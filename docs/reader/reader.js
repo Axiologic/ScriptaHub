@@ -144,7 +144,7 @@ function hideLoading() { loading.hidden = true; }
 
 function showError(message) {
   loading.hidden = true;
-  stage.innerHTML = `<div class="reader-error"><p>${escapeHtml(message)}</p>${state.source ? `<p><a href="${escapeAttribute(state.source)}" target="_blank" rel="noreferrer">Open the original file instead →</a></p>` : ''}</div>`;
+  stage.innerHTML = `<div class="reader-error"><p>${escapeHtml(message)}</p>${state.source ? `<p><a href="${escapeAttribute(state.source)}"${state.type === 'pdf' ? ' data-auth-action="download"' : ''} target="_blank" rel="noreferrer">Open the original file instead →</a></p>` : ''}</div>`;
   setStatus('This edition could not be opened here.');
 }
 
@@ -619,6 +619,8 @@ async function start() {
   state.type = type;
   state.source = resources[type];
   originalLink.href = resources.pdf || resources[type];
+  if (resources.pdf || type === 'pdf') originalLink.dataset.authAction = 'download';
+  else delete originalLink.dataset.authAction;
   if (resources.pdf) { downloadLink.href = resources.pdf; downloadLink.hidden = false; }
   else downloadLink.hidden = true;
   setControls(type);

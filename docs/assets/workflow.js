@@ -109,6 +109,16 @@
     return `<aside class="workflow-context workflow-book-compact"><a href="${escape(href)}" aria-label="${escape(`${words.back}: ${title}`)}"><img src="../${escape(book.thumbnailUrl[lang] || book.thumbnailUrl.en)}" alt="${escape(title)}"></a><div><h2>${escape(title)}</h2><p>${escape(description)}</p></div></aside>`;
   };
   const mail = (subject, lines) => `mailto:create@scriptahub.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+  const accountUnavailable = {
+    en: "Account sign-in is currently unavailable. Please try again.",
+    fr: "La connexion à votre compte est momentanément indisponible. Veuillez réessayer.",
+    de: "Die Anmeldung ist derzeit nicht verfügbar. Bitte versuchen Sie es erneut.",
+    es: "El inicio de sesión no está disponible en este momento. Inténtalo de nuevo.",
+    pt: "O início de sessão está indisponível neste momento. Tente novamente.",
+    it: "L’accesso all’account non è al momento disponibile. Riprova.",
+    ro: "Autentificarea nu este disponibilă momentan. Încearcă din nou.",
+    pl: "Logowanie jest obecnie niedostępne. Spróbuj ponownie.",
+  };
 
   function renderCreate(lang) {
     const words = text[lang];
@@ -174,17 +184,32 @@
     const form = root.querySelector("form");
     const contract = root.querySelector("[data-contract-accept]");
     const submit = form.querySelector("[type=submit]");
-    contract.addEventListener("change", () => { submit.disabled = !book || !contract.checked; });
-    form.addEventListener("submit", (event) => {
+    let awaitingAccount = false;
+    contract.addEventListener("change", () => { submit.disabled = awaitingAccount || !book || !contract.checked; });
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      if (!book || !contract.checked || !form.reportValidity()) return;
-      const data = new FormData(form);
-      const lines = [
-        `Book ID: ${book.id}`, `Book: ${book.title[lang] || book.title.en}`, `Book directory: ${book.directory}`, `Edition language: ${lang}`, `Contribution type: ${data.get("kind") || ""}`,
-        `Name: ${data.get("name") || ""}`, `Reply email: ${data.get("email") || ""}`, `Promotional URL: ${data.get("url") || ""}`, `Contribution agreement accepted: yes`, "", "PROPOSED CHANGE / FEEDBACK", data.get("feedback") || "", "", "SOURCES / CONTEXT", data.get("sources") || "",
-      ];
-      root.querySelector("[data-workflow-status]").textContent = words.mailReady;
-      location.href = mail(`${words.feedbackSubject}: ${book.title[lang] || book.title.en}`, lines);
+      if (awaitingAccount || !book || !contract.checked || !form.reportValidity()) return;
+      const status = form.querySelector("[data-workflow-status]");
+      awaitingAccount = true;
+      submit.disabled = true;
+      status.textContent = "";
+      try {
+        if (!globalThis.ScriptaHubAuth?.requireAccount) throw new Error("Account service unavailable");
+        const account = await globalThis.ScriptaHubAuth.requireAccount("feedback");
+        if (!account || !form.isConnected || !contract.checked || !form.reportValidity()) return;
+        const data = new FormData(form);
+        const lines = [
+          `Book ID: ${book.id}`, `Book: ${book.title[lang] || book.title.en}`, `Book directory: ${book.directory}`, `Edition language: ${lang}`, `Contribution type: ${data.get("kind") || ""}`,
+          `Name: ${data.get("name") || ""}`, `Reply email: ${data.get("email") || ""}`, `Promotional URL: ${data.get("url") || ""}`, `Contribution agreement accepted: yes`, "", "PROPOSED CHANGE / FEEDBACK", data.get("feedback") || "", "", "SOURCES / CONTEXT", data.get("sources") || "",
+        ];
+        status.textContent = words.mailReady;
+        location.href = mail(`${words.feedbackSubject}: ${book.title[lang] || book.title.en}`, lines);
+      } catch {
+        status.textContent = accountUnavailable[lang];
+      } finally {
+        awaitingAccount = false;
+        submit.disabled = !book || !contract.checked;
+      }
     });
   }
 
@@ -207,7 +232,7 @@
         const label = edition.label?.[lang] || edition.label?.en || `Edition ${edition.number}`;
         const changes = edition.changes?.[lang] || edition.changes?.en || "";
         const date = new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(new Date(`${edition.publishedAt}T12:00:00`));
-        const downloads = Object.entries(edition.pdf || {}).map(([code, path]) => `<a href="../${escape(book.directory)}/${escape(path)}" download>${escape(words.download)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`).join("");
+        const downloads = Object.entries(edition.pdf || {}).map(([code, path]) => `<a href="../${escape(book.directory)}/${escape(path)}" data-auth-action="download" download>${escape(words.download)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`).join("");
         return `<article class="edition-card"><div>${current}<p class="edition-date">${escape(words.published)} ${escape(date)}</p></div><div><h2>${escape(label)}</h2><p class="edition-changes"><strong>${escape(words.changes)}:</strong> ${escape(changes)}</p><div class="edition-downloads">${downloads || `<span class="workflow-note">${escape(words.noPdf)}</span>`}</div></div></article>`;
       }).join("");
     } catch {

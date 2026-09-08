@@ -12,7 +12,7 @@ Public copy explains what a visitor can accomplish, what action will occur, and 
 
 ## 2. Source of truth and generated output
 
-Each book manifest under `docs/books/<normalised-English-title-words>/<bk-random-id>/manifest.json` is the source record. `docs/collection.json` and `docs/collection.js` are aggregate indexes rebuilt from manifests. `tools/build_books.py` owns route migration, manifest aggregation, edition links, book-page rendering, cover derivatives, discovery metadata, and validation.
+Each book manifest under `docs/books/<normalised-English-title-words>/<bk-random-id>/manifest.json` is the source record. `docs/collection.json` and `docs/collection.js` are aggregate indexes rebuilt from manifests. `tools/build_books.mjs` owns current book-page rendering and edition-history initialization. `tools/check_catalogue.mjs` and `tools/audit_internal_links.mjs` validate catalogue records, assets, local links, and anchors. These tools and the account bundle run in Node.js. Legacy content migration, manifest aggregation, cover derivatives, and keyword extraction remain in `tools/build_books.py`; after those operations, run `npm run build:books` to regenerate the current page template.
 
 Generated files are replaced from their sources. Do not patch generated book pages or aggregate catalogue files to make a durable change; change the generator or manifest and rebuild. A catalogue refresh may run periodically. That cadence is an operational detail and must not appear in visitor-facing copy.
 
@@ -101,6 +101,30 @@ Every book root owns `editions.json`. Existing records and downloads are preserv
 
 ## 13. Privacy, legal, and AI communication
 
+### Reader account actions
+
+Reading and direct PDF file URLs remain public. Clicking a site PDF download
+(including historical editions and reader PDF links) or the book's edition-feedback
+action requires a UserPersisto account. The popup opens registration first with
+email and password; existing-account sign-in remains available. Public signup
+assigns `selfRegistered` under the configured registration policy and cannot
+bootstrap an administrator. Existing `user` and `admin` accounts also qualify.
+
+The shared browser client uses OpenID Connect Authorization Code with PKCE,
+state, nonce, signature validation, and a same-origin callback. Each gated action
+checks current UserInfo roles. Short-lived credentials remain in tab session
+storage; passwords are entered only on UserPersisto. No refresh token is used.
+Cancellation, provider failures, and denied accounts leave the pending action
+unperformed and preserve the feedback draft. Concurrent attempts share one popup.
+Site notices support all eight interface languages. See `docs/auth/README.md` for
+the client configuration, callback and browser contracts.
+
+This account check also runs on direct feedback-form submission. The existing
+structured-email workflow and contribution agreement remain in force; accounts
+do not introduce stored public reviews. Create proposals remain public. Future
+stored-review writes require server-side authorization independently of this
+browser interaction gate.
+
 Legal pages remain easy to reach and distinguish confirmed behavior from placeholders that require operator or counsel input. Privacy copy states what hosting, local preferences, dictation providers, email providers, and reader analytics may process. AI transparency explains that books can be AI-assisted, that recommendations are relative catalogue matches, and that editorial responsibility and correction routes matter.
 
 No public legal or product text should freeze the service into its current delivery method. Claims about data handling must remain precise even if the transport changes; update privacy and AI pages alongside any architecture change that changes those claims.
@@ -110,11 +134,12 @@ No public legal or product text should freeze the service into its current deliv
 After a catalogue, generator, route, or shared interaction change, run:
 
 ```text
-python3 tools/build_books.py check
-python3 tools/audit_internal_links.py --check
+npm run build
+npm test
+npm run test:catalogue
 ```
 
-Also syntax-check changed JavaScript and Python, run `git diff --check`, and verify these invariants:
+Also syntax-check changed JavaScript, run `git diff --check`, and verify these invariants:
 
 - `docs/keywords/` does not exist.
 - No source or generated book page links to `/keywords/<language>/<slug>/`.
