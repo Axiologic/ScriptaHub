@@ -14,7 +14,7 @@ class ChunkTests(unittest.TestCase):
             root = Path(folder)
             source = root / 'en/full_content.html'
             source.parent.mkdir()
-            source.write_text('<html lang="en"><head><title>Book</title></head><body><p>Hello &amp; welcome.</p><img src="images/a.png"><pre>do_not_translate()</pre></body></html>')
+            source.write_text('<html lang="en"><head><title>Book</title></head><body><p lang="en-GB">Hello &amp; welcome.</p><img src="images/a.png"><pre>do_not_translate()</pre></body></html>')
             destination = root / 'ro/full_content.html'
             work = root / 'work'
             chunks.prepare(source, destination, 'ro', work)
@@ -28,6 +28,8 @@ class ChunkTests(unittest.TestCase):
             chunks.assemble(work)
             translated = destination.read_text()
             self.assertIn('<html lang="ro">', translated)
+            self.assertIn('<p lang="ro">', translated)
+            self.assertNotIn('lang="en-GB"', translated)
             self.assertIn('Salut &amp; bun venit.', translated)
             self.assertIn('../en/images/a.png', translated)
             self.assertIn('<pre>do_not_translate()</pre>', translated)

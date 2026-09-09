@@ -5,47 +5,47 @@
     {
       "id": "t000125",
       "source": "The experiments in spock, HDC-RE, and VSARepresentations test whether the semantics assigned to vector operations are actually preserved by the implemented carrier, similarity measure, and decoder. The intended goal was to make reasoning geometric or holographic while retaining simple composition. Direct probes show several mismatches: information represented in vector magnitude can disappear under cosine comparison; sparse set-XOR does not automatically provide the illustrated inverse; and XOR binding is not an isometry for the byte-valued metric used by the metric-affine backend. These are useful negative results because they identify operator contracts that any successor architecture must state explicitly.",
-      "translation": ""
+      "translation": "Experimentele din spock, HDC-RE și VSARepresentations testează dacă semantica atribuită operațiilor vectoriale este păstrată efectiv de suportul implementat, măsura de similaritate și decodor. Obiectivul intenționat era să facă raționamentul geometric sau holografic, păstrând compoziția simplă. Probele directe arată mai multe nepotriviri: informația reprezentată în modulul vectorului poate dispărea la compararea prin cosinus; XOR pe mulțimi rare nu oferă automat inversul ilustrat; iar legarea XOR nu este o izometrie pentru metrica pe octeți folosită de componenta metric-afină. Acestea sunt rezultate negative utile deoarece identifică contracte de operator pe care orice arhitectură succesoare trebuie să le enunțe explicit."
     },
     {
       "id": "t000126",
       "source": "3.1 Magnitude information versus cosine readout",
-      "translation": ""
+      "translation": "3.1 Informația din modul versus citirea prin cosinus"
     },
     {
       "id": "t000127",
       "source": "The spock repository is a useful place to begin because its numerical kernel is small. It exposes operations corresponding to addition, binding, negation, a distance-like similarity, movement, modulation, identity, and normalisation. The implementation is inspectable enough to compare mathematical behaviour with the semantic language used in the accompanying theory documents. The attraction is clear: a limited set of fast operations might support a larger family of cognitive transformations. [R01]",
-      "translation": ""
+      "translation": "Depozitul spock este un loc util de început deoarece nucleul său numeric este mic. Expune operații corespunzătoare adunării, legării, negației, unei similarități de tip distanță, deplasării, modulării, identității și normalizării. Implementarea este suficient de inspectabilă pentru a compara comportamentul matematic cu limbajul semantic folosit în documentele teoretice însoțitoare. Atracția este clară: un set limitat de operații rapide ar putea susține o familie mai mare de transformări cognitive. [R01]"
     },
     {
       "id": "t000128",
       "source": "The first difficulty appears when confidence is represented by positive scaling. Suppose a vector describes a proposition and a factor of 0.7 is intended to express reduced confidence. The next stage compares this vector with another using cosine similarity. Cosine divides the dot product by the product of the vector norms. Multiplying one vector by a positive scalar multiplies both its contribution to the numerator and its norm in the denominator by that scalar. The factor cancels.",
-      "translation": ""
+      "translation": "Prima dificultate apare când încrederea este reprezentată prin scalare pozitivă. Să presupunem că un vector descrie o propoziție și că un factor de 0,7 este menit să exprime încredere redusă. Etapa următoare compară acest vector cu altul folosind similaritatea cosinus. Cosinusul împarte produsul scalar la produsul normelor vectorilor. Înmulțirea unui vector cu un scalar pozitiv înmulțește atât contribuția sa la numărător, cât și norma sa din numitor cu acel scalar. Factorul se simplifică."
     },
     {
       "id": "t000129",
       "source": "Written as an executable contract, the relevant identity is cosine(c * x, y) = cosine(x, y) for nonzero vectors and positive c. The audit tested the actual primitive with a simple vector and scale factors 0.1, 0.3, 0.7, and 1.0. Its cosine with the original remained one to numerical precision. The transformed similarity used by the implementation also remained one. A downstream decision that sees only this similarity cannot tell these confidence values apart. [A04]",
-      "translation": ""
+      "translation": "Scrisă ca un contract executabil, identitatea relevantă este cosine(c * x, y) = cosine(x, y) pentru vectori nenuli și c pozitiv. Auditul a testat primitiva efectivă cu un vector simplu și factori de scalare 0.1, 0.3, 0.7 și 1.0. Cosinusul său față de original a rămas unu până la precizia numerică. Similaritatea transformată folosită de implementare a rămas și ea unu. O decizie ulterioară care vede numai această similaritate nu poate distinge aceste valori de încredere. [A04]"
     },
     {
       "id": "t000130",
       "source": "This is not an argument against using vector magnitude. Magnitude can carry information when later operations read it. It is an argument against claiming that a particular pipeline preserves a confidence variable when that pipeline deliberately removes the relevant degree of freedom. A repair might keep confidence in a separate field, use a magnitude-sensitive score with explicit calibration, or encode uncertainty through a distribution rather than positive scaling. Each choice changes the semantics and should be tested as such.",
-      "translation": ""
+      "translation": "Acesta nu este un argument împotriva folosirii modulului vectorului. Modulul poate purta informație când operațiile ulterioare îl citesc. Este un argument împotriva afirmației că un anumit flux de procesare păstrează o variabilă de încredere când acel flux elimină deliberat gradul de libertate relevant. O reparație ar putea păstra încrederea într-un câmp separat, ar putea folosi un scor sensibil la modul, cu calibrare explicită, sau ar putea codifica incertitudinea printr-o distribuție în locul scalării pozitive. Fiecare alegere schimbă semantica și ar trebui testată ca atare."
     },
     {
       "id": "t000131",
       "source": "The example exposes a broader risk in AI-generated theory documents. Operations receive meaningful names, then the names begin to act as evidence. “Modulate” sounds like changing belief strength. “Distance” sounds like measuring semantic disagreement. “Normalise” sounds like a harmless numerical adjustment. But if the representation of uncertainty is magnitude, normalisation is not semantically harmless. The question is not whether the functions have plausible interpretations independently. It is whether the composition preserves the intended variable.",
-      "translation": ""
+      "translation": "Exemplul expune un risc mai larg în documentele teoretice generate de IA. Operațiile primesc nume semnificative, apoi numele încep să funcționeze ca dovezi. „Modulate” sugerează schimbarea tăriei unei convingeri. „Distance” sugerează măsurarea dezacordului semantic. „Normalise” sugerează o ajustare numerică inofensivă. Dar dacă reprezentarea incertitudinii este modulul, normalizarea nu este semantic inofensivă. Întrebarea nu este dacă funcțiile au, separat, interpretări plauzibile. Este dacă compoziția păstrează variabila intenționată."
     },
     {
       "id": "t000132",
       "source": "Similar care is needed with negation. Replacing a vector with its negative creates an opposite direction under cosine. That is a well-defined geometric operation. Logical negation, however, changes the truth condition of a proposition while preserving its content as the subject of denial. The negative of a vector for “Alice is in the kitchen” does not automatically identify the appropriate alternatives, distinguish explicit denial from missing evidence, or implement the scope of “Alice does not believe that Bob left.” A geometric opposite becomes logical negation only within a verified encoding and reasoning scheme.",
-      "translation": ""
+      "translation": "Este necesară o atenție similară pentru negație. Înlocuirea unui vector cu negativul său creează o direcție opusă în raport cu cosinusul. Aceasta este o operație geometrică bine definită. Negația logică schimbă însă condiția de adevăr a unei propoziții, păstrând conținutul ei ca obiect al negării. Negativul unui vector pentru „Alice este în bucătărie” nu identifică automat alternativele adecvate, nu distinge negarea explicită de lipsa dovezilor și nu implementează domeniul de aplicare din „Alice nu crede că Bob a plecat”. Un opus geometric devine negație logică numai într-o schemă verificată de codificare și raționament."
     },
     {
       "id": "t000133",
       "source": "The same limitation applies to addition. Adding vectors may bundle evidence or mix features, but calling the result Bayesian does not establish a Bayesian update. Such an update requires a specified probabilistic model, likelihoods, and a rule for combining dependent or independent evidence. The inspected primitive operations do not supply those ingredients merely by addition. The responsible conclusion is not that probabilistic interpretation is impossible; it is that the relevant model remains an additional obligation.",
-      "translation": ""
+      "translation": "Aceeași limitare se aplică adunării. Adunarea vectorilor poate agrega dovezi sau amesteca trăsături, însă numirea rezultatului bayesian nu stabilește o actualizare bayesiană. O asemenea actualizare necesită un model probabilist specificat, verosimilități și o regulă pentru combinarea dovezilor dependente sau independente. Operațiile primitive inspectate nu oferă aceste ingrediente doar prin adunare. Concluzia responsabilă nu este că interpretarea probabilistă este imposibilă; este că modelul relevant rămâne o obligație suplimentară."
     }
   ]
 }

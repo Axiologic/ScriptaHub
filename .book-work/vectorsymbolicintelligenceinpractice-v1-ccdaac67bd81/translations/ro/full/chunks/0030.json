@@ -5,47 +5,47 @@
     {
       "id": "t000314",
       "source": "The audit's deployment observations were mixed in a way that must not be obscured. All 73 selected tests passed. The separate smoke evaluation attempted twelve combinations of cases, solver choices, and intuition modes, but all twelve produced errors because the external solver binaries were unavailable. The evaluation process itself exited successfully. A process exit code of zero therefore did not mean that the reasoning cases passed. The unit tests largely exercised controlled adapters and mocks, not a live end-to-end solver installation. [A02, A03]",
-      "translation": ""
+      "translation": "Observațiile auditului privind instalarea au fost mixte, într-un mod care nu trebuie ascuns. Toate cele 73 de teste selectate au trecut. Evaluarea separată de bază a încercat douăsprezece combinații de cazuri, alegeri de rezolvitor și moduri de intuiție, dar toate cele douăsprezece au produs erori fiindcă executabilele rezolvitoarelor externe nu erau disponibile. Procesul de evaluare însuși s-a încheiat cu succes. Prin urmare, un cod de ieșire zero al procesului nu însemna că trecuseră cazurile de raționament. Testele unitare au exercitat în mare parte adaptoare controlate și simulări, nu o instalare reală cap-coadă a rezolvitorului. [A02, A03]"
     },
     {
       "id": "t000315",
       "source": "Rather than infer anything about solver quality from missing executables, I examined the query orchestration directly. For entailment, the code selects an active subset of fragments, asserts them, negates the goal, and asks whether the result is satisfiable. If unsatisfiable, the selected premises entail the goal under the chosen logic. If satisfiable, they do not. The crucial issue is what happens when those premises are only a retrieved part of the available world.",
-      "translation": ""
+      "translation": "În loc să deduc ceva despre calitatea rezolvitorului din lipsa executabilelor, am examinat direct orchestrarea interogării. Pentru implicația logică, codul selectează un subset activ de fragmente, le afirmă, neagă obiectivul și verifică dacă rezultatul este satisfiabil. Dacă este nesatisfiabil, premisele selectate implică obiectivul în logica aleasă. Dacă este satisfiabil, nu îl implică. Problema crucială este ce se întâmplă când acele premise sunt doar o parte recuperată a lumii disponibile."
     },
     {
       "id": "t000316",
       "source": "The implementation stops expansion on a definite solver verdict. Expansion is principally associated with an unknown result, not with a satisfiable counterexample obtained from an incomplete slice. This is understandable as a local solver protocol, but dangerous as a whole-knowledge-base protocol. A definitive answer about a subset is not necessarily definitive about the full set. The solver can be perfectly correct while the architecture assigns its answer the wrong scope.",
-      "translation": ""
+      "translation": "Implementarea oprește extinderea la un verdict categoric al rezolvitorului. Extinderea este asociată în principal unui rezultat necunoscut, nu unui contraexemplu satisfiabil obținut dintr-un subset incomplet. Acest lucru este de înțeles ca protocol local al rezolvitorului, dar periculos ca protocol pentru întreaga bază de cunoștințe. Un răspuns definitiv despre un subset nu este neapărat definitiv pentru întreaga mulțime. Rezolvitorul poate fi perfect corect, în timp ce arhitectura atribuie răspunsului său un domeniu greșit."
     },
     {
       "id": "t000317",
       "source": "To test this without claiming a live SMT deployment, I wrote a small independent Boolean adapter that enumerates all four assignments of two variables. It parses the assertions emitted by the real query executor and evaluates their Boolean content. It does not return a prearranged sequence of verdicts. It is exact for the tiny Boolean language used in the probe, not a general SMT implementation. This makes it possible to test the actual orchestration with a transparent solver. [A06]",
-      "translation": ""
+      "translation": "Pentru a testa acest lucru fără să pretind o instalare SMT reală, am scris un mic adaptor boolean independent care enumeră toate cele patru atribuiri pentru două variabile. El analizează aserțiunile emise de executorul real al interogării și evaluează conținutul lor boolean. Nu întoarce o secvență prestabilită de verdicte. Este exact pentru micul limbaj boolean folosit în probă, nu o implementare SMT generală. Aceasta face posibilă testarea orchestrării efective cu un rezolvitor transparent. [A06]"
     },
     {
       "id": "t000318",
       "source": "With available fragments q and p, goal p, and a one-fragment expansion step, ranking q first caused the executor to return not-entailed after one round. Ranking p first returned entailed. Including both immediately also returned entailed. The first result is correct for the active slice containing only q, but it is not a correct whole-world non-entailment conclusion because p is present in the available world. The probe exposes a scope problem, not a failure of Boolean reasoning. [A06]",
-      "translation": ""
+      "translation": "Cu fragmentele disponibile q și p, obiectivul p și un pas de extindere de un fragment, clasarea lui q pe primul loc a făcut executorul să întoarcă not-entailed după o rundă. Clasarea lui p pe primul loc a întors entailed. Includerea imediată a ambelor a întors tot entailed. Primul rezultat este corect pentru subsetul activ care conține numai q, dar nu este o concluzie corectă de neimplicare pentru întreaga lume, deoarece p este prezent în lumea disponibilă. Proba expune o problemă de domeniu, nu un eșec al raționamentului boolean. [A06]"
     },
     {
       "id": "t000319",
       "source": "The repository's knowledge-gap diagnostics partially recognise this first case: they note that the active slice does not support the goal symbol. That is useful, and a higher-level response policy may choose to ask a question rather than make an unconditional negative claim. The audit therefore does not assert that every user-facing answer is false. It establishes a lower-level contract hazard: a not-entailed label can be produced after an incomplete search unless the scope travels with it.",
-      "translation": ""
+      "translation": "Diagnosticele lacunelor de cunoaștere din depozit recunosc parțial acest prim caz: ele observă că subsetul activ nu susține simbolul obiectivului. Aceasta este util, iar o politică de răspuns de nivel superior poate alege să pună o întrebare în loc să facă o afirmație negativă necondiționată. Prin urmare, auditul nu afirmă că fiecare răspuns prezentat utilizatorului este fals. Stabilește un risc în contractul de nivel inferior: o etichetă not-entailed poate fi produsă după o căutare incompletă dacă domeniul nu o însoțește."
     },
     {
       "id": "t000320",
       "source": "9.3 Proof validity requires retrieval-scope evidence",
-      "translation": ""
+      "translation": "9.3 Validitatea demonstrației necesită dovezi despre domeniul recuperării"
     },
     {
       "id": "t000321",
       "source": "A stronger probe removes the simplest lexical warning. The first fragment is the tautology p or not p, and the second fragment is the fact p. The goal remains p. The first fragment mentions the relevant symbol, so the symbol-occurrence-based gap detector reports no gap. Yet the tautology alone does not entail p; it is compatible with either truth value. The executor returns not-entailed after its first round, even though the second available fragment would establish the goal. The audit reproduced this using the same independent Boolean adapter and the actual orchestration code. [A06]",
-      "translation": ""
+      "translation": "O probă mai puternică elimină cel mai simplu avertisment lexical. Primul fragment este tautologia p or not p, iar al doilea este faptul p. Obiectivul rămâne p. Primul fragment menționează simbolul relevant, astfel încât detectorul de lacune bazat pe apariția simbolurilor nu raportează nicio lacună. Totuși, tautologia singură nu implică p; este compatibilă cu ambele valori de adevăr. Executorul întoarce not-entailed după prima rundă, deși al doilea fragment disponibil ar stabili obiectivul. Auditul a reprodus acest lucru folosind același adaptor boolean independent și codul efectiv de orchestrare. [A06]"
     },
     {
       "id": "t000322",
       "source": "This is a compact result with broad architectural significance. Mentioning a symbol is not evidence that all relevant information about it has been retrieved. A retrieved paragraph can discuss a topic without containing its decisive fact. A solver can see every variable name and still lack the premise that changes the answer. Therefore a lexical knowledge-gap check cannot serve as a completeness certificate for reasoning over a larger corpus.",
-      "translation": ""
+      "translation": "Acesta este un rezultat compact, cu semnificație arhitecturală largă. Menționarea unui simbol nu dovedește că toate informațiile relevante despre el au fost recuperate. Un paragraf recuperat poate discuta un subiect fără să conțină faptul său decisiv. Un rezolvitor poate vedea fiecare nume de variabilă și totuși să îi lipsească premisa care schimbă răspunsul. Prin urmare, verificarea lexicală a lacunelor de cunoaștere nu poate servi drept certificat de completitudine pentru raționamentul asupra unui corpus mai mare."
     }
   ]
 }

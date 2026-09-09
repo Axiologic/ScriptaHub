@@ -5,47 +5,47 @@
     {
       "id": "t000274",
       "source": "The attraction is practical and conceptual. A small deterministic machine with local updates might be cheaper to inspect and operate than a conventional large neural model. Local learning also offers a possible route to continuous adaptation without a full global backward pass. However, the existence of a local update rule does not establish that it assigns credit to the right causes. A next-byte error can arise from an embedding, an attention choice, a context limitation, or a deficient output rule. A reward broadcast through bounded eligibility traces must somehow distinguish useful changes from reinforcing incidental correlations.",
-      "translation": ""
+      "translation": "Atracția este practică și conceptuală. O mașină deterministă mică, cu actualizări locale, ar putea fi mai ieftin de inspectat și operat decât un model neuronal mare convențional. Învățarea locală oferă și o cale posibilă către adaptarea continuă fără o trecere globală completă de propagare înapoi. Totuși, existența unei reguli de actualizare locală nu stabilește că aceasta atribuie meritul cauzelor corecte. O eroare de predicție a octetului următor poate proveni dintr-o reprezentare încorporată, o alegere a atenției, o limită a contextului sau o regulă de ieșire deficitară. O recompensă difuzată prin urme de eligibilitate limitate trebuie să distingă cumva schimbările utile de întărirea corelațiilor întâmplătoare."
     },
     {
       "id": "t000275",
       "source": "The repository's seven tests passed in this audit. That supports the mechanics they exercise, not language competence. To obtain a more substantive observation, I evaluated a supplied checkpoint on its included question-answer dataset. The first attempt exposed a configuration dependency: the evaluator constructed the default model shape before loading a checkpoint with different dimensions. Supplying the checkpoint's own configuration allowed the evaluation to run. This is another example of an engineering condition that should be separated from model quality. [A02, A03]",
-      "translation": ""
+      "translation": "Cele șapte teste ale depozitului au trecut în acest audit. Aceasta susține mecanismele pe care le exercită, nu competența lingvistică. Pentru a obține o observație mai substanțială, am evaluat o stare salvată furnizată pe setul său inclus de întrebări și răspunsuri. Prima încercare a dezvăluit o dependență de configurare: evaluatorul construia forma implicită a modelului înainte să încarce o stare salvată cu dimensiuni diferite. Furnizarea configurației proprii a stării salvate a permis rularea evaluării. Acesta este un alt exemplu de condiție inginerească ce trebuie separată de calitatea modelului. [A02, A03]"
     },
     {
       "id": "t000276",
       "source": "The evaluated checkpoint used model dimension 128, attention-head dimension 64, and context length 64. Its episodic memory and prompt-memory options were disabled. Those details matter because a claim about the result should not be generalised to every memory-enabled variant in the repository. The evaluation file contained twenty records, despite the command permitting a maximum of one hundred. File names and command limits are not sample counts.",
-      "translation": ""
+      "translation": "Starea salvată evaluată folosea dimensiunea modelului 128, dimensiunea capului de atenție 64 și lungimea contextului 64. Opțiunile sale de memorie episodică și de memorie a instrucțiunilor erau dezactivate. Aceste detalii contează deoarece o afirmație despre rezultat nu trebuie generalizată la fiecare variantă din depozit care utilizează memorie. Fișierul de evaluare conținea douăzeci de înregistrări, deși comanda permitea un maximum de o sută. Numele fișierelor și limitele comenzilor nu reprezintă numărul de exemple."
     },
     {
       "id": "t000277",
       "source": "On these twenty included records, exact-match rate was zero and mean F1 was approximately 0.0472. The reported next-prediction accuracy was approximately 0.0556. The questions included simple paraphrases such as asking the colour of the sky or the sound made by an animal. These results do not support useful question answering for this checkpoint. They also do not establish a general impossibility of integer predictive models or local learning. They establish a weak result for a specific supplied state and configuration. [A03]",
-      "translation": ""
+      "translation": "Pe aceste douăzeci de înregistrări incluse, rata potrivirilor exacte a fost zero, iar F1 mediu a fost de aproximativ 0,0472. Acuratețea raportată a predicției următoare a fost de aproximativ 0,0556. Întrebările includeau parafraze simple, precum întrebarea despre culoarea cerului sau sunetul produs de un animal. Aceste rezultate nu susțin o capacitate utilă de răspuns la întrebări pentru această stare salvată. Ele nu stabilesc nici imposibilitatea generală a modelelor predictive cu întregi sau a învățării locale. Stabilesc un rezultat slab pentru o anumită stare și configurație furnizate. [A03]"
     },
     {
       "id": "t000278",
       "source": "The most useful interpretation is that the programme has implemented a learning substrate without yet demonstrating the desired learned behaviour. That distinction should guide the next experiment. Before increasing the corpus or adding more machinery, the system should pass progressively harder controlled tasks: exact repetition, delayed copying, controlled variable substitution, short compositional transformations, and transfer to paraphrased prompts. Each task isolates a different demand on memory and credit assignment.",
-      "translation": ""
+      "translation": "Interpretarea cea mai utilă este că programul a implementat un suport pentru învățare fără să demonstreze încă comportamentul învățat dorit. Această distincție ar trebui să ghideze următorul experiment. Înainte de a mări corpusul sau de a adăuga mecanisme, sistemul ar trebui să treacă sarcini controlate progresiv mai dificile: repetare exactă, copiere întârziată, substituție controlată a variabilelor, transformări compoziționale scurte și transfer la instrucțiuni parafrazate. Fiecare sarcină izolează o cerință diferită asupra memoriei și atribuirii meritului."
     },
     {
       "id": "t000279",
       "source": "A good local-learning study would also compare the update rule with simpler alternatives on the same state budget. A frequency table or small n-gram model may outperform a more elaborate predictive VM on some workloads. A conventional small model may learn the same task with fewer examples. Such results would not make the VM useless; they would identify whether its advantage lies in adaptation cost, bounded arithmetic, interpretability, or some other property. Without a comparison, architectural simplicity is an aspiration rather than an empirical benefit.",
-      "translation": ""
+      "translation": "Un studiu bun al învățării locale ar compara și regula de actualizare cu alternative mai simple, folosind același buget de stare. Un tabel de frecvențe sau un mic model n-gram poate depăși o mașină virtuală predictivă mai elaborată pentru unele sarcini. Un model convențional mic poate învăța aceeași sarcină din mai puține exemple. Asemenea rezultate nu ar face mașina virtuală inutilă; ar identifica dacă avantajul ei ține de costul adaptării, aritmetica limitată, interpretabilitate sau altă proprietate. Fără comparație, simplitatea arhitecturală este o aspirație, nu un beneficiu empiric."
     },
     {
       "id": "t000280",
       "source": "SomaVM contributes an important research question even in its present state: can local predictive adaptation be attached to an explicit memory-and-program architecture rather than expected to invent the whole architecture implicitly? A circuit could decide what context to preserve, what prediction task is active, and when an update is accepted. The learned component could then solve a bounded subproblem. This proposed division would make it easier to discover whether failure comes from missing state, inadequate learning, or an unsuitable objective.",
-      "translation": ""
+      "translation": "SomaVM contribuie cu o întrebare importantă de cercetare chiar și în starea actuală: poate adaptarea predictivă locală să fie atașată unei arhitecturi explicite de memorie și programe, în loc să i se ceară să inventeze implicit întreaga arhitectură? Un circuit ar putea decide ce context să păstreze, ce sarcină predictivă este activă și când este acceptată o actualizare. Componenta învățată ar putea rezolva atunci o subproblemă limitată. Această împărțire propusă ar ușura descoperirea cauzei eșecului: stare lipsă, învățare inadecvată sau obiectiv nepotrivit."
     },
     {
       "id": "t000281",
       "source": "8.2 BSP: explicit transforms and a defective negation metric",
-      "translation": ""
+      "translation": "8.2 BSP: transformări explicite și o metrică defectuoasă a negației"
     },
     {
       "id": "t000282",
       "source": "BSP approaches prediction through explicit groups, counters, and compression operations. It is not simply a standard random-hypervector language model. Its structures increasingly resemble symbolic dictionaries and small programs: copying from context, emitting literals, repeating patterns, and representing reusable groups. That movement away from one holographic carrier is itself informative. The system finds useful regularity by exposing operations that can reconstruct sequences. [R09]",
-      "translation": ""
+      "translation": "BSP abordează predicția prin grupuri, contoare și operații de compresie explicite. Nu este pur și simplu un model standard de limbaj cu hipervectori aleatori. Structurile sale seamănă tot mai mult cu dicționare simbolice și programe mici: copiere din context, emitere de literali, repetare de tipare și reprezentare a grupurilor reutilizabile. Această îndepărtare de un singur suport holografic este ea însăși instructivă. Sistemul găsește regularitate utilă expunând operații care pot reconstrui secvențe. [R09]"
     }
   ]
 }

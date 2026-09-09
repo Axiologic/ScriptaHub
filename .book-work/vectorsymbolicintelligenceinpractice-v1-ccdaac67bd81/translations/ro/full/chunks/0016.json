@@ -5,47 +5,47 @@
     {
       "id": "t000175",
       "source": "The EXACT backend takes the move away from a fixed-size holographic state further. It maintains a session-local dictionary of atoms and represents a term through a set of atom bits. A bundle contains explicit terms. Binding forms pairwise unions of atom sets. This makes certain kinds of structural information exact rather than recoverable only through similarity. [R03]",
-      "translation": ""
+      "translation": "Componenta EXACT duce mai departe îndepărtarea de o stare holografică de dimensiune fixă. Ea menține un dicționar de atomi local sesiunii și reprezintă un termen printr-o mulțime de biți corespunzători atomilor. O agregare conține termeni expliciți. Legarea formează reuniuni perechi ale mulțimilor de atomi. Astfel, anumite tipuri de informație structurală devin exacte, în loc să poată fi recuperate doar prin similaritate. [R03]"
     },
     {
       "id": "t000176",
       "source": "The semantics are not those of an invertible group. Binding a term with itself does not duplicate its atoms, because set union is idempotent. The audit confirmed that binding a single atom with itself returns the same term. Removing that atom through the implemented quotient-like operation can produce an empty residual rather than reconstructing a second copy. This is expected under the chosen set semantics. It should not be described as a bug merely because it differs from a bipolar vector's self-inverse binding. [A04]",
-      "translation": ""
+      "translation": "Semantica nu este cea a unui grup cu operații inversabile. Legarea unui termen cu el însuși nu îi dublează atomii, deoarece reuniunea mulțimilor este idempotentă. Auditul a confirmat că legarea unui singur atom cu el însuși întoarce același termen. Eliminarea acelui atom prin operația implementată, de tip cât, poate produce un rest vid în loc să reconstruiască o a doua copie. Acest comportament este cel așteptat în semantica aleasă a mulțimilor. Nu trebuie descris drept eroare doar pentru că diferă de legarea autoinversă a unui vector bipolar. [A04]"
     },
     {
       "id": "t000177",
       "source": "This distinction is important for a generic backend interface. An inverse answers, “Which unique input produced this result under a reversible transformation?” A quotient-like operation may instead answer, “Which residual structures are compatible with removing this query pattern?” The latter can be extremely useful for symbolic matching. It can also return multiple candidates or discard multiplicity information. A caller must know which question is being answered.",
-      "translation": ""
+      "translation": "Această distincție este importantă pentru o interfață generică a componentelor de execuție. O inversă răspunde la întrebarea: „Care este intrarea unică ce a produs acest rezultat printr-o transformare reversibilă?” O operație de tip cât poate răspunde, în schimb: „Ce structuri reziduale sunt compatibile cu eliminarea acestui tipar de interogare?” Cea din urmă poate fi extrem de utilă pentru potrivirea simbolică. Ea poate însă întoarce mai mulți candidați sau pierde informația despre multiplicitate. Apelantul trebuie să știe la care întrebare primește răspuns."
     },
     {
       "id": "t000178",
       "source": "EXACT includes variants with different residual-selection behaviour. One construction gathers possible residual terms; another emphasises what remains common across query-related matches. These are meaningful alternative semantics for structural retrieval. They should be evaluated against corresponding tasks, such as existential pattern completion or common-factor extraction, rather than forced under one label of “unbinding.” Their potential novelty lies in a useful representation-and-query combination with explicit guarantees, not in pretending that the entire carrier obeys one familiar VSA algebra.",
-      "translation": ""
+      "translation": "EXACT include variante cu comportamente diferite de selectare a resturilor. O construcție reunește termenii reziduali posibili; alta pune accentul pe ceea ce rămâne comun între potrivirile asociate interogării. Acestea sunt semantici alternative relevante pentru recuperarea structurală. Ele trebuie evaluate pe sarcini corespunzătoare, precum completarea existențială a tiparelor sau extragerea factorului comun, în loc să fie forțate sub aceeași etichetă de „dezlegare”. Noutatea lor potențială constă într-o combinație utilă de reprezentare și interogare, cu garanții explicite, nu în pretenția că întregul suport al reprezentării respectă o algebră VSA familiară."
     },
     {
       "id": "t000179",
       "source": "Removing collision noise does not remove cost. Binding a bundle with two alternatives to another bundle with two alternatives can produce four combinations. Repeating the construction with independent alternatives yields exponential expansion. The audit's simple twelve-stage probe produced 4,096 explicit terms. That is the expected combinatorial growth, not evidence of an implementation error. An exact memory must either pay for such combinations, keep them factorised, or decline to enumerate them. [A04]",
-      "translation": ""
+      "translation": "Eliminarea zgomotului de coliziune nu elimină costul. Legarea unei agregări cu două alternative de o altă agregare cu două alternative poate produce patru combinații. Repetarea construcției cu alternative independente duce la o expansiune exponențială. Proba simplă în douăsprezece etape din audit a produs 4.096 de termeni expliciți. Aceasta este creșterea combinatorie așteptată, nu dovada unei erori de implementare. O memorie exactă trebuie fie să plătească pentru asemenea combinații, fie să le păstreze factorizate, fie să refuze enumerarea lor. [A04]"
     },
     {
       "id": "t000180",
       "source": "A factorised representation suggests a circuit directly. Instead of storing every expanded term, the system can retain a node saying that one bundle is bound to another. A query then chooses whether to expand, simplify, or match the structure lazily. This introduces a new burden: equality and retrieval may require computation over the factorised graph. The trade-off is no longer “noise versus no noise,” but “eager expansion versus deferred computation.” That is a more promising architectural question because it can be optimised according to actual tasks.",
-      "translation": ""
+      "translation": "O reprezentare factorizată sugerează direct un circuit. În loc să stocheze fiecare termen expandat, sistemul poate păstra un nod care exprimă legarea unei agregări de alta. O interogare alege apoi dacă să expandeze, să simplifice sau să efectueze potrivirea structurii la nevoie. Aceasta introduce o nouă cerință: egalitatea și recuperarea pot necesita calcule asupra grafului factorizat. Compromisul nu mai este „zgomot versus absența zgomotului”, ci „expansiune imediată versus calcul amânat”. Aceasta este o întrebare arhitecturală mai promițătoare, deoarece poate fi optimizată în funcție de sarcinile reale."
     },
     {
       "id": "t000181",
       "source": "The backend's reported byte count also requires care. An accessor returning zero for an exact representation does not demonstrate zero storage; in context it is an unknown or non-applicable size sentinel. The atom dictionary, BigInt values, term collection, and runtime objects all occupy memory. Scientific reporting should not allow a convenience API to become a capacity claim. The same principle applies to the elastic backend's atomic width and to later neural active-parameter counts: a convenient component measure is not the cost of the whole system.",
-      "translation": ""
+      "translation": "Și numărul de octeți raportat de componentă trebuie interpretat cu grijă. Un accesoriu care întoarce zero pentru o reprezentare exactă nu demonstrează un consum nul de stocare; în context, este o valoare-santinelă pentru o dimensiune necunoscută sau neaplicabilă. Dicționarul de atomi, valorile BigInt, colecția de termeni și obiectele mediului de execuție ocupă toate memorie. Raportarea științifică nu trebuie să transforme un API comod într-o afirmație despre capacitate. Același principiu se aplică lățimii atomice a componentei elastice și, mai târziu, numărului de parametri neuronali activi: o măsură convenabilă a unei componente nu reprezintă costul întregului sistem."
     },
     {
       "id": "t000182",
       "source": "A fixed finite memory cannot assign a distinct code to every member of an unbounded set of structures. That follows from counting, not from a special weakness of VSA. Allowing storage, computation, or external cleanup memory to grow changes the premise. Published capacity analyses likewise formulate guarantees for specified tasks and representation families, including connections with sketching and Bloom filters; they do not provide an unrestricted capacity claim for any object called a hypervector. [L03] The exact backend is interesting precisely because it makes one such change explicit. The programme is not discovering that intelligence requires abandoning mathematics; it is discovering that storage growth, factorisation, and query execution must be part of the mathematical object. This is the strongest bridge from representation experiments to SOP circuits in the supplied collection.",
-      "translation": ""
+      "translation": "O memorie finită fixă nu poate atribui un cod distinct fiecărui membru al unei mulțimi nelimitate de structuri. Acest lucru rezultă din numărare, nu dintr-o slăbiciune particulară a VSA. Permiterea creșterii stocării, a calculului sau a memoriei externe de dezambiguizare schimbă premisa. La fel, analizele de capacitate publicate formulează garanții pentru sarcini și familii de reprezentări specificate, inclusiv legături cu schițele compacte și filtrele Bloom; ele nu oferă o afirmație de capacitate nelimitată pentru orice obiect numit hipervector. [L03] Componenta exactă este interesantă tocmai fiindcă face explicită o astfel de schimbare. Programul nu descoperă că inteligența cere abandonarea matematicii; descoperă că extinderea stocării, factorizarea și executarea interogărilor trebuie să facă parte din obiectul matematic. Aceasta este cea mai solidă punte dintre experimentele de reprezentare și circuitele SOP din colecția furnizată."
     },
     {
       "id": "t000183",
       "source": "5. Interference-aware memory placement",
-      "translation": ""
+      "translation": "5. Amplasarea memoriei ținând cont de interferență"
     }
   ]
 }

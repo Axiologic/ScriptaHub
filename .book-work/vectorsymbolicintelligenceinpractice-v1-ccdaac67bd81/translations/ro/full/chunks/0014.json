@@ -5,52 +5,52 @@
     {
       "id": "t000154",
       "source": "VSARepresentations contains several attempts to escape the capacity limits of a fixed holographic vector by changing how memory grows. Sparse, elastic, and exact backends trade fixed-size approximation for additional state, chunks, or explicit terms. The experiments are interesting because they make the resource trade-off visible: preserving more structure generally requires more memory or deferred computation. No tested representation yet provides both unrestricted structural fidelity and bounded fixed-size storage.",
-      "translation": ""
+      "translation": "VSARepresentations conține mai multe încercări de a depăși limitele de capacitate ale unui vector holografic fix prin schimbarea modului în care crește memoria. Componentele rare, elastice și exacte schimbă aproximarea de dimensiune fixă pe stare suplimentară, blocuri sau termeni expliciți. Experimentele sunt interesante deoarece fac vizibil compromisul de resurse: păstrarea unei structuri mai bogate necesită, în general, mai multă memorie sau calcul amânat. Nicio reprezentare testată nu oferă încă simultan fidelitate structurală fără restricții și stocare limitată de dimensiune fixă."
     },
     {
       "id": "t000155",
       "source": "4.1 Sparse polynomial binding and the limits of cancellation",
-      "translation": ""
+      "translation": "4.1 Legarea polinomială rară și limitele anulării"
     },
     {
       "id": "t000156",
       "source": "One of the most interesting aspects of VSARepresentations is the willingness to change the carrier rather than repeatedly tune one fixed hypervector. Its sparse-polynomial backend represents an object as a set of integer terms. Binding constructs pairwise XOR combinations, and sparsification retains a bounded number of terms. This can resemble an algebraic alternative to dense holographic superposition: preserve explicit sparse structure while still supporting cheap bitwise operations. [R03]",
-      "translation": ""
+      "translation": "Unul dintre cele mai interesante aspecte ale VSARepresentations este disponibilitatea de a schimba suportul, în loc să ajusteze repetat un hipervector fix. Componenta sa polinomială rară reprezintă un obiect ca mulțime de termeni întregi. Legarea construiește combinații XOR perechi, iar rarefierea păstrează un număr limitat de termeni. Aceasta poate semăna cu o alternativă algebrică la superpoziția holografică densă: păstrarea unei structuri rare explicite, susținând totodată operații ieftine pe biți. [R03]"
     },
     {
       "id": "t000157",
       "source": "The implementation, however, must be distinguished from nearby mathematical constructions. A set removes duplicate elements. A polynomial over a field with characteristic two cancels duplicate contributions in pairs. These are different operations. If a design argument assumes cancellation while the code merely deduplicates, a claimed inverse may fail before any approximation or truncation is introduced.",
-      "translation": ""
+      "translation": "Implementarea trebuie însă distinsă de construcțiile matematice apropiate. O mulțime elimină elementele duplicate. Un polinom peste un corp de caracteristică doi anulează contribuțiile duplicate în perechi. Acestea sunt operații diferite. Dacă un argument de proiectare presupune anulare, în timp ce codul doar deduplică, un invers pretins poate eșua înainte să fie introdusă orice aproximare sau trunchiere."
     },
     {
       "id": "t000158",
       "source": "A small probe makes the difference visible. Let the first sparse set contain the term 1, and the second contain 2 and 4. Full pairwise-XOR binding produces the set containing 3 and 5. Bind that result with the second set again. The four pairwise outcomes are 1, 7, 7, and 1. Set semantics retain 1 and 7. They do not cancel both occurrences of 7 or both occurrences of 1. The resulting set is not the original singleton. The audit used the backend's full binding operation, so the failure cannot be blamed on its normal sparsification step. [A04]",
-      "translation": ""
+      "translation": "O probă mică face diferența vizibilă. Fie prima mulțime rară formată din termenul 1, iar a doua din 2 și 4. Legarea XOR completă între perechi produce mulțimea care conține 3 și 5. Legăm acel rezultat din nou cu a doua mulțime. Cele patru rezultate perechi sunt 1, 7, 7 și 1. Semantica mulțimilor păstrează 1 și 7. Nu anulează ambele apariții ale lui 7 sau ambele apariții ale lui 1. Mulțimea rezultată nu este mulțimea inițială cu un singur element. Auditul a folosit operația completă de legare a componentei, astfel că eșecul nu poate fi atribuit pasului său obișnuit de rarefiere. [A04]"
     },
     {
       "id": "t000159",
       "source": "This does not establish that sparse symbolic carriers are a bad idea. It establishes that a proposed inverse requires a different algebra or a different claim. One could use coefficients and parity cancellation, restrict the binding keys, retain a richer factorisation structure, or define unbinding as a candidate-producing quotient rather than an inverse. Each repair has consequences for capacity, storage, and composition. The useful research question begins where the slogan “XOR is self-inverse” stops being sufficient.",
-      "translation": ""
+      "translation": "Aceasta nu stabilește că suporturile simbolice rare sunt o idee proastă. Stabilește că un invers propus necesită o algebră diferită sau o afirmație diferită. S-ar putea folosi coeficienți și anulare prin paritate, s-ar putea restricționa cheile de legare, păstra o structură mai bogată de factorizare sau defini dezlegarea ca un cât care produce candidați, nu ca un invers. Fiecare reparație are consecințe asupra capacității, stocării și compoziției. Întrebarea utilă de cercetare începe acolo unde sloganul „XOR este autoinvers” nu mai este suficient."
     },
     {
       "id": "t000160",
       "source": "The backend also places explicit limits on work and representation size. Its Cartesian products can be truncated, and its sparse result is reduced to a chosen number of terms. These choices are legitimate engineering decisions for bounded computation. But after truncation, exact reconstruction is no longer guaranteed even if the untruncated algebra were correct. A complete account must separate an algebraic failure, an approximation introduced for speed, and a recovery failure due to an inadequate decoder. The repositories sometimes move between these explanations too easily.",
-      "translation": ""
+      "translation": "Componenta impune și limite explicite asupra muncii și dimensiunii reprezentării. Produsele sale carteziene pot fi trunchiate, iar rezultatul rar este redus la un număr ales de termeni. Aceste alegeri sunt decizii inginerești legitime pentru calcul limitat. Dar după trunchiere, reconstrucția exactă nu mai este garantată chiar dacă algebra netrunchiată ar fi corectă. O prezentare completă trebuie să separe un eșec algebric, o aproximare introdusă pentru viteză și un eșec al recuperării cauzat de un decodor inadecvat. Depozitele trec uneori prea ușor de la una dintre aceste explicații la alta."
     },
     {
       "id": "t000161",
       "source": "An archived design discussion provides a particularly revealing control. It reports that a configuration reduced to one small hash-like term could preserve strong symbolic evaluation results while HDC retrieval performance remained poor. That historical report was not independently reproduced as a dedicated configuration in this audit. Nevertheless, the new multi-backend evaluation supports the broader concern: high final correctness can be maintained by a symbolic wrapper even when the approximate representation contributes little to finding exact answer sets. [R03; A03]",
-      "translation": ""
+      "translation": "O discuție de proiectare arhivată oferă o variantă de control deosebit de revelatoare. Raportează că o configurație redusă la un singur termen mic, de tip hash, putea păstra rezultate puternice la evaluarea simbolică, în timp ce performanța recuperării HDC rămânea slabă. Acea relatare istorică nu a fost reprodusă independent ca o configurație dedicată în acest audit. Totuși, noua evaluare pe mai multe componente susține preocuparea mai largă: corectitudinea finală ridicată poate fi menținută de un strat simbolic exterior chiar când reprezentarea aproximativă contribuie puțin la găsirea mulțimilor exacte de răspunsuri. [R03; A03]"
     },
     {
       "id": "t000162",
       "source": "The correct lesson is not to discard the wrapper. The wrapper may be the useful part. It is to distinguish the architecture's success from the carrier's contribution. If a one-term identifier and a large holographic structure produce comparable accepted answers because the exact rule engine does the work, the expensive carrier has not yet justified its cost. Conversely, if the carrier reduces the number of exact operations needed, that reduction may be valuable even when its standalone accuracy is low. The experiment must expose those quantities separately.",
-      "translation": ""
+      "translation": "Lecția corectă nu este să eliminăm stratul exterior. El poate fi partea utilă. Este să distingem succesul arhitecturii de contribuția suportului. Dacă un identificator cu un singur termen și o structură holografică mare produc răspunsuri acceptate comparabile deoarece motorul exact de reguli face munca, suportul costisitor nu și-a justificat încă prețul. Invers, dacă suportul reduce numărul operațiilor exacte necesare, acea reducere poate fi valoroasă chiar când precizia sa de sine stătătoare este scăzută. Experimentul trebuie să expună separat aceste mărimi."
     },
     {
       "id": "t000163",
       "source": "Sparse representations therefore contribute two useful ideas to the future programme. They make growth and truncation visible, and they make it possible to discuss symbolic structure at a finer granularity than one dense memory vector. What they have not established is a cost-free reversible algebra for arbitrary composition. The next stage should treat sparsity as a resource policy over an explicit structure, not as evidence that every composite remains invertible.",
-      "translation": ""
+      "translation": "Reprezentările rare contribuie astfel cu două idei utile la programul viitor. Fac vizibile creșterea și trunchierea și permit discutarea structurii simbolice la o granularitate mai fină decât cea a unui singur vector dens de memorie. Ceea ce nu au stabilit este o algebră reversibilă fără cost pentru compoziție arbitrară. Etapa următoare ar trebui să trateze raritatea ca pe o politică de resurse aplicată unei structuri explicite, nu ca pe o dovadă că fiecare compus rămâne inversabil."
     }
   ]
 }

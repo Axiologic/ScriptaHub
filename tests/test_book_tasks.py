@@ -126,6 +126,35 @@ class TaskTests(unittest.TestCase):
         self.assertEqual((self.book / history["editions"][1]["covers"]["en"]).read_bytes(), b"new cover")
         self.assertEqual((self.book / history["editions"][2]["covers"]["en"]).read_bytes(), b"third cover")
 
+    def test_first_release_promotes_announced_draft_without_duplicate_edition(self):
+        work = tasks.prepare(self.delivery("New_Book.docx"), "en", root=self.root)
+        release = tasks.read(work / "release.json")
+        target = self.root / "docs" / release["directory"]
+        # Minimal metadata isolates the promotion mechanics from editorial checks.
+        tasks.write(work / "book/manifest.json", {
+            "id": release["bookId"], "title": {"en": "New Book"},
+            "route": ["new", "book"], "sourceId": "New_Book",
+            "editions": {code: {"book": f"{code}/book.html"} for code in tasks.LANGUAGES},
+        })
+        for code in tasks.LANGUAGES:
+            (work / "book" / code).mkdir(exist_ok=True)
+            for name in ("cover.png", "cover.webp", "thumbnail.webp"):
+                (work / "book" / code / name).write_bytes(b"draft cover")
+        tasks.announce(work, self.root)
+        self.assertIsNone(tasks.read(target / "editions.json")["currentEdition"])
+        (work / "book/en/book.pdf").write_bytes(b"first PDF")
+        (work / "book/en/cover.webp").write_bytes(b"final cover")
+        with patch.object(tasks, "validate_stage", return_value=[]):
+            tasks.install(work, self.root)
+        history = tasks.read(target / "editions.json")
+        self.assertEqual(history["currentEdition"], "edition-1")
+        self.assertEqual(len(history["editions"]), 1)
+        first = history["editions"][0]
+        self.assertNotIn("status", first)
+        self.assertEqual((target / first["pdf"]["en"]).read_bytes(), b"first PDF")
+        self.assertEqual((target / first["covers"]["en"]).read_bytes(), b"final cover")
+        self.assertEqual(tasks.read(target / "manifest.json")["publicationStatus"], "published")
+
 
 if __name__ == "__main__":
     unittest.main()

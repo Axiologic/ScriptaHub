@@ -5,57 +5,57 @@
     {
       "id": "t000366",
       "source": "Causality is equally important. A router evaluated on a continuation must not use information from the future continuation when deciding the route. Otherwise the benchmark leaks the answer into the computation selector. The repository's protocol treats the raw continuation boundary and the causal routing conditions as explicit parts of the experiment. This is good design discipline because routing improvements can otherwise be confused with access to additional information.",
-      "translation": ""
+      "translation": "Cauzalitatea este la fel de importantă. Un mecanism de rutare evaluat pe o continuare nu trebuie să folosească informații din continuarea viitoare când decide ruta. Altfel, testul transmite răspunsul către selectorul calculului. Protocolul depozitului tratează limita continuării brute și condițiile rutării cauzale ca părți explicite ale experimentului. Aceasta este o disciplină bună de proiectare, deoarece îmbunătățirile rutării pot fi altfel confundate cu accesul la informații suplimentare."
     },
     {
       "id": "t000367",
       "source": "A fixed or inexpensive router is not novel by itself. Hash Layers already investigated non-learned routing for sparse models. The relevant comparison is therefore not only with a dense model, but also with routing policies that preserve similar computational constraints. A VSA route should justify its additional representation machinery through better quality, compositional transfer, stability, or some other measured property. [L09]",
-      "translation": ""
+      "translation": "Un mecanism de rutare fix sau ieftin nu este nou în sine. Hash Layers a investigat deja rutarea neînvățată pentru modele rare. Comparația relevantă nu este, prin urmare, numai cu un model dens, ci și cu politici de rutare care păstrează constrângeri computaționale similare. O rută VSA ar trebui să justifice mecanismele suplimentare de reprezentare prin calitate mai bună, transfer compozițional, stabilitate sau altă proprietate măsurată. [L09]"
     },
     {
       "id": "t000368",
       "source": "The audit passed 28 Node tests and 52 Python tests associated with the repository. These tests support its protocol machinery and implemented invariants. No complete training-and-deployment experiment was performed here, and the supplied project's own status is “protocol implemented; result pending.” There is no basis in this edition for claiming that VSA-PathMoE is faster, smaller in process memory, or better at language than its controls. [A02, A03]",
-      "translation": ""
+      "translation": "Auditul a trecut 28 de teste Node și 52 de teste Python asociate depozitului. Aceste teste susțin mecanismele protocolului și invariantele implementate. Aici nu a fost efectuat niciun experiment complet de antrenare și exploatare, iar statutul propriu al proiectului furnizat este „protocol implementat; rezultat în așteptare”. În această ediție nu există o bază pentru a afirma că VSA-PathMoE este mai rapid, ocupă mai puțină memorie de proces sau este mai bun la limbaj decât controalele sale. [A02, A03]"
     },
     {
       "id": "t000369",
       "source": "Nevertheless, the repository belongs in the innovation account because it turns a broad ambition into a falsifiable, comparatively bounded experiment. It asks whether VSA is useful at a particular interface in a language model. That is a more credible test than requiring a single algebra to replace token prediction, memory, reasoning, and language generation at once.",
-      "translation": ""
+      "translation": "Cu toate acestea, depozitul merită inclus în prezentarea inovației deoarece transformă o ambiție largă într-un experiment falsificabil și relativ limitat. El întreabă dacă VSA este util la o anumită interfață a unui model de limbaj. Acesta este un test mai credibil decât cerința ca o singură algebră să înlocuiască simultan predicția tokenurilor, memoria, raționamentul și generarea limbajului."
     },
     {
       "id": "t000370",
       "source": "11.2 Matched controls and evidence gates",
-      "translation": ""
+      "translation": "11.2 Controale comparabile și praguri de acceptare a dovezilor"
     },
     {
       "id": "t000371",
       "source": "The vsaLLM protocol distinguishes several baseline roles. A published TinyStories model is an external reference, a larger published model is a capacity anchor, and two locally trained dense controls match the sparse model's active and total parameter budgets. Those controls answer different questions. A small dense model helps test whether sparse selection is better than simply using a smaller model. A total-size-matched dense model helps test whether any quality difference reflects total capacity rather than routing. [R15]",
-      "translation": ""
+      "translation": "Protocolul vsaLLM distinge mai multe roluri ale referințelor. Un model TinyStories publicat este o referință externă, un model publicat mai mare este un reper de capacitate, iar două controale dense antrenate local corespund bugetelor de parametri activi și totali ale modelului rar. Aceste controale răspund unor întrebări diferite. Un model dens mic ajută la testarea faptului dacă selecția rară este mai bună decât simpla folosire a unui model mai mic. Un model dens cu aceeași dimensiune totală ajută la testarea faptului dacă o diferență de calitate reflectă capacitatea totală, nu rutarea. [R15]"
     },
     {
       "id": "t000372",
       "source": "The quality metric uses conditional bits per UTF-8 byte at the same raw continuation boundary. This is meant to make comparisons less dependent on different tokenisations and prompt slicing. It does not make every difference in training data or model design disappear. That is why local matched controls remain necessary. An external published checkpoint is informative but cannot substitute for a carefully matched training comparison.",
-      "translation": ""
+      "translation": "Metrica de calitate folosește biți condiționali pe octet UTF-8 la aceeași limită a continuării brute. Scopul este ca aceste comparații să depindă mai puțin de tokenizări și delimitări diferite ale instrucțiunilor. Nu face să dispară fiecare diferență de date de antrenare sau de proiectare a modelului. De aceea rămân necesare controalele locale comparabile. O stare salvată externă, publicată, este informativă, dar nu poate înlocui o comparație de antrenare atent aliniată."
     },
     {
       "id": "t000373",
       "source": "The official workflow also separates training on a DGX Spark environment from deployment measurements on commodity x86 hardware. A manifest freezes the relevant artifacts and hashes before transfer. The deployment stage checks the handoff and runs defined thread-count conditions under a recorded physical-core affinity. Reports require the appropriate control matrices and reject missing or inconsistent lineage. These are implemented research constraints, not evidence that the complete official run already happened. [R15]",
-      "translation": ""
+      "translation": "Fluxul oficial separă și antrenarea într-un mediu DGX Spark de măsurătorile în exploatare pe hardware x86 obișnuit. Un manifest fixează artefactele relevante și hashurile înainte de transfer. Etapa de exploatare verifică transferul și rulează condiții definite ale numărului de fire de execuție, cu o afinitate înregistrată pentru nucleele fizice. Rapoartele cer matricile de control adecvate și resping istoricul de proveniență lipsă sau inconsistent. Acestea sunt constrângeri de cercetare implementate, nu dovezi că rularea oficială completă a avut deja loc. [R15]"
     },
     {
       "id": "t000374",
       "source": "This protocol is unusually relevant to the programme's practical goal. A model can look efficient when counted by active arithmetic parameters and still perform poorly on a CPU because of tensor shapes, cache behaviour, memory movement, and dispatch overhead. A sparse design also carries inactive weights that may remain resident. Training in one environment and benchmarking in another creates additional opportunities for accidental substitutions. A frozen artifact boundary makes such mistakes visible.",
-      "translation": ""
+      "translation": "Acest protocol este deosebit de relevant pentru obiectivul practic al programului. Un model poate părea eficient când este numărat prin parametrii aritmetici activi și totuși să funcționeze slab pe CPU din cauza formelor tensorilor, comportamentului cache-ului, deplasării datelor și costului de dispecerizare. O structură rară poartă și ponderi inactive care pot rămâne rezidente. Antrenarea într-un mediu și evaluarea în altul creează oportunități suplimentare de substituții accidentale. O delimitare fixă a artefactelor face vizibile asemenea greșeli."
     },
     {
       "id": "t000375",
       "source": "The protocol's insistence on a complete set of controls also counteracts a common failure mode in AI-generated reports: choosing the comparator that makes the new method look best. A method can beat an external checkpoint on one prompt set while losing to a locally trained control, or appear fast under one thread policy while using more favourable core placement. The report should retain those differences, not select one convenient number as the conclusion.",
-      "translation": ""
+      "translation": "Insistența protocolului asupra unui set complet de controale contracarează și un mod frecvent de eșec al rapoartelor generate de AI: alegerea comparatorului care avantajează cel mai mult metoda nouă. O metodă poate depăși o stare salvată externă pe un set de instrucțiuni și poate pierde în fața unui control antrenat local sau poate părea rapidă într-o politică de fire de execuție folosind, de fapt, o amplasare mai favorabilă pe nuclee. Raportul trebuie să păstreze acele diferențe, nu să selecteze o cifră convenabilă drept concluzie."
     },
     {
       "id": "t000376",
       "source": "A further useful test would examine composition in the router itself. Train on requests combining some task and content factors, then withhold particular combinations. Does the VSA route select experts that remain useful for the unseen combination, or does it behave like another opaque code lookup? Compare with hashing, random routes, a learned router, and an exact symbolic dispatch policy when the factors are known. That experiment would test the proposed compositional advantage rather than merely the existence of sparse execution.",
-      "translation": ""
+      "translation": "Un alt test util ar examina compoziția în mecanismul de rutare însuși. Se antrenează pe cereri care combină unii factori de sarcină și conținut, apoi se rezervă anumite combinații pentru testare. Selectează ruta VSA experți care rămân utili pentru combinația nevăzută sau se comportă ca o altă căutare opacă de coduri? Se compară cu hashing, rute aleatorii, un mecanism de rutare învățat și o politică exactă de dispecerizare simbolică atunci când factorii sunt cunoscuți. Acel experiment ar testa avantajul compozițional propus, nu doar existența execuției rare."
     }
   ]
 }

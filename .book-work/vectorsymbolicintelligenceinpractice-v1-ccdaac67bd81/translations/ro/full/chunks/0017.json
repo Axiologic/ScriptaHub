@@ -5,57 +5,57 @@
     {
       "id": "t000184",
       "source": "VSANash keeps the underlying VSA/HRR operations largely fixed and instead changes where memories are stored. The hypothesis is that interference can be reduced by retrieval-aware sharding and placement. This is one of the clearest positive systems results in the collection: under a low-load rerun, an interference-aware placement policy substantially improved retrieval relative to a simple hash placement, while high-load and multi-hop cases exposed the remaining limits. The result suggests that memory management may matter as much as the choice of binding algebra.",
-      "translation": ""
+      "translation": "VSANash păstrează în mare parte neschimbate operațiile VSA/HRR de bază și modifică, în schimb, locul unde sunt stocate amintirile. Ipoteza este că interferența poate fi redusă prin fragmentare și amplasare care țin cont de recuperare. Acesta este unul dintre cele mai clare rezultate pozitive la nivel de sistem din colecție: într-o rerulare cu încărcare redusă, o politică de amplasare care ține cont de interferență a îmbunătățit substanțial recuperarea față de amplasarea simplă prin hash, în timp ce cazurile cu încărcare mare și cu mai mulți pași au scos la iveală limitele rămase. Rezultatul sugerează că administrarea memoriei poate conta la fel de mult ca alegerea algebrei de legare."
     },
     {
       "id": "t000185",
       "source": "5.1 The VSANash placement mechanism",
-      "translation": ""
+      "translation": "5.1 Mecanismul de amplasare VSANash"
     },
     {
       "id": "t000186",
       "source": "VSANash asks a better question than whether one memory vector can hold an arbitrarily large knowledge base. Given several bounded memories, where should facts be stored so that they remain retrievable? This makes interference a variable the system can influence. Instead of accepting a random assignment of facts to superpositions, the implementation searches for placements with more favourable retrieval behaviour. [R04]",
-      "translation": ""
+      "translation": "VSANash pune o întrebare mai bună decât aceea dacă un singur vector de memorie poate conține o bază de cunoștințe oricât de mare. Date fiind mai multe memorii limitate, unde trebuie stocate faptele pentru a putea fi recuperate? Astfel, interferența devine o variabilă pe care sistemul o poate influența. În loc să accepte atribuirea aleatorie a faptelor unor superpoziții, implementarea caută amplasări cu un comportament de recuperare mai favorabil. [R04]"
     },
     {
       "id": "t000187",
       "source": "The evaluated HRR configuration represents associations through distributed keys and values. A query retrieves a noisy estimate, and cleanup compares that estimate with a vocabulary of possible answers. When many associations share a memory, unrelated contributions can survive the retrieval operation and compete with the intended answer. A shard is a separate memory in which only some associations are superposed. Sharding reduces load, but then the system must route a query to useful shards without scanning everything.",
-      "translation": ""
+      "translation": "Configurația HRR evaluată reprezintă asocierile prin chei și valori distribuite. O interogare recuperează o estimare zgomotoasă, iar dezambiguizarea compară acea estimare cu un vocabular de răspunsuri posibile. Când multe asocieri împart aceeași memorie, contribuții fără legătură pot supraviețui operației de recuperare și pot concura cu răspunsul vizat. Un fragment este o memorie separată în care sunt suprapuse doar unele asocieri. Fragmentarea reduce încărcarea, dar sistemul trebuie apoi să direcționeze o interogare către fragmente utile fără să scaneze totul."
     },
     {
       "id": "t000188",
       "source": "The repository provides several ways to allocate facts. Simple policies hash a subject, a relation, or a combined key. Other policies try to reduce collisions or pack associations according to a heuristic. The equilibrium-style policy repeatedly considers moving an association and scores possible placements using retrieval-related quantities and load. Its purpose is to improve the memory from which that association will later be recovered. Two-write variants allow replication into more than one shard.",
-      "translation": ""
+      "translation": "Depozitul oferă mai multe moduri de a aloca faptele. Politicile simple aplică un hash unui subiect, unei relații sau unei chei combinate. Alte politici încearcă să reducă coliziunile sau să grupeze asocierile după o euristică. Politica de tip echilibru ia în considerare în mod repetat mutarea unei asocieri și punctează amplasările posibile folosind mărimi legate de recuperare și de încărcare. Scopul ei este să îmbunătățească memoria din care acea asociere va fi recuperată ulterior. Variantele cu două scrieri permit replicarea în mai multe fragmente."
     },
     {
       "id": "t000189",
       "source": "This is a concrete algorithmic idea, not merely an analogy with games. The code has a state, candidate moves, a utility calculation, and stopping conditions. However, the name “equilibrium” must not be allowed to imply a theorem not supplied by the implementation. A bounded sequence of best-response-like moves with a tolerance and a maximum pass count is a heuristic optimisation procedure. The audit did not establish existence, uniqueness, or convergence to a Nash equilibrium for the relevant objective. The implemented mechanism is interesting without those stronger claims.",
-      "translation": ""
+      "translation": "Aceasta este o idee algoritmică concretă, nu doar o analogie cu jocurile. Codul are o stare, mutări candidate, un calcul al utilității și condiții de oprire. Totuși, denumirea „echilibru” nu trebuie să sugereze o teoremă pe care implementarea nu o furnizează. O secvență limitată de mutări asemănătoare răspunsului optim, cu toleranță și număr maxim de treceri, este o procedură euristică de optimizare. Auditul nu a stabilit existența, unicitatea sau convergența către un echilibru Nash pentru obiectivul relevant. Mecanismul implementat este interesant și fără aceste afirmații mai puternice."
     },
     {
       "id": "t000190",
       "source": "The distinction between placement and routing is central. A fact may have been placed in a shard where it is recoverable, but the query may never visit that shard. Conversely, the router may select the right shard while the answer is lost among cleanup competitors. VSANash records route-hit information separately from answer metrics. That separation is valuable because it exposes different bottlenecks instead of compressing them into one accuracy number. The next research iteration should make the decomposition even more explicit at the per-query level.",
-      "translation": ""
+      "translation": "Distincția dintre amplasare și rutare este esențială. Un fapt poate fi amplasat într-un fragment din care poate fi recuperat, dar interogarea poate să nu viziteze niciodată acel fragment. Invers, mecanismul de rutare poate selecta fragmentul corect, în timp ce răspunsul se pierde printre candidații concurenți la dezambiguizare. VSANash înregistrează informațiile despre atingerea fragmentului util separat de metricile răspunsului. Această separare este valoroasă deoarece dezvăluie blocaje diferite, în loc să le comprime într-o singură valoare a acurateței. Următoarea iterație de cercetare ar trebui să facă descompunerea și mai explicită la nivelul fiecărei interogări."
     },
     {
       "id": "t000191",
       "source": "An AI-attributed review already identifies that need. The supplied antigravity_review.md asks for per-query outcomes, margin decomposition, and broader scaling scenarios. It explains that aggregates cannot reliably distinguish routing failure, cleanup ambiguity, and multi-hop noise accumulation. This is documented evidence of an earlier AI contributing an appropriate diagnostic direction. It is not evidence that the requested export or scaling work had already been completed. [R04]",
-      "translation": ""
+      "translation": "O analiză atribuită unui AI identifică deja această nevoie. Fișierul antigravity_review.md furnizat cere rezultate pentru fiecare interogare, descompunerea marjelor și scenarii mai largi de scalare. El explică faptul că agregatele nu pot distinge fiabil eșecul rutării, ambiguitatea dezambiguizării și acumularea zgomotului în mai mulți pași. Aceasta este o dovadă documentată că un AI anterior a contribuit cu o direcție adecvată de diagnostic. Nu este o dovadă că exportul sau cercetarea de scalare solicitate fuseseră deja realizate. [R04]"
     },
     {
       "id": "t000192",
       "source": "The potentially innovative coupling is between storage decisions and downstream retrieval interference. General sharding, hashing, replication, and local search are established ideas. The research value here would come from showing that a VSA-specific retrieval signal provides a consistently better placement objective under fair resource constraints. A persuasive paper would compare it with equally budgeted alternatives, include insertion and update costs, and explain when the policy stops helping. The repository gives a concrete starting point for that investigation.",
-      "translation": ""
+      "translation": "Legătura potențial inovatoare este cea dintre deciziile de stocare și interferența la recuperarea ulterioară. Fragmentarea generală, hashingul, replicarea și căutarea locală sunt idei consacrate. Valoarea cercetării de aici ar proveni din demonstrarea faptului că un semnal de recuperare specific VSA oferă în mod consecvent un obiectiv mai bun de amplasare, în condiții echitabile de resurse. Un articol convingător l-ar compara cu alternative având același buget, ar include costurile inserării și actualizării și ar explica momentul în care politica încetează să ajute. Depozitul oferă un punct de plecare concret pentru această investigație."
     },
     {
       "id": "t000193",
       "source": "5.2 Observed low-load gain and high-load failure",
-      "translation": ""
+      "translation": "5.2 Câștigul observat la încărcare redusă și eșecul la încărcare mare"
     },
     {
       "id": "t000194",
       "source": "The audit reran three scenarios with the HRR backend. Each evaluated eleven strategies on 300 queries. The vector dimension was 512, and the sharded configurations used eight shards. The scenarios contained 1,200 facts at low load, 6,000 facts at higher load, and a 5,000-fact two-hop task. These are single protocol configurations, not a dimension sweep or a statistical claim over independent worlds. [A03]",
-      "translation": ""
+      "translation": "Auditul a rerulat trei scenarii folosind componenta HRR. Fiecare a evaluat unsprezece strategii pe 300 de interogări. Dimensiunea vectorilor a fost 512, iar configurațiile fragmentate au folosit opt fragmente. Scenariile au conținut 1.200 de fapte la încărcare redusă, 6.000 de fapte la încărcare mai mare și o sarcină în doi pași cu 5.000 de fapte. Acestea sunt configurații individuale ale protocolului, nu o explorare a dimensiunilor și nici o afirmație statistică despre lumi independente. [A03]"
     }
   ]
 }

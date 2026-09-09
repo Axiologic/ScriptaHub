@@ -5,52 +5,52 @@
     {
       "id": "t000195",
       "source": "In the low-load case, the equilibrium-style strategy achieved a hit-at-K score of 70.0 percent. The key-hash baseline achieved 31.7 percent, and the collision-greedy strategy achieved 64.3 percent. This is a meaningful observed difference within the tested setup. It suggests that placement can change retrieval behaviour substantially without changing the underlying representation family. The comparison with collision-greedy is especially useful because it asks whether the more elaborate policy adds value beyond simply reacting to collisions.",
-      "translation": ""
+      "translation": "În cazul cu încărcare redusă, strategia de tip echilibru a obținut un scor hit-at-K de 70,0 la sută. Referința bazată pe hashul cheii a obținut 31,7 la sută, iar strategia greedy bazată pe coliziuni a obținut 64,3 la sută. Aceasta este o diferență observată relevantă în configurația testată. Ea sugerează că amplasarea poate schimba substanțial comportamentul de recuperare fără a schimba familia de reprezentări de bază. Comparația cu strategia greedy bazată pe coliziuni este deosebit de utilă deoarece verifică dacă politica mai elaborată adaugă valoare dincolo de simpla reacție la coliziuni."
     },
     {
       "id": "t000196",
       "source": "Top-one accuracy gives a less triumphant picture. Both equilibrium-style and collision-greedy placement achieved 27.3 percent, whereas key hashing achieved 12.3 percent. The better memory often brought a correct answer into the candidate set without making it the highest-ranked answer. This is not a contradiction. It means that retrieval and final selection remain separate problems. A system with an exact downstream verifier might benefit from the wider candidate recall, but a system that directly emits the top candidate would still be wrong often.",
-      "translation": ""
+      "translation": "Acuratețea primului rezultat oferă o imagine mai puțin triumfală. Atât amplasarea de tip echilibru, cât și cea greedy bazată pe coliziuni au obținut 27,3 la sută, în timp ce hashingul cheii a obținut 12,3 la sută. Memoria mai bună a adus adesea răspunsul corect în mulțimea candidaților, fără să îl plaseze pe primul loc. Nu este o contradicție. Înseamnă că recuperarea și selecția finală rămân probleme separate. Un sistem cu un verificator exact ulterior ar putea beneficia de regăsirea mai multor candidați corecți, dar un sistem care emite direct primul candidat ar greși încă frecvent."
     },
     {
       "id": "t000197",
       "source": "Route-hit rate was about 95.3 percent for equilibrium-style placement in this low-load scenario, compared with about 82.7 percent for key hashing. Yet answer hit-at-K remained 70 percent and top-one accuracy much lower. Reaching a useful shard was not sufficient to recover the right answer reliably. This decomposition gives the next experiment a target: improve cleanup or verification rather than assuming the remaining error is all in routing.",
-      "translation": ""
+      "translation": "Rata de atingere a fragmentului util a fost de aproximativ 95,3 la sută pentru amplasarea de tip echilibru în acest scenariu cu încărcare redusă, față de circa 82,7 la sută pentru hashingul cheii. Totuși, hit-at-K pentru răspunsuri a rămas la 70 la sută, iar acuratețea primului rezultat a fost mult mai mică. Atingerea unui fragment util nu a fost suficientă pentru recuperarea fiabilă a răspunsului corect. Această descompunere oferă un obiectiv pentru următorul experiment: îmbunătățirea dezambiguizării sau a verificării, în loc să se presupună că toată eroarea rămasă ține de rutare."
     },
     {
       "id": "t000198",
       "source": "The higher-load case sharply limits the conclusion. With 6,000 facts, equilibrium-style hit-at-K fell to 21.3 percent and top-one accuracy to 5.0 percent. Key hashing reached 10.0 percent and 2.0 percent respectively. The relative advantage remained, but the absolute result was weak. In the two-hop scenario, equilibrium-style hit-at-K was about 4.7 percent and top-one accuracy 1.0 percent. Collision-greedy placement did better there, at about 7.3 percent hit-at-K and 2.0 percent top-one. No claim that the heuristic solves multi-step reasoning follows from these results. [A03]",
-      "translation": ""
+      "translation": "Cazul cu încărcare mai mare limitează drastic concluzia. La 6.000 de fapte, hit-at-K pentru strategia de tip echilibru a scăzut la 21,3 la sută, iar acuratețea primului rezultat la 5,0 la sută. Hashingul cheii a atins 10,0 la sută, respectiv 2,0 la sută. Avantajul relativ s-a menținut, dar rezultatul absolut a fost slab. În scenariul cu doi pași, hit-at-K pentru strategia de tip echilibru a fost de circa 4,7 la sută, iar acuratețea primului rezultat de 1,0 la sută. Amplasarea greedy bazată pe coliziuni s-a descurcat mai bine acolo, cu circa 7,3 la sută hit-at-K și 2,0 la sută pentru primul rezultat. Din aceste rezultate nu rezultă nicio afirmație că euristica rezolvă raționamentul în mai mulți pași. [A03]"
     },
     {
       "id": "t000199",
       "source": "Figure 2. Retrieval gains are load- and task-dependent. Four equally sharded strategies, HRR dimension 512, eight shards, 300 queries per strategy and scenario. Hit-at-K is not top-one accuracy; no confidence interval over independent worlds is claimed. Source: A03.",
-      "translation": ""
+      "translation": "Figura 2. Câștigurile de recuperare depind de încărcare și de sarcină. Patru strategii cu aceeași fragmentare, dimensiune HRR 512, opt fragmente, 300 de interogări pentru fiecare strategie și scenariu. Hit-at-K nu este acuratețea primului rezultat; nu se afirmă existența unui interval de încredere pe lumi independente. Sursa: A03."
     },
     {
       "id": "t000200",
       "source": "Replication was not a free improvement. In the low-load case, the equilibrium two-write variant achieved about 39.7 percent hit-at-K, well below the single-write variant's 70 percent. Writing into more memories can improve the chance of visiting a copy, but with a fixed shard budget it also increases the amount superposed into those memories. The experiment makes that trade-off visible. Redundancy and interference move together unless extra storage or another control compensates for them.",
-      "translation": ""
+      "translation": "Replicarea nu a fost o îmbunătățire gratuită. La încărcare redusă, varianta de tip echilibru cu două scrieri a obținut aproximativ 39,7 la sută hit-at-K, mult sub cele 70 la sută ale variantei cu o singură scriere. Scrierea în mai multe memorii poate crește șansa de a vizita o copie, dar, la un buget fix de fragmente, mărește și cantitatea suprapusă în acele memorii. Experimentul face vizibil acest compromis. Redundanța și interferența cresc împreună dacă stocarea suplimentară sau un alt mecanism de control nu le compensează."
     },
     {
       "id": "t000201",
       "source": "The measured memory counters also require a fair reading. The single-memory configuration reported approximately 4.31 million bytes, while the eight-shard configurations reported approximately 4.42 million. These are implementation counters rather than complete runtime measurements and include a substantial common representation cost. A comparison between single and sharded memory is therefore not perfectly equal-memory merely because vector dimension is fixed. Comparisons among equally sharded strategies are cleaner, although their build work and metadata may still differ.",
-      "translation": ""
+      "translation": "Și contoarele de memorie măsurate cer o interpretare corectă. Configurația cu o singură memorie a raportat aproximativ 4,31 milioane de octeți, iar configurațiile cu opt fragmente aproximativ 4,42 milioane. Acestea sunt contoare ale implementării, nu măsurători complete ale execuției, și includ un cost comun substanțial al reprezentării. Prin urmare, comparația dintre memoria unică și cea fragmentată nu folosește exact aceeași memorie doar fiindcă dimensiunea vectorilor este fixă. Comparațiile dintre strategiile cu aceeași fragmentare sunt mai clare, deși efortul de construire și metadatele lor pot diferi în continuare."
     },
     {
       "id": "t000202",
       "source": "The result worth preserving is neither “VSA memory scales” nor “VSA memory fails.” It is that inference-aware placement produces a useful low-load retrieval gain, but the gain does not remove overload or composition failure. That is a credible candidate mechanism with a visible operating region. The next study should vary load, vocabulary size, dimension, shard count, routing budget, and update frequency, then report where the policy improves total task cost rather than just one retrieval metric.",
-      "translation": ""
+      "translation": "Rezultatul care merită păstrat nu este nici „memoria VSA scalează”, nici „memoria VSA eșuează”. Este faptul că amplasarea care ține cont de inferență produce un câștig util de recuperare la încărcare redusă, dar acest câștig nu elimină supraîncărcarea sau eșecul compunerii. Acesta este un mecanism candidat credibil, cu un domeniu de funcționare vizibil. Următorul studiu ar trebui să varieze încărcarea, mărimea vocabularului, dimensiunea, numărul de fragmente, bugetul rutării și frecvența actualizărilor, apoi să raporteze unde politica îmbunătățește costul total al sarcinii, nu doar o metrică de recuperare."
     },
     {
       "id": "t000203",
       "source": "5.3 Research significance: interference-aware accountable memory",
-      "translation": ""
+      "translation": "5.3 Semnificația pentru cercetare: memorie verificabilă care ține cont de interferență"
     },
     {
       "id": "t000204",
       "source": "The VSANash findings connect naturally with elastic and exact representations. All three approaches recognise that memory organisation matters. Elastic chunks allocate additional state. EXACT retains structure without collision noise. VSANash redistributes associations across bounded noisy stores. These are alternative responses to the same practical question: what should the system do when its current memory organisation no longer supports the required operation reliably?",
-      "translation": ""
+      "translation": "Rezultatele VSANash se leagă firesc de reprezentările elastice și exacte. Toate cele trei abordări recunosc că organizarea memoriei contează. Fragmentele elastice alocă stare suplimentară. EXACT păstrează structura fără zgomot de coliziune. VSANash redistribuie asocierile între stocuri limitate și zgomotoase. Acestea sunt răspunsuri alternative la aceeași întrebare practică: ce ar trebui să facă sistemul când organizarea actuală a memoriei nu mai susține fiabil operația necesară?"
     }
   ]
 }

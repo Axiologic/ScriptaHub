@@ -116,6 +116,14 @@ def assemble(work: Path, force: bool = False) -> None:
     for identifier, translation in translations.items():
         template = template.replace(MARKER.format(id=identifier), escape(translation, quote=False))
     if "SCRIPTA_TRANSLATION:" in template: raise ValueError("Unresolved translation marker")
+    # Word exports repeat the source locale on paragraphs and headings. Update
+    # those declarations at assembly, including for already prepared chunks.
+    # Restrict changes to tags so literal text, scripts and CSS stay intact.
+    template = TOKEN.sub(lambda match: re.sub(
+        r'(\s(?:xml:)?lang\s*=\s*)(["\x27])[^"\x27]*\2',
+        lambda attr: attr[1] + attr[2] + manifest["language"] + attr[2],
+        match[0], flags=re.I,
+    ) if TAG.match(match[0]) else match[0], template)
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(template, encoding="utf-8")
     print(f"Assembled {destination}")

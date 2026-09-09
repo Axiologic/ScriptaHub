@@ -5,57 +5,57 @@
     {
       "id": "t000143",
       "source": "The novelty opportunity is therefore more specific than “reasoning in hypervectors.” It concerns a controlled interface between approximate representations and executable rules. The interface should expose what was retrieved, why it was admitted, what exact operation accepted it, and what remains unsearched. In a future SOP architecture, these would be different circuit nodes and different result types. The present repositories do not implement that unified contract, but they show why it would be useful.",
-      "translation": ""
+      "translation": "Prin urmare, oportunitatea de noutate este mai specifică decât „raționamentul în hipervectori”. Privește o interfață controlată între reprezentări aproximative și reguli executabile. Interfața ar trebui să expună ce a fost recuperat, de ce a fost admis, ce operație exactă l-a acceptat și ce rămâne necercetat. Într-o arhitectură SOP viitoare, acestea ar fi noduri de circuit diferite și tipuri de rezultat diferite. Depozitele actuale nu implementează acel contract unificat, dar arată de ce ar fi util."
     },
     {
       "id": "t000144",
       "source": "3.3 When binding and similarity encode incompatible geometries",
-      "translation": ""
+      "translation": "3.3 Când legarea și similaritatea codifică geometrii incompatibile"
     },
     {
       "id": "t000145",
       "source": "VSARepresentations makes the algebraic problem particularly visible because several backends implement superficially similar operations. A generic interface encourages substitution: encode, bind, bundle, compare, and unbind. Yet identical method names do not imply identical laws. An execution engine can become incorrect when it assumes that every backend preserves properties true of only one representation family. [R03]",
-      "translation": ""
+      "translation": "VSARepresentations face problema algebrică deosebit de vizibilă deoarece mai multe componente implementează operații superficial asemănătoare. O interfață generică încurajează substituirea: codificare, legare, agregare, comparare și dezlegare. Totuși, nume identice ale metodelor nu implică legi identice. Un motor de execuție poate deveni incorect când presupune că fiecare componentă păstrează proprietăți valabile numai pentru o familie de reprezentări. [R03]"
     },
     {
       "id": "t000146",
       "source": "The metric-affine backend provides an exact small counterexample. Its coordinates are bytes. Binding uses bitwise XOR, while similarity is based on numerical distance between byte values. XOR preserves bitwise relationships, but it does not preserve ordinary distance on the ordered numbers from zero to 255. Take coordinates 127 and 128. They differ by one, so the normalised distance-based similarity is about 0.996. XOR both with 127 and they become zero and 255, whose similarity is zero. The audit reproduced this with the actual implementation. [A04]",
-      "translation": ""
+      "translation": "Componenta metric-afină oferă un contraexemplu mic și exact. Coordonatele sale sunt octeți. Legarea folosește XOR bit cu bit, în timp ce similaritatea se bazează pe distanța numerică dintre valorile octeților. XOR păstrează relații între biți, dar nu păstrează distanța obișnuită pe numerele ordonate de la zero la 255. Să luăm coordonatele 127 și 128. Diferă cu unu, deci similaritatea normalizată bazată pe distanță este de aproximativ 0,996. Aplicând XOR ambelor cu 127, devin zero și 255, a căror similaritate este zero. Auditul a reprodus aceasta cu implementarea efectivă. [A04]"
     },
     {
       "id": "t000147",
       "source": "No amount of dimensionality fixes this one-coordinate incompatibility. Repeating the coordinate would repeat the counterexample. Using more random coordinates may hide the effect on an average workload, but it does not establish the missing algebraic law. If an inference step depends on binding preserving metric closeness, the backend does not satisfy that contract. The options are to change the metric, change binding, restrict the operand distribution and validate a probabilistic property, or stop depending on the law.",
-      "translation": ""
+      "translation": "Niciun număr de dimensiuni nu repară această incompatibilitate la nivelul unei coordonate. Repetarea coordonatei ar repeta contraexemplul. Folosirea mai multor coordonate aleatoare poate ascunde efectul pe o sarcină medie, dar nu stabilește legea algebrică lipsă. Dacă un pas de inferență depinde de păstrarea apropierii metrice prin legare, componenta nu satisface acel contract. Opțiunile sunt schimbarea metricii, schimbarea legării, restrângerea distribuției operanzilor și validarea unei proprietăți probabiliste sau renunțarea la dependența de acea lege."
     },
     {
       "id": "t000148",
       "source": "Bundling introduces another mismatch. The backend combines coordinates through a rounded mean. XOR does not generally distribute over that operation. For values zero and two, their mean is one. XOR the mean with one and the result is zero. XOR the original values with one first, obtaining one and three, and their mean is two. Thus bind(bundle(x, y), key) and bundle(bind(x, key), bind(y, key)) disagree in the actual code. An algorithm that moves binding across bundling as if these expressions were interchangeable changes the represented object. [A04]",
-      "translation": ""
+      "translation": "Agregarea introduce o altă nepotrivire. Componenta combină coordonatele printr-o medie rotunjită. XOR nu este, în general, distributiv față de acea operație. Pentru valorile zero și doi, media este unu. Aplicând XOR mediei cu unu, rezultatul este zero. Aplicând mai întâi XOR valorilor originale cu unu, se obțin unu și trei, iar media lor este doi. Astfel, bind(bundle(x, y), key) și bundle(bind(x, key), bind(y, key)) diferă în codul efectiv. Un algoritm care mută legarea peste agregare ca și cum aceste expresii ar fi interschimbabile schimbă obiectul reprezentat. [A04]"
     },
     {
       "id": "t000149",
       "source": "This observation is more constructive than a general complaint that the representation is ad hoc. It suggests an operator-law test suite that runs before downstream reasoning experiments. Such a suite would not demand that all backends be groups or that all operations distribute. It would record which laws actually hold, under which operand types and approximation regimes. A backend with non-distributive binding might still be useful, provided the compiler never applies a distributive rewrite to it.",
-      "translation": ""
+      "translation": "Această observație este mai constructivă decât o plângere generală că reprezentarea este ad-hoc. Sugerează o suită de teste ale legilor operatorilor care să ruleze înaintea experimentelor ulterioare de raționament. O asemenea suită nu ar cere ca toate componentele să fie grupuri sau ca toate operațiile să fie distributive. Ar înregistra ce legi sunt efectiv valabile, pentru ce tipuri de operanzi și regimuri de aproximare. O componentă cu legare nedistributivă ar putea fi totuși utilă, cu condiția ca compilatorul să nu îi aplice niciodată o rescriere distributivă."
     },
     {
       "id": "t000150",
       "source": "There is also a statistical issue. The normalised numerical similarity of two independent random byte coordinates has an expected value near 0.665. A coordinate near the centre of the range, such as 128, has a higher expected similarity to a random coordinate, near 0.749. The audit's 1,000-seed probe reproduced this difference. A bundle produced by averaging can move toward the centre and therefore look more similar to unrelated atoms even when it contains no useful association. [A04]",
-      "translation": ""
+      "translation": "Există și o problemă statistică. Similaritatea numerică normalizată a două coordonate aleatoare independente pe octeți are o valoare așteptată de circa 0,665. O coordonată aproape de centrul intervalului, precum 128, are o similaritate așteptată mai mare față de o coordonată aleatoare, de circa 0,749. Proba auditului cu 1.000 de inițializări aleatoare a reprodus această diferență. O agregare produsă prin mediere se poate deplasa spre centru și, prin urmare, poate părea mai similară cu atomi fără legătură chiar când nu conține nicio asociere utilă. [A04]"
     },
     {
       "id": "t000151",
       "source": "The result is not that a value near 0.75 is always meaningless. It is that the null distribution depends on what kind of object produced the score. Comparing two atoms, comparing an atom with a mean bundle, and taking the maximum over many chunks are different statistical tests. A single global threshold obscures those differences. If a system interprets all of them as a common notion of evidential support, its confidence can increase simply because a representation became more averaged or because more comparisons were tried.",
-      "translation": ""
+      "translation": "Rezultatul nu este că o valoare apropiată de 0,75 este întotdeauna lipsită de sens. Este că distribuția nulă depinde de tipul de obiect care a produs scorul. Compararea a doi atomi, compararea unui atom cu o agregare medie și luarea maximului peste multe blocuri sunt teste statistice diferite. Un singur prag global ascunde aceste diferențe. Dacă un sistem le interpretează pe toate ca pe o noțiune comună de sprijin probatoriu, încrederea sa poate crește doar pentru că o reprezentare a devenit mai mediată sau pentru că au fost încercate mai multe comparații."
     },
     {
       "id": "t000152",
       "source": "These elementary counterexamples motivate semantic operator contracts and conditional calibration. A language system needs to know not merely vector size, but which algebraic laws and statistical assumptions its operations satisfy. This is a concrete reason to prefer explicit typed composition over an unrestricted bind-and-compare interface.",
-      "translation": ""
+      "translation": "Aceste contraexemple elementare motivează contractele semantice ale operatorilor și calibrarea condiționată. Un sistem lingvistic trebuie să cunoască nu numai dimensiunea vectorului, ci și legile algebrice și ipotezele statistice satisfăcute de operațiile sale. Acesta este un motiv concret pentru a prefera compoziția explicită tipizată unei interfețe fără restricții de legare și comparare."
     },
     {
       "id": "t000153",
       "source": "4. Growing representations and explicit storage",
-      "translation": ""
+      "translation": "4. Reprezentări care cresc și stocare explicită"
     }
   ]
 }

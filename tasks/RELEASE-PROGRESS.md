@@ -38,8 +38,8 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] EN short_content.html
 - [x] RO full_content.html
 - [ ] RO short_content.html
-- Translation `.book-work/thosewhonolongerrun-v1-b20f159e3f1b/translations/en/full`: **0/119 chunks**, 0/5324 segments complete.
-  Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/thosewhonolongerrun-v1-b20f159e3f1b/translations/en/full`: **30/119 chunks**, 1353/5324 segments complete.
+  Resume at `0031.json`; preserve already filled segments.
 - [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
 - [ ] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -58,17 +58,17 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Workspace: `.book-work/vectorsymbolicintelligenceinpractice-v1-ccdaac67bd81`
 - [x] Visible book page: `docs/books/vector/symbolic/intelligence/in/practice/bk-3e2eb188d69142d8/en/book.html`
 - [x] EN full_content.html
-- [ ] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/vectorsymbolicintelligenceinpractice-v1-ccdaac67bd81/translations/ro/full`: **9/45 chunks**, 115/527 segments complete.
-  Resume at `0010.json`; preserve already filled segments.
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/vectorsymbolicintelligenceinpractice-v1-ccdaac67bd81/translations/ro/full`: **45/45 chunks**, 527/527 segments complete.
+- Translation `.book-work/vectorsymbolicintelligenceinpractice-v1-ccdaac67bd81/translations/ro/short`: **3/3 chunks**, 38/38 segments complete.
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
-- [ ] Inspect representative PDF pages, including figures and tables.
-- [ ] Verify reader structure, local images and translation completeness against the source.
-- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [x] Inspect representative PDF pages, including figures and tables.
+- [x] Verify reader structure, local images and translation completeness against the source.
+- [x] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
-- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [x] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.

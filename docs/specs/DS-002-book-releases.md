@@ -74,6 +74,9 @@ meaningful step and before a context switch or hand-off.
    Use stable chunks and run `check` before `assemble`. Preserve identifiers,
    references, code and local asset links. Never publish unfinished chunks or
    label a summary as a complete translation.
+   Set the translated document's HTML language and inherited paragraph/heading
+   language attributes to its actual reader language, including source locales
+   repeated by Word exports, so speech and hyphenation use the right language.
 3. Author a genuine ten-minute edition, then prepare its EN/RO versions through
    the same chunk workflow. Keep `full_content.html` and `short_content.html`
    in `book/en/` and `book/ro/`. Other reader files require an explicit language

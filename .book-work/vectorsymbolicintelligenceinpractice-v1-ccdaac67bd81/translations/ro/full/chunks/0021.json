@@ -5,52 +5,52 @@
     {
       "id": "t000224",
       "source": "The symbolic abductor and the HDC representation must be separated. The abductor learns the twelve-dimensional weight vector from semantic features. The HDC stage encodes those features through a matrix of random distributed codes and uses a corresponding readout to estimate the learned quantity. If the HDC stage performs poorly, that does not mean the invariant was not discovered. It means the distributed implementation of the already-discovered property needs examination.",
-      "translation": ""
+      "translation": "Sistemul simbolic de abducție și reprezentarea HDC trebuie separate. Sistemul de abducție învață vectorul de ponderi cu douăsprezece dimensiuni din trăsături semantice. Etapa HDC codifică acele trăsături printr-o matrice de coduri distribuite aleatoare și folosește o citire corespunzătoare pentru a estima mărimea învățată. Dacă etapa HDC funcționează slab, aceasta nu înseamnă că invariantul nu a fost descoperit. Înseamnă că implementarea distribuită a proprietății deja descoperite trebuie examinată."
     },
     {
       "id": "t000225",
       "source": "Let x be the twelve feature counts in a scene and q the twelve learned weights. The desired score is qᵀx. Let H contain the distributed feature codes as columns. The scene representation is Hx. A natural approximate readout is Hq; comparing it with the scene and dividing by the vector dimension gives qᵀ(HᵀH / D)x. This equals the desired score only when the codebook's normalised Gram matrix behaves like the identity on the relevant vectors.",
-      "translation": ""
+      "translation": "Fie x cele douăsprezece numere de apariții ale trăsăturilor într-o scenă și q cele douăsprezece ponderi învățate. Scorul dorit este qᵀx. Fie H matricea ale cărei coloane sunt codurile distribuite ale trăsăturilor. Reprezentarea scenei este Hx. O citire aproximativă naturală este Hq; compararea ei cu scena și împărțirea la dimensiunea vectorului dă qᵀ(HᵀH / D)x. Aceasta este egală cu scorul dorit numai când matricea Gram normalizată a dicționarului de coduri se comportă ca identitatea pe vectorii relevanți."
     },
     {
       "id": "t000226",
       "source": "Random columns are approximately orthogonal, not exactly orthogonal. Off-diagonal terms mix feature contributions. In a task where coherence means the exact zero level set of an additive quantity, small residual errors can matter. A larger dimension often reduces random correlations, but it does not make a finite codebook perfectly orthogonal. Increasing scene counts can also magnify the effect of remaining correlations. This gives a concrete reason that extrapolation may be more sensitive than familiar-count tests.",
-      "translation": ""
+      "translation": "Coloanele aleatoare sunt aproximativ ortogonale, nu exact ortogonale. Termenii din afara diagonalei amestecă contribuțiile trăsăturilor. Într-o sarcină în care coerența înseamnă mulțimea de nivel exact zero a unei mărimi aditive, erorile reziduale mici pot conta. O dimensiune mai mare reduce adesea corelațiile aleatoare, dar nu face un dicționar finit de coduri perfect ortogonal. Creșterea cantităților din scenă poate amplifica și efectul corelațiilor rămase. Aceasta oferă un motiv concret pentru care extrapolarea poate fi mai sensibilă decât testele cu cantități familiare."
     },
     {
       "id": "t000227",
       "source": "The key observation is that the encoding can still preserve all twelve feature dimensions. When H has full column rank, the mixed score can be corrected. Define G = HᵀH / D, solve G a = q, and use Ha as the readout. Then (Ha)ᵀ(Hx) / D equals qᵀx in exact arithmetic. The correction is a dual-coordinate readout. It does not reconstruct the hidden law from labels; that law has already been learned. It changes how the known property is read from the distributed representation.",
-      "translation": ""
+      "translation": "Observația esențială este că această codificare poate păstra totuși toate cele douăsprezece dimensiuni ale trăsăturilor. Când H are rang complet pe coloane, scorul amestecat poate fi corectat. Definim G = HᵀH / D, rezolvăm G a = q și folosim Ha pentru citire. Atunci (Ha)ᵀ(Hx) / D este egal cu qᵀx în aritmetică exactă. Corecția este o citire în coordonate duale. Ea nu reconstruiește legea ascunsă din etichete; acea lege a fost deja învățată. Schimbă modul în care proprietatea cunoscută este citită din reprezentarea distribuită."
     },
     {
       "id": "t000228",
       "source": "This is ordinary linear algebra, not a new theorem. It is also consistent with published practical VSA work that replaces similarity-based retrieval with linear readout in appropriate settings. The contribution of the present experiment is to apply the correction to the actual Eos implementation and determine whether it explains the observed gap. A literature-aware account should credit the existing idea while reporting the new diagnosis of this codebase. [L06]",
-      "translation": ""
+      "translation": "Aceasta este algebră liniară obișnuită, nu o teoremă nouă. Este, de asemenea, compatibilă cu lucrări practice VSA publicate, care înlocuiesc recuperarea bazată pe similaritate cu o citire liniară în situațiile potrivite. Contribuția experimentului prezent este aplicarea corecției implementării Eos efective și stabilirea faptului dacă ea explică diferența observată. O prezentare ancorată în literatura de specialitate trebuie să recunoască ideea existentă, raportând în același timp noul diagnostic al acestei baze de cod. [L06]"
     },
     {
       "id": "t000229",
       "source": "The audit reused the repository's world, parser, feature encoders, and abductor. It held the data seed fixed and varied the distributed codebook across five dimensions and five seeds per dimension. Both the original-style decoder and the corrected decoder fitted their decision thresholds using training data only. No held-out labels were used to calibrate the correction. The tested dimensions were 16, 32, 128, 512, and 8,192. All twenty-five sampled codebooks had full column rank. [A05]",
-      "translation": ""
+      "translation": "Auditul a reutilizat lumea, analizorul, codificatoarele trăsăturilor și sistemul de abducție din depozit. A menținut fixă sămânța aleatoare a datelor și a variat dicționarul de coduri distribuite pe cinci dimensiuni și cinci semințe pentru fiecare dimensiune. Atât decodorul în stilul original, cât și decodorul corectat și-au ajustat pragurile de decizie folosind numai datele de antrenare. Nicio etichetă din seturile rezervate evaluării nu a fost folosită pentru calibrarea corecției. Dimensiunile testate au fost 16, 32, 128, 512 și 8.192. Toate cele douăzeci și cinci de dicționare de coduri eșantionate au avut rang complet pe coloane. [A05]"
     },
     {
       "id": "t000230",
       "source": "The corrected readout achieved 100 percent classification on training and all three held-out splits in every sampled configuration. Its largest absolute discrepancy from the direct semantic score was below 4.7 × 10⁻¹³. At dimension 8,192 and the first tested codebook seed, the approximate readout's extrapolation accuracy was 82 percent; the corrected readout achieved 100 percent on the same cases. Across the five 8,192-dimensional codebooks, the approximate extrapolation results ranged from 77 percent to about 93.3 percent. [A05]",
-      "translation": ""
+      "translation": "Citirea corectată a obținut o clasificare de 100 la sută pe antrenare și pe toate cele trei seturi rezervate evaluării, în fiecare configurație eșantionată. Cea mai mare diferență absolută față de scorul semantic direct a fost sub 4,7 × 10⁻¹³. La dimensiunea 8.192 și prima sămânță testată a dicționarului de coduri, acuratețea extrapolării cu citirea aproximativă a fost de 82 la sută; citirea corectată a obținut 100 la sută pe aceleași cazuri. Pentru cele cinci dicționare de coduri cu 8.192 de dimensiuni, rezultatele extrapolării aproximative au variat între 77 la sută și circa 93,3 la sută. [A05]"
     },
     {
       "id": "t000231",
       "source": "Figure 3. Changing the readout changes the interpretation of the representation. Points show mean extrapolation accuracy across five codebooks per dimension; bars show the observed minimum-to-maximum range, not a confidence interval. The data world is fixed. All tested dual readouts score 100 percent. Source: A05.",
-      "translation": ""
+      "translation": "Figura 3. Schimbarea citirii schimbă interpretarea reprezentării. Punctele arată acuratețea medie a extrapolării pentru cinci dicționare de coduri pe dimensiune; barele arată intervalul observat dintre minim și maxim, nu un interval de încredere. Lumea datelor este fixă. Toate citirile duale testate obțin 100 la sută. Sursa: A05."
     },
     {
       "id": "t000232",
       "source": "This changes the explanation of the error. For these unquantised, full-rank encodings, the information needed for the property was present. The approximate decoder did not recover it accurately. The result therefore supports the human researcher's caution that engineering or operator design may account for some apparent VSA limitations. It does not overturn the broader concern about general reasoning, because the experiment still begins with twelve explicit semantic features and a learned additive law.",
-      "translation": ""
+      "translation": "Aceasta schimbă explicația erorii. Pentru aceste codificări necuantizate, de rang complet, informația necesară proprietății era prezentă. Decodorul aproximativ nu a recuperat-o cu precizie. Prin urmare, rezultatul susține precauția cercetătorului uman potrivit căreia ingineria sau proiectarea operatorilor pot explica unele limite VSA aparente. El nu infirmă preocuparea mai largă privind raționamentul general, deoarece experimentul pornește în continuare de la douăsprezece trăsături semantice explicite și o lege aditivă învățată."
     },
     {
       "id": "t000233",
       "source": "6.3 Research significance and claim boundary",
-      "translation": ""
+      "translation": "6.3 Semnificația pentru cercetare și limitele afirmațiilor"
     }
   ]
 }

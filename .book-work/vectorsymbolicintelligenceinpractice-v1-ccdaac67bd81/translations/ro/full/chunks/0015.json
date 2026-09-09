@@ -5,57 +5,57 @@
     {
       "id": "t000164",
       "source": "4.2 Elastic metric-affine memory and explicit growth",
-      "translation": ""
+      "translation": "4.2 Memoria metric-afină elastică și creșterea explicită"
     },
     {
       "id": "t000165",
       "source": "The metric-affine-elastic backend addresses a different problem. Repeatedly averaging a growing collection into one fixed summary can make individual contributions difficult to retrieve. The elastic representation keeps bounded-size chunks, each with coordinate sums, a count, and a mean. Additional chunks are allocated as the collection grows. A top-level summary can still provide a compact view, but it is no longer the entire stored state. [R03]",
-      "translation": ""
+      "translation": "Componenta metric-afină elastică abordează o problemă diferită. Medierea repetată a unei colecții în creștere într-un singur rezumat fix poate face dificilă recuperarea contribuțiilor individuale. Reprezentarea elastică păstrează blocuri de dimensiune limitată, fiecare cu sume ale coordonatelor, un contor și o medie. Blocuri suplimentare sunt alocate pe măsură ce colecția crește. Un rezumat de nivel superior poate oferi în continuare o vedere compactă, dar nu mai este întreaga stare stocată. [R03]"
     },
     {
       "id": "t000166",
       "source": "This is a significant conceptual change. A memory can look holographic at the level of each chunk while behaving like a segmented data structure at the level of the whole collection. Capacity is increased by allocating more storage, not by proving that one fixed vector holds unlimited information. The approach may be exactly what a practical system needs, but it must be described honestly. Its achievement is controlled growth with retained local statistics.",
-      "translation": ""
+      "translation": "Aceasta este o schimbare conceptuală semnificativă. O memorie poate arăta holografic la nivelul fiecărui bloc, comportându-se ca o structură de date segmentată la nivelul întregii colecții. Capacitatea crește prin alocarea unei stocări suplimentare, nu prin demonstrarea faptului că un vector fix conține informație nelimitată. Abordarea poate fi exact ceea ce îi trebuie unui sistem practic, dar trebuie descrisă onest. Realizarea sa este creșterea controlată cu păstrarea statisticilor locale."
     },
     {
       "id": "t000167",
       "source": "The audit measured the typed-array payload for a small configuration with dimension 32 and a chunk capacity of 32 items. One chunk required 192 bytes in the measured representation. At 33 items, allocation of a second chunk increased the payload to 352 bytes. A third chunk at 65 items brought it to 512 bytes; four chunks at 128 items used 672 bytes. These figures exclude JavaScript object overhead and other runtime structures. They are not complete process-memory measurements. They do demonstrate that a nominal 32-byte atomic vector is not an adequate description of a bundled elastic memory's cost. [A04]",
-      "translation": ""
+      "translation": "Auditul a măsurat volumul de date din tablouri tipizate pentru o configurație mică, de dimensiune 32 și capacitate a blocului de 32 de elemente. Un bloc necesita 192 de octeți în reprezentarea măsurată. La 33 de elemente, alocarea unui al doilea bloc a crescut volumul de date la 352 de octeți. Un al treilea bloc la 65 de elemente l-a adus la 512 octeți; patru blocuri la 128 de elemente foloseau 672 de octeți. Aceste valori exclud costul suplimentar al obiectelor JavaScript și alte structuri ale mediului de execuție. Nu sunt măsurători complete ale memoriei procesului. Demonstrează însă că un vector atomic nominal de 32 de octeți nu descrie adecvat costul unei memorii elastice agregate. [A04]"
     },
     {
       "id": "t000168",
       "source": "Figure 1. Elastic storage grows through chunk allocation. These are measured typed-array payloads for dimension 32 and chunk capacity 32, not full runtime memory. Each point is an executed probe. Source: A04.",
-      "translation": ""
+      "translation": "Figura 1. Stocarea elastică crește prin alocarea blocurilor. Acestea sunt volume măsurate ale datelor din tablouri tipizate pentru dimensiunea 32 și capacitatea blocului 32, nu memoria completă de execuție. Fiecare punct este o probă executată. Sursa: A04."
     },
     {
       "id": "t000169",
       "source": "The stored coordinate sums matter. If only an already-rounded mean were retained, subsequent updates would repeatedly compound rounding and weighting errors. Keeping sums and counts permits correct weighted aggregation at that level. This is a concrete positive engineering idea: distinguish a display summary from the sufficient state required for future updates. In a language memory, the analogous distinction is between a concise summary and the underlying records needed to revise it when new evidence arrives.",
-      "translation": ""
+      "translation": "Sumele coordonatelor stocate contează. Dacă ar fi păstrată numai o medie deja rotunjită, actualizările ulterioare ar acumula repetat erori de rotunjire și ponderare. Păstrarea sumelor și contoarelor permite agregare ponderată corectă la acel nivel. Aceasta este o idee inginerească pozitivă concretă: distingerea rezumatului afișat de starea suficientă necesară actualizărilor viitoare. Într-o memorie lingvistică, distincția analogă este cea dintre un rezumat concis și înregistrările de bază necesare revizuirii sale când apar dovezi noi."
     },
     {
       "id": "t000170",
       "source": "Elasticity does not automatically repair all operator problems. The inspected binding operation can apply XOR to chunk means and reconstruct sums from those means and counts. Information about the original distribution within a chunk is then absent. Combining bundles can also create Cartesian combinations of chunks. Furthermore, comparing against the best of several chunks changes the chance of seeing a large similarity by accident. A larger memory can improve recall while simultaneously increasing false positives unless the acceptance procedure accounts for the number and type of comparisons.",
-      "translation": ""
+      "translation": "Elasticitatea nu repară automat toate problemele operatorilor. Operația de legare inspectată poate aplica XOR mediilor blocurilor și reconstrui sumele din acele medii și contoare. Informația despre distribuția originală din interiorul unui bloc lipsește atunci. Combinarea agregărilor poate crea și combinații carteziene de blocuri. În plus, compararea cu cel mai bun dintre mai multe blocuri schimbă șansa de a vedea accidental o similaritate mare. O memorie mai mare poate îmbunătăți rata de regăsire, crescând simultan rezultatele fals pozitive, dacă procedura de acceptare nu ține cont de numărul și tipul comparațiilor."
     },
     {
       "id": "t000171",
       "source": "The repository also supports deterministic atom generation that preserves a prefix when a larger dimension is requested. The audit confirmed that an atom's first 32 coordinates at dimension 64 matched its dimension-32 encoding. This is a useful compatibility property. It does not mean that a previously stored 32-coordinate bundle can magically reveal the missing 32 coordinates. To expand an old representation faithfully, the system needs the source atoms, sufficient construction records, or another way to recompute the extension. Prefix stability solves naming across dimensions, not recovery of unstored information. [A04]",
-      "translation": ""
+      "translation": "Depozitul permite și generarea deterministă a atomilor care păstrează un prefix atunci când este cerută o dimensiune mai mare. Auditul a confirmat că primele 32 de coordonate ale unui atom la dimensiunea 64 corespundeau codificării sale de dimensiune 32. Aceasta este o proprietate utilă de compatibilitate. Nu înseamnă că o agregare de 32 de coordonate stocată anterior poate dezvălui magic cele 32 de coordonate lipsă. Pentru a extinde fidel o reprezentare veche, sistemul are nevoie de atomii sursă, înregistrări suficiente ale construcției sau alt mod de recalculare a extensiei. Stabilitatea prefixelor rezolvă denumirea între dimensiuni, nu recuperarea informației nestocate. [A04]"
     },
     {
       "id": "t000172",
       "source": "There are therefore several distinct meanings of “growing representation.” The width of each vector may increase. The number of chunks may increase. The vocabulary of symbolic atoms may increase. The number of explicit combinations may increase. These growth modes preserve different information and incur different costs. Treating them as one property prevents a meaningful comparison. An experiment should specify exactly what is allocated, which earlier information remains accessible, and which operations become more expensive.",
-      "translation": ""
+      "translation": "Există, așadar, mai multe sensuri distincte ale „reprezentării care crește”. Lățimea fiecărui vector poate crește. Numărul blocurilor poate crește. Vocabularul atomilor simbolici poate crește. Numărul combinațiilor explicite poate crește. Aceste moduri de creștere păstrează informații diferite și generează costuri diferite. Tratarea lor ca o singură proprietate împiedică o comparație semnificativă. Un experiment ar trebui să specifice exact ce se alocă, ce informații anterioare rămân accesibile și ce operații devin mai scumpe."
     },
     {
       "id": "t000173",
       "source": "The interesting future contribution is an allocation policy driven by task obligations. A memory might create a new chunk when interference threatens retrieval, expand a structured record when a new role is introduced, or retain a source witness when a summary becomes ambiguous. Such a policy would connect storage growth to the failure it is meant to prevent. The elastic backend supplies useful building blocks, but this obligation-driven policy is a proposal of the present analysis rather than a result already demonstrated by the repository.",
-      "translation": ""
+      "translation": "Contribuția viitoare interesantă este o politică de alocare determinată de obligațiile sarcinii. O memorie ar putea crea un bloc nou când interferența amenință recuperarea, extinde o înregistrare structurată când este introdus un rol nou sau păstra un martor sursă când un rezumat devine ambiguu. O asemenea politică ar lega creșterea stocării de eșecul pe care este menită să îl prevină. Componenta elastică oferă elemente utile, însă această politică determinată de obligații este o propunere a analizei de față, nu un rezultat deja demonstrat de depozit."
     },
     {
       "id": "t000174",
       "source": "4.3 Exact monomial storage: replacing noise with combinatorial growth",
-      "translation": ""
+      "translation": "4.3 Stocarea monomială exactă: înlocuirea zgomotului cu creștere combinatorică"
     }
   ]
 }
