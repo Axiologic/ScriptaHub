@@ -1,0 +1,51 @@
+{
+  "language": "ro",
+  "chunk": 11,
+  "segments": [
+    {
+      "id": "t000125",
+      "source": "The experiments in spock, HDC-RE, and VSARepresentations test whether the semantics assigned to vector operations are actually preserved by the implemented carrier, similarity measure, and decoder. The intended goal was to make reasoning geometric or holographic while retaining simple composition. Direct probes show several mismatches: information represented in vector magnitude can disappear under cosine comparison; sparse set-XOR does not automatically provide the illustrated inverse; and XOR binding is not an isometry for the byte-valued metric used by the metric-affine backend. These are useful negative results because they identify operator contracts that any successor architecture must state explicitly.",
+      "translation": ""
+    },
+    {
+      "id": "t000126",
+      "source": "3.1 Magnitude information versus cosine readout",
+      "translation": ""
+    },
+    {
+      "id": "t000127",
+      "source": "The spock repository is a useful place to begin because its numerical kernel is small. It exposes operations corresponding to addition, binding, negation, a distance-like similarity, movement, modulation, identity, and normalisation. The implementation is inspectable enough to compare mathematical behaviour with the semantic language used in the accompanying theory documents. The attraction is clear: a limited set of fast operations might support a larger family of cognitive transformations. [R01]",
+      "translation": ""
+    },
+    {
+      "id": "t000128",
+      "source": "The first difficulty appears when confidence is represented by positive scaling. Suppose a vector describes a proposition and a factor of 0.7 is intended to express reduced confidence. The next stage compares this vector with another using cosine similarity. Cosine divides the dot product by the product of the vector norms. Multiplying one vector by a positive scalar multiplies both its contribution to the numerator and its norm in the denominator by that scalar. The factor cancels.",
+      "translation": ""
+    },
+    {
+      "id": "t000129",
+      "source": "Written as an executable contract, the relevant identity is cosine(c * x, y) = cosine(x, y) for nonzero vectors and positive c. The audit tested the actual primitive with a simple vector and scale factors 0.1, 0.3, 0.7, and 1.0. Its cosine with the original remained one to numerical precision. The transformed similarity used by the implementation also remained one. A downstream decision that sees only this similarity cannot tell these confidence values apart. [A04]",
+      "translation": ""
+    },
+    {
+      "id": "t000130",
+      "source": "This is not an argument against using vector magnitude. Magnitude can carry information when later operations read it. It is an argument against claiming that a particular pipeline preserves a confidence variable when that pipeline deliberately removes the relevant degree of freedom. A repair might keep confidence in a separate field, use a magnitude-sensitive score with explicit calibration, or encode uncertainty through a distribution rather than positive scaling. Each choice changes the semantics and should be tested as such.",
+      "translation": ""
+    },
+    {
+      "id": "t000131",
+      "source": "The example exposes a broader risk in AI-generated theory documents. Operations receive meaningful names, then the names begin to act as evidence. “Modulate” sounds like changing belief strength. “Distance” sounds like measuring semantic disagreement. “Normalise” sounds like a harmless numerical adjustment. But if the representation of uncertainty is magnitude, normalisation is not semantically harmless. The question is not whether the functions have plausible interpretations independently. It is whether the composition preserves the intended variable.",
+      "translation": ""
+    },
+    {
+      "id": "t000132",
+      "source": "Similar care is needed with negation. Replacing a vector with its negative creates an opposite direction under cosine. That is a well-defined geometric operation. Logical negation, however, changes the truth condition of a proposition while preserving its content as the subject of denial. The negative of a vector for “Alice is in the kitchen” does not automatically identify the appropriate alternatives, distinguish explicit denial from missing evidence, or implement the scope of “Alice does not believe that Bob left.” A geometric opposite becomes logical negation only within a verified encoding and reasoning scheme.",
+      "translation": ""
+    },
+    {
+      "id": "t000133",
+      "source": "The same limitation applies to addition. Adding vectors may bundle evidence or mix features, but calling the result Bayesian does not establish a Bayesian update. Such an update requires a specified probabilistic model, likelihoods, and a rule for combining dependent or independent evidence. The inspected primitive operations do not supply those ingredients merely by addition. The responsible conclusion is not that probabilistic interpretation is impossible; it is that the relevant model remains an additional obligation.",
+      "translation": ""
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "language": "ro",
+  "chunk": 30,
+  "segments": [
+    {
+      "id": "t000314",
+      "source": "The audit's deployment observations were mixed in a way that must not be obscured. All 73 selected tests passed. The separate smoke evaluation attempted twelve combinations of cases, solver choices, and intuition modes, but all twelve produced errors because the external solver binaries were unavailable. The evaluation process itself exited successfully. A process exit code of zero therefore did not mean that the reasoning cases passed. The unit tests largely exercised controlled adapters and mocks, not a live end-to-end solver installation. [A02, A03]",
+      "translation": ""
+    },
+    {
+      "id": "t000315",
+      "source": "Rather than infer anything about solver quality from missing executables, I examined the query orchestration directly. For entailment, the code selects an active subset of fragments, asserts them, negates the goal, and asks whether the result is satisfiable. If unsatisfiable, the selected premises entail the goal under the chosen logic. If satisfiable, they do not. The crucial issue is what happens when those premises are only a retrieved part of the available world.",
+      "translation": ""
+    },
+    {
+      "id": "t000316",
+      "source": "The implementation stops expansion on a definite solver verdict. Expansion is principally associated with an unknown result, not with a satisfiable counterexample obtained from an incomplete slice. This is understandable as a local solver protocol, but dangerous as a whole-knowledge-base protocol. A definitive answer about a subset is not necessarily definitive about the full set. The solver can be perfectly correct while the architecture assigns its answer the wrong scope.",
+      "translation": ""
+    },
+    {
+      "id": "t000317",
+      "source": "To test this without claiming a live SMT deployment, I wrote a small independent Boolean adapter that enumerates all four assignments of two variables. It parses the assertions emitted by the real query executor and evaluates their Boolean content. It does not return a prearranged sequence of verdicts. It is exact for the tiny Boolean language used in the probe, not a general SMT implementation. This makes it possible to test the actual orchestration with a transparent solver. [A06]",
+      "translation": ""
+    },
+    {
+      "id": "t000318",
+      "source": "With available fragments q and p, goal p, and a one-fragment expansion step, ranking q first caused the executor to return not-entailed after one round. Ranking p first returned entailed. Including both immediately also returned entailed. The first result is correct for the active slice containing only q, but it is not a correct whole-world non-entailment conclusion because p is present in the available world. The probe exposes a scope problem, not a failure of Boolean reasoning. [A06]",
+      "translation": ""
+    },
+    {
+      "id": "t000319",
+      "source": "The repository's knowledge-gap diagnostics partially recognise this first case: they note that the active slice does not support the goal symbol. That is useful, and a higher-level response policy may choose to ask a question rather than make an unconditional negative claim. The audit therefore does not assert that every user-facing answer is false. It establishes a lower-level contract hazard: a not-entailed label can be produced after an incomplete search unless the scope travels with it.",
+      "translation": ""
+    },
+    {
+      "id": "t000320",
+      "source": "9.3 Proof validity requires retrieval-scope evidence",
+      "translation": ""
+    },
+    {
+      "id": "t000321",
+      "source": "A stronger probe removes the simplest lexical warning. The first fragment is the tautology p or not p, and the second fragment is the fact p. The goal remains p. The first fragment mentions the relevant symbol, so the symbol-occurrence-based gap detector reports no gap. Yet the tautology alone does not entail p; it is compatible with either truth value. The executor returns not-entailed after its first round, even though the second available fragment would establish the goal. The audit reproduced this using the same independent Boolean adapter and the actual orchestration code. [A06]",
+      "translation": ""
+    },
+    {
+      "id": "t000322",
+      "source": "This is a compact result with broad architectural significance. Mentioning a symbol is not evidence that all relevant information about it has been retrieved. A retrieved paragraph can discuss a topic without containing its decisive fact. A solver can see every variable name and still lack the premise that changes the answer. Therefore a lexical knowledge-gap check cannot serve as a completeness certificate for reasoning over a larger corpus.",
+      "translation": ""
+    }
+  ]
+}

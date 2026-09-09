@@ -1,0 +1,61 @@
+{
+  "language": "ro",
+  "chunk": 13,
+  "segments": [
+    {
+      "id": "t000143",
+      "source": "The novelty opportunity is therefore more specific than “reasoning in hypervectors.” It concerns a controlled interface between approximate representations and executable rules. The interface should expose what was retrieved, why it was admitted, what exact operation accepted it, and what remains unsearched. In a future SOP architecture, these would be different circuit nodes and different result types. The present repositories do not implement that unified contract, but they show why it would be useful.",
+      "translation": ""
+    },
+    {
+      "id": "t000144",
+      "source": "3.3 When binding and similarity encode incompatible geometries",
+      "translation": ""
+    },
+    {
+      "id": "t000145",
+      "source": "VSARepresentations makes the algebraic problem particularly visible because several backends implement superficially similar operations. A generic interface encourages substitution: encode, bind, bundle, compare, and unbind. Yet identical method names do not imply identical laws. An execution engine can become incorrect when it assumes that every backend preserves properties true of only one representation family. [R03]",
+      "translation": ""
+    },
+    {
+      "id": "t000146",
+      "source": "The metric-affine backend provides an exact small counterexample. Its coordinates are bytes. Binding uses bitwise XOR, while similarity is based on numerical distance between byte values. XOR preserves bitwise relationships, but it does not preserve ordinary distance on the ordered numbers from zero to 255. Take coordinates 127 and 128. They differ by one, so the normalised distance-based similarity is about 0.996. XOR both with 127 and they become zero and 255, whose similarity is zero. The audit reproduced this with the actual implementation. [A04]",
+      "translation": ""
+    },
+    {
+      "id": "t000147",
+      "source": "No amount of dimensionality fixes this one-coordinate incompatibility. Repeating the coordinate would repeat the counterexample. Using more random coordinates may hide the effect on an average workload, but it does not establish the missing algebraic law. If an inference step depends on binding preserving metric closeness, the backend does not satisfy that contract. The options are to change the metric, change binding, restrict the operand distribution and validate a probabilistic property, or stop depending on the law.",
+      "translation": ""
+    },
+    {
+      "id": "t000148",
+      "source": "Bundling introduces another mismatch. The backend combines coordinates through a rounded mean. XOR does not generally distribute over that operation. For values zero and two, their mean is one. XOR the mean with one and the result is zero. XOR the original values with one first, obtaining one and three, and their mean is two. Thus bind(bundle(x, y), key) and bundle(bind(x, key), bind(y, key)) disagree in the actual code. An algorithm that moves binding across bundling as if these expressions were interchangeable changes the represented object. [A04]",
+      "translation": ""
+    },
+    {
+      "id": "t000149",
+      "source": "This observation is more constructive than a general complaint that the representation is ad hoc. It suggests an operator-law test suite that runs before downstream reasoning experiments. Such a suite would not demand that all backends be groups or that all operations distribute. It would record which laws actually hold, under which operand types and approximation regimes. A backend with non-distributive binding might still be useful, provided the compiler never applies a distributive rewrite to it.",
+      "translation": ""
+    },
+    {
+      "id": "t000150",
+      "source": "There is also a statistical issue. The normalised numerical similarity of two independent random byte coordinates has an expected value near 0.665. A coordinate near the centre of the range, such as 128, has a higher expected similarity to a random coordinate, near 0.749. The audit's 1,000-seed probe reproduced this difference. A bundle produced by averaging can move toward the centre and therefore look more similar to unrelated atoms even when it contains no useful association. [A04]",
+      "translation": ""
+    },
+    {
+      "id": "t000151",
+      "source": "The result is not that a value near 0.75 is always meaningless. It is that the null distribution depends on what kind of object produced the score. Comparing two atoms, comparing an atom with a mean bundle, and taking the maximum over many chunks are different statistical tests. A single global threshold obscures those differences. If a system interprets all of them as a common notion of evidential support, its confidence can increase simply because a representation became more averaged or because more comparisons were tried.",
+      "translation": ""
+    },
+    {
+      "id": "t000152",
+      "source": "These elementary counterexamples motivate semantic operator contracts and conditional calibration. A language system needs to know not merely vector size, but which algebraic laws and statistical assumptions its operations satisfy. This is a concrete reason to prefer explicit typed composition over an unrestricted bind-and-compare interface.",
+      "translation": ""
+    },
+    {
+      "id": "t000153",
+      "source": "4. Growing representations and explicit storage",
+      "translation": ""
+    }
+  ]
+}

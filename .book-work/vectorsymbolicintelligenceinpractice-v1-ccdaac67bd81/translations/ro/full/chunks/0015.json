@@ -1,0 +1,61 @@
+{
+  "language": "ro",
+  "chunk": 15,
+  "segments": [
+    {
+      "id": "t000164",
+      "source": "4.2 Elastic metric-affine memory and explicit growth",
+      "translation": ""
+    },
+    {
+      "id": "t000165",
+      "source": "The metric-affine-elastic backend addresses a different problem. Repeatedly averaging a growing collection into one fixed summary can make individual contributions difficult to retrieve. The elastic representation keeps bounded-size chunks, each with coordinate sums, a count, and a mean. Additional chunks are allocated as the collection grows. A top-level summary can still provide a compact view, but it is no longer the entire stored state. [R03]",
+      "translation": ""
+    },
+    {
+      "id": "t000166",
+      "source": "This is a significant conceptual change. A memory can look holographic at the level of each chunk while behaving like a segmented data structure at the level of the whole collection. Capacity is increased by allocating more storage, not by proving that one fixed vector holds unlimited information. The approach may be exactly what a practical system needs, but it must be described honestly. Its achievement is controlled growth with retained local statistics.",
+      "translation": ""
+    },
+    {
+      "id": "t000167",
+      "source": "The audit measured the typed-array payload for a small configuration with dimension 32 and a chunk capacity of 32 items. One chunk required 192 bytes in the measured representation. At 33 items, allocation of a second chunk increased the payload to 352 bytes. A third chunk at 65 items brought it to 512 bytes; four chunks at 128 items used 672 bytes. These figures exclude JavaScript object overhead and other runtime structures. They are not complete process-memory measurements. They do demonstrate that a nominal 32-byte atomic vector is not an adequate description of a bundled elastic memory's cost. [A04]",
+      "translation": ""
+    },
+    {
+      "id": "t000168",
+      "source": "Figure 1. Elastic storage grows through chunk allocation. These are measured typed-array payloads for dimension 32 and chunk capacity 32, not full runtime memory. Each point is an executed probe. Source: A04.",
+      "translation": ""
+    },
+    {
+      "id": "t000169",
+      "source": "The stored coordinate sums matter. If only an already-rounded mean were retained, subsequent updates would repeatedly compound rounding and weighting errors. Keeping sums and counts permits correct weighted aggregation at that level. This is a concrete positive engineering idea: distinguish a display summary from the sufficient state required for future updates. In a language memory, the analogous distinction is between a concise summary and the underlying records needed to revise it when new evidence arrives.",
+      "translation": ""
+    },
+    {
+      "id": "t000170",
+      "source": "Elasticity does not automatically repair all operator problems. The inspected binding operation can apply XOR to chunk means and reconstruct sums from those means and counts. Information about the original distribution within a chunk is then absent. Combining bundles can also create Cartesian combinations of chunks. Furthermore, comparing against the best of several chunks changes the chance of seeing a large similarity by accident. A larger memory can improve recall while simultaneously increasing false positives unless the acceptance procedure accounts for the number and type of comparisons.",
+      "translation": ""
+    },
+    {
+      "id": "t000171",
+      "source": "The repository also supports deterministic atom generation that preserves a prefix when a larger dimension is requested. The audit confirmed that an atom's first 32 coordinates at dimension 64 matched its dimension-32 encoding. This is a useful compatibility property. It does not mean that a previously stored 32-coordinate bundle can magically reveal the missing 32 coordinates. To expand an old representation faithfully, the system needs the source atoms, sufficient construction records, or another way to recompute the extension. Prefix stability solves naming across dimensions, not recovery of unstored information. [A04]",
+      "translation": ""
+    },
+    {
+      "id": "t000172",
+      "source": "There are therefore several distinct meanings of “growing representation.” The width of each vector may increase. The number of chunks may increase. The vocabulary of symbolic atoms may increase. The number of explicit combinations may increase. These growth modes preserve different information and incur different costs. Treating them as one property prevents a meaningful comparison. An experiment should specify exactly what is allocated, which earlier information remains accessible, and which operations become more expensive.",
+      "translation": ""
+    },
+    {
+      "id": "t000173",
+      "source": "The interesting future contribution is an allocation policy driven by task obligations. A memory might create a new chunk when interference threatens retrieval, expand a structured record when a new role is introduced, or retain a source witness when a summary becomes ambiguous. Such a policy would connect storage growth to the failure it is meant to prevent. The elastic backend supplies useful building blocks, but this obligation-driven policy is a proposal of the present analysis rather than a result already demonstrated by the repository.",
+      "translation": ""
+    },
+    {
+      "id": "t000174",
+      "source": "4.3 Exact monomial storage: replacing noise with combinatorial growth",
+      "translation": ""
+    }
+  ]
+}

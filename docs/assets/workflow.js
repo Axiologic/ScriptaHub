@@ -93,7 +93,9 @@
   const activeBook = () => collection.books.find((book) => book.directory === params().get("book"));
   const field = (label, name, type = "text", wide = false, placeholder = "", required = false, extraClass = "") => `<label class="form-field${wide ? " form-field-wide" : ""}${extraClass ? ` ${extraClass}` : ""}"><span>${escape(label)}</span><input type="${type}" name="${name}" placeholder="${escape(placeholder)}"${required ? " required" : ""}></label>`;
   const textarea = (label, name, placeholder, required = false, extraClass = "") => `<label class="form-field form-field-wide${extraClass ? ` ${extraClass}` : ""}"><span>${escape(label)}</span><textarea name="${name}" placeholder="${escape(placeholder)}"${required ? " required" : ""}></textarea></label>`;
-  const pageHero = (kicker, title, lead = "") => `<section class="workflow-hero"><div><p class="eyebrow">${escape(kicker)}</p><h1>${escape(title)}</h1></div>${lead ? `<p class="lead">${escape(lead)}</p>` : ""}</section>`;
+  const pageHero = (kicker, title, lead = "") => `<section class="workflow-hero"><div><p class="eyebrow">${escape(kicker)}</p><h1 title="${escape(title)}">${escape(title)}</h1></div>${lead ? `<p class="lead">${escape(lead)}</p>` : ""}</section>`;
+  const backLabels = { en: "Back to book", fr: "Retour au livre", de: "Zurück zum Buch", es: "Volver al libro", pt: "Voltar ao livro", it: "Torna al libro", ro: "Înapoi la carte", pl: "Powrót do książki" };
+  const backToBook = (book, lang) => book ? `<nav class="workflow-back"><a class="button button-quiet" href="../${escape(book.editions[lang].book)}?lang=${lang}">${escape(backLabels[lang])}</a></nav>` : "";
   const agreementCard = (words) => `<aside class="workflow-context contribution-agreement"><p class="eyebrow">ScriptaHub</p><h2>${escape(words.contractTitle)}</h2><p>${escape(words.contractIntro)}</p><ol>${words.contractItems.map((item) => `<li>${escape(item)}</li>`).join("")}</ol><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">${escape(words.contractLink)}</a><label class="contract-accept"><input type="checkbox" data-contract-accept><span>${escape(words.contractAccept)}</span></label></aside>`;
   const bookContext = (book, lang, words) => {
     if (!book) return `<aside class="workflow-context"><p>${escape(words.missingBook)}</p></aside>`;
@@ -169,7 +171,7 @@
     const book = activeBook();
     document.title = `${words.feedbackTitle} · ScriptaHub`;
     const side = `<div class="workflow-aside-stack">${compactBookContext(book, lang, words)}${agreementCard(words)}</div>`;
-    root.innerHTML = `${pageHero(words.feedbackKicker, words.feedbackTitle)}<section class="workflow-layout"><form class="workflow-form" data-workflow-form><p class="workflow-message">${escape(words.promise)}</p><div class="form-grid">${field(words.name, "name", "text", false, "", true)}${field(words.email, "email", "email")}${field(words.url, "url", "url", true, "https://")}
+    root.innerHTML = `${backToBook(book, lang)}${pageHero(words.feedbackKicker, words.feedbackTitle)}<section class="workflow-layout"><form class="workflow-form" data-workflow-form><p class="workflow-message">${escape(words.promise)}</p><div class="form-grid">${field(words.name, "name", "text", false, "", true)}${field(words.email, "email", "email")}${field(words.url, "url", "url", true, "https://")}
       <label class="form-field form-field-wide"><span>${escape(words.kind)}</span><select name="kind">${words.kinds.map((kind) => `<option>${escape(kind)}</option>`).join("")}</select></label>${textarea(words.feedback, "feedback", words.feedbackHint, true)}${textarea(words.sources, "sources", words.sourcesHint)}</div><button class="workflow-submit" type="submit" disabled>${escape(words.send)}</button><p class="workflow-note">${escape(words.mailNote)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${side}</section>`;
     const form = root.querySelector("form");
     const contract = root.querySelector("[data-contract-accept]");
@@ -196,28 +198,73 @@
       root.innerHTML = `${pageHero(words.editionsKicker, words.editionsTitle, words.editionsLead)}<p class="workflow-message">${escape(words.missingBook)}</p>`;
       return;
     }
-    root.innerHTML = `${pageHero(words.editionsKicker, `${words.editionsTitle}: ${book.title[lang] || book.title.en}`, words.editionsLead)}<section class="workflow-layout"><div class="editions-list" data-editions-list><p class="workflow-message">…</p></div>${bookContext(book, lang, words)}</section>`;
+    root.innerHTML = `${backToBook(book, lang)}${pageHero(words.editionsKicker, `${words.editionsTitle}: ${book.title[lang] || book.title.en}`, words.editionsLead)}<section class="workflow-layout"><div class="editions-list" data-editions-list><p class="workflow-message">…</p></div>${bookContext(book, lang, words)}</section>`;
     try {
       const response = await fetch(`../${book.directory}/editions.json`);
       if (!response.ok) throw new Error(String(response.status));
       const history = await response.json();
       const list = root.querySelector("[data-editions-list]");
       list.innerHTML = [...history.editions].sort((a, b) => Number(b.number) - Number(a.number)).map((edition) => {
-        const current = edition.id === history.currentEdition ? `<span class="edition-date">${escape(words.current)}</span>` : "";
+        const preparing = edition.status === "preparing";
+        const current = preparing ? `<span class="publication-status">${escape(globalThis.ScriptaReading.preparationLabels[lang])}</span>` : edition.id === history.currentEdition ? `<span class="edition-date">${escape(words.current)}</span>` : "";
         const label = edition.label?.[lang] || edition.label?.en || `Edition ${edition.number}`;
         const changes = edition.changes?.[lang] || edition.changes?.en || "";
-        const date = new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(new Date(`${edition.publishedAt}T12:00:00`));
+        const date = preparing ? "" : new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(new Date(`${edition.publishedAt}T12:00:00`));
         const downloads = Object.entries(edition.pdf || {}).map(([code, path]) => `<a href="../${escape(book.directory)}/${escape(path)}" download>${escape(words.download)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`).join("");
-        return `<article class="edition-card"><div>${current}<p class="edition-date">${escape(words.published)} ${escape(date)}</p></div><div><h2>${escape(label)}</h2><p class="edition-changes"><strong>${escape(words.changes)}:</strong> ${escape(changes)}</p><div class="edition-downloads">${downloads || `<span class="workflow-note">${escape(words.noPdf)}</span>`}</div></div></article>`;
+        const readingWords = globalThis.ScriptaReading.labels[lang];
+        const readers = Object.entries(edition.readers || {}).flatMap(([code, formats]) => Object.entries(formats).map(([format, path]) => `<a href="../${escape(book.directory)}/${escape(path)}">${escape(format === "shortContent" ? readingWords.short : readingWords.full)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`)).join("");
+        const coverPath = edition.covers?.[lang] || edition.covers?.en;
+        const cover = coverPath ? `<img class="edition-history-cover" src="../${escape(book.directory)}/${escape(coverPath)}" alt="${escape(`${book.title[lang] || book.title.en} · ${label}`)}" loading="lazy">` : "";
+        return `<article class="edition-card${cover ? "" : " edition-card-no-cover"}">${cover}<div class="edition-card-details"><div class="edition-card-meta">${current}${date ? `<time class="edition-date" datetime="${escape(edition.publishedAt)}">${escape(date)}</time>` : ""}</div><h2>${escape(label)}</h2><p class="edition-changes"><strong>${escape(words.changes)}:</strong> ${escape(changes)}</p><div class="edition-downloads">${downloads || `<span class="workflow-note">${escape(words.noPdf)}</span>`}${readers}</div></div></article>`;
       }).join("");
     } catch {
       root.querySelector("[data-editions-list]").innerHTML = `<p class="workflow-message">${escape(words.loadError)}</p>`;
     }
   }
 
+  function renderTranslation(lang) {
+    const reading = globalThis.ScriptaReading;
+    const words = reading.labels[lang];
+    const book = activeBook();
+    document.title = `${words.request} · ScriptaHub`;
+    if (!book) {
+      root.innerHTML = `${pageHero(words.request, words.title, words.lead)}<p class="workflow-message">${escape(words.missing)}</p><a class="button" href="../index.html?lang=${lang}">ScriptaHub</a>`;
+      return;
+    }
+    const target = reading.locale(params().get("target") || lang);
+    const format = reading.formatName(params().get("format"));
+    root.innerHTML = `${backToBook(book, lang)}${pageHero(words.request, words.title, words.lead)}<section class="workflow-layout"><form class="workflow-form" data-translation-form><div class="form-grid"><label class="form-field"><span>${escape(words.target)}</span><select name="target">${collection.supportedLanguages.map(({ code, name }) => `<option value="${code}"${code === target ? " selected" : ""}>${escape(name)}</option>`).join("")}</select></label><label class="form-field"><span>${escape(words.format)}</span><select name="format"><option value="read"${format === "read" ? " selected" : ""}>${escape(words.full)}</option><option value="short"${format === "short" ? " selected" : ""}>${escape(words.short)}</option></select></label>${field(words.name, "name")}${field(words.email, "email", "email")}${textarea(words.note, "note", "")}</div><div data-translation-available hidden><p>${escape(words.available)}</p><a class="button" data-translation-read>${escape(words.read)}</a></div><button class="workflow-submit" type="submit">${escape(words.send)}</button><p class="workflow-note" data-translation-mail-note>${escape(words.mail)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${bookContext(book, lang, { ...text[lang], back: words.back })}</section>`;
+    const form = root.querySelector("[data-translation-form]");
+    const update = () => {
+      const data = new FormData(form);
+      const selected = data.get("target");
+      const selectedFormat = data.get("format");
+      const present = reading.available(book, selected, selectedFormat);
+      form.querySelector("[data-translation-available]").hidden = !present;
+      form.querySelector('[type="submit"]').hidden = present;
+      form.querySelector("[data-translation-mail-note]").hidden = present;
+      form.querySelector("[data-translation-read]").href = reading.readingUrl(book, selected, selectedFormat, lang, new URL("../", location.href)).href;
+      const url = new URL(location.href);
+      url.searchParams.set("target", selected);
+      url.searchParams.set("format", selectedFormat);
+      history.replaceState({}, "", url);
+    };
+    form.querySelectorAll("select").forEach((select) => select.addEventListener("change", update));
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      if (reading.available(book, data.get("target"), data.get("format"))) { update(); return; }
+      root.querySelector("[data-workflow-status]").textContent = words.ready;
+      location.href = reading.mailUrl(book, { target: data.get("target"), format: data.get("format"), uiLanguage: lang, source: params().get("source"), name: data.get("name"), email: data.get("email"), note: data.get("note") });
+    });
+    update();
+  }
+
   function render(lang = language()) {
     const page = document.body.dataset.workflowPage;
-    if (page === "create") renderCreate(lang);
+    if (page === "translate") renderTranslation(lang);
+    else if (page === "create") renderCreate(lang);
     else if (page === "feedback") renderFeedback(lang);
     else renderEditions(lang);
   }

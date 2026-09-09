@@ -280,7 +280,7 @@ def keyword_source_text(page: Path) -> str:
     )
     # Repetition is deliberate: headings usually name the question a reader
     # would search, while navigation/footer boilerplate should not outrank it.
-    return " ".join([*(headings * 5), clean_fragment(source)])
+    return ". ".join([*(headings * 5), clean_fragment(source)])
 
 
 def one(pattern: str, source: str, label: str, page: Path) -> str:
@@ -390,7 +390,7 @@ def extract_keyword_candidates(
 
     Only grammar, stop words, and document structure live in code. Subject
     vocabulary comes from the edition itself. Headings are weighted by
-    keyword_source_text; the synopsis receives a smaller additional weight.
+    keyword_source_text; the synopsis can boost existing phrases, not add them.
     """
     try:
         import nltk
@@ -399,7 +399,7 @@ def extract_keyword_candidates(
             "Keyword extraction needs NLTK; install tools/requirements-keywords.txt"
         ) from error
 
-    weighted = ((description + " ") * 4) + source_text
+    weighted = source_text
     title_key = keyword_normalise(title).strip()
     title_terms = {
         token for token in title_key.split()
@@ -702,6 +702,22 @@ def edition_record(book_root: Path, language: str) -> dict[str, str]:
     return record
 
 
+def snapshot_edition_covers(book_root: Path, edition: dict, source_root: Path | None = None, refresh_pending: bool = False) -> None:
+    """Give each edition independent artwork paths; published snapshots are immutable."""
+    source_root = source_root or book_root
+    replace = refresh_pending and edition.get("status") == "preparing"
+    covers = edition.setdefault("covers", {})
+    for language in LANGUAGES:
+        source = next((source_root / language / name for name in ("cover.webp", "cover.png") if (source_root / language / name).is_file()), None)
+        if source is None or (language in covers and not replace):
+            continue
+        destination = book_root / "edition-files" / edition["id"] / "covers" / f"{language}{source.suffix}"
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        if replace or not destination.exists():
+            shutil.copy2(source, destination)
+        covers[language] = destination.relative_to(book_root).as_posix()
+
+
 def ensure_editions_file(book_root: Path, manifest: dict[str, object]) -> None:
     """Create or gently extend a book's durable edition history.
 
@@ -716,6 +732,8 @@ def ensure_editions_file(book_root: Path, manifest: dict[str, object]) -> None:
     except (json.JSONDecodeError, OSError):
         payload = {}
     records = payload.get("editions") if isinstance(payload.get("editions"), list) else []
+    if manifest.get("publicationStatus") == "preparing" and records and not payload.get("currentEdition"):
+        return
     current_id = str(payload.get("currentEdition") or "edition-1")
     current = next((entry for entry in records if isinstance(entry, dict) and entry.get("id") == current_id), None)
     if current is None:
@@ -733,6 +751,7 @@ def ensure_editions_file(book_root: Path, manifest: dict[str, object]) -> None:
     for language, edition in manifest.get("editions", {}).items():
         if isinstance(edition, dict) and edition.get("pdf") and language not in current["pdf"]:
             current["pdf"][language] = edition["pdf"]
+    snapshot_edition_covers(book_root, current)
     payload.update({
         "schemaVersion": 1,
         "bookId": manifest.get("id"),
@@ -751,18 +770,43 @@ def reader_href(book: dict[str, object], language: str, page_path: Path, format_
     reader_directory = DOCS / "reader"
     book_directory = DOCS / str(book["directory"])
     params = {
-        "id": f"{book['id']}:{language}:{format_name}",
+        "id": f"{book['id']}:{book.get('currentEdition', 'edition-1')}:{language}:{format_name}",
         "title": f"{book['title'][language]} · {COPY[language][format_name]}",
         "html": relpath(book_directory / str(edition[content_key]), reader_directory),
         "mode": "ten-minute" if format_name == "short" else "full",
         "back": relpath(page_path, reader_directory),
         "book": str(book["directory"]),
         "language": language,
+        "lang": language,
         "format": format_name,
     }
     if "pdf" in edition:
         params["pdf"] = relpath(book_directory / str(edition["pdf"]), reader_directory)
     return f'{relpath(reader_directory / "index.html", page_path.parent)}?{urlencode(params)}'
+
+
+READING_LABELS = {
+    "en": ("Reading language", "Request translation"), "fr": ("Langue de lecture", "Demander une traduction"),
+    "de": ("Lesesprache", "Übersetzung anfragen"), "es": ("Idioma de lectura", "Solicitar traducción"),
+    "pt": ("Idioma de leitura", "Pedir tradução"), "it": ("Lingua di lettura", "Richiedi traduzione"),
+    "ro": ("Limba lecturii", "Cere traducerea"), "pl": ("Język lektury", "Poproś o tłumaczenie"),
+}
+
+PREPARATION_LABELS = {
+    "en": ("In preparation", "A new edition is in preparation. The published edition remains available."),
+    "fr": ("En préparation", "Une nouvelle édition est en préparation. L’édition publiée reste disponible."),
+    "de": ("In Vorbereitung", "Eine neue Ausgabe wird vorbereitet. Die veröffentlichte Ausgabe bleibt verfügbar."),
+    "es": ("En preparación", "Se está preparando una nueva edición. La edición publicada sigue disponible."),
+    "pt": ("Em preparação", "Uma nova edição está em preparação. A edição publicada continua disponível."),
+    "it": ("In preparazione", "Una nuova edizione è in preparazione. L’edizione pubblicata resta disponibile."),
+    "ro": ("În lucru", "O ediție nouă este în lucru. Ediția publicată rămâne disponibilă."),
+    "pl": ("W przygotowaniu", "Nowe wydanie jest w przygotowaniu. Opublikowane wydanie pozostaje dostępne."),
+}
+
+
+def translation_href(book: dict[str, object], language: str, page_path: Path, format_name: str) -> str:
+    query = urlencode({"book": book["directory"], "target": language, "format": format_name, "lang": language})
+    return f'{relpath(DOCS / "translate" / "index.html", page_path.parent)}?{query}'
 
 
 def about_book_section(book: dict[str, object], language: str) -> str:
@@ -804,20 +848,30 @@ def book_page(
     feedback_page = relpath(DOCS / "feedback" / "index.html", page_dir)
     editions_page = relpath(DOCS / "editions" / "index.html", page_dir)
     language_options = "\n".join(
-        f'<option value="../{code}/book.html"{" selected" if code == language else ""}>{html.escape(name)}</option>'
+        f'<option value="../{code}/book.html?lang={code}"{" selected" if code == language else ""}>{html.escape(name)}</option>'
         for code, name in LANGUAGES.items()
     )
     actions = []
-    if "shortContent" in edition:
-        actions.append(f'<a class="button button-quiet" href="{html.escape(reader_href(book, language, page_path, "short"), quote=True)}">{html.escape(words["short"])}</a>')
-    if "fullContent" in edition:
-        actions.append(f'<a class="button button-quiet" href="{html.escape(reader_href(book, language, page_path, "read"), quote=True)}">{html.escape(words["read"])}</a>')
+    reading_options = "".join(
+        f'<option value="{code}"{" selected" if code == language else ""}>{html.escape(name)}</option>'
+        for code, name in LANGUAGES.items()
+    )
+    actions.append(f'<label class="book-reading-language"><span>{html.escape(READING_LABELS[language][0])}</span><select data-book-reading-language>{reading_options}</select></label>')
+    for format_name, content_key in (("short", "shortContent"), ("read", "fullContent")):
+        present = content_key in edition
+        href = reader_href(book, language, page_path, format_name) if present else translation_href(book, language, page_path, format_name)
+        label = words[format_name] if present else f'{words[format_name]} · {READING_LABELS[language][1]}'
+        actions.append(f'<a class="button button-quiet" data-reading-format="{format_name}" data-reading-label="{html.escape(words[format_name], quote=True)}" href="{html.escape(href, quote=True)}">{html.escape(label)}</a>')
     if "pdf" in edition:
         actions.append(f'<a class="button button-quiet" href="book.pdf">{html.escape(words["download"])}</a>')
     workflow_query = urlencode({"book": str(book["directory"]), "lang": language})
     actions.append(f'<a class="button" href="{html.escape(f"{feedback_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["feedback"])}</a>')
     actions.append(f'<a class="button button-quiet" href="{html.escape(f"{editions_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["editions"])}</a>')
     availability = "" if has_content else f'<p class="edition-unavailable">{html.escape(words["unavailable"].format(language=LANGUAGES[language]))}</p>'
+    status_note = ""
+    if book.get("publicationStatus") == "preparing":
+        label = PREPARATION_LABELS[language][0]
+        status_note = f'<p class="publication-status" role="status">{html.escape(label)}</p>'
     keyword_entries = []
     for source_rank, (identifier, label) in enumerate(zip(book["keywordIds"], book["keywords"][language], strict=True)):
         stats = book["keywordStats"][language][identifier]
@@ -856,17 +910,17 @@ def book_page(
   <meta property="og:image" content="cover.webp">
   <link rel="stylesheet" href="{html.escape(css)}">
 </head>
-<body data-book-page="true" data-book-language="{language}">
+<body data-book-page="true" data-book-language="{language}" data-book-id="{book['id']}">
   <main class="site-shell book-page">
     <header class="site-header"><a class="wordmark" href="{html.escape(home)}">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link href="{html.escape(create_page, quote=True)}?lang={language}">{html.escape(BOOK_ACTIONS[language]["create"])}</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div>{theme_switcher()}<label class="language-picker"><span class="sr-only">Language</span><select onchange="location.href=this.value">{language_options}</select></label></div></header>
-    <article class="book-hero">
-      <a class="cover-link" href="cover.webp"><img src="cover.webp" alt="{html.escape(title)} cover"></a>
+    {status_note}<article class="book-hero">
+      <button class="cover-link" type="button" data-cover-preview aria-label="{html.escape(title, quote=True)}"><img src="cover.webp" alt="{html.escape(title)}"></button>
       <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead">{html.escape(description)}</p></div><div class="book-actions">{"".join(actions)}</div>{availability}</div>
       <aside class="book-keyword-widget" aria-label="{html.escape(words['keywords'], quote=True)}"><div class="keyword-cloud book-keyword-cloud" data-book-keyword-cloud></div></aside>
     </article>
     {about_book_section(book, language)}{site_footer(page_dir, language)}
   </main>
-  <script src="{html.escape(cloud_script)}"></script><script>globalThis.ScriptaKeywordCloud.mount(document.querySelector('[data-book-keyword-cloud]'), {keyword_data}, {keyword_options});</script><script src="{html.escape(collection_script)}"></script><script src="{html.escape(site_script)}"></script>
+  <script src="{html.escape(cloud_script)}"></script><script>globalThis.ScriptaKeywordCloud.mount(document.querySelector('[data-book-keyword-cloud]'), {keyword_data}, {keyword_options});</script><script src="{html.escape(collection_script)}"></script><script src="{relpath(DOCS / 'assets' / 'reading.js', page_dir)}"></script><script src="{html.escape(site_script)}"></script>
 </body>
 </html>
 """
@@ -1264,7 +1318,7 @@ def translate_keyword_phrases(phrases: set[str]) -> dict[str, dict[str, str]]:
     return translations
 
 
-def rebuild_keywords() -> int:
+def rebuild_keywords(manifest_paths: list[Path] | None = None) -> int:
     """Extract and localise 90 niche phrases per book from its short read."""
     records = []
     all_phrases: set[str] = set()
@@ -1273,14 +1327,20 @@ def rebuild_keywords() -> int:
         for localized in SHELF_CATEGORIES.values()
         for label in localized["en"].split("|")
     }
-    for manifest_path in sorted(BOOKS.glob("**/manifest.json")):
+    for manifest_path in sorted(manifest_paths if manifest_paths is not None else BOOKS.glob("**/manifest.json")):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         root = manifest_path.parent
         english_edition = manifest["editions"].get("en", {})
         source_name = english_edition.get("shortContent") or english_edition.get("fullContent")
+        if (root / "en/short_content.html").is_file():
+            source_name = "en/short_content.html"
+        elif not source_name and (root / "en/full_content.html").is_file():
+            source_name = "en/full_content.html"
         source_text = ""
+        source_hash = ""
         if source_name and (root / str(source_name)).is_file():
             source_text = keyword_source_text(root / str(source_name))
+            source_hash = hashlib.sha256((root / str(source_name)).read_bytes()).hexdigest()
         title = str(manifest["title"]["en"])
         description = str(manifest["shortDescription"].get("en", ""))
         group = subject_group(str(manifest["category"]), title, description)
@@ -1288,14 +1348,24 @@ def rebuild_keywords() -> int:
             phrase for phrase in extract_keyword_candidates(title, description, source_text, 120)
             if keyword_normalise(phrase).strip() not in shelf_terms
         ]
+        reviewed = manifest.get("keywordReview", {})
+        if reviewed.get("sourceHash") == source_hash and reviewed.get("phrases"):
+            candidates = reviewed["phrases"]
+            if len(candidates) != 90 or len(set(candidates)) != 90 or any(
+                keyword_normalise(phrase) not in keyword_normalise(source_text)
+                or keyword_normalise(phrase).strip() in shelf_terms
+                or keyword_normalise(phrase) == keyword_normalise(title)
+                for phrase in candidates
+            ):
+                raise ValueError(f"{title}: reviewed keywords must be 90 distinct phrases from the current English reader")
         if len(candidates) < 90:
             raise ValueError(f"{title} yielded only {len(candidates)} source-derived keywords")
-        records.append((manifest_path, manifest, group, candidates))
+        records.append((manifest_path, manifest, group, candidates, source_hash))
         all_phrases.update(candidates)
 
     translations = translate_keyword_phrases(all_phrases)
     changed = 0
-    for manifest_path, manifest, group, candidates in records:
+    for manifest_path, manifest, group, candidates, source_hash in records:
         broad = keyword_catalog(group)
         localized = {
             language: [labels[language] for _, _, labels in broad]
@@ -1318,14 +1388,16 @@ def rebuild_keywords() -> int:
                 break
         if len(identifiers) != 100:
             raise ValueError(f"{manifest['title']['en']} has only {len(identifiers)} distinct translated keywords")
-        if manifest.get("group") != group or manifest.get("keywordIds") != identifiers or manifest.get("keywords") != localized:
+        if manifest.get("group") != group or manifest.get("keywordIds") != identifiers or manifest.get("keywords") != localized or manifest.get("keywordSourceHash") != source_hash:
             manifest["group"] = group
             manifest["keywordIds"] = identifiers
             manifest["keywords"] = localized
+            manifest["keywordSourceHash"] = source_hash
             manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             changed += 1
-    rebuild_collection_from_manifests()
-    refresh_pages()
+    if manifest_paths is None or any(path.resolve().is_relative_to(BOOKS.resolve()) for path in manifest_paths):
+        rebuild_collection_from_manifests()
+        refresh_pages()
     return changed
 
 
@@ -1468,6 +1540,11 @@ def make_collection(manifests: list[dict[str, object]]) -> dict[str, object]:
             "coverUrl": {language: f"{directory}/{value}" for language, value in manifest["coverUrl"].items()},
             "thumbnailUrl": {language: f"{directory}/{value}" for language, value in manifest["thumbnailUrl"].items()},
             "editions": compact_editions, "availableLanguages": manifest["availableLanguages"],
+            "currentEdition": manifest.get("currentEdition", "edition-1"),
+            "publicationStatus": manifest.get("publicationStatus", "published"),
+            "pendingEdition": manifest.get("pendingEdition"),
+            "sourceAliases": manifest.get("sourceAliases", []),
+            "publicationLabel": {code: PREPARATION_LABELS[code][0] for code in LANGUAGES} if manifest.get("publicationStatus") == "preparing" else {},
         }
         books.append(book)
         for language in LANGUAGES:
@@ -1538,16 +1615,31 @@ def check() -> list[str]:
                 history_ids = {entry.get("id") for entry in history_records if isinstance(entry, dict)}
                 if history.get("bookId") != book.get("id"):
                     problems.append(f"{book['id']}: editions.json bookId mismatch")
-                if history.get("currentEdition") not in history_ids:
+                if history.get("currentEdition") not in history_ids and manifest.get("publicationStatus") != "preparing":
                     problems.append(f"{book['id']}: editions.json current edition is missing")
                 for history_entry in history_records:
-                    if not isinstance(history_entry, dict) or not history_entry.get("publishedAt") or not isinstance(history_entry.get("changes"), dict):
+                    if not isinstance(history_entry, dict) or not (history_entry.get("publishedAt") or (history_entry.get("status") == "preparing" and history_entry.get("startedAt"))) or not isinstance(history_entry.get("changes"), dict):
                         problems.append(f"{book['id']}: malformed edition history entry")
                         continue
                     for pdf_path in history_entry.get("pdf", {}).values():
                         target = (root / str(pdf_path)).resolve()
                         if root.resolve() not in target.parents or not target.is_file():
                             problems.append(f"{book['id']}: missing or unsafe historical PDF: {pdf_path}")
+                    for cover_path in history_entry.get("covers", {}).values():
+                        target = (root / str(cover_path)).resolve()
+                        if root.resolve() not in target.parents or not target.is_file():
+                            problems.append(f"{book['id']}: missing or unsafe edition cover: {cover_path}")
+                    for formats in history_entry.get("readers", {}).values():
+                        for reader_path in formats.values():
+                            target = (root / str(reader_path)).resolve()
+                            if root.resolve() not in target.parents or not target.is_file():
+                                problems.append(f"{book['id']}: missing or unsafe historical reader: {reader_path}")
+                if manifest.get("currentEdition") and manifest["currentEdition"] != history.get("currentEdition"):
+                    problems.append(f"{book['id']}: current edition differs between manifest and history")
+                if manifest.get("currentEdition") and manifest.get("releasePolicy") == "en-ro-on-request":
+                    for required_language in ("en", "ro"):
+                        if any(key not in manifest.get("editions", {}).get(required_language, {}) for key in ("fullContent", "shortContent")):
+                            problems.append(f"{book['id']}: new releases require complete and short {required_language} readers")
             except (json.JSONDecodeError, OSError):
                 problems.append(f"{book['id']}: invalid editions.json")
         expected_route = list(title_route(str(manifest.get("title", {}).get("en", ""))))
@@ -1557,7 +1649,8 @@ def check() -> list[str]:
         if book.get("directory") != expected_directory:
             problems.append(f"{book['id']}: directory does not match title route and random ID")
         identifiers = manifest.get("keywordIds", [])
-        if len(identifiers) != 100 or len(set(identifiers)) != 100:
+        expected_count = len(identifiers) if manifest.get("publicationStatus") == "preparing" else 100
+        if not 10 <= expected_count <= 100 or len(identifiers) != expected_count or len(set(identifiers)) != expected_count:
             problems.append(f"{book['id']}: expected 100 distinct keyword IDs, got {len(identifiers)}")
         missing_keyword_ids = set(identifiers) - english_keyword_ids
         if missing_keyword_ids:
@@ -1565,7 +1658,7 @@ def check() -> list[str]:
         for language in LANGUAGES:
             keywords = manifest.get("keywords", {}).get(language, [])
             normalized_keywords = [keyword_normalise(str(keyword)) for keyword in keywords]
-            if len(keywords) != 100 or len(set(normalized_keywords)) != 100:
+            if len(keywords) != expected_count or len(set(normalized_keywords)) != expected_count:
                 problems.append(f"{book['id']} {language}: expected 100 distinct keywords, got {len(keywords)}")
             if keyword_normalise(str(manifest.get("title", {}).get(language, ""))) in normalized_keywords:
                 problems.append(f"{book['id']} {language}: book title used as a keyword")
@@ -1602,7 +1695,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("build", "reorganize-routes", "rebuild-keywords", "refresh-covers", "enrich", "recover", "recover-editorial-descriptions", "rebrand", "retire-source", "repair-reader-links", "refresh", "check"))
     parser.add_argument("--source", type=Path, default=ROOT / "old_content", help="legacy source root")
+    parser.add_argument("--manifest", action="append", type=Path, help="rebuild keywords for these manifests only, including staged releases")
     args = parser.parse_args(argv)
+    if args.manifest and args.command != "rebuild-keywords":
+        parser.error("--manifest is only supported by rebuild-keywords")
     if args.command == "build":
         result = build(args.source.resolve())
         problems = check()
@@ -1644,7 +1740,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Enriched {changed} manifest values from published reader editions.")
         return 0
     if args.command == "rebuild-keywords":
-        changed = rebuild_keywords()
+        changed = rebuild_keywords(args.manifest)
         problems = check()
         if problems:
             print("\n".join(problems), file=sys.stderr)

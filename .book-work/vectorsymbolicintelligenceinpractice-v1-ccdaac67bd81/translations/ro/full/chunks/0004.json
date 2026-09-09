@@ -1,0 +1,66 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000053",
+      "source": "HDC-RE is particularly informative because its reasoning engine does not rely on the hypervector algebra alone. The inspected implementation combines HDC similarity with direct symbolic matches, rule chains and other explicit reasoning paths. [R02] This hybridisation is evidence that the project itself encountered a practical boundary: exact logical obligations are easier to control when represented explicitly, while HDC can still assist candidate retrieval and approximate matching.",
+      "translation": "HDC-RE este deosebit de instructiv deoarece motorul său de raționament nu se bazează numai pe algebra hipervectorilor. Implementarea inspectată combină similaritatea HDC cu potriviri simbolice directe, lanțuri de reguli și alte căi explicite de raționament. [R02] Această hibridizare dovedește că proiectul însuși a întâlnit o limită practică: obligațiile logice exacte sunt mai ușor de controlat când sunt reprezentate explicit, în timp ce HDC poate ajuta în continuare la recuperarea candidaților și potrivirea aproximativă."
+    },
+    {
+      "id": "t000054",
+      "source": "Dense binary HDC therefore remains a useful baseline throughout the book. It supplies a strong, simple binding contract and a well-understood source of bundling noise. Newer representations can be evaluated by asking what they improve relative to this baseline and which properties they lose in exchange.",
+      "translation": "Prin urmare, HDC binar dens rămâne o referință de bază utilă în întreaga carte. Oferă un contract de legare puternic și simplu și o sursă bine înțeleasă de zgomot la agregare. Reprezentările mai noi pot fi evaluate întrebând ce îmbunătățesc față de această referință și ce proprietăți pierd în schimb."
+    },
+    {
+      "id": "t000055",
+      "source": "1.3 Sparse polynomial HDC: reducing storage by changing the carrier",
+      "translation": "1.3 HDC polinomial rar: reducerea stocării prin schimbarea suportului reprezentării"
+    },
+    {
+      "id": "t000056",
+      "source": "The sparse-polynomial backend in VSARepresentations attempts a much more aggressive memory reduction. Instead of thousands of dense coordinates, a vector is represented by a small set of 64-bit integer exponents. The documented default uses only a few exponents. BIND computes the Cartesian product of the two exponent sets and combines each pair with integer XOR. BUNDLE performs set union followed by sparsification when the number of exponents exceeds the configured budget. Similarity is Jaccard overlap. [R03]",
+      "translation": "Componenta polinomială rară din VSARepresentations încearcă o reducere mult mai agresivă a memoriei. În loc de mii de coordonate dense, un vector este reprezentat printr-o mulțime mică de exponenți întregi pe 64 de biți. Configurația implicită documentată folosește doar câțiva exponenți. BIND calculează produsul cartezian al celor două mulțimi de exponenți și combină fiecare pereche prin XOR pe întregi. BUNDLE efectuează reuniunea mulțimilor, urmată de rarefiere când numărul exponenților depășește bugetul configurat. Similaritatea este suprapunerea Jaccard. [R03]"
+    },
+    {
+      "id": "t000057",
+      "source": "The intended gain is substantial: a concept can be represented by a very small number of integers, and similarity can be computed over sparse sets. This architecture asks whether the useful algebraic behaviour of HDC can survive when most coordinates are removed and the representation is treated more like a sparse polynomial or set of symbolic exponents.",
+      "translation": "Câștigul intenționat este substanțial: un concept poate fi reprezentat printr-un număr foarte mic de întregi, iar similaritatea poate fi calculată pe mulțimi rare. Această arhitectură întreabă dacă comportamentul algebric util al HDC poate supraviețui când majoritatea coordonatelor sunt eliminate, iar reprezentarea este tratată mai degrabă ca un polinom rar sau o mulțime de exponenți simbolici."
+    },
+    {
+      "id": "t000058",
+      "source": "The critical result is that the algebra changes. The implementation comments suggest that XOR cancellation should support an inverse-like operation, but the full Cartesian set product does not generally satisfy the simple cancellation intuition once duplicate terms are collapsed by set semantics. A direct audit counterexample demonstrates failure even before the normal sparsification stage is required. [A04] Sparsification adds a second source of information loss because only a bounded subset of generated terms is retained.",
+      "translation": "Rezultatul critic este că algebra se schimbă. Comentariile implementării sugerează că anularea XOR ar trebui să susțină o operație asemănătoare inversării, însă produsul cartezian complet al mulțimilor nu satisface, în general, intuiția simplă a anulării odată ce termenii duplicați sunt contopiți prin semantica mulțimilor. Un contraexemplu direct din audit demonstrează eșecul chiar înainte să fie necesară etapa obișnuită de rarefiere. [A04] Rarefierea adaugă o a doua sursă de pierdere a informației, deoarece este păstrată numai o submulțime limitată a termenilor generați."
+    },
+    {
+      "id": "t000059",
+      "source": "This is a scientifically useful failure. It shows that a storage optimisation cannot be evaluated only by memory size or task accuracy. If the representation is intended to support algebraic reasoning, the operator laws themselves are part of the specification. A sparse carrier could still be valuable if its semantics are reformulated around approximate containment, probabilistic recovery or another well-defined operation. The mistake would be to retain the dense-XOR interpretation after replacing the underlying algebra with set-valued Cartesian products and pruning.",
+      "translation": "Acesta este un eșec util științific. Arată că o optimizare a stocării nu poate fi evaluată numai prin dimensiunea memoriei sau precizia sarcinii. Dacă reprezentarea este destinată să susțină raționament algebric, legile operatorilor însele fac parte din specificație. Un suport rar ar putea rămâne valoros dacă semantica sa este reformulată în jurul incluziunii aproximative, recuperării probabiliste sau altei operații bine definite. Greșeala ar fi păstrarea interpretării XOR dense după înlocuirea algebrei de bază cu produse carteziene cu valori de tip mulțime și eliminare de termeni."
+    },
+    {
+      "id": "t000060",
+      "source": "The experiment also suggests a broader research direction. Sparse representations may be better suited to explicit factorised structures than to imitating dense holographic vectors. If the sparse terms are treated as inspectable components and the system records how they were composed, the architecture begins to resemble an executable circuit or symbolic factor graph. That direction trades some holographic elegance for auditability and controllable growth.",
+      "translation": "Experimentul sugerează și o direcție mai largă de cercetare. Reprezentările rare pot fi mai potrivite pentru structuri factorizate explicite decât pentru imitarea vectorilor holografici denși. Dacă termenii rari sunt tratați ca componente inspectabile și sistemul înregistrează cum au fost compuși, arhitectura începe să semene cu un circuit executabil sau un graf simbolic de factori. Această direcție schimbă o parte din eleganța holografică pe auditabilitate și creștere controlabilă."
+    },
+    {
+      "id": "t000061",
+      "source": "1.4 Metric-affine HDC: introducing numerical neighbourhoods",
+      "translation": "1.4 HDC metric-afin: introducerea vecinătăților numerice"
+    },
+    {
+      "id": "t000062",
+      "source": "The metric-affine backend represents an atom as a fixed-length vector of bytes rather than bits. BIND remains byte-wise XOR, but BUNDLE becomes an arithmetic mean and similarity is based on normalised Manhattan distance. The motivation is to obtain a \"fuzzier\" geometry in which numerical closeness between coordinates is meaningful, rather than treating every bit mismatch equally. [R03]",
+      "translation": "Componenta metric-afină reprezintă un atom ca vector de octeți de lungime fixă, nu de biți. BIND rămâne XOR octet cu octet, însă BUNDLE devine o medie aritmetică, iar similaritatea se bazează pe distanța Manhattan normalizată. Motivația este obținerea unei geometrii mai „difuze”, în care apropierea numerică a coordonatelor este semnificativă, în loc să trateze egal fiecare nepotrivire de bit. [R03]"
+    },
+    {
+      "id": "t000063",
+      "source": "This design is interesting because it explicitly searches for a richer notion of neighbourhood. A majority bit vector has a discrete geometry; a byte-valued space can represent graded coordinate differences, and averaging produces a natural centroid. If semantic similarity could be arranged to follow that geometry, the representation might support smoother interpolation while preserving the cheap XOR binding of binary HDC.",
+      "translation": "Această proiectare este interesantă deoarece caută explicit o noțiune mai bogată de vecinătate. Un vector majoritar de biți are o geometrie discretă; un spațiu cu valori pe octeți poate reprezenta diferențe graduale între coordonate, iar medierea produce un centroid natural. Dacă similaritatea semantică ar putea fi făcută să urmeze acea geometrie, reprezentarea ar putea susține interpolare mai netedă, păstrând legarea XOR ieftină a HDC binar."
+    },
+    {
+      "id": "t000064",
+      "source": "The audit shows why combining individually reasonable operators can create an inconsistent algebra. XOR is not an isometry of ordinary numerical Manhattan distance on byte values. Two vectors can be close in the byte metric, be bound by the same key, and no longer remain equally close. The implemented rounded arithmetic mean also does not satisfy a simple distributive relationship with XOR binding. [A04] Consequently, the similarity geometry and binding geometry are not aligned.",
+      "translation": "Auditul arată de ce combinarea unor operatori individual rezonabili poate crea o algebră inconsistentă. XOR nu este o izometrie a distanței numerice Manhattan obișnuite pe valori de octeți. Doi vectori pot fi apropiați în metrica pe octeți, pot fi legați cu aceeași cheie și apoi să nu mai rămână la fel de apropiați. Nici media aritmetică rotunjită implementată nu satisface o relație distributivă simplă cu legarea XOR. [A04] Prin urmare, geometria similarității și geometria legării nu sunt aliniate."
+    }
+  ]
+}

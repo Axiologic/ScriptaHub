@@ -524,7 +524,8 @@
     const bookHref = book.editions?.[language]?.book || book.editions?.en?.book;
     const labels = cardActions[language];
     const keywords = (book.keywords?.[language] || book.keywords?.en || []).slice(0, 5);
-    return `<div class="featured-book-copy"><p class="eyebrow">${escape(featuredBookLabels[language])}</p><p class="featured-book-category">${escape(book.category)}</p><h2><a href="${escape(assetPath(bookHref))}">${escape(title)}</a></h2><div class="featured-book-keywords" aria-label="${escape(featuredBookLabels[language])}">${keywords.map((keyword) => `<span>${escape(keyword)}</span>`).join("")}</div><p class="featured-book-description">${escape(description)}</p><nav class="book-card-actions featured-book-actions"><a class="book-card-details" href="${escape(assetPath(bookHref))}">${escape(labels.details)}</a></nav></div>`;
+    const status = book.publicationLabel?.[language] ? `<p class="publication-status">${escape(book.publicationLabel[language])}</p>` : "";
+    return `<div class="featured-book-copy"><p class="eyebrow">${escape(featuredBookLabels[language])}</p><p class="featured-book-category">${escape(book.category)}</p>${status}<h2><a href="${escape(assetPath(bookHref))}">${escape(title)}</a></h2><div class="featured-book-keywords" aria-label="${escape(featuredBookLabels[language])}">${keywords.map((keyword) => `<span>${escape(keyword)}</span>`).join("")}</div><p class="featured-book-description">${escape(description)}</p><nav class="book-card-actions featured-book-actions"><a class="book-card-details" href="${escape(assetPath(bookHref))}">${escape(labels.details)}</a></nav></div>`;
   }
 
   function setupMissionBookStrip(container, language, details) {
@@ -692,7 +693,8 @@
     const description = book.shortDescription[language] || book.shortDescription.en;
     const bookUrl = assetPath(edition.book);
     const labels = cardActions[language];
-    return `<article class="book-card" data-book-url="${escape(bookUrl)}" role="link" tabindex="0" aria-label="${escape(`${labels.details}: ${title}`)}"><div class="book-card-top"><a href="${escape(bookUrl)}"><img src="${escape(assetPath(book.thumbnailUrl[language]))}" alt="${escape(title)} cover" loading="lazy"></a><div><p class="category">${escape(book.category)}</p><h3><a href="${escape(bookUrl)}">${escape(title)}</a></h3></div></div><p class="description">${escape(description)}</p><nav class="book-card-actions"><a class="book-card-details" href="${escape(bookUrl)}">${escape(labels.details)}</a></nav></article>`;
+    const status = book.publicationLabel?.[language] ? `<p class="publication-status">${escape(book.publicationLabel[language])}</p>` : "";
+    return `<article class="book-card" data-book-url="${escape(bookUrl)}" role="link" tabindex="0" aria-label="${escape(`${labels.details}: ${title}`)}"><div class="book-card-top"><a href="${escape(bookUrl)}"><img src="${escape(assetPath(book.thumbnailUrl[language]))}" alt="${escape(title)} cover" loading="lazy"></a><div><p class="category">${escape(book.category)}</p><h3><a href="${escape(bookUrl)}">${escape(title)}</a></h3></div></div>${status}<p class="description">${escape(description)}</p><nav class="book-card-actions"><a class="book-card-details" href="${escape(bookUrl)}">${escape(labels.details)}</a></nav></article>`;
   }
 
   function renderKeywordSelection(keywordId, language, { updateHistory = false, scroll = false } = {}) {
@@ -768,6 +770,36 @@
     window.addEventListener("resize", sync, { passive: true });
     document.addEventListener("scriptahub:scalechange", sync);
     sync();
+  }
+
+  function setupCoverPreview(language) {
+    const trigger = document.querySelector("[data-cover-preview]");
+    if (!trigger) return;
+    const dialog = document.createElement("dialog");
+    dialog.className = "cover-preview";
+    dialog.setAttribute("aria-label", trigger.getAttribute("aria-label"));
+    const close = document.createElement("button");
+    close.type = "button";
+    close.className = "cover-preview-close";
+    close.setAttribute("aria-label", cloudCloseLabel[language]);
+    close.textContent = "×";
+    const artwork = trigger.querySelector("img").cloneNode();
+    dialog.append(close, artwork);
+    document.body.append(dialog);
+    trigger.setAttribute("aria-haspopup", "dialog");
+    trigger.addEventListener("click", () => {
+      dialog.showModal();
+      document.body.classList.add("cover-preview-open");
+      close.focus();
+    });
+    close.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("close", () => {
+      document.body.classList.remove("cover-preview-open");
+      trigger.focus({ preventScroll: true });
+    });
   }
 
   function renderCloud(language) {
@@ -925,9 +957,10 @@
   }
 
   function searchBooks(query, language) {
-    const needle = normalise(query.trim());
+    const searchable = (value) => normalise(value || "").replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
+    const needle = searchable(query);
     if (!needle) return [];
-    return collection.books.filter((book) => [book.title[language], book.subtitle[language], book.shortDescription[language], ...book.keywords[language]].some((value) => normalise(value).includes(needle)));
+    return collection.books.filter((book) => [...Object.values(book.title), book.sourceId, ...(book.sourceAliases || []), book.subtitle[language], book.shortDescription[language], ...book.keywords[language]].some((value) => searchable(value).includes(needle)));
   }
 
   function setupSearch(language) {
@@ -1326,11 +1359,29 @@
     revealHomeWhenReady();
   }
 
+  function setupBookReading(language) {
+    const select = document.querySelector("[data-book-reading-language]");
+    const book = collection.books.find((item) => item.id === document.body.dataset.bookId);
+    const reading = globalThis.ScriptaReading;
+    if (!select || !book || !reading) return;
+    select.value = language;
+    const update = () => {
+      for (const link of document.querySelectorAll("[data-reading-format]")) {
+        const format = link.dataset.readingFormat;
+        link.href = reading.readingUrl(book, select.value, format, language, siteRootUrl).href;
+        const present = reading.available(book, select.value, format);
+        link.textContent = present ? link.dataset.readingLabel : `${link.dataset.readingLabel} · ${reading.labels[language].request}`;
+      }
+    };
+    select.addEventListener("change", update);
+    update();
+  }
+
   const language = selectedLanguage();
   setupTheme();
   setupSiteScale();
   setupCardNavigation();
-  if (isBookPage()) { localizeGlobalHeader(language); setupSearch(language); setupBookHeroAlignment(); }
+  if (isBookPage()) { localizeGlobalHeader(language); setupSearch(language); setupBookHeroAlignment(); setupBookReading(language); setupCoverPreview(language); }
   else if (isAppPage()) { document.documentElement.lang = language; localizeGlobalHeader(language); setLanguagePicker(language); setupSearch(language); }
   else renderHome(language);
   if (!isBookPage() && !isAppPage()) addEventListener("popstate", () => renderKeywordSelection(new URL(location.href).searchParams.get("keyword"), selectedLanguage()));

@@ -1,0 +1,51 @@
+{
+  "language": "ro",
+  "chunk": 16,
+  "segments": [
+    {
+      "id": "t000175",
+      "source": "The EXACT backend takes the move away from a fixed-size holographic state further. It maintains a session-local dictionary of atoms and represents a term through a set of atom bits. A bundle contains explicit terms. Binding forms pairwise unions of atom sets. This makes certain kinds of structural information exact rather than recoverable only through similarity. [R03]",
+      "translation": ""
+    },
+    {
+      "id": "t000176",
+      "source": "The semantics are not those of an invertible group. Binding a term with itself does not duplicate its atoms, because set union is idempotent. The audit confirmed that binding a single atom with itself returns the same term. Removing that atom through the implemented quotient-like operation can produce an empty residual rather than reconstructing a second copy. This is expected under the chosen set semantics. It should not be described as a bug merely because it differs from a bipolar vector's self-inverse binding. [A04]",
+      "translation": ""
+    },
+    {
+      "id": "t000177",
+      "source": "This distinction is important for a generic backend interface. An inverse answers, “Which unique input produced this result under a reversible transformation?” A quotient-like operation may instead answer, “Which residual structures are compatible with removing this query pattern?” The latter can be extremely useful for symbolic matching. It can also return multiple candidates or discard multiplicity information. A caller must know which question is being answered.",
+      "translation": ""
+    },
+    {
+      "id": "t000178",
+      "source": "EXACT includes variants with different residual-selection behaviour. One construction gathers possible residual terms; another emphasises what remains common across query-related matches. These are meaningful alternative semantics for structural retrieval. They should be evaluated against corresponding tasks, such as existential pattern completion or common-factor extraction, rather than forced under one label of “unbinding.” Their potential novelty lies in a useful representation-and-query combination with explicit guarantees, not in pretending that the entire carrier obeys one familiar VSA algebra.",
+      "translation": ""
+    },
+    {
+      "id": "t000179",
+      "source": "Removing collision noise does not remove cost. Binding a bundle with two alternatives to another bundle with two alternatives can produce four combinations. Repeating the construction with independent alternatives yields exponential expansion. The audit's simple twelve-stage probe produced 4,096 explicit terms. That is the expected combinatorial growth, not evidence of an implementation error. An exact memory must either pay for such combinations, keep them factorised, or decline to enumerate them. [A04]",
+      "translation": ""
+    },
+    {
+      "id": "t000180",
+      "source": "A factorised representation suggests a circuit directly. Instead of storing every expanded term, the system can retain a node saying that one bundle is bound to another. A query then chooses whether to expand, simplify, or match the structure lazily. This introduces a new burden: equality and retrieval may require computation over the factorised graph. The trade-off is no longer “noise versus no noise,” but “eager expansion versus deferred computation.” That is a more promising architectural question because it can be optimised according to actual tasks.",
+      "translation": ""
+    },
+    {
+      "id": "t000181",
+      "source": "The backend's reported byte count also requires care. An accessor returning zero for an exact representation does not demonstrate zero storage; in context it is an unknown or non-applicable size sentinel. The atom dictionary, BigInt values, term collection, and runtime objects all occupy memory. Scientific reporting should not allow a convenience API to become a capacity claim. The same principle applies to the elastic backend's atomic width and to later neural active-parameter counts: a convenient component measure is not the cost of the whole system.",
+      "translation": ""
+    },
+    {
+      "id": "t000182",
+      "source": "A fixed finite memory cannot assign a distinct code to every member of an unbounded set of structures. That follows from counting, not from a special weakness of VSA. Allowing storage, computation, or external cleanup memory to grow changes the premise. Published capacity analyses likewise formulate guarantees for specified tasks and representation families, including connections with sketching and Bloom filters; they do not provide an unrestricted capacity claim for any object called a hypervector. [L03] The exact backend is interesting precisely because it makes one such change explicit. The programme is not discovering that intelligence requires abandoning mathematics; it is discovering that storage growth, factorisation, and query execution must be part of the mathematical object. This is the strongest bridge from representation experiments to SOP circuits in the supplied collection.",
+      "translation": ""
+    },
+    {
+      "id": "t000183",
+      "source": "5. Interference-aware memory placement",
+      "translation": ""
+    }
+  ]
+}

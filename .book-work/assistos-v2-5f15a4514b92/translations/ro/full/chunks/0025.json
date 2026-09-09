@@ -1,0 +1,106 @@
+{
+  "language": "ro",
+  "chunk": 25,
+  "segments": [
+    {
+      "id": "t000466",
+      "source": "Delegation should also have levels. A new Robot can begin in observation mode, where it analyzes but does not change state. It can move to proposal mode, where it creates patches or planned actions for approval. It can then receive bounded execution rights for well-understood operations. Finally, selected tasks may be allowed to run in the background without continuous supervision. The same Robot can occupy different levels for different actions.",
+      "translation": "Delegarea ar trebui să aibă și niveluri. Un Robot nou poate începe în modul de observare, în care analizează fără să modifice starea. Poate trece în modul de propunere, în care creează modificări de cod sau acțiuni planificate pentru aprobare. Apoi poate primi drepturi de execuție limitate pentru operațiuni bine înțelese. În cele din urmă, anumite sarcini pot fi lăsate să ruleze în fundal fără supraveghere continuă. Același Robot poate ocupa niveluri diferite pentru acțiuni diferite."
+    },
+    {
+      "id": "t000467",
+      "source": "Figure 4. A ladder of delegation. Autonomy can increase gradually for selected actions rather than being treated as a single global setting.",
+      "translation": "Figura 4. O scară a delegării. Autonomia poate crește treptat pentru anumite acțiuni, în loc să fie tratată ca o singură setare globală."
+    },
+    {
+      "id": "t000468",
+      "source": "Figure 4 shows this as a ladder rather than a switch. The platform does not force the user to choose between a powerless chatbot and a fully autonomous process. Trust can be increased gradually. More importantly, trust can remain asymmetric. A Robot may be highly autonomous in a test environment while permanently restricted in production.",
+      "translation": "Figura 4 prezintă această abordare ca pe o scară, nu ca pe un comutator. Platforma nu obligă utilizatorul să aleagă între un chatbot lipsit de putere și un proces complet autonom. Încrederea poate crește treptat. Mai mult, încrederea poate rămâne asimetrică. Un Robot poate fi foarte autonom într-un mediu de testare, rămânând în același timp permanent restricționat în producție."
+    },
+    {
+      "id": "t000469",
+      "source": "The ladder has a human-factors advantage. Users are more willing to adopt automation when they can begin conservatively. A team can watch the Robot perform a workflow several times, inspect the results and then reduce approval requirements for the parts that have become predictable. This resembles how organizations delegate to new human colleagues, but the technical system can enforce the boundary more precisely.",
+      "translation": "Scara are un avantaj din perspectiva factorilor umani. Utilizatorii sunt mai dispuși să adopte automatizarea atunci când pot începe prudent. O echipă poate urmări Robotul efectuând un flux de lucru de mai multe ori, poate inspecta rezultatele și apoi poate reduce cerințele de aprobare pentru părțile devenite previzibile. Acest lucru seamănă cu modul în care organizațiile deleagă sarcini colegilor umani noi, însă sistemul tehnic poate impune limita cu mai multă precizie."
+    },
+    {
+      "id": "t000470",
+      "source": "Approval design must avoid fatigue. If the system asks for confirmation on every low-risk file read, users will learn to click through without thinking. Approvals should correspond to meaningful boundaries: sending externally, deleting irreversibly, spending money, publishing, changing production, using a protected identity, accessing a new sensitive folder. Low-risk actions should be governed by policy and performed without constant interruption.",
+      "translation": "Proiectarea aprobărilor trebuie să evite oboseala. Dacă sistemul cere confirmare la fiecare citire de fișier cu risc scăzut, utilizatorii vor învăța să confirme mecanic, fără să mai gândească. Aprobările ar trebui să corespundă unor limite semnificative: trimitere în exterior, ștergere ireversibilă, cheltuirea banilor, publicare, modificarea producției, utilizarea unei identități protejate, accesarea unui folder sensibil nou. Acțiunile cu risc scăzut ar trebui guvernate de politici și executate fără întreruperi constante."
+    },
+    {
+      "id": "t000471",
+      "source": "A useful policy engine also explains why. “Denied by rule 7.4” is not an end-user message. “This Robot can prepare customer emails but cannot send them without your approval” is understandable. The technical mapping can remain available for administrators. As with the rest of AssistOS, the challenge is to hide complexity without hiding control.",
+      "translation": "Un motor de politici util explică și motivul. „Refuzat prin regula 7.4” nu este un mesaj pentru utilizatorul final. „Acest Robot poate pregăti e-mailuri pentru clienți, dar nu le poate trimite fără aprobarea dumneavoastră” este de înțeles. Corespondența tehnică poate rămâne disponibilă administratorilor. Ca în restul AssistOS, provocarea este să ascunzi complexitatea fără să ascunzi controlul."
+    },
+    {
+      "id": "t000472",
+      "source": "Manage Robot identity and persistent sessions",
+      "translation": "Gestionarea identității Robotului și a sesiunilor persistente"
+    },
+    {
+      "id": "t000473",
+      "source": "A Robot that acts in real systems eventually needs identity. Identity is where the virtual-employee metaphor becomes operationally serious. If every Robot simply reuses the credentials of the human who launched it, then the system has no clean way to distinguish human action from Robot action, restrict authority by role or revoke access without disrupting the person.",
+      "translation": "Un Robot care acționează în sisteme reale are în cele din urmă nevoie de identitate. Identitatea este punctul în care metafora angajatului virtual capătă seriozitate operațională. Dacă fiecare Robot doar reutilizează credențialele omului care l-a pornit, sistemul nu are o modalitate clară de a distinge acțiunea umană de acțiunea Robotului, de a restrânge autoritatea în funcție de rol sau de a revoca accesul fără să perturbe activitatea persoanei."
+    },
+    {
+      "id": "t000474",
+      "source": "Where possible, Robots should use dedicated service identities, scoped API tokens or delegated credentials. The organization can then know that the Web Operator accessed a procurement service while the Build Engineer did not. Access can be revoked per Robot. Audit records can identify the software actor. This is a more scalable model than copying personal API keys into configuration files.",
+      "translation": "Unde este posibil, Roboții ar trebui să utilizeze identități de serviciu dedicate, tokenuri API cu permisiuni limitate sau credențiale delegate. Organizația poate ști astfel că Operatorul web a accesat un serviciu de achiziții, în timp ce Inginerul de construire nu l-a accesat. Accesul poate fi revocat pentru fiecare Robot. Înregistrările de audit pot identifica actorul software. Acest model se extinde mai bine decât copierea cheilor API personale în fișiere de configurare."
+    },
+    {
+      "id": "t000475",
+      "source": "Secrets should be treated as references, not ordinary memory. A Robot home can store configuration that says which secret it needs, while the secret value itself remains encrypted or managed by a dedicated mechanism. The runtime can inject the secret only into the environment where it is required. The Agent should not receive a list of unrelated secrets “just in case.” This reduces both accidental disclosure and prompt-injection risk.",
+      "translation": "Secretele ar trebui tratate ca referințe, nu ca memorie obișnuită. Spațiul propriu al unui Robot poate stoca o configurație care precizează ce secret îi este necesar, în timp ce valoarea secretului rămâne criptată sau administrată printr-un mecanism dedicat. Mediul de execuție poate injecta secretul numai în mediul în care este necesar. Agentul nu ar trebui să primească o listă de secrete fără legătură „pentru orice eventualitate”. Astfel se reduc atât divulgarea accidentală, cât și riscul de injectare de instrucțiuni."
+    },
+    {
+      "id": "t000476",
+      "source": "Browser sessions are more difficult because authentication is often represented by cookies and local storage rather than explicit service tokens. A persistent browser profile may be necessary for practical automation, but it can contain authority equivalent to a password. AssistOS should therefore treat the browser profile as sensitive Robot state. It should be isolated from other Robots, encrypted at rest where appropriate and removable without deleting the rest of the Robot home.",
+      "translation": "Sesiunile de browser sunt mai dificile, deoarece autentificarea este adesea reprezentată prin cookie-uri și stocare locală, nu prin tokenuri de serviciu explicite. Un profil persistent de browser poate fi necesar pentru automatizare practică, însă poate conține o autoritate echivalentă cu o parolă. Prin urmare, AssistOS ar trebui să trateze profilul de browser ca pe o stare sensibilă a Robotului. Ar trebui izolat de ceilalți Roboți, criptat în repaus unde este cazul și eliminabil fără ștergerea restului spațiului propriu al Robotului."
+    },
+    {
+      "id": "t000477",
+      "source": "The system should also support human-only authentication moments. Multifactor prompts, hardware security keys and legal consent screens may be inappropriate for autonomous completion. The Robot can pause, show the live browser, allow the user to take control, and then continue after the human step. This approach preserves usability without pretending that every identity mechanism should be automated.",
+      "translation": "Sistemul ar trebui să permită și momente de autentificare rezervate omului. Solicitările de autentificare multifactor, cheile hardware de securitate și ecranele de consimțământ juridic pot fi nepotrivite pentru finalizare autonomă. Robotul poate pune activitatea în pauză, poate afișa browserul în timp real, îi poate permite utilizatorului să preia controlul și apoi poate continua după pasul uman. Această abordare păstrează ușurința utilizării fără să pretindă că fiecare mecanism de identitate ar trebui automatizat."
+    },
+    {
+      "id": "t000478",
+      "source": "Table 12. Identity patterns by task type",
+      "translation": "Tabelul 12. Modele de identitate în funcție de tipul sarcinii"
+    },
+    {
+      "id": "t000479",
+      "source": "Term or aspect",
+      "translation": "Termen sau aspect"
+    },
+    {
+      "id": "t000480",
+      "source": "Meaning or practical use",
+      "translation": "Semnificație sau utilizare practică"
+    },
+    {
+      "id": "t000481",
+      "source": "Dedicated service identity",
+      "translation": "Identitate de serviciu dedicată"
+    },
+    {
+      "id": "t000482",
+      "source": "Preferred when the target system supports role-oriented machine or service accounts.",
+      "translation": "Preferată atunci când sistemul țintă acceptă conturi de mașină sau de serviciu orientate pe roluri."
+    },
+    {
+      "id": "t000483",
+      "source": "Scoped token",
+      "translation": "Token cu permisiuni limitate"
+    },
+    {
+      "id": "t000484",
+      "source": "Useful for APIs when rights can be limited to the exact operations a Robot needs.",
+      "translation": "Util pentru API-uri atunci când drepturile pot fi limitate la operațiunile exacte de care are nevoie un Robot."
+    },
+    {
+      "id": "t000485",
+      "source": "Dedicated browser profile",
+      "translation": "Profil de browser dedicat"
+    }
+  ]
+}

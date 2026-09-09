@@ -63,37 +63,29 @@ function saveSharedSiteTheme(theme) {
 
 async function configureLanguageSelector() {
   const directory = query.get('book');
-  if (!directory || !languageWrap || !languageSelect) return;
+  const reading = globalThis.ScriptaReading;
+  if (!directory || !languageWrap || !languageSelect || !reading) return;
   try {
-    const response = await fetch(new URL('../collection.json', window.location.href), { cache: 'no-store' });
-    if (!response.ok) return;
-    const collection = await response.json();
+    let collection = globalThis.SCRIPTA_COLLECTION;
+    if (!collection) {
+      const response = await fetch(new URL('../collection.json', window.location.href), { cache: 'no-store' });
+      if (!response.ok) return;
+      collection = await response.json();
+    }
     const book = collection.books.find((item) => item.directory === directory);
     if (!book) return;
-    const preferred = query.get('language') || 'en';
-    const available = collection.supportedLanguages.filter(({ code }) => book.editions[code]?.shortContent || book.editions[code]?.fullContent);
-    if (!available.length) return;
-    languageSelect.innerHTML = available.map(({ code, name }) => `<option value="${escapeHtml(code)}"${code === preferred ? ' selected' : ''}>${escapeHtml(name)}</option>`).join('');
+    const preferred = reading.locale(query.get('language'));
+    const uiLanguage = reading.locale(query.get('lang') || preferred);
+    const format = query.get('format') || (readingMode === 'ten-minute' ? 'short' : 'read');
+    const words = reading.labels[uiLanguage];
+    languageSelect.setAttribute('aria-label', words.language);
+    languageSelect.innerHTML = collection.supportedLanguages.map(({ code, name }) => `<option value="${escapeHtml(code)}"${code === preferred ? ' selected' : ''}>${escapeHtml(name)}${reading.available(book, code, format) ? '' : ` · ${escapeHtml(words.request)}`}</option>`).join('');
     languageWrap.hidden = false;
     languageSelect.addEventListener('change', () => {
-      const code = languageSelect.value;
-      const edition = book.editions[code];
-      const requestedFormat = query.get('format') || (readingMode === 'ten-minute' ? 'short' : 'read');
-      const format = requestedFormat === 'short' && edition.shortContent ? 'short' : edition.fullContent ? 'read' : 'short';
-      const url = new URL(window.location.href);
-      url.searchParams.set('id', `${book.id}:${code}:${format}`);
-      url.searchParams.set('title', `${book.title[code] || book.title.en} · ${format === 'short' ? 'short read' : 'read online'}`);
-      url.searchParams.set('html', `../${format === 'short' ? edition.shortContent : edition.fullContent}`);
-      url.searchParams.set('mode', format === 'short' ? 'ten-minute' : 'full');
-      url.searchParams.set('format', format);
-      url.searchParams.set('language', code);
-      url.searchParams.set('back', `../${edition.book}`);
-      if (edition.pdf) url.searchParams.set('pdf', `../${edition.pdf}`);
-      else url.searchParams.delete('pdf');
-      window.location.href = url.href;
+      window.location.href = reading.readingUrl(book, languageSelect.value, format, uiLanguage, new URL('../', location.href), preferred).href;
     });
   } catch {
-    // The reader stays usable if the collection cannot be fetched.
+    // The reader stays usable if the catalogue is unavailable.
   }
 }
 

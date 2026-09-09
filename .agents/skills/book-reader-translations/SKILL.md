@@ -8,16 +8,23 @@ description: Translate book-reader HTML directly in stable chunks and rebuild fu
 Use this skill when the website's inline book readers need to be translated or
 their multilingual coverage needs repair. Translate the chunk JSON directly as
 the agent; do not call an external translation service. The English reader
-edition is the canonical source; never translate PDFs or create non-English
-PDF editions.
+edition is the canonical source for further translations. For an original
+Romanian DOCX, retain its Romanian HTML and translate that HTML into English.
+Never translate PDFs or create non-English PDF editions.
+
+New books and releases get complete and ten-minute HTML in **English and
+Romanian only** automatically. Every other language requires an explicit
+visitor/editor request for that book. Interface and catalogue language support
+does not authorise translating every reader. Preserve old translations under
+their own edition in the publication history.
 
 Prepare a source reader as stable chunks from the repository root:
 
 ```bash
-python3 docs/content/tools/html_translation_chunks.py prepare \
-  docs/content/htmls/EN/EXPLAINABLE_AI.html --language RO \
-  --destination docs/content/htmls/RO/EXPLAINABLE_AI_RO.html \
-  --workdir docs/content/.translation-work/RO/EXPLAINABLE_AI/full
+python3 tools/html_translation_chunks.py prepare \
+  .book-work/BOOK/book/en/full_content.html --language ro \
+  --destination .book-work/BOOK/book/ro/full_content.html \
+  --workdir .book-work/BOOK/translations/ro/full
 ```
 
 Each `chunks/*.json` file has ordered `source` strings. Translate each one to
@@ -26,31 +33,28 @@ citations exactly where they belong. Then rebuild only when every segment is
 filled:
 
 ```bash
-python3 docs/content/tools/html_translation_chunks.py check \
-  docs/content/.translation-work/RO/EXPLAINABLE_AI/full
-python3 docs/content/tools/html_translation_chunks.py assemble \
-  docs/content/.translation-work/RO/EXPLAINABLE_AI/full
-python3 docs/content/tools/content_index.py build
+python3 tools/html_translation_chunks.py check \
+  .book-work/BOOK/translations/ro/full
+python3 tools/html_translation_chunks.py assemble \
+  .book-work/BOOK/translations/ro/full
 ```
 
-To queue all still-missing files for a language group, use:
-
-```bash
-python3 docs/content/tools/html_translation_chunks.py prepare-missing \
-  --language RO --language PL --maximum-words 700
-```
-
-Prepare and assemble both the complete reader in `docs/content/htmls/<LANG>/`
-and the 10-minute reader in `docs/content/10minutes/<LANG>/`. The tool leaves
+Prepare only English/Romanian or a specifically requested language. Run
+`prepare` separately for `full_content.html` and `short_content.html` in the
+staged `book/<language>/` directory. Existing-reader repairs use the canonical
+`docs/books/<title-words>/<bk-id>/<language>/` path. The tool leaves
 tags, assets, analytics, citations, and reader code untouched; it removes the
-English PDF conversion notice and source download link before chunking.
+English PDF conversion notice before chunking. Retain canonical citations and
+local asset links.
 
 Before publishing, run:
 
 ```bash
-python3 docs/content/tools/translate_books.py check
-python3 docs/content/tools/content_index.py check
+python3 tools/book_tasks.py check .book-work/BOOK
+python3 tools/build_books.py check
+python3 tools/audit_internal_links.py --check
 ```
 
-For a partial repair, pass one or more `--book BOOK_ID` values. Existing files
-are left untouched unless `--force` is explicitly requested.
+Existing work and destinations are left untouched unless `--force` is explicitly
+requested. Never assemble partial translations. Follow the release procedure
+in `docs/specs/DS-002-book-releases.md`.

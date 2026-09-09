@@ -1,0 +1,61 @@
+{
+  "language": "ro",
+  "chunk": 17,
+  "segments": [
+    {
+      "id": "t000184",
+      "source": "VSANash keeps the underlying VSA/HRR operations largely fixed and instead changes where memories are stored. The hypothesis is that interference can be reduced by retrieval-aware sharding and placement. This is one of the clearest positive systems results in the collection: under a low-load rerun, an interference-aware placement policy substantially improved retrieval relative to a simple hash placement, while high-load and multi-hop cases exposed the remaining limits. The result suggests that memory management may matter as much as the choice of binding algebra.",
+      "translation": ""
+    },
+    {
+      "id": "t000185",
+      "source": "5.1 The VSANash placement mechanism",
+      "translation": ""
+    },
+    {
+      "id": "t000186",
+      "source": "VSANash asks a better question than whether one memory vector can hold an arbitrarily large knowledge base. Given several bounded memories, where should facts be stored so that they remain retrievable? This makes interference a variable the system can influence. Instead of accepting a random assignment of facts to superpositions, the implementation searches for placements with more favourable retrieval behaviour. [R04]",
+      "translation": ""
+    },
+    {
+      "id": "t000187",
+      "source": "The evaluated HRR configuration represents associations through distributed keys and values. A query retrieves a noisy estimate, and cleanup compares that estimate with a vocabulary of possible answers. When many associations share a memory, unrelated contributions can survive the retrieval operation and compete with the intended answer. A shard is a separate memory in which only some associations are superposed. Sharding reduces load, but then the system must route a query to useful shards without scanning everything.",
+      "translation": ""
+    },
+    {
+      "id": "t000188",
+      "source": "The repository provides several ways to allocate facts. Simple policies hash a subject, a relation, or a combined key. Other policies try to reduce collisions or pack associations according to a heuristic. The equilibrium-style policy repeatedly considers moving an association and scores possible placements using retrieval-related quantities and load. Its purpose is to improve the memory from which that association will later be recovered. Two-write variants allow replication into more than one shard.",
+      "translation": ""
+    },
+    {
+      "id": "t000189",
+      "source": "This is a concrete algorithmic idea, not merely an analogy with games. The code has a state, candidate moves, a utility calculation, and stopping conditions. However, the name “equilibrium” must not be allowed to imply a theorem not supplied by the implementation. A bounded sequence of best-response-like moves with a tolerance and a maximum pass count is a heuristic optimisation procedure. The audit did not establish existence, uniqueness, or convergence to a Nash equilibrium for the relevant objective. The implemented mechanism is interesting without those stronger claims.",
+      "translation": ""
+    },
+    {
+      "id": "t000190",
+      "source": "The distinction between placement and routing is central. A fact may have been placed in a shard where it is recoverable, but the query may never visit that shard. Conversely, the router may select the right shard while the answer is lost among cleanup competitors. VSANash records route-hit information separately from answer metrics. That separation is valuable because it exposes different bottlenecks instead of compressing them into one accuracy number. The next research iteration should make the decomposition even more explicit at the per-query level.",
+      "translation": ""
+    },
+    {
+      "id": "t000191",
+      "source": "An AI-attributed review already identifies that need. The supplied antigravity_review.md asks for per-query outcomes, margin decomposition, and broader scaling scenarios. It explains that aggregates cannot reliably distinguish routing failure, cleanup ambiguity, and multi-hop noise accumulation. This is documented evidence of an earlier AI contributing an appropriate diagnostic direction. It is not evidence that the requested export or scaling work had already been completed. [R04]",
+      "translation": ""
+    },
+    {
+      "id": "t000192",
+      "source": "The potentially innovative coupling is between storage decisions and downstream retrieval interference. General sharding, hashing, replication, and local search are established ideas. The research value here would come from showing that a VSA-specific retrieval signal provides a consistently better placement objective under fair resource constraints. A persuasive paper would compare it with equally budgeted alternatives, include insertion and update costs, and explain when the policy stops helping. The repository gives a concrete starting point for that investigation.",
+      "translation": ""
+    },
+    {
+      "id": "t000193",
+      "source": "5.2 Observed low-load gain and high-load failure",
+      "translation": ""
+    },
+    {
+      "id": "t000194",
+      "source": "The audit reran three scenarios with the HRR backend. Each evaluated eleven strategies on 300 queries. The vector dimension was 512, and the sharded configurations used eight shards. The scenarios contained 1,200 facts at low load, 6,000 facts at higher load, and a 5,000-fact two-hop task. These are single protocol configurations, not a dimension sweep or a statistical claim over independent worlds. [A03]",
+      "translation": ""
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "language": "ro",
+  "chunk": 24,
+  "segments": [
+    {
+      "id": "t000441",
+      "source": "Yet a sandbox should never be marketed as perfect containment. Containers share a host kernel. Configuration errors can expose files or network services. Privileged mounts can erase the value of isolation. Vulnerabilities can cross boundaries. Browser automation introduces its own attack surface. A secure design assumes that isolation can fail and layers controls accordingly.",
+      "translation": "Totuși, un mediu izolat nu ar trebui prezentat niciodată drept izolare perfectă. Containerele partajează nucleul gazdei. Erorile de configurare pot expune fișiere sau servicii de rețea. Montările privilegiate pot anula valoarea izolării. Vulnerabilitățile pot traversa limitele. Automatizarea browserului introduce propria suprafață de atac. O proiectare sigură presupune că izolarea poate eșua și suprapune controalele în consecință."
+    },
+    {
+      "id": "t000442",
+      "source": "The first layer is resource scope. A Robot should see only the files and devices required for its task. The second is identity scope. It should use its own credentials rather than inheriting the full authority of the human operator. The third is network scope. The Robot should not automatically reach every destination on the internet or internal network. The fourth is action policy. Some operations should require explicit approval even when technically reachable. The fifth is observability. Significant actions should leave enough evidence to investigate what happened.",
+      "translation": "Primul strat este domeniul resurselor. Un Robot ar trebui să vadă doar fișierele și dispozitivele necesare sarcinii sale. Al doilea este domeniul identității. Ar trebui să folosească propriile date de autentificare, nu să moștenească întreaga autoritate a operatorului uman. Al treilea este domeniul rețelei. Robotul nu ar trebui să poată ajunge automat la orice destinație de pe internet sau din rețeaua internă. Al patrulea este politica acțiunilor. Unele operații ar trebui să necesite aprobare explicită chiar dacă sunt accesibile tehnic. Al cincilea este observabilitatea. Acțiunile semnificative ar trebui să lase suficiente dovezi pentru investigarea celor întâmplate."
+    },
+    {
+      "id": "t000443",
+      "source": "Table 11. Layered boundaries for a software worker",
+      "translation": "Tabelul 11. Limite suprapuse pentru un lucrător software"
+    },
+    {
+      "id": "t000444",
+      "source": "Term or aspect",
+      "translation": "Termen sau aspect"
+    },
+    {
+      "id": "t000445",
+      "source": "Meaning or practical use",
+      "translation": "Semnificație sau utilizare practică"
+    },
+    {
+      "id": "t000446",
+      "source": "File scope",
+      "translation": "Domeniul fișierelor"
+    },
+    {
+      "id": "t000447",
+      "source": "Mount or expose only the project paths required for the task.",
+      "translation": "Montează sau expune numai căile proiectului necesare sarcinii."
+    },
+    {
+      "id": "t000448",
+      "source": "Identity scope",
+      "translation": "Domeniul identității"
+    },
+    {
+      "id": "t000449",
+      "source": "Use Robot-specific or task-scoped credentials rather than unrestricted human credentials.",
+      "translation": "Folosește date de autentificare specifice Robotului sau limitate la sarcină, nu date umane fără restricții."
+    },
+    {
+      "id": "t000450",
+      "source": "Network scope",
+      "translation": "Domeniul rețelei"
+    },
+    {
+      "id": "t000451",
+      "source": "Restrict external and internal destinations where practical.",
+      "translation": "Restricționează destinațiile externe și interne acolo unde este practic posibil."
+    },
+    {
+      "id": "t000452",
+      "source": "Action policy",
+      "translation": "Politica acțiunilor"
+    },
+    {
+      "id": "t000453",
+      "source": "Require approval for consequential operations even when the environment can technically perform them.",
+      "translation": "Cere aprobare pentru operațiile cu consecințe importante, chiar dacă mediul le poate executa tehnic."
+    },
+    {
+      "id": "t000454",
+      "source": "Observability",
+      "translation": "Observabilitate"
+    },
+    {
+      "id": "t000455",
+      "source": "Record significant actions, task state and resource use so behavior can be investigated.",
+      "translation": "Înregistrează acțiunile semnificative, starea sarcinii și utilizarea resurselor, astfel încât comportamentul să poată fi investigat."
+    },
+    {
+      "id": "t000456",
+      "source": "Recovery",
+      "translation": "Recuperare"
+    },
+    {
+      "id": "t000457",
+      "source": "Preserve versions, disposable sandboxes and rollback paths for reversible work.",
+      "translation": "Păstrează versiuni, medii izolate temporare și căi de revenire pentru munca reversibilă."
+    },
+    {
+      "id": "t000458",
+      "source": "The table is intentionally redundant. Security layers overlap because individual controls fail. If a coding Robot cannot see production credentials, a prompt injection inside the repository has less power. If network egress is restricted, a stolen token is harder to exfiltrate. If sensitive changes require approval, an agent mistake is less likely to become a production incident. If task history records what ran, recovery and investigation are easier.",
+      "translation": "Tabelul este intenționat redundant. Straturile de securitate se suprapun deoarece controalele individuale eșuează. Dacă un Robot de programare nu poate vedea datele de autentificare pentru producție, o injecție de instrucțiuni în depozitul de cod are mai puțină putere. Dacă ieșirea în rețea este restricționată, un token furat este mai greu de exfiltrat. Dacă modificările sensibile cer aprobare, o greșeală a agentului are mai puține șanse să devină un incident de producție. Dacă istoricul sarcinilor înregistrează ce s-a executat, recuperarea și investigația sunt mai ușoare."
+    },
+    {
+      "id": "t000459",
+      "source": "Sandboxing also provides operational hygiene. An Agent can install dependencies without polluting the host. A failed experiment can be discarded. Two Robots can use conflicting tool versions. A new package can be tested in a disposable environment. These benefits are often as important to adoption as security because they reduce the fear that an AI tool will destabilize a developer’s machine.",
+      "translation": "Izolarea oferă și igienă operațională. Un agent poate instala dependențe fără a polua gazda. Un experiment eșuat poate fi abandonat. Doi Roboți pot folosi versiuni incompatibile ale instrumentelor. Un pachet nou poate fi testat într-un mediu temporar. Aceste beneficii sunt adesea la fel de importante pentru adoptare ca securitatea, deoarece reduc teama că un instrument IA va destabiliza calculatorul unui dezvoltator."
+    },
+    {
+      "id": "t000460",
+      "source": "The platform should communicate these boundaries honestly. “Runs in a container” is not a sufficient security argument. An enterprise buyer will want to know which host resources are mounted, whether the process runs as root, how secrets are injected, what network routes are available, how images are updated and what logs exist. AssistOS should make these questions answerable without implying that one sandbox technology solves all of them.",
+      "translation": "Platforma ar trebui să comunice onest aceste limite. „Rulează într-un container” nu este un argument suficient de securitate. Un cumpărător dintr-o organizație va dori să știe ce resurse ale gazdei sunt montate, dacă procesul rulează ca root, cum sunt introduse secretele, ce rute de rețea sunt disponibile, cum sunt actualizate imaginile și ce jurnale există. AssistOS ar trebui să facă aceste întrebări ușor de lămurit, fără a sugera că o singură tehnologie de izolare le rezolvă pe toate."
+    },
+    {
+      "id": "t000461",
+      "source": "The product opportunity is precisely here. As AI Agents become more capable, the market for isolation, governance and observability grows. Model vendors will provide their own environments. Cloud platforms will provide managed agent systems. An open and self-hostable AssistOS can differentiate by making boundaries portable across models and tools rather than tying governance to a single provider.",
+      "translation": "Oportunitatea de produs se află tocmai aici. Pe măsură ce agenții IA devin mai capabili, piața pentru izolare, guvernanță și observabilitate crește. Furnizorii de modele vor oferi propriile medii. Platformele cloud vor oferi sisteme administrate de agenți. Un AssistOS deschis și găzduibil în regie proprie se poate diferenția făcând limitele portabile între modele și instrumente, în loc să lege guvernanța de un singur furnizor."
+    },
+    {
+      "id": "t000462",
+      "source": "Set the scope of delegation",
+      "translation": "Stabilește amploarea delegării"
+    },
+    {
+      "id": "t000463",
+      "source": "Traditional software security often speaks about least privilege: a user or process should receive only the permissions necessary for its function. Agentic systems need a related concept that is easier for ordinary users to understand: least capability. A Robot should have the smallest useful set of actions, resources and identities required for the task it performs.",
+      "translation": "Securitatea software tradițională vorbește adesea despre privilegiul minim: un utilizator sau un proces ar trebui să primească doar permisiunile necesare funcției sale. Sistemele agentice au nevoie de un concept înrudit, mai ușor de înțeles pentru utilizatorii obișnuiți: capacitatea minimă. Un Robot ar trebui să aibă cel mai mic set util de acțiuni, resurse și identități necesare sarcinii pe care o execută."
+    },
+    {
+      "id": "t000464",
+      "source": "The distinction is useful because an AI Agent does not merely access resources. It chooses actions. A coding Robot may need permission to read a repository and run tests. It may not need permission to push to the remote repository. A browser Robot may need permission to navigate an internal dashboard but not to approve a bank transfer. A meeting Robot may need to edit a shared diagram but not read unrelated project folders.",
+      "translation": "Distincția este utilă deoarece un agent IA nu doar accesează resurse. El alege acțiuni. Un Robot de programare poate avea nevoie de permisiunea de a citi un depozit de cod și de a rula teste. Poate să nu aibă nevoie de permisiunea de a trimite modificările în depozitul de la distanță. Un Robot de browser poate avea nevoie să navigheze într-un tablou de bord intern, dar nu să aprobe un transfer bancar. Un Robot de întâlnire poate avea nevoie să editeze o diagramă comună, dar nu să citească dosare de proiect fără legătură."
+    },
+    {
+      "id": "t000465",
+      "source": "A useful design combines the Robot's configured authority, the task's working scope and the capability's permitted operations. The effective authority should be limited by all of them. These limits require runtime enforcement; a natural-language instruction alone does not create an access boundary.",
+      "translation": "O proiectare utilă combină autoritatea configurată a Robotului, domeniul de lucru al sarcinii și operațiile permise ale capacității. Autoritatea efectivă ar trebui să fie limitată de toate acestea. Aceste limite trebuie aplicate la execuție; o instrucțiune în limbaj natural, singură, nu creează o limită de acces."
+    }
+  ]
+}

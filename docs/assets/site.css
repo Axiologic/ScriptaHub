@@ -450,19 +450,34 @@ button, select { cursor: pointer; }
 
 .book-page { padding-bottom: 0; }
 .book-hero { position: relative; display: grid; min-height: 420px; grid-template-columns: minmax(190px, 230px) minmax(0, 1fr); align-items: stretch; gap: clamp(18px, 2.2vw, 34px); margin: clamp(24px, 3vw, 38px) 0 30px; padding: clamp(20px, 2vw, 28px); overflow: hidden; border: 1px solid var(--line); border-radius: 10px; isolation: isolate; }
-.cover-link { position: relative; z-index: 2; align-self: start; display: block; width: 100%; aspect-ratio: 2 / 3; overflow: hidden; background: var(--field); box-shadow: 17px 20px 55px rgba(0, 0, 0, .24); }
+.cover-link { position: relative; z-index: 2; align-self: start; display: block; width: 100%; aspect-ratio: 2 / 3; overflow: hidden; padding: 0; border: 0; cursor: zoom-in; background: var(--field); box-shadow: 17px 20px 55px rgba(0, 0, 0, .24); }
 .cover-link img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.cover-link:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+.cover-preview { max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); margin: auto; padding: 46px 12px 12px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--panel); }
+.cover-preview::backdrop { background: rgba(0, 0, 0, .8); }
+.cover-preview img { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 94px); object-fit: contain; }
+.cover-preview-close { position: absolute; top: 6px; right: 8px; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: var(--field); font-size: 1.6rem; line-height: 1; }
+.cover-preview-open { overflow: hidden; }
 .book-hero h1 { max-width: none; font-size: clamp(2.3rem, 5vw, 5rem); }
 .book-subtitle { margin: 14px 0 25px; color: var(--green); font-size: clamp(1rem, 1.5vw, 1.26rem); line-height: 1.35; }
 .book-hero .lead { width: 100%; max-width: none; color: var(--content); font-size: 1.05rem; line-height: 1.65; text-align: justify; hyphens: auto; }
 .book-actions { display: flex; flex-wrap: wrap; gap: 9px; margin: 28px 0 0; }
+.book-reading-language { display: flex; flex: 1 0 100%; align-items: center; gap: 8px; min-width: 0; font-size: .78rem; }
+.book-reading-language select { min-width: 0; max-width: 100%; padding: 5px; background: var(--field); color: var(--content); border: 1px solid var(--line); border-radius: 3px; }
+.publication-status { margin: 0; padding: 12px var(--tower-gutter, 24px); background: var(--field); color: var(--content); border-left: 3px solid var(--green); font-weight: 600; }
+.book-card .publication-status { padding: 6px 10px; font-size: .8rem; }
+@media (max-width: 680px) {
+  .book-reading-language { flex: 0 0 auto; flex-wrap: wrap; gap: 2px; font-size: .6rem; }
+  .book-reading-language select { width: 100%; font-size: .68rem; padding: 3px; }
+  .book-actions [data-reading-format] { white-space: normal !important; height: auto !important; min-height: 22px; padding: 3px !important; }
+}
 .button { display: inline-flex; box-sizing: border-box; padding: 11px 14px; align-items: center; justify-content: center; border: 1px solid var(--green); border-radius: 6px; background: var(--button-bg); color: var(--button-ink); font-size: var(--action-font-size); font-weight: 750; line-height: 1.2; text-align: center; text-decoration: none; }
 .button:hover { background: var(--button-hover); }
 .button-quiet { background: transparent; color: var(--green); }
 .edition-unavailable { color: var(--muted); font-size: .89rem; }
 .book-introduction { display: grid; grid-template-columns: minmax(0, 1fr); padding-top: 42px; border-top: 1px solid var(--line); }
-.book-introduction > div { width: 100%; max-width: 75ch; }
-.book-introduction > div > p:not(.eyebrow) { width: 100%; color: var(--content); font-size: 1.02rem; line-height: 1.7; }
+.book-introduction > div { width: 100%; max-width: none; }
+.book-introduction > div > p:not(.eyebrow) { width: 100%; max-width: none; color: var(--content); font-size: 1.02rem; line-height: 1.7; text-align: justify; }
 .book-introduction > div > p:last-child { margin-bottom: 0; }
 .book-details { position: relative; z-index: 2; padding: 18px 20px; border: 1px solid color-mix(in srgb, var(--line) 82%, transparent); border-radius: 8px; background: color-mix(in srgb, var(--panel) 86%, transparent); box-shadow: 0 12px 36px rgba(0, 0, 0, .12); backdrop-filter: blur(4px); }
 .book-keyword-widget { position: absolute; z-index: 0; inset: 0; width: 100%; min-width: 0; }
@@ -518,7 +533,7 @@ button, select { cursor: pointer; }
 .contract-accept { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 9px; margin-top: 17px; padding-top: 15px; border-top: 1px solid var(--line); color: var(--ink); cursor: pointer; font-size: .79rem; font-weight: 720; line-height: 1.4; }
 .contract-accept input { width: 17px; height: 17px; margin: 1px 0 0; accent-color: var(--green); }
 .editions-list { display: grid; gap: 16px; }
-.edition-card { display: grid; grid-template-columns: minmax(120px, .24fr) minmax(0, 1fr); gap: 22px; padding: 20px; }
+.edition-card { display: grid; grid-template-columns: clamp(64px, 9vw, 96px) minmax(0, 1fr); align-items: start; gap: 16px; padding: 20px; }
 .edition-card h2 { margin: 0 0 7px; font-size: 1.35rem; }
 .edition-date { color: var(--green); font-size: .76rem; font-weight: 720; letter-spacing: .06em; text-transform: uppercase; }
 .edition-changes { margin: 7px 0 14px; color: var(--content); line-height: 1.55; }
@@ -730,7 +745,8 @@ button, select { cursor: pointer; }
   .librarian-result-action { margin-top: 16px; }
   .legal-facts > div, .legal-table > div { grid-template-columns: 1fr; }
   .legal-facts dd, .legal-table span { padding-top: 0; }
-  .form-grid, .edition-card { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .edition-card { padding: 14px; gap: 12px; }
   .workflow-form { padding: 16px; }
 }
 
@@ -1216,3 +1232,18 @@ button, select { cursor: pointer; }
 :root .librarian-search-form button::before,
 :root .search-suggestions button::before { content: "⌕"; }
 :root .form-file-button svg { width: var(--action-icon-box); min-width: var(--action-icon-box); height: 1em; flex: 0 0 var(--action-icon-box); }
+
+/* Book workflows share a compact, full-width heading and a visible return path. */
+.workflow-back { padding-top: 20px; }
+.workflow-back .button { display: inline-flex; align-items: center; gap: 8px; }
+:root .workflow-back .button::before { content: "←"; }
+.edition-history-cover { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: contain; margin: 0; box-shadow: 4px 6px 18px rgba(0, 0, 0, .18); }
+.edition-card-no-cover { grid-template-columns: minmax(0, 1fr); }
+.edition-card-details { min-width: 0; }
+.edition-card-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 7px; }
+.edition-card-meta .publication-status { margin: 0; }
+.edition-card-meta time { letter-spacing: 0; text-transform: none; }
+body:is([data-workflow-page="feedback"], [data-workflow-page="editions"], [data-workflow-page="translate"]) .workflow-hero { display: block; padding: 18px 0 22px; }
+body:is([data-workflow-page="feedback"], [data-workflow-page="editions"], [data-workflow-page="translate"]) .workflow-hero h1 { max-width: none; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: clamp(1.1rem, 1.8vw, 1.65rem); letter-spacing: -.025em; line-height: 1.3; }
+body:is([data-workflow-page="feedback"], [data-workflow-page="editions"], [data-workflow-page="translate"]) .workflow-hero .lead { max-width: none; margin-top: 12px; font-size: .9rem; text-align: start; }
+body:is([data-workflow-page="feedback"], [data-workflow-page="editions"], [data-workflow-page="translate"]) .workflow-context h2 { font-size: 1.05rem; line-height: 1.35; }

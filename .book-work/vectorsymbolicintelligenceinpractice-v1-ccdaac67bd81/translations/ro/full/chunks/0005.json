@@ -1,0 +1,61 @@
+{
+  "language": "ro",
+  "chunk": 5,
+  "segments": [
+    {
+      "id": "t000065",
+      "source": "This does not imply that XOR and L1 distance can never coexist in a useful system. It means that the architecture must specify which properties are required after binding. If similarity is only used on unbound atomic vectors, the incompatibility may be acceptable. If the system expects semantic neighbourhoods to remain stable through composition, a different group action, distance, or representation is required. The experiment therefore identifies a concrete open problem: design a carrier in which the desired binding operation is compatible with the similarity measure that gives meaning to the space.",
+      "translation": "Aceasta nu implică faptul că XOR și distanța L1 nu pot coexista niciodată într-un sistem util. Înseamnă că arhitectura trebuie să specifice ce proprietăți sunt necesare după legare. Dacă similaritatea este folosită numai pe vectori atomici nelegați, incompatibilitatea poate fi acceptabilă. Dacă sistemul se așteaptă ca vecinătățile semantice să rămână stabile prin compoziție, este necesară o altă acțiune de grup, distanță sau reprezentare. Experimentul identifică astfel o problemă deschisă concretă: proiectarea unui suport în care operația de legare dorită să fie compatibilă cu măsura de similaritate care dă sens spațiului."
+    },
+    {
+      "id": "t000066",
+      "source": "1.5 Elastic metric-affine memory: growing storage instead of compressing indefinitely",
+      "translation": "1.5 Memorie metric-afină elastică: creșterea stocării în locul comprimării indefinite"
+    },
+    {
+      "id": "t000067",
+      "source": "The elastic metric-affine backend retains the byte-valued atoms and XOR binding but changes BUNDLE substantially. Rather than reducing every superposition to one mean vector, it stores a sequence of bounded-capacity mean chunks. When more atoms are added, new chunks are allocated. Similarity between a bundle and an atom searches the chunk means and returns the best match. Binding a bundle with an atom transforms each chunk. Binding two bundles constructs a cross-product of their chunks. [R03]",
+      "translation": "Componenta metric-afină elastică păstrează atomii cu valori pe octeți și legarea XOR, dar schimbă substanțial BUNDLE. În loc să reducă fiecare superpoziție la un singur vector mediu, stochează o secvență de blocuri medii cu capacitate limitată. Când sunt adăugați mai mulți atomi, se alocă blocuri noi. Similaritatea dintre o agregare și un atom caută în mediile blocurilor și returnează cea mai bună potrivire. Legarea unei agregări cu un atom transformă fiecare bloc. Legarea a două agregări construiește un produs cartezian al blocurilor lor. [R03]"
+    },
+    {
+      "id": "t000068",
+      "source": "The research objective is direct: relax the assumption that semantic memory must remain fixed in size. If the system learns more, it may allocate more state. This is closer to ordinary computer memory and to the human feedback motivating the broader programme. A useful memory architecture should be allowed to grow when compaction would destroy information required by future tasks.",
+      "translation": "Obiectivul cercetării este direct: relaxarea ipotezei că memoria semantică trebuie să rămână de dimensiune fixă. Dacă sistemul învață mai mult, poate aloca mai multă stare. Aceasta este mai aproape de memoria obișnuită a calculatorului și de feedbackul uman care motivează programul mai larg. O arhitectură utilă de memorie ar trebui lăsată să crească atunci când compactarea ar distruge informații necesare sarcinilor viitoare."
+    },
+    {
+      "id": "t000069",
+      "source": "The audit confirms that the implementation genuinely grows its typed-array payload in the measured configuration. It also confirms deterministic prefix compatibility for atom generation when a larger dimension is requested. [A04] These are positive engineering properties. They should not be confused with a proof that all earlier information can be reconstructed after arbitrary expansion. Prefix-stable atom generation says that newly generated larger atoms are compatible with their shorter prefixes; it does not manufacture coordinates that were never stored in an old bundle.",
+      "translation": "Auditul confirmă că implementarea își mărește efectiv volumul de date din tablouri tipizate în configurația măsurată. Confirmă și compatibilitatea deterministă a prefixelor la generarea atomilor atunci când este cerută o dimensiune mai mare. [A04] Acestea sunt proprietăți inginerești pozitive. Nu trebuie confundate cu o dovadă că toate informațiile anterioare pot fi reconstruite după o extindere arbitrară. Generarea atomilor cu prefixe stabile spune că atomii mai mari generați ulterior sunt compatibili cu prefixele lor mai scurte; nu fabrică coordonate care nu au fost niciodată stocate într-o agregare veche."
+    },
+    {
+      "id": "t000070",
+      "source": "The main sacrifice is that the representation is no longer a single fixed-size hologram. It keeps auxiliary state, and bundle-to-bundle binding can multiply the number of chunks. The architecture therefore shifts the research question from \"How much can one vector remember?\" to \"When should memory allocate another chunk, preserve source state, or compact?\" That is a more general systems question and is likely to remain relevant even outside VSA/HDC.",
+      "translation": "Principalul sacrificiu este că reprezentarea nu mai este o singură hologramă de dimensiune fixă. Păstrează stare auxiliară, iar legarea între agregări poate multiplica numărul blocurilor. Arhitectura mută astfel întrebarea de cercetare de la „Cât poate memora un vector?” la „Când ar trebui memoria să aloce un alt bloc, să păstreze starea sursă sau să compacteze?”. Aceasta este o întrebare mai generală de sisteme și va rămâne probabil relevantă chiar și în afara VSA/HDC."
+    },
+    {
+      "id": "t000071",
+      "source": "An especially promising continuation would make allocation obligation-driven. The system could grow when retrieval margins fall below a threshold, when a new semantic role cannot be represented without collision, or when provenance must be preserved for verification. Such a policy is not demonstrated by the current repository, but the elastic representation provides an experimental substrate for testing it.",
+      "translation": "O continuare deosebit de promițătoare ar face ca alocarea să fie determinată de obligații. Sistemul ar putea crește când marjele de recuperare scad sub un prag, când un rol semantic nou nu poate fi reprezentat fără coliziune sau când proveniența trebuie păstrată pentru verificare. O asemenea politică nu este demonstrată de depozitul actual, însă reprezentarea elastică oferă un substrat experimental pentru testarea ei."
+    },
+    {
+      "id": "t000072",
+      "source": "1.6 Exact monomial representations: eliminating holographic noise at the price of expansion",
+      "translation": "1.6 Reprezentări monomiale exacte: eliminarea zgomotului holografic cu prețul expansiunii"
+    },
+    {
+      "id": "t000073",
+      "source": "The exact backend in VSARepresentations makes the most radical change. A representation is a list of exact monomials, implemented as bit sets encoded in BigInt values. BUNDLE forms the set union of terms. BIND forms all pairwise unions of atom bits. UNBIND is implemented as a quotient-like residual operation: if the queried component is contained in a composite term, the query bits are removed and the residual is returned. [R03]",
+      "translation": "Componenta exactă din VSARepresentations face cea mai radicală schimbare. O reprezentare este o listă de monoame exacte, implementate ca mulțimi de biți codificate în valori BigInt. BUNDLE formează reuniunea termenilor. BIND formează toate reuniunile perechi ale biților atomilor. UNBIND este implementat ca o operație reziduală asemănătoare câtului: dacă componenta interogată este inclusă într-un termen compus, biții interogării sunt eliminați, iar reziduul este returnat. [R03]"
+    },
+    {
+      "id": "t000074",
+      "source": "This design removes the usual collision noise of a fixed-width holographic superposition. A query can recover explicit residual structures rather than infer them only from vector similarity. The architecture is therefore useful for asking whether the difficulty attributed to VSA is fundamentally caused by approximate representation or by the combinatorics of structure itself.",
+      "translation": "Această proiectare elimină zgomotul obișnuit de coliziune al unei superpoziții holografice cu lățime fixă. O interogare poate recupera structuri reziduale explicite, în loc să le deducă numai din similaritatea vectorială. Arhitectura este astfel utilă pentru a întreba dacă dificultatea atribuită VSA este cauzată fundamental de reprezentarea aproximativă sau de combinatorica structurii înseși."
+    },
+    {
+      "id": "t000075",
+      "source": "The result is instructive. Exactness does not provide free capacity. Binding two bundles expands their combinations. A simple audit construction with twelve independent binary alternatives yields 4,096 explicit terms. [A04] Repeated factors are also not preserved in the same way as a group inverse because set union is idempotent. These are not implementation defects; they follow from the chosen semantics.",
+      "translation": "Rezultatul este instructiv. Exactitatea nu oferă capacitate gratuită. Legarea a două agregări le extinde combinațiile. O construcție simplă din audit, cu douăsprezece alternative binare independente, produce 4.096 de termeni expliciți. [A04] Nici factorii repetați nu sunt păstrați în același mod ca într-un invers de grup, deoarece reuniunea mulțimilor este idempotentă. Acestea nu sunt defecte de implementare; decurg din semantica aleasă."
+    }
+  ]
+}

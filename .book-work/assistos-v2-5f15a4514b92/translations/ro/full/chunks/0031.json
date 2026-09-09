@@ -1,0 +1,111 @@
+{
+  "language": "ro",
+  "chunk": 31,
+  "segments": [
+    {
+      "id": "t000598",
+      "source": "There is a parallel with service accounts in enterprise systems. Organizations rarely want every automated process to execute with a human employee’s unrestricted identity. They create scoped identities for services. A Robot is richer than a service account because it has an interactive role and workspace, but the security lesson is similar. The Robot should have an identity and home that are distinct from the human who created it.",
+      "translation": "Există o paralelă cu conturile de serviciu din sistemele întreprinderilor. Organizațiile rareori doresc ca fiecare proces automatizat să se execute cu identitatea fără restricții a unui angajat uman. Ele creează identități cu drepturi limitate pentru servicii. Un Robot este mai complex decât un cont de serviciu, deoarece are un rol interactiv și un spațiu de lucru, însă lecția de securitate este asemănătoare. Robotul ar trebui să aibă o identitate și un spațiu propriu distincte de cele ale omului care l-a creat."
+    },
+    {
+      "id": "t000599",
+      "source": "Persistence also improves debugging. If a task behaves differently today than yesterday, the user can inspect the Robot’s relevant configuration and capability version. If the entire environment is ephemeral and opaque, reproducibility is difficult. At the other extreme, if state is never reset, subtle corruption accumulates. AssistOS should support controlled rebuilding: preserve the meaningful Robot home, recreate the sandbox and reattach allowed state. A durable worker should not require an immortal container.",
+      "translation": "Persistența îmbunătățește și depanarea. Dacă o sarcină se comportă astăzi diferit față de ieri, utilizatorul poate inspecta configurația relevantă a Robotului și versiunea capabilității. Dacă întregul mediu este efemer și opac, reproductibilitatea este dificilă. La cealaltă extremă, dacă starea nu este resetată niciodată, se acumulează coruperi subtile. AssistOS ar trebui să permită reconstruirea controlată: păstrarea spațiului propriu relevant al Robotului, recrearea mediului izolat și reatașarea stării permise. Un lucrător durabil nu ar trebui să necesite un container nemuritor."
+    },
+    {
+      "id": "t000600",
+      "source": "This last distinction is important architecturally. The Robot is not identical to one container instance. Containers can be stopped, upgraded or replaced. The Robot is the durable identity and state model that can be backed by one or more sandbox executions over time. That separation makes the system more resilient and avoids turning implementation detail into user identity.",
+      "translation": "Această ultimă distincție este importantă arhitectural. Robotul nu este identic cu o instanță de container. Containerele pot fi oprite, actualizate sau înlocuite. Robotul reprezintă identitatea durabilă și modelul de stare care pot fi susținute, în timp, de una sau mai multe execuții izolate. Această separare face sistemul mai rezilient și evită transformarea unui detaliu de implementare în identitate de utilizator."
+    },
+    {
+      "id": "t000601",
+      "source": "Connect tools through suitable interfaces",
+      "translation": "Conectarea instrumentelor prin interfețe potrivite"
+    },
+    {
+      "id": "t000602",
+      "source": "A platform that packages capabilities still needs a common way to use them. No single interface is appropriate for every tool, which is why AssistOS benefits from supporting several interaction contracts. The objective is interoperability without flattening useful differences.",
+      "translation": "O platformă care împachetează capabilități are în continuare nevoie de o modalitate comună de a le utiliza. Nicio interfață nu este potrivită pentru toate instrumentele, motiv pentru care AssistOS beneficiază de pe urma acceptării mai multor contracte de interacțiune. Obiectivul este interoperabilitatea fără nivelarea diferențelor utile."
+    },
+    {
+      "id": "t000603",
+      "source": "MCP is a natural fit for tool invocation. It allows an AI application to discover named tools and call them with structured arguments. A Ploinky Agent can expose an MCP surface for file operations, data queries, search, compilation, conversion or specialized domain logic. The Robot’s AI Agent does not need to know how the tool is implemented internally. It only needs the contract and the permission to call it.",
+      "translation": "MCP se potrivește în mod natural invocării instrumentelor. Permite unei aplicații IA să descopere instrumente denumite și să le apeleze cu argumente structurate. Un agent Ploinky poate expune o interfață MCP pentru operațiuni cu fișiere, interogări de date, căutare, compilare, conversie sau logică de domeniu specializată. Agentul IA al Robotului nu trebuie să știe cum este implementat intern instrumentul. Are nevoie doar de contract și de permisiunea de a-l apela."
+    },
+    {
+      "id": "t000604",
+      "source": "OpenAI-compatible APIs serve a different purpose. Many model servers and agent systems implement interfaces inspired by OpenAI’s chat or response conventions because the ecosystem already knows how to integrate them. A Ploinky Agent can wrap a local model server or specialized reasoning service behind such an interface. Compatibility here is pragmatic rather than ideological. It reduces integration friction and allows capabilities to be substituted more easily.",
+      "translation": "API-urile compatibile cu OpenAI au alt rol. Multe servere de modele și sisteme de agenți implementează interfețe inspirate de convențiile de conversație sau de răspuns ale OpenAI, deoarece ecosistemul știe deja cum să le integreze. Un agent Ploinky poate plasa un server local de modele sau un serviciu specializat de raționament în spatele unei asemenea interfețe. Compatibilitatea este aici pragmatică, nu ideologică. Reduce dificultatea integrării și permite înlocuirea mai ușoară a capabilităților."
+    },
+    {
+      "id": "t000605",
+      "source": "Command-line interfaces remain extremely valuable, especially for coding and engineering. Tools such as Codex and Claude Code are designed around a terminal environment and can directly operate repositories and shell commands. Ploinky can install such tools inside isolated environments and expose their CLI through WebChat or a Robot task. The fact that the human sees a chat interface does not mean the underlying agent has to be a web application.",
+      "translation": "Interfețele în linie de comandă rămân extrem de valoroase, mai ales pentru programare și inginerie. Instrumente precum Codex și Claude Code sunt proiectate în jurul unui mediu de terminal și pot opera direct depozite de cod și comenzi shell. Ploinky poate instala asemenea instrumente în medii izolate și le poate expune interfața în linie de comandă prin WebChat sau printr-o sarcină a Robotului. Faptul că omul vede o interfață de conversație nu înseamnă că agentul de dedesubt trebuie să fie o aplicație web."
+    },
+    {
+      "id": "t000606",
+      "source": "Long-running web services and full web applications are also legitimate Ploinky Agents. A data visualization tool may already have a mature web UI. A scientific system may expose a local dashboard. AssistOS does not gain anything by rewriting those interfaces as chat. Explorer can embed or route to the web surface while Ploinky manages the isolation and lifecycle beneath it.",
+      "translation": "Serviciile web de lungă durată și aplicațiile web complete sunt, de asemenea, agenți Ploinky legitimi. Un instrument de vizualizare a datelor poate avea deja o interfață web matură. Un sistem științific poate expune un tablou de bord local. AssistOS nu câștigă nimic rescriind acele interfețe sub formă de conversație. Explorer poate încorpora interfața web sau poate direcționa către ea, în timp ce Ploinky gestionează dedesubt izolarea și ciclul de viață."
+    },
+    {
+      "id": "t000607",
+      "source": "Table 17. Different interfaces serve different kinds of capability",
+      "translation": "Tabelul 17. Interfețe diferite servesc tipuri diferite de capabilități"
+    },
+    {
+      "id": "t000608",
+      "source": "Term or aspect",
+      "translation": "Termen sau aspect"
+    },
+    {
+      "id": "t000609",
+      "source": "Meaning or practical use",
+      "translation": "Semnificație sau utilizare practică"
+    },
+    {
+      "id": "t000610",
+      "source": "MCP",
+      "translation": "MCP"
+    },
+    {
+      "id": "t000611",
+      "source": "Best suited to structured tools, resources and workflows discoverable by AI applications.",
+      "translation": "Cel mai potrivit pentru instrumente, resurse și fluxuri de lucru structurate, care pot fi descoperite de aplicațiile IA."
+    },
+    {
+      "id": "t000612",
+      "source": "OpenAI-compatible API",
+      "translation": "API compatibil cu OpenAI"
+    },
+    {
+      "id": "t000613",
+      "source": "Useful for model-like or conversational services that benefit from a widely supported de facto request format.",
+      "translation": "Util pentru servicii asemănătoare modelelor sau conversaționale, care beneficiază de un format de cerere de facto acceptat pe scară largă."
+    },
+    {
+      "id": "t000614",
+      "source": "CLI",
+      "translation": "CLI"
+    },
+    {
+      "id": "t000615",
+      "source": "Natural for coding agents and mature developer tools that already operate through a terminal.",
+      "translation": "Naturală pentru agenții de programare și instrumentele mature de dezvoltare care operează deja printr-un terminal."
+    },
+    {
+      "id": "t000616",
+      "source": "Web service / UI",
+      "translation": "Serviciu web / interfață"
+    },
+    {
+      "id": "t000617",
+      "source": "Appropriate when a capability has a long-running service or a valuable visual interface of its own.",
+      "translation": "Potrivit atunci când o capabilitate are un serviciu de lungă durată sau o interfață vizuală proprie valoroasă."
+    },
+    {
+      "id": "t000618",
+      "source": "The practical design rule is to preserve the native strength of the capability. Use MCP when structured tool calling is the natural interface. Use an OpenAI-compatible endpoint when the capability behaves like a model or conversational service. Use a CLI for mature command-line agents. Use a web surface when visual interaction is central. A Robot can coordinate across these interfaces through the same working context.",
+      "translation": "Regula practică de proiectare este păstrarea punctului forte nativ al capabilității. Folosiți MCP când apelarea structurată a instrumentelor este interfața naturală. Folosiți un punct de acces compatibil cu OpenAI când capabilitatea se comportă ca un model sau un serviciu conversațional. Folosiți o interfață în linie de comandă pentru agenți maturi care funcționează astfel. Folosiți o interfață web când interacțiunea vizuală este centrală. Un Robot poate coordona aceste interfețe în același context de lucru."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "language": "ro",
+  "chunk": 21,
+  "segments": [
+    {
+      "id": "t000224",
+      "source": "The symbolic abductor and the HDC representation must be separated. The abductor learns the twelve-dimensional weight vector from semantic features. The HDC stage encodes those features through a matrix of random distributed codes and uses a corresponding readout to estimate the learned quantity. If the HDC stage performs poorly, that does not mean the invariant was not discovered. It means the distributed implementation of the already-discovered property needs examination.",
+      "translation": ""
+    },
+    {
+      "id": "t000225",
+      "source": "Let x be the twelve feature counts in a scene and q the twelve learned weights. The desired score is qᵀx. Let H contain the distributed feature codes as columns. The scene representation is Hx. A natural approximate readout is Hq; comparing it with the scene and dividing by the vector dimension gives qᵀ(HᵀH / D)x. This equals the desired score only when the codebook's normalised Gram matrix behaves like the identity on the relevant vectors.",
+      "translation": ""
+    },
+    {
+      "id": "t000226",
+      "source": "Random columns are approximately orthogonal, not exactly orthogonal. Off-diagonal terms mix feature contributions. In a task where coherence means the exact zero level set of an additive quantity, small residual errors can matter. A larger dimension often reduces random correlations, but it does not make a finite codebook perfectly orthogonal. Increasing scene counts can also magnify the effect of remaining correlations. This gives a concrete reason that extrapolation may be more sensitive than familiar-count tests.",
+      "translation": ""
+    },
+    {
+      "id": "t000227",
+      "source": "The key observation is that the encoding can still preserve all twelve feature dimensions. When H has full column rank, the mixed score can be corrected. Define G = HᵀH / D, solve G a = q, and use Ha as the readout. Then (Ha)ᵀ(Hx) / D equals qᵀx in exact arithmetic. The correction is a dual-coordinate readout. It does not reconstruct the hidden law from labels; that law has already been learned. It changes how the known property is read from the distributed representation.",
+      "translation": ""
+    },
+    {
+      "id": "t000228",
+      "source": "This is ordinary linear algebra, not a new theorem. It is also consistent with published practical VSA work that replaces similarity-based retrieval with linear readout in appropriate settings. The contribution of the present experiment is to apply the correction to the actual Eos implementation and determine whether it explains the observed gap. A literature-aware account should credit the existing idea while reporting the new diagnosis of this codebase. [L06]",
+      "translation": ""
+    },
+    {
+      "id": "t000229",
+      "source": "The audit reused the repository's world, parser, feature encoders, and abductor. It held the data seed fixed and varied the distributed codebook across five dimensions and five seeds per dimension. Both the original-style decoder and the corrected decoder fitted their decision thresholds using training data only. No held-out labels were used to calibrate the correction. The tested dimensions were 16, 32, 128, 512, and 8,192. All twenty-five sampled codebooks had full column rank. [A05]",
+      "translation": ""
+    },
+    {
+      "id": "t000230",
+      "source": "The corrected readout achieved 100 percent classification on training and all three held-out splits in every sampled configuration. Its largest absolute discrepancy from the direct semantic score was below 4.7 × 10⁻¹³. At dimension 8,192 and the first tested codebook seed, the approximate readout's extrapolation accuracy was 82 percent; the corrected readout achieved 100 percent on the same cases. Across the five 8,192-dimensional codebooks, the approximate extrapolation results ranged from 77 percent to about 93.3 percent. [A05]",
+      "translation": ""
+    },
+    {
+      "id": "t000231",
+      "source": "Figure 3. Changing the readout changes the interpretation of the representation. Points show mean extrapolation accuracy across five codebooks per dimension; bars show the observed minimum-to-maximum range, not a confidence interval. The data world is fixed. All tested dual readouts score 100 percent. Source: A05.",
+      "translation": ""
+    },
+    {
+      "id": "t000232",
+      "source": "This changes the explanation of the error. For these unquantised, full-rank encodings, the information needed for the property was present. The approximate decoder did not recover it accurately. The result therefore supports the human researcher's caution that engineering or operator design may account for some apparent VSA limitations. It does not overturn the broader concern about general reasoning, because the experiment still begins with twelve explicit semantic features and a learned additive law.",
+      "translation": ""
+    },
+    {
+      "id": "t000233",
+      "source": "6.3 Research significance and claim boundary",
+      "translation": ""
+    }
+  ]
+}

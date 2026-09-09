@@ -1,0 +1,61 @@
+{
+  "language": "ro",
+  "chunk": 3,
+  "segments": [
+    {
+      "id": "t000042",
+      "source": "A useful way to read the experiments is to treat BIND and BUNDLE as contracts rather than as names. BIND is expected to compose two representations while retaining enough information to support some later operation, often an approximate or exact UNBIND. BUNDLE is expected to combine several representations into one memory-like object that remains related to its members. Different VSA families satisfy these expectations in different ways. The experiments in these repositories also test whether these two operations are sufficient. The evidence suggests that they are not: ordering, role identity, quantification, conditional structure, revision, provenance and program-like transformations repeatedly require additional mechanisms.",
+      "translation": "O modalitate utilă de a citi experimentele este să tratăm BIND și BUNDLE ca pe niște contracte, nu ca pe niște nume. BIND trebuie să compună două reprezentări păstrând suficientă informație pentru o operație ulterioară, adesea un UNBIND aproximativ sau exact. BUNDLE trebuie să combine mai multe reprezentări într-un singur obiect asemănător unei memorii, care rămâne legat de membrii săi. Familii VSA diferite satisfac aceste așteptări în moduri diferite. Experimentele din aceste depozite testează și dacă aceste două operații sunt suficiente. Dovezile sugerează că nu: ordinea, identitatea rolurilor, cuantificarea, structura condițională, revizuirea, proveniența și transformările asemănătoare programelor necesită în mod repetat mecanisme suplimentare."
+    },
+    {
+      "id": "t000043",
+      "source": "1.1 Continuous geometric vectors: addition, Hadamard binding and cosine readout",
+      "translation": "1.1 Vectori geometrici continui: adunare, legare Hadamard și citire prin cosinus"
+    },
+    {
+      "id": "t000044",
+      "source": "The spock repository represents concepts as dense real-valued vectors and gives geometric interpretations to a small set of primitive operations. Random concepts are created in a high-dimensional continuous space. Add performs element-wise addition and is interpreted as superposition. Bind performs the Hadamard product. Negate multiplies by minus one. Distance converts cosine similarity into a score. Planning is framed as movement through the same geometric state space. The documentation further introduces a canonical truth direction and attempts to encode graded evidence through alignment or scaling. [R01]",
+      "translation": "Depozitul spock reprezintă concepte ca vectori denși cu valori reale și oferă interpretări geometrice unui mic set de operații primitive. Conceptele aleatoare sunt create într-un spațiu continuu cu multe dimensiuni. Add efectuează adunarea element cu element și este interpretat ca superpoziție. Bind efectuează produsul Hadamard. Negate înmulțește cu minus unu. Distance convertește similaritatea cosinus într-un scor. Planificarea este formulată ca deplasare prin același spațiu geometric de stări. Documentația introduce în plus o direcție canonică a adevărului și încearcă să codifice dovezi graduale prin aliniere sau scalare. [R01]"
+    },
+    {
+      "id": "t000045",
+      "source": "The intended advantage is conceptual uniformity. The same numerical carrier can support similarity, superposition, continuous movement and compositional operations. Such an architecture is attractive if reasoning can be reduced to smooth transformations whose relevant distinctions are preserved by the geometry. It also maps naturally to efficient dense numerical computation.",
+      "translation": "Avantajul intenționat este uniformitatea conceptuală. Același suport numeric poate susține similaritatea, superpoziția, deplasarea continuă și operațiile compoziționale. O asemenea arhitectură este atractivă dacă raționamentul poate fi redus la transformări netede ale căror distincții relevante sunt păstrate de geometrie. De asemenea, se potrivește natural cu calculul numeric dens eficient."
+    },
+    {
+      "id": "t000046",
+      "source": "The implementation, however, exposes an important contract issue. Hadamard binding is self-inverse only under specific operand families, such as bipolar vectors with coordinates restricted to plus or minus one. spock generates Gaussian-like real vectors, so multiplying a bound vector by one factor does not generally recover the other factor. The documentation sometimes uses the stronger bipolar intuition when describing the real-valued implementation. This does not make Hadamard multiplication useless; it means the claimed semantics of BIND must match the actual carrier.",
+      "translation": "Implementarea expune însă o problemă importantă de contract. Legarea Hadamard este autoinversă numai pentru anumite familii de operanzi, precum vectorii bipolari cu coordonate restrânse la plus sau minus unu. spock generează vectori reali de tip gaussian, astfel că înmulțirea unui vector legat cu unul dintre factori nu îl recuperează, în general, pe celălalt. Documentația folosește uneori intuiția bipolară mai puternică atunci când descrie implementarea cu valori reale. Aceasta nu face inutilă înmulțirea Hadamard; înseamnă că semantica atribuită lui BIND trebuie să corespundă suportului real al reprezentării."
+    },
+    {
+      "id": "t000047",
+      "source": "A second audit result concerns confidence. If a vector is multiplied by a positive scalar and the next operation uses only cosine similarity, the scalar magnitude disappears. A state intended to represent stronger evidence can therefore become indistinguishable from a weaker state when interpreted through cosine alone. [A04] The broader lesson is that semantic meaning cannot be assigned independently to an operation and then assumed to survive an arbitrary downstream readout. The representation, operators and decoders form one system.",
+      "translation": "Un al doilea rezultat al auditului privește încrederea. Dacă un vector este înmulțit cu un scalar pozitiv și următoarea operație folosește numai similaritatea cosinus, mărimea scalarului dispare. Prin urmare, o stare menită să reprezinte dovezi mai puternice poate deveni imposibil de deosebit de una mai slabă când este interpretată numai prin cosinus. [A04] Lecția mai largă este că sensul semantic nu poate fi atribuit independent unei operații, presupunând apoi că va supraviețui oricărei metode ulterioare de citire. Reprezentarea, operatorii și decodoarele formează un singur sistem."
+    },
+    {
+      "id": "t000048",
+      "source": "This architecture remains interesting as an example of what a general geometric substrate would have to achieve. A future version could type quantities such as confidence separately from direction, use invertible or unitary binding families, or learn transformations under explicit algebraic constraints. What the current experiment does not support is the stronger idea that addition, Hadamard multiplication and cosine similarity already constitute a general reasoning algebra.",
+      "translation": "Această arhitectură rămâne interesantă ca exemplu a ceea ce ar trebui să realizeze un substrat geometric general. O versiune viitoare ar putea atribui tipuri distincte unor mărimi precum încrederea, separat de direcție, ar putea folosi familii de legare inversabile sau unitare ori ar putea învăța transformări sub constrângeri algebrice explicite. Ceea ce experimentul actual nu susține este ideea mai puternică potrivit căreia adunarea, înmulțirea Hadamard și similaritatea cosinus constituie deja o algebră generală a raționamentului."
+    },
+    {
+      "id": "t000049",
+      "source": "1.2 Dense binary HDC: XOR binding and majority bundling",
+      "translation": "1.2 HDC binar dens: legare XOR și agregare prin majoritate"
+    },
+    {
+      "id": "t000050",
+      "source": "HDC-RE and the reference backend of VSARepresentations use a more conventional binary HDC design. A concept is a dense high-dimensional bit vector. BIND is bitwise XOR. Because XOR is self-inverse, bind(bind(a,b),b) returns a exactly when all operands have the same geometry. BUNDLE uses a majority vote at each bit position. Similarity is derived from Hamming distance. [R02, R03]",
+      "translation": "HDC-RE și componenta de execuție de referință din VSARepresentations folosesc o proiectare HDC binară mai convențională. Un concept este un vector dens de biți, cu multe dimensiuni. BIND este XOR bit cu bit. Deoarece XOR este autoinvers, bind(bind(a,b),b) returnează exact a atunci când toți operanzii au aceeași geometrie. BUNDLE folosește votul majoritar la fiecare poziție de bit. Similaritatea este derivată din distanța Hamming. [R02, R03]"
+    },
+    {
+      "id": "t000051",
+      "source": "The attraction of this representation is clear. Binding is computationally simple, exact and symmetric. A large binary vector is cheap to manipulate on a CPU using word-level bit operations. Random atom vectors are approximately orthogonal in high dimensions, and bundling can store a noisy superposition from which members may still be recognised by similarity. The model therefore offers a compact and mechanically clean separation between association and set-like superposition.",
+      "translation": "Atractivitatea acestei reprezentări este clară. Legarea este simplă computațional, exactă și simetrică. Un vector binar mare este ieftin de manipulat pe CPU folosind operații pe biți la nivel de cuvânt. Vectorii aleatori ai atomilor sunt aproximativ ortogonali în spații cu multe dimensiuni, iar agregarea poate stoca o superpoziție cu zgomot din care membrii pot fi încă recunoscuți prin similaritate. Prin urmare, modelul oferă o separare compactă și mecanic clară între asociere și superpoziția de tip mulțime."
+    },
+    {
+      "id": "t000052",
+      "source": "The sacrifice is also clear. Majority bundling is lossy. As more items are bundled, the contribution of any individual item competes with the aggregate of unrelated bits. Cleanup memory and a candidate vocabulary become part of the retrieval mechanism. Fixed-size storage does not preserve arbitrary structured multiplicity or every role assignment without interference. XOR is also commutative, so ordering and directional relations require explicit role vectors, permutations, position encodings or another operation.",
+      "translation": "Sacrificiul este la fel de clar. Agregarea prin majoritate pierde informație. Pe măsură ce sunt agregate mai multe elemente, contribuția oricărui element individual concurează cu agregatul biților fără legătură. Memoria de dezambiguizare și un vocabular de candidați devin parte a mecanismului de recuperare. Stocarea de dimensiune fixă nu păstrează fără interferență multiplicitatea structurată arbitrară sau fiecare atribuire de rol. XOR este și comutativ, astfel că ordinea și relațiile direcționale necesită vectori de rol expliciți, permutări, codificări de poziție sau o altă operație."
+    }
+  ]
+}

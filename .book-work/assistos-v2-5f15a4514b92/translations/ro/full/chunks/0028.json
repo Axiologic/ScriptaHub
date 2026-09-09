@@ -1,0 +1,131 @@
+{
+  "language": "ro",
+  "chunk": 28,
+  "segments": [
+    {
+      "id": "t000541",
+      "source": "For a buyer, the same point can be stated more simply. AssistOS should make AI delegation behave like managed computing rather than like handing a password to a clever stranger. The system will never eliminate risk, but it can make authority explicit, action visible and failure recoverable. That is the threshold at which virtual workers become an infrastructure question rather than a novelty.",
+      "translation": "Pentru un cumpărător, aceeași idee poate fi formulată mai simplu. AssistOS ar trebui să facă delegarea către IA să se comporte ca un sistem informatic administrat, nu ca înmânarea unei parole unui străin isteț. Sistemul nu va elimina niciodată riscul, dar poate face autoritatea explicită, acțiunea vizibilă și eșecul recuperabil. Acesta este pragul la care lucrătorii virtuali devin o chestiune de infrastructură, nu o noutate."
+    },
+    {
+      "id": "t000542",
+      "source": "Chapter 5 Understanding the machinery that supports the work",
+      "translation": "Capitolul 5 Înțelegerea mecanismelor care susțin munca"
+    },
+    {
+      "id": "t000543",
+      "source": "Robots need tools, dependencies, interfaces and persistent state as well as models. This chapter explains those implementation choices after establishing what the person needs to do.",
+      "translation": "Roboții au nevoie de instrumente, dependențe, interfețe și stare persistentă, pe lângă modele. Acest capitol explică alegerile de implementare după ce stabilește ce trebuie să facă persoana."
+    },
+    {
+      "id": "t000544",
+      "source": "Provide the tools that a model needs",
+      "translation": "Furnizarea instrumentelor de care are nevoie un model"
+    },
+    {
+      "id": "t000545",
+      "source": "It is tempting to think that an AI platform is mostly a model-selection problem. Choose a strong model, provide a prompt, connect a few APIs, and the application is nearly finished. This is often sufficient for a demonstration. It is rarely sufficient for a working environment in which software is expected to operate for hours, manipulate files, install dependencies, interact with external services and remain safe enough to be reused by other people.",
+      "translation": "Este tentant să crezi că o platformă de IA este în principal o problemă de selectare a modelului. Alegi un model puternic, furnizezi o instrucțiune, conectezi câteva API-uri și aplicația este aproape gata. Adesea, acest lucru este suficient pentru o demonstrație. Rareori este suficient pentru un mediu de lucru în care software-ul trebuie să opereze ore întregi, să manipuleze fișiere, să instaleze dependențe, să interacționeze cu servicii externe și să rămână suficient de sigur pentru a fi reutilizat de alte persoane."
+    },
+    {
+      "id": "t000546",
+      "source": "A practical Robot needs capabilities that models do not provide by themselves. A coding Robot needs a shell, compiler, package manager, repository tools and tests. A data Robot may need Python libraries, database drivers, command-line utilities and visualization software. A browser Robot needs a browser runtime, perhaps a virtual desktop, and a place to keep its profile. A research Robot may need PDF utilities, citation databases and specialized retrieval tools. These dependencies are not merely conveniences. They are part of the operational definition of the task.",
+      "translation": "Un Robot practic are nevoie de capabilități pe care modelele nu le oferă singure. Un Robot de programare are nevoie de un interpretor de comenzi, un compilator, un gestionar de pachete, instrumente pentru depozite de cod și teste. Un Robot de date poate avea nevoie de biblioteci Python, drivere de baze de date, utilitare în linie de comandă și software de vizualizare. Un Robot de browser are nevoie de un mediu de execuție pentru browser, poate de un desktop virtual și de un loc pentru păstrarea profilului. Un Robot de cercetare poate avea nevoie de utilitare PDF, baze de date bibliografice și instrumente specializate de căutare. Aceste dependențe nu sunt doar facilități. Ele fac parte din definiția operațională a sarcinii."
+    },
+    {
+      "id": "t000547",
+      "source": "They also create risk. Installing arbitrary packages directly on a host machine is difficult to govern. Different tools require conflicting versions. One agent may need Node.js while another needs Python and system libraries. Some tools need background services. Some require access to graphics or network devices. An experimental coding agent may execute shell commands that would be unacceptable on the host. A platform that ignores these concerns transfers the burden to every user.",
+      "translation": "Ele creează și riscuri. Instalarea arbitrară a pachetelor direct pe o mașină gazdă este dificil de guvernat. Instrumente diferite necesită versiuni incompatibile. Un agent poate avea nevoie de Node.js, în timp ce altul are nevoie de Python și biblioteci de sistem. Unele instrumente au nevoie de servicii de fundal. Altele necesită acces la dispozitive grafice sau de rețea. Un agent experimental de programare poate executa comenzi shell care ar fi inacceptabile pe gazdă. O platformă care ignoră aceste preocupări transferă povara fiecărui utilizator."
+    },
+    {
+      "id": "t000548",
+      "source": "Ploinky addresses deployment through packages that declare their runtime, dependencies, startup commands and interfaces. Its Agent Specification documents container execution and optional host sandbox mechanisms, including bubblewrap on Linux and seatbelt on macOS. This supplies a foundation for repeatable capability installation; it does not by itself implement every Robot or enterprise feature described in this handbook. [P8]",
+      "translation": "Ploinky abordează instalarea prin pachete care își declară mediul de execuție, dependențele, comenzile de pornire și interfețele. Specificația sa pentru agenți documentează execuția în containere și mecanisme opționale de izolare pe gazdă, inclusiv bubblewrap pe Linux și seatbelt pe macOS. Aceasta oferă o bază pentru instalarea repetabilă a capabilităților; nu implementează, prin ea însăși, toate funcțiile pentru Roboți sau întreprinderi descrise în acest manual. [P8]"
+    },
+    {
+      "id": "t000549",
+      "source": "A Ploinky Agent can be small. It may wrap a command-line program and expose it through WebChat or MCP. It can also be substantial. It may include a coding agent plus the language runtimes it needs. It may start a web application. It may host a service that exposes an OpenAI-compatible endpoint. It may install a complete scientific toolchain whose dependencies would be painful to reproduce manually. The packaging boundary allows AssistOS to treat all of these as capabilities that can be enabled, updated and isolated.",
+      "translation": "Un agent Ploinky poate fi mic. Poate împacheta un program în linie de comandă și îl poate expune prin WebChat sau MCP. Poate fi și substanțial. Poate include un agent de programare împreună cu mediile de execuție pentru limbajele de care acesta are nevoie. Poate porni o aplicație web. Poate găzdui un serviciu care expune un punct de acces compatibil cu OpenAI. Poate instala un ansamblu complet de instrumente științifice ale cărui dependențe ar fi dificil de reprodus manual. Limita pachetului permite AssistOS să trateze toate acestea drept capabilități care pot fi activate, actualizate și izolate."
+    },
+    {
+      "id": "t000550",
+      "source": "Table 15. Why packaging matters even when the AI model is excellent",
+      "translation": "Tabelul 15. De ce contează împachetarea chiar și atunci când modelul IA este excelent"
+    },
+    {
+      "id": "t000551",
+      "source": "Term or aspect",
+      "translation": "Termen sau aspect"
+    },
+    {
+      "id": "t000552",
+      "source": "Meaning or practical use",
+      "translation": "Semnificație sau utilizare practică"
+    },
+    {
+      "id": "t000553",
+      "source": "Repeatability",
+      "translation": "Repetabilitate"
+    },
+    {
+      "id": "t000554",
+      "source": "The same capability can be installed again from a declared runtime rather than reconstructed manually.",
+      "translation": "Aceeași capabilitate poate fi instalată din nou dintr-un mediu de execuție declarat, în loc să fie reconstruită manual."
+    },
+    {
+      "id": "t000555",
+      "source": "Isolation",
+      "translation": "Izolare"
+    },
+    {
+      "id": "t000556",
+      "source": "Dependencies and commands run inside a controlled environment instead of directly on the host.",
+      "translation": "Dependențele și comenzile rulează într-un mediu controlat, nu direct pe gazdă."
+    },
+    {
+      "id": "t000557",
+      "source": "Dependencies",
+      "translation": "Dependențe"
+    },
+    {
+      "id": "t000558",
+      "source": "System packages, language runtimes and services can be bundled with the capability that needs them.",
+      "translation": "Pachetele de sistem, mediile de execuție ale limbajelor și serviciile pot fi incluse în capabilitatea care are nevoie de ele."
+    },
+    {
+      "id": "t000559",
+      "source": "Lifecycle",
+      "translation": "Ciclu de viață"
+    },
+    {
+      "id": "t000560",
+      "source": "Capabilities can be started, stopped, upgraded, rolled back and associated with explicit versions.",
+      "translation": "Capabilitățile pot fi pornite, oprite, actualizate, readuse la versiuni anterioare și asociate cu versiuni explicite."
+    },
+    {
+      "id": "t000561",
+      "source": "Distribution",
+      "translation": "Distribuție"
+    },
+    {
+      "id": "t000562",
+      "source": "A useful research repository can become an installable product rather than a set of setup instructions.",
+      "translation": "Un depozit de cercetare util poate deveni un produs instalabil, nu doar un set de instrucțiuni de configurare."
+    },
+    {
+      "id": "t000563",
+      "source": "Evaluation",
+      "translation": "Evaluare"
+    },
+    {
+      "id": "t000564",
+      "source": "The package provides a stable unit against which functionality, security and resource use can be tested.",
+      "translation": "Pachetul oferă o unitate stabilă pentru testarea funcționalității, securității și utilizării resurselor."
+    },
+    {
+      "id": "t000565",
+      "source": "A package can move from a developer's environment to a user's installation through a declared contract. Versioning, permissions, resource needs, health checks, evaluations and support information can make that contract useful throughout the capability's lifetime. The distribution model in Chapter 6 depends on this operational detail.",
+      "translation": "Un pachet poate trece din mediul unui dezvoltator în instalarea unui utilizator printr-un contract declarat. Versiunile, permisiunile, necesarul de resurse, verificările stării de funcționare, evaluările și informațiile de asistență pot face acel contract util pe întreaga durată de viață a capabilității. Modelul de distribuție din capitolul 6 depinde de acest detaliu operațional."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "language": "ro",
+  "chunk": 18,
+  "segments": [
+    {
+      "id": "t000195",
+      "source": "In the low-load case, the equilibrium-style strategy achieved a hit-at-K score of 70.0 percent. The key-hash baseline achieved 31.7 percent, and the collision-greedy strategy achieved 64.3 percent. This is a meaningful observed difference within the tested setup. It suggests that placement can change retrieval behaviour substantially without changing the underlying representation family. The comparison with collision-greedy is especially useful because it asks whether the more elaborate policy adds value beyond simply reacting to collisions.",
+      "translation": ""
+    },
+    {
+      "id": "t000196",
+      "source": "Top-one accuracy gives a less triumphant picture. Both equilibrium-style and collision-greedy placement achieved 27.3 percent, whereas key hashing achieved 12.3 percent. The better memory often brought a correct answer into the candidate set without making it the highest-ranked answer. This is not a contradiction. It means that retrieval and final selection remain separate problems. A system with an exact downstream verifier might benefit from the wider candidate recall, but a system that directly emits the top candidate would still be wrong often.",
+      "translation": ""
+    },
+    {
+      "id": "t000197",
+      "source": "Route-hit rate was about 95.3 percent for equilibrium-style placement in this low-load scenario, compared with about 82.7 percent for key hashing. Yet answer hit-at-K remained 70 percent and top-one accuracy much lower. Reaching a useful shard was not sufficient to recover the right answer reliably. This decomposition gives the next experiment a target: improve cleanup or verification rather than assuming the remaining error is all in routing.",
+      "translation": ""
+    },
+    {
+      "id": "t000198",
+      "source": "The higher-load case sharply limits the conclusion. With 6,000 facts, equilibrium-style hit-at-K fell to 21.3 percent and top-one accuracy to 5.0 percent. Key hashing reached 10.0 percent and 2.0 percent respectively. The relative advantage remained, but the absolute result was weak. In the two-hop scenario, equilibrium-style hit-at-K was about 4.7 percent and top-one accuracy 1.0 percent. Collision-greedy placement did better there, at about 7.3 percent hit-at-K and 2.0 percent top-one. No claim that the heuristic solves multi-step reasoning follows from these results. [A03]",
+      "translation": ""
+    },
+    {
+      "id": "t000199",
+      "source": "Figure 2. Retrieval gains are load- and task-dependent. Four equally sharded strategies, HRR dimension 512, eight shards, 300 queries per strategy and scenario. Hit-at-K is not top-one accuracy; no confidence interval over independent worlds is claimed. Source: A03.",
+      "translation": ""
+    },
+    {
+      "id": "t000200",
+      "source": "Replication was not a free improvement. In the low-load case, the equilibrium two-write variant achieved about 39.7 percent hit-at-K, well below the single-write variant's 70 percent. Writing into more memories can improve the chance of visiting a copy, but with a fixed shard budget it also increases the amount superposed into those memories. The experiment makes that trade-off visible. Redundancy and interference move together unless extra storage or another control compensates for them.",
+      "translation": ""
+    },
+    {
+      "id": "t000201",
+      "source": "The measured memory counters also require a fair reading. The single-memory configuration reported approximately 4.31 million bytes, while the eight-shard configurations reported approximately 4.42 million. These are implementation counters rather than complete runtime measurements and include a substantial common representation cost. A comparison between single and sharded memory is therefore not perfectly equal-memory merely because vector dimension is fixed. Comparisons among equally sharded strategies are cleaner, although their build work and metadata may still differ.",
+      "translation": ""
+    },
+    {
+      "id": "t000202",
+      "source": "The result worth preserving is neither “VSA memory scales” nor “VSA memory fails.” It is that inference-aware placement produces a useful low-load retrieval gain, but the gain does not remove overload or composition failure. That is a credible candidate mechanism with a visible operating region. The next study should vary load, vocabulary size, dimension, shard count, routing budget, and update frequency, then report where the policy improves total task cost rather than just one retrieval metric.",
+      "translation": ""
+    },
+    {
+      "id": "t000203",
+      "source": "5.3 Research significance: interference-aware accountable memory",
+      "translation": ""
+    },
+    {
+      "id": "t000204",
+      "source": "The VSANash findings connect naturally with elastic and exact representations. All three approaches recognise that memory organisation matters. Elastic chunks allocate additional state. EXACT retains structure without collision noise. VSANash redistributes associations across bounded noisy stores. These are alternative responses to the same practical question: what should the system do when its current memory organisation no longer supports the required operation reliably?",
+      "translation": ""
+    }
+  ]
+}
