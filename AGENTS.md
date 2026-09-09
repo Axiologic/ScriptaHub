@@ -11,14 +11,13 @@
   Do not insert taxonomy, author, language, or arbitrary category folders into
   this route. Rebuild the aggregate instead of hand-editing it.
 - Use `npm run test:catalogue` after changing the catalogue and before hand-off.
-  The Node.js checker validates catalogue records and edition assets; the Node.js
+  The Python checker validates catalogue records and edition assets; the Python
   link auditor validates local HTML targets and fragment anchors without
-  contacting the web. `tools/build_books.mjs` owns current book-page rendering
-  and edition-history initialization; run `npm run build:books` after changing
-  its templates or manifests. `npm test` runs the JavaScript contract tests.
-  Legacy import/keyword/cover tools remain available for their existing content
-  workflows, but must be followed by `npm run build:books` so their older page
-  template cannot remove current account actions.
+  contacting the web. `tools/build_books.py` owns book-page rendering,
+  edition-history initialization, and the existing import/keyword/cover workflows.
+  Run `python3 -B tools/build_books.py refresh` after changing templates or
+  manifests. `npm test` runs the JavaScript browser tests and Python tool tests
+  and checks. Python commands use `-B` to avoid modifying tracked bytecode caches.
 - Reader editions are canonical HTML files. For any repair or new translation,
   use the `book-reader-translations` skill and its chunk workflow. Do not
   translate PDFs and do not use an external translation service; PDFs remain
@@ -50,7 +49,7 @@
   cannot make a cover look like a small icon inside a white frame.
 - Public metadata is branded as ScriptaHub. If imported manifest metadata
   contains a retired public brand, run `python3 tools/build_books.py rebrand`
-  before `npm run build:books`; it updates manifests, `collection.json`, and generated
+  before `refresh`; it updates manifests, `collection.json`, and generated
   catalogue pages without touching reader-edition source files.
 - The MVP is delivered as prebuilt assets with browser-side interactions. Keep
   delivery architecture such as “static”, “prebuilt”, “generated”, or “without
@@ -63,7 +62,7 @@
   `edition-files/<edition-id>/<language>.pdf`, change that edition record to
   the archived path, and append a new edition with its publication date and a
   localised change log; never overwrite historical edition files. Run
-  `npm run build:books` to create the initial record for a new
+  `python3 -B tools/build_books.py refresh` to create the initial record for a new
   book and to expose the feedback and edition-history actions on `book.html`.
 - `docs/create/`, `docs/feedback/`, and `docs/editions/` are shared workflows
   rendered by `docs/assets/workflow.js` in all eight supported languages.

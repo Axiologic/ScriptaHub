@@ -12,7 +12,7 @@ Public copy explains what a visitor can accomplish, what action will occur, and 
 
 ## 2. Source of truth and generated output
 
-Each book manifest under `docs/books/<normalised-English-title-words>/<bk-random-id>/manifest.json` is the source record. `docs/collection.json` and `docs/collection.js` are aggregate indexes rebuilt from manifests. `tools/build_books.mjs` owns current book-page rendering and edition-history initialization. `tools/check_catalogue.mjs` and `tools/audit_internal_links.mjs` validate catalogue records, assets, local links, and anchors. These tools and the account bundle run in Node.js. Legacy content migration, manifest aggregation, cover derivatives, and keyword extraction remain in `tools/build_books.py`; after those operations, run `npm run build:books` to regenerate the current page template.
+Each book manifest under `docs/books/<normalised-English-title-words>/<bk-random-id>/manifest.json` is the source record. `docs/collection.json` and `docs/collection.js` are aggregate indexes rebuilt from manifests. `tools/build_books.py` owns route migration, manifest aggregation, edition links and history, book-page rendering, cover derivatives, discovery metadata, and catalogue validation. `tools/audit_internal_links.py` validates local links and anchors. These tools and their regression tests use Python's standard library. The browser account flow remains JavaScript, with Node.js used to bundle and test it.
 
 Generated files are replaced from their sources. Do not patch generated book pages or aggregate catalogue files to make a durable change; change the generator or manifest and rebuild. A catalogue refresh may run periodically. That cadence is an operational detail and must not appear in visitor-facing copy.
 
@@ -136,10 +136,11 @@ After a catalogue, generator, route, or shared interaction change, run:
 ```text
 npm run build
 npm test
-npm run test:catalogue
 ```
 
-Also syntax-check changed JavaScript, run `git diff --check`, and verify these invariants:
+`npm test` includes the browser account tests, Python tool tests, catalogue
+validation, and local-link audit. Also syntax-check changed JavaScript and Python,
+run `git diff --check`, and verify these invariants:
 
 - `docs/keywords/` does not exist.
 - No source or generated book page links to `/keywords/<language>/<slug>/`.

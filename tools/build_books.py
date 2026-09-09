@@ -691,44 +691,128 @@ def edition_record(book_root: Path, language: str) -> dict[str, str]:
     return record
 
 
-def ensure_editions_file(book_root: Path, manifest: dict[str, object]) -> None:
-    """Create or gently extend a book's durable edition history.
+def relative_asset(value: object, book_root: Path) -> Path:
+    """Accept only assets contained in this book, including symlink targets."""
+    if (not isinstance(value, str) or not value or "\\" in value
+            or Path(value).is_absolute() or any(part in ("", "..") for part in value.split("/"))):
+        raise ValueError(f"Unsafe relative asset path: {value}")
+    target = book_root / value
+    if not target.resolve().is_relative_to(book_root.resolve()):
+        raise ValueError(f"Unsafe relative asset path: {value}")
+    return target
 
-    Existing edition entries are never removed or rewritten here. Future
-    publishing code must archive a replaced PDF and add a new record; this
-    helper only establishes the initial edition and fills absent current PDF
-    language links.
-    """
+
+def validate_output(path: Path, boundary: Path) -> None:
+    """Reject redirected outputs before opening or replacing any file."""
+    if (not path.absolute().is_relative_to(boundary.absolute())
+            or not path.parent.resolve(strict=True).is_relative_to(boundary.resolve(strict=True))):
+        raise ValueError(f"Refusing output outside book directory: {path}")
+    if path.is_symlink() or (path.exists() and not path.is_file()):
+        raise ValueError(f"Refusing non-file output: {path}")
+
+
+def validate_history(payload: object, manifest: dict[str, object], book_root: Path) -> None:
+    """A malformed history must be repaired explicitly, never reinitialized."""
+    def invalid() -> None:
+        raise ValueError(f"Malformed existing edition history: {book_root / 'editions.json'}")
+
+    if (not isinstance(payload, dict) or type(payload.get("schemaVersion")) is not int
+            or payload["schemaVersion"] != 1 or payload.get("bookId") != manifest.get("id")
+            or not isinstance(payload.get("currentEdition"), str) or not payload["currentEdition"]
+            or not isinstance(payload.get("editions"), list) or not payload["editions"]):
+        invalid()
+    identifiers = set()
+    for entry in payload["editions"]:
+        if (not isinstance(entry, dict) or not isinstance(entry.get("id"), str)
+                or not entry["id"] or entry["id"] in identifiers
+                or type(entry.get("number")) is not int or entry["number"] < 1
+                or not isinstance(entry.get("publishedAt"), str)
+                or not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", entry["publishedAt"])
+                or not isinstance(entry.get("changes"), dict)
+                or any(not isinstance(value, str) for value in entry["changes"].values())):
+            invalid()
+        try:
+            datetime.strptime(entry["publishedAt"], "%Y-%m-%d")
+        except ValueError:
+            invalid()
+        identifiers.add(entry["id"])
+        if "label" in entry and (not isinstance(entry["label"], dict)
+                or any(not isinstance(value, str) for value in entry["label"].values())):
+            invalid()
+        if "pdf" in entry:
+            if not isinstance(entry["pdf"], dict):
+                invalid()
+            for value in entry["pdf"].values():
+                relative_asset(value, book_root)
+    if payload["currentEdition"] not in identifiers:
+        invalid()
+
+
+def prepare_editions_file(book_root: Path, manifest: dict[str, object]) -> dict[str, object]:
+    """Plan an initial history or missing current PDF links, preserving old records."""
     path = book_root / "editions.json"
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
-    except (json.JSONDecodeError, OSError):
-        payload = {}
-    records = payload.get("editions") if isinstance(payload.get("editions"), list) else []
-    current_id = str(payload.get("currentEdition") or "edition-1")
-    current = next((entry for entry in records if isinstance(entry, dict) and entry.get("id") == current_id), None)
-    if current is None:
-        manifest_mtime = (book_root / "manifest.json").stat().st_mtime if (book_root / "manifest.json").is_file() else time.time()
-        current = {
-            "id": current_id,
-            "number": 1,
-            "label": {language: BOOK_ACTIONS[language]["editionLabel"] for language in LANGUAGES},
-            "publishedAt": datetime.fromtimestamp(manifest_mtime, timezone.utc).date().isoformat(),
-            "changes": {language: BOOK_ACTIONS[language]["initial"] for language in LANGUAGES},
-            "pdf": {},
+    validate_output(path, book_root)
+    if not isinstance(manifest.get("id"), str) or not manifest["id"]:
+        raise ValueError(f"Missing manifest ID: {book_root}")
+    existing = path.read_bytes().decode("utf-8") if path.exists() else None
+    if existing is not None:
+        try:
+            payload = json.loads(existing)
+        except json.JSONDecodeError as error:
+            raise ValueError(f"Malformed existing edition history: {path}") from error
+        validate_history(payload, manifest, book_root)
+    else:
+        manifest_path = book_root / "manifest.json"
+        manifest_mtime = manifest_path.stat().st_mtime if manifest_path.is_file() else time.time()
+        payload = {
+            "schemaVersion": 1,
+            "bookId": manifest["id"],
+            "currentEdition": "edition-1",
+            "editions": [{
+                "id": "edition-1", "number": 1,
+                "label": {language: BOOK_ACTIONS[language]["editionLabel"] for language in LANGUAGES},
+                "publishedAt": datetime.fromtimestamp(manifest_mtime, timezone.utc).date().isoformat(),
+                "changes": {language: BOOK_ACTIONS[language]["initial"] for language in LANGUAGES},
+                "pdf": {},
+            }],
         }
-        records.append(current)
+    before = json.dumps(payload, ensure_ascii=False)
+    current = next(entry for entry in payload["editions"] if entry["id"] == payload["currentEdition"])
     current.setdefault("pdf", {})
-    for language, edition in manifest.get("editions", {}).items():
+    editions = manifest.get("editions", {})
+    if not isinstance(editions, dict):
+        raise ValueError(f"Missing manifest editions: {book_root}")
+    for language, edition in editions.items():
         if isinstance(edition, dict) and edition.get("pdf") and language not in current["pdf"]:
+            relative_asset(edition["pdf"], book_root)
             current["pdf"][language] = edition["pdf"]
-    payload.update({
-        "schemaVersion": 1,
-        "bookId": manifest.get("id"),
-        "currentEdition": current_id,
-        "editions": records,
-    })
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    content = (existing if existing is not None and before == json.dumps(payload, ensure_ascii=False)
+               else json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+    return {"path": path, "content": content, "kind": "editions", "changed": existing != content}
+
+
+def write_output(output: dict[str, object]) -> None:
+    """Replace only a changed generated file, without modifying linked originals."""
+    if not output["changed"]:
+        return
+    path = output["path"]
+    temporary = path.with_name(f"{path.name}.tmp-{uuid.uuid4().hex}")
+    created = False
+    try:
+        with temporary.open("xb") as stream:
+            created = True
+            stream.write(output["content"].encode("utf-8"))
+        temporary.replace(path)
+    finally:
+        if created and temporary.exists():
+            temporary.unlink()
+
+
+def ensure_editions_file(book_root: Path, manifest: dict[str, object]) -> dict[str, object]:
+    """Create or gently extend durable history without rewriting archived records."""
+    output = prepare_editions_file(book_root, manifest)
+    write_output(output)
+    return output
 
 
 def reader_href(book: dict[str, object], language: str, page_path: Path, format_name: str) -> str:
@@ -768,6 +852,7 @@ def book_page(
     css = relpath(DOCS / "assets" / "site.css", page_dir)
     collection_script = relpath(COLLECTION_SCRIPT, page_dir)
     site_script = relpath(DOCS / "assets" / "site.js", page_dir)
+    auth_script = relpath(DOCS / "assets" / "auth.js", page_dir)
     create_page = relpath(DOCS / "create" / "index.html", page_dir)
     feedback_page = relpath(DOCS / "feedback" / "index.html", page_dir)
     editions_page = relpath(DOCS / "editions" / "index.html", page_dir)
@@ -781,9 +866,9 @@ def book_page(
     if "fullContent" in edition:
         actions.append(f'<a class="button button-quiet" href="{html.escape(reader_href(book, language, page_path, "read"), quote=True)}">{html.escape(words["read"])}</a>')
     if "pdf" in edition:
-        actions.append(f'<a class="button button-quiet" href="book.pdf">{html.escape(words["download"])}</a>')
+        actions.append(f'<a class="button button-quiet" href="book.pdf" data-auth-action="download">{html.escape(words["download"])}</a>')
     workflow_query = urlencode({"book": str(book["directory"]), "lang": language})
-    actions.append(f'<a class="button" href="{html.escape(f"{feedback_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["feedback"])}</a>')
+    actions.append(f'<a class="button" href="{html.escape(f"{feedback_page}?{workflow_query}", quote=True)}" data-auth-action="feedback">{html.escape(BOOK_ACTIONS[language]["feedback"])}</a>')
     actions.append(f'<a class="button button-quiet" href="{html.escape(f"{editions_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["editions"])}</a>')
     availability = "" if has_content else f'<p class="edition-unavailable">{html.escape(words["unavailable"].format(language=LANGUAGES[language]))}</p>'
     keyword_entries = []
@@ -823,6 +908,7 @@ def book_page(
   <meta property="og:description" content="{html.escape(description, quote=True)}">
   <meta property="og:image" content="cover.webp">
   <link rel="stylesheet" href="{html.escape(css)}">
+  <script defer src="{html.escape(auth_script)}?v=20260908-1"></script>
 </head>
 <body data-book-page="true" data-book-language="{language}">
   <main class="site-shell book-page">
@@ -938,28 +1024,76 @@ def build(source_root: Path) -> dict[str, object]:
     return {"books": len(manifests), "moved": moved, "keywords": sum(len(values) for values in collection["keywords"].values())}
 
 
-def refresh_pages() -> dict[str, int]:
-    """Recreate generated catalogue pages from already-migrated manifests."""
+def plan_refresh() -> dict[str, object]:
+    """Validate all inputs and outputs before replacing any generated files."""
+    if (DOCS / "keywords").exists() or (DOCS / "keywords").is_symlink():
+        raise ValueError("Legacy docs/keywords exists; refresh will not delete it. Discovery must use the catalogue filter.")
+    docs_root = DOCS.resolve(strict=True)
+    books_root = BOOKS.resolve(strict=True)
+    if not books_root.is_relative_to(docs_root):
+        raise ValueError("Book directory escapes the documentation root")
     collection = json.loads(COLLECTION.read_text(encoding="utf-8"))
+    if not isinstance(collection, dict) or not isinstance(collection.get("books"), list):
+        raise ValueError("Collection books must be an array")
+    keyword_stats = {}
+    collection_keywords = collection.get("keywords", {})
+    for language in LANGUAGES:
+        keywords = collection_keywords.get(language) if isinstance(collection_keywords, dict) else None
+        if not isinstance(keywords, list):
+            raise ValueError(f"Collection is missing {language} keywords")
+        stats = {}
+        for keyword in keywords:
+            if (not isinstance(keyword, dict) or not isinstance(keyword.get("id"), str)
+                    or not keyword["id"] or keyword["id"] in stats
+                    or type(keyword.get("count")) is not int or keyword["count"] < 0):
+                raise ValueError(f"Collection has invalid {language} keywords")
+            stats[keyword["id"]] = {"count": keyword["count"]}
+        keyword_stats[language] = stats
+    directories = set()
+    files = []
     for listing in collection["books"]:
-        root = DOCS / listing["directory"]
+        directory = listing.get("directory") if isinstance(listing, dict) else None
+        if (not isinstance(directory, str) or not directory.startswith("books/")
+                or "\\" in directory or any(part in ("", ".", "..") for part in directory.split("/"))):
+            raise ValueError(f"Unsafe book directory: {directory}")
+        root = DOCS / directory
+        actual_root = root.resolve(strict=True)
+        if not actual_root.is_relative_to(books_root) or actual_root == books_root or actual_root in directories:
+            raise ValueError(f"Unsafe or duplicate book directory: {directory}")
+        directories.add(actual_root)
+        relative_asset("manifest.json", root)
         manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
-        ensure_editions_file(root, manifest)
-        keyword_stats = {
-            language: {keyword["id"]: {"count": keyword["count"]} for keyword in collection["keywords"][language]}
-            for language in LANGUAGES
-        }
-        page_book = {**manifest, "directory": listing["directory"], "descriptions": manifest["shortDescription"], "keywordStats": keyword_stats}
+        if not isinstance(manifest, dict) or manifest.get("id") != listing.get("id"):
+            raise ValueError(f"Manifest ID does not match collection: {directory}")
+        files.append(prepare_editions_file(root, manifest))
+        page_book = {**manifest, "directory": directory, "descriptions": manifest["shortDescription"], "keywordStats": keyword_stats}
         for language in LANGUAGES:
-            edition = manifest["editions"][language]
+            for field in ("title", "subtitle", "shortDescription"):
+                localized = manifest.get(field)
+                if not isinstance(localized, dict) or not isinstance(localized.get(language), str):
+                    raise ValueError(f"{manifest['id']}: missing {field}.{language}")
+            edition = manifest.get("editions", {}).get(language)
+            if not isinstance(edition, dict):
+                raise ValueError(f"{manifest['id']}: missing {language} edition")
+            for value in edition.values():
+                relative_asset(value, root)
             has_content = "fullContent" in edition or "shortContent" in edition
             page = root / language / "book.html"
-            page.write_text(book_page(page_book, language, page, has_content), encoding="utf-8")
-    # Discovery is rendered from collection data in the browser. Remove pages
-    # produced by older builds so per-keyword routes cannot return by accident.
-    if (DOCS / "keywords").exists():
-        shutil.rmtree(DOCS / "keywords")
-    return {"books": len(collection["books"])}
+            validate_output(page, root)
+            content = book_page(page_book, language, page, has_content)
+            existing = page.read_bytes() if page.exists() else None
+            files.append({"path": page, "content": content, "kind": "page", "changed": content.encode("utf-8") != existing})
+    return {"books": len(collection["books"]), "pages": len(collection["books"]) * len(LANGUAGES), "files": files}
+
+
+def refresh_pages(*, write: bool = True) -> dict[str, int]:
+    """Recreate pages from existing manifests; never touch canonical readers."""
+    plan = plan_refresh()
+    if write:
+        for output in plan["files"]:
+            write_output(output)
+    return {"books": plan["books"], "pages": plan["pages"],
+            "changedFiles": sum(output["changed"] for output in plan["files"])}
 
 
 def rebuild_collection_from_manifests() -> dict[str, object]:
@@ -1462,108 +1596,187 @@ def make_collection(manifests: list[dict[str, object]]) -> dict[str, object]:
     }
 
 
+def local_file(root: Path, relative: object) -> bool:
+    """Check lexical and real filesystem boundaries before accepting an asset."""
+    try:
+        return relative_asset(relative, root).is_file()
+    except (OSError, ValueError, RuntimeError):
+        return False
+
+
+def mapping(value: object) -> dict:
+    return value if isinstance(value, dict) else {}
+
+
 def check() -> list[str]:
+    """Validate catalogue records and local assets without changing any files."""
     problems = []
     if not COLLECTION.is_file():
-        return [f"missing {COLLECTION.relative_to(ROOT)}"]
-    collection = json.loads(COLLECTION.read_text(encoding="utf-8"))
-    if collection.get("bookCount") != len(collection.get("books", [])):
+        return ["missing docs/collection.json"]
+    try:
+        collection = json.loads(COLLECTION.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        return ["invalid docs/collection.json"]
+    if not isinstance(collection, dict) or not isinstance(collection.get("books"), list):
+        return ["collection books must be an array"]
+    books = collection["books"]
+    if collection.get("bookCount") != len(books):
         problems.append("collection bookCount does not match books")
-    book_keyword_counts = Counter(
-        identifier
-        for book in collection.get("books", [])
-        for identifier in book.get("keywordIds", [])
-    )
-    keyword_id_sets: dict[str, set[str]] = {}
+    book_keyword_counts = Counter()
+    for book in books:
+        identifiers = mapping(book).get("keywordIds")
+        if not isinstance(identifiers, list) or any(not isinstance(value, str) for value in identifiers):
+            problems.append(f"{mapping(book).get('id', '(no ID)')}: malformed collection keyword IDs")
+            continue
+        book_keyword_counts.update(identifiers)
+    keyword_id_sets = {}
     for language in LANGUAGES:
-        keyword_entries = collection.get("keywords", {}).get(language, [])
-        keyword_ids = [str(entry.get("id", "")) for entry in keyword_entries]
-        keyword_id_sets[language] = set(keyword_ids)
-        if len(keyword_ids) != len(keyword_id_sets[language]):
-            problems.append(f"{language}: duplicate keyword IDs in collection")
-        for entry in keyword_entries:
-            identifier = str(entry.get("id", ""))
-            if int(entry.get("count", 0)) != book_keyword_counts[identifier]:
+        entries = mapping(collection.get("keywords")).get(language)
+        if not isinstance(entries, list):
+            problems.append(f"{language}: missing collection keywords")
+            keyword_id_sets[language] = set()
+            continue
+        identifiers = []
+        for entry in entries:
+            if not isinstance(entry, dict) or not isinstance(entry.get("id"), str) or not entry["id"]:
+                problems.append(f"{language}: malformed collection keyword entry")
+                continue
+            identifier = entry["id"]
+            identifiers.append(identifier)
+            if type(entry.get("count")) is not int or entry["count"] != book_keyword_counts[identifier]:
                 problems.append(f"{language}: keyword count mismatch for {identifier}")
-    english_keyword_ids = keyword_id_sets.get("en", set())
+        keyword_id_sets[language] = set(identifiers)
+        if len(identifiers) != len(keyword_id_sets[language]):
+            problems.append(f"{language}: duplicate keyword IDs in collection")
+    english_keyword_ids = keyword_id_sets["en"]
     for language, identifiers in keyword_id_sets.items():
         if identifiers != english_keyword_ids:
             problems.append(f"{language}: keyword IDs do not match the language-independent English set")
-    for book in collection.get("books", []):
-        root = DOCS / book["directory"]
-        manifest_path = root / "manifest.json"
-        if not manifest_path.is_file():
-            problems.append(f"missing manifest: {manifest_path.relative_to(ROOT)}")
+    listed_manifests = set()
+    book_ids = set()
+    for book in books:
+        book = mapping(book)
+        directory = book.get("directory")
+        if (not isinstance(directory, str) or not directory.startswith("books/")
+                or not local_file(DOCS, f"{directory}/manifest.json")):
+            problems.append(f"missing or unsafe manifest: {directory}/manifest.json")
             continue
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        editions_path = root / "editions.json"
-        if not editions_path.is_file():
-            problems.append(f"{book['id']}: missing editions.json")
+        root = DOCS / directory
+        manifest_path = root / "manifest.json"
+        listed_manifests.add(manifest_path.resolve())
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            if not isinstance(manifest, dict):
+                raise ValueError("manifest must be an object")
+        except (ValueError, OSError):
+            problems.append(f"{book.get('id')}: invalid manifest.json")
+            continue
+        identifier = book.get("id")
+        if not isinstance(identifier, str) or not identifier:
+            problems.append("missing or invalid book ID in collection")
+            identifier = "(no ID)"
+        if identifier in book_ids:
+            problems.append(f"{identifier}: duplicate book ID in collection")
+        book_ids.add(identifier)
+        if manifest.get("id") != book.get("id"):
+            problems.append(f"{identifier}: manifest ID mismatch")
+        expected_route = list(title_route(str(mapping(manifest.get("title")).get("en", ""))))
+        if manifest.get("route") != expected_route:
+            problems.append(f"{identifier}: route does not match English title words")
+        expected_directory = Path("books").joinpath(*expected_route, str(manifest.get("id", ""))).as_posix()
+        if directory != expected_directory:
+            problems.append(f"{identifier}: directory does not match title route and random ID")
+        if not local_file(root, "editions.json"):
+            problems.append(f"{identifier}: missing or unsafe editions.json")
         else:
             try:
-                history = json.loads(editions_path.read_text(encoding="utf-8"))
-                history_records = history.get("editions", [])
-                history_ids = {entry.get("id") for entry in history_records if isinstance(entry, dict)}
+                history = json.loads((root / "editions.json").read_text(encoding="utf-8"))
+                if not isinstance(history, dict) or not isinstance(history.get("editions"), list):
+                    raise ValueError("history must contain edition records")
                 if history.get("bookId") != book.get("id"):
-                    problems.append(f"{book['id']}: editions.json bookId mismatch")
-                if history.get("currentEdition") not in history_ids:
-                    problems.append(f"{book['id']}: editions.json current edition is missing")
-                for history_entry in history_records:
-                    if not isinstance(history_entry, dict) or not history_entry.get("publishedAt") or not isinstance(history_entry.get("changes"), dict):
-                        problems.append(f"{book['id']}: malformed edition history entry")
+                    problems.append(f"{identifier}: editions.json bookId mismatch")
+                if not any(isinstance(entry, dict) and entry.get("id") == history.get("currentEdition")
+                           for entry in history["editions"]):
+                    problems.append(f"{identifier}: editions.json current edition is missing")
+                for entry in history["editions"]:
+                    if (not isinstance(entry, dict) or not entry.get("publishedAt")
+                            or not isinstance(entry.get("changes"), dict) or not isinstance(entry.get("pdf", {}), dict)):
+                        problems.append(f"{identifier}: malformed edition history entry")
                         continue
-                    for pdf_path in history_entry.get("pdf", {}).values():
-                        target = (root / str(pdf_path)).resolve()
-                        if root.resolve() not in target.parents or not target.is_file():
-                            problems.append(f"{book['id']}: missing or unsafe historical PDF: {pdf_path}")
-            except (json.JSONDecodeError, OSError):
-                problems.append(f"{book['id']}: invalid editions.json")
-        expected_route = list(title_route(str(manifest.get("title", {}).get("en", ""))))
-        if manifest.get("route") != expected_route:
-            problems.append(f"{book['id']}: route does not match English title words")
-        expected_directory = (Path("books").joinpath(*expected_route, str(manifest.get("id", "")))).as_posix()
-        if book.get("directory") != expected_directory:
-            problems.append(f"{book['id']}: directory does not match title route and random ID")
-        identifiers = manifest.get("keywordIds", [])
+                    for pdf_path in entry.get("pdf", {}).values():
+                        if not local_file(root, pdf_path):
+                            problems.append(f"{identifier}: missing or unsafe historical PDF: {pdf_path}")
+            except (ValueError, OSError):
+                problems.append(f"{identifier}: invalid editions.json")
+        identifiers = manifest.get("keywordIds")
+        if not isinstance(identifiers, list) or any(not isinstance(value, str) for value in identifiers):
+            identifiers = []
         if len(identifiers) != 100 or len(set(identifiers)) != 100:
-            problems.append(f"{book['id']}: expected 100 distinct keyword IDs, got {len(identifiers)}")
+            problems.append(f"{identifier}: expected 100 distinct keyword IDs, got {len(identifiers)}")
         missing_keyword_ids = set(identifiers) - english_keyword_ids
         if missing_keyword_ids:
-            problems.append(f"{book['id']}: keyword IDs missing from collection: {', '.join(sorted(missing_keyword_ids))}")
+            problems.append(f"{identifier}: keyword IDs missing from collection: {', '.join(sorted(missing_keyword_ids))}")
+        if book.get("keywordIds") != identifiers:
+            problems.append(f"{identifier}: collection keyword IDs differ from manifest")
         for language in LANGUAGES:
-            keywords = manifest.get("keywords", {}).get(language, [])
-            normalized_keywords = [keyword_normalise(str(keyword)) for keyword in keywords]
-            if len(keywords) != 100 or len(set(normalized_keywords)) != 100:
-                problems.append(f"{book['id']} {language}: expected 100 distinct keywords, got {len(keywords)}")
-            if keyword_normalise(str(manifest.get("title", {}).get(language, ""))) in normalized_keywords:
-                problems.append(f"{book['id']} {language}: book title used as a keyword")
+            keywords = mapping(manifest.get("keywords")).get(language)
+            keywords = keywords if isinstance(keywords, list) else []
+            normalized = [keyword_normalise(str(keyword)) for keyword in keywords]
+            if len(keywords) != 100 or len(set(normalized)) != 100:
+                problems.append(f"{identifier} {language}: expected 100 distinct keywords, got {len(keywords)}")
+            if keyword_normalise(str(mapping(manifest.get("title")).get(language, ""))) in normalized:
+                problems.append(f"{identifier} {language}: book title used as a keyword")
             for required in ("title", "subtitle", "shortDescription", "coverUrl"):
-                if language not in manifest.get(required, {}):
-                    problems.append(f"{book['id']} {language}: missing {required}")
-            book_page_path = root / language / "book.html"
-            if not book_page_path.is_file():
-                problems.append(f"{book['id']} {language}: missing book page")
+                if language not in mapping(manifest.get(required)):
+                    problems.append(f"{identifier} {language}: missing {required}")
+            if not local_file(root, f"{language}/book.html"):
+                problems.append(f"{identifier} {language}: missing or unsafe book page")
             else:
-                page_keyword_ids = [
-                    unquote(match)
-                    for match in re.findall(r"(?:&|&amp;)keyword=([^\"&<\s]+)", book_page_path.read_text(encoding="utf-8"))
-                ]
+                page_keyword_ids = [unquote(match) for match in re.findall(
+                    r'(?:&|&amp;)keyword=([^"&<\s]+)',
+                    (root / language / "book.html").read_text(encoding="utf-8"))]
                 if len(page_keyword_ids) != len(identifiers) or set(page_keyword_ids) != set(identifiers):
-                    problems.append(f"{book['id']} {language}: book-page keyword links do not match the manifest")
-        for language, edition in book.get("editions", {}).items():
-            for path in edition.values():
-                if not (DOCS / path).is_file():
-                    problems.append(f"missing edition asset: {path}")
-    if (DOCS / "keywords").exists():
+                    problems.append(f"{identifier} {language}: book-page keyword links do not match the manifest")
+        editions = book.get("editions")
+        if not isinstance(editions, dict):
+            problems.append(f"{identifier}: malformed collection editions")
+            continue
+        for edition in editions.values():
+            if not isinstance(edition, dict):
+                problems.append(f"{identifier}: malformed collection edition")
+                continue
+            for asset in edition.values():
+                if not local_file(DOCS, asset):
+                    problems.append(f"missing or unsafe edition asset: {asset}")
+    if BOOKS.resolve().is_relative_to(DOCS.resolve()):
+        for directory, _, filenames in os.walk(BOOKS, followlinks=False):
+            manifest_path = Path(directory) / "manifest.json"
+            if "manifest.json" in filenames and manifest_path.resolve() not in listed_manifests:
+                problems.append(f"manifest missing from collection: {manifest_path.relative_to(DOCS).as_posix()}")
+    else:
+        problems.append("Book directory escapes the documentation root")
+    if (DOCS / "keywords").exists() or (DOCS / "keywords").is_symlink():
         problems.append("legacy per-keyword pages exist; discovery must use the client-side catalogue filter")
     return problems
 
 
 def main(argv: list[str] | None = None) -> int:
+    global DOCS, BOOKS, COLLECTION, COLLECTION_SCRIPT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("build", "reorganize-routes", "rebuild-keywords", "refresh-covers", "enrich", "recover", "recover-editorial-descriptions", "rebrand", "retire-source", "repair-reader-links", "refresh", "check"))
     parser.add_argument("--source", type=Path, default=ROOT / "old_content", help="legacy source root")
+    parser.add_argument("--docs", type=Path, help="documentation root for refresh or check")
+    parser.add_argument("--dry-run", action="store_true", help="validate and preview refresh without writing files")
     args = parser.parse_args(argv)
+    if args.docs is not None:
+        if args.command not in ("refresh", "check"):
+            parser.error("--docs is only supported by refresh and check")
+        DOCS = args.docs.resolve()
+        BOOKS = DOCS / "books"
+        COLLECTION = DOCS / "collection.json"
+        COLLECTION_SCRIPT = DOCS / "collection.js"
+    if args.dry_run and args.command != "refresh":
+        parser.error("--dry-run is only supported by refresh")
     if args.command == "build":
         result = build(args.source.resolve())
         problems = check()
@@ -1573,12 +1786,19 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Built {result['books']} books, moved {result['moved']} source entries, and indexed {result['keywords']} localised discovery terms.")
         return 0
     if args.command == "refresh":
-        result = refresh_pages()
+        try:
+            result = refresh_pages(write=not args.dry_run)
+        except (ValueError, OSError, KeyError, TypeError) as error:
+            print(f"Unable to refresh catalogue: {error}", file=sys.stderr)
+            return 1
+        if args.dry_run:
+            print(f"Would refresh {result['books']} book roots ({result['pages']} pages, {result['changedFiles']} changed files).")
+            return 0
         problems = check()
         if problems:
             print("\n".join(problems), file=sys.stderr)
             return 1
-        print(f"Refreshed {result['books']} book roots; keyword discovery remains client-side.")
+        print(f"Refreshed {result['books']} book roots ({result['pages']} pages, {result['changedFiles']} changed files); keyword discovery remains client-side.")
         return 0
     if args.command == "refresh-covers":
         changed = refresh_display_covers()
