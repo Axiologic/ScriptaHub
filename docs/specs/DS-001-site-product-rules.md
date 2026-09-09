@@ -21,7 +21,7 @@ Generated files are replaced from their sources. Do not patch generated book pag
 The site has these product surfaces:
 
 - `docs/index.html`: the library entrance, introduction, keyword cloud, featured book, and dynamic keyword results.
-- Localised `book.html` files: one book’s title, description, discovery cloud, reading actions, feedback action, edition history, and introduction.
+- Localised `book.html` files: one book’s title, description, discovery cloud, reading actions, feedback action, edition history, and an About Book presentation.
 - Canonical reader HTML: full and ten-minute reading modes, language selection, theme, text controls, and Read Aloud where supported.
 - `docs/librarian/`: question-specific recommendations and a separate recommendation-feedback page.
 - `docs/create/`, `docs/feedback/`, and `docs/editions/`: proposal, edition-feedback, and publication-history workflows.
@@ -62,6 +62,10 @@ Visitor-facing text describes personalised recommendations and how to ask a usef
 ## 7. Cards and actions
 
 Catalogue, keyword-filter, and Librarian result cards use the book thumbnail and one clear `View Book` action. `Read in 10 min` and `Read Online` appear only on the book page. Book pages keep `Suggest An Edit` as the visually primary editorial action and capitalise `Read Aloud` consistently.
+
+Every book page includes an `About Book` section (`Despre carte` in Romanian, with equivalents in all eight interface languages). This heading is independent of the `Read Online` action, which continues to open the full reader. The section contains an inviting, book-specific presentation grounded in the canonical English reader: its central question or story premise, what readers will encounter, and the reason to explore it. Keep it within one page of prose and a few minutes of reading: 2–4 paragraphs, 60–250 words in each language, on a readable line length. Avoid generic library slogans, copied publication notices, plot resolutions, or claims that a speculative proposal is established fact.
+
+Store the presentation as an `aboutBook` map of language codes to plain-text paragraph arrays in each book manifest. Author and localise this metadata separately from the short description and from full or ten-minute reader editions. The page generator must render those paragraphs directly, escape them as text, and never substitute a generic introduction. A new book needs this copy in all eight languages before publishing its landing pages; `refresh` rebuilds the aggregate and pages from manifests, and `check` validates the presentation's length, completeness, heading, and agreement with its source.
 
 On narrow screens, a result card begins with a two-cell action row: cover on the left and actions on the right; descriptive text follows below that row. Discovery keyword chips are hidden on mobile. In the featured book area, the description is line-clamped rather than allowed to push the actions outside the balanced cover-and-information layout.
 

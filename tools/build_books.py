@@ -144,15 +144,26 @@ TOPICS = {
     "pl": {"technology": "inteligentne i godne zaufania technologie", "science": "badania, dowody i systemy czyniące wiedzę użyteczną", "fiction": "spekulatywne przyszłości, ludzkie wybory i zmianę technologiczną", "philosophy": "podstawy, granice i warunki rozumowania", "business": "innowacje, organizacje i zmianę gospodarczą", "society": "instytucje, wolność, władzę i życie zbiorowe"},
 }
 
+ABOUT_BOOK_TITLES = {
+    "en": "About Book",
+    "fr": "À propos du livre",
+    "de": "Über das Buch",
+    "es": "Sobre el libro",
+    "pt": "Sobre o livro",
+    "it": "Il libro",
+    "ro": "Despre carte",
+    "pl": "O książce",
+}
+
 COPY = {
-    "en": {"home": "Library", "description": "{title} is an Axiologic Research book about {topic}, made for readers who want to examine an idea rather than merely consume a summary.", "presentation": "Start with the question it puts under pressure, then follow the argument, world, or method far enough to form your own response.", "read": "Read Online", "short": "Read in 10 Min", "download": "Download PDF", "unavailable": "This reading edition is not yet available in {language}.", "available": "Available in", "keywords": "Keywords", "keywordCloudNote": "Larger terms occur in more books across the library.", "back": "Back to library"},
-    "fr": {"home": "Bibliothèque", "description": "{title} est un livre d’Axiologic Research sur {topic}, conçu pour les lecteurs qui veulent examiner une idée plutôt que consommer un simple résumé.", "presentation": "Commencez par la question qu’il met sous tension, puis suivez l’argument, le monde ou la méthode assez loin pour former votre propre réponse.", "read": "Lire en ligne", "short": "Lire en 10 min", "download": "Télécharger le PDF", "unavailable": "Cette édition de lecture n’est pas encore disponible en {language}.", "available": "Disponible en", "keywords": "Mots-clés", "keywordCloudNote": "Les termes plus grands apparaissent dans davantage de livres de la bibliothèque.", "back": "Retour à la bibliothèque"},
-    "de": {"home": "Bibliothek", "description": "{title} ist ein Buch von Axiologic Research über {topic}, für Leserinnen und Leser, die eine Idee prüfen statt nur eine Zusammenfassung zu konsumieren.", "presentation": "Beginnen Sie mit der Frage, die es unter Druck setzt, und folgen Sie dann Argument, Welt oder Methode weit genug, um eine eigene Antwort zu bilden.", "read": "Online lesen", "short": "In 10 Min. lesen", "download": "PDF herunterladen", "unavailable": "Diese Leseausgabe ist noch nicht auf {language} verfügbar.", "available": "Verfügbar in", "keywords": "Schlagwörter", "keywordCloudNote": "Größere Begriffe kommen in mehr Büchern der Bibliothek vor.", "back": "Zur Bibliothek"},
-    "es": {"home": "Biblioteca", "description": "{title} es un libro de Axiologic Research sobre {topic}, pensado para lectores que quieren examinar una idea y no solo consumir un resumen.", "presentation": "Empieza por la pregunta que pone bajo presión y sigue el argumento, el mundo o el método lo suficiente para construir tu propia respuesta.", "read": "Leer en línea", "short": "Leer en 10 min", "download": "Descargar PDF", "unavailable": "Esta edición de lectura todavía no está disponible en {language}.", "available": "Disponible en", "keywords": "Palabras clave", "keywordCloudNote": "Los términos más grandes aparecen en más libros de la biblioteca.", "back": "Volver a la biblioteca"},
-    "pt": {"home": "Biblioteca", "description": "{title} é um livro da Axiologic Research sobre {topic}, feito para leitores que querem examinar uma ideia em vez de apenas consumir um resumo.", "presentation": "Comece pela pergunta que ele coloca sob pressão e siga o argumento, o mundo ou o método o suficiente para formar sua própria resposta.", "read": "Ler online", "short": "Ler em 10 min", "download": "Baixar PDF", "unavailable": "Esta edição de leitura ainda não está disponível em {language}.", "available": "Disponível em", "keywords": "Palavras-chave", "keywordCloudNote": "Termos maiores aparecem em mais livros da biblioteca.", "back": "Voltar à biblioteca"},
-    "it": {"home": "Biblioteca", "description": "{title} è un libro di Axiologic Research su {topic}, pensato per chi vuole esaminare un’idea anziché consumare solo un riassunto.", "presentation": "Parti dalla domanda che mette sotto pressione e segui argomento, mondo o metodo abbastanza a lungo da formare una tua risposta.", "read": "Leggi online", "short": "Leggi in 10 min", "download": "Scarica il PDF", "unavailable": "Questa edizione di lettura non è ancora disponibile in {language}.", "available": "Disponibile in", "keywords": "Parole chiave", "keywordCloudNote": "I termini più grandi compaiono in più libri della biblioteca.", "back": "Torna alla biblioteca"},
-    "ro": {"home": "Bibliotecă", "description": "{title} este o carte Axiologic Research despre {topic}, pentru cititori care vor să examineze o idee, nu doar să consume un rezumat.", "presentation": "Pornește de la întrebarea pe care o pune sub presiune și urmărește argumentul, lumea sau metoda suficient de departe încât să îți formezi propriul răspuns.", "read": "Citește online", "short": "Citește în 10 min", "download": "Descarcă PDF", "unavailable": "Această ediție de lectură nu este încă disponibilă în {language}.", "available": "Disponibil în", "keywords": "Cuvinte-cheie", "keywordCloudNote": "Termenii mai mari apar în mai multe cărți din bibliotecă.", "back": "Înapoi la bibliotecă"},
-    "pl": {"home": "Biblioteka", "description": "{title} to książka Axiologic Research o {topic}, dla czytelników, którzy chcą zbadać ideę, a nie tylko przeczytać streszczenie.", "presentation": "Zacznij od pytania, które wywiera presję, a potem podążaj za argumentem, światem lub metodą wystarczająco daleko, by wyrobić własną odpowiedź.", "read": "Czytaj online", "short": "Czytaj w 10 min", "download": "Pobierz PDF", "unavailable": "To wydanie do czytania nie jest jeszcze dostępne po {language}.", "available": "Dostępne w", "keywords": "Słowa kluczowe", "keywordCloudNote": "Większe terminy występują w większej liczbie książek w bibliotece.", "back": "Wróć do biblioteki"},
+    "en": {"home": "Library", "description": "{title} is an Axiologic Research book about {topic}, made for readers who want to examine an idea rather than merely consume a summary.", "read": "Read Online", "short": "Read in 10 Min", "download": "Download PDF", "unavailable": "This reading edition is not yet available in {language}.", "available": "Available in", "keywords": "Keywords", "keywordCloudNote": "Larger terms occur in more books across the library.", "back": "Back to library"},
+    "fr": {"home": "Bibliothèque", "description": "{title} est un livre d’Axiologic Research sur {topic}, conçu pour les lecteurs qui veulent examiner une idée plutôt que consommer un simple résumé.", "read": "Lire en ligne", "short": "Lire en 10 min", "download": "Télécharger le PDF", "unavailable": "Cette édition de lecture n’est pas encore disponible en {language}.", "available": "Disponible en", "keywords": "Mots-clés", "keywordCloudNote": "Les termes plus grands apparaissent dans davantage de livres de la bibliothèque.", "back": "Retour à la bibliothèque"},
+    "de": {"home": "Bibliothek", "description": "{title} ist ein Buch von Axiologic Research über {topic}, für Leserinnen und Leser, die eine Idee prüfen statt nur eine Zusammenfassung zu konsumieren.", "read": "Online lesen", "short": "In 10 Min. lesen", "download": "PDF herunterladen", "unavailable": "Diese Leseausgabe ist noch nicht auf {language} verfügbar.", "available": "Verfügbar in", "keywords": "Schlagwörter", "keywordCloudNote": "Größere Begriffe kommen in mehr Büchern der Bibliothek vor.", "back": "Zur Bibliothek"},
+    "es": {"home": "Biblioteca", "description": "{title} es un libro de Axiologic Research sobre {topic}, pensado para lectores que quieren examinar una idea y no solo consumir un resumen.", "read": "Leer en línea", "short": "Leer en 10 min", "download": "Descargar PDF", "unavailable": "Esta edición de lectura todavía no está disponible en {language}.", "available": "Disponible en", "keywords": "Palabras clave", "keywordCloudNote": "Los términos más grandes aparecen en más libros de la biblioteca.", "back": "Volver a la biblioteca"},
+    "pt": {"home": "Biblioteca", "description": "{title} é um livro da Axiologic Research sobre {topic}, feito para leitores que querem examinar uma ideia em vez de apenas consumir um resumo.", "read": "Ler online", "short": "Ler em 10 min", "download": "Baixar PDF", "unavailable": "Esta edição de leitura ainda não está disponível em {language}.", "available": "Disponível em", "keywords": "Palavras-chave", "keywordCloudNote": "Termos maiores aparecem em mais livros da biblioteca.", "back": "Voltar à biblioteca"},
+    "it": {"home": "Biblioteca", "description": "{title} è un libro di Axiologic Research su {topic}, pensato per chi vuole esaminare un’idea anziché consumare solo un riassunto.", "read": "Leggi online", "short": "Leggi in 10 min", "download": "Scarica il PDF", "unavailable": "Questa edizione di lettura non è ancora disponibile in {language}.", "available": "Disponibile in", "keywords": "Parole chiave", "keywordCloudNote": "I termini più grandi compaiono in più libri della biblioteca.", "back": "Torna alla biblioteca"},
+    "ro": {"home": "Bibliotecă", "description": "{title} este o carte Axiologic Research despre {topic}, pentru cititori care vor să examineze o idee, nu doar să consume un rezumat.", "read": "Citește online", "short": "Citește în 10 min", "download": "Descarcă PDF", "unavailable": "Această ediție de lectură nu este încă disponibilă în {language}.", "available": "Disponibil în", "keywords": "Cuvinte-cheie", "keywordCloudNote": "Termenii mai mari apar în mai multe cărți din bibliotecă.", "back": "Înapoi la bibliotecă"},
+    "pl": {"home": "Biblioteka", "description": "{title} to książka Axiologic Research o {topic}, dla czytelników, którzy chcą zbadać ideę, a nie tylko przeczytać streszczenie.", "read": "Czytaj online", "short": "Czytaj w 10 min", "download": "Pobierz PDF", "unavailable": "To wydanie do czytania nie jest jeszcze dostępne po {language}.", "available": "Dostępne w", "keywords": "Słowa kluczowe", "keywordCloudNote": "Większe terminy występują w większej liczbie książek w bibliotece.", "back": "Wróć do biblioteki"},
 }
 
 # Keep the compact book-page widget descriptive without stealing attention from
@@ -754,6 +765,27 @@ def reader_href(book: dict[str, object], language: str, page_path: Path, format_
     return f'{relpath(reader_directory / "index.html", page_path.parent)}?{urlencode(params)}'
 
 
+def about_book_section(book: dict[str, object], language: str) -> str:
+    """Render the authored landing-page copy; reader editions are separate."""
+    localized = book.get("aboutBook")
+    paragraphs = localized.get(language) if isinstance(localized, dict) else None
+    if (
+        not isinstance(paragraphs, list) or not 2 <= len(paragraphs) <= 4
+        or any(not isinstance(text, str) or not text.strip() for text in paragraphs)
+    ):
+        raise ValueError(f"{book['id']} {language}: aboutBook needs 2–4 authored paragraphs")
+    word_count = len(" ".join(paragraphs).split())
+    if not 60 <= word_count <= 250:
+        raise ValueError(f"{book['id']} {language}: aboutBook must contain 60–250 words, got {word_count}")
+    body = "".join(f"<p>{html.escape(text)}</p>" for text in paragraphs)
+    return (
+        '<section class="book-introduction" id="about-book" aria-labelledby="about-book-title">'
+        '<div><p class="eyebrow">ScriptaHub</p>'
+        f'<h2 id="about-book-title">{html.escape(ABOUT_BOOK_TITLES[language])}</h2>'
+        f'{body}</div></section>'
+    )
+
+
 def book_page(
     book: dict[str, object], language: str, page_path: Path, has_content: bool,
 ) -> str:
@@ -832,7 +864,7 @@ def book_page(
       <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead">{html.escape(description)}</p></div><div class="book-actions">{"".join(actions)}</div>{availability}</div>
       <aside class="book-keyword-widget" aria-label="{html.escape(words['keywords'], quote=True)}"><div class="keyword-cloud book-keyword-cloud" data-book-keyword-cloud></div></aside>
     </article>
-    <section class="book-introduction"><div><p class="eyebrow">ScriptaHub</p><h2>{html.escape(words["read"])}</h2><p>{html.escape(words["presentation"])}</p></div></section>{site_footer(page_dir, language)}
+    {about_book_section(book, language)}{site_footer(page_dir, language)}
   </main>
   <script src="{html.escape(cloud_script)}"></script><script>globalThis.ScriptaKeywordCloud.mount(document.querySelector('[data-book-keyword-cloud]'), {keyword_data}, {keyword_options});</script><script src="{html.escape(collection_script)}"></script><script src="{html.escape(site_script)}"></script>
 </body>
@@ -940,7 +972,7 @@ def build(source_root: Path) -> dict[str, object]:
 
 def refresh_pages() -> dict[str, int]:
     """Recreate generated catalogue pages from already-migrated manifests."""
-    collection = json.loads(COLLECTION.read_text(encoding="utf-8"))
+    collection = rebuild_collection_from_manifests()
     for listing in collection["books"]:
         root = DOCS / listing["directory"]
         manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
@@ -1544,9 +1576,16 @@ def check() -> list[str]:
             if not book_page_path.is_file():
                 problems.append(f"{book['id']} {language}: missing book page")
             else:
+                page_source = book_page_path.read_text(encoding="utf-8")
+                try:
+                    expected_about = about_book_section(manifest, language)
+                    if expected_about not in page_source:
+                        problems.append(f"{book['id']} {language}: book presentation differs from manifest; run refresh")
+                except ValueError as error:
+                    problems.append(str(error))
                 page_keyword_ids = [
                     unquote(match)
-                    for match in re.findall(r"(?:&|&amp;)keyword=([^\"&<\s]+)", book_page_path.read_text(encoding="utf-8"))
+                    for match in re.findall(r"(?:&|&amp;)keyword=([^\"&<\s]+)", page_source)
                 ]
                 if len(page_keyword_ids) != len(identifiers) or set(page_keyword_ids) != set(identifiers):
                     problems.append(f"{book['id']} {language}: book-page keyword links do not match the manifest")
