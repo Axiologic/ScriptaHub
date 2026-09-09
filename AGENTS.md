@@ -11,13 +11,15 @@
   Do not insert taxonomy, author, language, or arbitrary category folders into
   this route. Rebuild the aggregate instead of hand-editing it.
 - Use `npm run test:catalogue` after changing the catalogue and before hand-off.
-  The Python checker validates catalogue records and edition assets; the Python
+  The Node.js checker validates catalogue records and edition assets; the Node.js
   link auditor validates local HTML targets and fragment anchors without
-  contacting the web. `tools/build_books.py` owns book-page rendering,
+  contacting the web. `tools/build_books.mjs` owns book-page rendering,
   edition-history initialization, and the existing import/keyword/cover workflows.
-  Run `python3 -B tools/build_books.py refresh` after changing templates or
-  manifests. `npm test` runs the JavaScript browser tests and Python tool tests
-  and checks. Python commands use `-B` to avoid modifying tracked bytecode caches.
+  Run `node tools/build_books.mjs refresh` after changing templates or
+  manifests. `npm test` runs the browser-logic and native Node.js tool tests
+  and checks. Follow [DS001](docs/specs/DS001-coding-style.md): `.mjs`, Node.js
+  built-ins, explicit imports, and four-space indentation. Optional NLP and
+  ImageMagick requirements are recorded in [dependencies.md](dependencies.md).
 - Reader editions are canonical HTML files. For any repair or new translation,
   use the `book-reader-translations` skill and its chunk workflow. Do not
   translate PDFs and do not use an external translation service; PDFs remain
@@ -33,8 +35,8 @@
   Never hardcode niche terms, title profiles, or a global topic ontology in a
   build script. The other 90 terms must be extracted from the English short
   read, translated locally, and stored in the manifest. Never use the book
-  title or site-process/marketing labels. Install `tools/requirements-keywords.txt`,
-  then run `python3 tools/build_books.py rebuild-keywords`; its generated
+  title or site-process/marketing labels. Prepare the optional environment and local models using
+  `dependencies.md` and `tools/requirements-keywords.txt`, then run `node tools/build_books.mjs rebuild-keywords`; its generated
   translation cache makes subsequent runs incremental. Inspect representative
   samples after extraction, then run both catalogue and link checks.
 - Never generate one HTML page or directory per keyword. Keywords are catalogue
@@ -42,15 +44,15 @@
   `index.html?lang=<code>&keyword=<stable-keyword-id>`, and the catalogue is
   filtered in the browser from `collection.js`. `docs/keywords/` is a forbidden
   legacy output; `npm run test:catalogue` must fail if it exists.
-- `cover.png` is preserved source art. Run `python3 tools/build_books.py
+- `cover.png` is preserved source art. Run `node tools/build_books.mjs
   refresh-covers` after adding or changing an artwork; it generates the
   portrait `cover.webp` displayed on a book page. Catalogue cards use only
   `thumbnail.webp`, never the source canvas, so a wide PDF/export canvas
   cannot make a cover look like a small icon inside a white frame.
 - Public metadata is branded as ScriptaHub. If imported manifest metadata
-  contains a retired public brand, run `python3 tools/build_books.py rebrand`
-  before `refresh`; it updates manifests, `collection.json`, and generated
-  catalogue pages without touching reader-edition source files.
+  contains a retired public brand, run `node tools/build_books.mjs rebrand`
+  before `refresh`; it updates manifests, `collection.json`, generated catalogue pages, and
+  retired brand references in reader HTML. Review that diff before publishing.
 - The MVP is delivered as prebuilt assets with browser-side interactions. Keep
   delivery architecture such as “static”, “prebuilt”, “generated”, or “without
   a backend” out of public-facing copy. Search and discovery remain browser-side
@@ -62,7 +64,7 @@
   `edition-files/<edition-id>/<language>.pdf`, change that edition record to
   the archived path, and append a new edition with its publication date and a
   localised change log; never overwrite historical edition files. Run
-  `python3 -B tools/build_books.py refresh` to create the initial record for a new
+  `node tools/build_books.mjs refresh` to create the initial record for a new
   book and to expose the feedback and edition-history actions on `book.html`.
 - `docs/create/`, `docs/feedback/`, and `docs/editions/` are shared workflows
   rendered by `docs/assets/workflow.js` in all eight supported languages.

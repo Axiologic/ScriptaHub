@@ -1,20 +1,20 @@
 {
-  "name": "scriptahub-site",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "npm run build:auth && npm run build:books",
-    "build:auth": "node tools/build_auth.mjs",
-    "build:books": "python3 -B tools/build_books.py refresh",
-    "test": "npm run test:auth && npm run test:catalogue",
-    "test:auth": "node --test tests/auth*.test.mjs",
-    "test:catalogue": "python3 -B -m unittest discover -s tests -p test_catalogue_tools.py && python3 -B -m unittest discover -s tests -p test_internal_links.py && python3 -B tools/build_books.py check && python3 -B tools/audit_internal_links.py --check"
-  },
-  "devDependencies": {
-    "esbuild": "0.28.2",
-    "openid-client": "6.8.7"
-  },
-  "engines": {
-    "node": ">=22.12.0"
-  }
+    "name": "scriptahub-site",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "npm run build:auth && npm run build:books",
+        "build:auth": "node tools/build_auth.mjs",
+        "build:books": "node tools/build_books.mjs refresh",
+        "test": "npm run test:auth && npm run test:catalogue",
+        "test:auth": "node --test tests/auth*.test.mjs",
+        "test:catalogue": "node --test tests/book-*.test.mjs tests/catalogue.test.mjs tests/internal-links.test.mjs tests/legacy-maintenance.test.mjs tests/maintenance.test.mjs && node tools/build_books.mjs check && node tools/audit_internal_links.mjs --check"
+    },
+    "devDependencies": {
+        "esbuild": "0.28.2",
+        "openid-client": "6.8.7"
+    },
+    "engines": {
+        "node": ">=22.12.0"
+    }
 }

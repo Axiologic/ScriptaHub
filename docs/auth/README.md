@@ -76,8 +76,7 @@ API, and this release makes no such API available.
 ## Build and verify
 
 The browser bundle is checked in so GitHub Pages can serve it directly. Use
-Python 3.10 or newer for book generation and validation, and Node.js 22.12 or
-newer for the browser bundle. Edit `src/`, then regenerate the bundles; do not edit
+Node.js 22.12 or newer for book generation, validation, and the browser bundle. Edit `src/`, then regenerate the bundles; do not edit
 `docs/assets/auth*.js` by hand.
 
 ```sh
@@ -87,10 +86,11 @@ npm test
 ```
 
 Pinned browser dependencies and their licences are included by the build. Book
-page changes originate in `tools/build_books.py` and are emitted by
-`python3 -B tools/build_books.py refresh` (also available as `npm run build:books`).
-The generator, catalogue checker, link auditor, and their tests run in Python.
-The browser account flow and its tests remain JavaScript. Canonical reader HTML
+page changes originate in `tools/build_books.mjs` and are emitted by
+`node tools/build_books.mjs refresh` (also available as `npm run build:books`).
+The generator, catalogue checker, link auditor, and their tests use native
+Node.js modules. Optional keyword inference still uses a local Python worker;
+see [dependencies.md](../../dependencies.md). The browser account flow remains JavaScript. Canonical reader HTML
 and PDFs are preserved.
 
 Before publishing, test against the selected deployed issuer: anonymous reading,

@@ -12,7 +12,7 @@ Public copy explains what a visitor can accomplish, what action will occur, and 
 
 ## 2. Source of truth and generated output
 
-Each book manifest under `docs/books/<normalised-English-title-words>/<bk-random-id>/manifest.json` is the source record. `docs/collection.json` and `docs/collection.js` are aggregate indexes rebuilt from manifests. `tools/build_books.py` owns route migration, manifest aggregation, edition links and history, book-page rendering, cover derivatives, discovery metadata, and catalogue validation. `tools/audit_internal_links.py` validates local links and anchors. These tools and their regression tests use Python's standard library. The browser account flow remains JavaScript, with Node.js used to bundle and test it.
+Each book manifest under `docs/books/<normalised-English-title-words>/<bk-random-id>/manifest.json` is the source record. `docs/collection.json` and `docs/collection.js` are aggregate indexes rebuilt from manifests. `tools/build_books.mjs` owns route migration, manifest aggregation, edition links and history, book-page rendering, cover derivatives, discovery metadata, and catalogue validation. `tools/audit_internal_links.mjs` validates local links and anchors. These tools and their regression tests use native Node.js modules with four-space indentation. Only optional keyword extraction and local model inference use the Python worker in `tools/keywords/local_nlp.py`; cover conversion uses ImageMagick. See `dependencies.md` and `DS001-coding-style.md`. The browser account flow remains JavaScript.
 
 Generated files are replaced from their sources. Do not patch generated book pages or aggregate catalogue files to make a durable change; change the generator or manifest and rebuild. A catalogue refresh may run periodically. That cadence is an operational detail and must not appear in visitor-facing copy.
 
@@ -138,8 +138,8 @@ npm run build
 npm test
 ```
 
-`npm test` includes the browser account tests, Python tool tests, catalogue
-validation, and local-link audit. Also syntax-check changed JavaScript and Python,
+`npm test` includes the browser account tests, Node.js tool tests, catalogue
+validation, and local-link audit. Also syntax-check changed modules and the optional Python worker when edited,
 run `git diff --check`, and verify these invariants:
 
 - `docs/keywords/` does not exist.

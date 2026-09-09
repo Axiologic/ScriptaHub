@@ -1,56 +1,51 @@
 ---
 name: book-reader-translations
-description: Translate book-reader HTML directly in stable chunks and rebuild full and 10-minute editions, without creating translated PDFs or using an external translation service.
+description: Translate canonical book-reader HTML in reviewed chunks, preserving complete and short editions, assets, citations, and English source PDFs.
 ---
 
 # Book reader translations
 
-Use this skill when the website's inline book readers need to be translated or
-their multilingual coverage needs repair. Translate the chunk JSON directly as
-the agent; do not call an external translation service. The English reader
-edition is the canonical source; never translate PDFs or create non-English
-PDF editions.
+Use this skill for new translations or repairs to a book's reader HTML. The
+English reader is the canonical source. Translate text directly; do not call
+an external translation service, translate PDFs, or create non-English PDFs.
 
-Prepare a source reader as stable chunks from the repository root:
+Locate the book through `docs/collection.json`, then read its `manifest.json`
+under `docs/books/<title-words>/<bk-id>/`. Current readers live in each language's
+`full_content.html` and `short_content.html`; follow the manifest's edition paths.
+Treat complete and short readers as separate translation jobs.
 
-```bash
-python3 docs/content/tools/html_translation_chunks.py prepare \
-  docs/content/htmls/EN/EXPLAINABLE_AI.html --language RO \
-  --destination docs/content/htmls/RO/EXPLAINABLE_AI_RO.html \
-  --workdir docs/content/.translation-work/RO/EXPLAINABLE_AI/full
+Work in stable, ordered chunks of at most 700 words. Keep a review record with
+the source file, source hash, stable segment identifier, original text, and
+translation for every segment. Keep tags, identifiers, links, code, citations,
+assets, analytics, and reader scripts unchanged. Translate text nodes and
+reader-facing accessibility labels, preserving their association with the
+original elements. Do not publish a reader until all segments are filled and
+reviewed against the source. Keep incomplete work outside published `docs/`.
+
+The old `docs/content/tools/` chunk executables are absent from this checkout.
+There is no automatic prepare/assemble command here. Do not invoke those retired
+paths or assume the catalogue generator translates reader text. For manual
+assembly, check segment order and count, inspect the resulting DOM and links,
+and compare every non-text attribute and embedded script against the source.
+
+Write completed HTML under the selected book and language, set the HTML language,
+and use relative asset paths that resolve from that location. A translated
+reader must not claim that its download is a translated PDF. Preserve access to
+the English source PDF and existing account gates. Update only the affected
+manifest's edition paths and `availableLanguages`; preserve other metadata and
+edition history. Existing readers require an explicit repair or replacement
+request before being overwritten.
+
+After manifest edits, rebuild the aggregate and pages from the repository root:
+
+```sh
+node --input-type=module -e "import { rebuildCollectionFromManifests, refreshPages } from './tools/build_books.mjs'; rebuildCollectionFromManifests(); refreshPages();"
+node tools/build_books.mjs check
+node tools/audit_internal_links.mjs --check
+npm run test:catalogue
 ```
 
-Each `chunks/*.json` file has ordered `source` strings. Translate each one to
-its `translation` string, retaining names, identifiers, URLs, code, and
-citations exactly where they belong. Then rebuild only when every segment is
-filled:
-
-```bash
-python3 docs/content/tools/html_translation_chunks.py check \
-  docs/content/.translation-work/RO/EXPLAINABLE_AI/full
-python3 docs/content/tools/html_translation_chunks.py assemble \
-  docs/content/.translation-work/RO/EXPLAINABLE_AI/full
-python3 docs/content/tools/content_index.py build
-```
-
-To queue all still-missing files for a language group, use:
-
-```bash
-python3 docs/content/tools/html_translation_chunks.py prepare-missing \
-  --language RO --language PL --maximum-words 700
-```
-
-Prepare and assemble both the complete reader in `docs/content/htmls/<LANG>/`
-and the 10-minute reader in `docs/content/10minutes/<LANG>/`. The tool leaves
-tags, assets, analytics, citations, and reader code untouched; it removes the
-English PDF conversion notice and source download link before chunking.
-
-Before publishing, run:
-
-```bash
-python3 docs/content/tools/translate_books.py check
-python3 docs/content/tools/content_index.py check
-```
-
-For a partial repair, pass one or more `--book BOOK_ID` values. Existing files
-are left untouched unless `--force` is explicitly requested.
+Open both reader editions in a browser and inspect headings, paragraph order,
+citations, assets, language selection, and reading/download actions. Automated
+catalogue checks establish structure and links, not translation completeness or
+linguistic quality. See [dependencies.md](dependencies.md) for prerequisites.
