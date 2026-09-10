@@ -1,0 +1,13 @@
+# Outfinite Mathematics — narrated book introduction
+
+Preview built from the canonical English reader associated with catalogue `edition-1`. The complete reader is preserved in `source/source.txt`, with original HTML hash, semantic section offsets, chapter map, and exact source spans. The film invites reading through why the book exists, selected substantive distinctions, and a specific starting chapter.
+
+Duration: **11:56.480**. Twelve scenes, 96 English sentences; each narration clip and subtitle card contains exactly one sentence. Measured narration and 1.55-second sentence gaps determine the timeline, with longer scene transitions. Voice is the existing local Piper `en_US-ljspeech-medium`; no browser speech, API key, or audible automated playback is used.
+
+Art direction: Indigo and violet semantic laboratory; one expression becomes distinct typed results, traces expose a frontier, claims carry bridges. Bundled Red Hat Display and Red Hat Text preserve the shared presentation typography. No copied book-player runtime or shell is installed in the book directory.
+
+Editable files: `work/scenes.json`, `work/editorial.json`, `work/chapter-map.json`, `work/art.mjs`, `work/production.json`, `work/film.direction.json`, voice tasks and hashed receipts. Regenerate artwork with `node presentations/outfinite-mathematics/work/art.mjs`, narration only when wording changes with `node presentations/outfinite-mathematics/render_voice.mjs`, and publish with `node presentations/outfinite-mathematics/build.mjs`. Portable HTML and VTT are in the ignored `exports/` folder; the public book's `Animation/` contains the SHF and the site's generated entry page.
+
+QA: structural source-span validation, one-sentence and word-length checks, actual audio timing, stale-text receipt checks, all 96 audio clips decoded using OfflineAudioContext, 108 sampled frames across Color/Light/Dark, captions and transport at widths 1200/720/540/393/320, and deterministic A–B–A seeking passed. First, middle and last frame contact sheets were visually inspected in all three themes; important labels and artwork remain separate from subtitles. The final source scope and limitations are recorded in `qa/source-review.json`.
+
+The canonical source was extracted in full; review surveyed all chapters and examined the selected-claim sections. This does not certify every sentence or cited source in the original book. Scientific and economic proposals retain their source status. Complete listening review, full-duration user playback and physical-phone testing remain pending; this is a narrated preview, not a claim of audience validation. Automated QA did not open an audible output device.

@@ -1,0 +1,25 @@
+import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';
+const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));
+const A='#4e647f',AN='#a8c5e4',B='#b56038',BN='#efab87';
+for(const [i,s] of scenes.entries()){
+ const q=stageAuthor(),{n,tint,path,text,dot,object,add,reveal,hide,move,label,link}=q;
+ const aperture=(id,x,y,rad=105)=>add(object(id,x,y,[tint(path(`M${-rad} 45V${-rad}H45 M${rad} -45V${rad}H-45`,A,20),AN)],'Open brackets represent the selected boundary of a model.'));
+ const point=(id,x,y,color=A,night=AN,r=22)=>add(object(id,x,y,[tint(dot(0,0,r,color),night)],'A selected consideration, not numerical data.'));
+ switch(i){
+ case 0:aperture('frame',420,280);point('metric',420,280);point('care',880,280,B,BN,39);label('a','Measured result',420,450);label('b','Uncounted care',880,450);move('care',4,820,280);reveal('care',3);break;
+ case 1:aperture('frame',640,290,142);for(let j=0;j<5;j++)point('item'+j,450+j*85,265+(j%2)*65,j<3?A:B,j<3?AN:BN);label('selection','A purpose selects what counts',600,505,36);reveal('selection',6);break;
+ case 2:for(let j=0;j<3;j++){const x=250+j*350;aperture('frame'+j,x,265,62);label('name'+j,['Survival','Care','Priorities'][j],x,410,30);reveal('frame'+j,j+2);}label('judgment','Different concerns need judgment',600,515,34);reveal('judgment',6);break;
+ case 3:point('act',340,280,A,AN,56);aperture('review',850,280,90);label('a','Act',340,440,42);label('b','Review',850,440,42);link('route','act','review',5,'An action remains subject to later review.');break;
+ case 4:for(let j=0;j<6;j++){point('step'+j,200+j*155,285,j<4?A:B,j<4?AN:BN,j<4?23:13);if(j>0)reveal('step'+j,Math.min(7,j+1));}label('finite','Realized steps',420,420,34);label('open','Possible continuation',860,485,30);reveal('open',3);break;
+ case 5:add(object('model',320,275,[tint(n('circle',{cx:0,cy:0,r:85,fill:'none',stroke:A,'stroke-width':10}),AN),tint(dot(-35,-22,20,A),AN),tint(dot(35,22,20,A),AN)],'A schematic representation of a molecule, not evidence of observation.'));add(object('observed',880,275,[tint(dot(-35,-22,24,B),BN),tint(dot(35,22,24,B),BN),tint(path('M-14 -10L14 10',B,12),BN)],'A contrasting icon for physical observation.'));label('a','Simulation',320,450);label('b','Observation',880,450);label('neq','≠',600,295,65);reveal('neq',4);break;
+ case 6:aperture('model',300,280);add(object('passport',840,270,[tint(n('rect',{x:-140,y:-95,width:280,height:210,rx:8,fill:A}),AN),tint(text('Domain',0,-34,30,'#fff'),'#202b39'),tint(text('Assumptions',0,14,30,'#fff'),'#202b39'),tint(text('Authority',0,62,30,'#fff'),'#202b39')],'Model-limit record, with three selected fields.'));q.objects.at(-1).visual.anchors.left=[-140,0];link('carry','model','passport',3,'A model carries its conditions of use.');break;
+ case 7:aperture('a',300,285,90);aperture('b',890,285,90);point('evidence',600,460,B,BN);label('al','Model A',300,440);label('bl','Model B',890,440);link('translation','a','b',4,'Explicit translation between local models.');label('ev','Independent evidence',600,530,28);break;
+ case 8:label('can','Can act',300,290,58);label('may','May act',900,290,58);label('gap','≠',600,290,65);reveal('gap',3);aperture('permit',900,270,118);reveal('permit',5);label('need','Authority needs justification',600,505,34);reveal('need',6);break;
+ case 9:for(let j=0;j<4;j++){const x=200+j*265;add(object('resource'+j,x,285,[tint(n('rect',{x:-45,y:-70,width:90,height:140,rx:8,fill:j%2?B:A}),j%2?BN:AN)],'Finite resource symbol; heights are equal and not data.'));label('r'+j,['Energy','Attention','Care','Housing'][j],x,460,29);reveal('resource'+j,j+1);}break;
+ case 10:for(let j=0;j<3;j++)label('trad'+j,['Fallibilism','Pragmatism','Pluralism'][j],300,190+j*130,31);aperture('synthesis',880,290,105);label('test','A useful synthesis?',880,480,33);reveal('synthesis',4);break;
+ case 11:aperture('frame',410,280,115);point('edge',530,280,B,BN,28);label('question','What does this miss?',835,270,40);label('start','Begin with the hospital dashboard',600,500,34);reveal('start',1);move('edge',7,600,350);break;
+ }
+ for(const o of q.objects)if(o.id.includes('frame')||['review','a','b','model','synthesis','permit'].includes(o.id)){if(o.visual?.children?.[0]?.type==='path'){const v=o.visual.children[0].attrs.d;const rad=Number(v.match(/M-([0-9]+)/)?.[1]||105);o.visual.anchors={left:[-rad-10,0],right:[rad+10,0]};}}
+ s.visual=q.finish('Model-boundary theatre: slate apertures identify selected frames, copper marks omitted concerns or extensions; no decorative backdrop.');
+}
+fs.writeFileSync(file,JSON.stringify(scenes,null,2)+'\n');fs.writeFileSync(new URL('./visual-bible.json',import.meta.url),JSON.stringify({direction:'Slate and copper aperture theatre; negative space makes model boundaries visible.',metaphors:'Apertures mean selected frames, dots mean considerations, never population statistics.',sourceImages:'Only source cover; omitted because it does not explain these distinctions.',font:'Bundled Red Hat Display and Red Hat Text'},null,2));

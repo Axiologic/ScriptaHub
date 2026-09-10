@@ -1,4 +1,4 @@
-/* Shared reading-language routing. Interface language and reading language are independent. */
+/* Shared reading routing: prefer the header language, then the same English format. */
 (() => {
   "use strict";
   const labels = {
@@ -25,11 +25,12 @@
     language = locale(language);
     uiLanguage = locale(uiLanguage);
     format = formatName(format);
-    if (!available(book, language, format)) return requestUrl(book, language, format, uiLanguage, siteRoot, source);
+    if (!available(book, language, format)) language = "en";
+    if (!available(book, language, format)) return null;
     const edition = book.editions[language];
     const url = new URL("reader/index.html", siteRoot);
     url.search = new URLSearchParams({ id: `${book.id}:${book.currentEdition || "edition-1"}:${language}:${format}`, book: book.directory, language, lang: uiLanguage, format, mode: format === "short" ? "ten-minute" : "full", title: `${book.title[language] || book.title.en} · ${format === "short" ? labels[uiLanguage].short : labels[uiLanguage].full}`, html: `../${edition[format === "short" ? "shortContent" : "fullContent"]}`, back: `../${book.editions[uiLanguage].book}?lang=${uiLanguage}` }).toString();
-    if (edition.pdf) url.searchParams.set("pdf", `../${edition.pdf}`);
+    if (book.editions.en?.pdf) url.searchParams.set("pdf", `../${book.editions.en.pdf}`);
     return url;
   };
   const mailUrl = (book, { target, format, uiLanguage, source = "", name = "", email = "", note = "" }) => {
@@ -37,6 +38,18 @@
     const lines = ["SCRIPTAHUB TRANSLATION REQUEST", `Book: ${book.title.en}`, `Book ID: ${book.id}`, `Book directory: ${book.directory}`, `Edition: ${book.currentEdition || "edition-1"}`, `Requested language: ${locale(target)}`, `Reading format: ${formatName(format) === "short" ? "10-minute HTML" : "complete HTML"}`, `Current reading language: ${supported.includes(source) ? source : "not selected"}`, `Interface language: ${uiLanguage}`, `Name: ${name}`, `Reply email: ${email}`, "", "MESSAGE", note];
     return `mailto:create@scriptahub.com?subject=${encodeURIComponent(`${labels[uiLanguage].subject}: ${book.title.en} [${locale(target)}]`)}&body=${encodeURIComponent(lines.join("\n"))}`;
   };
+  const unavailableLabels = {
+    en: 'This reading edition is not yet available in {language}.',
+    fr: 'Cette édition de lecture n’est pas encore disponible en {language}.',
+    de: 'Diese Leseausgabe ist noch nicht auf {language} verfügbar.',
+    es: 'Esta edición de lectura todavía no está disponible en {language}.',
+    pt: 'Esta edição de leitura ainda não está disponível em {language}.',
+    it: 'Questa edizione di lettura non è ancora disponibile in {language}.',
+    ro: 'Această ediție de lectură nu este încă disponibilă în {language}.',
+    pl: 'To wydanie do czytania nie jest jeszcze dostępne po {language}.',
+  };
+  const languageNames = { en: 'English', fr: 'Français', de: 'Deutsch', es: 'Español', pt: 'Português', it: 'Italiano', ro: 'Română', pl: 'Polski' };
+  const unavailableMessage = (language, uiLanguage = language) => unavailableLabels[locale(uiLanguage)].replace('{language}', languageNames[locale(language)]);
   const preparationLabels = { en: "In preparation", fr: "En préparation", de: "In Vorbereitung", es: "En preparación", pt: "Em preparação", it: "In preparazione", ro: "În lucru", pl: "W przygotowaniu" };
-  globalThis.ScriptaReading = { labels, preparationLabels, supported, locale, formatName, available, requestUrl, readingUrl, mailUrl };
+  globalThis.ScriptaReading = { labels, preparationLabels, supported, locale, formatName, available, requestUrl, readingUrl, mailUrl, unavailableMessage };
 })();

@@ -32,6 +32,12 @@
   each of them. These catalogue descriptions, About Book presentations and
   interface labels do not imply that the full book has been translated.
   A reader language may be unavailable until requested and completed.
+- Short descriptions are authored metadata: six short, book-specific sentences
+  per language, at most 22 words per sentence. Never use an extracted opening
+  paragraph, table of contents, numbered headings or generic shelf boilerplate.
+  Preserve `shortDescriptionEditorial` provenance; legacy enrichment must not
+  overwrite reviewed copy. Use `docs/assets/book-view.js` for shared book views
+  and the uniform `textShow` lifecycle rather than duplicating card markup.
 - Before book maintenance, scan `tasks/` with `python3 tools/book_tasks.py scan`.
   Read `tasks/RELEASE-PROGRESS.md` and `tasks/release-progress.json` first and
   resume their existing workspaces and chunk files. Update them with
@@ -70,7 +76,7 @@
   translation cache makes subsequent runs incremental. Inspect representative
   samples after extraction, then run both catalogue and link checks.
 - Never generate one HTML page or directory per keyword. Keywords are catalogue
-  data, not routes. Keyword-cloud links target
+  data, not routes. Embedded keyword-cloud links target
   `index.html?lang=<code>&keyword=<stable-keyword-id>`, and the catalogue is
   filtered in the browser from `collection.js`. `docs/keywords/` is a forbidden
   legacy output; `python3 tools/build_books.py check` must fail if it exists.
@@ -115,12 +121,135 @@
   `create@scriptahub.com`; selected documents must be attached by the user in
   the mail client because a browser `mailto:` link cannot attach files. Describe
   this user action without discussing the current delivery architecture. Keep
-  the green Create action before search in every generated site header.
-- `docs/translate/` is the translation-request workflow, also in all eight
-  interface languages. Book pages and the HTML reader offer all supported
-  reading languages independently of the interface language. Opening an
-  unavailable reading language/format opens this form with the book, target
-  language, format and interface language preserved. Available editions open
-  directly. Changing interface language alone is not a translation request.
+  the primary Create action before search in every generated site header.
+- `docs/translate/` is the translation-request workflow in all eight interface
+  languages. The header language is the preferred reading language; book pages
+  have no additional reading-language selector. Reading actions open the selected
+  format in that language when available, otherwise the same English format.
+  Current PDF downloads always use the English source. Keep historical downloads.
+  Missing translations are requested only by clicking the localised unavailability
+  sentence, preserving book, target, format and interface language in the form URL.
+  Never append “Request translation” to reading actions or language options.
   The form opens a structured email to `create@scriptahub.com`; it must say
   that the visitor reviews and sends the email, never claim automatic delivery.
+
+## SHF presentations
+
+- Use `shf-presentation-creator` and `theatrical-audio` for requested SHF book
+  presentations. Default to English narration, English on-screen text and
+  English transcripts, independent of the book or interface language. Do not
+  generate Romanian or other presentation languages unless explicitly requested.
+- Include audio by default; do not ask whether narration is wanted. Make a
+  complete, source-grounded invitation to read the book, with chapter navigation,
+  captions, transport controls and a measured duration (normally 10–15 minutes).
+- Preserve an explicitly configured audio engine. When none is configured,
+  report it, create the local configuration files/templates, and use a decent
+  small neural English model, initially Piper `en_US-ljspeech-medium`. Private
+  dependency installation and model download are authorized for this fallback;
+  continue without another confirmation. Never require an API key when this
+  local route works. Keep models, environments, credentials and caches ignored.
+- Measure audio and retime animation against the actual clips. Never substitute
+  browser speech or a silent presentation for the requested finished narration.
+  Keep editable direction, source/edition provenance, voice receipts and QA.
+- Embed the film in a dedicated page and expose an `Animation` action in the
+  book page's action list; preserve interface `?lang=` while the film stays in
+  English. Presentations live on their own page, reached through the book’s
+  Animation action; do not feature or embed book films on the home page.
+  Keep the presentation page focused on the film: no duplicate chapter list,
+  transcript, downloads, production notes or duration/language badges around it. These controls
+  belong inside the player. Expose Color, Light and Dark theme choices directly
+  in the player’s bottom bar, including the copied project runtime.
+- Skill code may be improved and tested in the separate ScriptaSkillSet
+  repository through the symlinks. Keep those symlinks ignored in ScriptaHub;
+  report skill changes separately so they can be committed in their own repo.
+
+- Structure document presentations around source-grounded why, how and what,
+  woven into the explanation. Focus on what distinguishes the document, retain
+  its technical meanings, and remove filler, slogans and generic observations.
+  Open with a source-supported novelty hook in the first one or two sentences;
+  establish why the document exists and deserves attention within 20–30 seconds,
+  then deliver the promised insight without claiming unsupported world-firsts.
+- Use exactly one sentence per narration clip and per subtitle card. Show the
+  whole current sentence, retime from measured audio, and invalidate recordings
+  when their text changes. Never display two sentences together.
+- Keep automated browser audio tests muted before playback starts. Do not run
+  audible background previews; the user starts listening. Pause and close owned
+  test players on completion or interruption.
+
+- Author an emotional plan with the script, including each scene’s rise, tension,
+  release and intended feeling, and each sentence’s expression and gesture.
+  Make human characters expressive through face, gaze, posture, hands and motivated
+  movement, with deliberate quiet contrasts. Preserve source accuracy and avoid
+  invented drama; technical explanations must remain precise.
+
+- Put each book’s animation in its own `Animation/` directory beside `en/`, `ro/`
+  and the other language folders. It contains only the film SHF and a generated
+  minimal `index.html` referencing common assets; no duplicated player or shell.
+  Shared animation UI/runtime/styles live in `docs/assets/`, reusable authoring
+  code in `tools/shf/`, and standalone exports stay outside published book folders.
+- Use flat, uncluttered backgrounds in Color, Light and Dark: no decorative
+  outlines, nested panels, frames or arbitrary lines. Use one short scene title
+  in the player and no duplicate SVG/page headings. Separate titles, moving
+  silhouettes, labels, captions and controls; check all three themes explicitly.
+
+- Prefer short narration sentences, normally 8–16 words and one idea each;
+  review sentences above 20 words and split dense clauses without losing meaning.
+- Inspect source diagrams and photos. Integrate relevant ones only when they
+  help explain a point, adapting their styling while preserving source meaning;
+  omit unsuitable images. Record selections and adaptations in working QA.
+- Automatically maintain the SHF creation skill with reusable lessons from
+  presentation feedback and observed defects, within the already authorized
+  scope. Reconcile old rules and verify changed behavior without another reminder.
+- Show no production/source boilerplate or duration/language badges around
+  the film. Keep provenance in metadata and QA; the player owns time controls.
+
+- Default book-page SHF films to `book-introduction`, not a product demonstration
+  or exhaustive summary. Establish why the book exists, its messages, contents
+  and reader gains. Alternate explicit book/content/reader lenses in working
+  plans; selected examples support the reading invitation. End with a specific
+  reason to read and a source-grounded starting point. Review editorial fit
+  before voice generation; technical subject matter must not override purpose.
+
+- The homepage has a compact librarian mascot entrance with Ask AI Librarian first
+  and What is ScriptaHub.com? second. Use its one shared vector asset in the site film.
+  The site-orientation SHF may open from the homepage in a full-viewport closable
+  dialog; book films stay book-local. Stop playback on close and cancel delayed
+  starts. Librarian questions replace the choices beside the mascot, preserving the
+  existing recommendation route and language. Keep the desktop entrance compact,
+  the mascot about the choices’ height, with academic cues and no cast shadow.
+
+- The librarian and featured book occupy matching aligned strips over the word
+  cloud, with a 70% cloud veil, header-green foreground strips at 85% background opacity and recessed grey discovery choices in Light theme and no cast shadows. Site tours stay concise
+  and useful; represent a library as a collection, never as one branded book.
+  Vary slide compositions and use prominent bold scene headings. Narration
+  includes real 1.0–1.5 second pauses between sentences and longer transitions;
+  reduce content rather than accelerating speech. Preserve these defaults in
+  the SHF creation skill automatically when further presentation lessons emerge.
+- Keep the librarian interactive before the catalogue loads. Show loading only
+  inside the featured-book strip. Its question form replaces the choices in
+  place; a top-right close button restores them without moving the entrance.
+- Presentation typography uses the bundled display font for headings and short
+  labels, with a separate readable text face for captions. Preserve approved
+  wording during visual revisions. Prefer natural sentence case and coherent
+  weight/size hierarchy over widely spaced all-caps utility labels.
+
+- Bound the entire site tower on wide screens through shared `--shell-width`,
+  `--wide-screen-inset`, `--tower-gutter` and `--content-max` CSS tokens. Header,
+  grey/cloud background and footer narrow together, with a modest inner gutter
+  for content. Do not apply the wide-screen reduction twice or duplicate
+  per-page width rules.
+
+- Site appearances are Light Green, Light Orange, Light Linen and Dark. Preserve the same
+  shared layout; Orange replaces green UI accents, including cloud and mascot,
+  and persists into reader paper mode. Linen replaces the previous blue theme with ivory, greige and burgundy,
+  with colours only changing (legacy storage key `nord`). Persist the last selected appearance and light
+  variant through reader Night mode. SHF player themes remain independent.
+- Fullscreen keyword selection opens AI Librarian recommendations with the
+  localised term and interface language, from home or book pages. Embedded
+  catalogue keyword links keep their stable keyword-ID URL contract.
+- Standardize SHF delivery and quality, not a book's art direction. Each book
+  gets its own source-grounded visual identity. Fiction films invite reading
+  through premise and questions, without revealing later twists or resolutions.
+- Align close, dictation and submit in the librarian form's right-hand column.
+  Dictation starts only on explicit visitor action and stops on close, submit,
+  language change or navigation; automated tests use a simulated recognizer.

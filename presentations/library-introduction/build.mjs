@@ -1,0 +1,21 @@
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import {fileURLToPath} from 'node:url';
+import '../../docs/assets/librarian-mascot.js';
+import {libraryStage} from '../../tools/shf/library-tour-stage.mjs';
+import {publishNarratedFilm} from '../../tools/shf/publish-film.mjs';
+const root=path.dirname(fileURLToPath(import.meta.url)),skill=path.resolve('.agents/skills/shf-presentation-creator');
+const {voiceTasks}=await import(path.join(skill,'scripts/lib/voice.mjs'));
+await import(path.join(skill,'runtime/shf-core.js'));const C=globalThis.SHFCore;
+const scenes=JSON.parse(fs.readFileSync(path.join(root,'work/scenes.json'))),production=JSON.parse(fs.readFileSync(path.join(root,'work/production.json')));
+const write=(file,v)=>{fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,typeof v==='string'?v:JSON.stringify(v,null,2)+'\n');};
+const sha=t=>crypto.createHash('sha256').update(t).digest('hex');
+for(const s of scenes)for(const t of s.lines)if(C.splitSentences(t,'en').length!==1||t.split(/\s+/).length>20)throw Error('Narration must contain one short sentence per beat: '+s.id);
+const original=fs.readFileSync(path.join(root,'source/original-home-introduction.txt'),'utf8');
+const brief=fs.readFileSync(path.join(root,'source/editor-brief.md'),'utf8');
+const specification=fs.readFileSync('docs/specs/DS-001-site-product-rules.md','utf8');
+write(path.join(root,'source/site-product-rules.md'),specification);
+const editorial={purpose:'site-orientation',why:'Give niche ideas enough room and a readership to develop.',how:'Discover books, choose reading depth, examine claims and contribute through the actual site workflows.',what:'A free, evolving library with concrete routes for readers, critics and contributors.',sourceHashes:{originalHome:sha(original),productRules:sha(specification),editorBrief:sha(brief)},limitations:['The librarian recommends catalogue books; it is not a general question-answering service.','Translations and animated introductions are only available for some editions.','Savings and superiority are conditional benefits of well-scoped, well-written books, not measured universal outcomes.'],sceneReview:scenes.map(s=>({id:s.id,source:['welcome','collaboration','reuse','literature'].includes(s.id)?'Project owner editorial brief':'Product rules: '+s.layout,readerValue:s.lines.at(-1),metaphor:s.metaphor,composition:s.layout,pauseAfterMs:s.pauseAfterMs}))};
+write(path.join(root,'work/editorial.json'),editorial);
+const direction={format:'SHF-Direction',version:'0.4',id:production.id,title:production.title,language:'en',stage:{width:1200,height:760},editorial,audioDisclosure:'English narration generated locally with Piper. Original ScriptaHub mascot and conceptual illustrations.',sources:[{id:'section_0',title:'Previous ScriptaHub homepage introduction'},{id:'section_1',title:'ScriptaHub product and interaction specification'},{id:'section_2',title:'Project owner editorial purpose'}],assets:{},voice:{id:'en_US-ljspeech-medium',provider:'Local Piper'},scenes:scenes.map((s,i)=>libraryStage(s,i,scenes))};
+write(path.join(root,'work/film.direction.json'),direction);write(path.join(root,'work/voice-tasks.json'),voiceTasks(direction));
+if(process.argv.includes('--plan-only')){console.log('Site purpose, source review and short-sentence tasks prepared.');process.exit(0);}
+await publishNarratedFilm({direction,root,output:path.resolve('docs/assets/films'),minDurationMs:90000,maxDurationMs:240000});

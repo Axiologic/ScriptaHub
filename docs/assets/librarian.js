@@ -105,14 +105,10 @@
 
   function resultMarkup(result, index, maximum, language, words) {
     const book = result.book;
-    const title = book.title?.[language] || book.title?.en || "";
-    const description = book.shortDescription?.[language] || book.shortDescription?.en || "";
-    const edition = book.editions?.[language]?.book ? book.editions[language] : book.editions?.en;
-    const thumbnail = book.thumbnailUrl?.[language] || book.thumbnailUrl?.en;
     const relevance = maximum > 0 ? Math.max(1, Math.round(result.score / maximum * 100)) : 0;
     const matched = result.keywords.length ? result.keywords : (book.keywords?.[language] || book.keywords?.en || []).slice(0, 3);
-    const status = book.publicationLabel?.[language] ? `<p class="publication-status">${escape(book.publicationLabel[language])}</p>` : "";
-    return `<article class="librarian-result"><a class="librarian-result-cover" href="../${escape(edition.book)}" aria-label="${escape(`${words.details}: ${title}`)}"><img src="../${escape(thumbnail)}" alt="${escape(title)}" loading="lazy" decoding="async"></a><a class="librarian-result-action-cell" href="../${escape(edition.book)}"><span>${escape(words.details)}</span></a><div class="librarian-result-copy"><div class="librarian-result-meta"><span class="librarian-rank">${String(index + 1).padStart(2, "0")}</span><span>${escape(book.category)}</span><span>${relevance}% ${escape(words.score)}</span></div>${status}<h2><a href="../${escape(edition.book)}">${escape(title)}</a></h2><div class="librarian-result-keywords" aria-label="${escape(words.keywords)}">${matched.map((keyword) => `<span>${escape(keyword)}</span>`).join("")}</div><p>${escape(description)}</p><a class="button librarian-result-action" href="../${escape(edition.book)}">${escape(words.details)}</a></div></article>`;
+    return ScriptaBookView.markup(book, {variant: "librarian", language, rank: index + 1,
+      relevance, scoreLabel: words.score, keywords: matched, keywordsLabel: words.keywords});
   }
 
   function render(language = currentLanguage()) {
@@ -127,7 +123,9 @@
     const feedbackParams = new URLSearchParams({ lang: language });
     const feedbackRequest = query ? `#${new URLSearchParams({ request: query }).toString()}` : "";
     document.title = `${words.kicker} · ScriptaHub`;
+    ScriptaBookView.unmount(root);
     root.innerHTML = `<section class="librarian-results librarian-results-page" aria-live="polite"><header><div><p class="eyebrow">${escape(words.results(results.length))}</p><h1>“${escape(query)}”</h1></div></header><div class="librarian-results-list">${results.map((result, index) => resultMarkup(result, index, maximum, language, words)).join("")}</div><div class="librarian-results-help"><a class="librarian-feedback-link" href="feedback.html?${feedbackParams.toString()}${feedbackRequest}"><span>${escape(words.feedback)}</span><small>${escape(words.feedbackNote)}</small></a></div></section>`;
+    ScriptaBookView.mount(root);
   }
 
   addEventListener("popstate", () => render());

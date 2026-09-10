@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {connect} from './browser-session.mjs';
+const site=process.env.SCRIPTA_TEST_URL||'http://127.0.0.1:8012/';
+const c=await connect('about:blank');let request;
+try{
+ await c.size(1366,768);
+ c.on('Fetch.requestPaused',e=>{request=e.requestId});
+ await c.send('Fetch.enable',{patterns:[{urlPattern:'*collection.js*',requestStage:'Request'}]});
+ await c.send('Page.navigate',{url:site+'index.html?lang=en'});
+ await c.wait('!!document.querySelector("[data-mascot-ask]")');
+ assert(request,'catalogue download deliberately held');
+ assert(await c.evaluate('!globalThis.SCRIPTA_COLLECTION'),'catalogue is not available yet');
+ const before=await c.evaluate('document.querySelector(".mascot-entrance").getBoundingClientRect().toJSON()');
+ await c.evaluate('document.querySelector("[data-mascot-ask]").click();document.querySelector("#mascot-query").value="Books on AI agents"');
+ const during=await c.evaluate('document.querySelector(".mascot-entrance").getBoundingClientRect().toJSON()');
+ assert.equal(during.y,before.y);assert.equal(during.height,before.height);
+ assert(await c.evaluate('document.activeElement.id==="mascot-query"&&document.querySelector("#mascot-query").value==="Books on AI agents"'),'input works while index is unavailable');
+ assert(await c.evaluate('(()=>{const l=document.querySelector("[data-home-loading]").getBoundingClientRect(),b=document.querySelector(".home-feature-strip").getBoundingClientRect(),m=document.querySelector(".mascot-entrance").getBoundingClientRect();return l.top>=b.top&&l.bottom<=b.bottom+1&&l.top>=m.bottom})()'),'loader is confined to featured book');
+ await c.capture('presentations/library-introduction/qa/screenshots/early-question.png');
+ await c.send('Fetch.continueRequest',{requestId:request});
+ await c.send('Fetch.disable');
+ await c.wait('document.querySelector(".home-feature-strip").getAttribute("aria-busy")==="false"');
+ assert(await c.evaluate('document.querySelector("#mascot-query").value==="Books on AI agents"&&!document.querySelector("#mascot-question").hidden'),'question survives catalogue initialization');
+ await c.evaluate('document.querySelector("[data-mascot-cancel]").click()');
+ assert(await c.evaluate('document.querySelector("#mascot-question").hidden&&document.activeElement.matches("[data-mascot-ask]")'),'close restores choices and focus');
+ assert.equal(c.errors.length,0);
+ await fs.writeFile('presentations/library-introduction/qa/early-loading.json',JSON.stringify({passed:true,catalogueHeld:true,questionAvailableBeforeCatalogue:true,entranceHeightUnchanged:true,loaderConfinedToBook:true,questionPreserved:true,jsErrors:[]},null,2)+'\n');
+ console.log('Early loading and in-place question checks passed.');
+}finally{await c.close()}

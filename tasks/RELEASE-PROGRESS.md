@@ -34,20 +34,20 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-c12780f8473e492c`; edition: `edition-1`
 - Workspace: `.book-work/thosewhonolongerrun-v1-b20f159e3f1b`
 - [x] Visible book page: `docs/books/those/who/no/longer/run/bk-c12780f8473e492c/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN full_content.html
+- [x] EN short_content.html
 - [x] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/thosewhonolongerrun-v1-b20f159e3f1b/translations/en/full`: **30/119 chunks**, 1353/5324 segments complete.
-  Resume at `0031.json`; preserve already filled segments.
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
-- [ ] Inspect representative PDF pages, including figures and tables.
-- [ ] Verify reader structure, local images and translation completeness against the source.
-- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [x] RO short_content.html
+- Translation `.book-work/thosewhonolongerrun-v1-b20f159e3f1b/translations/en/full`: **119/119 chunks**, 5324/5324 segments complete.
+- Translation `.book-work/thosewhonolongerrun-v1-b20f159e3f1b/translations/ro/short`: **3/3 chunks**, 45/45 segments complete.
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
+- [x] Inspect representative PDF pages, including figures and tables.
+- [x] Verify reader structure, local images and translation completeness against the source.
+- [x] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
-- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [x] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
 ## Vector-Symbolic Intelligence in Practice — source v1

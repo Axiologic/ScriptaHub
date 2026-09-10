@@ -7,6 +7,8 @@ const root = 'https://example.test/library/';
 const book = { id: 'bk-test', currentEdition: 'edition-2', directory: 'books/a/bk-test', title: { en: 'A & B' }, editions: Object.fromEntries(reading.supported.map(code => [code, { book: `books/a/bk-test/${code}/book.html` }])) };
 book.editions.en.fullContent = 'books/a/bk-test/en/full_content.html';
 book.editions.en.shortContent = 'books/a/bk-test/en/short_content.html';
+book.editions.en.pdf = 'books/a/bk-test/en/book.pdf';
+book.editions.ro.pdf = 'books/a/bk-test/ro/old.pdf';
 book.editions.ro.shortContent = 'books/a/bk-test/ro/short_content.html';
 
 test('all interface and target combinations preserve the requested reading format and UI language', () => {
@@ -15,21 +17,17 @@ test('all interface and target combinations preserve the requested reading forma
     assert.equal(url.searchParams.get('lang'), ui);
     assert.equal(url.searchParams.get('format'), format);
     assert.equal(url.searchParams.get('book'), book.directory);
-    if (reading.available(book, target, format)) {
-      assert.equal(url.pathname, '/library/reader/index.html');
-      assert.equal(url.searchParams.get('language'), target);
-      assert.equal(url.searchParams.get('back'), `../books/a/bk-test/${ui}/book.html?lang=${ui}`);
-      assert.match(url.searchParams.get('id'), /edition-2/);
-    } else {
-      assert.equal(url.pathname, '/library/translate/index.html');
-      assert.equal(url.searchParams.get('target'), target);
-      assert.equal(url.searchParams.get('source'), 'en');
-    }
+    assert.equal(url.pathname, '/library/reader/index.html');
+    assert.equal(url.searchParams.get('language'), reading.available(book, target, format) ? target : 'en');
+    assert.equal(url.searchParams.get('back'), `../books/a/bk-test/${ui}/book.html?lang=${ui}`);
+    assert.match(url.searchParams.get('id'), /edition-2/);
+    assert.equal(url.searchParams.get('pdf'), '../books/a/bk-test/en/book.pdf');
+
   }
 });
 
 test('short Romanian edition never substitutes for a missing full Romanian translation', () => {
-  assert.match(reading.readingUrl(book, 'ro', 'read', 'fr', root).pathname, /translate/);
+  assert.equal(reading.readingUrl(book, 'ro', 'read', 'fr', root).searchParams.get('language'), 'en');
   assert.match(reading.readingUrl(book, 'ro', 'short', 'fr', root).pathname, /reader/);
 });
 
@@ -43,4 +41,15 @@ test('structured mail safely encodes edition, languages and visitor text', () =>
 
 test('request paths also work with local files', () => {
   assert.equal(reading.requestUrl(book, 'de', 'read', 'ro', 'file:///library/docs/').protocol, 'file:');
+});
+
+test('missing English formats stay unavailable and request links remain explicit', () => {
+  const draft = { ...book, editions: { ...book.editions, en: { book: book.editions.en.book } } };
+  assert.equal(reading.readingUrl(draft, 'pt', 'read', 'pt', root), null);
+  const url = reading.requestUrl(draft, 'pt', 'short', 'ro', root, 'en');
+  assert.equal(url.searchParams.get('target'), 'pt');
+  assert.equal(url.searchParams.get('format'), 'short');
+  assert.equal(url.searchParams.get('lang'), 'ro');
+  assert.equal(url.searchParams.get('source'), 'en');
+  assert.equal(reading.unavailableMessage('pt'), 'Esta edição de leitura ainda não está disponível em Português.');
 });

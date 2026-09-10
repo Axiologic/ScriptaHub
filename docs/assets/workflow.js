@@ -99,16 +99,11 @@
   const agreementCard = (words) => `<aside class="workflow-context contribution-agreement"><p class="eyebrow">ScriptaHub</p><h2>${escape(words.contractTitle)}</h2><p>${escape(words.contractIntro)}</p><ol>${words.contractItems.map((item) => `<li>${escape(item)}</li>`).join("")}</ol><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">${escape(words.contractLink)}</a><label class="contract-accept"><input type="checkbox" data-contract-accept><span>${escape(words.contractAccept)}</span></label></aside>`;
   const bookContext = (book, lang, words) => {
     if (!book) return `<aside class="workflow-context"><p>${escape(words.missingBook)}</p></aside>`;
-    const title = book.title[lang] || book.title.en;
-    const description = book.shortDescription[lang] || book.shortDescription.en;
-    return `<aside class="workflow-context"><img src="../${escape(book.thumbnailUrl[lang] || book.thumbnailUrl.en)}" alt=""><h2>${escape(title)}</h2><p>${escape(description)}</p><a class="button button-quiet" href="../${escape(book.editions[lang].book)}?lang=${lang}">${escape(words.back)}</a></aside>`;
+    return ScriptaBookView.markup(book, {variant: "context", language: lang, actionLabel: words.back});
   };
   const compactBookContext = (book, lang, words) => {
     if (!book) return `<aside class="workflow-context"><p>${escape(words.missingBook)}</p></aside>`;
-    const title = book.title[lang] || book.title.en;
-    const description = book.shortDescription[lang] || book.shortDescription.en;
-    const href = `../${book.editions[lang].book}?lang=${lang}`;
-    return `<aside class="workflow-context workflow-book-compact"><a href="${escape(href)}" aria-label="${escape(`${words.back}: ${title}`)}"><img src="../${escape(book.thumbnailUrl[lang] || book.thumbnailUrl.en)}" alt="${escape(title)}"></a><div><h2>${escape(title)}</h2><p>${escape(description)}</p></div></aside>`;
+    return ScriptaBookView.markup(book, {variant: "compact-context", language: lang, actionLabel: words.back});
   };
   const mail = (subject, lines) => `mailto:create@scriptahub.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
 
@@ -226,14 +221,14 @@
     const reading = globalThis.ScriptaReading;
     const words = reading.labels[lang];
     const book = activeBook();
-    document.title = `${words.request} · ScriptaHub`;
+    document.title = `${words.title} · ScriptaHub`;
     if (!book) {
-      root.innerHTML = `${pageHero(words.request, words.title, words.lead)}<p class="workflow-message">${escape(words.missing)}</p><a class="button" href="../index.html?lang=${lang}">ScriptaHub</a>`;
+      root.innerHTML = `${pageHero("ScriptaHub", words.title, words.lead)}<p class="workflow-message">${escape(words.missing)}</p><a class="button" href="../index.html?lang=${lang}">ScriptaHub</a>`;
       return;
     }
     const target = reading.locale(params().get("target") || lang);
     const format = reading.formatName(params().get("format"));
-    root.innerHTML = `${backToBook(book, lang)}${pageHero(words.request, words.title, words.lead)}<section class="workflow-layout"><form class="workflow-form" data-translation-form><div class="form-grid"><label class="form-field"><span>${escape(words.target)}</span><select name="target">${collection.supportedLanguages.map(({ code, name }) => `<option value="${code}"${code === target ? " selected" : ""}>${escape(name)}</option>`).join("")}</select></label><label class="form-field"><span>${escape(words.format)}</span><select name="format"><option value="read"${format === "read" ? " selected" : ""}>${escape(words.full)}</option><option value="short"${format === "short" ? " selected" : ""}>${escape(words.short)}</option></select></label>${field(words.name, "name")}${field(words.email, "email", "email")}${textarea(words.note, "note", "")}</div><div data-translation-available hidden><p>${escape(words.available)}</p><a class="button" data-translation-read>${escape(words.read)}</a></div><button class="workflow-submit" type="submit">${escape(words.send)}</button><p class="workflow-note" data-translation-mail-note>${escape(words.mail)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${bookContext(book, lang, { ...text[lang], back: words.back })}</section>`;
+    root.innerHTML = `${backToBook(book, lang)}${pageHero("ScriptaHub", words.title, words.lead)}<section class="workflow-layout"><form class="workflow-form" data-translation-form><div class="form-grid"><label class="form-field"><span>${escape(words.target)}</span><select name="target">${collection.supportedLanguages.map(({ code, name }) => `<option value="${code}"${code === target ? " selected" : ""}>${escape(name)}</option>`).join("")}</select></label><label class="form-field"><span>${escape(words.format)}</span><select name="format"><option value="read"${format === "read" ? " selected" : ""}>${escape(words.full)}</option><option value="short"${format === "short" ? " selected" : ""}>${escape(words.short)}</option></select></label>${field(words.name, "name")}${field(words.email, "email", "email")}${textarea(words.note, "note", "")}</div><div data-translation-available hidden><p>${escape(words.available)}</p><a class="button" data-translation-read>${escape(words.read)}</a></div><button class="workflow-submit" type="submit">${escape(words.send)}</button><p class="workflow-note" data-translation-mail-note>${escape(words.mail)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${bookContext(book, lang, { ...text[lang], back: words.back })}</section>`;
     const form = root.querySelector("[data-translation-form]");
     const update = () => {
       const data = new FormData(form);
@@ -243,7 +238,9 @@
       form.querySelector("[data-translation-available]").hidden = !present;
       form.querySelector('[type="submit"]').hidden = present;
       form.querySelector("[data-translation-mail-note]").hidden = present;
-      form.querySelector("[data-translation-read]").href = reading.readingUrl(book, selected, selectedFormat, lang, new URL("../", location.href)).href;
+      const availableUrl = present ? reading.readingUrl(book, selected, selectedFormat, lang, new URL("../", location.href)) : null;
+      if (availableUrl) form.querySelector("[data-translation-read]").href = availableUrl.href;
+      else form.querySelector("[data-translation-read]").removeAttribute("href");
       const url = new URL(location.href);
       url.searchParams.set("target", selected);
       url.searchParams.set("format", selectedFormat);

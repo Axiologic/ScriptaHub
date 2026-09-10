@@ -1,0 +1,6 @@
+// Shared SHF adapter: every book supplies its own illustrated scene data and choreography.
+export function storyStage(scene,index,scenes){
+ let time=650;
+ const beats=scene.lines.map((text,i)=>{const duration=Math.ceil(text.split(/\s+/).length/145*60000),pause=scene.pauseAfterMs?.[i]??1400;const beat={id:scene.id+'-line-'+(i+1),startMs:time,spokenEndMs:time+duration,endMs:time+duration+pause,text,speakerId:'narrator',lens:scene.beatLenses?.[i]||scene.lens,sourceRefs:scene.sources.map(n=>'source-'+n),performance:{targetWpm:145,pauseAfterMs:pause,emotion:scene.emotionalPlan.states[i],intensity:scene.emotionalPlan.intensities[i],delivery:scene.emotionalPlan.purpose}};time=beat.endMs+150;return beat;});
+ return {id:scene.id,title:scene.title,chapter:scene.chapter||scene.title,lens:scene.lens,intent:scene.lines[0],knownBefore:index?scenes[index-1].lines.at(-1):'A prospective reader is choosing a book.',knownAfter:scene.lines.at(-1),durationMs:time+1000,setting:'minimal',objects:scene.visual?.objects||[],connections:scene.visual?.connections||[],actions:(scene.visual?.actions||[]).map(({beat,...a})=>({...a,cue:{beatId:scene.id+'-line-'+beat,edge:'start',offsetMs:a.offsetMs??250}})),beats,emotionalPlan:scene.emotionalPlan,alt:scene.visual?.meaning||scene.title};
+}

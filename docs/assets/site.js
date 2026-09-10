@@ -16,6 +16,7 @@
     ro: { kicker: "Găsește următoarea carte", title: "Întreabă Bibliotecarul AI" },
     pl: { kicker: "Znajdź następną książkę", title: "Zapytaj Bibliotekarza AI" },
   };
+  const homeLabels = { en: "Home", fr: "Accueil", de: "Startseite", es: "Inicio", pt: "Início", it: "Home", ro: "Acasă", pl: "Strona główna" };
   const createLabels = { en: "Create", fr: "Créer", de: "Erstellen", es: "Crear", pt: "Criar", it: "Crea", ro: "Creează", pl: "Utwórz" };
   const legalFooterLabels = {
     en: { terms: "Terms", privacy: "Privacy", cookies: "Cookies & local storage", notice: "Legal notice", ai: "AI transparency" },
@@ -27,16 +28,7 @@
     ro: { terms: "Termeni", privacy: "Confidențialitate", cookies: "Cookies și stocare locală", notice: "Informații legale", ai: "Transparență AI" },
     pl: { terms: "Warunki", privacy: "Prywatność", cookies: "Pliki cookie i pamięć lokalna", notice: "Informacje prawne", ai: "Przejrzystość AI" },
   };
-  const librarianLaunchLabels = {
-    en: { label: "What should the library recommend?", button: "Ask AI Librarian", dictate: "Dictate", stop: "Stop dictation", listening: "You can speak now. Your words will appear in the field.", unavailable: "Speech recognition is unavailable in this browser." },
-    fr: { label: "Que devrait vous recommander la bibliothèque ?", button: "Demander au bibliothécaire IA", dictate: "Dicter", stop: "Arrêter la dictée", listening: "Vous pouvez parler maintenant. Vos mots apparaîtront dans le champ.", unavailable: "La reconnaissance vocale n’est pas disponible dans ce navigateur." },
-    de: { label: "Was soll Ihnen die Bibliothek empfehlen?", button: "KI-Bibliothekar fragen", dictate: "Diktieren", stop: "Diktat stoppen", listening: "Sie können jetzt sprechen. Ihre Worte erscheinen im Eingabefeld.", unavailable: "Spracherkennung ist in diesem Browser nicht verfügbar." },
-    es: { label: "¿Qué debería recomendarte la biblioteca?", button: "Preguntar al Bibliotecario IA", dictate: "Dictar", stop: "Detener dictado", listening: "Ya puedes hablar. Tus palabras aparecerán en el campo.", unavailable: "El reconocimiento de voz no está disponible en este navegador." },
-    pt: { label: "O que a biblioteca deveria recomendar?", button: "Perguntar ao Bibliotecário IA", dictate: "Ditar", stop: "Parar ditado", listening: "Pode falar agora. As suas palavras aparecerão no campo.", unavailable: "O reconhecimento de voz não está disponível neste navegador." },
-    it: { label: "Che cosa dovrebbe consigliarti la biblioteca?", button: "Chiedi al Bibliotecario IA", dictate: "Detta", stop: "Ferma dettatura", listening: "Puoi parlare ora. Le tue parole appariranno nel campo.", unavailable: "Il riconoscimento vocale non è disponibile in questo browser." },
-    ro: { label: "Ce ai vrea să îți recomande biblioteca?", button: "Întreabă Bibliotecarul AI", dictate: "Dictează", stop: "Oprește dictarea", listening: "Acum poți vorbi. Textul dictat va apărea în câmp.", unavailable: "Recunoașterea vocală nu este disponibilă în acest browser." },
-    pl: { label: "Co biblioteka powinna Ci polecić?", button: "Zapytaj Bibliotekarza AI", dictate: "Dyktuj", stop: "Zatrzymaj dyktowanie", listening: "Możesz teraz mówić. Dyktowany tekst pojawi się w polu.", unavailable: "Rozpoznawanie mowy nie jest dostępne w tej przeglądarce." },
-  };
+
   const librarianMissionPrompt = {
     en: "Ask in your own words and add any interests or goals that matter. The AI Librarian will recommend up to ten books chosen for you.",
     fr: "Posez votre question avec vos propres mots et ajoutez les intérêts ou objectifs qui comptent. Le Bibliothécaire IA vous recommandera jusqu’à dix livres choisis pour vous.",
@@ -47,71 +39,6 @@
     ro: "Întreabă în cuvintele tale și adaugă interesele sau obiectivele importante. Bibliotecarul AI îți va recomanda până la zece cărți alese pentru tine.",
     pl: "Zapytaj własnymi słowami i dodaj ważne zainteresowania lub cele. Bibliotekarz AI poleci Ci do dziesięciu dobranych książek.",
   };
-  const heroAddendum = {
-    en: "Access is free, and contributors whose accepted ideas materially improve an edition may be credited. Shared editions are meant to become quality-checked, plural public goods that reduce repeated private prompting, cost and energy. ScriptaHub is also researching private neuro-symbolic systems for quality control and, later, more personal recommendations.",
-    fr: "L’accès est gratuit et les contributeurs dont les idées acceptées améliorent réellement une édition pourront être crédités. Les éditions partagées doivent devenir des biens publics pluriels et contrôlés, réduisant les sollicitations privées répétées, leur coût et leur énergie. ScriptaHub mène aussi des recherches privées sur des systèmes neuro-symboliques de contrôle qualité puis de recommandation plus personnelle.",
-    de: "Der Zugang ist kostenlos; Mitwirkende, deren angenommene Ideen eine Ausgabe wesentlich verbessern, können genannt werden. Gemeinsame Ausgaben sollen qualitätsgeprüfte, vielfältige öffentliche Güter werden und wiederholte private KI-Anfragen samt Kosten und Energiebedarf verringern. ScriptaHub erforscht außerdem private neurosymbolische Systeme für Qualitätskontrolle und später persönlichere Empfehlungen.",
-    es: "El acceso es gratuito y quienes aporten ideas aceptadas que mejoren materialmente una edición podrán recibir crédito. Las ediciones compartidas aspiran a ser bienes públicos plurales y revisados, reduciendo las consultas privadas repetidas, su coste y su consumo energético. ScriptaHub también investiga sistemas neurosimbólicos privados para el control de calidad y, más adelante, recomendaciones personales.",
-    pt: "O acesso é gratuito, e colaboradores cujas ideias aceitas melhorem materialmente uma edição poderão receber crédito. As edições partilhadas devem tornar-se bens públicos plurais e verificados, reduzindo solicitações privadas repetidas, custos e energia. A ScriptaHub também pesquisa sistemas neurossimbólicos privados para controle de qualidade e, mais tarde, recomendações pessoais.",
-    it: "L’accesso è gratuito e chi propone idee accettate che migliorano concretamente un’edizione potrà essere citato. Le edizioni condivise vogliono diventare beni pubblici plurali e controllati, riducendo richieste private ripetute, costi ed energia. ScriptaHub ricerca inoltre sistemi neuro-simbolici privati per il controllo della qualità e, in seguito, consigli più personali.",
-    ro: "Accesul este gratuit, iar contribuitorii ale căror idei acceptate îmbunătățesc substanțial o ediție pot fi menționați. Edițiile comune sunt gândite ca bunuri publice pluraliste și verificate calitativ, care reduc promptarea privată repetată, costurile și energia consumată. ScriptaHub cercetează și sisteme neuro-simbolice private pentru controlul calității și, ulterior, recomandări mai personale.",
-    pl: "Dostęp jest bezpłatny, a autorzy przyjętych pomysłów, które istotnie ulepszą wydanie, mogą zostać wymienieni. Wspólne wydania mają być sprawdzonymi jakościowo, pluralistycznymi dobrami publicznymi, ograniczającymi powtarzane prywatne zapytania, koszty i zużycie energii. ScriptaHub bada też prywatne systemy neurosymboliczne do kontroli jakości, a później bardziej osobistych rekomendacji.",
-  };
-  const heroExtraPoints = {
-    en: ["Free, quality-checked editions built as a plural public good.", "Shared contributions reduce repeated private prompting, cost and energy."],
-    fr: ["Des éditions gratuites et contrôlées, conçues comme un bien public pluriel.", "Les contributions partagées réduisent les requêtes privées répétées, leur coût et leur énergie."],
-    de: ["Kostenlose, qualitätsgeprüfte Ausgaben als vielfältiges öffentliches Gut.", "Geteilte Beiträge senken wiederholte private KI-Anfragen, Kosten und Energie."],
-    es: ["Ediciones gratuitas y revisadas, construidas como un bien público plural.", "Las contribuciones compartidas reducen consultas privadas repetidas, costes y energía."],
-    pt: ["Edições gratuitas e verificadas, construídas como um bem público plural.", "Contribuições partilhadas reduzem solicitações privadas repetidas, custos e energia."],
-    it: ["Edizioni gratuite e controllate, costruite come bene pubblico plurale.", "I contributi condivisi riducono richieste private ripetute, costi ed energia."],
-    ro: ["Ediții gratuite și verificate, construite ca un bun public pluralist.", "Contribuțiile comune reduc promptarea privată repetată, costurile și energia."],
-    pl: ["Bezpłatne, sprawdzone wydania budowane jako pluralistyczne dobro publiczne.", "Wspólny wkład ogranicza powtarzane prywatne zapytania, koszty i energię."],
-  };
-  const heroPresentation = {
-    en: "ScriptaHub is a free library for ideas that need more depth than a social media post or short blog article can provide. It combines the breadth of discovery found on YouTube with the depth of complete books and concise ten-minute editions. Audio and video editions are planned. The library focuses on niche knowledge, research programmes, difficult philosophy and speculative worlds that conventional publishing often cannot support. Generative AI makes these economically impractical books possible. Readers can question, correct and extend every edition, much as people improve a public knowledge base. Useful contributions are judged by the value they add, and major accepted contributions may be credited. Community review helps each book become more accurate, complete and open to different viewpoints. One book can answer another, and ScriptaHub can make that relationship visible. Shared editions reduce repeated private prompting and save readers money and energy. ScriptaHub also researches neuro-symbolic systems for quality control and, later, more personal recommendations.",
-    fr: "ScriptaHub est une bibliothèque gratuite pour les idées qui demandent plus de profondeur qu’une publication sur les réseaux sociaux ou un court article de blog. Elle associe l’ampleur de découverte de YouTube à la profondeur de livres complets et d’éditions concises à lire en dix minutes. Des éditions audio et vidéo sont prévues. La bibliothèque se concentre sur les savoirs de niche, les programmes de recherche, les philosophies difficiles et les mondes spéculatifs que l’édition classique soutient rarement. L’IA générative rend possibles ces livres peu viables économiquement. Les lecteurs peuvent questionner, corriger et prolonger chaque édition comme ils amélioreraient une base publique de connaissances. Les contributions utiles sont jugées selon leur valeur, et les apports importants acceptés peuvent être crédités. La relecture collective aide chaque livre à devenir plus exact, plus complet et plus ouvert à des points de vue différents. Un livre peut répondre à un autre, et ScriptaHub peut rendre cette relation visible. Les éditions partagées réduisent les requêtes privées répétées et économisent de l’argent et de l’énergie. ScriptaHub étudie aussi des systèmes neuro-symboliques pour le contrôle qualité puis, plus tard, des recommandations plus personnelles.",
-    de: "ScriptaHub ist eine kostenlose Bibliothek für Ideen, die mehr Tiefe brauchen, als ein Beitrag in sozialen Medien oder ein kurzer Blogartikel bieten kann. Sie verbindet die Entdeckungsbreite von YouTube mit der Tiefe vollständiger Bücher und knapper Zehn-Minuten-Ausgaben. Audio- und Videoausgaben sind geplant. Die Bibliothek konzentriert sich auf Nischenwissen, Forschungsprogramme, schwierige Philosophie und spekulative Welten, die der klassische Buchmarkt oft nicht tragen kann. Generative KI macht diese wirtschaftlich schwer realisierbaren Bücher möglich. Leser können jede Ausgabe hinterfragen, korrigieren und erweitern, wie bei einer öffentlichen Wissenssammlung. Hilfreiche Beiträge werden nach ihrem Wert beurteilt, und wichtige angenommene Beiträge können genannt werden. Gemeinschaftliche Prüfung macht jedes Buch genauer, vollständiger und offener für verschiedene Sichtweisen. Ein Buch kann auf ein anderes antworten, und ScriptaHub kann diese Beziehung sichtbar machen. Gemeinsame Ausgaben verringern wiederholte private KI-Anfragen und sparen Geld und Energie. ScriptaHub erforscht außerdem neurosymbolische Systeme für Qualitätskontrolle und später persönlichere Empfehlungen.",
-    es: "ScriptaHub es una biblioteca gratuita para ideas que necesitan más profundidad de la que puede ofrecer una publicación en redes sociales o un artículo breve de blog. Combina la amplitud de descubrimiento de YouTube con la profundidad de libros completos y ediciones concisas de diez minutos. Están previstas ediciones de audio y vídeo. La biblioteca se centra en conocimiento de nicho, programas de investigación, filosofía difícil y mundos especulativos que la edición convencional rara vez puede sostener. La IA generativa hace posibles estos libros poco viables económicamente. Los lectores pueden cuestionar, corregir y ampliar cada edición como mejorarían una base pública de conocimiento. Las contribuciones útiles se valoran por lo que aportan, y las aportaciones importantes aceptadas pueden recibir crédito. La revisión comunitaria ayuda a que cada libro sea más preciso, completo y abierto a distintos puntos de vista. Un libro puede responder a otro, y ScriptaHub puede hacer visible esa relación. Las ediciones compartidas reducen las consultas privadas repetidas y ahorran dinero y energía. ScriptaHub también investiga sistemas neurosimbólicos para controlar la calidad y, más adelante, ofrecer recomendaciones más personales.",
-    pt: "A ScriptaHub é uma biblioteca gratuita para ideias que precisam de mais profundidade do que uma publicação nas redes sociais ou um artigo curto de blogue pode oferecer. Ela combina a amplitude de descoberta do YouTube com a profundidade de livros completos e edições concisas de dez minutos. Estão previstas edições em áudio e vídeo. A biblioteca concentra-se em conhecimento de nicho, programas de pesquisa, filosofia difícil e mundos especulativos que a publicação convencional raramente consegue sustentar. A IA generativa torna possíveis esses livros pouco viáveis economicamente. Os leitores podem questionar, corrigir e ampliar cada edição como fariam numa base pública de conhecimento. As contribuições úteis são avaliadas pelo valor que acrescentam, e contribuições importantes aceitas podem receber crédito. A revisão da comunidade ajuda cada livro a tornar-se mais exato, completo e aberto a pontos de vista diferentes. Um livro pode responder a outro, e a ScriptaHub pode tornar essa relação visível. As edições partilhadas reduzem pedidos privados repetidos e poupam dinheiro e energia. A ScriptaHub também pesquisa sistemas neurossimbólicos para controle de qualidade e, mais tarde, recomendações mais pessoais.",
-    it: "ScriptaHub è una biblioteca gratuita per idee che richiedono più profondità di quanta ne possano offrire un post sui social media o un breve articolo di blog. Unisce la varietà di scoperta di YouTube alla profondità di libri completi e di edizioni concise da dieci minuti. Sono previste edizioni audio e video. La biblioteca si concentra su conoscenza di nicchia, programmi di ricerca, filosofia difficile e mondi speculativi che l’editoria tradizionale spesso non può sostenere. L’IA generativa rende possibili questi libri poco convenienti dal punto di vista economico. I lettori possono mettere in discussione, correggere ed estendere ogni edizione come farebbero con una base pubblica di conoscenza. I contributi utili sono valutati per il valore che aggiungono, e quelli importanti accettati possono ricevere un riconoscimento. La revisione della comunità aiuta ogni libro a diventare più accurato, completo e aperto a punti di vista diversi. Un libro può rispondere a un altro, e ScriptaHub può rendere visibile questa relazione. Le edizioni condivise riducono le richieste private ripetute e fanno risparmiare denaro ed energia. ScriptaHub ricerca anche sistemi neuro-simbolici per il controllo della qualità e, in futuro, raccomandazioni più personali.",
-    ro: "ScriptaHub este o bibliotecă gratuită pentru idei care au nevoie de mai multă profunzime decât poate oferi o postare pe rețelele sociale sau un articol scurt de blog. Combină ușurința descoperirii de pe YouTube cu profunzimea cărților complete și a edițiilor concise de zece minute. Sunt planificate și ediții audio și video. Biblioteca se concentrează pe cunoaștere de nișă, programe de cercetare, filosofii dificile și lumi speculative pe care publicarea convențională rareori le poate susține. AI-ul generativ face posibile aceste cărți care altfel nu ar fi viabile economic. Cititorii pot pune întrebări, corecta și extinde fiecare ediție, așa cum ar îmbunătăți o bază publică de cunoaștere. Contribuțiile sunt evaluate după valoarea adăugată, iar contribuțiile importante acceptate pot fi creditate. Verificarea făcută de comunitate ajută fiecare carte să devină mai exactă, mai cuprinzătoare și mai deschisă mai multor puncte de vedere. O carte poate răspunde alteia, iar ScriptaHub poate face vizibilă relația dintre ele. Edițiile comune reduc promptarea privată repetată și economisesc bani și energie. ScriptaHub cercetează și sisteme neuro-simbolice pentru controlul calității și, ulterior, pentru recomandări mai personale.",
-    pl: "ScriptaHub to bezpłatna biblioteka dla idei, które wymagają większej głębi, niż może zaoferować wpis w mediach społecznościowych lub krótki artykuł na blogu. Łączy szerokość odkrywania znaną z YouTube z głębią pełnych książek i zwięzłych wydań dziesięciominutowych. Planowane są również wydania audio i wideo. Biblioteka skupia się na wiedzy niszowej, programach badawczych, trudnej filozofii i spekulatywnych światach, których tradycyjny rynek wydawniczy często nie może utrzymać. Generatywna AI umożliwia powstawanie tych ekonomicznie niepraktycznych książek. Czytelnicy mogą kwestionować, poprawiać i rozszerzać każde wydanie tak, jak ulepsza się publiczną bazę wiedzy. Przydatny wkład jest oceniany według wniesionej wartości, a ważne zaakceptowane prace mogą zostać wymienione. Społeczna weryfikacja pomaga każdej książce stać się dokładniejszą, pełniejszą i bardziej otwartą na różne punkty widzenia. Jedna książka może odpowiadać drugiej, a ScriptaHub może pokazać tę relację. Wspólne wydania ograniczają powtarzane prywatne zapytania oraz oszczędzają pieniądze i energię. ScriptaHub bada także systemy neurosymboliczne do kontroli jakości, a później do bardziej osobistych rekomendacji.",
-  };
-  const introPresentationLabels = {
-    en: { label: "A short introduction", ready: "Here is a brief presentation of this page.", readyNote: "You can read it yourself or have it read aloud.", unavailable: "Books for questions that need real depth.", unavailableNote: "ScriptaHub is for curious readers, researchers and creators exploring niche knowledge, difficult ideas and speculative worlds beyond short posts and superficial articles.", start: "Start Text Presentation", read: "Read Aloud", previous: "Previous", next: "Next", pause: "Pause", resume: "Resume", restart: "Restart", viewAll: "View all messages", allTitle: "Full introduction", close: "Close", message: "Message", paused: "Paused", reading: "Reading aloud", preparing: "Preparing voice", nextIn: (seconds) => `Next in ${seconds} sec` },
-    fr: { label: "Une courte introduction", ready: "Voici une brève présentation de cette page.", readyNote: "Vous pouvez la lire vous-même ou l’écouter.", unavailable: "Des livres pour les questions qui exigent de la profondeur.", unavailableNote: "ScriptaHub s’adresse aux lecteurs curieux, aux chercheurs et aux créateurs qui explorent des savoirs de niche, des idées difficiles et des mondes spéculatifs au-delà des publications courtes et des articles superficiels.", start: "Lancer la présentation", read: "Écouter", previous: "Précédent", next: "Suivant", pause: "Pause", resume: "Reprendre", restart: "Recommencer", viewAll: "Voir tous les messages", allTitle: "Introduction complète", close: "Fermer", message: "Message", paused: "En pause", reading: "Lecture en cours", preparing: "Préparation de la voix", nextIn: (seconds) => `Suivant dans ${seconds} s` },
-    de: { label: "Eine kurze Einführung", ready: "Hier ist eine kurze Vorstellung dieser Seite.", readyNote: "Sie können sie selbst lesen oder vorlesen lassen.", unavailable: "Bücher für Fragen, die echte Tiefe brauchen.", unavailableNote: "ScriptaHub richtet sich an neugierige Leser, Forschende und Kreative, die Nischenwissen, schwierige Ideen und spekulative Welten jenseits kurzer Beiträge und oberflächlicher Artikel erkunden.", start: "Textpräsentation starten", read: "Vorlesen", previous: "Zurück", next: "Weiter", pause: "Pause", resume: "Fortsetzen", restart: "Neu starten", viewAll: "Alle Mitteilungen", allTitle: "Vollständige Einführung", close: "Schließen", message: "Mitteilung", paused: "Pausiert", reading: "Wird vorgelesen", preparing: "Stimme wird vorbereitet", nextIn: (seconds) => `Weiter in ${seconds} Sek.` },
-    es: { label: "Una breve introducción", ready: "Esta es una breve presentación de la página.", readyNote: "Puedes leerla o escucharla en voz alta.", unavailable: "Libros para preguntas que necesitan verdadera profundidad.", unavailableNote: "ScriptaHub está dirigido a lectores curiosos, investigadores y creadores que exploran conocimientos especializados, ideas difíciles y mundos especulativos más allá de publicaciones breves y artículos superficiales.", start: "Iniciar presentación", read: "Leer en voz alta", previous: "Anterior", next: "Siguiente", pause: "Pausa", resume: "Reanudar", restart: "Reiniciar", viewAll: "Ver todos los mensajes", allTitle: "Introducción completa", close: "Cerrar", message: "Mensaje", paused: "En pausa", reading: "Leyendo en voz alta", preparing: "Preparando la voz", nextIn: (seconds) => `Siguiente en ${seconds} s` },
-    pt: { label: "Uma breve introdução", ready: "Aqui está uma breve apresentação desta página.", readyNote: "Pode lê-la ou ouvi-la em voz alta.", unavailable: "Livros para perguntas que exigem verdadeira profundidade.", unavailableNote: "A ScriptaHub destina-se a leitores curiosos, investigadores e criadores que exploram conhecimentos de nicho, ideias difíceis e mundos especulativos para além de publicações curtas e artigos superficiais.", start: "Iniciar apresentação", read: "Ler em voz alta", previous: "Anterior", next: "Seguinte", pause: "Pausar", resume: "Continuar", restart: "Reiniciar", viewAll: "Ver todas as mensagens", allTitle: "Introdução completa", close: "Fechar", message: "Mensagem", paused: "Em pausa", reading: "Leitura em voz alta", preparing: "A preparar a voz", nextIn: (seconds) => `Seguinte em ${seconds} s` },
-    it: { label: "Una breve introduzione", ready: "Ecco una breve presentazione di questa pagina.", readyNote: "Puoi leggerla oppure ascoltarla.", unavailable: "Libri per domande che richiedono vera profondità.", unavailableNote: "ScriptaHub si rivolge a lettori curiosi, ricercatori e creatori che esplorano conoscenze di nicchia, idee difficili e mondi speculativi oltre i post brevi e gli articoli superficiali.", start: "Avvia presentazione", read: "Leggi ad alta voce", previous: "Precedente", next: "Successivo", pause: "Pausa", resume: "Riprendi", restart: "Ricomincia", viewAll: "Vedi tutti i messaggi", allTitle: "Introduzione completa", close: "Chiudi", message: "Messaggio", paused: "In pausa", reading: "Lettura in corso", preparing: "Preparazione della voce", nextIn: (seconds) => `Successivo tra ${seconds} s` },
-    ro: { label: "O scurtă introducere", ready: "Iată o scurtă prezentare a acestei pagini.", readyNote: "O poți citi singur sau o poți asculta.", unavailable: "Cărți pentru întrebări care cer profunzime reală.", unavailableNote: "ScriptaHub se adresează cititorilor curioși, cercetătorilor și creatorilor care explorează cunoaștere de nișă, idei dificile și lumi speculative dincolo de postări scurte și articole superficiale.", start: "Pornește prezentarea", read: "Citește cu voce tare", previous: "Înapoi", next: "Înainte", pause: "Pauză", resume: "Continuă", restart: "Repornește", viewAll: "Vezi toate mesajele", allTitle: "Introducerea completă", close: "Închide", message: "Mesaj", paused: "Pauză", reading: "Citesc cu voce tare", preparing: "Pregătesc vocea", nextIn: (seconds) => `Următorul în ${seconds} sec` },
-    pl: { label: "Krótkie wprowadzenie", ready: "Oto krótka prezentacja tej strony.", readyNote: "Możesz przeczytać ją samodzielnie albo jej posłuchać.", unavailable: "Książki dla pytań, które wymagają prawdziwej głębi.", unavailableNote: "ScriptaHub jest dla ciekawych czytelników, badaczy i twórców zgłębiających wiedzę niszową, trudne idee i spekulatywne światy poza krótkimi wpisami i powierzchownymi artykułami.", start: "Uruchom prezentację", read: "Czytaj na głos", previous: "Wstecz", next: "Dalej", pause: "Pauza", resume: "Wznów", restart: "Od początku", viewAll: "Pokaż wszystkie wiadomości", allTitle: "Pełne wprowadzenie", close: "Zamknij", message: "Wiadomość", paused: "Pauza", reading: "Czytanie na głos", preparing: "Przygotowywanie głosu", nextIn: (seconds) => `Dalej za ${seconds} s` },
-  };
-  const cardActions = {
-    en: { details: "View Book" },
-    fr: { details: "Voir le livre" },
-    de: { details: "Details ansehen" },
-    es: { details: "Ver detalles" },
-    pt: { details: "Ver detalhes" },
-    it: { details: "Vedi dettagli" },
-    ro: { details: "Vezi detalii" },
-    pl: { details: "Zobacz szczegóły" },
-  };
-  const keywordResultLabels = {
-    en: { clear: "Clear filter" }, fr: { clear: "Effacer le filtre" }, de: { clear: "Filter löschen" }, es: { clear: "Quitar filtro" },
-    pt: { clear: "Limpar filtro" }, it: { clear: "Rimuovi filtro" }, ro: { clear: "Șterge filtrul" }, pl: { clear: "Wyczyść filtr" },
-  };
-  const collectiveBookMission = {
-    en: "The project also reduces the need for each person to spend money and energy repeatedly prompting an AI alone. Guided by a community, books can become more comprehensive and plural in viewpoint: millions of readers can share attention and contributions, building careful collective books as a public good.",
-    fr: "Le projet veut aussi réduire le besoin pour chacun de dépenser de l’argent et de l’énergie à solliciter seul une IA de façon répétée. Guidés par une communauté, les livres peuvent devenir plus complets et plus pluriels : des millions de lecteurs peuvent partager leur attention et leurs contributions pour construire des livres collectifs soignés, comme un bien public.",
-    de: "Das Projekt soll auch den Bedarf verringern, dass jeder Mensch allein Geld und Energie für wiederholte KI-Anfragen aufwendet. Von einer Gemeinschaft geleitet, können Bücher umfassender und vielfältiger in ihren Perspektiven werden: Millionen Leser können Aufmerksamkeit und Beiträge teilen und sorgfältige kollektive Bücher als öffentliches Gut schaffen.",
-    es: "El proyecto también busca reducir la necesidad de que cada persona gaste dinero y energía pidiendo contenido a una IA en solitario una y otra vez. Guiados por una comunidad, los libros pueden ser más completos y plurales: millones de lectores pueden compartir atención y contribuciones para crear libros colectivos cuidados como un bien público.",
-    pt: "O projeto também reduz a necessidade de cada pessoa gastar dinheiro e energia solicitando repetidamente conteúdo a uma IA sozinha. Guiados por uma comunidade, os livros podem tornar-se mais completos e plurais em seus pontos de vista: milhões de leitores podem partilhar atenção e contribuições e criar livros coletivos bem escritos como um bem público.",
-    it: "Il progetto vuole anche ridurre la necessità che ogni persona spenda denaro ed energia interrogando ripetutamente un’IA da sola. Guidati da una comunità, i libri possono diventare più completi e plurali nei punti di vista: milioni di lettori possono condividere attenzione e contributi, creando libri collettivi curati come bene pubblico.",
-    ro: "Proiectul urmărește și reducerea nevoii ca fiecare persoană să consume bani și energie cerând repetat conținut unui AI, în izolare. Ghidate de comunitate, cărțile pot deveni mai cuprinzătoare și mai pluraliste ca puncte de vedere: milioane de cititori își pot împărți atenția și contribuțiile, creând cărți colective bine scrise, ca un bun public.",
-    pl: "Projekt ma też ograniczać potrzebę, by każda osoba wydawała pieniądze i energię na wielokrotne samodzielne pytanie AI. Prowadzone przez społeczność książki mogą stać się bardziej wszechstronne i pluralistyczne: miliony czytelników mogą dzielić uwagę i wkład, tworząc starannie napisane książki zbiorowe jako dobro publiczne.",
-  };
-
   const copy = {
     en: {
       heroKicker: "About",
@@ -254,7 +181,7 @@
     document.querySelectorAll("[data-site-size]").forEach((button) => { button.onclick = () => applySiteScale(1, true); });
   };
   const storedTheme = () => {
-    try { return localStorage.getItem(siteThemeKey) === "dark" ? "dark" : "light"; } catch { return "light"; }
+    try { const theme=localStorage.getItem(siteThemeKey); return ["light","orange","nord","dark"].includes(theme)?theme:"light"; } catch { return "light"; }
   };
   const ensureThemeToggle = () => {
     document.querySelectorAll(".theme-switcher").forEach((control) => {
@@ -265,34 +192,51 @@
     });
   };
   const applyTheme = (theme, persist = false) => {
-    const selected = theme === "dark" ? "dark" : "light";
+    const selected = ["light","orange","nord","dark"].includes(theme) ? theme : "light";
     document.documentElement.dataset.theme = selected;
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      button.textContent = selected === "dark" ? "☾" : "☼";
-      button.title = selected === "dark" ? "Switch to light appearance" : "Switch to dark appearance";
+      button.textContent = {light:"☼",orange:"◒",nord:"◈",dark:"☾"}[selected];
+      const next={light:"Light Orange",orange:"Light Linen",nord:"Dark",dark:"Light Green"}[selected];
+      button.title = `${{light:"Light Green",orange:"Light Orange",nord:"Light Linen",dark:"Dark"}[selected]} · Switch to ${next}`;
       button.setAttribute("aria-label", button.title);
-      button.setAttribute("aria-pressed", String(selected === "dark"));
+      button.removeAttribute("aria-pressed");
+      button.dataset.themeCurrent = selected;
+    });
+    document.querySelectorAll('.brand-icon,link[rel="icon"][type="image/svg+xml"]').forEach(node=>{
+      const key=node.tagName==='IMG'?'src':'href';
+      if(!node.dataset.baseIcon)node.dataset.baseIcon=node[key];
+      node[key]=['orange','nord'].includes(selected)?new URL(`assets/librarian-icon-${selected}.svg`,siteRootUrl).href:node.dataset.baseIcon;
     });
     if (persist) {
-      try { localStorage.setItem(siteThemeKey, selected); } catch { /* Storage may be unavailable. */ }
+      try { localStorage.setItem(siteThemeKey, selected); if(selected!=="dark")localStorage.setItem("scripta-site-light-theme",selected); } catch { /* Storage may be unavailable. */ }
+    }
+  };
+  // Generated headers already carry these elements; runtime-created shells use the same navigation.
+  const ensureHeaderBranding = () => {
+    for(const header of document.querySelectorAll('.site-header')){
+      const wordmark=header.querySelector('.wordmark');
+      if(wordmark&&!wordmark.querySelector('.brand-icon')){
+        const icon=document.createElement('img');icon.className='brand-icon';icon.alt='';
+        icon.src=new URL('assets/librarian-icon.svg',siteRootUrl).href;wordmark.prepend(icon);
+      }
+      const create=header.querySelector('[data-create-link]');
+      if(create&&!header.querySelector('[data-home-link]')){
+        const home=document.createElement('a');home.className='header-home';home.dataset.homeLink='';
+        home.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg><span>Home</span>';
+        create.before(home);
+      }
     }
   };
   const setupTheme = () => {
     ensureThemeToggle();
     applyTheme(storedTheme());
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      button.addEventListener("click", () => applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark", true));
+      button.addEventListener("click", () => applyTheme({light:"orange",orange:"nord",nord:"dark",dark:"light"}[document.documentElement.dataset.theme]||"light", true));
     });
   };
   const normalise = (value) => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   const displayKeyword = (value) => String(value).split(" ").map((word) => word ? word[0].toLocaleUpperCase() + word.slice(1) : word).join(" ");
   const escape = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
-  const compactDescription = (value, maximum = 260) => {
-    const clean = String(value || "").replace(/\s+/g, " ").trim();
-    if (clean.length <= maximum) return clean;
-    const clipped = clean.slice(0, maximum + 1).replace(/\s+\S*$/, "").trim();
-    return `${clipped || clean.slice(0, maximum)}…`;
-  };
   const isBookPage = () => document.body.dataset.bookPage === "true";
   const isAppPage = () => document.body.dataset.appPage === "true";
   const assetPath = (path) => path;
@@ -310,6 +254,16 @@
   }
 
   function localizeGlobalHeader(language) {
+    document.querySelectorAll("[data-home-link], .site-header .wordmark").forEach((link) => {
+      link.href = new URL(`index.html?lang=${language}`, siteRootUrl).href;
+      if (link.hasAttribute("data-home-link")) {
+        const label = homeLabels[language] || homeLabels.en;
+        link.querySelector("span").textContent = label;
+        link.setAttribute("aria-label", label);
+        link.title = label;
+        if (document.body.dataset.homePage === "true") link.setAttribute("aria-current", "page");
+      }
+    });
     document.querySelectorAll("[data-create-link]").forEach((link) => {
       link.textContent = createLabels[language];
       link.setAttribute("aria-label", createLabels[language]);
@@ -319,6 +273,7 @@
       link.href = url.href;
     });
     document.querySelectorAll(".site-header .header-tools").forEach((tools) => {
+      if(document.body.dataset.homePage==="true"){tools.querySelector("[data-header-librarian]")?.remove();return;}
       const create = tools.querySelector("[data-create-link]");
       let librarian = tools.querySelector("[data-header-librarian]");
       if (!librarian) {
@@ -344,87 +299,6 @@
     });
   }
 
-  function setupLibrarianLaunch(language) {
-    const form = document.querySelector("[data-librarian-launch]");
-    if (!form) return;
-    if (form._speechRecognition) {
-      form._speechRecognition.onend = null;
-      form._speechRecognition.abort();
-      form._speechRecognition = null;
-    }
-    const words = librarianLaunchLabels[language];
-    const input = form.querySelector("[data-librarian-query]");
-    const label = form.querySelector("[data-librarian-label]");
-    const button = form.querySelector("[data-librarian-button]");
-    const dictate = form.querySelector("[data-librarian-dictate]");
-    const speechStatus = form.querySelector("[data-librarian-speech-status]");
-    input.placeholder = words.label;
-    label.textContent = words.label;
-    button.textContent = words.button;
-    dictate.textContent = "";
-    dictate.setAttribute("aria-label", words.dictate);
-    dictate.title = words.dictate;
-    const SpeechRecognition = globalThis.SpeechRecognition || globalThis.webkitSpeechRecognition;
-    const speechLanguages = { en: "en-US", fr: "fr-FR", de: "de-DE", es: "es-ES", pt: "pt-PT", it: "it-IT", ro: "ro-RO", pl: "pl-PL" };
-    const resetDictationButton = () => {
-      dictate.setAttribute("aria-pressed", "false");
-      dictate.setAttribute("aria-label", words.dictate);
-      dictate.title = words.dictate;
-      speechStatus.textContent = "";
-    };
-    if (!SpeechRecognition) {
-      dictate.disabled = true;
-      dictate.title = words.unavailable;
-      speechStatus.textContent = words.unavailable;
-    } else {
-      dictate.disabled = false;
-      let recognition = null;
-      dictate.onclick = () => {
-        if (recognition) {
-          recognition.stop();
-          return;
-        }
-        const startingText = input.value.trim();
-        recognition = new SpeechRecognition();
-        form._speechRecognition = recognition;
-        recognition.lang = speechLanguages[language] || language;
-        recognition.continuous = true;
-        recognition.interimResults = true;
-        recognition.onstart = () => {
-          dictate.setAttribute("aria-pressed", "true");
-          dictate.setAttribute("aria-label", words.stop);
-          dictate.title = words.stop;
-          speechStatus.textContent = words.listening;
-        };
-        recognition.onresult = (event) => {
-          let transcript = "";
-          for (let index = 0; index < event.results.length; index += 1) transcript += event.results[index][0].transcript;
-          input.value = [startingText, transcript.trim()].filter(Boolean).join(startingText ? " " : "");
-          input.dispatchEvent(new Event("input", { bubbles: true }));
-        };
-        recognition.onerror = () => { speechStatus.textContent = words.unavailable; };
-        recognition.onend = () => {
-          recognition = null;
-          form._speechRecognition = null;
-          resetDictationButton();
-        };
-        recognition.start();
-      };
-      resetDictationButton();
-    }
-    form.onsubmit = (event) => {
-      event.preventDefault();
-      const query = input.value.trim();
-      if (!query) {
-        input.focus();
-        return;
-      }
-      const params = new URLSearchParams({ lang: language });
-      const request = new URLSearchParams({ request: query });
-      location.href = `librarian/index.html?${params.toString()}#${request.toString()}`;
-    };
-  }
-
   function setupMissionBookTooltips(container) {
     let tooltip = document.querySelector("[data-mission-book-tooltip]");
     if (!tooltip) {
@@ -433,7 +307,7 @@
       tooltip.dataset.missionBookTooltip = "";
       tooltip.setAttribute("role", "dialog");
       tooltip.hidden = true;
-      tooltip.innerHTML = '<strong data-tooltip-title></strong><p data-tooltip-description></p><a data-tooltip-link></a>';
+      tooltip.innerHTML = '<strong data-tooltip-title></strong><p data-tooltip-description data-text-show></p><a data-tooltip-link></a>';
       document.body.append(tooltip);
     }
     tooltip.hidden = true;
@@ -452,6 +326,7 @@
       activeIcon?.classList.remove("has-open-tooltip");
       activeIcon = null;
       tooltip.hidden = true;
+      ScriptaBookView.unmount(tooltip);
     };
     const scheduleHide = () => {
       cancelHide();
@@ -475,6 +350,7 @@
       activeIcon?.classList.remove("has-open-tooltip");
       activeIcon = icon;
       activeIcon.classList.add("has-open-tooltip");
+      ScriptaBookView.unmount(tooltip);
       tooltip.querySelector("[data-tooltip-title]").textContent = icon.dataset.bookTitle;
       tooltip.querySelector("[data-tooltip-description]").textContent = icon.dataset.bookDescription;
       const link = tooltip.querySelector("[data-tooltip-link]");
@@ -482,6 +358,7 @@
       link.href = icon.href;
       tooltip.setAttribute("aria-label", icon.dataset.bookTitle);
       tooltip.hidden = false;
+      ScriptaBookView.mount(tooltip);
       place(icon);
     };
     container.addEventListener("pointerover", (event) => {
@@ -509,23 +386,9 @@
   }
 
   function missionBookIconMarkup(book, language, index) {
-    const thumbnail = book.thumbnailUrl?.[language] || book.thumbnailUrl?.en;
-    if (!thumbnail) return "";
-    const title = book.title?.[language] || book.title?.en || "";
-    const description = compactDescription(book.shortDescription?.[language] || book.shortDescription?.en);
-    const bookHref = book.editions?.[language]?.book || book.editions?.en?.book;
-    const action = cardActions[language].details;
-    return `<a class="mission-book-icon" href="${escape(assetPath(bookHref))}" aria-label="${escape(`${action}: ${title}`)}" data-mission-book data-book-id="${escape(book.id)}" data-book-title="${escape(title)}" data-book-description="${escape(description)}" data-book-action="${escape(action)}" style="--book-tilt:${((index % 7) - 3) * .42}deg"><img src="${escape(assetPath(thumbnail))}" alt="" loading="lazy" decoding="async"></a>`;
-  }
-
-  function featuredBookMarkup(book, language) {
-    const title = book.title?.[language] || book.title?.en || "";
-    const description = book.shortDescription?.[language] || book.shortDescription?.en || "";
-    const bookHref = book.editions?.[language]?.book || book.editions?.en?.book;
-    const labels = cardActions[language];
-    const keywords = (book.keywords?.[language] || book.keywords?.en || []).slice(0, 5);
-    const status = book.publicationLabel?.[language] ? `<p class="publication-status">${escape(book.publicationLabel[language])}</p>` : "";
-    return `<div class="featured-book-copy"><p class="eyebrow">${escape(featuredBookLabels[language])}</p><p class="featured-book-category">${escape(book.category)}</p>${status}<h2><a href="${escape(assetPath(bookHref))}">${escape(title)}</a></h2><div class="featured-book-keywords" aria-label="${escape(featuredBookLabels[language])}">${keywords.map((keyword) => `<span>${escape(keyword)}</span>`).join("")}</div><p class="featured-book-description">${escape(description)}</p><nav class="book-card-actions featured-book-actions"><a class="book-card-details" href="${escape(assetPath(bookHref))}">${escape(labels.details)}</a></nav></div>`;
+    const data = ScriptaBookView.model(book, language);
+    if (!data.thumbnail) return "";
+    return `<a class="mission-book-icon" href="${escape(data.href)}" aria-label="${escape(`${data.details}: ${data.title}`)}" data-mission-book data-book-id="${escape(data.id)}" data-book-title="${escape(data.title)}" data-book-description="${escape(data.description)}" data-book-action="${escape(data.details)}" style="--book-tilt:${((index % 7) - 3) * .42}deg"><img src="${escape(data.thumbnail)}" alt="" loading="lazy" decoding="async"></a>`;
   }
 
   function setupMissionBookStrip(container, language, details) {
@@ -537,17 +400,16 @@
     let replacementSlot = 0;
     let visibleBooks = [];
     let disposed = false;
+    let featuredShow = null;
+
+    const renderDetails = (book) => {
+      if (!details) return;
+      [featuredShow] = ScriptaBookView.render(details, book, { variant: "featured", language, kicker: featuredBookLabels[language] });
+    };
 
     const syncFeaturedCardHeight = () => {
       if (!details) return;
-      if (globalThis.matchMedia?.("(max-width: 590px)").matches) {
-        details.style.removeProperty("height");
-        return;
-      }
-      const coverHeight = container.getBoundingClientRect().height;
-      if (coverHeight <= 1) return;
-      const nextHeight = `${coverHeight.toFixed(1)}px`;
-      if (details.style.height !== nextHeight) details.style.height = nextHeight;
+      ScriptaBookView.alignCover(container, details.parentElement);
     };
 
     const nextBook = (excluded = new Set()) => {
@@ -590,7 +452,7 @@
         excluded.add(book.id);
       }
       container.innerHTML = `<div class="mission-book-set">${visibleBooks.map((book, index) => missionBookIconMarkup(book, language, index)).join("")}</div>`;
-      if (details && visibleBooks[0]) details.innerHTML = featuredBookMarkup(visibleBooks[0], language);
+      if (details && visibleBooks[0]) renderDetails(visibleBooks[0]);
       syncFeaturedCardHeight();
     };
     const replaceIcon = (icon) => {
@@ -617,7 +479,7 @@
         icon.classList.add("is-entering");
         visibleBooks[slotIndex] = replacement;
         if (details?.isConnected) {
-          details.innerHTML = featuredBookMarkup(replacement, language);
+          renderDetails(replacement);
           details.classList.remove("is-card-leaving");
           details.classList.add("is-card-entering");
           const cardTimer = setTimeout(() => {
@@ -635,12 +497,12 @@
       pending.add(swapTimer);
     };
     const replaceNext = () => {
-      if (disposed || document.hidden) return;
+      if (disposed || document.hidden || (details && (!featuredShow?.completed || !featuredShow.visible || details.matches(":hover, :focus-within")))) return;
       const icons = [...container.querySelectorAll("[data-mission-book]")];
       for (let attempt = 0; attempt < icons.length; attempt += 1) {
         const icon = icons[replacementSlot % icons.length];
         replacementSlot = (replacementSlot + 1) % icons.length;
-        if (icon.matches(":hover") || icon.classList.contains("has-open-tooltip") || icon.classList.contains("is-leaving")) continue;
+        if (icon.matches(":hover, :focus-within") || icon.classList.contains("has-open-tooltip") || icon.classList.contains("is-leaving")) continue;
         replaceIcon(icon);
         return;
       }
@@ -653,9 +515,10 @@
     if (missionLayout) observer?.observe(missionLayout);
     if (details) observer?.observe(details);
     document.addEventListener("scriptahub:scalechange", renderSlots);
-    const interval = setInterval(replaceNext, 6200);
+    const interval = setInterval(replaceNext, details ? 250 : 6200);
     container._disposeMissionStrip = () => {
       disposed = true;
+      if (details) ScriptaBookView.unmount(details);
       clearInterval(interval);
       pending.forEach(clearTimeout);
       observer?.disconnect();
@@ -688,13 +551,7 @@
   }
 
   function bookCard(book, language) {
-    const edition = book.editions[language];
-    const title = book.title[language] || book.title.en;
-    const description = book.shortDescription[language] || book.shortDescription.en;
-    const bookUrl = assetPath(edition.book);
-    const labels = cardActions[language];
-    const status = book.publicationLabel?.[language] ? `<p class="publication-status">${escape(book.publicationLabel[language])}</p>` : "";
-    return `<article class="book-card" data-book-url="${escape(bookUrl)}" role="link" tabindex="0" aria-label="${escape(`${labels.details}: ${title}`)}"><div class="book-card-top"><a href="${escape(bookUrl)}"><img src="${escape(assetPath(book.thumbnailUrl[language]))}" alt="${escape(title)} cover" loading="lazy"></a><div><p class="category">${escape(book.category)}</p><h3><a href="${escape(bookUrl)}">${escape(title)}</a></h3></div></div>${status}<p class="description">${escape(description)}</p><nav class="book-card-actions"><a class="book-card-details" href="${escape(bookUrl)}">${escape(labels.details)}</a></nav></article>`;
+    return ScriptaBookView.markup(book, { language });
   }
 
   function renderKeywordSelection(keywordId, language, { updateHistory = false, scroll = false } = {}) {
@@ -705,6 +562,7 @@
     const results = browser.querySelector("[data-keyword-results]");
     const clear = browser.querySelector("[data-keyword-clear]");
 
+    if (globalThis.textShow) ScriptaBookView.unmount(results);
     if (!keyword) {
       browser.hidden = true;
       results.innerHTML = "";
@@ -720,6 +578,7 @@
     clear.textContent = keywordResultLabels[language].clear;
     results.innerHTML = matches.map((book) => bookCard(book, language)).join("");
     browser.hidden = false;
+    ScriptaBookView.mount(results);
     document.title = `${heading} · ScriptaHub`;
 
     clear.onclick = () => {
@@ -758,13 +617,7 @@
     const cover = hero?.querySelector(".cover-link");
     const details = hero?.querySelector(".book-details");
     if (!hero || !cover || !details) return;
-    const sync = () => {
-      if (globalThis.matchMedia?.("(max-width: 860px)").matches) {
-        details.style.removeProperty("height");
-        return;
-      }
-      details.style.height = `${cover.getBoundingClientRect().height.toFixed(1)}px`;
-    };
+    const sync = () => ScriptaBookView.alignCover(cover, hero);
     const observer = globalThis.ResizeObserver ? new ResizeObserver(sync) : null;
     observer?.observe(cover);
     window.addEventListener("resize", sync, { passive: true });
@@ -977,7 +830,9 @@
       const matches = searchBooks(input.value, language);
       const active = Boolean(input.value.trim());
       grid.hidden = active;
+      globalThis.ScriptaBookView?.unmount(results);
       results.innerHTML = active ? (matches.length ? `<div class="book-grid">${matches.map((book) => bookCard(book, language)).join("")}</div>` : `<p class="search-empty">${escape(copy[language].searchEmpty)}</p>`) : "";
+      globalThis.ScriptaBookView?.mount(results);
     };
     const showSuggestions = () => {
       const needle = normalise(input.value.trim());
@@ -1020,302 +875,11 @@
     }
   }
 
-  function splitIntroduction(value, language) {
-    const text = String(value || "").replace(/\s+/g, " ").trim();
-    if (!text) return [];
-    if (globalThis.Intl?.Segmenter) {
-      return [...new Intl.Segmenter(language, { granularity: "sentence" }).segment(text)]
-        .map(({ segment }) => segment.trim())
-        .filter(Boolean);
-    }
-    return text.match(/[^.!?。！？]+[.!?。！？]+(?:[”’»"])?|[^.!?。！？]+$/g)?.map((sentence) => sentence.trim()).filter(Boolean) || [text];
-  }
-
-  function setupIntroPresentation(language, text) {
-    const source = document.querySelector("[data-hero-lead]");
-    if (!source) return;
-    source._disposeIntroPresentation?.();
-    const sentences = splitIntroduction(text, language);
-    if (sentences.length < 2) {
-      source.textContent = text;
-      return;
-    }
-
-    const words = introPresentationLabels[language];
-    const palette = ["var(--green)", "#6746b9", "#28639f", "#a44f38", "#80438c", "#3d7768", "#8b6718", "#276f78"];
-    source.innerHTML = `<section class="intro-presentation is-awaiting-choice" aria-label="${escape(words.label)}">
-      <div class="intro-stage">
-        <button class="intro-arrow intro-arrow-previous" type="button" data-intro-previous aria-label="${escape(words.previous)}" hidden></button>
-        <article class="intro-slide" role="group" aria-roledescription="slide" aria-live="off" data-intro-slide hidden></article>
-        <button class="intro-arrow intro-arrow-next" type="button" data-intro-next aria-label="${escape(words.next)}" hidden></button>
-        <div class="intro-choice" data-intro-choice>
-          <div><span class="eyebrow">${escape(words.label)}</span><h2 data-intro-choice-title>${escape(words.unavailable)}</h2><p data-intro-choice-note>${escape(words.unavailableNote)}</p><div class="intro-choice-actions"><button type="button" data-intro-start-voice hidden>${escape(words.read)}</button><button type="button" data-intro-start>${escape(words.start)}</button><button type="button" data-intro-librarian>${escape(librarianSectionLabels[language].title)}</button></div></div>
-        </div>
-      </div>
-      <div class="intro-controls" data-intro-controls hidden>
-        <button type="button" data-intro-previous>${escape(words.previous)}</button><span class="intro-counter" data-intro-counter aria-live="polite"></span><button type="button" data-intro-next>${escape(words.next)}</button>
-        <button class="intro-icon-button" type="button" data-intro-toggle aria-label="${escape(words.pause)}" title="${escape(words.pause)}"><span aria-hidden="true">❚❚</span></button>
-        <button class="intro-icon-button intro-restart" type="button" data-intro-restart aria-label="${escape(words.restart)}" title="${escape(words.restart)}"><span aria-hidden="true">↺</span></button>
-        <button type="button" data-intro-read hidden>${escape(words.read)}</button><button type="button" data-intro-view-all>${escape(words.viewAll)}</button><button type="button" data-intro-librarian>${escape(librarianSectionLabels[language].title)}</button><span class="intro-status" data-intro-status></span>
-      </div>
-    </section>`;
-
-    const presentation = source.querySelector(".intro-presentation");
-    const choice = source.querySelector("[data-intro-choice]");
-    const choiceTitle = source.querySelector("[data-intro-choice-title]");
-    const choiceNote = source.querySelector("[data-intro-choice-note]");
-    const startVoiceButton = source.querySelector("[data-intro-start-voice]");
-    const readButton = source.querySelector("[data-intro-read]");
-    const slide = source.querySelector("[data-intro-slide]");
-    const controls = source.querySelector("[data-intro-controls]");
-    const counter = source.querySelector("[data-intro-counter]");
-    const status = source.querySelector("[data-intro-status]");
-    const toggle = source.querySelector("[data-intro-toggle]");
-    const arrows = [...source.querySelectorAll(".intro-arrow")];
-    const speech = globalThis.speechSynthesis;
-    const speechSupported = Boolean(speech && globalThis.SpeechSynthesisUtterance);
-    const reducedMotion = globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    let active = 0;
-    let started = false;
-    let paused = Boolean(reducedMotion);
-    let voiceMode = false;
-    let currentVoice = null;
-    let utterance = null;
-    let advanceTimer = 0;
-    let countdownTimer = 0;
-    let nextChangeAt = 0;
-    let disposed = false;
-    let resumeAfterDialog = false;
-
-    const localVoices = () => {
-      if (!speechSupported) return [];
-      return speech.getVoices().filter((voice) => voice.localService && voice.lang.toLowerCase().startsWith(language));
-    };
-    const chooseVoice = () => {
-      const voices = localVoices();
-      currentVoice = voices.find((voice) => voice.default) || voices[0] || null;
-      return currentVoice;
-    };
-    const updateVoiceAvailability = () => {
-      const available = Boolean(chooseVoice());
-      if (disposed) return;
-      choice.classList.toggle("has-local-voice", available);
-      startVoiceButton.hidden = !available;
-      readButton.hidden = !available;
-      choiceTitle.textContent = available ? words.ready : words.unavailable;
-      choiceNote.textContent = available ? words.readyNote : words.unavailableNote;
-      if (!available && voiceMode) {
-        voiceMode = false;
-        stopSpeech();
-        schedule();
-      }
-    };
-    const clearTimers = () => {
-      clearTimeout(advanceTimer);
-      clearInterval(countdownTimer);
-      advanceTimer = 0;
-      countdownTimer = 0;
-      nextChangeAt = 0;
-    };
-    const stopSpeech = () => {
-      if (utterance && speechSupported) speech.cancel();
-      utterance = null;
-    };
-    const durationFor = (sentence) => Math.max(4400, Math.min(9600, 2300 + sentence.split(/\s+/).length * 155));
-    const updateStatus = () => {
-      if (paused) { status.textContent = words.paused; return; }
-      if (voiceMode) { status.textContent = utterance ? words.reading : words.preparing; return; }
-      const seconds = Math.max(0, Math.ceil((nextChangeAt - Date.now()) / 1000));
-      status.textContent = words.nextIn(seconds);
-    };
-    const schedule = () => {
-      clearTimers();
-      if (!started || paused || voiceMode) { updateStatus(); return; }
-      const duration = durationFor(sentences[active]);
-      nextChangeAt = Date.now() + duration;
-      updateStatus();
-      countdownTimer = setInterval(updateStatus, 250);
-      advanceTimer = setTimeout(() => show(active + 1), duration);
-    };
-    const sentenceMarkup = (sentence) => {
-      const parts = sentence.split(/(\s+)/);
-      const wordCount = parts.filter((part) => /\S/.test(part)).length;
-      let wordIndex = 0;
-      const copy = parts.map((part) => {
-        if (!/\S/.test(part)) return part;
-        const delay = Math.round(wordIndex++ * Math.min(125, 3300 / Math.max(1, wordCount - 1)));
-        return `<span class="intro-word" style="--intro-word-delay:${delay}ms">${escape(part)}</span>`;
-      }).join("");
-      const signals = Array.from({ length: 7 }, (_, index) => `<span style="--signal-x:${9 + index * 12}%;--signal-delay:${(-index * .19).toFixed(2)}s">${index % 2 ? "01<>" : "10{}"}</span>`).join("");
-      return `<span class="intro-slide-copy">${copy}</span><span class="intro-signal-field" aria-hidden="true">${signals}</span>`;
-    };
-    const syncToggle = () => {
-      const label = paused ? words.resume : words.pause;
-      toggle.title = label;
-      toggle.setAttribute("aria-label", label);
-      toggle.querySelector("span").textContent = paused ? "▶" : "❚❚";
-    };
-    const speakActive = () => {
-      stopSpeech();
-      if (!voiceMode || paused || !chooseVoice()) { updateStatus(); return; }
-      const spokenIndex = active;
-      utterance = new SpeechSynthesisUtterance(sentences[active]);
-      utterance.voice = currentVoice;
-      utterance.lang = currentVoice.lang;
-      utterance.rate = 1;
-      utterance.pitch = 1;
-      utterance.onend = () => {
-        utterance = null;
-        if (!disposed && voiceMode && !paused && spokenIndex === active) {
-          status.textContent = words.nextIn(1);
-          advanceTimer = setTimeout(() => { show(active + 1); speakActive(); }, 650);
-        }
-      };
-      utterance.onerror = () => { utterance = null; if (!disposed) status.textContent = words.unavailable; };
-      speech.speak(utterance);
-      updateStatus();
-    };
-    const show = (index, restart = false) => {
-      if (!started) return;
-      active = (index + sentences.length) % sentences.length;
-      slide.style.setProperty("--intro-card-color", palette[active % palette.length]);
-      slide.setAttribute("aria-label", `${words.message} ${active + 1} / ${sentences.length}`);
-      slide.innerHTML = sentenceMarkup(sentences[active]);
-      counter.textContent = `${active + 1} / ${sentences.length}`;
-      slide.classList.remove("is-active");
-      if (restart) void slide.offsetWidth;
-      requestAnimationFrame(() => slide.classList.add("is-active"));
-      schedule();
-    };
-    const setPaused = (value) => {
-      paused = value;
-      if (paused) stopSpeech();
-      syncToggle();
-      schedule();
-      if (!paused && voiceMode) speakActive();
-    };
-    const start = (withVoice) => {
-      started = true;
-      voiceMode = Boolean(withVoice && chooseVoice());
-      paused = Boolean(reducedMotion && !voiceMode);
-      choice.hidden = true;
-      controls.hidden = false;
-      slide.hidden = false;
-      arrows.forEach((arrow) => { arrow.hidden = false; });
-      presentation.classList.remove("is-awaiting-choice");
-      syncToggle();
-      show(0, true);
-      if (voiceMode) speakActive();
-    };
-    const navigate = (offset) => {
-      stopSpeech();
-      show(active + offset, true);
-      if (voiceMode && !paused) speakActive();
-    };
-
-    const dialog = document.createElement("div");
-    dialog.className = "intro-dialog";
-    dialog.hidden = true;
-    dialog.innerHTML = `<button class="intro-dialog-backdrop" type="button" data-intro-dialog-close aria-label="${escape(words.close)}"></button><section class="intro-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="intro-dialog-title" tabindex="-1"><header><h2 id="intro-dialog-title">${escape(words.allTitle)}</h2><button type="button" data-intro-dialog-close aria-label="${escape(words.close)}">×</button></header><div>${sentences.map((sentence) => `<p>${escape(sentence)}</p>`).join("")}</div></section>`;
-    document.body.append(dialog);
-    const closeDialog = () => {
-      dialog.hidden = true;
-      source.querySelector("[data-intro-view-all]")?.focus();
-      if (resumeAfterDialog) setPaused(false);
-      resumeAfterDialog = false;
-    };
-    const openDialog = () => {
-      resumeAfterDialog = !paused;
-      if (resumeAfterDialog) setPaused(true);
-      dialog.hidden = false;
-      dialog.querySelector(".intro-dialog-panel").focus();
-    };
-    const onEscape = (event) => { if (event.key === "Escape" && !dialog.hidden) closeDialog(); };
-    dialog.querySelectorAll("[data-intro-dialog-close]").forEach((button) => button.addEventListener("click", closeDialog));
-    document.addEventListener("keydown", onEscape);
-    source.querySelector("[data-intro-start]").addEventListener("click", () => start(false));
-    startVoiceButton.addEventListener("click", () => start(true));
-    source.querySelectorAll("[data-intro-previous]").forEach((button) => button.addEventListener("click", () => navigate(-1)));
-    source.querySelectorAll("[data-intro-next]").forEach((button) => button.addEventListener("click", () => navigate(1)));
-    toggle.addEventListener("click", () => setPaused(!paused));
-    source.querySelector("[data-intro-restart]").addEventListener("click", () => { setPaused(false); navigate(-active); });
-    readButton.addEventListener("click", () => {
-      voiceMode = true;
-      paused = false;
-      syncToggle();
-      schedule();
-      speakActive();
-    });
-    source.querySelector("[data-intro-view-all]").addEventListener("click", openDialog);
-    if (speechSupported) speech.addEventListener?.("voiceschanged", updateVoiceAvailability);
-    updateVoiceAvailability();
-    source._disposeIntroPresentation = () => {
-      disposed = true;
-      clearTimers();
-      stopSpeech();
-      if (speechSupported) speech.removeEventListener?.("voiceschanged", updateVoiceAvailability);
-      document.removeEventListener("keydown", onEscape);
-      dialog.remove();
-      delete source._disposeIntroPresentation;
-    };
-  }
-
-  function setupLibrarianPopup(language) {
-    const triggers = [...document.querySelectorAll("[data-intro-librarian]")];
-    if (!triggers.length) return;
-    const previous = document.querySelector("[data-librarian-dialog]");
-    previous?._dispose?.();
-    const section = librarianSectionLabels[language];
-    const launch = librarianLaunchLabels[language];
-    const closeLabel = introPresentationLabels[language].close;
-    const dialog = document.createElement("div");
-    dialog.className = "librarian-dialog";
-    dialog.dataset.librarianDialog = "";
-    dialog.hidden = true;
-    dialog.innerHTML = `<button class="librarian-dialog-backdrop" type="button" data-librarian-close aria-label="${escape(closeLabel)}"></button><section class="librarian-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="librarian-dialog-title" tabindex="-1"><header><div><p class="eyebrow">${escape(section.kicker)}</p><h2 id="librarian-dialog-title">${escape(section.title)}</h2></div><button class="librarian-dialog-close" type="button" data-librarian-close aria-label="${escape(closeLabel)}">×</button></header><p class="librarian-dialog-lead">${escape(librarianMissionPrompt[language])}</p><form class="mission-librarian librarian-dialog-form" data-librarian-launch><label class="sr-only" for="librarian-dialog-query" data-librarian-label>${escape(launch.label)}</label><textarea id="librarian-dialog-query" rows="3" data-librarian-query required></textarea><div class="mission-librarian-actions"><button class="librarian-dictate" type="button" data-librarian-dictate aria-pressed="false" aria-label="${escape(launch.dictate)}" title="${escape(launch.dictate)}"></button><button type="submit" data-librarian-button>${escape(launch.button)}</button></div><span class="librarian-speech-status" data-librarian-speech-status aria-live="polite"></span></form></section>`;
-    document.body.append(dialog);
-    const panel = dialog.querySelector(".librarian-dialog-panel");
-    const input = dialog.querySelector("[data-librarian-query]");
-    let opener = null;
-    const close = () => {
-      dialog.hidden = true;
-      document.body.classList.remove("librarian-dialog-open");
-      opener?.focus();
-    };
-    const open = (event) => {
-      event.preventDefault();
-      opener = event.currentTarget;
-      dialog.hidden = false;
-      document.body.classList.add("librarian-dialog-open");
-      requestAnimationFrame(() => {
-        panel.focus();
-        input.focus();
-      });
-    };
-    const onEscape = (event) => {
-      if (event.key === "Escape" && !dialog.hidden) close();
-    };
-    triggers.forEach((trigger) => trigger.addEventListener("click", open));
-    dialog.querySelectorAll("[data-librarian-close]").forEach((button) => button.addEventListener("click", close));
-    document.addEventListener("keydown", onEscape);
-    dialog._dispose = () => {
-      const form = dialog.querySelector("[data-librarian-launch]");
-      if (form?._speechRecognition) {
-        form._speechRecognition.onend = null;
-        form._speechRecognition.abort();
-      }
-      document.removeEventListener("keydown", onEscape);
-      document.body.classList.remove("librarian-dialog-open");
-      dialog.remove();
-    };
-    if (location.hash === "#ask-librarian") requestAnimationFrame(() => triggers[0]?.click());
-  }
-
   function revealHomeWhenReady() {
     const loader = document.querySelector("[data-home-loading]");
     if (!loader || loader.dataset.revealStarted) return;
     loader.dataset.revealStarted = "true";
-    const floor = loader.closest(".discovery-mission");
+    const floor = loader.closest(".home-feature-strip");
     const waitForImage = (image) => {
       if (image.complete) return typeof image.decode === "function" ? image.decode().catch(() => {}) : Promise.resolve();
       return new Promise((resolve) => {
@@ -1331,6 +895,7 @@
       .then(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))))
       .then(() => {
         floor.setAttribute("aria-busy", "false");
+        ScriptaBookView.mount(floor);
         loader.classList.add("is-complete");
         setTimeout(() => loader.remove(), 420);
       });
@@ -1344,9 +909,7 @@
     document.title = `ScriptaHub · ${words.libraryTitle}`;
     replaceText("[data-hero-kicker]", words.heroKicker);
     replaceText("[data-hero-title]", words.heroTitle, true);
-    setupIntroPresentation(language, heroPresentation[language]);
-    setupLibrarianPopup(language);
-    setupLibrarianLaunch(language);
+    globalThis.ScriptaHomeLibrarian?.localize(language);
     renderCloud(language);
     const missionBooks = document.querySelector("[data-mission-books]");
     const featuredBook = document.querySelector("[data-featured-book]");
@@ -1360,28 +923,25 @@
   }
 
   function setupBookReading(language) {
-    const select = document.querySelector("[data-book-reading-language]");
     const book = collection.books.find((item) => item.id === document.body.dataset.bookId);
     const reading = globalThis.ScriptaReading;
-    if (!select || !book || !reading) return;
-    select.value = language;
-    const update = () => {
-      for (const link of document.querySelectorAll("[data-reading-format]")) {
-        const format = link.dataset.readingFormat;
-        link.href = reading.readingUrl(book, select.value, format, language, siteRootUrl).href;
-        const present = reading.available(book, select.value, format);
-        link.textContent = present ? link.dataset.readingLabel : `${link.dataset.readingLabel} · ${reading.labels[language].request}`;
-      }
-    };
-    select.addEventListener("change", update);
-    update();
+    if (!book || !reading) return;
+    for (const link of document.querySelectorAll("[data-reading-format]")) {
+      const url = reading.readingUrl(book, language, link.dataset.readingFormat, language, siteRootUrl);
+      if (url) link.href = url.href;
+      else { link.removeAttribute("href"); link.setAttribute("aria-disabled", "true"); }
+      link.textContent = link.dataset.readingLabel;
+    }
+    const pdf = document.querySelector("[data-download-pdf]");
+    if (pdf && book.editions.en?.pdf) pdf.href = new URL(book.editions.en.pdf, siteRootUrl).href;
   }
 
   const language = selectedLanguage();
+  ensureHeaderBranding();
   setupTheme();
   setupSiteScale();
   setupCardNavigation();
-  if (isBookPage()) { localizeGlobalHeader(language); setupSearch(language); setupBookHeroAlignment(); setupBookReading(language); setupCoverPreview(language); }
+  if (isBookPage()) { ScriptaBookView.page(collection.books.find(book => book.id === document.body.dataset.bookId), language); localizeGlobalHeader(language); setupSearch(language); setupBookHeroAlignment(); setupBookReading(language); setupCoverPreview(language); }
   else if (isAppPage()) { document.documentElement.lang = language; localizeGlobalHeader(language); setLanguagePicker(language); setupSearch(language); }
   else renderHome(language);
   if (!isBookPage() && !isAppPage()) addEventListener("popstate", () => renderKeywordSelection(new URL(location.href).searchParams.get("keyword"), selectedLanguage()));

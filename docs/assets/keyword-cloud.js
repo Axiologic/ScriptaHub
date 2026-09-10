@@ -19,7 +19,16 @@
     return value;
   };
 
-  function openModal(items, options, originatingCloud = null, onSelect = (keyword) => location.assign(keyword.href)) {
+  function openModal(items, options, originatingCloud = null) {
+    // Fullscreen discovery opens recommendations; embedded catalogue links keep their routes.
+    const root = new URL('../', document.querySelector('script[src*="assets/keyword-cloud.js"]')?.src || new URL('assets/keyword-cloud.js', location.href));
+    const modalItems = items.map(keyword => {
+      const prior = new URL(keyword.href, location.href);
+      const target = new URL('librarian/index.html', root);
+      target.search = new URLSearchParams({lang:prior.searchParams.get('lang') || document.documentElement.lang || 'en'});
+      target.hash = new URLSearchParams({request:keyword.label});
+      return {...keyword, href:target.href};
+    });
     if (document.querySelector(".keyword-cloud-modal")) return;
     const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const sourceCloud = originatingCloud || opener?.closest?.(".keyword-cloud") || null;
@@ -54,13 +63,13 @@
     closeButton.addEventListener("click", () => close());
     document.body.append(modal);
     document.body.classList.add("keyword-modal-open");
-    dispose = mount(modalCloud, items, {
+    dispose = mount(modalCloud, modalItems, {
       ...options,
       interactive: true,
       showInstruction: false,
       onSelect: (keyword) => {
         close({ restoreFocus: false });
-        onSelect(keyword);
+        location.assign(keyword.href);
       },
     });
     document.addEventListener("keydown", onKeydown);
@@ -166,7 +175,17 @@
       const centreX = bounds.width / 2, centreY = bounds.height / 2;
       const collisionLimited = interactive || backgroundMode || bounds.width <= 590;
       const darkTheme = document.documentElement.dataset.theme === "dark";
-      const palette = darkTheme
+      const orangeTheme = document.documentElement.dataset.theme === "orange";
+      const nordTheme = document.documentElement.dataset.theme === "nord";
+      const palette = nordTheme ? [
+        {fill:"#493c43",glow:"rgba(105,68,81,.12)"},{fill:"#684653",glow:"rgba(105,68,81,.12)"},
+        {fill:"#6d5f65",glow:"rgba(105,68,81,.12)"},{fill:"#79636b",glow:"rgba(105,68,81,.12)"},
+        {fill:"#8d6674",glow:"rgba(105,68,81,.12)"},{fill:"#897261",glow:"rgba(105,68,81,.12)"}
+      ] : orangeTheme ? [
+        {fill:"#934215",glow:"rgba(180,82,18,.18)"},{fill:"#85572d",glow:"rgba(168,100,38,.17)"},
+        {fill:"#9c542c",glow:"rgba(195,101,44,.17)"},{fill:"#795144",glow:"rgba(143,87,54,.16)"},
+        {fill:"#925f19",glow:"rgba(185,130,40,.18)"},{fill:"#765c49",glow:"rgba(139,102,64,.16)"}
+      ] : darkTheme
         ? [
             { fill: "#9bb8b1", glow: "rgba(112, 160, 148, .24)" },
             { fill: "#a0b2bd", glow: "rgba(111, 143, 162, .22)" },
@@ -436,7 +455,7 @@
       if (hit) onSelect(hit.keyword);
     };
 
-    const expand = () => openModal(items, { ariaLabel, instruction, modalInstruction, closeLabel }, cloud, onSelect);
+    const expand = () => openModal(items, { ariaLabel, instruction, modalInstruction, closeLabel }, cloud);
     if (navigable) {
       canvas.addEventListener("pointerdown", (event) => {
         pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });

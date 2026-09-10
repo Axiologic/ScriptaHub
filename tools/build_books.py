@@ -761,8 +761,9 @@ def ensure_editions_file(book_root: Path, manifest: dict[str, object]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def reader_href(book: dict[str, object], language: str, page_path: Path, format_name: str) -> str:
+def reader_href(book: dict[str, object], language: str, page_path: Path, format_name: str, ui_language: str | None = None) -> str:
     """Build a local-reader URL with a stable progress identity and locale."""
+    ui_language = ui_language or language
     edition = book["editions"][language]
     content_key = "shortContent" if format_name == "short" else "fullContent"
     if content_key not in edition:
@@ -771,26 +772,20 @@ def reader_href(book: dict[str, object], language: str, page_path: Path, format_
     book_directory = DOCS / str(book["directory"])
     params = {
         "id": f"{book['id']}:{book.get('currentEdition', 'edition-1')}:{language}:{format_name}",
-        "title": f"{book['title'][language]} · {COPY[language][format_name]}",
+        "title": f"{book['title'][language]} · {COPY[ui_language][format_name]}",
         "html": relpath(book_directory / str(edition[content_key]), reader_directory),
         "mode": "ten-minute" if format_name == "short" else "full",
-        "back": relpath(page_path, reader_directory),
+        "back": relpath(page_path, reader_directory) + "?" + urlencode({"lang": ui_language}),
         "book": str(book["directory"]),
         "language": language,
-        "lang": language,
+        "lang": ui_language,
         "format": format_name,
     }
-    if "pdf" in edition:
-        params["pdf"] = relpath(book_directory / str(edition["pdf"]), reader_directory)
+    english_pdf = book["editions"].get("en", {}).get("pdf")
+    if english_pdf:
+        params["pdf"] = relpath(book_directory / str(english_pdf), reader_directory)
     return f'{relpath(reader_directory / "index.html", page_path.parent)}?{urlencode(params)}'
 
-
-READING_LABELS = {
-    "en": ("Reading language", "Request translation"), "fr": ("Langue de lecture", "Demander une traduction"),
-    "de": ("Lesesprache", "Übersetzung anfragen"), "es": ("Idioma de lectura", "Solicitar traducción"),
-    "pt": ("Idioma de leitura", "Pedir tradução"), "it": ("Lingua di lettura", "Richiedi traduzione"),
-    "ro": ("Limba lecturii", "Cere traducerea"), "pl": ("Język lektury", "Poproś o tłumaczenie"),
-}
 
 PREPARATION_LABELS = {
     "en": ("In preparation", "A new edition is in preparation. The published edition remains available."),
@@ -830,6 +825,62 @@ def about_book_section(book: dict[str, object], language: str) -> str:
     )
 
 
+def animation_record(book: dict[str, object]) -> dict[str, object] | None:
+    """Resolve optional animation assets inside docs, preserving their source edition."""
+    animation = book.get("animation")
+    if not animation:
+        return None
+    if not isinstance(animation, dict):
+        raise ValueError(f"{book['id']}: animation must be an object")
+    if animation.get("language") not in LANGUAGES or animation.get("status") not in ("preview", "published"):
+        raise ValueError(f"{book['id']}: invalid animation language or status")
+    duration = animation.get("durationMs")
+    if not isinstance(duration, int) or not 0 < duration <= 14400000:
+        raise ValueError(f"{book['id']}: invalid animation duration")
+    if not animation.get("edition"):
+        raise ValueError(f"{book['id']}: animation needs its source edition")
+    result = {key: value for key, value in animation.items() if key not in ("standalone", "poster", "featured")}
+    book_root = (DOCS / str(book["directory"])).resolve()
+    animation_root = book_root / "Animation"
+    for key, extension in (("page", ".html"), ("shf", ".shf")):
+        value = animation.get(key)
+        if not isinstance(value, str) or not value:
+            raise ValueError(f"{book['id']}: missing animation {key}")
+        target = (book_root / value).resolve()
+        if target.parent != animation_root or target.suffix != extension or (key == "shf" and not target.is_file()):
+            raise ValueError(f"{book['id']}: animation {key} must be inside this book's Animation folder: {value}")
+        if key == "page" and target.name != "index.html":
+            raise ValueError(f"{book['id']}: animation page must be Animation/index.html")
+        result[key] = target.relative_to(DOCS.resolve()).as_posix()
+    return result
+
+
+def animation_page(book: dict[str, object]) -> str:
+    """A generated content identifier and shared asset references, never a copied player."""
+    folder = DOCS / str(book["directory"]) / "Animation"
+    asset = lambda name: html.escape(relpath(DOCS / name, folder), quote=True)
+    title = html.escape(str(book["title"]["en"]))
+    identifier = html.escape(str(book["id"]), quote=True)
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{title} · Animation · ScriptaHub</title>
+<link rel="stylesheet" href="{asset('assets/site.css')}">
+<link rel="stylesheet" href="{asset('assets/animation.css')}">
+</head>
+<body data-app-page="true" data-animation-book="{identifier}">
+<script src="{asset('collection.js')}"></script>
+<script src="{asset('assets/shf/shf-player.js')}"></script>
+<script src="{asset('assets/animation.js')}"></script>
+<script src="{asset('assets/site.js')}"></script>
+<script src="{asset('assets/reading.js')}"></script>
+</body>
+</html>
+'''
+
+
 def book_page(
     book: dict[str, object], language: str, page_path: Path, has_content: bool,
 ) -> str:
@@ -852,22 +903,29 @@ def book_page(
         for code, name in LANGUAGES.items()
     )
     actions = []
-    reading_options = "".join(
-        f'<option value="{code}"{" selected" if code == language else ""}>{html.escape(name)}</option>'
-        for code, name in LANGUAGES.items()
-    )
-    actions.append(f'<label class="book-reading-language"><span>{html.escape(READING_LABELS[language][0])}</span><select data-book-reading-language>{reading_options}</select></label>')
     for format_name, content_key in (("short", "shortContent"), ("read", "fullContent")):
-        present = content_key in edition
-        href = reader_href(book, language, page_path, format_name) if present else translation_href(book, language, page_path, format_name)
-        label = words[format_name] if present else f'{words[format_name]} · {READING_LABELS[language][1]}'
-        actions.append(f'<a class="button button-quiet" data-reading-format="{format_name}" data-reading-label="{html.escape(words[format_name], quote=True)}" href="{html.escape(href, quote=True)}">{html.escape(label)}</a>')
-    if "pdf" in edition:
-        actions.append(f'<a class="button button-quiet" href="book.pdf">{html.escape(words["download"])}</a>')
+        target = language if content_key in edition else "en"
+        if content_key in book["editions"].get(target, {}):
+            href = reader_href(book, target, page_path, format_name, ui_language=language)
+            actions.append(f'<a class="button button-quiet" data-reading-format="{format_name}" data-reading-label="{html.escape(words[format_name], quote=True)}" href="{html.escape(href, quote=True)}">{html.escape(words[format_name])}</a>')
+        else:
+            actions.append(f'<span class="button button-quiet" aria-disabled="true">{html.escape(words[format_name])}</span>')
+    english_pdf = book["editions"].get("en", {}).get("pdf")
+    if english_pdf:
+        pdf_href = relpath(DOCS / str(book["directory"]) / english_pdf, page_dir)
+        actions.append(f'<a class="button button-quiet" data-download-pdf href="{html.escape(pdf_href, quote=True)}" download>{html.escape(words["download"])}</a>')
+    animation = animation_record(book)
+    if animation:
+        animation_url = relpath(DOCS / animation["page"], page_dir) + "?" + urlencode({"lang": language})
+        actions.append(f'<a class="button button-quiet" data-animation-link href="{html.escape(animation_url, quote=True)}">Animation</a>')
     workflow_query = urlencode({"book": str(book["directory"]), "lang": language})
     actions.append(f'<a class="button" href="{html.escape(f"{feedback_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["feedback"])}</a>')
     actions.append(f'<a class="button button-quiet" href="{html.escape(f"{editions_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["editions"])}</a>')
-    availability = "" if has_content else f'<p class="edition-unavailable">{html.escape(words["unavailable"].format(language=LANGUAGES[language]))}</p>'
+    missing_format = next((name for name, key in (("read", "fullContent"), ("short", "shortContent")) if key not in edition), None)
+    availability = ""
+    if missing_format:
+        request_href = translation_href(book, language, page_path, missing_format)
+        availability = f'<p class="edition-unavailable"><a data-translation-notice href="{html.escape(request_href, quote=True)}">{html.escape(words["unavailable"].format(language=LANGUAGES[language]))}</a></p>'
     status_note = ""
     if book.get("publicationStatus") == "preparing":
         label = PREPARATION_LABELS[language][0]
@@ -909,18 +967,19 @@ def book_page(
   <meta property="og:description" content="{html.escape(description, quote=True)}">
   <meta property="og:image" content="cover.webp">
   <link rel="stylesheet" href="{html.escape(css)}">
+  <link rel="stylesheet" href="{relpath(DOCS / 'assets' / 'text-show.css', page_dir)}">
 </head>
 <body data-book-page="true" data-book-language="{language}" data-book-id="{book['id']}">
   <main class="site-shell book-page">
     <header class="site-header"><a class="wordmark" href="{html.escape(home)}">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link href="{html.escape(create_page, quote=True)}?lang={language}">{html.escape(BOOK_ACTIONS[language]["create"])}</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div>{theme_switcher()}<label class="language-picker"><span class="sr-only">Language</span><select onchange="location.href=this.value">{language_options}</select></label></div></header>
     {status_note}<article class="book-hero">
       <button class="cover-link" type="button" data-cover-preview aria-label="{html.escape(title, quote=True)}"><img src="cover.webp" alt="{html.escape(title)}"></button>
-      <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead">{html.escape(description)}</p></div><div class="book-actions">{"".join(actions)}</div>{availability}</div>
+      <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead" data-text-show>{html.escape(description)}</p>{availability}</div><div class="book-actions">{"".join(actions)}</div></div>
       <aside class="book-keyword-widget" aria-label="{html.escape(words['keywords'], quote=True)}"><div class="keyword-cloud book-keyword-cloud" data-book-keyword-cloud></div></aside>
     </article>
     {about_book_section(book, language)}{site_footer(page_dir, language)}
   </main>
-  <script src="{html.escape(cloud_script)}"></script><script>globalThis.ScriptaKeywordCloud.mount(document.querySelector('[data-book-keyword-cloud]'), {keyword_data}, {keyword_options});</script><script src="{html.escape(collection_script)}"></script><script src="{relpath(DOCS / 'assets' / 'reading.js', page_dir)}"></script><script src="{html.escape(site_script)}"></script>
+  <script src="{html.escape(cloud_script)}"></script><script>globalThis.ScriptaKeywordCloud.mount(document.querySelector('[data-book-keyword-cloud]'), {keyword_data}, {keyword_options});</script><script src="{html.escape(collection_script)}"></script><script src="{relpath(DOCS / 'assets' / 'reading.js', page_dir)}"></script><script src="{relpath(DOCS / 'assets' / 'text-show.js', page_dir)}"></script><script src="{relpath(DOCS / 'assets' / 'book-view.js', page_dir)}"></script><script src="{html.escape(site_script)}"></script>
 </body>
 </html>
 """
@@ -1024,9 +1083,66 @@ def build(source_root: Path) -> dict[str, object]:
     return {"books": len(manifests), "moved": moved, "keywords": sum(len(values) for values in collection["keywords"].values())}
 
 
+
+HOME_LABELS = {"en": "Home", "fr": "Accueil", "de": "Startseite", "es": "Inicio", "pt": "Início", "it": "Home", "ro": "Acasă", "pl": "Strona główna"}
+HOME_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg>'
+
+
+def install_site_branding(source: str, page_dir: Path) -> str:
+    """Share the mascot favicon and deterministic header navigation across shells."""
+    if 'site-header' in source or 'data-animation-book' in source:
+        source = re.sub(r'[ \t]*<script>try\{if\(localStorage.getItem\("scripta-site-theme"\).*?</script>', '', source)
+        bootstrap = '<script data-site-theme-bootstrap>try{const t=localStorage.getItem("scripta-site-theme");if(["light","orange","nord","dark"].includes(t))document.documentElement.dataset.theme=t}catch{}</script>'
+        source = re.sub(r'<script data-site-theme-bootstrap>.*?</script>', bootstrap, source)
+        if 'data-site-theme-bootstrap' not in source:
+            source = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + '\n  ' + bootstrap, source, count=1)
+    icon = html.escape(relpath(DOCS / "assets" / "librarian-icon.svg", page_dir), quote=True)
+    if '<head' in source and 'rel="icon"' not in source:
+        favicon = html.escape(relpath(DOCS / "favicon.ico", page_dir), quote=True)
+        source = source.replace('</head>', f'  <link rel="icon" href="{favicon}" sizes="16x16 32x32 48x48">\n  <link rel="icon" type="image/svg+xml" href="{icon}">\n</head>', 1)
+    language_match = re.search(r'<html\b[^>]* lang="([a-z]+)"', source)
+    language = language_match.group(1) if language_match else "en"
+    if language not in HOME_LABELS:
+        language = "en"
+    def header(match: re.Match) -> str:
+        markup = match.group(0)
+        if 'class="brand-icon"' not in markup:
+            markup = re.sub(r'(<a\b[^>]*class="wordmark"[^>]*>)', lambda m: m.group(1) + f'<img class="brand-icon" src="{icon}" width="34" height="34" alt="">', markup, count=1)
+        if 'data-home-link' not in markup:
+            home = html.escape(relpath(DOCS / "index.html", page_dir) + f'?lang={language}', quote=True)
+            label = HOME_LABELS[language]
+            link = f'<a class="header-home" data-home-link href="{home}" aria-label="{label}" title="{label}">{HOME_ICON}<span>{label}</span></a>'
+            markup = re.sub(r'(?=<a\b[^>]*data-create-link)', lambda _: link, markup, count=1)
+        return markup
+    return re.sub(r'<header\b[^>]*class="site-header"[^>]*>.*?</header>', header, source, flags=re.S)
+
+
+def version_shared_assets(source: str, page_dir: Path, versions: dict[Path, str]) -> str:
+    """Keep new HTML and its shared component code in the same browser revision."""
+    source = install_site_branding(source, page_dir)
+    def replace(match: re.Match) -> str:
+        attribute, value = match.groups()
+        plain = html.unescape(value).split("?", 1)[0]
+        if ":" in plain or plain.startswith("//"):
+            return match.group(0)
+        target = (page_dir / plain).resolve()
+        digest = versions.get(target)
+        return f'{attribute}="{plain}?v={digest}"' if digest else match.group(0)
+    return re.sub(r'(src|href)="([^"#]+)"', replace, source)
+
+
+def shared_asset_versions() -> dict[Path, str]:
+    paths = [COLLECTION_SCRIPT, DOCS / "favicon.ico", *[DOCS / "assets" / name for name in (
+        "site.js", "site.css", "text-show.js", "text-show.css", "book-view.js",
+        "librarian.js", "workflow.js", "reading.js", "home-librarian.css",
+        "home-librarian.js", "dictation.js", "keyword-cloud.js", "librarian-icon-orange.svg", "librarian-icon-nord.svg", "librarian-mascot.js", "librarian-icon.svg", "librarian-icon.png", "shf/shf-player.js")]]
+    return {path.resolve(): hashlib.sha256(path.read_bytes()).hexdigest()[:12] for path in paths if path.is_file()}
+
+
 def refresh_pages() -> dict[str, int]:
     """Recreate generated catalogue pages from already-migrated manifests."""
     collection = rebuild_collection_from_manifests()
+    versions = shared_asset_versions()
     for listing in collection["books"]:
         root = DOCS / listing["directory"]
         manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
@@ -1036,11 +1152,20 @@ def refresh_pages() -> dict[str, int]:
             for language in LANGUAGES
         }
         page_book = {**manifest, "directory": listing["directory"], "descriptions": manifest["shortDescription"], "keywordStats": keyword_stats}
+        if manifest.get("animation"):
+            page = root / "Animation" / "index.html"
+            page.parent.mkdir(parents=True, exist_ok=True)
+            page.write_text(version_shared_assets(animation_page(page_book), page.parent, versions), encoding="utf-8")
         for language in LANGUAGES:
             edition = manifest["editions"][language]
             has_content = "fullContent" in edition or "shortContent" in edition
             page = root / language / "book.html"
-            page.write_text(book_page(page_book, language, page, has_content), encoding="utf-8")
+            page.write_text(version_shared_assets(book_page(page_book, language, page, has_content), page.parent, versions), encoding="utf-8")
+    for shell in [DOCS / "index.html", *DOCS.glob("*/*.html")]:
+        source = shell.read_text(encoding="utf-8")
+        updated = version_shared_assets(source, shell.parent, versions)
+        if updated != source:
+            shell.write_text(updated, encoding="utf-8")
     # Discovery is rendered from collection data in the browser. Remove pages
     # produced by older builds so per-keyword routes cannot return by accident.
     if (DOCS / "keywords").exists():
@@ -1231,6 +1356,8 @@ def enrich_metadata() -> int:
     changed = 0
     for manifest_path in sorted(BOOKS.glob("**/manifest.json")):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if manifest.get("shortDescriptionEditorial"):
+            continue
         for language, edition in manifest["editions"].items():
             candidate = edition.get("shortContent") or edition.get("fullContent")
             if not candidate:
@@ -1459,6 +1586,8 @@ def recover_editorial_descriptions() -> tuple[int, list[str]]:
     missing = []
     for manifest_path in sorted(BOOKS.glob("**/manifest.json")):
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if manifest.get("shortDescriptionEditorial"):
+            continue
         source_id = str(manifest["sourceId"])
         candidates = [
             EDITORIAL_SLUG_ALIASES.get(source_id),
@@ -1546,6 +1675,9 @@ def make_collection(manifests: list[dict[str, object]]) -> dict[str, object]:
             "sourceAliases": manifest.get("sourceAliases", []),
             "publicationLabel": {code: PREPARATION_LABELS[code][0] for code in LANGUAGES} if manifest.get("publicationStatus") == "preparing" else {},
         }
+        animation = animation_record(manifest)
+        if animation:
+            book["animation"] = animation
         books.append(book)
         for language in LANGUAGES:
             for identifier, label in zip(manifest["keywordIds"], manifest["keywords"][language], strict=True):
@@ -1569,6 +1701,25 @@ def make_collection(manifests: list[dict[str, object]]) -> dict[str, object]:
         "books": books,
         "keywords": keyword_lists,
     }
+
+
+def editorial_description_problems(manifest: dict) -> list[str]:
+    """Keep reviewed descriptions as six short, complete, authored sentences."""
+    if not manifest.get("shortDescriptionEditorial"):
+        return []
+    problems = []
+    descriptions = manifest.get("shortDescription", {})
+    if set(descriptions) != set(LANGUAGES):
+        problems.append(f"{manifest['id']}: editorial descriptions need all eight languages")
+    for language, value in descriptions.items():
+        sentences = re.split(r"(?<=[.!?])\s+", str(value).strip())
+        if len(sentences) != 6 or any(not re.search(r"[.!?]$", sentence) for sentence in sentences):
+            problems.append(f"{manifest['id']} {language}: description must have six complete sentences")
+        if any(len(sentence.split()) > 22 for sentence in sentences):
+            problems.append(f"{manifest['id']} {language}: description sentence exceeds 22 words")
+        if re.search(r"(?:^|\s)\d+\.\d+\s|<[^>]+>|…|\.\.\.", str(value)):
+            problems.append(f"{manifest['id']} {language}: description contains an outline, markup or truncated prose")
+    return problems
 
 
 def check() -> list[str]:
@@ -1605,6 +1756,25 @@ def check() -> list[str]:
             problems.append(f"missing manifest: {manifest_path.relative_to(ROOT)}")
             continue
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        problems.extend(editorial_description_problems(manifest))
+        if book.get("shortDescription") != manifest.get("shortDescription"):
+            problems.append(f"{book['id']}: catalogue descriptions differ from manifest; run refresh")
+        try:
+            expected_animation = animation_record({**manifest, "directory": book["directory"]})
+            if expected_animation != book.get("animation"):
+                problems.append(f"{book['id']}: animation differs from manifest; run refresh")
+            if expected_animation:
+                animation_folder = DOCS / book["directory"] / "Animation"
+                expected_files = {"index.html", Path(expected_animation["shf"]).name}
+                if not animation_folder.is_dir() or {p.name for p in animation_folder.iterdir()} != expected_files:
+                    problems.append(f"{book['id']}: Animation must contain only its SHF content and generated entry page")
+                elif (animation_folder / "index.html").read_text(encoding="utf-8") != version_shared_assets(animation_page({**manifest, "directory": book["directory"]}), animation_folder, shared_asset_versions()):
+                    problems.append(f"{book['id']}: animation entry differs from shared template; run refresh")
+                history = json.loads((root / "editions.json").read_text(encoding="utf-8"))
+                if expected_animation["edition"] not in {entry["id"] for entry in history.get("editions", [])}:
+                    problems.append(f"{book['id']}: animation source edition is missing")
+        except (ValueError, OSError) as error:
+            problems.append(str(error))
         editions_path = root / "editions.json"
         if not editions_path.is_file():
             problems.append(f"{book['id']}: missing editions.json")
@@ -1670,6 +1840,14 @@ def check() -> list[str]:
                 problems.append(f"{book['id']} {language}: missing book page")
             else:
                 page_source = book_page_path.read_text(encoding="utf-8")
+                if 'data-text-show' not in page_source or not re.search(r'assets/book-view\.js(?:\?v=[^"<>]+)?"', page_source):
+                    problems.append(f"{book['id']} {language}: missing shared book view/textShow")
+                if manifest.get("shortDescriptionEditorial"):
+                    expected_description = html.escape(manifest["shortDescription"][language])
+                    if expected_description not in page_source:
+                        problems.append(f"{book['id']} {language}: description differs from reviewed manifest; run refresh")
+                if bool(manifest.get("animation")) != ('data-animation-link' in page_source):
+                    problems.append(f"{book['id']} {language}: animation action does not match manifest")
                 try:
                     expected_about = about_book_section(manifest, language)
                     if expected_about not in page_source:

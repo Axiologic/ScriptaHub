@@ -41,6 +41,15 @@ const audioWrap = document.querySelector('[data-reader-audio]');
 const audioPlayer = document.querySelector('[data-reader-audio-player]');
 
 const query = new URLSearchParams(window.location.search);
+const homeLink = document.querySelector('[data-reader-home]');
+if (homeLink) {
+  const labels = { en: 'Home', fr: 'Accueil', de: 'Startseite', es: 'Inicio', pt: 'Início', it: 'Home', ro: 'Acasă', pl: 'Strona główna' };
+  const language = query.get('lang') || document.documentElement.lang || 'en';
+  const chosen = Object.hasOwn(labels, language) ? language : 'en';
+  homeLink.href = new URL(`../index.html?lang=${chosen}`, location.href).href;
+  homeLink.title = labels[chosen];
+  homeLink.setAttribute('aria-label', labels[chosen]);
+}
 const validTypes = ['html', 'epub', 'pdf'];
 const themeOrder = ['paper', 'night'];
 const preferenceKey = 'axiologic-reader:preferences:v1';
@@ -54,11 +63,18 @@ const progressKey = `axiologic-reader:progress:v1:${sourceId}`;
 const isLocalFilePreview = window.location.protocol === 'file:';
 
 function sharedSiteTheme() {
-  try { return window.localStorage.getItem(siteThemeKey) === 'dark' ? 'dark' : 'light'; } catch { return 'light'; }
+  try { const theme=window.localStorage.getItem(siteThemeKey);return ['light','orange','nord','dark'].includes(theme)?theme:'light'; } catch { return 'light'; }
 }
 
+const lightSiteTheme = (() => {
+  const current=sharedSiteTheme();
+  if(current!=='dark')return current;
+  try{const saved=localStorage.getItem('scripta-site-light-theme');return ['orange','nord'].includes(saved)?saved:'light'}catch{return 'light'}
+})();
+document.querySelector('[data-reader-app]').dataset.accent=lightSiteTheme;
+
 function saveSharedSiteTheme(theme) {
-  try { window.localStorage.setItem(siteThemeKey, theme === 'night' ? 'dark' : 'light'); } catch { /* Storage is optional. */ }
+  try { window.localStorage.setItem(siteThemeKey, theme === 'night' ? 'dark' : lightSiteTheme); } catch { /* Storage is optional. */ }
 }
 
 async function configureLanguageSelector() {
@@ -78,11 +94,23 @@ async function configureLanguageSelector() {
     const uiLanguage = reading.locale(query.get('lang') || preferred);
     const format = query.get('format') || (readingMode === 'ten-minute' ? 'short' : 'read');
     const words = reading.labels[uiLanguage];
-    languageSelect.setAttribute('aria-label', words.language);
-    languageSelect.innerHTML = collection.supportedLanguages.map(({ code, name }) => `<option value="${escapeHtml(code)}"${code === preferred ? ' selected' : ''}>${escapeHtml(name)}${reading.available(book, code, format) ? '' : ` · ${escapeHtml(words.request)}`}</option>`).join('');
+    document.documentElement.lang = uiLanguage;
+    languageSelect.setAttribute('aria-label', 'Language');
+    languageSelect.innerHTML = collection.supportedLanguages.map(({ code, name }) => `<option value="${escapeHtml(code)}"${code === uiLanguage ? ' selected' : ''}>${escapeHtml(name)}</option>`).join('');
     languageWrap.hidden = false;
+    const notice = document.querySelector('[data-reader-translation-notice]');
+    if (notice && !reading.available(book, uiLanguage, format)) {
+      notice.textContent = reading.unavailableMessage(uiLanguage);
+      notice.href = reading.requestUrl(book, uiLanguage, format, uiLanguage, new URL('../', location.href), preferred).href;
+      notice.hidden = false;
+    }
+    // Preserve archived edition downloads, while current readers always use the English PDF.
+    if (!supplied.pdf.includes('/edition-files/')) supplied.pdf = book.editions.en?.pdf ? new URL(`../${book.editions.en.pdf}`, location.href).href : '';
+
     languageSelect.addEventListener('change', () => {
-      window.location.href = reading.readingUrl(book, languageSelect.value, format, uiLanguage, new URL('../', location.href), preferred).href;
+      const url = reading.readingUrl(book, languageSelect.value, format, languageSelect.value, new URL('../', location.href), preferred);
+      if (url) window.location.href = url.href;
+      else languageSelect.value = uiLanguage;
     });
   } catch {
     // The reader stays usable if the catalogue is unavailable.
