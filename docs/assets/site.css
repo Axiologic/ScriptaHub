@@ -1503,3 +1503,14 @@ shf-player {
 .presentation-close:hover,.presentation-close:active{background:transparent;color:inherit;box-shadow:none;opacity:.75}
 .presentation-close svg{display:block;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
 .presentation-close:focus-visible{outline:2px solid currentColor;outline-offset:-4px}
+
+/* Mobile labels collapse to zero; icon sizing must not inherit that zero. */
+@media(max-width:650px){
+ :root .site-header .header-tools > :is(.header-create,.header-librarian)::before{
+  display:inline-grid;place-items:center;font-size:16px;line-height:1;
+  width:16px;min-width:16px;height:16px;flex:0 0 16px;margin:0;
+ }
+}
+
+.book-availability-note{display:none}
+@media(min-width:1101px){.book-availability-note{display:flex;grid-column:1/-1;grid-row:3;flex-wrap:wrap;gap:3px 0;margin:10px 0 0;font-size:.7rem;font-weight:400;line-height:1.45;color:color-mix(in srgb,var(--muted) 76%,var(--panel));letter-spacing:0}.book-availability-note span+span::before{content:"·";padding:0 8px}}

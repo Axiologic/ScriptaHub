@@ -423,7 +423,7 @@ original visual identity and source-grounded curiosity without fictional spoiler
 
 
 On book pages, Animation is the first reading action, before Read in 10 minutes.
-Fork, Suggest Edit and Editions form an equally sized vertical right-hand rail
+Fork, Suggest and Editions form an equally sized vertical right-hand rail
 on desktop. At narrow widths this group moves below the book content and wraps
 into a vertical stack on small phones. The reading action group stays separate.
 
@@ -436,7 +436,7 @@ reference compact so the form starts high on the page.
 
 The desktop contribution rail lives inside the shared book-details surface,
 without its own panel or separating background gap. Its buttons are equal
-34px-high single-line controls; the English feedback label is “Suggest Edit”.
+34px-high single-line controls; the English feedback label is “Suggest”.
 
 Align the desktop contribution rail with the top of the book copy and its first
 text line, never vertically centre it beside the description.
@@ -445,3 +445,26 @@ Presentation hosts use a visible X alone, without text, fill or border, directly
 above the player at its right edge. Retain a localised accessible name and a
 44px hit target. Home closes its dialog and stops playback; book presentation
 pages return to the source book and pause playback.
+
+All catalogue books should have an English narrated book-introduction animation.
+Complete missing films as concise 2–3 minute invitations, while preserving
+existing longer presentations. Use richer, varied foreground colours and a
+slightly brighter emotional tone where the source supports it; serious subjects
+retain their gravity. The site default remains Dark Orange (Orange Black),
+including the pre-render bootstrap; preserve an explicitly saved theme choice.
+
+On mobile, compact header actions may hide their visible labels, but Create
+retains its plus and Ask AI Librarian its distinct symbol. Size these icons
+independently of the collapsed parent font, centre them, retain localised
+accessible names, and verify visibility across every site theme.
+
+Desktop book pages include a small, muted grey availability note below the
+reading/download actions: animation availability, actual full-reader languages
+(compact codes with full names on hover), and published edition count. Derive it
+from manifest reader files and edition history; interface metadata is not a
+translation, and in-preparation releases are not published editions. Hide the
+entire note at mobile/tablet book-layout widths.
+
+The book animation wrapper explicitly fills the available width up to 1100px;
+centred flex layout must not shrink it to the icon-only close link. Integration
+QA must measure the loaded player stage on desktop and mobile, not only the X.

@@ -2,6 +2,13 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+// Preserve existing cache names; bound only IDs whose batch suffix exceeds the voice schema.
+export function narrationBatchId(productionId,batch){
+ const suffix='-batch-'+batch,candidate=productionId+suffix;
+ if(candidate.length<=64)return candidate;
+ const digest=createHash('sha256').update(productionId).digest('hex').slice(0,10);
+ return productionId.slice(0,64-suffix.length-digest.length-1)+'-'+digest+suffix;
+}
 export async function renderNarration(projectRoot){
 const root=path.resolve(projectRoot);
 const production=JSON.parse(await fs.readFile(path.join(root,'work/production.json'),'utf8').catch(()=>JSON.stringify({id:path.basename(root),title:'Narrated presentation'})));
@@ -20,7 +27,7 @@ const audioDir=path.join(root,'work/audio');await fs.mkdir(audioDir,{recursive:t
 console.log('Preparing',beats.length,'single-sentence clips in bounded batches; no audio playback.');
 const results=[];
 for(let offset=0;offset<beats.length;offset+=16){
- const id=production.id+'-batch-'+(offset/16+1);
+ const id=narrationBatchId(production.id,offset/16+1);
  const score={format:'theatrical-audio/1',id,title:production.title,language:'en',voices:{narrator:{label:'Narrator',piperVoice:'en_US-ljspeech-medium'}},settings:{sampleRate:24000,tailSeconds:0},beats:beats.slice(offset,offset+16)};
  const scorePath=path.join(root,'work/scores',id+'.json');await fs.mkdir(path.dirname(scorePath),{recursive:true});await fs.writeFile(scorePath,JSON.stringify(score,null,2)+'\n');
  const out=path.join(root,'work/voice-bundles',id);

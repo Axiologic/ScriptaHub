@@ -201,7 +201,7 @@ CLOUD_CLOSE_LABELS = {
 }
 
 BOOK_ACTIONS = {
-    "en": {"create": "Create", "feedback": "Suggest Edit", "editions": "Editions", "initial": "Initial ScriptaHub edition.", "editionLabel": "Edition 1"},
+    "en": {"create": "Create", "feedback": "Suggest", "editions": "Editions", "initial": "Initial ScriptaHub edition.", "editionLabel": "Edition 1"},
     "fr": {"create": "Créer", "feedback": "Proposer une modification", "editions": "Éditions", "initial": "Première édition ScriptaHub.", "editionLabel": "Édition 1"},
     "de": {"create": "Erstellen", "feedback": "Änderung vorschlagen", "editions": "Ausgaben", "initial": "Erste ScriptaHub-Ausgabe.", "editionLabel": "Ausgabe 1"},
     "es": {"create": "Crear", "feedback": "Proponer un cambio", "editions": "Ediciones", "initial": "Primera edición de ScriptaHub.", "editionLabel": "Edición 1"},
@@ -884,6 +884,30 @@ def animation_page(book: dict[str, object]) -> str:
 '''
 
 
+def book_availability_note(book: dict[str, object], language: str) -> str:
+    """A compact factual desktop note, based on delivered readers and release history."""
+    labels = {
+        "en": ("Animation", "No animation yet", "Full text", "Editions", "Not available yet"),
+        "ro": ("Animație", "Fără animație încă", "Text integral", "Ediții", "Indisponibil încă"),
+        "fr": ("Animation", "Pas encore d’animation", "Texte intégral", "Éditions", "Pas encore disponible"),
+        "de": ("Animation", "Noch keine Animation", "Volltext", "Ausgaben", "Noch nicht verfügbar"),
+        "es": ("Animación", "Aún sin animación", "Texto completo", "Ediciones", "Aún no disponible"),
+        "pt": ("Animação", "Ainda sem animação", "Texto integral", "Edições", "Ainda indisponível"),
+        "it": ("Animazione", "Animazione non ancora disponibile", "Testo integrale", "Edizioni", "Non ancora disponibile"),
+        "pl": ("Animacja", "Jeszcze bez animacji", "Pełny tekst", "Wydania", "Jeszcze niedostępny"),
+    }
+    words = labels[language]
+    root = DOCS / str(book["directory"])
+    available = [code for code in LANGUAGES if (entry := book["editions"].get(code, {})).get("fullContent") and (root / entry["fullContent"]).is_file()]
+    history_path = root / "editions.json"
+    history = json.loads(history_path.read_text(encoding="utf-8")) if history_path.is_file() else {}
+    count = sum(1 for entry in history.get("editions", []) if entry.get("status") != "preparing")
+    names = ", ".join(LANGUAGES[code] for code in available) or words[4]
+    codes = ", ".join(code.upper() for code in available) or words[4]
+    animation_label = words[0] if animation_record(book) else words[1]
+    return f'<p class="book-availability-note" data-book-availability-note><span>{html.escape(animation_label)}</span><span title="{html.escape(names, quote=True)}">{html.escape(words[2])}: {html.escape(codes)}</span><span>{html.escape(words[3])}: {count}</span></p>'
+
+
 def book_page(
     book: dict[str, object], language: str, page_path: Path, has_content: bool,
 ) -> str:
@@ -979,7 +1003,7 @@ def book_page(
     <header class="site-header"><a class="wordmark" href="{html.escape(home)}">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link href="{html.escape(create_page, quote=True)}?lang={language}">{html.escape(BOOK_ACTIONS[language]["create"])}</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div>{theme_switcher()}<label class="language-picker"><span class="sr-only">Language</span><select onchange="location.href=this.value">{language_options}</select></label></div></header>
     {status_note}<article class="book-hero">
       <button class="cover-link" type="button" data-cover-preview aria-label="{html.escape(title, quote=True)}"><img src="cover.webp" alt="{html.escape(title)}"></button>
-      <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead" data-text-show>{html.escape(description)}</p>{availability}</div><div class="book-actions">{"".join(actions)}</div><nav class="book-side-actions" aria-label="{html.escape(BOOK_TOOL_LABELS[language], quote=True)}">{"".join(side_actions)}</nav></div>
+      <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead" data-text-show>{html.escape(description)}</p>{availability}</div><div class="book-actions">{"".join(actions)}</div><nav class="book-side-actions" aria-label="{html.escape(BOOK_TOOL_LABELS[language], quote=True)}">{"".join(side_actions)}</nav>{book_availability_note(book, language)}</div>
       <aside class="book-keyword-widget" aria-label="{html.escape(words['keywords'], quote=True)}"><div class="keyword-cloud book-keyword-cloud" data-book-keyword-cloud></div></aside>
     </article>
     {about_book_section(book, language)}{site_footer(page_dir, language)}

@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 import '../../.agents/skills/shf-presentation-creator/runtime/shf-core.js';
 const C=globalThis.SHFCore,sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
-const ledgerPath=process.argv[2]||'presentations/qa/2026-09-10-ninety-book-animations.json';
+const ledgerPath=process.argv[2]||'presentations/qa/2026-09-10-all-book-animations.json';
 const ledger=read(ledgerPath),required=new Set(ledger.books.map(b=>b.bookId));
 const works=new Map();
 for(const entry of fs.readdirSync('presentations',{withFileTypes:true})){
@@ -49,6 +49,6 @@ for(const book of books){
 }
 const missing=ledger.books.filter(b=>!results.some(r=>r.bookId===b.bookId)).map(b=>({bookId:b.bookId,title:b.title}));
 const report={target:ledger.targetInstalledBooks,installedValid:results.length,newValid:results.filter(r=>required.has(r.bookId)).length,missing,errors,books:results,audiblePlayback:false};
-fs.writeFileSync('presentations/qa/ninety-book-archive-audit.json',JSON.stringify(report,null,2)+'\n');
+fs.writeFileSync('presentations/qa/all-book-archive-audit.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({target:report.target,installedValid:results.length,newValid:report.newValid,missing:missing.length,errors},null,2));
 if(errors.length||results.length<ledger.targetInstalledBooks||missing.length)process.exitCode=1;
