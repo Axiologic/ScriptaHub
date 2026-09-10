@@ -1,0 +1,18 @@
+import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';import {storyPerson,storyGesture} from '../../../tools/shf/people-poses.mjs';
+const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));
+for(const [i,s]of scenes.entries()){
+const a=stageAuthor(),{n,path,text,tint,dot}=a;
+const obj=(id,x,y,kids,meaning,k=1)=>a.add(a.object(id,x,y,kids,meaning,k));
+const fill=(d,c,cn)=>tint(n('path',{d,fill:c}),cn||c);
+const rect=(x,y,w,h,c,cn,rx=0)=>tint(n('rect',{x,y,width:w,height:h,rx,fill:c}),cn||c);
+const human=(id,x,y,coat,identity='person-02-neutral',seated=false,scale=.9)=>{storyPerson(a,id,x,y,{coat,identity,seated,scale,chair:coat});a.objects.at(-1).options.dynamicExpressions=true;for(const [beat,emotion]of [[1,'curious'],[3,'worried'],[5,'skeptical'],[6,'curious']])a.actions.push({actor:id,action:'character.express',emotion,beat,durationMs:850});storyGesture(a,id,2,'question');storyGesture(a,id,4,'reflect');storyGesture(a,id,6,'invite');};
+
+const teal='#2e8f89',tn='#a5dbcf',coral='#d47555',cn='#efb79a',gold='#dcad3c',gn='#f5d891',blue='#567db4';
+const bench=()=>obj('cooperative-bench',600,450,[rect(-402,-14,804,28,teal,tn),path('M-345 14V103M345 14V103','$ink',13)],'A cooperative workshop makes trust useful before it becomes exploitable');
+if(i===0){human('maker',284,543,coral,'person-03-neutral',false,.91);human('middle',613,543,teal,'person-02-neutral',false,.96);human('recipient',923,543,gold,'person-01-neutral',false,.91);bench();obj('materials',478,416,[rect(-69,-22,138,33,gold,gn,6),rect(-56,-47,113,23,blue,'#afc6e8',4)],'Material passes between people who rely on shared expectations');a.move('materials',3,642,416);obj('diversion',741,513,[rect(-63,-28,126,51,coral,cn,5)],'A concealed benefit can grow while the visible exchange still looks cooperative');a.reveal('diversion',4);}
+else if(i===1){obj('department-section',610,354,[fill('M-411 173V-124H411V173Z',teal,tn),rect(-386,-99,772,245,'#e5d8b7','#3a5e67'),path('M-130 -99V146M127 -99V146',coral,17)],'Information is divided among units with different responsibilities');for(let j=0;j<3;j++){human('department'+j,346+j*264,502,[coral,gold,blue][j],['person-03-neutral','person-02-neutral','person-01-neutral'][j],true,.75);}obj('joined-record',610,218,[fill('M-225 -70H225V65H-225Z',gold,gn),text('The same affected person',0,-11,31,'#294e5b'),path('M-151 26H151',blue,5)],'Bringing records together reveals an act no department held in full');a.reveal('joined-record',4);}
+else if(i===2){obj('service-interface',390,339,[rect(-136,-160,272,295,teal,tn,25),rect(-104,-128,208,197,'#ebddbd','#3f5d6a',9),path('M-49 -64Q0 -93 51 -64M-49 -27Q0 -56 51 -27',coral,9),path('M-77 98H77',gold,11)],'Socially convincing output does not establish feeling or an automatic diagnosis');human('user',802,529,coral,'person-03-neutral',false,1.02);obj('correction-switch',636,449,[rect(-44,-34,88,68,gold,gn,9),path('M-20 0H20M0 -20V20',blue,8)],'A meaningful mechanism can let detected harm constrain behavior');a.reveal('correction-switch',4);}
+else{human('maker',341,542,coral,'person-03-neutral',false,.97);human('recipient',854,542,gold,'person-02-neutral',false,.97);bench();obj('shared-work',602,406,[fill('M-107 -18L-36 -62L35 -13L104 -41V34H-107Z',blue,'#b0c7e8'),path('M-61 -11L-30 13L13 -33',gold,8)],'The objective remains viable cooperation with checks, not universal suspicion');a.reveal('shared-work',3);}
+
+s.visual=a.finish(s.lines[0]+' Original material staging, a richer foreground palette and expressive participants make the particular question visible.');}
+fs.writeFileSync(file,JSON.stringify(scenes,null,2)+'\n');

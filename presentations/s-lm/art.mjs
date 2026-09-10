@@ -1,7 +1,8 @@
+import {storyPerson,storyGesture} from '../../tools/shf/people-poses.mjs';
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {stageAuthor} from '../../tools/shf/stage-authoring.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url));const scenes=JSON.parse(fs.readFileSync(path.join(root,'work/scenes.json')));
 
-function compose(i){const a=stageAuthor(),ink='#536381',gold='#bc8c48',pale='#e3e3db';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};
+function baseCompose(i){const a=stageAuthor(),ink='#536381',gold='#bc8c48',pale='#e3e3db';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};
  const calculator=(id,x,y,b=1)=>put(id,x,y,[a.n('rect',{x:-70,y:-102,width:140,height:205,rx:18,fill:ink}),a.n('rect',{x:-49,y:-77,width:98,height:43,rx:4,fill:pale}),...Array.from({length:9},(_,j)=>a.n('rect',{x:(j%3)*33-43,y:Math.floor(j/3)*33-13,width:21,height:21,rx:4,fill:pale}))],b,'Exact calculation is a different obligation from interpretation');
  if(i===0){put('request',275,260,[a.n('path',{d:'M-140 -72 H140 V72 H-60 L-100 110 V72 H-140Z',fill:pale}),a.text('What is needed?',0,7,33,'#374457')],1);put('branch',585,330,[a.path('M-100 -20 H0 L80 -100 M0 -20 L80 110',ink,12)],2,'One request contains roles with different requirements');calculator('exact',930,230,3);put('local',930,470,[a.n('rect',{x:-102,y:-45,width:204,height:80,rx:10,fill:gold}),a.text('Local policy',0,6,33,'#293645')],3);put('general',300,485,[a.text('Interpretation remains available',0,0,32)],4);}
  if(i===1){put('language',285,280,[a.n('path',{d:'M-133 -90 H133 V90 H-40 L-92 130 V90 H-133Z',fill:pale}),a.text('Ambiguous',0,-17,35,'#374457'),a.text('request',0,33,35,'#374457')],1);calculator('exact',900,285,2);put('contract',600,325,[a.path('M-115 -55 H115 M-115 55 H115',gold,11),a.text('Contract',0,12,35)],3,'The handoff states required input, output and authority');put('token',565,450,[a.n('path',{d:'M-32 -24 H32 V24 H-32Z',fill:gold})],4);a.move('token',5,820,430);}
@@ -9,4 +10,17 @@ function compose(i){const a=stageAuthor(),ink='#536381',gold='#bc8c48',pale='#e3
  if(i===3){calculator('exact',325,310);put('wide',855,280,[a.n('path',{d:'M-150 -90 H150 V85 H30 L-15 125 V85 H-150Z',fill:pale}),a.text('Broad judgment',0,-17,35,'#374457'),a.text('when needed',0,33,34,'#374457')],2);put('path',600,455,[a.path('M-170 0 H170 L140 -25 M170 0 L140 25',gold,12)],3,'A narrower role retains escalation to general reasoning rather than replacing it universally');}
  return a.finish('Different instruments handle ambiguous interpretation, exact computation and recurring local work; contracts, maintenance and escalation make allocation an inspectable research question.');}
 
-for(let i=0;i<scenes.length;i++)scenes[i].visual=compose(i);fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');
+function compose(i){if(i!==0)return baseCompose(i);const a=stageAuthor(),navy='#426f94',coral='#d67f60',green='#5ea58f',gold='#ddb052',cream='#e9e6d8';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};const figure=(id,x,y,c,identity='person-04-neutral',seated=false,scale=.95)=>{storyPerson(a,id,x,y,{coat:c,identity,seated,scale});a.reveal(id,1);};
+figure('planner',240,480,green,'person-04-neutral',true,.95);storyGesture(a,'planner',2,'reflect');put('desk',470,410,[a.path('M-250 0 H250 M-190 0 V125 M190 0 V125',navy,15),a.n('path',{d:'M-140 -120 H105 V-30 H-140Z',fill:cream}),a.text('Interpret',-15,-65,34,navy)],1);put('calculator',830,280,[a.n('rect',{x:-75,y:-110,width:150,height:220,rx:16,fill:navy}),a.n('rect',{x:-52,y:-85,width:104,height:48,rx:5,fill:cream}),a.text('24',23,-50,31,navy),...Array.from({length:9},(_,j)=>a.n('rect',{x:j%3*35-46,y:Math.floor(j/3)*36-13,width:23,height:23,rx:5,fill:j%2?gold:green}))],2,'Exact computation has a narrower obligation');put('machine',1030,425,[a.n('rect',{x:-100,y:-53,width:200,height:106,rx:10,fill:coral}),a.path('M-65 -20 H65 M-65 13 H20',cream,10),a.dot(63,22,14,gold)],3,'A local procedure handles repeated constrained work');put('handoff',630,320,[a.n('path',{d:'M-27 -34 H27 V34 H-27Z',fill:gold})],2);a.move('handoff',3,720,330);storyGesture(a,'planner',4,'question');put('question',645,550,[a.text('Choose the obligation before the engine',0,0,33)],4);
+
+return a.finish('Original enacted situation: task-specific work, visible participants, source-grounded causal distinction and meaningful motion; illustrative objects do not claim an empirical experiment.');}
+
+for(let i=0;i<scenes.length;i++){
+ const visual=compose(i);
+ for(const actor of visual.objects.filter(o=>o.options?.rig==='character')){
+  const affected=/patient|visitor/.test(actor.id), reflective=/author|reader|reviewer|evaluator|judge/.test(actor.id);
+  const states=affected?['curious','worried','worried']:reflective?['curious','skeptical','determined']:['curious','skeptical','determined'];
+  for(const [j,beat] of [1,3,5].entries())visual.actions.push({actor:actor.id,action:'character.express',emotion:states[j],beat,durationMs:900});
+ }
+ scenes[i].visual=visual;
+}fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');

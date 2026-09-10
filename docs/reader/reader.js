@@ -123,7 +123,7 @@ const state = {
   type: '',
   source: '',
   progress: readStored(progressKey, {}),
-  preferences: { ...readStored(preferenceKey, {}), fontSize: Number(readStored(preferenceKey, {}).fontSize) || 1.16, theme: sharedSiteTheme().startsWith('dark') ? 'night' : 'paper' },
+  preferences: { ...readStored(preferenceKey, {}), fontSize: Math.max(1.16, Math.min(1.74, Number(readStored(preferenceKey, {}).fontSize) || 1.16)), theme: sharedSiteTheme().startsWith('dark') ? 'night' : 'paper' },
   pdf: { document: null, page: 1, zoom: 1.15, fit: true, task: null, native: false, source: '' },
   epub: { book: null, rendition: null },
   htmlFrame: null,
@@ -286,7 +286,7 @@ function applyTheme() {
 function applyTextSize() {
   app.style.setProperty('--reader-font-size', `${state.preferences.fontSize}rem`);
   postHtmlFrameSettings();
-  if (state.type === 'epub' && state.epub.rendition) state.epub.rendition.themes.fontSize(`${state.preferences.fontSize}rem`);
+  if (state.type === 'epub' && state.epub.rendition) state.epub.rendition.themes.fontSize(`${state.preferences.fontSize * 1.24}rem`);
   sizeButton.textContent = `${Math.round(state.preferences.fontSize / 1.16 * 100)}%`;
 }
 
@@ -304,7 +304,7 @@ function changeTextSize(delta) {
     state.pdf.zoom = Math.max(.55, Math.min(3, state.pdf.zoom + delta * .14));
     renderPdfPage(state.pdf.page);
   } else {
-    state.preferences.fontSize = Math.max(.88, Math.min(1.72, Number((state.preferences.fontSize + delta * .08).toFixed(2))));
+    state.preferences.fontSize = Math.max(1.16, Math.min(1.74, Number((state.preferences.fontSize + delta * .058).toFixed(3))));
     applyTextSize();
     savePreferences();
   }
@@ -379,7 +379,7 @@ function postHtmlFrameSettings(includePosition = false) {
   if (!state.htmlFrame?.contentWindow) return;
   state.htmlFrame.contentWindow.postMessage({
     type: 'axiologic-reader-settings',
-    fontSize: state.preferences.fontSize,
+    fontSize: state.preferences.fontSize * 1.24,
     theme: state.preferences.theme,
     position: includePosition ? Number(state.progress.htmlPosition) || 0 : undefined
   }, '*');

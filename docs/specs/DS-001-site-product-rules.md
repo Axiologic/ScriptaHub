@@ -133,7 +133,7 @@ Create and feedback forms open a structured email addressed to `create@scriptahu
 
 Translation requests use the same mailbox. The form shows the book, requested language and complete/ten-minute HTML format, with optional name, reply email and message. The visitor opens, reviews and sends the email. No email is sent by selecting a language or opening the form. If a selected translation is already available, offer its reader instead of an unnecessary request.
 
-The Create form groups name and reply email, promotional website and one proposed title, plus a compact attachment area as a third visual column where space permits. Attached filenames appear as bounded pills with a shortened stem and visible extension. Instructions for the book receive the main writing area. The contribution agreement must be accepted before submission.
+The Create form groups name and reply email, promotional website and one proposed title, plus a compact attachment area as a third visual column where space permits. Attached filenames appear as bounded pills with a shortened stem and visible extension. Instructions for the book receive the main writing area. The contribution agreement is a separate shared final step at `agreement/index.html`, after the form’s Next action and before opening email.
 
 Every book root owns `editions.json`. Existing records and downloads are preserved. Replacing a current PDF means archiving it under `edition-files/<edition-id>/<language>.pdf`, pointing the old record to the archive, and appending a new dated edition with a localised change log.
 
@@ -468,3 +468,27 @@ entire note at mobile/tablet book-layout widths.
 The book animation wrapper explicitly fills the available width up to 1100px;
 centred flex layout must not shrink it to the icon-only close link. Integration
 QA must measure the loaded player stage on desktop and mobile, not only the X.
+
+Site typography uses a 19.84px root base: the new 100% equals the former 124%.
+Header size controls run from 100% to 150% in 5-point steps, with 100% as reset
+and default. Store this rebased preference separately from the old scale and
+apply it before first paint. Reader text shares the 24% baseline increase with
+its own 100–150% text control; PDF fit/zoom remains a document-viewing control.
+
+At increased text sizes, allow header controls to wrap and book panels to grow
+to their content. Mobile reading actions may wrap their labels with sufficient
+height; never clip enlarged text or let it overlap titles.
+
+All contribution workflows (Create, Fork, Suggest, animation suggestions and
+translation requests) collect details first and use a localised Next action.
+Navigate to the shared agreement page with an opaque draft ID and interface
+language; never put names, email addresses or contribution text in the URL.
+Keep the draft in tab-scoped session storage, expire it after 24 hours, and
+restore fields and selected attachment names when returning to edit. File bytes
+are not stored: the visitor attaches the documents in the mail application.
+The first agreement clause is an explicit declaration on the contributor’s own
+responsibility that they hold the necessary intellectual-property rights or
+authorisation to submit and grant the stated permissions. Never preselect consent.
+Only the agreement’s final action opens the structured email; it does not send
+mail automatically. Preserve the common submission boundary for a future
+endpoint integration without claiming that endpoint exists now.

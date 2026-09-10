@@ -12,7 +12,15 @@ function baseCompose(i){const a=stageAuthor(),blue='#4e789a',coral='#d68455',gre
 
 function compose(i){if(i!==0&&i!==2)return baseCompose(i);const a=stageAuthor(),navy='#4a7699',coral='#d5825c',green='#62a58e',gold='#dfb454',cream='#e8e7db';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};
  storyPerson(a,'maker',220,495,{coat:coral,scale:.92,identity:'person-04-neutral'});a.reveal('maker',1);storyGesture(a,'maker',2,'explain');storyPerson(a,'developer',1035,490,{coat:green,seated:true,scale:.88,identity:'person-02-neutral'});a.reveal('developer',1);storyGesture(a,'developer',3,'reflect');put('carpentry',360,395,[a.path('M-130 0 H130 M-95 0 V125 M95 0 V125',navy,15),a.n('path',{d:'M-110 -35 H115 V-4 H-110Z',fill:gold}),a.path('M-85 -24 H68',coral,7),a.path('M-24 -38 L41 -96',navy,12),a.n('path',{d:'M-6 -108 L24 -135 L93 -57 L66 -29Z',fill:green})],1,'A local maker adapts a physical object');put('digital',865,380,[a.path('M-130 28 H130 M-95 28 V137 M95 28 V137',navy,15),a.n('rect',{x:-110,y:-128,width:210,height:125,rx:10,fill:navy}),a.n('rect',{x:-94,y:-112,width:178,height:88,rx:3,fill:cream}),a.path('M-43 -88 L-67 -65 L-43 -42 M30 -88 L55 -65 L30 -42',green,9)],1,'A different organization develops reusable technical knowledge');put('shared-sign',605,175,[a.n('path',{d:'M-140 -43 H140 V43 H-140Z',fill:green}),a.text('Shared promise',0,11,35,'#ffffff')],2);put('exchange',605,350,[a.n('path',{d:'M-32 -43 H32 V43 H-32Z',fill:cream}),a.path('M-19 -16 H19 M-19 14 H10',navy,7)],2,'Selected knowledge can travel while local work remains different');a.move('exchange',3,675,350);put('mark-a',360,442,[a.dot(0,0,17,green),a.dot(0,0,6,cream)],3);put('mark-b',865,450,[a.dot(0,0,17,green),a.dot(0,0,6,cream)],3);
- if(i===2){put('boundary',605,350,[a.path('M0 -105 V-45 M0 45 V105',navy,11)],1);put('fault',475,455,[a.n('path',{d:'M0 -22 L24 22 H-24Z',fill:coral})],3,'A failure in one dependency stays local');a.move('fault',4,565,455);storyGesture(a,'maker',4,'question');}
+ if(i===2){put('boundary',605,350,[a.path('M0 -105 V-45 M0 45 V105',navy,11)],1);put('fault',515,475,[a.n('path',{d:'M0 -22 L24 22 H-24Z',fill:coral})],3,'A failure in one dependency stays local');a.move('fault',4,565,475);storyGesture(a,'maker',4,'question');}
  return a.finish('A craft maker and a software developer share a visible identity while performing different work; selected knowledge crosses between them while a local fault is contained. These are illustrative member activities.');}
 
-for(let i=0;i<scenes.length;i++)scenes[i].visual=compose(i);fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');
+for(let i=0;i<scenes.length;i++){
+ const visual=compose(i);
+ for(const actor of visual.objects.filter(o=>o.options?.rig==='character')){
+  const affected=/patient|visitor/.test(actor.id), reflective=/author|reader|reviewer|evaluator|judge/.test(actor.id);
+  const states=affected?['curious','worried','worried']:reflective?['curious','skeptical','determined']:['curious','skeptical','determined'];
+  for(const [j,beat] of [1,3,5].entries())visual.actions.push({actor:actor.id,action:'character.express',emotion:states[j],beat,durationMs:900});
+ }
+ scenes[i].visual=visual;
+}fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');

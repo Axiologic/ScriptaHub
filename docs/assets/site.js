@@ -123,7 +123,7 @@
   const supported = collection.supportedLanguages.map((item) => item.code);
   const scriptUrl = document.currentScript?.src;
   const siteRootUrl = scriptUrl ? new URL("../", scriptUrl) : new URL("./", location.href);
-  const siteScaleKey = "scripta-site-scale";
+  const siteScaleKey = "scripta-site-scale-v2";
   const siteThemeKey = "scripta-site-theme";
   const cloudInstruction = {
     en: "drag to rotate · Ctrl-drag to move · scroll to zoom", fr: "glisser pour tourner · Ctrl-glisser pour déplacer · défiler pour zoomer",
@@ -161,23 +161,24 @@
     const stored = localStorage.getItem("scripta-language");
     return [requested, pageLanguage, stored, browserLanguage(), "en"].find((item) => supported.includes(item));
   };
+  const boundedSiteScale = value => Number.isFinite(Number(value)) ? Math.max(1, Math.min(1.5, Number(value))) : 1;
   const savedSiteScale = () => {
-    const raw = localStorage.getItem(siteScaleKey);
-    if (raw === null) return 1;
-    const value = Number(raw);
-    return Number.isFinite(value) ? Math.max(.82, Math.min(1.24, value)) : 1;
+    try { return boundedSiteScale(localStorage.getItem(siteScaleKey) ?? 1); } catch { return 1; }
   };
   const applySiteScale = (value, persist = false) => {
-    const scale = Math.max(.82, Math.min(1.24, value));
+    const scale = boundedSiteScale(value);
     document.documentElement.style.setProperty("--site-scale", scale.toFixed(2));
+    document.documentElement.dataset.largeText = String(scale >= 1.25);
     document.querySelectorAll("[data-site-size]").forEach((node) => { node.textContent = `${Math.round(scale * 100)}%`; });
+    document.querySelectorAll("[data-site-smaller]").forEach(node => { node.disabled = scale <= 1; });
+    document.querySelectorAll("[data-site-larger]").forEach(node => { node.disabled = scale >= 1.5; });
     if (persist) try { localStorage.setItem(siteScaleKey, scale.toFixed(2)); } catch { /* Storage is optional. */ }
     requestAnimationFrame(() => document.dispatchEvent(new CustomEvent("scriptahub:scalechange", { detail: { scale } })));
   };
   const setupSiteScale = () => {
     applySiteScale(savedSiteScale());
-    document.querySelectorAll("[data-site-smaller]").forEach((button) => { button.onclick = () => applySiteScale(savedSiteScale() - .06, true); });
-    document.querySelectorAll("[data-site-larger]").forEach((button) => { button.onclick = () => applySiteScale(savedSiteScale() + .06, true); });
+    document.querySelectorAll("[data-site-smaller]").forEach((button) => { button.onclick = () => applySiteScale(savedSiteScale() - .05, true); });
+    document.querySelectorAll("[data-site-larger]").forEach((button) => { button.onclick = () => applySiteScale(savedSiteScale() + .05, true); });
     document.querySelectorAll("[data-site-size]").forEach((button) => { button.onclick = () => applySiteScale(1, true); });
   };
   const storedTheme = () => {

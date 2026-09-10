@@ -1,7 +1,8 @@
+import {storyPerson,storyGesture} from '../../tools/shf/people-poses.mjs';
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {stageAuthor} from '../../tools/shf/stage-authoring.mjs';
 const root=path.dirname(fileURLToPath(import.meta.url));const scenes=JSON.parse(fs.readFileSync(path.join(root,'work/scenes.json')));
 
-function compose(i){const a=stageAuthor(),blue='#4f769a',coral='#d48759',green='#64a796',pale='#e5e4da';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};
+function baseCompose(i){const a=stageAuthor(),blue='#4f769a',coral='#d48759',green='#64a796',pale='#e5e4da';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};
  const thinker=(id,x,y,b=1)=>put(id,x,y,[a.dot(-20,-55,27,coral),a.n('path',{d:'M-62 52 V-6 Q-16 -45 28 -6 L55 43Z',fill:blue}),a.path('M-150 60 H150 M-110 60 V130 M110 60 V130',blue,13),a.n('path',{d:'M-26 13 H97 V48 H-26Z',fill:pale})],b,'Sustained inquiry requires an environment that protects time');
  if(i===0){thinker('reader',650,305);put('feed',225,305,[a.n('rect',{x:-77,y:-137,width:154,height:272,rx:24,fill:blue}),...[-85,-8,69].map((y,j)=>a.n('rect',{x:-52,y,width:104,height:50,rx:7,fill:j%2?green:coral}))],1);put('interrupt',430,280,[a.n('path',{d:'M-45 -35 H45 V35 H-45Z',fill:coral})],2);a.move('interrupt',3,500,270);put('boundary',460,305,[a.path('M0 -145 V145',green,16)],4,'Institutional rules can limit interruption rather than blaming the individual');}
  if(i===1){thinker('reader',600,295);put('time',600,510,[a.path('M-390 0 H390',green,14)],1,'Time for sustained judgment');for(const[id,x,b]of[['i1',285,2],['i2',570,3],['i3',900,4]])put(id,x,465,[a.path('M-17 -40 L17 40 M17 -40 L-17 40',coral,9)],b,'An interruption fragments the shared time horizon');put('clock',1010,260,[a.n('circle',{cx:0,cy:0,r:62,fill:pale}),a.path('M0 -39 V0 L33 16',blue,10)],2);}
@@ -9,4 +10,17 @@ function compose(i){const a=stageAuthor(),blue='#4f769a',coral='#d48759',green='
  if(i===3){thinker('reader',370,285);put('horizon',850,350,[a.path('M-165 100 L-80 23 L10 52 L135 -85',green,14),a.dot(125,-95,30,coral),a.text('Longer decisions',0,175,34)],2);put('plural',610,510,[a.text('Shared responsibility · limited power',0,0,32)],4);}
  return a.finish('An interrupted study desk, fragmented time and three distinct civic rooms enact institutional protection for attention without a central authority deciding truth or seriousness.');}
 
-for(let i=0;i<scenes.length;i++)scenes[i].visual=compose(i);fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');
+function compose(i){if(i!==0)return baseCompose(i);const a=stageAuthor(),navy='#426f94',coral='#d67f60',green='#5ea58f',gold='#ddb052',cream='#e9e6d8';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};const figure=(id,x,y,c,identity='person-04-neutral',seated=false,scale=.95)=>{storyPerson(a,id,x,y,{coat:c,identity,seated,scale});a.reveal(id,1);};
+figure('reader',705,480,green,'person-04-neutral',true,1);storyGesture(a,'reader',2,'reflect');storyGesture(a,'reader',3,'recoil');storyGesture(a,'reader',5,'resolve');put('desk',850,420,[a.path('M-205 0 H205 M-155 0 V120 M155 0 V120',navy,15),a.n('path',{d:'M-90 -69 Q-20 -98 25 -66 Q80 -97 135 -65 V-12 Q75 -34 25 -7 Q-20 -31 -90 -8Z',fill:cream}),a.path('M25 -65 V-12',gold,7)],1,'Protected reading time supports sustained judgment');put('phone',305,295,[a.n('rect',{x:-90,y:-145,width:180,height:290,rx:28,fill:navy}),a.n('rect',{x:-71,y:-115,width:142,height:232,rx:13,fill:cream}),...[-71,0,71].map((y,j)=>a.n('rect',{x:-50,y:y-24,width:100,height:48,rx:9,fill:j%2?green:coral}))],1);put('notification',500,280,[a.n('rect',{x:-65,y:-42,width:130,height:84,rx:14,fill:coral}),a.dot(-32,0,12,cream),a.path('M-6 -10 H42 M-6 15 H27',cream,7)],2);a.move('notification',3,595,285);a.hide('notification',4);put('protected',500,450,[a.text('Protected time',0,88,34)],4,'A rule changes the environment rather than demanding more individual willpower');
+
+return a.finish('Original enacted situation: task-specific work, visible participants, source-grounded causal distinction and meaningful motion; illustrative objects do not claim an empirical experiment.');}
+
+for(let i=0;i<scenes.length;i++){
+ const visual=compose(i);
+ for(const actor of visual.objects.filter(o=>o.options?.rig==='character')){
+  const affected=/patient|visitor/.test(actor.id), reflective=/author|reader|reviewer|evaluator|judge/.test(actor.id);
+  const states=affected?['curious','worried','worried']:reflective?['curious','skeptical','determined']:['curious','skeptical','determined'];
+  for(const [j,beat] of [1,3,5].entries())visual.actions.push({actor:actor.id,action:'character.express',emotion:states[j],beat,durationMs:900});
+ }
+ scenes[i].visual=visual;
+}fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');

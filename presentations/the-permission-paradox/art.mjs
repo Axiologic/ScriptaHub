@@ -15,4 +15,12 @@ function compose(i){if(i!==0&&i!==2)return baseCompose(i);const a=stageAuthor(),
  else{storyPerson(a,'tester',250,490,{coat:green,scale:1,identity:'person-04-neutral'});a.reveal('tester',1);storyGesture(a,'tester',2,'explain');put('test-rig',635,395,[a.path('M-230 30 H225 M-180 30 V140 M180 30 V140',navy,15),a.path('M-175 5 V-180 H160 V5',navy,14),a.path('M-120 -160 H95',gold,8),a.n('path',{d:'M-120 -140 H95 V-72 H-120Z',fill:green}),a.dot(-45,-32,25,coral),a.path('M-165 -30 H150',navy,12)],1,'A narrow load test substitutes a bounded observation for a broad promise');put('gauge',1005,275,[a.n('circle',{cx:0,cy:0,r:75,fill:cream}),a.path('M-45 20 A52 52 0 0 1 45 20',green,10),a.path('M0 20 L22 -32',coral,9),a.text('Measure',0,150,34)],2);put('weight',635,220,[a.n('path',{d:'M-33 -30 H33 L49 24 H-49Z',fill:gold})],3);a.move('weight',4,635,287);storyGesture(a,'tester',4,'reflect');put('limit',670,555,[a.text('Small test · explicit stop conditions',0,0,32)],4);}
  return a.finish('An evaluator attempts an incompatible comparison and then a tester performs a bounded load observation; the apparatus is an illustrative learning test, not a claimed invention or established Longview implementation.');}
 
-for(let i=0;i<scenes.length;i++)scenes[i].visual=compose(i);fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');
+for(let i=0;i<scenes.length;i++){
+ const visual=compose(i);
+ for(const actor of visual.objects.filter(o=>o.options?.rig==='character')){
+  const affected=/patient|visitor/.test(actor.id), reflective=/author|reader|reviewer|evaluator|judge/.test(actor.id);
+  const states=affected?['curious','worried','worried']:reflective?['curious','skeptical','determined']:['curious','skeptical','determined'];
+  for(const [j,beat] of [1,3,5].entries())visual.actions.push({actor:actor.id,action:'character.express',emotion:states[j],beat,durationMs:900});
+ }
+ scenes[i].visual=visual;
+}fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');

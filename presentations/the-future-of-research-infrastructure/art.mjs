@@ -15,4 +15,12 @@ function compose(i){if(i!==0&&i!==1)return baseCompose(i);const a=stageAuthor(),
  if(i===1){put('revision',940,402,[a.n('path',{d:'M-51 -29 H51 V29 H-51Z',fill:green}),a.text('v2',0,11,34,'#ffffff')],3,'A new version does not silently erase the older account');a.move('revision',4,1000,405);}
  return a.finish('A scientist, sample and measuring instrument feed an identified observation into a persistent versioned project record; the interface changes without replacing scientific history. The experiment is conceptual rather than a fabricated study.');}
 
-for(let i=0;i<scenes.length;i++)scenes[i].visual=compose(i);fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');
+for(let i=0;i<scenes.length;i++){
+ const visual=compose(i);
+ for(const actor of visual.objects.filter(o=>o.options?.rig==='character')){
+  const affected=/patient|visitor/.test(actor.id), reflective=/author|reader|reviewer|evaluator|judge/.test(actor.id);
+  const states=affected?['curious','worried','worried']:reflective?['curious','skeptical','determined']:['curious','skeptical','determined'];
+  for(const [j,beat] of [1,3,5].entries())visual.actions.push({actor:actor.id,action:'character.express',emotion:states[j],beat,durationMs:900});
+ }
+ scenes[i].visual=visual;
+}fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');

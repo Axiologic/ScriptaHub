@@ -1122,7 +1122,7 @@ def install_site_branding(source: str, page_dir: Path) -> str:
     """Share the mascot favicon and deterministic header navigation across shells."""
     if 'site-header' in source or 'data-animation-book' in source or 'data-reader-app' in source:
         source = re.sub(r'[ \t]*<script>try\{if\(localStorage.getItem\("scripta-site-theme"\).*?</script>', '', source)
-        bootstrap = '<script data-site-theme-bootstrap>try{const t=localStorage.getItem("scripta-site-theme");document.documentElement.dataset.theme=["light","orange","nord","dark","dark-orange"].includes(t)?t:"dark-orange"}catch{document.documentElement.dataset.theme="dark-orange"}</script>'
+        bootstrap = '<script data-site-theme-bootstrap>try{const t=localStorage.getItem("scripta-site-theme");document.documentElement.dataset.theme=["light","orange","nord","dark","dark-orange"].includes(t)?t:"dark-orange"}catch{document.documentElement.dataset.theme="dark-orange"}try{const s=Number(localStorage.getItem("scripta-site-scale-v2")||1);document.documentElement.style.setProperty("--site-scale",String(Number.isFinite(s)?Math.max(1,Math.min(1.5,s)):1));document.documentElement.dataset.largeText=String(Number.isFinite(s)&&s>=1.25)}catch{}</script>'
         source = re.sub(r'<script data-site-theme-bootstrap>.*?</script>', bootstrap, source)
         if 'data-site-theme-bootstrap' not in source:
             source = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + '\n  ' + bootstrap, source, count=1)

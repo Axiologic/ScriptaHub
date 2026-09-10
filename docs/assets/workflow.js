@@ -77,6 +77,28 @@
   };
   Object.entries(contractIntros).forEach(([code, intro]) => { text[code].contractIntro = intro; });
 
+  const agreementSteps = {
+    en: ["Next", "Back to contribution", "Open email to send", "Complete a contribution form before continuing.", "Your draft could not be saved in this tab; allow session storage and try again.", "I declare, on my own responsibility, that I hold the intellectual-property rights needed to submit this material and grant the permissions below, or that I am authorised to do so by the rights holder, public-domain status or a compatible licence."],
+    fr: ["Suivant", "Retour à la contribution", "Ouvrir l’e-mail à envoyer", "Remplissez un formulaire de contribution avant de continuer.", "Votre brouillon n’a pas pu être enregistré dans cet onglet ; autorisez le stockage de session et réessayez.", "Je déclare sous ma propre responsabilité détenir les droits de propriété intellectuelle nécessaires pour soumettre ces éléments et accorder les autorisations ci-dessous, ou y être autorisé par le titulaire des droits, le domaine public ou une licence compatible."],
+    de: ["Weiter", "Zurück zum Beitrag", "E-Mail zum Senden öffnen", "Füllen Sie zuerst ein Beitragsformular aus.", "Der Entwurf konnte in diesem Tab nicht gespeichert werden; erlauben Sie Sitzungsspeicher und versuchen Sie es erneut.", "Ich erkläre in eigener Verantwortung, dass ich die erforderlichen geistigen Eigentumsrechte besitze, um dieses Material einzureichen und die folgenden Nutzungsrechte zu gewähren, oder dazu vom Rechteinhaber, aufgrund der Gemeinfreiheit oder einer kompatiblen Lizenz berechtigt bin."],
+    es: ["Siguiente", "Volver a la contribución", "Abrir el correo para enviar", "Completa un formulario de contribución antes de continuar.", "No se pudo guardar el borrador en esta pestaña; permite el almacenamiento de sesión e inténtalo de nuevo.", "Declaro bajo mi propia responsabilidad que poseo los derechos de propiedad intelectual necesarios para enviar este material y conceder los permisos siguientes, o que estoy autorizado por el titular, el dominio público o una licencia compatible."],
+    pt: ["Seguinte", "Voltar à contribuição", "Abrir e-mail para enviar", "Preencha um formulário de contribuição antes de continuar.", "Não foi possível guardar o rascunho nesta aba; permita o armazenamento de sessão e tente novamente.", "Declaro sob minha própria responsabilidade que detenho os direitos de propriedade intelectual necessários para enviar este material e conceder as permissões abaixo, ou que estou autorizado pelo titular dos direitos, pelo domínio público ou por uma licença compatível."],
+    it: ["Avanti", "Torna al contributo", "Apri l’e-mail da inviare", "Compila un modulo di contribuzione prima di continuare.", "Impossibile salvare la bozza in questa scheda; consenti l’archiviazione di sessione e riprova.", "Dichiaro sotto la mia responsabilità di detenere i diritti di proprietà intellettuale necessari per inviare questo materiale e concedere le autorizzazioni seguenti, oppure di essere autorizzato dal titolare dei diritti, dal pubblico dominio o da una licenza compatibile."],
+    ro: ["Înainte", "Înapoi la contribuție", "Deschide e-mailul pentru trimitere", "Completează un formular de contribuție înainte de a continua.", "Ciorna nu a putut fi salvată în această filă; permite stocarea de sesiune și încearcă din nou.", "Declar pe propria răspundere că dețin drepturile de proprietate intelectuală necesare pentru a trimite aceste materiale și a acorda permisiunile de mai jos sau că sunt autorizat să fac acest lucru de titularul drepturilor, de statutul de domeniu public ori de o licență compatibilă."],
+    pl: ["Dalej", "Wróć do wkładu", "Otwórz e-mail do wysłania", "Najpierw wypełnij formularz wkładu.", "Nie udało się zapisać szkicu w tej karcie; zezwól na pamięć sesji i spróbuj ponownie.", "Oświadczam na własną odpowiedzialność, że posiadam prawa własności intelektualnej niezbędne do przesłania tych materiałów i udzielenia poniższych zezwoleń lub jestem do tego uprawniony przez właściciela praw, status domeny publicznej albo zgodną licencję."],
+  };
+  const nextNotes = {
+    en: "Next, review the contribution agreement before opening your email to review and send.",
+    fr: "Ensuite, consultez l’accord avant d’ouvrir l’e-mail pour le vérifier et l’envoyer.",
+    de: "Prüfen Sie als Nächstes die Vereinbarung, bevor Sie die E-Mail zur Kontrolle und zum Senden öffnen.",
+    es: "A continuación, revisa el acuerdo antes de abrir el correo para comprobarlo y enviarlo.",
+    pt: "A seguir, reveja o acordo antes de abrir o e-mail para conferir e enviar.",
+    it: "Poi leggi l’accordo prima di aprire l’e-mail per controllarla e inviarla.",
+    ro: "Urmează acordul de contribuție, apoi poți deschide e-mailul pentru a-l verifica și trimite.",
+    pl: "Następnie przeczytaj umowę przed otwarciem e-maila do sprawdzenia i wysłania.",
+  };
+  Object.entries(agreementSteps).forEach(([code, words]) => { text[code].contractItems[0] = words[5]; });
+
   const createFieldLabels = {
     en: { title: "Proposed title", titleHint: "A working title (optional)", chooseFiles: "Choose attachments", attachmentNote: "Email cannot include files automatically. Attach the selected documents when your mail app opens." },
     fr: { title: "Titre proposé", titleHint: "Un titre de travail (facultatif)", chooseFiles: "Choisir les pièces jointes", attachmentNote: "L’e-mail ne peut pas inclure les fichiers automatiquement. Joignez les documents sélectionnés dans votre messagerie." },
@@ -108,6 +130,58 @@
   };
   const mail = (subject, lines) => `mailto:create@scriptahub.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
 
+  const draftPrefix = "scripta-contribution-draft:";
+  function readDraft() {
+    try {
+      const draft = JSON.parse(sessionStorage.getItem(draftPrefix + params().get("draft")));
+      if (!draft || typeof draft.subject !== "string" || !Array.isArray(draft.lines) || !Array.isArray(draft.files) || !draft.values || typeof draft.values !== "object") return null;
+      const back = new URL(draft.returnUrl);
+      if (back.origin !== siteRoot.origin || !back.pathname.startsWith(siteRoot.pathname) || Date.now() - draft.createdAt > 86400000) return null;
+      return draft;
+    } catch { return null; }
+  }
+  function restoreDraft(form) {
+    const draft = readDraft();
+    if (!draft) return;
+    const back = new URL(draft.returnUrl);
+    if (back.pathname !== location.pathname || back.searchParams.get("book") !== params().get("book")) return;
+    for (const [name, value] of Object.entries(draft.values)) {
+      const input = form.elements.namedItem(name);
+      if (input && input.type !== "file") input.value = value;
+    }
+    form._draftFiles = draft.files;
+  }
+  function beginAgreement(subject, lines, lang, form, files = []) {
+    const id = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const back = new URL(location.href); back.searchParams.set("draft", id);
+    const values = Object.fromEntries([...new FormData(form)].filter(([, value]) => typeof value === "string"));
+    const draft = {subject, lines, values, files, returnUrl: back.href, createdAt: Date.now()};
+    try { sessionStorage.setItem(draftPrefix + id, JSON.stringify(draft)); }
+    catch { root.querySelector("[data-workflow-status]").textContent = agreementSteps[lang][4]; return; }
+    const target = new URL("agreement/index.html", siteRoot);
+    target.searchParams.set("lang", lang); target.searchParams.set("draft", id);
+    history.replaceState(history.state, "", back);
+    location.href = target.href;
+  }
+  function renderAgreement(lang) {
+    const words = text[lang], steps = agreementSteps[lang], draft = readDraft();
+    document.title = `${words.contractTitle} · ScriptaHub`;
+    root.innerHTML = `${pageHero("ScriptaHub", words.contractTitle)}${draft ? `<nav class="workflow-back"><a class="button button-quiet" href="${escape(draft.returnUrl)}">${escape(steps[1])}</a></nav>` : ""}<section class="agreement-page">${agreementCard(words)}${draft ? `<form data-agreement-form><button class="workflow-submit" type="submit" disabled>${escape(steps[2])}</button><p class="workflow-note">${escape(words.mailNote)}${draft.files.length ? ` ${escape(createFieldLabels[lang].attachmentNote)}` : ""}</p>${draft.files.length ? `<ul class="agreement-files">${draft.files.map(file => `<li>${escape(file)}</li>`).join("")}</ul>` : ""}<p data-workflow-status aria-live="polite"></p></form>` : `<p>${escape(steps[3])}</p>`}</section>`;
+    root.querySelector(".contribution-agreement h2").remove();
+    root.querySelector(".contribution-agreement .eyebrow").remove();
+    if (!draft) { root.querySelector(".contract-accept").remove(); return; }
+    const form = root.querySelector("[data-agreement-form]"), checkbox = root.querySelector("[data-contract-accept]");
+    checkbox.addEventListener("change", () => { form.querySelector("button").disabled = !checkbox.checked; });
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      if (!checkbox.checked) return;
+      root.querySelector("[data-workflow-status]").textContent = words.mailReady;
+      const mailUrl = mail(draft.subject, [...draft.lines, "", "Contribution agreement accepted: yes", "Agreement version: 2026-09-10", `Declaration: ${words.contractItems[0]}`]);
+      const submit = new CustomEvent("scriptahub:contribution-submit", {cancelable: true, detail: {draft, agreementVersion: "2026-09-10", declaration: words.contractItems[0], mailUrl}});
+      if (document.dispatchEvent(submit)) location.href = mailUrl;
+    });
+  }
+
   const proposalLabels = {
     en: ["Propose a derived book", "Build on this book with a new direction, audience or perspective.", "What should the derived book retain, change or add?", "Describe the new purpose, audience, scope and relationship to the source book.", "Suggest an animation", "This book has no animation yet. Help shape its introduction.", "Improve this presentation", "What would make this book introduction clearer or more compelling?", "Your suggestion", "Suggest the opening, distinctive ideas, visual approach or changes to a scene; include a timestamp if useful."],
     ro: ["Propune o carte derivată", "Pornește de la această carte cu o nouă direcție, perspectivă sau un alt public.", "Ce ar trebui păstrat, schimbat sau adăugat?", "Descrie scopul, publicul, conținutul și legătura cu această carte.", "Propune o animație", "Această carte nu are încă o animație. Ajută la conturarea prezentării.", "Îmbunătățește prezentarea", "Cum ar putea această introducere să fie mai clară sau mai convingătoare?", "Sugestia ta", "Propune deschiderea, ideile distinctive, stilul vizual sau modificarea unei scene; indică momentul dacă este util."],
@@ -126,7 +200,7 @@
     if (fork && !book) { root.innerHTML = pageHero("Fork", words.missingBook); return; }
     const fields = createFieldLabels[lang];
     document.title = `${words.createTitle} · ScriptaHub`;
-    const agreement = agreementCard(words);
+
     root.innerHTML = `${fork ? backToBook(book, lang) : ""}${pageHero(words.createKicker, words.createTitle, fork ? labels[1] : "")}${fork ? `<div class="fork-source">${compactBookContext(book, lang, words, false)}</div>` : ""}<section class="workflow-layout create-workflow-layout"><form class="workflow-form create-workflow-form" data-workflow-form><div class="form-grid create-form-grid">
       ${field(words.name, "name", "text", false, "", true, "create-name-field")}
       ${field(words.email, "email", "email", false, "", false, "create-email-field")}
@@ -134,8 +208,9 @@
       ${field(words.url, "url", "url", false, "https://", false, "create-url-field")}
       ${field(fields.title, "titles", "text", false, fields.titleHint, false, "create-title-field")}
       ${textarea(words.prompt, "prompt", words.promptHint, true, "create-instructions-field")}
-      </div><button class="workflow-submit" type="submit" disabled>${escape(words.propose)}</button><p class="workflow-note">${escape(words.mailNote)} ${escape(fields.attachmentNote)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${agreement}</section>`;
+      </div><button class="workflow-submit" type="submit">${escape(agreementSteps[lang][0])}</button><p class="workflow-note">${escape(nextNotes[lang])} ${escape(fields.attachmentNote)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form></section>`;
     const form = root.querySelector("form");
+    restoreDraft(form);
     const documents = form.elements.documents;
     const fileSelection = form.querySelector("[data-file-selection]");
     const compactFileName = (name) => {
@@ -146,7 +221,7 @@
       return name.length <= headLength + extension.length ? name : `${stem.slice(0, headLength)}…${extension}`;
     };
     const updateFileSelection = () => {
-      const names = [...documents.files].map((file) => file.name);
+      const names = documents.files.length ? [...documents.files].map((file) => file.name) : (form._draftFiles || []);
       fileSelection.replaceChildren();
       if (!names.length) return;
       const list = document.createElement("ul");
@@ -158,22 +233,20 @@
       });
       fileSelection.append(list);
     };
-    documents.addEventListener("change", updateFileSelection);
-    const contract = root.querySelector("[data-contract-accept]");
-    const submit = form.querySelector("[type=submit]");
-    contract.addEventListener("change", () => { submit.disabled = !contract.checked; });
+    documents.addEventListener("change", () => { form._draftFiles = []; updateFileSelection(); });
+    updateFileSelection();
+
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      if (!contract.checked || !form.reportValidity()) return;
+      if (!form.reportValidity()) return;
       const data = new FormData(form);
-      const files = [...form.elements.documents.files].map((file) => file.name);
+      const files = form.elements.documents.files.length ? [...form.elements.documents.files].map((file) => file.name) : (form._draftFiles || []);
       const lines = [
         ...(fork ? [`Source book ID: ${book.id}`, `Source book: ${book.title.en}`, `Source directory: ${book.directory}`, `Source edition: ${book.currentEdition || book.animation?.edition || "Current published edition"}`, ""] : []),
         `Name: ${data.get("name") || ""}`, `Reply email: ${data.get("email") || ""}`, `Promotional URL: ${data.get("url") || ""}`,
-        `Selected documents (attach manually): ${files.join(", ") || "None"}`, `Contribution agreement accepted: yes`, "", "PROPOSED TITLE", data.get("titles") || "", "", "BOOK INSTRUCTIONS", data.get("prompt") || "", "", `Interface language: ${lang}`,
+        `Selected documents (attach manually): ${files.join(", ") || "None"}`, "", "PROPOSED TITLE", data.get("titles") || "", "", "BOOK INSTRUCTIONS", data.get("prompt") || "", "", `Interface language: ${lang}`,
       ];
-      root.querySelector("[data-workflow-status]").textContent = words.mailReady;
-      location.href = mail(words.createSubject, lines);
+      beginAgreement(words.createSubject, lines, lang, form, files);
     });
   }
 
@@ -184,23 +257,20 @@
     const book = activeBook();
     if (!document.body.dataset.animationBook) document.title = `${words.feedbackTitle} · ScriptaHub`;
     const embedded = Boolean(document.body.dataset.animationBook);
-    const side = `<div class="workflow-aside-stack">${embedded ? "" : compactBookContext(book, lang, words)}${agreementCard(words)}</div>`;
+    const side = `<div class="workflow-aside-stack">${embedded ? "" : compactBookContext(book, lang, words)}</div>`;
     root.innerHTML = `${embedded ? `<h2>${escape(words.feedbackTitle)}</h2>` : backToBook(book, lang) + pageHero(words.feedbackKicker, words.feedbackTitle)}<section class="workflow-layout"><form class="workflow-form" data-workflow-form><p class="workflow-message">${escape(words.promise)}</p><div class="form-grid">${field(words.name, "name", "text", false, "", true)}${field(words.email, "email", "email")}${field(words.url, "url", "url", true, "https://")}
-      ${animation ? "" : `<label class="form-field form-field-wide"><span>${escape(words.kind)}</span><select name="kind">${words.kinds.map((kind) => `<option>${escape(kind)}</option>`).join("")}</select></label>`}${textarea(words.feedback, "feedback", words.feedbackHint, true)}${textarea(words.sources, "sources", words.sourcesHint)}</div><button class="workflow-submit" type="submit" disabled>${escape(words.send)}</button><p class="workflow-note">${escape(words.mailNote)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${side}</section>`;
+      ${animation ? "" : `<label class="form-field form-field-wide"><span>${escape(words.kind)}</span><select name="kind">${words.kinds.map((kind) => `<option>${escape(kind)}</option>`).join("")}</select></label>`}${textarea(words.feedback, "feedback", words.feedbackHint, true)}${textarea(words.sources, "sources", words.sourcesHint)}</div><button class="workflow-submit" type="submit"${book ? "" : " disabled"}>${escape(agreementSteps[lang][0])}</button><p class="workflow-note">${escape(nextNotes[lang])}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${side}</section>`;
     const form = root.querySelector("form");
-    const contract = root.querySelector("[data-contract-accept]");
-    const submit = form.querySelector("[type=submit]");
-    contract.addEventListener("change", () => { submit.disabled = !book || !contract.checked; });
+    restoreDraft(form);
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      if (!book || !contract.checked || !form.reportValidity()) return;
+      if (!book || !form.reportValidity()) return;
       const data = new FormData(form);
       const lines = [
         `Book ID: ${book.id}`, `Book: ${book.title[lang] || book.title.en}`, `Book directory: ${book.directory}`, `Edition language: ${lang}`, `Contribution type: ${animation ? (existing ? "Animation improvement" : "Animation proposal") : data.get("kind") || ""}`, ...(animation ? [`Animation source edition: ${book.animation?.edition || "Not yet produced"}`, `Animation file: ${book.animation?.shf || "None"}`] : []),
-        `Name: ${data.get("name") || ""}`, `Reply email: ${data.get("email") || ""}`, `Promotional URL: ${data.get("url") || ""}`, `Contribution agreement accepted: yes`, "", "PROPOSED CHANGE / FEEDBACK", data.get("feedback") || "", "", "SOURCES / CONTEXT", data.get("sources") || "",
+        `Name: ${data.get("name") || ""}`, `Reply email: ${data.get("email") || ""}`, `Promotional URL: ${data.get("url") || ""}`, "", "PROPOSED CHANGE / FEEDBACK", data.get("feedback") || "", "", "SOURCES / CONTEXT", data.get("sources") || "",
       ];
-      root.querySelector("[data-workflow-status]").textContent = words.mailReady;
-      location.href = mail(`${words.feedbackSubject}: ${book.title[lang] || book.title.en}`, lines);
+      beginAgreement(`${words.feedbackSubject}: ${book.title[lang] || book.title.en}`, lines, lang, form);
     });
   }
 
@@ -247,8 +317,9 @@
     }
     const target = reading.locale(params().get("target") || lang);
     const format = reading.formatName(params().get("format"));
-    root.innerHTML = `${backToBook(book, lang)}${pageHero("ScriptaHub", words.title, words.lead)}<section class="workflow-layout"><form class="workflow-form" data-translation-form><div class="form-grid"><label class="form-field"><span>${escape(words.target)}</span><select name="target">${collection.supportedLanguages.map(({ code, name }) => `<option value="${code}"${code === target ? " selected" : ""}>${escape(name)}</option>`).join("")}</select></label><label class="form-field"><span>${escape(words.format)}</span><select name="format"><option value="read"${format === "read" ? " selected" : ""}>${escape(words.full)}</option><option value="short"${format === "short" ? " selected" : ""}>${escape(words.short)}</option></select></label>${field(words.name, "name")}${field(words.email, "email", "email")}${textarea(words.note, "note", "")}</div><div data-translation-available hidden><p>${escape(words.available)}</p><a class="button" data-translation-read>${escape(words.read)}</a></div><button class="workflow-submit" type="submit">${escape(words.send)}</button><p class="workflow-note" data-translation-mail-note>${escape(words.mail)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${bookContext(book, lang, { ...text[lang], back: words.back })}</section>`;
+    root.innerHTML = `${backToBook(book, lang)}${pageHero("ScriptaHub", words.title, words.lead)}<section class="workflow-layout"><form class="workflow-form" data-translation-form><div class="form-grid"><label class="form-field"><span>${escape(words.target)}</span><select name="target">${collection.supportedLanguages.map(({ code, name }) => `<option value="${code}"${code === target ? " selected" : ""}>${escape(name)}</option>`).join("")}</select></label><label class="form-field"><span>${escape(words.format)}</span><select name="format"><option value="read"${format === "read" ? " selected" : ""}>${escape(words.full)}</option><option value="short"${format === "short" ? " selected" : ""}>${escape(words.short)}</option></select></label>${field(words.name, "name")}${field(words.email, "email", "email")}${textarea(words.note, "note", "")}</div><div data-translation-available hidden><p>${escape(words.available)}</p><a class="button" data-translation-read>${escape(words.read)}</a></div><button class="workflow-submit" type="submit">${escape(agreementSteps[lang][0])}</button><p class="workflow-note" data-translation-mail-note>${escape(nextNotes[lang])}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${bookContext(book, lang, { ...text[lang], back: words.back })}</section>`;
     const form = root.querySelector("[data-translation-form]");
+    restoreDraft(form);
     const update = () => {
       const data = new FormData(form);
       const selected = data.get("target");
@@ -271,16 +342,17 @@
       if (!form.reportValidity()) return;
       const data = new FormData(form);
       if (reading.available(book, data.get("target"), data.get("format"))) { update(); return; }
-      root.querySelector("[data-workflow-status]").textContent = words.ready;
-      location.href = reading.mailUrl(book, { target: data.get("target"), format: data.get("format"), uiLanguage: lang, source: params().get("source"), name: data.get("name"), email: data.get("email"), note: data.get("note") });
+      const prepared = new URL(reading.mailUrl(book, { target: data.get("target"), format: data.get("format"), uiLanguage: lang, source: params().get("source"), name: data.get("name"), email: data.get("email"), note: data.get("note") }));
+      beginAgreement(prepared.searchParams.get("subject"), [prepared.searchParams.get("body")], lang, form);
     });
     update();
   }
 
   function render(lang = language()) {
     const page = document.body.dataset.workflowPage;
-    document.body.toggleAttribute("data-book-workflow", ["feedback","editions","translate","fork","animation-request"].includes(page));
-    if (page === "animation-request" || document.body.dataset.animationBook) renderFeedback(lang, true);
+    document.body.toggleAttribute("data-book-workflow", ["feedback","editions","translate","fork","animation-request","agreement"].includes(page));
+    if (page === "agreement") renderAgreement(lang);
+    else if (page === "animation-request" || document.body.dataset.animationBook) renderFeedback(lang, true);
     else if (page === "fork") renderCreate(lang, true);
     else if (page === "translate") renderTranslation(lang);
     else if (page === "create") renderCreate(lang);

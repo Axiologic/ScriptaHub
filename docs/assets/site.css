@@ -40,7 +40,7 @@
   --max: 1500px;
   --site-scale: 1;
   color-scheme: light;
-  font-size: calc(16px * var(--site-scale));
+  font-size: calc(19.84px * var(--site-scale));
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -1514,3 +1514,43 @@ shf-player {
 
 .book-availability-note{display:none}
 @media(min-width:1101px){.book-availability-note{display:flex;grid-column:1/-1;grid-row:3;flex-wrap:wrap;gap:3px 0;margin:10px 0 0;font-size:.7rem;font-weight:400;line-height:1.45;color:color-mix(in srgb,var(--muted) 76%,var(--panel));letter-spacing:0}.book-availability-note span+span::before{content:"·";padding:0 8px}}
+
+.site-scale button:disabled{opacity:.45;cursor:default}
+
+/* Larger type must reflow rather than collide with fixed-height containers. */
+.site-header{flex-wrap:wrap}
+.site-header .header-tools{flex:1 1 max-content;flex-wrap:wrap}
+.site-header .site-scale{flex-shrink:0}
+.book-side-actions .button{height:max(34px,calc(1.2em + 16px))}
+@media(min-width:1101px){.book-details{height:auto;min-height:var(--book-cover-height,0px);overflow:visible;align-content:start}}
+@media(max-width:650px){
+ .site-header .wordmark{font-size:min(1.28rem,6vw)}
+ body[data-book-page="true"] .site-header{display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+ body[data-book-page="true"] .site-header .wordmark{font-size:min(1.28rem,6vw);width:max-content}
+ .site-header .header-tools{flex:none;flex-wrap:wrap;width:100%;gap:6px}
+ body[data-book-page="true"] .site-header .site-scale{display:flex}
+ body[data-book-page="true"] .book-hero .book-actions{height:auto;min-height:var(--book-cover-height,0px)}
+ body[data-book-page="true"] .book-hero .book-actions .button{height:auto;min-height:28px;padding:5px;line-height:1.2;white-space:normal;overflow:visible;flex:0 0 auto}
+}
+
+@media(max-width:420px){
+ :root[data-large-text="true"] .book-hero .cover-link{grid-column:1/-1;justify-self:center}
+ :root[data-large-text="true"] body[data-book-page="true"] .book-hero .book-actions{grid-column:1/-1;grid-row:2;min-height:0;margin-top:12px}
+ :root[data-large-text="true"] .book-copy{grid-row:3}
+ :root[data-large-text="true"] .book-side-actions{grid-row:4}
+}
+
+/* Contribution details and consent are separate, shared workflow steps. */
+[data-workflow-page="create"] .create-workflow-layout,
+[data-workflow-page="fork"] .create-workflow-layout,
+body[data-animation-book] .workflow-layout {grid-template-columns:minmax(0,1fr)}
+.agreement-page{max-width:820px;margin:0 auto;padding:12px 0 36px}
+.agreement-page .contribution-agreement{padding:0;background:transparent}
+.agreement-page .contribution-agreement > p,
+.agreement-page .contribution-agreement li{font-size:.9rem;text-align:left;line-height:1.6}
+.agreement-page .contract-accept{margin:24px 0;font-size:.9rem}
+.agreement-page .workflow-submit{margin-top:8px}
+.agreement-files{font-size:.8rem;overflow-wrap:anywhere}
+
+.agreement-page{width:100%;min-width:0}
+.agreement-page .contribution-agreement li{hyphens:none;overflow-wrap:anywhere}

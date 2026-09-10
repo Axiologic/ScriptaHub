@@ -1,0 +1,18 @@
+import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';import {storyPerson,storyGesture} from '../../../tools/shf/people-poses.mjs';
+const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));
+for(const [i,s]of scenes.entries()){
+const a=stageAuthor(),{n,path,text,tint,dot}=a;
+const obj=(id,x,y,kids,meaning,k=1)=>a.add(a.object(id,x,y,kids,meaning,k));
+const fill=(d,c,cn)=>tint(n('path',{d,fill:c}),cn||c);
+const rect=(x,y,w,h,c,cn,rx=0)=>tint(n('rect',{x,y,width:w,height:h,rx,fill:c}),cn||c);
+const human=(id,x,y,coat,identity='person-02-neutral',seated=false,scale=.9)=>{storyPerson(a,id,x,y,{coat,identity,seated,scale,chair:coat});a.objects.at(-1).options.dynamicExpressions=true;for(const [beat,emotion]of [[1,'curious'],[3,'worried'],[5,'skeptical'],[6,'curious']])a.actions.push({actor:id,action:'character.express',emotion,beat,durationMs:850});storyGesture(a,id,2,'question');storyGesture(a,id,4,'reflect');storyGesture(a,id,6,'invite');};
+
+const blue='#527bb0',bn='#aac5e8',coral='#d57555',cn='#efb69a',gold='#dfb142',gn='#f4d78c',teal='#308f88';
+const room=()=>obj('unfinished-room',600,355,[rect(-397,-150,241,282,blue,bn,7),...[-91,-16,60].map(y=>rect(-376,y,199,11,gold,gn)),path('M-65 114H395M-28 114V197M361 114V197',coral,15)],'The room contains substantial work whose parts have not become a working sequence');
+if(i===0){room();human('strategist',755,534,coral,'person-02-neutral',true,1.02);obj('unfinished-mechanism',960,355,[n('circle',{cx:0,cy:0,r:71,fill:gold}),n('circle',{cx:0,cy:0,r:43,fill:blue}),path('M0 73V112M-26 113H28',blue,13)],'A carefully developed mechanism still lacks its connection to practical use');obj('loose-component',545,440,[path('M-54 -11Q0 -61 60 -10',teal,14)],'A missing integration remains visible rather than covered by more explanation');a.reveal('loose-component',3);}
+else if(i===1){obj('gorge',600,414,[fill('M-422 121L-270 -6L-92 33L-135 163H-422Z',blue,bn),fill('M111 24L265 -9L424 111V163H135Z',blue,bn)],'A load must cross a real gap rather than an inventory of related ideas');obj('loose-strands',597,322,[path('M-312 23Q-107 -95 312 27',coral,6),path('M-312 36Q-17 -9 312 43',gold,6),path('M-312 48Q92 -103 312 53',teal,6)],'Separate strands do not yet act together');obj('bound-rope',597,355,[path('M-311 18Q0 89 312 18',coral,19),path('M-309 20Q0 89 309 20',gold,5)],'A binding rule turns connection into shared load-bearing work');a.hide('loose-strands',3);a.reveal('bound-rope',3);human('traveler',839,449,gold,'person-03-neutral',false,.83);}
+else if(i===2){obj('shared-well',596,421,[n('ellipse',{cx:0,cy:0,rx:194,ry:77,fill:blue}),n('ellipse',{cx:0,cy:-21,rx:160,ry:54,fill:'#91cfc8'}),path('M-128 0V-178M132 0V-178M-129 -176H133',gold,14),path('M0 -173V-3',coral,7),fill('M-36 -5H36L26 38H-24Z',coral,cn)],'A useful local operation draws on a shared resource that must continue supporting others');human('operator',278,539,coral,'person-02-neutral',false,.94);human('neighbor',942,539,teal,'person-03-neutral',false,.94);obj('water-level',598,420,[path('M-117 8Q0 52 118 7',gold,9)],'The external cost becomes visible inside the same physical system');a.reveal('water-level',4);}
+else{room();human('strategist',755,534,coral,'person-02-neutral',true,1.02);obj('working-sequence',608,388,[path('M-96 57V-37H91V57',teal,13),path('M-91 19H87',gold,16)],'A finite completed step remains open to judgment at a larger scale');a.reveal('working-sequence',3);}
+
+s.visual=a.finish(s.lines[0]+' Original material staging, a richer foreground palette and expressive participants make the particular question visible.');}
+fs.writeFileSync(file,JSON.stringify(scenes,null,2)+'\n');
