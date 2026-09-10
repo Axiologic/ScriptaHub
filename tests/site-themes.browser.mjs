@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';import {connect} from './browser-session
 const base=process.env.SCRIPTA_TEST_URL||'http://127.0.0.1:8012/';const c=await connect('about:blank');let checks=0;
 try{
  await c.send('Page.navigate',{url:base+'index.html?lang=en'});await c.wait('!!document.querySelector("[data-theme-toggle]")?.dataset.themeCurrent');
- await c.evaluate(`localStorage.setItem('scripta-site-theme','light')`);await c.send('Page.reload');await c.wait(`document.querySelector('[data-theme-toggle]')?.dataset.themeCurrent==='light'`);
- for(const theme of ['orange','nord','dark','light','orange']){
+ await c.evaluate(`localStorage.setItem('scripta-site-theme','light');localStorage.removeItem('scripta-site-dark-theme')`);await c.send('Page.reload');await c.wait(`document.querySelector('[data-theme-toggle]')?.dataset.themeCurrent==='light'`);
+ for(const theme of ['orange','nord','dark','dark-orange','light','orange']){
   await c.evaluate(`document.querySelector('[data-theme-toggle]').click()`);
   assert(await c.evaluate(`document.documentElement.dataset.theme==='${theme}'&&localStorage.getItem('scripta-site-theme')==='${theme}'&&document.querySelector('[data-theme-toggle]').getAttribute('aria-label').length>10`));checks++;
  }
@@ -22,7 +22,7 @@ try{
  const reader=await c.evaluate(`document.querySelector('[data-reading-format="short"]').href`);await c.send('Page.navigate',{url:reader});await c.wait(`document.querySelector('[data-reader-app]')?.dataset.accent==='nord'&&document.querySelector('[data-reader-app]').dataset.theme==='paper'&&!!document.querySelector('.reader-html-content')`);
  await c.wait(`getComputedStyle(document.querySelector('[data-reader-home]')).backgroundColor==='rgb(104, 70, 83)'`);checks++;
 
- await c.evaluate(`document.querySelector('[data-reader-theme]').click()`);assert(await c.evaluate(`localStorage.getItem('scripta-site-theme')==='dark'`));checks++;
+ await c.evaluate(`document.querySelector('[data-reader-theme]').click()`);assert(await c.evaluate(`localStorage.getItem('scripta-site-theme')==='dark-orange'`));checks++;
  await c.send('Page.reload');await c.wait(`document.querySelector('[data-reader-app]')?.dataset.theme==='night'&&!!document.querySelector('.reader-html-content')`);
  await c.evaluate(`document.querySelector('[data-reader-theme]').click()`);assert(await c.evaluate(`localStorage.getItem('scripta-site-theme')==='nord'&&document.querySelector('[data-reader-app]').dataset.accent==='nord'`));checks++;
  assert.equal(c.errors.length,0);console.log(JSON.stringify({checks,errors:0}));

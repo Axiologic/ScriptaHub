@@ -174,10 +174,14 @@
       const spreadY = bounds.height * (backgroundMode ? .49 : .43) * zoom;
       const centreX = bounds.width / 2, centreY = bounds.height / 2;
       const collisionLimited = interactive || backgroundMode || bounds.width <= 590;
-      const darkTheme = document.documentElement.dataset.theme === "dark";
+      const darkTheme = ["dark","dark-orange"].includes(document.documentElement.dataset.theme);
       const orangeTheme = document.documentElement.dataset.theme === "orange";
       const nordTheme = document.documentElement.dataset.theme === "nord";
-      const palette = nordTheme ? [
+      const palette = document.documentElement.dataset.theme === "dark-orange" ? [
+        {fill:"#ffc08a",glow:"rgba(255,121,0,.18)"},{fill:"#e6b18b",glow:"rgba(255,121,0,.14)"},
+        {fill:"#d3c2b3",glow:"rgba(255,121,0,.12)"},{fill:"#f3a766",glow:"rgba(255,121,0,.16)"},
+        {fill:"#c6b4a5",glow:"rgba(255,121,0,.12)"},{fill:"#e6c8ad",glow:"rgba(255,121,0,.12)"}
+      ] : nordTheme ? [
         {fill:"#493c43",glow:"rgba(105,68,81,.12)"},{fill:"#684653",glow:"rgba(105,68,81,.12)"},
         {fill:"#6d5f65",glow:"rgba(105,68,81,.12)"},{fill:"#79636b",glow:"rgba(105,68,81,.12)"},
         {fill:"#8d6674",glow:"rgba(105,68,81,.12)"},{fill:"#897261",glow:"rgba(105,68,81,.12)"}

@@ -208,8 +208,8 @@ Every SHF embed derives transport, progress/volume, focus, selected controls and
 
 The public player uses the supplied SHF runtime, actual measured narration,
 chapter navigation, captions, playback speed, mute, seeking and fullscreen.
-Retain voice provenance in metadata and QA; do not autoplay. The presentation page ends at its
-player: do not append production notes, downloads, chapter lists, transcripts or other sections.
+Retain voice provenance in metadata and QA; do not autoplay. The presentation page includes a contextual improvement form below its player.
+Do not append production notes, downloads, chapter lists or transcripts.
 Keep chapter navigation and the full transcript inside the player. Single-film
 standalone exports show only the player. Place three accessible Color, Light and
 Dark theme choices directly in the bottom transport bar, rather than requiring
@@ -365,3 +365,64 @@ Red Hat Text Regular. Bundle the original OFL fonts in the shared player so
 rendering is consistent and requires no external font service. Shared book illustrations use
 coherent covers, spines and page blocks. Reusable authoring, narration and
 publication code lives in `tools/shf/` and the creation skill.
+
+
+## Book animation proposals and derived books
+
+Every book page exposes Animation, including books without a film. Ready films
+open their book-local Animation page; missing films open the shared animation
+proposal workflow with the source book and interface language retained. A shared
+form below each book player accepts suggestions for improving its narrative or
+visuals. These forms prepare an email for the visitor to review and send, using
+the same contribution terms as existing editorial suggestions; they do not claim
+automatic delivery. No film payload or reusable UI is copied into missing-film
+book folders.
+
+Every book also exposes Fork, a source-aware Create workflow for a derived book.
+The visitor describes what to retain and change, the new audience and purpose,
+and may select additional documents. The proposal preserves source book ID,
+title, directory and available source edition. Selected files must be attached
+by the visitor in the mail client, as in Create. Shared workflows support all
+eight interface languages and retain ?lang=.
+
+New book introductions normally last 5–10 minutes. Their opening identifies the
+book, why it merits reading and its central message/direction before examples.
+The spoken narrative develops why, how and what coherently; hidden editorial
+labels are not evidence that viewers can follow it. Every book receives a unique
+visual direction with verified bundled display typography and readable headings.
+
+
+The appearance cycle now includes Light Green, Light Orange, Light Linen,
+Dark Green and Dark Orange. Dark Orange inherits the dark layout and uses
+#ff7900 accents with dark ink on orange buttons. Both dark themes use a black
+outer surround beside the charcoal keyword-cloud area. Dark Orange retains a
+pure #ff7900 band behind the top header and a matching orange footer with dark
+text; its panels use neutral charcoal, not brown. The last selection stays
+in local storage; reader Night mode preserves the selected dark variant as well
+as the last light variant. Player controls and discovery graphics follow the
+site palette; the film artwork retains its own theme choices.
+
+Scene visuals must make the particular narrated relationship intuitive, using
+source-specific action and consequence. Repeating generic asset arrangements
+with changed labels or colours does not constitute a distinct visual direction.
+
+The saved theme is applied synchronously in each page's head before stylesheet
+paint, including generated book and animation pages. The reader also initializes
+its app palette immediately when its shell is parsed. New themes must be added
+to this early bootstrap, not only the interactive selector. Fingerprint reader
+CSS/JS alongside other shared assets. Verify navigation and refresh with external
+application scripts blocked so a light-green flash cannot be masked by fast JS.
+
+
+Dark Orange is the default when no valid saved theme exists, including the
+synchronous head bootstrap and reader. Preserve an explicit saved preference.
+Its logo/navigation bar is near-black (#080808), with the orange band behind it.
+The additional short book-introduction batch targets 2–3 measured minutes,
+concentrating on the book's message, questions and reason to read; preserve
+original visual identity and source-grounded curiosity without fictional spoilers.
+
+
+On book pages, Animation is the first reading action, before Read in 10 minutes.
+Fork, Suggest an edit and Editions form an equally sized vertical right-hand rail
+on desktop. At narrow widths this group moves below the book content and wraps
+into a vertical stack on small phones. The reading action group stays separate.

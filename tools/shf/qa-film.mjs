@@ -12,6 +12,8 @@ try{
  await c.size(1200,960);await c.wait('!!document.querySelector("shf-player")?.film');
  await c.evaluate('window.p=document.querySelector("shf-player");p.setMuted(true);p.pause()');
  await test('English film starts paused without an audio output','p.film.language==="en"&&!p.playing&&!p.audio.ctx');
+ await c.evaluate('document.fonts.ready');
+ await test('bundled presentation fonts actually loaded',`['SHF Display','SHF Text'].every(name=>[...document.fonts].some(f=>f.family.replaceAll(String.fromCharCode(34),'').replaceAll(String.fromCharCode(39),'')===name&&f.status==='loaded'))&&getComputedStyle(p.$('sceneTitle')).fontFamily.includes('SHF Display')&&Number(getComputedStyle(p.$('sceneTitle')).fontWeight)>=600`);
  await test('one sentence in every narration beat','p.film.scenes.every(s=>s.beats.every(b=>SHF.core.splitSentences(b.text,"en").length===1))');
  await test('book invitation and source evidence retained','p.film.editorial.purpose==="book-introduction"&&p.film.editorial.readerInvitation.readerOutcomes.length>0&&p.film.editorial.sourceSha256.length===64');
  await test('authored emotional plan retained','p.film.scenes.every(s=>s.emotionalPlan?.states.length===s.beats.length)');
@@ -32,6 +34,7 @@ try{
  if(frames.some(f=>f.invalid||f.unresolved||!f.connections))throw Error('Invalid sampled geometry, token or connection');
  for(const width of [1200,720,540,393,320]){
   await c.size(width,960);
+  await test('scene headings remain readable and contained '+width,`(()=>{let start=0;for(const scene of p.film.scenes){p.seek(start+1);const title=p.$('sceneTitle'),r=title.getBoundingClientRect(),host=p.getBoundingClientRect(),font=getComputedStyle(title);if(parseFloat(font.fontSize)<20||r.left<host.left||r.right>host.right+1||title.scrollWidth>title.clientWidth+1)return false;start+=scene.durationMs}return true})()`);
   await test('transport buttons fit '+width,'(()=>{const r=p.getBoundingClientRect();return [...p.shadowRoot.querySelectorAll(".controls button")].filter(b=>getComputedStyle(b).display!=="none").every(b=>{const a=b.getBoundingClientRect();return a.left>=r.left-1&&a.right<=r.right+1})})()');
   await test('captions match one whole sentence and fit '+width,'(()=>{let start=0;for(const s of p.film.scenes){for(const b of s.beats){p.seek(start+(b.startMs+b.spokenEndMs)/2);const cap=p.$("captionbox").getBoundingClientRect(),art=p.$("art").getBoundingClientRect(),bar=p.$("transport").getBoundingClientRect();if(p.$("caption").textContent!==b.text||(innerWidth<=720&&cap.top<art.bottom-1)||cap.bottom>bar.top+20)return false}start+=s.durationMs}return true})()');
   if(width===393||width===320){await c.evaluate('p.seek(2000)');await c.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');await c.capture(path.join(shots,'phone-'+width+'.png'))}

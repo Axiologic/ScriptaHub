@@ -141,7 +141,7 @@
   generate Romanian or other presentation languages unless explicitly requested.
 - Include audio by default; do not ask whether narration is wanted. Make a
   complete, source-grounded invitation to read the book, with chapter navigation,
-  captions, transport controls and a measured duration (normally 10–15 minutes).
+  captions, transport controls and a measured duration (normally 5–10 minutes).
 - Preserve an explicitly configured audio engine. When none is configured,
   report it, create the local configuration files/templates, and use a decent
   small neural English model, initially Piper `en_US-ljspeech-medium`. Private
@@ -253,3 +253,23 @@
 - Align close, dictation and submit in the librarian form's right-hand column.
   Dictation starts only on explicit visitor action and stops on close, submit,
   language change or navigation; automated tests use a simulated recognizer.
+
+- Every book exposes Animation and Fork. An absent animation opens a contextual
+  animation proposal form; a ready animation has an improvement form below the
+  player. This requested feedback form is the exception to the film-only page
+  rule; retain the prohibition on production boilerplate. Fork proposes a derived
+  book, preserving source identity and allowing additional document selection.
+- Before generating voice, review the actual spoken script as a coherent book
+  introduction: identify the book, why it deserves reading, its essential message
+  and direction in the opening, then develop its approach and selected content
+  through why → how → what. Do not approve isolated ideas just because hidden
+  editorial metadata contains the right labels. Verify rendered display fonts,
+  strong short headings and distinct visual identities for every new book.
+
+- Theme selection includes `dark-orange` alongside `light`, `orange`, `nord`
+  (Light Linen) and `dark` (Dark Green). Both dark variants share layout and a
+  black surround; use #ff7900 for Dark Orange and preserve both remembered light
+  and dark variants across reader toggles. SHF artwork themes stay independent.
+
+- Default the site and reader to Dark Orange when no valid appearance preference
+  is saved; preserve explicit preferences and apply the default before first paint.

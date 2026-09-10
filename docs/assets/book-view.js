@@ -42,7 +42,7 @@
       case 'context':
         return `<aside class="workflow-context" ${identity}><img src="${escape(data.thumbnail)}" alt="">${title(data, 'h2', false)}${description(data)}${action(data, 'button button-quiet')}</aside>`;
       case 'compact-context':
-        return `<aside class="workflow-context workflow-book-compact" ${identity}>${cover(data)}<div>${title(data, 'h2', false)}${description(data)}</div></aside>`;
+        return `<aside class="workflow-context workflow-book-compact" ${identity}>${cover(data)}<div>${title(data, 'h2', false)}${options.showDescription === false ? '' : description(data)}</div></aside>`;
       default:
         return `<article class="book-card" ${identity} data-book-url="${escape(data.href)}" role="link" tabindex="0" aria-label="${escape(`${data.details}: ${data.title}`)}"><div class="book-card-top">${cover(data)}<div><p class="category">${escape(data.category)}</p>${title(data, 'h3')}</div></div>${status(data)}${description(data)}<nav class="book-card-actions">${action(data)}</nav></article>`;
     }

@@ -181,7 +181,7 @@
     document.querySelectorAll("[data-site-size]").forEach((button) => { button.onclick = () => applySiteScale(1, true); });
   };
   const storedTheme = () => {
-    try { const theme=localStorage.getItem(siteThemeKey); return ["light","orange","nord","dark"].includes(theme)?theme:"light"; } catch { return "light"; }
+    try { const theme=localStorage.getItem(siteThemeKey); return ["light","orange","nord","dark","dark-orange"].includes(theme)?theme:"dark-orange"; } catch { return "dark-orange"; }
   };
   const ensureThemeToggle = () => {
     document.querySelectorAll(".theme-switcher").forEach((control) => {
@@ -192,12 +192,12 @@
     });
   };
   const applyTheme = (theme, persist = false) => {
-    const selected = ["light","orange","nord","dark"].includes(theme) ? theme : "light";
+    const selected = ["light","orange","nord","dark","dark-orange"].includes(theme) ? theme : "dark-orange";
     document.documentElement.dataset.theme = selected;
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      button.textContent = {light:"☼",orange:"◒",nord:"◈",dark:"☾"}[selected];
-      const next={light:"Light Orange",orange:"Light Linen",nord:"Dark",dark:"Light Green"}[selected];
-      button.title = `${{light:"Light Green",orange:"Light Orange",nord:"Light Linen",dark:"Dark"}[selected]} · Switch to ${next}`;
+      button.textContent = {light:"☼",orange:"◒",nord:"◈",dark:"☾","dark-orange":"◑"}[selected];
+      const next={light:"Light Orange",orange:"Light Linen",nord:"Dark Green",dark:"Dark Orange","dark-orange":"Light Green"}[selected];
+      button.title = `${{light:"Light Green",orange:"Light Orange",nord:"Light Linen",dark:"Dark Green","dark-orange":"Dark Orange"}[selected]} · Switch to ${next}`;
       button.setAttribute("aria-label", button.title);
       button.removeAttribute("aria-pressed");
       button.dataset.themeCurrent = selected;
@@ -205,10 +205,10 @@
     document.querySelectorAll('.brand-icon,link[rel="icon"][type="image/svg+xml"]').forEach(node=>{
       const key=node.tagName==='IMG'?'src':'href';
       if(!node.dataset.baseIcon)node.dataset.baseIcon=node[key];
-      node[key]=['orange','nord'].includes(selected)?new URL(`assets/librarian-icon-${selected}.svg`,siteRootUrl).href:node.dataset.baseIcon;
+      node[key]=['orange','nord','dark-orange'].includes(selected)?new URL(`assets/librarian-icon-${selected==='dark-orange'?'orange':selected}.svg`,siteRootUrl).href:node.dataset.baseIcon;
     });
     if (persist) {
-      try { localStorage.setItem(siteThemeKey, selected); if(selected!=="dark")localStorage.setItem("scripta-site-light-theme",selected); } catch { /* Storage may be unavailable. */ }
+      try { localStorage.setItem(siteThemeKey, selected); if(!selected.startsWith("dark"))localStorage.setItem("scripta-site-light-theme",selected);else localStorage.setItem("scripta-site-dark-theme",selected); } catch { /* Storage may be unavailable. */ }
     }
   };
   // Generated headers already carry these elements; runtime-created shells use the same navigation.
@@ -231,7 +231,7 @@
     ensureThemeToggle();
     applyTheme(storedTheme());
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      button.addEventListener("click", () => applyTheme({light:"orange",orange:"nord",nord:"dark",dark:"light"}[document.documentElement.dataset.theme]||"light", true));
+      button.addEventListener("click", () => applyTheme({light:"orange",orange:"nord",nord:"dark",dark:"dark-orange","dark-orange":"light"}[document.documentElement.dataset.theme]||"light", true));
     });
   };
   const normalise = (value) => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();

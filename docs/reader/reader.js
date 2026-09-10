@@ -63,18 +63,20 @@ const progressKey = `axiologic-reader:progress:v1:${sourceId}`;
 const isLocalFilePreview = window.location.protocol === 'file:';
 
 function sharedSiteTheme() {
-  try { const theme=window.localStorage.getItem(siteThemeKey);return ['light','orange','nord','dark'].includes(theme)?theme:'light'; } catch { return 'light'; }
+  try { const theme=window.localStorage.getItem(siteThemeKey);return ['light','orange','nord','dark','dark-orange'].includes(theme)?theme:'dark-orange'; } catch { return 'dark-orange'; }
 }
 
 const lightSiteTheme = (() => {
   const current=sharedSiteTheme();
-  if(current!=='dark')return current;
+  if(!current.startsWith('dark'))return current;
   try{const saved=localStorage.getItem('scripta-site-light-theme');return ['orange','nord'].includes(saved)?saved:'light'}catch{return 'light'}
 })();
+const darkSiteTheme = (()=>{const current=sharedSiteTheme();if(current.startsWith('dark'))return current;try{return localStorage.getItem('scripta-site-dark-theme')==='dark-orange'?'dark-orange':'dark'}catch{return 'dark'}})();
 document.querySelector('[data-reader-app]').dataset.accent=lightSiteTheme;
+document.querySelector('[data-reader-app]').dataset.darkAccent=darkSiteTheme;
 
 function saveSharedSiteTheme(theme) {
-  try { window.localStorage.setItem(siteThemeKey, theme === 'night' ? 'dark' : lightSiteTheme); } catch { /* Storage is optional. */ }
+  try { window.localStorage.setItem(siteThemeKey, theme === 'night' ? darkSiteTheme : lightSiteTheme); } catch { /* Storage is optional. */ }
 }
 
 async function configureLanguageSelector() {
@@ -121,7 +123,7 @@ const state = {
   type: '',
   source: '',
   progress: readStored(progressKey, {}),
-  preferences: { ...readStored(preferenceKey, {}), fontSize: Number(readStored(preferenceKey, {}).fontSize) || 1.16, theme: sharedSiteTheme() === 'dark' ? 'night' : 'paper' },
+  preferences: { ...readStored(preferenceKey, {}), fontSize: Number(readStored(preferenceKey, {}).fontSize) || 1.16, theme: sharedSiteTheme().startsWith('dark') ? 'night' : 'paper' },
   pdf: { document: null, page: 1, zoom: 1.15, fit: true, task: null, native: false, source: '' },
   epub: { book: null, rendition: null },
   htmlFrame: null,
@@ -270,6 +272,7 @@ function updateHtmlProgress(position) {
 
 function applyTheme() {
   app.dataset.theme = state.preferences.theme;
+  document.documentElement.dataset.theme = state.preferences.theme === "night" ? darkSiteTheme : lightSiteTheme;
   themeButton.textContent = state.preferences.theme === 'night' ? '☾' : '☼';
   themeButton.title = state.preferences.theme === 'night' ? 'Switch to light appearance' : 'Switch to dark appearance';
   themeButton.setAttribute('aria-label', themeButton.title);

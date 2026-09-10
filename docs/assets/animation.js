@@ -18,7 +18,7 @@
   const book = collection.books.find(b => b.id === document.body.dataset.animationBook);
   if(!book?.animation)return;
   const shell=document.createElement('main');shell.className='site-shell animation-page';
-  shell.innerHTML=`<header class="site-header"><a class="wordmark">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link>Create</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div><div class="theme-switcher" role="group" aria-label="Appearance"><button type="button" data-theme-choice="light" aria-label="Light appearance">☼</button><button type="button" data-theme-choice="dark" aria-label="Dark appearance">◐</button></div><label class="language-picker"><span class="sr-only">Language</span><select data-language-select></select></label></div></header><nav class="animation-navigation"><a class="button button-quiet" data-animation-back data-animation-text="back"></a></nav><section class="animation-player-floor"><p data-animation-status role="status"></p><shf-player id="film"></shf-player></section>`;
+  shell.innerHTML=`<header class="site-header"><a class="wordmark">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link>Create</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div><div class="theme-switcher" role="group" aria-label="Appearance"><button type="button" data-theme-choice="light" aria-label="Light appearance">☼</button><button type="button" data-theme-choice="dark" aria-label="Dark appearance">◐</button></div><label class="language-picker"><span class="sr-only">Language</span><select data-language-select></select></label></div></header><nav class="animation-navigation"><a class="button button-quiet" data-animation-back data-animation-text="back"></a></nav><section class="animation-player-floor"><p data-animation-status role="status"></p><shf-player id="film"></shf-player></section><section class="animation-feedback" data-workflow-content></section>`;
   document.body.prepend(shell);
   shell.querySelector('[data-create-link]').href=new URL('create/index.html',root).href;
   const player = shell.querySelector('shf-player');
@@ -37,7 +37,7 @@
     player.addEventListener('shf-loaded',()=>{loaded=true;loadError=false;localize();});
     player.addEventListener('shf-error',()=>{loadError=true;localize();});
     player.load(new URL(book.animation.shf,root).href).catch(()=>{loadError=true;localize();});
-    const theme=()=>player.setTheme(document.documentElement.dataset.theme==='dark'?'night':'color');theme();
+    const theme=()=>player.setTheme(['dark','dark-orange'].includes(document.documentElement.dataset.theme)?'night':'color');theme();
     new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
   }
   document.addEventListener('scriptahub:language',localize);

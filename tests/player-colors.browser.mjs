@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';import {connect} from './browser-session
 const c=await connect('http://127.0.0.1:8012/books/the/first/wake/bk-409c27f5b4524932/Animation/index.html?lang=en');let checks=0;
 try{
  await c.wait('!!document.querySelector("shf-player")?.film');await c.evaluate('window.p=document.querySelector("shf-player");p.setMuted(true);p.pause()');
- for(const theme of ['light','orange','nord','dark'])for(const width of [1200,393]){
+ for(const theme of ['light','orange','nord','dark','dark-orange'])for(const width of [1200,393]){
   await c.size(width,900);await c.evaluate(`document.documentElement.dataset.theme='${theme}'`);
   const result=await c.evaluate(`(()=>{const host=getComputedStyle(p),bar=getComputedStyle(p.$('transport')),progress=getComputedStyle(p.$('seek')),drawer=getComputedStyle(p.$('drawer'));const probe=document.createElement('span');p.append(probe);const resolved=name=>{probe.style.color=host.getPropertyValue(name);return getComputedStyle(probe).color};const expected={bg:resolved('--header'),ink:resolved('--ink'),accent:resolved('--green')};probe.remove();return {bar:bar.backgroundColor,ink:bar.color,accent:progress.accentColor,drawer:drawer.backgroundColor,expected,playing:p.playing,audio:!!p.audio.ctx}})()`);
   assert.equal(result.bar,result.expected.bg);assert.equal(result.ink,result.expected.ink);assert.equal(result.accent,result.expected.accent);assert.equal(result.drawer,result.expected.bg);assert.equal(result.playing,false);assert.equal(result.audio,false);checks++;

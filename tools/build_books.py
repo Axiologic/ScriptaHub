@@ -876,6 +876,9 @@ def animation_page(book: dict[str, object]) -> str:
 <script src="{asset('assets/animation.js')}"></script>
 <script src="{asset('assets/site.js')}"></script>
 <script src="{asset('assets/reading.js')}"></script>
+<script src="{asset('assets/text-show.js')}"></script>
+<script src="{asset('assets/book-view.js')}"></script>
+<script src="{asset('assets/workflow.js')}"></script>
 </body>
 </html>
 '''
@@ -915,12 +918,14 @@ def book_page(
         pdf_href = relpath(DOCS / str(book["directory"]) / english_pdf, page_dir)
         actions.append(f'<a class="button button-quiet" data-download-pdf href="{html.escape(pdf_href, quote=True)}" download>{html.escape(words["download"])}</a>')
     animation = animation_record(book)
-    if animation:
-        animation_url = relpath(DOCS / animation["page"], page_dir) + "?" + urlencode({"lang": language})
-        actions.append(f'<a class="button button-quiet" data-animation-link href="{html.escape(animation_url, quote=True)}">Animation</a>')
     workflow_query = urlencode({"book": str(book["directory"]), "lang": language})
-    actions.append(f'<a class="button" href="{html.escape(f"{feedback_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["feedback"])}</a>')
-    actions.append(f'<a class="button button-quiet" href="{html.escape(f"{editions_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["editions"])}</a>')
+    animation_url = (relpath(DOCS / animation["page"], page_dir) + "?" + urlencode({"lang": language})) if animation else (relpath(DOCS / "animation-request/index.html", page_dir) + "?" + workflow_query)
+    actions.insert(0, f'<a class="button button-quiet" data-animation-link href="{html.escape(animation_url, quote=True)}">Animation</a>')
+    side_actions = []
+    fork_url = relpath(DOCS / "fork/index.html", page_dir) + "?" + workflow_query
+    side_actions.append(f'<a class="button button-quiet" data-fork-link href="{html.escape(fork_url, quote=True)}">Fork</a>')
+    side_actions.append(f'<a class="button button-quiet" data-book-feedback href="{html.escape(f"{feedback_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["feedback"])}</a>')
+    side_actions.append(f'<a class="button button-quiet" data-book-editions href="{html.escape(f"{editions_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["editions"])}</a>')
     missing_format = next((name for name, key in (("read", "fullContent"), ("short", "shortContent")) if key not in edition), None)
     availability = ""
     if missing_format:
@@ -975,6 +980,7 @@ def book_page(
     {status_note}<article class="book-hero">
       <button class="cover-link" type="button" data-cover-preview aria-label="{html.escape(title, quote=True)}"><img src="cover.webp" alt="{html.escape(title)}"></button>
       <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead" data-text-show>{html.escape(description)}</p>{availability}</div><div class="book-actions">{"".join(actions)}</div></div>
+      <nav class="book-side-actions">{"".join(side_actions)}</nav>
       <aside class="book-keyword-widget" aria-label="{html.escape(words['keywords'], quote=True)}"><div class="keyword-cloud book-keyword-cloud" data-book-keyword-cloud></div></aside>
     </article>
     {about_book_section(book, language)}{site_footer(page_dir, language)}
@@ -1090,9 +1096,9 @@ HOME_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 
 def install_site_branding(source: str, page_dir: Path) -> str:
     """Share the mascot favicon and deterministic header navigation across shells."""
-    if 'site-header' in source or 'data-animation-book' in source:
+    if 'site-header' in source or 'data-animation-book' in source or 'data-reader-app' in source:
         source = re.sub(r'[ \t]*<script>try\{if\(localStorage.getItem\("scripta-site-theme"\).*?</script>', '', source)
-        bootstrap = '<script data-site-theme-bootstrap>try{const t=localStorage.getItem("scripta-site-theme");if(["light","orange","nord","dark"].includes(t))document.documentElement.dataset.theme=t}catch{}</script>'
+        bootstrap = '<script data-site-theme-bootstrap>try{const t=localStorage.getItem("scripta-site-theme");document.documentElement.dataset.theme=["light","orange","nord","dark","dark-orange"].includes(t)?t:"dark-orange"}catch{document.documentElement.dataset.theme="dark-orange"}</script>'
         source = re.sub(r'<script data-site-theme-bootstrap>.*?</script>', bootstrap, source)
         if 'data-site-theme-bootstrap' not in source:
             source = re.sub(r'(<head[^>]*>)', lambda m: m.group(1) + '\n  ' + bootstrap, source, count=1)
@@ -1132,7 +1138,7 @@ def version_shared_assets(source: str, page_dir: Path, versions: dict[Path, str]
 
 
 def shared_asset_versions() -> dict[Path, str]:
-    paths = [COLLECTION_SCRIPT, DOCS / "favicon.ico", *[DOCS / "assets" / name for name in (
+    paths = [COLLECTION_SCRIPT, DOCS / "favicon.ico", DOCS / "reader/reader.css", DOCS / "reader/reader.js", *[DOCS / "assets" / name for name in (
         "site.js", "site.css", "text-show.js", "text-show.css", "book-view.js",
         "librarian.js", "workflow.js", "reading.js", "home-librarian.css",
         "home-librarian.js", "dictation.js", "keyword-cloud.js", "librarian-icon-orange.svg", "librarian-icon-nord.svg", "librarian-mascot.js", "librarian-icon.svg", "librarian-icon.png", "shf/shf-player.js")]]
@@ -1846,8 +1852,8 @@ def check() -> list[str]:
                     expected_description = html.escape(manifest["shortDescription"][language])
                     if expected_description not in page_source:
                         problems.append(f"{book['id']} {language}: description differs from reviewed manifest; run refresh")
-                if bool(manifest.get("animation")) != ('data-animation-link' in page_source):
-                    problems.append(f"{book['id']} {language}: animation action does not match manifest")
+                if 'data-animation-link' not in page_source or 'data-fork-link' not in page_source:
+                    problems.append(f"{book['id']} {language}: missing Animation or Fork action")
                 try:
                     expected_about = about_book_section(manifest, language)
                     if expected_about not in page_source:

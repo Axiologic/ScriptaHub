@@ -198,3 +198,11 @@ button { cursor: pointer; }
 [data-reader-app]:is([data-accent="orange"],[data-accent="nord"]):not([data-theme="night"]) .reader-html-content :is(h1,h2,h3,h4){color:var(--reader-ink)}
 [data-reader-app]:is([data-accent="orange"],[data-accent="nord"]):not([data-theme="night"]) .reader-html-content blockquote{color:var(--reader-quote);border-left-color:var(--reader-quote-line)}
 [data-reader-app]:is([data-accent="orange"],[data-accent="nord"]):not([data-theme="night"]) .reader-spinner{border-color:color-mix(in srgb,var(--reader-accent) 24%,transparent);border-top-color:var(--reader-accent)}
+
+[data-reader-app][data-theme="night"]{--reader-surround:#000000}
+[data-reader-app][data-theme="night"][data-dark-accent="dark-orange"]{--reader-accent:#ff7900;--reader-control:#24211f;--reader-line:rgba(255,190,134,.2)}
+[data-reader-app][data-theme="night"][data-dark-accent="dark-orange"] .reader-html-content a{color:#ff963d}
+[data-reader-app][data-theme="night"][data-dark-accent="dark-orange"] .reader-html-content blockquote{color:#d9c6b7;border-left-color:#ff7900}
+
+/* The synchronous head/bootstrap styles cover the reader before its deferred JS. */
+:root[data-theme="dark"],:root[data-theme="dark-orange"]{color-scheme:dark;--reader-bg:#080a0c;--reader-ui-ink:#f5f5f5}

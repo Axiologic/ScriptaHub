@@ -1,6 +1,7 @@
 (() => {
   "use strict";
 
+  const siteRoot = new URL("../", document.currentScript.src);
   const collection = globalThis.SCRIPTA_COLLECTION;
   const root = document.querySelector("[data-workflow-content]");
   if (!collection || !root) return;
@@ -90,29 +91,43 @@
   const escape = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
   const params = () => new URLSearchParams(location.search);
   const language = () => collection.supportedLanguages.some((item) => item.code === document.documentElement.lang) ? document.documentElement.lang : "en";
-  const activeBook = () => collection.books.find((book) => book.directory === params().get("book"));
+  const activeBook = () => collection.books.find((book) => document.body.dataset.animationBook ? book.id === document.body.dataset.animationBook : book.directory === params().get("book"));
   const field = (label, name, type = "text", wide = false, placeholder = "", required = false, extraClass = "") => `<label class="form-field${wide ? " form-field-wide" : ""}${extraClass ? ` ${extraClass}` : ""}"><span>${escape(label)}</span><input type="${type}" name="${name}" placeholder="${escape(placeholder)}"${required ? " required" : ""}></label>`;
   const textarea = (label, name, placeholder, required = false, extraClass = "") => `<label class="form-field form-field-wide${extraClass ? ` ${extraClass}` : ""}"><span>${escape(label)}</span><textarea name="${name}" placeholder="${escape(placeholder)}"${required ? " required" : ""}></textarea></label>`;
   const pageHero = (kicker, title, lead = "") => `<section class="workflow-hero"><div><p class="eyebrow">${escape(kicker)}</p><h1 title="${escape(title)}">${escape(title)}</h1></div>${lead ? `<p class="lead">${escape(lead)}</p>` : ""}</section>`;
   const backLabels = { en: "Back to book", fr: "Retour au livre", de: "Zurück zum Buch", es: "Volver al libro", pt: "Voltar ao livro", it: "Torna al libro", ro: "Înapoi la carte", pl: "Powrót do książki" };
-  const backToBook = (book, lang) => book ? `<nav class="workflow-back"><a class="button button-quiet" href="../${escape(book.editions[lang].book)}?lang=${lang}">${escape(backLabels[lang])}</a></nav>` : "";
+  const backToBook = (book, lang) => book ? `<nav class="workflow-back"><a class="button button-quiet" href="${escape(new URL(book.editions[lang].book, siteRoot).href)}?lang=${lang}">${escape(backLabels[lang])}</a></nav>` : "";
   const agreementCard = (words) => `<aside class="workflow-context contribution-agreement"><p class="eyebrow">ScriptaHub</p><h2>${escape(words.contractTitle)}</h2><p>${escape(words.contractIntro)}</p><ol>${words.contractItems.map((item) => `<li>${escape(item)}</li>`).join("")}</ol><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">${escape(words.contractLink)}</a><label class="contract-accept"><input type="checkbox" data-contract-accept><span>${escape(words.contractAccept)}</span></label></aside>`;
   const bookContext = (book, lang, words) => {
     if (!book) return `<aside class="workflow-context"><p>${escape(words.missingBook)}</p></aside>`;
     return ScriptaBookView.markup(book, {variant: "context", language: lang, actionLabel: words.back});
   };
-  const compactBookContext = (book, lang, words) => {
+  const compactBookContext = (book, lang, words, showDescription = true) => {
     if (!book) return `<aside class="workflow-context"><p>${escape(words.missingBook)}</p></aside>`;
-    return ScriptaBookView.markup(book, {variant: "compact-context", language: lang, actionLabel: words.back});
+    return ScriptaBookView.markup(book, {variant: "compact-context", language: lang, actionLabel: words.back, showDescription});
   };
   const mail = (subject, lines) => `mailto:create@scriptahub.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
 
-  function renderCreate(lang) {
-    const words = text[lang];
+  const proposalLabels = {
+    en: ["Propose a derived book", "Build on this book with a new direction, audience or perspective.", "What should the derived book retain, change or add?", "Describe the new purpose, audience, scope and relationship to the source book.", "Suggest an animation", "This book has no animation yet. Help shape its introduction.", "Improve this presentation", "What would make this book introduction clearer or more compelling?", "Your suggestion", "Suggest the opening, distinctive ideas, visual approach or changes to a scene; include a timestamp if useful."],
+    ro: ["Propune o carte derivată", "Pornește de la această carte cu o nouă direcție, perspectivă sau un alt public.", "Ce ar trebui păstrat, schimbat sau adăugat?", "Descrie scopul, publicul, conținutul și legătura cu această carte.", "Propune o animație", "Această carte nu are încă o animație. Ajută la conturarea prezentării.", "Îmbunătățește prezentarea", "Cum ar putea această introducere să fie mai clară sau mai convingătoare?", "Sugestia ta", "Propune deschiderea, ideile distinctive, stilul vizual sau modificarea unei scene; indică momentul dacă este util."],
+    fr: ["Proposer un livre dérivé", "Développez ce livre pour un nouveau public, une autre direction ou perspective.", "Que faut-il conserver, modifier ou ajouter ?", "Décrivez l’objectif, le public, le périmètre et le lien avec le livre source.", "Proposer une animation", "Ce livre n’a pas encore d’animation. Aidez à concevoir son introduction.", "Améliorer cette présentation", "Comment rendre cette introduction plus claire ou plus convaincante ?", "Votre suggestion", "Proposez une ouverture, des idées distinctives, une approche visuelle ou une modification de scène ; précisez le moment si utile."],
+    de: ["Ein abgeleitetes Buch vorschlagen", "Entwickeln Sie dieses Buch für eine neue Zielgruppe, Richtung oder Perspektive weiter.", "Was soll erhalten, geändert oder ergänzt werden?", "Beschreiben Sie Zweck, Zielgruppe, Umfang und Bezug zum Ausgangsbuch.", "Eine Animation vorschlagen", "Dieses Buch hat noch keine Animation. Gestalten Sie seine Einführung mit.", "Diese Präsentation verbessern", "Wie könnte diese Bucheinführung klarer oder überzeugender werden?", "Ihr Vorschlag", "Schlagen Sie einen Einstieg, besondere Ideen, eine Bildsprache oder Szenenänderungen vor; nennen Sie bei Bedarf einen Zeitpunkt."],
+    es: ["Proponer un libro derivado", "Desarrolla este libro con otra dirección, público o perspectiva.", "¿Qué debería conservar, cambiar o añadir?", "Describe el propósito, público, alcance y relación con el libro original.", "Proponer una animación", "Este libro aún no tiene animación. Ayuda a diseñar su introducción.", "Mejorar esta presentación", "¿Cómo podría esta introducción ser más clara o convincente?", "Tu sugerencia", "Propón la apertura, ideas distintivas, enfoque visual o cambios en una escena; indica el momento si resulta útil."],
+    pt: ["Propor um livro derivado", "Desenvolva este livro para outro público, direção ou perspectiva.", "O que deve ser mantido, alterado ou acrescentado?", "Descreva o objetivo, público, âmbito e relação com o livro original.", "Propor uma animação", "Este livro ainda não tem animação. Ajude a criar a sua introdução.", "Melhorar esta apresentação", "Como tornar esta introdução mais clara ou convincente?", "A sua sugestão", "Sugira a abertura, ideias distintivas, abordagem visual ou alterações numa cena; indique o momento se for útil."],
+    it: ["Proponi un libro derivato", "Sviluppa questo libro per un nuovo pubblico, una direzione o una prospettiva diversa.", "Cosa dovrebbe conservare, cambiare o aggiungere?", "Descrivi scopo, pubblico, ambito e rapporto con il libro di origine.", "Proponi un’animazione", "Questo libro non ha ancora un’animazione. Aiuta a idearne l’introduzione.", "Migliora questa presentazione", "Come rendere questa introduzione più chiara o convincente?", "Il tuo suggerimento", "Proponi l’apertura, idee distintive, stile visivo o modifiche a una scena; indica il momento se utile."],
+    pl: ["Zaproponuj książkę pochodną", "Rozwiń tę książkę dla nowych odbiorców, w nowym kierunku lub z innej perspektywy.", "Co należy zachować, zmienić lub dodać?", "Opisz cel, odbiorców, zakres i związek z książką źródłową.", "Zaproponuj animację", "Ta książka nie ma jeszcze animacji. Pomóż zaplanować jej wprowadzenie.", "Ulepsz tę prezentację", "Jak uczynić to wprowadzenie jaśniejszym lub bardziej przekonującym?", "Twoja sugestia", "Zaproponuj początek, wyróżniające idee, oprawę wizualną lub zmiany sceny; w razie potrzeby podaj czas."],
+  };
+
+  function renderCreate(lang, fork = false) {
+    const book = fork ? activeBook() : null;
+    const labels = proposalLabels[lang];
+    const words = fork ? {...text[lang], createTitle: labels[0], createKicker: "Fork", prompt: labels[2], promptHint: labels[3], createSubject: "ScriptaHub derived book proposal"} : text[lang];
+    if (fork && !book) { root.innerHTML = pageHero("Fork", words.missingBook); return; }
     const fields = createFieldLabels[lang];
     document.title = `${words.createTitle} · ScriptaHub`;
     const agreement = agreementCard(words);
-    root.innerHTML = `${pageHero(words.createKicker, words.createTitle)}<section class="workflow-layout create-workflow-layout"><form class="workflow-form create-workflow-form" data-workflow-form><div class="form-grid create-form-grid">
+    root.innerHTML = `${fork ? backToBook(book, lang) : ""}${pageHero(words.createKicker, words.createTitle, fork ? labels[1] : "")}${fork ? `<div class="fork-source">${compactBookContext(book, lang, words, false)}</div>` : ""}<section class="workflow-layout create-workflow-layout"><form class="workflow-form create-workflow-form" data-workflow-form><div class="form-grid create-form-grid">
       ${field(words.name, "name", "text", false, "", true, "create-name-field")}
       ${field(words.email, "email", "email", false, "", false, "create-email-field")}
       <label class="form-file-field"><input class="form-file-input" type="file" name="documents" multiple aria-label="${escape(words.files)}"><span class="form-file-picker"><strong>${escape(words.files)}</strong><span class="form-file-button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8.5 12.8 14 7.3a3.2 3.2 0 0 1 4.5 4.5l-7.1 7.1a5 5 0 0 1-7.1-7.1l7.5-7.5"/></svg>${escape(fields.chooseFiles)}</span><span class="form-file-selection" data-file-selection aria-live="polite"></span></span></label>
@@ -153,6 +168,7 @@
       const data = new FormData(form);
       const files = [...form.elements.documents.files].map((file) => file.name);
       const lines = [
+        ...(fork ? [`Source book ID: ${book.id}`, `Source book: ${book.title.en}`, `Source directory: ${book.directory}`, `Source edition: ${book.currentEdition || book.animation?.edition || "Current published edition"}`, ""] : []),
         `Name: ${data.get("name") || ""}`, `Reply email: ${data.get("email") || ""}`, `Promotional URL: ${data.get("url") || ""}`,
         `Selected documents (attach manually): ${files.join(", ") || "None"}`, `Contribution agreement accepted: yes`, "", "PROPOSED TITLE", data.get("titles") || "", "", "BOOK INSTRUCTIONS", data.get("prompt") || "", "", `Interface language: ${lang}`,
       ];
@@ -161,13 +177,16 @@
     });
   }
 
-  function renderFeedback(lang) {
-    const words = text[lang];
+  function renderFeedback(lang, animation = false) {
+    const labels = proposalLabels[lang];
+    const existing = Boolean(activeBook()?.animation);
+    const words = animation ? {...text[lang], feedbackTitle: labels[existing ? 6 : 4], feedbackKicker: "Animation", promise: labels[existing ? 7 : 5], feedback: labels[8], feedbackHint: labels[9], feedbackSubject: existing ? "ScriptaHub animation improvement" : "ScriptaHub animation proposal"} : text[lang];
     const book = activeBook();
-    document.title = `${words.feedbackTitle} · ScriptaHub`;
-    const side = `<div class="workflow-aside-stack">${compactBookContext(book, lang, words)}${agreementCard(words)}</div>`;
-    root.innerHTML = `${backToBook(book, lang)}${pageHero(words.feedbackKicker, words.feedbackTitle)}<section class="workflow-layout"><form class="workflow-form" data-workflow-form><p class="workflow-message">${escape(words.promise)}</p><div class="form-grid">${field(words.name, "name", "text", false, "", true)}${field(words.email, "email", "email")}${field(words.url, "url", "url", true, "https://")}
-      <label class="form-field form-field-wide"><span>${escape(words.kind)}</span><select name="kind">${words.kinds.map((kind) => `<option>${escape(kind)}</option>`).join("")}</select></label>${textarea(words.feedback, "feedback", words.feedbackHint, true)}${textarea(words.sources, "sources", words.sourcesHint)}</div><button class="workflow-submit" type="submit" disabled>${escape(words.send)}</button><p class="workflow-note">${escape(words.mailNote)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${side}</section>`;
+    if (!document.body.dataset.animationBook) document.title = `${words.feedbackTitle} · ScriptaHub`;
+    const embedded = Boolean(document.body.dataset.animationBook);
+    const side = `<div class="workflow-aside-stack">${embedded ? "" : compactBookContext(book, lang, words)}${agreementCard(words)}</div>`;
+    root.innerHTML = `${embedded ? `<h2>${escape(words.feedbackTitle)}</h2>` : backToBook(book, lang) + pageHero(words.feedbackKicker, words.feedbackTitle)}<section class="workflow-layout"><form class="workflow-form" data-workflow-form><p class="workflow-message">${escape(words.promise)}</p><div class="form-grid">${field(words.name, "name", "text", false, "", true)}${field(words.email, "email", "email")}${field(words.url, "url", "url", true, "https://")}
+      ${animation ? "" : `<label class="form-field form-field-wide"><span>${escape(words.kind)}</span><select name="kind">${words.kinds.map((kind) => `<option>${escape(kind)}</option>`).join("")}</select></label>`}${textarea(words.feedback, "feedback", words.feedbackHint, true)}${textarea(words.sources, "sources", words.sourcesHint)}</div><button class="workflow-submit" type="submit" disabled>${escape(words.send)}</button><p class="workflow-note">${escape(words.mailNote)}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${side}</section>`;
     const form = root.querySelector("form");
     const contract = root.querySelector("[data-contract-accept]");
     const submit = form.querySelector("[type=submit]");
@@ -177,7 +196,7 @@
       if (!book || !contract.checked || !form.reportValidity()) return;
       const data = new FormData(form);
       const lines = [
-        `Book ID: ${book.id}`, `Book: ${book.title[lang] || book.title.en}`, `Book directory: ${book.directory}`, `Edition language: ${lang}`, `Contribution type: ${data.get("kind") || ""}`,
+        `Book ID: ${book.id}`, `Book: ${book.title[lang] || book.title.en}`, `Book directory: ${book.directory}`, `Edition language: ${lang}`, `Contribution type: ${animation ? (existing ? "Animation improvement" : "Animation proposal") : data.get("kind") || ""}`, ...(animation ? [`Animation source edition: ${book.animation?.edition || "Not yet produced"}`, `Animation file: ${book.animation?.shf || "None"}`] : []),
         `Name: ${data.get("name") || ""}`, `Reply email: ${data.get("email") || ""}`, `Promotional URL: ${data.get("url") || ""}`, `Contribution agreement accepted: yes`, "", "PROPOSED CHANGE / FEEDBACK", data.get("feedback") || "", "", "SOURCES / CONTEXT", data.get("sources") || "",
       ];
       root.querySelector("[data-workflow-status]").textContent = words.mailReady;
@@ -260,7 +279,9 @@
 
   function render(lang = language()) {
     const page = document.body.dataset.workflowPage;
-    if (page === "translate") renderTranslation(lang);
+    if (page === "animation-request" || document.body.dataset.animationBook) renderFeedback(lang, true);
+    else if (page === "fork") renderCreate(lang, true);
+    else if (page === "translate") renderTranslation(lang);
     else if (page === "create") renderCreate(lang);
     else if (page === "feedback") renderFeedback(lang);
     else renderEditions(lang);
