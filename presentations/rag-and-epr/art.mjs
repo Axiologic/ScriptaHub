@@ -10,9 +10,9 @@ put('library',976,264,[rect(-144,-91,280,146,C.marine,7),...[-117,-73,-29,15,59]
 if(i===1){
 put('desk',615,374,[n('path',{d:'M-516 -163H491L518 188H-532Z',fill:C.blue})],1);proposal('proposal',345,366,1.05);
 paper('near-one',874,259,'Automated review','Same component',C.marine,1,310);paper('near-two',884,363,'Automated review','Similar evidence',C.marine,1,310);paper('near-three',874,467,'Automated review','Repeated coverage',C.marine,1,310);
-put('covered',345,281,[rect(-150,-22,300,48,C.marine,4),text('Manuscript review',0,10,29,C.paper)],1,'All three topically relevant references concentrate on the same component');
-hand('reading-hand',719,193,C.terra,2);hide('near-three',2);paper('component',874,467,'Provenance method','Additional component',C.terra,2,310);
-put('provenance-mark',345,400,[rect(-151,-21,302,44,C.terra,4),text('Provenance',0,10,28,C.paper)],3,'One component precedent broadens coverage, without establishing the whole proposal’s novelty');put('remaining',531,453,[a.dot(0,0,20,C.gold),text('?',0,9,29)],4,'An uncovered part stays a gap, not a novelty verdict');
+put('covered',345,286,[line('M-151 0H149',C.marine,7)],1,'All three topically relevant references concentrate on the same component');
+put('reading-hand',60,-22,[n('path',{d:'M1280 140L1140 166L1050 218L985 224L967 238L980 252L1054 235L1160 201L1280 199Z',fill:'#c28e70'}),n('path',{d:'M1280 124L1147 151L1166 213L1280 205Z',fill:C.terra})],2,'Reviewer follows an exact evidence unit; sleeve enters from the right clear of the heading');hide('near-three',2);paper('component',874,467,'Provenance method','Additional component',C.terra,2,310);
+put('provenance-mark',345,414,[line('M-151 0H149',C.terra,7)],3,'One component precedent broadens coverage, without establishing the whole proposal’s novelty');put('remaining',531,453,[a.dot(0,0,20,C.gold),text('?',0,9,29)],4,'An uncovered part stays a gap, not a novelty verdict');
 }
 if(i===2){
 put('portfolio',631,375,[n('path',{d:'M-462 -176H-251L-224 -198H436Q455 -198 455 -177V177H-462Z',fill:C.marine}),rect(-442,-159,874,306,C.blue,9)],1,'A finite physical dossier makes an illustrative four-place attention allowance visible');
@@ -23,7 +23,7 @@ put('lineage',342,532,[line('M-62 -119V-2H109',C.terra,5),rect(-34,-27,270,54,C.
 }
 if(i===3){
 put('reviewdesk',638,415,[n('path',{d:'M-414 -137H404L446 139H-446Z',fill:C.blue}),n('path',{d:'M-446 139H446V158H-446Z',fill:C.marine})],1,'Controlled comparison keeps the scientific decision and attention allowance fixed');person('researcher',141,578,C.terra,'person-04-neutral',.91);person('reviewer',1117,578,C.sage,'person-20-neutral',.91);storyGesture(a,'researcher',2,'explain');storyGesture(a,'reviewer',3,'reflect');storyGesture(a,'reviewer',5,'question');
-for(const[id,x,title,c]of[['baseline',435,'Strong RAG',C.marine],['epr',851,'Proposed EPR',C.terra]])put(id,x,374,[rect(-170,-72,340,159,C.paper,8),text(title,0,-27,31),...[-116,-47,22,91].map(xx=>rect(xx,-1,48,57,c,3))],1,'A comparison condition has the same illustrative four-place allowance, not a measured performance score');
+for(const[id,x,title,c]of[['baseline',435,'Strong RAG',C.marine],['epr',851,'Proposed EPR',C.terra]])put(id,x,374,[rect(-170,-72,340,159,C.paper,8),text(title,0,-27,31),...[-116,-47,22,91].flatMap(xx=>[n('path',{d:`M${xx} -1H${xx+33}L${xx+48} 14V56H${xx}Z`,fill:C.blue}),rect(xx,-1,8,57,c,2),line(`M${xx+14} 25H${xx+38}M${xx+14} 39H${xx+31}`,c,3)])],1,'A comparison condition has the same illustrative four-place allowance, not a measured performance score');
 put('equal',643,251,[rect(-191,-28,382,56,C.gold,4),text('Same budget • same reasoner',0,9,27)],2,'Equal budgets and fixed evaluator are required for causal attribution');
 put('decision',775,510,[text('Novelty assessment still open',0,0,28)],3,'No superior outcome has been demonstrated by this conceptual comparison');
 put('book',374,510,[n('path',{d:'M-70 -71H61L77 -55V66H-70Z',fill:C.marine}),line('M-58 -66V64',C.gold,4),text('RAG',0,-27,28,C.paper),text('and EPR',0,7,25,C.paper),line('M-44 36H45',C.gold,3)],4,'The reading invitation returns to the book’s comparative experimental programme');

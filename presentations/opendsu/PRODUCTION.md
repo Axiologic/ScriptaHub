@@ -4,7 +4,7 @@ The film introduces why this book exists, its distinctive argument, selected exa
 
 - Source: `docs/books/opendsu/bk-76b58c26734a45c7/en/full_content.html`, active `edition-1`.
 - Canonical HTML SHA-256: `08a8385cc17878f4bb0c47f3a32c947d59d96c904f35f3d3ff468fbe63e2973c`.
-- Duration: **2:35** (154744 ms), four chapters, 20 single-sentence narration clips.
+- Duration: **2:36** (156212 ms), four chapters, 20 single-sentence narration clips.
 - Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
 - Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
 - Public film: `docs/books/opendsu/bk-76b58c26734a45c7/Animation/opendsu-introduction.shf`.
@@ -26,3 +26,7 @@ Voice caching uses text hashes, so changed sentences must be rendered again. Sta
 Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
 
 Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+
+## Research-dataset revision
+
+The same schematic dataset now moves between applications while its surrounding history and permitted-use policy may be lost. Protected pieces visibly move through the protected map before the authorized view is reconstructed. Reading and verification-only powers remain distinct. A disputed measurement does not alter the intact continuity record or become true through cryptography. Fourteen clips are preserved and six changed. Source scope, exact hashes, all-theme inspection and four reconstruction timestamps are retained in `qa/targeted-revision-review.json` and `qa/reconstruction-event-review.json`. All21 browser checks,36 frames,20 offline clips and zero caption overlaps pass; no audible or complete listening review was performed. The prior public film, manifest and report remain archived under `review-revision/before/`.

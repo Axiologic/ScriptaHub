@@ -4,7 +4,7 @@ The film introduces why this book exists, its distinctive argument, selected exa
 
 - Source: `docs/books/s/lm/bk-a89c2347f3404908/en/full_content.html`, active `edition-1`.
 - Canonical HTML SHA-256: `900088c3185850c2f074ba43d4ae80c549c3b4c0797ed59cbcd8ab969e1a9eb1`.
-- Duration: **2:39** (158579 ms), four chapters, 20 single-sentence narration clips.
+- Duration: **2:41** (161348 ms), four chapters, 20 single-sentence narration clips.
 - Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
 - Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
 - Public film: `docs/books/s/lm/bk-a89c2347f3404908/Animation/s-lm-introduction.shf`.
@@ -26,3 +26,7 @@ Voice caching uses text hashes, so changed sentences must be rendered again. Sta
 Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
 
 Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+
+## Supplier-request revision
+
+The book’s supplier-restriction request now remains visible through policy interpretation, bound supplier IDs, symbolic exposure calculation and a draft with no sending authority. S1/S2 and e1/e2 are schematic; their illustrative aggregation is not a real exposure methodology. The same Request R returns with unresolved-policy marking to make additional work visible. Thirteen clips are preserved and seven replaced. Final silent QA passed21 checks,36 all-theme frames and20 offline decoded clips, with six targeted transit captures and zero caption overlaps. Exact installed hashes, scope and inspection limits are in `qa/targeted-revision-review.json`; movements are recorded in `qa/binding-and-return-event-review.json`. Prior public film, manifest and report remain in `review-revision/before/`. No complete listening review was performed.

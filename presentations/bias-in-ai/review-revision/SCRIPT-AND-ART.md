@@ -1,6 +1,6 @@
 # Bias in AI — retain script, sharpen proxy and stage the paths
 
-Status: proposed for root review; no new voice or public changes.
+Status: approved and installed with measured English narration and final all-theme QA.
 
 Story spine: This course extends bias beyond training data by revealing unequal resources behind similar agent replies, then makes measurement error concrete through medical spending as a proxy for need; readers learn to identify the actual harmful dependency before selecting a metric.
 

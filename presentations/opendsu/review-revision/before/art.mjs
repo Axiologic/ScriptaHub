@@ -1,0 +1,26 @@
+import {storyPerson,storyGesture} from '../../tools/shf/people-poses.mjs';
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {stageAuthor} from '../../tools/shf/stage-authoring.mjs';
+const root=path.dirname(fileURLToPath(import.meta.url));const scenes=JSON.parse(fs.readFileSync(path.join(root,'work/scenes.json')));
+
+function baseCompose(i){const a=stageAuthor(),blue='#356f85',gold='#b7854a',pale='#dce7e5';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};
+ const casework=(id,x,y,b=1)=>put(id,x,y,[a.n('path',{d:'M-145 -86 H145 V103 H-145Z',fill:blue}),a.path('M-145 -86 L-83 -134 H83 L145 -86',blue,14),...Array.from({length:6},(_,j)=>a.n('rect',{x:(j%3)*70-103,y:Math.floor(j/3)*63-57,width:55,height:43,rx:6,fill:pale})),a.n('path',{d:'M-23 -31 H23 V25 H-23Z',fill:gold}),a.path('M-14 -31 V-46 Q0 -66 14 -46 V-31',gold,8)],b,'Protected bricks and reconstruction information form one logical object');
+ if(i===0){casework('object',420,320);put('history',910,300,[a.path('M-25 -120 V120',blue,10),...[-90,0,90].map(y=>a.dot(-25,y,19,gold)),a.text('History',50,174,34)],2);put('evidence',635,315,[a.n('path',{d:'M-25 -32 H25 V32 H-25Z',fill:gold})],3,'A commitment records integrity, not truth');a.move('evidence',4,840,300);put('label',365,520,[a.text('Content with relationships',0,0,34)],4);}
+ if(i===1){put('file',265,260,[a.n('path',{d:'M-70 -86 H70 V86 H-70Z',fill:pale}),a.path('M-42 -43 H43 M-42 -4 H43 M-42 35 H16',blue,9)],1);put('lost',280,445,[a.text('Policy · history',0,0,34)],1,'Relationships are not necessarily copied with a file');a.move('file',2,580,250);a.hide('lost',2);casework('object',905,315,3);put('map',645,440,[a.n('path',{d:'M-95 -35 L-30 -55 L30 -35 L95 -55 V35 L30 55 L-30 35 L-95 55Z',fill:gold})],3,'Protected reconstruction map');a.move('map',4,875,435);}
+ if(i===2){casework('object',600,300);put('read',205,265,[a.path('M-62 0 Q0 -65 62 0 Q0 65 -62 0',gold,10),a.dot(0,0,23,blue),a.text('Read',0,190,34)],1);put('write',995,255,[a.n('path',{d:'M-65 55 L38 -62 L62 -38 L-40 80Z',fill:gold}),a.text('Modify',0,200,34)],2);put('proof',600,490,[a.text('Verify without every power',0,0,34)],3);put('boundary',795,310,[a.path('M0 -110 V110',gold,13)],4,'Capabilities remain differentiated, not automatically transferred together');}
+ if(i===3){put('claim',340,295,[a.n('path',{d:'M-110 -112 H110 V112 H-110Z',fill:pale}),a.text('Claim',0,-45,37,'#294c5a'),a.text('True?',0,22,43,'#294c5a')],1);put('seal',390,355,[a.path('M-31 -5 L-8 19 L36 -29',blue,11)],2,'Content integrity can be verified');put('world',850,305,[a.n('path',{d:'M-160 88 L-60 -62 L35 48 L95 -112 L175 88Z',fill:blue}),a.dot(-100,-98,31,gold),a.text('Independent validation',0,180,32)],3,'The truth of a claim requires evidence beyond its cryptographic history');put('question',600,300,[a.text('?',0,20,75,gold)],4);}
+ return a.finish('A travelling reconstruction case shows protected content, differentiated capabilities and a history commitment; the final claim/world distinction explicitly prevents integrity from masquerading as truth.');}
+
+function compose(i){if(i!==0)return baseCompose(i);const a=stageAuthor(),navy='#426f94',coral='#d67f60',green='#5ea58f',gold='#ddb052',cream='#e9e6d8';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};const figure=(id,x,y,c,identity='person-04-neutral',seated=false,scale=.95)=>{storyPerson(a,id,x,y,{coat:c,identity,seated,scale});a.reveal(id,1);};
+figure('sender',205,495,green);figure('recipient',1005,495,coral,'person-09-neutral');storyGesture(a,'sender',2,'explain');storyGesture(a,'recipient',3,'reflect');put('case',520,350,[a.n('rect',{x:-125,y:-83,width:250,height:166,rx:13,fill:navy}),a.path('M-49 -83 V-114 H49 V-83',navy,15),...[-80,0,80].map(x=>a.n('rect',{x:x-26,y:-52,width:52,height:63,rx:6,fill:cream})),a.n('rect',{x:-27,y:11,width:54,height:45,rx:5,fill:gold}),a.path('M-16 11 V-9 Q0 -30 16 -9 V11',gold,8)],1,'Protected content travels as a reconstructable logical object');a.move('case',3,680,350);put('trail',595,145,[a.path('M-190 0 H190',green,10),...[-140,0,140].map(x=>a.dot(x,0,17,gold)),a.text('Verifiable continuity',0,70,34)],2);put('map',600,485,[a.n('path',{d:'M-120 -23 L-40 -45 L35 -23 L120 -45 V25 L35 47 L-40 25 L-120 47Z',fill:cream}),a.path('M-80 0 L-15 -10 L40 20 L80 0',navy,8)],3,'A protected map supports reconstruction');storyGesture(a,'recipient',4,'question');
+
+return a.finish('Original enacted situation: task-specific work, visible participants, source-grounded causal distinction and meaningful motion; illustrative objects do not claim an empirical experiment.');}
+
+for(let i=0;i<scenes.length;i++){
+ const visual=compose(i);
+ for(const actor of visual.objects.filter(o=>o.options?.rig==='character')){
+  const affected=/patient|visitor/.test(actor.id), reflective=/author|reader|reviewer|evaluator|judge/.test(actor.id);
+  const states=affected?['curious','worried','worried']:reflective?['curious','skeptical','determined']:['curious','skeptical','determined'];
+  for(const [j,beat] of [1,3,5].entries())visual.actions.push({actor:actor.id,action:'character.express',emotion:states[j],beat,durationMs:900});
+ }
+ scenes[i].visual=visual;
+}fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');

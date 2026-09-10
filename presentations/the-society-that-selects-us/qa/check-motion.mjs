@@ -1,0 +1,14 @@
+import fs from 'node:fs/promises';import {connect} from '../../../tests/browser-session.mjs';
+const root=new URL('..',import.meta.url).pathname.replace(/\/$/,''),c=await connect('file://'+root+'/exports/the-society-that-selects-us-introduction.html');
+try{await c.size(1200,960);await c.wait('!!document.querySelector("shf-player")?.film');await c.evaluate('window.p=document.querySelector("shf-player");p.setMuted(true);p.pause()');const rows=[];
+const frame=async(scene,beat,offset,ids)=>c.evaluate(`(()=>{let s=p.film.scenes[${scene}],start=p.film.scenes.slice(0,${scene}).reduce((n,x)=>n+x.durationMs,0);p.seek(start+s.beats[${beat}].startMs+${offset});return{caption:p.$('caption').textContent,playing:p.playing,audioOutput:!!p.audio.ctx,nodes:${JSON.stringify(ids)}.map(id=>{let n=p.dom.get(id),m=n.getCTM();return{id,x:m.e,y:m.f,opacity:Number(getComputedStyle(n).opacity)}})}})()`);
+const get=(f,id)=>f.nodes.find(n=>n.id===id);
+for(const theme of ['color','paper','night']){await c.evaluate(`p.setTheme('${theme}')`);
+ const career=[await frame(0,1,150,['workplace','professional','home']),await frame(0,1,3800,['workplace','professional','home'])];
+ const care=[await frame(1,1,150,['care-bag']),await frame(1,1,3200,['care-bag'])];
+ const trip=[await frame(1,2,150,['commute-bus','far-evening']),await frame(1,4,1300,['commute-bus','far-evening'])];
+ const proximity=[await frame(2,1,150,['model-care','model-home','short-walk']),await frame(2,1,4200,['model-care','model-home','short-walk'])];
+ const pencil=[await frame(3,2,150,['pencil']),await frame(3,2,3500,['pencil'])];
+ const pass=get(career[1],'workplace').x-get(career[0],'workplace').x>200&&Math.abs(get(career[1],'home').x-get(career[0],'home').x)<.1&&get(care[0],'care-bag').x-get(care[1],'care-bag').x>60&&get(trip[1],'commute-bus').x-get(trip[0],'commute-bus').x>200&&get(trip[1],'far-evening').x===get(trip[0],'far-evening').x&&get(proximity[0],'model-care').x-get(proximity[1],'model-care').x>300&&Math.abs(get(proximity[1],'model-home').x-get(proximity[0],'model-home').x)<.1&&get(proximity[0],'short-walk').opacity<.1&&get(proximity[1],'short-walk').opacity>.9&&get(pencil[0],'pencil').x-get(pencil[1],'pencil').x>250&&[...career,...care,...trip,...proximity,...pencil].every(f=>!f.playing&&!f.audioOutput);
+ rows.push({theme,pass,career,care,trip,proximity,pencil});if(!pass)throw Error(JSON.stringify(rows.at(-1)));}
+await fs.writeFile(root+'/qa/material-motion-review.json',JSON.stringify({status:'passed',audiblePlayback:false,results:rows,scope:'Actual deterministic positions establish workplace separation, caregiver handoff, long commute, care-building relocation without moving home, and a tracing pencil. Scene2 commute stays long; only scene3 enacts a conditional alternative. These are explanatory illustrations, not measured study data.'},null,2));console.log('Five material mechanisms passed across all three themes.');}finally{await c.close()}

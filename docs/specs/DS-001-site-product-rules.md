@@ -395,9 +395,9 @@ visual direction with verified bundled display typography and readable headings.
 The appearance cycle now includes Light Green, Light Orange, Light Linen,
 Dark Green and Dark Orange. Dark Orange inherits the dark layout and uses
 #ff7900 accents with dark ink on orange buttons. Both dark themes use a black
-outer surround beside the charcoal keyword-cloud area. Dark Orange retains a
-pure #ff7900 band behind the top header and a matching orange footer with dark
-text; its panels use neutral charcoal, not brown. The last selection stays
+outer surround beside the charcoal keyword-cloud area. Dark Orange uses black for the outer top band behind the main site shell,
+matching the outer surround. Its footer remains #ff7900 with dark text;
+its panels use neutral charcoal, not brown. The last selection stays
 in local storage; reader Night mode preserves the selected dark variant as well
 as the last light variant. Player controls and discovery graphics follow the
 site palette; the film artwork retains its own theme choices.
@@ -503,8 +503,36 @@ question: linked cover, title, localised category and short description, using
 the shared book-view component. This also applies beneath an existing player.
 
 SHF subtitles use centred, balanced wrapping in a narrower reading measure,
-preferably two even lines when a long sentence fits. Use white outlined text
-without the grey panel. Player settings offer remembered subtitle size
+preferably two even lines when a long sentence fits. Use semibold (600) black text with a white outline in Colorful/Light and regular
+(400) white text with a
+black outline in Dark, following the player theme independently of the site.
+Do not restore the grey panel. Player settings offer remembered subtitle size
 (75–150%) instead of Speed; omit the Reduced motion checkbox while preserving
 the system motion preference. On narrow screens allow additional lines rather
 than clipping captions or hiding words.
+
+
+Every book exposes a one-word Contributors action alongside Fork, Suggest and
+Editions, using the shared `/contributors/index.html?book=<directory>&lang=<code>`
+workflow. Keep its heading compact and show only the book title above the provenance, without a cover.
+Use a full-width semantic table per edition: linked author name in the first
+column, contribution text in the second. Provide clear row and column rules,
+allow any number of contributors, and avoid an artificial text-width limit.
+Do not render the URL as a separate field.
+Contributions belong to explicit edition IDs in `editions.json`, preserving
+historical credits when later editions add ideas, feedback or other work.
+The initial editions of the current104 books credit Axiologic Research SRL
+(`https://www.axiologic.net`) for creating and contributing the initial book
+within the SCRIPTA use case of Achilles (`https://www.achilles-project.eu/`).
+This is editor-provided attribution. Store shared identities and initial text in
+`docs/contributors.json`; edition entries reference `authorId` and `statementId`.
+Future entries may instead supply an `author` object with name/url and a localized
+`description` (plain text or text/link segments), plus a role. Do not automatically
+attribute future contributors or releases. The catalogue and local-file mirror
+include resolved edition credits, so this page does not depend on a fetch.
+
+Book animation pages expose the standard localized “Back to book” button above
+the player, alongside the unobtrusive close icon. Both return to the same book
+and pause playback. Contributors tables use compact uppercase column headings,
+comfortable cell spacing, subtle alternating row surfaces and a rounded outer
+border. Keep contribution prose naturally wrapped across the available width.

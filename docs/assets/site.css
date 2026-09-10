@@ -1477,7 +1477,7 @@ shf-player {
 :root[data-theme="dark-orange"] .home-loading-visual i::before{background:var(--brand-green)}
 :root[data-theme="dark-orange"] .form-file-button{background:var(--button-bg);color:var(--button-ink)}
 
-:root[data-theme="dark-orange"] body{background:linear-gradient(180deg,#ff7900 0 148px,#000000 148px);background-attachment:fixed}
+:root[data-theme="dark-orange"] body{background:#000000;background-attachment:fixed}
 :root[data-theme="dark-orange"] .site-footer :is(a,.footer-status){color:#21160c}
 :root[data-theme="dark-orange"] .mascot-choice{background:#1b1b1b}
 :root[data-theme="dark-orange"] .mascot-choice:is(:hover,:focus-visible){background:#262626;border-color:#ff7900}
@@ -1560,3 +1560,29 @@ body[data-animation-book] .workflow-layout {grid-template-columns:minmax(0,1fr)}
 .animation-book-reminder .workflow-book-compact h2{font-size:1.05rem;margin:0 0 4px}
 .animation-book-reminder .workflow-book-compact .category{font-size:.8rem;color:var(--muted);margin:0 0 6px}
 .animation-book-reminder .workflow-book-compact p{margin-top:0;-webkit-line-clamp:4;line-clamp:4}
+
+/* Edition-specific intellectual provenance, shared across all book pages. */
+.contributors-book-title{margin:0 0 22px;font-size:1.05rem;font-weight:600}
+.contributors-list{width:100%;padding-bottom:24px}
+.contribution-edition{width:100%;margin:0 0 28px;border-spacing:0;table-layout:auto;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.contribution-edition caption{text-align:left;padding:0 0 12px;color:var(--ink);font-size:.9rem;font-weight:650}
+.contribution-edition th,.contribution-edition td{padding:20px 22px;text-align:left;vertical-align:top}
+.contribution-edition thead th{padding-top:12px;padding-bottom:12px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--field);font-weight:700;border-bottom:1px solid var(--line)}
+.contribution-edition th+th,.contribution-edition td{border-left:1px solid var(--line)}
+.contributor-entry+ .contributor-entry>th,.contributor-entry+ .contributor-entry>td{border-top:1px solid var(--line)}
+.contributor-entry:nth-child(even){background:color-mix(in srgb,var(--field) 45%,var(--panel))}
+.contributor-entry>th{width:1%;white-space:nowrap;font-size:.95rem;font-weight:650}
+.contributor-entry>th a{color:var(--ink);text-decoration-color:var(--line);text-decoration-thickness:1px}
+.contributor-entry>th a:hover{color:var(--green);text-decoration-color:currentColor}
+.contributor-entry p{margin:0;max-width:none;line-height:1.65;white-space:normal;color:var(--content)}
+.contributor-entry a{text-underline-offset:.22em}
+@media(max-width:600px){
+ .contribution-edition th,.contribution-edition td{padding:12px}
+ .contribution-edition thead th{font-size:.65rem;letter-spacing:.04em}
+ .contributor-entry>th{width:30%;white-space:normal;overflow-wrap:anywhere}
+ .contributor-entry p{overflow-wrap:anywhere}
+}
+@media(min-width:421px) and (max-width:1100px){
+ .book-side-actions{flex-wrap:wrap}
+ .book-side-actions .button{flex:1 1 auto;min-width:max-content}
+}

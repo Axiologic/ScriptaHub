@@ -14,7 +14,13 @@ try {
  await c.evaluate('p.setRate(1);p.setReducedMotion(true);p.setCaptionScale(1);');
  assert.equal(await c.evaluate('getComputedStyle(p.shadowRoot.getElementById("caption")).backgroundColor'),'rgba(0, 0, 0, 0)');
  assert.equal(await c.evaluate('getComputedStyle(p.shadowRoot.getElementById("caption")).textWrap'),'balance');
- console.log('Subtitle control, persistence, transparent balanced caption styling and retained APIs passed.');
+ for (const theme of ['color','paper','night']) {
+  const style=await c.evaluate(`p.setTheme('${theme}');(()=>{const s=getComputedStyle(p.$('caption'));return {ink:s.color,outline:s.webkitTextStrokeColor,weight:s.fontWeight}})()`);
+  assert.equal(style.ink,theme==='night'?'rgb(255, 255, 255)':'rgb(17, 24, 32)');
+  assert.equal(style.outline,theme==='night'?'rgb(17, 24, 32)':'rgb(255, 255, 255)');
+  assert.equal(style.weight,theme==='night'?'400':'600');
+ }
+ console.log('Subtitle control, persistence, balanced wrapping, theme contrast/weight and retained APIs passed.');
 } finally {
  await c.evaluate('if(window.oldCaptionScale==null)localStorage.removeItem("shf-caption-scale");else localStorage.setItem("shf-caption-scale",oldCaptionScale)');
  await c.close();

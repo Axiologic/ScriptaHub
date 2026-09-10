@@ -27,6 +27,28 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
+## The Society That Selects Us — source v1
+
+- Source: `tasks/Societatea_care_ne_selecteaza.docx`
+- SHA-256: `da853d2c7063fbc5457534127623d1afca50637d82cf2b2c20fa3056a3965ee5`
+- Book ID: `bk-8973996d3e1140b2`; edition: `edition-1`
+- Workspace: `.book-work/societateacareneselecteaza-v1-da853d2c7063`
+- [x] Visible book page: `docs/books/the/society/that/selects/us/bk-8973996d3e1140b2/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/societateacareneselecteaza-v1-da853d2c7063/translations/en/full`: **19/19 chunks**, 466/466 segments complete.
+- Translation `.book-work/societateacareneselecteaza-v1-da853d2c7063/translations/ro/short`: **4/4 chunks**, 74/74 segments complete.
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
+- [x] Inspect representative PDF pages, including figures and tables.
+- [x] Verify reader structure, local images and translation completeness against the source.
+- [x] Refresh descriptions, About Book and release notes in all interface languages.
+- [x] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+
 ## Those Who No Longer Run — source v1
 
 - Source: `tasks/THOSE_WHO_NO_LONGER_RUN.docx`

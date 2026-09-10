@@ -212,6 +212,8 @@ BOOK_ACTIONS = {
 }
 
 
+CONTRIBUTOR_LABELS = {'en': 'Contributors', 'ro': 'Contribuitori', 'fr': 'Contributeurs', 'de': 'Mitwirkende', 'es': 'Colaboradores', 'pt': 'Colaboradores', 'it': 'Collaboratori', 'pl': 'Współtwórcy'}
+
 def theme_switcher() -> str:
     """Compact shared control: symbols avoid taking header space in any locale."""
     return '<div class="theme-switcher"><button type="button" data-theme-toggle aria-label="Switch to dark appearance">☼</button></div>'
@@ -950,6 +952,8 @@ def book_page(
     side_actions.append(f'<a class="button button-quiet" data-fork-link href="{html.escape(fork_url, quote=True)}">Fork</a>')
     side_actions.append(f'<a class="button button-quiet" data-book-feedback href="{html.escape(f"{feedback_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["feedback"])}</a>')
     side_actions.append(f'<a class="button button-quiet" data-book-editions href="{html.escape(f"{editions_page}?{workflow_query}", quote=True)}">{html.escape(BOOK_ACTIONS[language]["editions"])}</a>')
+    contributors_url = relpath(DOCS / "contributors/index.html", page_dir) + "?" + workflow_query
+    side_actions.append(f'<a class="button button-quiet" data-book-contributors href="{html.escape(contributors_url, quote=True)}">{html.escape(CONTRIBUTOR_LABELS[language])}</a>')
     missing_format = next((name for name, key in (("read", "fullContent"), ("short", "shortContent")) if key not in edition), None)
     availability = ""
     if missing_format:
@@ -1705,6 +1709,17 @@ def make_collection(manifests: list[dict[str, object]]) -> dict[str, object]:
             "sourceAliases": manifest.get("sourceAliases", []),
             "publicationLabel": {code: PREPARATION_LABELS[code][0] for code in LANGUAGES} if manifest.get("publicationStatus") == "preparing" else {},
         }
+        provenance = json.loads((DOCS / directory / "editions.json").read_text(encoding="utf-8"))
+        registry = json.loads((DOCS / "contributors.json").read_text(encoding="utf-8"))
+        book["contributions"] = []
+        for release in provenance.get("editions", []):
+            entries = []
+            for credit in release.get("contributors", []):
+                author = credit.get("author") or registry["authors"][credit["authorId"]]
+                statement = credit if "description" in credit else registry["statements"][credit["statementId"]]
+                entries.append({"name": author["name"], "url": author["url"], "role": credit.get("role", "contributor"), "description": statement["description"]})
+            if entries:
+                book["contributions"].append({"edition": release["id"], "number": release.get("number", 1), "label": release.get("label", {}), "entries": entries})
         animation = animation_record(manifest)
         if animation:
             book["animation"] = animation

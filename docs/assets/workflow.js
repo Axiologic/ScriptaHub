@@ -307,6 +307,24 @@
     }
   }
 
+  const contributorLabels = {en:"Contributors",ro:"Contribuitori",fr:"Contributeurs",de:"Mitwirkende",es:"Colaboradores",pt:"Colaboradores",it:"Collaboratori",pl:"Współtwórcy"};
+  const contributionLink = (name, href) => {
+    try { const url = new URL(href); if (!["https:", "http:"].includes(url.protocol)) return escape(name); return `<a href="${escape(url.href)}" rel="noopener noreferrer">${escape(name)}</a>`; }
+    catch { return escape(name); }
+  };
+  function contributionDescription(value) {
+    return (Array.isArray(value) ? value : [value || ""]).map(part => typeof part === "string" ? escape(part) : contributionLink(part.label, part.url)).join("");
+  }
+  const contributorColumns = {en:["Author","Contribution"],ro:["Autor","Contribuție"],fr:["Auteur","Contribution"],de:["Autor","Beitrag"],es:["Autor","Contribución"],pt:["Autor","Contribuição"],it:["Autore","Contributo"],pl:["Autor","Wkład"]};
+  function renderContributors(lang) {
+    const book = activeBook(), words = text[lang], title = contributorLabels[lang];
+    document.title = `${title} · ${book?.title?.[lang] || book?.title?.en || "ScriptaHub"}`;
+    if (!book) { root.innerHTML = `${pageHero("ScriptaHub", title)}<p class="workflow-message">${escape(words.missingBook)}</p>`; return; }
+    const releases = [...(book.contributions || [])].sort((a,b) => Number(b.number) - Number(a.number));
+    const columns = contributorColumns[lang];
+    root.innerHTML = `${backToBook(book, lang)}${pageHero("ScriptaHub", title)}<p class="contributors-book-title">${escape(book.title[lang] || book.title.en)}</p><section class="contributors-list">${releases.map(release => `<table class="contribution-edition" data-contribution-edition="${escape(release.edition)}"><caption>${escape(release.label?.[lang] || release.label?.en || release.edition)}</caption><thead><tr><th scope="col">${escape(columns[0])}</th><th scope="col">${escape(columns[1])}</th></tr></thead><tbody>${release.entries.map(entry => `<tr class="contributor-entry"><th scope="row">${contributionLink(entry.name, entry.url)}</th><td><p>${contributionDescription(entry.description?.[lang] || entry.description?.en)}</p></td></tr>`).join("")}</tbody></table>`).join("")}</section>`;
+  }
+
   function renderTranslation(lang) {
     const reading = globalThis.ScriptaReading;
     const words = reading.labels[lang];
@@ -351,9 +369,10 @@
 
   function render(lang = language()) {
     const page = document.body.dataset.workflowPage;
-    document.body.toggleAttribute("data-book-workflow", ["feedback","editions","translate","fork","animation-request","agreement"].includes(page));
+    document.body.toggleAttribute("data-book-workflow", ["feedback","editions","contributors","translate","fork","animation-request","agreement"].includes(page));
     if (page === "agreement") renderAgreement(lang);
     else if (page === "animation-request" || document.body.dataset.animationBook) renderFeedback(lang, true);
+    else if (page === "contributors") renderContributors(lang);
     else if (page === "fork") renderCreate(lang, true);
     else if (page === "translate") renderTranslation(lang);
     else if (page === "create") renderCreate(lang);

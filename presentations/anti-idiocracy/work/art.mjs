@@ -25,15 +25,15 @@ function setup(q){const{n,path,text,dot}=q;const rect=(x,y,w,h,fill,rx=5)=>n('re
  put('terminal',518,366,[rect(-180,-161,360,274,C.lilac),rect(-154,-140,308,158,C.paper),text('Candidate selection',0,-97,28,C.ink),path('M-118 -68H112M-118 -42H75',C.blue,4),rect(-165,129,330,22,C.wood),path('M-135 150V170M135 150V170',C.wood,12),rect(-100,65,200,28,C.wood)],1,'A specific recruiting system is the source’s hypothetical decision, not an actual deployed product or measured benchmark.');
  folio('application',476,384,'Application',2);q.move('application',2,518,407,1800);storyGesture(q,'founder',2,'explain');
  put('validation-drawer',516,454,[rect(-143,-39,286,78,C.paper),text('Validation population?',0,-2,24,C.ink),path('M-93 18H91',C.blue,4)],3,'The question is which population validated the predictions; no composition or discovered bias is fabricated.');q.move('validation-drawer',3,760,455,2300);storyGesture(q,'specialist',3,'question');
- q.hide('validation-drawer',4);q.hide('specialist',4);
+ q.hide('validation-drawer',4);q.hide('specialist',4);for(const a of q.actions.filter(a=>a.beat===4&&a.action==='disappear'))a.durationMs=400;
  person('applicant',1002,531,{identity:'person-09-neutral',coat:C.gold,b:4,scale:.8});
- put('review-tray',806,453,[n('path',{d:'M-96 -14H96L112 35H-109Z',fill:C.mint}),text('Appeal?',0,18,27,C.ink)],4,'A question about where the rejected application can go, not an assurance an appeal exists.');
- put('returned-application',694,371,[rect(-56,-42,112,86,C.paper),path('M-39 -20H34M-39 1H12',C.blue,3),path('M-10 14L10 32M10 14L-10 32',C.red,4)],4,'The application has a questioned rejection; the mark is not a numerical result.');q.move('returned-application',4,806,414,2300);storyGesture(q,'applicant',4,'question');mood('applicant',4,'worried');
+ put('review-tray',806,453,[n('path',{d:'M-96 -14H96L112 35H-109Z',fill:C.mint}),text('Appeal?',0,29,27,C.ink)],4,'A question about where the rejected application can go, not an assurance an appeal exists.');
+ put('returned-application',694,371,[rect(-56,-42,112,86,C.paper),path('M-39 -20H34M-39 1H12',C.blue,3),path('M-10 14L10 32M10 14L-10 32',C.red,4)],4,'The application has a questioned rejection; the mark is not a numerical result.');q.move('returned-application',4,806,400,2300);storyGesture(q,'applicant',4,'question');mood('applicant',4,'worried');for(const a of q.actions.filter(a=>a.beat===4&&['applicant','review-tray','returned-application'].includes(a.actor)&&['appear','moveTo'].includes(a.action)))a.offsetMs=850;
  for(const id of ['terminal','application','returned-application','review-tray'])q.hide(id,5);
  q.move('founder',5,162,535,1900);q.move('applicant',5,722,535,1900);
  put('small-terminal',379,417,[rect(-96,-98,192,145,C.lilac),rect(-76,-80,152,87,C.paper),text('AI route',0,-34,27,C.ink),path('M0 48V95M-60 95H60',C.wood,13)],5,'The automated option remains visible beside a separately questioned human route.');
  person('reviewer',1077,526,{identity:'person-04-neutral',coat:C.blue,scale:.65,b:5,seated:true});
- put('human-desk',990,476,[rect(-131,-30,261,24,C.wood),path('M-107 -6V57M107 -6V57',C.wood,10),text('Human route?',0,-48,27,'$ink')],5,'A non-automated route is a source question, not a promised institutional feature.');
+ put('human-desk',990,476,[rect(-131,-30,261,24,C.wood),path('M-107 -6V57M107 -6V57',C.wood,10),text('Human route?',-78,-48,25,'$ink')],5,'A non-automated route is a source question, not a promised institutional feature.');
  storyGesture(q,'applicant',5,'question');storyGesture(q,'reviewer',6,'reflect');storyGesture(q,'founder',6,'reflect');mood('applicant',6,'curious');
  scenes[1].visual=q.finish('The hypothetical recruiting case moves from an AI device to validation population, a rejected applicant’s missing appeal destination, and a possible human route. Different questions affect who may exercise authority. Nothing asserts a real population defect, implemented remedy or measured fairness outcome.');
 }
@@ -53,7 +53,7 @@ function setup(q){const{n,path,text,dot}=q;const rect=(x,y,w,h,fill,rx=5)=>n('re
  put('work-evidence',787,416,[rect(-88,-64,176,128,C.paper),text('My contribution',0,-29,25,C.ink),text('Verified work',0,13,23,C.ink),path('M-44 34H45',C.mint,4)],3,'Only permitted evidence of the member’s own work travels, not private data or unrestricted shared property.');q.move('work-evidence',3,891,417,2500);q.move('contributor',3,1013,535,2500);delay('contributor','moveTo',1000);
  mood('contributor',3,'relieved');
  put('project-box',797,494,[rect(-72,-32,144,65,C.wood),path('M-72 -31L0 -12L72 -31',C.paper,3),text('Project closed',0,22,23,C.ink)],4,'A closed project can retain professional relationships without being sold as a success.');
- folio('recommendation',242,392,'Recommendation',4);q.move('recommendation',4,879,343,3200);storyGesture(q,'originator',4,'invite');
+ folio('recommendation',242,392,'Recommendation',4);q.move('recommendation',4,242,140,1200);q.move('recommendation',4,879,140,1800);delay('recommendation','moveTo',1500);q.move('recommendation',4,879,274,1000);delay('recommendation','moveTo',3350);storyGesture(q,'originator',4,'invite');
  storyGesture(q,'contributor',5,'invite');mood('originator',5,'relieved');
  scenes[2].visual=q.finish('Correction visibly preserves Edition 1 beside Edition 2. On departure a permitted contribution record and recommendation move toward the member; a labelled private envelope and both historical editions remain. A closed-project box makes the practical value of unstigmatized support visible, without promising clinical services or project success.');
 }
@@ -61,11 +61,11 @@ function setup(q){const{n,path,text,dot}=q;const rect=(x,y,w,h,fill,rx=5)=>n('re
  const q=stageAuthor(),{n,path,text,dot}=q,{rect,put,person,mood,delay}=setup(q);
  put('platform',599,467,[rect(-156,-17,312,85,C.lilac),path('M-183 49H-156M-202 69H-156',C.wood,10)],1,'Accumulated prestige can raise a founder beyond ordinary challenge; elevation means authority, not worth.');
  person('leader',601,449,{coat:C.terra,scale:.74});person('questioner',247,535,{identity:'person-09-neutral',coat:C.gold,scale:.76});person('reviewer',951,535,{identity:'person-04-neutral',coat:C.blue,scale:.76});
- put('lectern',600,401,[rect(-103,-31,206,19,C.wood),path('M-72 -12V45M72 -12V45',C.wood,10),text('Mandate expires',0,15,24,C.ink)],1,'A real endpoint to authority is written on the actual meeting lectern.');
+ put('lectern',600,401,[rect(-103,-31,206,19,C.wood),path('M-72 -12V45M72 -12V45',C.wood,10),rect(-103,-9,206,43,C.paper),text('Mandate expires',0,20,24,C.ink)],1,'A real endpoint to authority is written on the actual meeting lectern.');
  put('token',601,356,[dot(0,0,23,C.gold),path('M0 -14V0L11 7',C.ink,3)],1,'The temporary facilitation token can transfer to a different participant.');
  storyGesture(q,'questioner',1,'question');mood('questioner',1,'worried');storyGesture(q,'leader',1,'explain');
- q.move('platform',2,599,541,2600);q.hide('platform',2);delay('platform','disappear',2800);
- q.move('leader',2,602,532,2600);q.move('lectern',2,600,485,2600);q.move('token',2,904,412,2800);delay('token','moveTo',2800);
+ q.move('platform',2,599,482,800);q.hide('platform',2);delay('platform','disappear',600);
+ q.move('leader',2,602,532,2600);q.move('lectern',2,600,485,2600);q.move('token',2,601,440,2600);q.move('token',2,904,412,2400);delay('token','moveTo',3100);
  storyGesture(q,'reviewer',2,'question');storyGesture(q,'leader',2,'reflect');
  q.hide('lectern',3);q.move('leader',3,566,535,1800);q.move('reviewer',3,821,535,1800);q.move('token',3,778,412,1800);mood('questioner',3,'relieved');storyGesture(q,'questioner',3,'explain');storyGesture(q,'leader',3,'reflect');
  for(const id of ['leader','reviewer','token'])q.hide(id,4);

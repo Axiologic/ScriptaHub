@@ -1,22 +1,6 @@
+import fs from 'node:fs';
 import {mutualCreditArt} from '../review-revision/mutual-credit-art.mjs';
-import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';
+import {monetaryArt} from '../review-revision/monetary-objects-art.mjs';
 const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));
-for(const [i,s]of scenes.entries()){
- if(i===2){s.visual=mutualCreditArt();continue;}
- const q=stageAuthor(),{n,tint,path,text,dot,object,add,reveal,hide,move,label}=q,A='#82495d',B='#317b78',AN='#dba6b9',BN='#91d3cb';
- const claim=(id,x,y,kind,scale=1)=>add(object(id,x,y,[tint(n('rect',{x:-100,y:-68,width:200,height:136,rx:kind==='Points'?40:5,fill:kind==='Bank'?A:B}),kind==='Bank'?AN:BN),tint(text(kind,0,33,28,'white'),'#1d2830'),tint(path(kind==='Points'?'M-40 -30H40M0 -30L-25 -55M0 -30L-25 -5':'M-45 -30L0 -55L45 -30M-30 -20V-2M0 -20V-2M30 -20V-2',kind==='Bank'?B:A,7),kind==='Bank'?BN:AN)],`A ${kind} claim has its own governing rules.`,scale));
- const wallet=(id,x,y)=>add(object(id,x,y,[tint(n('path',{d:'M-150 -75Q-150 -95 -130 -95H130V-55H160V100H-130Q-150 100 -150 80Z',fill:A}),AN),tint(n('rect',{x:70,y:-10,width:110,height:65,rx:12,fill:B}),BN),tint(dot(115,22,10,A),AN)],'An ordinary wallet hides distinct monetary promises.'));
- const coin=(id,x,y,word,r=60)=>add(object(id,x,y,[tint(dot(0,0,r,B),BN),tint(text(word,0,10,28,'white'),'#163b39')],'A monetary claim or obligation, not an amount or price.'));
- switch(i){
- case 0:wallet('wallet',600,360);claim('bank',370,200,'Bank',.8);claim('points',830,200,'Points',.8);reveal('bank',2);reveal('points',2);move('bank',3,260,250);move('points',3,940,250);break;
- case 1:claim('claim',350,280,'Bank',1.3);for(let j=0;j<3;j++){label('rule'+j,['Issuer','Acceptance','Loss'][j],860,190+j*115,38);reveal('rule'+j,j+1);}break;
- case 2:coin('seller',270,285,'A');coin('buyer',930,285,'B');add(object('ledger',600,310,[tint(n('rect',{x:-105,y:-140,width:210,height:280,rx:6,fill:A}),AN),tint(text('Credit',0,-60,30,'white'),'#352030'),tint(text('Debit',0,70,30,'white'),'#352030')],'Reciprocal entries record exchange without depicting fictitious monetary values.'));reveal('ledger',2);add(object('exchange',600,160,[tint(path('M-200 0H200M200 0L175 -18M200 0L175 18',B,9),BN)],'Goods can move when reciprocal obligations are recorded.'));reveal('exchange',3);break;
- case 3:coin('metal',260,280,'Metal',70);add(object('credit',620,275,[tint(n('path',{d:'M-80 -110H60L90 -80V105H-80Z',fill:A}),AN),tint(path('M-45 -15H50M-45 25H30',B,8),BN)],'A written debt represents credit traditions.'));add(object('public',990,295,[tint(n('path',{d:'M-95 -60L0 -120L95 -60Z',fill:B}),BN),tint(path('M-65 -45V85M0 -45V85M65 -45V85M-90 100H90',B,20),BN)],'Public authority helps organize monetary acceptance.'));reveal('credit',2);reveal('public',3);break;
- case 4:claim('code',300,260,'Code',1.1);add(object('key',900,280,[tint(n('circle',{cx:-55,cy:0,r:40,fill:'none',stroke:A,'stroke-width':15}),AN),tint(path('M-15 0H110M65 0V35M100 0V35',A,15),AN)],'Control of keys and custody relocates reliance.'));reveal('key',3);label('custody','Custody',900,440,34);reveal('custody',3);move('code',5,400,260);break;
- case 5:claim('local',260,290,'Local',.8);claim('other',950,290,'Bank',.8);add(object('bridge',600,295,[tint(path('M-180 0Q0 -140 180 0',B,14),BN)],'Interoperability creates a route that can also transmit failure.'));reveal('bridge',2);add(object('loss',440,245,[tint(dot(0,0,24,A),AN)],'A disturbance can travel through a shared conversion route.'));reveal('loss',3);move('loss',4,760,245,3000);break;
- case 6:wallet('wallet',300,295);for(let j=0;j<3;j++){claim('p'+j,860,175+j*145,['Bank','Points','Local'][j],.75);reveal('p'+j,j+1);}add(object('selector',620,305,[tint(path('M-55 -50L0 0L-55 50M0 0H70',B,12),BN)],'A personal interface selects among claims but also concentrates decision power.'));reveal('selector',3);break;
- case 7:claim('bank',350,280,'Bank',1.15);claim('points',850,280,'Points',1.15);add(object('signature',600,495,[tint(path('M-170 0Q-120 -60 -90 0T-10 0Q30 -40 70 0T170 0',A,10),AN)],'Distinct promises remain subject to authorship and revision of their rules.'));reveal('signature',5);break;
- }
- s.visual=q.finish('Burgundy and teal monetary editorial: wallet, distinct claims, reciprocal ledger, governing key and conversion route.');
-}
+for(const [i,s]of scenes.entries())s.visual=i===2?mutualCreditArt():monetaryArt(i);
 fs.writeFileSync(file,JSON.stringify(scenes,null,2));

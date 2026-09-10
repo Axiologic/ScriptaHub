@@ -18,19 +18,19 @@
   const book = collection.books.find(b => b.id === document.body.dataset.animationBook);
   if(!book?.animation)return;
   const shell=document.createElement('main');shell.className='site-shell animation-page';
-  shell.innerHTML=`<header class="site-header"><a class="wordmark">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link>Create</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div><div class="theme-switcher" role="group" aria-label="Appearance"><button type="button" data-theme-choice="light" aria-label="Light appearance">☼</button><button type="button" data-theme-choice="dark" aria-label="Dark appearance">◐</button></div><label class="language-picker"><span class="sr-only">Language</span><select data-language-select></select></label></div></header><section class="animation-player-floor"><nav class="animation-navigation"><a class="presentation-close" data-animation-back><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></a></nav><p data-animation-status role="status"></p><shf-player id="film"></shf-player></section><section class="animation-feedback" data-workflow-content></section>`;
+  shell.innerHTML=`<header class="site-header"><a class="wordmark">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link>Create</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div><div class="theme-switcher" role="group" aria-label="Appearance"><button type="button" data-theme-choice="light" aria-label="Light appearance">☼</button><button type="button" data-theme-choice="dark" aria-label="Dark appearance">◐</button></div><label class="language-picker"><span class="sr-only">Language</span><select data-language-select></select></label></div></header><section class="animation-player-floor"><nav class="animation-navigation workflow-back"><a class="button button-quiet" data-animation-back data-animation-text="back"></a><a class="presentation-close" data-animation-back><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></a></nav><p data-animation-status role="status"></p><shf-player id="film"></shf-player></section><section class="animation-feedback" data-workflow-content></section>`;
   document.body.prepend(shell);
   shell.querySelector('[data-create-link]').href=new URL('create/index.html',root).href;
   const player = shell.querySelector('shf-player');
   player.lang=book.animation.language;player.setAttribute('aria-label',book.title.en+' · Animation');
-  shell.querySelector('[data-animation-back]').addEventListener('click',()=>player.pause());
+  shell.querySelectorAll('[data-animation-back]').forEach(back=>back.addEventListener('click',()=>player.pause()));
   let loadError=false, loaded=false;
   function localize() {
     if(!book||!player)return;
     const w=words[lang()];
     document.title=(book.title[lang()]||book.title.en)+' · Animation · ScriptaHub';
     for(const node of document.querySelectorAll('[data-animation-text]'))node.textContent=w[node.dataset.animationText];
-    const back=document.querySelector('[data-animation-back]');back.href=url(book.editions[lang()].book);back.setAttribute('aria-label',w.back);
+    document.querySelectorAll('[data-animation-back]').forEach(back=>{back.href=url(book.editions[lang()].book);back.setAttribute('aria-label',w.back);});
     const status=document.querySelector('[data-animation-status]');status.textContent=loadError?w.error:loaded?'':w.loading;status.hidden=loaded&&!loadError;
     document.querySelectorAll('.wordmark,.footer-wordmark').forEach(a=>a.href=url('index.html'));
   }

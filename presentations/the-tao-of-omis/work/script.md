@@ -6,7 +6,7 @@ The Tao of OMIS explores love without treating another person as a completed ans
 
 Its standalone speculative triptych begins with finite people in a habitable dusk belt.
 
-Their attraction opens a question about influence, difference, and a future left unclaimed.
+A flood brings a memory biologist aboard a rescue pilot's crowded boat.
 
 The larger realms preserve that intimate question while changing its scale.
 
@@ -20,7 +20,7 @@ Mara and Sio live within a habitable belt between intense heat and cold.
 
 Their world depends on practical forms of care, transport, and ecological attention.
 
-The relationship begins among finite people with different habits and responsibilities.
+She explains memory through reed cultures, while he attends to particular people's needs.
 
 Attraction does not settle how much one life may organize another.
 
@@ -32,13 +32,13 @@ Its intimacy matters because an uncertain future cannot be replaced by perfect a
 
 The later spirals bring observers and more powerful realms into the inquiry.
 
-Greater resolution does not automatically provide a better understanding of another life.
+A flawless reconstruction of Iria unsettles a visitor who remembers imperfect, particular bowls.
 
 The book distinguishes care from a convergence that quietly narrows what someone may become.
 
 Its complementary modes are not fixed genders or permanent kinds of person.
 
-They describe tensions within continuation, influence, and the possibility of return.
+Openness keeps commitments revisable, while action prevents that openness from becoming paralysis.
 
 That framework connects the intimate beginning with the triptych's larger speculative environments.
 
@@ -48,10 +48,10 @@ Begin with the short reading guide, then the city between day and night.
 
 The people there provide a concrete center for the concepts that follow.
 
-This standalone triptych suits readers drawn to relationships inside ambitious metaphysical fiction.
+Each spiral changes the power available to people trying to care for one another.
 
 Its strongest question concerns a future that love supports without owning.
 
 The repeated change of scale lets you compare intimacy with more powerful forms of care.
 
-The book asks what remains open when another life matters deeply.
+Read the three spirals to test understanding against the freedom to remain different.

@@ -1,23 +1,6 @@
-import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';
-const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));const A='#263f69',AN='#a8c7fa',B='#a57224',BN='#eec97c';
-for(const [i,s]of scenes.entries()){
- const q=stageAuthor(),{n,tint,path,text,dot,object,add,reveal,hide,move,label,link}=q;
- const tile=(id,x,y,w=170,h=120,color=A,night=AN)=>{add(object(id,x,y,[tint(n('rect',{x:-w/2,y:-h/2,width:w,height:h,rx:9,fill:color}),night)],'A conceptual capability or institutional asset; not a quantitative chart.'));q.objects.at(-1).visual.anchors={left:[-w/2,0],right:[w/2,0]};};
- const disk=(id,x,y,r=35)=>add(object(id,x,y,[tint(dot(0,0,r,B),BN)],'A participant or hypothesis.'));
- switch(i){
- case 0:tile('feature',300,260);for(let j=0;j<3;j++)tile('asset'+j,820,205+j*64,250,44,j%2?B:A,j%2?BN:AN);label('f','Useful feature',300,450,35);label('p','Durable position?',820,450,35);reveal('asset1',6);reveal('asset2',7);break;
- case 1:for(let j=0;j<4;j++){tile('platform'+j,190+j*270,260,145,105,j===3?B:A,j===3?BN:AN);label('p'+j,['Mainframe','Personal','Networked','AI'][j],190+j*270,420,28);if(j)reveal('platform'+j,j+2);}label('function','Functions persist as control moves',600,520,33);reveal('function',4);break;
- case 2:tile('feature',285,275,145,120);tile('platform',865,275,310,235);label('a','Independent feature',285,460,28);label('b','Platform bundle',865,460,32);move('feature',4,665,275);label('q','What keeps customers?',600,520,34);reveal('q',5);break;
- case 3:disk('deployment',245,295,65);tile('knowledge',840,210,290,60);tile('rights',840,310,290,60,B,BN);tile('evaluation',840,410,290,60);label('d','Deployment',245,450);for(const [j,name]of ['Learning','Rights','Evaluations'].entries()){label('l'+j,name,840,221+j*100,30);const o=q.objects.at(-1);o.visual.children[0].attrs.fill='#fff';o.visual.children[0].themeAttrs={night:{fill:'#1b283c'}};}reveal('rights',3);reveal('l1',3);reveal('evaluation',4);reveal('l2',4);break;
- case 4:for(let j=0;j<5;j++)tile('candidate'+j,230+(j%2)*135,180+Math.floor(j/2)*100,78,56);tile('gate',875,290,205,235,B,BN);label('a','Many candidates',300,500);label('b','Justified use',875,500);label('why','?',600,290,85);reveal('why',2);break;
- case 5:tile('work',370,280,280,170);label('w','Persistent work',370,470,35);tile('model',880,240,165,90,B,BN);label('m','Replaceable model',880,400,29);link('use','work','model',3,'Organizational work uses a model without surrendering its own continuity.');move('model',4,900,230);break;
- case 6:for(const [j,x,y]of [[0,290,200],[1,560,200],[2,420,390]])disk('member'+j,x,y,43);add(object('common',865,290,[tint(path('M-90 0L0 -90L90 0L0 90Z',B,14),BN)],'Shared legitimate coordination, distinct from generated content.'));label('m','Participation',425,515);label('c','Shared rules',865,470);reveal('common',4);break;
- case 7:tile('base',600,455,670,64);label('base-label','Shared research',600,468,31);q.objects.at(-1).visual.children[0].attrs.fill='#fff';q.objects.at(-1).visual.children[0].themeAttrs={night:{fill:'#18253b'}};tile('business',355,230,270,160);tile('social',845,230,270,160,B,BN);label('b','Business systems',355,365,29);label('s','Social systems',845,365,29);reveal('social',2);reveal('base',5);reveal('base-label',5);break;
- case 8:for(let j=0;j<4;j++){disk('hypothesis'+j,190+j*130,230,21);reveal('hypothesis'+j,1);}tile('evidence',820,280,195,180);label('ev','Evidence',820,440);move('hypothesis2',4,650,320);hide('hypothesis1',5);label('choice','Commitment follows learning',550,540,32);reveal('choice',6);break;
- case 9:add(object('promise',600,270,[tint(n('circle',{cx:0,cy:0,r:95,fill:'none',stroke:B,'stroke-width':15}),BN),text('Promise',0,10,31)],'A common institutional promise.'));tile('venturea',250,350,105,86);tile('ventureb',960,350,105,86);label('a','Autonomy',250,490);label('b','Autonomy',960,490);move('venturea',5,205,340);move('ventureb',5,1000,340);break;
- case 10:for(let j=0;j<3;j++){label('q'+j,['Observed','Inferred','Uncertain'][j],250+j*350,240,37);tile('status'+j,250+j*350,355,155,34,j===2?B:A,j===2?BN:AN);reveal('status'+j,j+2);}label('limit','The thesis must remain revisable',600,510,34);reveal('limit',5);break;
- case 11:tile('capability',280,280,160,110,B,BN);for(let j=0;j<3;j++)tile('institution'+j,850,200+j*70,260,50);label('c','Capability',280,470,37);label('i','Institution',850,470,37);link('question','capability','institution1',7,'The book asks where durable value accumulates beyond capability.');break;
- }
- s.visual=q.finish('Navy and brass institutional architecture; shapes depict roles and accumulation, not investment performance or quantified forecasts.');
-}
-fs.writeFileSync(file,JSON.stringify(scenes,null,2)+'\n');fs.writeFileSync(new URL('./visual-bible.json',import.meta.url),JSON.stringify({direction:'Navy and brass; solid modular assets, scarce shared centers, separated independent participants.',sourceImages:[{page:10,decision:'Adapted platform sequence in scene 2; captions simplified, no claimed historical measurement.'},{page:14,decision:'Selected capability/accumulation relation in scenes 1 and 12, no copying crowded panel hierarchy.'},{page:18,decision:'Two institutional deficits expressed in scenes 5–7.'},{page:26,decision:'Faithful simplified shared-foundation / two-brand relation in scene 8; ventures remain conceptually separate.'}],font:'Bundled Red Hat Display/Text',qualifiers:'All market outcomes remain the source thesis; no stock price or performance chart.'},null,2));
+import fs from 'node:fs';
+import {ventureArt} from '../review-revision/venture-art.mjs';
+const file=new URL('./scenes.json',import.meta.url);
+const scenes=JSON.parse(fs.readFileSync(file,'utf8'));
+scenes.forEach((s,i)=>s.visual=ventureArt(i));
+fs.writeFileSync(file,JSON.stringify(scenes,null,2)+'\n');

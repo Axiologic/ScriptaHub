@@ -4,7 +4,7 @@ The film introduces why this book exists, its distinctive argument, selected exa
 
 - Source: `docs/books/mrp/vm/bk-5f1e79c81f464bb0/en/full_content.html`, active `edition-1`.
 - Canonical HTML SHA-256: `38f8afda6fafa91896ab9d27084668ce1b27cc1a2480ffca1ef61718e31646ad`.
-- Duration: **2:33** (153012 ms), four chapters, 20 single-sentence narration clips.
+- Duration: **2:41** (160603 ms), four chapters, 20 single-sentence narration clips.
 - Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
 - Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
 - Public film: `docs/books/mrp/vm/bk-5f1e79c81f464bb0/Animation/mrp-vm-introduction.shf`.
@@ -26,3 +26,7 @@ Voice caching uses text hashes, so changed sentences must be rendered again. Sta
 Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
 
 Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+
+## Research-team revision
+
+The source theory-comparison thought experiment now carries the film from an excellent answer through an unexplained shallow repeat into the proposed maintained capability. The initial configuration remains unknown. Procedure, sources, tests and interpreter receive a bound version only under AKU; candidates, baseline, publication authority and complete previous generation stay separate. Eight existing audio clips are preserved. Full script and source boundaries are in `review-revision/SCRIPT-AND-ART.md`; exact installed hashes and scoped review evidence are in `qa/targeted-revision-review.json`. Final silent QA passed21 checks,36 all-theme frames and20 offline decoded clips, plus two targeted event captures. No listening review or runtime compositor guarantee is claimed. Previous public film, manifest and report remain in `review-revision/before/`.
