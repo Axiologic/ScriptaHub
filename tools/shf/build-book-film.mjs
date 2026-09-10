@@ -16,5 +16,9 @@ export async function buildBookFilm(root){
  write('work/film.direction.json',direction);write('work/voice-tasks.json',voiceTasks(direction));
  if(process.argv.includes('--plan-only')){console.log('Validated source, editorial purpose and '+scenes.reduce((n,s)=>n+s.lines.length,0)+' single-sentence beats.');return;}
  if(scenes.some(s=>!s.visual?.objects?.length))throw Error('Every scene needs its authored visual composition.');
- const report=await publishNarratedFilm({direction,root,output:path.resolve(production.bookDirectory,'Animation'),minDurationMs:production.minDurationMs??0,maxDurationMs:production.maxDurationMs??900000});write('qa/build.json',report);return report;
+ // A review build may target staging without changing the canonical book/source route.
+ const outputArgument=process.argv.find(arg=>arg.startsWith('--output='));
+ if(outputArgument==='--output=')throw Error('--output requires a directory.');
+ const output=outputArgument?path.resolve(outputArgument.slice('--output='.length)):path.resolve(production.bookDirectory,'Animation');
+ const report=await publishNarratedFilm({direction,root,output,minDurationMs:production.minDurationMs??0,maxDurationMs:production.maxDurationMs??900000});write('qa/build.json',report);return report;
 }

@@ -8,9 +8,9 @@
   "centralQuestion": "AI Agents teaches how to turn model suggestions into dependable working systems.",
   "thesis": "Follow one laboratory-support case as a conversational helper becomes a durable, evaluated, accountable system.",
   "narrativeFramework": {
-    "why": "AI Agents teaches how to turn model suggestions into dependable working systems.",
-    "how": "Follow the book's connected distinctions, selected concrete examples and limitations.",
-    "what": "Read AI Agents to connect the decisions that a working agent system forces together."
+    "why": "A plausible answer cannot establish that the support task was completed under its real constraints.",
+    "how": "The book grows a laboratory-support incident from read-only evidence collection into bounded action, durable recovery and evaluation.",
+    "what": "Readers learn why specific permissions, state, tool contracts, evaluations and costs belong together."
   },
   "readerInvitation": {
     "reasonToExist": "AI Agents teaches how to turn model suggestions into dependable working systems.",
@@ -22,31 +22,35 @@
     ],
     "bookJourney": [
       {
-        "chapters": "AI Agents",
-        "focus": "The book treats deployment as an engineering commitment, rather than a conversational trick."
+        "chapters": "1.1 From generating answers to pursuing outcomes",
+        "focus": "Begin with the missing measurement uploads and a deliberately read-only candidate."
       },
       {
-        "chapters": "One incident, many obligations",
-        "focus": "It connects agent patterns with the work of operating a dependable service."
+        "chapters": "4.1 Tool contracts, side effects, and computer use",
+        "focus": "Later remediation acquires typed scope and approval."
       },
       {
-        "chapters": "When work is interrupted",
-        "focus": "Reliability becomes a property of the whole trajectory, rather than its final sentence."
+        "chapters": "6.1 Durable execution, checkpoints, queues, and human approval",
+        "focus": "The exact approved restart survives worker interruption through transaction identity and reconciliation."
       },
       {
-        "chapters": "Follow the evolving system",
-        "focus": "Read AI Agents to connect the decisions that a working agent system forces together."
+        "chapters": "7.1 From answer quality to trajectory evaluation",
+        "focus": "Evaluate evidence, action order, recovery and stopping."
+      },
+      {
+        "chapters": "10.2 Pricing, ROI, pilots, procurement, and selling outcomes",
+        "focus": "Include human review and retries in outcome cost."
       }
     ],
     "audienceFit": "Readers interested in the book's central problem who want to examine its distinctions, evidence, proposals and limitations before adopting its conclusions.",
     "contentSamples": [
       {
         "sceneId": "scene-02",
-        "readingValue": "It connects agent patterns with the work of operating a dependable service."
+        "readingValue": "The same device moves from read-only investigation to a later, exact approved action."
       },
       {
         "sceneId": "scene-03",
-        "readingValue": "Reliability becomes a property of the whole trajectory, rather than its final sentence."
+        "readingValue": "The worker fails after a side effect; durable task identity and observed device state prevent a blind repeat."
       }
     ],
     "reservedForReading": [
@@ -91,7 +95,7 @@
     },
     {
       "id": "claim-scene-02",
-      "statement": "Meridian Instruments is a fictional teaching case about support for laboratory devices. An incident requires evidence from accounts, telemetry, firmware, and internal knowledge. As the system grows, earlier choices acquire memory, security, and coordination consequences. The case makes those requirements appear for reasons the reader can follow. It connects agent patterns with the work of operating a dependable service.",
+      "statement": "Meridian Instruments is a fictional teaching case about support for laboratory devices. An incident requires evidence from accounts, telemetry, firmware, and internal knowledge. The first agent can investigate missing measurements, but cannot change the device. Later, a proposed remote restart pauses until a person approves it. The runtime preserves that exact action and its evidence for review.",
       "kind": "source-claim",
       "noveltyScope": "within-source",
       "spans": [
@@ -108,10 +112,10 @@
           "quote": "1.1 From generating answers to pursuing outcomes\nImagine Meridian Instruments at 08:17 on a Monday. A customer reports that a laboratory device stopped uploading measurements overnight. The support engineer normally reads the email, finds the device account, checks recent telemetry, searches three internal knowledge sources, compares firmware versions, decides whether the case is a known issue, and either sends instructions or escalates to engineering. A chatbot can help with the prose. An agent system can participate in the work. That difference is the starting point for the entire field: the unit of value moves from a generated answer to a completed or meaningfully advanced outcome.\nA language model by itself transforms an input context into an output. Even when the output contains excellent reasoning, the model has not changed the world. Agency appears when the surrounding system interprets part of the output as a decision about what to do next. The model may request a database lookup, search a document store, invoke a diagnostic function, open a browser, run code, ask the user for missing information, or hand control to a specialist. The environment returns an observation, the system updates state, and another decision becomes possible. ReAct made this interleaving of reasoning and acting an explicit research pattern; later production systems generalized it into tool-calling loops, graph runtimes, and agent frameworks [S22].\nThis distinction also explains why the most useful definition of an agent is operational rather than anthropomorphic. An agent is not a model that sounds self-directed. It is a system in which a model is permitted to influence the sequence of actions used to pursue a goal. Anthropic usefully distinguishes workflows, where code determines the path, from agents, where the model dynamically directs its own process and tool use [S1]. The boundary is not metaphysical. It is an engineering boundary about who chooses the next transition. A deterministic workflow can contain an LLM. An agent can contain deterministic subworkflows. Most successful production systems combine both.\nThe shift from answer to outcome changes the failure model. A wrong sentence is undesirable; a wrong action can be expensive, irreversible, or legally significant. If Meridian's assistant hallucinates a firmware version, a human may notice. If an agent writes that version into the customer's device-management record, triggers a remote reset, or closes the ticket as resolved, the error has become operational. Reliability therefore cannot be reduced to factuality of the final response. We must evaluate action selection, parameter correctness, ordering, state transitions, privilege use, recovery, and stopping behavior. This is why agent engineering quickly becomes systems engineering.\nIt also changes the economics. A general chatbot is commonly sold per user or per token because the product exposes a general capability. An agent product often competes with a workflow cost. The relevant denominator becomes successful incident triage, resolved support conversation, completed coding task, reviewed claim, or processed case. This can be seen in current enterprise pricing: Intercom prices Fin around delivered outcomes, while Salesforce offers action- and conversation-oriented consumption models and Microsoft meters Copilot Studio through usage credits [S27][S28][S29]. Pricing is not merely a commercial afterthought; it reveals what vendors believe the product actually does.\nA second consequence is that agents inherit the ambiguity of human goals. 'Fix the customer's problem' is not an executable specification. Does the agent have permission to restart a device? Can it change configuration? How much customer history may it inspect? When should it ask rather than infer? What counts as fixed? The more open the objective, the larger the search space and the larger the governance burden. Good agent design therefore begins by converting an attractive goal into bounded operational semantics: observable success conditions, permitted actions, forbidden actions, budgets, escalation rules, and evidence requirements.\nMeridian's first production candidate is intentionally modest. It can read the incoming ticket, retrieve the customer's device metadata, query telemetry, search approved troubleshooting documents, and draft a recommended next action. It cannot change the device or close the case. That design may look less impressive than a fully autonomous demo, but it creates a measurable learning loop. The team can observe which information is missing, which tools are hard for the model to use, which policies are ambiguous, and where the model's decisions diverge from expert practice. The lesson recurs throughout this book: autonomy is best earned by evidence, not granted by enthusiasm.\nThis outcome-oriented view also clarifies a recurring debate about whether agents are fundamentally new. Many ingredients are old: planners, expert systems, workflow engines, robotics controllers, software bots, and reinforcement-learning agents all pursued goals before large language models. What changed is the interface between unstructured human intent and software action. Language models can interpret a wide variety of instructions, documentation, exceptions, and intermediate observations without a programmer enumerating every semantic branch. They lower the cost of building controllers for workflows whose rules are partly expressed in language. The novelty is therefore not that software can act, but that a general linguistic model can occupy the decision layer between goals and heterogeneous tools.\nThat strength creates a corresponding weakness: the decision layer is statistical. Traditional programs can be wrong because their specification is incomplete or their implementation has a bug; agentic systems can additionally select a locally plausible but globally inappropriate action. Engineers must therefore design for graded competence. The agent should be allowed to make low-consequence decisions before high-consequence ones, should be able to ask when evidence is missing, and should make uncertainty operational by escalating rather than merely saying that it is uncertain. A well-designed agent is not one that never hesitates. It is one whose hesitation leads to a safe and useful next state.\nFigure from PDF page 7\nFigure 1. The basic agent loop. A model becomes operationally agentic when its decisions can select actions and those actions return observations that alter subsequent decisions.\nSystem form\nOperational meaning\nChat completion\nThe model produces text. The application decides what, if anything, to do with it.\nLLM workflow\nThe model contributes to a path whose transitions are mostly chosen by code.\nBounded agent\nThe model chooses among tools and steps, but permissions, budgets, and stopping rules are explicit.\nOpen-ended agent\nThe model can create longer plans, adapt strategy, and recover across a broad action space. Evaluation and control become correspondingly harder.\n"
         },
         {
-          "sourceId": "source-17",
-          "start": 57093,
-          "end": 63766,
-          "quote": "5.1 When multiple agents help: supervisors, handoffs, workers, and reviewers\nA single agent should be the default benchmark. This rule is important because multi-agent architectures can improve a demo while quietly degrading a system. Every additional agent creates another prompt, context boundary, model call, failure mode, trace, and coordination decision. If a single well-tooled agent can solve the task reliably, multiplying roles usually adds cost without adding capability. Multi-agent design becomes rational when the task benefits from specialization, isolation of context, parallel search, independent review, or organizational boundaries that already exist outside the AI system.\nThe supervisor-worker pattern is the most common. A supervisor interprets the global goal, decomposes it, assigns subproblems, and integrates results. Workers receive narrower contexts and tool sets. This can reduce cognitive load on each model and allow parallel execution. It is effective for research tasks where several sources can be investigated independently, for software tasks that touch separable components, and for document production where extraction, verification, and synthesis can be separated. The supervisor, however, becomes a bottleneck and a single point of coordination failure.\nHandoffs are different. Instead of a manager retaining control, one agent transfers the interaction to a specialist. OpenAI's Agents SDK exposes both manager-style composition and handoffs as distinct orchestration patterns [S5]. Handoffs work well when a conversation enters a domain with different rules, tools, or identity requirements, such as moving from general support to refunds or from product guidance to regulated advice. They work poorly when the user must repeatedly bounce between specialists and context is lost at each boundary.\nAgents-as-tools provide another form of composition. A specialist is exposed to a manager as if it were a higher-level capability. The manager remains responsible for the final interaction while delegating bounded work. This is useful when the specialist produces an artifact rather than owning the conversation: a research agent returns evidence, a code agent returns a patch, a policy agent returns a compliance assessment. The abstraction can also hide complexity, so the returned artifact should include provenance and confidence rather than a bare natural-language assertion.\nReviewer or debate patterns seek diversity of judgment. One agent drafts and another critiques. Several agents independently propose answers, then a judge selects or synthesizes. These patterns can improve robustness when errors are weakly correlated. They fail when all agents share the same blind spot or when the judge rewards persuasive language rather than correctness. For high-stakes work, independent evidence sources matter more than theatrical disagreement. A second model that checks the same unsupported claim is not independent verification.\nAnthropic's August 2026 research on emerging multi-agent systems broadens the issue beyond orchestration frameworks. As agents increasingly interact in shared codebases, markets, and institutions, the volume of agent-agent interaction may grow faster than human oversight mechanisms can adapt [S4]. This suggests that production multi-agent design should not only ask whether agents can coordinate, but whether incentives, identities, authority, and failure containment remain understandable when interaction scales.\nMeridian eventually creates a small agent team, but only after the single-agent baseline is mature. A triage agent owns the user interaction. It can invoke a diagnostic specialist as a tool and hand off to a security specialist when indicators cross a threshold. A customer-language reviewer checks the proposed communication but cannot act on the system. Each role exists because it has different context, tools, or authority. There is no 'creative agent', 'planner agent', and 'critic agent' merely to make the diagram look advanced.\nSpecialization can arise from more than prompts. Different agents may use different models, context sizes, tools, temperatures, latency budgets, or deployment locations. A lightweight router can use a fast model while a difficult code repair invokes a stronger model in a sandbox. A compliance reviewer may run in a region where sensitive data is allowed to reside. A remote research specialist may have access to licensed databases that the primary agent does not. Multi-agent architecture is most defensible when specialization is backed by real capability boundaries of this kind.\nThe same principle applies to failure containment. A worker given only read access can fail without causing the same harm as a supervisor with broad permissions. A reviewer can operate on artifacts without seeing secrets used during execution. Role separation can therefore be a security mechanism, not merely a cognitive metaphor. The price is coordination complexity, which should be included in evaluation and cost models.\nA practical test for a proposed specialist is to ask what information or authority can be removed from the other components after the split. If the answer is 'none', the new agent is probably just an extra model call. If the split lets the diagnostic worker see raw telemetry while the customer-facing agent sees only an approved summary, or lets a reviewer inspect a patch without holding deployment credentials, the boundary is doing real architectural work. Specialization should reduce coupling, privilege, or evaluation complexity rather than simply rename prompts.\nThe supervisor also deserves its own evaluation. It can fail even when every worker is competent: it may delegate too late, choose the wrong specialist, omit a constraint, accept an incomplete artifact, or create circular delegation. Teams should therefore record routing decisions and compare them with an oracle or expert policy on representative tasks. Multi-agent quality is not the average quality of the agents; it is the quality of the coordination policy that turns their partial capabilities into one outcome.\nPattern\nBest justification\nSupervisor-worker\nUse when decomposition is natural and the manager can integrate bounded results.\nHandoff\nUse when responsibility, tools, or policy genuinely move to a specialist.\nAgent-as-tool\nUse when a specialist produces a bounded artifact while the caller retains responsibility.\nIndependent reviewers\nUse when multiple perspectives have genuinely different evidence or error profiles.\nParallel researchers\nUse when information gathering is separable and latency matters enough to justify duplicate context cost.\n"
+          "sourceId": "source-14",
+          "start": 44393,
+          "end": 50504,
+          "quote": "4.1 Tool contracts, side effects, and computer use\nThe quickest way to make an agent unreliable is to give it a vague, powerful tool. Consider a function named `manage_customer` that accepts a free-form instruction string. The model must infer what operations are possible, how to phrase them, which fields are required, and which actions are reversible. Errors are inevitable. A better interface exposes narrow capabilities such as `get_customer_profile`, `list_recent_device_events`, `create_draft_response`, and `request_remote_restart`. The model then chooses among explicit actions whose parameters and consequences are legible to both software and human reviewers.\nTool schemas are therefore part of the reasoning environment. Good names reduce selection errors. Descriptions should explain preconditions and effects, not merely restate the function name. Parameter types should exclude invalid states where possible. Enumerations should represent meaningful choices. Error responses should distinguish authentication failure, missing data, temporary unavailability, policy rejection, and semantic invalidity. When a tool returns a giant blob of text, the model spends tokens reconstructing structure that the API already knew. Structured responses preserve information and make deterministic validation possible.\nSide effects divide tools into risk classes. Read-only retrieval is generally easier to automate than mutation. Reversible mutations are easier than irreversible ones. Financial transfer, deletion, publication, sending messages, changing access control, and executing code deserve explicit treatment. A production tool wrapper should know whether an operation is idempotent, whether it can be retried, whether it needs a unique transaction key, and whether it requires approval. These concepts come from distributed systems because agents do not repeal distributed-systems failure modes; they add uncertain decision-making on top of them.\nComputer use expands the action space dramatically. Instead of a curated API, the agent sees pixels, accessibility trees, application state, or browser DOMs and must infer how to navigate. This is attractive because organizations possess many workflows with no clean API. It is also difficult. GUI environments contain hidden state, timing, dynamic content, inconsistent affordances, and ambiguous confirmation. WebArena showed years ago that realistic web tasks were far harder than toy environments [S19]. OSWorld 2.0 now pushes this further with professional workflows requiring hundreds of interactions, where even frontier systems remain far below reliable human completion rates [S18].\nComputer-use agents need stronger observation discipline. A human may glance at a screen and notice a modal dialog or changed status. An agent can continue acting on an outdated internal assumption. Robust systems therefore verify after meaningful actions. Did the file really save? Did the form submit? Did the ticket status change? Was the intended account selected? Verification is not an optional final step; it is part of the action semantics. A useful tool abstraction often packages action and observation together so the runtime can confirm what changed.\nCode execution is an extreme tool because generated code can compose many operations. Its benefit is enormous for data analysis, repository work, scientific computing, and transformation of large artifacts. Its risk comes from access. A sandbox should explicitly define filesystem scope, network access, environment variables, available credentials, process limits, package installation policy, CPU and memory quotas, and lifetime. Google's current ADK documentation describes persistent sandbox state precisely because multi-step code agents benefit from continuity while still requiring isolation [S9]. Similar patterns are appearing across coding-agent products and runtimes.\nMeridian's diagnostic agent begins with read-only typed tools. When the team later introduces remote remediation, the action is not exposed as a generic device API. It becomes a narrowly scoped tool with a device identifier, a permitted remediation enum, a reason field, a dry-run mode, an approval token, and a result object containing the before and after state. That extra software may appear to slow development, but it moves ambiguity out of the model and into a contract that can be tested. Tool design is one of the highest-leverage forms of agent alignment available to ordinary engineering teams.\nTool design should include negative affordances: not only what a tool can do, but what it deliberately cannot do. A refund tool may cap the amount, require a reason code, and refuse transactions for accounts outside the authenticated user scope. A shell tool may expose a workspace but no home directory, credentials, or network. These constraints make the model's action space safer by construction. They are usually more dependable than a sentence in the prompt saying 'be careful,' because the forbidden state cannot be reached through that interface.\nTool evolution also needs versioning. A schema change can silently alter model behavior even when application code still runs. New enum values, changed defaults, or expanded permissions affect the decision environment. Production platforms should therefore version tool manifests, include them in traces, and run regression evaluations when tools change. In agent systems, an API contract is part of the model's behavioral context, so interface changes deserve the same caution as model changes.\nTool class\nProduction expectation\nRead-only query\nLowest operational risk; still validate authorization, privacy, and source freshness.\nTool class\nProduction expectation\nReversible mutation\nAllow only with clear before/after state and reliable rollback semantics.\nIrreversible action\nRequire stronger policy gates, confirmation, transaction identity, and audit evidence.\nBrowser /GUI action\nExpect partial observability, timing issues, and post-action verification.\nCode execution\nTreat the sandbox boundary as a security product, not as a convenience wrapper.\n"
         },
         {
           "sourceId": "source-20",
@@ -123,10 +127,16 @@
     },
     {
       "id": "claim-scene-03",
-      "statement": "The runtime chapters assume that processes crash and people answer later. A checkpoint preserves meaningful task state so that work can resume. Repeating an action requires care when its earlier attempt may already have changed something. The book connects recovery with tool contracts, evidence, and operational evaluation. Reliability becomes a property of the whole trajectory, rather than its final sentence.",
+      "statement": "After the approved restart executes, the worker running the task may crash. A checkpoint preserves meaningful task state so that work can resume. Before repeating the restart, the runtime checks what already happened to the device. The book connects recovery with tool contracts, evidence, and operational evaluation. Reliability becomes a property of the whole trajectory, rather than its final sentence.",
       "kind": "source-claim",
       "noveltyScope": "within-source",
       "spans": [
+        {
+          "sourceId": "source-14",
+          "start": 44393,
+          "end": 50504,
+          "quote": "4.1 Tool contracts, side effects, and computer use\nThe quickest way to make an agent unreliable is to give it a vague, powerful tool. Consider a function named `manage_customer` that accepts a free-form instruction string. The model must infer what operations are possible, how to phrase them, which fields are required, and which actions are reversible. Errors are inevitable. A better interface exposes narrow capabilities such as `get_customer_profile`, `list_recent_device_events`, `create_draft_response`, and `request_remote_restart`. The model then chooses among explicit actions whose parameters and consequences are legible to both software and human reviewers.\nTool schemas are therefore part of the reasoning environment. Good names reduce selection errors. Descriptions should explain preconditions and effects, not merely restate the function name. Parameter types should exclude invalid states where possible. Enumerations should represent meaningful choices. Error responses should distinguish authentication failure, missing data, temporary unavailability, policy rejection, and semantic invalidity. When a tool returns a giant blob of text, the model spends tokens reconstructing structure that the API already knew. Structured responses preserve information and make deterministic validation possible.\nSide effects divide tools into risk classes. Read-only retrieval is generally easier to automate than mutation. Reversible mutations are easier than irreversible ones. Financial transfer, deletion, publication, sending messages, changing access control, and executing code deserve explicit treatment. A production tool wrapper should know whether an operation is idempotent, whether it can be retried, whether it needs a unique transaction key, and whether it requires approval. These concepts come from distributed systems because agents do not repeal distributed-systems failure modes; they add uncertain decision-making on top of them.\nComputer use expands the action space dramatically. Instead of a curated API, the agent sees pixels, accessibility trees, application state, or browser DOMs and must infer how to navigate. This is attractive because organizations possess many workflows with no clean API. It is also difficult. GUI environments contain hidden state, timing, dynamic content, inconsistent affordances, and ambiguous confirmation. WebArena showed years ago that realistic web tasks were far harder than toy environments [S19]. OSWorld 2.0 now pushes this further with professional workflows requiring hundreds of interactions, where even frontier systems remain far below reliable human completion rates [S18].\nComputer-use agents need stronger observation discipline. A human may glance at a screen and notice a modal dialog or changed status. An agent can continue acting on an outdated internal assumption. Robust systems therefore verify after meaningful actions. Did the file really save? Did the form submit? Did the ticket status change? Was the intended account selected? Verification is not an optional final step; it is part of the action semantics. A useful tool abstraction often packages action and observation together so the runtime can confirm what changed.\nCode execution is an extreme tool because generated code can compose many operations. Its benefit is enormous for data analysis, repository work, scientific computing, and transformation of large artifacts. Its risk comes from access. A sandbox should explicitly define filesystem scope, network access, environment variables, available credentials, process limits, package installation policy, CPU and memory quotas, and lifetime. Google's current ADK documentation describes persistent sandbox state precisely because multi-step code agents benefit from continuity while still requiring isolation [S9]. Similar patterns are appearing across coding-agent products and runtimes.\nMeridian's diagnostic agent begins with read-only typed tools. When the team later introduces remote remediation, the action is not exposed as a generic device API. It becomes a narrowly scoped tool with a device identifier, a permitted remediation enum, a reason field, a dry-run mode, an approval token, and a result object containing the before and after state. That extra software may appear to slow development, but it moves ambiguity out of the model and into a contract that can be tested. Tool design is one of the highest-leverage forms of agent alignment available to ordinary engineering teams.\nTool design should include negative affordances: not only what a tool can do, but what it deliberately cannot do. A refund tool may cap the amount, require a reason code, and refuse transactions for accounts outside the authenticated user scope. A shell tool may expose a workspace but no home directory, credentials, or network. These constraints make the model's action space safer by construction. They are usually more dependable than a sentence in the prompt saying 'be careful,' because the forbidden state cannot be reached through that interface.\nTool evolution also needs versioning. A schema change can silently alter model behavior even when application code still runs. New enum values, changed defaults, or expanded permissions affect the decision environment. Production platforms should therefore version tool manifests, include them in traces, and run regression evaluations when tools change. In agent systems, an API contract is part of the model's behavioral context, so interface changes deserve the same caution as model changes.\nTool class\nProduction expectation\nRead-only query\nLowest operational risk; still validate authorization, privacy, and source freshness.\nTool class\nProduction expectation\nReversible mutation\nAllow only with clear before/after state and reliable rollback semantics.\nIrreversible action\nRequire stronger policy gates, confirmation, transaction identity, and audit evidence.\nBrowser /GUI action\nExpect partial observability, timing issues, and post-action verification.\nCode execution\nTreat the sandbox boundary as a security product, not as a convenience wrapper.\n"
+        },
         {
           "sourceId": "source-20",
           "start": 71036,
@@ -178,6 +188,18 @@
           "quote": "10.1 Build versus buy, horizontal platforms, vertical agents, and defensibility\nThe first product decision is not which model to use. It is what part of the stack should belong to the product. A horizontal agent platform provides orchestration, tools, memory, evaluation, security controls, and deployment infrastructure across many workflows. A vertical agent product packages those primitives around one domain such as customer service, software engineering, legal review, security operations, or research. Most enterprises need both layers: reusable infrastructure underneath and domain-specific behavior, integrations, evaluation cases, and governance on top.\nHorizontal platforms are attractive because they create leverage across many teams, but they are difficult businesses unless they control a durable integration or operational surface. The base model layer changes quickly. Framework APIs can be copied. Simple tool calling is becoming standardized through MCP and agent-to-agent interaction through A2A. A platform that differentiates only by offering a convenient loop may face rapid commoditization. More defensible assets include enterprise identity integration, policy enforcement, observability, evaluation infrastructure, domain data connectors, deployment governance, and a mature operational dataset of failures and outcomes.\nVertical products can create stronger value propositions because they own the workflow definition. Intercom does not sell a generic 'agent loop'; Fin is tied to customer-service outcomes [S27]. Salesforce embeds agents into CRM objects, actions, and business processes [S28]. Microsoft integrates Copilot Studio into its identity, productivity, data, and Power Platform ecosystem [S29]. The model is only one component of the product. Distribution, permissions, workflow state, administrative control, and business semantics are usually what make enterprise software sticky.\nBuild versus buy should therefore be decomposed. An enterprise may buy model access, use an open framework, build its own orchestration, consume managed sandboxing, adopt a vendor's observability, and still build the domain agent internally. The correct boundary depends on strategic differentiation and risk. Commodity plumbing should usually be purchased or standardized. Proprietary process knowledge, domain evaluation, integrations to critical systems, and policy logic may deserve ownership because they determine whether the agent works in the organization's real environment.\nData moats are often misunderstood. A pile of conversation transcripts is not automatically a moat. High-value agent data connects context, trajectory, outcome, and expert correction. It tells you which case occurred, what the agent saw, what it did, what the environment returned, whether the task succeeded, why it failed, and what a qualified human would have done differently. Such data can improve retrieval, tool design, evaluation, prompts, routing, and eventually model adaptation. It is operational knowledge, not merely text volume.\nIntegration can be an even stronger moat. A product that safely performs a useful action inside a customer's identity, data, and workflow landscape has crossed a difficult boundary. It has solved authentication, authorization, schemas, exception handling, compliance, and change management. These integrations may look less glamorous than model research, but they are the difference between a demo and a durable enterprise product. Standard protocols will reduce some integration cost while increasing the value of governance layers that can manage many standardized connections safely.\nMeridian's internal platform team reaches the same conclusion. It does not try to build a proprietary general model or a universal agent framework. It owns the control plane, evaluation data, tool contracts, identity integration, and reusable runtime because those are strategic for its regulated products. It adopts standard protocols and external models where interchangeability is useful. Domain teams own their workflow-specific instructions, policies, tools, and test cases. The architecture mirrors a sensible product strategy: own the layers where organizational knowledge and risk accumulate.\nStandardization changes where defensibility can live. If models, MCP servers, A2A endpoints, and orchestration runtimes become interchangeable, a thin wrapper around a public model becomes easier to copy. Durable advantage moves toward proprietary workflow integration, trusted distribution, outcome data, evaluation assets, domain-specific tool contracts, accumulated exception handling, and the ability to operate under real compliance constraints. In other words, the moat is increasingly the system that knows how to finish the job safely rather than the prompt that describes the job attractively.\nPlatform teams should resist becoming internal framework vendors. Their purpose is to remove repeated engineering: identity, tool gateways, tracing, evaluation infrastructure, secure sandboxes, model routing, cost controls, and durable task state. Domain teams should still be able to express workflow-specific policies and tests without negotiating every change with a central group. A good internal platform reduces the marginal cost of the next reliable agent while preserving local ownership of business semantics.\nBuild-versus-buy decisions should therefore be made layer by layer. Buying a model does not imply buying the orchestration platform; buying a support agent does not imply outsourcing identity or audit records. Conversely, building everything may waste years on commodity capabilities. An architecture that uses standards and explicit contracts lets the organization own the parts where risk and learning accumulate while substituting providers where the market is efficient.\nLayer\nTypical strategic posture\nFoundation model\nUsually buy or support several providers unless model research is itself the business.\nAgent framework\nUse as an implementation accelerator; avoid making framework-specific abstractions the core moat.\nControl plane\nOften strategic in enterprises because identity, policy, routing, budgets, and governance accumulate here.\nDomain tools\nFrequently strategic because they encode real workflow semantics and safe action boundaries.\nEvaluation corpus\nStrong candidate for ownership: it represents task reality, failure history, and quality expectations.\nOperational data\nValuable when linked to trajectories, outcomes, and expert corrections rather than stored as undifferentiated logs.\n"
         },
         {
+          "sourceId": "source-33",
+          "start": 132758,
+          "end": 139181,
+          "quote": "10.2 Pricing, ROI, pilots, procurement, and selling outcomes\nAgent pricing is evolving because the software increasingly resembles labor or transaction automation rather than a passive information product. Several models coexist. Per-user pricing works when the product augments an employee. Consumption pricing works when usage varies and the agent performs measurable actions. Per-conversation pricing fits service interactions. Outcome pricing aligns payment with a resolution, qualification, or completed task. Platform vendors often combine these structures because enterprise buyers need predictable budgeting while vendors face variable inference and tool costs.\nCurrent products illustrate the experimentation. Intercom's 2026 documentation prices several Fin outcomes at a fixed amount per successful outcome, with a higher price for qualified sales leads [S27]. Salesforce offers Flex Credits, conversation pricing, and user-oriented options for Agentforce [S28]. Microsoft sells Copilot Studio through prepaid or pay-as-you-go Copilot Credits and includes some internal agent capabilities within Microsoft 365 Copilot licenses [S29]. These numbers will change, but the direction is more important: commercial units are moving closer to actions and results.\nROI should be calculated per successful outcome, not per model call. Suppose a human incident investigation costs twenty minutes of a skilled engineer and an agent resolves half the cases independently while escalating the rest with useful evidence. The value includes time saved on successful cases and time compressed on escalations. From this subtract inference, tool infrastructure, platform licenses, human review, error remediation, and ongoing engineering. The most honest denominator is usually cost per accepted resolution or cost per correctly completed workflow, not average token cost.\nThe pilot is an experiment, not a miniature deployment. A good pilot chooses a bounded workflow, defines baseline human performance, creates a realistic evaluation set, instruments outcomes, and limits permissions. The objective is to learn the error surface.\nWhich cases are easy? Which are impossible because data is missing? Which failures come from the model, retrieval, tools, policy, or process ambiguity? A pilot that only demonstrates happy-path tasks creates marketing evidence but little engineering evidence.\nEnterprise procurement introduces another dimension: trust. Buyers ask where data flows, which models are used, how prompts and traces are retained, whether actions are auditable, how permissions work, how the system is evaluated, what happens when it is wrong, and whether it can be disabled. Agent vendors should expect security questionnaires, data-processing agreements, model-provider disclosures, architecture reviews, and increasingly AI-governance requirements. The sales process is therefore easier when the product architecture already produces the evidence procurement needs.\nChange management matters because workflows have owners and informal adaptations. A successful agent may change staffing, escalation paths, service-level expectations, and accountability. Employees will test whether the system creates more cleanup than it saves. Managers will discover that procedures assumed to be standardized are not. Agent deployment can become a form of process discovery: the failures reveal where organizational rules are inconsistent or where critical knowledge exists only in experienced employees' heads. Treating this as a purely technical rollout wastes that information.\nMeridian sells its first external agent capability as a managed incident-resolution service rather than an 'autonomous AI agent.' The contract defines which incident classes are eligible, which actions are automated, what evidence accompanies resolutions, when humans intervene, and how outcomes are measured. Pricing can then be connected to successfully processed incidents. This language is less futuristic but more credible. In mature markets, buyers pay for a reliable workflow with accountability; the agent architecture is how the vendor produces it.\nUnit economics should be calculated per verified outcome, including inference, retrieval, browser or code execution, third-party APIs, human review, retries, support, and the expected cost of failures. Token cost can be a useful component metric, but it rarely matches the buyer's value unit. A cheap agent that succeeds only after extensive human cleanup may be more expensive than a costly model that resolves the case correctly on the first attempt. Economic evaluation and technical evaluation should therefore share the same denominator.\nContracts for consequential agents will increasingly resemble service contracts rather than software licenses. Buyers will ask which tasks are in scope, what success means, which errors trigger credits or remediation, how data is handled, what audit evidence is available, which model or subprocessors may change, and who is responsible when the system acts incorrectly. Vendors that can describe these boundaries precisely may win against technically impressive competitors that can only discuss benchmark performance.\nThere is also a ceiling on outcome pricing: the vendor cannot capture all labor savings because the buyer still bears integration, oversight, residual risk, and organizational change. Sustainable pricing leaves a visible surplus for the customer and improves as the provider reduces intervention cost and expands the reliable task envelope. This creates a healthy incentive: commercial margin grows when the system becomes more dependable, not merely when it generates more tokens.\nFigure from PDF page 54\nFigure 7. The path from agent demo to product is a sequence of narrowing, measuring, controlling, and only then scaling.\nPricing model\nWhere it fits\nPer user\nBest for employee augmentation where value accrues continuously across many tasks.\nConsumption /credits\nUseful for platforms with heterogeneous model and tool usage.\nPer action\nFits workflows where discrete tool-backed operations are the natural unit.\nPer conversation\nFits service interactions, though conversation length and value can vary substantially.\nPer outcome\nStrong alignment when success is objectively measurable and attribution is clear.\nFixed enterprise contract\nUseful when buyers require budget predictability and the vendor can manage usage risk.\n"
+        },
+        {
+          "sourceId": "source-36",
+          "start": 145992,
+          "end": 152054,
+          "quote": "11.2 A reference production architecture, built step by step\nWe can now rebuild Meridian's agent without using any framework vocabulary. The user or upstream system submits a task under an authenticated identity. An intake layer resolves the operational objective, validates required fields, and attaches applicable policy. The task receives a durable identifier. Nothing agentic has happened yet. This first stage exists to make the request a well-defined piece of work rather than a transient chat message.\nThe context builder then constructs the initial decision state. It loads the minimal customer and device metadata needed for triage, retrieves applicable knowledge and policy, records provenance, and exposes only the tools permitted at this stage. The agent model receives instructions plus this state and chooses the next action. A typed tool wrapper validates parameters and executes under a scoped service identity. The result is written to the trace and task state before the next model decision.\nThe control plane sits around this loop. It chooses the model class, token and time budgets, allowable tool set, retry policy, and escalation thresholds. It can route a task to a specialist, but delegation is explicit and inherits only the required context and permissions. The control plane also owns guardrails that must survive model error. If an action exceeds the current authority, execution pauses and emits an approval object rather than merely asking the model whether it feels confident.\nThe durable runtime manages checkpoints, queues, concurrency, and resumption. Tool actions with side effects carry transaction identities. Browser and code environments are isolated. Artifacts are stored outside the prompt and referenced by stable identifiers. If a human approves an action four hours later, the runtime reloads current state, revalidates preconditions, and then continues. This is important: approval of an old plan does not imply that the world has remained unchanged.\nEvaluation is integrated rather than attached afterward. Every release runs against golden scenarios and historical failure cases. Production traces feed online metrics. Some trajectories are sampled for expert review. Security tests inject malicious content into retrieval sources and tool outputs. Cost and latency are measured per successful outcome.\nWhen a regression appears, the team can replay the task with a previous model, prompt, tool version, or retrieval policy to identify the cause.\nThe architecture is intentionally modular because the fast-changing pieces are not the same as the stable pieces. Models may change monthly. Protocols may evolve. Frameworks may be replaced. But the organization's definition of a valid incident, a privileged action, an approval rule, a verified resolution, and an acceptable audit trail should be much more stable. The reference architecture therefore locates domain invariants outside the model and connects them to the model through explicit contracts.\nThis is the central engineering story of the book. We began with a model generating text and ended with a distributed system in which a model selects some transitions. The system has identity, policy, state, tools, memory, protocols, durability, evaluation, security, human control, and economics. None of these components makes the agent intelligent alone. Together they make intelligence operationally useful. A framework can package many of them, but architecture is the reasoning that tells us why they are there.\nThe architecture becomes easier to implement if constructed in risk order. Start with authenticated intake and read-only tools. Add structured task state and an explicit success condition. Instrument every model and tool transition. Build the evaluation harness from traces. Only then add durable continuation, memory writes, privileged actions, multi-agent delegation, and external protocol discovery. Each new capability should arrive with a corresponding control and test. This sequence avoids the common pattern of building a spectacular autonomous prototype and then discovering that no one knows how to make it safe enough to deploy.\nA small team can implement the same principles without a giant platform. A relational database can hold task and event state; a queue can schedule work; a model SDK can produce structured tool calls; a policy service can authorize actions; object storage can hold artifacts; OpenTelemetry-compatible traces can connect components; and a simple evaluation runner can replay scenarios. Frameworks are valuable because they package these ideas, not because agency requires a special substrate. Understanding the primitives makes framework choice reversible.\nThe final architecture should have an explicit evidence path. For every consequential action, an operator should be able to answer: which goal was active, which identity requested it, which evidence the agent saw, which policy permitted it, which model and tool versions were used, what the external system returned, whether a human approved it, and how success was verified. If the platform cannot reconstruct that story, it is not yet a mature agent platform.\nFigure from PDF page 59\nFigure 8. The reference architecture. Model intelligence operates inside a control plane, durable runtime, scoped tool plane, and continuous evaluation system.\nComponent\nResponsibility\nIntake\nTurn a user request into a durable task with identity, objective, and applicable policy.\nContext builder\nAssemble minimal sufficient state with provenance and an explicitly limited tool surface.\nDecision layer\nUse the model to choose among allowed actions or produce bounded artifacts.\nControl plane\nEnforce model routing, permissions, budgets, guardrails, escalation, and policy.\nDurable runtime\nPersist state, manage queues and retries, pause for humans, and resume safely.\nTool plane\nExecute typed actions with scoped identities, transaction semantics, and isolation.\nEvaluation plane\nContinuously test task outcomes, trajectories, safety, cost, and production drift.\n"
+        },
+        {
           "sourceId": "source-39",
           "start": 159300,
           "end": 165966,
@@ -190,97 +212,97 @@
     {
       "id": "scene-01",
       "lens": "book",
-      "purpose": "The book treats deployment as an engineering commitment, rather than a conversational trick.",
+      "purpose": "The course grows a concrete support incident into a system, making its dependencies and reader gain explicit.",
       "emotionalPlan": {
         "arc": "curiosity through scrutiny to invitation",
-        "purpose": "Follow one laboratory-support case as a conversational helper becomes a durable, evaluated, accountable system.",
+        "purpose": "The course grows a concrete support incident into a system, making its dependencies and reader gain explicit.",
         "states": [
-          "curiosity",
-          "attention",
-          "scrutiny",
-          "clarity",
-          "invitation"
+          "curious",
+          "curious",
+          "focused",
+          "understanding",
+          "confident"
         ],
         "intensities": [
-          0.4,
-          0.5,
-          0.55,
-          0.4,
-          0.3
+          0.45,
+          0.45,
+          0.45,
+          0.45,
+          0.45
         ],
-        "visualActing": "Enact the named cause or consequence through recognizable source-appropriate objects; preserve meaningful stillness and fixed readable label lanes."
+        "visualActing": "Keep the same orange-tagged laboratory analyser and motivated human review; movement follows evidence, authority, observed restart effect and recovery."
       }
     },
     {
       "id": "scene-02",
       "lens": "content",
-      "purpose": "It connects agent patterns with the work of operating a dependable service.",
+      "purpose": "The same device moves from read-only investigation to a later, exact approved action.",
       "emotionalPlan": {
         "arc": "curiosity through scrutiny to invitation",
-        "purpose": "Follow one laboratory-support case as a conversational helper becomes a durable, evaluated, accountable system.",
+        "purpose": "The same device moves from read-only investigation to a later, exact approved action.",
         "states": [
-          "curiosity",
-          "attention",
-          "scrutiny",
-          "clarity",
-          "invitation"
+          "curious",
+          "focused",
+          "reflective",
+          "concerned",
+          "understanding"
         ],
         "intensities": [
-          0.4,
-          0.5,
-          0.55,
-          0.4,
-          0.3
+          0.45,
+          0.45,
+          0.45,
+          0.59,
+          0.45
         ],
-        "visualActing": "Enact the named cause or consequence through recognizable source-appropriate objects; preserve meaningful stillness and fixed readable label lanes."
+        "visualActing": "Keep the same orange-tagged laboratory analyser and motivated human review; movement follows evidence, authority, observed restart effect and recovery."
       }
     },
     {
       "id": "scene-03",
       "lens": "content",
-      "purpose": "Reliability becomes a property of the whole trajectory, rather than its final sentence.",
+      "purpose": "The worker fails after a side effect; durable task identity and observed device state prevent a blind repeat.",
       "emotionalPlan": {
         "arc": "curiosity through scrutiny to invitation",
-        "purpose": "Follow one laboratory-support case as a conversational helper becomes a durable, evaluated, accountable system.",
+        "purpose": "The worker fails after a side effect; durable task identity and observed device state prevent a blind repeat.",
         "states": [
-          "curiosity",
-          "attention",
-          "scrutiny",
-          "clarity",
-          "invitation"
+          "concerned",
+          "focused",
+          "curious",
+          "understanding",
+          "confident"
         ],
         "intensities": [
-          0.4,
-          0.5,
-          0.55,
-          0.4,
-          0.3
+          0.59,
+          0.45,
+          0.45,
+          0.45,
+          0.45
         ],
-        "visualActing": "Enact the named cause or consequence through recognizable source-appropriate objects; preserve meaningful stillness and fixed readable label lanes."
+        "visualActing": "Keep the same orange-tagged laboratory analyser and motivated human review; movement follows evidence, authority, observed restart effect and recovery."
       }
     },
     {
       "id": "scene-04",
       "lens": "reader",
-      "purpose": "Read AI Agents to connect the decisions that a working agent system forces together.",
+      "purpose": "The reader can inspect the entire incident path, evidence, permissions and outcome cost.",
       "emotionalPlan": {
         "arc": "curiosity through scrutiny to invitation",
-        "purpose": "Follow one laboratory-support case as a conversational helper becomes a durable, evaluated, accountable system.",
+        "purpose": "The reader can inspect the entire incident path, evidence, permissions and outcome cost.",
         "states": [
-          "curiosity",
-          "attention",
-          "scrutiny",
-          "clarity",
-          "invitation"
+          "curious",
+          "skeptical",
+          "focused",
+          "reflective",
+          "confident"
         ],
         "intensities": [
-          0.4,
-          0.5,
-          0.55,
-          0.4,
-          0.3
+          0.45,
+          0.45,
+          0.45,
+          0.45,
+          0.45
         ],
-        "visualActing": "Enact the named cause or consequence through recognizable source-appropriate objects; preserve meaningful stillness and fixed readable label lanes."
+        "visualActing": "Keep the same orange-tagged laboratory analyser and motivated human review; movement follows evidence, authority, observed restart effect and recovery."
       }
     }
   ],
@@ -308,5 +330,27 @@
     "Local Piper pace control does not provide fine-grained emotional acting.",
     "Human listening review remains user initiated."
   ],
-  "rights": "Adaptation requested by the project editor for the existing ScriptaHub source; source rights retained; original vector art created for this film."
+  "rights": "Adaptation requested by the project editor for the existing ScriptaHub source; source rights retained; original vector art created for this film.",
+  "originalIllustrations": [
+    {
+      "id": "laboratory-incident-atlas",
+      "status": "Original physical analyser and device tag M-17 illustrate the source fictional incident; visual transaction T-1 and the completed-restart observation are conceptual labels, not a measured trace.",
+      "sourceBasis": [
+        "source-4",
+        "source-14",
+        "source-20"
+      ]
+    },
+    {
+      "id": "no-blind-repeat",
+      "status": "A source-grounded existing tool effect is checked before repeating; no claim that every restart succeeds or every failed request already executed.",
+      "sourceBasis": [
+        "source-20"
+      ]
+    }
+  ],
+  "review": {
+    "sourceScope": "All chapter introductions; full About,1.1,4.1,6.1,7.1,10.1,10.2,11.2,12.2. All9source images inspected; semantic relations adapted from diagrams, not reproduced as boxes.",
+    "scriptStatus": "Proposed to root; no new voice yet"
+  }
 }

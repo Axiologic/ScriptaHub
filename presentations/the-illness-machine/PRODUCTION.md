@@ -1,15 +1,17 @@
 # The Illness Machine — narrated book introduction
 
-Finished narrated preview: **2:40.730**, four authored scenes and 20 English single-sentence clips, each 8–16 words. The complete script passed authoring and parent editorial review before local voice generation. Its coherent book-level why/how/what introduces the source and provides a specific reason and starting point for reading.
+Installed edition-1 revision: 160250 ms (2:40), 21 English single-sentence clips across four scenes. The introduction connects immediate clinical care with external causes and persistence, earns its reading promise through the North Carolina child study, and ends with the book’s counterargument.
 
-Canonical reader: `docs/books/the/illness/machine/bk-0c9a80d5872c40f5/en/full_content.html`; edition `edition-1`; SHA-256 `4a450ca6e1e48069466d7648edc9ba5e20a725c1dbc69f523b70c99ebd124e39`. Source extraction, UTF-16 section offsets, chapter map, exact supporting spans and full editable script remain in `source/` and `work/`. Review covered the opening, chapter structure, conclusion, methodological limits and selected substantive passages; it does not certify every line or reference. Source claims remain the book’s arguments, not independently validated findings.
+The study is represented selectively: conduct and oppositional symptoms improved in the relevant group; anxiety and depression did not show equivalent improvement. No amount, randomized allocation, universal cure or personal clinical instruction is invented. The workplace intervention remains a proposal alongside care.
 
-Art direction is authored in `work/art.mjs`, with scene-specific purposes in `work/scenes.json`. Original colorful compositions enact the source’s relationships; staged situations are not passed off as historical evidence. All 1 source images were inspected; their selection decisions and conceptual adaptations are recorded in `qa/source-review.json`. Shared typography uses bundled Red Hat Display headings and Red Hat Text captions. Expressive people retain faces, gestures and articulated poses; chair and lower-body contrast is preserved in Night.
+Source review: complete substantive sections 12, 13, 14, 16, 19, 43, 45, 47–50 and the full chapter map; 16 exact supporting spans verified, including location, tribal membership and child-study identity. Evidence is in review/rewrite-proposal.json and qa/source-review.json. This is not independent medical-literature validation.
 
-Narration uses the already prepared local Piper `en_US-ljspeech-medium`. All 20 text and audio hashes match the receipts. Actual gaps between sentences are 1400–1400 ms; transitions allow additional breathing room. No external voice API, browser speech or audible automated preview was used.
+Local Piper en_US-ljspeech-medium narration; all 21 text/audio receipt hashes verified. Minimum authored pause 1400 ms; measured sentence gap 1550 ms. No audible automated playback or listening review.
 
-Apply artwork with `node presentations/the-illness-machine/work/art.mjs`; rerender changed narration with `node presentations/the-illness-machine/render_voice.mjs`; build with `node presentations/the-illness-machine/build.mjs`. Unchanged voice receipts are reused. Public book content contains only the SHF and the site-generated minimal Animation entry page. Portable HTML and VTT remain in ignored `exports/`; production and QA stay outside the public book folder.
+Validation: 21 checks passed, 36 sampled frames across Color, Light and Dark, zero JavaScript errors or sampled caption overlaps, and all 21 clips decoded offline. All Color first/middle/final and all-theme middle frames were inspected. Parent independently approved the 12-frame Color contact before installation. This is sampled motion QA, not full-duration playback or a physical-device test.
 
-Silent browser QA passed 21 checks, decoded 20 clips through OfflineAudioContext, sampled 36 frames across all three themes, checked headings/captions/controls at five widths, and verified deterministic seeking with no JavaScript errors. All-theme contact sheets and targeted motion endpoints/phone captures were inspected. Automated QA used a muted owned browser, disabled background networking and a dead local external proxy; the user’s browser was not touched.
+Editable script and original art remain in work/. Prior editable files and public SHF are preserved under review/previous-version/. Only this book’s manifest duration changed; shared catalogue refresh belongs to the coordinating agent.
 
-Full listening, continuous full-duration playback, physical-phone testing and audience validation remain unperformed. The final SHA-256 and bounded QA findings are in `qa/final-review.json`.
+Installed SHA-256: `98ee4ac740db5f7f2079e67ef491863d1cee0b4c5af86dcd1a779cfb4bf4c7fa`
+
+Canonical reader SHA-256: `4a450ca6e1e48069466d7648edc9ba5e20a725c1dbc69f523b70c99ebd124e39`

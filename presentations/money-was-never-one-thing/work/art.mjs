@@ -1,6 +1,8 @@
+import {mutualCreditArt} from '../review-revision/mutual-credit-art.mjs';
 import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';
 const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));
 for(const [i,s]of scenes.entries()){
+ if(i===2){s.visual=mutualCreditArt();continue;}
  const q=stageAuthor(),{n,tint,path,text,dot,object,add,reveal,hide,move,label}=q,A='#82495d',B='#317b78',AN='#dba6b9',BN='#91d3cb';
  const claim=(id,x,y,kind,scale=1)=>add(object(id,x,y,[tint(n('rect',{x:-100,y:-68,width:200,height:136,rx:kind==='Points'?40:5,fill:kind==='Bank'?A:B}),kind==='Bank'?AN:BN),tint(text(kind,0,33,28,'white'),'#1d2830'),tint(path(kind==='Points'?'M-40 -30H40M0 -30L-25 -55M0 -30L-25 -5':'M-45 -30L0 -55L45 -30M-30 -20V-2M0 -20V-2M30 -20V-2',kind==='Bank'?B:A,7),kind==='Bank'?BN:AN)],`A ${kind} claim has its own governing rules.`,scale));
  const wallet=(id,x,y)=>add(object(id,x,y,[tint(n('path',{d:'M-150 -75Q-150 -95 -130 -95H130V-55H160V100H-130Q-150 100 -150 80Z',fill:A}),AN),tint(n('rect',{x:70,y:-10,width:110,height:65,rx:12,fill:B}),BN),tint(dot(115,22,10,A),AN)],'An ordinary wallet hides distinct monetary promises.'));

@@ -38,8 +38,7 @@
     player.addEventListener('shf-loaded',()=>{loaded=true;loadError=false;localize();});
     player.addEventListener('shf-error',()=>{loadError=true;localize();});
     player.load(new URL(book.animation.shf,root).href).catch(()=>{loadError=true;localize();});
-    const theme=()=>player.setTheme(['dark','dark-orange'].includes(document.documentElement.dataset.theme)?'night':'color');theme();
-    new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+    player.setTheme('color');
   }
   document.addEventListener('scriptahub:language',localize);
   new MutationObserver(localize).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});

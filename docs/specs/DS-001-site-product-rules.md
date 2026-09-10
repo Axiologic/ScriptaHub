@@ -492,3 +492,19 @@ authorisation to submit and grant the stated permissions. Never preselect consen
 Only the agreement’s final action opens the structured email; it does not send
 mail automatically. Preserve the common submission boundary for a future
 endpoint integration without claiming that endpoint exists now.
+
+SHF animations start in Colorful (`color`) on both book pages and the homepage
+introduction, independently of the site theme. Changing the site theme must not
+change the film artwork theme. Visitors may still choose another artwork theme
+using the player controls; reopening the homepage introduction starts in Colorful.
+
+Animation suggestion forms show a compact book reminder before the introductory
+question: linked cover, title, localised category and short description, using
+the shared book-view component. This also applies beneath an existing player.
+
+SHF subtitles use centred, balanced wrapping in a narrower reading measure,
+preferably two even lines when a long sentence fits. Use white outlined text
+without the grey panel. Player settings offer remembered subtitle size
+(75–150%) instead of Speed; omit the Reduced motion checkbox while preserving
+the system motion preference. On narrow screens allow additional lines rather
+than clipping captions or hiding words.

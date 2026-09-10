@@ -4,7 +4,7 @@ The film introduces why this book exists, its distinctive argument, selected exa
 
 - Source: `docs/books/ai/agents/bk-92eca672686a4f90/en/full_content.html`, active `edition-1`.
 - Canonical HTML SHA-256: `44e5e41ee9b92c58e392b020ce1f424ebbc984c59a1bf127d8c90bb223d71b06`.
-- Duration: **2:32** (152219 ms), four chapters, 20 single-sentence narration clips.
+- Duration: **2:31** (150759 ms), four chapters, 20 single-sentence narration clips.
 - Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
 - Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
 - Public film: `docs/books/ai/agents/bk-92eca672686a4f90/Animation/ai-agents-introduction.shf`.
@@ -26,3 +26,7 @@ Voice caching uses text hashes, so changed sentences must be rendered again. Sta
 Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
 
 Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+
+## Laboratory incident continuity revision
+
+The film now carries the same laboratory analyser from read-only investigation through exact approved restart, worker interruption, retained task and real-state query before a repeated action. Five sentences were replaced; fifteen original encoded audio hashes remain identical. Device and transaction labels are illustrative; no actual operational result is claimed. All36theme samples and six additional approval/recovery frames were visually checked;21browser checks and20offline audio decodes passed without caption overlaps or JavaScript errors. Root approved the final Color sequence. No audible playback or complete listening review occurred. Archive and exact source scope/hash are in `review-revision/before/` and `review-revision/QA.json`.

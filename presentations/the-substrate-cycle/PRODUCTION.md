@@ -1,22 +1,28 @@
 # The Substrate Cycle — English narrated introduction
 
-Completed **2:47**, four scenes and 24 single-sentence clips. The public preview flag records pending user listening, not missing narration.
+Installed independent-review revision: **2:45.391**, four scenes and24 single-sentence clips. Root approved the complete script and final12-frame Color contact; all-theme and motion QA passed before installation. The public SHF now matches the reviewed candidate and its existing preview flag remains preserved. Original reviewed work and QA are preserved under `work/revisions/2026-09-10-independent-review/previous/`.
 
-Source: `docs/books/the/substrate/cycle/bk-090f5950310f4bd1/en/full_content.html`, `edition-1`, HTML SHA-256 `2e0da04d9ddbc6afbf88cdaf5d6b3aa5ea05b0efb0195bdbd4d7b458285c7623`. Full text was extracted and indexed; selected chapter-aligned openings, body passages and endings were inspected. This does not claim every word or every chapter was manually reviewed. Exact substantive UTF-16 evidence spans, source hash, chapter map and limitations are retained in working metadata.
+Canonical source: `docs/books/the/substrate/cycle/bk-090f5950310f4bd1/en/full_content.html`, edition1, SHA-256 `2e0da04d9ddbc6afbf88cdaf5d6b3aa5ea05b0efb0195bdbd4d7b458285c7623`. The revision reviewed all24 actual sentences and the chapter map; complete shared-world note, City That Chose the Sea, Last Currency, River That Voted, Child with Thirty-Seven Parents, BookII epilogue, and final3500 UTF-16 characters of BookI epilogue. This is not a fresh complete reread of every chapter. Exact scope and source limits are in the replacement plan and `qa/source-review.json`.
 
-Root reviewed the complete book-first WHY→HOW→WHAT script before voice. It establishes genre, distinctive source tension and a specific reading invitation. Fiction resolutions remain outside the film. English narration uses the prepared local Piper `en_US-ljspeech-medium`, pace0.94, no acceleration, measured 1.25-second ordinary gaps and longer scene transitions. Every clip has a text hash, measured audio and separate caption.
+Root approved the complete book-first script and four art plans, with the explicit older-child clarification. Eleven sentences now introduce the two investigations and the concrete care dispute;13 local Piper recordings remain byte-identical. All24 text/audio hashes match. English narration uses prepared `en_US-ljspeech-medium`, measured126.073 seconds, real breathing gaps and no tempo acceleration.
 
-Original book-owned staging and choreography are in `work/art.mjs`; reusable typography, rendering and player controls remain shared. Source images were inspected. Covers, small complex conceptual diagrams and an emblem were omitted where they did not improve the enacted composition. Color, Light and Dark were checked; discovered table-position and contrast issues were corrected and rechecked.
+The art stages the scheduled gate, a connected water front reaching a vacated household threshold, then House Nine’s infant-care audit. Nila is the missing infant with37 legal parents; Sami is the distinct older child playing with the maintenance spider. Two direct actions concern holding Nila and preparing milk; settling Sami frees a caregiver and is shown as indirect enabling care. No cash or transferable credits are depicted. Pando stays a neutral interface, respecting the source’s prohibition of emotional simulation in governance. The two epochs remain distinct. Mystery solutions, demographic disclosures and constitutional endings remain protected.
 
-All 21 shared silent browser checks passed, including offline decoding of all24 clips,36 first/middle/last frames across allthree themes, deterministic seeking, five caption/control widths, loaded Red Hat Display/Text fonts, source/emotion metadata and zero JavaScript errors. Screenshots are under `qa/screenshots/`. No audible background preview, subjective full listening review, physical-device test or audience study is claimed.
+All21 shared silent checks passed, including24 offline audio decodes,36 frames across Color/Light/Dark, caption/control widths, fonts, geometry, deterministic seeking and zero JavaScript errors. All36 frames inspected. Corrected a prop covering Mina, an indirect-care arrow crossing a label, gate support and water extent. `qa/check-material-motion.mjs` measures actual gate descent, water arrival and indirect-care signal movement with the matching full sentence; it does not claim a hydrological or care-attribution simulation. Final contacts use fresh full-resolution captures and unique filenames. The precautionary compositor setting is QA-only; no shared player change or diagnosed runtime defect is claimed. No audible preview, subjective complete listening review, external-network request or physical-device test was performed.
 
-Delivery: `docs/books/the/substrate/cycle/bk-090f5950310f4bd1/Animation/the-substrate-cycle-introduction.shf`, plus only this book's manifest animation record. Root integration generates the shared-player entry page and aggregate catalogue. Readers and release workspaces were not modified.
+Installed SHA-256: `e7c5342333896983b14ee614f77ccb4430b801b2d4fa2bed41d020a48284bb8f`.
+
+Review contacts: `qa/final-contact-v2-color.png`, `qa/final-contact-v2-paper.png`, `qa/final-contact-v2-night.png`. Receipts: `qa/revision-review.json`, `qa/browser-review.json`, `qa/material-motion-review.json`.
 
 ```sh
 node presentations/the-substrate-cycle/work/art.mjs
 node presentations/the-substrate-cycle/render_voice.mjs
-node presentations/the-substrate-cycle/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9246 node tools/shf/qa-film.mjs presentations/the-substrate-cycle
+node presentations/the-substrate-cycle/build.mjs --output=presentations/the-substrate-cycle/work/revisions/2026-09-10-independent-review/candidate
+SCRIPTA_CDP_URL=http://127.0.0.1:9257 node tools/shf/qa-film.mjs presentations/the-substrate-cycle
+SCRIPTA_CDP_URL=http://127.0.0.1:9257 node presentations/the-substrate-cycle/qa/check-material-motion.mjs
+SCRIPTA_CDP_URL=http://127.0.0.1:9257 node presentations/the-substrate-cycle/qa/capture-fresh-frames.mjs
 ```
 
-Local browser tests use a private muted instance with external resolution blocked and background services disabled. The visitor controls listening.
+Only root integration refreshes the aggregate catalogue and generated entry pages. No reader or release file changed.
+
+Prior public SHF and manifest are preserved under `previous/published/`. Owned QA Chrome9257 is closed.

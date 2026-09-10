@@ -1,28 +1,7 @@
-# Judgment Engines — English book introduction
+# Judgment Engines — revised book introduction
 
-The film introduces why this book exists, its distinctive argument, selected examples, limits and a specific reading route. It is not an exhaustive summary or a product demonstration.
+Current film:3:11.433,26 English single-sentence local Piper clips and five source-specific scenes. A failed patch connects criteria, execution, intent, evaluator validity and meaningful appeal. Source-qualified script independently reviewed before voice; the source rubric diagram was inspected and its dependency distinction adapted into the release-gate example.
 
-- Source: `docs/books/judgment/engines/bk-4f63b7e99e714c53/en/full_content.html`, active `edition-1`.
-- Canonical HTML SHA-256: `5c3a45324313aad44d93abb7fc1dc9c9c449e2b011b6f7ed2cfa05edf67bfeeb`.
-- Duration: **7:01** (421055 ms), nine chapters, 54 single-sentence narration clips.
-- Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
-- Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
-- Public film: `docs/books/judgment/engines/bk-4f63b7e99e714c53/Animation/judgment-engines-introduction.shf`.
-- The generated minimal page and catalogue integration are managed by the parent agent; book folders contain no duplicated player or authoring library.
+Canonical rebuild: `node presentations/judgment-engines/art.mjs`, then `node presentations/judgment-engines/build.mjs`. Regenerate changed narration with `node presentations/judgment-engines/render_voice.mjs`. Artwork delegates to the retained review-revision module; the old version is archived.
 
-`source/` retains the complete text extraction, original section IDs, source hash and source-image inventory. `work/editorial.json` retains substantive source-body evidence and the book/content/reader plan; `work/scenes.json` holds editable sentences and timed visual direction. `art.mjs` contains this book's original vector staging. Shared compiler, runtime, Red Hat Display/Text fonts and narration tools are reused.
-
-Rebuild from the repository root:
-
-```sh
-node presentations/judgment-engines/art.mjs
-node presentations/judgment-engines/render_voice.mjs
-node presentations/judgment-engines/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/judgment-engines
-```
-
-Voice caching uses text hashes, so changed sentences must be rendered again. Standalone HTML and VTT exports are in `exports/`, outside the public book folder.
-
-Validation passed: all 54 audio clips decoded in an OfflineAudioContext; 81 sampled frames across all three themes; 21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
-
-Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+All21 technical checks and45 scene/theme samples pass. Root reviewed15 additional fresh-tab Night captures because repeated seeks produced incomplete screenshot raster tiles. Exact scope, limitations and installed hash are in `qa/final-review.json`. No audible playback, full listening review, audience validation or physical-device test is claimed.

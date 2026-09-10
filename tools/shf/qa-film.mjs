@@ -5,7 +5,8 @@ import {connect} from '../../tests/browser-session.mjs';
 const root=path.resolve(process.argv[2]||'');if(!process.argv[2])throw Error('Provide a presentation workspace.');
 const production=JSON.parse(await fs.readFile(path.join(root,'work/production.json'),'utf8'));
 const out=path.join(root,'qa'),shots=path.join(out,'screenshots');await fs.mkdir(shots,{recursive:true});
-const c=await connect(pathToFileURL(path.join(root,'exports',production.id+'.html')).href);
+const exportUrl=pathToFileURL(path.join(root,'exports',(production.filmId||production.id)+'.html')).href;
+let c=await connect(exportUrl);const priorJsErrors=[];
 const checks=[],frames=[];let audio;
 const test=async(name,expression)=>{const result=await c.evaluate(expression);checks.push({name,pass:!!result});if(!result)throw Error(name);return result};
 try{
@@ -22,28 +23,36 @@ try{
  // Match unobstructed playing artwork without starting the clock or an audio device.
  await c.evaluate('p.$("centerPlay").style.visibility="hidden"');
  for(const theme of ['color','paper','night']){
-  await c.evaluate(`p.setTheme('${theme}')`);const durations=await c.evaluate('p.film.scenes.map(s=>s.durationMs)');let start=0;
+  if(theme!=='color'){
+   // A fresh owned player prevents cached SVG raster tiles from a prior theme.
+   priorJsErrors.push(...c.errors);await c.close();c=await connect(exportUrl);
+   await c.size(1200,960);await c.wait('!!document.querySelector("shf-player")?.film');
+   await c.evaluate('window.p=document.querySelector("shf-player");p.setMuted(true);p.pause();p.$("centerPlay").style.visibility="hidden"');
+  }
+  await c.evaluate(`p.setTheme('${theme}');p.seek(0)`);const durations=await c.evaluate('p.film.scenes.map(s=>s.durationMs)');let start=0;
   for(let i=0;i<durations.length;i++){
    for(const [label,ratio]of [['first',.08],['middle',.5],['last',.96]]){
-    const result=await c.evaluate(`(()=>{p.seek(${start+durations[i]*ratio});const invalid=[...p.svg.querySelectorAll('[transform]')].some(e=>/NaN|Infinity/.test(e.getAttribute('transform')));const unresolved=[...p.svg.querySelectorAll('[fill],[stroke]')].some(e=>((e.getAttribute('fill')||'')+(e.getAttribute('stroke')||'')).includes('$'));const inv=p.dom.get('$camera').getCTM().inverse();const connections=p.film.scenes[${i}].connections.every(c=>[[c.from,false],[c.to,true]].every(([port,last])=>{const xy=p.defs.get(port.node).anchors[port.anchor],pt=p.svg.createSVGPoint();pt.x=xy[0];pt.y=xy[1];const a=pt.matrixTransform(p.dom.get(port.node).getCTM()).matrixTransform(inv),line=p.dom.get(c.id)._shape,b=line.getPointAtLength(last?line.getTotalLength():0);return Math.hypot(a.x-b.x,a.y-b.y)<.1}));return {invalid,unresolved,connections}})()`);
+    const result=await c.evaluate(`(()=>{p.seek(${start+durations[i]*ratio});const invalid=[...p.svg.querySelectorAll('[transform]')].some(e=>/NaN|Infinity/.test(e.getAttribute('transform')));const unresolved=[...p.svg.querySelectorAll('[fill],[stroke]')].some(e=>((e.getAttribute('fill')||'')+(e.getAttribute('stroke')||'')).includes('$'));const inv=p.dom.get('$camera').getCTM().inverse();const connections=p.film.scenes[${i}].connections.every(c=>[[c.from,false],[c.to,true]].every(([port,last])=>{const xy=p.defs.get(port.node).anchors[port.anchor],pt=p.svg.createSVGPoint();pt.x=xy[0];pt.y=xy[1];const a=pt.matrixTransform(p.dom.get(port.node).getCTM()).matrixTransform(inv),line=p.dom.get(c.id)._shape,b=line.getPointAtLength(last?line.getTotalLength():0);return Math.hypot(a.x-b.x,a.y-b.y)<.1}));const caption=p.$('caption').getBoundingClientRect();const captionOverlaps=[...p.svg.querySelectorAll('text')].filter(node=>{let opacity=1;for(let a=node;a&&a!==p.svg.parentNode;a=a.parentNode){const css=getComputedStyle(a);if(css.display==='none'||css.visibility==='hidden')return false;opacity*=Number(css.opacity)}if(opacity<.1)return false;const r=node.getBoundingClientRect();return caption.width>0&&caption.height>0&&Math.min(r.right,caption.right)-Math.max(r.left,caption.left)>2&&Math.min(r.bottom,caption.bottom)-Math.max(r.top,caption.top)>2}).map(node=>({text:node.textContent,id:node.id}));return {invalid,unresolved,connections,captionOverlaps}})()`);
     frames.push({theme,scene:i,frame:label,...result});
-    const clip=await c.evaluate('(()=>{const r=p.$("stage").getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,scale:.6}})()');
-    await c.evaluate('document.fonts.ready.then(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))))');
+    const clip=await c.evaluate('(()=>{const r=p.$("stage").getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,scale:1}})()');
+    // Headless Chromium can retain stale raster tiles after a theme/seek change.
+    // Keep the player paused and let the compositor settle before capturing.
+    await c.evaluate('document.fonts.ready.then(()=>new Promise(resolve=>setTimeout(resolve,600)))');
     const shot=await c.send('Page.captureScreenshot',{format:'png',clip});await fs.writeFile(path.join(shots,`${theme}-${String(i).padStart(2,'0')}-${label}.png`),Buffer.from(shot.data,'base64'));
    }start+=durations[i];
   }
  }
  await c.evaluate('p.$("centerPlay").style.removeProperty("visibility")');
- if(frames.some(f=>f.invalid||f.unresolved||!f.connections))throw Error('Invalid sampled geometry, token or connection');
+ if(frames.some(f=>f.invalid||f.unresolved||!f.connections||f.captionOverlaps.length))throw Error('Invalid sampled geometry or caption collision: '+JSON.stringify(frames.filter(f=>f.captionOverlaps.length)));
  for(const width of [1200,720,540,393,320]){
   await c.size(width,960);
   await test('scene headings remain readable and contained '+width,`(()=>{let start=0;for(const scene of p.film.scenes){p.seek(start+1);const title=p.$('sceneTitle'),r=title.getBoundingClientRect(),host=p.getBoundingClientRect(),font=getComputedStyle(title);if(parseFloat(font.fontSize)<20||r.left<host.left||r.right>host.right+1||title.scrollWidth>title.clientWidth+1)return false;start+=scene.durationMs}return true})()`);
   await test('transport buttons fit '+width,'(()=>{const r=p.getBoundingClientRect();return [...p.shadowRoot.querySelectorAll(".controls button")].filter(b=>getComputedStyle(b).display!=="none").every(b=>{const a=b.getBoundingClientRect();return a.left>=r.left-1&&a.right<=r.right+1})})()');
   await test('captions match one whole sentence and fit '+width,'(()=>{let start=0;for(const s of p.film.scenes){for(const b of s.beats){p.seek(start+(b.startMs+b.spokenEndMs)/2);const cap=p.$("captionbox").getBoundingClientRect(),art=p.$("art").getBoundingClientRect(),bar=p.$("transport").getBoundingClientRect();if(p.$("caption").textContent!==b.text||(innerWidth<=720&&cap.top<art.bottom-1)||cap.bottom>bar.top+20)return false}start+=s.durationMs}return true})()');
-  if(width===393||width===320){await c.evaluate('p.seek(2000)');await c.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');await c.capture(path.join(shots,'phone-'+width+'.png'))}
+  if(width===393||width===320){await c.evaluate('p.seek(2000)');await c.evaluate('new Promise(resolve=>setTimeout(resolve,600))');await c.capture(path.join(shots,'phone-'+width+'.png'))}
  }
  await c.evaluate('p.seek(20000);window.referenceSVG=p.captureSVG();p.seek(p.durationMs*.8);p.seek(20000)');await test('seeking A-B-A is deterministic','p.captureSVG()===referenceSVG');
- const report={durationMs:await c.evaluate('p.durationMs'),sentences,checks,audio,sampledFrames:frames.length,frames,jsErrors:c.errors,audiblePlayback:false,fullPlayback:false,completeListeningReview:false,artScreenshotsHidePausedPlayOverlay:true,visualInspection:'Screenshots produced for separate human/agent inspection; geometry checks do not certify visual quality.',physicalDeviceTesting:false};
+ const report={durationMs:await c.evaluate('p.durationMs'),sentences,checks,audio,sampledFrames:frames.length,frames,jsErrors:[...priorJsErrors,...c.errors],audiblePlayback:false,fullPlayback:false,completeListeningReview:false,artScreenshotsHidePausedPlayOverlay:true,visualInspection:'Screenshots produced for separate human/agent inspection; geometry checks do not certify visual quality.',physicalDeviceTesting:false};
  await fs.writeFile(path.join(out,'browser-review.json'),JSON.stringify(report,null,2)+'\n');
- console.log(JSON.stringify({durationMs:report.durationMs,sentences,checks:checks.length,sampledFrames:frames.length,errors:c.errors.length}));if(c.errors.length)process.exitCode=1;
+ console.log(JSON.stringify({durationMs:report.durationMs,sentences,checks:checks.length,sampledFrames:frames.length,errors:report.jsErrors.length}));if(report.jsErrors.length)process.exitCode=1;
 }finally{await c.close()}

@@ -36,7 +36,7 @@
     try{
       if(!loadPromise)loadPromise=player.load(new URL('assets/films/library-introduction.shf',root).href).catch(e=>{loadPromise=null;throw e;});
       await Promise.all([loadPromise,unlocked]);if(token!==attempt||!dialog.open)return;
-      player.setTheme(['dark','dark-orange'].includes(document.documentElement.dataset.theme)?'night':'color');status.hidden=true;await player.play();
+      player.setTheme('color');status.hidden=true;await player.play();
     }catch(error){if(token===attempt&&dialog.open){status.textContent=words[language][6];status.hidden=false;}}
   });
   function localize(next){language=words[next]?next:'en';dictation.setLanguage(language);for(const node of [...entrance.querySelectorAll('[data-mascot-label]'),...dialog.querySelectorAll('[data-mascot-label]')])node.textContent=words[language][+node.dataset.mascotLabel];input.placeholder=words[language][2];form.querySelector('[data-mascot-send]').setAttribute('aria-label',words[language][3]);form.querySelector('[data-mascot-send]').title=words[language][3];dialog.setAttribute('aria-label',words[language][0]);dialog.querySelector('.mascot-film-close').setAttribute('aria-label',words[language][4]);form.querySelector('[data-mascot-cancel]').setAttribute('aria-label',({en:'Close question',ro:'Închide întrebarea',fr:'Fermer la question',de:'Frage schließen',es:'Cerrar pregunta',pt:'Fechar pergunta',it:'Chiudi domanda',pl:'Zamknij pytanie'})[language]);if(location.hash==='#ask-librarian'&&form.hidden&&!entrance.dataset.questionDismissed)showQuestion(false);}

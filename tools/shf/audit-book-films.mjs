@@ -31,7 +31,7 @@ for(const book of books){
   if(root){
    const extraction=path.join(root,'source/extraction.json');
    if(fs.existsSync(extraction)){
-    const e=read(extraction),source=e.file||e.sourceHtml||e.path,expected=e.htmlSha256||e.sha256;
+    const e=read(extraction),source=e.file||e.sourceHtml||e.path||e.source,expected=e.htmlSha256||e.sha256||e.sourceHtmlSha256;
     if(!source||sha(fs.readFileSync(source))!==expected)throw Error('Canonical source hash mismatch');sourceVerified=true;
    }
    const receipts=path.join(root,'work/voice-receipts.json');

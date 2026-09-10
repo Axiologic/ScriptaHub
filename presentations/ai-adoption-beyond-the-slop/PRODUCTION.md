@@ -26,3 +26,7 @@ Voice caching uses text hashes, so changed sentences must be rendered again. Sta
 Validation passed: all 54 audio clips decoded in an OfflineAudioContext; 81 sampled frames across all three themes; 21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
 
 Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+
+## Independent revision, 2026-09-10
+
+Replaced the nine symbolic slides with five concrete book-introduction scenes, 20 English sentences, measured 155047 ms. Canonical artwork command: `node presentations/ai-adoption-beyond-the-slop/art.mjs`. Review/staging evidence and prior version are under `review-revision/`. Final installed hash and all-theme verification: `qa/final-review.json`.

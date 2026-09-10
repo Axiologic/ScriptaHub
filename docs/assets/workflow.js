@@ -257,8 +257,9 @@
     const book = activeBook();
     if (!document.body.dataset.animationBook) document.title = `${words.feedbackTitle} · ScriptaHub`;
     const embedded = Boolean(document.body.dataset.animationBook);
-    const side = `<div class="workflow-aside-stack">${embedded ? "" : compactBookContext(book, lang, words)}</div>`;
-    root.innerHTML = `${embedded ? `<h2>${escape(words.feedbackTitle)}</h2>` : backToBook(book, lang) + pageHero(words.feedbackKicker, words.feedbackTitle)}<section class="workflow-layout"><form class="workflow-form" data-workflow-form><p class="workflow-message">${escape(words.promise)}</p><div class="form-grid">${field(words.name, "name", "text", false, "", true)}${field(words.email, "email", "email")}${field(words.url, "url", "url", true, "https://")}
+    const side = embedded || animation ? "" : `<div class="workflow-aside-stack">${compactBookContext(book, lang, words)}</div>`;
+    const animationContext = animation && book ? ScriptaBookView.markup(book, {variant: "compact-context", language: lang, showCategory: true}) : "";
+    root.innerHTML = `${embedded ? `<h2>${escape(words.feedbackTitle)}</h2>` : backToBook(book, lang) + pageHero(words.feedbackKicker, words.feedbackTitle)}<section class="workflow-layout"><form class="workflow-form" data-workflow-form>${animationContext ? `<div class="animation-book-reminder">${animationContext}</div>` : ""}<p class="workflow-message">${escape(words.promise)}</p><div class="form-grid">${field(words.name, "name", "text", false, "", true)}${field(words.email, "email", "email")}${field(words.url, "url", "url", true, "https://")}
       ${animation ? "" : `<label class="form-field form-field-wide"><span>${escape(words.kind)}</span><select name="kind">${words.kinds.map((kind) => `<option>${escape(kind)}</option>`).join("")}</select></label>`}${textarea(words.feedback, "feedback", words.feedbackHint, true)}${textarea(words.sources, "sources", words.sourcesHint)}</div><button class="workflow-submit" type="submit"${book ? "" : " disabled"}>${escape(agreementSteps[lang][0])}</button><p class="workflow-note">${escape(nextNotes[lang])}</p><p class="workflow-status" data-workflow-status aria-live="polite"></p></form>${side}</section>`;
     const form = root.querySelector("form");
     restoreDraft(form);

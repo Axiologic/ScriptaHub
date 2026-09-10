@@ -1,0 +1,26 @@
+import {storyPerson,storyGesture} from '../../tools/shf/people-poses.mjs';
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {stageAuthor} from '../../tools/shf/stage-authoring.mjs';
+const root=path.dirname(fileURLToPath(import.meta.url));const scenes=JSON.parse(fs.readFileSync(path.join(root,'work/scenes.json')));
+
+function baseCompose(i){const a=stageAuthor(),navy='#315d7c',rust='#be7246',pale='#e1e2d2';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};
+ const result=(id,x,y,variant,b=1)=>put(id,x,y,[a.n('path',{d:'M-64 -92 H64 V95 H-64Z',fill:pale}),a.path(variant?'M-43 -45 L-12 31 L42 -23':'M-43 30 L-12 -38 L42 24',variant?rust:navy,10),a.path('M-40 65 H40',navy,7)],b,variant?'Complementary or contradictory evidence':'An individually relevant but redundant result');
+ if(i===0){put('table',600,360,[a.path('M-420 90 H420 M-360 90 V140 M360 90 V140',navy,15)],1,'A scientific evidence worktable');for(const [id,x,b] of [['r1',280,1],['r2',420,2],['r3',560,2]])result(id,x,320,false,b);result('alternative',935,285,true,3);a.move('alternative',4,795,320);put('labels',600,535,[a.text('What does the set let you decide?',0,0,34)],5);}
+ if(i===1){result('one',295,300,false);result('two',440,310,false,2);result('three',585,320,false,2);put('decision',915,290,[a.n('path',{d:'M0 -95 L105 0 L0 95 L-105 0Z',fill:navy}),a.text('?',0,18,65,'#ffffff'),a.text('Decision',0,165,34)],3);a.move('two',4,340,300);a.move('three',4,385,300);result('counter',650,300,true,4);}
+ if(i===2){put('support',285,285,[a.n('path',{d:'M-36 -100 H36 V-25 L92 83 Q0 115 -92 83 L-36 -25Z',fill:navy}),a.text('Support',0,170,34)],1,'Supporting experimental evidence');put('boundary',595,285,[a.n('path',{d:'M-85 -100 H85 V100 H-85Z',fill:pale}),a.path('M-55 30 L-10 -50 L52 30',rust,10),a.text('Counterexample',0,170,32)],2);put('gap',935,285,[a.n('path',{d:'M-65 -75 H65 V75 H-65Z',fill:pale}),a.text('?',0,16,65,navy),a.text('Uncovered',0,170,34)],3);put('budget',600,520,[a.text('Task · budget · source dependence',0,0,33)],4);}
+ if(i===3){put('compare',350,315,[a.n('path',{d:'M-120 70 H120 V95 H-120Z',fill:navy}),a.n('path',{d:'M-95 45 V-55 H-37 V45 M-18 45 V-55 H40 V45 M59 45 V-55 H117 V45',fill:pale}),a.text('Retrieval baselines',0,160,32)],1);result('new',835,275,true,2);put('question',1030,290,[a.text('?',0,20,75,rust)],3,'A portfolio advantage needs comparative downstream evidence');put('value',835,480,[a.text('Better decisions?',0,0,34)],4);}
+ return a.finish('The worktable exposes redundant relevance, a missing counterexample and an explicit evidence gap; no numeric improvement or established superiority is implied.');}
+
+function compose(i){if(i!==0)return baseCompose(i);const a=stageAuthor(),navy='#426f94',coral='#d67f60',green='#5ea58f',gold='#ddb052',cream='#e9e6d8';const put=(id,x,y,z,b=1,m=id)=>{a.add(a.object(id,x,y,z,m));a.reveal(id,b);};const figure=(id,x,y,c,identity='person-04-neutral',seated=false,scale=.95)=>{storyPerson(a,id,x,y,{coat:c,identity,seated,scale});a.reveal(id,1);};
+figure('researcher',210,495,green);storyGesture(a,'researcher',2,'reflect');storyGesture(a,'researcher',4,'explain');put('table',695,445,[a.n('path',{d:'M-375 -24 H360 L400 20 H-415Z',fill:gold}),a.path('M-330 20 V115 M320 20 V115',navy,15)],1,'A researcher assembles an evidence set for one decision');for(const[id,x,y,alt,b]of[['r1',430,300,false,1],['r2',560,305,false,2],['r3',690,310,false,2],['counter',970,300,true,3]])put(id,x,y,[a.n('path',{d:'M-60 -100 H60 V98 H-60Z',fill:cream}),a.path(alt?'M-36 -53 L-7 37 L38 -29':'M-36 35 L-7 -52 L38 25',alt?coral:navy,10),a.path('M-35 64 H35',green,8)],b,alt?'A contradictory result adds a missing perspective':'A relevant result repeats the same pattern');a.move('r2',3,477,305);a.move('r3',3,525,310);a.move('counter',4,790,315);put('question',730,535,[a.text('Does this set support the decision?',0,0,33)],4);
+
+return a.finish('Original enacted situation: task-specific work, visible participants, source-grounded causal distinction and meaningful motion; illustrative objects do not claim an empirical experiment.');}
+
+for(let i=0;i<scenes.length;i++){
+ const visual=compose(i);
+ for(const actor of visual.objects.filter(o=>o.options?.rig==='character')){
+  const affected=/patient|visitor/.test(actor.id), reflective=/author|reader|reviewer|evaluator|judge/.test(actor.id);
+  const states=affected?['curious','worried','worried']:reflective?['curious','skeptical','determined']:['curious','skeptical','determined'];
+  for(const [j,beat] of [1,3,5].entries())visual.actions.push({actor:actor.id,action:'character.express',emotion:states[j],beat,durationMs:900});
+ }
+ scenes[i].visual=visual;
+}fs.writeFileSync(path.join(root,'work/scenes.json'),JSON.stringify(scenes,null,2)+'\n');

@@ -13,3 +13,5 @@ Run `node presentations/enough-for-everyone/work/art.mjs` to apply editable art,
 Final silent QA passed 21 checks: one sentence per clip, source/editorial metadata, loaded display/text fonts, 56 offline decoded audio clips, 72 sampled frames across Color/Light/Dark, heading/caption/control layout at five widths, and deterministic seeking. No JavaScript errors occurred. Contact sheets, embed samples and representative phone capture were visually inspected. The final SHF hash is in `qa/final-review.json`.
 
 Complete listening, full-duration user playback, physical-phone testing and audience validation remain unperformed. All automated players were muted and closed; no audible output device was opened.
+
+2026-09-10 independent revision: scenes 2 and 5 now enact household energy access and useful robot work with maintenance. All 56 voice clips remain unchanged. Current installed hash and bounded inspection are in `qa/targeted-revision-review.json`; six other scenes remain in the artistic revision queue. Canonical `work/art.mjs` imports `review-revision/worked-art.mjs` so rebuilding preserves these changes.

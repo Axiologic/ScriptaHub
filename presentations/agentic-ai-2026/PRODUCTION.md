@@ -1,28 +1,15 @@
-# Agentic AI 2026 — English book introduction
+# Agentic AI 2026 — revised English book introduction
 
-The film introduces why this book exists, its distinctive argument, selected examples, limits and a specific reading route. It is not an exhaustive summary or a product demonstration.
+Installed narrated film: **6:32.561**, nine scenes and 54 single-sentence clips. The parent revised the complete script and all nine scenes in two passes; an independent review then read all 54 lines and all artwork, retaining the refund/security/harness diagrams and refining six repetitive compositions. Parent approved the final eighteen changed-scene Color frames before installation.
 
-- Source: `docs/books/agentic/ai/2026/bk-6bb778c5204946b7/en/full_content.html`, active `edition-1`.
-- Canonical HTML SHA-256: `c7607c97e82bb8273f4c1192c74271b6195a5672f6705b7c32a1c22b0549213d`.
-- Duration: **6:41** (401190 ms), nine chapters, 54 single-sentence narration clips.
-- Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
-- Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
-- Public film: `docs/books/agentic/ai/2026/bk-6bb778c5204946b7/Animation/agentic-ai-2026-introduction.shf`.
-- The generated minimal page and catalogue integration are managed by the parent agent; book folders contain no duplicated player or authoring library.
+The continuing imagined refund task grounds the book’s account of permissions, state, verification, recovery, total cost and bounded generality. An actual customer and returned parcel, missing evidence, duplicated retrieval, human review and a clarification exchange now supplement the precise technical diagrams. Payment stays pending throughout. The final runtime proposals remain qualified and are not presented as benchmarked product superiority or actual product screens.
 
-`source/` retains the complete text extraction, original section IDs, source hash and source-image inventory. `work/editorial.json` retains substantive source-body evidence and the book/content/reader plan; `work/scenes.json` holds editable sentences and timed visual direction. `art.mjs` contains this book's original vector staging. Shared compiler, runtime, Red Hat Display/Text fonts and narration tools are reused.
+Canonical reader: `docs/books/agentic/ai/2026/bk-6bb778c5204946b7/en/full_content.html`, edition `edition-1`; SHA-256 `c7607c97e82bb8273f4c1192c74271b6195a5672f6705b7c32a1c22b0549213d`. All 43 unique exact editorial quote spans verified. The independent review reread substantive source passages on cost, patterns, bounded generality, orchestration, evaluation and MRP-VM limits; it does not claim a new whole-book reading or independent bibliography verification. Complete review scope and prioritized findings remain in `review-revision/independent/review.json`.
 
-Rebuild from the repository root:
+Local Piper `en_US-ljspeech-medium` uses pace 0.96 at normal playback speed. All 54 root-approved spoken lines and voice recordings were preserved during the independent visual pass; their text/audio hashes were verified. Exact measured gaps remain in `qa/pacing.json`. No audible automated playback occurred.
 
-```sh
-node presentations/agentic-ai-2026/art.mjs
-node presentations/agentic-ai-2026/render_voice.mjs
-node presentations/agentic-ai-2026/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/agentic-ai-2026
-```
+Silent browser QA passed 21 checks, decoded all 54 clips offline, and sampled 81 frames across Color, Light and Dark. It verified actual bundled Red Hat fonts, title/caption/control containment at five widths, deterministic seeking and caption overlap, with zero JavaScript errors. Manual review covered changed-scene first/middle/final Color frames and all-theme middle frames; overlapping request/clarification messages and object clearances were corrected. Contacts: `review-revision/independent/refined-color.jpg` and `refined-themes.jpg`. Final hashes and bounded evidence: `qa/final-review.json`.
 
-Voice caching uses text hashes, so changed sentences must be rendered again. Standalone HTML and VTT exports are in `exports/`, outside the public book folder.
+Full listening, continuous full-duration playback, physical-device and audience validation remain unperformed. QA used an owned muted Chrome with disabled background networking and a dead external proxy; the user’s browser was not touched.
 
-Validation passed: all 54 audio clips decoded in an OfflineAudioContext; 81 sampled frames across all three themes; 21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
-
-Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+Run `node presentations/agentic-ai-2026/art.mjs`, then `node presentations/agentic-ai-2026/build.mjs`. Source-specific art lives in `review-revision/task-art.mjs` and `remaining-art.mjs`; shared player, compiler, fonts and authoring mechanics remain centralized. Voice generation is needed only when spoken text changes. The earlier public SHF and editable snapshots are preserved in the revision workspaces.

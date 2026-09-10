@@ -1,6 +1,8 @@
+import {workedVisual} from '../review-revision/worked-art.mjs';
 import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';
 const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));
 for(const [i,s]of scenes.entries()){
+ if([1,4].includes(i)){s.visual=workedVisual(i);continue;}
  const q=stageAuthor(),{n,tint,path,text,dot,object,add,reveal,hide,move,label}=q,A='#ad664e',B='#36798a',AN='#edb39c',BN='#92d1df';
  const house=(id,x,y,scale=1,door=true)=>add(object(id,x,y,[tint(n('path',{d:'M-120 100V-35L0 -125L120 -35V100Z',fill:A}),AN),tint(n('rect',{x:-82,y:-12,width:50,height:55,rx:4,fill:B}),BN),tint(n('rect',{x:32,y:-12,width:50,height:55,rx:4,fill:B}),BN),tint(n('rect',{x:-22,y:40,width:44,height:60,fill:door?B:A}),door?BN:AN)],'A home receiving useful services, not a claim about universal housing design.',scale));
  const sun=(id,x,y)=>add(object(id,x,y,[tint(dot(0,0,48,A),AN)],'Available energy potential.'));

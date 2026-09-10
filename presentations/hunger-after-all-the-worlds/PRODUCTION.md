@@ -1,22 +1,17 @@
-# Hunger After All the Worlds — English narrated introduction
+# Hunger After All the Worlds — English book introduction
 
-Completed **2:43**, four scenes and 24 single-sentence clips. The public preview flag records pending user listening, not missing narration.
+Revised after independent editorial review, **2:26.405**, four individually staged scenes and 24 single-sentence narration clips. The public preview status preserves the pending visitor listening designation.
 
-Source: `docs/books/hunger/after/all/the/worlds/bk-57cfd396f7fd431e/en/full_content.html`, `edition-1`, HTML SHA-256 `af23c6619f64c24ec182c25aa0b258d24db201fc45182ccd501e6bc0744cc452`. Full text was extracted and indexed; selected chapter-aligned openings, body passages and endings were inspected. This does not claim every word or every chapter was manually reviewed. Exact substantive UTF-16 evidence spans, source hash, chapter map and limitations are retained in working metadata.
+Canonical source: `docs/books/hunger/after/all/the/worlds/bk-57cfd396f7fd431e/en/full_content.html`, edition 1, SHA-256 `af23c6619f64c24ec182c25aa0b258d24db201fc45182ccd501e6bc0744cc452`. The full source was extracted and indexed; selected source passages were reviewed. For this revision, the complete table explanation and first five night sections were reread. Source-4 and source-26/28/29 support the final script, with exact UTF-16 evidence in `work/editorial.json`. This is not a claim to have freshly read every word of the full novel and atlas.
 
-Root reviewed the complete book-first WHY→HOW→WHAT script before voice. It establishes genre, distinctive source tension and a specific reading invitation. Fiction resolutions remain outside the film. English narration uses the prepared local Piper `en_US-ljspeech-medium`, pace0.94, no acceleration, measured 1.25-second ordinary gaps and longer scene transitions. Every clip has a text hash, measured audio and separate caption.
+The script explains why this novel pairs inhabited encounters with a revisable atlas. The revised images enact an inhabited workshop, library selection, copied minds with inherited obligations, and a reader’s entry into the two forms. The library deadline, workshop appointment and domestic promise are explicitly recorded conceptual staging of the source’s examples, not additional named plot incidents. Hidden deviations, private cognitive discoveries and later resolutions remain excluded.
 
-Original book-owned staging and choreography are in `work/art.mjs`; reusable typography, rendering and player controls remain shared. Source images were inspected. Covers, small complex conceptual diagrams and an emblem were omitted where they did not improve the enacted composition. Color, Light and Dark were checked; discovered table-position and contrast issues were corrected and rechecked.
+Root reviewed the entire replacement script before audio, corrected Aster’s role wording and the literary-reference invitation, then independently reviewed all twelve Color sequence frames before installation. The previous version and its QA are preserved in `work/revisions/2026-09-10-independent-review/previous/`.
 
-All 21 shared silent browser checks passed, including offline decoding of all24 clips,36 first/middle/last frames across allthree themes, deterministic seeking, five caption/control widths, loaded Red Hat Display/Text fonts, source/emotion metadata and zero JavaScript errors. Screenshots are under `qa/screenshots/`. No audible background preview, subjective full listening review, physical-device test or audience study is claimed.
+Local Piper `en_US-ljspeech-medium` produced the new English audio at pace 0.94 without acceleration. All 24 narration-text and audio hashes match; measured film duration is 146405 ms. Captions show one complete current sentence, with real intersentence pauses and longer scene transitions. Full subjective listening has not been performed.
 
-Delivery: `docs/books/hunger/after/all/the/worlds/bk-57cfd396f7fd431e/Animation/hunger-after-all-the-worlds-introduction.shf`, plus only this book's manifest animation record. Root integration generates the shared-player entry page and aggregate catalogue. Readers and release workspaces were not modified.
+All 21 silent browser checks passed: 24 offline audio decodes, all-three-theme first/middle/last samples, caption-safe text, loaded fonts, deterministic seeking and controls/captions at five widths. All 36 frames were visually inspected. Review fixed a promise card hiding a face, a note overlapping a page heading, and dark-theme ink on light cards. No audible playback, physical-device test or audience study is claimed. Private isolated Chrome9257 was closed afterward.
 
-```sh
-node presentations/hunger-after-all-the-worlds/work/art.mjs
-node presentations/hunger-after-all-the-worlds/render_voice.mjs
-node presentations/hunger-after-all-the-worlds/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9246 node tools/shf/qa-film.mjs presentations/hunger-after-all-the-worlds
-```
+Installed SHF: `docs/books/hunger/after/all/the/worlds/bk-57cfd396f7fd431e/Animation/hunger-after-all-the-worlds-introduction.shf`. SHA-256 `e42271025a331d430e0401c60597c489031a43965f988883b0f6942260d4225f`. Its bytes match the validated draft. Only this book’s animation and manifest duration changed; root owns aggregate catalogue refresh.
 
-Local browser tests use a private muted instance with external resolution blocked and background services disabled. The visitor controls listening.
+Authoring: `work/art.mjs`, `work/scenes.json`, `work/editorial.json`; evidence: `qa/revision-review.json`, `qa/revision-themes-contact.jpg`, and the three `qa/revision-*-sequence.jpg` sheets. Use shared `build.mjs --output=/staging/path` for future unpublished builds.

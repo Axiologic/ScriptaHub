@@ -4,7 +4,7 @@ The film introduces why this book exists, its distinctive argument, selected exa
 
 - Source: `docs/books/cones/of/meaning/bk-d24f851643364bce/en/full_content.html`, active `edition-1`.
 - Canonical HTML SHA-256: `9fffb412754af6f094ac5284c17793601a16981646b1e9da9c3af0d324707f84`.
-- Duration: **2:25** (145383 ms), four chapters, 20 single-sentence narration clips.
+- Duration: **2:43** (162866 ms), five chapters, 23 single-sentence narration clips.
 - Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
 - Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
 - Public film: `docs/books/cones/of/meaning/bk-d24f851643364bce/Animation/cones-of-meaning-introduction.shf`.
@@ -18,11 +18,21 @@ Rebuild from the repository root:
 node presentations/cones-of-meaning/art.mjs
 node presentations/cones-of-meaning/render_voice.mjs
 node presentations/cones-of-meaning/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/cones-of-meaning
+SCRIPTA_CDP_URL=http://127.0.0.1:9237 node tools/shf/qa-film.mjs presentations/cones-of-meaning
 ```
 
 Voice caching uses text hashes, so changed sentences must be rendered again. Standalone HTML and VTT exports are in `exports/`, outside the public book folder.
 
-Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
+Validation passed: all 23 audio clips decoded in an OfflineAudioContext;45 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
 
 Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+
+## Independent quality revision — 10 September 2026
+
+Root approved the full source-grounded script and all 15 Color frames. The film now follows the book’s conditional hospital waiting-time example: an unfinished consultation persists while the queue measure improves. Two selective views share the same encounter, then a conditional policy page changes purpose while keeping the source facts fixed. This connects the institutional example to the author’s AI-origin inquiry and ends with the actual introductory chapter.
+
+The source’s page29 and page47 figures were visually inspected; their relationships are adapted in the selective common-scene and policy-page sequence. The hospital is composite conceptual staging, and the prompt pair is an original conditional illustration, not recorded AI output. Source scope and exact claims remain in the working editorial record.
+
+All45 theme/frame samples passed with no caption overlap;21 browser checks and23 offline audio decodes passed without JavaScript errors. Visual revision removed a label crossing a character and preserved contrast for dark legs against the light clinic floor in Night. No audible or complete listening review was performed; preview status remains. Owned browser was closed after QA.
+
+Installed SHF SHA-256: `dcbee0c842e553d7ea1a2b038a5afb4df9493491b92ab82d4c419ee4b469c27a`.

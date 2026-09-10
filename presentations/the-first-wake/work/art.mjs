@@ -61,8 +61,20 @@ for(const [index,s] of scenes.entries()){
   label('word','Taste',310,330,76);add(object('meaning',820,293,[tint(path('M-130 0 C-80 -100 80 100 130 0',plum,13),plumNight),tint(path('M-130 18 C-80 118 80 -82 130 18',blue,13),blueNight)],'A relation of mutual alteration rather than biological tasting.'));
   label('translation','A change in possible becoming',820,475,29);reveal('meaning',4);reveal('translation',4);label('guide','Follow the function',310,460,31);reveal('guide',6);break;
  case 'reading-shape':
-  for(let i=0;i<5;i++){const x=165+i*215;add(object('chapter-'+i,x,245,[tint(n('rect',{x:-59,y:-64,width:118,height:168,rx:3,fill:i%2?copper:plum}),i%2?copperNight:plumNight),tint(text(String(i*4+1).padStart(2,'0'),0,6,37,'#ffffff'),'#251d30')],'A chapter landmark across the seventeen-chapter journey, without revealing events.'));if(i)reveal('chapter-'+i,Math.min(i+1,5));}
-  label('journey','An anomaly becomes a wider question',600,470,38);reveal('journey',1);break;
+  rill(300,315,.95);skein(825,315,.95);
+  add(object('anomaly',300,170,[tint(text('?',0,0,63,copper),copperNight)],'The initiating anomaly remains with Rill as the novel expands.'));
+  reveal('anomaly',1);reveal('skein',3);
+  for(const [id,x,y,color,night,form] of [['reef-a',600,155,copper,copperNight,'open'],['reef-b',1040,235,blue,blueNight,'woven'],['reef-c',590,460,plum,plumNight,'woven']]){
+   add(knot(id,x,y,color,night,'',.46,form));reveal(id,4);
+  }
+  link('bond','rill','skein',3,'$ink','Their negotiated intimacy connects two different lives.');
+  link('social-a','rill','reef-a',4,'$ink','Individual questions enter a wider ecology of processes.');
+  link('social-b','skein','reef-b',4,'$ink','Other processes carry their own continuation constraints.');
+  link('social-c','skein','reef-c',5,'$ink','A rule affects lives beyond the original game.');
+  connections.find(c=>c.id==='social-c').from.anchor='left';
+  connections.find(c=>c.id==='social-c').to.anchor='right';
+  move('rill',6,345,310);move('skein',6,775,330);
+  label('relations','Different lives, shared consequences',600,550,32);reveal('relations',7);break;
  case 'reader-fit':
   add(knot('reader-mind',360,295,plum,plumNight,'An unfamiliar life',1.45));
   label('question-one','Consciousness',850,213,35);label('question-two','Identity',850,328,35);label('question-three','Time',850,443,35);reveal('question-two',3);reveal('question-three',4);break;

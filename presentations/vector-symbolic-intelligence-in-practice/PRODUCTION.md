@@ -4,9 +4,9 @@ The film introduces why this book exists, its distinctive argument, selected exa
 
 - Source: `docs/books/vector/symbolic/intelligence/in/practice/bk-3e2eb188d69142d8/en/full_content.html`, active `edition-1`.
 - Canonical HTML SHA-256: `c089468c9f080e77ac50a3ac824e85404af5558afd8109e4187dc2f0524b018b`.
-- Duration: **2:30** (150029 ms), four chapters, 20 single-sentence narration clips.
+- Duration: **2:42** (162182 ms), five chapters, 22 single-sentence narration clips.
 - Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
-- Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
+- Pauses: measured clips followed by 1.25s authored silence plus 0.15s spacing; longer scene endings.
 - Public film: `docs/books/vector/symbolic/intelligence/in/practice/bk-3e2eb188d69142d8/Animation/vector-symbolic-intelligence-in-practice-introduction.shf`.
 - The generated minimal page and catalogue integration are managed by the parent agent; book folders contain no duplicated player or authoring library.
 
@@ -23,6 +23,14 @@ SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/v
 
 Voice caching uses text hashes, so changed sentences must be rendered again. Standalone HTML and VTT exports are in `exports/`, outside the public book folder.
 
-Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
+Validation passed: all 22 audio clips decoded in an OfflineAudioContext;45 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
 
 Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+
+## Reviewed replacement — 2026-09-10
+
+The approved script uses the exact Alice helps Bob / Bob helps Alice source audit to explain topical retrieval versus role-sensitive representation. Original helping poses preserve direction; an explicit proposed event then separates actor, action and recipient. The remedy is conditional and parsing remains independent. The final notebook connects the test with executable semantic structure without claiming a completed replacement language model.
+
+All45 Color/Light/Dark frames were visually inspected, plus a dedicated Alice/helps/Bob frame before reversal. All22clips decoded offline;21 browser checks passed with zero caption overlaps or JavaScript errors. Paper was recaptured at full CDP scale1 after600ms settle in a fresh owned muted tab to avoid stale screenshot tiles. No audible playback, complete listening review or physical-device claim; preview status preserved.
+
+Installed SHF SHA-256: `b60dabe66b88f53a0d284f07b8532f9722e66daafb8d2fae03946fbe0f9861e0`. Full source/evidence scope and visual QA: `review-revision/QA.json`.
