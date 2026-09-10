@@ -143,7 +143,7 @@ History uses a compact cover column and an adjacent text column, including on na
 
 For a book with a published edition, show a pending release's preparation status only in edition history. Do not put a new-edition notice on its book page or catalogue cards. A completely new book with no published edition still carries its brief `In preparation` label until it is ready.
 
-Book-maintenance work begins by scanning `tasks/` for PDF, DOC and DOCX sources. Normalised filenames identify books; trailing `_v2`, `_v3`, etc. identify source versions and are excluded from title matching. An unsuffixed first source is version 1. Matching sources create releases under the existing book ID and route; genuinely new titles receive a new route and random ID. Source hashes prevent repeat ingestion. Stage and validate both EN/RO reader formats and refreshed descriptions, presentations, keywords and covers before installation. Archive previous readers and their local assets together with downloads, and associate older translations with their historical edition. The detailed procedure is in `DS-002-book-releases.md`.
+Book-maintenance work begins by scanning `tasks/` for PDF, DOC and DOCX sources. Normalised filenames identify books; trailing `_v2`, `_v3`, etc. identify source versions and are excluded from title matching. An unsuffixed first source is version 1. Matching sources create releases under the existing book ID and route; genuinely new titles receive a new route and random ID. Source hashes prevent repeat ingestion. Stage and validate both EN/RO reader formats and refreshed descriptions, presentations, keywords and covers before installation. Archive previous readers and their local assets together with downloads, and associate older translations with their historical edition. The detailed procedure is in `DS-002-book-releases.md`. Completed DOCX deliveries are removed from `tasks/` after validated conversion and PDF installation, with an identical source retained in the edition archive; unfinished deliveries remain queued.
 
 On intake, expose the book landing pages and a pending edition-history record immediately, even while the book is being prepared. Mark them clearly as `In preparation` in the selected interface language. A pending edition has `status: preparing` and `startedAt`; it has no publication date and does not replace a previous current edition. Search includes titles in all languages, source IDs and filename aliases, with spaces, underscores and hyphens treated consistently. The ongoing work is recorded in `tasks/RELEASE-PROGRESS.md` and `tasks/release-progress.json`, including source hashes, stable IDs, workspaces, completed chunks and remaining checks. Update that ledger throughout work and resume from it after interruptions.
 
@@ -208,7 +208,16 @@ Every SHF embed derives transport, progress/volume, focus, selected controls and
 
 The public player uses the supplied SHF runtime, actual measured narration,
 chapter navigation, captions, playback speed, mute, seeking and fullscreen.
-Retain voice provenance in metadata and QA; do not autoplay. The presentation page includes a contextual improvement form below its player.
+Retain voice provenance in metadata and QA. A trusted, unmodified same-tab click
+on a book's Animation action starts its narrated film after loading, without a
+second Play click. Carry this intent with a single-use session token matching
+the destination and a short expiry, then remove its URL fragment immediately.
+Direct links, copied URLs, reloads, modified/new-tab clicks and background loads
+remain paused. Hiding the page, pausing or leaving cancels a pending start; becoming
+visible again does not resume it. If audible autoplay is denied or its audio
+unlock stays suspended, return to a usable Play control rather than running a
+silent film or reporting a false page-loading failure. Keep narration and the
+interface language unchanged. The presentation page includes a contextual improvement form below its player.
 Do not append production notes, downloads, chapter lists or transcripts.
 Keep chapter navigation and the full transcript inside the player. Single-film
 standalone exports show only the player. Place three accessible Color, Light and
@@ -501,6 +510,15 @@ using the player controls; reopening the homepage introduction starts in Colorfu
 Animation suggestion forms show a compact book reminder before the introductory
 question: linked cover, title, localised category and short description, using
 the shared book-view component. This also applies beneath an existing player.
+The reminder shows the actual description as justified prose, initially limited
+to two lines. When it overflows, show a visible ellipsis button that expands the
+complete text in place, supports keyboard activation and exposes `aria-expanded`
+and `aria-controls`; preserve the text and show it in the native hover tooltip.
+Do not animate individual sentences in this opt-in compact reminder. Short
+fitting descriptions need no disclosure. Keep title-to-reminder spacing tight,
+and make the introductory question bold, white in both dark site themes and
+high-contrast in light themes. Keep the shared component responsive to width,
+font-size and language changes without duplicating per-book markup.
 
 SHF subtitles use centred, balanced wrapping in a narrower reading measure,
 preferably two even lines when a long sentence fits. Use semibold (600) black text with a white outline in Colorful/Light and regular
@@ -536,3 +554,34 @@ the player, alongside the unobtrusive close icon. Both return to the same book
 and pause playback. Contributors tables use compact uppercase column headings,
 comfortable cell spacing, subtle alternating row surfaces and a rounded outer
 border. Keep contribution prose naturally wrapped across the available width.
+Integrate each edition caption into a restrained accent-edged table heading.
+Use distinct header and author-column surfaces, strong linked author names and
+continuous table borders; inherit the active theme and retain a real two-column
+table on mobile without unnecessary desktop line breaks.
+
+The entire homepage featured-book strip opens the current book, including its
+cover, description, category, keywords and padding. Use a native link with the
+same localized destination as View Book so modifier clicks work. Keep existing
+keyboard-accessible title/action links. Update the whole-card destination on
+every book rotation and language change, and pause rotation while the strip is
+hovered or contains keyboard focus.
+
+
+### Scene transitions and transport visibility
+
+Automatic scene advance is a continuation of playback, not a new user Play
+action: preserve hidden controls and their interaction timer, and emit
+`shf-play` only for an actual playback start. Reveal transport for pointer
+interaction within its own area, a touch gesture, or keyboard focus/navigation.
+Do not reveal it for mouse movement elsewhere over the artwork. Preserve the
+mobile transport rail dimensions while hiding its controls, avoiding layout jumps.
+Prepare only the next scene's audio ahead of the boundary, retaining bounded
+decoded caching and authored sentence pauses. An automatic transition must not
+add the initial playback scheduling delay. Verify muted playback with deliberately
+slow preparation, plus desktop/mobile hover, touch and keyboard interactions.
+
+A pointer press outside the player immediately dismisses transport during playback.
+Pointer movement outside its control rail clears hover and pointer-era button
+focus as reasons to keep it open; it hides after 3.5 seconds without interaction.
+Keyboard navigation still reveals controls. Attach outside-pointer listeners only
+while connected and remove them on disconnect.

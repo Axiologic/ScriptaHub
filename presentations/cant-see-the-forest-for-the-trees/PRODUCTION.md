@@ -1,28 +1,15 @@
-# Can’t See the Forest for the Trees — English book introduction
+# Can’t See the Forest for the Trees — revised English book introduction
 
-The film introduces why this book exists, its distinctive argument, selected examples, limits and a specific reading route. It is not an exhaustive summary or a product demonstration.
+Installed source-grounded revision:162350ms (2:42),20 single-sentence English clips across4 scenes. Local Piper en_US-ljspeech-medium at0.96pace, normal playback speed;18 unchanged audio clips retained and2 rerecorded. Real1.35second pauses plus0.15spacing and longer endings.
 
-- Source: `docs/books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1/en/full_content.html`, active `edition-1`.
-- Canonical HTML SHA-256: `321b89938d545c21acd4f9373624394fe68c0e308b53f508f6eff073b67aae79`.
-- Duration: **2:42** (161827 ms), four chapters, 20 single-sentence narration clips.
-- Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
-- Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
-- Public film: `docs/books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1/Animation/cant-see-the-forest-for-the-trees-introduction.shf`.
-- The generated minimal page and catalogue integration are managed by the parent agent; book folders contain no duplicated player or authoring library.
+The film starts from the author’s reported AI editing loss, separates the book’s research-proposal uncertainty example, and introduces an explicitly imagined rail-yard backup service. An unused alternative and upkeep remain visible; reopening inspection access is not a depicted emergency rescue, routing operation, financial result or guaranteed solution. The exact author draft is not available, so the displayed question is a schematic paraphrase.
 
-`source/` retains the complete text extraction, original section IDs, source hash and source-image inventory. `work/editorial.json` retains substantive source-body evidence and the book/content/reader plan; `work/scenes.json` holds editable sentences and timed visual direction. `art.mjs` contains this book's original vector staging. Shared compiler, runtime, Red Hat Display/Text fonts and narration tools are reused.
+Source: active edition-1 canonical English HTML SHA256321b89938d545c21acd4f9373624394fe68c0e308b53f508f6eff073b67aae79. Installed SHF SHA2567463fd4ee59bf4042c5fc8ea18f18983ead7819b785617e502c6c6feb6011f77. Previous public film, manifest, authoring and report preserved under review-revision/before/.
 
-Rebuild from the repository root:
+Fresh reading: complete source3/4/7/8/9/10/11/16/20/26/35/37/39/42; chapter-aligned opening extracts13/14/18/22/24/28/30/31/33 (13/31 complete), all44section headings and15chapter topics. No fresh every-word rereading or external bibliography verification. Single forest/planet cover inspected and omitted; there are no internal diagrams. Exact source-body spans and original-illustration limits stay in work/editorial.json.
 
-```sh
-node presentations/cant-see-the-forest-for-the-trees/art.mjs
-node presentations/cant-see-the-forest-for-the-trees/render_voice.mjs
-node presentations/cant-see-the-forest-for-the-trees/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/cant-see-the-forest-for-the-trees
-```
+Finalv6 QA:21 checks passed,36frames across Color/Paper/Night inspected,20clips decoded offline,12additional actual-event frames inspected,0caption overlaps or JS errors. Exact named standalone export deep-matches the installed candidate. Question and uncertainty remain readable during transit; hand/status movement is coupled; inspection gate closes then reopens while the yard/ledger remain. Characters stand on ground or the walkway; dark trousers contrast with the authored light surfaces. Root independently approved final script/art and installation.
 
-Voice caching uses text hashes, so changed sentences must be rendered again. Standalone HTML and VTT exports are in `exports/`, outside the public book folder.
+Original raw Paper/Night crops and PNG hashes are retained in review-revision/raw-raster-proof-v6.json; complete labels in raw pixels resolve contact-preview omissions without a speculative runtime change. Earlier failed-looking captures are preserved. Full evidence:qa/targeted-revision-review.json andqa/scale-event-review.json.
 
-Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
-
-Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+No audible playback, complete listening review or physical-device testing. Preview status remains. Owned browser tests start muted and paused; standalone exports stay outside the public book folder. Root owns shared catalogue refresh. Rebuild art.mjs, render_voice.mjs when text changes, then build.mjs with --output pointing to a staging directory; run tools/shf/qa-film.mjs against the regenerated named export before replacement.

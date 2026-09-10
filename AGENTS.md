@@ -53,7 +53,7 @@
   create duplicate releases. Process queued versions in numeric order.
   Prepare the complete EN/RO readers, ten-minute editions, refreshed metadata,
   100 discovery keywords and cover derivatives before installing a release.
-  Keep source files and all prior downloads. See `docs/specs/DS-002-book-releases.md`
+  Keep archived source files and all prior downloads. After the complete conversion is validated and its PDF is installed, remove the delivered DOCX from `tasks/`, only after verifying an identical SHA-256 source copy in the edition archive. Keep unfinished deliveries in `tasks/`. See `docs/specs/DS-002-book-releases.md`
   for the staging, translation and release procedure.
 - **Make incoming work visible immediately.** After identifying a source,
   create the new book's landing pages and searchable catalogue entry, or add

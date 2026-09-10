@@ -30,7 +30,7 @@ Match English titles, source IDs, title routes and recorded source aliases.
 A unique match remains the same book; an unmatched title becomes a new book.
 Ambiguous titles, two different source files with the same title/version, and
 versions that do not advance must be resolved before installation. An identical
-SHA-256 is already imported and must not create another edition. Keep deliveries.
+SHA-256 is already imported and must not create another edition. Keep unfinished deliveries in `tasks/`. After the complete conversion and PDF are validated and installed, remove the completed DOCX delivery from `tasks/`. First verify its SHA-256 matches the retained edition source archive; preserve that archive and all prior downloads. Record cleanup evidence in the edition workspace.
 
 ```sh
 python3 tools/book_tasks.py prepare tasks/AssistOs_v2.docx --source-language en

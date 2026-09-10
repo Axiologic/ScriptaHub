@@ -1,28 +1,17 @@
-# The Licence and the Shared Name — English book introduction
+# The Licence and the Shared Name — revised English book introduction
 
-The film introduces why this book exists, its distinctive argument, selected examples, limits and a specific reading route. It is not an exhaustive summary or a product demonstration.
+Installed root-reviewed candidate:157201ms (2:37),four chapters,20 single-sentence English clips. Local Piper `en_US-ljspeech-medium`;19 cached clips preserved and1 changed clip regenerated. Measured1.35s authored pauses plus0.15s spacing and longer scene endings.
 
-- Source: `docs/books/the/licence/and/the/shared/name/bk-ba3e172b12944518/en/full_content.html`, active `edition-1`.
-- Canonical HTML SHA-256: `ba640165fa6983f4837bcf394e8cea9ff1e6784353bf609538023c4734469e5c`.
-- Duration: **2:36** (156351 ms), four chapters, 20 single-sentence narration clips.
-- Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
-- Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
-- Public film: `docs/books/the/licence/and/the/shared/name/bk-ba3e172b12944518/Animation/the-licence-and-the-shared-name-introduction.shf`.
-- The generated minimal page and catalogue integration are managed by the parent agent; book folders contain no duplicated player or authoring library.
+- Public SHF: `docs/books/the/licence/and/the/shared/name/bk-ba3e172b12944518/Animation/the-licence-and-the-shared-name-introduction.shf`.
+- Film SHA256: `4747678579a69cd39c9bface01f52edafec31c7dddab28ddf40da98cdd4c99a2`.
+- Canonical English edition-1 SHA256: `ba640165fa6983f4837bcf394e8cea9ff1e6784353bf609538023c4734469e5c`.
 
-`source/` retains the complete text extraction, original section IDs, source hash and source-image inventory. `work/editorial.json` retains substantive source-body evidence and the book/content/reader plan; `work/scenes.json` holds editable sentences and timed visual direction. `art.mjs` contains this book's original vector staging. Shared compiler, runtime, Red Hat Display/Text fonts and narration tools are reused.
+The book’s historical account prepares its proposed separation between released technical rights and voluntary common-name participation. An original fictional software team keeps code F distinct from a public mark, inspects a rights folio, and continues work under a visibly different active mark after ordinary departure. Its dated/scoped work history remains. Covered-code rights do not transfer all datasets, customers, current certification or an official mark. The folio shows selected legal functions, not a software settings menu or a complete seven-instrument implementation. No source-reported organization, contested custodian succession, verified legal enforceability or guaranteed institutional outcome is asserted.
 
-Rebuild from the repository root:
+Fresh complete source1/2/33/45/46/47/54/55/56/62/63/68/69; chapter-aligned opening extracts5/6/10/15/18/22/25/28/32/35/38/42/50/58/65/66 and full heading map. All24 source images inspected. Figures16(page91) and21(page113) inform technical-commons/shared-name and ordinary-exit staging; layered-rights figures inform the project folio. Dense source charts and cover elephant are not embedded. This is targeted review plus chapter overview, not a fresh every-word reread or bibliography/legal verification. Root read the full20-line script and source63 passages, not a certified full63 section. Source spans and original illustration boundaries remain in work/editorial.json.
 
-```sh
-node presentations/the-licence-and-the-shared-name/art.mjs
-node presentations/the-licence-and-the-shared-name/render_voice.mjs
-node presentations/the-licence-and-the-shared-name/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/the-licence-and-the-shared-name
-```
+Full QA21 checks,20 offline audio decodes,36 Color/Paper/Night frames and12 actual-event frames were reviewed on candidate b59674410430225550fcfa3d523540abfb2fe5075b6308d2aa6d97d1a2d668bb. Root reviewed those frames. The only later change widened the Proposed compact placard202to242 while retaining its position; current candidate passed recompile/identity and targeted three-theme padding/crop checks in qa/placard-final-review.json. No need to claim a second full36-frame run on this tiny edit. Exact named export deep-equals the installed candidate apart from embedded assets.
 
-Voice caching uses text hashes, so changed sentences must be rendered again. Standalone HTML and VTT exports are in `exports/`, outside the public book folder.
+Actual event transforms show source copy movement while mark/visitor stay fixed, developer and carried editor moving together, and code F plus dated/scoped history staying fixed while current sign moves off and a distinct active sign appears. The sign stays above history/code-label regions. Real defects corrected: laptop below face, coupled actor raised above caption line, placard separated from folio rim with padded edges. Paper/Night contact previews omitted text for root, but all six original single crops and separate DOM proof contain complete labels; original/crop hashes and ink counts remain in review-revision/raw-paper-night-proof-v3.json. This resolves these original rasters, not a universal preview diagnosis.
 
-Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
-
-Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+Prior public film, manifest, report and editable sources are archived in review-revision/before/. Existing preview status retained. No audible playback, full listening review, physical-device test or current-law research claimed. Parent owns shared catalogue/page refresh. Rebuild via art.mjs, render_voice.mjs and build.mjs --output=/absolute/staging/path.

@@ -1,29 +1,15 @@
-# Anatomy of an Echo — narrated SHF introduction
+# Anatomy of an Echo — revised book invitation
 
-Finished English narration, **6:14**, eight scenes and 56 individual sentence clips. Public preview status records the pending user listening review, not unfinished audio.
+Installed revision: 164825 ms (2:45), four scenes and 22 single-sentence English clips. Root approved the complete replacement script before its local Piper recordings. This support/grasp repair preserves every approved sentence and recording; no voice generation or audible playback was performed. Measured ordinary gaps are 1450 ms (1300 ms authored caption tails plus scheduling separation), with 4000 ms scene transitions.
 
-- Canonical source: `docs/books/anatomy/of/an/echo/bk-7a0e708c9ac4499a/en/full_content.html`, `edition-1`. HTML SHA-256 `f0a906809fd1f935ba90f55064f4befa2009b05d978596f789fb5f388b25c775`; exact text hash and UTF-16 prose-span claims retained in source/editorial files.
-- Reading scope: full semantic extraction and heading index; chapter-aligned opening/end coverage with selected deeper passages, including endings to protect discoveries. This does not claim every word was manually read. See `source/chapter-review-extracts.json`, `work/chapter-map.json`, and `qa/source-review.json`.
-- Purpose: source-specific book-first WHY→HOW→WHAT invitation, with explicit genre, concrete opening, distinctive treatment and reading gains. Root reviewed all complete scripts before voice; repeated withholding boilerplate and generic instructions were revised.
-- Art: original geometry and composition in `work/art.mjs`, with source-specific material vocabulary. Covers inspected; no interior source diagrams/photos were present. Foreground scale, spatial staging, consequential movement, and theme contrast received iterative review. Reusable typography, authoring primitives and runtime remain site-owned.
-- Voice: local Piper `en_US-ljspeech-medium`, pace0.94, no tempo acceleration. Model card retained. Each recording has a text hash and measured duration; scores, receipts and editable English script remain in this workspace.
-- Actual ordinary sentence gaps: **1400ms**; transitions are longer. Exactly one sentence per clip and caption. Final measured duration is within the requested5–10minutes.
+Canonical edition 1 reader HTML SHA `f0a906809fd1f935ba90f55064f4befa2009b05d978596f789fb5f388b25c775`; extracted text SHA `2e26c0de17d156ec0bfc4faf5fdd2fec2e27b5e2beb1cd3e6b077326ae3935a0`. Root reread source chapters 1, 2, 5 and ending chapters 30, 32 to protect revelations. The material repair independently reread chapters 1 and 2 completely. Inherited full extraction and chapter map remain; no fresh end-to-end novel reread is claimed.
 
-## Verification
+The opening makes the novel’s reading promise explicit: familiar likeness does not settle what continuation permits. Shared ceramic and repair work grounds the relationship; an early recorded younger likeness complicates recognition; the reading invitation returns to consent and the conditions of speaking. No physical copy arrival, definitive consciousness judgment, later classified counts, deaths or endings are shown. `review-revision/SCRIPT-AND-ART.md` contains the approved 22 lines and source plan. Current editorial scenePlan, claims and hooks have been reconciled to those four scenes rather than the previous eight-scene script.
 
-All 21 shared silent browser checks passed: all56 clips decoded using OfflineAudioContext,72 first/middle/last frames across Color/Light/Dark, deterministic seeking, loaded bundled Red Hat Display/Text, source and emotion metadata, five caption/control widths1200/720/540/393/320, and zero JavaScript errors. Per-frame screenshots and phone layouts are in `qa/screenshots/`. All-theme contact inspection checked staged compositions and exposed layering defects that were corrected and rechecked where applicable.
+Book-owned art lives in `review-revision/ceramic-art.mjs`. Fired bowls retain the uneven rim and dark pooled glaze. Iron tong jaws grip opposing sides, move with the bowl and hand, lower its base to the brick surface, then release and rest on the tabletop. Workshop upper bodies have continuous sleeves and grasping fingers. Sensor feet meet the bench; the screwdriver tip engages its housing. Tool, fingers and wrist band travel together before Mara takes the handle and Elias releases it. The repair is compressed onto a workbench although the source places Elias beside the kiln; this is recorded visual staging, not a new plot fact. The older Elias is an unframed upper body with a short forearm and open palm; only the smaller younger likeness is framed as a recording. Mara, Elias and the sensor are staged close enough for a normal reach, and the bowl-hand clears before the receiving hand appears. An actual supported reading volume and the same imperfect bowl close the film. Empty geometric strokes do not stand in for unexplained technological mechanisms.
 
-No audible background preview, full listening review, physical-device test or audience-comprehension study is claimed. The player remains paused for the visitor to start listening.
+`qa/supported-action-review.json` measures fourteen support/grasp/motion conditions in all three themes, including lowering, contact, release, transfer and reading-table support. Shared silent QA checks decoded audio, exact single-sentence captions, five viewport widths, loaded fonts, theme geometry and deterministic seeks. Full-resolution captures run sequentially in owned muted Chrome with external network blocked; no concurrent capture process is used. Actual contact sheets require visual inspection; a passed DOM check alone does not certify a complete raster. No subjective pronunciation/listening review or audience test is claimed.
 
-## Delivery and rebuilding
+Old public SHF is preserved under `review-revision/previous-version/`. The exact staged replacement was installed after root’s independent review. Root owns catalogue integration; no shared refresh, historical reader or unrelated edition/contributor field was modified.
 
-Only `docs/books/anatomy/of/an/echo/bk-7a0e708c9ac4499a/Animation/anatomy-of-an-echo-introduction.shf` is published by this workspace, plus its own manifest's animation field. Root integration regenerates the shared-player entry page and aggregate catalogue. No reader, release workspace, historical source or unrelated manifest field was deliberately changed.
-
-```sh
-node presentations/anatomy-of-an-echo/work/art.mjs
-node presentations/anatomy-of-an-echo/render_voice.mjs
-node presentations/anatomy-of-an-echo/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9246 node tools/shf/qa-film.mjs presentations/anatomy-of-an-echo
-```
-
-Standalone HTML and VTT exports, speech audio and caches remain in ignored working outputs. Production metadata stays out of the public film shell.
+Installed SHA `8e873350bd7d5c702ac78afbd0575210c41163573ff1ad734d37e5350af60144` passes 21 shared silent checks and 14 actual material/reach/opacity assertions in each theme. All 36 full frames and 18 action-detail frames were locally inspected. Unique `support-8e873350-*` and `grasp-8e873350-*` contacts identify this exact candidate; previous candidate contacts are not final evidence. All 22 current audio files match their receipts. A duplicate disappearance cue that revived the old bowl-hand during transfer was removed and its absence asserted. Root reviewed all 36 standard and 18 action frames and approved exact candidate installation.

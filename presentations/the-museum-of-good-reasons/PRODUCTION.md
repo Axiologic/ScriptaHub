@@ -1,29 +1,23 @@
-# The Museum of Good Reasons — narrated SHF introduction
+# The Museum of Good Reasons — revised narrated introduction
 
-Finished English narration, **6:05**, eight scenes and 56 individual sentence clips. Public preview status records the pending user listening review, not unfinished audio.
+Installed English film: **2:26 (145923 ms)**, four scenes, 21 newly synthesized local Piper clips. Independent root review approved the full script and art/source plan before production. Root inspected all36standard frames,27action events and unique raw label/distance/route/page crops, approving this exact candidate. Full standalone-film equality was reconfirmed before installation; the old public film and all previous editable work remain preserved in `review-revision/previous-version/`.
 
-- Canonical source: `docs/books/the/museum/of/good/reasons/bk-0db7c8ba679b41bb/en/full_content.html`, `edition-1`. HTML SHA-256 `b164514faac03085d8258af0221aa509d0350cc490e345591150693bff7e9222`; exact text hash and UTF-16 prose-span claims retained in source/editorial files.
-- Reading scope: full semantic extraction and heading index; chapter-aligned opening/end coverage with selected deeper passages, including endings to protect discoveries. This does not claim every word was manually read. See `source/chapter-review-extracts.json`, `work/chapter-map.json`, and `qa/source-review.json`.
-- Purpose: source-specific book-first WHY→HOW→WHAT invitation, with explicit genre, concrete opening, distinctive treatment and reading gains. Root reviewed all complete scripts before voice; repeated withholding boilerplate and generic instructions were revised.
-- Art: original geometry and composition in `work/art.mjs`, with source-specific material vocabulary. Covers inspected; no interior source diagrams/photos were present. Foreground scale, spatial staging, consequential movement, and theme contrast received iterative review. Reusable typography, authoring primitives and runtime remain site-owned.
-- Voice: local Piper `en_US-ljspeech-medium`, pace0.94, no tempo acceleration. Model card retained. Each recording has a text hash and measured duration; scores, receipts and editable English script remain in this workspace.
-- Actual ordinary sentence gaps: **1400ms**; transitions are longer. Exactly one sentence per clip and caption. Final measured duration is within the requested5–10minutes.
+The introduction explains why this philosophical novel merits reading: explanations can remain true while leaving a person's loss outside the account. Mara's lamp label introduces framing; the umbrella's projected street routes make perspective consequential; the bench file distinguishes correct facts from a full description of loss; the final scene returns to the book's wider galleries and its ordinary reading entrance, *The Lamp's Label*.
 
-## Verification
+Canonical source is edition1 at `docs/books/the/museum/of/good/reasons/bk-0db7c8ba679b41bb/en/full_content.html`. HTML SHA-256: `b164514faac03085d8258af0221aa509d0350cc490e345591150693bff7e9222`. Extracted text SHA-256: `1202641348ca65f815bd005a1e7fab92fc5b7a7b27d3063d455060af22f18ca7`. Fresh complete chapters1,2,3,4,7,9,19, the prologue/epilogue, the final chapter's conclusion and the complete chapter map were reviewed, together with every line of the old film. This is bounded source review, not a fresh every-word reading of the entire novel. Fourteen exact supporting spans and explicit scope remain in `review-revision/source-evidence.json`.
 
-All 21 shared silent browser checks passed: all56 clips decoded using OfflineAudioContext,72 first/middle/last frames across Color/Light/Dark, deterministic seeking, loaded bundled Red Hat Display/Text, source and emotion metadata, five caption/control widths1200/720/540/393/320, and zero JavaScript errors. Per-frame screenshots and phone layouts are in `qa/screenshots/`. All-theme contact inspection checked staged compositions and exposed layering defects that were corrected and rechecked where applicable.
+Original art lives in `work/art.mjs`. A cup-size brass oil lamp replaces the old film's electric-style lampshade. The hidden-pipe cutaway is explanatory staging of the opening exhibit, **not** the later transparent-pipe gallery reform. The route reconstructs the participants' accounts on the museum's projected floor, with actual separation, following and Mara's retracing. The bench is a conceptual reenactment of a first-chapter file; no visit by Mara is asserted. Supported workers lift, carry and settle it. The reader's lap, arms and hands support the final book; the page fold stays at its gutter. Cast appearance, bench construction and simplified sets are illustrative. The source cover was inspected, but no source image is imported; no interior diagrams were available.
 
-No audible background preview, full listening review, physical-device test or audience-comprehension study is claimed. The player remains paused for the visitor to start listening.
+Protected material includes watch/bridge identities and discoveries, family fates, archive clues, later reforms and window resolution, and final clinical/ontological developments. The prologue explicitly permits *Whale Within Whale* as an independent entrance; only its title is shown.
 
-## Delivery and rebuilding
+Local Piper `en_US-ljspeech-medium` generated 21 new clips at pace0.94 and tempo1. Measured speech is105.337375seconds; ordinary silence between sentences is1450ms and scene transitions4000ms. Every clip and caption contains one sentence, at most15words; all21 audio-file hashes match their receipts. No external voice or translation API was used. The emotional arc is authored through acting and pacing; Piper is not claimed to provide verified theatrical vocal performance.
 
-Only `docs/books/the/museum/of/good/reasons/bk-0db7c8ba679b41bb/Animation/the-museum-of-good-reasons-introduction.shf` is published by this workspace, plus its own manifest's animation field. Root integration regenerates the shared-player entry page and aggregate catalogue. No reader, release workspace, historical source or unrelated manifest field was deliberately changed.
+The final candidate passed all21 shared silent checks,21 offline audio decodes,36 sampled frames, five caption/control widths, loaded bundled Red Hat fonts, deterministic seeking and zero JavaScript errors. Thirteen actual material assertions pass per theme. Final repetition after the bounded7-metre annotation contrast/placement repair passed. All36 standard frames and27 action frames were inspected; measured motion covers lamp/pencil contact, the route's changing separation and turn, bench/hand movement, supported volume and page/hand state changes. Source and artistic judgment remain distinct from technical validation.
 
-```sh
-node presentations/the-museum-of-good-reasons/work/art.mjs
-node presentations/the-museum-of-good-reasons/render_voice.mjs
-node presentations/the-museum-of-good-reasons/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9246 node tools/shf/qa-film.mjs presentations/the-museum-of-good-reasons
-```
+Candidate SHA-256: `848d2d72eb59f436aceb29323f0498a7d054a151ddd2ab217b959d76c3d9b767`.
 
-Standalone HTML and VTT exports, speech audio and caches remain in ignored working outputs. Production metadata stays out of the public film shell.
+All browser testing is muted, with an owned network-restricted Chrome profile and OfflineAudioContext decoding. No audible preview, full playback or complete listening review is claimed. The published preview status retains that listening limitation. Shared runtime, skill code, catalogue and historical edition files are unchanged.
+
+Tool previews occasionally omitted repeated labels. The actual raw file-label regions are byte-identical across all3themes (1518 exact ink pixels each); unique crop hashes are retained in `qa/raw-848d2d72-proof.json`. This bounded evidence does not attribute the preview behavior to an unverified runtime defect.
+
+Reusable lessons were saved separately in the linked skill repository’s `shf-presentation-creator/references/ART_DIRECTION.md`: current horizontal-only `walkTo` behavior and the initial opacity written by a later `appear`. No runtime change was made.

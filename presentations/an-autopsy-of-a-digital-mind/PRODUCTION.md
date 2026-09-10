@@ -1,29 +1,11 @@
-# An Autopsy of a Digital Mind — narrated SHF introduction
+# An Autopsy of a Digital Mind — revised book introduction
 
-Finished English narration, **6:21**, eight scenes and 56 individual sentence clips. Public preview status records the pending user listening review, not unfinished audio.
+Installed English narrated SHF: **151.577 seconds**, four scenes, 21 one-sentence clips. SHA-256 `23bde873b9c79c36f48d9246a143eeff2176efa27469ea0e2de5133d931f163a`.
 
-- Canonical source: `docs/books/an/autopsy/of/a/digital/mind/bk-dd1a6c0d64b84fa0/en/full_content.html`, `edition-1`. HTML SHA-256 `b0c10d4d351cd2e92859bcb4a8b80489798b4b912c28b236c457c4f197d38655`; exact text hash and UTF-16 prose-span claims retained in source/editorial files.
-- Reading scope: full semantic extraction and heading index; chapter-aligned opening/end coverage with selected deeper passages, including endings to protect discoveries. This does not claim every word was manually read. See `source/chapter-review-extracts.json`, `work/chapter-map.json`, and `qa/source-review.json`.
-- Purpose: source-specific book-first WHY→HOW→WHAT invitation, with explicit genre, concrete opening, distinctive treatment and reading gains. Root reviewed all complete scripts before voice; repeated withholding boilerplate and generic instructions were revised.
-- Art: original geometry and composition in `work/art.mjs`, with source-specific material vocabulary. Covers inspected; no interior source diagrams/photos were present. Foreground scale, spatial staging, consequential movement, and theme contrast received iterative review. Reusable typography, authoring primitives and runtime remain site-owned.
-- Voice: local Piper `en_US-ljspeech-medium`, pace0.94, no tempo acceleration. Model card retained. Each recording has a text hash and measured duration; scores, receipts and editable English script remain in this workspace.
-- Actual ordinary sentence gaps: **1400ms**; transitions are longer. Exactly one sentence per clip and caption. Final measured duration is within the requested5–10minutes.
+Full21-line independently approved source/art plan, full preface and selected ambition/apology/final-epilogue spans, full section map; no fresh entire-book reread.
 
-## Verification
+Root viewed36standardframes before final bookmark/layer/identity corrections,36final actual-event frames after those corrections, original Night text crops and final foreground-pencil crop; independent reviewer cleared final Paper/Night hand contact and female identity. Initial paper-sleeve/caption collision, chapter-tab text overlap, bookmark overlap and hidden reaching hand fixed.
 
-All 21 shared silent browser checks passed: all56 clips decoded using OfflineAudioContext,72 first/middle/last frames across Color/Light/Dark, deterministic seeking, loaded bundled Red Hat Display/Text, source and emotion metadata, five caption/control widths1200/720/540/393/320, and zero JavaScript errors. Per-frame screenshots and phone layouts are in `qa/screenshots/`. All-theme contact inspection checked staged compositions and exposed layering defects that were corrected and rechecked where applicable.
+Narration uses local Piper en_US-ljspeech-medium with measured sentence pauses and no speech acceleration. No audible background playback or complete listening review was performed. The actual final candidate/export scenes, embedded audio and voice-text hashes agree; see `review-revision/candidate-identity.json` and `qa/final-review.json` for exact verification scope.
 
-No audible background preview, full listening review, physical-device test or audience-comprehension study is claimed. The player remains paused for the visitor to start listening.
-
-## Delivery and rebuilding
-
-Only `docs/books/an/autopsy/of/a/digital/mind/bk-dd1a6c0d64b84fa0/Animation/an-autopsy-of-a-digital-mind-introduction.shf` is published by this workspace, plus its own manifest's animation field. Root integration regenerates the shared-player entry page and aggregate catalogue. No reader, release workspace, historical source or unrelated manifest field was deliberately changed.
-
-```sh
-node presentations/an-autopsy-of-a-digital-mind/work/art.mjs
-node presentations/an-autopsy-of-a-digital-mind/render_voice.mjs
-node presentations/an-autopsy-of-a-digital-mind/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9246 node tools/shf/qa-film.mjs presentations/an-autopsy-of-a-digital-mind
-```
-
-Standalone HTML and VTT exports, speech audio and caches remain in ignored working outputs. Production metadata stays out of the public film shell.
+The source script and original art remain in `work/` and `review-revision/`; previous public film, manifest and production record are preserved in `review-revision/previous-version/`. The public book folder contains the SHF and shared-player entry only. No public claim of empirical validation or production metadata is added.

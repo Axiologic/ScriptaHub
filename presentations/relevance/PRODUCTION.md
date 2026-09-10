@@ -1,28 +1,17 @@
-# Relevance — English book introduction
+# Relevance — revised English book introduction
 
-The film introduces why this book exists, its distinctive argument, selected examples, limits and a specific reading route. It is not an exhaustive summary or a product demonstration.
+Installed root-reviewed candidate,151988ms (2:32),20 single-sentence English narration clips in four chapters. Piper `en_US-ljspeech-medium` runs locally;16 prior clips preserved and4 changed clips regenerated. Measured pauses remain1.35s plus0.15s spacing, with longer transitions.
 
-- Source: `docs/books/relevance/bk-765eb810dbff4bf4/en/full_content.html`, active `edition-1`.
-- Canonical HTML SHA-256: `4a703a7f057748adcf2f8f3a5be2505b322870ba00921ec516ef6f7c5886faab`.
-- Duration: **2:34** (154434 ms), four chapters, 20 single-sentence narration clips.
-- Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
-- Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
 - Public film: `docs/books/relevance/bk-765eb810dbff4bf4/Animation/relevance-introduction.shf`.
-- The generated minimal page and catalogue integration are managed by the parent agent; book folders contain no duplicated player or authoring library.
+- Film SHA256: `067303aa1fca62f3803e545697eb39f6cf7004a5a6bde72fcf7f3707a3a3c500`.
+- Canonical English edition-1 SHA256: `4a703a7f057748adcf2f8f3a5be2505b322870ba00921ec516ef6f7c5886faab`.
 
-`source/` retains the complete text extraction, original section IDs, source hash and source-image inventory. `work/editorial.json` retains substantive source-body evidence and the book/content/reader plan; `work/scenes.json` holds editable sentences and timed visual direction. `art.mjs` contains this book's original vector staging. Shared compiler, runtime, Red Hat Display/Text fonts and narration tools are reused.
+The source's rare-failure method stays unchanged through theoretical, clinical-safety and conditional regulatory contexts. Two critics physically receive excerpts from the same source, making correlated evidence visible. A small cinema reserves an exploration screening without claiming cultural success. These are source-grounded illustrations, not a reported incident, medical diagnosis, performance finding or regulator approval. The booklet's grid and diamond are editorial identity marks, not measured failure frequencies.
 
-Rebuild from the repository root:
+Fresh complete source sections6–11 and55–59, all10 chapter openings and all6 source images inspected. The cover and linear diagrams were assessed; actor/context/time and shared-source relationships were adapted to original art rather than copying box chains. No fresh complete reading of remaining chapters claimed. Detailed source spans, emotional direction, script and art decisions remain in `work/` and `review-revision/`.
 
-```sh
-node presentations/relevance/art.mjs
-node presentations/relevance/render_voice.mjs
-node presentations/relevance/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/relevance
-```
+Validation:21 checks passed,20 clips decoded offline,36 sampled Color/Paper/Night frames inspected,0 caption intersections or browser errors. Eleven extra action frames verify same-method continuity, excerpt movement and the reel's unobstructed route. The sampled standalone export equals the staged film apart from asset embedding. Root independently reviewed all36 frames and11 event frames before installation. Original film, manifest, narration receipts and authoring files were archived under `review-revision/before/`.
 
-Voice caching uses text hashes, so changed sentences must be rendered again. Standalone HTML and VTT exports are in `exports/`, outside the public book folder.
+No audible playback or complete listening review was performed. Owned test tabs and browser were closed; no physical-phone test or bibliography verification claimed. Existing manifest preview status retained. Parent owns catalogue/page refresh; no shared catalogue was changed.
 
-Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
-
-Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+Rebuild with `node presentations/relevance/art.mjs`, `node presentations/relevance/render_voice.mjs`, then `node presentations/relevance/build.mjs --output=/absolute/staging/path`. Use `tools/shf/qa-film.mjs` against a muted, external-network-blocked owned browser. The candidate and unique final contacts are in `review-revision/`.

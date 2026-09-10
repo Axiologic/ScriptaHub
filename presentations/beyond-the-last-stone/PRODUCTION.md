@@ -1,29 +1,17 @@
-# Beyond the Last Stone — narrated SHF introduction
+# Beyond the Last Stone — revised narrated introduction
 
-Finished English narration, **5:59**, eight scenes and 56 individual sentence clips. Public preview status records the pending user listening review, not unfinished audio.
+Installed English film: **2:31 (151349 ms)**, four scenes, 21 locally synthesized single-sentence clips. Root reviewed all 36 standard and 21 material action frames, plus unique raw crops, and approved this exact candidate. The previous published film and pre-install manifest remain archived in `review-revision/previous-version/`; standalone embedded-film equality was verified before installation.
 
-- Canonical source: `docs/books/beyond/the/last/stone/bk-718ccf0885654d25/en/full_content.html`, `edition-1`. HTML SHA-256 `aed1832b35cea56941bfab78cd2e12ac289589d841cd79deb82119399986bbfe`; exact text hash and UTF-16 prose-span claims retained in source/editorial files.
-- Reading scope: full semantic extraction and heading index; chapter-aligned opening/end coverage with selected deeper passages, including endings to protect discoveries. This does not claim every word was manually read. See `source/chapter-review-extracts.json`, `work/chapter-map.json`, and `qa/source-review.json`.
-- Purpose: source-specific book-first WHY→HOW→WHAT invitation, with explicit genre, concrete opening, distinctive treatment and reading gains. Root reviewed all complete scripts before voice; repeated withholding boilerplate and generic instructions were revised.
-- Art: original geometry and composition in `work/art.mjs`, with source-specific material vocabulary. Covers inspected; no interior source diagrams/photos were present. Foreground scale, spatial staging, consequential movement, and theme contrast received iterative review. Reusable typography, authoring primitives and runtime remain site-owned.
-- Voice: local Piper `en_US-ljspeech-medium`, pace0.94, no tempo acceleration. Model card retained. Each recording has a text hash and measured duration; scores, receipts and editable English script remain in this workspace.
-- Actual ordinary sentence gaps: **1400ms**; transitions are longer. Exactly one sentence per clip and caption. Final measured duration is within the requested5–10minutes.
+The approved book-first script introduces this prehistoric philosophical novel through the absent herd, an old bear track, finite food beside extensible counting, and the enlarged cooperation of Many Fires. It ends with a concrete invitation to begin *Fire After the Herd*. Later deaths, crossings, accusations, institutional outcomes and final resolutions remain protected.
 
-## Verification
+Canonical source is edition 1, `docs/books/beyond/the/last/stone/bk-718ccf0885654d25/en/full_content.html`. Source HTML SHA-256: `aed1832b35cea56941bfab78cd2e12ac289589d841cd79deb82119399986bbfe`. Exact text SHA-256: `af064c991ee76c28bf986dcec4dcad86d62098ca3e904cf023ab3f04262c1b8c`. Fresh review covered full chapters 1–5, 12–16 and 24, front matter, the complete chapter map and the prior full film script; this is not a fresh end-to-end reading of every novel chapter. Nine exact supporting passages and reading scope are recorded in `review-revision/source-evidence.json`.
 
-All 21 shared silent browser checks passed: all56 clips decoded using OfflineAudioContext,72 first/middle/last frames across Color/Light/Dark, deterministic seeking, loaded bundled Red Hat Display/Text, source and emotion metadata, five caption/control widths1200/720/540/393/320, and zero JavaScript errors. Per-frame screenshots and phone layouts are in `qa/screenshots/`. All-theme contact inspection checked staged compositions and exposed layering defects that were corrected and rechecked where applicable.
+Original material art lives in `work/art.mjs`: a cold camp preparing to travel, close investigation of an old paw impression without a present bear, a child physically adding stones without adding food, and grain storage with a received clay mark. Six remembered waiting stones remain distinct from five food-day stones. Three visible additions compress the longer source counting exchange. The imaginary cast, clothing, simplified objects and staging are illustrative, not archaeological documentation. Source extraction includes a cover image but no interior explanatory figures; no imported source image is used in this revised film.
 
-No audible background preview, full listening review, physical-device test or audience-comprehension study is claimed. The player remains paused for the visitor to start listening.
+Local Piper `en_US-ljspeech-medium` generated all 21 replacement clips at pace 0.94 without tempo acceleration. Measured speech is 110.770833 seconds; ordinary sentence gaps are 1450 ms and scene transitions 4000 ms. Each caption contains exactly the current full sentence, with at most 15 words. All audio-file hashes match their retained receipts. No cloud voice service was used.
 
-## Delivery and rebuilding
+All 21 shared silent browser checks passed: 21 offline audio decodes, bundled display/text fonts, captions and controls at five widths, deterministic seeking and zero JavaScript errors. All 36 first/middle/last theme frames and 21 additional action frames were inspected. Eleven material assertions pass in each theme, covering actual hand/prop contact, unchanged food, mark transfer and reading transition. Dark lower-body paint is locally preserved against the authored pale ground, including Night mode. Raw pixel crops independently confirm both labels, seven currently visible stones at the selected middle frame, all six jars, and visible Night lower bodies; later hidden stones are not asserted present. See `qa/final-revision-review.json`, `qa/material-action-review.json` and `qa/latest-raw-proof.json`.
 
-Only `docs/books/beyond/the/last/stone/bk-718ccf0885654d25/Animation/beyond-the-last-stone-introduction.shf` is published by this workspace, plus its own manifest's animation field. Root integration regenerates the shared-player entry page and aggregate catalogue. No reader, release workspace, historical source or unrelated manifest field was deliberately changed.
+Candidate SHA-256: `e04fbd4c315e7a52c6982327f8824ca01000945921eaf8f070c016b889d6c4a1`.
 
-```sh
-node presentations/beyond-the-last-stone/work/art.mjs
-node presentations/beyond-the-last-stone/render_voice.mjs
-node presentations/beyond-the-last-stone/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9246 node tools/shf/qa-film.mjs presentations/beyond-the-last-stone
-```
-
-Standalone HTML and VTT exports, speech audio and caches remain in ignored working outputs. Production metadata stays out of the public film shell.
+No audible preview or complete listening review occurred. Tests use owned muted Chrome and offline decoding; preview quality status remains appropriate until a human listening review. Shared runtime, catalogue and historical edition files are unchanged.

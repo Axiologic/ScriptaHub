@@ -1,6 +1,6 @@
 # Anatomy of an Echo — replacement book invitation
 
-Purpose: English narrated fiction introduction, roughly three minutes,22 single-sentence beats, four contrasting scenes. Replace the current56-line tour of themes with a clear progression from making an object, through a premature recorded likeness, to the power behind a familiar voice. No voice or public changes yet.
+Purpose: English narrated fiction introduction, roughly three minutes,22 single-sentence beats, four contrasting scenes. Replace the current56-line tour of themes with a clear progression from making an object, through a premature recorded likeness, to the power behind a familiar voice. The approved script has local narrated clips; the revised artwork remains staged pending independent review.
 
 ## 1. More than a likeness
 
@@ -10,7 +10,7 @@ Purpose: English narrated fiction introduction, roughly three minutes,22 single-
 4. It joins an intimate investigation with a harder question about who controls the resulting lives.
 5. Read it for the tension between recognizing someone and accepting their claim on a relationship.
 
-Art: Begin close on Mara's fired bowl, asymmetrical lip and dark pooled glaze clearly visible, supported by iron tongs above a brick worktable. The composition widens just enough to reveal Mara's hands and Elias's open wooden toolbox; workshop tools establish a ceramic studio, not another domestic doorway or generic futuristic skyline. A small original portrait beside an incomplete modeled likeness remains a visibly mediated record, not a body emerging from a machine. Do not imply a new copy has already physically arrived. The bowl is the visual anchor, while narration names the novel and why its intimate stakes matter. Palette: glaze indigo, warm brick, copper tools, pale lake blue, small lively ochre accents; background stays quiet.
+Art: Begin close on Mara's fired bowl, asymmetrical lip and dark pooled glaze clearly visible, supported by iron tongs above a brick worktable. The composition widens just enough to reveal Mara's hands and Elias's open wooden toolbox; workshop tools establish a ceramic studio, not another domestic doorway or generic futuristic skyline. The opening stays in the workshop; it does not imply that any copy has physically arrived. The bowl is the visual anchor, while narration names the novel and why its intimate stakes matter. Palette: glaze indigo, warm brick, copper tools, pale lake blue, small lively ochre accents; background stays quiet.
 
 ## 2. The bowl that listened
 
@@ -21,7 +21,7 @@ Art: Begin close on Mara's fired bowl, asymmetrical lip and dark pooled glaze cl
 5. There, another advanced treatment is tied to completing his digital continuation.
 6. Care and pressure occupy the same conversation, making refusal more complicated than a signature.
 
-Art: A close material action: move the bowl away from a suggested recycle tray to a safe place on the brick table. Show the uneven glazed lip, never a smashed pot or a perfect replacement. Elias opens the old sensor housing with a screwdriver. His wrist band lights; the tool pauses and Mara takes it. Transition at the last two lines to a clinician's consultation tabletop, distinct from the workshop, with treatment and continuation commitments physically linked in a proposed document. The doctor remains attentive, not villain-coded. Do not show total denial of care: no locked hospital door or extinguished medical support. No medical procedure or invented prognosis illustrated. Body-relative scales and physical hand/object support must be inspected.
+Art: A close material action: move the bowl away from a suggested recycle tray to a safe place on the brick table. Show the uneven glazed lip, never a smashed pot or a perfect replacement. Elias opens the old sensor housing with a screwdriver. His wrist band lights; the tool pauses and Mara takes it. Transition at the last two lines to a clinician's consultation tabletop, distinct from the workshop, with treatment and continuation commitments physically linked in a proposed document. No doctor portrait or villain-coded figure is added to the allocation illustration. Do not show total denial of care: no locked hospital door or extinguished medical support. No medical procedure or invented prognosis illustrated. Body-relative scales and physical hand/object support must be inspected.
 
 ## 3. A message arrives early
 
@@ -32,7 +32,7 @@ Art: A close material action: move the bowl away from a suggested recycle tray t
 5. The investigation leads toward institutions that can classify a speaking instance or interrupt it.
 6. The novel asks how much that control decides before its categories have been justified.
 
-Art: A portrait-format projected recording rises from Elias's open palm, explicitly framed as a recording and distinct from the present older person. Both use the same small right thumb/forefinger gesture; match identity and age difference, avoiding a walking copy or a generic eyeless robot. No displayed secret date, branch count, encoded kiln map or unseen mastermind. Cut to a neutral authorized-review desk and a paused recording cursor to symbolize interruption as a question, not reenact the specific later pause or reveal its speaker. Keep the original person's body unchanged and present, and leave the message's authenticity unresolved. A receiver can stop a replay without deleting a person; do not depict those acts as established equivalents.
+Art: An unframed older biological upper body raises a nearby projected recording over a short, continuous forearm and open palm. Only the smaller younger likeness sits inside a recording frame. Both use the same small right thumb/forefinger gesture; match identity and age difference, avoiding a walking copy or a generic eyeless robot. No displayed secret date, branch count, encoded kiln map or unseen mastermind. The recording controls stay visible as narration turns toward institutional classification; no specific later interruption or its speaker is reenacted. Keep the original person's body unchanged and present, and leave the message's authenticity unresolved. A receiver can stop a replay without deleting a person; do not depict those acts as established equivalents.
 
 ## 4. Read before deciding
 
@@ -42,7 +42,7 @@ Art: A portrait-format projected recording rises from Elias's open palm, explici
 4. Attend to who consents, who can refuse, and who controls the conditions of speaking.
 5. Read the novel to question what a likeness may ask of the people who remain.
 
-Art: Return to the actual brick worktable, now viewed over a reader's shoulder. One open volume shows its opening chapter and a discreet next-page marker; the original leaning bowl remains beside it. Retain its same material irregularity instead of a concluding duplicate, second bowl or off-world setting that would spoil the ending. The reader turns toward the first chapter. A short still pause ends the invitation, without death, legal judgment, branch escape or relationship resolution. Only one concise strong player heading per scene. No extra slogan or production note.
+Art: Return to the actual brick worktable, with a reader's forearm entering continuously from the left edge. One open volume shows its opening chapter and a discreet next-page marker; the original leaning bowl remains beside it. Retain its same material irregularity instead of a concluding duplicate, second bowl or off-world setting that would spoil the ending. The reader turns toward the first chapter. A short still pause ends the invitation, without death, legal judgment, branch escape or relationship resolution. Only one concise strong player heading per scene. No extra slogan or production note.
 
 ## Source and protected revelations
 

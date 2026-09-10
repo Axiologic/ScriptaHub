@@ -1,28 +1,15 @@
-# Decentralised Brands — English book introduction
+# Decentralised Brands — revised English book introduction
 
-The film introduces why this book exists, its distinctive argument, selected examples, limits and a specific reading route. It is not an exhaustive summary or a product demonstration.
+Installed root-reviewed film:162134ms (2:42),four chapters,20 single-sentence English clips. Local Piper `en_US-ljspeech-medium`;18 cached clips preserved and2 changed clips regenerated. Measured1.35s authored pauses plus0.15s spacing and longer scene endings.
 
-- Source: `docs/books/decentralised/brands/bk-201d0531859c4e42/en/full_content.html`, active `edition-1`.
-- Canonical HTML SHA-256: `a5290be35cc2b16a7c28df240815dc82de05ba136b1386d41e2c5c45506bffca`.
-- Duration: **2:43** (162646 ms), four chapters, 20 single-sentence narration clips.
-- Voice: locally prepared Piper `en_US-ljspeech-medium`, pace 0.96, normal playback speed; English text and captions. No browser speech or API key.
-- Pauses: measured clips followed by 1.35s authored silence plus 0.15s spacing; longer scene endings.
-- Public film: `docs/books/decentralised/brands/bk-201d0531859c4e42/Animation/decentralised-brands-introduction.shf`.
-- The generated minimal page and catalogue integration are managed by the parent agent; book folders contain no duplicated player or authoring library.
+- Public SHF: `docs/books/decentralised/brands/bk-201d0531859c4e42/Animation/decentralised-brands-introduction.shf`.
+- SHA256: `88b047d3dad1db8c8c5178d30e7c07fccc7750896a26e08fb2805d99e15d1e1c`.
+- Canonical English edition-1 SHA256: `a5290be35cc2b16a7c28df240815dc82de05ba136b1386d41e2c5c45506bffca`.
 
-`source/` retains the complete text extraction, original section IDs, source hash and source-image inventory. `work/editorial.json` retains substantive source-body evidence and the book/content/reader plan; `work/scenes.json` holds editable sentences and timed visual direction. `art.mjs` contains this book's original vector staging. Shared compiler, runtime, Red Hat Display/Text fonts and narration tools are reused.
+A fictional craft federation makes common identity and bounded custody visible through autonomous restoration workshops. Member consultation remains separate from power over the shared name; an actual case goes to independent review with no predetermined outcome. One selected project record crosses a service hatch while the private archive and the receiving workshop's decision stay local. The represented joint repair is scoped project evidence, never a universal credential. A documented custody handover leaves local work intact; a departure route uses a distinct mark. No real institution, automatic acceptance, universal reputation score or guaranteed legal result is asserted.
 
-Rebuild from the repository root:
+Fresh complete source7/8/12/14/15/19/23/24,all12 chapter openings and full heading map were reviewed. Extracted early heading-only sections3/4/5 were not treated as substantive evidence; actual early prose in7 supplies the relevant claims. Original cover octopus inspected and omitted: its centralized animal metaphor does not explain bounded custody. No internal diagrams. This is a targeted source review with chapter overview, not a fresh every-word reread. Source spans, original illustration boundaries and emotional plans remain editable in `work/` and `review-revision/`.
 
-```sh
-node presentations/decentralised-brands/art.mjs
-node presentations/decentralised-brands/render_voice.mjs
-node presentations/decentralised-brands/build.mjs
-SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/decentralised-brands
-```
+QA passed21 checks,20 offline audio decodes,36 Color/Paper/Night frames and12 actual-event frames,with0 caption overlaps or browser errors. Selected-record motion473,288 to753,338 was inspected at intermediate timing; archive272,281 and local decision1015,468 stay fixed. Consultation slips and case move to their distinct recipients. Custody seal544,509 to650,509 changes hands without moving workshops or tools. Final sampled export deep-equals the candidate apart from embedded asset data. Root reviewed all36+12 frames and directly reviewed raw single crops after contact previews omitted parts of the cabinet/charter. All original raw pixels contain the complete objects and labels. Contact evidence and source/crop hashes remain in `review-revision/raw-raster-proof-v3.json`; no recapture or runtime change was made for that preview uncertainty. This resolves these samples, not every possible renderer case.
 
-Voice caching uses text hashes, so changed sentences must be rendered again. Standalone HTML and VTT exports are in `exports/`, outside the public book folder.
-
-Validation passed: all 20 audio clips decoded in an OfflineAudioContext;36 sampled frames across all three themes;21 browser checks including actual bundled fonts, heading containment, all captions, transport controls at 320–1200px, and deterministic seeking. All three theme contact sheets were visually inspected and collision fixes rebuilt. Source and all voice hashes matched at hand-off. Browser tests were muted before any playback and owned tabs were closed.
-
-Scope remains honest: no complete listening review, audible playback, physical-phone test, or independent verification of the book's bibliography. Source reading focused on the argument, selected substantive passages, methodological limits and conclusions; complete extraction is retained for audit. The manifest therefore uses the existing `preview` status.
+Corrected actual art defects: mandate sheet above custodian face, receiving decision marker on its surface, constant dark archive ink on cream in Night. Prior public film, manifest, report and editable sources are archived in `review-revision/before/`. Existing preview status retained. No audible playback, full listening review, physical-device test or fresh bibliography validation claimed. Parent owns shared catalogue/page refresh. Rebuild via this workspace's `art.mjs`, `render_voice.mjs`, and `build.mjs --output=/absolute/staging/path`.

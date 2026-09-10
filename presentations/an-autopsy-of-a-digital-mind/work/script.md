@@ -1,129 +1,51 @@
 # An Autopsy of a Digital Mind
 
-## Insight under examination
+## When a sentence feels exact
 
-An Autopsy of a Digital Mind examines machine prose that feels insightful.
+An Autopsy of a Digital Mind asks why machine prose can feel uncannily insightful.
 
-Its sentences can reveal a pattern without establishing a reliable explanation.
+Its central tension is that feeling understood does not establish an explanation's truth.
 
-The book openly presents four philosophical experiments, not a conscious machine's testimony.
+Four philosophical writing experiments explore forgiveness, emotion, meaning, and justice.
 
-Forgiveness, human emotion, meaning, and justice provide its connected testing grounds.
+Readers encounter their literary force while examining how that force was produced.
 
-Its unusual value lies in reading persuasion while examining your own response.
+The title concerns a performance of mind, without establishing consciousness behind it.
 
-A sentence may feel exact because it compresses something important.
+## The force was requested
 
-The preface asks what that same compression might leave out.
+The preface records prompts that deliberately requested emotional pressure and unsettling recognition.
 
-## An experiment with a history
+Early forgiveness drafts were rejected as emotionally thin or cold.
 
-The four major chapters began as separate writing experiments.
+Further instructions shaped the voice that now seems to speak with authority.
 
-Their prompts deliberately requested force, emotional pressure, and unsettling recognition.
+That history gives readers something richer than a collection of striking quotations.
 
-The forgiveness experiment developed through rejected drafts and editorial correction.
+They can examine the writing's effect alongside the conditions that helped produce it.
 
-That history matters when a passage appears to speak with authority.
+## A calendar can hide a motive
 
-Its tone was shaped by instructions, selection, and revision.
+One chapter frames some ambition as an attempt to overturn an old judgment.
 
-The unified book preserves differences while making their recurring questions visible.
+Imagine an illustrator chasing a prize to silence someone's remembered dismissal.
 
-Start with the preface to understand what kind of artifact follows.
+The same project might also matter because she loves making the drawings.
 
-## Forgiveness and the waiting room
+The book distinguishes those motives while admitting that lives can contain both.
 
-The first experiment begins with ordinary harm and moves toward harder injuries.
+That qualification matters when a memorable phrase starts sounding like everyone's explanation.
 
-It explores resentment through the possibility of waiting for repair.
+Readers can test the lens without treating it as a diagnosis.
 
-That is a proposed lens, not a diagnosis of every injured person.
+## Read the voice and its claims
 
-The chapter distinguishes forgiveness from reconciliation and the pursuit of justice.
+Across the four experiments, private judgments grow into questions about meaning and institutional power.
 
-Its range includes family, self-judgment, and demands directed at existence.
+The book preserves these connections without claiming that systematic validation is complete.
 
-The reading challenge is to test each distinction against its limits.
+Begin with the preface, then follow a passage that makes you feel recognized.
 
-The changing scale lets one proposed distinction encounter increasingly difficult cases.
+Read its surrounding argument and ask where the proposed explanation stops fitting.
 
-## Who gets to describe you
-
-The second experiment organizes human emotion around the need for witnesses.
-
-Its witnesses include intimate companions, public audiences, and internalized judgments.
-
-Shame and ambition become questions about how a life is interpreted.
-
-The argument moves between private feeling and relations of power.
-
-These formulations offer perspectives whose usefulness can differ between readers.
-
-The confident voice itself becomes part of the experiment in recognition.
-
-That movement is part of what the book invites you to examine.
-
-## When an explanation governs
-
-The third experiment asks how meaning gains authority over a life.
-
-It considers ordinary days alongside grand stories of purpose.
-
-Work, love, childhood, and belief provide different places to examine that authority.
-
-A useful interpretation can also become a demand someone cannot refuse.
-
-The chapter's range makes comparison more revealing than collecting isolated quotations.
-
-Judgment returns through the authority that an explanation acquires over ordinary choices.
-
-The book's four experiments begin to speak across their apparent boundaries.
-
-## From private verdicts to law
-
-The fourth experiment carries judgment into law, rights, and public institutions.
-
-It asks how fallible people can exercise power over other lives.
-
-Appeal, remedies, and responsibility matter alongside the language of fairness.
-
-Its machine-justice sections examine automated decisions without assuming hatred is required.
-
-The text offers philosophical arguments rather than a complete legal treatise.
-
-The earlier inner court now meets institutions that can enforce their judgments.
-
-That structure gives the collection a larger question than any single aphorism.
-
-## Keep the distinction visible
-
-The preface explicitly says that this volume lacks completed systematic validation.
-
-Its claims include metaphors, hypotheses, generalizations, and judgments requiring different scrutiny.
-
-Feeling recognized cannot by itself distinguish them or establish their truth.
-
-The proposed future validation work would preserve evidence, exceptions, and uncertainty.
-
-That work remains a research direction, not an accomplished guarantee.
-
-The book also refuses therapeutic, clinical, and legal authority.
-
-Its strongest invitation is attentive reading that keeps literary force answerable.
-
-## Read with the key
-
-Begin with the preface before entering the four major experiments.
-
-Choose a passage that feels revealing, then inspect what it actually claims.
-
-Ask whether it describes a pattern, proposes a cause, or makes a judgment.
-
-Return to nearby paragraphs before letting one sentence stand alone.
-
-Compare the recurring family, witness, and court images across chapters.
-
-This book suits readers interested in philosophy, literary persuasion, and artificial intelligence.
-
-Its reward is a closer encounter with insight and its uncertain authority.
+The invitation is to enjoy the prose while keeping its authority open to examination.

@@ -1,129 +1,51 @@
 # Beyond the Last Stone
 
-## Thought before the city
+## Reasons before certainty
 
-Beyond the Last Stone gives philosophical questions a prehistoric setting.
+Beyond the Last Stone makes careful thinking a matter of staying alive.
 
-Its people need food while deciding which explanations deserve trust.
+This prehistoric philosophical novel begins when a community's expected herd fails to arrive.
 
-This imagined novel uses deliberately simple language for demanding ideas.
+Its plain language lets readers examine knowledge without hiding behind specialist vocabulary.
 
-A missing herd makes uncertainty a practical problem before an abstract one.
+Hungry people must compare observations, inherited stories, and reasons for acting together.
 
-Tracks, memories, and stories offer different reasons to choose a path.
+The book follows those questions from a travelling group into a larger settlement.
 
-The pleasure lies in discovering those distinctions alongside people who need them.
+## What the track tells
 
-The book makes thinking part of survival without turning its characters into lecturers.
+Ar finds an old bear track, but refuses to confuse past presence with danger now.
 
-## When the herd does not come
+More signs strengthen his judgment without revealing everything the group needs to know.
 
-The opening waits with a community beside an empty northern path.
+Orra still has to choose a route before uncertainty disappears.
 
-Hunger makes a familiar explanation harder to accept without question.
+That tension gives the argument its urgency: caution must still guide action.
 
-Ar notices signs, while others bring authority, experience, and remembered stories.
+The storyteller Karr adds another difficulty: stories can carry courage as well as claims.
 
-The group cannot postpone movement until certainty becomes available.
+Reading their disagreements reveals why useful stories still require attention to their purpose.
 
-Its arguments therefore have warmth, urgency, and consequences for other people.
+## Stones do not feed people
 
-Disagreement changes the group's movement, not merely the opinions held beside its fire.
+A child adds stones while Kee counts the community's remaining food.
 
-The first chapters establish a way of reading signs as carefully as sentences.
+Another stone can extend a number without creating another day's meal.
 
-## Marks are not explanations
+The scene asks what counting permits, and what an imagined total would assert.
 
-A mark in snow can show that something happened nearby.
+The book's philosophical method stays inside hands, jokes, hunger, and disagreements.
 
-It cannot automatically supply every part of the story someone tells.
+It gives readers distinctions to test, rather than conclusions delivered by an outside lecturer.
 
-The novel explores that difference through hunting, memory, and painted hands.
+## When memory needs marks
 
-Its characters compare observations instead of receiving a modern vocabulary lesson.
+In its second part, Many Fires changes the scale of living together.
 
-Stories can preserve courage and meaning as well as uncertain explanations.
+Stored grain and clay records help strangers cooperate beyond anyone's personal memory.
 
-A story's value changes with the task its listeners need it to perform.
+The same arrangements raise questions about whose reasons survive inside a rule.
 
-That makes its treatment of imagination more interesting than simply dismissing it.
+Begin with Fire After the Herd, then follow those questions into the city.
 
-## One more is not all
-
-Ar places stones where the group can count and move them.
-
-One additional stone is a possibility everyone can try.
-
-An assertion about every possible stone demands a different kind of confidence.
-
-The horizon gives another ordinary shape to the edge of knowing.
-
-The book's language stays close to hands, ground, and movement.
-
-Its distinctive method lets philosophical pressure arise inside familiar physical acts.
-
-Readers can follow the distinction without being asked to memorize technical terms.
-
-## Memory has a history
-
-Remembering matters because a route can outlast the person who crossed it.
-
-Kee's accounts preserve people, conditions, and the reasons for earlier choices.
-
-A changed landscape can make an old warning newly difficult to interpret.
-
-The novel gives inherited knowledge respect without making it immune to revision.
-
-Painted hands also preserve presence without supplying a complete explanation.
-
-These scenes slow the argument through attention to what remains unknown.
-
-The reading experience rewards patience with signs that refuse an immediate story.
-
-## Many fires change the question
-
-The second part moves toward a larger settlement called Many Fires.
-
-Stored grain changes what can wait and what people owe.
-
-Strangers need rules that cannot depend entirely on personal memory.
-
-The scale of cooperation creates benefits as well as unfamiliar constraints.
-
-The book carries its earlier questions into these new arrangements.
-
-Who knows enough to judge, and which differences does a rule conceal?
-
-Its city chapters extend the journey without abandoning the concrete language.
-
-## Reasons inside institutions
-
-Public explanations and private exceptions begin to occupy the same settlement.
-
-The novel examines debt, authority, labor, and stories that legitimate power.
-
-It also notices the real work that makes collective life possible.
-
-That balance keeps the city from becoming a simple warning symbol.
-
-Readers encounter institutions through people trying to eat, work, and belong.
-
-The argument grows through comparison rather than a sudden imported lecture.
-
-The earlier arguments about signs now matter to strangers governed by shared records.
-
-## Begin beside the empty path
-
-Begin with Fire After the Herd and the decision still ahead.
-
-Follow what Ar notices, and listen to what older people remember.
-
-Keep track of the differences between a sign, a reason, and a story.
-
-Then watch those differences change when more people must live together.
-
-This book suits readers who enjoy philosophical fiction with direct, spare language.
-
-Its questions grow larger while its words remain close to ordinary experience.
-
-The invitation is to think carefully without pretending the path is complete.
+Read for a concrete way to distinguish what people know, claim, and choose.

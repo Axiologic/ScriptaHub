@@ -1,6 +1,6 @@
 # The Permission Paradox — same-prototype continuity revision
 
-Status: full proposed speech before voice; one revised sentence preserves nineteen clips.
+Status: root-reviewed complete speech; two revised sentences preserve eighteen clips.
 
 Spine: An unfamiliar idea needs evidence to obtain resources and resources to create evidence; Longview proposes converting conditional possibility into a small, stoppable test whose learning can change the next funding decision.
 
@@ -16,7 +16,7 @@ Reader gain: Distinguish belief in an unconventional claim from support for a bo
 5. Readers gain a way to inspect this tension without dividing people into visionaries and fools.
 
 ### Scene 2
-1. An innovator may reason backward from a possible future that an institution cannot yet observe.
+1. Imagine an inventor proposing a leak sensor whose performance has not yet been tested.
 2. An evaluator usually reasons forward from existing evidence, precedent, and recognized categories.
 3. Both approaches can be reasonable while producing a persistent mismatch.
 4. The book also recognizes that an unfamiliar idea may simply be wrong.
@@ -24,7 +24,7 @@ Reader gain: Distinguish belief in an unconventional claim from support for a bo
 
 ### Scene 3
 1. Longview is the book's proposed approach to conditional assessment of future potential.
-2. A poorly evidenced prototype could justify a bounded test that changes the funding decision.
+2. A small, controlled test could show whether that sensor detects the leak.
 3. Reversibility, meaningful benefit, protected participants, and learning value remain important conditions.
 4. The funding discussion connects short experimental cycles with patience for difficult research.
 5. These are institutional proposals to investigate, not automatic reasons to approve every unconventional claim.
@@ -51,4 +51,4 @@ The prototype is an explicitly editorial, hypothetical acoustic leak sensor. The
 
 Sources4/5 explicitly qualify Longview as a proposal; both innovator and evaluator can be reasonable. Source8 provides the resources/evidence paradox. Source9 ties conditional review, reversible inquiry and funding; source21 requires meaningful benefit, bounded harms, stop conditions, protected participants, informative failure and a route back with evidence. Source24 supports a next discriminating test instead of a final funding verdict; source25 retains living claims and experiment records. Source33 supports a failure ledger and event-driven funding review; source46 returns to novelty absorption.
 
-The sensor/closed-loop/negative observation are original editorial illustration, not a named source case or empirical result. They illustrate only the explicitly sourced logic of a bounded prototype test. Full selected sections4/5/8/9/21/24/25/33/46 read; complete section inventory retained. Remaining nine-chapter overview and source-image assessment will be completed before finalization. No source ending or established effect of Longview is claimed.
+The sensor/closed-loop/negative observation are original editorial illustration, not a named source case or empirical result. They illustrate only the explicitly sourced logic of a bounded prototype test. Full selected sections4/5/8/9/21/24/25/33/46 read; complete section inventory retained. All nine chapter openings and the single cover were inspected; there are no internal source diagrams. No source ending or established effect of Longview is claimed.

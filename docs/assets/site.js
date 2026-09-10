@@ -406,6 +406,20 @@
     const renderDetails = (book) => {
       if (!details) return;
       [featuredShow] = ScriptaBookView.render(details, book, { variant: "featured", language, kicker: featuredBookLabels[language] });
+      const strip = details.closest(".home-feature-strip");
+      if (strip) {
+        let link = strip.querySelector("[data-featured-card-link]");
+        if (!link) {
+          link = document.createElement("a");
+          link.dataset.featuredCardLink = "";
+          link.className = "featured-card-link";
+          // Existing title and View Book links provide keyboard navigation.
+          link.tabIndex = -1;
+          link.setAttribute("aria-hidden", "true");
+          strip.append(link);
+        }
+        link.href = ScriptaBookView.model(book, language).href;
+      }
     };
 
     const syncFeaturedCardHeight = () => {
@@ -498,7 +512,7 @@
       pending.add(swapTimer);
     };
     const replaceNext = () => {
-      if (disposed || document.hidden || (details && (!featuredShow?.completed || !featuredShow.visible || details.matches(":hover, :focus-within")))) return;
+      if (disposed || document.hidden || (details && (!featuredShow?.completed || !featuredShow.visible || (details.closest(".home-feature-strip") || details).matches(":hover, :focus-within")))) return;
       const icons = [...container.querySelectorAll("[data-mission-book]")];
       for (let attempt = 0; attempt < icons.length; attempt += 1) {
         const icon = icons[replacementSlot % icons.length];
@@ -602,6 +616,28 @@
     if (document.documentElement.dataset.cardNavigationBound) return;
     document.documentElement.dataset.cardNavigationBound = "true";
     document.addEventListener("click", (event) => {
+      const animation = event.target.closest("a[data-animation-link]");
+      if (animation && event.isTrusted && !event.defaultPrevented && event.button === 0 &&
+          !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey &&
+          !animation.hasAttribute("download") && (!animation.target || animation.target === "_self") &&
+          document.visibilityState === "visible") {
+        const destination = new URL(animation.href);
+        const film = collection.books.find(book => book.animation &&
+          new URL(book.animation.page, siteRootUrl).pathname === destination.pathname);
+        if (film && destination.origin === location.origin) {
+          try {
+            const token = crypto.randomUUID();
+            destination.hash = "";
+            sessionStorage.setItem("scriptahub:animation-start", JSON.stringify({
+              token, href: destination.href, createdAt: Date.now()
+            }));
+            destination.hash = "start=" + token;
+            event.preventDefault();
+            location.assign(destination.href);
+          } catch { /* Storage restrictions retain ordinary navigation and Play. */ }
+          return;
+        }
+      }
       const card = event.target.closest(".book-card[data-book-url]");
       if (!card || event.defaultPrevented || event.target.closest("a, button, input, select, textarea, label")) return;
       location.assign(card.dataset.bookUrl);
