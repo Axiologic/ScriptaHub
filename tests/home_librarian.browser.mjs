@@ -8,7 +8,7 @@ const check=async(name,code)=>{assert(await c.evaluate(code),name);checks.push(n
 try{
  await c.size(1200,1000);await c.wait('!!document.querySelector("[data-mascot-start]")');
  await check('two choices, no old introduction or librarian popup','document.querySelectorAll(".mascot-choice").length===2&&!document.querySelector(".site-hero,.intro-presentation,[data-librarian-dialog],[data-header-librarian]")');
- await check('requested choice order','document.querySelector(".mascot-choice").matches("[data-mascot-ask]")&&document.querySelector("[data-mascot-start] [data-mascot-label]").textContent==="What is ScriptaHub.com?"');
+ await check('requested choice order','document.querySelector(".mascot-choice").matches("[data-mascot-ask]")&&document.querySelector("[data-mascot-start] [data-mascot-label]").textContent==="Why ScriptaHub.com?"');
  await check('question initially concealed','document.querySelector("#mascot-question").hidden');
  await c.wait('document.querySelector("[data-home-loading]")?.classList.contains("is-complete")||!document.querySelector("[data-home-loading]")');
  for(const [width,height] of [[1280,720],[1366,768],[1440,900]]){await c.size(width,height);await check('initial desktop fits viewport '+width+'x'+height,'document.documentElement.scrollHeight<=innerHeight&&document.documentElement.scrollWidth<=innerWidth');}

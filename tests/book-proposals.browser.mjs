@@ -15,8 +15,8 @@ try{
   for(const href of links){
    assert.equal(new URL(href).searchParams.get('book'),missing.directory);assert.equal(new URL(href).searchParams.get('lang'),lang);
    await c.send('Page.navigate',{url:href});await c.wait('!!document.querySelector("form")');
-   const state=await c.evaluate(`(()=>{const f=document.querySelector('form');return {lang:document.documentElement.lang,heading:document.querySelector('h1').textContent,book:document.querySelector('[data-book-id]').dataset.bookId,back:document.querySelector('.workflow-back a').href,disabled:f.querySelector('[type=submit]').disabled,files:!!f.elements.documents,overflow:document.documentElement.scrollWidth>innerWidth+1}})()`);
-   assert.equal(state.lang,lang);assert.equal(state.book,missing.id);assert.equal(new URL(state.back).pathname,'/'+missing.editions[lang].book);assert.equal(state.disabled,true);assert.equal(state.files,href.includes('/fork/'));assert.equal(state.overflow,false);checks++;
+   const state=await c.evaluate(`(()=>{const f=document.querySelector('form');return {lang:document.documentElement.lang,heading:document.querySelector('h1').textContent,headingSize:parseFloat(getComputedStyle(document.querySelector('h1')).fontSize),formTop:f.getBoundingClientRect().top,book:document.querySelector('[data-book-id]').dataset.bookId,back:document.querySelector('.workflow-back a').href,disabled:f.querySelector('[type=submit]').disabled,files:!!f.elements.documents,overflow:document.documentElement.scrollWidth>innerWidth+1}})()`);
+   assert.equal(state.lang,lang);assert.ok(state.headingSize<=27);assert.ok(state.formTop<600);assert.equal(state.book,missing.id);assert.equal(new URL(state.back).pathname,'/'+missing.editions[lang].book);assert.equal(state.disabled,true);assert.equal(state.files,href.includes('/fork/'));assert.equal(state.overflow,false);checks++;
   }
  }
  // Exercise actual form serialization in this isolated headless browser. No email is sent.

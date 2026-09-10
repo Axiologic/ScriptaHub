@@ -1,12 +1,12 @@
 import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';
 const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));
-const ink='#65508b',light='#c3b4ea',coral='#ac5768',coralN='#e9aab8';
+const ink='#65508b',light='#b6a3d3',coral='#ac5768',coralN='#da91a1';
 for(const [index,s]of scenes.entries()){
 const a=stageAuthor(),{n,path,text,tint,dot}=a;const shape=(id,x,y,kids,meaning,scale=1)=>a.add(a.object(id,x,y,kids,meaning,scale));
 const material=(d,c=ink,cn=light)=>tint(n('path',{d,fill:c}),cn);
 const type=(id,value,x,y,size=42)=>a.label(id,value,x,y,size);
 
-const child=(id,x,y,k=1)=>shape(id,x,y,[material('M-32 -130C-115 -142 -140 -41 -83 3C-148 38 -110 132 -35 104C-6 159 92 121 69 48C144 44 152 -63 75 -71C68 -137 19 -159 -32 -130Z'),material('M-52 -75C-101 -17 -55 64 -3 58C50 102 98 36 51 -13C94 -60 29 -100 -5 -54Z',coral,coralN),material('M-30 -48Q-2 -83 35 -47L48 13Q9 57 -24 14Z'),path(id.includes('need')||id==='alone'?'M-7 5Q11 -7 24 4':'M-7 -3Q8 7 24 -2','$ink',4)],'A folded dimensional child; curved surfaces carry vulnerability rather than a star icon',k);
+const child=(id,x,y,k=1)=>shape(id,x,y,[material('M-32 -130C-115 -142 -140 -41 -83 3C-148 38 -110 132 -35 104C-6 159 92 121 69 48C144 44 152 -63 75 -71C68 -137 19 -159 -32 -130Z'),material('M-52 -75C-101 -17 -55 64 -3 58C50 102 98 36 51 -13C94 -60 29 -100 -5 -54Z',coral,coralN),material('M-30 -48Q-2 -83 35 -47L48 13Q9 57 -24 14Z'),path(id.includes('need')||id==='alone'?'M-7 5Q11 -7 24 4':'M-7 -3Q8 7 24 -2','#31253d',4)],'A folded dimensional child; curved surfaces carry vulnerability rather than a star icon',k);
 const world=(id,x,y,k=1)=>shape(id,x,y,[tint(dot(0,0,92,coral),coralN),material('M-69 -55L-11 -74L23 -28L-8 9L-48 -6L-65 27L-88 5Z'),material('M29 8L76 -7L72 48L33 78L10 44Z')],'A human tess world as a schematic finite sphere',k);
 const reward=(id,x,y,k=1)=>shape(id,x,y,[material('M0 -86L73 -44V44L0 86L-73 44V-44Z',coral,coralN),path('M0 -43V43M-22 -13H17Q43 -4 13 12H-17','$ink',7)],'Yield sustains the observer; symbolic reward token',k);
 switch(index){

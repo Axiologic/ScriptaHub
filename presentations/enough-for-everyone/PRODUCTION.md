@@ -1,0 +1,15 @@
+# Enough for Everyone — narrated book introduction
+
+Finished narrated preview: **7:08.922**, eight scenes, 56 English single-sentence clips. The source-led opening, coherent book-level why/how/what, selected examples and concrete reading invitation were reviewed before local voice generation. Every sentence contains 8–16 words.
+
+Canonical reader: `docs/books/enough/for/everyone/bk-ece0c7c62fe041d8/en/full_content.html`; catalogue release `edition-1`. Its original SHA-256 is `6ea278ba39a75c2f4a08c88e934ea1f709e66a844f17e595e0742a9fb7974960`. Complete extraction, section offsets, chapter map and exact supporting spans remain in `source/` and `work/`. Review covered the chapter structure, opening, conclusion and selected substantive claim passages; it does not certify every sentence or reference in the original book. Source theses and proposals remain attributed, rather than independently established conclusions.
+
+Art direction: Warm terracotta and sea-blue civic cutaway: one elegant house gradually acquires actual services through power, water, repair and access. Scale changes between home, supply connection and shared neighborhood. No invented quantitative charts or endless growth imagery. Artwork is authored in `work/art.mjs`; the shared runtime supplies Red Hat Display headings and Red Hat Text captions. Meaningful visual transformations, object support surfaces, readable labels and empty backgrounds were reviewed. Source figures were inspected; selections and conceptual adaptations are recorded in `qa/source-review.json`.
+
+Audio uses the already prepared local Piper `en_US-ljspeech-medium`, with measured clips, text-hash receipts and 1.4-second authored pauses plus the shared 150-millisecond beat separation. Scene transitions are longer. No browser speech, API key or audible automated preview was used.
+
+Run `node presentations/enough-for-everyone/work/art.mjs` to apply editable art, `node presentations/enough-for-everyone/render_voice.mjs` when narration wording changes, and `node presentations/enough-for-everyone/build.mjs` to republish. Voice receipts preserve unchanged clips. Portable HTML and captions stay in ignored `exports/`; the book's public `Animation/` contains only the SHF and the site-generated minimal entry page. Its own manifest has an Animation record; shared site generation is coordinated by the parent task.
+
+Final silent QA passed 21 checks: one sentence per clip, source/editorial metadata, loaded display/text fonts, 56 offline decoded audio clips, 72 sampled frames across Color/Light/Dark, heading/caption/control layout at five widths, and deterministic seeking. No JavaScript errors occurred. Contact sheets, embed samples and representative phone capture were visually inspected. The final SHF hash is in `qa/final-review.json`.
+
+Complete listening, full-duration user playback, physical-phone testing and audience validation remain unperformed. All automated players were muted and closed; no audible output device was opened.

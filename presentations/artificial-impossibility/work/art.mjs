@@ -28,7 +28,7 @@ for(const [i,s]of scenes.entries()){
  case 4:project('commons',600,280,1.25);for(let j=0;j<4;j++){add(object('benefit'+j,260+j*225,490,[tint(dot(0,0,25,j%2?A:B),j%2?AN:BN)],'A distinct beneficiary; positions are conceptual, not data.'));reveal('benefit'+j,j+2);}label('public','Shared infrastructure',600,160,30);break;
  case 5:gate('rights',600,290,'Due process');project('project',260,310,.9);add(object('shield',930,290,[tint(n('path',{d:'M-65 -70Q0 -35 65 -70V15Q40 75 0 95Q-40 75 -65 15Z',fill:A}),AN)],'A protective boundary can deserve preservation.'));reveal('shield',3);move('project',4,365,310,1800);break;
  case 6:mandate('smooth',350,270,'Easy story');project('p',870,280);add(object('missing',600,400,[tint(path('M-60 0H-20M20 0H60',A,10),AN)],'The missing relationship in a polished explanation.'));label('relation','Missing relationship',600,500,30);reveal('missing',2);reveal('relation',2);move('smooth',4,260,270);move('p',4,940,280);break;
- case 7:gate('old',870,270,'Selection');project('p',340,280,1.1);add(object('route',600,410,[tint(path('M-180 20Q0 110 240 0M240 0L210 -5M240 0L220 25',A,9),AN)],'Reviewing the selection environment can reveal another route, without guaranteeing approval.'));reveal('route',5);break;
+ case 7:gate('old',870,270,'Selection');q.objects.at(-1).visual.children.at(-1).attrs.y=230;project('p',340,280,1.1);add(object('route',600,410,[tint(path('M-180 20Q0 110 240 0M240 0L210 -5M240 0L220 25',A,9),AN)],'Reviewing the selection environment can reveal another route, without guaranteeing approval.'));reveal('route',5);break;
  }
  s.visual=q.finish('Amber architectural section theatre; project, mandate and protective gate remain distinct narrative objects.');
 }

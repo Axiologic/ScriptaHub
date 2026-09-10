@@ -297,7 +297,7 @@ its top edge and View Book ends at its bottom edge, without extra outer margins
 or action padding. Both entrance strips share the resulting height.
 
 The entrance contains the shared academic robot and two primary choices in this
-order: **Ask AI Librarian**, then **What is ScriptaHub.com?**, localised with the
+order: **Ask AI Librarian**, then **Why ScriptaHub.com?**, localised with the
 interface. There is no hero title or introductory paragraph. The header retains
 Create, appearance, scale and language controls, without a duplicate Librarian
 action on the homepage.
@@ -326,7 +326,7 @@ the initial loader and busy state to the featured-book strip; visitors can
 start writing while the catalogue downloads. Submission uses the existing recommendation route, with the interface language
 and question fragment preserved. Links ending in `#ask-librarian` reveal it.
 
-What is ScriptaHub.com? opens a viewport-filling, closable native dialog with the
+Why ScriptaHub.com? opens a viewport-filling, closable native dialog with the
 shared SHF player. Start narration only following that visitor action. Escape
 and the close control stop playback and restore focus; closing during loading
 cancels the pending start. The site tour lives in
@@ -423,6 +423,25 @@ original visual identity and source-grounded curiosity without fictional spoiler
 
 
 On book pages, Animation is the first reading action, before Read in 10 minutes.
-Fork, Suggest an edit and Editions form an equally sized vertical right-hand rail
+Fork, Suggest Edit and Editions form an equally sized vertical right-hand rail
 on desktop. At narrow widths this group moves below the book content and wraps
 into a vertical stack on small phones. The reading action group stays separate.
+
+
+All book-related workflows (feedback, editions, translations, Fork and animation
+proposals) share the compact `data-book-workflow` heading style. Use a small
+single-line heading, restrained lead and tight vertical spacing; never inherit
+a large marketing hero when adding a new contextual form. Keep the source-book
+reference compact so the form starts high on the page.
+
+The desktop contribution rail lives inside the shared book-details surface,
+without its own panel or separating background gap. Its buttons are equal
+34px-high single-line controls; the English feedback label is “Suggest Edit”.
+
+Align the desktop contribution rail with the top of the book copy and its first
+text line, never vertically centre it beside the description.
+
+Presentation hosts use a visible X alone, without text, fill or border, directly
+above the player at its right edge. Retain a localised accessible name and a
+44px hit target. Home closes its dialog and stops playback; book presentation
+pages return to the source book and pause playback.

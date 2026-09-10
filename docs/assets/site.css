@@ -1250,10 +1250,10 @@ button, select { cursor: pointer; }
 .edition-card-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 7px; }
 .edition-card-meta .publication-status { margin: 0; }
 .edition-card-meta time { letter-spacing: 0; text-transform: none; }
-body:is([data-workflow-page="feedback"], [data-workflow-page="editions"], [data-workflow-page="translate"]) .workflow-hero { display: block; padding: 18px 0 22px; }
-body:is([data-workflow-page="feedback"], [data-workflow-page="editions"], [data-workflow-page="translate"]) .workflow-hero h1 { max-width: none; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: clamp(1.1rem, 1.8vw, 1.65rem); letter-spacing: -.025em; line-height: 1.3; }
-body:is([data-workflow-page="feedback"], [data-workflow-page="editions"], [data-workflow-page="translate"]) .workflow-hero .lead { max-width: none; margin-top: 12px; font-size: .9rem; text-align: start; }
-body:is([data-workflow-page="feedback"], [data-workflow-page="editions"], [data-workflow-page="translate"]) .workflow-context h2 { font-size: 1.05rem; line-height: 1.35; }
+body[data-book-workflow] .workflow-hero { display: block; padding: 18px 0 22px; }
+body[data-book-workflow] .workflow-hero h1 { max-width: none; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: clamp(1.1rem, 1.8vw, 1.65rem); letter-spacing: -.025em; line-height: 1.3; }
+body[data-book-workflow] .workflow-hero .lead { max-width: none; margin-top: 12px; font-size: .9rem; text-align: start; }
+body[data-book-workflow] .workflow-context h2 { font-size: 1.05rem; line-height: 1.35; }
 
 /* Every textShow sentence remains readable, including long descriptions. */
 .featured-book-description { flex-shrink: 0; overflow: visible; text-overflow: clip; }
@@ -1452,7 +1452,7 @@ shf-player {
 }
 
 /* A source reference stays compact above the derived-book brief. */
-.fork-source .workflow-book-compact{grid-template-columns:64px minmax(0,1fr);align-items:center;padding:16px 0}.fork-source .workflow-book-compact>a{width:64px}.fork-source .workflow-book-compact h2{margin:0;font-size:22px}.fork-source+.workflow-layout{margin-top:20px}
+.fork-source .workflow-book-compact{grid-template-columns:64px minmax(0,1fr);align-items:center;padding:16px 0}.fork-source .workflow-book-compact>a{width:64px}.fork-source .workflow-book-compact h2{margin:0;font-size:22px}.fork-source+.workflow-layout{margin-top:0;padding-top:16px}
 
 /* Both dark variants have a black surround, distinct from the cloud floor. */
 :root:is([data-theme="dark"],[data-theme="dark-orange"]){--canvas:#000000;--body-glow:transparent}
@@ -1489,11 +1489,17 @@ shf-player {
 :root[data-theme="dark-orange"] .site-header{background:#080808}
 
 /* Reading is primary; contribution and edition tools form a quiet right rail. */
-.book-side-actions{position:relative;z-index:2;display:flex;flex-direction:column;gap:10px;align-self:center;margin:0;padding:14px;background:var(--panel);border-radius:8px}
-.book-side-actions .button{width:100%;min-height:40px;margin:0;padding:10px 12px;white-space:normal;line-height:1.3}
+.book-side-actions{position:relative;z-index:2;display:flex;flex-direction:column;gap:8px;align-self:center;margin:0;padding:0;background:transparent}
+.book-side-actions .button{width:100%;height:34px;min-height:34px;margin:0;padding:7px 10px;white-space:nowrap;line-height:1.2;font-size:.75rem;border-radius:4px}
 .book-side-actions [data-fork-link]::before{content:"⑂";margin-right:7px}
 .book-side-actions [data-book-feedback]::before{content:"✎";margin-right:7px}
 .book-side-actions [data-book-editions]::before{content:"◷";margin-right:7px}
-@media(min-width:1101px){.book-hero{grid-template-columns:minmax(160px,200px) minmax(0,1fr) minmax(130px,160px);gap:20px}.book-side-actions{grid-column:3;grid-row:1}}
-@media(max-width:1100px){.book-side-actions{grid-column:1/-1;grid-row:3;flex-direction:row;align-items:stretch;padding:12px;gap:8px}.book-side-actions .button{flex:1;min-width:0}}
+@media(min-width:1101px){.book-hero{grid-template-columns:minmax(160px,200px) minmax(0,1fr);gap:20px}.book-details{display:grid;grid-template-columns:minmax(0,1fr) max-content;column-gap:18px;align-content:center}.book-copy{grid-column:1;grid-row:1;min-width:0}.book-details>.book-actions{grid-column:1;grid-row:2}.book-side-actions{grid-column:2;grid-row:1/3;min-width:126px;align-self:start}}
+@media(max-width:1100px){.book-hero{row-gap:0}.book-copy{margin-top:18px;border-radius:8px 8px 0 0}.book-side-actions{grid-column:1/-1;grid-row:3;flex-direction:row;align-items:stretch;padding:0 18px 18px;gap:8px;background:var(--panel);border-radius:0 0 8px 8px}.book-side-actions .button{flex:1;min-width:0}}
 @media(max-width:420px){.book-side-actions{flex-direction:column}.book-side-actions .button{min-height:40px}}
+
+/* Quiet, accessible host close control above presentation frames. */
+.presentation-close{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;min-height:44px;margin:0;padding:10px;border:0;border-radius:0;background:transparent;color:inherit;box-shadow:none;text-decoration:none;cursor:pointer}
+.presentation-close:hover,.presentation-close:active{background:transparent;color:inherit;box-shadow:none;opacity:.75}
+.presentation-close svg{display:block;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.presentation-close:focus-visible{outline:2px solid currentColor;outline-offset:-4px}

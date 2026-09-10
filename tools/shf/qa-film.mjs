@@ -19,6 +19,8 @@ try{
  await test('authored emotional plan retained','p.film.scenes.every(s=>s.emotionalPlan?.states.length===s.beats.length)');
  audio=await c.evaluate('(async()=>{p.audio.ctx=new OfflineAudioContext(1,1,24000);let clips=0;try{for(const scene of p.film.scenes)clips+=(await p.audio.prepare(scene)).clips.length;return {clips,mode:"OfflineAudioContext decode only",audiblePlayback:false};}finally{p.audio.clear();p.audio.ctx=null}})()');
  const sentences=await c.evaluate('p.film.scenes.reduce((n,s)=>n+s.beats.length,0)');if(audio.clips!==sentences)throw Error('Audio count does not match script');
+ // Match unobstructed playing artwork without starting the clock or an audio device.
+ await c.evaluate('p.$("centerPlay").style.visibility="hidden"');
  for(const theme of ['color','paper','night']){
   await c.evaluate(`p.setTheme('${theme}')`);const durations=await c.evaluate('p.film.scenes.map(s=>s.durationMs)');let start=0;
   for(let i=0;i<durations.length;i++){
@@ -31,6 +33,7 @@ try{
    }start+=durations[i];
   }
  }
+ await c.evaluate('p.$("centerPlay").style.removeProperty("visibility")');
  if(frames.some(f=>f.invalid||f.unresolved||!f.connections))throw Error('Invalid sampled geometry, token or connection');
  for(const width of [1200,720,540,393,320]){
   await c.size(width,960);
@@ -40,7 +43,7 @@ try{
   if(width===393||width===320){await c.evaluate('p.seek(2000)');await c.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');await c.capture(path.join(shots,'phone-'+width+'.png'))}
  }
  await c.evaluate('p.seek(20000);window.referenceSVG=p.captureSVG();p.seek(p.durationMs*.8);p.seek(20000)');await test('seeking A-B-A is deterministic','p.captureSVG()===referenceSVG');
- const report={durationMs:await c.evaluate('p.durationMs'),sentences,checks,audio,sampledFrames:frames.length,frames,jsErrors:c.errors,audiblePlayback:false,fullPlayback:false,completeListeningReview:false,visualInspection:'Screenshots produced for separate human/agent inspection; geometry checks do not certify visual quality.',physicalDeviceTesting:false};
+ const report={durationMs:await c.evaluate('p.durationMs'),sentences,checks,audio,sampledFrames:frames.length,frames,jsErrors:c.errors,audiblePlayback:false,fullPlayback:false,completeListeningReview:false,artScreenshotsHidePausedPlayOverlay:true,visualInspection:'Screenshots produced for separate human/agent inspection; geometry checks do not certify visual quality.',physicalDeviceTesting:false};
  await fs.writeFile(path.join(out,'browser-review.json'),JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify({durationMs:report.durationMs,sentences,checks:checks.length,sampledFrames:frames.length,errors:c.errors.length}));if(c.errors.length)process.exitCode=1;
 }finally{await c.close()}

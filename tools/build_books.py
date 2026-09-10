@@ -201,7 +201,7 @@ CLOUD_CLOSE_LABELS = {
 }
 
 BOOK_ACTIONS = {
-    "en": {"create": "Create", "feedback": "Suggest An Edit", "editions": "Editions", "initial": "Initial ScriptaHub edition.", "editionLabel": "Edition 1"},
+    "en": {"create": "Create", "feedback": "Suggest Edit", "editions": "Editions", "initial": "Initial ScriptaHub edition.", "editionLabel": "Edition 1"},
     "fr": {"create": "Créer", "feedback": "Proposer une modification", "editions": "Éditions", "initial": "Première édition ScriptaHub.", "editionLabel": "Édition 1"},
     "de": {"create": "Erstellen", "feedback": "Änderung vorschlagen", "editions": "Ausgaben", "initial": "Erste ScriptaHub-Ausgabe.", "editionLabel": "Ausgabe 1"},
     "es": {"create": "Crear", "feedback": "Proponer un cambio", "editions": "Ediciones", "initial": "Primera edición de ScriptaHub.", "editionLabel": "Edición 1"},
@@ -979,8 +979,7 @@ def book_page(
     <header class="site-header"><a class="wordmark" href="{html.escape(home)}">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link href="{html.escape(create_page, quote=True)}?lang={language}">{html.escape(BOOK_ACTIONS[language]["create"])}</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div>{theme_switcher()}<label class="language-picker"><span class="sr-only">Language</span><select onchange="location.href=this.value">{language_options}</select></label></div></header>
     {status_note}<article class="book-hero">
       <button class="cover-link" type="button" data-cover-preview aria-label="{html.escape(title, quote=True)}"><img src="cover.webp" alt="{html.escape(title)}"></button>
-      <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead" data-text-show>{html.escape(description)}</p>{availability}</div><div class="book-actions">{"".join(actions)}</div></div>
-      <nav class="book-side-actions">{"".join(side_actions)}</nav>
+      <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead" data-text-show>{html.escape(description)}</p>{availability}</div><div class="book-actions">{"".join(actions)}</div><nav class="book-side-actions" aria-label="{html.escape(BOOK_TOOL_LABELS[language], quote=True)}">{"".join(side_actions)}</nav></div>
       <aside class="book-keyword-widget" aria-label="{html.escape(words['keywords'], quote=True)}"><div class="keyword-cloud book-keyword-cloud" data-book-keyword-cloud></div></aside>
     </article>
     {about_book_section(book, language)}{site_footer(page_dir, language)}
@@ -1090,6 +1089,7 @@ def build(source_root: Path) -> dict[str, object]:
 
 
 
+BOOK_TOOL_LABELS = {"en":"Book tools","fr":"Outils du livre","de":"Buchwerkzeuge","es":"Herramientas del libro","pt":"Ferramentas do livro","it":"Strumenti del libro","ro":"Acțiuni pentru carte","pl":"Narzędzia książki"}
 HOME_LABELS = {"en": "Home", "fr": "Accueil", "de": "Startseite", "es": "Inicio", "pt": "Início", "it": "Home", "ro": "Acasă", "pl": "Strona główna"}
 HOME_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5M5.5 9v11h5v-6h3v6h5V9"/></svg>'
 
@@ -1141,7 +1141,7 @@ def shared_asset_versions() -> dict[Path, str]:
     paths = [COLLECTION_SCRIPT, DOCS / "favicon.ico", DOCS / "reader/reader.css", DOCS / "reader/reader.js", *[DOCS / "assets" / name for name in (
         "site.js", "site.css", "text-show.js", "text-show.css", "book-view.js",
         "librarian.js", "workflow.js", "reading.js", "home-librarian.css",
-        "home-librarian.js", "dictation.js", "keyword-cloud.js", "librarian-icon-orange.svg", "librarian-icon-nord.svg", "librarian-mascot.js", "librarian-icon.svg", "librarian-icon.png", "shf/shf-player.js")]]
+        "home-librarian.js", "animation.js", "animation.css", "dictation.js", "keyword-cloud.js", "librarian-icon-orange.svg", "librarian-icon-nord.svg", "librarian-mascot.js", "librarian-icon.svg", "librarian-icon.png", "shf/shf-player.js")]]
     return {path.resolve(): hashlib.sha256(path.read_bytes()).hexdigest()[:12] for path in paths if path.is_file()}
 
 

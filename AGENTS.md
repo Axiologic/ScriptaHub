@@ -273,3 +273,13 @@
 
 - Default the site and reader to Dark Orange when no valid appearance preference
   is saved; preserve explicit preferences and apply the default before first paint.
+
+- Book-associated forms use the shared compact `data-book-workflow` heading
+  treatment, including new workflows; never introduce oversized marketing titles
+  or unnecessary vertical hero spacing above these forms.
+
+- Local browser QA must disable browser background networking, component updates,
+  sync and extensions, remain muted, and close owned browsers when idle. Use
+  `--disable-background-networking --disable-component-update --disable-sync
+  --disable-extensions --metrics-recording-only --no-first-run --mute-audio`.
+  Restrict external network access for local-only checks; never close user browsers.

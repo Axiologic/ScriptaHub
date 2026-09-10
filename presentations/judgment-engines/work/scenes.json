@@ -99,13 +99,46 @@
                   "stroke-linecap": "round",
                   "stroke-linejoin": "round"
                 }
-              },
+              }
+            ]
+          }
+        },
+        {
+          "id": "candidate-label",
+          "asset": "custom",
+          "x": 285,
+          "y": 470,
+          "scale": 1,
+          "meaning": "candidate-label",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
               {
                 "id": "$asset.part3",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 160,
+                  "y": 0,
                   "font-size": 34,
                   "font-weight": 700,
                   "letter-spacing": -0.3,
@@ -291,56 +324,17 @@
               }
             ]
           }
-        },
-        {
-          "id": "review",
-          "asset": "custom",
-          "x": 760,
-          "y": 470,
-          "scale": 1,
-          "meaning": "The procedure itself returns to evaluation",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part11",
-                "type": "path",
-                "attrs": {
-                  "d": "M-90 0 Q-215 95 -330 0 M-330 0 L-295 5 M-330 0 L-322 35",
-                  "fill": "none",
-                  "stroke": "#bd5b4b",
-                  "stroke-width": 10,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
         }
       ],
       "actions": [
         {
           "actor": "candidate",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1300
+        },
+        {
+          "actor": "candidate-label",
           "action": "appear",
           "beat": 1,
           "durationMs": 1300
@@ -369,12 +363,6 @@
           "actor": "selected",
           "action": "appear",
           "beat": 4,
-          "durationMs": 1300
-        },
-        {
-          "actor": "review",
-          "action": "appear",
-          "beat": 6,
           "durationMs": 1300
         }
       ],

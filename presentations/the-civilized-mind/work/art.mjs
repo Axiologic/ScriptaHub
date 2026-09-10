@@ -1,0 +1,14 @@
+import fs from'node:fs';import{stageAuthor}from'../../../tools/shf/stage-authoring.mjs';const f=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(f));
+for(const[i,s]of scenes.entries()){
+ const q=stageAuthor(),{n,tint,path,text,dot,object,add,reveal,hide,move,label}=q,A='#525962',B='#b97060',AN='#c2cedb',BN='#edbdad';
+ const person=(id,x,y,second=false)=>{add({id,asset:second?'person-09-neutral':'person-02-neutral',x,y,scale:.85,options:{coat:second?B:A,dynamicExpressions:true},meaning:'Two different interlocutors remain people rather than caricatures of opposing political camps.'});for(const b of[1,3,5]){q.actions.push({actor:id,action:'character.express',beat:b,emotion:b===1?'skeptical':b===3?'curious':'determined',durationMs:450},{actor:id,action:'character.gesture',beat:b,gesture:b===1?'question':b===3?'reflect':'invite',offsetMs:700,durationMs:1800});}};
+ const table=(id,x,y)=>add(object(id,x,y,[tint(path('M-180 0H180M-140 0V100M140 0V100',A,16),AN)],'A shared place to examine a conflict rather than defeat a person.'));
+ const document=(id,x,y)=>add(object(id,x,y,[tint(n('path',{d:'M-100 -75H100V75H-100Z',fill:B}),BN),tint(path('M-60 -35H60M-60 0H40M-60 35H55',A,8),AN)],'The substantive disagreement remains visible and open to revision.'));
+ switch(i){
+ case 0:person('a',260,535);person('b',960,535,true);table('table',610,420);document('issue',610,320);move('a',4,345,535);move('b',4,875,535);break;
+ case 1:table('table',600,430);add(object('concern',380,275,[tint(n('path',{d:'M-140 -70H140V70H-140Z',fill:A}),AN),tint(text('Their concern',0,10,29,'white'),'#29333f')],'The opposing position is stated in a form its holder recognizes.'));add(object('cost',830,275,[tint(n('path',{d:'M-115 -70H115V70H-115Z',fill:B}),BN),tint(text('Our cost',0,10,29,'white'),'#56352d')],'Acknowledging the cost of one’s own position changes the negotiation.'));reveal('cost',3);move('concern',4,445,340);move('cost',4,760,340);break;
+ case 2:table('table',600,385);document('proposal',600,290);add(object('review-seat',940,355,[tint(n('rect',{x:-50,y:-60,width:100,height:85,rx:20,fill:B}),BN),tint(path('M-60 40H60M-40 40V125M40 40V125',A,13),AN)],'An independent reviewer tests how a constructive institution could be captured.'));reveal('review-seat',3);break;
+ case 3:person('a',300,535);person('b',910,535,true);table('table',605,430);document('issue',605,325);add(object('departure',1040,245,[tint(path('M-45 95V-100H45V95',B,13),BN)],'Meaningful limits and exit remain part of honest conversation.'));reveal('departure',4);break;
+ }
+ s.visual=q.finish('Charcoal and coral conversation chamber: different interlocutors approach a common document, acknowledge their own costs and reserve an independent review seat.');
+}fs.writeFileSync(f,JSON.stringify(scenes,null,2));

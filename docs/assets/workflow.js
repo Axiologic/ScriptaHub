@@ -279,6 +279,7 @@
 
   function render(lang = language()) {
     const page = document.body.dataset.workflowPage;
+    document.body.toggleAttribute("data-book-workflow", ["feedback","editions","translate","fork","animation-request"].includes(page));
     if (page === "animation-request" || document.body.dataset.animationBook) renderFeedback(lang, true);
     else if (page === "fork") renderCreate(lang, true);
     else if (page === "translate") renderTranslation(lang);
