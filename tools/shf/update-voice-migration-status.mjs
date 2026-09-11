@@ -1,0 +1,90 @@
+#!/usr/bin/env node
+// Keep a durable, verifiable record of the short-film local voice migration.
+import crypto from 'node:crypto';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+const root=process.cwd();
+const readJson=file=>fs.readFile(file,'utf8').then(JSON.parse);
+const exists=file=>fs.access(file).then(()=>true).catch(()=>false);
+const rel=file=>path.relative(root,file).split(path.sep).join('/');
+const hash=file=>fs.readFile(file).then(data=>crypto.createHash('sha256').update(data).digest('hex'));
+
+async function walk(dir,name){
+  const result=[];
+  for(const item of await fs.readdir(dir,{withFileTypes:true})){
+    const file=path.join(dir,item.name);
+    if(item.isDirectory()) result.push(...await walk(file,name));
+    else if(item.name===name) result.push(file);
+  }
+  return result;
+}
+async function loadDuration(shf){
+  await import(path.resolve('.agents/skills/shf-presentation-creator/runtime/shf-core.js'));
+  const data=await fs.readFile(shf);
+  return (await SHFCore.loadFile(new File([data],path.basename(shf)))).durationMs;
+}
+async function projectFor(bookDirectory){
+  for(const name of await fs.readdir('presentations')){
+    const project=path.join('presentations',name), production=path.join(project,'work/production.json');
+    if(await exists(production) && path.resolve((await readJson(production)).bookDirectory||'')===path.resolve(bookDirectory)) return project;
+  }
+  return null;
+}
+async function hasRenderLock(project){
+  const bundles=path.join(project,'work/voice-bundles');
+  if(!await exists(bundles)) return false;
+  const files=await walk(bundles,'.render.lock');
+  return files.length>0;
+}
+async function record(manifestFile){
+  const manifest=await readJson(manifestFile), bookDirectory=path.dirname(manifestFile);
+  if(!manifest.animation?.shf) return null;
+  const publicShf=path.resolve(bookDirectory,manifest.animation.shf);
+  if(!await exists(publicShf) || await loadDuration(publicShf)>=300000) return null;
+  const project=await projectFor(bookDirectory);
+  if(!project) return {title:manifest.title.en,bookId:manifest.id,status:'untracked',bookDirectory:rel(bookDirectory)};
+  const [production, receipts, build, locked]=await Promise.all([
+    readJson(path.join(project,'work/production.json')),
+    exists(path.join(project,'work/voice-receipts.json')).then(ok=>ok?readJson(path.join(project,'work/voice-receipts.json')):null),
+    exists(path.join(project,'qa/build.json')).then(ok=>ok?readJson(path.join(project,'qa/build.json')):null),
+    hasRenderLock(project)
+  ]);
+  const lines=receipts?.lines||[];
+  const filesValid=lines.length>0 && await Promise.all(lines.map(async line=>{
+    const audio=path.join(project,'work',line.file);
+    return await exists(audio) && await hash(audio)===line.sha256;
+  })).then(values=>values.every(Boolean));
+  const qwen=/Qwen3-TTS/.test(receipts?.provider||'') && filesValid && !!build && !locked;
+  const piper=/Piper/i.test(receipts?.provider||'');
+  const status=qwen?'qwen-complete':locked?'rendering':piper?'pending-piper':'needs-render';
+  return {
+    title:manifest.title.en, bookId:manifest.id, status, durationMs:build?.durationMs||null,
+    voice:receipts?.provider||production.voiceProvider||null, voiceId:receipts?.lines?.[0]?.voiceId||production.voiceId||null,
+    bookDirectory:rel(bookDirectory), project:rel(project), shf:rel(publicShf), shfSha256:await hash(publicShf),
+    receiptLines:lines.length, audioReceiptsVerified:filesValid, updatedAt:new Date().toISOString()
+  };
+}
+async function acquire(lock){
+  for(let attempt=0;attempt<120;attempt++) try{return await fs.open(lock,'wx');}catch(error){
+    if(error.code!=='EEXIST') throw error;
+    await new Promise(resolve=>setTimeout(resolve,250));
+  }
+  throw new Error(`Timed out waiting for ${lock}`);
+}
+const lock=path.join('tasks','.voice-migration-progress.lock'), handle=await acquire(lock);
+try {
+  const entries=(await Promise.all((await walk('docs/books','manifest.json')).map(record))).filter(Boolean).sort((a,b)=>a.title.localeCompare(b.title));
+  const counts=Object.fromEntries(['qwen-complete','rendering','pending-piper','needs-render','untracked'].map(status=>[status,entries.filter(entry=>entry.status===status).length]));
+  const data={format:'ScriptaHub-animation-voice-migration',version:1,updatedAt:new Date().toISOString(),scope:'Published book animations shorter than five minutes.',counts,entries};
+  const json=path.join('tasks','voice-migration-progress.json');
+  await fs.writeFile(`${json}.${process.pid}.tmp`,JSON.stringify(data,null,2)+'\n');
+  await fs.rename(`${json}.${process.pid}.tmp`,json);
+  const groups=[['qwen-complete','Voci Qwen finalizate'],['rendering','În conversie'],['pending-piper','Încă pe Piper'],['needs-render','Pregătite pentru conversie'],['untracked','Fără proiect asociat']];
+  const lines=['# Progres migrare voci pentru animații','',`Actualizat: ${data.updatedAt}`, '', 'Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.', '', '## Situație','',...groups.map(([key,label])=>`- ${label}: **${counts[key]}**`),''];
+  for(const [key,label] of groups){const items=entries.filter(entry=>entry.status===key);if(!items.length)continue;lines.push(`## ${label}`,'',...items.map(entry=>`- ${entry.title}${entry.voiceId?` — ${entry.voiceId}`:''}${entry.durationMs?` (${Math.round(entry.durationMs/1000)} s)`:''}`),'');}
+  const markdown=path.join('tasks','VOICE-MIGRATION-PROGRESS.md');
+  await fs.writeFile(`${markdown}.${process.pid}.tmp`,lines.join('\n'));
+  await fs.rename(`${markdown}.${process.pid}.tmp`,markdown);
+  console.log(JSON.stringify({counts,entries:entries.length}));
+} finally { await handle.close(); await fs.rm(lock,{force:true}); }
