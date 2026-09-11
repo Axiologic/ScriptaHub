@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+import {trackMigrationStage} from './migration-state.mjs';
 // Preserve existing cache names; bound only IDs whose batch suffix exceeds the voice schema.
 export function narrationBatchId(productionId,batch){
  const suffix='-batch-'+batch,candidate=productionId+suffix;
@@ -10,6 +11,9 @@ export function narrationBatchId(productionId,batch){
  return productionId.slice(0,64-suffix.length-digest.length-1)+'-'+digest+suffix;
 }
 export async function renderNarration(projectRoot){
+ return trackMigrationStage(projectRoot,'voice',()=>renderNarrationClips(projectRoot));
+}
+async function renderNarrationClips(projectRoot){
 const root=path.resolve(projectRoot);
 const production=JSON.parse(await fs.readFile(path.join(root,'work/production.json'),'utf8').catch(()=>JSON.stringify({id:path.basename(root),title:'Narrated presentation'})));
 const skill=path.resolve('.agents/skills/theatrical-audio');

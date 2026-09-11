@@ -295,3 +295,15 @@
   `--disable-background-networking --disable-component-update --disable-sync
   --disable-extensions --metrics-recording-only --no-first-run --mute-audio`.
   Restrict external network access for local-only checks; never close user browsers.
+
+- Maintain `docs/status.html` as the unlinked, noindex work dashboard for every
+  book. Keep exact proposed narration under “Spoken script and film plan” and
+  track Text, Animation and Voice separately. Record work starts, progress,
+  failures and completion in each presentation's `work/migration-state.json`,
+  and run `node tools/shf/update-voice-migration-status.mjs` after each meaningful
+  change. Active work appears first. The page refreshes its data every minute
+  without closing open scripts. Do not mark a draft, recording or planned visual
+  revision as a finished film; verify current text, packaged audio, measured
+  duration and visual review separately. Review all requested scripts before
+  batch voice generation. Current book-introduction scope is all books, with
+  a source-grounded marketing hook and maximum two-minute measured duration.

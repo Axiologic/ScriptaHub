@@ -2,6 +2,7 @@
 import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
 import {storyStage} from './story-stage.mjs';
 import {publishNarratedFilm} from './publish-film.mjs';
+import {trackMigrationStage} from './migration-state.mjs';
 export async function buildBookFilm(root){
  root=path.resolve(root);const read=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));const write=(file,value)=>fs.writeFileSync(path.join(root,file),JSON.stringify(value,null,2)+'\n');
  const skill=path.resolve('.agents/skills/shf-presentation-creator');
@@ -21,11 +22,6 @@ export async function buildBookFilm(root){
  const outputArgument=process.argv.find(arg=>arg.startsWith('--output='));
  if(outputArgument==='--output=')throw Error('--output requires a directory.');
  const output=outputArgument?path.resolve(outputArgument.slice('--output='.length)):path.resolve(production.bookDirectory,'Animation');
- const report=await publishNarratedFilm({direction,root,output,minDurationMs:production.minDurationMs??0,maxDurationMs:production.maxDurationMs??900000});write('qa/build.json',report);
- // A successful public Qwen build is immediately registered so a later migration resumes safely.
- if(production.voiceEngine==='qwen'&&!outputArgument){
-  const {spawn}=await import('node:child_process');
-  await new Promise((resolve,reject)=>{const child=spawn(process.execPath,['tools/shf/update-voice-migration-status.mjs'],{stdio:'inherit'});child.on('exit',code=>code===0?resolve():reject(new Error(`voice migration status exited ${code}`)));child.on('error',reject);});
- }
- return report;
+ const publish=async()=>{const report=await publishNarratedFilm({direction,root,output,minDurationMs:production.minDurationMs??0,maxDurationMs:production.maxDurationMs??900000});write('qa/build.json',report);return report;};
+ return outputArgument?publish():trackMigrationStage(root,'animation',publish);
 }

@@ -1,42 +1,37 @@
 # Progres migrare voci pentru animații
 
-Actualizat: 2026-09-11T13:56:59.222Z
+Actualizat: 2026-09-11T14:35:24.515Z
 
 Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.
 
 ## Situație
 
-- Voci Qwen finalizate: **5**
-- În conversie: **2**
-- Încă pe Piper: **93**
+- Voci Qwen finalizate: **0**
+- În conversie: **0**
+- Încă pe Piper: **117**
 - Pregătite pentru conversie: **0**
+- De refăcut după schimbarea textului: **5**
 - Fără proiect asociat: **0**
-
-## Voci Qwen finalizate
-
-- A Balance of Iron and Salt — Ryan (189 s)
-- AI Adoption Beyond the Slop — Aiden (148 s)
-- AI Agents — Aiden (141 s)
-- All the Ways to Rule a World — Ryan (161 s)
-- The Right to Copy — Ryan (75 s)
-
-## În conversie
-
-- An Autopsy of a Digital Mind — en_US-ljspeech-medium (152 s)
-- Anatomy of an Echo — en_US-ljspeech-medium (165 s)
 
 ## Încă pe Piper
 
+- Agentic AI 2026 — en_US-ljspeech-medium (393 s)
+- An Autopsy of a Digital Mind — en_US-ljspeech-medium (152 s)
+- Anatomy of an Echo — en_US-ljspeech-medium (165 s)
 - Anti-Idiocracy — en_US-ljspeech-medium (167 s)
 - Anti-Trivialization Machines of the Future — en_US-ljspeech-medium (179 s)
 - Artificial Impossibility — en_US-ljspeech-medium (159 s)
+- Aspirin, Viagra, and Coffins — en_US-ljspeech-medium (732 s)
+- AssistOS — en_US-ljspeech-medium (845 s)
 - Autopsy of Future Emotions — en_US-ljspeech-medium (177 s)
 - Beauty: The Anatomy of Fascination — en_US-ljspeech-medium (75 s)
 - Before Explanation — en_US-ljspeech-medium (81 s)
 - Between Faith and Evidence — en_US-ljspeech-medium (71 s)
 - Beyond the Last Stone — en_US-ljspeech-medium (151 s)
 - Bias in AI — en_US-ljspeech-medium (152 s)
+- Borrowed Credibility — en_US-ljspeech-medium (420 s)
 - Can’t See the Forest for the Trees — en_US-ljspeech-medium (162 s)
+- Coherence Pressure — en_US-ljspeech-medium (398 s)
 - Concordia Series — en_US-ljspeech-medium (164 s)
 - Cones of Meaning — en_US-ljspeech-medium (163 s)
 - Decentralised Brands — en_US-ljspeech-medium (162 s)
@@ -45,18 +40,24 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - Eden Was a Jungle — en_US-ljspeech-medium (154 s)
 - Egregnosis — en_US-ljspeech-medium (160 s)
 - Egregopathy — en_US-ljspeech-medium (149 s)
+- Enough for Everyone — en_US-ljspeech-medium (429 s)
+- Executable Natural Language — en_US-ljspeech-medium (715 s)
+- Executable Scientific Intelligence — en_US-ljspeech-medium (735 s)
+- Explainable AI — en_US-ljspeech-medium (421 s)
 - Freedom and Its Price — en_US-ljspeech-medium (70 s)
 - From Rules, Worlds — en_US-ljspeech-medium (73 s)
 - Holding the Dirty Thing by the Clean Side — en_US-ljspeech-medium (148 s)
-- Hunger After All the Worlds — en_US-ljspeech-medium (164 s)
+- Hunger After All the Worlds — en_US-ljspeech-medium (146 s)
 - Investing in an AI-Dominated Economy — en_US-ljspeech-medium (266 s)
 - Judgment Engines — en_US-ljspeech-medium (191 s)
+- Life Without an Audience — en_US-ljspeech-medium (415 s)
 - Limits of Machine Intelligence — en_US-ljspeech-medium (156 s)
 - Machines of Understanding Through Circuits — en_US-ljspeech-medium (73 s)
 - Me and My Robots — en_US-ljspeech-medium (165 s)
 - Memes for 2030 — en_US-ljspeech-medium (157 s)
 - Meta-Rational Pragmatics — en_US-ljspeech-medium (74 s)
 - Metacult — en_US-ljspeech-medium (161 s)
+- Money Was Never One Thing — en_US-ljspeech-medium (425 s)
 - More Words Than Reality — en_US-ljspeech-medium (162 s)
 - MRP-VM — en_US-ljspeech-medium (161 s)
 - No Right to Survive — en_US-ljspeech-medium (165 s)
@@ -65,6 +66,8 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - One More Try — en_US-ljspeech-medium (71 s)
 - OpenDSU — en_US-ljspeech-medium (156 s)
 - Oriven and Origaya Universe — en_US-ljspeech-medium (169 s)
+- Outfinite Mathematics — en_US-ljspeech-medium (716 s)
+- Outfinitism — en_US-ljspeech-medium (720 s)
 - Predator in the Name of the Dead — en_US-ljspeech-medium (160 s)
 - RAG and EPR — en_US-ljspeech-medium (156 s)
 - Relevance — en_US-ljspeech-medium (152 s)
@@ -80,9 +83,13 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - The Basilisk’s Internal Critique of Outfinitism — en_US-ljspeech-medium (158 s)
 - The Blind Specialist — en_US-ljspeech-medium (154 s)
 - The Book Sends No Notifications — en_US-ljspeech-medium (70 s)
+- The Captured Internet — en_US-ljspeech-medium (443 s)
 - The Cascade of the New — en_US-ljspeech-medium (163 s)
 - The Civilized Mind — en_US-ljspeech-medium (158 s)
+- The First Wake — en_US-ljspeech-medium (708 s)
+- The Founder Lottery — en_US-ljspeech-medium (443 s)
 - The Fragmented Future — en_US-ljspeech-medium (156 s)
+- The Frontier Is Correction — en_US-ljspeech-medium (740 s)
 - The Future of Research Infrastructure — en_US-ljspeech-medium (163 s)
 - The Gospel of the Basilisk — en_US-ljspeech-medium (164 s)
 - The Great Decoupling — en_US-ljspeech-medium (158 s)
@@ -91,10 +98,12 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - The Illness Machine — en_US-ljspeech-medium (160 s)
 - The Last Naive Person — en_US-ljspeech-medium (69 s)
 - The Licence and the Shared Name — en_US-ljspeech-medium (157 s)
+- The Living Research Book — en_US-ljspeech-medium (420 s)
 - The Makers of Reality — en_US-ljspeech-medium (163 s)
 - The Museum of Good Reasons — en_US-ljspeech-medium (146 s)
 - The Necessary Mask — en_US-ljspeech-medium (175 s)
 - The Network of Intent — en_US-ljspeech-medium (77 s)
+- The Orphan Gods — en_US-ljspeech-medium (366 s)
 - The Permission Paradox — en_US-ljspeech-medium (157 s)
 - The Predator’s Niche — en_US-ljspeech-medium (180 s)
 - The Right Not to Be Saved — en_US-ljspeech-medium (173 s)
@@ -102,6 +111,7 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - The Schizoid and the Oracle — en_US-ljspeech-medium (176 s)
 - The Science and Wisdom of Limits — en_US-ljspeech-medium (168 s)
 - The Seventh Signature — en_US-ljspeech-medium (167 s)
+- The Silicon Shadows and I — en_US-ljspeech-medium (369 s)
 - The Smoothing — en_US-ljspeech-medium (151 s)
 - The Society That Selects Us — en_US-ljspeech-medium (162 s)
 - The Sovereignty Archipelago — en_US-ljspeech-medium (166 s)
@@ -114,9 +124,19 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - The Wish Series — en_US-ljspeech-medium (166 s)
 - The World Does Not Read Equations — en_US-ljspeech-medium (69 s)
 - The Zodiac on Trial — en_US-ljspeech-medium (162 s)
+- Those Who No Longer Run — en_US-ljspeech-medium (671 s)
 - Too Convinced to Stop — en_US-ljspeech-medium (157 s)
 - Trustworthy AI — en_US-ljspeech-medium (158 s)
 - Vector-Symbolic Intelligence in Practice — en_US-ljspeech-medium (162 s)
+- Wendigo — en_US-ljspeech-medium (708 s)
 - What We Still Have to Solve — en_US-ljspeech-medium (164 s)
 - Who Will Inherit the World? — en_US-ljspeech-medium (77 s)
 - Why the World Won’t End — en_US-ljspeech-medium (165 s)
+
+## De refăcut după schimbarea textului
+
+- A Balance of Iron and Salt — Ryan (189 s)
+- AI Adoption Beyond the Slop — Aiden (148 s)
+- AI Agents — Aiden (141 s)
+- All the Ways to Rule a World — Ryan (161 s)
+- The Right to Copy — Ryan (75 s)

@@ -26,6 +26,7 @@ The site has these product surfaces:
 - `docs/librarian/`: question-specific recommendations and a separate recommendation-feedback page.
 - `docs/create/`, `docs/feedback/`, `docs/editions/`, and `docs/translate/`: proposal, edition-feedback, publication-history, and translation-request workflows.
 - `docs/legal/`: terms, privacy, cookies and local storage, legal notice, and AI transparency.
+- `docs/status.html`: an unlinked, `noindex` internal maintenance view for animation-voice migration. It reads generated progress data, shows each book’s current narration state and links back to its book and animation pages. It never appears in headers, footers, sitemaps or public discovery.
 
 The shared header places a Home link with a house icon immediately before Create, keeping Create before discovery actions. Home and the ScriptaHub.com wordmark return to the first page with the selected interface language. A simplified full-body icon derived from the shared librarian mascot, including its book and feet, precedes the wordmark and also serves as the SVG favicon, with PNG and multi-size ICO derivatives. The reader retains its book Back action and adds a separate Home action. The shared footer keeps the normal legal destinations visible. Selected interface language is carried by `?lang=` on navigation URLs.
 
@@ -195,8 +196,30 @@ Requested presentations default to English script, screen text, transcript,
 and narration; they are independent of the eight interface languages. Do not
 create additional presentation translations automatically. Keep `?lang=` in
 navigation; the film remains English when interface language changes.
-Use a complete illustrated introduction that invites reading, normally 10–15 minutes, adapting the
-accepted source edition with provenance retained in metadata and QA.
+Default book introductions to one to two minutes, with a two-minute maximum, adapting the
+accepted source edition with provenance retained in metadata and QA. Open with
+a concrete, source-grounded hook and identify the book within the first two
+sentences. Convey its premise, human stakes, distinctive approach and an inviting
+open question in roughly 85–150 words. Marketing copy should earn curiosity
+without revealing fictional outcomes or promising unsupported benefits. Preserve
+natural pauses and shorten content rather than accelerating speech. The current
+migration includes all books, including films previously longer than five minutes.
+
+During the short-film migration, rewrite and independently review the entire
+script batch before voice conversion begins. Store a review tied to each script
+hash; changing the wording invalidates approval and the affected recordings.
+The unlinked status page shows exact proposed narration, source-specific visual
+plans, editorial review state and remaining production work. Distinguish existing
+voice recordings and published duration from the proposed voice and duration
+target. Planned visuals are not completed films, and synthesis does not establish
+listening approval.
+
+The status dashboard tracks Text, Animation and Voice as separate tasks for
+every book, with active work first and exact narration under “Spoken script and
+film plan”. Refresh data automatically every 60 seconds and on returning to the
+tab; preserve expanded scripts and the search query. Stage transitions and
+failures must update the durable per-project progress record and regenerate
+the dashboard data. Never equate an authored visual plan with a finished film.
 
 Standardize SHF delivery, typography, single-sentence captions and pacing, while giving each book its own source-grounded visual identity and composition. Science-fiction introductions establish the premise, questions and reader fit without revealing later twists or resolutions. Use source-appropriate nonhuman forms when the story has no human characters; do not copy the AssistOS cast or visual staging.
 

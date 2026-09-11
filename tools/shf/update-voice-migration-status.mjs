@@ -3,11 +3,13 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {marketingReview} from './marketing-review.mjs';
 
 const root=process.cwd();
 const readJson=file=>fs.readFile(file,'utf8').then(JSON.parse);
 const exists=file=>fs.access(file).then(()=>true).catch(()=>false);
 const rel=file=>path.relative(root,file).split(path.sep).join('/');
+const webRel=file=>path.relative(path.join(root,'docs'),file).split(path.sep).join('/');
 const hash=file=>fs.readFile(file).then(data=>crypto.createHash('sha256').update(data).digest('hex'));
 
 async function walk(dir,name){
@@ -19,10 +21,10 @@ async function walk(dir,name){
   }
   return result;
 }
-async function loadDuration(shf){
+async function loadFilm(shf){
   await import(path.resolve('.agents/skills/shf-presentation-creator/runtime/shf-core.js'));
   const data=await fs.readFile(shf);
-  return (await SHFCore.loadFile(new File([data],path.basename(shf)))).durationMs;
+  return SHFCore.loadFile(new File([data],path.basename(shf)));
 }
 async function projectFor(bookDirectory){
   for(const name of await fs.readdir('presentations')){
@@ -41,7 +43,8 @@ async function record(manifestFile){
   const manifest=await readJson(manifestFile), bookDirectory=path.dirname(manifestFile);
   if(!manifest.animation?.shf) return null;
   const publicShf=path.resolve(bookDirectory,manifest.animation.shf);
-  if(!await exists(publicShf) || await loadDuration(publicShf)>=300000) return null;
+  if(!await exists(publicShf)) return null;
+  const film=await loadFilm(publicShf);
   const project=await projectFor(bookDirectory);
   if(!project) return {title:manifest.title.en,bookId:manifest.id,status:'untracked',bookDirectory:rel(bookDirectory)};
   const [production, receipts, build, locked]=await Promise.all([
@@ -50,19 +53,49 @@ async function record(manifestFile){
     exists(path.join(project,'qa/build.json')).then(ok=>ok?readJson(path.join(project,'qa/build.json')):null),
     hasRenderLock(project)
   ]);
+  const scenes=await readJson(path.join(project,'work/scenes.json'));
+  const editorial=await marketingReview(project,scenes);
+  const state=await fs.readFile(path.join(project,'work/migration-state.json'),'utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return {stages:{}};throw error;});
+  const expectedTexts=scenes.flatMap(scene=>scene.lines).map(text=>crypto.createHash('sha256').update(text).digest('hex'));
   const lines=receipts?.lines||[];
   const filesValid=lines.length>0 && await Promise.all(lines.map(async line=>{
     const audio=path.join(project,'work',line.file);
     return await exists(audio) && await hash(audio)===line.sha256;
   })).then(values=>values.every(Boolean));
-  const qwen=/Qwen3-TTS/.test(receipts?.provider||'') && filesValid && !!build && !locked;
+  const textCurrent=lines.length===expectedTexts.length && lines.every((line,index)=>line.textSha256===expectedTexts[index]);
+  const publishedBeats=film.scenes.flatMap(scene=>scene.beats||[]);
+  const publishedTextCurrent=publishedBeats.length===expectedTexts.length&&publishedBeats.every((beat,index)=>crypto.createHash('sha256').update(beat.text).digest('hex')===expectedTexts[index]);
+  const publishedAudioCurrent=lines.length>0&&lines.every(line=>Object.values(film.assets||{}).some(asset=>asset.sha256===line.sha256));
+  const qwen=/Qwen3-TTS/.test(film.voice?.provider||'') && filesValid && textCurrent && publishedTextCurrent && publishedAudioCurrent && !!build && !locked;
   const piper=/Piper/i.test(receipts?.provider||'');
-  const status=qwen?'qwen-complete':locked?'rendering':piper?'pending-piper':'needs-render';
+  const status=qwen?'qwen-complete':locked?'rendering':/Qwen3-TTS/.test(receipts?.provider||'')?'needs-rerender':piper?'pending-piper':'needs-render';
+  const stages={
+    text:{status:editorial.approved?'reviewed':editorial.current?'awaiting independent review':'rewrite pending'},
+    voice:{status:filesValid&&textCurrent?'generated; listening review pending':'generation pending'},
+    animation:{status:publishedTextCurrent&&publishedAudioCurrent?'packaged; visual review pending':'revision pending'}
+  };
+  for(const [stage,value] of Object.entries(state.stages||{})){
+    if(!stages[stage]||value.scriptSha256!==editorial.scriptSha256)continue;
+    if(stage==='text'&&editorial.approved)continue;
+    if(value.status==='running'&&value.pid){try{process.kill(value.pid,0);}catch{stages[stage]={...value,status:'interrupted'};continue;}}
+    stages[stage]=value;
+  }
+  const active=Object.values(stages).some(stage=>['running','reviewing','rewriting'].includes(stage.status));
   return {
-    title:manifest.title.en, bookId:manifest.id, status, durationMs:build?.durationMs||null,
+    title:manifest.title.en, bookId:manifest.id, status, durationMs:film.durationMs,
+    stages,active,
+    publishedVoice:film.voice?.provider||'Unknown', publishedVoiceId:film.voice?.id||null,
+    plannedVoice:production.voiceProvider||null, plannedVoiceId:production.voiceId||null,
     voice:receipts?.provider||production.voiceProvider||null, voiceId:receipts?.lines?.[0]?.voiceId||production.voiceId||null,
     bookDirectory:rel(bookDirectory), project:rel(project), shf:rel(publicShf), shfSha256:await hash(publicShf),
-    receiptLines:lines.length, audioReceiptsVerified:filesValid, updatedAt:new Date().toISOString()
+    bookPage:`${webRel(path.join(bookDirectory,'en/book.html'))}?lang=en`, animationPage:manifest.animation.page?webRel(path.resolve(bookDirectory,manifest.animation.page)):null,
+    script:scenes.map(scene=>({title:scene.title,lines:scene.lines})),
+    scriptWords:scenes.flatMap(scene=>scene.lines).join(' ').trim().split(/\s+/).length,
+    targetDurationMs:120000,
+    editorialStatus:editorial.approved?'reviewed':editorial.current?'independent-review-pending':'rewrite-pending',
+    editorialReview:editorial.current?{hook:editorial.review.hook,readerPromise:editorial.review.readerPromise,visualPlan:editorial.review.visualPlan,independentReview:editorial.review.independentReview||null}:null,
+    presentationPlan:{scenes:scenes.length,beats:expectedTexts.length,visualActions:scenes.reduce((count,scene)=>count+(scene.visual?.actions?.length||0),0),method:'Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film.'},
+    receiptLines:lines.length, audioReceiptsVerified:filesValid, narrationTextCurrent:textCurrent, publishedTextCurrent, publishedAudioCurrent, updatedAt:new Date().toISOString()
   };
 }
 async function acquire(lock){
@@ -75,16 +108,21 @@ async function acquire(lock){
 const lock=path.join('tasks','.voice-migration-progress.lock'), handle=await acquire(lock);
 try {
   const entries=(await Promise.all((await walk('docs/books','manifest.json')).map(record))).filter(Boolean).sort((a,b)=>a.title.localeCompare(b.title));
-  const counts=Object.fromEntries(['qwen-complete','rendering','pending-piper','needs-render','untracked'].map(status=>[status,entries.filter(entry=>entry.status===status).length]));
-  const data={format:'ScriptaHub-animation-voice-migration',version:1,updatedAt:new Date().toISOString(),scope:'Published book animations shorter than five minutes.',counts,entries};
+  const counts=Object.fromEntries(['qwen-complete','rendering','pending-piper','needs-render','needs-rerender','untracked'].map(status=>[status,entries.filter(entry=>entry.status===status).length]));
+  const editorialCounts={reviewed:entries.filter(entry=>entry.editorialStatus==='reviewed').length,awaitingReview:entries.filter(entry=>entry.editorialStatus==='independent-review-pending').length,awaitingRewrite:entries.filter(entry=>entry.editorialStatus==='rewrite-pending').length};
+  const data={format:'ScriptaHub-animation-voice-migration',version:2,updatedAt:new Date().toISOString(),scope:'All book animations: engaging introductions of 1–2 minutes, maximum two minutes.',counts,editorialCounts,conversionGate:editorialCounts.reviewed===entries.length?'scripts-reviewed':'all-scripts-must-be-reviewed',entries};
   const json=path.join('tasks','voice-migration-progress.json');
   await fs.writeFile(`${json}.${process.pid}.tmp`,JSON.stringify(data,null,2)+'\n');
   await fs.rename(`${json}.${process.pid}.tmp`,json);
-  const groups=[['qwen-complete','Voci Qwen finalizate'],['rendering','În conversie'],['pending-piper','Încă pe Piper'],['needs-render','Pregătite pentru conversie'],['untracked','Fără proiect asociat']];
+  const groups=[['qwen-complete','Voci Qwen finalizate'],['rendering','În conversie'],['pending-piper','Încă pe Piper'],['needs-render','Pregătite pentru conversie'],['needs-rerender','De refăcut după schimbarea textului'],['untracked','Fără proiect asociat']];
   const lines=['# Progres migrare voci pentru animații','',`Actualizat: ${data.updatedAt}`, '', 'Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.', '', '## Situație','',...groups.map(([key,label])=>`- ${label}: **${counts[key]}**`),''];
   for(const [key,label] of groups){const items=entries.filter(entry=>entry.status===key);if(!items.length)continue;lines.push(`## ${label}`,'',...items.map(entry=>`- ${entry.title}${entry.voiceId?` — ${entry.voiceId}`:''}${entry.durationMs?` (${Math.round(entry.durationMs/1000)} s)`:''}`),'');}
   const markdown=path.join('tasks','VOICE-MIGRATION-PROGRESS.md');
   await fs.writeFile(`${markdown}.${process.pid}.tmp`,lines.join('\n'));
   await fs.rename(`${markdown}.${process.pid}.tmp`,markdown);
+  const browserData={...data,entries:entries.map(({project,shf,shfSha256,audioReceiptsVerified,narrationTextCurrent,...entry})=>entry)};
+  const browserFile=path.join('docs','assets','voice-migration-status.js');
+  await fs.writeFile(`${browserFile}.${process.pid}.tmp`,`/* Generated by tools/shf/update-voice-migration-status.mjs. */\nwindow.SCRIPTA_VOICE_MIGRATION_STATUS=${JSON.stringify(browserData)};\n`);
+  await fs.rename(`${browserFile}.${process.pid}.tmp`,browserFile);
   console.log(JSON.stringify({counts,entries:entries.length}));
 } finally { await handle.close(); await fs.rm(lock,{force:true}); }

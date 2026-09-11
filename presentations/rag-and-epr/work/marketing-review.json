@@ -1,0 +1,68 @@
+{
+  "version": "curiosity-v2",
+  "title": "RAG and EPR",
+  "scriptSha256": "6000c8a8a0099ac71887bb84d41574366c6ca1b7504554413c1220fd46d18220",
+  "sourceFiles": [
+    "docs/books/rag/and/epr/bk-b5f873f3cb414ffc/en/short_content.html"
+  ],
+  "sourceEvidence": [
+    {
+      "locator": "RAG as an information-flow system",
+      "excerpt": "The book exists because Retrieval-Augmented Generation has expanded from a particular model class into a broad family of systems. Two products called RAG may share little beyond supplying external information to a generator. One may preserve source structure, combine lexical and semantic search, rerank candidates, enforce access rules, verify citations, and log every transformation. Another may place five nearby chunks into a prompt. Treating them as equivalent hides the architectural choices that determine accuracy, reproducibility, security, latency, and cost."
+    },
+    {
+      "locator": "RAG as an information-flow system",
+      "excerpt": "RAG is therefore defined as controlled information flow rather than a magical retrieve-then-answer box. Sources are acquired and normalized; documents are parsed and segmented; evidence units enter one or more indexes; queries are interpreted or rewritten; candidate pools are retrieved and reranked; context is selected, ordered, compressed, and labelled; a model generates; verification checks claims, citations, or constraints; and users receive both an answer and some trace of its basis. Each contract can introduce error, so end-to-end quality must be explained through stages rather than attributed vaguely to retrieval or generation."
+    },
+    {
+      "locator": "Retrieval begins before the query",
+      "excerpt": "Corpus acquisition sets the ceiling of recall. A system cannot retrieve an article it never indexed, a correction disconnected from its original, or a table destroyed during parsing. Scientific collections may need papers, patents, standards, supplementary files, datasets, code, protocols, reviews, errata, retractions, and version histories. PDF extraction can scramble reading order, detach captions, flatten tables, and corrupt technical identifiers. Robust ingestion keeps original files, normalized representations, structural coordinates, stable identifiers, hashes, and uncertainty about transformation so evidence can be traced to what a user can inspect."
+    },
+    {
+      "locator": "Retrieval begins before the query",
+      "excerpt": "No single retrieval method dominates every query. Sparse methods preserve exact terms and rare identifiers; dense methods recover semantic similarity; hybrid systems exploit their different errors; late-interaction models retain token-level matching; cross-encoders improve expensive final ranking. A practical stack behaves like a recall-preserving funnel: several channels build a broad candidate pool, fusion and reranking estimate local usefulness, and later selection constructs a bounded context. Premature pruning is especially dangerous in multi-hop research because evidence discarded early cannot be recovered by a clever generator. Every narrowing step should remain measurable and attributable."
+    }
+  ],
+  "hook": "An AI answer includes citations, but did the system ever retrieve the evidence it needed?",
+  "readerPromise": "Understand how source selection and information loss shape supposedly grounded AI answers.",
+  "protectedRevelations": [
+    "Detailed retrieval recipes, evaluation contracts and proposed EPR implementation."
+  ],
+  "visualPlan": [
+    "Pair final answer with an absent evidence source rather than decorative citation badges.",
+    "Trace one source through extraction and selection, eliminating the full pipeline demonstration.",
+    "Keep complementary evidence items side by side to show a portfolio rather than a ranking race.",
+    "End with the reader comparing source and answer."
+  ],
+  "visualActionChanges": [
+    {
+      "scene": "scene-01",
+      "removedObsoleteBeatActions": [],
+      "direction": "Pair final answer with an absent evidence source rather than decorative citation badges."
+    },
+    {
+      "scene": "scene-02",
+      "removedObsoleteBeatActions": [],
+      "direction": "Trace one source through extraction and selection, eliminating the full pipeline demonstration."
+    },
+    {
+      "scene": "scene-03",
+      "removedObsoleteBeatActions": [],
+      "direction": "Keep complementary evidence items side by side to show a portfolio rather than a ranking race."
+    },
+    {
+      "scene": "scene-04",
+      "removedObsoleteBeatActions": [],
+      "direction": "End with the reader comparing source and answer."
+    }
+  ],
+  "authorReview": {
+    "status": "ready-for-independent-review",
+    "reviewedAt": "2026-09-11T14:32:13.146Z",
+    "scope": "Complete spoken script against canonical English source; clear premise, concrete opening hook, meaningful curiosity, no revealed outcomes, restrained emotional delivery.",
+    "wordCount": 124,
+    "sentenceCount": 8,
+    "corrections": null,
+    "conversion": "Not started; editorial work only."
+  }
+}
