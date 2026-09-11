@@ -1809,87 +1809,6 @@
           }
         },
         {
-          "id": "tissue-table",
-          "asset": "custom",
-          "x": 381,
-          "y": 465,
-          "scale": 1,
-          "meaning": "Two equal-height seats and a small shared table locate a listening encounter without prescribing treatment.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part11",
-                "type": "rect",
-                "attrs": {
-                  "x": -43,
-                  "y": -8,
-                  "width": 86,
-                  "height": 16,
-                  "fill": "#aa8768",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part12",
-                "type": "path",
-                "attrs": {
-                  "d": "M-28 8V58M28 8V58",
-                  "fill": "none",
-                  "stroke": "#aa8768",
-                  "stroke-width": 8,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part13",
-                "type": "rect",
-                "attrs": {
-                  "x": -29,
-                  "y": -41,
-                  "width": 58,
-                  "height": 31,
-                  "fill": "#f0e9dd",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part14",
-                "type": "path",
-                "attrs": {
-                  "d": "M-10 -41Q-14 -69 9 -66L19 -41",
-                  "fill": "none",
-                  "stroke": "#f0e9dd",
-                  "stroke-width": 7,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "schedule",
           "asset": "custom",
           "x": 921,
@@ -2063,85 +1982,6 @@
           }
         },
         {
-          "id": "message",
-          "asset": "custom",
-          "x": 935,
-          "y": 466,
-          "scale": 1,
-          "meaning": "A workplace message interrupts the person’s ordinary day.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part26",
-                "type": "rect",
-                "attrs": {
-                  "x": -38,
-                  "y": -65,
-                  "width": 76,
-                  "height": 132,
-                  "fill": "#304254",
-                  "rx": 10
-                }
-              },
-              {
-                "id": "$asset.part27",
-                "type": "rect",
-                "attrs": {
-                  "x": -30,
-                  "y": -53,
-                  "width": 60,
-                  "height": 100,
-                  "fill": "#f0e9dd",
-                  "rx": 4
-                }
-              },
-              {
-                "id": "$asset.part28",
-                "type": "path",
-                "attrs": {
-                  "d": "M-20 -24H20M-20 -4H15M-20 16H20",
-                  "fill": "none",
-                  "stroke": "#528f91",
-                  "stroke-width": 3,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part29",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 56,
-                  "r": 4,
-                  "fill": "#f0e9dd"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "changed-shift",
           "asset": "custom",
           "x": 820,
@@ -2215,12 +2055,6 @@
           "durationMs": 1300
         },
         {
-          "actor": "tissue-table",
-          "action": "appear",
-          "beat": 1,
-          "durationMs": 1000
-        },
-        {
           "actor": "worker",
           "action": "character.express",
           "emotion": "worried",
@@ -2248,20 +2082,36 @@
           "durationMs": 1000
         },
         {
-          "actor": "message",
+          "actor": "changed-shift",
           "action": "appear",
           "beat": 2,
           "durationMs": 1000
         },
         {
           "actor": "changed-shift",
-          "action": "appear",
+          "action": "moveTo",
           "beat": 2,
-          "durationMs": 850
+          "x": 1006,
+          "y": 357,
+          "durationMs": 2600
+        },
+        {
+          "actor": "clinician",
+          "action": "character.gesture",
+          "gesture": "explain",
+          "beat": 2,
+          "durationMs": 1900
+        },
+        {
+          "actor": "worker",
+          "action": "character.express",
+          "emotion": "curious",
+          "beat": 2,
+          "durationMs": 1100
         }
       ],
       "connections": [],
-      "meaning": "Open with a worker carrying a changed shift into a clinical encounter; show home and income as context, not a universal cure; keep treatment visible while widening to working conditions."
+      "meaning": "The source’s worker example: a person receives a listening clinical encounter while an employer-controlled schedule changes elsewhere. The person is illustrative; no therapy, medication recommendation or improvement in clinical outcome is depicted."
     }
   },
   {
@@ -4148,489 +3998,6 @@
               }
             ]
           }
-        },
-        {
-          "id": "prior-record",
-          "asset": "custom",
-          "x": 883,
-          "y": 286,
-          "scale": 1,
-          "meaning": "Repeated study observations already existed before the income change.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part3",
-                "type": "rect",
-                "attrs": {
-                  "x": -181,
-                  "y": -107,
-                  "width": 362,
-                  "height": 220,
-                  "fill": "#f0e9dd",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part4",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -65,
-                  "font-size": 30,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Earlier assessments"
-              },
-              {
-                "id": "$asset.part5",
-                "type": "path",
-                "attrs": {
-                  "d": "M-135 -21H135M-135 9H135M-135 39H73",
-                  "fill": "none",
-                  "stroke": "#528f91",
-                  "stroke-width": 5,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part6",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 85,
-                  "font-size": 24,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Children and families"
-              }
-            ]
-          }
-        },
-        {
-          "id": "payment",
-          "asset": "custom",
-          "x": 1095,
-          "y": 448,
-          "scale": 1,
-          "meaning": "Annual distributions of tribal casino profits, not gambling winnings.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part7",
-                "type": "rect",
-                "attrs": {
-                  "x": -112,
-                  "y": -53,
-                  "width": 224,
-                  "height": 111,
-                  "fill": "#e9d5ad",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part8",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -12,
-                  "font-size": 27,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Annual payment"
-              },
-              {
-                "id": "$asset.part9",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 25,
-                  "font-size": 23,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Tribal profits"
-              }
-            ]
-          }
-        },
-        {
-          "id": "income-change",
-          "asset": "custom",
-          "x": 410,
-          "y": 577,
-          "scale": 1,
-          "meaning": "Some families left poverty",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part10",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 31,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Some families left poverty"
-              }
-            ]
-          }
-        },
-        {
-          "id": "follow-up",
-          "asset": "custom",
-          "x": 823,
-          "y": 332,
-          "scale": 1,
-          "meaning": "Qualitative study findings; the arrow indicates direction only and does not encode an effect size or universal outcome.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part11",
-                "type": "rect",
-                "attrs": {
-                  "x": -267,
-                  "y": -165,
-                  "width": 534,
-                  "height": 326,
-                  "fill": "#f0e9dd",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part12",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -118,
-                  "font-size": 32,
-                  "font-weight": 700,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Families leaving poverty"
-              },
-              {
-                "id": "$asset.part13",
-                "type": "text",
-                "attrs": {
-                  "x": -40,
-                  "y": -53,
-                  "font-size": 27,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Conduct / oppositional"
-              },
-              {
-                "id": "$asset.part14",
-                "type": "text",
-                "attrs": {
-                  "x": -116,
-                  "y": -20,
-                  "font-size": 27,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "symptoms"
-              },
-              {
-                "id": "$asset.part15",
-                "type": "path",
-                "attrs": {
-                  "d": "M165 -79V-15M148 -35L165 -15L182 -35",
-                  "fill": "none",
-                  "stroke": "#528f91",
-                  "stroke-width": 7,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part16",
-                "type": "text",
-                "attrs": {
-                  "x": 169,
-                  "y": 19,
-                  "font-size": 24,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Fewer"
-              },
-              {
-                "id": "$asset.part17",
-                "type": "path",
-                "attrs": {
-                  "d": "M-223 41H222",
-                  "fill": "none",
-                  "stroke": "#aa8768",
-                  "stroke-width": 3,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "selective-result",
-          "asset": "custom",
-          "x": 809,
-          "y": 440,
-          "scale": 1,
-          "meaning": "The same study did not find the equivalent improvement in anxiety and depression.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part18",
-                "type": "text",
-                "attrs": {
-                  "x": -33,
-                  "y": -21,
-                  "font-size": 27,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Anxiety / depression"
-              },
-              {
-                "id": "$asset.part19",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 22,
-                  "font-size": 26,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "No equivalent improvement"
-              }
-            ]
-          }
-        },
-        {
-          "id": "time-return",
-          "asset": "custom",
-          "x": 538,
-          "y": 334,
-          "scale": 1,
-          "meaning": "Researchers can refer back to observations made before the income change; this was not randomized assignment.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part20",
-                "type": "path",
-                "attrs": {
-                  "d": "M-51 0H29M-31 -19L-51 0L-31 19",
-                  "fill": "none",
-                  "stroke": "#936b92",
-                  "stroke-width": 6,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "timing",
-          "asset": "custom",
-          "x": 284,
-          "y": 481,
-          "scale": 1,
-          "meaning": "Before the payments",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part21",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Before the payments"
-              }
-            ]
-          }
         }
       ],
       "actions": [
@@ -4653,28 +4020,33 @@
           "durationMs": 1000
         },
         {
-          "actor": "prior-record",
-          "action": "appear",
-          "beat": 1,
-          "durationMs": 1000
+          "actor": "parent",
+          "action": "character.gesture",
+          "gesture": "reflect",
+          "beat": 2,
+          "durationMs": 1900
         },
         {
-          "actor": "payment",
-          "action": "appear",
+          "actor": "parent",
+          "action": "disappear",
           "beat": 2,
-          "durationMs": 1000
+          "durationMs": 1100
         },
         {
-          "actor": "payment",
-          "action": "moveTo",
+          "actor": "child",
+          "action": "disappear",
           "beat": 2,
-          "x": 645,
-          "y": 432,
-          "durationMs": 3300
+          "durationMs": 1100
+        },
+        {
+          "actor": "home-seat",
+          "action": "disappear",
+          "beat": 2,
+          "durationMs": 1100
         }
       ],
       "connections": [],
-      "meaning": "Open with a worker carrying a changed shift into a clinical encounter; show home and income as context, not a universal cure; keep treatment visible while widening to working conditions."
+      "meaning": "The book’s western North Carolina child study: earlier assessments precede annual tribal profit payments. The displayed qualitative follow-up is explicitly restricted to families escaping poverty, with fewer conduct/oppositional symptoms but no equivalent anxiety/depression improvement. No invented amount, effect size, casino glamour, randomization or guaranteed cure."
     }
   },
   {
@@ -5594,317 +4966,6 @@
           }
         },
         {
-          "id": "message",
-          "asset": "custom",
-          "x": 302,
-          "y": 395,
-          "scale": 1,
-          "meaning": "A workplace message interrupts the person’s ordinary day.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "rect",
-                "attrs": {
-                  "x": -38,
-                  "y": -65,
-                  "width": 76,
-                  "height": 132,
-                  "fill": "#304254",
-                  "rx": 10
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "rect",
-                "attrs": {
-                  "x": -30,
-                  "y": -53,
-                  "width": 60,
-                  "height": 100,
-                  "fill": "#f0e9dd",
-                  "rx": 4
-                }
-              },
-              {
-                "id": "$asset.part3",
-                "type": "path",
-                "attrs": {
-                  "d": "M-20 -24H20M-20 -4H15M-20 16H20",
-                  "fill": "none",
-                  "stroke": "#528f91",
-                  "stroke-width": 3,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part4",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 56,
-                  "r": 4,
-                  "fill": "#f0e9dd"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "rota",
-          "asset": "custom",
-          "x": 640,
-          "y": 294,
-          "scale": 1,
-          "meaning": "A schedule is a concrete exposure controlled by the workplace, not a claim that every work change causes illness.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part5",
-                "type": "rect",
-                "attrs": {
-                  "x": -146,
-                  "y": -99,
-                  "width": 292,
-                  "height": 203,
-                  "fill": "#f0e9dd",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part6",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -58,
-                  "font-size": 31,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Work schedule"
-              },
-              {
-                "id": "$asset.part7",
-                "type": "rect",
-                "attrs": {
-                  "x": -114,
-                  "y": -28,
-                  "width": 58,
-                  "height": 46,
-                  "fill": "#97b69c",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part8",
-                "type": "rect",
-                "attrs": {
-                  "x": -114,
-                  "y": 36,
-                  "width": 58,
-                  "height": 43,
-                  "fill": "#97b69c",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part9",
-                "type": "rect",
-                "attrs": {
-                  "x": -29,
-                  "y": -28,
-                  "width": 58,
-                  "height": 46,
-                  "fill": "#97b69c",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part10",
-                "type": "rect",
-                "attrs": {
-                  "x": -29,
-                  "y": 36,
-                  "width": 58,
-                  "height": 43,
-                  "fill": "#97b69c",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part11",
-                "type": "rect",
-                "attrs": {
-                  "x": 56,
-                  "y": -28,
-                  "width": 58,
-                  "height": 46,
-                  "fill": "#97b69c",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part12",
-                "type": "rect",
-                "attrs": {
-                  "x": 56,
-                  "y": 36,
-                  "width": 58,
-                  "height": 43,
-                  "fill": "#97b69c",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part13",
-                "type": "text",
-                "attrs": {
-                  "x": -85,
-                  "y": 3,
-                  "font-size": 20,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Mon"
-              },
-              {
-                "id": "$asset.part14",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 3,
-                  "font-size": 20,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Tue"
-              },
-              {
-                "id": "$asset.part15",
-                "type": "text",
-                "attrs": {
-                  "x": 85,
-                  "y": 3,
-                  "font-size": 20,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Wed"
-              }
-            ]
-          }
-        },
-        {
-          "id": "replacement-shift",
-          "asset": "custom",
-          "x": 553,
-          "y": 345,
-          "scale": 1,
-          "meaning": "A repeatedly changed shift is part of the source’s harmful workplace scenario.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part16",
-                "type": "rect",
-                "attrs": {
-                  "x": -39,
-                  "y": -23,
-                  "width": 78,
-                  "height": 46,
-                  "fill": "#ce8975",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part17",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 8,
-                  "font-size": 24,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "New"
-              }
-            ]
-          }
-        },
-        {
           "id": "representative",
           "asset": "custom",
           "x": 1005,
@@ -6799,122 +5860,6 @@
           }
         },
         {
-          "id": "concern",
-          "asset": "custom",
-          "x": 1005,
-          "y": 178,
-          "scale": 1,
-          "meaning": "An accessible reporting conversation is one proposed change in workplace control.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part18",
-                "type": "path",
-                "attrs": {
-                  "d": "M-155 -35H155V39H-85L-133 66L-116 39H-155Z",
-                  "fill": "#f0e9dd"
-                }
-              },
-              {
-                "id": "$asset.part19",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 9,
-                  "font-size": 27,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Raise the concern"
-              }
-            ]
-          }
-        },
-        {
-          "id": "schedule-note",
-          "asset": "custom",
-          "x": 640,
-          "y": 453,
-          "scale": 1,
-          "meaning": "Proposed reduction of unpredictability; not a depicted trial result or promise of clinical improvement.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part20",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -20,
-                  "font-size": 31,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Proposed repair"
-              },
-              {
-                "id": "$asset.part21",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 20,
-                  "font-size": 28,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Predictable shifts"
-              }
-            ]
-          }
-        },
-        {
           "id": "care-continues",
           "asset": "custom",
           "x": 330,
@@ -6982,30 +5927,10 @@
           "durationMs": 1300
         },
         {
-          "actor": "message",
+          "actor": "representative",
           "action": "appear",
-          "beat": 1,
-          "durationMs": 1000
-        },
-        {
-          "actor": "rota",
-          "action": "appear",
-          "beat": 1,
-          "durationMs": 1000
-        },
-        {
-          "actor": "replacement-shift",
-          "action": "appear",
-          "beat": 1,
-          "durationMs": 1000
-        },
-        {
-          "actor": "replacement-shift",
-          "action": "moveTo",
-          "beat": 1,
-          "x": 726,
-          "y": 282,
-          "durationMs": 2600
+          "beat": 2,
+          "durationMs": 1300
         },
         {
           "actor": "worker",
@@ -7022,14 +5947,42 @@
           "durationMs": 1900
         },
         {
+          "actor": "worker",
+          "action": "character.gesture",
+          "gesture": "question",
+          "beat": 2,
+          "durationMs": 1900
+        },
+        {
+          "actor": "representative",
+          "action": "character.gesture",
+          "gesture": "invite",
+          "beat": 2,
+          "durationMs": 1900
+        },
+        {
           "actor": "care-continues",
           "action": "appear",
           "beat": 2,
           "durationMs": 1000
+        },
+        {
+          "actor": "representative",
+          "action": "character.gesture",
+          "gesture": "explain",
+          "beat": 2,
+          "durationMs": 1900
+        },
+        {
+          "actor": "worker",
+          "action": "character.express",
+          "emotion": "curious",
+          "beat": 2,
+          "durationMs": 1100
         }
       ],
       "connections": [],
-      "meaning": "Open with a worker carrying a changed shift into a clinical encounter; show home and income as context, not a universal cure; keep treatment visible while widening to working conditions."
+      "meaning": "A worker’s changing rota and interrupted day lead to a reporting conversation and a proposed more predictable schedule. Clinical support continues; the illustration does not diagnose the person, promise a cure or prescribe treatment."
     }
   },
   {
@@ -7950,164 +6903,6 @@
           }
         },
         {
-          "id": "missed-work",
-          "asset": "custom",
-          "x": 650,
-          "y": 262,
-          "scale": 1,
-          "meaning": "An existing episode can disrupt work and income; a consequence can become a maintaining condition.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part6",
-                "type": "rect",
-                "attrs": {
-                  "x": -165,
-                  "y": -112,
-                  "width": 330,
-                  "height": 226,
-                  "fill": "#f0e9dd",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part7",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -66,
-                  "font-size": 31,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Work interrupted"
-              },
-              {
-                "id": "$asset.part8",
-                "type": "path",
-                "attrs": {
-                  "d": "M-116 -22H115M-116 9H78",
-                  "fill": "none",
-                  "stroke": "#528f91",
-                  "stroke-width": 5,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part9",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 70,
-                  "font-size": 28,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Income disrupted"
-              }
-            ]
-          }
-        },
-        {
-          "id": "new-obligation",
-          "asset": "custom",
-          "x": 947,
-          "y": 421,
-          "scale": 1,
-          "meaning": "A continuing obligation returns into daily life, without implying irresponsibility or identifying a diagnosis.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part10",
-                "type": "rect",
-                "attrs": {
-                  "x": -132,
-                  "y": -70,
-                  "width": 264,
-                  "height": 143,
-                  "fill": "#e8d1bb",
-                  "rx": 6
-                }
-              },
-              {
-                "id": "$asset.part11",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -18,
-                  "font-size": 30,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "A new obstacle"
-              },
-              {
-                "id": "$asset.part12",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 26,
-                  "font-size": 25,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#304254"
-                },
-                "text": "Bills still arrive"
-              }
-            ]
-          }
-        },
-        {
           "id": "reading-spread",
           "asset": "custom",
           "x": 859,
@@ -8225,59 +7020,6 @@
               }
             ]
           }
-        },
-        {
-          "id": "held-pages",
-          "asset": "custom",
-          "x": 412,
-          "y": 389,
-          "scale": 1,
-          "meaning": "The person turns toward reading; the enlarged spread is a view of the same reading object.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part20",
-                "type": "path",
-                "attrs": {
-                  "d": "M-55 -37Q-30 -48 0 -35Q28 -49 55 -37V38Q29 28 0 39Q-29 28 -55 38Z",
-                  "fill": "#f0e9dd"
-                }
-              },
-              {
-                "id": "$asset.part21",
-                "type": "path",
-                "attrs": {
-                  "d": "M0 -34V38",
-                  "fill": "none",
-                  "stroke": "#aa8768",
-                  "stroke-width": 2,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
         }
       ],
       "actions": [
@@ -8302,20 +7044,28 @@
           "durationMs": 1900
         },
         {
-          "actor": "missed-work",
+          "actor": "reading-spread",
           "action": "appear",
           "beat": 2,
           "durationMs": 1000
         },
         {
-          "actor": "reading-spread",
-          "action": "appear",
+          "actor": "person",
+          "action": "character.gesture",
+          "gesture": "invite",
           "beat": 2,
-          "durationMs": 850
+          "durationMs": 1900
+        },
+        {
+          "actor": "person",
+          "action": "character.express",
+          "emotion": "curious",
+          "beat": 2,
+          "durationMs": 1100
         }
       ],
       "connections": [],
-      "meaning": "Open with a worker carrying a changed shift into a clinical encounter; show home and income as context, not a universal cure; keep treatment visible while widening to working conditions."
+      "meaning": "Reverse causation is illustrated through an existing difficult episode interrupting work, followed by a new household obstacle. The reader returns to the source’s casino study and strongest countercase. No specific diagnosis, moral blame or universal social explanation is assigned."
     }
   }
 ]

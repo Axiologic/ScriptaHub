@@ -45,115 +45,6 @@
     "visual": {
       "objects": [
         {
-          "id": "station",
-          "asset": "custom",
-          "x": 599,
-          "y": 341,
-          "scale": 1,
-          "meaning": "The commuter’s ordinary platform precedes the changed fortune",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-428 144V-151H427V144Z",
-                  "fill": "#6c6781"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#c8c1dc"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "rect",
-                "attrs": {
-                  "x": -384,
-                  "y": -109,
-                  "width": 244,
-                  "height": 205,
-                  "rx": 16,
-                  "fill": "#ded3bc"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#40505c"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part3",
-                "type": "rect",
-                "attrs": {
-                  "x": -92,
-                  "y": -109,
-                  "width": 244,
-                  "height": 205,
-                  "rx": 16,
-                  "fill": "#ded3bc"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#40505c"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part4",
-                "type": "rect",
-                "attrs": {
-                  "x": 201,
-                  "y": -109,
-                  "width": 188,
-                  "height": 205,
-                  "rx": 7,
-                  "fill": "#ac774d"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#e8bf94"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part5",
-                "type": "path",
-                "attrs": {
-                  "d": "M-428 161H427",
-                  "fill": "none",
-                  "stroke": "#ac774d",
-                  "stroke-width": 18,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "commuter",
           "asset": "custom",
           "x": 840,
@@ -301,124 +192,34 @@
               }
             ]
           }
-        },
-        {
-          "id": "fallen-person",
-          "asset": "custom",
-          "x": 395,
-          "y": 463,
-          "scale": 1,
-          "meaning": "An encounter that cannot be reduced to the mechanics of a wish",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part16",
-                "type": "ellipse",
-                "attrs": {
-                  "cx": -84,
-                  "cy": -8,
-                  "rx": 25,
-                  "ry": 25,
-                  "fill": "#ac774d"
-                }
-              },
-              {
-                "id": "$asset.part17",
-                "type": "path",
-                "attrs": {
-                  "d": "M-56 -1L18 16L82 -1M11 13L35 55L98 61M-36 2L-43 36L-102 27",
-                  "fill": "none",
-                  "stroke": "#ac774d",
-                  "stroke-width": 20,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "door-leaf",
-          "asset": "custom",
-          "x": 832,
-          "y": 335,
-          "scale": 1,
-          "meaning": "The train door closes while an ordinary ethical decision remains",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part18",
-                "type": "rect",
-                "attrs": {
-                  "x": -91,
-                  "y": -105,
-                  "width": 183,
-                  "height": 207,
-                  "rx": 6,
-                  "fill": "#ac774d"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#e8bf94"
-                  }
-                }
-              }
-            ]
-          }
         }
       ],
       "actions": [
         {
-          "actor": "door-leaf",
-          "action": "appear",
+          "actor": "commuter",
+          "action": "moveTo",
+          "beat": 1,
+          "x": 864,
+          "y": 309,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "The balance changes and the commuter checks it again.",
+          "emotion": "temptation"
+        },
+        {
+          "actor": "commuter",
+          "action": "moveTo",
           "beat": 2,
-          "durationMs": 850
+          "x": 816,
+          "y": 329,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "Reveal four distinct story openings without resolving their worlds.",
+          "emotion": "interest"
         }
       ],
       "connections": [],
-      "meaning": "Use the station decision as one concrete opening, not a repeated miniature plot; show the four-reality structure through distinct figures and contexts; end at an open train door without revealing later mechanisms."
+      "meaning": "A banking error brings extraordinary wealth just when an ordinary man most wants life to change. The scene stages a material relationship and its change, rather than a row of topical symbols."
     }
   },
   {
@@ -468,115 +269,6 @@
     "visual": {
       "objects": [
         {
-          "id": "station",
-          "asset": "custom",
-          "x": 599,
-          "y": 341,
-          "scale": 1,
-          "meaning": "The commuter’s ordinary platform precedes the changed fortune",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-428 144V-151H427V144Z",
-                  "fill": "#6c6781"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#c8c1dc"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "rect",
-                "attrs": {
-                  "x": -384,
-                  "y": -109,
-                  "width": 244,
-                  "height": 205,
-                  "rx": 16,
-                  "fill": "#ded3bc"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#40505c"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part3",
-                "type": "rect",
-                "attrs": {
-                  "x": -92,
-                  "y": -109,
-                  "width": 244,
-                  "height": 205,
-                  "rx": 16,
-                  "fill": "#ded3bc"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#40505c"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part4",
-                "type": "rect",
-                "attrs": {
-                  "x": 201,
-                  "y": -109,
-                  "width": 188,
-                  "height": 205,
-                  "rx": 7,
-                  "fill": "#ac774d"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#e8bf94"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part5",
-                "type": "path",
-                "attrs": {
-                  "d": "M-428 161H427",
-                  "fill": "none",
-                  "stroke": "#ac774d",
-                  "stroke-width": 18,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "commuter",
           "asset": "custom",
           "x": 840,
@@ -724,124 +416,34 @@
               }
             ]
           }
-        },
-        {
-          "id": "fallen-person",
-          "asset": "custom",
-          "x": 395,
-          "y": 463,
-          "scale": 1,
-          "meaning": "An encounter that cannot be reduced to the mechanics of a wish",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part16",
-                "type": "ellipse",
-                "attrs": {
-                  "cx": -84,
-                  "cy": -8,
-                  "rx": 25,
-                  "ry": 25,
-                  "fill": "#ac774d"
-                }
-              },
-              {
-                "id": "$asset.part17",
-                "type": "path",
-                "attrs": {
-                  "d": "M-56 -1L18 16L82 -1M11 13L35 55L98 61M-36 2L-43 36L-102 27",
-                  "fill": "none",
-                  "stroke": "#ac774d",
-                  "stroke-width": 20,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "door-leaf",
-          "asset": "custom",
-          "x": 832,
-          "y": 335,
-          "scale": 1,
-          "meaning": "The train door closes while an ordinary ethical decision remains",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part18",
-                "type": "rect",
-                "attrs": {
-                  "x": -91,
-                  "y": -105,
-                  "width": 183,
-                  "height": 207,
-                  "rx": 6,
-                  "fill": "#ac774d"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#e8bf94"
-                  }
-                }
-              }
-            ]
-          }
         }
       ],
       "actions": [
         {
-          "actor": "fallen-person",
-          "action": "appear",
+          "actor": "commuter",
+          "action": "moveTo",
+          "beat": 1,
+          "x": 864,
+          "y": 309,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "Give each person one concrete opportunity matching the named desire.",
+          "emotion": "recognition"
+        },
+        {
+          "actor": "commuter",
+          "action": "moveTo",
           "beat": 2,
-          "durationMs": 850
+          "x": 816,
+          "y": 329,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "Hold a small unexplained timing detail beside the attractive offer.",
+          "emotion": "unease"
         }
       ],
       "connections": [],
-      "meaning": "Use the station decision as one concrete opening, not a repeated miniature plot; show the four-reality structure through distinct figures and contexts; end at an open train door without revealing later mechanisms."
+      "meaning": "Ethan wants success; others want plenty, influence, or the feeling that they are being reasonable. The scene stages a material relationship and its change, rather than a row of topical symbols."
     }
   },
   {
@@ -890,158 +492,6 @@
     },
     "visual": {
       "objects": [
-        {
-          "id": "conference",
-          "asset": "custom",
-          "x": 397,
-          "y": 356,
-          "scale": 1,
-          "meaning": "Maya’s professional recognition occupies a different social setting",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-162 149V-143H153V149Z",
-                  "fill": "#6c6781"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#c8c1dc"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "path",
-                "attrs": {
-                  "d": "M-109 121L-42 -23L100 11V122Z",
-                  "fill": "#ac774d"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#e8bf94"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part3",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -87,
-                  "font-size": 32,
-                  "font-weight": 700,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Conference"
-              }
-            ]
-          }
-        },
-        {
-          "id": "tram",
-          "asset": "custom",
-          "x": 865,
-          "y": 355,
-          "scale": 1,
-          "meaning": "Daniel’s ordinary day places altered possibility in another life",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part4",
-                "type": "rect",
-                "attrs": {
-                  "x": -149,
-                  "y": -138,
-                  "width": 298,
-                  "height": 287,
-                  "rx": 30,
-                  "fill": "#ac774d"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#e8bf94"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part5",
-                "type": "rect",
-                "attrs": {
-                  "x": -114,
-                  "y": -103,
-                  "width": 224,
-                  "height": 176,
-                  "rx": 12,
-                  "fill": "#ded3bd"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#40505c"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part6",
-                "type": "path",
-                "attrs": {
-                  "d": "M-99 98H99",
-                  "fill": "none",
-                  "stroke": "#6c6781",
-                  "stroke-width": 14,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
         {
           "id": "maya",
           "asset": "custom",
@@ -1357,11 +807,22 @@
           "actor": "daniel",
           "action": "appear",
           "beat": 2,
-          "durationMs": 850
+          "durationMs": 1300
+        },
+        {
+          "actor": "maya",
+          "action": "moveTo",
+          "beat": 1,
+          "x": 418,
+          "y": 339,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "The train remains available while someone on the platform needs attention.",
+          "emotion": "curiosity"
         }
       ],
       "connections": [],
-      "meaning": "Use the station decision as one concrete opening, not a repeated miniature plot; show the four-reality structure through distinct figures and contexts; end at an open train door without revealing later mechanisms."
+      "meaning": "The stories begin with recognizable choices, including a man left on a railway platform. The scene stages a material relationship and its change, rather than a row of topical symbols."
     }
   },
   {
@@ -1410,115 +871,6 @@
     },
     "visual": {
       "objects": [
-        {
-          "id": "station",
-          "asset": "custom",
-          "x": 599,
-          "y": 341,
-          "scale": 1,
-          "meaning": "The commuter’s ordinary platform precedes the changed fortune",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-428 144V-151H427V144Z",
-                  "fill": "#6c6781"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#c8c1dc"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "rect",
-                "attrs": {
-                  "x": -384,
-                  "y": -109,
-                  "width": 244,
-                  "height": 205,
-                  "rx": 16,
-                  "fill": "#ded3bc"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#40505c"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part3",
-                "type": "rect",
-                "attrs": {
-                  "x": -92,
-                  "y": -109,
-                  "width": 244,
-                  "height": 205,
-                  "rx": 16,
-                  "fill": "#ded3bc"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#40505c"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part4",
-                "type": "rect",
-                "attrs": {
-                  "x": 201,
-                  "y": -109,
-                  "width": 188,
-                  "height": 205,
-                  "rx": 7,
-                  "fill": "#ac774d"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#e8bf94"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part5",
-                "type": "path",
-                "attrs": {
-                  "d": "M-428 161H427",
-                  "fill": "none",
-                  "stroke": "#ac774d",
-                  "stroke-width": 18,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
         {
           "id": "open-door",
           "asset": "custom",
@@ -1722,13 +1074,26 @@
       "actions": [
         {
           "actor": "reader",
-          "action": "appear",
+          "action": "moveTo",
           "beat": 2,
-          "durationMs": 850
+          "x": 540,
+          "y": 389,
+          "durationMs": 2000
+        },
+        {
+          "actor": "reader",
+          "action": "moveTo",
+          "beat": 1,
+          "x": 613,
+          "y": 372,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "Keep the offer welcoming with its odd detail still visible.",
+          "emotion": "temptation"
         }
       ],
       "connections": [],
-      "meaning": "Use the station decision as one concrete opening, not a repeated miniature plot; show the four-reality structure through distinct figures and contexts; end at an open train door without revealing later mechanisms."
+      "meaning": "Each reality invites you to feel the attraction before deciding what troubles you. The scene stages a material relationship and its change, rather than a row of topical symbols."
     }
   }
 ]

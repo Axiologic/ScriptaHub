@@ -216,10 +216,23 @@ listening approval.
 
 The status dashboard tracks Text, Animation and Voice as separate tasks for
 every book, with active work first and exact narration under “Spoken script and
-film plan”. Refresh data automatically every 60 seconds and on returning to the
+film plan”. Put a compact, labelled status indicator beside each title; active
+books show “În lucru” and the current task, with a subtle orange pulse that
+respects reduced-motion preferences. Keep active books together above all other
+groups, and distinguish pending work, review, completion and failures in text.
+Show separate summary counts for completed, visually reviewed animations,
+current generated Qwen voices, and newly packaged public films. Count voice
+from matching text/performance and verified audio hashes independently of the
+public film; count artwork from a current independent rendered review tied to
+both script and artwork hashes. A plan alone contributes to neither count.
+Refresh data automatically every 60 seconds and on returning to the
 tab; preserve expanded scripts and the search query. Stage transitions and
 failures must update the durable per-project progress record and regenerate
 the dashboard data. Never equate an authored visual plan with a finished film.
+Before publishing a revised film, check the approved actor retention/removal
+against actual artwork and validate all action references against the shortened
+narration. Inspect rendered sentence cues separately: descriptive metadata and
+generic movements do not establish correspondence with the spoken content.
 
 Standardize SHF delivery, typography, single-sentence captions and pacing, while giving each book its own source-grounded visual identity and composition. Science-fiction introductions establish the premise, questions and reader fit without revealing later twists or resolutions. Use source-appropriate nonhuman forms when the story has no human characters; do not copy the AssistOS cast or visual staging.
 

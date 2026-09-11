@@ -148,101 +148,6 @@
           }
         },
         {
-          "id": "transition",
-          "asset": "custom",
-          "x": 560,
-          "y": 264,
-          "scale": 1,
-          "meaning": "Directed transformation, with validation still required.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part3",
-                "type": "path",
-                "attrs": {
-                  "d": "M0 0L85 0M71 -10L85 0L71 10",
-                  "fill": "none",
-                  "stroke": "$ink",
-                  "stroke-width": 4,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "wrong-mark",
-          "asset": "custom",
-          "x": 330,
-          "y": 311,
-          "scale": 1,
-          "meaning": "Editorial underline marking a distinction under discussion.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part4",
-                "type": "path",
-                "attrs": {
-                  "d": "M-160 0H160",
-                  "fill": "none",
-                  "stroke": "#af3f34",
-                  "stroke-width": 6,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "stroke": "#f3a096"
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "gap",
           "asset": "custom",
           "x": 600,
@@ -292,14 +197,25 @@
       ],
       "actions": [
         {
-          "actor": "wrong-mark",
+          "actor": "gap",
           "action": "appear",
-          "beat": 1,
+          "beat": 2,
           "durationMs": 1400
+        },
+        {
+          "actor": "wrong",
+          "action": "moveTo",
+          "beat": 1,
+          "x": 354,
+          "y": 270,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "Show a result that is numerically correct but linked to the wrong interpretation of the instruction.",
+          "emotion": "curious"
         }
       ],
       "connections": [],
-      "meaning": "Original annotated language workbench. Before the proof. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
+      "meaning": "Original annotated language workbench. A correct answer to the wrong question. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -359,212 +275,10 @@
       ]
     },
     "visual": {
-      "objects": [
-        {
-          "id": "source",
-          "asset": "custom",
-          "x": 350,
-          "y": 270,
-          "scale": 1,
-          "meaning": "“They report rain”",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 48,
-                  "font-weight": 700,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "“They report rain”"
-              }
-            ]
-          }
-        },
-        {
-          "id": "claim",
-          "asset": "custom",
-          "x": 865,
-          "y": 370,
-          "scale": 1,
-          "meaning": "Rain is a fact",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part2",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 43,
-                  "font-weight": 700,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Rain is a fact"
-              }
-            ]
-          }
-        },
-        {
-          "id": "commitment",
-          "asset": "custom",
-          "x": 600,
-          "y": 270,
-          "scale": 1,
-          "meaning": "A fracture represents an unsupported upgrade of epistemic status.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part3",
-                "type": "path",
-                "attrs": {
-                  "d": "M-15 -50L20 -20L-20 20L15 55",
-                  "fill": "none",
-                  "stroke": "#af3f34",
-                  "stroke-width": 8,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "stroke": "#f3a096"
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "source-mark",
-          "asset": "custom",
-          "x": 350,
-          "y": 310,
-          "scale": 1,
-          "meaning": "Editorial underline marking a distinction under discussion.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part4",
-                "type": "path",
-                "attrs": {
-                  "d": "M-170 0H170",
-                  "fill": "none",
-                  "stroke": "#305ca4",
-                  "stroke-width": 6,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "stroke": "#97b9f2"
-                  }
-                }
-              }
-            ]
-          }
-        }
-      ],
-      "actions": [
-        {
-          "actor": "commitment",
-          "action": "appear",
-          "beat": 2,
-          "durationMs": 1400
-        }
-      ],
+      "objects": [],
+      "actions": [],
       "connections": [],
-      "meaning": "Original annotated language workbench. Where meaning changes. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
+      "meaning": "Original annotated language workbench. The choices inside a sentence. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -721,106 +435,6 @@
           }
         },
         {
-          "id": "same-mark",
-          "asset": "custom",
-          "x": 330,
-          "y": 330,
-          "scale": 1,
-          "meaning": "Editorial underline marking a distinction under discussion.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part3",
-                "type": "path",
-                "attrs": {
-                  "d": "M-102.5 0H102.5",
-                  "fill": "none",
-                  "stroke": "#305ca4",
-                  "stroke-width": 6,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "stroke": "#97b9f2"
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "we-mark",
-          "asset": "custom",
-          "x": 850,
-          "y": 330,
-          "scale": 1,
-          "meaning": "Editorial underline marking a distinction under discussion.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part4",
-                "type": "path",
-                "attrs": {
-                  "d": "M-77.5 0H77.5",
-                  "fill": "none",
-                  "stroke": "#af3f34",
-                  "stroke-width": 6,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "stroke": "#f3a096"
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "context",
           "asset": "custom",
           "x": 600,
@@ -868,9 +482,27 @@
           }
         }
       ],
-      "actions": [],
+      "actions": [
+        {
+          "actor": "context",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1400
+        },
+        {
+          "actor": "same",
+          "action": "moveTo",
+          "beat": 1,
+          "x": 354,
+          "y": 278,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "Show the relevant choices being marked explicitly in a schematic instruction labeled Proposed SLEnglish.",
+          "emotion": "calm"
+        }
+      ],
       "connections": [],
-      "meaning": "Original annotated language workbench. Precision has a price. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
+      "meaning": "Original annotated language workbench. Making meaning visible. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -1075,198 +707,6 @@
           }
         },
         {
-          "id": "member-2",
-          "asset": "custom",
-          "x": 525,
-          "y": 347,
-          "scale": 1,
-          "meaning": "A group member, shown as a neutral participation marker.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part4",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 0,
-                  "r": 23,
-                  "fill": "#305ca4"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#97b9f2"
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "member-3",
-          "asset": "custom",
-          "x": 670,
-          "y": 347,
-          "scale": 1,
-          "meaning": "A group member, shown as a neutral participation marker.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part5",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 0,
-                  "r": 23,
-                  "fill": "#305ca4"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#97b9f2"
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "member-4",
-          "asset": "custom",
-          "x": 815,
-          "y": 347,
-          "scale": 1,
-          "meaning": "A group member, shown as a neutral participation marker.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part6",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 0,
-                  "r": 23,
-                  "fill": "#305ca4"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#97b9f2"
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "member-5",
-          "asset": "custom",
-          "x": 960,
-          "y": 347,
-          "scale": 1,
-          "meaning": "A group member, shown as a neutral participation marker.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part7",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 0,
-                  "r": 23,
-                  "fill": "#305ca4"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#97b9f2"
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "scope",
           "asset": "custom",
           "x": 310,
@@ -1378,32 +818,25 @@
           "durationMs": 1400
         },
         {
-          "actor": "member-2",
+          "actor": "scope",
           "action": "appear",
           "beat": 2,
           "durationMs": 1400
         },
         {
-          "actor": "member-3",
-          "action": "appear",
-          "beat": 2,
-          "durationMs": 1400
-        },
-        {
-          "actor": "member-4",
-          "action": "appear",
-          "beat": 2,
-          "durationMs": 1400
-        },
-        {
-          "actor": "member-5",
-          "action": "appear",
-          "beat": 2,
-          "durationMs": 1400
+          "actor": "we",
+          "action": "moveTo",
+          "beat": 1,
+          "x": 624,
+          "y": 200,
+          "durationMs": 900,
+          "offsetMs": 180,
+          "planCue": "Show two possible scopes of we, holding the result until the scope is clear.",
+          "emotion": "engaged"
         }
       ],
       "connections": [],
-      "meaning": "Original annotated language workbench. Who belongs to we. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
+      "meaning": "Original annotated language workbench. Before the proof. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",

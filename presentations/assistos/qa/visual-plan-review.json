@@ -1,0 +1,378 @@
+{
+  "project": "presentations/assistos",
+  "title": "AssistOS",
+  "reviewType": "visual-plan-review",
+  "reviewStatus": "awaiting root review",
+  "privateOnly": true,
+  "scriptSha256": "9aef38389fe7af351096b63ce867ebfde153c96ee1c536027a54a2c14f6d34f7",
+  "artSha256": "e4d35257fe65135036baf9742349b17b252ba5e778a728fe8f1632949b42b5d8",
+  "sceneVisualSha256": "2618627851dbf6bfad5f3202785bd0213b07f09a34c764a64dfcd4fdddb95ae0",
+  "planSha256": "91b256aaa11aa826de3ab974eb748228e4223d504537d6c6a78b7d676210fa39",
+  "inspection": {
+    "preview": "/tmp/assistOS-visual-preview/assistos.html",
+    "contactSheet": "/tmp/assistOS-contact-24.png",
+    "frames": 24,
+    "themes": [
+      "color",
+      "paper",
+      "night"
+    ],
+    "sentences": 8,
+    "paused": true,
+    "muted": true,
+    "captionPolicy": "one sentence per frame",
+    "labelBounds": "presentations/assistos/qa/label-bounds.json"
+  },
+  "mapping": [
+    {
+      "sceneId": "opening",
+      "line": 1,
+      "sentence": "Your AI finished the chat, but did it finish the work?",
+      "cue": "Close the finished conversation, leaving the visible unfinished document in place.",
+      "emotion": "curious",
+      "implementedBy": {
+        "objects": [
+          "finished-chat",
+          "close-mark",
+          "unfinished-document",
+          "project-owner",
+          "software-worker"
+        ],
+        "actions": [
+          {
+            "actor": "finished-chat",
+            "action": "disappear",
+            "beat": 1
+          },
+          {
+            "actor": "unfinished-document",
+            "action": "appear",
+            "beat": 1
+          }
+        ]
+      },
+      "actual": "Inspected the exact sentence midpoint frame: the first cue objects/actions are visible.",
+      "screenshots": [
+        "presentations/assistos/qa/visual-preview/color-scene-01-sentence-1.png",
+        "presentations/assistos/qa/visual-preview/paper-scene-01-sentence-1.png",
+        "presentations/assistos/qa/visual-preview/night-scene-01-sentence-1.png"
+      ]
+    },
+    {
+      "sceneId": "opening",
+      "line": 2,
+      "sentence": "AssistOS explores a proposed workplace where people and AI workers can keep a project moving together.",
+      "cue": "Reveal a shared workspace containing the document, a person and one clearly nonhuman software worker.",
+      "emotion": "engaged",
+      "implementedBy": {
+        "objects": [
+          "finished-chat",
+          "close-mark",
+          "unfinished-document",
+          "project-owner",
+          "software-worker"
+        ],
+        "actions": [
+          {
+            "actor": "project-owner",
+            "action": "appear",
+            "beat": 2
+          },
+          {
+            "actor": "software-worker",
+            "action": "appear",
+            "beat": 2
+          },
+          {
+            "actor": "unfinished-document",
+            "action": "moveTo",
+            "beat": 2
+          }
+        ]
+      },
+      "actual": "Inspected the exact sentence midpoint frame: the second cue objects/actions are visible.",
+      "screenshots": [
+        "presentations/assistos/qa/visual-preview/color-scene-01-sentence-2.png",
+        "presentations/assistos/qa/visual-preview/paper-scene-01-sentence-2.png",
+        "presentations/assistos/qa/visual-preview/night-scene-01-sentence-2.png"
+      ]
+    },
+    {
+      "sceneId": "reason",
+      "line": 1,
+      "sentence": "A document needs revising, a piece of research needs checking, or a code change needs review.",
+      "cue": "Bring the three unfinished items into the same project folder with short readable labels.",
+      "emotion": "clear",
+      "implementedBy": {
+        "objects": [
+          "project-folder",
+          "folder-tab",
+          "decision-history"
+        ],
+        "actions": [
+          {
+            "actor": "project-folder",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "folder-tab",
+            "action": "appear",
+            "beat": 1
+          }
+        ]
+      },
+      "actual": "Inspected the exact sentence midpoint frame: the first cue objects/actions are visible.",
+      "screenshots": [
+        "presentations/assistos/qa/visual-preview/color-scene-02-sentence-1.png",
+        "presentations/assistos/qa/visual-preview/paper-scene-02-sentence-1.png",
+        "presentations/assistos/qa/visual-preview/night-scene-02-sentence-1.png"
+      ]
+    },
+    {
+      "sceneId": "reason",
+      "line": 2,
+      "sentence": "The files and earlier decisions should still be there when the next task begins.",
+      "cue": "Return to the folder after a brief transition; keep the previous decision attached to the document.",
+      "emotion": "reassuring",
+      "implementedBy": {
+        "objects": [
+          "project-folder",
+          "folder-tab",
+          "decision-history"
+        ],
+        "actions": [
+          {
+            "actor": "decision-history",
+            "action": "appear",
+            "beat": 2
+          },
+          {
+            "actor": "decision-history",
+            "action": "moveTo",
+            "beat": 2
+          }
+        ]
+      },
+      "actual": "Inspected the exact sentence midpoint frame: the second cue objects/actions are visible.",
+      "screenshots": [
+        "presentations/assistos/qa/visual-preview/color-scene-02-sentence-2.png",
+        "presentations/assistos/qa/visual-preview/paper-scene-02-sentence-2.png",
+        "presentations/assistos/qa/visual-preview/night-scene-02-sentence-2.png"
+      ]
+    },
+    {
+      "sceneId": "journey",
+      "line": 1,
+      "sentence": "The book asks how conversation, useful tools, and shared projects could fit together.",
+      "cue": "Connect one conversation request to a tool and its resulting project file.",
+      "emotion": "interested",
+      "implementedBy": {
+        "objects": [
+          "conversation-request",
+          "tool",
+          "project-file",
+          "request-to-tool",
+          "tool-to-file",
+          "pause-control",
+          "selecting-hand",
+          "proposed-change"
+        ],
+        "actions": [
+          {
+            "actor": "conversation-request",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "tool",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "project-file",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "request-to-tool",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "tool-to-file",
+            "action": "appear",
+            "beat": 1
+          }
+        ]
+      },
+      "actual": "Inspected the exact sentence midpoint frame: the first cue objects/actions are visible.",
+      "screenshots": [
+        "presentations/assistos/qa/visual-preview/color-scene-03-sentence-1.png",
+        "presentations/assistos/qa/visual-preview/paper-scene-03-sentence-1.png",
+        "presentations/assistos/qa/visual-preview/night-scene-03-sentence-1.png"
+      ]
+    },
+    {
+      "sceneId": "journey",
+      "line": 2,
+      "sentence": "You would be able to follow the work, interrupt it, and check what actually changed.",
+      "cue": "A hand selects Pause before execution; reveal the proposed file change for inspection.",
+      "emotion": "calm",
+      "implementedBy": {
+        "objects": [
+          "conversation-request",
+          "tool",
+          "project-file",
+          "request-to-tool",
+          "tool-to-file",
+          "pause-control",
+          "selecting-hand",
+          "proposed-change"
+        ],
+        "actions": [
+          {
+            "actor": "pause-control",
+            "action": "appear",
+            "beat": 2
+          },
+          {
+            "actor": "selecting-hand",
+            "action": "appear",
+            "beat": 2
+          },
+          {
+            "actor": "proposed-change",
+            "action": "appear",
+            "beat": 2
+          }
+        ]
+      },
+      "actual": "Inspected the exact sentence midpoint frame: the second cue objects/actions are visible.",
+      "screenshots": [
+        "presentations/assistos/qa/visual-preview/color-scene-03-sentence-2.png",
+        "presentations/assistos/qa/visual-preview/paper-scene-03-sentence-2.png",
+        "presentations/assistos/qa/visual-preview/night-scene-03-sentence-2.png"
+      ]
+    },
+    {
+      "sceneId": "identity",
+      "line": 1,
+      "sentence": "It also examines what must survive when a model or service is replaced.",
+      "cue": "Exchange the small model component while leaving files and decision history in place.",
+      "emotion": "thoughtful",
+      "implementedBy": {
+        "objects": [
+          "project-files",
+          "decision-history",
+          "model-a",
+          "model-b",
+          "model-exchange",
+          "book-card",
+          "unfinished-task"
+        ],
+        "actions": [
+          {
+            "actor": "project-files",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "decision-history",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "model-a",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "model-a",
+            "action": "moveTo",
+            "beat": 1
+          },
+          {
+            "actor": "model-b",
+            "action": "appear",
+            "beat": 1
+          },
+          {
+            "actor": "model-b",
+            "action": "moveTo",
+            "beat": 1
+          },
+          {
+            "actor": "model-exchange",
+            "action": "appear",
+            "beat": 1
+          }
+        ]
+      },
+      "actual": "Inspected the exact sentence midpoint frame: the first cue objects/actions are visible.",
+      "screenshots": [
+        "presentations/assistos/qa/visual-preview/color-scene-04-sentence-1.png",
+        "presentations/assistos/qa/visual-preview/paper-scene-04-sentence-1.png",
+        "presentations/assistos/qa/visual-preview/night-scene-04-sentence-1.png"
+      ]
+    },
+    {
+      "sceneId": "identity",
+      "line": 2,
+      "sentence": "For anyone tired of restarting the same conversation, the next question is how to make the work last.",
+      "cue": "Finish on the continuing project beside the book, with one unfinished task ready for the next visit.",
+      "emotion": "warm",
+      "implementedBy": {
+        "objects": [
+          "project-files",
+          "decision-history",
+          "model-a",
+          "model-b",
+          "model-exchange",
+          "book-card",
+          "unfinished-task"
+        ],
+        "actions": [
+          {
+            "actor": "book-card",
+            "action": "appear",
+            "beat": 2
+          },
+          {
+            "actor": "unfinished-task",
+            "action": "appear",
+            "beat": 2
+          }
+        ]
+      },
+      "actual": "Inspected the exact sentence midpoint frame: the second cue objects/actions are visible.",
+      "screenshots": [
+        "presentations/assistos/qa/visual-preview/color-scene-04-sentence-2.png",
+        "presentations/assistos/qa/visual-preview/paper-scene-04-sentence-2.png",
+        "presentations/assistos/qa/visual-preview/night-scene-04-sentence-2.png"
+      ]
+    }
+  ],
+  "independentReview": {
+    "status": "passed",
+    "reviewer": "production_1",
+    "scope": "Independent full-size review of all 8 approved short-introduction cues across 24 muted private frames in Color, Paper, and Night.",
+    "notes": "Verified the current 8-cue AssistOS invitation uses source-specific project continuity, decision history, inspectable work routing, pause control, and model replacement imagery. Removed a scene 4 collision by separating the replacement-worker card from the next-task card and captions. No obsolete tutorial or implementation boilerplate appears in the reviewed scenes.",
+    "evidence": {
+      "previewDirectory": "qa/independent-review-20260911",
+      "contactSheet": "qa/independent-review-20260911/contact-all-24.png",
+      "themes": [
+        "color",
+        "paper",
+        "night"
+      ],
+      "frames": 24,
+      "muted": true,
+      "paused": true,
+      "renderedTextCheck": "valid",
+      "structuralChecker": "node tools/shf/check-visual-plan-implementation.mjs presentations/assistos"
+    },
+    "scriptSha256": "9aef38389fe7af351096b63ce867ebfde153c96ee1c536027a54a2c14f6d34f7",
+    "artSha256": "e4d35257fe65135036baf9742349b17b252ba5e778a728fe8f1632949b42b5d8"
+  }
+}

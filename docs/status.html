@@ -20,6 +20,17 @@
     .status-list .status-spoken{font-size:1.06rem;line-height:1.65;color:var(--ink);margin:0 0 12px}.status-direction{margin:0 0 22px;font-size:.85rem;line-height:1.55}.status-direction div{display:grid;grid-template-columns:145px minmax(0,1fr);gap:10px;padding:5px 0}.status-direction dt{font-weight:650;color:var(--status-orange)}.status-direction dd{margin:0;color:var(--muted);overflow-wrap:anywhere}.status-scene{padding-top:12px}.status-scene+.status-scene{border-top:1px solid var(--status-line);margin-top:22px}.status-scene h5{color:var(--status-orange);font-size:1.05rem}.status-list details[open] ol{max-width:none}@media(max-width:580px){.status-direction div{grid-template-columns:1fr;gap:2px}.status-direction{font-size:.87rem}}
     .status-page{padding-top:24px}.status-page h1{font-size:clamp(1.65rem,3.2vw,2.4rem)}.status-page>p{font-size:.94rem;line-height:1.5}.status-page>.status-note{font-size:.78rem;margin:0 0 12px}.status-updated{font-size:.82rem;margin:18px 0 12px}.status-gate{font-size:.9rem;padding:10px 14px}.status-counts div{padding:14px}.status-counts strong{font-size:1.7rem}.status-counts span{font-size:.76rem}.status-search{margin-top:18px}
   </style>
+  <style>
+    .status-indicator{display:inline-flex;align-items:center;gap:.4em;vertical-align:middle;margin:3px 0 3px 10px;padding:3px 9px;border-radius:5px;background:color-mix(in srgb,var(--ink) 7%,transparent);color:var(--muted);font-size:.75rem;font-weight:650;line-height:1.5;letter-spacing:0;white-space:normal}
+    .status-indicator-active{color:var(--status-orange);background:color-mix(in srgb,var(--status-orange) 16%,transparent)}
+    .status-indicator-active>span{animation:status-pulse 1.6s ease-in-out infinite}
+    .status-indicator-failed{color:var(--ink);border:1px solid var(--status-orange)}
+    .status-indicator-done{color:var(--ink)}
+    .status-idle{font-size:.9rem;color:var(--muted)}
+    .status-counts small{display:block;margin-top:6px;font-size:.68rem;line-height:1.4;color:var(--muted)}
+    @keyframes status-pulse{50%{opacity:.35}}
+    @media(prefers-reduced-motion:reduce){.status-indicator-active>span{animation:none}}
+  </style>
 </head>
 <body data-app-page="true">
   <main class="status-page">
@@ -29,6 +40,6 @@
     <div data-voice-status aria-live="polite">Loading migration status…</div>
   </main>
   <script src="assets/voice-migration-status.js?v=curiosity-v2"></script>
-  <script src="assets/status.js?v=curiosity-v2"></script>
+  <script src="assets/status.js?v=curiosity-v3"></script>
 </body>
 </html>

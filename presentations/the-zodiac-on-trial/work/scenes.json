@@ -1208,23 +1208,23 @@
           }
         },
         {
-          "id": "test",
+          "id": "plan-cue-1",
           "asset": "custom",
-          "x": 960,
-          "y": 300,
-          "scale": 1,
-          "meaning": "test",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Show the recognition, then the unresolved question beside it.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -210,
                 0
               ],
               "right": [
-                70,
+                210,
                 0
               ],
               "top": [
@@ -1238,54 +1238,139 @@
             },
             "children": [
               {
-                "id": "$asset.part20",
-                "type": "path",
+                "id": "$asset.bg",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-80 -100 H80 V100 H-80Z",
-                  "fill": "#e9e5d8"
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#427e83",
+                  "stroke-width": 4
                 }
               },
               {
-                "id": "$asset.part21",
+                "id": "$asset.title",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": -50,
-                  "font-size": 35,
+                  "y": -24,
+                  "font-size": 22,
                   "font-weight": 700,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
-                  "fill": "#466d94"
+                  "fill": "#427e83"
                 },
-                "text": "Claim"
+                "text": "The chart feels personal"
               },
               {
-                "id": "$asset.part22",
+                "id": "$asset.text",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 6,
-                  "font-size": 37,
-                  "font-weight": 700,
-                  "letter-spacing": -0.3,
+                  "y": 16,
+                  "font-size": 18,
                   "text-anchor": "middle",
-                  "fill": "#466d94"
+                  "fill": "#333b59"
                 },
-                "text": "Test"
+                "text": "Show the recognition, then the unresolved question beside it."
               },
               {
-                "id": "$asset.part23",
+                "id": "$asset.emotion",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 61,
-                  "font-size": 34,
-                  "font-weight": 700,
-                  "letter-spacing": -0.3,
+                  "y": 45,
+                  "font-size": 16,
                   "text-anchor": "middle",
-                  "fill": "#466d94"
+                  "fill": "#427e83"
                 },
-                "text": "Result"
+                "text": "recognition"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Bring chart and evidence together without ridicule or endorsement.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#76557f",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "The chart feels personal"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Bring chart and evidence together without ridicule or endorsement."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "curiosity"
               }
             ]
           }
@@ -1318,21 +1403,41 @@
           "durationMs": 1300
         },
         {
-          "actor": "test",
-          "action": "appear",
-          "beat": 2,
-          "durationMs": 1300
-        },
-        {
           "actor": "investigator",
           "action": "character.express",
           "emotion": "curious",
           "beat": 1,
           "durationMs": 900
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "Show the recognition, then the unresolved question beside it. — recognition"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "Bring chart and evidence together without ridicule or endorsement. — curiosity"
         }
       ],
       "connections": [],
-      "meaning": "Open with the personal chart; separate seasonal influence from a claim about destiny; let the mirror scene illustrate recognition without endorsing causation; end at the evidence table without announcing the verdict."
+      "meaning": "Open with the personal chart; separate seasonal influence from a claim about destiny; let the mirror scene illustrate recognition without endorsing causation; end at the evidence table without announcing the verdict. Approved visual plan: A reader recognizes themselves in a horoscope Approved visual plan: A reader recognizes themselves in a horoscope",
+      "planComposition": "A reader recognizes themselves in a horoscope",
+      "planKeep": [
+        "investigator",
+        "chart",
+        "evidence-table"
+      ],
+      "planRemove": [
+        "test"
+      ],
+      "planAddOrChange": [
+        "Keep their reaction separate from the claim’s evidence, with no mystical control imagery."
+      ]
     }
   },
   {
@@ -1699,23 +1804,23 @@
           }
         },
         {
-          "id": "link",
+          "id": "plan-cue-1",
           "asset": "custom",
-          "x": 605,
-          "y": 315,
-          "scale": 1,
-          "meaning": "An association needs its actual mechanism and context",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Change the seasonal light while keeping the destiny claim separate.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -210,
                 0
               ],
               "right": [
-                70,
+                210,
                 0
               ],
               "top": [
@@ -1729,16 +1834,139 @@
             },
             "children": [
               {
-                "id": "$asset.part19",
-                "type": "path",
+                "id": "$asset.bg",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-60 0 H60 L34 -25 M60 0 L34 25",
-                  "fill": "none",
-                  "stroke": "#64a68f",
-                  "stroke-width": 11,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#496580",
+                  "stroke-width": 4
                 }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "The sky and the calendar"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Change the seasonal light while keeping the destiny claim separate."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "clarity"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Distinguish sky observation, seasonal conditions and personal recognition.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#76557f",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "The sky and the calendar"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Distinguish sky observation, seasonal conditions and personal recognitio"
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "interest"
               }
             ]
           }
@@ -1758,14 +1986,34 @@
           "durationMs": 1300
         },
         {
-          "actor": "link",
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "Change the seasonal light while keeping the destiny claim separate. — clarity"
+        },
+        {
+          "actor": "plan-cue-2",
           "action": "appear",
           "beat": 2,
-          "durationMs": 1300
+          "durationMs": 700,
+          "meaning": "Distinguish sky observation, seasonal conditions and personal recognition. — interest"
         }
       ],
       "connections": [],
-      "meaning": "Open with the personal chart; separate seasonal influence from a claim about destiny; let the mirror scene illustrate recognition without endorsing causation; end at the evidence table without announcing the verdict."
+      "meaning": "Open with the personal chart; separate seasonal influence from a claim about destiny; let the mirror scene illustrate recognition without endorsing causation; end at the evidence table without announcing the verdict. Approved visual plan: Seasonal timing and individual destiny remain different claims Approved visual plan: Seasonal timing and individual destiny remain different claims",
+      "planComposition": "Seasonal timing and individual destiny remain different claims",
+      "planKeep": [
+        "calendar",
+        "seasons",
+        "conditions"
+      ],
+      "planRemove": [
+        "link"
+      ],
+      "planAddOrChange": [
+        "Use one clear calendar cycle beside a separate personal chart."
+      ]
     }
   },
   {
@@ -2692,81 +2940,6 @@
           }
         },
         {
-          "id": "mirror",
-          "asset": "custom",
-          "x": 765,
-          "y": 305,
-          "scale": 1,
-          "meaning": "A personalized account can feel like recognition while still requiring evaluation",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "rect",
-                "attrs": {
-                  "x": -150,
-                  "y": -150,
-                  "width": 300,
-                  "height": 300,
-                  "rx": 70,
-                  "fill": "#466d94"
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "rect",
-                "attrs": {
-                  "x": -132,
-                  "y": -132,
-                  "width": 264,
-                  "height": 264,
-                  "rx": 55,
-                  "fill": "#e9e5d8"
-                }
-              },
-              {
-                "id": "$asset.part3",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": -35,
-                  "r": 42,
-                  "fill": "#d88262"
-                }
-              },
-              {
-                "id": "$asset.part4",
-                "type": "path",
-                "attrs": {
-                  "d": "M-75 108 Q-83 12 0 12 Q83 12 75 108Z",
-                  "fill": "#64a68f"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "description",
           "asset": "custom",
           "x": 990,
@@ -2822,23 +2995,23 @@
           }
         },
         {
-          "id": "step",
+          "id": "plan-cue-1",
           "asset": "custom",
-          "x": 450,
-          "y": 425,
-          "scale": 1,
-          "meaning": "An accepted description can influence a subsequent choice",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Give the strong claim and careful response equal attention.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -210,
                 0
               ],
               "right": [
-                70,
+                210,
                 0
               ],
               "top": [
@@ -2852,16 +3025,139 @@
             },
             "children": [
               {
-                "id": "$asset.part7",
-                "type": "path",
+                "id": "$asset.bg",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-30 25 H80 L52 0 M80 25 L52 50",
-                  "fill": "none",
-                  "stroke": "#8b729e",
-                  "stroke-width": 11,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#496580",
+                  "stroke-width": 4
                 }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "Recognition or prediction"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Give the strong claim and careful response equal attention."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "reassurance"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: The algorithmic description grows more detailed without proving its interpretation.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#cd785c",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "Recognition or prediction"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "The algorithmic description grows more detailed without proving its inte"
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "unease"
               }
             ]
           }
@@ -2882,12 +3178,6 @@
           "durationMs": 1900
         },
         {
-          "actor": "mirror",
-          "action": "appear",
-          "beat": 1,
-          "durationMs": 1300
-        },
-        {
           "actor": "description",
           "action": "appear",
           "beat": 2,
@@ -2899,10 +3189,36 @@
           "emotion": "curious",
           "beat": 1,
           "durationMs": 900
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "Give the strong claim and careful response equal attention. — reassurance"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "The algorithmic description grows more detailed without proving its interpretation. — unease"
         }
       ],
       "connections": [],
-      "meaning": "Open with the personal chart; separate seasonal influence from a claim about destiny; let the mirror scene illustrate recognition without endorsing causation; end at the evidence table without announcing the verdict."
+      "meaning": "Open with the personal chart; separate seasonal influence from a claim about destiny; let the mirror scene illustrate recognition without endorsing causation; end at the evidence table without announcing the verdict. Approved visual plan: A listener considers an astrological claim and a personalized algorithmic account Approved visual plan: A listener considers an astrological claim and a personalized algorithmic account",
+      "planComposition": "A listener considers an astrological claim and a personalized algorithmic account",
+      "planKeep": [
+        "viewer",
+        "description"
+      ],
+      "planRemove": [
+        "mirror",
+        "step"
+      ],
+      "planAddOrChange": [
+        "Replace mirror with two labeled descriptions and no truth badge."
+      ]
     }
   },
   {
@@ -4196,6 +4512,174 @@
               }
             ]
           }
+        },
+        {
+          "id": "plan-cue-1",
+          "asset": "custom",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: The reader opens the actual claim rather than a caricature.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#cd785c",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "A fair hearing"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "The reader opens the actual claim rather than a caricature."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "invitation"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Hold prediction, blank result and recognition as distinct things.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#cd785c",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "A fair hearing"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Hold prediction, blank result and recognition as distinct things."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "reflection"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -4230,10 +4714,35 @@
           "emotion": "curious",
           "beat": 1,
           "durationMs": 900
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "The reader opens the actual claim rather than a caricature. — invitation"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "Hold prediction, blank result and recognition as distinct things. — reflection"
         }
       ],
       "connections": [],
-      "meaning": "Open with the personal chart; separate seasonal influence from a claim about destiny; let the mirror scene illustrate recognition without endorsing causation; end at the evidence table without announcing the verdict."
+      "meaning": "Open with the personal chart; separate seasonal influence from a claim about destiny; let the mirror scene illustrate recognition without endorsing causation; end at the evidence table without announcing the verdict. Approved visual plan: A personal reaction sits beside a declared test prediction Approved visual plan: A personal reaction sits beside a declared test prediction",
+      "planComposition": "A personal reaction sits beside a declared test prediction",
+      "planKeep": [
+        "chart",
+        "reader",
+        "protocol",
+        "evidence"
+      ],
+      "planRemove": [],
+      "planAddOrChange": [
+        "Simplify the protocol to one prediction and blank result."
+      ]
     }
   }
 ]

@@ -46,64 +46,6 @@
     "visual": {
       "objects": [
         {
-          "id": "public-doorway",
-          "asset": "custom",
-          "x": 390,
-          "y": 340,
-          "scale": 1,
-          "meaning": "A public learning entrance raises a question about formation rather than hidden superior doctrine",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-131 180V-149L0 -210L131 -149V180H99V-128L0 -173L-99 -128V180Z",
-                  "fill": "#d86b67"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#f1b0a7"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "path",
-                "attrs": {
-                  "d": "M-157 184H155",
-                  "fill": "none",
-                  "stroke": "#e6b445",
-                  "stroke-width": 18,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "learner",
           "asset": "custom",
           "x": 588,
@@ -1092,6 +1034,174 @@
               }
             ]
           }
+        },
+        {
+          "id": "plan-cue-1",
+          "asset": "custom",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: The answer appears before the learner finishes the question.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#496580",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "Answers before judgment"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "The answer appears before the learner finishes the question."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "unease"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Keep the unfinished question visible as the book is named.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#76557f",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "Answers before judgment"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Keep the unfinished question visible as the book is named."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "interest"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -1114,10 +1224,35 @@
           "action": "appear",
           "beat": 2,
           "durationMs": 850
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "The answer appears before the learner finishes the question. — unease"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "Keep the unfinished question visible as the book is named. — interest"
         }
       ],
       "connections": [],
-      "meaning": "Open on a learner receiving a fluent answer; move from doorway to public assembly; keep an open path beside the speaker; use an unfinished essay to mark an ideology still subject to criticism."
+      "meaning": "Open on a learner receiving a fluent answer; move from doorway to public assembly; keep an open path beside the speaker; use an unfinished essay to mark an ideology still subject to criticism. Approved visual plan: A complete-looking answer arrives beside an unfinished question Approved visual plan: A complete-looking answer arrives beside an unfinished question",
+      "planComposition": "A complete-looking answer arrives beside an unfinished question",
+      "planKeep": [
+        "learner",
+        "answer-terminal"
+      ],
+      "planRemove": [
+        "public-doorway"
+      ],
+      "planAddOrChange": [
+        "Add a study table and remove oracle faces or supernatural light."
+      ]
     }
   },
   {
@@ -1168,64 +1303,6 @@
     "visual": {
       "objects": [
         {
-          "id": "public-doorway",
-          "asset": "custom",
-          "x": 390,
-          "y": 340,
-          "scale": 1,
-          "meaning": "A public learning entrance raises a question about formation rather than hidden superior doctrine",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-131 180V-149L0 -210L131 -149V180H99V-128L0 -173L-99 -128V180Z",
-                  "fill": "#d86b67"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#f1b0a7"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "path",
-                "attrs": {
-                  "d": "M-157 184H155",
-                  "fill": "none",
-                  "stroke": "#e6b445",
-                  "stroke-width": 18,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "learner",
           "asset": "custom",
           "x": 588,
@@ -2214,6 +2291,174 @@
               }
             ]
           }
+        },
+        {
+          "id": "plan-cue-1",
+          "asset": "custom",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Move the notebook idea into a common discussion note.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#76557f",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "How ideas become authority"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Move the notebook idea into a common discussion note."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "clarity"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Show a learner asking what the received answer means.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#496580",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "How ideas become authority"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Show a learner asking what the received answer means."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "curiosity"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -2232,14 +2477,33 @@
           "durationMs": 1900
         },
         {
-          "actor": "public-doorway",
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "Move the notebook idea into a common discussion note. — clarity"
+        },
+        {
+          "actor": "plan-cue-2",
           "action": "appear",
           "beat": 2,
-          "durationMs": 850
+          "durationMs": 700,
+          "meaning": "Show a learner asking what the received answer means. — curiosity"
         }
       ],
       "connections": [],
-      "meaning": "Open on a learner receiving a fluent answer; move from doorway to public assembly; keep an open path beside the speaker; use an unfinished essay to mark an ideology still subject to criticism."
+      "meaning": "Open on a learner receiving a fluent answer; move from doorway to public assembly; keep an open path beside the speaker; use an unfinished essay to mark an ideology still subject to criticism. Approved visual plan: A private notebook idea becomes a shared discussion Approved visual plan: A private notebook idea becomes a shared discussion",
+      "planComposition": "A private notebook idea becomes a shared discussion",
+      "planKeep": [
+        "learner",
+        "answer-terminal"
+      ],
+      "planRemove": [
+        "public-doorway"
+      ],
+      "planAddOrChange": [
+        "Add three listeners and a teaching circle without exotic ritual imagery."
+      ]
     }
   },
   {
@@ -2289,52 +2553,6 @@
     },
     "visual": {
       "objects": [
-        {
-          "id": "assembly-floor",
-          "asset": "custom",
-          "x": 606,
-          "y": 463,
-          "scale": 1,
-          "meaning": "An assembly’s seats leave a real entrance for a dissenting participant",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-389 11Q0 -173 389 11L333 64Q0 -74 -333 64Z",
-                  "fill": "#258e9d"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#9edce4"
-                  }
-                }
-              }
-            ]
-          }
-        },
         {
           "id": "speaker",
           "asset": "custom",
@@ -5042,6 +5260,174 @@
               }
             ]
           }
+        },
+        {
+          "id": "plan-cue-1",
+          "asset": "custom",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Show the writer proposing a model without a diagnostic label.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#496580",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "The critic’s temptation"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Show the writer proposing a model without a diagnostic label."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "reassurance"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: An organizer carries the model toward authority as a participant questions it.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#cd785c",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "The critic’s temptation"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "An organizer carries the model toward authority as a participant questio"
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "concern"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -5092,10 +5478,37 @@
           "action": "appear",
           "beat": 2,
           "durationMs": 850
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "Show the writer proposing a model without a diagnostic label. — reassurance"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "An organizer carries the model toward authority as a participant questions it. — concern"
         }
       ],
       "connections": [],
-      "meaning": "Open on a learner receiving a fluent answer; move from doorway to public assembly; keep an open path beside the speaker; use an unfinished essay to mark an ideology still subject to criticism."
+      "meaning": "Open on a learner receiving a fluent answer; move from doorway to public assembly; keep an open path beside the speaker; use an unfinished essay to mark an ideology still subject to criticism. Approved visual plan: An ordinary writer’s model enters a public decision Approved visual plan: An ordinary writer’s model enters a public decision",
+      "planComposition": "An ordinary writer’s model enters a public decision",
+      "planKeep": [
+        "speaker",
+        "critic",
+        "participant",
+        "open-path"
+      ],
+      "planRemove": [
+        "assembly-floor"
+      ],
+      "planAddOrChange": [
+        "Keep faces non-clinical and add a decision desk separate from discussion."
+      ]
     }
   },
   {
@@ -5146,64 +5559,6 @@
     },
     "visual": {
       "objects": [
-        {
-          "id": "public-doorway",
-          "asset": "custom",
-          "x": 390,
-          "y": 340,
-          "scale": 1,
-          "meaning": "A public learning entrance raises a question about formation rather than hidden superior doctrine",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-131 180V-149L0 -210L131 -149V180H99V-128L0 -173L-99 -128V180Z",
-                  "fill": "#d86b67"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#f1b0a7"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "path",
-                "attrs": {
-                  "d": "M-157 184H155",
-                  "fill": "none",
-                  "stroke": "#e6b445",
-                  "stroke-width": 18,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
         {
           "id": "working-essay",
           "asset": "custom",
@@ -6172,6 +6527,174 @@
             "rig": "character",
             "dynamicExpressions": true
           }
+        },
+        {
+          "id": "plan-cue-1",
+          "asset": "custom",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: A reader places a criticism beside the proposed belief.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#76557f",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "An ideology under review"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "A reader places a criticism beside the proposed belief."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "curiosity"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: The author’s essay stays open to that criticism.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#427e83",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "An ideology under review"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "The author’s essay stays open to that criticism."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "invitation"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -6194,10 +6717,35 @@
           "action": "appear",
           "beat": 2,
           "durationMs": 850
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "A reader places a criticism beside the proposed belief. — curiosity"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "The author’s essay stays open to that criticism. — invitation"
         }
       ],
       "connections": [],
-      "meaning": "Open on a learner receiving a fluent answer; move from doorway to public assembly; keep an open path beside the speaker; use an unfinished essay to mark an ideology still subject to criticism."
+      "meaning": "Open on a learner receiving a fluent answer; move from doorway to public assembly; keep an open path beside the speaker; use an unfinished essay to mark an ideology still subject to criticism. Approved visual plan: Readers annotate a shared essay in front of its author Approved visual plan: Readers annotate a shared essay in front of its author",
+      "planComposition": "Readers annotate a shared essay in front of its author",
+      "planKeep": [
+        "working-essay",
+        "reader"
+      ],
+      "planRemove": [
+        "public-doorway"
+      ],
+      "planAddOrChange": [
+        "Add the listening author and retain the objection beside the claim."
+      ]
     }
   }
 ]

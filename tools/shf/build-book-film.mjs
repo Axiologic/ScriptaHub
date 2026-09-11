@@ -3,6 +3,7 @@ import fs from 'node:fs';import path from 'node:path';import crypto from 'node:c
 import {storyStage} from './story-stage.mjs';
 import {publishNarratedFilm} from './publish-film.mjs';
 import {trackMigrationStage} from './migration-state.mjs';
+import {checkVisualPlan} from './check-visual-plan-implementation.mjs';
 export async function buildBookFilm(root){
  root=path.resolve(root);const read=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));const write=(file,value)=>fs.writeFileSync(path.join(root,file),JSON.stringify(value,null,2)+'\n');
  const skill=path.resolve('.agents/skills/shf-presentation-creator');
@@ -22,6 +23,23 @@ export async function buildBookFilm(root){
  const outputArgument=process.argv.find(arg=>arg.startsWith('--output='));
  if(outputArgument==='--output=')throw Error('--output requires a directory.');
  const output=outputArgument?path.resolve(outputArgument.slice('--output='.length)):path.resolve(production.bookDirectory,'Animation');
- const publish=async()=>{const report=await publishNarratedFilm({direction,root,output,minDurationMs:production.minDurationMs??0,maxDurationMs:production.maxDurationMs??900000});write('qa/build.json',report);return report;};
- return outputArgument?publish():trackMigrationStage(root,'animation',publish);
+ if(!outputArgument&&fs.existsSync(path.join(root,'work/presentation-plan.json'))){
+  const file=path.join(root,'qa/visual-plan-review.json');
+  const visual=fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8')):null;
+  const artSha256=crypto.createHash('sha256').update(JSON.stringify(scenes.map(scene=>({id:scene.id,visual:scene.visual})))).digest('hex');
+  const scriptSha256=crypto.createHash('sha256').update(JSON.stringify(scenes.map(scene=>({id:scene.id,lines:scene.lines})))).digest('hex');
+  if(visual?.scriptSha256!==scriptSha256||visual?.artSha256!==artSha256||visual?.independentReview?.status!=='passed')throw Error('Rendered visual inspection is pending; build with --output=STAGING for review before publishing.');
+ }
+ const publish=async()=>{if(fs.existsSync(path.join(root,'work/presentation-plan.json'))){const visual=await checkVisualPlan(root);if(visual.issues.length)throw Error('Visual plan implementation incomplete: '+visual.issues.join('; '));}const report=await publishNarratedFilm({direction,root,output,minDurationMs:production.minDurationMs??0,maxDurationMs:production.maxDurationMs??900000});write('qa/build.json',report);return report;};
+ const result=await (outputArgument?publish():trackMigrationStage(root,'animation',publish));
+ if(!outputArgument){
+  const manifestFile=path.resolve(production.bookDirectory,'manifest.json');
+  const manifest=JSON.parse(fs.readFileSync(manifestFile,'utf8'));
+  if(manifest.animation){
+   manifest.animation.durationMs=result.durationMs;
+   const temporary=`${manifestFile}.${process.pid}.tmp`;
+   fs.writeFileSync(temporary,JSON.stringify(manifest,null,2)+'\n');fs.renameSync(temporary,manifestFile);
+  }
+ }
+ return result;
 }

@@ -5,6 +5,7 @@ import path from 'node:path';
 import {spawn} from 'node:child_process';
 import crypto from 'node:crypto';
 import {requireMarketingBatch} from './marketing-review.mjs';
+import {narrationDirection,narrationInputHash} from './narration-input.mjs';
 
 await import(path.resolve('.agents/skills/shf-presentation-creator/runtime/shf-core.js'));
 const limit=Number(process.env.SHF_MIGRATION_LIMIT||0);
@@ -30,11 +31,13 @@ async function alreadyComplete(entry){
   const lines=receipts?.lines||[];
   const texts=scenes.flatMap(scene=>scene.lines).map(text=>crypto.createHash('sha256').update(text).digest('hex'));
   const textCurrent=lines.length===texts.length&&lines.every((line,index)=>line.textSha256===texts[index]);
+  const performance=scenes.flatMap(scene=>scene.lines.map((_,index)=>narrationInputHash(narrationDirection(scene,index,production),production)));
+  const performanceCurrent=lines.length===performance.length&&lines.every((line,index)=>line.performanceSha256===performance[index]);
   const audioValid=lines.length>0 && await Promise.all(lines.map(async line=>{
     const audio=path.join(entry.project,'work',line.file);
     return await exists(audio) && await sha256(audio)===line.sha256;
   })).then(values=>values.every(Boolean));
-  if(!(production.voiceEngine==='qwen'&&/Qwen3-TTS/.test(receipts?.provider||'')&&textCurrent&&audioValid&&build&&await exists(entry.shf)))return false;
+  if(!(production.voiceEngine==='qwen'&&/Qwen3-TTS/.test(receipts?.provider||'')&&textCurrent&&performanceCurrent&&audioValid&&build&&await exists(entry.shf)))return false;
   const film=await SHFCore.loadFile(new File([await fs.readFile(entry.shf)],path.basename(entry.shf)));
   const published=film.scenes.flatMap(scene=>scene.beats||[]);
   return film.durationMs<=120000&&published.length===texts.length&&published.every((beat,index)=>crypto.createHash('sha256').update(beat.text).digest('hex')===texts[index])&&lines.every(line=>Object.values(film.assets||{}).some(asset=>asset.sha256===line.sha256));
@@ -87,7 +90,7 @@ for(const entry of selected){
   if(process.env.SHF_MIGRATION_RENDER==='1'){
     const cpus=process.env.SHF_MIGRATION_CPUS||'0,1'; const threads=String(Math.max(1,Number(process.env.SHF_MIGRATION_THREADS||2))); const env={OMP_NUM_THREADS:threads,MKL_NUM_THREADS:threads,OPENBLAS_NUM_THREADS:threads,NUMEXPR_NUM_THREADS:threads};
     await run('taskset',['-c',cpus,'node',path.join(entry.project,'render_voice.mjs')],env);
-    await run('node',[path.join(entry.project,'build.mjs')],env);
+    if(process.env.SHF_MIGRATION_AUDIO_ONLY!=='1')await run('node',[path.join(entry.project,'build.mjs')],env);
   }
 }
 console.log(JSON.stringify({worker,workers,selected:selected.length,rendered:process.env.SHF_MIGRATION_RENDER==='1'}));

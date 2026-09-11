@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {marketingReview} from './marketing-review.mjs';
+import {narrationDirection,narrationInputHash} from './narration-input.mjs';
 
 const root=process.cwd();
 const readJson=file=>fs.readFile(file,'utf8').then(JSON.parse);
@@ -26,12 +27,18 @@ async function loadFilm(shf){
   const data=await fs.readFile(shf);
   return SHFCore.loadFile(new File([data],path.basename(shf)));
 }
+let projectIndex;
 async function projectFor(bookDirectory){
-  for(const name of await fs.readdir('presentations')){
-    const project=path.join('presentations',name), production=path.join(project,'work/production.json');
-    if(await exists(production) && path.resolve((await readJson(production)).bookDirectory||'')===path.resolve(bookDirectory)) return project;
-  }
-  return null;
+  if(!projectIndex)projectIndex=(async()=>{
+    const entries=await Promise.all((await fs.readdir('presentations')).map(async name=>{
+      const project=path.join('presentations',name),file=path.join(project,'work/production.json');
+      if(!await exists(file))return null;
+      const production=await readJson(file);
+      return production.bookDirectory?[path.resolve(production.bookDirectory),project]:null;
+    }));
+    return new Map(entries.filter(Boolean));
+  })();
+  return (await projectIndex).get(path.resolve(bookDirectory))||null;
 }
 async function hasRenderLock(project){
   const bundles=path.join(project,'work/voice-bundles');
@@ -65,15 +72,21 @@ async function record(manifestFile){
     return await exists(audio) && await hash(audio)===line.sha256;
   })).then(values=>values.every(Boolean));
   const textCurrent=lines.length===expectedTexts.length && lines.every((line,index)=>line.textSha256===expectedTexts[index]);
+  const expectedPerformance=scenes.flatMap(scene=>scene.lines.map((_,index)=>narrationInputHash(narrationDirection(scene,index,production),production)));
+  const performanceCurrent=lines.length===expectedPerformance.length&&lines.every((line,index)=>line.performanceSha256===expectedPerformance[index]);
   const publishedBeats=film.scenes.flatMap(scene=>scene.beats||[]);
   const publishedTextCurrent=publishedBeats.length===expectedTexts.length&&publishedBeats.every((beat,index)=>crypto.createHash('sha256').update(beat.text).digest('hex')===expectedTexts[index]);
   const publishedAudioCurrent=lines.length>0&&lines.every(line=>Object.values(film.assets||{}).some(asset=>asset.sha256===line.sha256));
-  const qwen=/Qwen3-TTS/.test(film.voice?.provider||'') && filesValid && textCurrent && publishedTextCurrent && publishedAudioCurrent && !!build && !locked;
+  const voiceGenerated=/Qwen3-TTS/.test(receipts?.provider||'')&&filesValid&&textCurrent&&performanceCurrent;
+  const artSha256=crypto.createHash('sha256').update(JSON.stringify(scenes.map(scene=>({id:scene.id,visual:scene.visual})))).digest('hex');
+  const visualReview=await fs.readFile(path.join(project,'qa/visual-plan-review.json'),'utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+  const animationCompleted=visualReview?.scriptSha256===editorial.scriptSha256&&visualReview?.artSha256===artSha256&&visualReview?.independentReview?.status==='passed';
+  const qwen=/Qwen3-TTS/.test(film.voice?.provider||'') && voiceGenerated && publishedTextCurrent && publishedAudioCurrent && film.durationMs<=120000 && !!build && !locked;
   const piper=/Piper/i.test(receipts?.provider||'');
   const status=qwen?'qwen-complete':locked?'rendering':/Qwen3-TTS/.test(receipts?.provider||'')?'needs-rerender':piper?'pending-piper':'needs-render';
   const stages={
     text:{status:editorial.approved?'reviewed':editorial.current?'awaiting independent review':'rewrite pending'},
-    voice:{status:filesValid&&textCurrent?'generated; listening review pending':'generation pending'},
+    voice:{status:filesValid&&textCurrent&&performanceCurrent?'generated; listening review pending':'generation pending'},
     animation:{status:publishedTextCurrent&&publishedAudioCurrent?'packaged; visual review pending':visualPlanCurrent?'planned; production pending':'visual plan pending'}
   };
   for(const [stage,value] of Object.entries(state.stages||{})){
@@ -85,7 +98,7 @@ async function record(manifestFile){
   const active=Object.values(stages).some(stage=>['running','reviewing','rewriting'].includes(stage.status));
   return {
     title:manifest.title.en, bookId:manifest.id, status, durationMs:film.durationMs,
-    stages,active,
+    stages,active,voiceGenerated,animationCompleted,
     publishedVoice:film.voice?.provider||'Unknown', publishedVoiceId:film.voice?.id||null,
     plannedVoice:production.voiceEngine==='qwen'?production.voiceProvider:null, plannedVoiceId:production.voiceEngine==='qwen'?production.voiceId:null,
     voice:receipts?.provider||production.voiceProvider||null, voiceId:receipts?.lines?.[0]?.voiceId||production.voiceId||null,
@@ -113,8 +126,9 @@ try {
   const entries=(await Promise.all((await walk('docs/books','manifest.json')).map(record))).filter(Boolean).sort((a,b)=>a.title.localeCompare(b.title));
   const counts=Object.fromEntries(['qwen-complete','rendering','pending-piper','needs-render','needs-rerender','untracked'].map(status=>[status,entries.filter(entry=>entry.status===status).length]));
   const editorialCounts={reviewed:entries.filter(entry=>entry.editorialStatus==='reviewed').length,awaitingReview:entries.filter(entry=>entry.editorialStatus==='independent-review-pending').length,awaitingRewrite:entries.filter(entry=>entry.editorialStatus==='rewrite-pending').length};
+  const productionCounts={animations:entries.filter(entry=>entry.animationCompleted).length,voices:entries.filter(entry=>entry.voiceGenerated).length,published:counts['qwen-complete']};
   const planned=entries.filter(entry=>entry.visualPlan).length;
-  const data={format:'ScriptaHub-animation-voice-migration',version:2,updatedAt:new Date().toISOString(),scope:'All book animations: engaging introductions of 1–2 minutes, maximum two minutes.',counts,editorialCounts,visualPlans:planned,conversionGate:editorialCounts.reviewed===entries.length&&planned===entries.length?'plans-reviewed':'all-plans-must-be-reviewed',entries};
+  const data={format:'ScriptaHub-animation-voice-migration',version:2,updatedAt:new Date().toISOString(),scope:'All book animations: engaging introductions of 1–2 minutes, maximum two minutes.',counts,editorialCounts,productionCounts,visualPlans:planned,conversionGate:editorialCounts.reviewed===entries.length&&planned===entries.length?'plans-reviewed':'all-plans-must-be-reviewed',entries};
   const json=path.join('tasks','voice-migration-progress.json');
   await fs.writeFile(`${json}.${process.pid}.tmp`,JSON.stringify(data,null,2)+'\n');
   await fs.rename(`${json}.${process.pid}.tmp`,json);

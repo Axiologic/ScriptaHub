@@ -301,7 +301,8 @@
   track Text, Animation and Voice separately. Record work starts, progress,
   failures and completion in each presentation's `work/migration-state.json`,
   and run `node tools/shf/update-voice-migration-status.mjs` after each meaningful
-  change. Active work appears first. The page refreshes its data every minute
+  change. Active work appears first, with an “În lucru” indicator beside the
+  title naming the current task. The page refreshes its data every minute
   without closing open scripts. Do not mark a draft, recording or planned visual
   revision as a finished film; verify current text, packaged audio, measured
   duration and visual review separately. Review all requested scripts before

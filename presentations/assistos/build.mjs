@@ -1,30 +1,18 @@
-import {publishNarratedFilm} from '../../tools/shf/publish-film.mjs';
-import {stage} from '../../tools/shf/illustrated-stage.mjs';
-import {storyStage} from '../../tools/shf/story-stage.mjs';
-import {revisedVisual} from './work/art.mjs';
+import {buildBookFilm} from '../../tools/shf/build-book-film.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
-import { fileURLToPath } from 'node:url';
-const root=path.dirname(fileURLToPath(import.meta.url));
-const skill=path.resolve('.agents/skills/shf-presentation-creator');
-const {voiceTasks}=await import(path.join(skill,'scripts/lib/voice.mjs'));
-const {checkEditorial}=await import(path.join(skill,'scripts/check-editorial.mjs'));
-await import(path.join(skill,'runtime/shf-core.js'));const C=globalThis.SHFCore;
-const scenes=JSON.parse(fs.readFileSync(path.join(root,'work/scenes.json')));
-for(const s of scenes)for(const text of s.lines)if(C.splitSentences(text,'en').length!==1)throw Error('Expected exactly one sentence: '+s.id);
-const source=fs.readFileSync(path.join(root,'source/source.txt'),'utf8');
-const sections=JSON.parse(fs.readFileSync(path.join(root,'source/sections.json')));
-const write=(file,value)=>{fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,typeof value==='string'?value:JSON.stringify(value,null,2)+'\n');};
-const sha=value=>crypto.createHash('sha256').update(value).digest('hex');
-const selected=[...new Set(scenes.flatMap(s=>s.sources))];
-const claims=selected.map(i=>{const sec=sections[i],start=source.lastIndexOf(sec.heading);if(start<0)throw Error('Missing source heading');const next=sections[i+1];let end=next?source.lastIndexOf(next.heading):source.length;if(end<0)end=source.length;return {id:sec.id,statement:sec.heading,kind:'source-claim',noveltyScope:'within-source',qualifiers:['The book describes an intended architecture; deployment-dependent availability.'],spans:[{start,end,quote:source.slice(start,end)}]};});
-const positioning=JSON.parse(fs.readFileSync(path.join(root,'work/positioning.json')));
-const editorial={format:'SHF-Editorial',version:'1',...positioning,sourceSha256:sha(source),claims,scenePlan:scenes.map(s=>({id:s.id,role:s.narrativeRole,lens:s.lens,purpose:s.lines.at(-1),emotionalPlan:s.emotionalPlan}))};
-const review=checkEditorial(editorial,source);if(!review.valid)throw Error(review.errors.join('\n'));
-write(path.join(root,'work/editorial.json'),editorial);write(path.join(root,'qa/editorial-validation.json'),review);
-write(path.join(root,'work/visual-bible.json'),{human:{id:'consultant',asset:'person-02',meaning:'Fictional human reviewer with stable identity, dynamic expressions and motivated gestures.',emotionalPlan:scenes.map(s=>({scene:s.id,...s.emotionalPlan}))},robot:{id:'robot',asset:'machine',meaning:'Schematic software worker, not physical machinery.'},palette:{blue:'Inputs and human context',gold:'Work in progress and qualifications',teal:'Preservation and checks; does not imply proof of truth',coral:'A question or intervention'},motion:'Sentence-cued anticipation, expressive gesture and settlement; alternate tension, reflection and release without continuous decorative loops.',diagrams:'Qualitative only; no invented numeric results.'});
-const direction={format:'SHF-Direction',version:'0.4',id:'assistos-essence',title:positioning.title,language:'en',stage:{width:1200,height:760},description:'Why read AssistOS? An illustrated introduction to the book’s questions, distinctive ideas and value for prospective readers.',editorial:{purpose:editorial.purpose,readerInvitation:editorial.readerInvitation,rights:editorial.rights,sourceNote:'Based on AssistOS, edition 2. Conceptual illustrations. Synthetic narration generated locally.',sourceEdition:'edition-2',sourceSha256:sha(source),disclosure:'Conceptual illustrations of the proposed architecture; not a recording of a completed product.'},audioDisclosure:'English synthetic narration generated locally with Piper, en_US-ljspeech-medium. Conceptual illustrations based on AssistOS, edition 2.',sources:selected.map(i=>({id:'section_'+i,title:sections[i].heading,edition:'edition-2',locator:'en/full_content.html#section_'+i})),assets:{},voice:{id:'en_US-ljspeech-medium',provider:'Piper 1.4.2, local CPU'},scenes:scenes.map((s,i)=>{const visual=revisedVisual(s);if(!visual)return stage(s,i,scenes);const directed=storyStage({...s,visual},i,scenes);for(const beat of directed.beats)beat.sourceRefs=s.sources.map(n=>"section_"+n);return directed;})};
-write(path.join(root,'work/film.direction.json'),direction);write(path.join(root,'work/voice-tasks.json'),voiceTasks(direction));
-if(process.argv.includes('--plan-only')){console.log('Editorial plan and sentence tasks validated; no audio or film generated.');process.exit(0);}
-await publishNarratedFilm({direction,root,output:path.resolve('docs/books/assistos/bk-c0f6d112218f4c52/Animation'),minDurationMs:600000,maxDurationMs:900000});
+
+// AssistOS uses the shared compiler; source, edition, production settings and
+// approved scene direction remain book-owned in this directory.
+await buildBookFilm(new URL('.', import.meta.url).pathname);
+
+// The shared authoring verbs use source-N references. Keep this book's
+// section metadata compatible with that direction contract without changing
+// the shared compiler or the approved spoken plan.
+const root = new URL('.', import.meta.url).pathname;
+const directionFile = path.join(root, 'work/film.direction.json');
+if (fs.existsSync(directionFile)) {
+  const direction = JSON.parse(fs.readFileSync(directionFile, 'utf8'));
+  direction.sources = direction.sources.map((source, index) => ({...source, id: `source-${index}`}));
+  fs.writeFileSync(directionFile, JSON.stringify(direction, null, 2) + '\n');
+}

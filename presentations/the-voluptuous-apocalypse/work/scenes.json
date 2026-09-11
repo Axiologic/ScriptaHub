@@ -1218,6 +1218,174 @@
               }
             ]
           }
+        },
+        {
+          "id": "plan-cue-1",
+          "asset": "custom",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: The imagined calendar stops as the worker briefly relaxes.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#496580",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "The cancelled calendar"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "The imagined calendar stops as the worker briefly relaxes."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "wry amusement"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Return the ordinary office while the relief becomes the book’s subject.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#427e83",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "The cancelled calendar"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Return the ordinary office while the relief becomes the book’s subject."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "curiosity"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -1240,10 +1408,35 @@
           "action": "appear",
           "beat": 2,
           "durationMs": 850
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "The imagined calendar stops as the worker briefly relaxes. — wry amusement"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "Return the ordinary office while the relief becomes the book’s subject. — curiosity"
         }
       ],
       "connections": [],
-      "meaning": "Keep the office calendar and trays, then briefly suspend their motion rather than depict destruction; retain the resident when considering costs; return to the window and ordinary life with the question unresolved."
+      "meaning": "Keep the office calendar and trays, then briefly suspend their motion rather than depict destruction; retain the resident when considering costs; return to the window and ordinary life with the question unresolved. Approved visual plan: A worker imagines an abruptly quiet office Approved visual plan: A worker imagines an abruptly quiet office",
+      "planComposition": "A worker imagines an abruptly quiet office",
+      "planKeep": [
+        "worker",
+        "office-desk",
+        "review-trays",
+        "clock"
+      ],
+      "planRemove": [],
+      "planAddOrChange": [
+        "Make the imagined cancellation clearly distinct from reality, with no destructive spectacle."
+      ]
     }
   },
   {
@@ -2557,23 +2750,23 @@
           }
         },
         {
-          "id": "extra-tray",
+          "id": "plan-cue-1",
           "asset": "custom",
-          "x": 770,
-          "y": 181,
-          "scale": 1,
-          "meaning": "A new evaluation becomes another layer",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Calendar demands fade only in the imagined scene.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -210,
                 0
               ],
               "right": [
-                70,
+                210,
                 0
               ],
               "top": [
@@ -2587,34 +2780,139 @@
             },
             "children": [
               {
-                "id": "$asset.part25",
-                "type": "path",
+                "id": "$asset.bg",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-88 26H88L68 44H-71Z",
-                  "fill": "#8170b1"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#c4b9e1"
-                  }
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#427e83",
+                  "stroke-width": 4
                 }
               },
               {
-                "id": "$asset.part26",
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "Relief inside fear"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Calendar demands fade only in the imagined scene."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "recognition"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Hold the quiet road beside the real obligation list.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
                 "type": "rect",
                 "attrs": {
-                  "x": -70,
-                  "y": 10,
-                  "width": 140,
-                  "height": 18,
-                  "rx": 2,
-                  "fill": "#ebdfbf"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#d3d6bd"
-                  }
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#496580",
+                  "stroke-width": 4
                 }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "Relief inside fear"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Hold the quiet road beside the real obligation list."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#496580"
+                },
+                "text": "unease"
               }
             ]
           }
@@ -2636,14 +2934,35 @@
           "durationMs": 1900
         },
         {
-          "actor": "extra-tray",
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "Calendar demands fade only in the imagined scene. — recognition"
+        },
+        {
+          "actor": "plan-cue-2",
           "action": "appear",
           "beat": 2,
-          "durationMs": 850
+          "durationMs": 700,
+          "meaning": "Hold the quiet road beside the real obligation list. — unease"
         }
       ],
       "connections": [],
-      "meaning": "Keep the office calendar and trays, then briefly suspend their motion rather than depict destruction; retain the resident when considering costs; return to the window and ordinary life with the question unresolved."
+      "meaning": "Keep the office calendar and trays, then briefly suspend their motion rather than depict destruction; retain the resident when considering costs; return to the window and ordinary life with the question unresolved. Approved visual plan: An empty office and road appear as temporary fantasies Approved visual plan: An empty office and road appear as temporary fantasies",
+      "planComposition": "An empty office and road appear as temporary fantasies",
+      "planKeep": [
+        "worker",
+        "office-desk",
+        "review-trays",
+        "clock"
+      ],
+      "planRemove": [
+        "extra-tray"
+      ],
+      "planAddOrChange": [
+        "Add one simple road view and remove infinite tray multiplication."
+      ]
     }
   },
   {
@@ -2694,246 +3013,6 @@
     },
     "visual": {
       "objects": [
-        {
-          "id": "removable-system",
-          "asset": "custom",
-          "x": 412,
-          "y": 346,
-          "scale": 1,
-          "meaning": "Specific institutional functions can be examined without treating everyone’s support as disposable",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "rect",
-                "attrs": {
-                  "x": -170,
-                  "y": -165,
-                  "width": 340,
-                  "height": 321,
-                  "rx": 8,
-                  "fill": "#3a8998"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#a8d8df"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "rect",
-                "attrs": {
-                  "x": -138,
-                  "y": -113,
-                  "width": 276,
-                  "height": 49,
-                  "rx": 7,
-                  "fill": "#e0b246"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#f4d794"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part3",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -80,
-                  "font-size": 30,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#294f5b"
-                },
-                "text": "Care"
-              },
-              {
-                "id": "$asset.part4",
-                "type": "rect",
-                "attrs": {
-                  "x": -138,
-                  "y": 51,
-                  "width": 276,
-                  "height": 49,
-                  "rx": 7,
-                  "fill": "#e0b246"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#f4d794"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part5",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 84,
-                  "font-size": 30,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#294f5b"
-                },
-                "text": "Water"
-              }
-            ]
-          }
-        },
-        {
-          "id": "old-procedure",
-          "asset": "custom",
-          "x": 412,
-          "y": 346,
-          "scale": 1,
-          "meaning": "A specific obsolete layer can end while care and water remain",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part6",
-                "type": "rect",
-                "attrs": {
-                  "x": -138,
-                  "y": -31,
-                  "width": 276,
-                  "height": 49,
-                  "rx": 7,
-                  "fill": "#d9785a"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#f1b7a0"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part7",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 2,
-                  "font-size": 30,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#294f5b"
-                },
-                "text": "Old procedure"
-              }
-            ]
-          }
-        },
-        {
-          "id": "retired-procedure",
-          "asset": "custom",
-          "x": 615,
-          "y": 442,
-          "scale": 1,
-          "meaning": "The question concerns ending a procedure while maintaining essential life",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part8",
-                "type": "rect",
-                "attrs": {
-                  "x": -85,
-                  "y": -33,
-                  "width": 170,
-                  "height": 66,
-                  "rx": 7,
-                  "fill": "#d9785a"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#f1b7a0"
-                  }
-                }
-              },
-              {
-                "id": "$asset.part9",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 10,
-                  "font-size": 32,
-                  "font-weight": 700,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#294f5b"
-                },
-                "text": "Retired"
-              }
-            ]
-          }
-        },
         {
           "id": "resident",
           "asset": "custom",
@@ -3818,6 +3897,174 @@
             "rig": "character",
             "dynamicExpressions": true
           }
+        },
+        {
+          "id": "plan-cue-1",
+          "asset": "custom",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Set basic needs beside the attractive imagined silence.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#427e83",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "What collapse would cost"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Set basic needs beside the attractive imagined silence."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "reassurance"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Return to an office schedule with gentle administrative absurdity.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#427e83",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "What collapse would cost"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Return to an office schedule with gentle administrative absurdity."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#427e83"
+                },
+                "text": "wry amusement"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -3840,10 +4087,36 @@
           "action": "appear",
           "beat": 2,
           "durationMs": 850
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "Set basic needs beside the attractive imagined silence. — reassurance"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "Return to an office schedule with gentle administrative absurdity. — wry amusement"
         }
       ],
       "connections": [],
-      "meaning": "Keep the office calendar and trays, then briefly suspend their motion rather than depict destruction; retain the resident when considering costs; return to the window and ordinary life with the question unresolved."
+      "meaning": "Keep the office calendar and trays, then briefly suspend their motion rather than depict destruction; retain the resident when considering costs; return to the window and ordinary life with the question unresolved. Approved visual plan: The same world still needs food, medicine and help Approved visual plan: The same world still needs food, medicine and help",
+      "planComposition": "The same world still needs food, medicine and help",
+      "planKeep": [
+        "resident"
+      ],
+      "planRemove": [
+        "removable-system",
+        "old-procedure",
+        "retired-procedure"
+      ],
+      "planAddOrChange": [
+        "Replace removable-system metaphor with essentials and a crowded schedule."
+      ]
     }
   },
   {
@@ -5014,6 +5287,174 @@
               }
             ]
           }
+        },
+        {
+          "id": "plan-cue-1",
+          "asset": "custom",
+          "x": 760,
+          "y": 215,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Circle the task nobody seems able to stop.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#76557f",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "A different kind of ending"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Circle the task nobody seems able to stop."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "reflection"
+              }
+            ]
+          }
+        },
+        {
+          "id": "plan-cue-2",
+          "asset": "custom",
+          "x": 778,
+          "y": 325,
+          "scale": 0.74,
+          "meaning": "Approved shot cue: Rest the hand beside it as the final question lands.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -210,
+                0
+              ],
+              "right": [
+                210,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.bg",
+                "type": "rect",
+                "attrs": {
+                  "x": -210,
+                  "y": -62,
+                  "width": 420,
+                  "height": 124,
+                  "rx": 12,
+                  "fill": "#f0e6d8",
+                  "stroke": "#cd785c",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -24,
+                  "font-size": 22,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "A different kind of ending"
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 16,
+                  "font-size": 18,
+                  "text-anchor": "middle",
+                  "fill": "#333b59"
+                },
+                "text": "Rest the hand beside it as the final question lands."
+              },
+              {
+                "id": "$asset.emotion",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 45,
+                  "font-size": 16,
+                  "text-anchor": "middle",
+                  "fill": "#cd785c"
+                },
+                "text": "invitation"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -5036,10 +5477,35 @@
           "action": "appear",
           "beat": 2,
           "durationMs": 850
+        },
+        {
+          "actor": "plan-cue-1",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 700,
+          "meaning": "Circle the task nobody seems able to stop. — reflection"
+        },
+        {
+          "actor": "plan-cue-2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 700,
+          "meaning": "Rest the hand beside it as the final question lands. — invitation"
         }
       ],
       "connections": [],
-      "meaning": "Keep the office calendar and trays, then briefly suspend their motion rather than depict destruction; retain the resident when considering costs; return to the window and ordinary life with the question unresolved."
+      "meaning": "Keep the office calendar and trays, then briefly suspend their motion rather than depict destruction; retain the resident when considering costs; return to the window and ordinary life with the question unresolved. Approved visual plan: The worker looks from one obsolete task to the window Approved visual plan: The worker looks from one obsolete task to the window",
+      "planComposition": "The worker looks from one obsolete task to the window",
+      "planKeep": [
+        "worker",
+        "office-desk",
+        "remaining-work",
+        "window"
+      ],
+      "planRemove": [],
+      "planAddOrChange": [
+        "Keep the institution present and avoid magical abolition."
+      ]
     }
   }
 ]
