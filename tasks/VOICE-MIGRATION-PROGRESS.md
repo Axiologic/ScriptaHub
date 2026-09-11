@@ -1,16 +1,16 @@
 # Progres migrare voci pentru animații
 
-Actualizat: 2026-09-11T15:56:28.674Z
+Actualizat: 2026-09-11T15:59:45.630Z
 
 Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.
 
 ## Situație
 
 - Voci Qwen finalizate: **2**
-- În conversie: **4**
-- Încă pe Piper: **110**
+- În conversie: **2**
+- Încă pe Piper: **111**
 - Pregătite pentru conversie: **0**
-- De refăcut după schimbarea textului: **6**
+- De refăcut după schimbarea textului: **7**
 - Fără proiect asociat: **0**
 
 ## Voci Qwen finalizate
@@ -20,13 +20,12 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 
 ## În conversie
 
-- Agentic AI 2026 — en_US-ljspeech-medium (393 s)
-- Anti-Trivialization Machines of the Future — en_US-ljspeech-medium (179 s)
 - Artificial Impossibility — en_US-ljspeech-medium (159 s)
 - Aspirin, Viagra, and Coffins — en_US-ljspeech-medium (732 s)
 
 ## Încă pe Piper
 
+- Agentic AI 2026 — en_US-ljspeech-medium (393 s)
 - AssistOS — en_US-ljspeech-medium (845 s)
 - Autopsy of Future Emotions — en_US-ljspeech-medium (177 s)
 - Beauty: The Anatomy of Fascination — en_US-ljspeech-medium (75 s)
@@ -145,4 +144,5 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - An Autopsy of a Digital Mind — Ryan (152 s)
 - Anatomy of an Echo — Ryan (165 s)
 - Anti-Idiocracy — Aiden (167 s)
+- Anti-Trivialization Machines of the Future — Aiden (179 s)
 - The Right to Copy — Ryan (75 s)

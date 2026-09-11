@@ -225,6 +225,11 @@ current generated Qwen voices, and newly packaged public films. Count voice
 from matching text/performance and verified audio hashes independently of the
 public film; count artwork from a current independent rendered review tied to
 both script and artwork hashes. A plan alone contributes to neither count.
+Below active work, show a separate “Filme finalizate și publicate” table with
+book title, measured duration, voice and relative book/film links opening in new
+tabs. Include only current published films with verified voice and independently
+reviewed artwork; retain their detailed scripts below. Apply title search and
+automatic refresh to the table as well.
 Refresh data automatically every 60 seconds and on returning to the
 tab; preserve expanded scripts and the search query. Stage transitions and
 failures must update the durable per-project progress record and regenerate

@@ -66,16 +66,19 @@
   };
   const c=data.editorialCounts||{};
   const active=data.entries.filter(entry=>entry.active);
+  const finished=data.entries.filter(entry=>entry.status==='qwen-complete'&&entry.animationCompleted&&entry.voiceGenerated);
+  const finishedTable=`<section class="status-group status-finished" data-finished-films><h2>Filme finalizate și publicate <small>${finished.length}</small></h2><p class="status-note">Animație verificată și voce nouă, disponibile în filmul publicat.</p>${finished.length?`<div class="status-table-scroll"><table><thead><tr><th scope="col">Carte</th><th scope="col">Durată</th><th scope="col">Voce</th><th scope="col">Linkuri</th></tr></thead><tbody>${finished.map(entry=>`<tr data-status-book="${escape(entry.title.toLowerCase())}"><th scope="row">${link(entry.bookPage,entry.title)}</th><td>${duration(entry.durationMs)}</td><td>${escape(entry.publishedVoiceId||entry.publishedVoice||entry.voice)}</td><td><div class="status-actions">${link(entry.animationPage,'Vezi filmul')}${link(entry.bookPage,'Cartea')}</div></td></tr>`).join('')}</tbody></table></div>`:'<p>Niciun film finalizat încă.</p>'}</section>`;
   root.innerHTML=`<p class="status-updated">Updated ${new Date(data.updatedAt).toLocaleString()} · refreshes every minute · ${escape(data.scope)}</p>
     <p class="status-gate">${data.conversionGate==='plans-reviewed'?'All scripts and visual plans are ready. Voice and film production are tracked separately below.':`Planning in progress: ${data.visualPlans||0} of ${data.entries.length} visual plans ready. Voice conversion waits until every script and visual plan is ready.`}</p>
     <div class="status-counts"><div><strong>${active.length}</strong><span>În lucru acum</span></div><div><strong>${data.entries.length}</strong><span>Cărți în total</span></div><div><strong>${c.reviewed||0}</strong><span>Texte revizuite</span></div><div data-production-count="animations"><strong>${data.productionCounts?.animations||0}</strong><span>Animații realizate</span><small>Vizual verificat</small></div><div data-production-count="voices"><strong>${data.productionCounts?.voices||0}</strong><span>Voci generate</span><small>Textul curent înregistrat</small></div><div data-production-count="published"><strong>${data.productionCounts?.published??data.counts?.['qwen-complete']??0}</strong><span>Filme noi publicate</span><small>Voce și animație împachetate</small></div></div>
     <label class="status-search">Find a book<input type="search" placeholder="Search titles" data-status-search></label>
     ${active.length?`<section class="status-group status-active"><h2>În lucru acum <small>${active.length}</small></h2><div class="status-list">${active.map(article).join('')}</div></section>`:'<p class="status-idle">Nicio carte nu este procesată în acest moment.</p>'}
+    ${finishedTable}
     ${order.map(key=>{const entries=data.entries.filter(entry=>entry.status===key&&!entry.active);return entries.length?`<section class="status-group"><h2>${labels[key]} <small>${entries.length}</small></h2><div class="status-list">${entries.map(article).join('')}</div></section>`:'';}).join('')}`;
   root.querySelector('[data-status-search]').addEventListener('input',event=>{
     const query=event.target.value.toLowerCase().trim();
     root.querySelectorAll('[data-status-book]').forEach(article=>{article.hidden=!article.dataset.statusBook.includes(query);});
-    root.querySelectorAll('.status-group').forEach(group=>{group.hidden=![...group.querySelectorAll('article')].some(article=>!article.hidden);});
+    root.querySelectorAll('.status-group').forEach(group=>{group.hidden=![...group.querySelectorAll('[data-status-book]')].some(article=>!article.hidden)&&!(group.hasAttribute('data-finished-films')&&!finished.length&&!query);});
   });
   const search=root.querySelector('[data-status-search]');search.value=queryBefore;search.dispatchEvent(new Event('input'));
   if(focusSearch)search.focus({preventScroll:true});
