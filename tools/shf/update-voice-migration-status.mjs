@@ -55,6 +55,8 @@ async function record(manifestFile){
   ]);
   const scenes=await readJson(path.join(project,'work/scenes.json'));
   const editorial=await marketingReview(project,scenes);
+  const visualPlan=await fs.readFile(path.join(project,'work/presentation-plan.json'),'utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+  const visualPlanCurrent=visualPlan?.scriptSha256===editorial.scriptSha256;
   const state=await fs.readFile(path.join(project,'work/migration-state.json'),'utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return {stages:{}};throw error;});
   const expectedTexts=scenes.flatMap(scene=>scene.lines).map(text=>crypto.createHash('sha256').update(text).digest('hex'));
   const lines=receipts?.lines||[];
@@ -72,7 +74,7 @@ async function record(manifestFile){
   const stages={
     text:{status:editorial.approved?'reviewed':editorial.current?'awaiting independent review':'rewrite pending'},
     voice:{status:filesValid&&textCurrent?'generated; listening review pending':'generation pending'},
-    animation:{status:publishedTextCurrent&&publishedAudioCurrent?'packaged; visual review pending':'revision pending'}
+    animation:{status:publishedTextCurrent&&publishedAudioCurrent?'packaged; visual review pending':visualPlanCurrent?'planned; production pending':'visual plan pending'}
   };
   for(const [stage,value] of Object.entries(state.stages||{})){
     if(!stages[stage]||value.scriptSha256!==editorial.scriptSha256)continue;
@@ -85,15 +87,16 @@ async function record(manifestFile){
     title:manifest.title.en, bookId:manifest.id, status, durationMs:film.durationMs,
     stages,active,
     publishedVoice:film.voice?.provider||'Unknown', publishedVoiceId:film.voice?.id||null,
-    plannedVoice:production.voiceProvider||null, plannedVoiceId:production.voiceId||null,
+    plannedVoice:production.voiceEngine==='qwen'?production.voiceProvider:null, plannedVoiceId:production.voiceEngine==='qwen'?production.voiceId:null,
     voice:receipts?.provider||production.voiceProvider||null, voiceId:receipts?.lines?.[0]?.voiceId||production.voiceId||null,
     bookDirectory:rel(bookDirectory), project:rel(project), shf:rel(publicShf), shfSha256:await hash(publicShf),
     bookPage:`${webRel(path.join(bookDirectory,'en/book.html'))}?lang=en`, animationPage:manifest.animation.page?webRel(path.resolve(bookDirectory,manifest.animation.page)):null,
-    script:scenes.map(scene=>({title:scene.title,lines:scene.lines})),
+    script:scenes.map(scene=>({id:scene.id,title:scene.title,lines:scene.lines,emotions:scene.emotionalPlan?.states||[],intensities:scene.emotionalPlan?.intensities||[],voiceDirections:scene.emotionalPlan?.voiceDirections||[],pausesMs:scene.pauseAfterMs||[]})),
+    visualPlan:visualPlanCurrent?visualPlan:null,
     scriptWords:scenes.flatMap(scene=>scene.lines).join(' ').trim().split(/\s+/).length,
     targetDurationMs:120000,
     editorialStatus:editorial.approved?'reviewed':editorial.current?'independent-review-pending':'rewrite-pending',
-    editorialReview:editorial.current?{hook:editorial.review.hook,readerPromise:editorial.review.readerPromise,visualPlan:editorial.review.visualPlan,independentReview:editorial.review.independentReview||null}:null,
+    editorialReview:editorial.current?{hook:editorial.review.hook,readerPromise:editorial.review.readerPromise,distinctiveContribution:editorial.review.distinctiveContribution,visualPlan:editorial.review.visualPlan,independentReview:editorial.review.independentReview||null}:null,
     presentationPlan:{scenes:scenes.length,beats:expectedTexts.length,visualActions:scenes.reduce((count,scene)=>count+(scene.visual?.actions?.length||0),0),method:'Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film.'},
     receiptLines:lines.length, audioReceiptsVerified:filesValid, narrationTextCurrent:textCurrent, publishedTextCurrent, publishedAudioCurrent, updatedAt:new Date().toISOString()
   };
@@ -110,7 +113,8 @@ try {
   const entries=(await Promise.all((await walk('docs/books','manifest.json')).map(record))).filter(Boolean).sort((a,b)=>a.title.localeCompare(b.title));
   const counts=Object.fromEntries(['qwen-complete','rendering','pending-piper','needs-render','needs-rerender','untracked'].map(status=>[status,entries.filter(entry=>entry.status===status).length]));
   const editorialCounts={reviewed:entries.filter(entry=>entry.editorialStatus==='reviewed').length,awaitingReview:entries.filter(entry=>entry.editorialStatus==='independent-review-pending').length,awaitingRewrite:entries.filter(entry=>entry.editorialStatus==='rewrite-pending').length};
-  const data={format:'ScriptaHub-animation-voice-migration',version:2,updatedAt:new Date().toISOString(),scope:'All book animations: engaging introductions of 1–2 minutes, maximum two minutes.',counts,editorialCounts,conversionGate:editorialCounts.reviewed===entries.length?'scripts-reviewed':'all-scripts-must-be-reviewed',entries};
+  const planned=entries.filter(entry=>entry.visualPlan).length;
+  const data={format:'ScriptaHub-animation-voice-migration',version:2,updatedAt:new Date().toISOString(),scope:'All book animations: engaging introductions of 1–2 minutes, maximum two minutes.',counts,editorialCounts,visualPlans:planned,conversionGate:editorialCounts.reviewed===entries.length&&planned===entries.length?'plans-reviewed':'all-plans-must-be-reviewed',entries};
   const json=path.join('tasks','voice-migration-progress.json');
   await fs.writeFile(`${json}.${process.pid}.tmp`,JSON.stringify(data,null,2)+'\n');
   await fs.rename(`${json}.${process.pid}.tmp`,json);

@@ -1,6 +1,6 @@
 # Progres migrare voci pentru animații
 
-Actualizat: 2026-09-11T14:35:24.515Z
+Actualizat: 2026-09-11T14:48:06.456Z
 
 Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.
 

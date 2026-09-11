@@ -23,7 +23,13 @@ export async function requireMarketingBatch(entries){
   const pending=[];
   for(const entry of entries){
     const scenes=JSON.parse(await fs.readFile(path.join(entry.project,'work/scenes.json'),'utf8'));
-    if(!(await marketingReview(entry.project,scenes)).approved)pending.push(entry.title);
+    const result=await marketingReview(entry.project,scenes);
+    const plan=await fs.readFile(path.join(entry.project,'work/presentation-plan.json'),'utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+    const cuesValid=plan?.scriptSha256===result.scriptSha256&&scenes.every(scene=>{
+      const planned=plan.scenes?.find(item=>item.sceneId===scene.id);
+      return planned&&scene.lines.every((_,index)=>planned.cues?.some(cue=>cue.line===index+1&&cue.visualAction));
+    });
+    if(!result.approved||!cuesValid)pending.push(entry.title);
   }
-  if(pending.length)throw new Error(`Complete the current marketing script and independent review for all books before voice conversion (${pending.length} pending): ${pending.join(', ')}`);
+  if(pending.length)throw new Error(`Complete the current marketing script, independent review and every visual cue for all books before voice conversion (${pending.length} pending): ${pending.join(', ')}`);
 }

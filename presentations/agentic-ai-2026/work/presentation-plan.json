@@ -1,0 +1,138 @@
+{
+  "version": "curiosity-v2",
+  "scriptSha256": "f373811c45685d5bc1be2a058c4e22e9a32db24d8af88b53558b74e16e8b89a2",
+  "productionStatus": "planned",
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "title": "When an answer becomes an action",
+      "viewerPurpose": "An AI can give a useful answer and still make a costly mistake when it acts.",
+      "composition": "A request document on the left and an unfinished action on the right, separated by a visible approval control.",
+      "keep": [
+        "request",
+        "review-hand",
+        "payment"
+      ],
+      "remove": [
+        "customer",
+        "customer-phone",
+        "parcel"
+      ],
+      "addOrChange": [
+        "Remove the unrelated parcel and refund story; change the action label to a proposed file edit."
+      ],
+      "cues": [
+        {
+          "line": 1,
+          "visualAction": "A request enters; the consequential action stays pending rather than receiving a success tick.",
+          "emotion": "concerned"
+        },
+        {
+          "line": 2,
+          "visualAction": "Bring the book title into the same view while the request and pending action remain visible.",
+          "emotion": "engaged"
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-02",
+      "title": "Who gave permission",
+      "viewerPurpose": "Editing a file or using a service involves more than finding the right words.",
+      "composition": "One source page beside a proposed change, with the owner’s approval between them.",
+      "keep": [
+        "page",
+        "approval",
+        "request-marker"
+      ],
+      "remove": [
+        "request",
+        "refund",
+        "read-status"
+      ],
+      "addOrChange": [
+        "Relabel the refund operation as a proposed change; do not imply read access authorizes edits."
+      ],
+      "cues": [
+        {
+          "line": 1,
+          "visualAction": "Reveal the source page, then a proposed edit with its changed region highlighted.",
+          "emotion": "clear"
+        },
+        {
+          "line": 2,
+          "visualAction": "Move the request marker toward the approval control and stop before execution.",
+          "emotion": "thoughtful"
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-03",
+      "title": "When a task goes wrong",
+      "viewerPurpose": "As jobs grow longer, even capable agents can lose track of the original request.",
+      "composition": "A short task record with one missing step and a second person inspecting it.",
+      "keep": [
+        "receipt",
+        "inspection",
+        "second-reviewer"
+      ],
+      "remove": [
+        "plan",
+        "revision",
+        "handoff"
+      ],
+      "addOrChange": [
+        "Remove the extra handoff and nested plan panels; keep one record with a readable missing step."
+      ],
+      "cues": [
+        {
+          "line": 1,
+          "visualAction": "Show the original request beside the incomplete record so the missed step is visible.",
+          "emotion": "concerned"
+        },
+        {
+          "line": 2,
+          "visualAction": "Invite the second reviewer to inspect the gap; show two possible next steps without selecting a winner.",
+          "emotion": "curious"
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-04",
+      "title": "Choosing what to trust",
+      "viewerPurpose": "Builders can follow what happens when a step fails or needs to be undone.",
+      "composition": "The proposed change can be reversed beside the original request and book.",
+      "keep": [
+        "page",
+        "memory",
+        "boundary"
+      ],
+      "remove": [
+        "quote",
+        "copied-quote",
+        "source-label"
+      ],
+      "addOrChange": [
+        "Replace the malicious-quote illustration with a reversible file change; retain the authority boundary."
+      ],
+      "cues": [
+        {
+          "line": 1,
+          "visualAction": "Show a changed file returning to its previous version while its record remains available.",
+          "emotion": "engaged"
+        },
+        {
+          "line": 2,
+          "visualAction": "Hold the original request beside the book with a simple Check what happens next label.",
+          "emotion": "reflective"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "Do not generate voice until all122 script and visual plans pass review.",
+    "Use only source-grounded diagrams and neutral illustrative examples; preserve uncertainty and proposal labels.",
+    "Measure audio and keep the complete film at or below120 seconds without accelerating narration.",
+    "Inspect Color, Light and Dark at desktop and phone sizes; verify captions, labels and cue timing.",
+    "Listening review and visual QA are separate from having a compiled film."
+  ]
+}

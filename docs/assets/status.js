@@ -29,11 +29,30 @@
       <div class="status-actions">${link(entry.bookPage,'Book')}${entry.animationPage?link(entry.animationPage,'Published animation'):''}</div>
       <details${openTitles.has(entry.title.toLowerCase())?' open':''}><summary>Spoken script and film plan</summary>
         ${review?.hook?`<p class="status-hook"><strong>Opening hook:</strong> ${escape(review.hook)}</p>`:''}
+        ${review?.distinctiveContribution?`<p><strong>Distinctive idea:</strong> ${escape(planText(review.distinctiveContribution))}</p>`:''}
         <h4>Exact narration</h4>
-        ${(entry.script||[]).map(scene=>`<section class="status-scene"><h5>${escape(scene.title)}</h5><ol>${scene.lines.map(line=>`<li>${escape(line)}</li>`).join('')}</ol></section>`).join('')}
+        ${(entry.script||[]).map(scene=>{
+          const plan=entry.visualPlan?.scenes?.find(item=>item.sceneId===scene.id);
+          return `<section class="status-scene"><h5>${escape(scene.title)}</h5>
+            ${plan?`<p><strong>On screen:</strong> ${escape(planText(plan.composition))}</p>`:''}
+            <ol>${scene.lines.map((line,index)=>{
+              const intent=review?.independentReview?.sentenceIntentions?.find(item=>item.sceneId===scene.id&&item.line===index+1);
+              const cue=plan?.cues?.find(item=>item.line===index+1);
+              return `<li><p class="status-spoken">${escape(line)}</p><dl class="status-direction">
+                <div><dt>Purpose</dt><dd>${escape(planText(intent?.purpose)||'Final review pending')}</dd></div>
+                <div><dt>Viewer response</dt><dd>${escape(planText(intent?.viewerResponse)||'Final review pending')}</dd></div>
+                <div><dt>Voice</dt><dd>${escape(scene.emotions?.[index]||'Pending')} · intensity ${Math.round((scene.intensities?.[index]||0)*100)}% · pause ${((scene.pausesMs?.[index]||0)/1000).toFixed(1)} s</dd></div>
+                <div><dt>Exact TTS direction</dt><dd>${escape(scene.voiceDirections?.[index]||'Pending')}</dd></div>
+                <div><dt>Visual cue</dt><dd>${escape(planText(cue?.visualAction)||'Detailed visual plan pending')}</dd></div>
+              </dl></li>`;
+            }).join('')}</ol>
+            ${plan?`<p><strong>Keep:</strong> ${escape(planText(plan.keep)||'None')}<br><strong>Remove:</strong> ${escape(planText(plan.remove)||'None')}<br><strong>Add or change:</strong> ${escape(planText(plan.addOrChange)||'None')}</p>`:''}
+          </section>`;
+        }).join('')}
         <h4>Visual plan — proposed</h4>
         <p>${escape(planText(review?.visualPlan)||'Book-specific visual revision plan pending.')}</p>
         <p>${entry.presentationPlan?.scenes||0} selected scenes, ${entry.presentationPlan?.beats||0} narration sentences. Final duration will come from the measured audio.</p>
+        ${entry.visualPlan?.checks?`<p><strong>Checks before completion:</strong> ${escape(planText(entry.visualPlan.checks))}</p>`:''}
         <h4>Remaining production work</h4><p>${escape(remaining)}</p>
       </details>
     </article>`;
@@ -41,7 +60,7 @@
   const c=data.editorialCounts||{};
   const active=data.entries.filter(entry=>entry.active);
   root.innerHTML=`<p class="status-updated">Updated ${new Date(data.updatedAt).toLocaleString()} · refreshes every minute · ${escape(data.scope)}</p>
-    <p class="status-gate">${data.conversionGate==='scripts-reviewed'?'All scripts have passed independent editorial review. Voice and film production are tracked separately below.':'Editorial revision in progress. Voice conversion waits until every script has passed independent review.'}</p>
+    <p class="status-gate">${data.conversionGate==='plans-reviewed'?'All scripts and visual plans are ready. Voice and film production are tracked separately below.':`Planning in progress: ${data.visualPlans||0} of ${data.entries.length} visual plans ready. Voice conversion waits until every script and visual plan is ready.`}</p>
     <div class="status-counts"><div><strong>${data.entries.length}</strong><span>Books in this revision</span></div><div><strong>${c.reviewed||0}</strong><span>Scripts independently reviewed</span></div><div><strong>${c.awaitingReview||0}</strong><span>Drafts awaiting review</span></div><div><strong>${c.awaitingRewrite||0}</strong><span>Scripts awaiting rewrite</span></div></div>
     <label class="status-search">Find a book<input type="search" placeholder="Search titles" data-status-search></label>
     ${active.length?`<section class="status-group status-active"><h2>In progress now <small>${active.length}</small></h2><div class="status-list">${active.map(article).join('')}</div></section>`:''}

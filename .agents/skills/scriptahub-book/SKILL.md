@@ -65,6 +65,14 @@ or when an operation fails.
 
 ## Specialist skills
 
+For book-introduction films, use the canonical short reader to identify the
+book's distinctive contribution before drafting. A new concept, proposed
+technology or challenge to a familiar view belongs in the opening in plain
+language, with proposal status preserved. Follow the SHF book-introduction
+reference and the marketing skill's editorial principles. Keep exact narration,
+sentence-level voice direction and concrete visual plans visible in the
+project's maintenance dashboard before production when the editor requests it.
+
 Use `doc2Pdf` for DOC/DOCX-to-PDF conversion and `pdf2html` for born-digital PDF
 conversion where appropriate. Direct semantic DOCX extraction is acceptable when
 validated against all source elements. Preserve tables, notes, hyperlinks, images,
