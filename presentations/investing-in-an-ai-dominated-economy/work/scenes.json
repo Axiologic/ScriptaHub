@@ -83,6 +83,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -94,6 +99,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -407,6 +417,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -418,6 +433,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -541,6 +561,152 @@
               }
             ]
           }
+        },
+        {
+          "id": "lasting-need",
+          "asset": "custom",
+          "x": 600,
+          "y": 490,
+          "scale": 1,
+          "meaning": "The customer need that survives product absorption.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -170,
+                0
+              ],
+              "right": [
+                170,
+                0
+              ],
+              "top": [
+                0,
+                -38
+              ],
+              "bottom": [
+                0,
+                38
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -170,
+                  "y": -38,
+                  "width": 340,
+                  "height": 76,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -5,
+                  "font-size": 23,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "LASTING CUSTOMER NEED",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "survives the interface",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "bundle-link",
+          "asset": "custom",
+          "x": 675,
+          "y": 294,
+          "scale": 1,
+          "meaning": "The independent product becoming one feature inside a larger suite.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -150,
+                0
+              ],
+              "right": [
+                150,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                45
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-110 0L110 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 29,
+                  "font-size": 19,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#956315"
+                },
+                "text": "FEATURE ABSORBED"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -551,10 +717,38 @@
           "x": 544,
           "y": 294,
           "durationMs": 2000
+        },
+        {
+          "actor": "independent",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Show a useful independent AI product appear as one feature inside a larger suite."
+        },
+        {
+          "actor": "suite",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Show a useful independent AI product appear as one feature inside a larger suite."
+        },
+        {
+          "actor": "lasting-need",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1100,
+          "planCue": "Keep the independent team beside a lasting customer need that survives the change in interface."
+        },
+        {
+          "actor": "bundle-link",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1100,
+          "planCue": "Keep the independent team beside a lasting customer need that survives the change in interface."
         }
       ],
       "connections": [],
-      "meaning": "Show a useful independent AI product appear as one feature inside a larger suite. Keep the independent team beside a lasting customer need that survives the change in interface. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "meaning": "An independent AI product becomes a feature in a larger suite while the customer need and the team’s durable work remain visible."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -639,6 +833,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -650,6 +849,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -721,6 +925,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -732,6 +941,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -896,6 +1110,11 @@
                   "height": 112,
                   "rx": 7,
                   "fill": "#77b3a1"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#77b3a1"
+                  }
                 }
               },
               {
@@ -940,11 +1159,341 @@
               }
             ]
           }
+        },
+        {
+          "id": "shared-model",
+          "asset": "custom",
+          "x": 600,
+          "y": 175,
+          "scale": 1,
+          "meaning": "A capable model available to both teams.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -120,
+                0
+              ],
+              "right": [
+                120,
+                0
+              ],
+              "top": [
+                0,
+                -35
+              ],
+              "bottom": [
+                0,
+                35
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -120,
+                  "y": -35,
+                  "width": 240,
+                  "height": 70,
+                  "rx": 10,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#275c86",
+                    "stroke": "#275c86"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "SHARED MODEL"
+              }
+            ]
+          }
+        },
+        {
+          "id": "team-record",
+          "asset": "custom",
+          "x": 250,
+          "y": 330,
+          "scale": 1,
+          "meaning": "Team A retains records and a service relationship.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -125,
+                0
+              ],
+              "right": [
+                125,
+                0
+              ],
+              "top": [
+                0,
+                -42
+              ],
+              "bottom": [
+                0,
+                42
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -125,
+                  "y": -42,
+                  "width": 250,
+                  "height": 84,
+                  "rx": 10,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -6,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "TEAM A",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "records + care",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "team-service",
+          "asset": "custom",
+          "x": 950,
+          "y": 330,
+          "scale": 1,
+          "meaning": "Team B retains a different service responsibility.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -125,
+                0
+              ],
+              "right": [
+                125,
+                0
+              ],
+              "top": [
+                0,
+                -42
+              ],
+              "bottom": [
+                0,
+                42
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -125,
+                  "y": -42,
+                  "width": 250,
+                  "height": 84,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -6,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "TEAM B",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "service + trust",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "responsibility",
+          "asset": "custom",
+          "x": 600,
+          "y": 470,
+          "scale": 1,
+          "meaning": "The durable company question beyond model access.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -280,
+                0
+              ],
+              "right": [
+                280,
+                0
+              ],
+              "top": [
+                0,
+                -35
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.l",
+                "type": "path",
+                "attrs": {
+                  "d": "M-260 0L260 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 29,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#956315"
+                },
+                "text": "CAPABILITY IS RENTED; RESPONSIBILITY IS BUILT"
+              }
+            ]
+          }
         }
       ],
-      "actions": [],
+      "actions": [
+        {
+          "actor": "shared-model",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Place two teams using similar models beside different records, services and responsibilities."
+        },
+        {
+          "actor": "team-record",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Place two teams using similar models beside different records, services and responsibilities."
+        },
+        {
+          "actor": "team-service",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Place two teams using similar models beside different records, services and responsibilities."
+        },
+        {
+          "actor": "responsibility",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Place two teams using similar models beside different records, services and responsibilities."
+        }
+      ],
       "connections": [],
-      "meaning": "Place two teams using similar models beside different records, services and responsibilities. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "meaning": "Two teams share capable model access but retain different records, services and responsibilities; durable company value sits in those relationships."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -1028,6 +1577,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -1039,6 +1593,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -1110,6 +1669,11 @@
                   "height": 130,
                   "rx": 9,
                   "fill": "#25384c"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#25384c"
+                  }
                 }
               },
               {
@@ -1183,6 +1747,11 @@
                   "height": 130,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -1364,6 +1933,193 @@
               }
             ]
           }
+        },
+        {
+          "id": "era-line",
+          "asset": "custom",
+          "x": 600,
+          "y": 185,
+          "scale": 1,
+          "meaning": "A short history of changing computing control points.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -380,
+                0
+              ],
+              "right": [
+                380,
+                0
+              ],
+              "top": [
+                0,
+                -35
+              ],
+              "bottom": [
+                0,
+                35
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-360 0L360 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.a",
+                "type": "text",
+                "attrs": {
+                  "x": -270,
+                  "y": -18,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "MAINFRAME",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.b",
+                "type": "text",
+                "attrs": {
+                  "x": -90,
+                  "y": -18,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "PC",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.c",
+                "type": "text",
+                "attrs": {
+                  "x": 90,
+                  "y": -18,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "CLOUD",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.d",
+                "type": "text",
+                "attrs": {
+                  "x": 270,
+                  "y": -18,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "MODEL",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "control-point",
+          "asset": "custom",
+          "x": 600,
+          "y": 380,
+          "scale": 1,
+          "meaning": "The control point changes as tools become widely available.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -170,
+                0
+              ],
+              "right": [
+                170,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -170,
+                  "y": -40,
+                  "width": 340,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "CONTROL POINT MOVES",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -1372,10 +2128,38 @@
           "action": "appear",
           "beat": 1,
           "durationMs": 1300
+        },
+        {
+          "actor": "era-line",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Show a short sequence of computing tools with the control point changing between them."
+        },
+        {
+          "actor": "modelA",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Show a short sequence of computing tools with the control point changing between them."
+        },
+        {
+          "actor": "modelB",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Show a short sequence of computing tools with the control point changing between them."
+        },
+        {
+          "actor": "control-point",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Show a short sequence of computing tools with the control point changing between them."
         }
       ],
       "connections": [],
-      "meaning": "Show a short sequence of computing tools with the control point changing between them. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "meaning": "A compact sequence from mainframe to PC, cloud and model shows control points moving while a reviewer remains present."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -1945,15 +2729,254 @@
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Shared identity has limits"
+                "text": "Shared identity has limits",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "polished-demo",
+          "asset": "custom",
+          "x": 600,
+          "y": 170,
+          "scale": 1,
+          "meaning": "A convincing demonstration isolated from its dependencies.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -160,
+                0
+              ],
+              "right": [
+                160,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -160,
+                  "y": -40,
+                  "width": 320,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#275c86",
+                    "stroke": "#275c86"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 27,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "POLISHED DEMO"
+              }
+            ]
+          }
+        },
+        {
+          "id": "service-dependencies",
+          "asset": "custom",
+          "x": 600,
+          "y": 390,
+          "scale": 1,
+          "meaning": "The dependencies that make a product usable and governable.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -220,
+                0
+              ],
+              "right": [
+                220,
+                0
+              ],
+              "top": [
+                0,
+                -42
+              ],
+              "bottom": [
+                0,
+                42
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -220,
+                  "y": -42,
+                  "width": 440,
+                  "height": 84,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "OWNERSHIP + SERVICES",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "evidence · relationships · support",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "separation",
+          "asset": "custom",
+          "x": 600,
+          "y": 285,
+          "scale": 1,
+          "meaning": "The proposed distinction between demonstration quality and durable control.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -160,
+                0
+              ],
+              "right": [
+                160,
+                0
+              ],
+              "top": [
+                0,
+                -35
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-135 0L135 0",
+                  "fill": "none",
+                  "stroke": "#af3f34",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 28,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#af3f34"
+                },
+                "text": "DEMO ≠ CONTROL"
               }
             ]
           }
         }
       ],
-      "actions": [],
+      "actions": [
+        {
+          "actor": "polished-demo",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Keep a polished demonstration separate from the ownership and service dependencies it needs."
+        },
+        {
+          "actor": "separation",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Keep a polished demonstration separate from the ownership and service dependencies it needs."
+        },
+        {
+          "actor": "service-dependencies",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Keep a polished demonstration separate from the ownership and service dependencies it needs."
+        }
+      ],
       "connections": [],
-      "meaning": "Keep a polished demonstration separate from the ownership and service dependencies it needs. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "meaning": "A polished demonstration is held apart from ownership, evidence, relationships and services; quality alone does not establish durable control."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -2094,6 +3117,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -2105,6 +3133,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -2176,6 +3209,11 @@
                   "height": 112,
                   "rx": 7,
                   "fill": "#77b3a1"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#77b3a1"
+                  }
                 }
               },
               {
@@ -2261,6 +3299,11 @@
                   "height": 130,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -2334,6 +3377,11 @@
                   "height": 130,
                   "rx": 9,
                   "fill": "#b86546"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#b86546"
+                  }
                 }
               },
               {
@@ -2366,11 +3414,232 @@
               }
             ]
           }
+        },
+        {
+          "id": "completed-work",
+          "asset": "custom",
+          "x": 600,
+          "y": 185,
+          "scale": 1,
+          "meaning": "A finished engagement that can teach the next one.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -150,
+                0
+              ],
+              "right": [
+                150,
+                0
+              ],
+              "top": [
+                0,
+                -38
+              ],
+              "bottom": [
+                0,
+                38
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -150,
+                  "y": -38,
+                  "width": 300,
+                  "height": 76,
+                  "rx": 10,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 24,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "COMPLETED WORK",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "case-arrow",
+          "asset": "custom",
+          "x": 600,
+          "y": 285,
+          "scale": 1,
+          "meaning": "The transfer from completed work to reusable institutional memory.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -120,
+                0
+              ],
+              "right": [
+                120,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                75
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M0 -35L0 35",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 63,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#956315"
+                },
+                "text": "REUSABLE CASE"
+              }
+            ]
+          }
+        },
+        {
+          "id": "institutional-memory",
+          "asset": "custom",
+          "x": 600,
+          "y": 500,
+          "scale": 1,
+          "meaning": "Repeated work becoming capability rather than only a private result.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -190,
+                0
+              ],
+              "right": [
+                190,
+                0
+              ],
+              "top": [
+                0,
+                -38
+              ],
+              "bottom": [
+                0,
+                38
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -190,
+                  "y": -38,
+                  "width": 380,
+                  "height": 76,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 24,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "SKILL + INSTITUTION",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
         }
       ],
-      "actions": [],
+      "actions": [
+        {
+          "actor": "completed-work",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Let completed work add to a reusable case record rather than a rising-profit graph."
+        },
+        {
+          "actor": "case-arrow",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Let completed work add to a reusable case record rather than a rising-profit graph."
+        },
+        {
+          "actor": "institutional-memory",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Let completed work add to a reusable case record rather than a rising-profit graph."
+        }
+      ],
       "connections": [],
-      "meaning": "Let completed work add to a reusable case record rather than a rising-profit graph. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "meaning": "Completed work feeds a reusable evaluation case and shared institutional memory across business and social systems, rather than a rising-profit graph."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -2547,6 +3816,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -2558,6 +3832,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -2914,11 +4193,250 @@
               }
             ]
           }
+        },
+        {
+          "id": "failed-trial",
+          "asset": "custom",
+          "x": 280,
+          "y": 390,
+          "scale": 1,
+          "meaning": "A failed trial that tests the proposed strategy.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -135,
+                0
+              ],
+              "right": [
+                135,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -135,
+                  "y": -40,
+                  "width": 270,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#af3f34",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#af3f34"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "TRIAL FAILED",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#af3f34"
+                },
+                "text": "assumption exposed"
+              }
+            ]
+          }
+        },
+        {
+          "id": "retained-lesson",
+          "asset": "custom",
+          "x": 880,
+          "y": 390,
+          "scale": 1,
+          "meaning": "A retained lesson that changes the thesis.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -150,
+                0
+              ],
+              "right": [
+                150,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -150,
+                  "y": -40,
+                  "width": 300,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 24,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "LESSON RETAINED",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "revise the thesis",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "trial-link",
+          "asset": "custom",
+          "x": 600,
+          "y": 390,
+          "scale": 1,
+          "meaning": "The review path from failed trial to thesis revision.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -180,
+                0
+              ],
+              "right": [
+                180,
+                0
+              ],
+              "top": [
+                0,
+                -25
+              ],
+              "bottom": [
+                0,
+                25
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-160 0L160 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              }
+            ]
+          }
         }
       ],
-      "actions": [],
+      "actions": [
+        {
+          "actor": "failed-trial",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Place the proposed strategy beside a failed trial and its retained lesson."
+        },
+        {
+          "actor": "retained-lesson",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Place the proposed strategy beside a failed trial and its retained lesson."
+        },
+        {
+          "actor": "trial-link",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "Place the proposed strategy beside a failed trial and its retained lesson."
+        }
+      ],
       "connections": [],
-      "meaning": "Place the proposed strategy beside a failed trial and its retained lesson. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "meaning": "The proposed strategy is shown beside a failed trial and its retained lesson; the wager can be revised when an assumption fails."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -3250,11 +4768,258 @@
               }
             ]
           }
+        },
+        {
+          "id": "useful-output",
+          "asset": "custom",
+          "x": 300,
+          "y": 220,
+          "scale": 1,
+          "meaning": "The useful work produced for a reader or customer.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -145,
+                0
+              ],
+              "right": [
+                145,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -145,
+                  "y": -40,
+                  "width": 290,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#275c86",
+                    "stroke": "#275c86"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 26,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "USEFUL OUTPUT"
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "creates value"
+              }
+            ]
+          }
+        },
+        {
+          "id": "retained-value",
+          "asset": "custom",
+          "x": 900,
+          "y": 220,
+          "scale": 1,
+          "meaning": "The unresolved question of durable claim and ownership.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -160,
+                0
+              ],
+              "right": [
+                160,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -160,
+                  "y": -40,
+                  "width": 320,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 24,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "WHO RETAINS VALUE?",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "open question",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "value-link",
+          "asset": "custom",
+          "x": 600,
+          "y": 485,
+          "scale": 1,
+          "meaning": "The distinction between making something useful and holding a durable claim on its value.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -220,
+                0
+              ],
+              "right": [
+                220,
+                0
+              ],
+              "top": [
+                0,
+                -35
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-200 0L200 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 30,
+                  "font-size": 21,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#956315"
+                },
+                "text": "CREATING ≠ RETAINING"
+              }
+            ]
+          }
         }
       ],
-      "actions": [],
+      "actions": [
+        {
+          "actor": "useful-output",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "End on the useful output and the unanswered question of who can retain its value."
+        },
+        {
+          "actor": "retained-value",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "End on the useful output and the unanswered question of who can retain its value."
+        },
+        {
+          "actor": "value-link",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1100,
+          "planCue": "End on the useful output and the unanswered question of who can retain its value."
+        }
+      ],
       "connections": [],
-      "meaning": "End on the useful output and the unanswered question of who can retain its value. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "meaning": "The useful output remains beside the open question of who can retain its value, returning the reader to the book’s institutional argument."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",

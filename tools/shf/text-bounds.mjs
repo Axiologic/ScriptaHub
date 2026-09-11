@@ -7,7 +7,12 @@ export function findLabelOverflow(svg){
   if(!visible(text))continue;
   const box=text.getBoundingClientRect();if(!box.width||!box.height)continue;
   const x=(box.left+box.right)/2,y=(box.top+box.bottom)/2;
-  const candidates=[...text.parentElement.children].filter(node=>node.tagName.toLowerCase()==='rect'&&visible(node)).map(node=>({node,box:node.getBoundingClientRect()})).filter(({box:r})=>x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom);
+  // The runtime wraps each authored primitive in an animated <g>.
+  // Inspect sibling primitives through those wrappers, within this asset only.
+  let container=text.parentElement;
+  if(container.children.length===1&&container.parentElement?.tagName.toLowerCase()==='g')container=container.parentElement;
+  const primitives=[...container.children].flatMap(node=>node.tagName.toLowerCase()==='g'?[...node.children]:[node]);
+  const candidates=primitives.filter(node=>node.tagName.toLowerCase()==='rect'&&visible(node)).map(node=>({node,box:node.getBoundingClientRect()})).filter(({box:r})=>x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom);
   candidates.sort((a,b)=>a.box.width*a.box.height-b.box.width*b.box.height);
   if(!candidates.length)continue;
   const r=candidates[0].box;

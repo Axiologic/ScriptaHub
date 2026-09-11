@@ -490,19 +490,19 @@
   ],
   "assets": {},
   "voice": {
-    "id": "en_US-ljspeech-medium",
-    "provider": "Piper local CPU"
+    "id": "Aiden",
+    "provider": "local Qwen3-TTS 1.7B CustomVoice / Aiden"
   },
   "scenes": [
     {
       "id": "scene-1",
-      "title": "Before an idea becomes visible",
+      "title": "The information nobody recognizes",
       "chapter": "Before an idea becomes visible",
       "lens": "book",
-      "intent": "Egregnosis asks why an available idea may remain invisible to an entire society.",
+      "intent": "A company can collect thousands of complaints without recognizing that its product is the problem.",
       "knownBefore": "A prospective reader is choosing a book.",
-      "knownAfter": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius.",
-      "durationMs": 37240,
+      "knownAfter": "Egregnosis gives a name to what a society becomes able to notice, share, and act on together.",
+      "durationMs": 18142,
       "setting": "minimal",
       "objects": [
         {
@@ -1493,47 +1493,6 @@
           }
         },
         {
-          "id": "curtain0",
-          "asset": "custom",
-          "x": 300,
-          "y": 305,
-          "scale": 1,
-          "meaning": "A privacy screen prevents people from seeing what others recognize.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part7",
-                "type": "path",
-                "attrs": {
-                  "d": "M-108 -105H108V138H-108Z",
-                  "fill": "#394b68"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "room1",
           "asset": "custom",
           "x": 600,
@@ -2494,47 +2453,6 @@
           "meaning": "Expressive participant in an authored illustrative situation, not a historical portrait.",
           "options": {
             "rig": "character"
-          }
-        },
-        {
-          "id": "curtain1",
-          "asset": "custom",
-          "x": 600,
-          "y": 305,
-          "scale": 1,
-          "meaning": "A privacy screen prevents people from seeing what others recognize.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part14",
-                "type": "path",
-                "attrs": {
-                  "d": "M-108 -105H108V138H-108Z",
-                  "fill": "#394b68"
-                }
-              }
-            ]
           }
         },
         {
@@ -3525,12 +3443,12 @@
           }
         },
         {
-          "id": "curtain2",
+          "id": "shared-description",
           "asset": "custom",
-          "x": 900,
-          "y": 305,
+          "x": 600,
+          "y": 120,
           "scale": 1,
-          "meaning": "A privacy screen prevents people from seeing what others recognize.",
+          "meaning": "A newly shared description turns separate private complaints into a collectively recognizable pattern.",
           "visual": {
             "id": "$asset",
             "type": "g",
@@ -3555,11 +3473,37 @@
             },
             "children": [
               {
-                "id": "$asset.part21",
+                "id": "$asset.part22",
                 "type": "path",
                 "attrs": {
-                  "d": "M-108 -105H108V138H-108Z",
+                  "d": "M-190 -42H190V48H-190Z",
+                  "fill": "#d9a441"
+                }
+              },
+              {
+                "id": "$asset.part23",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -4,
+                  "font-size": 28,
+                  "font-weight": 600,
+                  "letter-spacing": -0.3,
+                  "text-anchor": "middle",
                   "fill": "#394b68"
+                },
+                "text": "Shared pattern"
+              },
+              {
+                "id": "$asset.part24",
+                "type": "path",
+                "attrs": {
+                  "d": "M-140 25H140",
+                  "fill": "none",
+                  "stroke": "#70a18a",
+                  "stroke-width": 7,
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round"
                 }
               }
             ]
@@ -3568,16 +3512,6 @@
       ],
       "connections": [],
       "actions": [
-        {
-          "actor": "curtain0",
-          "action": "disappear",
-          "durationMs": 1100,
-          "cue": {
-            "beatId": "scene-1-line-2",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
         {
           "actor": "resident0",
           "action": "character.gesture",
@@ -3590,32 +3524,12 @@
           }
         },
         {
-          "actor": "curtain1",
-          "action": "disappear",
-          "durationMs": 1100,
-          "cue": {
-            "beatId": "scene-1-line-3",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
           "actor": "resident1",
           "action": "character.gesture",
           "gesture": "question",
           "durationMs": 1900,
           "cue": {
-            "beatId": "scene-1-line-3",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "curtain2",
-          "action": "disappear",
-          "durationMs": 1100,
-          "cue": {
-            "beatId": "scene-1-line-4",
+            "beatId": "scene-1-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -3626,7 +3540,28 @@
           "gesture": "question",
           "durationMs": 1900,
           "cue": {
-            "beatId": "scene-1-line-4",
+            "beatId": "scene-1-line-2",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "shared-description",
+          "action": "appear",
+          "durationMs": 1300,
+          "cue": {
+            "beatId": "scene-1-line-2",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "resident0",
+          "action": "character.gesture",
+          "gesture": "question",
+          "durationMs": 1400,
+          "cue": {
+            "beatId": "scene-1-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -3636,9 +3571,9 @@
         {
           "id": "scene-1-line-1",
           "startMs": 650,
-          "spokenEndMs": 6030,
-          "endMs": 7280,
-          "text": "Egregnosis asks why an available idea may remain invisible to an entire society.",
+          "spokenEndMs": 6857,
+          "endMs": 8057,
+          "text": "A company can collect thousands of complaints without recognizing that its product is the problem.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -3648,18 +3583,18 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "curiosity",
-            "intensity": 0.35,
-            "delivery": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius."
+            "pauseAfterMs": 1200,
+            "emotion": "surprised recognition",
+            "intensity": 0.43,
+            "delivery": "Keep complaint records accumulating beside an unchanged product category; no invented counts or metrics."
           }
         },
         {
           "id": "scene-1-line-2",
-          "startMs": 7430,
-          "spokenEndMs": 12810,
-          "endMs": 14060,
-          "text": "The missing step can be shared recognition rather than another piece of evidence.",
+          "startMs": 8207,
+          "spokenEndMs": 15242,
+          "endMs": 16992,
+          "text": "Egregnosis gives a name to what a society becomes able to notice, share, and act on together.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -3669,106 +3604,40 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "attention",
-            "intensity": 0.45,
-            "delivery": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius."
-          }
-        },
-        {
-          "id": "scene-1-line-3",
-          "startMs": 14210,
-          "spokenEndMs": 19176,
-          "endMs": 20426,
-          "text": "The book proposes a vocabulary for collective attention, expectations, prestige, and memory.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-2",
-            "source-4",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "concern",
-            "intensity": 0.5,
-            "delivery": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius."
-          }
-        },
-        {
-          "id": "scene-1-line-4",
-          "startMs": 20576,
-          "spokenEndMs": 26783,
-          "endMs": 28033,
-          "text": "It follows those filters into AI systems that can widen or narrow what becomes thinkable.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-2",
-            "source-4",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "clarity",
-            "intensity": 0.4,
-            "delivery": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius."
-          }
-        },
-        {
-          "id": "scene-1-line-5",
-          "startMs": 28183,
-          "spokenEndMs": 34390,
-          "endMs": 36090,
-          "text": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-2",
-            "source-4",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1700,
-            "emotion": "invitation",
-            "intensity": 0.3,
-            "delivery": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius."
+            "pauseAfterMs": 1750,
+            "emotion": "plain clarity",
+            "intensity": 0.35,
+            "delivery": "Keep complaint records accumulating beside an unchanged product category; no invented counts or metrics."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "curiosity → stakes → direction",
-        "purpose": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius.",
+        "arc": "recognition → curiosity",
+        "purpose": "Keep complaint records accumulating beside an unchanged product category; no invented counts or metrics.",
         "states": [
-          "curiosity",
-          "attention",
-          "concern",
-          "clarity",
-          "invitation"
+          "surprised recognition",
+          "plain clarity"
         ],
         "intensities": [
-          0.35,
-          0.45,
-          0.5,
-          0.4,
-          0.3
+          0.43,
+          0.35
         ],
-        "motion": "The scene enacts one source-specific relation; no decorative repeated movement, and quiet space for qualifications."
+        "voiceDirections": [
+          "Speak with surprised recognition; give gentle emphasis to thousands of complaints. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with plain clarity; lightly emphasize notice, share, and act. Present this specific idea in a simple conversational voice, without a grand announcement or dramatic suspense, and leave a natural pause."
+        ]
       },
       "alt": "Colorful domestic cutaways open into a shared courtyard; an editorial press physically loses a meaningful exception; a reader inspects both source and output. These are authored conceptual situations, not historical reconstructions."
     },
     {
       "id": "scene-2",
-      "title": "Knowing that others know",
+      "title": "How reality becomes shared",
       "chapter": "Knowing that others know",
       "lens": "content",
-      "intent": "The opening account separates private belief from knowledge of what others will publicly do.",
-      "knownBefore": "Readers learn to examine how an idea becomes publicly possible without assuming rejection proves genius.",
-      "knownAfter": "It does not require an invisible mind hovering above the people involved.",
-      "durationMs": 34344,
+      "intent": "It begins with what gets noticed, who gets heard, and which words make a problem recognizable.",
+      "knownBefore": "Egregnosis gives a name to what a society becomes able to notice, share, and act on together.",
+      "knownAfter": "The book compares what individuals miss with the different pressures shaping what a society can notice.",
+      "durationMs": 18142,
       "setting": "minimal",
       "objects": [
         {
@@ -6572,7 +6441,7 @@
           "gesture": "question",
           "durationMs": 1900,
           "cue": {
-            "beatId": "scene-2-line-3",
+            "beatId": "scene-2-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -6583,7 +6452,7 @@
           "gesture": "resolve",
           "durationMs": 1900,
           "cue": {
-            "beatId": "scene-2-line-4",
+            "beatId": "scene-2-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -6595,7 +6464,7 @@
           "y": 475,
           "durationMs": 1800,
           "cue": {
-            "beatId": "scene-2-line-4",
+            "beatId": "scene-2-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -6607,7 +6476,18 @@
           "y": 475,
           "durationMs": 1800,
           "cue": {
-            "beatId": "scene-2-line-4",
+            "beatId": "scene-2-line-2",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "speaker",
+          "action": "character.gesture",
+          "gesture": "invite",
+          "durationMs": 1400,
+          "cue": {
+            "beatId": "scene-2-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -6617,9 +6497,9 @@
         {
           "id": "scene-2-line-1",
           "startMs": 650,
-          "spokenEndMs": 6444,
-          "endMs": 7694,
-          "text": "The opening account separates private belief from knowledge of what others will publicly do.",
+          "spokenEndMs": 7271,
+          "endMs": 8471,
+          "text": "It begins with what gets noticed, who gets heard, and which words make a problem recognizable.",
           "speakerId": "narrator",
           "lens": "content",
           "sourceRefs": [
@@ -6628,18 +6508,18 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "curiosity",
+            "pauseAfterMs": 1200,
+            "emotion": "engaged interest",
             "intensity": 0.35,
-            "delivery": "It does not require an invisible mind hovering above the people involved."
+            "delivery": "Use visible channels for a message to become shared, preserving differences in access."
           }
         },
         {
           "id": "scene-2-line-2",
-          "startMs": 7844,
-          "spokenEndMs": 11982,
-          "endMs": 13232,
-          "text": "A possibility can remain individually understood while seeming collectively unavailable.",
+          "startMs": 8621,
+          "spokenEndMs": 15242,
+          "endMs": 16992,
+          "text": "The book compares what individuals miss with the different pressures shaping what a society can notice.",
           "speakerId": "narrator",
           "lens": "content",
           "sourceRefs": [
@@ -6648,103 +6528,40 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "attention",
-            "intensity": 0.45,
-            "delivery": "It does not require an invisible mind hovering above the people involved."
-          }
-        },
-        {
-          "id": "scene-2-line-3",
-          "startMs": 13382,
-          "spokenEndMs": 18348,
-          "endMs": 19598,
-          "text": "Visible support changes that situation by altering expectations about participation and enforcement.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-2",
-            "source-4"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "concern",
-            "intensity": 0.5,
-            "delivery": "It does not require an invisible mind hovering above the people involved."
-          }
-        },
-        {
-          "id": "scene-2-line-4",
-          "startMs": 19748,
-          "spokenEndMs": 25128,
-          "endMs": 26378,
-          "text": "The book uses this distinction to introduce a distributed architecture of collective perception.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-2",
-            "source-4"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "clarity",
-            "intensity": 0.4,
-            "delivery": "It does not require an invisible mind hovering above the people involved."
-          }
-        },
-        {
-          "id": "scene-2-line-5",
-          "startMs": 26528,
-          "spokenEndMs": 31494,
-          "endMs": 33194,
-          "text": "It does not require an invisible mind hovering above the people involved.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-2",
-            "source-4"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1700,
-            "emotion": "invitation",
-            "intensity": 0.3,
-            "delivery": "It does not require an invisible mind hovering above the people involved."
+            "pauseAfterMs": 1750,
+            "emotion": "thoughtful curiosity",
+            "intensity": 0.35,
+            "delivery": "Use visible channels for a message to become shared, preserving differences in access."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "concrete tension → distinction",
-        "purpose": "It does not require an invisible mind hovering above the people involved.",
+        "arc": "attention → thoughtful tension",
+        "purpose": "Use visible channels for a message to become shared, preserving differences in access.",
         "states": [
-          "curiosity",
-          "attention",
-          "concern",
-          "clarity",
-          "invitation"
+          "engaged interest",
+          "thoughtful curiosity"
         ],
         "intensities": [
           0.35,
-          0.45,
-          0.5,
-          0.4,
-          0.3
+          0.35
         ],
-        "motion": "The scene enacts one source-specific relation; no decorative repeated movement, and quiet space for qualifications."
+        "voiceDirections": [
+          "Speak with engaged interest; give gentle emphasis to problem recognizable. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with thoughtful curiosity; give gentle emphasis to what a society can notice. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
       "alt": "Colorful domestic cutaways open into a shared courtyard; an editorial press physically loses a meaningful exception; a reader inspects both source and output. These are authored conceptual situations, not historical reconstructions."
     },
     {
       "id": "scene-3",
-      "title": "The filter can learn",
+      "title": "Blindness inside successful work",
       "chapter": "The filter can learn",
       "lens": "book",
-      "intent": "Prestige, institutional categories, memory, and identity then explain different kinds of selective visibility.",
-      "knownBefore": "It does not require an invisible mind hovering above the people involved.",
-      "knownAfter": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal.",
-      "durationMs": 37655,
+      "intent": "A newsroom, a ministry, and a laboratory can each miss something while performing their assigned task well.",
+      "knownBefore": "The book compares what individuals miss with the different pressures shaping what a society can notice.",
+      "knownAfter": "The question is how private knowledge becomes visible enough for people to act on together.",
+      "durationMs": 18142,
       "setting": "minimal",
       "objects": [
         {
@@ -6991,47 +6808,6 @@
           }
         },
         {
-          "id": "discard",
-          "asset": "custom",
-          "x": 675,
-          "y": 505,
-          "scale": 1,
-          "meaning": "A decision-relevant exception has been removed from the fluent output.",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part14",
-                "type": "path",
-                "attrs": {
-                  "d": "M-14 -30H17V21H-14Z",
-                  "fill": "#c87563"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "exception",
           "asset": "custom",
           "x": 675,
@@ -7098,7 +6874,7 @@
           "action": "disappear",
           "durationMs": 1100,
           "cue": {
-            "beatId": "scene-3-line-3",
+            "beatId": "scene-3-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -7108,17 +6884,7 @@
           "action": "appear",
           "durationMs": 1300,
           "cue": {
-            "beatId": "scene-3-line-3",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "discard",
-          "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "scene-3-line-3",
+            "beatId": "scene-3-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -7128,7 +6894,17 @@
           "action": "appear",
           "durationMs": 1300,
           "cue": {
-            "beatId": "scene-3-line-4",
+            "beatId": "scene-3-line-2",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "original",
+          "action": "appear",
+          "durationMs": 1100,
+          "cue": {
+            "beatId": "scene-3-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -7138,9 +6914,9 @@
         {
           "id": "scene-3-line-1",
           "startMs": 650,
-          "spokenEndMs": 6030,
-          "endMs": 7280,
-          "text": "Prestige, institutional categories, memory, and identity then explain different kinds of selective visibility.",
+          "spokenEndMs": 7685,
+          "endMs": 8885,
+          "text": "A newsroom, a ministry, and a laboratory can each miss something while performing their assigned task well.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -7151,18 +6927,18 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "curiosity",
+            "pauseAfterMs": 1200,
+            "emotion": "restrained surprise",
             "intensity": 0.35,
-            "delivery": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal."
+            "delivery": "Select one institutional task that highlights its target and leaves another observation outside attention."
           }
         },
         {
           "id": "scene-3-line-2",
-          "startMs": 7430,
-          "spokenEndMs": 12810,
-          "endMs": 14060,
-          "text": "The AI chapters ask what happens when those inherited filters become fluent assistants.",
+          "startMs": 9035,
+          "spokenEndMs": 15242,
+          "endMs": 16992,
+          "text": "The question is how private knowledge becomes visible enough for people to act on together.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -7173,109 +6949,40 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "attention",
-            "intensity": 0.45,
-            "delivery": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal."
-          }
-        },
-        {
-          "id": "scene-3-line-3",
-          "startMs": 14210,
-          "spokenEndMs": 20004,
-          "endMs": 21254,
-          "text": "An unusual idea may become clearer while losing the irregularity that made it informative.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-16",
-            "source-17",
-            "source-42",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "concern",
-            "intensity": 0.5,
-            "delivery": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal."
-          }
-        },
-        {
-          "id": "scene-3-line-4",
-          "startMs": 21404,
-          "spokenEndMs": 26784,
-          "endMs": 28034,
-          "text": "The book also asks whether its own collective-brain analogy describes a testable mechanism.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-16",
-            "source-17",
-            "source-42",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "clarity",
-            "intensity": 0.4,
-            "delivery": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal."
-          }
-        },
-        {
-          "id": "scene-3-line-5",
-          "startMs": 28184,
-          "spokenEndMs": 34805,
-          "endMs": 36505,
-          "text": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-16",
-            "source-17",
-            "source-42",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1700,
-            "emotion": "invitation",
-            "intensity": 0.3,
-            "delivery": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal."
+            "pauseAfterMs": 1750,
+            "emotion": "hopeful inquiry",
+            "intensity": 0.35,
+            "delivery": "Select one institutional task that highlights its target and leaves another observation outside attention."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "scope → challenge → constructive possibility",
-        "purpose": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal.",
+        "arc": "attention → thoughtful tension",
+        "purpose": "Select one institutional task that highlights its target and leaves another observation outside attention.",
         "states": [
-          "curiosity",
-          "attention",
-          "concern",
-          "clarity",
-          "invitation"
+          "restrained surprise",
+          "hopeful inquiry"
         ],
         "intensities": [
           0.35,
-          0.45,
-          0.5,
-          0.4,
-          0.3
+          0.35
         ],
-        "motion": "The scene enacts one source-specific relation; no decorative repeated movement, and quiet space for qualifications."
+        "voiceDirections": [
+          "Speak with restrained surprise; give gentle emphasis to assigned task well. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with hopeful inquiry; give gentle emphasis to act on together. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
       "alt": "Colorful domestic cutaways open into a shared courtyard; an editorial press physically loses a meaningful exception; a reader inspects both source and output. These are authored conceptual situations, not historical reconstructions."
     },
     {
       "id": "scene-4",
-      "title": "Begin where reality became shared",
+      "title": "Look at what remains unseen",
       "chapter": "Begin where reality became shared",
       "lens": "reader",
-      "intent": "Begin with the opening threshold story, then follow how visibility acquires institutional consequences.",
-      "knownBefore": "Those objections matter because an attractive vocabulary can conceal the very filtering it claims to reveal.",
-      "knownAfter": "That difference gives readers a more precise way to investigate why an idea cannot travel.",
-      "durationMs": 38895,
+      "intent": "There is no mysterious mind above society, just people and institutions deciding what becomes visible.",
+      "knownBefore": "The question is how private knowledge becomes visible enough for people to act on together.",
+      "knownAfter": "Begin with the things a society cannot see, especially when the evidence is already there.",
+      "durationMs": 17314,
       "setting": "minimal",
       "objects": [
         {
@@ -8428,7 +8135,7 @@
           "gesture": "question",
           "durationMs": 1900,
           "cue": {
-            "beatId": "scene-4-line-4",
+            "beatId": "scene-4-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -8438,7 +8145,7 @@
           "action": "appear",
           "durationMs": 1300,
           "cue": {
-            "beatId": "scene-4-line-3",
+            "beatId": "scene-4-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -8449,7 +8156,18 @@
           "gesture": "invite",
           "durationMs": 1900,
           "cue": {
-            "beatId": "scene-4-line-5",
+            "beatId": "scene-4-line-2",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "editor",
+          "action": "character.gesture",
+          "gesture": "reflect",
+          "durationMs": 1400,
+          "cue": {
+            "beatId": "scene-4-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -8459,9 +8177,9 @@
         {
           "id": "scene-4-line-1",
           "startMs": 650,
-          "spokenEndMs": 6030,
-          "endMs": 7280,
-          "text": "Begin with the opening threshold story, then follow how visibility acquires institutional consequences.",
+          "spokenEndMs": 6857,
+          "endMs": 8057,
+          "text": "There is no mysterious mind above society, just people and institutions deciding what becomes visible.",
           "speakerId": "narrator",
           "lens": "reader",
           "sourceRefs": [
@@ -8470,18 +8188,18 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "curiosity",
+            "pauseAfterMs": 1200,
+            "emotion": "plain reassurance",
             "intensity": 0.35,
-            "delivery": "That difference gives readers a more precise way to investigate why an idea cannot travel."
+            "delivery": "End with the same overlooked evidence becoming a question, not a magically enlightened crowd."
           }
         },
         {
           "id": "scene-4-line-2",
-          "startMs": 7430,
-          "spokenEndMs": 13224,
-          "endMs": 14474,
-          "text": "The later AI discussion extends that question into the systems shaping everyday intellectual choices.",
+          "startMs": 8207,
+          "spokenEndMs": 14414,
+          "endMs": 16164,
+          "text": "Begin with the things a society cannot see, especially when the evidence is already there.",
           "speakerId": "narrator",
           "lens": "reader",
           "sourceRefs": [
@@ -8490,91 +8208,28 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "attention",
-            "intensity": 0.45,
-            "delivery": "That difference gives readers a more precise way to investigate why an idea cannot travel."
-          }
-        },
-        {
-          "id": "scene-4-line-3",
-          "startMs": 14624,
-          "spokenEndMs": 20831,
-          "endMs": 22081,
-          "text": "Read the objections alongside the proposal rather than treating the new term as established science.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-2",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "concern",
-            "intensity": 0.5,
-            "delivery": "That difference gives readers a more precise way to investigate why an idea cannot travel."
-          }
-        },
-        {
-          "id": "scene-4-line-4",
-          "startMs": 22231,
-          "spokenEndMs": 28438,
-          "endMs": 29688,
-          "text": "The book offers distinctions between unavailable evidence and evidence that cannot yet become publicly actionable.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-2",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1250,
-            "emotion": "clarity",
-            "intensity": 0.4,
-            "delivery": "That difference gives readers a more precise way to investigate why an idea cannot travel."
-          }
-        },
-        {
-          "id": "scene-4-line-5",
-          "startMs": 29838,
-          "spokenEndMs": 36045,
-          "endMs": 37745,
-          "text": "That difference gives readers a more precise way to investigate why an idea cannot travel.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-2",
-            "source-63"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1700,
-            "emotion": "invitation",
-            "intensity": 0.3,
-            "delivery": "That difference gives readers a more precise way to investigate why an idea cannot travel."
+            "pauseAfterMs": 1750,
+            "emotion": "inviting challenge",
+            "intensity": 0.35,
+            "delivery": "End with the same overlooked evidence becoming a question, not a magically enlightened crowd."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "reflection → specific invitation",
-        "purpose": "That difference gives readers a more precise way to investigate why an idea cannot travel.",
+        "arc": "reflection → open curiosity",
+        "purpose": "End with the same overlooked evidence becoming a question, not a magically enlightened crowd.",
         "states": [
-          "curiosity",
-          "attention",
-          "concern",
-          "clarity",
-          "invitation"
+          "plain reassurance",
+          "inviting challenge"
         ],
         "intensities": [
           0.35,
-          0.45,
-          0.5,
-          0.4,
-          0.3
+          0.35
         ],
-        "motion": "The scene enacts one source-specific relation; no decorative repeated movement, and quiet space for qualifications."
+        "voiceDirections": [
+          "Speak with plain reassurance; give gentle emphasis to people and institutions. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with inviting challenge; give gentle emphasis to evidence is already there. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
       "alt": "Colorful domestic cutaways open into a shared courtyard; an editorial press physically loses a meaningful exception; a reader inspects both source and output. These are authored conceptual situations, not historical reconstructions."
     }

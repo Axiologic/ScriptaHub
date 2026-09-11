@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fitBeatGestures} from './illustrated-stage.mjs';
+import {atomicWriteFile} from './atomic-write.mjs';
 export async function publishNarratedFilm({direction,root,output,minDurationMs=0,maxDurationMs=3600000}){
  const skill=path.resolve('.agents/skills/shf-presentation-creator');
  const {compileFilm}=await import(path.join(skill,'scripts/lib/director.mjs'));
@@ -20,7 +21,7 @@ export async function publishNarratedFilm({direction,root,output,minDurationMs=0
  write(path.join(root,'qa/pacing.json'),{sentenceGapsMs:gaps,minSentenceGapMs:Math.min(...gaps),maxSentenceGapMs:Math.max(...gaps),captionPauseTailMs:voiced.direction.scenes.flatMap(s=>s.beats.map(b=>b.endMs-b.spokenEndMs)),sceneTransitionsMs:voiced.direction.scenes.slice(1).map((s,i)=>voiced.direction.scenes[i].durationMs-voiced.direction.scenes[i].beats.at(-1).spokenEndMs+s.beats[0].startMs)});
  const film=compileFilm(voiced.direction),validation=C.validate(film);if(!validation.valid)throw Error(validation.errors.join('\n'));
  if(film.durationMs<minDurationMs||film.durationMs>maxDurationMs)throw Error('Duration outside the editorial brief: '+film.durationMs);
- write(path.join(root,'qa/validation.json'),validation);fs.mkdirSync(output,{recursive:true});fs.writeFileSync(path.join(output,film.id+'.shf'),C.packFilm(film));
+ write(path.join(root,'qa/validation.json'),validation);const packed=C.packFilm(film);const shfPath=path.join(output,film.id+'.shf');atomicWriteFile(shfPath,packed);
  const exports=path.join(root,'exports');write(path.join(exports,film.id+'.html'),standalone([film]));
  const stamp=t=>{const ms=Math.round(t);return String(Math.floor(ms/3600000)).padStart(2,'0')+':'+String(Math.floor(ms/60000)%60).padStart(2,'0')+':'+String(Math.floor(ms/1000)%60).padStart(2,'0')+'.'+String(ms%1000).padStart(3,'0');};
  const vtt=['WEBVTT',''];let offset=0;for(const scene of film.scenes){for(const b of scene.beats)vtt.push(b.id,`${stamp(offset+b.startMs)} --> ${stamp(offset+b.endMs)}`,b.text,'');offset+=scene.durationMs;}

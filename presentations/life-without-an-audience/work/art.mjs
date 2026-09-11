@@ -22,3 +22,4 @@ for(const [i,s]of scenes.entries()){
  s.visual=q.finish('Aubergine and rose chamber theatre: expressive adult, imagined audience, real interlocutor and permission to leave.');
 }
 fs.writeFileSync(file,JSON.stringify(scenes,null,2));
+await import('./normalize-scenes.mjs');

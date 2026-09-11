@@ -214,19 +214,19 @@
   ],
   "assets": {},
   "voice": {
-    "id": "en_US-ljspeech-medium",
-    "provider": "Piper local CPU"
+    "id": "Aiden",
+    "provider": "local Qwen3-TTS 1.7B CustomVoice / Aiden"
   },
   "scenes": [
     {
       "id": "revision-1",
-      "title": "Useful can still be fragile",
+      "title": "A useful product can disappear",
       "chapter": "Useful can still be fragile",
       "lens": "book",
-      "intent": "A useful AI product can succeed with customers and still lose its independence.",
+      "intent": "Your AI product can be useful today and become someone else’s bundled feature tomorrow.",
       "knownBefore": "A prospective reader is choosing a book.",
-      "knownAfter": "Readers gain a framework for examining that wager, including reasons it could fail.",
-      "durationMs": 36044,
+      "knownAfter": "Investing in an AI-Dominated Economy proposes building around lasting needs that cheaper AI makes more important.",
+      "durationMs": 17315,
       "setting": "minimal",
       "objects": [
         {
@@ -269,6 +269,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -280,6 +285,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -593,6 +603,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -604,6 +619,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -729,48 +749,147 @@
           }
         },
         {
-          "id": "choice",
+          "id": "lasting-need",
           "asset": "custom",
-          "x": 652,
-          "y": 535,
+          "x": 600,
+          "y": 490,
           "scale": 1,
-          "meaning": "Which supplier remains?",
+          "meaning": "The customer need that survives product absorption.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -170,
                 0
               ],
               "right": [
-                70,
+                170,
                 0
               ],
               "top": [
                 0,
-                -70
+                -38
               ],
               "bottom": [
                 0,
-                70
+                38
               ]
             },
             "children": [
               {
-                "id": "$asset.part29",
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -170,
+                  "y": -38,
+                  "width": 340,
+                  "height": 76,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 30,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": -5,
+                  "font-size": 23,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Which supplier remains?"
+                "text": "LASTING CUSTOMER NEED",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "survives the interface",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "bundle-link",
+          "asset": "custom",
+          "x": 675,
+          "y": 294,
+          "scale": 1,
+          "meaning": "The independent product becoming one feature inside a larger suite.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -150,
+                0
+              ],
+              "right": [
+                150,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                45
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-110 0L110 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 29,
+                  "font-size": 19,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#956315"
+                },
+                "text": "FEATURE ABSORBED"
               }
             ]
           }
@@ -778,26 +897,6 @@
       ],
       "connections": [],
       "actions": [
-        {
-          "actor": "suite",
-          "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "revision-1-line-3",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "same-report",
-          "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "revision-1-line-3",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
         {
           "actor": "report",
           "action": "moveTo",
@@ -811,11 +910,45 @@
           }
         },
         {
-          "actor": "choice",
+          "actor": "independent",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Show a useful independent AI product appear as one feature inside a larger suite.",
           "cue": {
-            "beatId": "revision-1-line-4",
+            "beatId": "revision-1-line-1",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "suite",
+          "action": "appear",
+          "durationMs": 1100,
+          "planCue": "Show a useful independent AI product appear as one feature inside a larger suite.",
+          "cue": {
+            "beatId": "revision-1-line-1",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "lasting-need",
+          "action": "appear",
+          "durationMs": 1100,
+          "planCue": "Keep the independent team beside a lasting customer need that survives the change in interface.",
+          "cue": {
+            "beatId": "revision-1-line-2",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "bundle-link",
+          "action": "appear",
+          "durationMs": 1100,
+          "planCue": "Keep the independent team beside a lasting customer need that survives the change in interface.",
+          "cue": {
+            "beatId": "revision-1-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -825,9 +958,9 @@
         {
           "id": "revision-1-line-1",
           "startMs": 650,
-          "spokenEndMs": 6030,
-          "endMs": 7530,
-          "text": "A useful AI product can succeed with customers and still lose its independence.",
+          "spokenEndMs": 6444,
+          "endMs": 7644,
+          "text": "Your AI product can be useful today and become someone else’s bundled feature tomorrow.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -838,18 +971,18 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "concern",
-            "intensity": 0.4,
-            "delivery": "A buyer receives a useful review report from an independent software team. An existing enterprise suite offers the same visible report function. Keep the buyer and report constant: usefulness persists while the separate supplier faces a retention question. No named company or measured outcome."
+            "pauseAfterMs": 1200,
+            "emotion": "practical concern",
+            "intensity": 0.43,
+            "delivery": "Retain the independent tool and suite comparison with no invented market winner."
           }
         },
         {
           "id": "revision-1-line-2",
-          "startMs": 7680,
-          "spokenEndMs": 12646,
-          "endMs": 14146,
-          "text": "Investing in an AI-Dominated Economy builds its thesis around that uncomfortable distinction.",
+          "startMs": 7794,
+          "spokenEndMs": 14415,
+          "endMs": 16165,
+          "text": "Investing in an AI-Dominated Economy proposes building around lasting needs that cheaper AI makes more important.",
           "speakerId": "narrator",
           "lens": "content",
           "sourceRefs": [
@@ -860,109 +993,40 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "attention",
-            "intensity": 0.6,
-            "delivery": "A buyer receives a useful review report from an independent software team. An existing enterprise suite offers the same visible report function. Keep the buyer and report constant: usefulness persists while the separate supplier faces a retention question. No named company or measured outcome."
-          }
-        },
-        {
-          "id": "revision-1-line-3",
-          "startMs": 14296,
-          "spokenEndMs": 18434,
-          "endMs": 20034,
-          "text": "The book presents the strategic doctrine behind Outfinity Venture Studio.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-4",
-            "source-5",
-            "source-6",
-            "source-9"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "curiosity",
-            "intensity": 0.5,
-            "delivery": "A buyer receives a useful review report from an independent software team. An existing enterprise suite offers the same visible report function. Keep the buyer and report constant: usefulness persists while the separate supplier faces a retention question. No named company or measured outcome."
-          }
-        },
-        {
-          "id": "revision-1-line-4",
-          "startMs": 20184,
-          "spokenEndMs": 25564,
-          "endMs": 27164,
-          "text": "It asks what a company retains when competitors can rent the same intelligence.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-4",
-            "source-5",
-            "source-6",
-            "source-9"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "question",
-            "intensity": 0.4,
-            "delivery": "A buyer receives a useful review report from an independent software team. An existing enterprise suite offers the same visible report function. Keep the buyer and report constant: usefulness persists while the separate supplier faces a retention question. No named company or measured outcome."
-          }
-        },
-        {
-          "id": "revision-1-line-5",
-          "startMs": 27314,
-          "spokenEndMs": 32694,
-          "endMs": 34894,
-          "text": "Readers gain a framework for examining that wager, including reasons it could fail.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-4",
-            "source-5",
-            "source-6",
-            "source-9"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 2200,
-            "emotion": "invitation",
+            "pauseAfterMs": 1750,
+            "emotion": "practical interest",
             "intensity": 0.35,
-            "delivery": "A buyer receives a useful review report from an independent software team. An existing enterprise suite offers the same visible report function. Keep the buyer and report constant: usefulness persists while the separate supplier faces a retention question. No named company or measured outcome."
+            "delivery": "Retain the independent tool and suite comparison with no invented market winner."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "concern → attention → curiosity → question → invitation",
-        "purpose": "A buyer receives a useful review report from an independent software team. An existing enterprise suite offers the same visible report function. Keep the buyer and report constant: usefulness persists while the separate supplier faces a retention question. No named company or measured outcome.",
+        "arc": "recognition → curiosity",
+        "purpose": "Retain the independent tool and suite comparison with no invented market winner.",
         "states": [
-          "concern",
-          "attention",
-          "curiosity",
-          "question",
-          "invitation"
+          "practical concern",
+          "practical interest"
         ],
         "intensities": [
-          0.4,
-          0.6,
-          0.5,
-          0.4,
+          0.43,
           0.35
         ],
-        "motion": "One consequential movement at a time; hold on constraints and reading invitation."
+        "voiceDirections": [
+          "Speak with practical concern; give gentle emphasis to bundled feature tomorrow. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with practical interest; lightly emphasize lasting needs. Present this specific idea in a simple conversational voice, without a grand announcement or dramatic suspense, and leave a natural pause."
+        ]
       },
-      "alt": "Source-grounded venture situations. The review tool, evaluation Case R and failed trial are schematic illustrations, not reported customers, measured outcomes or investment advice."
+      "alt": "An independent AI product becomes a feature in a larger suite while the customer need and the team’s durable work remain visible."
     },
     {
       "id": "revision-2",
-      "title": "What survives the feature?",
+      "title": "What can a company retain?",
       "chapter": "What survives the feature?",
       "lens": "book",
-      "intent": "Imagine a review tool whose main attraction is generating a polished report.",
-      "knownBefore": "Readers gain a framework for examining that wager, including reasons it could fail.",
-      "knownAfter": "Reusable evaluations and lawful learning rights matter only when they actually strengthen the company.",
-      "durationMs": 36045,
+      "intent": "It asks what a company can keep building when capable models become widely available to competitors.",
+      "knownBefore": "Investing in an AI-Dominated Economy proposes building around lasting needs that cheaper AI makes more important.",
+      "knownAfter": "It asks what a company can keep building when capable models become widely available to competitors.",
+      "durationMs": 10171,
       "setting": "minimal",
       "objects": [
         {
@@ -1005,6 +1069,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -1016,6 +1085,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -1087,6 +1161,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -1098,6 +1177,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -1122,192 +1206,6 @@
                   "fill": "none",
                   "stroke": "$ink",
                   "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "r1",
-          "asset": "custom",
-          "x": 250,
-          "y": 283,
-          "scale": 0.5,
-          "meaning": "Review report",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part9",
-                "type": "path",
-                "attrs": {
-                  "d": "M-110 -70H88L110 -48V90H-110Z",
-                  "fill": "#fff0d6"
-                }
-              },
-              {
-                "id": "$asset.part10",
-                "type": "path",
-                "attrs": {
-                  "d": "M-109 -70V89",
-                  "fill": "none",
-                  "stroke": "#b86546",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part11",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -33,
-                  "font-size": 25,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#25384c"
-                },
-                "text": "Review report"
-              },
-              {
-                "id": "$asset.part12",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 21,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#386b99"
-                },
-                "text": "Useful result"
-              },
-              {
-                "id": "$asset.part13",
-                "type": "path",
-                "attrs": {
-                  "d": "M-70 32H70M-70 51H45",
-                  "fill": "none",
-                  "stroke": "#386b99",
-                  "stroke-width": 4,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "r2",
-          "asset": "custom",
-          "x": 962,
-          "y": 283,
-          "scale": 0.5,
-          "meaning": "Review report",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part14",
-                "type": "path",
-                "attrs": {
-                  "d": "M-110 -70H88L110 -48V90H-110Z",
-                  "fill": "#fff0d6"
-                }
-              },
-              {
-                "id": "$asset.part15",
-                "type": "path",
-                "attrs": {
-                  "d": "M-109 -70V89",
-                  "fill": "none",
-                  "stroke": "#b86546",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part16",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -33,
-                  "font-size": 25,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#25384c"
-                },
-                "text": "Review report"
-              },
-              {
-                "id": "$asset.part17",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 21,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#386b99"
-                },
-                "text": "Useful result"
-              },
-              {
-                "id": "$asset.part18",
-                "type": "path",
-                "attrs": {
-                  "d": "M-70 32H70M-70 51H45",
-                  "fill": "none",
-                  "stroke": "#386b99",
-                  "stroke-width": 4,
                   "stroke-linecap": "round",
                   "stroke-linejoin": "round"
                 }
@@ -1448,6 +1346,11 @@
                   "height": 112,
                   "rx": 7,
                   "fill": "#77b3a1"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#77b3a1"
+                  }
                 }
               },
               {
@@ -1494,141 +1397,302 @@
           }
         },
         {
-          "id": "check-result",
+          "id": "shared-model",
           "asset": "custom",
-          "x": 950,
-          "y": 450,
-          "scale": 0.86,
-          "meaning": "Replay result",
+          "x": 600,
+          "y": 175,
+          "scale": 1,
+          "meaning": "A capable model available to both teams.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -120,
                 0
               ],
               "right": [
-                70,
+                120,
                 0
               ],
               "top": [
                 0,
-                -70
+                -35
               ],
               "bottom": [
                 0,
-                70
+                35
               ]
             },
             "children": [
               {
-                "id": "$asset.part28",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-110 -70H88L110 -48V90H-110Z",
-                  "fill": "#fff0d6"
+                  "x": -120,
+                  "y": -35,
+                  "width": 240,
+                  "height": 70,
+                  "rx": 10,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#275c86",
+                    "stroke": "#275c86"
+                  }
                 }
               },
               {
-                "id": "$asset.part29",
-                "type": "path",
-                "attrs": {
-                  "d": "M-109 -70V89",
-                  "fill": "none",
-                  "stroke": "#b86546",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part30",
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": -33,
+                  "y": 8,
                   "font-size": 25,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "font-weight": 700,
                   "text-anchor": "middle",
-                  "fill": "#25384c"
+                  "fill": "#ffffff"
                 },
-                "text": "Replay result"
+                "text": "SHARED MODEL"
+              }
+            ]
+          }
+        },
+        {
+          "id": "team-record",
+          "asset": "custom",
+          "x": 250,
+          "y": 330,
+          "scale": 1,
+          "meaning": "Team A retains records and a service relationship.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -125,
+                0
+              ],
+              "right": [
+                125,
+                0
+              ],
+              "top": [
+                0,
+                -42
+              ],
+              "bottom": [
+                0,
+                42
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -125,
+                  "y": -42,
+                  "width": 250,
+                  "height": 84,
+                  "rx": 10,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
               },
               {
-                "id": "$asset.part31",
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 21,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": -6,
+                  "font-size": 25,
+                  "font-weight": 700,
                   "text-anchor": "middle",
-                  "fill": "#386b99"
+                  "fill": "$ink"
                 },
-                "text": "Missing decision"
+                "text": "TEAM A",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               },
               {
-                "id": "$asset.part32",
-                "type": "path",
+                "id": "$asset.sub",
+                "type": "text",
                 "attrs": {
-                  "d": "M-70 32H70M-70 51H45",
-                  "fill": "none",
-                  "stroke": "#386b99",
-                  "stroke-width": 4,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "records + care",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
                 }
               }
             ]
           }
         },
         {
-          "id": "reuse",
+          "id": "team-service",
           "asset": "custom",
-          "x": 625,
-          "y": 558,
+          "x": 950,
+          "y": 330,
           "scale": 1,
-          "meaning": "A reusable check exposes a gap",
+          "meaning": "Team B retains a different service responsibility.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -125,
                 0
               ],
               "right": [
-                70,
+                125,
                 0
               ],
               "top": [
                 0,
-                -70
+                -42
               ],
               "bottom": [
                 0,
-                70
+                42
               ]
             },
             "children": [
               {
-                "id": "$asset.part33",
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -125,
+                  "y": -42,
+                  "width": 250,
+                  "height": 84,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 26,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": -6,
+                  "font-size": 25,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "A reusable check exposes a gap"
+                "text": "TEAM B",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "service + trust",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "responsibility",
+          "asset": "custom",
+          "x": 600,
+          "y": 470,
+          "scale": 1,
+          "meaning": "The durable company question beyond model access.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -280,
+                0
+              ],
+              "right": [
+                280,
+                0
+              ],
+              "top": [
+                0,
+                -35
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.l",
+                "type": "path",
+                "attrs": {
+                  "d": "M-260 0L260 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 29,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#956315"
+                },
+                "text": "CAPABILITY IS RENTED; RESPONSIBILITY IS BUILT"
               }
             ]
           }
@@ -1637,67 +1701,47 @@
       "connections": [],
       "actions": [
         {
-          "actor": "private",
+          "actor": "shared-model",
           "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "revision-2-line-3",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "case",
-          "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "revision-2-line-4",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "case",
-          "action": "moveTo",
-          "x": 962,
-          "y": 267,
-          "durationMs": 2200,
-          "cue": {
-            "beatId": "revision-2-line-5",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "r2",
-          "action": "disappear",
           "durationMs": 1100,
+          "planCue": "Place two teams using similar models beside different records, services and responsibilities.",
           "cue": {
-            "beatId": "revision-2-line-5",
+            "beatId": "revision-2-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "check-result",
+          "actor": "team-record",
           "action": "appear",
-          "durationMs": 1300,
-          "offsetMs": 2650,
+          "durationMs": 1100,
+          "planCue": "Place two teams using similar models beside different records, services and responsibilities.",
           "cue": {
-            "beatId": "revision-2-line-5",
+            "beatId": "revision-2-line-1",
             "edge": "start",
-            "offsetMs": 2650
+            "offsetMs": 250
           }
         },
         {
-          "actor": "reuse",
+          "actor": "team-service",
           "action": "appear",
-          "durationMs": 1300,
-          "offsetMs": 2850,
+          "durationMs": 1100,
+          "planCue": "Place two teams using similar models beside different records, services and responsibilities.",
           "cue": {
-            "beatId": "revision-2-line-5",
+            "beatId": "revision-2-line-1",
             "edge": "start",
-            "offsetMs": 2850
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "responsibility",
+          "action": "appear",
+          "durationMs": 1100,
+          "planCue": "Place two teams using similar models beside different records, services and responsibilities.",
+          "cue": {
+            "beatId": "revision-2-line-1",
+            "edge": "start",
+            "offsetMs": 250
           }
         }
       ],
@@ -1705,9 +1749,9 @@
         {
           "id": "revision-2-line-1",
           "startMs": 650,
-          "spokenEndMs": 5616,
-          "endMs": 7116,
-          "text": "Imagine a review tool whose main attraction is generating a polished report.",
+          "spokenEndMs": 7271,
+          "endMs": 9021,
+          "text": "It asks what a company can keep building when capable models become widely available to competitors.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -1717,127 +1761,37 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "curiosity",
-            "intensity": 0.4,
-            "delivery": "Close view of the same report inside two procurement options. The independent team inspects a second deployment: validated evaluation cases and reusable methods remain, while confidential customer records stay at the customer. Carry a tested exception from deployment one into deployment two; no automatic ownership or business-success stamp."
-          }
-        },
-        {
-          "id": "revision-2-line-2",
-          "startMs": 7266,
-          "spokenEndMs": 12646,
-          "endMs": 14146,
-          "text": "An enterprise suite could bundle that feature into a service customers already use.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-9",
-            "source-10",
-            "source-12"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "concern",
-            "intensity": 0.6,
-            "delivery": "Close view of the same report inside two procurement options. The independent team inspects a second deployment: validated evaluation cases and reusable methods remain, while confidential customer records stay at the customer. Carry a tested exception from deployment one into deployment two; no automatic ownership or business-success stamp."
-          }
-        },
-        {
-          "id": "revision-2-line-3",
-          "startMs": 14296,
-          "spokenEndMs": 19676,
-          "endMs": 21276,
-          "text": "The book distinguishes demand for the feature from bargaining power for its supplier.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-9",
-            "source-10",
-            "source-12"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "clarity",
-            "intensity": 0.5,
-            "delivery": "Close view of the same report inside two procurement options. The independent team inspects a second deployment: validated evaluation cases and reusable methods remain, while confidential customer records stay at the customer. Carry a tested exception from deployment one into deployment two; no automatic ownership or business-success stamp."
-          }
-        },
-        {
-          "id": "revision-2-line-4",
-          "startMs": 21426,
-          "spokenEndMs": 25151,
-          "endMs": 26751,
-          "text": "It asks what each deployment accumulates beyond another sale.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-9",
-            "source-10",
-            "source-12"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "question",
-            "intensity": 0.4,
-            "delivery": "Close view of the same report inside two procurement options. The independent team inspects a second deployment: validated evaluation cases and reusable methods remain, while confidential customer records stay at the customer. Carry a tested exception from deployment one into deployment two; no automatic ownership or business-success stamp."
-          }
-        },
-        {
-          "id": "revision-2-line-5",
-          "startMs": 26901,
-          "spokenEndMs": 32695,
-          "endMs": 34895,
-          "text": "Reusable evaluations and lawful learning rights matter only when they actually strengthen the company.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-9",
-            "source-10",
-            "source-12"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 2200,
-            "emotion": "reflection",
+            "pauseAfterMs": 1750,
+            "emotion": "curious inquiry",
             "intensity": 0.35,
-            "delivery": "Close view of the same report inside two procurement options. The independent team inspects a second deployment: validated evaluation cases and reusable methods remain, while confidential customer records stay at the customer. Carry a tested exception from deployment one into deployment two; no automatic ownership or business-success stamp."
+            "delivery": "Keep the reusable evaluation artifact as a question about what survives, not a measured advantage."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "curiosity → concern → clarity → question → reflection",
-        "purpose": "Close view of the same report inside two procurement options. The independent team inspects a second deployment: validated evaluation cases and reusable methods remain, while confidential customer records stay at the customer. Carry a tested exception from deployment one into deployment two; no automatic ownership or business-success stamp.",
+        "arc": "attention → thoughtful tension",
+        "purpose": "Keep the reusable evaluation artifact as a question about what survives, not a measured advantage.",
         "states": [
-          "curiosity",
-          "concern",
-          "clarity",
-          "question",
-          "reflection"
+          "curious inquiry"
         ],
         "intensities": [
-          0.4,
-          0.6,
-          0.5,
-          0.4,
           0.35
         ],
-        "motion": "One consequential movement at a time; hold on constraints and reading invitation."
+        "voiceDirections": [
+          "Speak with curious inquiry; give gentle emphasis to widely available. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
-      "alt": "Source-grounded venture situations. The review tool, evaluation Case R and failed trial are schematic illustrations, not reported customers, measured outcomes or investment advice."
+      "alt": "Two teams share capable model access but retain different records, services and responsibilities; durable company value sits in those relationships."
     },
     {
       "id": "revision-3",
-      "title": "Beyond a convincing answer",
+      "title": "When control points move",
       "chapter": "Beyond a convincing answer",
       "lens": "book",
-      "intent": "A report can be fluent while leaving authority and responsibility unresolved.",
-      "knownBefore": "Reusable evaluations and lawful learning rights matter only when they actually strengthen the company.",
-      "knownAfter": "AssistOS is one architectural contribution, rather than the whole commercial strategy.",
-      "durationMs": 34802,
+      "intent": "The book looks back at computing history to ask who gained power when new tools became widely available.",
+      "knownBefore": "It asks what a company can keep building when capable models become widely available to competitors.",
+      "knownAfter": "The book looks back at computing history to ask who gained power when new tools became widely available.",
+      "durationMs": 10999,
       "setting": "minimal",
       "objects": [
         {
@@ -1880,6 +1834,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -1891,6 +1850,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -1915,192 +1879,6 @@
                   "fill": "none",
                   "stroke": "$ink",
                   "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "report",
-          "asset": "custom",
-          "x": 468,
-          "y": 303,
-          "scale": 0.52,
-          "meaning": "Review report",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part5",
-                "type": "path",
-                "attrs": {
-                  "d": "M-110 -70H88L110 -48V90H-110Z",
-                  "fill": "#fff0d6"
-                }
-              },
-              {
-                "id": "$asset.part6",
-                "type": "path",
-                "attrs": {
-                  "d": "M-109 -70V89",
-                  "fill": "none",
-                  "stroke": "#b86546",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part7",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -33,
-                  "font-size": 25,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#25384c"
-                },
-                "text": "Review report"
-              },
-              {
-                "id": "$asset.part8",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 21,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#386b99"
-                },
-                "text": "Useful result"
-              },
-              {
-                "id": "$asset.part9",
-                "type": "path",
-                "attrs": {
-                  "d": "M-70 32H70M-70 51H45",
-                  "fill": "none",
-                  "stroke": "#386b99",
-                  "stroke-width": 4,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "approval",
-          "asset": "custom",
-          "x": 784,
-          "y": 279,
-          "scale": 0.82,
-          "meaning": "Reviewer decision",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part10",
-                "type": "path",
-                "attrs": {
-                  "d": "M-110 -70H88L110 -48V90H-110Z",
-                  "fill": "#fff0d6"
-                }
-              },
-              {
-                "id": "$asset.part11",
-                "type": "path",
-                "attrs": {
-                  "d": "M-109 -70V89",
-                  "fill": "none",
-                  "stroke": "#b86546",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part12",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -33,
-                  "font-size": 25,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#25384c"
-                },
-                "text": "Reviewer decision"
-              },
-              {
-                "id": "$asset.part13",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 21,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#386b99"
-                },
-                "text": "Retained history"
-              },
-              {
-                "id": "$asset.part14",
-                "type": "path",
-                "attrs": {
-                  "d": "M-70 32H70M-70 51H45",
-                  "fill": "none",
-                  "stroke": "#386b99",
-                  "stroke-width": 4,
                   "stroke-linecap": "round",
                   "stroke-linejoin": "round"
                 }
@@ -2148,6 +1926,11 @@
                   "height": 130,
                   "rx": 9,
                   "fill": "#25384c"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#25384c"
+                  }
                 }
               },
               {
@@ -2221,6 +2004,11 @@
                   "height": 130,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -2404,48 +2192,188 @@
           }
         },
         {
-          "id": "baseline",
+          "id": "era-line",
           "asset": "custom",
-          "x": 774,
-          "y": 526,
+          "x": 600,
+          "y": 185,
           "scale": 1,
-          "meaning": "A shared assurance promise",
+          "meaning": "A short history of changing computing control points.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -380,
                 0
               ],
               "right": [
-                70,
+                380,
                 0
               ],
               "top": [
                 0,
-                -70
+                -35
               ],
               "bottom": [
                 0,
-                70
+                35
               ]
             },
             "children": [
               {
-                "id": "$asset.part31",
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-360 0L360 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.a",
                 "type": "text",
                 "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 28,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "x": -270,
+                  "y": -18,
+                  "font-size": 20,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "A shared assurance promise"
+                "text": "MAINFRAME",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.b",
+                "type": "text",
+                "attrs": {
+                  "x": -90,
+                  "y": -18,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "PC",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.c",
+                "type": "text",
+                "attrs": {
+                  "x": 90,
+                  "y": -18,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "CLOUD",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.d",
+                "type": "text",
+                "attrs": {
+                  "x": 270,
+                  "y": -18,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "MODEL",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "control-point",
+          "asset": "custom",
+          "x": 600,
+          "y": 380,
+          "scale": 1,
+          "meaning": "The control point changes as tools become widely available.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -170,
+                0
+              ],
+              "right": [
+                170,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -170,
+                  "y": -40,
+                  "width": 340,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "CONTROL POINT MOVES",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -2453,16 +2381,6 @@
       ],
       "connections": [],
       "actions": [
-        {
-          "actor": "approval",
-          "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "revision-3-line-2",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
         {
           "actor": "modelA",
           "action": "appear",
@@ -2474,11 +2392,23 @@
           }
         },
         {
-          "actor": "modelA",
-          "action": "disappear",
+          "actor": "era-line",
+          "action": "appear",
           "durationMs": 1100,
+          "planCue": "Show a short sequence of computing tools with the control point changing between them.",
           "cue": {
-            "beatId": "revision-3-line-3",
+            "beatId": "revision-3-line-1",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "modelA",
+          "action": "appear",
+          "durationMs": 1100,
+          "planCue": "Show a short sequence of computing tools with the control point changing between them.",
+          "cue": {
+            "beatId": "revision-3-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -2486,29 +2416,21 @@
         {
           "actor": "modelB",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Show a short sequence of computing tools with the control point changing between them.",
           "cue": {
-            "beatId": "revision-3-line-3",
+            "beatId": "revision-3-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "reviewer",
+          "actor": "control-point",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Show a short sequence of computing tools with the control point changing between them.",
           "cue": {
-            "beatId": "revision-3-line-2",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "baseline",
-          "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "revision-3-line-4",
+            "beatId": "revision-3-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -2518,9 +2440,9 @@
         {
           "id": "revision-3-line-1",
           "startMs": 650,
-          "spokenEndMs": 5202,
-          "endMs": 6702,
-          "text": "A report can be fluent while leaving authority and responsibility unresolved.",
+          "spokenEndMs": 8099,
+          "endMs": 9849,
+          "text": "The book looks back at computing history to ask who gained power when new tools became widely available.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -2529,182 +2451,39 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "doubt",
-            "intensity": 0.4,
-            "delivery": "The report enters a real review workspace: a named role must approve a consequential step; an unchanged decision record stays while the model resource is replaced. Pull back to specialized workstations sharing a baseline, not one AssistOS product swallowing all ventures. Proposed architecture only."
-          }
-        },
-        {
-          "id": "revision-3-line-2",
-          "startMs": 6852,
-          "spokenEndMs": 11818,
-          "endMs": 13318,
-          "text": "The business chapters follow work through permissions, checks, decisions, and retained evidence.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-11",
-            "source-12"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "attention",
-            "intensity": 0.6,
-            "delivery": "The report enters a real review workspace: a named role must approve a consequential step; an unchanged decision record stays while the model resource is replaced. Pull back to specialized workstations sharing a baseline, not one AssistOS product swallowing all ventures. Proposed architecture only."
-          }
-        },
-        {
-          "id": "revision-3-line-3",
-          "startMs": 13468,
-          "spokenEndMs": 18434,
-          "endMs": 20034,
-          "text": "A model may change while the project and its authorized history remain.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-11",
-            "source-12"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "clarity",
-            "intensity": 0.5,
-            "delivery": "The report enters a real review workspace: a named role must approve a consequential step; an unchanged decision record stays while the model resource is replaced. Pull back to specialized workstations sharing a baseline, not one AssistOS product swallowing all ventures. Proposed architecture only."
-          }
-        },
-        {
-          "id": "revision-3-line-4",
-          "startMs": 20184,
-          "spokenEndMs": 25150,
-          "endMs": 26750,
-          "text": "The proposed business brand would stand behind that continuity across specialized products.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-11",
-            "source-12"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "confidence",
-            "intensity": 0.4,
-            "delivery": "The report enters a real review workspace: a named role must approve a consequential step; an unchanged decision record stays while the model resource is replaced. Pull back to specialized workstations sharing a baseline, not one AssistOS product swallowing all ventures. Proposed architecture only."
-          }
-        },
-        {
-          "id": "revision-3-line-5",
-          "startMs": 26900,
-          "spokenEndMs": 31452,
-          "endMs": 33652,
-          "text": "AssistOS is one architectural contribution, rather than the whole commercial strategy.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-11",
-            "source-12"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 2200,
-            "emotion": "reflection",
+            "pauseAfterMs": 1750,
+            "emotion": "thoughtful interest",
             "intensity": 0.35,
-            "delivery": "The report enters a real review workspace: a named role must approve a consequential step; an unchanged decision record stays while the model resource is replaced. Pull back to specialized workstations sharing a baseline, not one AssistOS product swallowing all ventures. Proposed architecture only."
+            "delivery": "Use one changing platform control point, simplifying component-switch demonstrations."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "doubt → attention → clarity → confidence → reflection",
-        "purpose": "The report enters a real review workspace: a named role must approve a consequential step; an unchanged decision record stays while the model resource is replaced. Pull back to specialized workstations sharing a baseline, not one AssistOS product swallowing all ventures. Proposed architecture only.",
+        "arc": "attention → thoughtful tension",
+        "purpose": "Use one changing platform control point, simplifying component-switch demonstrations.",
         "states": [
-          "doubt",
-          "attention",
-          "clarity",
-          "confidence",
-          "reflection"
+          "thoughtful interest"
         ],
         "intensities": [
-          0.4,
-          0.6,
-          0.5,
-          0.4,
           0.35
         ],
-        "motion": "One consequential movement at a time; hold on constraints and reading invitation."
+        "voiceDirections": [
+          "Speak with thoughtful interest; give gentle emphasis to who gained power. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
-      "alt": "Source-grounded venture situations. The review tool, evaluation Case R and failed trial are schematic illustrations, not reported customers, measured outcomes or investment advice."
+      "alt": "A compact sequence from mainframe to PC, cloud and model shows control points moving while a reviewer remains present."
     },
     {
       "id": "revision-4",
-      "title": "A different social promise",
+      "title": "Beyond the demonstration",
       "chapter": "A different social promise",
       "lens": "book",
-      "intent": "The social chapters ask what makes repeated cooperation credible beyond an attention feed.",
-      "knownBefore": "AssistOS is one architectural contribution, rather than the whole commercial strategy.",
-      "knownAfter": "This social promise requires a different balance of power from enterprise assurance.",
-      "durationMs": 36458,
+      "intent": "A convincing demonstration says little about who controls the evidence, relationships, and services the product needs.",
+      "knownBefore": "The book looks back at computing history to ask who gained power when new tools became widely available.",
+      "knownAfter": "A convincing demonstration says little about who controls the evidence, relationships, and services the product needs.",
+      "durationMs": 10171,
       "setting": "minimal",
       "objects": [
-        {
-          "id": "meeting",
-          "asset": "custom",
-          "x": 565,
-          "y": 422,
-          "scale": 1,
-          "meaning": "Physical work surface",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part1",
-                "type": "path",
-                "attrs": {
-                  "d": "M-290 0H290",
-                  "fill": "none",
-                  "stroke": "#b86546",
-                  "stroke-width": 11,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part2",
-                "type": "path",
-                "attrs": {
-                  "d": "M-265 7V54M265 7V54",
-                  "fill": "none",
-                  "stroke": "$ink",
-                  "stroke-width": 7,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
         {
           "id": "member1",
           "asset": "custom",
@@ -3190,99 +2969,6 @@
           }
         },
         {
-          "id": "copy",
-          "asset": "custom",
-          "x": 545,
-          "y": 284,
-          "scale": 0.72,
-          "meaning": "Method record",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part33",
-                "type": "path",
-                "attrs": {
-                  "d": "M-110 -70H88L110 -48V90H-110Z",
-                  "fill": "#fff0d6"
-                }
-              },
-              {
-                "id": "$asset.part34",
-                "type": "path",
-                "attrs": {
-                  "d": "M-109 -70V89",
-                  "fill": "none",
-                  "stroke": "#b86546",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part35",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -33,
-                  "font-size": 25,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#25384c"
-                },
-                "text": "Method record"
-              },
-              {
-                "id": "$asset.part36",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 21,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#386b99"
-                },
-                "text": "By member A"
-              },
-              {
-                "id": "$asset.part37",
-                "type": "path",
-                "attrs": {
-                  "d": "M-70 32H70M-70 51H45",
-                  "fill": "none",
-                  "stroke": "#386b99",
-                  "stroke-width": 4,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              }
-            ]
-          }
-        },
-        {
           "id": "limits",
           "asset": "custom",
           "x": 674,
@@ -3324,7 +3010,224 @@
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Shared identity has limits"
+                "text": "Shared identity has limits",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "polished-demo",
+          "asset": "custom",
+          "x": 600,
+          "y": 170,
+          "scale": 1,
+          "meaning": "A convincing demonstration isolated from its dependencies.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -160,
+                0
+              ],
+              "right": [
+                160,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -160,
+                  "y": -40,
+                  "width": 320,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#275c86",
+                    "stroke": "#275c86"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 27,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "POLISHED DEMO"
+              }
+            ]
+          }
+        },
+        {
+          "id": "service-dependencies",
+          "asset": "custom",
+          "x": 600,
+          "y": 390,
+          "scale": 1,
+          "meaning": "The dependencies that make a product usable and governable.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -220,
+                0
+              ],
+              "right": [
+                220,
+                0
+              ],
+              "top": [
+                0,
+                -42
+              ],
+              "bottom": [
+                0,
+                42
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -220,
+                  "y": -42,
+                  "width": 440,
+                  "height": 84,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "OWNERSHIP + SERVICES",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "evidence · relationships · support",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "separation",
+          "asset": "custom",
+          "x": 600,
+          "y": 285,
+          "scale": 1,
+          "meaning": "The proposed distinction between demonstration quality and durable control.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -160,
+                0
+              ],
+              "right": [
+                160,
+                0
+              ],
+              "top": [
+                0,
+                -35
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-135 0L135 0",
+                  "fill": "none",
+                  "stroke": "#af3f34",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 28,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#af3f34"
+                },
+                "text": "DEMO ≠ CONTROL"
               }
             ]
           }
@@ -3333,65 +3236,34 @@
       "connections": [],
       "actions": [
         {
-          "actor": "method",
+          "actor": "polished-demo",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Keep a polished demonstration separate from the ownership and service dependencies it needs.",
           "cue": {
-            "beatId": "revision-4-line-2",
+            "beatId": "revision-4-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "rights",
+          "actor": "separation",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Keep a polished demonstration separate from the ownership and service dependencies it needs.",
           "cue": {
-            "beatId": "revision-4-line-3",
+            "beatId": "revision-4-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "copy",
+          "actor": "service-dependencies",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Keep a polished demonstration separate from the ownership and service dependencies it needs.",
           "cue": {
-            "beatId": "revision-4-line-4",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "copy",
-          "action": "moveTo",
-          "x": 955,
-          "y": 270,
-          "durationMs": 2200,
-          "cue": {
-            "beatId": "revision-4-line-4",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "member2",
-          "action": "moveTo",
-          "x": 1080,
-          "y": 393,
-          "durationMs": 2200,
-          "cue": {
-            "beatId": "revision-4-line-4",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "limits",
-          "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "revision-4-line-5",
+            "beatId": "revision-4-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -3401,9 +3273,9 @@
         {
           "id": "revision-4-line-1",
           "startMs": 650,
-          "spokenEndMs": 6030,
-          "endMs": 7530,
-          "text": "The social chapters ask what makes repeated cooperation credible beyond an attention feed.",
+          "spokenEndMs": 7271,
+          "endMs": 9021,
+          "text": "A convincing demonstration says little about who controls the evidence, relationships, and services the product needs.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -3412,123 +3284,37 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "curiosity",
-            "intensity": 0.4,
-            "delivery": "Replace software screens with a small collaborative room. A participant contributes an attributed method to common work; a member leaving retains their legitimate contribution record. Community rules and brand-use conditions remain distinct. No global score, poll-as-governance guarantee, or forced belonging."
-          }
-        },
-        {
-          "id": "revision-4-line-2",
-          "startMs": 7680,
-          "spokenEndMs": 13060,
-          "endMs": 14560,
-          "text": "Consider a small group with shared work, memory, and rules its members understand.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-13",
-            "source-14"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "warmth",
-            "intensity": 0.6,
-            "delivery": "Replace software screens with a small collaborative room. A participant contributes an attributed method to common work; a member leaving retains their legitimate contribution record. Community rules and brand-use conditions remain distinct. No global score, poll-as-governance guarantee, or forced belonging."
-          }
-        },
-        {
-          "id": "revision-4-line-3",
-          "startMs": 14710,
-          "spokenEndMs": 19676,
-          "endMs": 21276,
-          "text": "The book proposes shared brands that independent communities and ventures can carry.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-13",
-            "source-14"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "attention",
-            "intensity": 0.5,
-            "delivery": "Replace software screens with a small collaborative room. A participant contributes an attributed method to common work; a member leaving retains their legitimate contribution record. Community rules and brand-use conditions remain distinct. No global score, poll-as-governance guarantee, or forced belonging."
-          }
-        },
-        {
-          "id": "revision-4-line-4",
-          "startMs": 21426,
-          "spokenEndMs": 26392,
-          "endMs": 27992,
-          "text": "Their common identity must leave meaningful rights, local authority, and practical exit.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-13",
-            "source-14"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "concern",
-            "intensity": 0.4,
-            "delivery": "Replace software screens with a small collaborative room. A participant contributes an attributed method to common work; a member leaving retains their legitimate contribution record. Community rules and brand-use conditions remain distinct. No global score, poll-as-governance guarantee, or forced belonging."
-          }
-        },
-        {
-          "id": "revision-4-line-5",
-          "startMs": 28142,
-          "spokenEndMs": 33108,
-          "endMs": 35308,
-          "text": "This social promise requires a different balance of power from enterprise assurance.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-13",
-            "source-14"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 2200,
-            "emotion": "reflection",
+            "pauseAfterMs": 1750,
+            "emotion": "skeptical clarity",
             "intensity": 0.35,
-            "delivery": "Replace software screens with a small collaborative room. A participant contributes an attributed method to common work; a member leaving retains their legitimate contribution record. Community rules and brand-use conditions remain distinct. No global score, poll-as-governance guarantee, or forced belonging."
+            "delivery": "Keep review, authority and relationship objects visibly distinct."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "curiosity → warmth → attention → concern → reflection",
-        "purpose": "Replace software screens with a small collaborative room. A participant contributes an attributed method to common work; a member leaving retains their legitimate contribution record. Community rules and brand-use conditions remain distinct. No global score, poll-as-governance guarantee, or forced belonging.",
+        "arc": "attention → thoughtful tension",
+        "purpose": "Keep review, authority and relationship objects visibly distinct.",
         "states": [
-          "curiosity",
-          "warmth",
-          "attention",
-          "concern",
-          "reflection"
+          "skeptical clarity"
         ],
         "intensities": [
-          0.4,
-          0.6,
-          0.5,
-          0.4,
           0.35
         ],
-        "motion": "One consequential movement at a time; hold on constraints and reading invitation."
+        "voiceDirections": [
+          "Speak with skeptical clarity; give gentle emphasis to demonstration says little. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
-      "alt": "Source-grounded venture situations. The review tool, evaluation Case R and failed trial are schematic illustrations, not reported customers, measured outcomes or investment advice."
+      "alt": "A polished demonstration is held apart from ownership, evidence, relationships and services; quality alone does not establish durable control."
     },
     {
       "id": "revision-5",
-      "title": "Shared research, separate ventures",
+      "title": "What repeated work builds",
       "chapter": "Shared research, separate ventures",
       "lens": "book",
-      "intent": "Outfinity proposes a shared research base supporting those two different brand promises.",
-      "knownBefore": "This social promise requires a different balance of power from enterprise assurance.",
-      "knownAfter": "The book warns against forcing every company onto one convenient stack.",
-      "durationMs": 34388,
+      "intent": "It explores how repeated work might become skills and institutions a company can build on.",
+      "knownBefore": "A convincing demonstration says little about who controls the evidence, relationships, and services the product needs.",
+      "knownAfter": "It explores how repeated work might become skills and institutions a company can build on.",
+      "durationMs": 9757,
       "setting": "minimal",
       "objects": [
         {
@@ -3628,6 +3414,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -3639,6 +3430,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -3710,6 +3506,11 @@
                   "height": 112,
                   "rx": 7,
                   "fill": "#77b3a1"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#77b3a1"
+                  }
                 }
               },
               {
@@ -3795,6 +3596,11 @@
                   "height": 130,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -3868,6 +3674,11 @@
                   "height": 130,
                   "rx": 9,
                   "fill": "#b86546"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#b86546"
+                  }
                 }
               },
               {
@@ -3902,116 +3713,94 @@
           }
         },
         {
-          "id": "private",
+          "id": "completed-work",
           "asset": "custom",
-          "x": 895,
-          "y": 359,
-          "scale": 0.83,
-          "meaning": "Restricted data",
+          "x": 600,
+          "y": 185,
+          "scale": 1,
+          "meaning": "A finished engagement that can teach the next one.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -150,
                 0
               ],
               "right": [
-                70,
+                150,
                 0
               ],
               "top": [
                 0,
-                -70
+                -38
               ],
               "bottom": [
                 0,
-                70
+                38
               ]
             },
             "children": [
               {
-                "id": "$asset.part17",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-110 -70H88L110 -48V90H-110Z",
-                  "fill": "#fff0d6"
+                  "x": -150,
+                  "y": -38,
+                  "width": 300,
+                  "height": 76,
+                  "rx": 10,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
                 }
               },
               {
-                "id": "$asset.part18",
-                "type": "path",
-                "attrs": {
-                  "d": "M-109 -70V89",
-                  "fill": "none",
-                  "stroke": "#b86546",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                }
-              },
-              {
-                "id": "$asset.part19",
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": -33,
-                  "font-size": 25,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": 8,
+                  "font-size": 24,
+                  "font-weight": 700,
                   "text-anchor": "middle",
-                  "fill": "#25384c"
+                  "fill": "$ink"
                 },
-                "text": "Restricted data"
-              },
-              {
-                "id": "$asset.part20",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 21,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#386b99"
-                },
-                "text": "Stays in its domain"
-              },
-              {
-                "id": "$asset.part21",
-                "type": "path",
-                "attrs": {
-                  "d": "M-70 32H70M-70 51H45",
-                  "fill": "none",
-                  "stroke": "#386b99",
-                  "stroke-width": 4,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
+                "text": "COMPLETED WORK",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
                 }
               }
             ]
           }
         },
         {
-          "id": "fit",
+          "id": "case-arrow",
           "asset": "custom",
-          "x": 612,
-          "y": 553,
+          "x": 600,
+          "y": 285,
           "scale": 1,
-          "meaning": "Reuse depends on fit and rights",
+          "meaning": "The transfer from completed work to reusable institutional memory.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -120,
                 0
               ],
               "right": [
-                70,
+                120,
                 0
               ],
               "top": [
@@ -4020,23 +3809,104 @@
               ],
               "bottom": [
                 0,
-                70
+                75
               ]
             },
             "children": [
               {
-                "id": "$asset.part22",
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M0 -35L0 35",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": 63,
+                  "font-size": 20,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#956315"
+                },
+                "text": "REUSABLE CASE"
+              }
+            ]
+          }
+        },
+        {
+          "id": "institutional-memory",
+          "asset": "custom",
+          "x": 600,
+          "y": 500,
+          "scale": 1,
+          "meaning": "Repeated work becoming capability rather than only a private result.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -190,
+                0
+              ],
+              "right": [
+                190,
+                0
+              ],
+              "top": [
+                0,
+                -38
+              ],
+              "bottom": [
+                0,
+                38
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -190,
+                  "y": -38,
+                  "width": 380,
+                  "height": 76,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 24,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Reuse depends on fit and rights"
+                "text": "SKILL + INSTITUTION",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -4045,43 +3915,34 @@
       "connections": [],
       "actions": [
         {
-          "actor": "social",
+          "actor": "completed-work",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Let completed work add to a reusable case record rather than a rising-profit graph.",
           "cue": {
-            "beatId": "revision-5-line-2",
+            "beatId": "revision-5-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "private",
+          "actor": "case-arrow",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Let completed work add to a reusable case record rather than a rising-profit graph.",
           "cue": {
-            "beatId": "revision-5-line-4",
+            "beatId": "revision-5-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "shared-case",
-          "action": "moveTo",
-          "x": 295,
-          "y": 335,
-          "durationMs": 2000,
-          "cue": {
-            "beatId": "revision-5-line-3",
-            "edge": "start",
-            "offsetMs": 250
-          }
-        },
-        {
-          "actor": "fit",
+          "actor": "institutional-memory",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Let completed work add to a reusable case record rather than a rising-profit graph.",
           "cue": {
-            "beatId": "revision-5-line-5",
+            "beatId": "revision-5-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -4091,9 +3952,9 @@
         {
           "id": "revision-5-line-1",
           "startMs": 650,
-          "spokenEndMs": 5616,
-          "endMs": 7116,
-          "text": "Outfinity proposes a shared research base supporting those two different brand promises.",
+          "spokenEndMs": 6857,
+          "endMs": 8607,
+          "text": "It explores how repeated work might become skills and institutions a company can build on.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -4102,123 +3963,37 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "curiosity",
-            "intensity": 0.4,
-            "delivery": "A research workshop tests a reusable evaluator. Two autonomous teams choose whether it fits their respective tasks. Only the suitable tested component crosses to a venture; protected source records stay behind. Business and social promises appear on separate work surfaces, not interchangeable towers."
-          }
-        },
-        {
-          "id": "revision-5-line-2",
-          "startMs": 7266,
-          "spokenEndMs": 11818,
-          "endMs": 13318,
-          "text": "Each venture still needs its own buyer, team, and economic logic.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-14",
-            "source-15"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "attention",
-            "intensity": 0.6,
-            "delivery": "A research workshop tests a reusable evaluator. Two autonomous teams choose whether it fits their respective tasks. Only the suitable tested component crosses to a venture; protected source records stay behind. Business and social promises appear on separate work surfaces, not interchangeable towers."
-          }
-        },
-        {
-          "id": "revision-5-line-3",
-          "startMs": 13468,
-          "spokenEndMs": 18434,
-          "endMs": 20034,
-          "text": "A common component earns its place when it solves a recurring problem.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-14",
-            "source-15"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "clarity",
-            "intensity": 0.5,
-            "delivery": "A research workshop tests a reusable evaluator. Two autonomous teams choose whether it fits their respective tasks. Only the suitable tested component crosses to a venture; protected source records stay behind. Business and social promises appear on separate work surfaces, not interchangeable towers."
-          }
-        },
-        {
-          "id": "revision-5-line-4",
-          "startMs": 20184,
-          "spokenEndMs": 24736,
-          "endMs": 26336,
-          "text": "Confidential data and ownership rights limit what the ventures can share.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-14",
-            "source-15"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "concern",
-            "intensity": 0.4,
-            "delivery": "A research workshop tests a reusable evaluator. Two autonomous teams choose whether it fits their respective tasks. Only the suitable tested component crosses to a venture; protected source records stay behind. Business and social promises appear on separate work surfaces, not interchangeable towers."
-          }
-        },
-        {
-          "id": "revision-5-line-5",
-          "startMs": 26486,
-          "spokenEndMs": 31038,
-          "endMs": 33238,
-          "text": "The book warns against forcing every company onto one convenient stack.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-14",
-            "source-15"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 2200,
-            "emotion": "reflection",
+            "pauseAfterMs": 1750,
+            "emotion": "cautious possibility",
             "intensity": 0.35,
-            "delivery": "A research workshop tests a reusable evaluator. Two autonomous teams choose whether it fits their respective tasks. Only the suitable tested component crosses to a venture; protected source records stay behind. Business and social promises appear on separate work surfaces, not interchangeable towers."
+            "delivery": "Show a repeated deployment leaving a reusable record without promising compounding returns."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "curiosity → attention → clarity → concern → reflection",
-        "purpose": "A research workshop tests a reusable evaluator. Two autonomous teams choose whether it fits their respective tasks. Only the suitable tested component crosses to a venture; protected source records stay behind. Business and social promises appear on separate work surfaces, not interchangeable towers.",
+        "arc": "attention → thoughtful tension",
+        "purpose": "Show a repeated deployment leaving a reusable record without promising compounding returns.",
         "states": [
-          "curiosity",
-          "attention",
-          "clarity",
-          "concern",
-          "reflection"
+          "cautious possibility"
         ],
         "intensities": [
-          0.4,
-          0.6,
-          0.5,
-          0.4,
           0.35
         ],
-        "motion": "One consequential movement at a time; hold on constraints and reading invitation."
+        "voiceDirections": [
+          "Speak with cautious possibility; give gentle emphasis to company can build on. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
-      "alt": "Source-grounded venture situations. The review tool, evaluation Case R and failed trial are schematic illustrations, not reported customers, measured outcomes or investment advice."
+      "alt": "Completed work feeds a reusable evaluation case and shared institutional memory across business and social systems, rather than a rising-profit graph."
     },
     {
       "id": "revision-6",
-      "title": "Finance what the test reveals",
+      "title": "A wager that can fail",
       "chapter": "Finance what the test reveals",
       "lens": "book",
-      "intent": "Its venture method increases commitments as technical and commercial evidence improves.",
-      "knownBefore": "The book warns against forcing every company onto one convenient stack.",
-      "knownAfter": "Even the studio’s favored thesis must remain open to revision.",
-      "durationMs": 34388,
+      "intent": "The strategy is a bet with stated assumptions, including reasons it might fail.",
+      "knownBefore": "It explores how repeated work might become skills and institutions a company can build on.",
+      "knownAfter": "The strategy is a bet with stated assumptions, including reasons it might fail.",
+      "durationMs": 8930,
       "setting": "minimal",
       "objects": [
         {
@@ -4354,6 +4129,11 @@
                   "height": 202,
                   "rx": 9,
                   "fill": "#386b99"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#386b99"
+                  }
                 }
               },
               {
@@ -4365,6 +4145,11 @@
                   "width": 280,
                   "height": 170,
                   "fill": "#dce9ed"
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#dce9ed"
+                  }
                 }
               },
               {
@@ -4532,79 +4317,6 @@
                   "fill": "#b86546"
                 },
                 "text": "D1 missing"
-              }
-            ]
-          }
-        },
-        {
-          "id": "next",
-          "asset": "custom",
-          "x": 1012,
-          "y": 298,
-          "scale": 1,
-          "meaning": "Next commitment",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part16",
-                "type": "rect",
-                "attrs": {
-                  "x": -130,
-                  "y": -65,
-                  "width": 260,
-                  "height": 130,
-                  "rx": 9,
-                  "fill": "#b86546"
-                }
-              },
-              {
-                "id": "$asset.part17",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": -16,
-                  "font-size": 26,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#fff0d6"
-                },
-                "text": "Next commitment"
-              },
-              {
-                "id": "$asset.part18",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 21,
-                  "font-size": 21,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "#fff0d6"
-                },
-                "text": "Held"
               }
             ]
           }
@@ -4794,58 +4506,256 @@
               }
             ]
           }
+        },
+        {
+          "id": "failed-trial",
+          "asset": "custom",
+          "x": 280,
+          "y": 390,
+          "scale": 1,
+          "meaning": "A failed trial that tests the proposed strategy.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -135,
+                0
+              ],
+              "right": [
+                135,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -135,
+                  "y": -40,
+                  "width": 270,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#af3f34",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#af3f34"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "TRIAL FAILED",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#af3f34"
+                },
+                "text": "assumption exposed"
+              }
+            ]
+          }
+        },
+        {
+          "id": "retained-lesson",
+          "asset": "custom",
+          "x": 880,
+          "y": 390,
+          "scale": 1,
+          "meaning": "A retained lesson that changes the thesis.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -150,
+                0
+              ],
+              "right": [
+                150,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -150,
+                  "y": -40,
+                  "width": 300,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 24,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "LESSON RETAINED",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "revise the thesis",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "trial-link",
+          "asset": "custom",
+          "x": 600,
+          "y": 390,
+          "scale": 1,
+          "meaning": "The review path from failed trial to thesis revision.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -180,
+                0
+              ],
+              "right": [
+                180,
+                0
+              ],
+              "top": [
+                0,
+                -25
+              ],
+              "bottom": [
+                0,
+                25
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-160 0L160 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              }
+            ]
+          }
         }
       ],
       "connections": [],
       "actions": [
         {
-          "actor": "decision",
-          "action": "disappear",
+          "actor": "failed-trial",
+          "action": "appear",
           "durationMs": 1100,
+          "planCue": "Place the proposed strategy beside a failed trial and its retained lesson.",
           "cue": {
-            "beatId": "revision-6-line-2",
+            "beatId": "revision-6-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "missing",
+          "actor": "retained-lesson",
           "action": "appear",
-          "durationMs": 1300,
-          "offsetMs": 1500,
+          "durationMs": 1100,
+          "planCue": "Place the proposed strategy beside a failed trial and its retained lesson.",
           "cue": {
-            "beatId": "revision-6-line-2",
-            "edge": "start",
-            "offsetMs": 1500
-          }
-        },
-        {
-          "actor": "next",
-          "action": "appear",
-          "durationMs": 1300,
-          "offsetMs": 2400,
-          "cue": {
-            "beatId": "revision-6-line-2",
-            "edge": "start",
-            "offsetMs": 2400
-          }
-        },
-        {
-          "actor": "record",
-          "action": "appear",
-          "durationMs": 1300,
-          "cue": {
-            "beatId": "revision-6-line-3",
+            "beatId": "revision-6-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "thesis",
+          "actor": "trial-link",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "Place the proposed strategy beside a failed trial and its retained lesson.",
           "cue": {
-            "beatId": "revision-6-line-4",
+            "beatId": "revision-6-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -4855,9 +4765,9 @@
         {
           "id": "revision-6-line-1",
           "startMs": 650,
-          "spokenEndMs": 5202,
-          "endMs": 6702,
-          "text": "Its venture method increases commitments as technical and commercial evidence improves.",
+          "spokenEndMs": 6030,
+          "endMs": 7780,
+          "text": "The strategy is a bet with stated assumptions, including reasons it might fail.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -4866,123 +4776,37 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "attention",
-            "intensity": 0.4,
-            "delivery": "A bounded trial fails a declared criterion. The failed venture path closes, its evidence enters the shared research record, and further funds remain unallocated rather than flowing automatically. A critic points to the original prediction; an amended thesis preserves the prior version. No invented financial figures or benchmark."
-          }
-        },
-        {
-          "id": "revision-6-line-2",
-          "startMs": 6852,
-          "spokenEndMs": 11818,
-          "endMs": 13318,
-          "text": "A failed experiment can stop a weak path and preserve useful knowledge.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-15",
-            "source-16"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "disappointment",
-            "intensity": 0.6,
-            "delivery": "A bounded trial fails a declared criterion. The failed venture path closes, its evidence enters the shared research record, and further funds remain unallocated rather than flowing automatically. A critic points to the original prediction; an amended thesis preserves the prior version. No invented financial figures or benchmark."
-          }
-        },
-        {
-          "id": "revision-6-line-3",
-          "startMs": 13468,
-          "spokenEndMs": 18020,
-          "endMs": 19620,
-          "text": "Patient capital still has to purchase learning, rather than prolonged motion.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-15",
-            "source-16"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "clarity",
-            "intensity": 0.5,
-            "delivery": "A bounded trial fails a declared criterion. The failed venture path closes, its evidence enters the shared research record, and further funds remain unallocated rather than flowing automatically. A critic points to the original prediction; an amended thesis preserves the prior version. No invented financial figures or benchmark."
-          }
-        },
-        {
-          "id": "revision-6-line-4",
-          "startMs": 19770,
-          "spokenEndMs": 25150,
-          "endMs": 26750,
-          "text": "The proposed operating culture protects criticism, recorded mistakes, and the right to leave.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-15",
-            "source-16"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "resolve",
-            "intensity": 0.4,
-            "delivery": "A bounded trial fails a declared criterion. The failed venture path closes, its evidence enters the shared research record, and further funds remain unallocated rather than flowing automatically. A critic points to the original prediction; an amended thesis preserves the prior version. No invented financial figures or benchmark."
-          }
-        },
-        {
-          "id": "revision-6-line-5",
-          "startMs": 26900,
-          "spokenEndMs": 31038,
-          "endMs": 33238,
-          "text": "Even the studio’s favored thesis must remain open to revision.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-15",
-            "source-16"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 2200,
-            "emotion": "reflection",
+            "pauseAfterMs": 1750,
+            "emotion": "calm honesty",
             "intensity": 0.35,
-            "delivery": "A bounded trial fails a declared criterion. The failed venture path closes, its evidence enters the shared research record, and further funds remain unallocated rather than flowing automatically. A critic points to the original prediction; an amended thesis preserves the prior version. No invented financial figures or benchmark."
+            "delivery": "Preserve the failed-trial record and next decision as open possibilities."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "attention → disappointment → clarity → resolve → reflection",
-        "purpose": "A bounded trial fails a declared criterion. The failed venture path closes, its evidence enters the shared research record, and further funds remain unallocated rather than flowing automatically. A critic points to the original prediction; an amended thesis preserves the prior version. No invented financial figures or benchmark.",
+        "arc": "attention → thoughtful tension",
+        "purpose": "Preserve the failed-trial record and next decision as open possibilities.",
         "states": [
-          "attention",
-          "disappointment",
-          "clarity",
-          "resolve",
-          "reflection"
+          "calm honesty"
         ],
         "intensities": [
-          0.4,
-          0.6,
-          0.5,
-          0.4,
           0.35
         ],
-        "motion": "One consequential movement at a time; hold on constraints and reading invitation."
+        "voiceDirections": [
+          "Speak with calm honesty; give gentle emphasis to reasons it might fail. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
-      "alt": "Source-grounded venture situations. The review tool, evaluation Case R and failed trial are schematic illustrations, not reported customers, measured outcomes or investment advice."
+      "alt": "The proposed strategy is shown beside a failed trial and its retained lesson; the wager can be revised when an assumption fails."
     },
     {
       "id": "revision-7",
-      "title": "Read the wager and its limits",
+      "title": "Follow the claim on value",
       "chapter": "Read the wager and its limits",
       "lens": "book",
-      "intent": "This is a thesis about building institutions around AI, not selecting the next popular stock.",
-      "knownBefore": "Even the studio’s favored thesis must remain open to revision.",
-      "knownAfter": "Read it to examine what a useful product would need to become a lasting organization.",
-      "durationMs": 39354,
+      "intent": "Begin with the difference between creating value and having a durable claim on it.",
+      "knownBefore": "The strategy is a bet with stated assumptions, including reasons it might fail.",
+      "knownAfter": "Begin with the difference between creating value and having a durable claim on it.",
+      "durationMs": 9344,
       "setting": "minimal",
       "objects": [
         {
@@ -5271,16 +5095,264 @@
               }
             ]
           }
+        },
+        {
+          "id": "useful-output",
+          "asset": "custom",
+          "x": 300,
+          "y": 220,
+          "scale": 1,
+          "meaning": "The useful work produced for a reader or customer.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -145,
+                0
+              ],
+              "right": [
+                145,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -145,
+                  "y": -40,
+                  "width": 290,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#275c86",
+                    "stroke": "#275c86"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 26,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "USEFUL OUTPUT"
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "creates value"
+              }
+            ]
+          }
+        },
+        {
+          "id": "retained-value",
+          "asset": "custom",
+          "x": 900,
+          "y": 220,
+          "scale": 1,
+          "meaning": "The unresolved question of durable claim and ownership.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -160,
+                0
+              ],
+              "right": [
+                160,
+                0
+              ],
+              "top": [
+                0,
+                -40
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -160,
+                  "y": -40,
+                  "width": 320,
+                  "height": 80,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -7,
+                  "font-size": 24,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "WHO RETAINS VALUE?",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 24,
+                  "font-size": 19,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "open question",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "value-link",
+          "asset": "custom",
+          "x": 600,
+          "y": 485,
+          "scale": 1,
+          "meaning": "The distinction between making something useful and holding a durable claim on its value.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -220,
+                0
+              ],
+              "right": [
+                220,
+                0
+              ],
+              "top": [
+                0,
+                -35
+              ],
+              "bottom": [
+                0,
+                40
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.line",
+                "type": "path",
+                "attrs": {
+                  "d": "M-200 0L200 0",
+                  "fill": "none",
+                  "stroke": "#956315",
+                  "stroke-width": 5,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 30,
+                  "font-size": 21,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#956315"
+                },
+                "text": "CREATING ≠ RETAINING"
+              }
+            ]
+          }
         }
       ],
       "connections": [],
       "actions": [
         {
-          "actor": "opening-report",
+          "actor": "useful-output",
           "action": "appear",
-          "durationMs": 1300,
+          "durationMs": 1100,
+          "planCue": "End on the useful output and the unanswered question of who can retain its value.",
           "cue": {
-            "beatId": "revision-7-line-2",
+            "beatId": "revision-7-line-1",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "retained-value",
+          "action": "appear",
+          "durationMs": 1100,
+          "planCue": "End on the useful output and the unanswered question of who can retain its value.",
+          "cue": {
+            "beatId": "revision-7-line-1",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "value-link",
+          "action": "appear",
+          "durationMs": 1100,
+          "planCue": "End on the useful output and the unanswered question of who can retain its value.",
+          "cue": {
+            "beatId": "revision-7-line-1",
             "edge": "start",
             "offsetMs": 250
           }
@@ -5290,9 +5362,9 @@
         {
           "id": "revision-7-line-1",
           "startMs": 650,
-          "spokenEndMs": 6857,
-          "endMs": 8357,
-          "text": "This is a thesis about building institutions around AI, not selecting the next popular stock.",
+          "spokenEndMs": 6444,
+          "endMs": 8194,
+          "text": "Begin with the difference between creating value and having a durable claim on it.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -5303,121 +5375,27 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "clarity",
-            "intensity": 0.4,
-            "delivery": "Return to the opening report and its supplier, now beside the book open to the underwriting questions. Retained method, ownership boundary and accountable service point back to concrete situations already seen. The final choice is whether to read the argument, not buy an asset or join the studio."
-          }
-        },
-        {
-          "id": "revision-7-line-2",
-          "startMs": 8507,
-          "spokenEndMs": 13887,
-          "endMs": 15387,
-          "text": "Its distinctive question is what research, rights, and responsibility can make durable together.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-4",
-            "source-5",
-            "source-15",
-            "source-17"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1500,
-            "emotion": "curiosity",
-            "intensity": 0.6,
-            "delivery": "Return to the opening report and its supplier, now beside the book open to the underwriting questions. Retained method, ownership boundary and accountable service point back to concrete situations already seen. The final choice is whether to read the argument, not buy an asset or join the studio."
-          }
-        },
-        {
-          "id": "revision-7-line-3",
-          "startMs": 15537,
-          "spokenEndMs": 20917,
-          "endMs": 22517,
-          "text": "The book connects that question to venture design, brand governance, and capital allocation.",
-          "speakerId": "narrator",
-          "lens": "content",
-          "sourceRefs": [
-            "source-4",
-            "source-5",
-            "source-15",
-            "source-17"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "attention",
-            "intensity": 0.5,
-            "delivery": "Return to the opening report and its supplier, now beside the book open to the underwriting questions. Retained method, ownership boundary and accountable service point back to concrete situations already seen. The final choice is whether to read the argument, not buy an asset or join the studio."
-          }
-        },
-        {
-          "id": "revision-7-line-4",
-          "startMs": 22667,
-          "spokenEndMs": 28047,
-          "endMs": 29647,
-          "text": "Its proposed advantages remain conditional, and many experiments may never become independent companies.",
-          "speakerId": "narrator",
-          "lens": "book",
-          "sourceRefs": [
-            "source-4",
-            "source-5",
-            "source-15",
-            "source-17"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 1600,
-            "emotion": "reflection",
-            "intensity": 0.4,
-            "delivery": "Return to the opening report and its supplier, now beside the book open to the underwriting questions. Retained method, ownership boundary and accountable service point back to concrete situations already seen. The final choice is whether to read the argument, not buy an asset or join the studio."
-          }
-        },
-        {
-          "id": "revision-7-line-5",
-          "startMs": 29797,
-          "spokenEndMs": 36004,
-          "endMs": 38204,
-          "text": "Read it to examine what a useful product would need to become a lasting organization.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-4",
-            "source-5",
-            "source-15",
-            "source-17"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 2200,
-            "emotion": "invitation",
+            "pauseAfterMs": 1750,
+            "emotion": "inviting reflection",
             "intensity": 0.35,
-            "delivery": "Return to the opening report and its supplier, now beside the book open to the underwriting questions. Retained method, ownership boundary and accountable service point back to concrete situations already seen. The final choice is whether to read the argument, not buy an asset or join the studio."
+            "delivery": "End on the actual thesis with the opening value question still visible."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "clarity → curiosity → attention → reflection → invitation",
-        "purpose": "Return to the opening report and its supplier, now beside the book open to the underwriting questions. Retained method, ownership boundary and accountable service point back to concrete situations already seen. The final choice is whether to read the argument, not buy an asset or join the studio.",
+        "arc": "reflection → open curiosity",
+        "purpose": "End on the actual thesis with the opening value question still visible.",
         "states": [
-          "clarity",
-          "curiosity",
-          "attention",
-          "reflection",
-          "invitation"
+          "inviting reflection"
         ],
         "intensities": [
-          0.4,
-          0.6,
-          0.5,
-          0.4,
           0.35
         ],
-        "motion": "One consequential movement at a time; hold on constraints and reading invitation."
+        "voiceDirections": [
+          "Speak with inviting reflection; give gentle emphasis to durable claim. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
+        ]
       },
-      "alt": "Source-grounded venture situations. The review tool, evaluation Case R and failed trial are schematic illustrations, not reported customers, measured outcomes or investment advice."
+      "alt": "The useful output remains beside the open question of who can retain its value, returning the reader to the book’s institutional argument."
     }
   ]
 }

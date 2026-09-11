@@ -1,14 +1,15 @@
 {
   "format": "ScriptaHub-animation-voice-migration",
   "version": 2,
-  "updatedAt": "2026-09-11T15:59:45.630Z",
+  "updatedAt": "2026-09-11T17:17:18.194Z",
   "scope": "All book animations: engaging introductions of 1–2 minutes, maximum two minutes.",
   "counts": {
-    "qwen-complete": 2,
-    "rendering": 2,
-    "pending-piper": 111,
+    "qwen-complete": 16,
+    "rendering": 3,
+    "pending-piper": 99,
     "needs-render": 0,
-    "needs-rerender": 7,
+    "needs-rerender": 4,
+    "publication-invalid": 0,
     "untracked": 0
   },
   "editorialCounts": {
@@ -17,9 +18,10 @@
     "awaitingRewrite": 0
   },
   "productionCounts": {
-    "animations": 12,
-    "voices": 8,
-    "published": 2
+    "animations": 39,
+    "voices": 19,
+    "published": 16,
+    "publicationInvalid": 0
   },
   "visualPlans": 122,
   "conversionGate": "plans-reviewed",
@@ -399,43 +401,44 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.456Z"
+      "updatedAt": "2026-09-11T17:17:18.042Z"
     },
     {
       "title": "Agentic AI 2026",
       "bookId": "bk-6bb778c5204946b7",
-      "status": "pending-piper",
-      "durationMs": 392561,
+      "status": "qwen-complete",
+      "durationMs": 68820,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "failed",
-          "updatedAt": "2026-09-11T15:43:35.732Z",
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:40:20.952Z",
           "scriptSha256": "f373811c45685d5bc1be2a058c4e22e9a32db24d8af88b53558b74e16e8b89a2",
-          "error": "Another render may own /home/salboaie/work/axiologic/ScriptaHub/presentations/agentic-ai-2026/work/voice-bundles/agentic-ai-2026-introduction-batch-1. A crashed job may leave .render.lock; remove it only after confirming no renderer is active."
+          "elapsedSeconds": 780,
+          "note": "Listening review pending."
         },
         "animation": {
           "status": "done",
-          "updatedAt": "2026-09-11T15:26:29.136Z",
+          "updatedAt": "2026-09-11T16:56:26.932Z",
           "scriptSha256": "f373811c45685d5bc1be2a058c4e22e9a32db24d8af88b53558b74e16e8b89a2",
-          "note": "Independent visual review passed; final measured-audio integration pending."
+          "note": "Published 68.820-second film; measured narrated QA passed 23 checks and 36 frames. Independent current-art review passed after label spacing repair; eight ASR sentences matched. Acting/listening review remains separate."
         }
       },
       "active": false,
-      "voiceGenerated": false,
+      "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/agentic/ai/2026/bk-6bb778c5204946b7",
       "project": "presentations/agentic-ai-2026",
       "shf": "docs/books/agentic/ai/2026/bk-6bb778c5204946b7/Animation/agentic-ai-2026-introduction.shf",
-      "shfSha256": "396b62801f0012b9334f0d94925ac67bd549b001a4086b5a430003b0e8a819e6",
+      "shfSha256": "ec8fe100067f62d448cc7fd3663c09d3bf7eaeb92b9fe6ba7be79fbb28ac403e",
       "bookPage": "books/agentic/ai/2026/bk-6bb778c5204946b7/en/book.html?lang=en",
       "animationPage": "books/agentic/ai/2026/bk-6bb778c5204946b7/Animation/index.html",
       "script": [
@@ -762,12 +765,12 @@
         "visualActions": 20,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 54,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.527Z"
+      "updatedAt": "2026-09-11T17:17:18.040Z"
     },
     {
       "title": "AI Adoption Beyond the Slop",
@@ -786,14 +789,15 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "built",
-          "updatedAt": "2026-09-11T15:33:28.380Z",
+          "status": "reviewing",
+          "updatedAt": "2026-09-11T17:17:04.347Z",
           "scriptSha256": "08ccc2987a589d859b46ed8b72aa2e34e22cea76bf53a2728e5aa30eb9e8adba",
-          "elapsedSeconds": 41,
-          "note": "Visual inspection pending."
+          "worker": 1,
+          "reviewer": "production_1",
+          "note": "Independent collision repair and expanded midpoint review in progress."
         }
       },
-      "active": false,
+      "active": true,
       "voiceGenerated": true,
       "animationCompleted": true,
       "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -805,7 +809,7 @@
       "bookDirectory": "docs/books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1",
       "project": "presentations/ai-adoption-beyond-the-slop",
       "shf": "docs/books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/Animation/ai-adoption-beyond-the-slop-introduction.shf",
-      "shfSha256": "b728e8ec8aa26d50a6c8247ffa890ae917744d3ed0468aa19e1e8d444eb5e903",
+      "shfSha256": "53d888c0d065e24bdd3b365f9d3e4ed8c4b9332fb87ceca1066f369024d06a7e",
       "bookPage": "books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/en/book.html?lang=en",
       "animationPage": "books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/Animation/index.html",
       "script": [
@@ -1135,13 +1139,13 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.456Z"
+      "updatedAt": "2026-09-11T17:17:18.040Z"
     },
     {
       "title": "AI Agents",
       "bookId": "bk-92eca672686a4f90",
-      "status": "needs-rerender",
-      "durationMs": 141305,
+      "status": "qwen-complete",
+      "durationMs": 63515,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -1154,18 +1158,16 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T15:27:31.315Z",
+          "status": "built",
+          "updatedAt": "2026-09-11T16:14:50.386Z",
           "scriptSha256": "331af98dd04f8e4a87a7eaf04ae6dc129f69090e89ae47ecae8bcd56603e8824",
-          "worker": 0,
-          "cpus": "1-5",
-          "threads": 5,
-          "note": "Private visual preview with eight approved technical cues and 24 exact sentence frames across Color, Paper, Night; awaiting root review."
+          "elapsedSeconds": 31,
+          "note": "Visual inspection pending."
         }
       },
       "active": false,
       "voiceGenerated": true,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
       "publishedVoiceId": "Aiden",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -1175,7 +1177,7 @@
       "bookDirectory": "docs/books/ai/agents/bk-92eca672686a4f90",
       "project": "presentations/ai-agents",
       "shf": "docs/books/ai/agents/bk-92eca672686a4f90/Animation/ai-agents-introduction.shf",
-      "shfSha256": "249e272cdd48788db8f1af0f44f55be6ec1e2c3adf6701afb7ce254f65b5b27a",
+      "shfSha256": "68e6639d7b5711edae0192bf7d12e763520833d346ba417bbe8c08b641eb2e60",
       "bookPage": "books/ai/agents/bk-92eca672686a4f90/en/book.html?lang=en",
       "animationPage": "books/ai/agents/bk-92eca672686a4f90/Animation/index.html",
       "script": [
@@ -1513,15 +1515,15 @@
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-09-11T15:59:45.378Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-09-11T17:17:17.940Z"
     },
     {
       "title": "All the Ways to Rule a World",
       "bookId": "bk-c7241081cde24474",
-      "status": "needs-rerender",
-      "durationMs": 161176,
+      "status": "qwen-complete",
+      "durationMs": 76111,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -1534,16 +1536,13 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "reviewing",
-          "updatedAt": "2026-09-11T15:32:39.600Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:06:50.622Z",
           "scriptSha256": "678f6e774e1d9f80274c93b411c9ad42079950696f2202e828dd7d0b70588d13",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Independent private visual review completed; 8 cue mappings and 24 theme frames in qa/visual-plan-review.json. Public publish pending root review."
+          "note": "Published 76.111-second narrated film after repaired election-notice occlusion and request-label fit; independent full-size review, root corrected-frame inspection, 36 browser frames and 21 checks passed."
         }
       },
-      "active": true,
+      "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
       "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -1555,7 +1554,7 @@
       "bookDirectory": "docs/books/all/the/ways/to/rule/a/world/bk-c7241081cde24474",
       "project": "presentations/all-the-ways-to-rule-a-world",
       "shf": "docs/books/all/the/ways/to/rule/a/world/bk-c7241081cde24474/Animation/all-the-ways-to-rule-a-world-introduction.shf",
-      "shfSha256": "d58c0b316578b1e2229bf841825fa6129ebc1c9d587d73d07678ef5128ecad63",
+      "shfSha256": "511a92677a51b87a196a66fbd96e306a07491098e12022a31db462a83994edcd",
       "bookPage": "books/all/the/ways/to/rule/a/world/bk-c7241081cde24474/en/book.html?lang=en",
       "animationPage": "books/all/the/ways/to/rule/a/world/bk-c7241081cde24474/Animation/index.html",
       "script": [
@@ -1890,15 +1889,15 @@
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-09-11T15:59:45.416Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-09-11T17:17:17.941Z"
     },
     {
       "title": "An Autopsy of a Digital Mind",
       "bookId": "bk-dd1a6c0d64b84fa0",
-      "status": "needs-rerender",
-      "durationMs": 151577,
+      "status": "qwen-complete",
+      "durationMs": 74172,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -1911,20 +1910,17 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "reviewing",
-          "updatedAt": "2026-09-11T15:29:36.474Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:19:57.336Z",
           "scriptSha256": "03cfc9007e5983ad41ab999f02302d82d4fcb15694cf32d8265d3fa812338229",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Private visual-only preview compiled; 8 approved cues mapped in qa/visual-plan-review.json. Public publish pending root inspection."
+          "note": "Published 74.172-second narrated film after corrected cards, reader/table placement, fresh independent review and root inspection; 36 browser frames/21 checks passed. ASR differences are homophones."
         }
       },
-      "active": true,
+      "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -1932,7 +1928,7 @@
       "bookDirectory": "docs/books/an/autopsy/of/a/digital/mind/bk-dd1a6c0d64b84fa0",
       "project": "presentations/an-autopsy-of-a-digital-mind",
       "shf": "docs/books/an/autopsy/of/a/digital/mind/bk-dd1a6c0d64b84fa0/Animation/an-autopsy-of-a-digital-mind-introduction.shf",
-      "shfSha256": "23bde873b9c79c36f48d9246a143eeff2176efa27469ea0e2de5133d931f163a",
+      "shfSha256": "3e8547d2705646f52614f1bd7474b601f9d3a30ef2d0d6bbbce1e539bf0cd2d7",
       "bookPage": "books/an/autopsy/of/a/digital/mind/bk-dd1a6c0d64b84fa0/en/book.html?lang=en",
       "animationPage": "books/an/autopsy/of/a/digital/mind/bk-dd1a6c0d64b84fa0/Animation/index.html",
       "script": [
@@ -2275,15 +2271,15 @@
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-09-11T15:59:45.476Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-09-11T17:17:18.043Z"
     },
     {
       "title": "Anatomy of an Echo",
       "bookId": "bk-7a0e708c9ac4499a",
-      "status": "needs-rerender",
-      "durationMs": 164825,
+      "status": "qwen-complete",
+      "durationMs": 81726,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -2296,20 +2292,17 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "reviewing",
-          "updatedAt": "2026-09-11T15:34:49.070Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:02:52.153Z",
           "scriptSha256": "1110fecdb45aa85a3a91e07da7de97e940b6c84b0bc9ea5a89daa5f677cc1970",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Independent visual review passed; 8 cue mappings and 24 theme frames in qa/visual-plan-review.json. Public publish pending root review."
+          "note": "Published 81.726-second narrated film after independent visual review and root full-size inspection; 36 sampled frames, 21 browser checks, zero JS errors. Local ASR report retains article/name transcription differences; no claim of complete listening review."
         }
       },
-      "active": true,
+      "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -2317,7 +2310,7 @@
       "bookDirectory": "docs/books/anatomy/of/an/echo/bk-7a0e708c9ac4499a",
       "project": "presentations/anatomy-of-an-echo",
       "shf": "docs/books/anatomy/of/an/echo/bk-7a0e708c9ac4499a/Animation/anatomy-of-an-echo-introduction.shf",
-      "shfSha256": "8e873350bd7d5c702ac78afbd0575210c41163573ff1ad734d37e5350af60144",
+      "shfSha256": "bb8c2fe353b9dda5c067f93ed2af4b5f46ba7b56f2de6300614c0fa13388d430",
       "bookPage": "books/anatomy/of/an/echo/bk-7a0e708c9ac4499a/en/book.html?lang=en",
       "animationPage": "books/anatomy/of/an/echo/bk-7a0e708c9ac4499a/Animation/index.html",
       "script": [
@@ -2656,15 +2649,15 @@
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-09-11T15:59:45.478Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-09-11T17:17:18.045Z"
     },
     {
       "title": "Anti-Idiocracy",
       "bookId": "bk-938145af7220478f",
-      "status": "needs-rerender",
-      "durationMs": 166794,
+      "status": "qwen-complete",
+      "durationMs": 70507,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -2677,20 +2670,17 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T15:36:05.496Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:20:57.341Z",
           "scriptSha256": "64830a849c984bf8af4e76e455575cbe24b7e46bb914c86febd3832ac4128da1",
-          "worker": 0,
-          "cpus": "1-5",
-          "threads": 5,
-          "note": "Private visual preview with concrete correction, evidence, revision and shared-question cues; 24 exact sentence frames across Color, Paper, Night."
+          "note": "Published 70.507-second narrated film after grounded cast and document/arrow clearance repairs; independent review, root actual corrected frame inspection, 36 browser frames/21 checks passed."
         }
       },
       "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
       "plannedVoiceId": "Aiden",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -2698,7 +2688,7 @@
       "bookDirectory": "docs/books/anti/idiocracy/bk-938145af7220478f",
       "project": "presentations/anti-idiocracy",
       "shf": "docs/books/anti/idiocracy/bk-938145af7220478f/Animation/anti-idiocracy-introduction.shf",
-      "shfSha256": "73f4173cf816218652b3bb504aa36bbe7abca214a057cb1b50a6d94abdb926b0",
+      "shfSha256": "f07fab52a9f3b40aa1420287b4a7e0c1e007b9e5001e62e54acb98921ad357e4",
       "bookPage": "books/anti/idiocracy/bk-938145af7220478f/en/book.html?lang=en",
       "animationPage": "books/anti/idiocracy/bk-938145af7220478f/Animation/index.html",
       "script": [
@@ -3044,15 +3034,15 @@
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-09-11T15:59:45.424Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-09-11T17:17:17.953Z"
     },
     {
       "title": "Anti-Trivialization Machines of the Future",
       "bookId": "bk-41f22d81e81142ed",
-      "status": "needs-rerender",
-      "durationMs": 179331,
+      "status": "qwen-complete",
+      "durationMs": 68308,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -3065,20 +3055,17 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T15:39:06.213Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:13:04.157Z",
           "scriptSha256": "716f6b829555fb4f601142a5ab503df7d1ebfb23975fd25a2b2aef431eb0daea",
-          "worker": 0,
-          "cpus": "1-5",
-          "threads": 5,
-          "note": "Private visual preview with concrete attention, pacing, archive, queue and protected-time objects; 24 exact sentence frames across Color, Paper, Night."
+          "note": "Published 68.308-second narrated film; independent art review and root full-size spot inspection, 36 browser frames and corrected label-bounds checks passed. ASR only ten/10 numeric transcription difference."
         }
       },
       "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
       "plannedVoiceId": "Aiden",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -3086,7 +3073,7 @@
       "bookDirectory": "docs/books/anti/trivialization/machines/of/the/future/bk-41f22d81e81142ed",
       "project": "presentations/anti-trivialization-machines-of-the-future",
       "shf": "docs/books/anti/trivialization/machines/of/the/future/bk-41f22d81e81142ed/Animation/anti-trivialization-machines-of-the-future-introduction.shf",
-      "shfSha256": "d89528f4e0fb5a902034ccf31ecff3aa447038b3b4670601841a185ef58b508c",
+      "shfSha256": "cfc7aad5513e72b3d9c9844ca66eeef00966bcccb43b56fbb50072d570e18032",
       "bookPage": "books/anti/trivialization/machines/of/the/future/bk-41f22d81e81142ed/en/book.html?lang=en",
       "animationPage": "books/anti/trivialization/machines/of/the/future/bk-41f22d81e81142ed/Animation/index.html",
       "script": [
@@ -3429,48 +3416,46 @@
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-09-11T15:59:45.417Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-09-11T17:17:17.940Z"
     },
     {
       "title": "Artificial Impossibility",
       "bookId": "bk-ff85e7259f32439c",
-      "status": "rendering",
-      "durationMs": 159083,
+      "status": "qwen-complete",
+      "durationMs": 67020,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "running",
-          "updatedAt": "2026-09-11T15:50:11.735Z",
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:06:17.609Z",
           "scriptSha256": "7ed687e4b6d0325541d17aea4d331168e5ad6c26271b724e065f627efa5bd106",
-          "pid": 2236327
+          "elapsedSeconds": 966,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "reviewing",
-          "updatedAt": "2026-09-11T15:47:32.013Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:27:52.632Z",
           "scriptSha256": "7ed687e4b6d0325541d17aea4d331168e5ad6c26271b724e065f627efa5bd106",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Independent visual review passed; 8 cue mappings and 24 theme frames in qa/visual-plan-review.json. Public publish pending root review."
+          "note": "Published 67.020-second narrated film after final organizer/book separation. Its deliberate disappearance matches the absent-sponsor cue. Root inspected corrected frame; independent review, current-script/canonical-ID tests and36 frames/23 checks passed. Local ASR matched8 sentences."
         }
       },
-      "active": true,
-      "voiceGenerated": false,
+      "active": false,
+      "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
       "plannedVoiceId": "Aiden",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "voiceId": "Aiden",
       "bookDirectory": "docs/books/artificial/impossibility/bk-ff85e7259f32439c",
       "project": "presentations/artificial-impossibility",
       "shf": "docs/books/artificial/impossibility/bk-ff85e7259f32439c/Animation/artificial-impossibility-introduction.shf",
-      "shfSha256": "3dafac4aa527c09d91350d1401ea03c8a115174c6c422862f9c337bb9ddfcb1a",
+      "shfSha256": "20175213fc83cc5407bb6ed3a27137263d2e2fdbfb301957df65179e759eca80",
       "bookPage": "books/artificial/impossibility/bk-ff85e7259f32439c/en/book.html?lang=en",
       "animationPage": "books/artificial/impossibility/bk-ff85e7259f32439c/Animation/index.html",
       "script": [
@@ -3824,51 +3809,49 @@
         "visualActions": 27,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 21,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.496Z"
+      "updatedAt": "2026-09-11T17:17:18.045Z"
     },
     {
       "title": "Aspirin, Viagra, and Coffins",
       "bookId": "bk-9a2dd3c2a55341db",
-      "status": "rendering",
-      "durationMs": 731953,
+      "status": "qwen-complete",
+      "durationMs": 71587,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "running",
-          "updatedAt": "2026-09-11T15:51:52.831Z",
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:09:16.652Z",
           "scriptSha256": "bd258807cb0b0e92b285aea602445968faab03f8bfe424ffb97f265d6c9b31c1",
-          "pid": 2244192
+          "elapsedSeconds": 1044,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "reviewing",
-          "updatedAt": "2026-09-11T15:42:28.028Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:16:56.753Z",
           "scriptSha256": "bd258807cb0b0e92b285aea602445968faab03f8bfe424ffb97f265d6c9b31c1",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Independent visual review passed; 8 cue mappings and 24 theme frames in qa/visual-plan-review.json. Public publish pending root review."
+          "note": "Published 71.587-second narrated film after independent rendered review, root sampled-frame inspection and 36 browser frames/21 checks. Corrected label-bounds checks pass. ASR differences are retained for review; no full-listening claim."
         }
       },
-      "active": true,
-      "voiceGenerated": false,
+      "active": false,
+      "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/aspirin/viagra/and/coffins/bk-9a2dd3c2a55341db",
       "project": "presentations/aspirin-viagra-and-coffins",
       "shf": "docs/books/aspirin/viagra/and/coffins/bk-9a2dd3c2a55341db/Animation/aspirin-viagra-and-coffins-introduction.shf",
-      "shfSha256": "f5e5d046908238679b5b02e0f773af3ece5c609861af152ad0532ef35ba29737",
+      "shfSha256": "fb17620f313a779656fd6241f1ff740fa76e9aea6b6703cdc2ede32b4af15837",
       "bookPage": "books/aspirin/viagra/and/coffins/bk-9a2dd3c2a55341db/en/book.html?lang=en",
       "animationPage": "books/aspirin/viagra/and/coffins/bk-9a2dd3c2a55341db/Animation/index.html",
       "script": [
@@ -4189,51 +4172,49 @@
         "visualActions": 19,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 98,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.590Z"
+      "updatedAt": "2026-09-11T17:17:18.119Z"
     },
     {
       "title": "AssistOS",
       "bookId": "bk-c0f6d112218f4c52",
-      "status": "pending-piper",
-      "durationMs": 845368,
+      "status": "qwen-complete",
+      "durationMs": 69114,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "running",
-          "updatedAt": "2026-09-11T15:59:33.733Z",
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:15:01.198Z",
           "scriptSha256": "9aef38389fe7af351096b63ce867ebfde153c96ee1c536027a54a2c14f6d34f7",
-          "pid": 2278813
+          "elapsedSeconds": 927,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T15:48:33.860Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:26:23.040Z",
           "scriptSha256": "9aef38389fe7af351096b63ce867ebfde153c96ee1c536027a54a2c14f6d34f7",
-          "worker": 0,
-          "cpus": "1-5",
-          "threads": 5,
-          "note": "AssistOS visual-only private preview; 8 approved cues, 24 muted paused frames across color/paper/night; awaiting independent semantic review."
+          "note": "Published canonical assistos-essence SHF, 69.114 seconds and8 current sentences. Source identifiers repaired before compile; current-script and canonical-ID checks plus 36 frames/23 checks passed. Root inspected actual short export."
         }
       },
-      "active": true,
-      "voiceGenerated": false,
+      "active": false,
+      "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper 1.4.2, local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/assistos/bk-c0f6d112218f4c52",
       "project": "presentations/assistos",
       "shf": "docs/books/assistos/bk-c0f6d112218f4c52/Animation/assistos-essence.shf",
-      "shfSha256": "ce9ae89066026c94f5b5ee7d5731e91aa9aeadf73586d756a02057b46b9efb52",
+      "shfSha256": "9ffbdcc365b76fca1b23e27b7d21f2839335be2fb0e164656a909fe9599cb960",
       "bookPage": "books/assistos/bk-c0f6d112218f4c52/en/book.html?lang=en",
       "animationPage": "books/assistos/bk-c0f6d112218f4c52/Animation/index.html",
       "script": [
@@ -4528,48 +4509,49 @@
         "visualActions": 26,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 128,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.619Z"
+      "updatedAt": "2026-09-11T17:17:18.185Z"
     },
     {
       "title": "Autopsy of Future Emotions",
       "bookId": "bk-a91b1512505e4224",
-      "status": "pending-piper",
-      "durationMs": 177316,
+      "status": "qwen-complete",
+      "durationMs": 77442,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:26:58.429Z",
+          "scriptSha256": "31f228a5d961ad70ec9443ae56fff2baf39b825ef7274f8f3aec65bfbf82bfd7",
+          "elapsedSeconds": 1225,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T15:55:39.942Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:35:52.427Z",
           "scriptSha256": "31f228a5d961ad70ec9443ae56fff2baf39b825ef7274f8f3aec65bfbf82bfd7",
-          "worker": 0,
-          "cpus": "1-5",
-          "threads": 5,
-          "note": "Visual-only private preview; 8 approved emotional-premise cues, 24 muted paused frames across color/paper/night; awaiting independent semantic review."
+          "note": "Published77.442-second narrated film after companion-scene label moved clear of captions. Independent amendment and root corrected-frame inspection; current-script/canonical-ID checks and36 frames/23 checks passed."
         }
       },
       "active": false,
-      "voiceGenerated": false,
-      "animationCompleted": false,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "voiceGenerated": true,
+      "animationCompleted": true,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/autopsy/of/future/emotions/bk-a91b1512505e4224",
       "project": "presentations/autopsy-of-future-emotions",
       "shf": "docs/books/autopsy/of/future/emotions/bk-a91b1512505e4224/Animation/autopsy-of-future-emotions-introduction.shf",
-      "shfSha256": "46854ce3bc29c2bd89d113649a882312bfdedb745fe86d544dc9e1f4e9b123a5",
+      "shfSha256": "fa5791ee7116232b75863aa05c82932a10fdd4cd1109aaff06138b93b25bb82f",
       "bookPage": "books/autopsy/of/future/emotions/bk-a91b1512505e4224/en/book.html?lang=en",
       "animationPage": "books/autopsy/of/future/emotions/bk-a91b1512505e4224/Animation/index.html",
       "script": [
@@ -4594,7 +4576,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -4618,7 +4600,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -4642,7 +4624,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -4666,7 +4648,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            2100
           ]
         }
       ],
@@ -4887,48 +4869,49 @@
         "visualActions": 25,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 24,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.377Z"
+      "updatedAt": "2026-09-11T17:17:17.941Z"
     },
     {
       "title": "Beauty: The Anatomy of Fascination",
       "bookId": "bk-cc426ab3c3ed40cc",
-      "status": "pending-piper",
-      "durationMs": 75235,
+      "status": "qwen-complete",
+      "durationMs": 75544,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:29:13.769Z",
+          "scriptSha256": "e28149e6aebca7cfe605fd737641fd870fa5e745e618a907931ac665fda9b32a",
+          "elapsedSeconds": 1181,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T15:53:25.260Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:38:20.977Z",
           "scriptSha256": "e28149e6aebca7cfe605fd737641fd870fa5e745e618a907931ac665fda9b32a",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Author visual review complete; 8 cue mappings and 24 paused muted frames in qa/visual-plan-review.json. Independent review pending root/other agent."
+          "note": "Published75.544-second narrated film after widened label, spectacle/flag separation and duplicate heading removal; independent amendment and root corrected-frame inspection,27 browser frames/23 checks passed."
         }
       },
       "active": false,
-      "voiceGenerated": false,
+      "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/beauty/the/anatomy/of/fascination/bk-cc426ab3c3ed40cc",
       "project": "presentations/beauty-the-anatomy-of-fascination",
       "shf": "docs/books/beauty/the/anatomy/of/fascination/bk-cc426ab3c3ed40cc/Animation/beauty-the-anatomy-of-fascination-introduction.shf",
-      "shfSha256": "2808d18a6c68d61e4ce492398d93c76ed3299a727a33948ab66dd42543037372",
+      "shfSha256": "3920eeb902ab172ffe88d340581bc96dd7b9e90021b84e0444f46f12392075a2",
       "bookPage": "books/beauty/the/anatomy/of/fascination/bk-cc426ab3c3ed40cc/en/book.html?lang=en",
       "animationPage": "books/beauty/the/anatomy/of/fascination/bk-cc426ab3c3ed40cc/Animation/index.html",
       "script": [
@@ -4958,7 +4941,7 @@
           "pausesMs": [
             1200,
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -4987,7 +4970,7 @@
           "pausesMs": [
             1200,
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -5011,7 +4994,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            2100
           ]
         }
       ],
@@ -5213,48 +5196,49 @@
         "visualActions": 19,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 9,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.299Z"
+      "updatedAt": "2026-09-11T17:17:17.875Z"
     },
     {
       "title": "Before Explanation",
       "bookId": "bk-a12d4dc9bd8c42c2",
-      "status": "pending-piper",
-      "durationMs": 80843,
+      "status": "qwen-complete",
+      "durationMs": 70788,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:32:56.380Z",
+          "scriptSha256": "56716a2c3e0702c409eaf20cb1be0da813141263952a3d2f73225ce14a29a441",
+          "elapsedSeconds": 1044,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T15:58:40.824Z",
+          "status": "done",
+          "updatedAt": "2026-09-11T16:48:24.092Z",
           "scriptSha256": "56716a2c3e0702c409eaf20cb1be0da813141263952a3d2f73225ce14a29a441",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Author visual review complete; 8 cue mappings and 24 paused muted frames in qa/visual-plan-review.json. Independent review pending root/other agent."
+          "note": "Published70.788-second narrated film. Optional scene2 figure removed to avoid caption/label conflicts; independent v3 inspection confirmed Night labels readable. Root inspected current fullsize frames;27frames/23checks passed; ASR matchedall8sentences."
         }
       },
       "active": false,
-      "voiceGenerated": false,
-      "animationCompleted": false,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "voiceGenerated": true,
+      "animationCompleted": true,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/before/explanation/bk-a12d4dc9bd8c42c2",
       "project": "presentations/before-explanation",
       "shf": "docs/books/before/explanation/bk-a12d4dc9bd8c42c2/Animation/before-explanation-introduction.shf",
-      "shfSha256": "1cc6de9e1653188b11ef7ad209755693454f15f77ba04ecaf68ca15004493f3b",
+      "shfSha256": "c21fe072aebffa23ce3bf4a4c5bb31415ab9a92c5ce1c1321e8e823564c73a03",
       "bookPage": "books/before/explanation/bk-a12d4dc9bd8c42c2/en/book.html?lang=en",
       "animationPage": "books/before/explanation/bk-a12d4dc9bd8c42c2/Animation/index.html",
       "script": [
@@ -5284,7 +5268,7 @@
           "pausesMs": [
             1200,
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -5313,7 +5297,7 @@
           "pausesMs": [
             1200,
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -5337,7 +5321,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            2100
           ]
         }
       ],
@@ -5539,24 +5523,27 @@
         "visualActions": 21,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 9,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.301Z"
+      "updatedAt": "2026-09-11T17:17:17.876Z"
     },
     {
       "title": "Between Faith and Evidence",
       "bookId": "bk-74a8fea2704641d1",
-      "status": "pending-piper",
+      "status": "rendering",
       "durationMs": 70851,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "running",
+          "updatedAt": "2026-09-11T17:10:57.168Z",
+          "scriptSha256": "3910dc0ee854efff2352069ded97cfe545754150ef3a6be75527a0c40ccceba0",
+          "pid": 2592668
         },
         "animation": {
           "status": "ready-for-review",
@@ -5568,15 +5555,15 @@
           "note": "Visual-only private preview; 8 approved history/evidence cues, 24 muted paused frames across color/paper/night; awaiting independent semantic review."
         }
       },
-      "active": false,
+      "active": true,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/between/faith/and/evidence/bk-74a8fea2704641d1",
       "project": "presentations/between-faith-and-evidence",
       "shf": "docs/books/between/faith/and/evidence/bk-74a8fea2704641d1/Animation/between-faith-and-evidence-introduction.shf",
@@ -5610,7 +5597,7 @@
           "pausesMs": [
             1200,
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -5639,7 +5626,7 @@
           "pausesMs": [
             1200,
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -5663,7 +5650,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            2100
           ]
         }
       ],
@@ -5865,38 +5852,45 @@
         "visualActions": 21,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 9,
-      "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
+      "receiptLines": 8,
+      "audioReceiptsVerified": false,
+      "narrationTextCurrent": true,
       "publishedTextCurrent": false,
-      "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.276Z"
+      "publishedAudioCurrent": false,
+      "updatedAt": "2026-09-11T17:17:18.020Z"
     },
     {
       "title": "Beyond the Last Stone",
       "bookId": "bk-718ccf0885654d25",
-      "status": "pending-piper",
+      "status": "needs-rerender",
       "durationMs": 151349,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:50:52.605Z",
+          "scriptSha256": "85e85962faf1d857c95d809f97a329a0bcf565af0f8dbea90029b29c67ba7819",
+          "elapsedSeconds": 1057,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "interrupted",
+          "updatedAt": "2026-09-11T17:05:03.021Z",
+          "scriptSha256": "85e85962faf1d857c95d809f97a329a0bcf565af0f8dbea90029b29c67ba7819",
+          "pid": 2566767
         }
       },
       "active": false,
-      "voiceGenerated": false,
+      "voiceGenerated": true,
       "animationCompleted": false,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/beyond/the/last/stone/bk-718ccf0885654d25",
       "project": "presentations/beyond-the-last-stone",
       "shf": "docs/books/beyond/the/last/stone/bk-718ccf0885654d25/Animation/beyond-the-last-stone-introduction.shf",
@@ -5925,7 +5919,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -5949,7 +5943,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -5973,7 +5967,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -5997,7 +5991,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            2100
           ]
         }
       ],
@@ -6274,45 +6268,53 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 12,
+        "visualActions": 35,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 21,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
+      "narrationTextCurrent": true,
       "publishedTextCurrent": false,
-      "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.418Z"
+      "publishedAudioCurrent": false,
+      "updatedAt": "2026-09-11T17:17:18.071Z"
     },
     {
       "title": "Bias in AI",
       "bookId": "bk-c0e43df73f514937",
-      "status": "pending-piper",
-      "durationMs": 151691,
+      "status": "qwen-complete",
+      "durationMs": 66865,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "generated",
+          "updatedAt": "2026-09-11T16:56:45.468Z",
+          "scriptSha256": "8ef57432255aa8ebdf50b5b4ac56d8cb8bc4911c42424a6fad44453ec9d8ece0",
+          "elapsedSeconds": 968,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "built",
+          "updatedAt": "2026-09-11T17:16:32.495Z",
+          "scriptSha256": "8ef57432255aa8ebdf50b5b4ac56d8cb8bc4911c42424a6fad44453ec9d8ece0",
+          "elapsedSeconds": 16,
+          "note": "Visual inspection pending."
         }
       },
       "active": false,
-      "voiceGenerated": false,
-      "animationCompleted": false,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "voiceGenerated": true,
+      "animationCompleted": true,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
       "plannedVoiceId": "Aiden",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "voiceId": "Aiden",
       "bookDirectory": "docs/books/bias/in/ai/bk-c0e43df73f514937",
       "project": "presentations/bias-in-ai",
       "shf": "docs/books/bias/in/ai/bk-c0e43df73f514937/Animation/bias-in-ai-introduction.shf",
-      "shfSha256": "5b2307a10c98074ee496593e5647c198aa60334d9925cedf5f113c667b960d85",
+      "shfSha256": "5b25af8f2479b4beeb54743ce9b8422c8b0741fd0d5a567892bc9199661a1bf4",
       "bookPage": "books/bias/in/ai/bk-c0e43df73f514937/en/book.html?lang=en",
       "animationPage": "books/bias/in/ai/bk-c0e43df73f514937/Animation/index.html",
       "script": [
@@ -6337,7 +6339,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -6361,7 +6363,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -6385,7 +6387,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -6409,7 +6411,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            2100
           ]
         }
       ],
@@ -6647,36 +6649,42 @@
         "visualActions": 30,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 20,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.252Z"
+      "updatedAt": "2026-09-11T17:17:17.940Z"
     },
     {
       "title": "Borrowed Credibility",
       "bookId": "bk-b261862e55a34094",
-      "status": "pending-piper",
+      "status": "rendering",
       "durationMs": 420150,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "running",
+          "updatedAt": "2026-09-11T17:11:27.713Z",
+          "scriptSha256": "d5d33e9e2539f2c37d27909ca9dbbff40ecb86a0465a9f15b9824a87a5cc3add",
+          "pid": 2595083
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.037Z",
+          "scriptSha256": "d5d33e9e2539f2c37d27909ca9dbbff40ecb86a0465a9f15b9824a87a5cc3add",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
-      "active": false,
+      "active": true,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
-      "plannedVoice": null,
-      "plannedVoiceId": null,
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "plannedVoiceId": "Ryan",
       "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
       "voiceId": "en_US-ljspeech-medium",
       "bookDirectory": "docs/books/borrowed/credibility/bk-b261862e55a34094",
@@ -6707,7 +6715,7 @@
           ],
           "pausesMs": [
             1200,
-            1800
+            1950
           ]
         },
         {
@@ -6731,7 +6739,7 @@
           ],
           "pausesMs": [
             1200,
-            1800
+            1950
           ]
         },
         {
@@ -6755,7 +6763,7 @@
           ],
           "pausesMs": [
             1200,
-            1800
+            1950
           ]
         },
         {
@@ -7033,7 +7041,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 18,
+        "visualActions": 23,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 21,
@@ -7041,33 +7049,43 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": false,
-      "updatedAt": "2026-09-11T15:59:45.490Z"
+      "updatedAt": "2026-09-11T17:17:18.162Z"
     },
     {
       "title": "Can’t See the Forest for the Trees",
       "bookId": "bk-64b470d550bb47a1",
-      "status": "pending-piper",
+      "status": "needs-rerender",
       "durationMs": 162350,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "generated",
+          "updatedAt": "2026-09-11T17:10:41.671Z",
+          "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
+          "elapsedSeconds": 1153,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "ready-for-review",
+          "updatedAt": "2026-09-11T16:16:56.742Z",
+          "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
+          "worker": 2,
+          "cpus": "11-15",
+          "threads": 5,
+          "note": "Author visual review complete; 8 cue mappings and 24 paused muted frames in qa/visual-plan-review.json. Independent review pending root/other agent."
         }
       },
       "active": false,
-      "voiceGenerated": false,
-      "animationCompleted": false,
+      "voiceGenerated": true,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1",
       "project": "presentations/cant-see-the-forest-for-the-trees",
       "shf": "docs/books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1/Animation/cant-see-the-forest-for-the-trees-introduction.shf",
@@ -7096,7 +7114,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -7120,7 +7138,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -7144,7 +7162,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -7168,7 +7186,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            2100
           ]
         }
       ],
@@ -7407,41 +7425,48 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 25,
+        "visualActions": 31,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 20,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
+      "narrationTextCurrent": true,
       "publishedTextCurrent": false,
-      "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.286Z"
+      "publishedAudioCurrent": false,
+      "updatedAt": "2026-09-11T17:17:17.962Z"
     },
     {
       "title": "Coherence Pressure",
       "bookId": "bk-5e790be3de5d4533",
-      "status": "pending-piper",
+      "status": "needs-rerender",
       "durationMs": 398338,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "generated",
+          "updatedAt": "2026-09-11T17:11:06.996Z",
+          "scriptSha256": "b65c9d4b51b83800649a362213ba0388c9ed260e4790278dab79e63a00f44f95",
+          "elapsedSeconds": 899,
+          "note": "Listening review pending."
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.047Z",
+          "scriptSha256": "b65c9d4b51b83800649a362213ba0388c9ed260e4790278dab79e63a00f44f95",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
       "active": false,
-      "voiceGenerated": false,
-      "animationCompleted": false,
+      "voiceGenerated": true,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
-      "plannedVoice": null,
-      "plannedVoiceId": null,
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "plannedVoiceId": "Ryan",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/coherence/pressure/bk-5e790be3de5d4533",
       "project": "presentations/coherence-pressure",
       "shf": "docs/books/coherence/pressure/bk-5e790be3de5d4533/Animation/coherence-pressure-introduction.shf",
@@ -7470,7 +7495,7 @@
           ],
           "pausesMs": [
             1200,
-            1800
+            1950
           ]
         },
         {
@@ -7494,7 +7519,7 @@
           ],
           "pausesMs": [
             1200,
-            1800
+            1950
           ]
         },
         {
@@ -7518,7 +7543,7 @@
           ],
           "pausesMs": [
             1200,
-            1800
+            1950
           ]
         },
         {
@@ -7802,35 +7827,38 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 41,
+        "visualActions": 27,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 20,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
+      "narrationTextCurrent": true,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": false,
-      "updatedAt": "2026-09-11T15:59:45.487Z"
+      "updatedAt": "2026-09-11T17:17:18.112Z"
     },
     {
       "title": "Concordia Series",
       "bookId": "bk-7a56d2d893d34260",
-      "status": "pending-piper",
+      "status": "rendering",
       "durationMs": 163633,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generation pending"
+          "status": "running",
+          "updatedAt": "2026-09-11T16:57:03.518Z",
+          "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
+          "pid": 2531844
         },
         "animation": {
           "status": "planned; production pending"
         }
       },
-      "active": false,
+      "active": true,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -7865,7 +7893,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -7889,7 +7917,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -7913,7 +7941,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            1950
           ]
         },
         {
@@ -7937,7 +7965,7 @@
           ],
           "pausesMs": [
             1200,
-            1750
+            2100
           ]
         }
       ],
@@ -8171,7 +8199,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 10,
+        "visualActions": 25,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 24,
@@ -8179,7 +8207,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.249Z"
+      "updatedAt": "2026-09-11T17:17:18.103Z"
     },
     {
       "title": "Cones of Meaning",
@@ -8194,12 +8222,18 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "ready-for-review",
+          "updatedAt": "2026-09-11T16:20:30.571Z",
+          "scriptSha256": "f575024744cadddddf37b6e0247c55b6d6e6a0ff5751e438546d9a8477995f64",
+          "worker": 2,
+          "cpus": "11-15",
+          "threads": 5,
+          "note": "Author visual review complete; 8 cue mappings and 24 paused muted frames in qa/visual-plan-review.json. Independent review pending root/other agent."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -8549,7 +8583,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 31,
+        "visualActions": 29,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 23,
@@ -8557,7 +8591,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.313Z"
+      "updatedAt": "2026-09-11T17:17:17.981Z"
     },
     {
       "title": "Decentralised Brands",
@@ -8572,12 +8606,15 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.050Z",
+          "scriptSha256": "32a72d59c341bf2ddd02127e7cd42277a65b2153099093c6198a0661d0c76c15",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -8929,7 +8966,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 47,
+        "visualActions": 64,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 20,
@@ -8937,7 +8974,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.310Z"
+      "updatedAt": "2026-09-11T17:17:17.978Z"
     },
     {
       "title": "Ecology of Predation",
@@ -8952,12 +8989,18 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "ready-for-review",
+          "updatedAt": "2026-09-11T16:26:40.933Z",
+          "scriptSha256": "070ef9287bedc3ac56689f26611bedd8fb987e3057ce6f244bd59f90642a5b59",
+          "worker": 2,
+          "cpus": "11-15",
+          "threads": 5,
+          "note": "Author visual review complete; 8 cue mappings and 24 paused muted frames in qa/visual-plan-review.json. Independent review pending root/other agent."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -9313,7 +9356,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 25,
+        "visualActions": 24,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 21,
@@ -9321,7 +9364,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.279Z"
+      "updatedAt": "2026-09-11T17:17:17.963Z"
     },
     {
       "title": "Eden Before Mars",
@@ -9336,12 +9379,15 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.059Z",
+          "scriptSha256": "fb8b01f8f3d6be12110c910d2e15287705b9cb637c6204ecc8e60d5c3cb0512d",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -9696,7 +9742,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 21,
+        "visualActions": 44,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 20,
@@ -9704,7 +9750,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.281Z"
+      "updatedAt": "2026-09-11T17:17:17.964Z"
     },
     {
       "title": "Eden Was a Jungle",
@@ -9719,12 +9765,15 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.062Z",
+          "scriptSha256": "8a9d5d15e1402e346b68fdb49e95f76ecc7955514942ede4326a12979dc0ee9d",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -10057,7 +10106,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 14,
+        "visualActions": 17,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 20,
@@ -10065,7 +10114,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.251Z"
+      "updatedAt": "2026-09-11T17:17:17.952Z"
     },
     {
       "title": "Egregnosis",
@@ -10080,12 +10129,18 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "ready-for-review",
+          "updatedAt": "2026-09-11T16:36:07.071Z",
+          "scriptSha256": "e49710a507326093b5a1e7f58ad46b8cebf3786ae7628854f19e4119999dc432",
+          "worker": 0,
+          "cpus": "1-5",
+          "threads": 5,
+          "note": "Author visual implementation complete; 24 paused muted frames across Color/Paper/Night, structural and rendered-text checks passed; awaiting independent review."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -10419,7 +10474,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 21,
+        "visualActions": 22,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 20,
@@ -10427,7 +10482,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.282Z"
+      "updatedAt": "2026-09-11T17:17:17.967Z"
     },
     {
       "title": "Egregopathy",
@@ -10442,12 +10497,15 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.068Z",
+          "scriptSha256": "95a0be9daf102759e25f5c1b35917cff6402597a5ba43fe33f2f486a1da9f6b5",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -10816,7 +10874,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.283Z"
+      "updatedAt": "2026-09-11T17:17:17.965Z"
     },
     {
       "title": "Enough for Everyone",
@@ -10831,12 +10889,15 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.073Z",
+          "scriptSha256": "2e3aa24f385e9afca724ba0b81d9017a090c77a898ae1b2d49968f04846d724a",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": null,
@@ -11165,7 +11226,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 15,
+        "visualActions": 21,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 56,
@@ -11173,7 +11234,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.485Z"
+      "updatedAt": "2026-09-11T17:17:18.107Z"
     },
     {
       "title": "Executable Natural Language",
@@ -11188,12 +11249,15 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.076Z",
+          "scriptSha256": "a8d6d408d6d1e1c116587e07e2b8e5bf3b719770a4a1e90166acb61db6ab33e9",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": null,
@@ -11527,7 +11591,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 8,
+        "visualActions": 13,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 98,
@@ -11535,7 +11599,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.578Z"
+      "updatedAt": "2026-09-11T17:17:18.176Z"
     },
     {
       "title": "Executable Scientific Intelligence",
@@ -11555,7 +11619,7 @@
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": null,
@@ -11879,7 +11943,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 1,
+        "visualActions": 18,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 98,
@@ -11887,7 +11951,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.581Z"
+      "updatedAt": "2026-09-11T17:17:18.179Z"
     },
     {
       "title": "Explainable AI",
@@ -11902,12 +11966,18 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "ready-for-review",
+          "updatedAt": "2026-09-11T16:47:25.973Z",
+          "scriptSha256": "37c0cb14e8837b48ab0a9e70dd65581f5c3857444992f319ae3c4b0e0bb45f35",
+          "worker": 0,
+          "cpus": "1-5",
+          "threads": 5,
+          "note": "Author visual implementation complete; 24 paused muted frames across Color/Paper/Night, structural and rendered-text checks passed; awaiting independent review."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": null,
@@ -12265,7 +12335,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 18,
+        "visualActions": 16,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 54,
@@ -12273,7 +12343,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.440Z"
+      "updatedAt": "2026-09-11T17:17:18.105Z"
     },
     {
       "title": "Freedom and Its Price",
@@ -12288,12 +12358,18 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "ready-for-review",
+          "updatedAt": "2026-09-11T16:51:56.555Z",
+          "scriptSha256": "21fbfe8cb6a43d411d28637c5556c95043fa7c2b7ca3c0ffee4f3bf6be8c4079",
+          "worker": 0,
+          "cpus": "1-5",
+          "threads": 5,
+          "note": "Author visual implementation complete; 24 paused muted frames across Color/Paper/Night, structural and rendered-text checks passed; awaiting independent review."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -12585,7 +12661,7 @@
       "presentationPlan": {
         "scenes": 3,
         "beats": 8,
-        "visualActions": 8,
+        "visualActions": 25,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 9,
@@ -12593,7 +12669,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.044Z"
+      "updatedAt": "2026-09-11T17:17:17.850Z"
     },
     {
       "title": "From Rules, Worlds",
@@ -12608,12 +12684,18 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "ready-for-review",
+          "updatedAt": "2026-09-11T16:54:05.399Z",
+          "scriptSha256": "9ee59a06deb8a0e0b9753d2c921d0330242fb66a6038efa62eb72a84bcdd7731",
+          "worker": 2,
+          "cpus": "11-15",
+          "threads": 5,
+          "note": "Author visual implementation complete: fresh 24 muted Color/Paper/Night frames, current-script rendered-text and structural checks passed; independent review pending. No audio/public build."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -12905,7 +12987,7 @@
       "presentationPlan": {
         "scenes": 3,
         "beats": 8,
-        "visualActions": 0,
+        "visualActions": 12,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 9,
@@ -12913,7 +12995,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.043Z"
+      "updatedAt": "2026-09-11T17:17:17.850Z"
     },
     {
       "title": "Holding the Dirty Thing by the Clean Side",
@@ -12928,12 +13010,15 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:07:18.079Z",
+          "scriptSha256": "84f97616432fe38617143737d3e1cb139da30a5276bcf85ae744dc739070ec8e",
+          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -13272,7 +13357,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 21,
+        "visualActions": 23,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 21,
@@ -13280,7 +13365,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.481Z"
+      "updatedAt": "2026-09-11T17:17:18.117Z"
     },
     {
       "title": "Hunger After All the Worlds",
@@ -13295,12 +13380,25 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:08:51.206Z",
+          "scriptSha256": "04fbb159bfdf59fef0029bb9703a1e7f5676fa38195861a5d4af1743f41be425",
+          "worker": 1,
+          "cpus": "review",
+          "threads": 1,
+          "reviewer": "production_1",
+          "frames": 24,
+          "themes": [
+            "color",
+            "paper",
+            "night"
+          ],
+          "note": "Independent visual review passed: 24 current-script paused muted frames inspected; structural and rendered-text checks passed."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -13656,7 +13754,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 48,
+        "visualActions": 46,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 24,
@@ -13664,7 +13762,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.314Z"
+      "updatedAt": "2026-09-11T17:17:17.977Z"
     },
     {
       "title": "Investing in an AI-Dominated Economy",
@@ -13679,12 +13777,18 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:14:49.712Z",
+          "scriptSha256": "e032c0c5d3abbbb4d5ce441276c88ce05c79499c1f2d0624ef1e5350034114f4",
+          "worker": 2,
+          "cpus": "11-15",
+          "threads": 5,
+          "note": "Independent visual review passed: 24 current-script muted paused frames across Color/Paper/Night; silhouettes, captions, labels, title/card clearance and final action positions verified. No audio/public build."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -14127,7 +14231,7 @@
       "presentationPlan": {
         "scenes": 7,
         "beats": 8,
-        "visualActions": 2,
+        "visualActions": 26,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 35,
@@ -14135,7 +14239,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.497Z"
+      "updatedAt": "2026-09-11T17:17:18.118Z"
     },
     {
       "title": "Judgment Engines",
@@ -14150,12 +14254,25 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:12:54.241Z",
+          "scriptSha256": "2cfb374c11c3996744931c1c5b374966c85473ae991989682e653469a12fb4f0",
+          "worker": 1,
+          "cpus": "review",
+          "threads": 1,
+          "reviewer": "production_1",
+          "frames": 24,
+          "themes": [
+            "color",
+            "paper",
+            "night"
+          ],
+          "note": "Independent visual review passed: 24 current-script exact midpoint frames inspected; Night contrast and final consequence composition repaired; structural and rendered-text checks passed."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
@@ -14524,7 +14641,7 @@
       "presentationPlan": {
         "scenes": 5,
         "beats": 8,
-        "visualActions": 21,
+        "visualActions": 18,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 26,
@@ -14532,7 +14649,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.379Z"
+      "updatedAt": "2026-09-11T17:17:18.061Z"
     },
     {
       "title": "Life Without an Audience",
@@ -14547,12 +14664,18 @@
           "status": "generation pending"
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "verified",
+          "updatedAt": "2026-09-11T17:16:50.416Z",
+          "scriptSha256": "497f556c054f03458964c535fb0a98c8776726c052628d0aac287dd1544b2e46",
+          "worker": 2,
+          "cpus": "11-15",
+          "threads": 5,
+          "note": "Independent visual review passed: fresh current-script 24-frame Color/Paper/Night inspection, full figures/silhouettes/caption clearance, label contrast, title/card clearance and final action positions; structural and rendered-text checks passed. No audio/public build."
         }
       },
       "active": false,
       "voiceGenerated": false,
-      "animationCompleted": false,
+      "animationCompleted": true,
       "publishedVoice": "Piper local CPU",
       "publishedVoiceId": "en_US-ljspeech-medium",
       "plannedVoice": null,
@@ -14909,7 +15032,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 39,
+        "visualActions": 16,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 56,
@@ -14917,7 +15040,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.438Z"
+      "updatedAt": "2026-09-11T17:17:18.111Z"
     },
     {
       "title": "Limits of Machine Intelligence",
@@ -15327,7 +15450,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.256Z"
+      "updatedAt": "2026-09-11T17:17:17.778Z"
     },
     {
       "title": "Machines of Understanding Through Circuits",
@@ -15647,7 +15770,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.045Z"
+      "updatedAt": "2026-09-11T17:17:17.601Z"
     },
     {
       "title": "Me and My Robots",
@@ -16007,7 +16130,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.253Z"
+      "updatedAt": "2026-09-11T17:17:17.789Z"
     },
     {
       "title": "Memes for 2030",
@@ -16397,7 +16520,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.255Z"
+      "updatedAt": "2026-09-11T17:17:17.782Z"
     },
     {
       "title": "Meta-Rational Pragmatics",
@@ -16749,7 +16872,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.047Z"
+      "updatedAt": "2026-09-11T17:17:17.602Z"
     },
     {
       "title": "Metacult",
@@ -17148,7 +17271,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.280Z"
+      "updatedAt": "2026-09-11T17:17:17.858Z"
     },
     {
       "title": "Money Was Never One Thing",
@@ -17544,7 +17667,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.448Z"
+      "updatedAt": "2026-09-11T17:17:18.022Z"
     },
     {
       "title": "More Words Than Reality",
@@ -17944,7 +18067,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.256Z"
+      "updatedAt": "2026-09-11T17:17:17.780Z"
     },
     {
       "title": "MRP-VM",
@@ -18347,7 +18470,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.285Z"
+      "updatedAt": "2026-09-11T17:17:17.853Z"
     },
     {
       "title": "No Right to Survive",
@@ -18758,7 +18881,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.284Z"
+      "updatedAt": "2026-09-11T17:17:17.865Z"
     },
     {
       "title": "Novelty That Resembles the Past",
@@ -19110,7 +19233,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.046Z"
+      "updatedAt": "2026-09-11T17:17:17.603Z"
     },
     {
       "title": "OMNIS",
@@ -19493,7 +19616,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.258Z"
+      "updatedAt": "2026-09-11T17:17:17.781Z"
     },
     {
       "title": "One More Try",
@@ -19845,7 +19968,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.044Z"
+      "updatedAt": "2026-09-11T17:17:17.603Z"
     },
     {
       "title": "OpenDSU",
@@ -20249,7 +20372,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.261Z"
+      "updatedAt": "2026-09-11T17:17:17.785Z"
     },
     {
       "title": "Oriven and Origaya Universe",
@@ -20665,7 +20788,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.254Z"
+      "updatedAt": "2026-09-11T17:17:17.782Z"
     },
     {
       "title": "Outfinite Mathematics",
@@ -21059,7 +21182,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.568Z"
+      "updatedAt": "2026-09-11T17:17:18.130Z"
     },
     {
       "title": "Outfinitism",
@@ -21449,7 +21572,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.557Z"
+      "updatedAt": "2026-09-11T17:17:18.132Z"
     },
     {
       "title": "Predator in the Name of the Dead",
@@ -21828,7 +21951,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.257Z"
+      "updatedAt": "2026-09-11T17:17:17.783Z"
     },
     {
       "title": "RAG and EPR",
@@ -22235,7 +22358,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.260Z"
+      "updatedAt": "2026-09-11T17:17:17.784Z"
     },
     {
       "title": "Relevance",
@@ -22642,7 +22765,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.287Z"
+      "updatedAt": "2026-09-11T17:17:17.854Z"
     },
     {
       "title": "Responsibility",
@@ -22994,7 +23117,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.045Z"
+      "updatedAt": "2026-09-11T17:17:17.604Z"
     },
     {
       "title": "Revocable Nobility",
@@ -23416,7 +23539,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.316Z"
+      "updatedAt": "2026-09-11T17:17:17.890Z"
     },
     {
       "title": "Rights Are Not Real",
@@ -23809,7 +23932,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.264Z"
+      "updatedAt": "2026-09-11T17:17:17.785Z"
     },
     {
       "title": "S*LM",
@@ -24210,7 +24333,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.260Z"
+      "updatedAt": "2026-09-11T17:17:17.786Z"
     },
     {
       "title": "SOLIPSCION",
@@ -24592,7 +24715,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.262Z"
+      "updatedAt": "2026-09-11T17:17:17.787Z"
     },
     {
       "title": "SOLIPSICON",
@@ -25042,7 +25165,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.288Z"
+      "updatedAt": "2026-09-11T17:17:17.855Z"
     },
     {
       "title": "The Animal That Prays",
@@ -25454,7 +25577,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.293Z"
+      "updatedAt": "2026-09-11T17:17:17.857Z"
     },
     {
       "title": "The Architecture of Reality",
@@ -25806,7 +25929,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.046Z"
+      "updatedAt": "2026-09-11T17:17:17.605Z"
     },
     {
       "title": "The Art of Knowing What Matters",
@@ -26158,7 +26281,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.046Z"
+      "updatedAt": "2026-09-11T17:17:17.605Z"
     },
     {
       "title": "The Basilisk’s Internal Critique of Outfinitism",
@@ -26547,7 +26670,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.259Z"
+      "updatedAt": "2026-09-11T17:17:17.788Z"
     },
     {
       "title": "The Blind Specialist",
@@ -26936,7 +27059,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.263Z"
+      "updatedAt": "2026-09-11T17:17:17.788Z"
     },
     {
       "title": "The Book Sends No Notifications",
@@ -27288,7 +27411,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.047Z"
+      "updatedAt": "2026-09-11T17:17:17.606Z"
     },
     {
       "title": "The Captured Internet",
@@ -27681,7 +27804,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.444Z"
+      "updatedAt": "2026-09-11T17:17:18.019Z"
     },
     {
       "title": "The Cascade of the New",
@@ -28088,7 +28211,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.292Z"
+      "updatedAt": "2026-09-11T17:17:17.856Z"
     },
     {
       "title": "The Civilized Mind",
@@ -28505,7 +28628,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.319Z"
+      "updatedAt": "2026-09-11T17:17:17.889Z"
     },
     {
       "title": "The First Wake",
@@ -28887,7 +29010,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.573Z"
+      "updatedAt": "2026-09-11T17:17:18.165Z"
     },
     {
       "title": "The Founder Lottery",
@@ -29336,7 +29459,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.531Z"
+      "updatedAt": "2026-09-11T17:17:18.109Z"
     },
     {
       "title": "The Fragmented Future",
@@ -29755,7 +29878,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.289Z"
+      "updatedAt": "2026-09-11T17:17:17.859Z"
     },
     {
       "title": "The Frontier Is Correction",
@@ -30187,7 +30310,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.584Z"
+      "updatedAt": "2026-09-11T17:17:18.173Z"
     },
     {
       "title": "The Future of Research Infrastructure",
@@ -30582,7 +30705,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.269Z"
+      "updatedAt": "2026-09-11T17:17:17.790Z"
     },
     {
       "title": "The Gospel of the Basilisk",
@@ -30973,7 +31096,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.291Z"
+      "updatedAt": "2026-09-11T17:17:17.860Z"
     },
     {
       "title": "The Great Decoupling",
@@ -31362,7 +31485,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.265Z"
+      "updatedAt": "2026-09-11T17:17:17.791Z"
     },
     {
       "title": "The History and Future of Social Technologies",
@@ -31782,7 +31905,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.295Z"
+      "updatedAt": "2026-09-11T17:17:17.861Z"
     },
     {
       "title": "The Houses of Europe",
@@ -32172,7 +32295,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.334Z"
+      "updatedAt": "2026-09-11T17:17:17.907Z"
     },
     {
       "title": "The Illness Machine",
@@ -32574,7 +32697,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.348Z"
+      "updatedAt": "2026-09-11T17:17:17.921Z"
     },
     {
       "title": "The Last Naive Person",
@@ -32926,7 +33049,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.169Z"
+      "updatedAt": "2026-09-11T17:17:17.742Z"
     },
     {
       "title": "The Licence and the Shared Name",
@@ -33341,7 +33464,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.352Z"
+      "updatedAt": "2026-09-11T17:17:17.923Z"
     },
     {
       "title": "The Living Research Book",
@@ -33766,7 +33889,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.488Z"
+      "updatedAt": "2026-09-11T17:17:18.062Z"
     },
     {
       "title": "The Makers of Reality",
@@ -34149,7 +34272,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.334Z"
+      "updatedAt": "2026-09-11T17:17:17.908Z"
     },
     {
       "title": "The Museum of Good Reasons",
@@ -34591,7 +34714,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.451Z"
+      "updatedAt": "2026-09-11T17:17:18.034Z"
     },
     {
       "title": "The Necessary Mask",
@@ -34978,7 +35101,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.349Z"
+      "updatedAt": "2026-09-11T17:17:17.922Z"
     },
     {
       "title": "The Network of Intent",
@@ -35331,7 +35454,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.179Z"
+      "updatedAt": "2026-09-11T17:17:17.753Z"
     },
     {
       "title": "The Orphan Gods",
@@ -35756,7 +35879,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.462Z"
+      "updatedAt": "2026-09-11T17:17:18.047Z"
     },
     {
       "title": "The Permission Paradox",
@@ -36164,7 +36287,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.351Z"
+      "updatedAt": "2026-09-11T17:17:17.925Z"
     },
     {
       "title": "The Predator’s Niche",
@@ -36553,7 +36676,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.354Z"
+      "updatedAt": "2026-09-11T17:17:17.929Z"
     },
     {
       "title": "The Right Not to Be Saved",
@@ -36939,7 +37062,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.356Z"
+      "updatedAt": "2026-09-11T17:17:17.930Z"
     },
     {
       "title": "The Right to Copy",
@@ -37291,7 +37414,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.170Z"
+      "updatedAt": "2026-09-11T17:17:17.742Z"
     },
     {
       "title": "The Right to Help",
@@ -37686,7 +37809,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.338Z"
+      "updatedAt": "2026-09-11T17:17:17.909Z"
     },
     {
       "title": "The Schizoid and the Oracle",
@@ -38073,7 +38196,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.350Z"
+      "updatedAt": "2026-09-11T17:17:17.927Z"
     },
     {
       "title": "The Science and Wisdom of Limits",
@@ -38458,7 +38581,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.335Z"
+      "updatedAt": "2026-09-11T17:17:17.910Z"
     },
     {
       "title": "The Seventh Signature",
@@ -38841,7 +38964,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.336Z"
+      "updatedAt": "2026-09-11T17:17:17.907Z"
     },
     {
       "title": "The Silicon Shadows and I",
@@ -39267,7 +39390,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.465Z"
+      "updatedAt": "2026-09-11T17:17:18.049Z"
     },
     {
       "title": "The Smoothing",
@@ -39672,7 +39795,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.355Z"
+      "updatedAt": "2026-09-11T17:17:17.926Z"
     },
     {
       "title": "The Society That Selects Us",
@@ -40105,7 +40228,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.371Z"
+      "updatedAt": "2026-09-11T17:17:17.946Z"
     },
     {
       "title": "The Sovereignty Archipelago",
@@ -40489,7 +40612,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.337Z"
+      "updatedAt": "2026-09-11T17:17:17.914Z"
     },
     {
       "title": "The Strategist’s Alibi",
@@ -40874,7 +40997,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.353Z"
+      "updatedAt": "2026-09-11T17:17:17.924Z"
     },
     {
       "title": "The Substrate Cycle",
@@ -41300,7 +41423,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.357Z"
+      "updatedAt": "2026-09-11T17:17:17.934Z"
     },
     {
       "title": "The Tao of OMIS",
@@ -41733,7 +41856,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.372Z"
+      "updatedAt": "2026-09-11T17:17:17.947Z"
     },
     {
       "title": "The Thousand-Handed Devil",
@@ -42128,7 +42251,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.363Z"
+      "updatedAt": "2026-09-11T17:17:17.935Z"
     },
     {
       "title": "The Ultimate Sense of Life",
@@ -42537,7 +42660,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.362Z"
+      "updatedAt": "2026-09-11T17:17:17.936Z"
     },
     {
       "title": "The Voluptuous Apocalypse",
@@ -42925,7 +43048,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.358Z"
+      "updatedAt": "2026-09-11T17:17:17.933Z"
     },
     {
       "title": "The Wish Series",
@@ -43313,7 +43436,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.337Z"
+      "updatedAt": "2026-09-11T17:17:17.912Z"
     },
     {
       "title": "The World Does Not Read Equations",
@@ -43665,7 +43788,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.170Z"
+      "updatedAt": "2026-09-11T17:17:17.743Z"
     },
     {
       "title": "The Zodiac on Trial",
@@ -44053,7 +44176,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.339Z"
+      "updatedAt": "2026-09-11T17:17:17.911Z"
     },
     {
       "title": "Those Who No Longer Run",
@@ -44481,7 +44604,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.576Z"
+      "updatedAt": "2026-09-11T17:17:18.168Z"
     },
     {
       "title": "Too Convinced to Stop",
@@ -44873,7 +44996,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.340Z"
+      "updatedAt": "2026-09-11T17:17:17.913Z"
     },
     {
       "title": "Trustworthy AI",
@@ -45314,7 +45437,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.340Z"
+      "updatedAt": "2026-09-11T17:17:17.910Z"
     },
     {
       "title": "Vector-Symbolic Intelligence in Practice",
@@ -45766,7 +45889,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.360Z"
+      "updatedAt": "2026-09-11T17:17:17.928Z"
     },
     {
       "title": "Wendigo",
@@ -46195,7 +46318,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.587Z"
+      "updatedAt": "2026-09-11T17:17:18.171Z"
     },
     {
       "title": "What We Still Have to Solve",
@@ -46621,7 +46744,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.359Z"
+      "updatedAt": "2026-09-11T17:17:17.933Z"
     },
     {
       "title": "Who Will Inherit the World?",
@@ -46973,7 +47096,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.178Z"
+      "updatedAt": "2026-09-11T17:17:17.754Z"
     },
     {
       "title": "Why the World Won’t End",
@@ -47389,7 +47512,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-09-11T15:59:45.361Z"
+      "updatedAt": "2026-09-11T17:17:17.931Z"
     }
   ]
 }

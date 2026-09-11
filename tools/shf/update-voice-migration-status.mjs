@@ -27,6 +27,17 @@ async function loadFilm(shf){
   const data=await fs.readFile(shf);
   return SHFCore.loadFile(new File([data],path.basename(shf)));
 }
+async function loadFilmWithRetry(shf){
+  let error;
+  for(let attempt=0;attempt<4;attempt++){
+    try{return {film:await loadFilm(shf),error:null};}
+    catch(caught){
+      error=caught;
+      if(attempt<3)await new Promise(resolve=>setTimeout(resolve,125*(attempt+1)));
+    }
+  }
+  return {film:null,error};
+}
 let projectIndex;
 async function projectFor(bookDirectory){
   if(!projectIndex)projectIndex=(async()=>{
@@ -44,16 +55,26 @@ async function hasRenderLock(project){
   const bundles=path.join(project,'work/voice-bundles');
   if(!await exists(bundles)) return false;
   const files=await walk(bundles,'.render.lock');
-  return files.length>0;
+  for(const file of files){
+    try{
+      const {pid}=await readJson(file);
+      if(!Number.isInteger(pid)||pid<=0)continue;
+      const status=await fs.readFile(`/proc/${pid}/status`,'utf8');
+      if(!/^State:\s+Z/m.test(status))return true;
+    }catch{/* An abandoned lock does not establish an active render. */}
+  }
+  return false;
 }
 async function record(manifestFile){
   const manifest=await readJson(manifestFile), bookDirectory=path.dirname(manifestFile);
   if(!manifest.animation?.shf) return null;
   const publicShf=path.resolve(bookDirectory,manifest.animation.shf);
   if(!await exists(publicShf)) return null;
-  const film=await loadFilm(publicShf);
-  const project=await projectFor(bookDirectory);
-  if(!project) return {title:manifest.title.en,bookId:manifest.id,status:'untracked',bookDirectory:rel(bookDirectory)};
+ const loaded=await loadFilmWithRetry(publicShf);
+ const project=await projectFor(bookDirectory);
+ if(!project) return {title:manifest.title.en,bookId:manifest.id,status:'untracked',bookDirectory:rel(bookDirectory)};
+ if(!loaded.film)return {title:manifest.title.en,bookId:manifest.id,status:'publication-invalid',bookDirectory:rel(bookDirectory),project:rel(project),shf:rel(publicShf),publicationError:String(loaded.error?.message||loaded.error||'Unable to read published SHF after retries'),updatedAt:new Date().toISOString()};
+ const film=loaded.film;
   const [production, receipts, build, locked]=await Promise.all([
     readJson(path.join(project,'work/production.json')),
     exists(path.join(project,'work/voice-receipts.json')).then(ok=>ok?readJson(path.join(project,'work/voice-receipts.json')):null),
@@ -124,15 +145,15 @@ async function acquire(lock){
 const lock=path.join('tasks','.voice-migration-progress.lock'), handle=await acquire(lock);
 try {
   const entries=(await Promise.all((await walk('docs/books','manifest.json')).map(record))).filter(Boolean).sort((a,b)=>a.title.localeCompare(b.title));
-  const counts=Object.fromEntries(['qwen-complete','rendering','pending-piper','needs-render','needs-rerender','untracked'].map(status=>[status,entries.filter(entry=>entry.status===status).length]));
+  const counts=Object.fromEntries(['qwen-complete','rendering','pending-piper','needs-render','needs-rerender','publication-invalid','untracked'].map(status=>[status,entries.filter(entry=>entry.status===status).length]));
   const editorialCounts={reviewed:entries.filter(entry=>entry.editorialStatus==='reviewed').length,awaitingReview:entries.filter(entry=>entry.editorialStatus==='independent-review-pending').length,awaitingRewrite:entries.filter(entry=>entry.editorialStatus==='rewrite-pending').length};
-  const productionCounts={animations:entries.filter(entry=>entry.animationCompleted).length,voices:entries.filter(entry=>entry.voiceGenerated).length,published:counts['qwen-complete']};
+  const productionCounts={animations:entries.filter(entry=>entry.animationCompleted).length,voices:entries.filter(entry=>entry.voiceGenerated).length,published:counts['qwen-complete'],publicationInvalid:counts['publication-invalid']};
   const planned=entries.filter(entry=>entry.visualPlan).length;
   const data={format:'ScriptaHub-animation-voice-migration',version:2,updatedAt:new Date().toISOString(),scope:'All book animations: engaging introductions of 1–2 minutes, maximum two minutes.',counts,editorialCounts,productionCounts,visualPlans:planned,conversionGate:editorialCounts.reviewed===entries.length&&planned===entries.length?'plans-reviewed':'all-plans-must-be-reviewed',entries};
   const json=path.join('tasks','voice-migration-progress.json');
   await fs.writeFile(`${json}.${process.pid}.tmp`,JSON.stringify(data,null,2)+'\n');
   await fs.rename(`${json}.${process.pid}.tmp`,json);
-  const groups=[['qwen-complete','Voci Qwen finalizate'],['rendering','În conversie'],['pending-piper','Încă pe Piper'],['needs-render','Pregătite pentru conversie'],['needs-rerender','De refăcut după schimbarea textului'],['untracked','Fără proiect asociat']];
+  const groups=[['qwen-complete','Voci Qwen finalizate'],['rendering','În conversie'],['pending-piper','Încă pe Piper'],['needs-render','Pregătite pentru conversie'],['needs-rerender','De refăcut după schimbarea textului'],['publication-invalid','Publicare SHF invalidă'],['untracked','Fără proiect asociat']];
   const lines=['# Progres migrare voci pentru animații','',`Actualizat: ${data.updatedAt}`, '', 'Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.', '', '## Situație','',...groups.map(([key,label])=>`- ${label}: **${counts[key]}**`),''];
   for(const [key,label] of groups){const items=entries.filter(entry=>entry.status===key);if(!items.length)continue;lines.push(`## ${label}`,'',...items.map(entry=>`- ${entry.title}${entry.voiceId?` — ${entry.voiceId}`:''}${entry.durationMs?` (${Math.round(entry.durationMs/1000)} s)`:''}`),'');}
   const markdown=path.join('tasks','VOICE-MIGRATION-PROGRESS.md');

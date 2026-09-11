@@ -55,45 +55,265 @@
       "id": "source-1",
       "title": "The question",
       "edition": "edition-1",
-      "locator": "en/short_content.html#"
+      "locator": "en/short_content.html"
     },
     {
       "id": "source-2",
       "title": "The book’s path",
       "edition": "edition-1",
-      "locator": "en/short_content.html#"
+      "locator": "en/short_content.html"
     },
     {
       "id": "source-3",
       "title": "Your invitation",
       "edition": "edition-1",
-      "locator": "en/short_content.html#"
+      "locator": "en/short_content.html"
     }
   ],
   "assets": {},
   "voice": {
-    "id": "en_US-ljspeech-medium",
-    "provider": "Piper local CPU"
+    "id": "Aiden",
+    "provider": "local Qwen3-TTS 1.7B CustomVoice / Aiden"
   },
   "scenes": [
     {
       "id": "why",
-      "title": "The question",
+      "title": "The past is not the whole test",
       "chapter": "01 · The question",
       "lens": "book",
-      "intent": "How can modest rules generate worlds worth investigating?",
+      "intent": "Two models can describe the same past and disagree the moment you try to change something.",
       "knownBefore": "A prospective reader is choosing a book.",
-      "knownAfter": "It connects philosophical questions about existence with operational questions about prediction.",
-      "durationMs": 19643,
+      "knownAfter": "This research proposal explores the difference between describing an outcome and showing how it can happen.",
+      "durationMs": 26527,
       "setting": "minimal",
       "objects": [
         {
-          "id": "motif",
+          "id": "model-a",
+          "asset": "custom",
+          "x": 300,
+          "y": 300,
+          "scale": 1,
+          "meaning": "One mechanism drives two matching lights.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.model-a-0",
+                "type": "rect",
+                "attrs": {
+                  "x": -170,
+                  "y": -115,
+                  "width": 340,
+                  "height": 230,
+                  "rx": 10,
+                  "fill": "#edf5f3",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.model-a-1",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -72,
+                  "font-size": 28,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "Model A"
+              },
+              {
+                "id": "$asset.model-a-2",
+                "type": "circle",
+                "attrs": {
+                  "cx": -65,
+                  "cy": 15,
+                  "r": 22,
+                  "fill": "#f2b84b",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.model-a-3",
+                "type": "circle",
+                "attrs": {
+                  "cx": 65,
+                  "cy": 15,
+                  "r": 22,
+                  "fill": "#f2b84b",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.model-a-4",
+                "type": "line",
+                "attrs": {
+                  "x1": -43,
+                  "y1": 15,
+                  "x2": 43,
+                  "y2": 15,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 6,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.model-a-5",
+                "type": "line",
+                "attrs": {
+                  "x1": 0,
+                  "y1": 55,
+                  "x2": 0,
+                  "y2": 85,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 6,
+                  "stroke-linecap": "round"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "model-b",
+          "asset": "custom",
+          "x": 900,
+          "y": 300,
+          "scale": 1,
+          "meaning": "A different mechanism also matches the observed past.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.model-b-0",
+                "type": "rect",
+                "attrs": {
+                  "x": -170,
+                  "y": -115,
+                  "width": 340,
+                  "height": 230,
+                  "rx": 10,
+                  "fill": "#f7eee9",
+                  "stroke": "#d8583e",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.model-b-1",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -72,
+                  "font-size": 28,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "Model B"
+              },
+              {
+                "id": "$asset.model-b-2",
+                "type": "circle",
+                "attrs": {
+                  "cx": -65,
+                  "cy": 15,
+                  "r": 22,
+                  "fill": "#f2b84b",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.model-b-3",
+                "type": "circle",
+                "attrs": {
+                  "cx": 65,
+                  "cy": 15,
+                  "r": 22,
+                  "fill": "#f2b84b",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.model-b-4",
+                "type": "line",
+                "attrs": {
+                  "x1": -43,
+                  "y1": 15,
+                  "x2": 43,
+                  "y2": 15,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 6,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.model-b-5",
+                "type": "line",
+                "attrs": {
+                  "x1": 0,
+                  "y1": 55,
+                  "x2": 0,
+                  "y2": 85,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 6,
+                  "stroke-linecap": "round"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "switch",
           "asset": "custom",
           "x": 600,
-          "y": 295,
+          "y": 480,
           "scale": 1,
-          "meaning": "Three worlds branch from one compact rule system.",
+          "meaning": "The intervention changes one condition.",
           "visual": {
             "id": "$asset",
             "type": "g",
@@ -118,107 +338,55 @@
             },
             "children": [
               {
-                "id": "$asset.part16",
-                "type": "path",
+                "id": "$asset.switch-0",
+                "type": "rect",
                 "attrs": {
-                  "d": "M0-120V-45M0-45L-135 65M0-45V85M0-45L135 65",
-                  "fill": "none",
-                  "stroke": "#f23822",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
+                  "x": -120,
+                  "y": -48,
+                  "width": 240,
+                  "height": 96,
+                  "rx": 10,
+                  "fill": "#f3d58a",
+                  "stroke": "#b8792e",
+                  "stroke-width": 3
                 }
               },
               {
-                "id": "$asset.part17",
-                "type": "circle",
-                "attrs": {
-                  "cx": -135,
-                  "cy": 72,
-                  "r": 48,
-                  "fill": "#f23822",
-                  "opacity": 0.9
-                }
-              },
-              {
-                "id": "$asset.part18",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 92,
-                  "r": 48,
-                  "fill": "#00a7c8",
-                  "opacity": 0.9
-                }
-              },
-              {
-                "id": "$asset.part19",
-                "type": "circle",
-                "attrs": {
-                  "cx": 135,
-                  "cy": 72,
-                  "r": 48,
-                  "fill": "#ffd84d",
-                  "opacity": 0.9
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "label-1",
-          "asset": "custom",
-          "x": 330,
-          "y": 500,
-          "scale": 1,
-          "meaning": "Assumption",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part90",
+                "id": "$asset.switch-1",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
+                  "y": 10,
                   "font-size": 28,
                   "font-weight": 600,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
-                  "fill": "$ink"
+                  "fill": "#463a2c"
                 },
-                "text": "Assumption"
+                "text": "Changed input"
+              },
+              {
+                "id": "$asset.switch-2",
+                "type": "line",
+                "attrs": {
+                  "x1": -55,
+                  "y1": -20,
+                  "x2": 55,
+                  "y2": 20,
+                  "stroke": "#b8792e",
+                  "stroke-width": 10,
+                  "stroke-linecap": "round"
+                }
               }
             ]
           }
         },
         {
-          "id": "label-2",
+          "id": "description",
           "asset": "custom",
           "x": 600,
-          "y": 500,
+          "y": 165,
           "scale": 1,
-          "meaning": "Tension",
+          "meaning": "Description of the observed outcome beside the mechanisms.",
           "visual": {
             "id": "$asset",
             "type": "g",
@@ -243,65 +411,17 @@
             },
             "children": [
               {
-                "id": "$asset.part91",
+                "id": "$asset.description-0",
                 "type": "text",
                 "attrs": {
                   "x": 0,
                   "y": 0,
-                  "font-size": 28,
+                  "font-size": 32,
                   "font-weight": 600,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Tension"
-              }
-            ]
-          }
-        },
-        {
-          "id": "label-3",
-          "asset": "custom",
-          "x": 870,
-          "y": 500,
-          "scale": 1,
-          "meaning": "Question",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part92",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 28,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Question"
+                "text": "Same past: two lights"
               }
             ]
           }
@@ -310,7 +430,7 @@
       "connections": [],
       "actions": [
         {
-          "actor": "label-1",
+          "actor": "model-a",
           "action": "appear",
           "durationMs": 900,
           "cue": {
@@ -320,7 +440,17 @@
           }
         },
         {
-          "actor": "label-2",
+          "actor": "model-b",
+          "action": "appear",
+          "durationMs": 900,
+          "cue": {
+            "beatId": "why-line-1",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "switch",
           "action": "appear",
           "durationMs": 900,
           "cue": {
@@ -330,7 +460,7 @@
           }
         },
         {
-          "actor": "label-3",
+          "actor": "description",
           "action": "appear",
           "durationMs": 900,
           "cue": {
@@ -344,9 +474,9 @@
         {
           "id": "why-line-1",
           "startMs": 650,
-          "spokenEndMs": 3961,
-          "endMs": 5161,
-          "text": "How can modest rules generate worlds worth investigating?",
+          "spokenEndMs": 7271,
+          "endMs": 8471,
+          "text": "Two models can describe the same past and disagree the moment you try to change something.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -355,17 +485,17 @@
           "performance": {
             "targetWpm": 145,
             "pauseAfterMs": 1200,
-            "emotion": "curiosity",
-            "intensity": 0.35,
-            "delivery": "It connects philosophical questions about existence with operational questions about prediction."
+            "emotion": "curious surprise",
+            "intensity": 0.43,
+            "delivery": "Replace generic reasoning symbols with two matching light observations and separate concealed mechanisms."
           }
         },
         {
           "id": "why-line-2",
-          "startMs": 5311,
-          "spokenEndMs": 10691,
-          "endMs": 11891,
-          "text": "This research programme investigates how rules, states, and observers define descriptions of worlds.",
+          "startMs": 8621,
+          "spokenEndMs": 15656,
+          "endMs": 16856,
+          "text": "From Rules, Worlds proposes a test of understanding: can the same explanation keep working when conditions change?",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -374,17 +504,17 @@
           "performance": {
             "targetWpm": 145,
             "pauseAfterMs": 1200,
-            "emotion": "focus",
-            "intensity": 0.53,
-            "delivery": "It connects philosophical questions about existence with operational questions about prediction."
+            "emotion": "engaged inquiry",
+            "intensity": 0.35,
+            "delivery": "Replace generic reasoning symbols with two matching light observations and separate concealed mechanisms."
           }
         },
         {
           "id": "why-line-3",
-          "startMs": 12041,
-          "spokenEndMs": 16593,
-          "endMs": 18493,
-          "text": "It connects philosophical questions about existence with operational questions about prediction.",
+          "startMs": 17006,
+          "spokenEndMs": 23627,
+          "endMs": 25377,
+          "text": "This research proposal explores the difference between describing an outcome and showing how it can happen.",
           "speakerId": "narrator",
           "lens": "book",
           "sourceRefs": [
@@ -392,47 +522,125 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1900,
-            "emotion": "invitation",
-            "intensity": 0.71,
-            "delivery": "It connects philosophical questions about existence with operational questions about prediction."
+            "pauseAfterMs": 1750,
+            "emotion": "thoughtful contrast",
+            "intensity": 0.35,
+            "delivery": "Replace generic reasoning symbols with two matching light observations and separate concealed mechanisms."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "question",
-        "purpose": "It connects philosophical questions about existence with operational questions about prediction.",
+        "arc": "recognition → curiosity",
+        "purpose": "Replace generic reasoning symbols with two matching light observations and separate concealed mechanisms.",
         "states": [
-          "curiosity",
-          "focus",
-          "invitation"
+          "curious surprise",
+          "engaged inquiry",
+          "thoughtful contrast"
         ],
         "intensities": [
+          0.43,
           0.35,
-          0.53,
-          0.71
+          0.35
+        ],
+        "voiceDirections": [
+          "Speak with curious surprise; give gentle emphasis to try to change something. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with engaged inquiry; lightly emphasize keep working when conditions change. Present this specific idea in a simple conversational voice, without a grand announcement or dramatic suspense, and leave a natural pause.",
+          "Speak with thoughtful contrast; give gentle emphasis to showing how it can happen. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
         ]
       },
-      "alt": "Three worlds branch from one compact rule system. The diagram is qualitative and represents the book's conceptual relationships."
+      "alt": "Show two mechanisms producing the same two lights, then responding differently when one switch is changed. Keep the changed condition visible as the proposed understanding test. Place a description of the lights beside the actual operations connecting them. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
     },
     {
       "id": "how",
-      "title": "The book’s path",
+      "title": "What must a model preserve?",
       "chapter": "02 · The book’s path",
       "lens": "content",
-      "intent": "Chapters examine complexity, useful memory, causal intervention, and computational limits.",
-      "knownBefore": "It connects philosophical questions about existence with operational questions about prediction.",
-      "knownAfter": "The text develops hypotheses, examples, and directions for empirical investigation.",
-      "durationMs": 19642,
+      "intent": "Its examples make memory, prediction, and intervention part of the same practical challenge.",
+      "knownBefore": "This research proposal explores the difference between describing an outcome and showing how it can happen.",
+      "knownAfter": "A useful summary must keep the details that later questions will still need.",
+      "durationMs": 22390,
       "setting": "minimal",
       "objects": [
         {
-          "id": "motif",
+          "id": "memory",
+          "asset": "custom",
+          "x": 220,
+          "y": 220,
+          "scale": 1,
+          "meaning": "Memory of the earlier state.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.memory-0",
+                "type": "rect",
+                "attrs": {
+                  "x": -135,
+                  "y": -62,
+                  "width": 270,
+                  "height": 124,
+                  "rx": 10,
+                  "fill": "#e9f2f5",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.memory-1",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -8,
+                  "font-size": 27,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "Earlier state"
+              },
+              {
+                "id": "$asset.memory-2",
+                "type": "line",
+                "attrs": {
+                  "x1": -65,
+                  "y1": 28,
+                  "x2": 65,
+                  "y2": 28,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 6,
+                  "stroke-linecap": "round"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "prediction",
           "asset": "custom",
           "x": 600,
-          "y": 295,
+          "y": 220,
           "scale": 1,
-          "meaning": "Three worlds branch from one compact rule system.",
+          "meaning": "Prediction before intervention.",
           "visual": {
             "id": "$asset",
             "type": "g",
@@ -457,107 +665,128 @@
             },
             "children": [
               {
-                "id": "$asset.part16",
-                "type": "path",
+                "id": "$asset.prediction-0",
+                "type": "rect",
                 "attrs": {
-                  "d": "M0-120V-45M0-45L-135 65M0-45V85M0-45L135 65",
-                  "fill": "none",
-                  "stroke": "#f23822",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
+                  "x": -135,
+                  "y": -62,
+                  "width": 270,
+                  "height": 124,
+                  "rx": 10,
+                  "fill": "#f6efe0",
+                  "stroke": "#b8792e",
+                  "stroke-width": 3
                 }
               },
               {
-                "id": "$asset.part17",
-                "type": "circle",
-                "attrs": {
-                  "cx": -135,
-                  "cy": 72,
-                  "r": 48,
-                  "fill": "#f23822",
-                  "opacity": 0.9
-                }
-              },
-              {
-                "id": "$asset.part18",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 92,
-                  "r": 48,
-                  "fill": "#00a7c8",
-                  "opacity": 0.9
-                }
-              },
-              {
-                "id": "$asset.part19",
-                "type": "circle",
-                "attrs": {
-                  "cx": 135,
-                  "cy": 72,
-                  "r": 48,
-                  "fill": "#ffd84d",
-                  "opacity": 0.9
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "label-1",
-          "asset": "custom",
-          "x": 330,
-          "y": 500,
-          "scale": 1,
-          "meaning": "Context",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part90",
+                "id": "$asset.prediction-1",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 28,
+                  "y": -8,
+                  "font-size": 27,
                   "font-weight": 600,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Context"
+                "text": "Next prediction"
+              },
+              {
+                "id": "$asset.prediction-2",
+                "type": "line",
+                "attrs": {
+                  "x1": -65,
+                  "y1": 28,
+                  "x2": 65,
+                  "y2": 28,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 6,
+                  "stroke-linecap": "round"
+                }
               }
             ]
           }
         },
         {
-          "id": "label-2",
+          "id": "intervention",
+          "asset": "custom",
+          "x": 980,
+          "y": 220,
+          "scale": 1,
+          "meaning": "A changed condition tested against prediction.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.intervention-0",
+                "type": "rect",
+                "attrs": {
+                  "x": -135,
+                  "y": -62,
+                  "width": 270,
+                  "height": 124,
+                  "rx": 10,
+                  "fill": "#f7eee9",
+                  "stroke": "#d8583e",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.intervention-1",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -8,
+                  "font-size": 27,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "Intervention"
+              },
+              {
+                "id": "$asset.intervention-2",
+                "type": "line",
+                "attrs": {
+                  "x1": -65,
+                  "y1": 28,
+                  "x2": 65,
+                  "y2": 28,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 6,
+                  "stroke-linecap": "round"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "mechanisms",
           "asset": "custom",
           "x": 600,
-          "y": 500,
+          "y": 390,
           "scale": 1,
-          "meaning": "Method",
+          "meaning": "Two mechanisms can coordinate the visible lights differently.",
           "visual": {
             "id": "$asset",
             "type": "g",
@@ -582,29 +811,78 @@
             },
             "children": [
               {
-                "id": "$asset.part91",
+                "id": "$asset.mechanisms-0",
+                "type": "line",
+                "attrs": {
+                  "x1": -260,
+                  "y1": 0,
+                  "x2": -60,
+                  "y2": 0,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 8,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.mechanisms-1",
+                "type": "line",
+                "attrs": {
+                  "x1": 60,
+                  "y1": 0,
+                  "x2": 260,
+                  "y2": 0,
+                  "stroke": "#d8583e",
+                  "stroke-width": 8,
+                  "stroke-linecap": "round"
+                }
+              },
+              {
+                "id": "$asset.mechanisms-2",
+                "type": "circle",
+                "attrs": {
+                  "cx": -215,
+                  "cy": 0,
+                  "r": 16,
+                  "fill": "#f2b84b",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.mechanisms-3",
+                "type": "circle",
+                "attrs": {
+                  "cx": 215,
+                  "cy": 0,
+                  "r": 16,
+                  "fill": "#f2b84b",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.mechanisms-4",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 28,
+                  "y": 48,
+                  "font-size": 25,
                   "font-weight": 600,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Method"
+                "text": "Different hidden connections"
               }
             ]
           }
         },
         {
-          "id": "label-3",
+          "id": "record",
           "asset": "custom",
-          "x": 870,
-          "y": 500,
+          "x": 600,
+          "y": 515,
           "scale": 1,
-          "meaning": "Limits",
+          "meaning": "Compact record retains details needed later.",
           "visual": {
             "id": "$asset",
             "type": "g",
@@ -629,18 +907,31 @@
             },
             "children": [
               {
-                "id": "$asset.part92",
+                "id": "$asset.record-0",
+                "type": "rect",
+                "attrs": {
+                  "x": -250,
+                  "y": -42,
+                  "width": 500,
+                  "height": 84,
+                  "rx": 10,
+                  "fill": "#edf1ef",
+                  "stroke": "#76557f",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.record-1",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 28,
+                  "y": 9,
+                  "font-size": 25,
                   "font-weight": 600,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Limits"
+                "text": "Keep the connection for the next question"
               }
             ]
           }
@@ -649,7 +940,7 @@
       "connections": [],
       "actions": [
         {
-          "actor": "label-1",
+          "actor": "memory",
           "action": "appear",
           "durationMs": 900,
           "cue": {
@@ -659,7 +950,27 @@
           }
         },
         {
-          "actor": "label-2",
+          "actor": "prediction",
+          "action": "appear",
+          "durationMs": 900,
+          "cue": {
+            "beatId": "how-line-1",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "intervention",
+          "action": "appear",
+          "durationMs": 900,
+          "cue": {
+            "beatId": "how-line-1",
+            "edge": "start",
+            "offsetMs": 250
+          }
+        },
+        {
+          "actor": "mechanisms",
           "action": "appear",
           "durationMs": 900,
           "cue": {
@@ -669,7 +980,7 @@
           }
         },
         {
-          "actor": "label-3",
+          "actor": "record",
           "action": "appear",
           "durationMs": 900,
           "cue": {
@@ -683,9 +994,9 @@
         {
           "id": "how-line-1",
           "startMs": 650,
-          "spokenEndMs": 4788,
-          "endMs": 5988,
-          "text": "Chapters examine complexity, useful memory, causal intervention, and computational limits.",
+          "spokenEndMs": 6030,
+          "endMs": 7230,
+          "text": "Its examples make memory, prediction, and intervention part of the same practical challenge.",
           "speakerId": "narrator",
           "lens": "content",
           "sourceRefs": [
@@ -694,17 +1005,17 @@
           "performance": {
             "targetWpm": 145,
             "pauseAfterMs": 1200,
-            "emotion": "curiosity",
+            "emotion": "engaged clarity",
             "intensity": 0.35,
-            "delivery": "The text develops hypotheses, examples, and directions for empirical investigation."
+            "delivery": "Animate one intervention with both possibilities still open; distinguish prediction from action."
           }
         },
         {
           "id": "how-line-2",
-          "startMs": 6138,
-          "spokenEndMs": 11104,
-          "endMs": 12304,
-          "text": "Model comparisons depend on explicit observations, resource budgets, and criteria of equivalence.",
+          "startMs": 7380,
+          "spokenEndMs": 12760,
+          "endMs": 13960,
+          "text": "Two lights may look perfectly coordinated while depending on entirely different hidden mechanisms.",
           "speakerId": "narrator",
           "lens": "content",
           "sourceRefs": [
@@ -713,17 +1024,17 @@
           "performance": {
             "targetWpm": 145,
             "pauseAfterMs": 1200,
-            "emotion": "focus",
-            "intensity": 0.53,
-            "delivery": "The text develops hypotheses, examples, and directions for empirical investigation."
+            "emotion": "lively curiosity",
+            "intensity": 0.35,
+            "delivery": "Animate one intervention with both possibilities still open; distinguish prediction from action."
           }
         },
         {
           "id": "how-line-3",
-          "startMs": 12454,
-          "spokenEndMs": 16592,
-          "endMs": 18492,
-          "text": "The text develops hypotheses, examples, and directions for empirical investigation.",
+          "startMs": 14110,
+          "spokenEndMs": 19490,
+          "endMs": 21240,
+          "text": "A useful summary must keep the details that later questions will still need.",
           "speakerId": "narrator",
           "lens": "content",
           "sourceRefs": [
@@ -731,47 +1042,213 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1900,
-            "emotion": "invitation",
-            "intensity": 0.71,
-            "delivery": "The text develops hypotheses, examples, and directions for empirical investigation."
+            "pauseAfterMs": 1750,
+            "emotion": "careful emphasis",
+            "intensity": 0.35,
+            "delivery": "Animate one intervention with both possibilities still open; distinguish prediction from action."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "tension",
-        "purpose": "The text develops hypotheses, examples, and directions for empirical investigation.",
+        "arc": "attention → thoughtful tension",
+        "purpose": "Animate one intervention with both possibilities still open; distinguish prediction from action.",
         "states": [
-          "curiosity",
-          "focus",
-          "invitation"
+          "engaged clarity",
+          "lively curiosity",
+          "careful emphasis"
         ],
         "intensities": [
           0.35,
-          0.53,
-          0.71
+          0.35,
+          0.35
+        ],
+        "voiceDirections": [
+          "Speak with engaged clarity; give gentle emphasis to same practical challenge. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with lively curiosity; give gentle emphasis to two lights. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with careful emphasis; give gentle emphasis to later questions. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
         ]
       },
-      "alt": "Three worlds branch from one compact rule system. The diagram is qualitative and represents the book's conceptual relationships."
+      "alt": "Keep memory of the earlier state, the next prediction and the intervention in one legible sequence. Reveal the different hidden connections beneath the apparently coordinated lights. Show a compact record retaining the connection needed for the next question. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
     },
     {
       "id": "what",
-      "title": "Your invitation",
+      "title": "Ask what happens next",
       "chapter": "03 · Your invitation",
       "lens": "reader",
-      "intent": "Its central problem concerns what finite evidence can establish about apparently similar systems.",
-      "knownBefore": "The text develops hypotheses, examples, and directions for empirical investigation.",
-      "knownAfter": "Read From Rules, Worlds to follow the complete argument, examples, and consequences.",
-      "durationMs": 22012,
+      "intent": "A simple example becomes a demanding question about what a machine really understands.",
+      "knownBefore": "A useful summary must keep the details that later questions will still need.",
+      "knownAfter": "Begin with what happens next, and ask whether the explanation gives you a way to work it out.",
+      "durationMs": 17729,
       "setting": "minimal",
       "objects": [
         {
-          "id": "motif",
+          "id": "lights",
+          "asset": "custom",
+          "x": 300,
+          "y": 280,
+          "scale": 1,
+          "meaning": "Simple light example remains visible.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.lights-0",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -65,
+                  "font-size": 28,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "Observed lights"
+              },
+              {
+                "id": "$asset.lights-1",
+                "type": "circle",
+                "attrs": {
+                  "cx": -55,
+                  "cy": 0,
+                  "r": 24,
+                  "fill": "#f2b84b",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.lights-2",
+                "type": "circle",
+                "attrs": {
+                  "cx": 55,
+                  "cy": 0,
+                  "r": 24,
+                  "fill": "#f2b84b",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.lights-3",
+                "type": "line",
+                "attrs": {
+                  "x1": -30,
+                  "y1": 0,
+                  "x2": 30,
+                  "y2": 0,
+                  "stroke": "#2d7c88",
+                  "stroke-width": 6,
+                  "stroke-linecap": "round"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "proposal",
+          "asset": "custom",
+          "x": 900,
+          "y": 280,
+          "scale": 1,
+          "meaning": "An unproven proposal asks what the machine understands.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.proposal-0",
+                "type": "rect",
+                "attrs": {
+                  "x": -190,
+                  "y": -82,
+                  "width": 380,
+                  "height": 164,
+                  "rx": 10,
+                  "fill": "#f6efe0",
+                  "stroke": "#2d7c88",
+                  "stroke-width": 3
+                }
+              },
+              {
+                "id": "$asset.proposal-1",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -30,
+                  "font-size": 30,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#334a54"
+                },
+                "text": "Research proposal",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#334a54"
+                  }
+                }
+              },
+              {
+                "id": "$asset.proposal-2",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 28,
+                  "font-size": 25,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#76557f"
+                },
+                "text": "What happens next?"
+              }
+            ]
+          }
+        },
+        {
+          "id": "switch-next",
           "asset": "custom",
           "x": 600,
-          "y": 295,
+          "y": 470,
           "scale": 1,
-          "meaning": "Three worlds branch from one compact rule system.",
+          "meaning": "A new condition awaits a justified answer.",
           "visual": {
             "id": "$asset",
             "type": "g",
@@ -796,190 +1273,31 @@
             },
             "children": [
               {
-                "id": "$asset.part16",
-                "type": "path",
+                "id": "$asset.switch-next-0",
+                "type": "rect",
                 "attrs": {
-                  "d": "M0-120V-45M0-45L-135 65M0-45V85M0-45L135 65",
-                  "fill": "none",
-                  "stroke": "#f23822",
-                  "stroke-width": 9,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
+                  "x": -145,
+                  "y": -48,
+                  "width": 290,
+                  "height": 96,
+                  "rx": 10,
+                  "fill": "#f3d58a",
+                  "stroke": "#b8792e",
+                  "stroke-width": 3
                 }
               },
               {
-                "id": "$asset.part17",
-                "type": "circle",
-                "attrs": {
-                  "cx": -135,
-                  "cy": 72,
-                  "r": 48,
-                  "fill": "#f23822",
-                  "opacity": 0.9
-                }
-              },
-              {
-                "id": "$asset.part18",
-                "type": "circle",
-                "attrs": {
-                  "cx": 0,
-                  "cy": 92,
-                  "r": 48,
-                  "fill": "#00a7c8",
-                  "opacity": 0.9
-                }
-              },
-              {
-                "id": "$asset.part19",
-                "type": "circle",
-                "attrs": {
-                  "cx": 135,
-                  "cy": 72,
-                  "r": 48,
-                  "fill": "#ffd84d",
-                  "opacity": 0.9
-                }
-              }
-            ]
-          }
-        },
-        {
-          "id": "label-1",
-          "asset": "custom",
-          "x": 330,
-          "y": 500,
-          "scale": 1,
-          "meaning": "Insight",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part90",
+                "id": "$asset.switch-next-1",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 28,
+                  "y": 8,
+                  "font-size": 27,
                   "font-weight": 600,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
-                  "fill": "$ink"
+                  "fill": "#463a2c"
                 },
-                "text": "Insight"
-              }
-            ]
-          }
-        },
-        {
-          "id": "label-2",
-          "asset": "custom",
-          "x": 600,
-          "y": 500,
-          "scale": 1,
-          "meaning": "Journey",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part91",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 28,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Journey"
-              }
-            ]
-          }
-        },
-        {
-          "id": "label-3",
-          "asset": "custom",
-          "x": 870,
-          "y": 500,
-          "scale": 1,
-          "meaning": "Read",
-          "visual": {
-            "id": "$asset",
-            "type": "g",
-            "attrs": {},
-            "anchors": {
-              "left": [
-                -70,
-                0
-              ],
-              "right": [
-                70,
-                0
-              ],
-              "top": [
-                0,
-                -70
-              ],
-              "bottom": [
-                0,
-                70
-              ]
-            },
-            "children": [
-              {
-                "id": "$asset.part92",
-                "type": "text",
-                "attrs": {
-                  "x": 0,
-                  "y": 0,
-                  "font-size": 28,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
-                  "text-anchor": "middle",
-                  "fill": "$ink"
-                },
-                "text": "Read"
+                "text": "New switch position"
               }
             ]
           }
@@ -988,7 +1306,7 @@
       "connections": [],
       "actions": [
         {
-          "actor": "label-1",
+          "actor": "lights",
           "action": "appear",
           "durationMs": 900,
           "cue": {
@@ -998,21 +1316,21 @@
           }
         },
         {
-          "actor": "label-2",
+          "actor": "proposal",
           "action": "appear",
           "durationMs": 900,
           "cue": {
-            "beatId": "what-line-2",
+            "beatId": "what-line-1",
             "edge": "start",
             "offsetMs": 250
           }
         },
         {
-          "actor": "label-3",
+          "actor": "switch-next",
           "action": "appear",
           "durationMs": 900,
           "cue": {
-            "beatId": "what-line-3",
+            "beatId": "what-line-2",
             "edge": "start",
             "offsetMs": 250
           }
@@ -1024,7 +1342,7 @@
           "startMs": 650,
           "spokenEndMs": 6030,
           "endMs": 7230,
-          "text": "Its central problem concerns what finite evidence can establish about apparently similar systems.",
+          "text": "A simple example becomes a demanding question about what a machine really understands.",
           "speakerId": "narrator",
           "lens": "reader",
           "sourceRefs": [
@@ -1033,17 +1351,17 @@
           "performance": {
             "targetWpm": 145,
             "pauseAfterMs": 1200,
-            "emotion": "curiosity",
+            "emotion": "intellectual interest",
             "intensity": 0.35,
-            "delivery": "Read From Rules, Worlds to follow the complete argument, examples, and consequences."
+            "delivery": "End on the compact representation and a new question it must answer, avoiding an unsupported solved-understanding claim."
           }
         },
         {
           "id": "what-line-2",
           "startMs": 7380,
-          "spokenEndMs": 12346,
-          "endMs": 13546,
-          "text": "This invitation is for readers drawn to computation, emergence, and rigorous imagination.",
+          "spokenEndMs": 14829,
+          "endMs": 16579,
+          "text": "Begin with what happens next, and ask whether the explanation gives you a way to work it out.",
           "speakerId": "narrator",
           "lens": "reader",
           "sourceRefs": [
@@ -1051,47 +1369,30 @@
           ],
           "performance": {
             "targetWpm": 145,
-            "pauseAfterMs": 1200,
-            "emotion": "focus",
-            "intensity": 0.53,
-            "delivery": "Read From Rules, Worlds to follow the complete argument, examples, and consequences."
-          }
-        },
-        {
-          "id": "what-line-3",
-          "startMs": 13696,
-          "spokenEndMs": 18662,
-          "endMs": 20862,
-          "text": "Read From Rules, Worlds to follow the complete argument, examples, and consequences.",
-          "speakerId": "narrator",
-          "lens": "reader",
-          "sourceRefs": [
-            "source-3"
-          ],
-          "performance": {
-            "targetWpm": 145,
-            "pauseAfterMs": 2200,
-            "emotion": "invitation",
-            "intensity": 0.71,
-            "delivery": "Read From Rules, Worlds to follow the complete argument, examples, and consequences."
+            "pauseAfterMs": 1750,
+            "emotion": "gentle invitation",
+            "intensity": 0.35,
+            "delivery": "End on the compact representation and a new question it must answer, avoiding an unsupported solved-understanding claim."
           }
         }
       ],
       "emotionalPlan": {
-        "arc": "opening",
-        "purpose": "Read From Rules, Worlds to follow the complete argument, examples, and consequences.",
+        "arc": "reflection → open curiosity",
+        "purpose": "End on the compact representation and a new question it must answer, avoiding an unsupported solved-understanding claim.",
         "states": [
-          "curiosity",
-          "focus",
-          "invitation"
+          "intellectual interest",
+          "gentle invitation"
         ],
         "intensities": [
           0.35,
-          0.53,
-          0.71
+          0.35
+        ],
+        "voiceDirections": [
+          "Speak with intellectual interest; give gentle emphasis to really understands. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end.",
+          "Speak with gentle invitation; give gentle emphasis to work it out. Keep a natural conversational voice, let the listener picture this specific situation, and leave a real pause at the end."
         ]
       },
-      "alt": "Three worlds branch from one compact rule system. The diagram is qualitative and represents the book's conceptual relationships."
+      "alt": "Let the simple light example remain visible beside an unproven research proposal. End with a new switch position awaiting a justified next answer. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
     }
   ]
 }

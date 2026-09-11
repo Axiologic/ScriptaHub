@@ -7,9 +7,9 @@
   const queryBefore=root.querySelector('[data-status-search]')?.value||'';
   const focusSearch=document.activeElement===root.querySelector('[data-status-search]');
   const openTitles=new Set([...root.querySelectorAll('details[open]')].map(details=>details.closest('article').dataset.statusBook));
-  const labels={'qwen-complete':'Current script published with Qwen','rendering':'Voice generation in progress','pending-piper':'Previous Piper recording','needs-render':'Voice generation pending','needs-rerender':'Qwen recording needs updating','untracked':'Project missing'};
+  const labels={'publication-invalid':'Published SHF invalid · rebuild required','qwen-complete':'Current script published with Qwen','rendering':'Voice generation in progress','pending-piper':'Previous Piper recording','needs-render':'Voice generation pending','needs-rerender':'Qwen recording needs updating','untracked':'Project missing'};
   const reviews={reviewed:'Script independently reviewed','independent-review-pending':'Draft rewritten · independent review pending','rewrite-pending':'Editorial rewrite pending'};
-  const order=['qwen-complete','rendering','needs-rerender','pending-piper','needs-render','untracked'];
+  const order=['publication-invalid','qwen-complete','rendering','needs-rerender','pending-piper','needs-render','untracked'];
   const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const duration=ms=>`${Math.floor(ms/60000)}:${String(Math.round(ms/1000)%60).padStart(2,'0')}`;
   const link=(url,label)=>`<a href="${escape(url)}" target="_blank" rel="noopener noreferrer">${escape(label)}</a>`;
@@ -17,13 +17,15 @@
   const article=entry=>{
     const review=entry.editorialReview;
     const stages=entry.stages||{};
-    const failed=Object.values(stages).some(stage=>['failed','interrupted'].includes(stage.status));
+    const failed=entry.status==='publication-invalid'||Object.values(stages).some(stage=>['failed','interrupted'].includes(stage.status));
     const done=stages.animation?.status==='done'&&stages.voice?.status==='done';
     const checking=entry.status==='qwen-complete'||['built','reviewing'].includes(stages.animation?.status)||stages.voice?.status==='generated';
     const state=entry.active?'active':failed?'failed':done?'done':checking?'review':'pending';
     const stateLabel={active:'În lucru',failed:'Necesită atenție',done:'Gata',review:'De verificat',pending:'De făcut'}[state];
     const currentSteps=Object.entries(stages).filter(([,stage])=>['running','reviewing','rewriting'].includes(stage.status)).map(([name])=>({text:'text',animation:'animație',voice:'voce'}[name]||name));
-    const remaining=entry.status==='qwen-complete'
+    const remaining=entry.status==='publication-invalid'
+      ? 'The published SHF archive is unreadable after retries. Rebuild and republish the film; the entry remains visible until the archive parses successfully.'
+      : entry.status==='qwen-complete'
       ? 'Current wording and audio are present in the published film; listening and visual review are separate checks.'
       : `${entry.editorialStatus==='reviewed'?'':'Finish the script review. '}Adapt the artwork to the selected scenes, generate changed narration, measure and retime, then rebuild and inspect the film in all three themes.`;
     return `<article data-status-book="${escape(entry.title.toLowerCase())}" data-work-state="${state}">
@@ -70,7 +72,7 @@
   const finishedTable=`<section class="status-group status-finished" data-finished-films><h2>Filme finalizate și publicate <small>${finished.length}</small></h2><p class="status-note">Animație verificată și voce nouă, disponibile în filmul publicat.</p>${finished.length?`<div class="status-table-scroll"><table><thead><tr><th scope="col">Carte</th><th scope="col">Durată</th><th scope="col">Voce</th><th scope="col">Linkuri</th></tr></thead><tbody>${finished.map(entry=>`<tr data-status-book="${escape(entry.title.toLowerCase())}"><th scope="row">${link(entry.bookPage,entry.title)}</th><td>${duration(entry.durationMs)}</td><td>${escape(entry.publishedVoiceId||entry.publishedVoice||entry.voice)}</td><td><div class="status-actions">${link(entry.animationPage,'Vezi filmul')}${link(entry.bookPage,'Cartea')}</div></td></tr>`).join('')}</tbody></table></div>`:'<p>Niciun film finalizat încă.</p>'}</section>`;
   root.innerHTML=`<p class="status-updated">Updated ${new Date(data.updatedAt).toLocaleString()} · refreshes every minute · ${escape(data.scope)}</p>
     <p class="status-gate">${data.conversionGate==='plans-reviewed'?'All scripts and visual plans are ready. Voice and film production are tracked separately below.':`Planning in progress: ${data.visualPlans||0} of ${data.entries.length} visual plans ready. Voice conversion waits until every script and visual plan is ready.`}</p>
-    <div class="status-counts"><div><strong>${active.length}</strong><span>În lucru acum</span></div><div><strong>${data.entries.length}</strong><span>Cărți în total</span></div><div><strong>${c.reviewed||0}</strong><span>Texte revizuite</span></div><div data-production-count="animations"><strong>${data.productionCounts?.animations||0}</strong><span>Animații realizate</span><small>Vizual verificat</small></div><div data-production-count="voices"><strong>${data.productionCounts?.voices||0}</strong><span>Voci generate</span><small>Textul curent înregistrat</small></div><div data-production-count="published"><strong>${data.productionCounts?.published??data.counts?.['qwen-complete']??0}</strong><span>Filme noi publicate</span><small>Voce și animație împachetate</small></div></div>
+    <div class="status-counts"><div><strong>${active.length}</strong><span>În lucru acum</span></div><div><strong>${data.entries.length}</strong><span>Cărți în total</span></div><div><strong>${c.reviewed||0}</strong><span>Texte revizuite</span></div><div data-production-count="animations"><strong>${data.productionCounts?.animations||0}</strong><span>Animații realizate</span><small>Vizual verificat</small></div><div data-production-count="voices"><strong>${data.productionCounts?.voices||0}</strong><span>Voci generate</span><small>Textul curent înregistrat</small></div><div data-production-count="published"><strong>${data.productionCounts?.published??data.counts?.['qwen-complete']??0}</strong><span>Filme noi publicate</span><small>Voce și animație împachetate</small></div><div data-production-count="publication-invalid"><strong>${data.productionCounts?.publicationInvalid??data.counts?.['publication-invalid']??0}</strong><span>SHF invalid</span><small>Necesită rebuild</small></div></div>
     <label class="status-search">Find a book<input type="search" placeholder="Search titles" data-status-search></label>
     ${active.length?`<section class="status-group status-active"><h2>În lucru acum <small>${active.length}</small></h2><div class="status-list">${active.map(article).join('')}</div></section>`:'<p class="status-idle">Nicio carte nu este procesată în acest moment.</p>'}
     ${finishedTable}

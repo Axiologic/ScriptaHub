@@ -193,6 +193,52 @@
               }
             ]
           }
+        },
+        {
+          "id": "book-title",
+          "asset": "custom",
+          "x": 600,
+          "y": 165,
+          "scale": 1,
+          "meaning": "Book title beside the two candidate readings.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 0,
+                  "font-size": 32,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "Executable Natural Language"
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -212,6 +258,12 @@
           "offsetMs": 180,
           "planCue": "Show a result that is numerically correct but linked to the wrong interpretation of the instruction.",
           "emotion": "curious"
+        },
+        {
+          "actor": "book-title",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 900
         }
       ],
       "connections": [],
@@ -275,10 +327,312 @@
       ]
     },
     "visual": {
-      "objects": [],
-      "actions": [],
+      "objects": [
+        {
+          "id": "same-word",
+          "asset": "custom",
+          "x": 240,
+          "y": 260,
+          "scale": 1,
+          "meaning": "same makes a small interpretation choice visible.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -120,
+                0
+              ],
+              "right": [
+                120,
+                0
+              ],
+              "top": [
+                0,
+                -60
+              ],
+              "bottom": [
+                0,
+                60
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -120,
+                  "y": -55,
+                  "width": 240,
+                  "height": 110,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -10,
+                  "font-size": 34,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#30465b"
+                },
+                "text": "same"
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 28,
+                  "font-size": 20,
+                  "text-anchor": "middle",
+                  "fill": "#af3f34"
+                },
+                "text": "which things?"
+              }
+            ]
+          }
+        },
+        {
+          "id": "we-word",
+          "asset": "custom",
+          "x": 600,
+          "y": 260,
+          "scale": 1,
+          "meaning": "we makes a small interpretation choice visible.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -120,
+                0
+              ],
+              "right": [
+                120,
+                0
+              ],
+              "top": [
+                0,
+                -60
+              ],
+              "bottom": [
+                0,
+                60
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -120,
+                  "y": -55,
+                  "width": 240,
+                  "height": 110,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -10,
+                  "font-size": 34,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#30465b"
+                },
+                "text": "we"
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 28,
+                  "font-size": 20,
+                  "text-anchor": "middle",
+                  "fill": "#305ca4"
+                },
+                "text": "who is included?"
+              }
+            ]
+          }
+        },
+        {
+          "id": "must-word",
+          "asset": "custom",
+          "x": 960,
+          "y": 260,
+          "scale": 1,
+          "meaning": "must makes a small interpretation choice visible.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -120,
+                0
+              ],
+              "right": [
+                120,
+                0
+              ],
+              "top": [
+                0,
+                -60
+              ],
+              "bottom": [
+                0,
+                60
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -120,
+                  "y": -55,
+                  "width": 240,
+                  "height": 110,
+                  "rx": 10,
+                  "fill": "#f2ead8",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -10,
+                  "font-size": 34,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#30465b"
+                },
+                "text": "must"
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 28,
+                  "font-size": 20,
+                  "text-anchor": "middle",
+                  "fill": "#4d8f80"
+                },
+                "text": "whose duty?"
+              }
+            ]
+          }
+        },
+        {
+          "id": "action-wait",
+          "asset": "custom",
+          "x": 600,
+          "y": 470,
+          "scale": 1,
+          "meaning": "A proposed machine action waits until the sentence choices are selected.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -180,
+                0
+              ],
+              "right": [
+                180,
+                0
+              ],
+              "top": [
+                0,
+                -60
+              ],
+              "bottom": [
+                0,
+                60
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.panel",
+                "type": "rect",
+                "attrs": {
+                  "x": -180,
+                  "y": -46,
+                  "width": 360,
+                  "height": 92,
+                  "rx": 10,
+                  "fill": "#e8d8c4",
+                  "stroke": "#af3f34",
+                  "stroke-width": 4
+                }
+              },
+              {
+                "id": "$asset.text",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 27,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#30465b"
+                },
+                "text": "ACTION ON HOLD"
+              }
+            ]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "actor": "same-word",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 800
+        },
+        {
+          "actor": "we-word",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 800
+        },
+        {
+          "actor": "must-word",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 800
+        },
+        {
+          "actor": "action-wait",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 800
+        }
+      ],
       "connections": [],
-      "meaning": "Original annotated language workbench. The choices inside a sentence. Lines are semantic underlines, explicit boundaries or transformation routes; no background ornament."
+      "meaning": "Small words same, we and must expose unresolved referents and responsibility before a machine acts."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",

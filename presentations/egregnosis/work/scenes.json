@@ -2971,6 +2971,73 @@
           "options": {
             "rig": "character"
           }
+        },
+        {
+          "id": "shared-description",
+          "asset": "custom",
+          "x": 600,
+          "y": 120,
+          "scale": 1,
+          "meaning": "A newly shared description turns separate private complaints into a collectively recognizable pattern.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -70,
+                0
+              ],
+              "right": [
+                70,
+                0
+              ],
+              "top": [
+                0,
+                -70
+              ],
+              "bottom": [
+                0,
+                70
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.part22",
+                "type": "path",
+                "attrs": {
+                  "d": "M-190 -42H190V48H-190Z",
+                  "fill": "#d9a441"
+                }
+              },
+              {
+                "id": "$asset.part23",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -4,
+                  "font-size": 28,
+                  "font-weight": 600,
+                  "letter-spacing": -0.3,
+                  "text-anchor": "middle",
+                  "fill": "#394b68"
+                },
+                "text": "Shared pattern"
+              },
+              {
+                "id": "$asset.part24",
+                "type": "path",
+                "attrs": {
+                  "d": "M-140 25H140",
+                  "fill": "none",
+                  "stroke": "#70a18a",
+                  "stroke-width": 7,
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round"
+                }
+              }
+            ]
+          }
         }
       ],
       "actions": [
@@ -2996,15 +3063,17 @@
           "durationMs": 1900
         },
         {
-          "actor": "room0",
-          "action": "moveTo",
+          "actor": "shared-description",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1300
+        },
+        {
+          "actor": "resident0",
+          "action": "character.gesture",
+          "gesture": "question",
           "beat": 1,
-          "x": 324,
-          "y": 300,
-          "durationMs": 900,
-          "offsetMs": 180,
-          "planCue": "Let a pile of complaints grow while the product's design stays outside the company's named problem.",
-          "emotion": "surprised recognition"
+          "durationMs": 1400
         }
       ],
       "connections": [],
@@ -5867,15 +5936,11 @@
           "durationMs": 1800
         },
         {
-          "actor": "courtyard",
-          "action": "moveTo",
+          "actor": "speaker",
+          "action": "character.gesture",
+          "gesture": "invite",
           "beat": 1,
-          "x": 624,
-          "y": 445,
-          "durationMs": 900,
-          "offsetMs": 180,
-          "planCue": "Show which report gets a hearing, which label it receives and which observation is left aside.",
-          "emotion": "engaged interest"
+          "durationMs": 1400
         }
       ],
       "connections": [],
@@ -6242,15 +6307,10 @@
           "durationMs": 1300
         },
         {
-          "actor": "press",
-          "action": "moveTo",
+          "actor": "original",
+          "action": "appear",
           "beat": 1,
-          "x": 624,
-          "y": 375,
-          "durationMs": 900,
-          "offsetMs": 180,
-          "planCue": "Keep newsroom, ministry and laboratory each completing a task while one relevant fact remains outside it.",
-          "emotion": "restrained surprise"
+          "durationMs": 1100
         }
       ],
       "connections": [],
@@ -7457,14 +7517,10 @@
         },
         {
           "actor": "editor",
-          "action": "moveTo",
+          "action": "character.gesture",
+          "gesture": "reflect",
           "beat": 1,
-          "x": 349,
-          "y": 490,
-          "durationMs": 900,
-          "offsetMs": 180,
-          "planCue": "Show the people and records carrying that notice, without any floating collective brain.",
-          "emotion": "plain reassurance"
+          "durationMs": 1400
         }
       ],
       "connections": [],

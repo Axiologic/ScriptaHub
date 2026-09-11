@@ -230,6 +230,9 @@ book title, measured duration, voice and relative book/film links opening in new
 tabs. Include only current published films with verified voice and independently
 reviewed artwork; retain their detailed scripts below. Apply title search and
 automatic refresh to the table as well.
+Publish SHF archives atomically so concurrent status reads never observe a partial
+replacement. A persistently unreadable archive stays visible as a publication
+error, is excluded from completion counts, and does not stop unrelated voice jobs.
 Refresh data automatically every 60 seconds and on returning to the
 tab; preserve expanded scripts and the search query. Stage transitions and
 failures must update the durable per-project progress record and regenerate

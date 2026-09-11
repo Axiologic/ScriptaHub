@@ -1,10 +1,12 @@
 // Shared silent integration checks; never opens an output audio device.
 // Usage: node tools/shf/qa-film.mjs presentations/<book-slug>
-import fs from 'node:fs/promises';import path from 'node:path';import {pathToFileURL} from 'node:url';
+import fs from 'node:fs/promises';import path from 'node:path';import crypto from 'node:crypto';import {pathToFileURL} from 'node:url';
 import {connect} from '../../tests/browser-session.mjs';
 import {findLabelOverflow} from './text-bounds.mjs';
 const root=path.resolve(process.argv[2]||'');if(!process.argv[2])throw Error('Provide a presentation workspace.');
 const production=JSON.parse(await fs.readFile(path.join(root,'work/production.json'),'utf8'));
+const approvedScenes=JSON.parse(await fs.readFile(path.join(root,'work/scenes.json'),'utf8'));
+const artSha256=crypto.createHash('sha256').update(JSON.stringify(approvedScenes.map(s=>({id:s.id,visual:s.visual})))).digest('hex');
 const out=path.join(root,'qa'),shots=path.join(out,'screenshots');await fs.mkdir(shots,{recursive:true});
 const exportUrl=pathToFileURL(path.join(root,'exports',(production.filmId||production.id)+'.html')).href;
 let c=await connect(exportUrl);const priorJsErrors=[];
@@ -14,6 +16,8 @@ try{
  await c.size(1200,960);await c.wait('!!document.querySelector("shf-player")?.film');
  await c.evaluate('window.p=document.querySelector("shf-player");p.setMuted(true);p.pause()');
  await test('English film starts paused without an audio output','p.film.language==="en"&&!p.playing&&!p.audio.ctx');
+ await test('export contains the current approved script',`JSON.stringify(p.film.scenes.map(s=>({id:s.id,lines:s.beats.map(b=>b.text)})))===${JSON.stringify(JSON.stringify(approvedScenes.map(s=>({id:s.id,lines:s.lines}))))}`);
+ await test('canonical film identifier and configured duration',`p.film.id===${JSON.stringify(production.filmId||production.id)}&&p.durationMs<=${production.maxDurationMs??900000}`);
  await c.evaluate('document.fonts.ready');
  await test('bundled presentation fonts actually loaded',`['SHF Display','SHF Text'].every(name=>[...document.fonts].some(f=>f.family.replaceAll(String.fromCharCode(34),'').replaceAll(String.fromCharCode(39),'')===name&&f.status==='loaded'))&&getComputedStyle(p.$('sceneTitle')).fontFamily.includes('SHF Display')&&Number(getComputedStyle(p.$('sceneTitle')).fontWeight)>=600`);
  await test('one sentence in every narration beat','p.film.scenes.every(s=>s.beats.every(b=>SHF.core.splitSentences(b.text,"en").length===1))');
@@ -32,8 +36,10 @@ try{
   }
   await c.evaluate(`p.setTheme('${theme}');p.seek(0)`);const durations=await c.evaluate('p.film.scenes.map(s=>s.durationMs)');let start=0;
   for(let i=0;i<durations.length;i++){
-   for(const [label,ratio]of [['first',.08],['middle',.5],['last',.96]]){
-    const result=await c.evaluate(`(()=>{p.seek(${start+durations[i]*ratio});const invalid=[...p.svg.querySelectorAll('[transform]')].some(e=>/NaN|Infinity/.test(e.getAttribute('transform')));const unresolved=[...p.svg.querySelectorAll('[fill],[stroke]')].some(e=>((e.getAttribute('fill')||'')+(e.getAttribute('stroke')||'')).includes('$'));const inv=p.dom.get('$camera').getCTM().inverse();const connections=p.film.scenes[${i}].connections.every(c=>[[c.from,false],[c.to,true]].every(([port,last])=>{const xy=p.defs.get(port.node).anchors[port.anchor],pt=p.svg.createSVGPoint();pt.x=xy[0];pt.y=xy[1];const a=pt.matrixTransform(p.dom.get(port.node).getCTM()).matrixTransform(inv),line=p.dom.get(c.id)._shape,b=line.getPointAtLength(last?line.getTotalLength():0);return Math.hypot(a.x-b.x,a.y-b.y)<.1}));const caption=p.$('caption').getBoundingClientRect();const captionOverlaps=[...p.svg.querySelectorAll('text')].filter(node=>{let opacity=1;for(let a=node;a&&a!==p.svg.parentNode;a=a.parentNode){const css=getComputedStyle(a);if(css.display==='none'||css.visibility==='hidden')return false;opacity*=Number(css.opacity)}if(opacity<.1)return false;const r=node.getBoundingClientRect();return caption.width>0&&caption.height>0&&Math.min(r.right,caption.right)-Math.max(r.left,caption.left)>2&&Math.min(r.bottom,caption.bottom)-Math.max(r.top,caption.top)>2}).map(node=>({text:node.textContent,id:node.id}));return {invalid,unresolved,connections,captionOverlaps,labelOverflow:(${findLabelOverflow.toString()})(p.svg)}})()`);
+   const spokenPoints=await c.evaluate(`p.film.scenes[${i}].beats.map((b,n)=>['sentence-'+(n+1),(b.startMs+b.spokenEndMs)/2])`);
+   const samplePoints=[['first',durations[i]*.08],...spokenPoints,['last',durations[i]*.96]];
+   for(const [label,localTime]of samplePoints){
+    const result=await c.evaluate(`(()=>{p.seek(${start+localTime});const invalid=[...p.svg.querySelectorAll('[transform]')].some(e=>/NaN|Infinity/.test(e.getAttribute('transform')));const unresolved=[...p.svg.querySelectorAll('[fill],[stroke]')].some(e=>((e.getAttribute('fill')||'')+(e.getAttribute('stroke')||'')).includes('$'));const inv=p.dom.get('$camera').getCTM().inverse();const connections=p.film.scenes[${i}].connections.every(c=>[[c.from,false],[c.to,true]].every(([port,last])=>{const xy=p.defs.get(port.node).anchors[port.anchor],pt=p.svg.createSVGPoint();pt.x=xy[0];pt.y=xy[1];const a=pt.matrixTransform(p.dom.get(port.node).getCTM()).matrixTransform(inv),line=p.dom.get(c.id)._shape,b=line.getPointAtLength(last?line.getTotalLength():0);return Math.hypot(a.x-b.x,a.y-b.y)<.1}));const caption=p.$('caption').getBoundingClientRect();const captionOverlaps=[...p.svg.querySelectorAll('text')].filter(node=>{let opacity=1;for(let a=node;a&&a!==p.svg.parentNode;a=a.parentNode){const css=getComputedStyle(a);if(css.display==='none'||css.visibility==='hidden')return false;opacity*=Number(css.opacity)}if(opacity<.1)return false;const r=node.getBoundingClientRect();return caption.width>0&&caption.height>0&&Math.min(r.right,caption.right)-Math.max(r.left,caption.left)>2&&Math.min(r.bottom,caption.bottom)-Math.max(r.top,caption.top)>2}).map(node=>({text:node.textContent,id:node.id}));return {invalid,unresolved,connections,captionOverlaps,labelOverflow:(${findLabelOverflow.toString()})(p.svg)}})()`);
     frames.push({theme,scene:i,frame:label,...result});
     const clip=await c.evaluate('(()=>{const r=p.$("stage").getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,scale:1}})()');
     // Headless Chromium can retain stale raster tiles after a theme/seek change.
@@ -53,7 +59,10 @@ try{
   if(width===393||width===320){await c.evaluate('p.seek(2000)');await c.evaluate('new Promise(resolve=>setTimeout(resolve,600))');await c.capture(path.join(shots,'phone-'+width+'.png'))}
  }
  await c.evaluate('p.seek(20000);window.referenceSVG=p.captureSVG();p.seek(p.durationMs*.8);p.seek(20000)');await test('seeking A-B-A is deterministic','p.captureSVG()===referenceSVG');
- const report={durationMs:await c.evaluate('p.durationMs'),sentences,checks,audio,sampledFrames:frames.length,frames,jsErrors:[...priorJsErrors,...c.errors],audiblePlayback:false,fullPlayback:false,completeListeningReview:false,artScreenshotsHidePausedPlayOverlay:true,visualInspection:'Screenshots produced for separate human/agent inspection; geometry checks do not certify visual quality.',physicalDeviceTesting:false};
+ const report={valid:true,artSha256,durationMs:await c.evaluate('p.durationMs'),sentences,checks,audio,sampledFrames:frames.length,frames,jsErrors:[...priorJsErrors,...c.errors],audiblePlayback:false,fullPlayback:false,completeListeningReview:false,artScreenshotsHidePausedPlayOverlay:true,allSpokenSentenceMidpointsCaptured:true,visualInspection:'Screenshots produced for separate human/agent inspection; geometry checks do not certify visual quality.',physicalDeviceTesting:false};
  await fs.writeFile(path.join(out,'browser-review.json'),JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify({durationMs:report.durationMs,sentences,checks:checks.length,sampledFrames:frames.length,errors:report.jsErrors.length}));if(report.jsErrors.length)process.exitCode=1;
+}catch(error){
+ await fs.writeFile(path.join(out,'browser-review.json'),JSON.stringify({valid:false,artSha256,checks,frames,sampledFrames:frames.length,error:String(error.message||error),audiblePlayback:false,completeListeningReview:false},null,2)+'\n');
+ throw error;
 }finally{await c.close()}

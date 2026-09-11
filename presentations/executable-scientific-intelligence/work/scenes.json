@@ -57,46 +57,88 @@
         {
           "id": "report",
           "asset": "custom",
-          "x": 355,
-          "y": 275,
+          "x": 330,
+          "y": 260,
           "scale": 1,
-          "meaning": "A convincing report",
+          "meaning": "A scientific claim awaiting its link to evidence.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -175,
                 0
               ],
               "right": [
-                70,
+                175,
                 0
               ],
               "top": [
                 0,
-                -70
+                -82
               ],
               "bottom": [
                 0,
-                70
+                82
               ]
             },
             "children": [
               {
-                "id": "$asset.part1",
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -175,
+                  "y": -82,
+                  "width": 350,
+                  "height": 164,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.title",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 46,
+                  "y": -28,
+                  "font-size": 38,
                   "font-weight": 700,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "A convincing report"
+                "text": "CLAIM",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 34,
+                  "font-size": 27,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#af3f34"
+                },
+                "text": "does it follow?",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f3a096"
+                  }
+                }
               }
             ]
           }
@@ -104,102 +146,85 @@
         {
           "id": "receipt",
           "asset": "custom",
-          "x": 890,
-          "y": 285,
+          "x": 875,
+          "y": 250,
           "scale": 1,
-          "meaning": "An execution receipt, not a page of the book.",
+          "meaning": "A rerun reproduces the numerical output, not the interpretation.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -170,
                 0
               ],
               "right": [
-                70,
+                170,
                 0
               ],
               "top": [
                 0,
-                -70
+                -90
               ],
               "bottom": [
                 0,
-                70
+                90
               ]
             },
             "children": [
               {
-                "id": "$asset.part2",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-92 -135H92V130L69 117L46 130L23 117L0 130L-23 117L-46 130L-69 117L-92 130Z",
-                  "fill": "#275c86"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#94c7ee"
-                  }
+                  "x": -170,
+                  "y": -90,
+                  "width": 340,
+                  "height": 180,
+                  "rx": 12,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
                 }
               },
               {
-                "id": "$asset.part3",
+                "id": "$asset.title",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": -65,
-                  "font-size": 30,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": -40,
+                  "font-size": 28,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "#ffffff"
                 },
-                "text": "Method",
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#172d40"
-                  }
-                }
+                "text": "RERUN RECEIPT"
               },
               {
-                "id": "$asset.part4",
+                "id": "$asset.result",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 9,
+                  "y": 8,
                   "font-size": 30,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "#ffffff"
                 },
-                "text": "Evidence",
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#172d40"
-                  }
-                }
+                "text": "result = 42"
               },
               {
-                "id": "$asset.part5",
+                "id": "$asset.status",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 83,
-                  "font-size": 30,
+                  "y": 52,
+                  "font-size": 24,
                   "font-weight": 600,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "#ffffff"
                 },
-                "text": "Status",
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#172d40"
-                  }
-                }
+                "text": "same output"
               }
             ]
           }
@@ -208,45 +233,211 @@
           "id": "test",
           "asset": "custom",
           "x": 600,
-          "y": 499,
+          "y": 355,
           "scale": 1,
-          "meaning": "What was actually established?",
+          "meaning": "The open check between a repeated result and a conclusion.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -220,
                 0
               ],
               "right": [
-                70,
+                220,
                 0
               ],
               "top": [
                 0,
-                -70
+                -48
               ],
               "bottom": [
                 0,
-                70
+                48
               ]
             },
             "children": [
               {
-                "id": "$asset.part6",
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -220,
+                  "y": -48,
+                  "width": 440,
+                  "height": 96,
+                  "rx": 12,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.title",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 37,
+                  "y": 8,
+                  "font-size": 27,
                   "font-weight": 700,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "What was actually established?"
+                "text": "WHAT WAS ESTABLISHED?",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "data-record",
+          "asset": "custom",
+          "x": 340,
+          "y": 500,
+          "scale": 1,
+          "meaning": "The data behind the result.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -100,
+                0
+              ],
+              "right": [
+                100,
+                0
+              ],
+              "top": [
+                0,
+                -38
+              ],
+              "bottom": [
+                0,
+                38
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -100,
+                  "y": -38,
+                  "width": 200,
+                  "height": 76,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 3
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "DATA",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "code-record",
+          "asset": "custom",
+          "x": 860,
+          "y": 500,
+          "scale": 1,
+          "meaning": "The executable method that produced the result.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -100,
+                0
+              ],
+              "right": [
+                100,
+                0
+              ],
+              "top": [
+                0,
+                -38
+              ],
+              "bottom": [
+                0,
+                38
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -100,
+                  "y": -38,
+                  "width": 200,
+                  "height": 76,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 3
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 25,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "CODE",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -256,12 +447,72 @@
         {
           "actor": "receipt",
           "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Show the rerun receipt matching the result, while a question remains beside the conclusion."
+        },
+        {
+          "actor": "test",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Show the rerun receipt matching the result, while a question remains beside the conclusion."
+        },
+        {
+          "actor": "report",
+          "action": "moveTo",
           "beat": 2,
-          "durationMs": 1500
+          "durationMs": 1000,
+          "planCue": "Bring the claim, data and code into one proposed connected record.",
+          "x": 330,
+          "y": 245
+        },
+        {
+          "actor": "data-record",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1000,
+          "planCue": "Bring the claim, data and code into one proposed connected record."
+        },
+        {
+          "actor": "code-record",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1000,
+          "planCue": "Bring the claim, data and code into one proposed connected record."
         }
       ],
-      "connections": [],
-      "meaning": "A repeated numerical result sits beside a claim with one unexamined link. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "connections": [
+        {
+          "id": "claim-data",
+          "from": {
+            "node": "report",
+            "anchor": "bottom"
+          },
+          "to": {
+            "node": "data-record",
+            "anchor": "top"
+          },
+          "width": 4,
+          "color": "#956315",
+          "meaning": "A proposed link for inspection, not proof of the conclusion."
+        },
+        {
+          "id": "claim-code",
+          "from": {
+            "node": "report",
+            "anchor": "bottom"
+          },
+          "to": {
+            "node": "code-record",
+            "anchor": "top"
+          },
+          "width": 4,
+          "color": "#956315",
+          "meaning": "A proposed link for inspection, not proof of the conclusion."
+        }
+      ],
+      "meaning": "A repeated numerical result sits beside a claim with one unexamined link; the proposed record makes data and code inspectable without claiming validation."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -325,96 +576,94 @@
         {
           "id": "document",
           "asset": "custom",
-          "x": 315,
-          "y": 280,
+          "x": 300,
+          "y": 270,
           "scale": 1,
-          "meaning": "Scientific narrative remains a document.",
+          "meaning": "The article remains the readable scientific argument.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -150,
                 0
               ],
               "right": [
-                70,
+                150,
                 0
               ],
               "top": [
                 0,
-                -70
+                -112
               ],
               "bottom": [
                 0,
-                70
+                112
               ]
             },
             "children": [
               {
-                "id": "$asset.part1",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-110 -125H70L110 -85V125H-110Z",
-                  "fill": "#275c86"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#94c7ee"
-                  }
+                  "x": -150,
+                  "y": -112,
+                  "width": 300,
+                  "height": 224,
+                  "rx": 12,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
                 }
               },
               {
-                "id": "$asset.part2",
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -62,
+                  "font-size": 34,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "ARTICLE"
+              },
+              {
+                "id": "$asset.l1",
                 "type": "path",
                 "attrs": {
-                  "d": "M-65 -60H60",
+                  "d": "M-95 -15L95 -15",
                   "fill": "none",
                   "stroke": "#ffffff",
                   "stroke-width": 7,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "stroke": "#172d40"
-                  }
+                  "stroke-linecap": "round"
                 }
               },
               {
-                "id": "$asset.part3",
+                "id": "$asset.l2",
                 "type": "path",
                 "attrs": {
-                  "d": "M-65 0H60",
+                  "d": "M-95 35L95 35",
                   "fill": "none",
                   "stroke": "#ffffff",
                   "stroke-width": 7,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "stroke": "#172d40"
-                  }
+                  "stroke-linecap": "round"
                 }
               },
               {
-                "id": "$asset.part4",
-                "type": "path",
+                "id": "$asset.note",
+                "type": "text",
                 "attrs": {
-                  "d": "M-65 60H60",
-                  "fill": "none",
-                  "stroke": "#ffffff",
-                  "stroke-width": 7,
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round"
+                  "x": 0,
+                  "y": 88,
+                  "font-size": 23,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
                 },
-                "themeAttrs": {
-                  "night": {
-                    "stroke": "#172d40"
-                  }
-                }
+                "text": "claim + explanation"
               }
             ]
           }
@@ -422,59 +671,70 @@
         {
           "id": "data",
           "asset": "custom",
-          "x": 815,
-          "y": 190,
+          "x": 800,
+          "y": 150,
           "scale": 1,
-          "meaning": "Typed operation or result: Evidence",
+          "meaning": "The data record linked to a claim.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -60,
+                -118,
                 0
               ],
               "right": [
-                60,
+                118,
                 0
               ],
               "top": [
                 0,
-                -37
+                -42
               ],
               "bottom": [
                 0,
-                37
+                42
               ]
             },
             "children": [
               {
-                "id": "$asset.part5",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-60 -37L35 -37L60 0L35 37L-60 37Z",
-                  "fill": "#275c86"
+                  "x": -118,
+                  "y": -42,
+                  "width": 236,
+                  "height": 84,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
                 },
                 "themeAttrs": {
                   "night": {
-                    "fill": "#94c7ee"
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
                   }
                 }
               },
               {
-                "id": "$asset.part6",
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 83,
-                  "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": 8,
+                  "font-size": 28,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Evidence"
+                "text": "DATA",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -482,59 +742,141 @@
         {
           "id": "method",
           "asset": "custom",
-          "x": 815,
-          "y": 375,
+          "x": 800,
+          "y": 290,
           "scale": 1,
-          "meaning": "Typed operation or result: Method",
+          "meaning": "The method record linked to a claim.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -60,
+                -118,
                 0
               ],
               "right": [
-                60,
+                118,
                 0
               ],
               "top": [
                 0,
-                -37
+                -42
               ],
               "bottom": [
                 0,
-                37
+                42
               ]
             },
             "children": [
               {
-                "id": "$asset.part7",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-60 -37L35 -37L60 0L35 37L-60 37Z",
-                  "fill": "#956315"
+                  "x": -118,
+                  "y": -42,
+                  "width": 236,
+                  "height": 84,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
                 },
                 "themeAttrs": {
                   "night": {
-                    "fill": "#eec67c"
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
                   }
                 }
               },
               {
-                "id": "$asset.part8",
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 83,
-                  "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": 8,
+                  "font-size": 28,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Method"
+                "text": "METHOD",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "assumptions",
+          "asset": "custom",
+          "x": 800,
+          "y": 430,
+          "scale": 1,
+          "meaning": "The assumptions that interpretation must make visible.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -142,
+                0
+              ],
+              "right": [
+                142,
+                0
+              ],
+              "top": [
+                0,
+                -42
+              ],
+              "bottom": [
+                0,
+                42
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -142,
+                  "y": -42,
+                  "width": 284,
+                  "height": 84,
+                  "rx": 12,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 26,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "ASSUMPTIONS",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -542,54 +884,150 @@
         {
           "id": "companion",
           "asset": "custom",
-          "x": 600,
-          "y": 506,
+          "x": 520,
+          "y": 480,
           "scale": 1,
-          "meaning": "An executable companion",
+          "meaning": "A short note that code cannot express the whole argument.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -170,
                 0
               ],
               "right": [
-                70,
+                170,
                 0
               ],
               "top": [
                 0,
-                -70
+                -42
               ],
               "bottom": [
                 0,
-                70
+                42
               ]
             },
             "children": [
               {
-                "id": "$asset.part9",
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -170,
+                  "y": -42,
+                  "width": 340,
+                  "height": 84,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 36,
+                  "y": 8,
+                  "font-size": 25,
                   "font-weight": 700,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "An executable companion"
+                "text": "UNCERTAINTY NOTE",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
         }
       ],
-      "actions": [],
-      "connections": [],
-      "meaning": "A readable article is connected to data and method records. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "actions": [
+        {
+          "actor": "data",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Reveal the source records one at a time, each linked to the relevant claim."
+        },
+        {
+          "actor": "method",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Reveal the source records one at a time, each linked to the relevant claim."
+        },
+        {
+          "actor": "assumptions",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Reveal the source records one at a time, each linked to the relevant claim."
+        },
+        {
+          "actor": "companion",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1000,
+          "planCue": "Keep the article prominent while a short uncertainty note stays visible next to the code."
+        }
+      ],
+      "connections": [
+        {
+          "id": "doc-data",
+          "from": {
+            "node": "document",
+            "anchor": "right"
+          },
+          "to": {
+            "node": "data",
+            "anchor": "left"
+          },
+          "width": 4,
+          "color": "#3f5368",
+          "meaning": "A traceable source relationship."
+        },
+        {
+          "id": "doc-method",
+          "from": {
+            "node": "document",
+            "anchor": "right"
+          },
+          "to": {
+            "node": "method",
+            "anchor": "left"
+          },
+          "width": 4,
+          "color": "#3f5368",
+          "meaning": "A traceable method relationship."
+        },
+        {
+          "id": "doc-assumptions",
+          "from": {
+            "node": "document",
+            "anchor": "right"
+          },
+          "to": {
+            "node": "assumptions",
+            "anchor": "left"
+          },
+          "width": 4,
+          "color": "#956315",
+          "meaning": "An explicit interpretive assumption."
+        }
+      ],
+      "meaning": "A readable article stays central while data, method and assumptions become linked records; the uncertainty note preserves human explanation beyond code."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -654,58 +1092,58 @@
           "id": "citation",
           "asset": "custom",
           "x": 280,
-          "y": 250,
+          "y": 190,
           "scale": 1,
-          "meaning": "Typed operation or result: Citation",
+          "meaning": "A source record that can change.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -60,
+                -120,
                 0
               ],
               "right": [
-                60,
+                120,
                 0
               ],
               "top": [
                 0,
-                -37
+                -44
               ],
               "bottom": [
                 0,
-                37
+                44
               ]
             },
             "children": [
               {
-                "id": "$asset.part1",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-60 -37L35 -37L60 0L35 37L-60 37Z",
-                  "fill": "#275c86"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#94c7ee"
-                  }
+                  "x": -120,
+                  "y": -44,
+                  "width": 240,
+                  "height": 88,
+                  "rx": 12,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
                 }
               },
               {
-                "id": "$asset.part2",
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 83,
+                  "y": 8,
                   "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "font-weight": 700,
                   "text-anchor": "middle",
-                  "fill": "$ink"
+                  "fill": "#ffffff"
                 },
-                "text": "Citation"
+                "text": "SOURCE"
               }
             ]
           }
@@ -713,59 +1151,70 @@
         {
           "id": "operation",
           "asset": "custom",
-          "x": 905,
-          "y": 250,
+          "x": 920,
+          "y": 190,
           "scale": 1,
-          "meaning": "Typed operation or result: Operation",
+          "meaning": "A conclusion that depends on the source.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -60,
+                -120,
                 0
               ],
               "right": [
-                60,
+                120,
                 0
               ],
               "top": [
                 0,
-                -37
+                -44
               ],
               "bottom": [
                 0,
-                37
+                44
               ]
             },
             "children": [
               {
-                "id": "$asset.part3",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-60 -37L35 -37L60 0L35 37L-60 37Z",
-                  "fill": "#956315"
+                  "x": -120,
+                  "y": -44,
+                  "width": 240,
+                  "height": 88,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
                 },
                 "themeAttrs": {
                   "night": {
-                    "fill": "#eec67c"
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
                   }
                 }
               },
               {
-                "id": "$asset.part4",
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 83,
+                  "y": 8,
                   "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Operation"
+                "text": "CLAIM",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -774,45 +1223,69 @@
           "id": "relationship",
           "asset": "custom",
           "x": 280,
-          "y": 438,
+          "y": 400,
           "scale": 1,
-          "meaning": "Records a relationship",
+          "meaning": "The changed source event that triggers review.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -145,
                 0
               ],
               "right": [
-                70,
+                145,
                 0
               ],
               "top": [
                 0,
-                -70
+                -44
               ],
               "bottom": [
                 0,
-                70
+                44
               ]
             },
             "children": [
               {
-                "id": "$asset.part5",
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -145,
+                  "y": -44,
+                  "width": 290,
+                  "height": 88,
+                  "rx": 12,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": 8,
+                  "font-size": 25,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Records a relationship"
+                "text": "SOURCE CHANGED",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -820,54 +1293,292 @@
         {
           "id": "dependency",
           "asset": "custom",
-          "x": 905,
-          "y": 438,
+          "x": 920,
+          "y": 400,
           "scale": 1,
-          "meaning": "Consumes a value",
+          "meaning": "The dependent claim is marked for another look.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -145,
                 0
               ],
               "right": [
-                70,
+                145,
                 0
               ],
               "top": [
                 0,
-                -70
+                -44
               ],
               "bottom": [
                 0,
-                70
+                44
               ]
             },
             "children": [
               {
-                "id": "$asset.part6",
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -145,
+                  "y": -44,
+                  "width": 290,
+                  "height": 88,
+                  "rx": 12,
+                  "fill": "#f2ead8",
+                  "stroke": "#af3f34",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 0,
-                  "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": 8,
+                  "font-size": 25,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Consumes a value"
+                "text": "REVIEW NEEDED",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "ai-check",
+          "asset": "custom",
+          "x": 600,
+          "y": 510,
+          "scale": 1,
+          "meaning": "The same AI can assist selection, but independent checking remains open.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -220,
+                0
+              ],
+              "right": [
+                220,
+                0
+              ],
+              "top": [
+                0,
+                -42
+              ],
+              "bottom": [
+                0,
+                42
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -220,
+                  "y": -42,
+                  "width": 440,
+                  "height": 84,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 26,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "AI CHECKS EVIDENCE",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "independent-check",
+          "asset": "custom",
+          "x": 600,
+          "y": 300,
+          "scale": 1,
+          "meaning": "A visible boundary against self-certification.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -170,
+                0
+              ],
+              "right": [
+                170,
+                0
+              ],
+              "top": [
+                0,
+                -38
+              ],
+              "bottom": [
+                0,
+                38
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -170,
+                  "y": -38,
+                  "width": 340,
+                  "height": 76,
+                  "rx": 12,
+                  "fill": "#f2ead8",
+                  "stroke": "#af3f34",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
+                  }
+                }
+              },
+              {
+                "id": "$asset.label",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 8,
+                  "font-size": 24,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "INDEPENDENT CHECK OPEN",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
         }
       ],
-      "actions": [],
-      "connections": [],
-      "meaning": "A changed source highlights the claims that depend on it. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "actions": [
+        {
+          "actor": "relationship",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Change one source record and mark its dependent conclusion for review, not automatic reversal."
+        },
+        {
+          "actor": "dependency",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Change one source record and mark its dependent conclusion for review, not automatic reversal."
+        },
+        {
+          "actor": "ai-check",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1000,
+          "planCue": "Show the same AI icon selecting and checking evidence, then an independent check left open."
+        },
+        {
+          "actor": "independent-check",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1000,
+          "planCue": "Show the same AI icon selecting and checking evidence, then an independent check left open."
+        }
+      ],
+      "connections": [
+        {
+          "id": "source-claim",
+          "from": {
+            "node": "citation",
+            "anchor": "right"
+          },
+          "to": {
+            "node": "operation",
+            "anchor": "left"
+          },
+          "width": 4,
+          "color": "#3f5368",
+          "meaning": "The claim depends on the cited source."
+        },
+        {
+          "id": "change-review",
+          "from": {
+            "node": "relationship",
+            "anchor": "right"
+          },
+          "to": {
+            "node": "dependency",
+            "anchor": "left"
+          },
+          "width": 4,
+          "color": "#af3f34",
+          "meaning": "A source change routes the dependent claim to review."
+        },
+        {
+          "id": "check-boundary",
+          "from": {
+            "node": "ai-check",
+            "anchor": "top"
+          },
+          "to": {
+            "node": "independent-check",
+            "anchor": "bottom"
+          },
+          "width": 4,
+          "color": "#956315",
+          "meaning": "AI assistance does not close the independent check."
+        }
+      ],
+      "meaning": "A changed source marks its dependent claim for review; the AI may select and inspect evidence, while independent checking remains visibly open."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",
@@ -931,59 +1642,72 @@
         {
           "id": "v1",
           "asset": "custom",
-          "x": 260,
-          "y": 290,
+          "x": 220,
+          "y": 250,
           "scale": 1,
-          "meaning": "Typed operation or result: Value 1",
+          "meaning": "The repeated result record.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -60,
+                -125,
                 0
               ],
               "right": [
-                60,
+                125,
                 0
               ],
               "top": [
                 0,
-                -37
+                -52
               ],
               "bottom": [
                 0,
-                37
+                52
               ]
             },
             "children": [
               {
-                "id": "$asset.part1",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-60 -37L35 -37L60 0L35 37L-60 37Z",
-                  "fill": "#275c86"
-                },
-                "themeAttrs": {
-                  "night": {
-                    "fill": "#94c7ee"
-                  }
+                  "x": -125,
+                  "y": -52,
+                  "width": 250,
+                  "height": 104,
+                  "rx": 12,
+                  "fill": "#275c86",
+                  "stroke": "#275c86",
+                  "stroke-width": 4
                 }
               },
               {
-                "id": "$asset.part2",
+                "id": "$asset.title",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 83,
+                  "y": -12,
                   "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "font-weight": 700,
                   "text-anchor": "middle",
-                  "fill": "$ink"
+                  "fill": "#ffffff"
                 },
-                "text": "Value 1"
+                "text": "RESULT"
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 30,
+                  "font-size": 22,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "#ffffff"
+                },
+                "text": "rerun record"
               }
             ]
           }
@@ -992,58 +1716,87 @@
           "id": "v2",
           "asset": "custom",
           "x": 600,
-          "y": 290,
+          "y": 250,
           "scale": 1,
-          "meaning": "Typed operation or result: Value 2",
+          "meaning": "The interpretation that still needs support.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -60,
+                -125,
                 0
               ],
               "right": [
-                60,
+                125,
                 0
               ],
               "top": [
                 0,
-                -37
+                -52
               ],
               "bottom": [
                 0,
-                37
+                52
               ]
             },
             "children": [
               {
-                "id": "$asset.part3",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-60 -37L35 -37L60 0L35 37L-60 37Z",
-                  "fill": "#275c86"
+                  "x": -125,
+                  "y": -52,
+                  "width": 250,
+                  "height": 104,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
                 },
                 "themeAttrs": {
                   "night": {
-                    "fill": "#94c7ee"
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
                   }
                 }
               },
               {
-                "id": "$asset.part4",
+                "id": "$asset.title",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 83,
+                  "y": -12,
                   "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Value 2"
+                "text": "CLAIM",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 30,
+                  "font-size": 22,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "why trust it?",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -1051,59 +1804,88 @@
         {
           "id": "handle",
           "asset": "custom",
-          "x": 940,
-          "y": 290,
+          "x": 980,
+          "y": 250,
           "scale": 1,
-          "meaning": "Typed operation or result: Handle",
+          "meaning": "The visible missing link between result and claim.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -60,
+                -135,
                 0
               ],
               "right": [
-                60,
+                135,
                 0
               ],
               "top": [
                 0,
-                -37
+                -52
               ],
               "bottom": [
                 0,
-                37
+                52
               ]
             },
             "children": [
               {
-                "id": "$asset.part5",
-                "type": "path",
+                "id": "$asset.card",
+                "type": "rect",
                 "attrs": {
-                  "d": "M-60 -37L35 -37L60 0L35 37L-60 37Z",
-                  "fill": "#956315"
+                  "x": -135,
+                  "y": -52,
+                  "width": 270,
+                  "height": 104,
+                  "rx": 12,
+                  "fill": "#f2ead8",
+                  "stroke": "#956315",
+                  "stroke-width": 4
                 },
                 "themeAttrs": {
                   "night": {
-                    "fill": "#eec67c"
+                    "fill": "#3b3021",
+                    "stroke": "#eec67c"
                   }
                 }
               },
               {
-                "id": "$asset.part6",
+                "id": "$asset.title",
                 "type": "text",
                 "attrs": {
                   "x": 0,
-                  "y": 83,
-                  "font-size": 29,
-                  "font-weight": 600,
-                  "letter-spacing": -0.3,
+                  "y": -12,
+                  "font-size": 25,
+                  "font-weight": 700,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "Handle"
+                "text": "ASSUMPTION CHECK",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 30,
+                  "font-size": 22,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "unfinished",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
@@ -1112,54 +1894,183 @@
           "id": "history",
           "asset": "custom",
           "x": 600,
-          "y": 486,
+          "y": 465,
           "scale": 1,
-          "meaning": "History remains inspectable",
+          "meaning": "An inspectable record history for a reviewer.",
           "visual": {
             "id": "$asset",
             "type": "g",
             "attrs": {},
             "anchors": {
               "left": [
-                -70,
+                -220,
                 0
               ],
               "right": [
-                70,
+                220,
                 0
               ],
               "top": [
                 0,
-                -70
+                -48
               ],
               "bottom": [
                 0,
-                70
+                48
               ]
             },
             "children": [
               {
-                "id": "$asset.part7",
+                "id": "$asset.card",
+                "type": "rect",
+                "attrs": {
+                  "x": -220,
+                  "y": -48,
+                  "width": 440,
+                  "height": 96,
+                  "rx": 12,
+                  "fill": "#e8eef2",
+                  "stroke": "#3f5368",
+                  "stroke-width": 4
+                },
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#172d40",
+                    "stroke": "#94c7ee"
+                  }
+                }
+              },
+              {
+                "id": "$asset.title",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": -10,
+                  "font-size": 28,
+                  "font-weight": 700,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "HISTORY",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              },
+              {
+                "id": "$asset.sub",
+                "type": "text",
+                "attrs": {
+                  "x": 0,
+                  "y": 28,
+                  "font-size": 22,
+                  "font-weight": 600,
+                  "text-anchor": "middle",
+                  "fill": "$ink"
+                },
+                "text": "reviewer can follow each change",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "review-question",
+          "asset": "custom",
+          "x": 600,
+          "y": 560,
+          "scale": 1,
+          "meaning": "The open reading question at the close.",
+          "visual": {
+            "id": "$asset",
+            "type": "g",
+            "attrs": {},
+            "anchors": {
+              "left": [
+                -240,
+                0
+              ],
+              "right": [
+                240,
+                0
+              ],
+              "top": [
+                0,
+                -25
+              ],
+              "bottom": [
+                0,
+                25
+              ]
+            },
+            "children": [
+              {
+                "id": "$asset.label",
                 "type": "text",
                 "attrs": {
                   "x": 0,
                   "y": 0,
-                  "font-size": 36,
+                  "font-size": 26,
                   "font-weight": 700,
-                  "letter-spacing": -0.3,
                   "text-anchor": "middle",
                   "fill": "$ink"
                 },
-                "text": "History remains inspectable"
+                "text": "UNDERSTAND WHY, NOT ONLY WHAT",
+                "themeAttrs": {
+                  "night": {
+                    "fill": "#f4f7f7"
+                  }
+                }
               }
             ]
           }
         }
       ],
-      "actions": [],
+      "actions": [
+        {
+          "actor": "history",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Bring a reviewer to the record history with an unfinished check still visible."
+        },
+        {
+          "actor": "handle",
+          "action": "appear",
+          "beat": 1,
+          "durationMs": 1000,
+          "planCue": "Bring a reviewer to the record history with an unfinished check still visible."
+        },
+        {
+          "actor": "v1",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1000,
+          "planCue": "Hold the claim, assumption and result beside the book, leaving the reading question open."
+        },
+        {
+          "actor": "v2",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1000,
+          "planCue": "Hold the claim, assumption and result beside the book, leaving the reading question open."
+        },
+        {
+          "actor": "review-question",
+          "action": "appear",
+          "beat": 2,
+          "durationMs": 1000,
+          "planCue": "Hold the claim, assumption and result beside the book, leaving the reading question open."
+        }
+      ],
       "connections": [
         {
-          "id": "consume",
+          "id": "result-claim",
           "from": {
             "node": "v1",
             "anchor": "right"
@@ -1169,11 +2080,11 @@
             "anchor": "left"
           },
           "width": 4,
-          "color": "$ink",
-          "meaning": "A specified data dependency, not evidence of truth or institutional authority."
+          "color": "#3f5368",
+          "meaning": "A result can be repeated without making the claim self-justifying."
         },
         {
-          "id": "inspect",
+          "id": "claim-assumption",
           "from": {
             "node": "v2",
             "anchor": "right"
@@ -1183,11 +2094,25 @@
             "anchor": "left"
           },
           "width": 4,
-          "color": "$ink",
-          "meaning": "A specified data dependency, not evidence of truth or institutional authority."
+          "color": "#956315",
+          "meaning": "The missing assumption check remains explicit."
+        },
+        {
+          "id": "history-records",
+          "from": {
+            "node": "history",
+            "anchor": "top"
+          },
+          "to": {
+            "node": "v2",
+            "anchor": "bottom"
+          },
+          "width": 4,
+          "color": "#3f5368",
+          "meaning": "A reviewer can inspect how the records changed."
         }
       ],
-      "meaning": "The claim and rerun record remain separated by a visible assumption check. Approved cues are represented by plan-cue markers while retained objects carry the book's identity."
+      "meaning": "The result, claim and assumption check remain separate in an inspectable history, inviting a human reader to ask why the result should be trusted."
     },
     "marketingVisualRevision": {
       "status": "planned-before-film-rebuild",

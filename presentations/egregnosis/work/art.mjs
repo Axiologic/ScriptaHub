@@ -8,7 +8,7 @@ for(const[i,s]of scenes.entries()){
  function paper(id,x,y,{rough=true,word='Observation',scale=1}={}){add(object(id,x,y,[shape(rough?'M-92 -117H63V-68H94V-17H63V117H-92Z':'M-92 -117H92V117H-92Z',cream),text(word,-7,-72,25,ink),path('M-64 -27H45M-64 10H30M-64 47H42',ink,6),...(rough?[shape('M63 -68H94V-17H63Z',red),dot(-43,85,10,gold)]:[])],'The manuscript’s irregular feature carries a potentially meaningful distinction.',scale));}
  switch(i){
  case 0:
-  for(let j=0;j<3;j++){const x=300+j*300;apartment('room'+j,x,310,[blue,red,green][j]);person('resident'+j,x+15,442,[red,green,blue][j],.69,j===1?'person-04-neutral':'person-02-neutral');add(object('curtain'+j,x,305,[shape('M-108 -105H108V138H-108Z',ink)],'A privacy screen prevents people from seeing what others recognize.'));hide('curtain'+j,j+2);gesture('resident'+j,j+2,'question');}
+  for(let j=0;j<3;j++){const x=300+j*300;apartment('room'+j,x,310,[blue,red,green][j]);person('resident'+j,x+15,442,[red,green,blue][j],.69,j===1?'person-04-neutral':'person-02-neutral');add(object('curtain'+j,x,305,[shape('M-108 -105H108V138H-108Z',ink)],'A privacy screen prevents people from seeing what others recognize.'));hide('curtain'+j,j+2);gesture('resident'+j,j+2,'question');} add(object('shared-description',600,120,[shape('M-190 -42H190V48H-190Z',gold),text('Shared pattern',0,-4,28,ink),path('M-140 25H140',green,7)],'A newly shared description turns separate private complaints into a collectively recognizable pattern.'));reveal('shared-description',2);
   break;
  case 1:
   add(object('courtyard',600,455,[n('ellipse',{cx:0,cy:0,rx:410,ry:88,fill:'#bdd5bf'}),path('M-320 0H320',cream,14)],'A shared public meeting place makes the same signal mutually visible.'));
