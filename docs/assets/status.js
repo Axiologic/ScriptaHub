@@ -17,7 +17,7 @@
   const article=entry=>{
     const review=entry.editorialReview;
     const stages=entry.stages||{};
-    const failed=entry.status==='publication-invalid'||Object.values(stages).some(stage=>['failed','interrupted'].includes(stage.status));
+    const failed=entry.status==='publication-invalid'||Object.values(stages).some(stage=>['failed','interrupted','review-required'].includes(stage.status));
     const done=stages.animation?.status==='done'&&stages.voice?.status==='done';
     const checking=entry.status==='qwen-complete'||['built','reviewing'].includes(stages.animation?.status)||stages.voice?.status==='generated';
     const state=entry.active?'active':failed?'failed':done?'done':checking?'review':'pending';
@@ -31,6 +31,7 @@
     return `<article data-status-book="${escape(entry.title.toLowerCase())}" data-work-state="${state}">
       <div><h3>${link(entry.bookPage,entry.title)} <span class="status-indicator status-indicator-${state}"><span aria-hidden="true">${entry.active?'●':done?'✓':failed?'!':'○'}</span> ${stateLabel}${entry.active&&currentSteps.length?` · ${escape(currentSteps.join(' + '))}`:''}</span></h3>
         <p class="status-stages">Text: ${escape(entry.stages?.text?.status||entry.editorialStatus)} · Animation: ${escape(entry.stages?.animation?.status||'pending')} · Voice: ${escape(entry.stages?.voice?.status||'pending')}</p>
+        ${Object.entries(stages).filter(([,stage])=>['failed','interrupted','review-required'].includes(stage.status)&&stage.note).map(([name,stage])=>`<p class="status-note"><strong>${escape(name)}:</strong> ${escape(stage.note)}</p>`).join('')}
         <p>${escape(reviews[entry.editorialStatus]||'Review pending')} · ${entry.scriptWords||0} words · target 1–2 min, maximum 2 min</p>
         <p>Published film: ${escape(entry.publishedVoice||entry.voice||'Unknown voice')} · ${duration(entry.durationMs||0)}.</p>
         <p>Planned voice: ${escape(entry.plannedVoice||'Local Qwen; casting pending')}.</p>
@@ -70,7 +71,7 @@
   const active=data.entries.filter(entry=>entry.active);
   const finished=data.entries.filter(entry=>entry.status==='qwen-complete'&&entry.animationCompleted&&entry.voiceGenerated);
   const finishedTable=`<section class="status-group status-finished" data-finished-films><h2>Filme finalizate și publicate <small>${finished.length}</small></h2><p class="status-note">Animație verificată și voce nouă, disponibile în filmul publicat.</p>${finished.length?`<div class="status-table-scroll"><table><thead><tr><th scope="col">Carte</th><th scope="col">Durată</th><th scope="col">Voce</th><th scope="col">Linkuri</th></tr></thead><tbody>${finished.map(entry=>`<tr data-status-book="${escape(entry.title.toLowerCase())}"><th scope="row">${link(entry.bookPage,entry.title)}</th><td>${duration(entry.durationMs)}</td><td>${escape(entry.publishedVoiceId||entry.publishedVoice||entry.voice)}</td><td><div class="status-actions">${link(entry.animationPage,'Vezi filmul')}${link(entry.bookPage,'Cartea')}</div></td></tr>`).join('')}</tbody></table></div>`:'<p>Niciun film finalizat încă.</p>'}</section>`;
-  root.innerHTML=`<p class="status-updated">Updated ${new Date(data.updatedAt).toLocaleString()} · refreshes every minute · ${escape(data.scope)}</p>
+  root.innerHTML=`${data.productionPause?.paused?'<p class="status-gate"><strong>Producția este oprită la cererea editorului.</strong> Progresul este salvat; reluarea se face doar la cerere.</p>':''}<p class="status-updated">Updated ${new Date(data.updatedAt).toLocaleString()} · refreshes every minute · ${escape(data.scope)}</p>
     <p class="status-gate">${data.conversionGate==='plans-reviewed'?'All scripts and visual plans are ready. Voice and film production are tracked separately below.':`Planning in progress: ${data.visualPlans||0} of ${data.entries.length} visual plans ready. Voice conversion waits until every script and visual plan is ready.`}</p>
     <div class="status-counts"><div><strong>${active.length}</strong><span>În lucru acum</span></div><div><strong>${data.entries.length}</strong><span>Cărți în total</span></div><div><strong>${c.reviewed||0}</strong><span>Texte revizuite</span></div><div data-production-count="animations"><strong>${data.productionCounts?.animations||0}</strong><span>Animații realizate</span><small>Vizual verificat</small></div><div data-production-count="voices"><strong>${data.productionCounts?.voices||0}</strong><span>Voci generate</span><small>Textul curent înregistrat</small></div><div data-production-count="published"><strong>${data.productionCounts?.published??data.counts?.['qwen-complete']??0}</strong><span>Filme noi publicate</span><small>Voce și animație împachetate</small></div><div data-production-count="publication-invalid"><strong>${data.productionCounts?.publicationInvalid??data.counts?.['publication-invalid']??0}</strong><span>SHF invalid</span><small>Necesită rebuild</small></div></div>
     <label class="status-search">Find a book<input type="search" placeholder="Search titles" data-status-search></label>

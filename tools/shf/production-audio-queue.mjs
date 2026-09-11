@@ -5,6 +5,8 @@ import {promisify} from 'node:util';
 import crypto from 'node:crypto';
 import {narrationDirection,narrationInputHash} from './narration-input.mjs';
 const exec=promisify(execFile),sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+const pause=await fs.readFile('tasks/production-paused.json','utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+if(pause?.paused)throw Error('Production paused by the editor; clear the pause marker only after an explicit resume request.');
 const stateFile='tasks/production-audio-queue-state.json',lockFile='tasks/.production-audio-queue.lock';
 // Measured production throughput is higher with three workers on this host.
 const count=Number(process.env.SHF_AUDIO_WORKERS||3);

@@ -61,10 +61,20 @@ function profile(title){
   const close=kind==='narrative'?'Close with a warm, inviting curiosity; resolve softly rather than performing a dramatic finish.':kind==='technical'?'Close with measured confidence and a practical invitation; avoid sales language.':kind==='reflective'?'Close gently, with an open and personal invitation to continue reading.':'Close with a sober, inviting cadence and a small sense of discovery.';
   return {voice,kind,directions:[open,middle,close],intensities:kind==='narrative'?[.42,.45,.36]:kind==='technical'?[.38,.43,.36]:kind==='reflective'?[.36,.40,.34]:[.39,.43,.36]};
 }
+async function explicitCasting(project,title){
+  const production=await readJson(path.join(project,'work/production.json')).catch(()=>({}));
+  const plan=await readJson('tasks/voice-casting-plan.json').catch(()=>({}));
+  const fromPlan=plan[title]||plan[path.basename(project)]||{};
+  return {...fromPlan,...(production.voiceCasting||{})};
+}
 function updateProject(project,title){
   const pfile=path.join(project,'work/production.json'), sfile=path.join(project,'work/scenes.json');
   return Promise.all([readJson(pfile),readJson(sfile)]).then(async([production,scenes])=>{
     const p=profile(title); production.voiceEngine='qwen'; production.voiceId=p.voice; production.voiceRuntimeConfig='.agents/skills/theatrical-audio/runtime/qwen.json'; production.voiceProvider=`local Qwen3-TTS 1.7B CustomVoice / ${p.voice}`; production.voiceRights='Source adaptation and local neural narration authorized by the project editor.';
+    const casting=await explicitCasting(project,title);
+    if(casting.voiceId){ production.voiceId=casting.voiceId; production.voiceProvider=casting.voiceProvider||`local Qwen3-TTS 1.7B CustomVoice / ${casting.voiceId}`; }
+    if(casting.voicePace!==undefined) production.voicePace=casting.voicePace;
+    if(casting.voiceRights) production.voiceRights=casting.voiceRights;
     production.voicePace=p.kind==='technical'?.95:p.kind==='narrative'?.93:.94;
     production.minDurationMs=0; production.maxDurationMs=120000;
     for(const [sceneIndex,scene] of scenes.entries()){

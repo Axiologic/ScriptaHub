@@ -149,7 +149,8 @@ try {
   const editorialCounts={reviewed:entries.filter(entry=>entry.editorialStatus==='reviewed').length,awaitingReview:entries.filter(entry=>entry.editorialStatus==='independent-review-pending').length,awaitingRewrite:entries.filter(entry=>entry.editorialStatus==='rewrite-pending').length};
   const productionCounts={animations:entries.filter(entry=>entry.animationCompleted).length,voices:entries.filter(entry=>entry.voiceGenerated).length,published:counts['qwen-complete'],publicationInvalid:counts['publication-invalid']};
   const planned=entries.filter(entry=>entry.visualPlan).length;
-  const data={format:'ScriptaHub-animation-voice-migration',version:2,updatedAt:new Date().toISOString(),scope:'All book animations: engaging introductions of 1–2 minutes, maximum two minutes.',counts,editorialCounts,productionCounts,visualPlans:planned,conversionGate:editorialCounts.reviewed===entries.length&&planned===entries.length?'plans-reviewed':'all-plans-must-be-reviewed',entries};
+  const productionPause=await readJson('tasks/production-paused.json').catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+  const data={productionPause,format:'ScriptaHub-animation-voice-migration',version:2,updatedAt:new Date().toISOString(),scope:'All book animations: engaging introductions of 1–2 minutes, maximum two minutes.',counts,editorialCounts,productionCounts,visualPlans:planned,conversionGate:editorialCounts.reviewed===entries.length&&planned===entries.length?'plans-reviewed':'all-plans-must-be-reviewed',entries};
   const json=path.join('tasks','voice-migration-progress.json');
   await fs.writeFile(`${json}.${process.pid}.tmp`,JSON.stringify(data,null,2)+'\n');
   await fs.rename(`${json}.${process.pid}.tmp`,json);

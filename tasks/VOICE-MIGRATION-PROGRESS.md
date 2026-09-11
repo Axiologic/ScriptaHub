@@ -1,16 +1,16 @@
 # Progres migrare voci pentru animații
 
-Actualizat: 2026-09-11T17:17:18.194Z
+Actualizat: 2026-09-11T17:22:30.183Z
 
 Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.
 
 ## Situație
 
 - Voci Qwen finalizate: **16**
-- În conversie: **3**
-- Încă pe Piper: **99**
+- În conversie: **0**
+- Încă pe Piper: **100**
 - Pregătite pentru conversie: **0**
-- De refăcut după schimbarea textului: **4**
+- De refăcut după schimbarea textului: **6**
 - Publicare SHF invalidă: **0**
 - Fără proiect asociat: **0**
 
@@ -33,14 +33,9 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - Before Explanation — Ryan (71 s)
 - Bias in AI — Aiden (67 s)
 
-## În conversie
-
-- Between Faith and Evidence — Ryan (71 s)
-- Borrowed Credibility — en_US-ljspeech-medium (420 s)
-- Concordia Series — en_US-ljspeech-medium (164 s)
-
 ## Încă pe Piper
 
+- Borrowed Credibility — en_US-ljspeech-medium (420 s)
 - Cones of Meaning — en_US-ljspeech-medium (163 s)
 - Decentralised Brands — en_US-ljspeech-medium (162 s)
 - Ecology of Predation — en_US-ljspeech-medium (168 s)
@@ -143,7 +138,9 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 
 ## De refăcut după schimbarea textului
 
+- Between Faith and Evidence — Ryan (71 s)
 - Beyond the Last Stone — Ryan (151 s)
 - Can’t See the Forest for the Trees — Ryan (162 s)
 - Coherence Pressure — Ryan (398 s)
+- Concordia Series — Ryan (164 s)
 - The Right to Copy — Ryan (75 s)

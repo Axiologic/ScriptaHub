@@ -26,7 +26,9 @@ if(planCheck.status!==0)throw Error('Editorial preflight failed before audio gen
 console.log(planCheck.stdout.trim());
 const beats=scenes.flatMap(s=>s.lines.map((text,i)=>{
  if([...segmenter.segment(text)].filter(s=>s.segment.trim()).length!==1)throw Error('One sentence per spoken beat is required: '+s.id);
- return {id:s.id+'-line-'+(i+1),type:'speech',speaker:'narrator',text,direction:narrationDirection(s,i,production)};
+ const id=s.id+'-line-'+(i+1);
+ const seedOverride=production.voiceSeedOverrides?.[id];
+ return {id,type:'speech',speaker:'narrator',text,direction:narrationDirection(s,i,production),...(Number.isInteger(seedOverride)?{seed:seedOverride}:{})};
 }));
 const audioDir=path.join(root,'work/audio');await fs.mkdir(audioDir,{recursive:true});
 console.log('Preparing',beats.length,'single-sentence clips in bounded batches; no audio playback.');
