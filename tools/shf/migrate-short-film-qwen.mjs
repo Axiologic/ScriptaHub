@@ -34,7 +34,10 @@ async function alreadyComplete(entry){
     const audio=path.join(entry.project,'work',line.file);
     return await exists(audio) && await sha256(audio)===line.sha256;
   })).then(values=>values.every(Boolean));
-  return production.voiceEngine==='qwen' && /Qwen3-TTS/.test(receipts?.provider||'') && textCurrent && audioValid && !!build && await exists(entry.shf);
+  if(!(production.voiceEngine==='qwen'&&/Qwen3-TTS/.test(receipts?.provider||'')&&textCurrent&&audioValid&&build&&await exists(entry.shf)))return false;
+  const film=await SHFCore.loadFile(new File([await fs.readFile(entry.shf)],path.basename(entry.shf)));
+  const published=film.scenes.flatMap(scene=>scene.beats||[]);
+  return film.durationMs<=120000&&published.length===texts.length&&published.every((beat,index)=>crypto.createHash('sha256').update(beat.text).digest('hex')===texts[index])&&lines.every(line=>Object.values(film.assets||{}).some(asset=>asset.sha256===line.sha256));
 }
 
 async function manifests(dir='docs/books'){
@@ -76,7 +79,7 @@ function updateProject(project,title){
 }
 function run(cmd,args,env){return new Promise((resolve,reject)=>{const child=spawn(cmd,args,{stdio:'inherit',env:{...process.env,...env}});child.on('exit',code=>code===0?resolve():reject(new Error(`${cmd} exited ${code}`)));child.on('error',reject);});}
 const all=[];for(const mf of await manifests()){const m=await readJson(mf);if(!m.animation?.shf)continue;const shf=path.resolve(path.dirname(mf),m.animation.shf);const candidates=(await fs.readdir('presentations')).map(n=>path.join('presentations',n));const project=(await Promise.all(candidates.map(async c=>({c,p:await exists(path.join(c,'work/production.json'))?await readJson(path.join(c,'work/production.json')):null})))).find(x=>path.resolve(x.p?.bookDirectory||'')===path.resolve(path.dirname(mf)))?.c;if(project)all.push({title:m.title.en,project,shf});}
-const selected=all.sort((a,b)=>a.title.localeCompare(b.title)).filter((_,i)=>i%workers===worker).slice(0,limit||Infinity);
+const selected=all.sort((a,b)=>a.title.localeCompare(b.title)).filter((entry,i)=>process.env.SHF_MIGRATION_PROJECT?path.resolve(entry.project)===path.resolve(process.env.SHF_MIGRATION_PROJECT):i%workers===worker).slice(0,limit||Infinity);
 if(process.env.SHF_MIGRATION_RENDER==='1')await requireMarketingBatch(all);
 for(const entry of selected){
   if(await alreadyComplete(entry)){ console.log(`Already complete ${entry.title}; keeping its verified Qwen narration.`); continue; }

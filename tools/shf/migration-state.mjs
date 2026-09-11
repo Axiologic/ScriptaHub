@@ -25,11 +25,12 @@ export async function refreshMigrationStatus(){
 }
 
 export async function trackMigrationStage(project,stage,operation){
+  const started=Date.now();
   await setMigrationStage(project,stage,'running',{pid:process.pid});
   await refreshMigrationStatus();
   try {
     const result=await operation();
-    await setMigrationStage(project,stage,stage==='voice'?'generated':'built',{note:stage==='voice'?'Listening review pending.':'Visual inspection pending.'});
+    await setMigrationStage(project,stage,stage==='voice'?'generated':'built',{elapsedSeconds:Math.round((Date.now()-started)/1000),note:stage==='voice'?'Listening review pending.':'Visual inspection pending.'});
     await refreshMigrationStatus();
     return result;
   }catch(error){
