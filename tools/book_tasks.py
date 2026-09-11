@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ("en", "fr", "de", "es", "pt", "it", "ro", "pl")
 AUTOMATIC_LANGUAGES = ("en", "ro")
 EXTENSIONS = {".pdf", ".doc", ".docx"}
+DEFAULT_CONTRIBUTORS = [{"authorId": "axiologic-research", "role": "author", "statementId": "scripta-initial"}]
 
 
 def normalise(value: str) -> str:
@@ -172,7 +173,7 @@ def announce(work: Path, root: Path = ROOT) -> Path:
         return target
     if pending is None:
         number = max((entry["number"] for entry in history["editions"]), default=0) + 1
-        pending = {"id": f"edition-{number}", "number": number, "status": "preparing", "startedAt": date.today().isoformat(), "label": {code: re.sub(r"1$", str(number), BOOK_ACTIONS[code]["editionLabel"]) for code in LANGUAGES}, "changes": {code: PREPARATION_LABELS[code][0] for code in LANGUAGES}, "source": {"filename": Path(release["source"]).name, "version": release["sourceVersion"], "sha256": release["sha256"]}, "pdf": {}}
+        pending = {"id": f"edition-{number}", "number": number, "status": "preparing", "startedAt": date.today().isoformat(), "label": {code: re.sub(r"1$", str(number), BOOK_ACTIONS[code]["editionLabel"]) for code in LANGUAGES}, "changes": {code: PREPARATION_LABELS[code][0] for code in LANGUAGES}, "source": {"filename": Path(release["source"]).name, "version": release["sourceVersion"], "sha256": release["sha256"]}, "pdf": {}, "contributors": release.get("contributors") or DEFAULT_CONTRIBUTORS}
         history["editions"].append(pending)
     manifest["pendingEdition"] = pending["id"]
     from build_books import snapshot_edition_covers
@@ -388,7 +389,7 @@ def install(work: Path, root: Path = ROOT) -> Path:
     shutil.copy2(root / release["source"], source_archive)
     from build_books import BOOK_ACTIONS
     labels = {code: re.sub(r"1$", str(number), BOOK_ACTIONS[code]["editionLabel"]) for code in LANGUAGES}
-    edition = {"id": identifier, "number": number, "label": labels, "publishedAt": release["publishedAt"], "changes": release["changes"], "source": {"filename": Path(release["source"]).name, "version": release["sourceVersion"], "sha256": release["sha256"], "path": source_archive.relative_to(target).as_posix()}, "pdf": {"en": "en/book.pdf"}}
+    edition = {"id": identifier, "number": number, "label": labels, "publishedAt": release["publishedAt"], "changes": release["changes"], "source": {"filename": Path(release["source"]).name, "version": release["sourceVersion"], "sha256": release["sha256"], "path": source_archive.relative_to(target).as_posix()}, "pdf": {"en": "en/book.pdf"}, "contributors": release.get("contributors") or (pending or {}).get("contributors") or DEFAULT_CONTRIBUTORS}
     from build_books import snapshot_edition_covers
     edition["status"] = "preparing"
     snapshot_edition_covers(target, edition, refresh_pending=True)

@@ -1,0 +1,112 @@
+An agent can learn to distinguish a device's states yet fail to understand the social significance of the operation it performs. It may have a representation sufficient for technical tests but insufficient for the consequences for people.
+This does not make the model useless. It shows that the family of tests and objectives must be extended carefully and that some judgments remain people's responsibility. Operational understanding always comes with a boundary: for which tasks, observations and consequences is it sufficient?
+Interactive applications are promising when we can observe outcomes, limit effects and control the cost of experiments. In opaque or irreversible settings, the same architecture must take a more cautious role, focused on recommendations and clarification.
+CHAPTER 23
+The Experimental Program
+The Main Claim and Its Scope
+A useful empirical hypothesis must name the tasks, the systems compared and the criterion for success. For the first stage, I would formulate it as follows: within a family of discrete processes with reusable structure, an agent that diagnoses collisions, induces executable distinctions and consolidates them achieves a better error–cost tradeoff than alternatives with comparable access to information and tools.
+This claim may be false. The chosen families may not offer enough transfer; induction may be too expensive; the selector may fail; a single model may learn the same structure more efficiently. The protocol must be capable of producing these conclusions too.
+We should not begin with the vague objective of “demonstrating understanding.” We should begin with observable properties whose combination supports or weakens the proposed interpretation. The name MRP must not become a substitute for measurement.
+Stages and Advancement Thresholds
+Stage
+Object of study
+Condition for continuing
+1. Exact collisions
+Finite histories, deterministic labels
+The diagnosis separates computation from representation loss
+2. Controlled induction
+Compositions of declared primitives
+Refinements resolve unseen structural cases
+3. Library
+Sequences of related tasks
+Reuse amortizes induction and selection
+4. Uncertainty
+Stochastic observations and incomplete data
+Estimates and abstentions are evaluated correctly
+5. Controlled texts
+Documents generated from known structures
+Conditions, attribution and temporality are preserved
+6. Pilot application
+Authentic data and domain users
+The advantage survives real costs and errors
+Numerical thresholds must be set before the final evaluation, according to the application and a pilot study. I would not invent a mandatory accuracy or a universal savings percentage here. What matters is that the criterion is fixed before the decisive comparison, rather than chosen after the results.
+Baseline Systems
+The first baseline is a capable single model trained on the same tasks. The second is a fixed library with a selector. The third is a program generator that solves each task separately, without consolidation. The fourth is the complete MRP system. An ideal baseline that receives the correct representation can be added to estimate how much is lost because of induction.
+The ideal baseline is not a realistic competitor and must be labeled accordingly. Its role is diagnostic. If it works but all induction variants fail, the problem is discovering the representation, not the task's impossibility in the chosen language.
+When we use an LLM, all relevant variants must receive comparable access to it. Prompts, calls, tokens or other consumption units must be reported, along with local time and memory. It is unfair to count only the final symbolic execution after an expensive external search.
+Ablating the Mechanisms
+An ablation removes or replaces a component while keeping the rest as constant as possible. Without diagnosis, the generator receives only the error. Without consolidation, each solution remains local. Without provenance, the agent cannot identify changed dependencies. Without learned selection, we use a simple rule.
+If removing a component does not change the results, it does not yet have a demonstrated contribution in the experiment. It may be necessary under other conditions, but that possibility does not justify claiming a current advantage. Ablation should be viewed as a tool for simplification, not a rhetorical obstacle.
+For geometry, the alternatives may be an applicability table, a Euclidean representation and a representation with cone-inspired regions. We compare the preservation of relevant relations and the cost, not merely the error of a visual projection.
+Structural Data Splits
+Randomly splitting examples can leave the same structure in training and testing. A program then learns a familiar template, and the result is presented as generalization. I would split the data by rules, compositions, dependency lengths and combinations of conditions.
+One evaluation could reserve for testing all protocols in which an operation cancels another's effect only for a particular key. Another could reserve combinations of ordering and aggregation. Transfer then measures something stronger than a change of names.
+The same principle applies to documents. Fragments from the same document or generated from the same structure must not be treated as entirely independent observations. The sampling unit may be the document, protocol or family, rather than each sentence or each nearly identical trace.
+Statistical Uncertainty
+Results must be reported across multiple tasks and initializations, including their variation. An average advantage can hide serious failures in a subfamily. Reporting the distribution of costs and errors, rather than only the mean, is useful.
+If a fixed candidate makes no errors in n independent tests from the same distribution, its true error rate has not been proved to be zero. A one-sided 95% confidence bound is 1 − 0.05 to the power 1/n, under the binomial model. The appendix explains the derivation and why it does not automatically apply after adaptive selection on the same tests.
+Stopping the experiment precisely when a favorable result appears and omitting earlier attempts can distort the conclusions. The protocol must specify the budget, stopping conditions and model selection method. Research on adaptive validation is relevant to this discipline [
+Dwork2015
+What Would Refute the Hypotheses
+Hypothesis
+Result that directly weakens it
+Learned distinctions are general
+The advantage disappears on unseen compositions
+The library produces savings
+The total cost exceeds independent solution
+Diagnosis is useful
+A search without diagnosis achieves the same result
+Meta-control is worthwhile
+A simple rule dominates once selection cost is included
+Geometry offers useful structure
+It does not improve applicability or transfer
+Translation into circuits helps
+Translation errors outweigh the advantage of subsequent verification
+A negative result must be followed by locating its cause, not by arbitrarily changing the definition of success. We may discover that the idea works only for processes with stable rules or for sufficiently reused libraries. A narrower scope, supported by data, is real progress.
+Necessary Artifacts
+A research package should contain the task generator, specifications, data distributions, available primitives, induced programs, complete cost logs, evaluator and negative results. For a text study, it would include sources and annotation rules within the limits permitted for their use.
+The final report must distinguish demonstrated results, measured results and proposals. This book provides a program and conceptual derivations; it does not present results from such an experimental package. The first technical publication should focus on a narrow, reproducible mechanism before making a claim about intelligence in general.
+CHAPTER 24
+Limits, Objections and Contributions
+“Everything Is an Interpreter”
+This is the strongest objection of vacuity. If any function that transforms an input is called an interpreter, then any system can be redescribed in MRP vocabulary. Such a general redescription may be philosophically interesting, but it does not discriminate between architectures.
+The response is to narrow the empirical program: explicitly represented interpreters, scopes of application, observable collisions, induction mechanisms and transfer criteria. We do not claim that a system lacking these structures cannot understand. We investigate whether these structures produce particular advantages.
+The descriptive part can remain a general perspective. The technical part must accept comparison with systems that do not use our terminology. A good result from a monolithic model is relevant information, not a reason to retrospectively redefine the model as MRP to save the hypothesis.
+“It Is Just Operational Semantics”
+Operational semantics can describe the system's execution, including learning and changes of interpreters. MRP does not prove that there is a cognitive process impossible to express semantically. Such a claim would require a much stronger argument than the one offered here.
+The useful distinction is between describing a system's rules and the problem of selecting or constructing interpretation rules suited to a task. MRP focuses on the latter. It can be formalized semantically without losing its usefulness, just as a learning algorithm can have an exact semantics.
+The formulation “semantics are restricted pragmatics” is acceptable as a choice of vocabulary within this framework if it means stabilized regimes of interpretation. It is not a mandatory classification of all theories of meaning and must not be used to downplay the contributions of formal semantics.
+“It Is a Combination of Familiar Ideas”
+The objection is largely correct. Behavioral equivalences, abstractions, active learning, program induction and metareasoning have strong precedents. An architecture with multiple modules and a selector is not novel merely because it contains a plurality; hierarchical mixtures of experts offer a clear precedent for dividing inputs among specialized components [
+Jordan1993
+The difference sought by MRP is not the absence of routing in other systems. It is the traceability of a complete transition: an error is diagnosed as representational insufficiency, a new executable distinction is constructed and checked, and its reuse is then measured. This combination may yield a contribution, but its precise novelty must be demonstrated through comparison and experiment.
+Existing direction
+Connection to MRP
+What should be added or measured
+Abstract interpretation
+Multiple domains for different properties
+Incident-guided selection and induction
+Automata learning
+States defined by distinct continuations
+Libraries reusable across tasks
+Predictive representations
+State constructed from test predictions
+Selection, cost and explicit refinement
+Program learning
+Concepts as executable abstractions
+Diagnosis of lost information
+Mixtures of experts
+Specialization and routing
+Contracts and the genesis of a new distinction
+Metareasoning
+Choosing computation under costs
+The value of building a library
+The table proposes integration questions; it does not claim that no previous system has explored these combinations. The bibliography is selective and does not establish a priority claim. Publishing a new mechanism would require a more focused review of the immediately relevant literature.
+“A Large Model Can Already Do All This”
+In principle, a sufficiently expressive model can implement similar procedures internally. MRP does not need monolithic models to be universally incapable in order to be useful. The desired advantage may be control, local verification, cost or adaptation with few examples.
+The relevant comparison is operational: what can each system do with the same budget and information? A large model may win. A hybrid system may win. The result may depend on task frequency and error costs. The theory must allow this plurality.
+It is also possible that the best technology uses a large model for proposals and small interpreters for repeated execution. This is not a contradiction. It shows that the useful unit of comparison is the complete system and that roles must be attributed correctly.
+“Where Is Understanding Beyond Success?”
+Test performance does not exhaust human understanding. An agent may exploit accidental regularities or possess very narrow competence. MRP tries to reduce this problem through contrastive tests, structural transfer and procedure verification, but it does not provide a definitive criterion for consciousness or lived meaning.
+The symbol grounding problem remains relevant [
+Harnad1990

@@ -8,8 +8,17 @@
   is `docs/books/<title-word>/<title-word>/…/<bk-random-id>/manifest.json`.
   Create one lower-case, punctuation-normalised folder for every English title
   word, in title order; the final `bk-` identifier must be freshly random.
+  The route always uses the English translation of the book title, even when
+  the delivered manuscript, cover title and filename are Romanian or another
+  language. Establish `title.en` before preparing a new book; the original
+  filename is provenance/an alias, never the public route. Source-based names
+  under `tasks/` and `.book-work/` are private workflow paths, not book URLs.
   Do not insert taxonomy, author, language, or arbitrary category folders into
   this route. Rebuild the aggregate instead of hand-editing it.
+- Use the project skill `scriptahub-book` at
+  `.agents/skills/scriptahub-book/SKILL.md` for book intake, folder structure,
+  staging, reader generation, discovery metadata and release maintenance.
+  It coordinates the specialist skills and the repository-owned builders.
 - Use `python3 tools/build_books.py check` after changing the catalogue. The
   migration script owns folder identifiers, reader-link rewrites, manifest
   generation, book pages, and the local-file-safe `collection.js` mirror.
@@ -85,6 +94,9 @@
   portrait `cover.webp` displayed on a book page. Catalogue cards use only
   `thumbnail.webp`, never the source canvas, so a wide PDF/export canvas
   cannot make a cover look like a small icon inside a white frame.
+- Cover derivatives must preserve all artwork after trimming empty export margins.
+  Fit it into the portrait canvas using the source background; never crop titles
+  or authors to force the aspect ratio. Keep `cover.png` unchanged.
 - Every new release must inspect and select the cover from its own delivered
   document, even if it resembles the previous cover. Record it with
   `python3 tools/book_tasks.py cover WORKSPACE EXTRACTED_COVER.png`; the release

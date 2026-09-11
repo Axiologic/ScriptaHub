@@ -72,7 +72,6 @@
     });
     player.addEventListener('shf-error',()=>{clearInterval(startTimer);if(!loaded)loadError=true;localize();});
     player.load(new URL(book.animation.shf,root).href).catch(()=>{loadError=true;localize();});
-    player.setTheme('color');
   }
   document.addEventListener('scriptahub:language',localize);
   new MutationObserver(localize).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});

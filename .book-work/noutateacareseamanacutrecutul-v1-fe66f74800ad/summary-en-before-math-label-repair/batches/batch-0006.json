@@ -1,0 +1,272 @@
+{
+  "batch": "batch-0006.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0006",
+  "chapterTitle": "Chapter 4. An Operational Semantics of Contributions",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000191",
+      "chapterId": "chapter-0006",
+      "kind": "h1",
+      "text": "Chapter 4. An Operational Semantics of Contributions",
+      "sourceAnchor": "src-p191",
+      "wordCount": 7
+    },
+    {
+      "id": "u000192",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "4.1. The Idea as a Structure of Claims, Not a Topic",
+      "sourceAnchor": "src-p192",
+      "wordCount": 12
+    },
+    {
+      "id": "u000193",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A topic is a territory of discourse. A contribution is a definite change within that territory or a change in its rules. “Artificial intelligence for research” names a topic. “A verifier that detects contradictions between the stated assumptions of two experiments” describes a function. “A verifier that does this without access to raw data, under conditions X” introduces a possible difference. For novelty evaluation, moving from topic to structure is essential.",
+      "sourceAnchor": "src-p193",
+      "wordCount": 71
+    },
+    {
+      "id": "u000194",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "An operational representation can describe the problem, assumptions, mechanism, guarantees, costs and evidence. Not every field must be completed in every document. A missing field is itself information: if a proposal does not state its assumptions, the evaluator should not invent them to make it comparable. It can formulate multiple interpretations and mark which verdict depends on each.",
+      "sourceAnchor": "src-p194",
+      "wordCount": 58
+    },
+    {
+      "id": "u000195",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We will schematically write a contribution as a structured object. The notation is an analytical tool, not a requirement that every idea fit one universal form.",
+      "sourceAnchor": "src-p195",
+      "wordCount": 26
+    },
+    {
+      "id": "u000196",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "x = ( P , A , M , G , R , E ) .",
+      "sourceAnchor": "src-p196",
+      "wordCount": 7
+    },
+    {
+      "id": "u000197",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "P denotes the problem, A the assumptions, M the mechanism, G the claimed guarantees or results, R the resources and E the evidence supplied. The difference between two contributions can occur in any component or in the relation between components. The same guarantee under weaker assumptions is not the same claim. The same mechanism with a different proof can constitute another type of contribution. The same results obtained with fewer resources may have operational novelty even if the final function remains identical.",
+      "sourceAnchor": "src-p197",
+      "wordCount": 82
+    },
+    {
+      "id": "u000198",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "To avoid turning the scheme into a rigid ontology, every field must be linked to original passages. The representation must not replace the document without the possibility of auditing it. An evaluator can say “I extracted assumption A from this passage” and retain an alternative version if the text is ambiguous. Structuring aims to preserve differences, not force them into familiar vocabulary.",
+      "sourceAnchor": "src-p198",
+      "wordCount": 62
+    },
+    {
+      "id": "u000199",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Negation, modality and quantification are especially important. “May improve” is not equivalent to “improves in every case.” “There exists a parameter set” is not equivalent to “for every parameter set.” “Under the independence assumption” is not a stylistic note. These elements can be short in the text and large in their consequences. A summary that retains the nouns but loses logical operators can remain thematically correct and semantically useless for novelty.",
+      "sourceAnchor": "src-p199",
+      "wordCount": 71
+    },
+    {
+      "id": "u000200",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A contribution structure can be viewed as a small graph. Nodes represent claims, assumptions, results and sources. Edges can indicate dependence, justification, contradiction or the transformation of an assumption. The graph must not be confused with a proof: linking two nodes with a “justifies” edge does not certify the relation’s validity. It does, however, provide precise places where a verifier or expert can intervene.",
+      "sourceAnchor": "src-p200",
+      "wordCount": 64
+    },
+    {
+      "id": "u000201",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This representation enables better questions than “is the idea new?” What guarantee is absent from the prior work? What assumption has been removed? What observation would distinguish the mechanisms? What claim is merely a reformulation? What part of the contribution depends on an unverified assumption? Each answer can be evaluated separately. We do not automatically obtain truth, but we obtain a better surface for correction.",
+      "sourceAnchor": "src-p201",
+      "wordCount": 65
+    },
+    {
+      "id": "u000202",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "4.2. Equivalence, Anticipation and Residual Difference",
+      "sourceAnchor": "src-p202",
+      "wordCount": 7
+    },
+    {
+      "id": "u000203",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Equivalence is a stronger relation than resemblance. Two objects can resemble one another without being equivalent; they can be equivalent under one criterion and different under another. For functions on a finite domain, extensional equivalence means identical outputs for every input in that domain. For scientific papers, the criterion can be much more complex. A small distance in vector space therefore cannot be treated directly as proof of conceptual equivalence.",
+      "sourceAnchor": "src-p203",
+      "wordCount": 70
+    },
+    {
+      "id": "u000204",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We will use x equivalent_C y to denote that two contributions are equivalent under criterion C. If the relation is genuinely an equivalence relation, it must be reflexive, symmetric and transitive. Many similarity scores do not satisfy these requirements when thresholded. We can have A similar to B and B similar to C without A being similar to C. Constructing classes of ideas through the transitive closure of such a relation can group together contributions that should not have been confused.",
+      "sourceAnchor": "src-p204",
+      "wordCount": 82
+    },
+    {
+      "id": "u000205",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Anticipation is often asymmetric. Prior work can already contain all the relevant elements of the candidate while also including additional results. In this case, the candidate need not be identical to the prior work for its novelty claim to be weakened. We can represent the relation through inclusion of relevant content, provided we specify what content means and which inference rules are permitted.",
+      "sourceAnchor": "src-p205",
+      "wordCount": 63
+    },
+    {
+      "id": "u000206",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "n o v e l C ( x , K ) = 1 ⇔ ¬ ∃ k ∈ K : A n t C ( k , x ) .",
+      "sourceAnchor": "src-p206",
+      "wordCount": 17
+    },
+    {
+      "id": "u000207",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Here, Ant_C(k,x) means that prior work k anticipates contribution x under criterion C. This is a working definition in a closed world, not a legal definition of novelty or a guarantee concerning the entire history of ideas. In real applications, several sources may jointly contribute to what appears new in a candidate. If we allow any combination of prior work, we must establish when the combination is considered already available and when constructing it is itself the contribution. Without such a rule, the evaluator can declare every idea “a combination of known things,” which no longer discriminates anything.",
+      "sourceAnchor": "src-p207",
+      "wordCount": 101
+    },
+    {
+      "id": "u000208",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A useful concept is residual difference. After identifying the closest prior work, we extract what remains unanticipated under the stated criterion. The difference can be empty, clear or uncertain. It may consist of a removed condition, an introduced type of object or a new relation between old components. “Residual” does not mean minor; it means what remains after an explicit comparison.",
+      "sourceAnchor": "src-p208",
+      "wordCount": 61
+    },
+    {
+      "id": "u000209",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A constructed example: prior work A solves problem P for acyclic inputs. Prior work B handles cycles, but only in a restricted case. Candidate C claims a solution for all inputs in a larger class. A summary saying “combines A and B” is insufficient to deny novelty. We must show either that applying the prior methods together already produces C’s guarantee or that C does not actually deliver its claimed guarantee. In the first case, the novelty claim is anticipated; in the second, validity is challenged. These are different arguments.",
+      "sourceAnchor": "src-p209",
+      "wordCount": 90
+    },
+    {
+      "id": "u000210",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "An instructive difficulty arises in formal mathematics. If we define knowledge as all the logical consequences of accepted axioms, every provable theorem was already implicitly contained in the axioms. No new proof would then expand the set of consequences. This definition may be logically useful, but it does not describe the epistemic progress of a resource-limited agent well. Having an implicit consequence is not the same as having identified or proved it within a practical time.",
+      "sourceAnchor": "src-p210",
+      "wordCount": 76
+    },
+    {
+      "id": "u000211",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We can introduce a resource-dependent closure: the consequences that specified procedures can obtain from K within budget B. A new proof can expand what is accessible even if it does not expand ideal logical consequence. This idea must be used cautiously because the result depends on the procedure and representation. Nevertheless, it reveals a type of novelty that simple semantic inclusion misses: turning an abstract possibility into effectively usable knowledge.",
+      "sourceAnchor": "src-p211",
+      "wordCount": 70
+    },
+    {
+      "id": "u000212",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "In computer science, the same phenomenon occurs when a compilation method turns a correct but impractical computation into an efficient one. The computed function can remain identical while the contribution is substantial. A detector identifying only new functions would miss it by definition, not through lack of intelligence. The criterion must therefore be chosen according to the type of progress we want to observe.",
+      "sourceAnchor": "src-p212",
+      "wordCount": 64
+    },
+    {
+      "id": "u000213",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "4.3. When the Idea Changes the Very Vocabulary of Comparison",
+      "sourceAnchor": "src-p213",
+      "wordCount": 11
+    },
+    {
+      "id": "u000214",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The most difficult situation is not always a new value in a known field. Sometimes the contribution challenges the fields. Instead of proposing a better mechanism for the accepted problem, it redefines the problem. Instead of optimizing a guarantee, it suggests that the guarantee is unsuitable. Instead of adding a category, it changes the criterion by which categories were constructed. An evaluator requiring all ideas to conform to the same scheme can miss precisely this type of change.",
+      "sourceAnchor": "src-p214",
+      "wordCount": 78
+    },
+    {
+      "id": "u000215",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "It does not follow that every rejection of existing vocabulary is profound. Some reformulations produce no additional predictions, operations or clarifications. Others conceal incoherence. The real difficulty is that the novelty test must allow the criterion to be challenged without abandoning verification. The solution proposed here is evaluation at two levels: comparison within the current framework and reasoned examination of a change in framework.",
+      "sourceAnchor": "src-p215",
+      "wordCount": 64
+    },
+    {
+      "id": "u000216",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "At the first level, the system can say that the proposal introduces no new function under the existing criterion. At the second, it can ask whether the proposal exposes a limitation of the criterion, offers examples the framework cannot distinguish and introduces an alternative with verifiable consequences. A change of framework becomes more than a metaphor when it shows what can be observed or done differently. Conceptual originality is thus neither reduced to lexical distance nor exempted from the obligation to produce intelligible differences.",
+      "sourceAnchor": "src-p216",
+      "wordCount": 84
+    },
+    {
+      "id": "u000217",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A constructed example for programmers is a change in the cost model. Two algorithms may be equivalent if we count only arithmetic operations but different if data transfer is the dominant cost. Proposing another cost model does not change the computed function; it can, however, change the optimization question and the ordering of preferred solutions. The evaluator must distinguish a merely convenient change of metric from a change justified by application conditions.",
+      "sourceAnchor": "src-p217",
+      "wordCount": 72
+    },
+    {
+      "id": "u000218",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Another example concerns privacy. If the system describes two procedures only through accuracy and time, it cannot evaluate their difference in information disclosure. Introducing an explicit adversary model can show that the old representation was insufficient. We need not claim that every new adversarial model is historically original. The example shows only that novelty can consist in adding a relevant dimension, not a new value on old dimensions.",
+      "sourceAnchor": "src-p218",
+      "wordCount": 68
+    },
+    {
+      "id": "u000219",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "In an automated system, an ontology change must be managed without retroactively rewriting the data. One solution is to preserve multiple interpretations and a translation relation between them. The contribution remains linked to its original formulation, and the evaluator can compare results under alternative criteria. If all interpretations are compressed into one at the outset, the possibility of revision disappears. If they are retained without limit, the cost becomes uncontrollable. The problem is how to allocate the budget among plausible interpretations.",
+      "sourceAnchor": "src-p219",
+      "wordCount": 81
+    },
+    {
+      "id": "u000220",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "An important research direction appears here: detecting representational insufficiency before detecting novelty. A system might observe that two texts are very close in the current representation yet contain incompatible claims or explicit differences the scheme cannot encode. Instead of declaring them identical, it could request an expanded scheme or human verification. This is an architectural proposal, not a capability demonstrated in this book.",
+      "sourceAnchor": "src-p220",
+      "wordCount": 63
+    },
+    {
+      "id": "u000221",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Such a mechanism must also be tested against misuse. If every lexical difference triggers a new ontology, the system becomes useless. The escalation criterion should depend on a concrete question to which the interpretations give different answers. In this way, representational change remains connected to consequences rather than a vague impression of depth.",
+      "sourceAnchor": "src-p221",
+      "wordCount": 53
+    },
+    {
+      "id": "u000222",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This chapter closes with a warning and an opportunity. We cannot detect every type of novelty in a space that has removed its constitutive differences from the outset. But we can build systems that declare their criteria, preserve sources and allow the representation to be revised. Such discipline does not promise infallible recognition of conceptual revolutions. It at least prevents confusing the limits of a scheme with the limits of what can be new.",
+      "sourceAnchor": "src-p222",
+      "wordCount": 74
+    }
+  ]
+}

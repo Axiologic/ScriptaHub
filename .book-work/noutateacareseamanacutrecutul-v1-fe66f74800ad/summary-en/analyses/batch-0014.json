@@ -1,0 +1,216 @@
+{
+  "batch": "batch-0014.json",
+  "chapterId": "chapter-0014",
+  "segment": 1,
+  "thesis": "Novelty detection and attention allocation must be designed together and evaluated separately.",
+  "role": "Selection and learning from rejection",
+  "ideas": [
+    {
+      "id": "batch-0014-idea-001",
+      "statement": "Known nonzero audit probabilities, independent new evidence and archives expose missed contributions.",
+      "centrality": 1,
+      "originality": 0.95,
+      "recurrenceCandidate": "selection",
+      "sourceUnitIds": [
+        "u000466",
+        "u000467",
+        "u000468",
+        "u000469",
+        "u000470",
+        "u000471",
+        "u000472",
+        "u000473"
+      ]
+    },
+    {
+      "id": "batch-0014-idea-002",
+      "statement": "Closed-loop selection can amplify bias, but external influx and correction can prevent homogenization.",
+      "centrality": 0.95,
+      "originality": 0.9,
+      "recurrenceCandidate": "selection",
+      "sourceUnitIds": [
+        "u000475",
+        "u000476",
+        "u000477",
+        "u000478",
+        "u000479",
+        "u000480",
+        "u000481",
+        "u000482",
+        "u000483",
+        "u000484"
+      ]
+    }
+  ],
+  "evidenceAndExamples": [
+    {
+      "statement": "Even a perfect detector of relative novelty does not automatically solve selection. A team may need feasible ideas, impactful results or projects compatible with its resources. Novelty is one decision component, not the sole objective. If these criteria are mixed from the outset, we can no longer determine whether the system missed originality or made a different strategic choice.",
+      "sourceUnitIds": [
+        "u000458"
+      ]
+    },
+    {
+      "statement": "We can represent the decision through the expected utility of examining a proposal. Utility may depend on the probability that the difference is real, the possible value of the result, verification cost and the opportunity to learn. These components are the decision-maker’s assumptions. They are not properties the LLM can objectively infer from the text. A system must request or declare the selection policy.",
+      "sourceUnitIds": [
+        "u000459"
+      ]
+    },
+    {
+      "statement": "A simplified example can have two actions: in-depth verification or postponement. If verification costs c, a valid contribution brings value v and the estimated probability of relevant validity is p, the rule p·v>c can justify verification in the minimal model. But v may be highly uncertain, and verification can produce useful information even if the idea is false. The example shows the decision’s structure, not a universal research threshold.",
+      "sourceUnitIds": [
+        "u000460"
+      ]
+    },
+    {
+      "statement": "Very rare novelty complicates estimation. If we have few confirmed examples, probabilities are hard to calibrate and model errors may dominate. A cautious policy can combine exploitation of scores with exploration of unusual cases. We need not randomly select half the projects. But a system that never explores beyond its confidence region will not systematically learn where it is wrong.",
+      "sourceUnitIds": [
+        "u000461"
+      ]
+    },
+    {
+      "statement": "Semantic distance should not be used as a direct substitute for exploration value. A very distant text may be noise. A small difference in a central mechanism may matter much more. Exploration can be stratified by uncertainty type: hard-to-find prior work, assumption changes, contributions in different languages or cases where models and verifiers disagree. The choice of strata is a hypothesis that must be evaluated through auditing.",
+      "sourceUnitIds": [
+        "u000462"
+      ]
+    },
+    {
+      "statement": "There is also the negative value of a false verdict that something is old. If the system says “this already exists” without concrete prior work, the author may abandon a promising direction. In a brainstorming application, this cost may exceed that of a false novelty alarm. In an editorial application, costs may be distributed differently. Response policy must reflect context, not merely average accuracy.",
+      "sourceUnitIds": [
+        "u000463"
+      ]
+    },
+    {
+      "statement": "A normative recommendation of this book is that research systems should be more demanding when rejecting than when proposing an investigation. Claiming “worth checking” requires a plausible lead. Claiming “there is nothing new” requires a comparison sufficient to eliminate the claimed differences. This asymmetry is not a statistical law; it is a choice justified by the irreversible cost of eliminating rare ideas.",
+      "sourceUnitIds": [
+        "u000464"
+      ]
+    },
+    {
+      "statement": "A filter produces two populations: accepted and rejected candidates. Usually, accepted candidates are checked more carefully. We thus learn much about false alarms but little about missed novelties. If we report only selection precision, we may perceive an excellent system while recall remains unknown. This observational asymmetry must be corrected through design.",
+      "sourceUnitIds": [
+        "u000466"
+      ]
+    },
+    {
+      "statement": "One solution is random sampling of rejections for auditing. Every rejected candidate receives a known, nonzero probability of being checked. Probabilities may differ between strata, for example to oversample highly uncertain cases. But they must be retained for weighting estimates. If we check only rejections that seem interesting retrospectively, we do not obtain a representative estimate.",
+      "sourceUnitIds": [
+        "u000467"
+      ]
+    },
+    {
+      "statement": "Let A_i indicate that idea i was audited, q_i its inclusion probability and Y_i the novelty label established through auditing. The total number of novelties in the rejected population can be estimated using the following weighted sum. The justification is elementary: the mean of A_i/q_i is one if inclusion follows the stated probability.",
+      "sourceUnitIds": [
+        "u000468"
+      ]
+    },
+    {
+      "statement": "T ̂ m i s s e d = ∑ i ∈ r e j e c t e d ​ A i Y i q i .",
+      "sourceUnitIds": [
+        "u000469"
+      ]
+    },
+    {
+      "statement": "The estimate can have high variance when audit probabilities are very small. A formally nonzero chance is not enough. The budget must allow useful uncertainty intervals. If novelties are extremely rare, auditing may require extensive examination. This is a property of the problem, not an error in the formula. An adaptive strategy can increase sampling in strata where signals appear while retaining appropriate estimation rules.",
+      "sourceUnitIds": [
+        "u000470"
+      ]
+    },
+    {
+      "statement": "The audit must also track the reason for rejection. A system can miss contributions because it considers them old, unclear, infeasible or insufficiently supported. If the policy permits rejection for infeasibility, cases where novelty was recognized must be separated. Otherwise, a false-negative analysis may attribute to the detector a decision made by another component.",
+      "sourceUnitIds": [
+        "u000471"
+      ]
+    },
+    {
+      "statement": "Another question is who assigns the label after auditing. If the same LLM and sources are used, the procedure may reproduce the initial error. Auditing must bring additional information or verification: experts, broader search, formal tools or time for experimentation. Repeating the same verdict with a different prompt can test stability but is insufficient as an independent audit.",
+      "sourceUnitIds": [
+        "u000472"
+      ]
+    },
+    {
+      "statement": "The rejection archive also has a longitudinal role. An idea considered unclear may become intelligible after a new framework appears. Earlier work may be discovered later. Preserving versions enables reevaluation and learning from errors. Deleting rejections makes selection irreversible, and irreversibility reduces the system’s ability to learn what types of novelty it fails to recognize.",
+      "sourceUnitIds": [
+        "u000473"
+      ]
+    },
+    {
+      "statement": "We can construct a very simple model of selection’s cumulative effect. We have a distribution p_t(x) of visible ideas at round t and an acceptance probability a(x). If only accepted ideas return in the next round, the following distribution is proportional to the product of visibility and acceptance. The model is a didactic idealization, not an empirical description of a community.",
+      "sourceUnitIds": [
+        "u000475"
+      ]
+    },
+    {
+      "statement": "p t + 1 ( x ) = a ( x ) p t ( x ) ∑ u ​ a ( u ) p t ( u ) .",
+      "sourceUnitIds": [
+        "u000476"
+      ]
+    },
+    {
+      "statement": "If two classes have constant acceptance probabilities a1 and a2, their frequency ratio is multiplied at each round by a1/a2. A small but persistent advantage can become large after many rounds. This conclusion is algebraic. It does not say that the advantage is unjustified or every ecosystem works this way. It shows why a modest bias deserves dynamic evaluation as well as measurement of the score difference in a single round.",
+      "sourceUnitIds": [
+        "u000477"
+      ]
+    },
+    {
+      "statement": "Introducing external ideas changes the process. We can mix the selected distribution with a distribution of new input r, weighted by λ. If λ is positive and r maintains certain classes, they do not automatically disappear. Archive preservation and reevaluation can also change acceptance probabilities. Homogenization is therefore not inevitable; it depends on input and correction mechanisms.",
+      "sourceUnitIds": [
+        "u000478"
+      ]
+    },
+    {
+      "statement": "p t + 1 = ( 1 − λ ) S e l e c t ( p t ) + λ r .",
+      "sourceUnitIds": [
+        "u000479"
+      ]
+    },
+    {
+      "statement": "In a real system, acceptance probability may depend on frequency. An idea may be favored because it is familiar or, conversely, because it is rare. If rarity is mechanically rewarded, the system may produce superficial variations to avoid resemblance. If familiarity is mechanically rewarded, it may preserve dominant patterns. The objective should not be to maximize either extreme, but to preserve the ability to verify relevant differences.",
+      "sourceUnitIds": [
+        "u000480"
+      ]
+    },
+    {
+      "statement": "A portfolio policy can retain projects with different profiles: robust incremental contributions, ideas with clear differences but incomplete validation, and explorations challenging the criterion. They need not all receive the same resources. But evaluating them should not force them onto the same scale without explanation. A conceptual-clarification project and an operational-optimization project can have different types of outcome.",
+      "sourceUnitIds": [
+        "u000481"
+      ]
+    },
+    {
+      "statement": "This discussion separates two normative questions. Do we want the system to imitate the community’s current judgments, or help the community discover its blind spots? The first task can be evaluated through expert agreement. The second requires cases where disagreement is investigated and sometimes proves justified. A model perfectly reproducing consensus is not thereby a perfect detector of contributions that will change consensus.",
+      "sourceUnitIds": [
+        "u000482"
+      ]
+    },
+    {
+      "statement": "Opposition to consensus should not be romanticized. Many rejected ideas are wrong or insufficiently developed. But a research system cannot learn which exceptions deserve preservation if it equates unfamiliarity with meaninglessness. Selection policy must allow verification of cases current scores do not favor, and audit results must be able to change the procedure.",
+      "sourceUnitIds": [
+        "u000483"
+      ]
+    },
+    {
+      "statement": "The operational conclusion is that the novelty detector and attention-allocation policy must be designed together but evaluated separately. The detector identifies relations and uncertainties. The policy decides how much cost to accept for exploration and how much risk for rejection. Mixing them into a single score can conceal both epistemic biases and normative choices.",
+      "sourceUnitIds": [
+        "u000484"
+      ]
+    }
+  ],
+  "objectionsAndQualifications": [
+    {
+      "statement": "Stricter rejection is a normative recommendation; utility calculations and dynamics are didactic, not universal policies or predictions.",
+      "sourceUnitIds": [
+        "u000459",
+        "u000460",
+        "u000464",
+        "u000475",
+        "u000477",
+        "u000478"
+      ]
+    }
+  ],
+  "audit": {
+    "chapterCovered": true,
+    "meaningPreserved": true,
+    "factsPreserved": true,
+    "notes": "Complete chapter read; preserve conditional impossibilities, proposed protocols and bounded empirical evidence."
+  }
+}

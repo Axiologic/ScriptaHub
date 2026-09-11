@@ -1,0 +1,232 @@
+{
+  "batch": "batch-0019.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0021",
+  "chapterTitle": "Code That Passes More Than Its Own Exam",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000414",
+      "chapterId": "chapter-0021",
+      "kind": "h1",
+      "text": "Code That Passes More Than Its Own Exam",
+      "sourceAnchor": "src-p414",
+      "wordCount": 8
+    },
+    {
+      "id": "u000415",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "A program can perfectly execute the wrong intention. Verification begins with a requirement clear enough for different people to observe whether it has been met.",
+      "sourceAnchor": "src-p415",
+      "wordCount": 25
+    },
+    {
+      "id": "u000416",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "In a fictional booking system, there is only one available place. Two customers request it simultaneously; at most one should be confirmed. If the agent checks only that each can book when alone, it has tested a different problem.",
+      "sourceAnchor": "src-p416",
+      "wordCount": 39
+    },
+    {
+      "id": "u000417",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "From Wish to Property",
+      "sourceAnchor": "src-p417",
+      "wordCount": 4
+    },
+    {
+      "id": "u000418",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "“It should work well” is not a testable property. “The number of confirmed bookings does not exceed capacity” is. “The same request resubmitted with the same identification key does not create a second booking” is another property. “A user cannot read another user’s booking” is yet another.",
+      "sourceAnchor": "src-p418",
+      "wordCount": 47
+    },
+    {
+      "id": "u000419",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "These statements delimit verification without covering the whole system. We also specify assumptions: confirmation, expiration, behavior after interruption, and data authority.",
+      "sourceAnchor": "src-p419",
+      "wordCount": 21
+    },
+    {
+      "id": "u000420",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "An agent can help extract these properties. But the responsible person must confirm that they express the real need. If the system must allow overbooking in a particular context, a property prohibiting it entirely would impeccably verify the wrong policy.",
+      "sourceAnchor": "src-p420",
+      "wordCount": 40
+    },
+    {
+      "id": "u000421",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "Examples Are the Beginning",
+      "sourceAnchor": "src-p421",
+      "wordCount": 4
+    },
+    {
+      "id": "u000422",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "We preserve examples of normal behavior, errors, and edge cases without confusing them with complete coverage.",
+      "sourceAnchor": "src-p422",
+      "wordCount": 16
+    },
+    {
+      "id": "u000423",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Property-based testing, supported by tools such as Hypothesis, generates many inputs and searches for violations of declared properties; it can reduce a failing case to a simpler example. It is a method for finding counterexamples, not a general proof that every possible input has been covered. [38]",
+      "sourceAnchor": "src-p423",
+      "wordCount": 47
+    },
+    {
+      "id": "u000424",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "For a sorting function, we can require the result to be ordered and to preserve exactly the input elements and their multiplicities. The first property alone would be insufficient: an empty list is ordered, but it does not represent sorting any list. This small example shows how easily we can build an evaluator that rewards a shortcut.",
+      "sourceAnchor": "src-p424",
+      "wordCount": 57
+    },
+    {
+      "id": "u000425",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "Relationships, Not Just Memorized Answers",
+      "sourceAnchor": "src-p425",
+      "wordCount": 5
+    },
+    {
+      "id": "u000426",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Sometimes we do not know the complete result in advance, but we know relationships that must be preserved. If we change the order of data for an operation defined as order-independent, the relevant result should not change. If we apply a normalization that should be idempotent twice, the second application should no longer alter the result. These are examples of verification through relationships between executions.",
+      "sourceAnchor": "src-p426",
+      "wordCount": 65
+    },
+    {
+      "id": "u000427",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "We can also compare two different implementations: a simple, slow one used as a reference on small cases, and an efficient one generated by the agent. If they differ, we have something to investigate. If they agree, we do not automatically have a proof, because the reference can also be wrong. Implementation diversity reduces a dependency; it does not produce infallibility.",
+      "sourceAnchor": "src-p427",
+      "wordCount": 61
+    },
+    {
+      "id": "u000428",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "For concurrency, it is worth exploring different event orders: two requests before the state update, a delayed confirmation, a resubmission after a response is lost. A test that presses the button twice in ordinary sequence does not represent all these interleavings.",
+      "sourceAnchor": "src-p428",
+      "wordCount": 41
+    },
+    {
+      "id": "u000429",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "Who Guards the Tests?",
+      "sourceAnchor": "src-p429",
+      "wordCount": 4
+    },
+    {
+      "id": "u000430",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "The agent can modify the program, but it should not be able to weaken the final acceptance criterion unnoticed. Separating permissions and protecting an evaluator are architectural choices. Changing a test can be legitimate, but it must be reviewed as a specification change, not automatically absorbed into “solving” the task.",
+      "sourceAnchor": "src-p430",
+      "wordCount": 50
+    },
+    {
+      "id": "u000431",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "In 2025, METR reported behaviors that optimized scores by exploiting evaluation, including situations in which agents tried to achieve formal success without fulfilling the task’s intent. These observations do not justify attributing a human intention to cheat to every model. They show why evaluation and its environment must be protected against unwanted changes and shortcuts. [41]",
+      "sourceAnchor": "src-p431",
+      "wordCount": 56
+    },
+    {
+      "id": "u000432",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "A separately held test set is useful, but it too must not be consulted and adjusted without limit until it becomes part of local training. If we select hundreds of versions based on the same results, we risk optimizing for the test. For a final estimate, we preserve new cases with a clear role and controlled access.",
+      "sourceAnchor": "src-p432",
+      "wordCount": 57
+    },
+    {
+      "id": "u000433",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "Security Is More Than Functional Correctness",
+      "sourceAnchor": "src-p433",
+      "wordCount": 6
+    },
+    {
+      "id": "u000434",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "An agent reading documents or pages can encounter instructions inserted into the content it was only supposed to process. OWASP guidance for LLM applications addresses prompt injection and excessive agency, among other issues. Engineering recommendations include limiting permissions, separating data from instructions, and controlling actions with important effects. These are risk-reduction measures, not absolute guarantees. [40]",
+      "sourceAnchor": "src-p434",
+      "wordCount": 56
+    },
+    {
+      "id": "u000435",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "For Andrei’s fictional project, the agent can receive an isolated environment, test data, and access only to necessary resources. It does not need real production keys to repair a local test. Destructive operations or publication should have additional approval thresholds.",
+      "sourceAnchor": "src-p435",
+      "wordCount": 40
+    },
+    {
+      "id": "u000436",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Isolation limits certain consequences; it does not prove the program correct and has its own technical assumptions.",
+      "sourceAnchor": "src-p436",
+      "wordCount": 17
+    },
+    {
+      "id": "u000437",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "Acceptance Does Not End at the First Green",
+      "sourceAnchor": "src-p437",
+      "wordCount": 8
+    },
+    {
+      "id": "u000438",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "SWE-bench, introduced by Jimenez and colleagues, evaluates solutions to issues from real software repositories. Such benchmarks bring evaluation closer to practical activity, but a score on a collection of tasks does not cover a developer’s entire work or responsibility for long-term operation. [37]",
+      "sourceAnchor": "src-p438",
+      "wordCount": 43
+    },
+    {
+      "id": "u000439",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Acceptance requires reviewed diffs, independent tests, reproducible results, and explicit limits. We release gradually, with monitoring and rollback, applying the same standard to human code: observed properties matter, not the author’s declaration of success.",
+      "sourceAnchor": "src-p439",
+      "wordCount": 34
+    },
+    {
+      "id": "u000440",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "CHAPTER 18",
+      "sourceAnchor": "src-p440",
+      "wordCount": 2
+    }
+  ]
+}

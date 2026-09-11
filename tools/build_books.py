@@ -584,15 +584,21 @@ def create_display_cover(source: Path, destination: Path) -> None:
     covers: several include an empty transparent/white/black canvas beside the
     actual cover.  Keeping that canvas and fitting it into a 2:3 slot makes the
     book look like a tiny icon.  The derived WebP trims the outer canvas and
-    makes a portrait crop once, during generation.  Thumbnails remain the
+    fits all remaining artwork into a portrait canvas. Cropping that artwork
+    can remove titles from typographic covers. Thumbnails remain the
     lightweight image used only in catalogue lists.
     """
     destination.parent.mkdir(parents=True, exist_ok=True)
     try:
+        background = subprocess.check_output(
+            ["convert", str(source), "-format", "%[pixel:p{0,0}]", "info:"],
+            text=True, stderr=subprocess.DEVNULL,
+        ).strip()
         subprocess.run(
             [
                 "convert", str(source), "-fuzz", "3%", "-trim", "+repage",
-                "-resize", "640x960^", "-gravity", "center", "-extent", "640x960",
+                "-resize", "640x960", "-background", background,
+                "-gravity", "center", "-extent", "640x960",
                 "-quality", "90", str(destination),
             ],
             check=True,

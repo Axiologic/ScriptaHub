@@ -1,0 +1,346 @@
+{
+  "language": "en",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000261",
+      "source": "Acesta este un mecanism de construcție, nu doar o clasificare post-hoc. După fiecare extindere, agentul construiește un model candidat și îl confruntă cu sistemul. Un contraexemplu este o secvență pe care comportamentul candidatului diferă de comportamentul țintei. Secvența poate fi redusă pentru a localiza testul care lipsea.",
+      "translation": "This is a construction mechanism, not merely post-hoc classification. After every extension, the agent builds a candidate model and confronts it with the system. A counterexample is a sequence on which the candidate's behavior differs from the target's. The sequence can be reduced to locate the missing test."
+    },
+    {
+      "id": "t000262",
+      "source": "Într-un cadru ideal, un oracol de echivalență spune dacă modelul candidat este corect și oferă un contraexemplu când nu este. Într-un sistem real, un asemenea oracol este de obicei înlocuit de testare. Lucrarea lui Tappler și colaboratorii separă explicit un cadru cu informație perfectă de învățarea prin eșantionarea traseelor [",
+      "translation": "In an ideal setting, an equivalence oracle states whether the candidate model is correct and supplies a counterexample when it is not. In a real system, such an oracle is usually replaced by testing. Tappler and colleagues explicitly distinguish a perfect-information setting from learning through sampled traces ["
+    },
+    {
+      "id": "t000263",
+      "source": "Tappler2019",
+      "translation": "Tappler2019"
+    },
+    {
+      "id": "t000264",
+      "source": "]. Absența unui contraexemplu găsit nu trebuie reinterpretată drept demonstrarea echivalenței.",
+      "translation": "]. Failure to find a counterexample must not be reinterpreted as proof of equivalence."
+    },
+    {
+      "id": "t000265",
+      "source": "Resetare și acces experimental",
+      "translation": "Resetting and Experimental Access"
+    },
+    {
+      "id": "t000266",
+      "source": "Pentru a compara două continuări pornind din aceeași situație, poate fi necesară resetarea sistemului sau reproducerea unui istoric. Într-un simulator aceasta poate fi simplă. Într-un flux organizațional, poate fi scumpă sau imposibilă. Capacitatea de experimentare nu trebuie presupusă gratuit.",
+      "translation": "Comparing two continuations from the same situation may require resetting the system or reproducing a history. This may be simple in a simulator. In an organizational workflow, it may be expensive or impossible. The ability to experiment must not be assumed free."
+    },
+    {
+      "id": "t000267",
+      "source": "Un mediu de învățare trebuie să declare ce acțiuni sunt disponibile, ce observații sunt obținute, dacă se poate reseta și dacă execuția modifică ireversibil lumea. Aceste condiții determină ce algoritmi pot fi aplicați și ce afirmații pot fi validate.",
+      "translation": "A learning environment must declare which actions are available, which observations are obtained, whether resetting is possible and whether execution irreversibly changes the world. These conditions determine which algorithms can be applied and which claims can be validated."
+    },
+    {
+      "id": "t000268",
+      "source": "Ce câștigă MRP",
+      "translation": "What MRP Gains"
+    },
+    {
+      "id": "t000269",
+      "source": "Un automat învățat poate deveni un interpretor reutilizabil al istoricului. El poate procesa evenimente noi incremental, fără să recitească permanent întregul trecut. Dar această eficiență presupune că starea învățată păstrează diferențele necesare în domeniul evaluat.",
+      "translation": "A learned automaton can become a reusable interpreter of history. It can process new events incrementally without continually rereading the entire past. But this efficiency assumes that the learned state preserves the necessary differences within the evaluated domain."
+    },
+    {
+      "id": "t000270",
+      "source": "Experimentul trebuie să distingă inducția unui model nou de selecția unuia furnizat. Numai prima testează construirea distincțiilor; ambele pot avea utilitate inginerească.",
+      "translation": "The experiment must distinguish inducing a new model from selecting a supplied one. Only the former tests the construction of distinctions; both may have engineering value."
+    },
+    {
+      "id": "t000271",
+      "source": "CAPITOLUL 07",
+      "translation": "CHAPTER 07"
+    },
+    {
+      "id": "t000272",
+      "source": "Predicție și intervenție",
+      "translation": "Prediction and Intervention"
+    },
+    {
+      "id": "t000273",
+      "source": "Dincolo de stări vizibile",
+      "translation": "Beyond Visible States"
+    },
+    {
+      "id": "t000274",
+      "source": "Într-un sistem probabilist, două istorii pot produce rezultate diferite la repetarea aceluiași test fără să reprezinte neapărat stări diferite. Diferența poate proveni din aleatoriu. Criteriul de echivalență trebuie să compare distribuții, nu o singură observație.",
+      "translation": "In a probabilistic system, two histories may produce different outcomes when the same test is repeated without necessarily representing different states. The difference may arise from randomness. The equivalence criterion must compare distributions, not a single observation."
+    },
+    {
+      "id": "t000275",
+      "source": "Vom nota Distribuție(test, h) distribuția rezultatelor testului după istoricul h. Două istorii sunt echivalente predictiv relativ la T dacă aceste distribuții sunt egale pentru fiecare test din T. Egalitatea exactă este un obiect teoretic; în experiment estimăm distribuțiile din eșantioane și raportăm incertitudinea.",
+      "translation": "We will write Distribution(test, h) for the distribution of test outcomes after history h. Two histories are predictively equivalent relative to T if these distributions are equal for every test in T. Exact equality is a theoretical object; experimentally, we estimate distributions from samples and report uncertainty."
+    },
+    {
+      "id": "t000276",
+      "source": "Un test interactiv include modul de alegere a acțiunilor. Dacă prima observație determină acțiunea următoare, testul este o politică de experimentare, nu doar o listă fixă. Două sisteme pot fi comparate numai dacă folosim aceeași specificație a testului și aceleași condiții relevante de pornire.",
+      "translation": "An interactive test includes how actions are chosen. If the first observation determines the next action, the test is an experimental policy, not merely a fixed list. Two systems can be compared only if we use the same test specification and relevant starting conditions."
+    },
+    {
+      "id": "t000277",
+      "source": "Reprezentări predictive",
+      "translation": "Predictive Representations"
+    },
+    {
+      "id": "t000278",
+      "source": "Reprezentările predictive de stare, cunoscute ca PSR, descriu starea prin predicții despre rezultatele unor teste executabile asupra sistemului. Singh, James și Rudary dezvoltă această idee folosind o matrice a dinamicii sistemului, ale cărei linii corespund istoriilor, iar coloane testelor [",
+      "translation": "Predictive state representations, or PSRs, describe state through predictions about the outcomes of tests executable on the system. Singh, James and Rudary develop this idea using a system-dynamics matrix whose rows correspond to histories and columns to tests ["
+    },
+    {
+      "id": "t000279",
+      "source": "Singh2004",
+      "translation": "Singh2004"
+    },
+    {
+      "id": "t000280",
+      "source": "Intuiția se vede într-un exemplu. În loc să stocăm o etichetă ascunsă precum „modul latent 7”, putem stoca probabilitatea ca o verificare simplă să reușească, probabilitatea ca două operații succesive să reușească și probabilitatea ca un reset să restabilească funcționarea. Aceste coordonate au sens deoarece se referă la observații care pot fi colectate.",
+      "translation": "An example makes the intuition clear. Instead of storing a hidden label such as “latent mode 7,” we can store the probability that a simple check succeeds, the probability that two successive operations succeed and the probability that a reset restores functioning. These coordinates are meaningful because they refer to observations that can be collected."
+    },
+    {
+      "id": "t000281",
+      "source": "Nu orice listă de predicții este o PSR suficientă. Trebuie să existe o regulă pentru a calcula din ea predicțiile relevante și pentru a o actualiza după acțiuni și observații. Alegerea unui număr mic de întrebări intuitive nu asigură această proprietate.",
+      "translation": "Not every list of predictions is a sufficient PSR. There must be a rule for calculating relevant predictions from it and updating it after actions and observations. Choosing a few intuitive questions does not ensure this property."
+    },
+    {
+      "id": "t000282",
+      "source": "Rangul fără mister",
+      "translation": "Rank Without Mystery"
+    },
+    {
+      "id": "t000283",
+      "source": "O matrice este un tabel numeric. Rangul său măsoară câte coloane sau linii independente sunt necesare pentru a descrie informația liniară din tabel. Dacă unele predicții pot fi obținute ca combinații liniare ale altora, nu trebuie stocate toate ca dimensiuni independente.",
+      "translation": "A matrix is a numerical table. Its rank measures how many independent columns or rows are needed to describe the table's linear information. If some predictions can be obtained as linear combinations of others, they need not all be stored as independent dimensions."
+    },
+    {
+      "id": "t000284",
+      "source": "Aceasta oferă o posibilă compresie pentru sisteme cu structură adecvată. Totuși, estimarea unui rang mic din date finite nu demonstrează că sistemul real are exact acel rang. Zgomotul poate face coloane aparent independente, iar testele insuficiente pot ascunde diferențe. O reprezentare predictivă utilă cere atât o ipoteză structurală, cât și o procedură de validare.",
+      "translation": "This offers possible compression for suitably structured systems. However, estimating a low rank from finite data does not prove that the real system has exactly that rank. Noise may make columns appear independent, while insufficient tests can hide differences. A useful predictive representation requires both a structural hypothesis and a validation procedure."
+    },
+    {
+      "id": "t000285",
+      "source": "Coeficienții unei combinații liniare nu trebuie interpretați automat ca probabilități. Ei pot fi negativi, deși predicția finală trebuie să rămână o probabilitate validă. În plus, actualizarea după observarea unui eveniment implică de regulă normalizare. Compresia liniară a predicțiilor nu înseamnă că întregul agent devine o simplă medie de modele.",
+      "translation": "The coefficients of a linear combination must not automatically be interpreted as probabilities. They may be negative, although the final prediction must remain a valid probability. Moreover, updating after observing an event usually involves normalization. Linear compression of predictions does not mean the entire agent becomes a simple average of models."
+    },
+    {
+      "id": "t000286",
+      "source": "A observa nu este a interveni",
+      "translation": "Observing Is Not Intervening"
+    },
+    {
+      "id": "t000287",
+      "source": "Considerăm două modele cu variabile binare. În primul, o variabilă ascunsă Z determină atât X, cât și Y. În al doilea, Z determină X, iar X determină Y. Presupunem că Z este zero sau unu cu probabilități egale și că toate legăturile copiază valoarea. În datele observaționale ale ambelor modele vedem mereu X = Y.",
+      "translation": "Consider two models with binary variables. In the first, a hidden variable Z determines both X and Y. In the second, Z determines X and X determines Y. Suppose Z is zero or one with equal probabilities and every link copies the value. In observational data from both models, we always see X = Y."
+    },
+    {
+      "id": "t000288",
+      "source": "Dacă intervenim și fixăm X la zero, diferența apare. În primul model, Y continuă să copieze Z și este unu în jumătate dintre cazuri. În al doilea, Y copiază X și devine zero. Aceeași distribuție observațională poate fi compatibilă cu efecte diferite ale intervenției.",
+      "translation": "If we intervene and fix X at zero, the difference emerges. In the first model, Y continues to copy Z and is one in half the cases. In the second, Y copies X and becomes zero. The same observational distribution can be compatible with different intervention effects."
+    },
+    {
+      "id": "t000289",
+      "source": "Formalismul cauzal pune în centru această separare între condiționare, intervenție și întrebări contrafactuale [",
+      "translation": "Causal formalism centers on this separation between conditioning, intervention and counterfactual questions ["
+    },
+    {
+      "id": "t000290",
+      "source": "Pearl2018",
+      "translation": "Pearl2018"
+    },
+    {
+      "id": "t000291",
+      "source": "]. Pentru MRP, consecința practică este că un interpretor antrenat pe corelații nu primește automat autoritatea de a prezice efectele oricărei acțiuni. Are nevoie de ipoteze cauzale sau de date experimentale adecvate.",
+      "translation": "]. For MRP, the practical consequence is that an interpreter trained on correlations does not automatically gain authority to predict the effects of any action. It needs causal assumptions or suitable experimental data."
+    },
+    {
+      "id": "t000292",
+      "source": "O PSR a unui sistem controlat poate prezice teste de acțiune în condițiile sale de identificare și acoperire. Aceasta nu echivalează cu rezolvarea tuturor întrebărilor cauzale despre mecanisme ascunse ori despre lumi contrafactuale neobservate. Trebuie precizat exact ce intervenții au fost disponibile și ce clasă de predicții este susținută.",
+      "translation": "A PSR of a controlled system can predict action tests under its identification and coverage conditions. This does not amount to solving every causal question about hidden mechanisms or unobserved counterfactual worlds. Exactly which interventions were available and which prediction class is supported must be specified."
+    },
+    {
+      "id": "t000293",
+      "source": "Identificabilitate și lipsuri",
+      "translation": "Identifiability and Gaps"
+    },
+    {
+      "id": "t000294",
+      "source": "Un model este identificabil pentru o întrebare dacă datele și ipotezele disponibile determină răspunsul relevant. Două modele care explică toate observațiile pot rămâne diferite în privința unei acțiuni netestate. În această situație, rafinarea reprezentării interne nu produce singură informație nouă despre lume.",
+      "translation": "A model is identifiable for a question if the available data and assumptions determine the relevant answer. Two models explaining every observation may still differ regarding an untested action. In this situation, refining the internal representation does not itself produce new information about the world."
+    },
+    {
+      "id": "t000295",
+      "source": "Agentul trebuie să aleagă între experimentare, presupunerea explicită a unui model sau abținere. Generarea unei explicații suplimentare nu este a patra cale de obținere a informației. Această limită împiedică transformarea MRP într-o retorică a omniscienței prin reorganizare internă.",
+      "translation": "The agent must choose between experimentation, explicitly assuming a model or abstaining. Generating an additional explanation is not a fourth route to acquiring information. This limit prevents MRP from becoming a rhetoric of omniscience through internal reorganization."
+    },
+    {
+      "id": "t000296",
+      "source": "Rolul în arhitectură",
+      "translation": "Role in the Architecture"
+    },
+    {
+      "id": "t000297",
+      "source": "Interpretoarele predictive pot furniza coordonate verificabile, pot detecta coliziuni și pot sugera teste care ar separa modele candidate. Un meta-controler poate decide dacă beneficiul informației justifică experimentul. Un verificator poate controla dacă afirmația finală depășește domeniul susținut de date.",
+      "translation": "Predictive interpreters can supply verifiable coordinates, detect collisions and suggest tests that would separate candidate models. A metacontroller can decide whether the information's benefit justifies the experiment. A verifier can check whether the final claim exceeds the domain supported by the data."
+    },
+    {
+      "id": "t000298",
+      "source": "Astfel, MRP poate lega reprezentarea de acțiune fără a reduce toate formele de înțelegere la predicția următorului simbol. Predicția relevantă poate privi un protocol, o intervenție, un răspuns documentar sau consecința unei reguli. Specificarea acestei ținte este parte din problemă, nu un detaliu care poate fi lăsat implicit.",
+      "translation": "MRP can thus connect representation with action without reducing every form of understanding to next-symbol prediction. The relevant prediction may concern a protocol, an intervention, a documentary answer or a rule's consequence. Specifying this target is part of the problem, not a detail that can remain implicit."
+    },
+    {
+      "id": "t000299",
+      "source": "CAPITOLUL 08",
+      "translation": "CHAPTER 08"
+    },
+    {
+      "id": "t000300",
+      "source": "Interpretări abstracte",
+      "translation": "Abstract Interpretations"
+    },
+    {
+      "id": "t000301",
+      "source": "Informație suficientă pentru o proprietate",
+      "translation": "Sufficient Information for a Property"
+    },
+    {
+      "id": "t000302",
+      "source": "Interpretarea abstractă construiește aproximări corecte ale comportamentului programelor. În loc să execute fiecare caz concret, operează într-un domeniu care păstrează anumite proprietăți și ignoră altele [",
+      "translation": "Abstract interpretation constructs sound approximations of program behavior. Instead of executing every concrete case, it operates in a domain preserving certain properties and ignoring others ["
+    },
+    {
+      "id": "t000303",
+      "source": "Cousot1977",
+      "translation": "Cousot1977"
+    },
+    {
+      "id": "t000304",
+      "source": "]. Pentru MRP, aceasta oferă un exemplu matur de pluralitate a interpretoarelor cu obligații matematice clare.",
+      "translation": "]. For MRP, this provides a mature example of multiple interpreters with clear mathematical obligations."
+    },
+    {
+      "id": "t000305",
+      "source": "Să presupunem că două variabile x și y sunt ambele egale cu același număr a, iar a este între zero și zece. O reprezentare prin intervale păstrează x între zero și zece și y între zero și zece. Aplicată independent celor două intervale, scăderea produce intervalul dintre minus zece și zece. Dar rezultatul concret x − y este întotdeauna zero.",
+      "translation": "Suppose two variables x and y both equal the same number a, and a lies between zero and ten. An interval representation preserves x between zero and ten and y between zero and ten. Applied independently to both intervals, subtraction produces the interval from minus ten to ten. Yet the concrete result x − y is always zero."
+    },
+    {
+      "id": "t000306",
+      "source": "Problema nu este că intervalele au fost calculate greșit. Ele au pierdut relația dintre variabile. O interpretare relațională care păstrează egalitatea x = y poate demonstra imediat rezultatul. Alegerea domeniului abstract determină ce proprietăți devin accesibile analizei.",
+      "translation": "The problem is not that the intervals were calculated incorrectly. They lost the relation between the variables. A relational interpretation preserving the equality x = y can immediately prove the result. The choice of abstract domain determines which properties become accessible to analysis."
+    },
+    {
+      "id": "t000307",
+      "source": "Aproximare corectă",
+      "translation": "Sound Approximation"
+    },
+    {
+      "id": "t000308",
+      "source": "Într-o analiză prin supraaproximare, rezultatul abstract trebuie să includă toate rezultatele concrete posibile. Poate include și posibilități care nu apar în realitate. Acestea produc alarme false, nu neapărat erori ale analizei. O aproximare care exclude un comportament concret posibil poate deveni nesigură pentru proprietatea urmărită.",
+      "translation": "In overapproximation analysis, the abstract result must include every possible concrete result. It may also include possibilities that do not occur in reality. These produce false alarms, not necessarily analysis errors. An approximation excluding a possible concrete behavior may become unsound for the property pursued."
+    },
+    {
+      "id": "t000309",
+      "source": "Putem vedea valoarea abstractă drept o descriere a unui set de stări concrete. „x este pozitiv” descrie multe valori. O transformare abstractă este corectă dacă, pornind de la toate stările descrise de intrare, nicio stare concretă posibilă după operație nu este pierdută din descrierea ieșirii.",
+      "translation": "We can view an abstract value as a description of a set of concrete states. “x is positive” describes many values. An abstract transformation is sound if, starting from all states described by the input, no possible concrete state after the operation is lost from the output description."
+    },
+    {
+      "id": "t000310",
+      "source": "Aceasta este o obligație mult mai puternică decât „operația a fost corectă pe exemplele testate”. Un interpretor învățat empiric nu devine un analizor abstract corect doar pentru că produce intervale sau formule. Trebuie verificată relația dintre operația concretă și transformarea abstractă.",
+      "translation": "This obligation is much stronger than “the operation was correct on tested examples.” An empirically learned interpreter does not become a sound abstract analyzer merely by producing intervals or formulas. The relationship between the concrete operation and abstract transformation must be verified."
+    },
+    {
+      "id": "t000311",
+      "source": "Precizie și cost",
+      "translation": "Precision and Cost"
+    },
+    {
+      "id": "t000312",
+      "source": "Domeniile mai expresive pot demonstra proprietăți pe care domeniile simple le pierd, dar pot necesita mai mult calcul. Unele relații sunt importante într-o regiune a programului și inutile în alta. O strategie rezonabilă este să înceapă simplu și să mărească precizia acolo unde proprietatea cerută o impune.",
+      "translation": "More expressive domains can prove properties simpler domains lose, but may require more computation. Some relations matter in one program region and are useless in another. A reasonable strategy starts simply and increases precision where the required property demands it."
+    },
+    {
+      "id": "t000313",
+      "source": "Introducerea lui Cousot asupra interpretării abstracte explică această relație între proprietățile urmărite, aproximare și analiza calculabilă [",
+      "translation": "Cousot's introduction to abstract interpretation explains this relationship between the properties pursued, approximation and computable analysis ["
+    },
+    {
+      "id": "t000314",
+      "source": "CousotIntro",
+      "translation": "CousotIntro"
+    },
+    {
+      "id": "t000315",
+      "source": "]. Extensia MRP ar fi un controler care învață ce schimbare de reprezentare este probabil să rezolve o anumită alarmă, fără să presupună că „mai multă precizie” este întotdeauna gratuită sau necesară.",
+      "translation": "]. The MRP extension would be a controller learning which representation change is likely to resolve a particular alarm, without assuming that “more precision” is always free or necessary."
+    },
+    {
+      "id": "t000316",
+      "source": "De exemplu, pentru verificarea că x nu depășește zece, intervalul poate fi suficient. Pentru verificarea egalității x − y = 0, relația este decisivă. Alegerea pragmatică depinde de întrebare; corectitudinea fiecărei interpretări depinde de regulile sale.",
+      "translation": "For example, the interval may suffice to verify that x does not exceed ten. To verify the equality x − y = 0, the relation is decisive. The pragmatic choice depends on the question; each interpretation's soundness depends on its rules."
+    },
+    {
+      "id": "t000317",
+      "source": "Puncte fixe și oprire",
+      "translation": "Fixed Points and Stopping"
+    },
+    {
+      "id": "t000318",
+      "source": "Programele cu bucle pot necesita propagarea repetată a informației. Un punct fix este o stare a analizei care nu se mai schimbă după încă o aplicare a regulii de propagare. Nu orice proces ajunge rapid la un punct fix, iar unele domenii permit lanțuri infinite de aproximări tot mai precise sau tot mai largi.",
+      "translation": "Programs with loops may require repeated information propagation. A fixed point is an analysis state unchanged by another application of the propagation rule. Not every process reaches a fixed point quickly, and some domains allow infinite chains of increasingly precise or increasingly broad approximations."
+    },
+    {
+      "id": "t000319",
+      "source": "Interpretarea abstractă folosește mecanisme de accelerare, inclusiv lărgirea, pentru a forța stabilizarea unor analize [",
+      "translation": "Abstract interpretation uses acceleration mechanisms, including widening, to force certain analyses to stabilize ["
+    },
+    {
+      "id": "t000320",
+      "source": "CousotIntro",
+      "translation": "CousotIntro"
+    },
+    {
+      "id": "t000321",
+      "source": "]. Prețul poate fi pierderea preciziei. Pentru MRP, ideea generală este că o politică de oprire trebuie să fie parte din algoritm. „Continuă să rafinezi până înțelegi” nu definește o procedură cu resurse finite.",
+      "translation": "]. The price may be lost precision. For MRP, the general idea is that a stopping policy must form part of the algorithm. “Keep refining until you understand” does not define a procedure with finite resources."
+    },
+    {
+      "id": "t000322",
+      "source": "Un prototip poate evita inițial domeniile complicate și poate folosi tabele finite ori limite explicite de pași. Restricția este legitimă dacă domeniul experimentului o declară. Ea devine problematică numai când concluziile sunt extinse tacit la sisteme fără aceleași limite.",
+      "translation": "A prototype can initially avoid complicated domains and use finite tables or explicit step limits. The restriction is legitimate if the experiment's domain declares it. It becomes problematic only when conclusions are tacitly extended to systems without those limits."
+    },
+    {
+      "id": "t000323",
+      "source": "Două forme de evidență",
+      "translation": "Two Forms of Evidence"
+    },
+    {
+      "id": "t000324",
+      "source": "Un rezultat formal poate spune: sub aceste ipoteze despre program și aritmetică, proprietatea este satisfăcută pentru toate execuțiile modelate. Un rezultat empiric poate spune: în această distribuție de teste, interpretorul a avut o anumită rată de eroare. Ambele sunt utile, dar nu sunt interschimbabile.",
+      "translation": "A formal result may say: under these assumptions about the program and arithmetic, the property holds for every modeled execution. An empirical result may say: on this test distribution, the interpreter had a particular error rate. Both are useful, but they are not interchangeable."
+    },
+    {
+      "id": "t000325",
+      "source": "O arhitectură hibridă poate permite unui generator să propună o abstracție și unui verificator să îi controleze corectitudinea locală. Dacă verificarea eșuează, ipoteza nu trebuie promovată ca regulă sigură. Dacă verificarea este incompletă, statutul rezultatului trebuie să păstreze această limită.",
+      "translation": "A hybrid architecture may allow a generator to propose an abstraction and a verifier to check its local soundness. If verification fails, the hypothesis must not be promoted to a sound rule. If verification is incomplete, the result's status must preserve that limit."
+    },
+    {
+      "id": "t000326",
+      "source": "Transferul către MRP",
+      "translation": "Transfer to MRP"
+    },
+    {
+      "id": "t000327",
+      "source": "Interpretarea abstractă arată că „mai multe moduri de interpretare” nu este o idee nouă în sine. Arată și cum pluralitatea poate fi disciplinată prin relații formale. MRP merită investigată acolo unde adaugă un mecanism măsurabil de alegere, construcție și reutilizare a acestor moduri.",
+      "translation": "Abstract interpretation shows that “multiple modes of interpretation” is not a new idea in itself. It also shows how this plurality can be disciplined through formal relations. MRP merits investigation where it adds a measurable mechanism for selecting, constructing and reusing these modes."
+    },
+    {
+      "id": "t000328",
+      "source": "Prima aplicație plauzibilă nu este un agent care își inventează propria matematică fără control. Este un agent care identifică ce relație lipsește unei analize, propune un interpretor adecvat și demonstrează sau testează exact ce îmbunătățire a obținut. Acest obiect este mai modest, dar suficient de dificil și de util pentru un program de cercetare real.",
+      "translation": "The first plausible application is not an agent inventing its own mathematics without control. It is an agent identifying which relation an analysis lacks, proposing a suitable interpreter and proving or testing exactly which improvement it achieved. This object is more modest, but difficult and useful enough for a real research program."
+    }
+  ]
+}

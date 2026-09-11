@@ -1,0 +1,148 @@
+Solution: no. The first is close to the second and the second to the third, but the first and third are 0.12 apart. The transitive closure of the closeness relation can exceed the threshold. The clustering algorithm must control the diameter or explicitly accept a different guarantee.
+B7. A Procedure's Cone
+Problem: two procedures have net utilities (0.8; 0.2) and (0.4; 0.6) in two states. For what probability p of the first state is the first preferable?
+Solution: the first has value 0.2 + 0.6p, the second 0.6 − 0.2p. Comparing them gives 0.8p ≥ 0.4, hence p ≥ 0.5. In unnormalized weights, the condition is z1 ≥ z2. This defines a cone in the nonnegative quadrant, with equal preference on the boundary.
+B8. Geometric Compression
+Problem: we represent a point by x² + y². Can we answer both whether it lies in a concentric annulus and whether it lies to the left of the origin?
+Solution: the first question can be answered by comparing the squared radius with the thresholds. The second cannot: points (1; 0) and (−1; 0) have the same representation. The geometry was simplified by losing direction, not by preserving all information.
+B9. Correct Proof, Unsupported Conclusion
+Problem: a solver proves that a summary respects the rules extracted from a document. Can we declare the summary faithful to the document?
+Solution: only if the correctness of extracting the relevant rules is also justified. Internal verification does not automatically cover translation from text. Two distinct bodies of evidence must be preserved: the link between document and representation, then the link between representation and summary.
+B10. How a Favorite Hypothesis Is Lost
+Problem: the MRP system outperforms a simple model but does not outperform a fixed library with a selector once all costs are included. What conclusion is defensible?
+Solution: the result supports the usefulness of specialization or selection in the experiment, not the advantage of adaptive induction. We must investigate whether the fixed library already covers all necessary distinctions or whether induction is too costly. It is illegitimate to credit the complete system with an advantage its distinctive component did not produce.
+APPENDIX C
+Operational Glossary
+Abstraction.
+A representation that preserves some properties and ignores others. Its value depends on the questions for which it is used.
+Abstention.
+An outcome in which the agent does not provide the requested answer because information, verification or budget is insufficient.
+Adapter.
+A procedure that transforms one representation into another, with a contract concerning the information preserved and lost.
+Agent.
+A system that receives observations, maintains a state and chooses operations or actions in relation to tasks and constraints.
+Atlas of interpreters.
+A proposed organization of multiple local representations and the adapters between them; it does not assume a geometric manifold.
+Adaptive library.
+A versioned collection of interpreters that can be extended, consolidated, suspended and evaluated through reuse.
+Calibration.
+Agreement between stated probabilities and the relevant frequencies of outcomes; it is not identical to accuracy.
+Circuit.
+An executable composition represented by operations and dependencies between their values.
+Relevant collision.
+The identification under the same representation of situations requiring different answers or distributions for the same test.
+Convex cone.
+A set closed under linear combinations with nonnegative coefficients; in this book it can describe preference regions among procedures.
+Consolidation.
+The promotion and reorganization of procedures for reuse under explicit evaluation and cost criteria.
+Contract.
+A specification of an operation's inputs, outputs, preconditions, effects and limits.
+Counterexample.
+A case that refutes a precise claim. In CEGAR, whether the abstract example corresponds to concrete behavior must be checked.
+Executable distinction.
+A relevant difference that a program can compute from available information and that can be evaluated.
+Behavioral equivalence.
+Indistinguishability with respect to a declared family of continuations or tests.
+Episode.
+A contextualized record of observations and actions, with the relevant identities and order.
+Execution epoch.
+A logical interval during which a task uses stable versions of interpreters and policy.
+Evidence.
+An artifact supporting a bounded status: observation, test, derivation, proof or independent evaluation.
+Factorization.
+The possibility of obtaining a correct answer through an intermediate representation and a function applied to it.
+Generalization.
+Performance on cases not used to construct or select the solution, under explicitly described distributions.
+Program induction.
+The construction of candidate programs from examples, specifications and a vocabulary of operations.
+Interpreter.
+A procedure that transforms inputs and state into results, new state and evidence under declared conditions.
+Abstract interpretation.
+A family of methods for soundly approximating program behavior in domains that preserve selected properties.
+Intervention.
+An action that changes a component of the system under study; its effect is generally not identical to observational conditioning.
+Invariant.
+A property preserved through a system's relevant transitions under explicit assumptions.
+Meta-controller.
+A component that selects computation, observation, induction or stopping operations, taking costs into account.
+MRP.
+The research program of constructing, selecting and revising interpreters through verifiable consequences and resource constraints.
+MRP-VM.
+A possible execution environment that manages the state, dependencies, interpreters and acceptance conditions of MRP operations.
+Policy.
+A rule that chooses actions according to available information; it may include responses to intermediate results.
+Provenance.
+Information about a result's sources and transformations; it facilitates auditing but does not guarantee truth.
+Pseudometric.
+A distance function that satisfies nonnegativity, symmetry and the triangle inequality but may be zero between distinct objects.
+Refinement.
+The addition of distinctions without losing those previously preserved, when the term is used in the strict sense of partitions.
+Predictive representation.
+A description of state through predictions about test outcomes, rather than necessarily identifying a latent state.
+SOP Lang.
+A language option for executable compositions through circuits, discussed here as possible support for MRP, not as a premise of the theory.
+Sufficiency.
+The preservation of information necessary for a declared family of answers or predictions; it does not mean preserving all information.
+Transfer.
+The reuse of a capability in other situations or task families, with checks on its conditions of applicability.
+Value of computation.
+The expected decision gain produced by an internal operation after relevant costs are subtracted.
+Formal verification.
+Establishing a property for all cases covered by a model and the proof's assumptions, not for every possible world.
+APPENDIX D
+Annotated Bibliography
+The sources below ground the concepts used; they do not validate the MRP architecture as a whole. Identifiers correspond to citations in the text. The original publication year is distinguished from the arXiv submission year where they differ. Addresses were consulted for this edition in September 2026. The selection includes original works, authors' expositions and institutional documentation.
+[Angluin1987] Learning Through Queries
+Angluin, Dana (1987). Learning regular sets from queries and counterexamples. Information and Computation, 75(2), 87–106. DOI: 10.1016/0890-5401(87)90052-6.
+A foundational work on learning regular languages through queries and counterexamples. This book uses it as a precedent for the distinction between a learned model and a test that can distinguish it from the target system, not as a guarantee for every MRP environment.
+Publication record
+[Barak] Computability and Complexity
+Barak, Boaz. Introduction to Theoretical Computer Science. The author's online textbook, version consulted in September 2026.
+A reference for the limits of computability and the difference between a solution's mathematical existence and its efficient computation. These limits motivate restricted languages, budgets and inconclusive outcomes in the proposed architecture.
+The author's textbook
+[Boyd2004] Convexity
+Boyd, Stephen; Vandenberghe, Lieven (2004). Convex Optimization. Cambridge University Press.
+A foundation for convex sets, cones, half-spaces and optimization. The book's derivation of preference regions is an instructional calculation under explicit assumptions about procedures and utilities, not an empirical result about the geometry of knowledge.
+Book page and text made available by the authors
+[Callaway2018] Choosing Computations
+Callaway, Frederick; Gul, Sayan; Krueger, Paul M.; Griffiths, Thomas L.; Lieder, Falk (2018). Learning to select computations. Proceedings of the Conference on Uncertainty in Artificial Intelligence. Initial preprint: arXiv:1711.06892, 2017.
+A direct reference for learning approximate metareasoning policies. It supports positioning the value of computation as an existing foundation, distinct from the MRP hypothesis about constructing and consolidating new interpreters.
+Authors' manuscript
+[Clarke2000] Counterexample-Guided Refinement
+Clarke, Edmund; Grumberg, Orna; Jha, Somesh; Lu, Yuan; Veith, Helmut (2000). Counterexample-Guided Abstraction Refinement. Computer Aided Verification, Lecture Notes in Computer Science, 1855, 154–169. DOI: 10.1007/10722167_15.
+The source for the CEGAR loop. The book distinguishes a spurious abstract counterexample from an ordinary predictive error and proposes an integration inspired by this discipline, without automatically transferring its guarantees.
+Original publication
+[Cousot1977] Abstract Interpretation
+Cousot, Patrick; Cousot, Radhia (1977). Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints. Proceedings of the ACM Symposium on Principles of Programming Languages, 238–252.
+The foundation of abstract interpretation. In the MRP argument, it shows that a plurality of interpretation domains can have precise soundness obligations and that approximation is not synonymous with an unchecked heuristic.
+Authors' publication page
+[CousotIntro] Precision, Approximation and Fixed Points
+Cousot, Patrick. Abstract Interpretation in a Nutshell. The author's online introductory exposition.
+Complementary reading on the relationship between concrete analysis, abstract domains and stabilization mechanisms. It is recommended before exploring the mathematical details that this book introduces only as needed for the architecture.
+The author's exposition
+[DeSabbata2025] Metareasoning for LLMs
+De Sabbata, C. Nicolò; Sumers, Theodore R.; AlKhamissi, Badr; Bosselut, Antoine; Griffiths, Thomas L. (2025). Rational Metareasoning for Large Language Models. arXiv:2410.05563, version 3, June 23, 2025; first version submitted in 2024.
+A relevant preprint for positioning rational computation selection in systems with language models. The book does not claim that adaptive allocation of reasoning effort alone is an MRP novelty.
+Cited version
+[Dwork2015] Adaptive Evaluation
+Dwork, Cynthia; Feldman, Vitaly; Hardt, Moritz; Pitassi, Toniann; Reingold, Omer; Roth, Aaron (2015). Generalization in Adaptive Data Analysis and Holdout Reuse. arXiv:1506.02629.
+A reference on the risks of adaptively reusing evaluation data. It motivates separating induction, development and final evaluation; it is not used to claim that a single procedure resolves all MRP's statistical risks.
+Authors' manuscript
+[Ellis2020] Program Libraries
+Ellis, Kevin; Wong, Catherine; Nye, Maxwell; Sable-Meyer, Mathias; Cary, Luc; Morales, Lucas; Hewitt, Luke; Solar-Lezama, Armando; Tenenbaum, Joshua B. (2020). DreamCoder: Growing generalizable, interpretable knowledge with wake-sleep Bayesian program learning. arXiv:2006.08381.
+A work connecting the learning of programmatic abstractions to search guidance. It is a concrete precedent for the interpreter library; MRP must separately justify its mechanism for diagnosing, selecting and checking distinctions.
+Manuscript with the cited title
+[Ferns2004] Behavioral Distances
+Ferns, Norman; Panangaden, Prakash; Precup, Doina (2004). Metrics for Finite Markov Decision Processes. Proceedings of the Conference on Uncertainty in Artificial Intelligence, 162–169. arXiv copy: 1207.4114, submitted in 2012.
+A precedent for behavioral metrics in decision processes. The pseudometric defined in this book through the test family is not automatically identified with the exact metric in this work.
+Authors' copy
+[Ganea2018] Entailment Cones
+Ganea, Octavian; Bécigneul, Gary; Hofmann, Thomas (2018). Hyperbolic Entailment Cones for Learning Hierarchical Embeddings. Proceedings of the 35th International Conference on Machine Learning, PMLR 80, 1646–1655.
+A source for representing hierarchical relations through cones. The book separates this motivation, based on partial order, from the derivation of preference cones from expected utilities.
+Publication and authors' materials
+[Gardenfors2000] Conceptual Spaces
+Gärdenfors, Peter (2000). Conceptual Spaces: The Geometry of Thought. MIT Press. The linked publisher page includes the 2004 paperback edition.
+A reference point for representing concepts through quality dimensions and geometric regions. In MRP, a region's shape is treated as a hypothesis dependent on coordinates, operations and tasks.
+Publisher's page
+[Gneiting2007] Evaluating Probabilities
+Gneiting, Tilmann; Raftery, Adrian E. (2007). Strictly Proper Scoring Rules, Prediction, and Estimation. Journal of the American Statistical Association, 102(477), 359–378. DOI: 10.1198/016214506000001437.

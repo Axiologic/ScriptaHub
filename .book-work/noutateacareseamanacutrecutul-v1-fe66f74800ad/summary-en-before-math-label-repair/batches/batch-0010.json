@@ -1,0 +1,256 @@
+{
+  "batch": "batch-0010.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0010",
+  "chapterTitle": "Chapter 8. How to Identify a Familiarity Bias Experimentally",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000317",
+      "chapterId": "chapter-0010",
+      "kind": "h1",
+      "text": "Chapter 8. How to Identify a Familiarity Bias Experimentally",
+      "sourceAnchor": "src-p317",
+      "wordCount": 9
+    },
+    {
+      "id": "u000318",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "8.1. Hypotheses, Interventions and Alternative Explanations",
+      "sourceAnchor": "src-p318",
+      "wordCount": 7
+    },
+    {
+      "id": "u000319",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A good experiment begins by defining the claim that could be wrong. “Models prefer the familiar” is too broad unless we specify familiarity and the task. We can define a behavioral hypothesis: for the same contribution and prior work, conventional wording receives a higher novelty score than unusual wording under conditions of comparable clarity. We can define an informational hypothesis: a particular compression stage reduces recovery of the decisive semantic difference. We can define a causal hypothesis about training: increasing exposure to a contribution pattern, with other factors controlled, changes its evaluation independently of genuine novelty.",
+      "sourceAnchor": "src-p319",
+      "wordCount": 96
+    },
+    {
+      "id": "u000320",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "These hypotheses require different experiments. Reformulating the prompt does not intervene on pretraining. Comparing two commercial models does not isolate data frequency because the models may differ in architecture, capacity, post-training and tools. Observing a correlation between perplexity and score does not separate clarity, correctness and familiarity. A study must declare the level at which it claims a conclusion.",
+      "sourceAnchor": "src-p320",
+      "wordCount": 59
+    },
+    {
+      "id": "u000321",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "We can informally represent a causal mechanism through variables. F is training exposure, S style, N reference novelty, D semantic difficulty, R access to prior work, Z the intermediate representation and J the verdict. F can influence both Z and J. S can influence difficulty and perceived quality. N is not necessarily observed directly; sometimes we have only an expert label Y influenced by other factors as well. An experiment ignoring these relationships can attribute to novelty what belongs to style or difficulty.",
+      "sourceAnchor": "src-p321",
+      "wordCount": 83
+    },
+    {
+      "id": "u000322",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Factorial design allows factors to vary independently. We can combine old and new contributions with familiar and unusual formulations, then with prior work absent, automatically retrieved or supplied by an experimental oracle. In another block, we can compare full text with a summary. We need not run every combination immediately. But we must understand what interactions might change the result. A style effect may appear only when prior work is absent; that is a different problem from a bias persisting with complete information.",
+      "sourceAnchor": "src-p322",
+      "wordCount": 83
+    },
+    {
+      "id": "u000323",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The experimental oracle is not an omniscient agent. It is the condition in which the experimenter supplies exactly the decisive prior work and the information needed for comparison. In a finite world, this information can be checked exhaustively. In a real study, “oracle” must be used more modestly: an expert-adjudicated package of prior work. The condition’s role is to separate search failure from comparison failure.",
+      "sourceAnchor": "src-p323",
+      "wordCount": 65
+    },
+    {
+      "id": "u000324",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A simple causal contrast is the difference between scores for the same idea under two styles, with random assignment of order and instances. For idea i, we can denote potential outcomes J_i(1) and J_i(0), where 1 and 0 indicate the stylistic treatment. The target average effect is the mean difference. The definition does not automatically resolve identification: memory effects between evaluations must be avoided and content equivalence ensured.",
+      "sourceAnchor": "src-p324",
+      "wordCount": 72
+    },
+    {
+      "id": "u000325",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "τ S = E [ J i ( 1 ) − J i ( 0 ) ] .",
+      "sourceAnchor": "src-p325",
+      "wordCount": 9
+    },
+    {
+      "id": "u000326",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "In practice, the same conversation session can create dependencies between conditions. If the model has already seen the original version, evaluation of the paraphrase is no longer independent. We can use separate sessions and randomization. If an interface retains memory or dynamically changes the model, these conditions must be documented. A repeatable experiment needs the version, date, parameters and complete input–output log.",
+      "sourceAnchor": "src-p326",
+      "wordCount": 63
+    },
+    {
+      "id": "u000327",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Hypotheses must be accompanied by criteria for local refutation. If the style effect is smaller than a preregistered practical threshold with sufficiently small uncertainty, the hypothesis of a relevant effect in that configuration is weakened. A nonsignificant result in a small sample is not a refutation. Likewise, a significant but tiny effect may have little importance for selection. Effect size and decision cost must be discussed together.",
+      "sourceAnchor": "src-p327",
+      "wordCount": 67
+    },
+    {
+      "id": "u000328",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "8.2. Measurement: From Scores to Recovered Contributions",
+      "sourceAnchor": "src-p328",
+      "wordCount": 8
+    },
+    {
+      "id": "u000329",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Overall accuracy is insufficient when novelties are rare. A classifier calling every idea “old” can have high accuracy and no usefulness for discovery. Saito and Rehmsmeier discuss why precision–recall curves are often more informative than ROC curves for evaluation on imbalanced classes. In our application, metric choice must be explicitly linked to the filtering objective. [ R19 ]",
+      "sourceAnchor": "src-p329",
+      "wordCount": 57
+    },
+    {
+      "id": "u000330",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Recall measures the proportion of genuinely new contributions retained. Precision measures the proportion of selections that are genuinely new. They express different costs. For a team able to examine twenty proposals a week, the practical question may be how many new contributions are in the top twenty. For an alert system, missing almost no cases may matter even with many false alarms. There is no universally optimal threshold.",
+      "sourceAnchor": "src-p330",
+      "wordCount": 68
+    },
+    {
+      "id": "u000331",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "An appropriate metric is recall at a fixed budget. For each method, we allow the same number of candidates to be sent to an expert. We compare how many novelties are recovered. We can add the total cost of tokens, searches and expert time. A system detecting five percent more contributions but consuming ten times more verification may be better or worse depending on the application. Cost must not be hidden behind a single curve.",
+      "sourceAnchor": "src-p331",
+      "wordCount": 75
+    },
+    {
+      "id": "u000332",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The quality of the identified difference must be measured separately. The model can correctly select a candidate for a false reason. We can evaluate whether the cited passage exists, whether the prior work is relevant, whether the anticipation relation is valid and whether the difference witness works. A correct selection with a false explanation is not equivalent to an evidence-supported selection, especially when other systems will reuse the result.",
+      "sourceAnchor": "src-p332",
+      "wordCount": 69
+    },
+    {
+      "id": "u000333",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Abstention must be handled explicitly. An evaluator may answer “insufficient information.” If we count every abstention as an error, we favor systems that guess. If we exclude it completely, a system can abstain on every difficult case and report artificially high precision. Coverage, risk on decided cases and the cost of escalated cases must be reported together. A good selective system allocates its uncertainty usefully rather than hiding it.",
+      "sourceAnchor": "src-p333",
+      "wordCount": 69
+    },
+    {
+      "id": "u000334",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Calibration can be evaluated by comparing probabilities with observed frequencies. But good average calibration can conceal large errors on rare contributions, underrepresented languages or ideas changing assumptions. Analysis of subgroups defined before the test is necessary. We should not create dozens of subgroups after seeing the results and report only those supporting the preferred hypothesis.",
+      "sourceAnchor": "src-p334",
+      "wordCount": 55
+    },
+    {
+      "id": "u000335",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Conformal prediction methods can offer marginal guarantees under assumptions such as data exchangeability. The introduction by Angelopoulos and Bates explains these mechanisms and limits. In a stream of discoveries, the distribution may change precisely because new contributions appear. A guarantee calibrated on the past must therefore not be presented as individual certification of historical novelty or automatic protection under distribution shift. [ R20 ]",
+      "sourceAnchor": "src-p335",
+      "wordCount": 62
+    },
+    {
+      "id": "u000336",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The statistical unit must be chosen correctly. Ten paraphrases of the same idea are not ten independent discoveries. A hundred runs of the same model on the same pair are not a hundred replications of the training effect. The data have hierarchical structure: problem families, ideas, variants, models and seeds. Confidence intervals must reflect this dependence through idea-level aggregation, cluster bootstrap or suitable hierarchical models.",
+      "sourceAnchor": "src-p336",
+      "wordCount": 65
+    },
+    {
+      "id": "u000337",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "One possible statistical model, presented here as a planning tool, uses logistic regression for verdict correctness, with effects of novelty, style, access and compression, plus preregistered interactions and random intercepts for family and idea. The model does not turn observation into causality. Causal interpretation comes from the intervention design; regression estimates contrasts and uncertainty under its assumptions.",
+      "sourceAnchor": "src-p337",
+      "wordCount": 57
+    },
+    {
+      "id": "u000338",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "8.3. Testing Training Frequency and Statistical Power",
+      "sourceAnchor": "src-p338",
+      "wordCount": 8
+    },
+    {
+      "id": "u000339",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Testing the initial hypothesis’s exact explanation requires control of exposure. We can construct an artificial domain where certain contribution forms are presented as innovative more often and others less often. In the test, novelty is determined independently of these frequencies. If evaluations follow the frequency of the “innovative” label despite the controlled truth, we have evidence for the proposed causal mechanism in that regime.",
+      "sourceAnchor": "src-p339",
+      "wordCount": 64
+    },
+    {
+      "id": "u000340",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Two manipulations must be separated. The first changes the frequency of an idea’s content. The second changes how frequently an idea form is associated with an assessment of novelty. These can have opposite effects. Repeating an idea can help the model recognize it as old. Repeating praise for a pattern can make the model regard it as innovative. The initial hypothesis is more interesting in the second form because it concerns learning an evaluative concept, not merely memorizing content.",
+      "sourceAnchor": "src-p340",
+      "wordCount": 79
+    },
+    {
+      "id": "u000341",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Total token count, optimization steps, difficulty distribution and label proportions must be controlled. Otherwise, a higher-exposure condition may simply receive more useful training. We can redistribute the same resources among categories and use multiple independent initializations. Comparing a single pair of models does not allow the effect to be robustly separated from optimization variation.",
+      "sourceAnchor": "src-p341",
+      "wordCount": 54
+    },
+    {
+      "id": "u000342",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Small models or local adaptations can provide an accessible causal laboratory. A result in such a laboratory must not automatically be transferred to the pretraining of a very large model. It can demonstrate the mechanism’s existence and the conditions in which it appears. The next step is testing transfer to different capacities, objectives and data regimes. This progression is stronger than attempting to deduce an opaque system’s training data from a few answers.",
+      "sourceAnchor": "src-p342",
+      "wordCount": 73
+    },
+    {
+      "id": "u000343",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Sample planning must start from the minimum relevant effect. For a paired contrast between two styles, information comes especially from cases where verdicts differ. If almost all pairs produce the same verdict, a larger sample may be needed to estimate a small difference. For ordinal scores, we must decide whether distances between grades are treated as equal or whether an ordinal model is used. The choice must not be made after seeing which analysis produces the desired result.",
+      "sourceAnchor": "src-p343",
+      "wordCount": 78
+    },
+    {
+      "id": "u000344",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A power simulation is useful if the generating assumptions are explicit. We can assume particular error rates and correlations between paraphrases, generate synthetic data and estimate how often the procedure would detect an effect. These results concern statistical design under the chosen assumptions, not actual LLM performance. The book does not turn such planning simulations into empirical evidence for the familiarity hypothesis.",
+      "sourceAnchor": "src-p344",
+      "wordCount": 62
+    },
+    {
+      "id": "u000345",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Preregistration must fix the primary outcome, contrasts, relevance threshold, exclusions, handling of abstentions and rules for exploratory analyses. It should not prohibit unexpected discoveries. It should separate confirmation of a prior prediction from formulation of a new one after observing the data. An interesting finding discovered later remains valuable but needs independent replication before being presented as confirmation.",
+      "sourceAnchor": "src-p345",
+      "wordCount": 58
+    },
+    {
+      "id": "u000346",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Ultimately, the hypothesis should be evaluated through a profile of results. A style effect without a controlled-exposure effect supports a behavioral bias, not its training explanation. A compression effect that disappears with access to the original supports a remediable informational mechanism. Persistent failure with perfect prior work and a simple criterion indicates a comparison limit in the tested configuration. Robust success in the finite world refutes universal impossibility without automatically certifying competence in open science.",
+      "sourceAnchor": "src-p346",
+      "wordCount": 75
+    }
+  ]
+}

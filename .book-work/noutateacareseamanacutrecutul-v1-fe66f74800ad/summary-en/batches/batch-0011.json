@@ -1,0 +1,256 @@
+{
+  "batch": "batch-0011.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0011",
+  "chapterTitle": "Chapter 9. The Controlled Laboratory: Novelty with Exact Ground Truth",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000347",
+      "chapterId": "chapter-0011",
+      "kind": "h1",
+      "text": "Chapter 9. The Controlled Laboratory: Novelty with Exact Ground Truth",
+      "sourceAnchor": "src-p347",
+      "wordCount": 10
+    },
+    {
+      "id": "u000348",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "9.1. Why Finite Circuits Are a Suitable Laboratory",
+      "sourceAnchor": "src-p348",
+      "wordCount": 9
+    },
+    {
+      "id": "u000349",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "To test a detector, we must know what it should have detected. In open science, this condition is difficult: prior work may be missing, experts may have different criteria and the contribution may not yet be validated. A finite laboratory does not replace reality, but it allows certain mechanisms to be isolated. Boolean circuits are suitable because they have exact semantics, can be reformulated in many ways and can differ on a single case.",
+      "sourceAnchor": "src-p349",
+      "wordCount": 74
+    },
+    {
+      "id": "u000350",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A Boolean circuit takes n binary inputs and produces a binary output. AND, OR, NOT and XOR gates have determinate semantics. For fixed n, the circuit’s function can be represented by a table with 2 to the power n rows. If two circuits have the same table, they are extensionally equivalent on that domain. If the tables differ, at least one input witnesses the difference.",
+      "sourceAnchor": "src-p350",
+      "wordCount": 65
+    },
+    {
+      "id": "u000351",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "We define a library K of circuits and a candidate c. Relative functional novelty is one if c’s function coincides with none of the functions of elements in K. This definition is deliberately narrow. It does not say that c has an original implementation, is more efficient or was discovered for the first time in history. It says that the library contains no identical function. The advantage is that the verdict can be calculated exactly, independently of a linguistic evaluator.",
+      "sourceAnchor": "src-p351",
+      "wordCount": 80
+    },
+    {
+      "id": "u000352",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A minimal example uses two inputs a and b. The library contains AND and OR. The candidate “negation of the disjunction of the negations” is equivalent to AND and must be classified as old despite different wording. Candidate XOR differs from both and must be classified as new relative to this library. If we add XOR to the library, the same candidate becomes old. We thus test both invariance to reformulation and correct dependence on the reference.",
+      "sourceAnchor": "src-p352",
+      "wordCount": 77
+    },
+    {
+      "id": "u000353",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "This example is too easy for a broad evaluation because gate names may trigger memorized knowledge. We can define operations with random names and supply their tables locally. We can construct expressions with different trees, redundant operations and variable permutations. We can require the model to use only the definitions in context. The aim is not to conceal meaning artificially but to eliminate the possibility of answering solely from a name’s reputation.",
+      "sourceAnchor": "src-p353",
+      "wordCount": 72
+    },
+    {
+      "id": "u000354",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The verifier and generator must remain separate. The generator creates candidates and variants. The verifier calculates tables and labels. The LLM produces the verdict or translates the description into a verifiable representation. If the same model generates the labels and is then evaluated against them, the laboratory loses the very independence that makes it useful. In the executable appendix, labels are calculated by exhaustive enumeration without calling a model.",
+      "sourceAnchor": "src-p354",
+      "wordCount": 69
+    },
+    {
+      "id": "u000355",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A finite laboratory can also test operational novelty, but the criterion must change. Two equivalent circuits can have different depths or gate counts. If the new candidate is smaller than every implementation in the library, we have another type of relative novelty. It does not follow that it is the globally minimal circuit; that would require exploring a larger space or proving a bound. Every extension of the criterion brings a verification obligation.",
+      "sourceAnchor": "src-p355",
+      "wordCount": 73
+    },
+    {
+      "id": "u000356",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "9.2. Rare Differences, Collisions and Test Families",
+      "sourceAnchor": "src-p356",
+      "wordCount": 8
+    },
+    {
+      "id": "u000357",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A critical test of the initial hypothesis must include rare differences. We choose a function f and construct g to coincide with f on every input except one. If inputs are uniform, the difference appears with probability 2 to the power minus n. For n equal to eight, only one row out of 256 distinguishes the functions. Functional novelty is exact, but a small sample of behaviors can miss it.",
+      "sourceAnchor": "src-p357",
+      "wordCount": 70
+    },
+    {
+      "id": "u000358",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "If we observe m independent inputs with replacement, the probability of missing the difference entirely is as follows:",
+      "sourceAnchor": "src-p358",
+      "wordCount": 18
+    },
+    {
+      "id": "u000359",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "P ( missed difference ) = ( 1 − 2 − n ) m .",
+      "sourceAnchor": "src-p359",
+      "wordCount": 7
+    },
+    {
+      "id": "u000360",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The formula concerns the information supplied by sampling, not LLMs. To reduce the probability of missing the difference below α, the budget must satisfy the relation derived by taking logarithms. This analysis shows that failure can result from the absence of a distinguishing case even if the evaluator perfectly compares every observation received.",
+      "sourceAnchor": "src-p360",
+      "wordCount": 53
+    },
+    {
+      "id": "u000361",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "m ≥ log α log ( 1 − 2 − n ) .",
+      "sourceAnchor": "src-p361",
+      "wordCount": 7
+    },
+    {
+      "id": "u000362",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "We can compare three conditions. In the first, the model sees only a sample without the witness. In the second, it sees a sample containing it. In the third, it receives complete expressions and can reason symbolically. The first condition does not permit reliable identification of the difference from examples alone; the second provides local evidence; the third tests the ability to deduce the difference from structure. These conditions must not be aggregated into a single success rate.",
+      "sourceAnchor": "src-p362",
+      "wordCount": 78
+    },
+    {
+      "id": "u000363",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "To test smoothing, we can construct a representation that deliberately removes the distinguishing row or retains only the circuit’s thematic category. The collision is then known by construction. An evaluator based exclusively on the compressed representation cannot distinguish the pair. This experiment checks the pipeline’s informational limit, not a particular LLM’s inability. We can subsequently replace the deliberate compressor with a linguistic summarizer and measure how often a relevant collision occurs.",
+      "sourceAnchor": "src-p363",
+      "wordCount": 71
+    },
+    {
+      "id": "u000364",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Another family uses reformulations without changing the function. We can apply double negation, De Morgan’s laws, reordering of commutative arguments and introduction of redundant subexpressions. These transformations produce different texts with the same label. If the model considers them new only because the expression is long or unusual, we have a false positive for syntactic originality. If it correctly normalizes all expressions, we have useful semantic-invariance competence.",
+      "sourceAnchor": "src-p364",
+      "wordCount": 67
+    },
+    {
+      "id": "u000365",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The complementary family changes a single relevant component while keeping the form as close as possible. Replacing an OR gate with XOR can produce a local functional difference. Changing the input domain can turn equivalence into nonequivalence. Moving a quantifier in a description can change the objective. These minimal pairs are useful because they reduce the chance that the model uses length or topic as the main cue.",
+      "sourceAnchor": "src-p365",
+      "wordCount": 68
+    },
+    {
+      "id": "u000366",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "One danger of synthetic datasets is the emergence of artifacts. If every new example has an extra level of parentheses, the model can learn the parentheses. If every old example is obtained through a single rewriting rule, it may recognize the rule without general comparison. The generator must balance length, structure and vocabulary between classes. More importantly, the test must be split by latent transformation families, not merely by randomly dividing nearly identical examples.",
+      "sourceAnchor": "src-p366",
+      "wordCount": 74
+    },
+    {
+      "id": "u000367",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "We can reserve a rewriting family exclusively for testing, a set of base functions exclusively for testing and new names for each round. This does not guarantee absence of every shortcut, but it makes generalization more demanding. Results must be reported for each family. A good average can conceal failure precisely on the rare differences or quantification changes motivating the research.",
+      "sourceAnchor": "src-p367",
+      "wordCount": 61
+    },
+    {
+      "id": "u000368",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "9.3. What a Positive or Negative Result Would Demonstrate",
+      "sourceAnchor": "src-p368",
+      "wordCount": 10
+    },
+    {
+      "id": "u000369",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Suppose a model correctly classifies new circuits, recognizes old reformulations and produces valid difference witnesses on families not used in preparing the test. The result would demonstrate comparison ability in a finite domain under the experimental conditions. It would strongly weaken the thesis that every recognition of novelty is merely retrieval of memorized ideas. It would not demonstrate that the model can examine the open scientific literature or assess an idea’s importance.",
+      "sourceAnchor": "src-p369",
+      "wordCount": 72
+    },
+    {
+      "id": "u000370",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "If the model succeeds only when given complete tables but not descriptions, the problem seems connected to interpretation or symbolic computation. If it succeeds when the witness is supplied but cannot find it, we separate verification from witness search. If it fails even when the difference is explicitly highlighted, we can investigate the instruction, context or ability to apply the criterion. These results are more informative than simply saying “it does not understand.”",
+      "sourceAnchor": "src-p370",
+      "wordCount": 73
+    },
+    {
+      "id": "u000371",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "If all models fail after compression has removed the witness and structural information, we do not have a useful comparison between models. We have constructed an unidentifiable task. The experiment’s value is to demonstrate the architectural defect. A good detector should at least recognize insufficient information and abstain. Certainty in a verdict under this condition is itself a calibration result.",
+      "sourceAnchor": "src-p371",
+      "wordCount": 60
+    },
+    {
+      "id": "u000372",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "If style affects the verdict even though the circuit and library are identical, there is a behavioral effect. Interpreting it requires checking that the variants describe exactly the same circuit. We can generate descriptions from a controlled grammar and then include validated human variants. Increasing linguistic realism reduces formal control; a progression from controlled language to natural explanations is therefore useful, rather than abruptly replacing one with the other.",
+      "sourceAnchor": "src-p372",
+      "wordCount": 69
+    },
+    {
+      "id": "u000373",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A negative laboratory result does not prove that the model will fail on every real task. Humans can use analogies and domain knowledge poorly represented by random circuits. But success on subjectively assessed real tasks does not cancel formal failure either. The two tests measure different components. A good research program preserves the tension between control and relevance instead of choosing only the favorable test.",
+      "sourceAnchor": "src-p373",
+      "wordCount": 65
+    },
+    {
+      "id": "u000374",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "For reporting, each case should include the expression or description, library, criterion, exact label, existing witnesses, stylistic transformations and the evaluator’s raw output. If the model proposes an intermediate circuit, it must be retained separately from the reference circuit. A correct answer obtained from an incorrect translation may be accidental. An incorrect answer from a correct translation indicates another problem.",
+      "sourceAnchor": "src-p374",
+      "wordCount": 60
+    },
+    {
+      "id": "u000375",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The laboratory can be extended to finite automata, regular expressions on bounded domains, finite Datalog relations or discrete causal models. Each domain offers different distinctions: temporal behavior, quantification, dependencies or interventions. Extensions should not be made merely to add benchmarks. They must test a precise hypothesis about what kind of difference is lost or recognized.",
+      "sourceAnchor": "src-p375",
+      "wordCount": 55
+    },
+    {
+      "id": "u000376",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The laboratory’s ultimate aim is not to proclaim a winner. It is to construct an anatomy of error. A system missing prior work needs a different remedy from one that reads it and erases the difference. A system that can verify a witness but not search for one has a different profile from one that confuses the criterion. Only after this anatomy is established is scaling to real documents worth discussing.",
+      "sourceAnchor": "src-p376",
+      "wordCount": 71
+    }
+  ]
+}

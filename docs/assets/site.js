@@ -6,6 +6,7 @@
 
   const discoveryTitles = { en: "Discover", fr: "Explorer", de: "Entdecken", es: "Descubre", pt: "Descubra", it: "Scopri", ro: "Descoperă", pl: "Odkrywaj" };
   const featuredBookLabels = { en: "From the shelf", fr: "Dans les rayons", de: "Aus dem Regal", es: "De la biblioteca", pt: "Da estante", it: "Dallo scaffale", ro: "Din bibliotecă", pl: "Z biblioteki" };
+  const featuredNextLabels = { en: "Next Book", fr: "Livre suivant", de: "Nächstes Buch", es: "Libro siguiente", pt: "Próximo livro", it: "Libro successivo", ro: "Cartea următoare", pl: "Następna książka" };
   const librarianSectionLabels = {
     en: { kicker: "Find your next book", title: "Ask AI Librarian" },
     fr: { kicker: "Trouvez votre prochaine lecture", title: "Demandez au bibliothécaire IA" },
@@ -419,6 +420,23 @@
           strip.append(link);
         }
         link.href = ScriptaBookView.model(book, language).href;
+        let next = strip.querySelector("[data-featured-next]");
+        if (!next) {
+          next = document.createElement("button");
+          next.type = "button";
+          next.dataset.featuredNext = "";
+          next.className = "featured-carousel-next";
+          next.innerHTML = '<span aria-hidden="true">›</span>';
+          next.addEventListener("click", event => {
+            event.preventDefault();
+            event.stopPropagation();
+            const icon = container.querySelector("[data-mission-book]");
+            if (icon && !icon.classList.contains("is-leaving")) replaceIcon(icon);
+          });
+          strip.append(next);
+        }
+        next.setAttribute("aria-label", featuredNextLabels[language]);
+        next.title = featuredNextLabels[language];
       }
     };
 

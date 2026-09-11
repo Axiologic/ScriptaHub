@@ -1,0 +1,232 @@
+{
+  "batch": "batch-0012.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0013",
+  "chapterTitle": "Interpreter Induction",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000348",
+      "chapterId": "chapter-0013",
+      "kind": "h1",
+      "text": "Interpreter Induction",
+      "sourceAnchor": "src-p353",
+      "wordCount": 2
+    },
+    {
+      "id": "u000349",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "What Is Learned and What Is Supplied",
+      "sourceAnchor": "src-p354",
+      "wordCount": 7
+    },
+    {
+      "id": "u000350",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "An initial MRP system need not invent machine language, logic or every basic operation. It can receive a function core and learn new compositions. Learning's contribution must be described precisely: which primitives existed, which structures could be expressed and which programs were discovered.",
+      "sourceAnchor": "src-p355",
+      "wordCount": 43
+    },
+    {
+      "id": "u000351",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "For event histories, primitives may include filtering by a field, comparing two values, selecting an extremum, counting, joining by a key and applying a transition rule. A type limits admissible inputs: selecting the last record takes an orderable sequence, not a probability or an isolated proposition.",
+      "sourceAnchor": "src-p356",
+      "wordCount": 46
+    },
+    {
+      "id": "u000352",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Types reduce search and prevent some errors, but do not establish intent. A program can be well typed and select the first record instead of the last. Structural correctness is a necessary condition for certain operations, not a certificate for the entire solution.",
+      "sourceAnchor": "src-p357",
+      "wordCount": 43
+    },
+    {
+      "id": "u000353",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Searching a Finitely Described Language",
+      "sourceAnchor": "src-p358",
+      "wordCount": 5
+    },
+    {
+      "id": "u000354",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Induction can begin by enumerating short compositions. If there are roughly b choices at each position and length d is allowed, the number of candidate sequences may grow on the order of b to the power d. Types, symmetries and examples eliminate some combinations without removing the combinatorial difficulty.",
+      "sourceAnchor": "src-p359",
+      "wordCount": 49
+    },
+    {
+      "id": "u000355",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "A guided generator can prioritize programs that seem appropriate to the incident. For example, the difference between two histories with identical elements in different orders suggests order-sensitive operations. This heuristic does not guarantee success; it offers a verifiable way to reduce computation.",
+      "sourceAnchor": "src-p360",
+      "wordCount": 42
+    },
+    {
+      "id": "u000356",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "An LLM can participate as a generator of such hypotheses. The potential advantage is rapidly proposing compositions that would be expensive to enumerate. The disadvantage is that it may supply additional information from training, produce fragile programs and dominate the entire system's contribution. Evaluation must include a variant using the same LLM, tools and budget but lacking MRP's consolidation mechanism.",
+      "sourceAnchor": "src-p361",
+      "wordCount": 60
+    },
+    {
+      "id": "u000357",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "A Selection Criterion Beyond Fitting Examples",
+      "sourceAnchor": "src-p362",
+      "wordCount": 6
+    },
+    {
+      "id": "u000358",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "A selection function can combine error, description complexity and execution cost. No weights are universally correct. They express the trade-off chosen for the application and must be published with the results.",
+      "sourceAnchor": "src-p363",
+      "wordCount": 31
+    },
+    {
+      "id": "u000359",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Score(candidate) = estimated error + description penalty + estimated cost.",
+      "sourceAnchor": "src-p364",
+      "wordCount": 8
+    },
+    {
+      "id": "u000360",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The minimum description length principle, MDL, provides a foundation for preferring an explanation that compresses both the model and the data left unexplained [ Grunwald2004 ]. In MRP, this preference could favor a reusable rule over a list of exceptions. However, the result depends on the language in which description length is measured and on data quality. A short program is not automatically true or ethically preferable.",
+      "sourceAnchor": "src-p365",
+      "wordCount": 65
+    },
+    {
+      "id": "u000361",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Separating description cost from execution cost matters. A very short definition may hide enormous search. Conversely, a longer program may precompile operations and run quickly. The library must be evaluated in terms of total cost over relevant tasks.",
+      "sourceAnchor": "src-p366",
+      "wordCount": 38
+    },
+    {
+      "id": "u000362",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "From a Local Program to a Reusable Concept",
+      "sourceAnchor": "src-p367",
+      "wordCount": 8
+    },
+    {
+      "id": "u000363",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Suppose the agent discovers the same pattern across several protocols: group by identity, select the last event and interpret its type. Consolidation extracts the common part and parameterizes it with the protocol's specific fields and rules.",
+      "sourceAnchor": "src-p368",
+      "wordCount": 36
+    },
+    {
+      "id": "u000364",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "This pattern is a candidate for an operational notion of a concept: a composition organizing many cases that can be executed in new contexts. We do not claim that every human concept is such a program. We define a kind of knowledge that can be built and measured.",
+      "sourceAnchor": "src-p369",
+      "wordCount": 48
+    },
+    {
+      "id": "u000365",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "DreamCoder shows that learning libraries of programmatic abstractions and guiding search can be combined in a concrete system [ Ellis2020 ]. For MRP, the distinct question would be whether diagnosing a collision can guide this induction and whether the new abstraction explicitly improves the family of distinctions available to the agent.",
+      "sourceAnchor": "src-p370",
+      "wordCount": 49
+    },
+    {
+      "id": "u000366",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Program Equivalence and Rewriting",
+      "sourceAnchor": "src-p371",
+      "wordCount": 4
+    },
+    {
+      "id": "u000367",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The library may contain different programs computing the same result. Eliminating redundancy would save memory and simplify selection. But establishing equivalence for general programs is neither free nor universally decidable [ Barak ].",
+      "sourceAnchor": "src-p372",
+      "wordCount": 31
+    },
+    {
+      "id": "u000368",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "We can work with identities proved in a restricted language. Equality saturation, including structures such as those used by egg, enables compact representation of many equivalent expressions and selection by cost [ Willsey2021 ]. This does not authorize declaring arbitrary LLM-generated programs equivalent.",
+      "sourceAnchor": "src-p373",
+      "wordCount": 41
+    },
+    {
+      "id": "u000369",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "If operations have effects, arithmetic overflows or order matters, rewrite rules must include these conditions. An algebraic identity between ideal expressions may not hold for concrete execution. In a prototype, a pure and explicitly restricted core would greatly simplify verification.",
+      "sourceAnchor": "src-p374",
+      "wordCount": 40
+    },
+    {
+      "id": "u000370",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Independent Validation and Contamination",
+      "sourceAnchor": "src-p375",
+      "wordCount": 4
+    },
+    {
+      "id": "u000371",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The case that generated the hypothesis cannot be the main evidence that it generalizes. Nor does a test set consulted repeatedly until the candidate passes remain an independent evaluation. Research on adaptive data analysis shows why reusing evaluation results can compromise generalization [ Dwork2015 ].",
+      "sourceAnchor": "src-p376",
+      "wordCount": 43
+    },
+    {
+      "id": "u000372",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "I would separate induction examples, development tests and a final set inaccessible to selection. An evaluator could return only the verdict needed for the current stage while retaining a reserve for final evaluation. All relevant attempts should also be reported, not just the last candidate.",
+      "sourceAnchor": "src-p377",
+      "wordCount": 45
+    },
+    {
+      "id": "u000373",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Successful induction does not mean “a program was generated.” It means a program constructed from declared primitives repaired an identified insufficiency, passed appropriate evaluations and justified the cost of consolidation. This is the complete experimental object.",
+      "sourceAnchor": "src-p378",
+      "wordCount": 36
+    },
+    {
+      "id": "u000374",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "CHAPTER 11",
+      "sourceAnchor": "src-p379",
+      "wordCount": 2
+    }
+  ]
+}

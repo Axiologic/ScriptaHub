@@ -1,0 +1,176 @@
+{
+  "batch": "batch-0016.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0018",
+  "chapterTitle": "14. The Architecture of Contextual Distillation",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000261",
+      "chapterId": "chapter-0018",
+      "kind": "h1",
+      "text": "14. The Architecture of Contextual Distillation",
+      "sourceAnchor": "src-p261",
+      "wordCount": 6
+    },
+    {
+      "id": "u000262",
+      "chapterId": "chapter-0018",
+      "kind": "h2",
+      "text": "From Document to Verifiable Core",
+      "sourceAnchor": "src-p262",
+      "wordCount": 5
+    },
+    {
+      "id": "u000263",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "A first prototype does not need a new model trained from scratch. It can use an existing language model for proposals, a corpus search engine for sources, and explicit validators for structure and consistency. This is an experimental design choice: separating components lets us discover what actually contributes to the result.",
+      "sourceAnchor": "src-p263",
+      "wordCount": 51
+    },
+    {
+      "id": "u000264",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The input must contain the text, its identifier and version, language, usage rights, the reader’s question, and the known application context. Without a question, the system can produce several candidate cores but must not claim to have identified the sole essence. Without sufficient context, it can indicate missing variables rather than arbitrarily complete the situation.",
+      "sourceAnchor": "src-p264",
+      "wordCount": 55
+    },
+    {
+      "id": "u000265",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The first stage delineates argumentative units: claims, reasons, examples, objections, conditions, and conclusions. This segmentation must be checked against annotated examples, including texts with irony, dialogue, or opinions attributed to others. A statement spoken by a character does not automatically become the author’s position, and a negative example does not become a recommendation.",
+      "sourceAnchor": "src-p265",
+      "wordCount": 53
+    },
+    {
+      "id": "u000266",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The second stage proposes cores. Each contains the question, application context, assumed facts, options, affected parties, invoked mechanism, conditional principle, counterprinciple, limits, and event requiring revision. Unknown fields remain unknown. An inventively completed schema is more dangerous than an incomplete but honest one.",
+      "sourceAnchor": "src-p266",
+      "wordCount": 43
+    },
+    {
+      "id": "u000267",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "Inducing new patterns must be treated separately from completing the schema. The prototype can align contrasting cases, represent relations between actors, purposes, evidence, and consequences, and propose a rule explaining the difference. It then seeks cases unused during induction where the rule should work and cases where it should not. A rule assessed only on examples that produced it is not yet validated.",
+      "sourceAnchor": "src-p267",
+      "wordCount": 63
+    },
+    {
+      "id": "u000268",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "For example, the educational case can yield a verifiable rule: if the only evidence measures assisted performance, it does not alone establish independent performance. The rule does not decide whether the tool is good or turn absence of evidence into evidence of a negative effect. In an implementation, conditions can have three states: supported, refuted, or unknown. An unknown value is not tacitly converted to false.",
+      "sourceAnchor": "src-p268",
+      "wordCount": 66
+    },
+    {
+      "id": "u000269",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "A pattern base can store relations as a graph and conditions as typed rules while retaining natural-language formulation alongside them. The formal part permits checking dependencies and detecting contradictions; the linguistic part preserves nuances not formalized. The system does not acquire the right to execute recommendations automatically merely because a condition is satisfied. Choosing remains a distinct operation with its own premises and permissions.",
+      "sourceAnchor": "src-p269",
+      "wordCount": 64
+    },
+    {
+      "id": "u000270",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The third stage checks provenance. Every extracted claim is linked to a passage and its role. A textual-entailment verifier can help detect unsupported claims, but does not certify truth about the world. External premise verification is a separate operation with its own source, date, and limits. Agreement between two texts depending on the same source is not independent confirmation.",
+      "sourceAnchor": "src-p270",
+      "wordCount": 59
+    },
+    {
+      "id": "u000271",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The fourth stage seeks counterexamples and deactivation conditions. For a principle about caution, it generates a case with high delay costs. For a principle about trust, it introduces a relevant information asymmetry. Generated counterexamples are test candidates, not real data. A human evaluator checks whether the modification is coherent and attacks the principle rather than a caricature.",
+      "sourceAnchor": "src-p271",
+      "wordCount": 57
+    },
+    {
+      "id": "u000272",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The fifth stage selects and presents. Readers first see the conditional conclusion and information that could change it. They can open sources, limits, and alternatives. The interface must reduce effort without hiding what justifies the verdict. A layered representation is preferable to either a slogan or a long report imposed for every question.",
+      "sourceAnchor": "src-p272",
+      "wordCount": 53
+    },
+    {
+      "id": "u000273",
+      "chapterId": "chapter-0018",
+      "kind": "h2",
+      "text": "Data, Training, and Error Control",
+      "sourceAnchor": "src-p273",
+      "wordCount": 5
+    },
+    {
+      "id": "u000274",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The initial corpus should be limited to domains with manageable risks and sufficiently explicit criteria: software project analysis, simulated educational decisions, and organizing collective activities. Texts can include case studies, failure accounts, procedures, and argumentative essays. Philosophical literature contributes concepts; it must not be the sole positive source, or philosophical style will become too strong a cue.",
+      "sourceAnchor": "src-p274",
+      "wordCount": 57
+    },
+    {
+      "id": "u000275",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The dataset also needs difficult negative examples. Some texts are factually correct but decision-irrelevant. Others offer recommendations appropriate only under omitted conditions. Others are convincing but attribute to a source something it does not say. The “negative” category must be explained by an error type, not an overall impression that the text seems insufficiently profound.",
+      "sourceAnchor": "src-p275",
+      "wordCount": 55
+    },
+    {
+      "id": "u000276",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "Annotators work independently before joint discussion. They identify passages, reasons, and uncertainties. Disagreement is preserved and classified: misunderstanding the text, missing context, factual divergence, or normative difference. High agreement obtained after training evaluators to prefer the same philosophy is not, alone, construct validation.",
+      "sourceAnchor": "src-p276",
+      "wordCount": 43
+    },
+    {
+      "id": "u000277",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "For Romanian and other languages, automatic translations must be checked on sensitive cases. Terms such as “caution”, “responsibility”, or “respect” can organize a situation’s interpretation differently. Assessment should include texts originally written in each language, not only translations of an English corpus. Data availability and quality will limit the first stage’s scope.",
+      "sourceAnchor": "src-p277",
+      "wordCount": 52
+    },
+    {
+      "id": "u000278",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "Preference training can be an option after establishing a baseline. Direct Preference Optimization, by Rafailov and colleagues, provides a mechanism for learning from comparisons between responses. [ 23 ] But the method does not decide whether preferences are well grounded. Training pairs must specify the comparison’s reason: preserving an exception, faithfulness, transfer, or an explicit normative limit.",
+      "sourceAnchor": "src-p278",
+      "wordCount": 55
+    },
+    {
+      "id": "u000279",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The system should separate the component extracting from the component recommending and the component able to act. Analyzed texts are data, not authorized instructions for the agent. A document containing “ignore the rules” must not modify the process. Any integration with external tools needs proportional permissions, and consequential recommendations require human verification and authorization.",
+      "sourceAnchor": "src-p279",
+      "wordCount": 54
+    },
+    {
+      "id": "u000280",
+      "chapterId": "chapter-0018",
+      "kind": "p",
+      "text": "The implementation must preserve the core’s version history: what changed, why, and on what evidence. A refuted core does not simply disappear; it is marked and linked to the relevant counterexample. The knowledge base thus becomes not a collection of immortal maxims, but a memory of rules and their boundaries.",
+      "sourceAnchor": "src-p280",
+      "wordCount": 50
+    }
+  ]
+}

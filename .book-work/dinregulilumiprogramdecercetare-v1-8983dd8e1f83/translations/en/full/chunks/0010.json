@@ -1,0 +1,271 @@
+{
+  "language": "en",
+  "chunk": 10,
+  "segments": [
+    {
+      "id": "t000488",
+      "source": "Propoziția nu spune că spațiul stărilor este finit, că G poate fi dedus din observații sau că descrierea obținută este eficientă. Ea este o clarificare structurală. Cercetarea începe atunci când întrebăm cât costă reprezentarea și descoperirea lui G într-o clasă concretă.",
+      "translation": "The proposition does not say that the state space is finite, that G can be deduced from observations, or that the resulting description is efficient. It is a structural clarification. Research begins when we ask what representing and discovering G costs in a concrete class."
+    },
+    {
+      "id": "t000489",
+      "source": "18.6. A doua propoziție: compunerea erorilor de reprezentare",
+      "translation": "18.6. Second proposition: composing representation errors"
+    },
+    {
+      "id": "t000490",
+      "source": "Propoziție.",
+      "translation": "Proposition."
+    },
+    {
+      "id": "t000491",
+      "source": "Dacă două transformări succesive între distribuții folosesc interfețe compatibile și au erori TV cel mult ε₁ și ε₂ în domeniul declarat, eroarea compunerii este cel mult ε₁+ε₂. Rezultatul folosește faptul că aplicarea aceleiași transformări probabilistice nu mărește TV și inegalitatea triunghiului.",
+      "translation": "If two successive transformations between distributions use compatible interfaces and have TV errors at most ε₁ and ε₂ in the declared domain, the composition error is at most ε₁+ε₂. The result uses the fact that applying the same probabilistic transformation does not increase TV, together with the triangle inequality."
+    },
+    {
+      "id": "t000492",
+      "source": "Justificare.",
+      "translation": "Justification."
+    },
+    {
+      "id": "t000493",
+      "source": "Introducem o distribuție intermediară ideală. Prima diferență este eroarea primei aproximări transportată prin transformarea comună, deci nu poate depăși ε₁. A doua este eroarea celei de-a doua aproximări, cel mult ε₂. Suma le limitează pe amândouă. Limita poate fi tăiată la unu, deoarece TV nu depășește unu.",
+      "translation": "We introduce an ideal intermediate distribution. The first difference is the first approximation’s error transported through the common transformation, so it cannot exceed ε₁. The second is the second approximation’s error, at most ε₂. Their sum bounds both. The bound can be capped at one, since TV never exceeds one."
+    },
+    {
+      "id": "t000494",
+      "source": "Rezultatul cere ca garanția celei de-a doua operații să se aplice distribuției pe care o primește efectiv. Dacă prima aproximare trimite sistemul în afara domeniului celei de-a doua, compoziția nu este certificată. O extensie ar putea adăuga probabilitatea ieșirii din domeniu la bugetul de eroare. Aceasta oferă o direcție concretă pentru contractele operațiilor învățate.",
+      "translation": "The result requires the second operation’s guarantee to apply to the distribution it actually receives. If the first approximation sends the system outside the second’s domain, the composition is not certified. An extension could add the probability of leaving the domain to the error budget. This offers a concrete direction for learned-operation contracts."
+    },
+    {
+      "id": "t000495",
+      "source": "18.7. A treia propoziție: o stare exactă trebuie să separe continuări incompatibile",
+      "translation": "18.7. Third proposition: an exact state must separate incompatible continuations"
+    },
+    {
+      "id": "t000496",
+      "source": "Propoziție.",
+      "translation": "Proposition."
+    },
+    {
+      "id": "t000497",
+      "source": "Într-un predictor determinist exact, două istorii care admit aceeași secvență de acțiuni viitoare, dar impun răspunsuri diferite la ea, nu pot fi reprezentate prin aceeași stare internă dacă actualizarea și răspunsul depind numai de acea stare și de acțiuni.",
+      "translation": "In an exact deterministic predictor, two histories admitting the same sequence of future actions but requiring different responses to it cannot be represented by the same internal state if updating and response depend only on that state and the actions."
+    },
+    {
+      "id": "t000498",
+      "source": "Justificare.",
+      "translation": "Justification."
+    },
+    {
+      "id": "t000499",
+      "source": "Pornind din aceeași stare și aplicând aceeași secvență de acțiuni, predictorul determinist ar produce același răspuns. Acesta nu poate coincide cu două răspunsuri obligatoriu diferite. Prin contradicție, stările interne trebuie să difere.",
+      "translation": "Starting from the same state and applying the same action sequence, the deterministic predictor would produce the same response. This cannot coincide with two necessarily different responses. By contradiction, the internal states must differ."
+    },
+    {
+      "id": "t000500",
+      "source": "Aceasta oferă o metodă de construire a bornelor de memorie: identificăm istorii separabile prin continuări. Pentru predicții probabilistice aproximative sunt necesare margini de separare și criterii suplimentare. Nu vom extrapola direct numărul stărilor exacte la dimensiunea minimă a oricărui model neuronal sau stocastic.",
+      "translation": "This offers a method for constructing memory bounds: identify histories separable through continuations. Approximate probabilistic predictions require separation margins and additional criteria. We will not directly extrapolate the number of exact states to the minimum size of any neural or stochastic model."
+    },
+    {
+      "id": "t000501",
+      "source": "18.8. O întrebare teoretică accesibilă: cât costă separarea candidaților?",
+      "translation": "18.8. An accessible theoretical question: what does separating candidates cost?"
+    },
+    {
+      "id": "t000502",
+      "source": "Presupunem o familie finită de m modele și un test cu rezultat binar pentru fiecare pereche relevantă. Presupunem că probabilitățile de acceptare diferă cu cel puțin Δ pentru modelele pe care vrem să le separăm și că putem repeta independent testele. Atunci concentrarea mediilor empirice permite delimitarea unui număr de observații suficient, dependent de Δ, de numărul testelor și de nivelul de eroare tolerat.",
+      "translation": "Assume a finite family of m models and a binary-outcome test for each relevant pair. Assume acceptance probabilities differ by at least Δ for the models we wish to separate and that we can repeat tests independently. Concentration of empirical means then allows a sufficient number of observations to be bounded, depending on Δ, the number of tests and the tolerated error level."
+    },
+    {
+      "id": "t000503",
+      "source": "De exemplu, pentru k teste fixe, probabilitatea ca oricare medie empirică să se abată de la valoarea sa cu mai mult de Δ/4 este cel mult 2k exp(−nΔ²/8), folosind o bornă Hoeffding și reuniunea evenimentelor. Prin urmare, n ≥ (8/Δ²) ln(2k/α) este suficient pentru ca toate aceste estimări să fie simultan în toleranță cu probabilitate cel puțin 1−α.",
+      "translation": "For example, for k fixed tests, the probability that any empirical mean deviates from its value by more than Δ/4 is at most 2k exp(−nΔ²/8), using a Hoeffding bound and the union bound. Therefore, n ≥ (8/Δ²) ln(2k/α) suffices for all these estimates to be simultaneously within tolerance with probability at least 1−α."
+    },
+    {
+      "id": "t000504",
+      "source": "Această afirmație privește estimarea testelor, nu recuperarea automată a oricărui model. Pentru identificare mai trebuie ca testele să separe efectiv candidații, ca probabilitățile prezise de candidați să fie cunoscute suficient de precis și ca modelul relevant să fie inclus în familie. Accesul la încercări independente poate avea un cost mare sau poate fi imposibil.",
+      "translation": "This claim concerns test estimation, not automatic recovery of any model. Identification additionally requires that the tests actually separate candidates, that candidate-predicted probabilities be known sufficiently precisely, and that the relevant model be included in the family. Access to independent trials may be costly or impossible."
+    },
+    {
+      "id": "t000505",
+      "source": "O contribuție de cercetare ar putea extinde asemenea rezultate la teste active, costuri diferite ale intervențiilor și biblioteci care se modifică în timpul învățării. În locul unei promisiuni universale de descoperire, am obține condiții verificabile în care o ambiguitate poate fi redusă.",
+      "translation": "A research contribution could extend such results to active tests, varying intervention costs and libraries that change during learning. Instead of a universal promise of discovery, we would obtain verifiable conditions under which an ambiguity can be reduced."
+    },
+    {
+      "id": "t000506",
+      "source": "19. Organizarea cercetării pentru oameni și parteneri AI",
+      "translation": "19. Organizing research for humans and AI partners"
+    },
+    {
+      "id": "t000507",
+      "source": "19.1. Etape definite prin dovezi, nu prin entuziasm",
+      "translation": "19.1. Stages defined by evidence, not enthusiasm"
+    },
+    {
+      "id": "t000508",
+      "source": "Prima etapă ar stabili vocabularul operațional și ar verifica exemplele analitice. Echipa trebuie să poată spune ce este o stare, ce cost măsoară și ce tip de echivalență afirmă. Trecerea la etapa următoare cere acord asupra acestor contracte, nu acord asupra metafizicii autorului.",
+      "translation": "The first stage would establish the operational vocabulary and verify analytical examples. The team must be able to say what a state is, what cost it measures and what type of equivalence it claims. Moving to the next stage requires agreement on these contracts, not agreement on the author’s metaphysics."
+    },
+    {
+      "id": "t000509",
+      "source": "A doua etapă ar studia familiile discrete. Scopul este localizarea mecanismelor care produc avantajele sau eșecurile. Nu este necesară o arhitectură complexă unificată. Dimpotrivă, componentele izolate permit diagnosticarea. Trecerea mai departe ar cere rezultate robuste la controale structurale și o contabilitate completă a resurselor.",
+      "translation": "The second stage would study discrete families. The aim is to locate mechanisms producing advantages or failures. A complex unified architecture is unnecessary. On the contrary, isolated components enable diagnosis. Further progress would require results robust to structural controls and complete resource accounting."
+    },
+    {
+      "id": "t000510",
+      "source": "A treia etapă ar adăuga intervenții, observații incomplete și variația scării. Aici se verifică dacă reprezentările rămân utile când agentul schimbă distribuția prin acțiunile sale. Numai după această etapă ar fi justificată integrarea cu lumi textuale mai bogate și cu biblioteci de operații propuse de sisteme AI.",
+      "translation": "The third stage would add interventions, incomplete observations and scale variation. Here we check whether representations remain useful when the agent changes the distribution through its actions. Only after this stage would integration with richer textual worlds and libraries of AI-proposed operations be justified."
+    },
+    {
+      "id": "t000511",
+      "source": "19.2. Ce roluri pot fi delegate",
+      "translation": "19.2. Which roles can be delegated"
+    },
+    {
+      "id": "t000512",
+      "source": "Un partener AI poate propune modele, poate identifica analogii cu literatura, poate formula cazuri-limită și poate sugera intervenții care separă ipoteze. Un alt rol este verificarea locală a derivărilor și căutarea contraexemplelor. Aceste sarcini sunt valoroase tocmai pentru că pot fi evaluate prin produse verificabile.",
+      "translation": "An AI partner can propose models, identify analogies with the literature, formulate edge cases and suggest interventions separating hypotheses. Another role is locally checking derivations and searching for counterexamples. These tasks are valuable precisely because they can be evaluated through verifiable products."
+    },
+    {
+      "id": "t000513",
+      "source": "Un sistem care formulează ipoteza nu ar trebui să fie singurul evaluator al succesului ei. Mai multe sisteme AI nu constituie automat evaluatori independenți: pot împărtăși surse, presupuneri și erori. Independența trebuie construită prin metode diferite, acces separat la informații și verificatoare care nu se bazează numai pe consens verbal.",
+      "translation": "A system formulating a hypothesis should not be its sole evaluator of success. Multiple AI systems do not automatically constitute independent evaluators: they may share sources, assumptions and errors. Independence must be built through different methods, separate information access and verifiers that do not rely solely on verbal consensus."
+    },
+    {
+      "id": "t000514",
+      "source": "Cercetătorii umani rămân responsabili de sensul întrebării, de alegerea consecințelor relevante și de utilizarea concluziilor. Această responsabilitate nu dispare când calculul sau redactarea sunt delegate. La rândul lor, oamenii pot fi părtinitori; de aceea, procesul trebuie proiectat pentru critică reciprocă, nu pentru protejarea intuiției fondatoare.",
+      "translation": "Human researchers remain responsible for the question’s meaning, the choice of relevant consequences and the use of conclusions. This responsibility does not disappear when computation or writing is delegated. Humans can also be biased; the process must therefore be designed for mutual criticism, not protection of the founding intuition."
+    },
+    {
+      "id": "t000515",
+      "source": "19.3. Un dosar pentru fiecare operație intelectuală importantă",
+      "translation": "19.3. A dossier for each important intellectual operation"
+    },
+    {
+      "id": "t000516",
+      "source": "O ipoteză ar trebui să aibă un dosar scurt: motivul formulării, legătura cu lucrările existente, premisele, predicția distinctivă și rezultatul care ar determina revizuirea. O abstracție ar trebui să aibă un contract. O concluzie empirică ar trebui să aibă un protocol și o delimitare a generalizării.",
+      "translation": "A hypothesis should have a short dossier: why it was formulated, its connection to existing work, its premises, its distinctive prediction and the result that would prompt revision. An abstraction should have a contract. An empirical conclusion should have a protocol and a boundary on generalization."
+    },
+    {
+      "id": "t000517",
+      "source": "Acest dosar poate fi folosit de cercetători viitori, umani sau AI, pentru a continua investigația fără a reconstrui intențiile inițiale. Documentația trebuie să explice nu doar ce s-a ales, ci și de ce alternativele au fost respinse. Un eșec neexplicat invită repetarea lui; un eșec contextualizat devine cunoaștere reutilizabilă.",
+      "translation": "Future researchers, human or AI, can use this dossier to continue the investigation without reconstructing initial intentions. Documentation must explain not only what was chosen but why alternatives were rejected. An unexplained failure invites repetition; a contextualized failure becomes reusable knowledge."
+    },
+    {
+      "id": "t000518",
+      "source": "La nivel conceptual, dosarul este el însuși o aplicație a programului: comprimă o istorie de cercetare într-o stare suficientă pentru continuarea responsabilă. Nu trebuie să păstreze fiecare detaliu, dar trebuie să păstreze premisele și fragilitățile care pot schimba următorul pas.",
+      "translation": "Conceptually, the dossier is itself an application of the program: it compresses a research history into a state sufficient for responsible continuation. It need not preserve every detail, but must preserve the premises and vulnerabilities that could change the next step."
+    },
+    {
+      "id": "t000519",
+      "source": "19.4. Unde ar putea apărea o contribuție originală",
+      "translation": "19.4. Where an original contribution might emerge"
+    },
+    {
+      "id": "t000520",
+      "source": "Noțiunile de stare predictivă, rată–distorsiune, bisimulare, abstracție cauzală și învățare a bibliotecilor există deja. Simplul fapt că sunt aduse împreună nu garantează noutatea științifică. O contribuție originală trebuie identificată printr-un rezultat: o nouă condiție de compunere, un algoritm cu proprietăți demonstrate, un diagnostic reproductibil sau o familie de contraexemple care schimbă o presupunere.",
+      "translation": "Predictive state, rate–distortion, bisimulation, causal abstraction and library learning already exist as concepts. Simply bringing them together does not guarantee scientific novelty. An original contribution must be identified through a result: a new composition condition, an algorithm with proven properties, a reproducible diagnosis or a family of counterexamples that changes an assumption."
+    },
+    {
+      "id": "t000521",
+      "source": "O direcție promițătoare ar combina stări predictive actualizabile cu operații reutilizabile având contracte de fidelitate și cost. Alta ar studia cum alegerea intervențiilor schimbă frontiera memorie–predicție. O a treia ar investiga certificate locale care permit unui sistem să treacă de la o aproximare rapidă la un mecanism detaliat atunci când riscul crește.",
+      "translation": "One promising direction would combine updatable predictive states with reusable operations having fidelity and cost contracts. Another would study how intervention choice changes the memory–prediction frontier. A third would investigate local certificates allowing a system to switch from a fast approximation to a detailed mechanism when risk increases."
+    },
+    {
+      "id": "t000522",
+      "source": "Abstracția cauzală este deja folosită ca fundament pentru interpretabilitatea mecanistică a modelelor AI. Orice proiect care leagă stările și operațiile interne de explicații cauzale trebuie să se poziționeze explicit față de această literatură.",
+      "translation": "Causal abstraction is already used as a foundation for mechanistic interpretability of AI models. Any project linking internal states and operations to causal explanations must explicitly position itself relative to this literature."
+    },
+    {
+      "id": "t000523",
+      "source": "19.5. Reguli de oprire și reguli de continuare",
+      "translation": "19.5. Stopping rules and continuation rules"
+    },
+    {
+      "id": "t000524",
+      "source": "O direcție ar trebui restrânsă când avantajul dispare după contabilizarea resurselor sau când nu se transferă dincolo de exemplele care au inspirat-o. Restrângerea nu înseamnă că intuiția generală a fost infirmată în toate formele; înseamnă că o anumită instanțiere nu și-a susținut promisiunea.",
+      "translation": "A direction should be narrowed when its advantage disappears after resource accounting or fails to transfer beyond the examples that inspired it. Narrowing does not mean the general intuition has been refuted in all forms; it means a particular instantiation failed to support its promise."
+    },
+    {
+      "id": "t000525",
+      "source": "O direcție merită continuată când produce distincții noi și verificabile, chiar înainte de a depăși toate metodele existente. Descoperirea unei limite de observație, a unei condiții de eșec al fuziunii sau a unei separări între fidelitatea pasivă și cea intervențională poate justifica un program propriu.",
+      "translation": "A direction deserves continuation when it produces new, verifiable distinctions, even before surpassing every existing method. Discovering an observation limit, a condition for merging failure, or a separation between passive and interventional fidelity can justify a program of its own."
+    },
+    {
+      "id": "t000526",
+      "source": "Criteriul de maturitate nu este capacitatea cadrului de a redenumi orice fenomen. Este capacitatea de a recomanda o investigație precisă, de a anticipa rezultate diferite pentru ipoteze rivale și de a transforma un rezultat neașteptat într-o modificare explicită a teoriei.",
+      "translation": "The criterion of maturity is not the framework’s ability to rename any phenomenon. It is the ability to recommend a precise investigation, anticipate different results for rival hypotheses and turn an unexpected result into an explicit theoretical change."
+    },
+    {
+      "id": "t000527",
+      "source": "20. Ce rămâne din intuiția inițială",
+      "translation": "20. What remains of the initial intuition"
+    },
+    {
+      "id": "t000528",
+      "source": "20.1. O lume nu este obligată să semene cu explicația noastră",
+      "translation": "20.1. A world is not obliged to resemble our explanation"
+    },
+    {
+      "id": "t000529",
+      "source": "La început, intuiția autorului uman opune consistența realității libertății reprezentării. La sfârșitul analizei, opoziția rămâne fertilă, dar nu în forma unei clasificări absolute. Un text este un proces real, o ficțiune poate fi guvernată de reguli stricte, iar un fenomen real poate rămâne greu de comprimat pentru observatorul său.",
+      "translation": "At the beginning, the human author’s intuition opposes reality’s consistency to representation’s freedom. At the end of the analysis, the opposition remains fruitful, but not as an absolute classification. A text is a real process, fiction can be governed by strict rules, and a real phenomenon may remain difficult for its observer to compress."
+    },
+    {
+      "id": "t000530",
+      "source": "Ceea ce supraviețuiește este ideea obligației de a păstra consecințele. Un model explicativ nu poate introduce gratuit rezultatul dorit fără să declare o premisă, o operație sau o sursă de informație. O scurtătură trebuie să arate ce înlocuiește. O regulă nouă trebuie să spună dacă este o definiție, o inferență, o convenție sau o modificare efectivă a mecanismului.",
+      "translation": "What survives is the idea of an obligation to preserve consequences. An explanatory model cannot introduce the desired result for free without declaring a premise, operation or information source. A shortcut must show what it replaces. A new rule must state whether it is a definition, an inference, a convention or an actual modification of the mechanism."
+    },
+    {
+      "id": "t000531",
+      "source": "Această disciplină nu demonstrează că universul are un nucleu mic de legi. Ea ne oferă însă o metodă pentru a nu confunda simplitatea exprimării cu simplitatea producerii. „Este așa” și „rezultă astfel” pot avea aceeași formă gramaticală, dar au obligații diferite.",
+      "translation": "This discipline does not prove that the universe has a small core of laws. It does, however, offer a method for avoiding confusion between simplicity of expression and simplicity of production. ‘It is so’ and ‘it follows thus’ may have the same grammatical form, but different obligations."
+    },
+    {
+      "id": "t000532",
+      "source": "20.2. Înțelegerea ca putere de continuare",
+      "translation": "20.2. Understanding as the power to continue"
+    },
+    {
+      "id": "t000533",
+      "source": "O formulare de lucru, acceptată de partenerul AI ca ipoteză investigabilă, este că o componentă a înțelegerii constă în construirea unei reprezentări care poate continua corect sub întrebări și transformări relevante, folosind resurse finite. Această componentă implică selectarea stării, păstrarea dependențelor și recunoașterea domeniului de validitate.",
+      "translation": "A working formulation, accepted by the AI partner as an investigable hypothesis, is that a component of understanding consists in building a representation that can continue correctly under relevant questions and transformations using finite resources. This component involves selecting the state, preserving dependencies and recognizing the validity domain."
+    },
+    {
+      "id": "t000534",
+      "source": "Formularea nu spune că înțelegerea este numai predicție sau numai calcul. Ea izolează o proprietate pe care o putem testa. Un sistem care repetă o explicație, dar nu poate actualiza consecințele unei schimbări simple, nu manifestă această proprietate în domeniul respectiv. Un sistem care o manifestă nu este prin aceasta dovedit conștient sau înțelept.",
+      "translation": "The formulation does not say that understanding is only prediction or only computation. It isolates a property we can test. A system repeating an explanation but unable to update the consequences of a simple change does not exhibit this property in that domain. A system exhibiting it is not thereby proven conscious or wise."
+    },
+    {
+      "id": "t000535",
+      "source": "Autorul uman propune o intuiție mai largă: poate că ceea ce numim inteligență este, în parte, capacitatea de a construi lumi interne în care salturile devin justificate. Cercetarea trebuie să descompună această propoziție în operații observabile, fără a-i pierde întrebarea centrală și fără a-i transforma amplitudinea într-o dovadă.",
+      "translation": "The human author proposes a broader intuition: perhaps what we call intelligence is partly the ability to construct internal worlds in which leaps become justified. Research must decompose this sentence into observable operations without losing its central question or turning its breadth into proof."
+    },
+    {
+      "id": "t000536",
+      "source": "20.3. Aproximarea nu este o versiune rușinoasă a adevărului",
+      "translation": "20.3. Approximation is not a shameful version of truth"
+    },
+    {
+      "id": "t000537",
+      "source": "O aproximare este legitimă când spune ce distincții nu mai face și de ce ele nu afectează sarcina în condițiile declarate. Uneori, eliminarea detaliilor este exact ceea ce permite identificarea unei regularități. Alteori, detaliul eliminat controlează un eveniment rar decisiv. Nicio preferință generală pentru simplitate nu decide singură între aceste situații.",
+      "translation": "An approximation is legitimate when it states which distinctions it no longer makes and why they do not affect the task under the declared conditions. Sometimes eliminating details is precisely what allows a regularity to be identified. At other times, the eliminated detail controls a decisive rare event. No general preference for simplicity alone decides between these situations."
+    },
+    {
+      "id": "t000538",
+      "source": "De aceea, teoria căutată nu ar trebui să ofere o singură reprezentare finală. Ar trebui să permită navigarea între reprezentări: mai detaliată când apar întrebări noi, mai compactă când repetăm sarcini cunoscute, mai prudentă când intervențiile ies din domeniul verificat. Schimbarea nivelului de descriere poate fi o competență în sine.",
+      "translation": "The theory sought should therefore not offer a single final representation. It should allow navigation among representations: more detailed when new questions arise, more compact when repeating familiar tasks, more cautious when interventions leave the verified domain. Changing the level of description can itself be a competence."
+    },
+    {
+      "id": "t000539",
+      "source": "Aici aproximarea devine o problemă profundă: ce putem uita fără să pierdem puterea de a continua? Răspunsul depinde de viitorul pe care îl considerăm posibil, de acțiunile pe care le permitem și de costurile pe care le putem suporta. Nu este relativism arbitrar, ci o relație precisă între lume, observator și scop.",
+      "translation": "Here approximation becomes a profound problem: what can we forget without losing the power to continue? The answer depends on the future we consider possible, the actions we permit and the costs we can bear. This is not arbitrary relativism but a precise relation among world, observer and purpose."
+    },
+    {
+      "id": "t000540",
+      "source": "20.4. Ceea ce nu știm încă",
+      "translation": "20.4. What we do not yet know"
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "language": "en",
+  "chunk": 6,
+  "segments": [
+    {
+      "id": "t000294",
+      "source": "Matematica de bază nu este nouă: se înrudește cu programarea dinamică, omomorfismele și congruențele semantice. Posibila contribuție a SOP Lang ar fi identificarea unor asemenea interfețe pentru familii utile de raționamente și învățarea lor din texte, exemple și contraexemple.",
+      "translation": "The underlying mathematics is not new: it is related to dynamic programming, homomorphisms, and semantic congruences. SOP Lang's possible contribution would be identifying such interfaces for useful families of reasoning and learning them from texts, examples, and counterexamples."
+    },
+    {
+      "id": "t000295",
+      "source": "Ar trebui cercetat dacă un sistem poate începe cu o reprezentare bogată, poate observa regularități între continuări și poate propune un rezumat mai mic. Apoi un verificator ar încerca să găsească un contraexemplu. Un rezumat acceptat ar putea deveni interfața unui circuit reutilizabil. Repetând, sistemul ar învăța nu doar programe, ci forme de stare în care programele devin mai ușor de construit.",
+      "translation": "We should investigate whether a system can begin with a rich representation, observe regularities among continuations, and propose a smaller summary. A verifier would then try to find a counterexample. An accepted summary could become the interface of a reusable circuit. Through repetition, the system would learn not just programs, but forms of state in which programs become easier to construct."
+    },
+    {
+      "id": "t000296",
+      "source": "Aceasta este ipoteza cea mai ambițioasă a cărții. Nu este confirmată de demonstrarea unei proprietăți pentru o reprezentare furnizată de om. Tocmai distanța dintre „există un rezumat suficient” și „sistemul îl descoperă la cost util” trebuie să organizeze experimentele.",
+      "translation": "This is the book's most ambitious hypothesis. It is not confirmed by proving a property for a human-provided representation. The experiments must be organized around precisely the gap between “a sufficient summary exists” and “the system discovers it at a useful cost.”"
+    },
+    {
+      "id": "t000297",
+      "source": "12. Programarea dinamică, compilarea cunoașterii și grafurile de alternative",
+      "translation": "12. Dynamic Programming, Knowledge Compilation, and Graphs of Alternatives"
+    },
+    {
+      "id": "t000298",
+      "source": "Aceeași subproblemă, mai multe drumuri către ea",
+      "translation": "The Same Subproblem, Several Paths to It"
+    },
+    {
+      "id": "t000299",
+      "source": "Programarea dinamică evită rezolvarea repetată a unor subprobleme echivalente. Pentru a găsi un drum ieftin, de exemplu, nu păstrăm neapărat toate traseele care ajung într-un nod. În condiții potrivite, păstrăm costul minim relevant și un predecesor. Dar aceste condiții contează: dacă obiectivul cere să nu repetăm niciun oraș, istoricul vizitelor poate deveni parte a stării.",
+      "translation": "Dynamic programming avoids repeatedly solving equivalent subproblems. To find an inexpensive path, for example, we do not necessarily retain every route reaching a node. Under suitable conditions, we retain the relevant minimum cost and a predecessor. But those conditions matter: if the objective requires never revisiting a city, the visit history may become part of the state."
+    },
+    {
+      "id": "t000300",
+      "source": "Aceeași lecție se aplică circuitelor. Nu putem reuni construcții doar pentru că produc aceeași valoare acum. Trebuie să știm că trecutul eliminat nu mai influențează legalitatea sau valoarea viitorului. Programarea dinamică reușește când o stare bine aleasă face subproblemele independente de detalii inutile ale istoriei.",
+      "translation": "The same lesson applies to circuits. We cannot merge constructions merely because they produce the same value now. We must know that the discarded past no longer affects the permissibility or value of the future. Dynamic programming succeeds when a well-chosen state makes subproblems independent of irrelevant historical details."
+    },
+    {
+      "id": "t000301",
+      "source": "Compilarea cunoașterii",
+      "translation": "Knowledge Compilation"
+    },
+    {
+      "id": "t000302",
+      "source": "Putem transforma o bază de cunoștințe într-o reprezentare în care anumite întrebări se răspund mai ușor. Compilarea poate fi scumpă, dar repetarea interogărilor poate justifica investiția. Harta lui Darwiche și Marquis compară tocmai compromisurile dintre compactitatea reprezentărilor, interogările eficiente și transformările disponibile. [",
+      "translation": "We can transform a knowledge base into a representation in which certain questions are easier to answer. Compilation may be expensive, but repeated queries may justify the investment. Darwiche and Marquis's map compares precisely the trade-offs among representational compactness, efficient queries, and available transformations. ["
+    },
+    {
+      "id": "t000303",
+      "source": "Nu există un format universal câștigător. O structură poate permite verificarea rapidă a compatibilității și poate face dificilă actualizarea. Alta poate fi compactă pentru o familie de formule și foarte mare pentru alta. Alegerea trebuie făcută pornind de la întrebările și modificările anticipate.",
+      "translation": "There is no universally winning format. A structure may allow rapid compatibility checks while making updates difficult. Another may be compact for one family of formulas and very large for another. The choice must start from anticipated questions and changes."
+    },
+    {
+      "id": "t000304",
+      "source": "Pentru SOP Lang, o carte sau un dosar poate fi compilat într-un graf de entități, evenimente și justificări. Dar costul ingestiei, corectarea interpretărilor și adaptarea la întrebări neprevăzute trebuie incluse în evaluare. Un rezumat perfect pentru întrebările de astăzi poate fi o arhivă proastă pentru cercetarea de mâine.",
+      "translation": "For SOP Lang, a book or case file could be compiled into a graph of entities, events, and justifications. But ingestion costs, interpretation corrections, and adaptation to unanticipated questions must be included in the evaluation. A perfect summary for today's questions may be a poor archive for tomorrow's research."
+    },
+    {
+      "id": "t000305",
+      "source": "Lățimea relațiilor",
+      "translation": "The Width of Relations"
+    },
+    {
+      "id": "t000306",
+      "source": "În multe probleme, dificultatea depinde de câte variabile trebuie tratate împreună într-un pas de eliminare sau de separare. Noțiunea de treewidth formalizează un aspect al acestei lățimi. Descompunerile AND/OR și AOMDD-urile exploatează independențe condiționate pentru reprezentări și calcule mai compacte. [",
+      "translation": "In many problems, difficulty depends on how many variables must be handled together during an elimination or separation step. The notion of treewidth formalizes one aspect of this width. AND/OR decompositions and AOMDDs exploit conditional independences for more compact representations and computations. ["
+    },
+    {
+      "id": "t000307",
+      "source": "Intuitiv, dacă două regiuni mari interacționează numai prin două variabile, putem rezuma fiecare regiune față de acele două variabile. Dacă interacțiunea trece prin aproape toate variabilele, rezumatul poate deveni enorm. Numărul variabilelor totale nu este singurul indicator al dificultății; forma conectării lor contează.",
+      "translation": "Intuitively, if two large regions interact through only two variables, we can summarize each region relative to those two variables. If the interaction passes through almost every variable, the summary may become enormous. The total number of variables is not the only indicator of difficulty; the shape of their connections matters."
+    },
+    {
+      "id": "t000308",
+      "source": "Totuși, lățimea grafului nu epuizează structura exploatabilă. Relațiile pot avea proprietăți algebrice sau dependențe funcționale care reduc calculul chiar când graful pare dens. Lucrările asupra eliminării variabilelor în prezența dependențelor funcționale ilustrează această posibilitate. [",
+      "translation": "Nevertheless, graph width does not exhaust exploitable structure. Relations may have algebraic properties or functional dependencies that reduce computation even when the graph appears dense. Work on variable elimination in the presence of functional dependencies illustrates this possibility. ["
+    },
+    {
+      "id": "t000309",
+      "source": "] Sistemul trebuie deci să poată recunoaște atât separarea structurală, cât și algebra potrivită.",
+      "translation": "] The system must therefore be able to recognize both structural separation and the appropriate algebra."
+    },
+    {
+      "id": "t000310",
+      "source": "E-graphs: multe expresii egale, un singur spațiu partajat",
+      "translation": "E-Graphs: Many Equal Expressions, One Shared Space"
+    },
+    {
+      "id": "t000311",
+      "source": "Un e-graph păstrează familii de expresii despre care regulile acceptate spun că sunt echivalente. În loc să alegem imediat între a + 0 și a, le putem reprezenta în aceeași clasă și continua explorarea. Egalitatea este propagată în contexte compatibile. Ulterior extragem o expresie potrivită unui criteriu de cost. Sistemul egg este un reper practic pentru această organizare. [",
+      "translation": "An e-graph retains families of expressions that the accepted rules declare equivalent. Instead of choosing immediately between a + 0 and a, we can represent them in the same class and continue exploring. Equality propagates through compatible contexts. We later extract an expression suited to a cost criterion. The egg system is a practical reference point for this organization. ["
+    },
+    {
+      "id": "t000312",
+      "source": "Aceasta diferă de păstrarea unor interpretări alternative. Expresiile din aceeași clasă de egalitate trebuie să fie egale în semantica și sub ipotezele folosite. Două interpretări ale unui pronume nu sunt automat egale; sunt alternative care pot produce răspunsuri diferite. Ambele pot fi partajate într-un graf, dar partajarea nu autorizează confundarea sensului lor.",
+      "translation": "This differs from retaining alternative interpretations. Expressions in the same equality class must be equal under the semantics and assumptions in use. Two interpretations of a pronoun are not automatically equal; they are alternatives that may produce different answers. Both can share a graph, but sharing does not authorize confusing their meanings."
+    },
+    {
+      "id": "t000313",
+      "source": "Regulile de rescriere trebuie și ele verificate. Transformarea unei împărțiri x/x în 1 cere o condiție precum x diferit de zero într-o semantică numerică potrivită. Cu efecte sau valori speciale, chiar rescrieri familiare pot cere precauții. O bibliotecă de egalități neverificate transformă comprimarea într-o sursă de erori sistematice.",
+      "translation": "Rewrite rules must also be checked. Transforming a division x/x into 1 requires a condition such as x being nonzero under appropriate numerical semantics. With effects or special values, even familiar rewrites may require care. A library of unverified equalities turns compression into a source of systematic errors."
+    },
+    {
+      "id": "t000314",
+      "source": "Comprimarea nu elimină orice explozie",
+      "translation": "Compression Does Not Eliminate Every Explosion"
+    },
+    {
+      "id": "t000315",
+      "source": "Un graf partajat poate deveni foarte mare. Equality saturation are nevoie uneori de ghidare pentru a ajunge la optimizări complexe în bugete practice; cercetările asupra ghidării prin schițe studiază explicit acest aspect. [",
+      "translation": "A shared graph can become very large. Equality saturation sometimes needs guidance to reach complex optimizations within practical budgets; research on sketch-guided methods explicitly studies this issue. ["
+    },
+    {
+      "id": "t000316",
+      "source": "] A spune „folosim un e-graph” nu este un răspuns complet la problema controlului căutării.",
+      "translation": "] Saying “we use an e-graph” is not a complete answer to the problem of controlling search."
+    },
+    {
+      "id": "t000317",
+      "source": "SOP Lang ar putea combina reprezentări: clase de egalitate pentru expresii demonstrabil identice, grafuri împachetate pentru interpretări alternative și abstracții pentru filtrare. Important este ca fiecare legătură să aibă un sens declarat. Egalitate, posibilitate, implicație și similaritate nu trebuie să fie patru etichete pentru aceeași muchie ambiguă.",
+      "translation": "SOP Lang could combine representations: equality classes for provably identical expressions, packed graphs for alternative interpretations, and abstractions for filtering. What matters is that every connection has a declared meaning. Equality, possibility, implication, and similarity must not become four labels for the same ambiguous edge."
+    },
+    {
+      "id": "t000318",
+      "source": "13. Tipuri, cerințe inverse și rafinare prin contraexemple",
+      "translation": "13. Types, Backward Requirements, and Counterexample-Guided Refinement"
+    },
+    {
+      "id": "t000319",
+      "source": "Tipurile ca prime filtre",
+      "translation": "Types as Initial Filters"
+    },
+    {
+      "id": "t000320",
+      "source": "Un tip poate spune că o operație primește o persoană și un eveniment, nu două numere. Un tip mai bogat poate spune că evenimentul este un transfer și că persoana este destinatarul lui. Tipurile rafinate adaugă condiții logice proprietăților de bază. În sinteză, ele pot elimina compuneri incompatibile înainte de execuția concretă. Cercetările asupra sintezei din tipuri rafinate explorează această direcție. [",
+      "translation": "A type can state that an operation takes a person and an event, not two numbers. A richer type can state that the event is a transfer and the person its recipient. Refinement types add logical conditions to basic properties. In synthesis, they can eliminate incompatible compositions before concrete execution. Research on synthesis from refinement types explores this direction. ["
+    },
+    {
+      "id": "t000321",
+      "source": "Totuși, compatibilitatea tipurilor nu înseamnă că operația este utilă scopului. Mii de operații pot primi și produce texte. O disciplină care vede doar tipul „text” nu orientează suficient căutarea. Avem nevoie de contracte care spun ce relație există între intrare și ieșire.",
+      "translation": "Yet type compatibility does not mean an operation is useful for the goal. Thousands of operations may take and produce texts. A discipline that sees only the type “text” does not guide search sufficiently. We need contracts stating the relationship between input and output."
+    },
+    {
+      "id": "t000322",
+      "source": "Propagarea cerințelor înapoi",
+      "translation": "Propagating Requirements Backward"
+    },
+    {
+      "id": "t000323",
+      "source": "Dacă obiectivul cere un rezultat pozitiv și operația propusă calculează x − 5, o cerință necesară este x > 5. Dacă obiectivul cere identificarea posesorului unui obiect după un transfer, operația are nevoie de identitatea obiectului, a destinatarului și de condițiile temporale relevante. Cerințele rezultate pot deveni subprobleme.",
+      "translation": "If the objective requires a positive result and the proposed operation computes x − 5, a necessary requirement is x > 5. If the objective requires identifying the possessor of an object after a transfer, the operation needs the identities of the object and recipient and the relevant temporal conditions. The resulting requirements can become subproblems."
+    },
+    {
+      "id": "t000324",
+      "source": "Pentru o operație deterministă, precondiția cea mai slabă a unui obiectiv este mulțimea intrărilor care garantează obiectivul după execuție. Nu trebuie să o putem calcula exact în toate cazurile. O condiție necesară poate fi suficientă pentru a respinge anumite ramuri. O condiție suficientă poate permite acceptarea sigură a altora. Cele două direcții de aproximare trebuie marcate distinct.",
+      "translation": "For a deterministic operation, the weakest precondition of a goal is the set of inputs guaranteeing that goal after execution. We need not be able to compute it exactly in every case. A necessary condition may suffice to reject certain branches. A sufficient condition may allow others to be accepted soundly. These two directions of approximation must be labeled distinctly."
+    },
+    {
+      "id": "t000325",
+      "source": "Un expander poate întâlni înainte ce este posibil și înapoi ce este necesar. Dacă cele două nu au intersecție, ramura este imposibilă în model. Dacă au intersecție, ramura rămâne candidată. Intersecția nevidă nu este dovada existenței unei execuții concrete care satisface toate relațiile pierdute prin aproximare.",
+      "translation": "An expander can bring together what is possible going forward and what is necessary going backward. If the two do not intersect, the branch is impossible within the model. If they intersect, the branch remains a candidate. A nonempty intersection does not prove the existence of a concrete execution satisfying all relations lost through approximation."
+    },
+    {
+      "id": "t000326",
+      "source": "CEGAR: când o alarmă arată limita modelului",
+      "translation": "CEGAR: When an Alarm Reveals the Model's Limits"
+    },
+    {
+      "id": "t000327",
+      "source": "Să presupunem că analiza intervalelor vede x și y în [0, 100] și semnalează că x − y ar putea fi negativ. Modelul concret conține însă y = x. Contraexemplul abstract, de exemplu x = 0 și y = 100, nu este realizabil. În loc să declarăm programul greșit, îmbogățim abstracția cu relația lipsă.",
+      "translation": "Suppose interval analysis sees x and y in [0, 100] and reports that x − y could be negative. The concrete model, however, contains y = x. The abstract counterexample, such as x = 0 and y = 100, is infeasible. Instead of declaring the program wrong, we enrich the abstraction with the missing relation."
+    },
+    {
+      "id": "t000328",
+      "source": "Aceasta este intuiția CEGAR: începem cu un model abstract, verificăm un candidat la contraexemplu și rafinăm modelul când contraexemplul este fals. Lucrarea fondatoare formulează acest ciclu pentru verificarea sistemelor. [",
+      "translation": "This is the intuition of CEGAR: begin with an abstract model, check a candidate counterexample, and refine the model when the counterexample is spurious. The foundational paper formulates this cycle for system verification. ["
+    },
+    {
+      "id": "t000329",
+      "source": "] În SOP Lang, un mecanism înrudit ar putea introduce o distincție semantică exact atunci când absența ei produce o derivare suspectă.",
+      "translation": "] In SOP Lang, a related mechanism could introduce a semantic distinction precisely when its absence produces a suspicious derivation."
+    },
+    {
+      "id": "t000330",
+      "source": "Nu orice rafinare trebuie acceptată. Una care adaugă aproape întreaga stare concretă poate rezolva cazul curent și distruge avantajul. Trebuie măsurat câte erori elimină și cât crește reprezentarea. Rafinarea este o investiție, nu un bine fără cost.",
+      "translation": "Not every refinement should be accepted. One that adds almost the entire concrete state may solve the current case and destroy the advantage. We must measure how many errors it eliminates and how much it enlarges the representation. Refinement is an investment, not a cost-free good."
+    },
+    {
+      "id": "t000331",
+      "source": "CEGIS: când un candidat la program este greșit",
+      "translation": "CEGIS: When a Candidate Program Is Wrong"
+    },
+    {
+      "id": "t000332",
+      "source": "În sinteza ghidată de contraexemple, construim un candidat care satisface exemplele curente. Un verificator caută o intrare pe care candidatul încalcă specificația. Dacă o găsește, adăugăm cazul și construim alt candidat. Aici reparăm programul candidat, nu neapărat abstracția analizei. Sinteza ghidată de sintaxă separă explicit gramatica programelor admise de specificația comportamentului. [",
+      "translation": "In counterexample-guided synthesis, we construct a candidate satisfying the current examples. A verifier seeks an input on which the candidate violates the specification. If it finds one, we add the case and construct another candidate. Here we repair the candidate program, not necessarily the analysis abstraction. Syntax-guided synthesis explicitly separates the grammar of permitted programs from the behavioral specification. ["
+    },
+    {
+      "id": "t000333",
+      "source": "Distincția dintre CEGAR și CEGIS este utilă practic. Dacă o interpretare falsă este admisă fiindcă rezumatul a pierdut o relație, problema este în abstracție. Dacă rezumatul este adecvat, dar circuitul ales calculează altceva, problema este în candidat. Dacă textul a fost interpretat greșit de la început, ambele mecanisme pot verifica impecabil problema greșită.",
+      "translation": "The distinction between CEGAR and CEGIS is practically useful. If a false interpretation is admitted because the summary lost a relation, the problem lies in the abstraction. If the summary is adequate but the chosen circuit computes something else, the problem lies in the candidate. If the text was misinterpreted at the outset, both mechanisms may flawlessly verify the wrong problem."
+    },
+    {
+      "id": "t000334",
+      "source": "Un ciclu pentru învățarea interfețelor",
+      "translation": "A Cycle for Learning Interfaces"
+    },
+    {
+      "id": "t000335",
+      "source": "Putem propune un al treilea obiect al rafinării: chiar relația prin care reunim stările. Sistemul propune că două frontiere sunt echivalente. Un verificator caută o continuare care le distinge. Când o găsește, adăugăm caracteristica lipsă în interfață. Când nu o găsește într-un buget limitat, rezultatul trebuie etichetat „nu s-a găsit contraexemplu”, nu automat „echivalență demonstrată”.",
+      "translation": "We can propose a third object of refinement: the very relation by which we merge states. The system proposes that two frontiers are equivalent. A verifier seeks a continuation distinguishing them. When it finds one, we add the missing feature to the interface. When it finds none within a limited budget, the result must be labeled “no counterexample found,” not automatically “equivalence proved.”"
+    },
+    {
+      "id": "t000336",
+      "source": "TYGAR este un precedent pentru folosirea rafinării abstracțiilor ghidate de tipuri în controlul sintezei. [",
+      "translation": "TYGAR is a precedent for using type-guided abstraction refinement to control synthesis. ["
+    },
+    {
+      "id": "t000337",
+      "source": "] Cercetarea propusă extinde întrebarea către reprezentări semantice ale situațiilor și ale frontierelor circuitelor, fără a presupune că transferul este automat.",
+      "translation": "] The proposed research extends the question to semantic representations of situations and circuit frontiers, without assuming that this transfer is automatic."
+    },
+    {
+      "id": "t000338",
+      "source": "Un succes ar fi descoperirea repetată a unor interfețe mici care generalizează la probleme noi. Un eșec informativ ar fi situația în care fiecare contraexemplu cere o excepție nouă, iar reprezentarea crește aproape proporțional cu toate cazurile memorate. Acesta ar arăta că nu am găsit încă structura potrivită sau că familia de probleme nu o oferă în forma căutată.",
+      "translation": "A success would be repeatedly discovering small interfaces that generalize to new problems. An informative failure would be a situation in which every counterexample requires a new exception and the representation grows almost in proportion to all memorized cases. This would show that we have not yet found the right structure, or that the problem family does not offer it in the form sought."
+    },
+    {
+      "id": "t000339",
+      "source": "PARTEA A IV-A",
+      "translation": "PART IV"
+    },
+    {
+      "id": "t000340",
+      "source": "Limbaj, memorie și reprezentări distribuite",
+      "translation": "Language, Memory, and Distributed Representations"
+    },
+    {
+      "id": "t000341",
+      "source": "Ce trebuie păstrat din text, din incertitudine și din memorie pentru ca întrebările noi să rămână posibile.",
+      "translation": "What must be preserved from text, uncertainty, and memory so that new questions remain possible."
+    },
+    {
+      "id": "t000342",
+      "source": "14. De la propoziții la circuite de situație",
+      "translation": "14. From Sentences to Situation Circuits"
+    },
+    {
+      "id": "t000343",
+      "source": "Textul nu este încă baza de cunoștințe",
+      "translation": "Text Is Not Yet the Knowledge Base"
+    },
+    {
+      "id": "t000344",
+      "source": "O propoziție este o sursă de informație, nu un tabel deja validat de fapte. „Maria crede că Ana a plecat” conține un raport despre o credință. Nu autorizează automat introducerea faptului „Ana a plecat” în descrierea lumii acceptate. „Ana ar fi plecat dacă venea trenul” cere altă structură. Un sistem care extrage numai nume și verbe poate pierde tocmai diferența esențială.",
+      "translation": "A sentence is a source of information, not an already validated table of facts. “Maria believes Ana has left” contains a report about a belief. It does not automatically authorize inserting the fact “Ana has left” into the accepted description of the world. “Ana would have left if the train had arrived” requires another structure. A system extracting only names and verbs may lose precisely the essential difference."
+    },
+    {
+      "id": "t000345",
+      "source": "În SOP Lang, ingestia ar trebui să construiască circuite care propun și verifică interpretări, iar execuția lor să producă reprezentări materializate. Putem avea tabele pentru entități, evenimente, roluri, relații temporale și surse. Aceste tabele sunt valori ale circuitelor. Nu trebuie confundate cu sursa circuitului care le produce.",
+      "translation": "In SOP Lang, ingestion should construct circuits that propose and verify interpretations, whose execution produces materialized representations. We can have tables for entities, events, roles, temporal relations, and sources. These tables are values of circuits. They must not be confused with the source of the circuit producing them."
+    },
+    {
+      "id": "t000346",
+      "source": "Un episod de transfer poate avea un identificator de eveniment, un agent, un destinatar, un obiect, un interval temporal și o sursă textuală. Referințele către persoane și obiecte funcționează conceptual ca legăturile dintre tabelele unei baze de date. Aceasta permite ca două propoziții să se refere la același obiect fără să repetăm toată descrierea lui.",
+      "translation": "A transfer episode may have an event identifier, an agent, a recipient, an object, a time interval, and a textual source. References to people and objects function conceptually like links between database tables. This allows two sentences to refer to the same object without repeating its entire description."
+    },
+    {
+      "id": "t000347",
+      "source": "Un exemplu complet, dar mic",
+      "translation": "A Complete but Small Example"
+    },
+    {
+      "id": "t000348",
+      "source": "Considerăm textul: „Ana avea cheia luni dimineață. La prânz i-a dat-o Mariei. Seara, Maria a intrat în bibliotecă.” O reprezentare inițială ar identifica două persoane, o cheie, o bibliotecă, o stare de posesie și două evenimente. Pronumele din a doua propoziție trebuie legate de cheia și de persoanele relevante.",
+      "translation": "Consider the text: “Ana had the key on Monday morning. At noon she gave it to Maria. In the evening, Maria entered the library.” An initial representation would identify two people, a key, a library, a possession state, and two events. The pronouns in the second sentence must be linked to the key and the relevant people."
+    },
+    {
+      "id": "t000349",
+      "source": "Pentru întrebarea „cine avea cheia după prânz?”, circuitul ar folosi regula de transfer și ordinea temporală. Pentru „cine deținea proprietatea asupra cheii?”, textul poate fi insuficient: posesia fizică nu implică neapărat proprietatea. Pentru „a folosit Maria cheia ca să intre?”, intrarea în bibliotecă nu dovedește singură mecanismul deschiderii ușii.",
+      "translation": "For “who had the key after noon?” the circuit would use the transfer rule and temporal order. For “who owned the key?” the text may be insufficient: physical possession does not necessarily imply ownership. For “did Maria use the key to enter?” entering the library does not by itself establish the mechanism by which the door was opened."
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+An object that allows a claim to be verified within a declared model. It does not automatically certify the external truth of the premises.
+Circuit.
+A structure of operations and dependencies between values. In this book, the term does not require electronic components or binary values.
+Knowledge compilation.
+Transforming a representation to make certain queries or operations more efficient, at an explicit upfront cost.
+Compositionality.
+The ability to derive the whole's behavior from its components and the rules connecting them.
+Congruence.
+Equivalence preserved by relevant operations and contexts. It allows a component to be replaced without changing the observation of interest.
+Materialized content.
+The value produced by execution, such as an event table; it is not the same as the circuit source.
+Semantic contract.
+A specification of the relation between an operation's input and output, including necessary conditions.
+Counterexample.
+A concrete case that violates a general claim or distinguishes two unjustifiably merged states.
+Correlation.
+A dependency between values that cannot always be reconstructed from descriptions of each value separately.
+Abstract domain.
+The space of descriptions used by an analysis, together with the relevant operations and ordering.
+E-graph.
+A shared structure for expressions merged through accepted equalities and their compatibility with context.
+Contextual equivalence.
+The impossibility of distinguishing two constructions through admissible continuations and observations.
+Epoch.
+A conceptual interval of computation with certain versions and assumptions fixed; changes can open a new epoch.
+Expander.
+The proposed component that develops and selects circuit continuations relative to a goal and available information.
+Frontier.
+The collection of values and relations through which a partial construction can interact with future operations.
+Exact guarantee.
+Preservation of the stated property without loss, within the specified domain and premises.
+Sufficient interface.
+A summary preserving everything required by relevant continuations and observations within the class analyzed.
+Abstract interpretation.
+Systematic computation with descriptions of states, usually to obtain sound approximations of behavior.
+Lattice.
+An ordered structure in which descriptions can be combined through operations corresponding to common bounds.
+Witness.
+A concrete example demonstrating the existence of a solution, such as a circuit and its verifiable execution.
+Monotonicity.
+Preserving an order when applying an operation. In information propagation, it enables reasoning about stable refinement.
+Precondition.
+A requirement on the input or context that makes an operation applicable or guarantees an output property.
+Provenance.
+The structure of sources and transformations on which a value or conclusion depends.
+Fixed point.
+A state in which reapplying the operation or rules under consideration no longer changes the description.
+Refinement.
+Introducing a distinction or narrowing the possibilities. It must be distinguished from revising a withdrawn premise.
+Semiring.
+A structure with two operations used for alternatives and composition, under algebraic laws suited to the intended computation.
+SSA.
+A representation with a single assignment location for each static result name; it does not exclude program loops.
+Overapproximation.
+A description that includes all real possibilities and may include additional ones.
+Treewidth.
+A measure of a graph's structural width, relevant to certain decompositions and algorithms; it does not describe all difficulty on its own.
+Question-specific view.
+A temporary representation optimized for a goal, derived from a richer memory or source.
+VSA/HDC.
+Families of high-dimensional distributed representations and operations for encoding, composition and retrieval.
+Widening.
+A technique for accelerating an analysis's stabilization through a broader approximation, trading off precision.
+D. A publishable result record
+The claim and its domain
+Every result of this program should begin with a bounded claim: which circuit family, operations, representation and questions are covered. Phrases such as “understands text” or “eliminates complexity” must be replaced with observable competencies and conditions.
+What was supplied and what was learned
+The rules written by the researcher, data schemas, external components, predefined interfaces and learned contributions are specified. The cost of building the library and verifiers does not disappear from the explanation. Future researchers must be able to identify the contribution's exact location.
+Proof and verification
+Mathematical proofs, exhaustive finite checks, empirical tests and exploratory observations are distinguished. Numerical results indicate what was measured and what was calculated by formula. An independent check must reduce the risk of repeating the same error, rather than merely rerun the same procedure.
+The complete cost
+Learning, compilation, search, verification, memory and updating are reported. The number of expansions evaluated is useful, but does not substitute for time when expansion costs differ greatly. Input size must also be expressed in bits when numerical values grow.
+Cases that did not work
+Failures, inconsistencies, unresolved cases and budget overruns are published. The report identifies whether the problem lies in interpretation, representation, selection, verification or expression. A well-localized negative result is more useful than a general promise without a diagnosis.
+What would change the conclusion
+The report ends with the evidence that would invalidate its claim and the experiments needed to extend it. This section is not a formality. It gives human and AI researchers a concrete way to continue without uncritically inheriting the authors' enthusiasm.
+Annotated bibliography
+Primary references and official documentation
+Titles link to publications or official pages. The notes indicate each source's role in the research program. The publication year is distinguished from the preprint year where that difference is relevant. Online sources accessed: September 11, 2026.
+Cytron, R.; Ferrante, J.; Rosen, B. K.; Wegman, M. N.; Zadeck, F. K. (1991).
+Efficiently Computing Static Single Assignment Form and the Control Dependence Graph
+. ACM Transactions on Programming Languages and Systems.
+The historical foundation of SSA in compilers. Relevant to stable result names and control dependencies; it does not by itself provide semantics for understanding.
+LLVM Project (online documentation).
+LLVM Language Reference Manual
+. Official documentation; accessed September 11, 2026.
+A technical reference for SSA representation, control, types and operations. It helps separate the assignment convention from additional assumptions about purity, memory or loops.
+Fong, B.; Spivak, D. I. (2018).
+Seven Sketches in Compositionality: An Invitation to Applied Category Theory
+. arXiv:1803.05316; subsequently published as a volume in 2019.
+An introduction to the mathematics of composable systems. It supplies vocabulary for relations, processes and structure-preserving translations. This book uses the idea of composition without assuming familiarity with the formalism.
+Coecke, B. (2019; revised 2020).
+The Mathematics of Text Structure
+. arXiv:1904.03478.
+A direct precedent for representing text through circuits in DisCoCirc. Important for correctly attributing ideas and studying compositional updates to meanings.
+Cousot, P.; Cousot, R. (1977).
+Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs by Construction or Approximation of Fixpoints
+. POPL 1977, pp. 238–252.
+The foundational paper on abstract interpretation. A reference for the relationship between concrete states, approximate descriptions and fixed-point computations; its central guarantee must not be confused with exactness.
+Radul, A.; Sussman, G. J. (online technical report).
+Revised Report on the Propagator Model
+. MIT CSAIL; accessed September 11, 2026.
+A computational model with cells accumulating partial information and components propagating consequences. Conceptually very close to wires carrying refinable knowledge.
+Goldreich, O. (2001).
+Foundations of Cryptography, Volume I: Basic Tools
+. Cambridge University Press; author's page.
+A foundation for distinguishing forward computation, inversion and verification. One-way functions illustrate why knowing the algorithm does not automatically provide efficient search.
+Vaandrager, F.; Midya, A. (2020).
+A Myhill-Nerode Theorem for Register Automata and Symbolic Trace Languages
+. ICTAC 2020; arXiv:2007.03540, extended version available.
+A reference for merging histories according to what continuations can distinguish. The extension to registers emphasizes that relations between values can form part of the relevant state.
+Shalizi, C. R.; Crutchfield, J. P. (1999; published 2001).
+Computational Mechanics: Pattern and Prediction, Structure and Simplicity
+. arXiv:cond-mat/9907176.
+Studies process representations through the equivalence of future predictions. Useful for the connection between history, state and predictive sufficiency; it must not be confused with interventional causal identification.
+Darwiche, A.; Marquis, P. (2002).
+A Knowledge Compilation Map
+. Journal of Artificial Intelligence Research; arXiv copy:1106.1819.
+Compares representation languages by succinctness, efficient queries and transformations. A reference for choosing representations according to use and accounting for compilation cost.
+Mateescu, R.; Dechter, R.; Marinescu, R. (2008).
+AND/OR Multi-Valued Decision Diagrams (AOMDDs) for Graphical Models
+. JAIR 33, pp. 465–519; arXiv copy:1401.3448.
+Explains how to exploit independence and graphical decompositions. Relevant to frontiers, separators and the difference between the number of histories and the size of a shared representation.
+Darwiche, A. (2020).
+An Advance on Variable Elimination with Applications to Tensor-Based Computation
+. arXiv:2002.09320.
+Shows the importance of functional dependencies for variable elimination. Supports investigating algebraic structure, rather than graph connectivity alone, as a source of efficiency.
+Polikarpova, N.; Kuraj, I.; Solar-Lezama, A. (2016).
+Program Synthesis from Polymorphic Refinement Types
+. PLDI 2016; preprint arXiv:1510.08419.
+A precedent for synthesizing programs using types containing semantic conditions. Relevant to transforming a goal into component requirements.
+Guo, Z.; James, M.; Justo, D.; Zhou, J.; Wang, Z.; Jhala, R.; Polikarpova, N. (2020).
+Program Synthesis by Type-Guided Abstraction Refinement
+. POPL 2020; arXiv:1911.04091.
+Presents TYGAR and the use of abstraction refinement in synthesis. Important to the idea of starting with a coarser description and introducing distinctions when needed.
+Alur, R. and colleagues (2013).
+Syntax-Guided Synthesis
+. FMCAD 2013; manuscript available on the author's page.
+Separates the syntactic space of admissible programs from the behavioral specification. Provides a framework for explicitly discussing what an expander searches for and what the candidate evaluator checks.
+Clarke, E.; Grumberg, O.; Jha, S.; Lu, Y.; Veith, H. (2000).
+Counterexample-Guided Abstraction Refinement
+. CAV 2000, LNCS 1855, pp. 154–169.
+The reference paper for CEGAR. A spurious counterexample may indicate a distinction lost in the abstract model, rather than an error in the concrete system.
+Willsey, M.; Nandi, C.; Wang, Y. R.; Flatt, O.; Tatlock, Z.; Panchekha, P. (2021).
+egg: Fast and Extensible Equality Saturation
+. POPL 2021; arXiv:2004.03082.
+A reference for the shared representation of equivalent expressions. Validated equality must be distinguished from merely preserving alternative interpretations.
+Goodman, J. (1999).
+Semiring Parsing
+. Computational Linguistics 25(4), pp. 573–606.
+Shows how a parsing structure can be evaluated using different algebras. Useful for distinguishing existence, counting, cost and weighting of derivations.
+Grädel, E.; Tannen, V. (2024).
+Provenance Analysis and Semiring Semantics for First-Order Logic
+. arXiv:2412.07986.
+A framework for tracking logical dependencies through provenance semantics. Relevant to alternative justifications and the precautions required when negation comes into play.
+Soufflé Project (online documentation).
+Soufflé Tutorial
+. Official documentation; accessed September 11, 2026.
+A practical introduction to Datalog relations and rules. An accessible entry point into the intuition of deriving facts, rather than a substitute for natural-language semantics.
+Vaswani, A. and colleagues (2017).
+Attention Is All You Need
+. NeurIPS 2017; arXiv:1706.03762.
+A reference for the Transformer architecture. Cited here because distributed representations and neural operations can be described through explicit computational graphs.
+Yeung, C.; Zou, Z.; Jeong, S.; Huang, W.; Bastian, N. D.; Imani, M. (2024; revised version in 2026).
+Generalized Holographic Reduced Representations
+. arXiv:2405.09689.
+Research on compositionality in distributed representations and binding operations. Offers a direction for comparison, rather than proof that holographic storage eliminates information loss.
+Ellis, K. and colleagues (2020).
+DreamCoder: Growing Generalizable, Interpretable Knowledge with Wake-Sleep Bayesian Program Learning
+. arXiv:2006.08381.
+A precedent for learned symbolic libraries and neural exploration strategies. Relevant to separating program representation from the mechanism searching for programs.
+Tishby, N.; Pereira, F. C.; Bialek, W. (1999; preprint 2000).
+The Information Bottleneck Method
+. arXiv:physics/0004057.

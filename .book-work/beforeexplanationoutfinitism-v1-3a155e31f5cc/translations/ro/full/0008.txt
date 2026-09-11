@@ -1,0 +1,189 @@
+Rezultatul util este harta.
+Exemplu: o explicație organizațională
+Afirmație: „Scăderea vânzărilor noastre este cauzată de sensibilitatea la preț.”
+Regiune validată: două segmente de clienți într-un trimestru; interviuri despre vânzările câștigate și pierdute și un test A/B de preț.
+Variabile de frontieră: geografia, clienții mari față de cei mici, concurenți noi, modificări ale produsului.
+Semnătura eșecului: reducerile de preț nu îmbunătățesc conversia; clienții invocă funcționalități lipsă.
+Redresare: redeschiderea ipotezelor rivale; analiza segmentelor; experimente cu produsul.
+Din nou, harta este mai utilă decât încrederea singură.
+Descoperirea limitelor ca benchmark
+Majoritatea benchmarkurilor întreabă: cât de bine se descurcă sistemul pe un set fix de teste?
+Un benchmark outfinitist ar adăuga:
+Cât de eficient putem descoperi condițiile în care sistemul eșuează?
+Aceasta creează un nou tip de competiție științifică.
+Nu construi doar cel mai puternic model.
+Construiește cel mai bun
+detector de limite
+Acest lucru poate fi crucial pentru siguranța IA, medicină, securitate cibernetică, economie și politici publice.
+Capitolul 26.
+Măsurarea distanței dintre explicație și lucru
+Putem reveni acum la propoziția care a ghidat această carte:
+Înțelepciunea s-ar putea să nu însemne cunoașterea explicației corecte. S-ar putea să însemne cunoașterea distanței dintre o explicație și lucrul pe care îl explică.
+Poate „distanța” să însemne mai mult decât o metaforă?
+Nu ca un singur număr universal. Explicațiile diferite servesc scopuri diferite și trăiesc în spații de reprezentare diferite. Dar metafora poate fi descompusă în distanțe măsurabile.
+Distanță predictivă
+Cât de departe sunt rezultatele prezise de cele observate?
+Acesta este teritoriul familiar al indicatorilor de eroare, calibrării, reziduurilor și performanței în afara eșantionului.
+Distanță intervențională
+Când manipulăm variabila pe care explicația o identifică drept cauzală, se schimbă rezultatele conform așteptărilor?
+Un model se poate potrivi observațiilor și poate eșua la intervenții.
+Distanță contrafactuală
+Modelul ordonează sau caracterizează corect scenarii plauzibile de tipul „ce-ar fi dacă”?
+Distanță față de domeniul de aplicare
+Cât de departe în afara domeniului său validat este aplicată explicația?
+Un model poate fi precis acolo unde a fost testat și iresponsabil acolo unde este extrapolat.
+Distanță de compresie
+Ce detalii relevante se pierd când fenomenul este comprimat în reprezentarea explicativă?
+Acest lucru este greu de redus la un singur indicator, dar poate fi investigat comparând deciziile luate pe baza reprezentării comprimate cu cele luate pe baza unor date mai bogate.
+Distanță normativă
+Câte judecăți de valoare sunt ascunse între afirmația empirică și acțiunea recomandată?
+Distanța crește când „X cauzează Y” devine pe nesimțite „prin urmare Z este justificat”.
+Distanță de proveniență
+Câte transformări separă o afirmație de dovezile sale sursă și cât de ușor pot fi auditate?
+Acest lucru este tot mai important în cercetarea generată de IA și în raportarea instituțională.
+Distanță de încredere
+Cât de mare este decalajul dintre încrederea exprimată și fiabilitatea empirică?
+Aceasta este o problemă de calibrare.
+Împreună, aceste distanțe formează un
+profil al explicației
+S-ar putea defini un vector specific domeniului, în locul unui scor universal:
+D(E) = [eroare predictivă, eroare de intervenție, depășirea domeniului de aplicare, eroare de calibrare, pierderea provenienței, salt normativ, pierdere prin compresie]
+Vectorul nu este o teoremă. Este o propunere pentru proiectarea cercetării.
+Domeniile diferite ar concretiza componentele în moduri diferite. Unele componente s-ar putea să nu se aplice. Scopul este de a impune o întrebare pe care proza singură o ascunde:
+În ce sens este această explicație aproape de ținta sa și în ce sens este departe?
+Aceasta este o întrebare mult mai productivă decât a întreba dacă explicația este pur și simplu „adevărată”.
+Adevărul contează în continuare. Dar, în practică, relația noastră cu adevărul este mediată de modele cu scopuri, erori și limite.
+Distanța ne oferă un limbaj pentru acea mediere.
+Capitolul 27.
+Un program de cercetare outfinitistă
+O filosofie își câștigă viitorul generând întrebări de cercetare care pot eșua.
+Dacă outfinitismul vrea să devină mai mult decât un temperament, are nevoie de experimente, benchmarkuri, formalizări și artefacte inginerești.
+Iată un program posibil.
+Programul A: Descoperirea limitelor
+Întrebare:
+Pot agenții să învețe nu doar o sarcină, ci și forma propriei regiuni de competență?
+Experimentele ar putea antrena modele pe o familie de sarcini și evalua dacă își pot prezice propria eroare pe măsură ce condițiile variază. Compară încrederea declarată de sistem cu estimatori externi ai limitelor. Introdu sistematic schimbări de distribuție. Măsoară cât de devreme detectează sistemul deteriorarea.
+Succesul nu ar însemna autocunoaștere perfectă. Ar însemna o corelație îmbunătățită între apropierea de limită și prudență, abținere, utilizarea instrumentelor sau escaladare.
+Programul B: Fidelitatea explicației
+Întrebare:
+Când urmărește o explicație procesul care a generat un răspuns și când este o raționalizare post hoc?
+Pentru sistemele IA, folosește intervenții asupra indiciilor ascunse, accesului la instrumente, documentelor recuperate sau calculelor intermediare. Compară motivele raportate cu influența cauzală.
+Pentru deciziile umane, folosește înregistrări anterioare deciziei, expunere randomizată la informație, urmărirea procesului și relatări ulterioare despre sine.
+Scopul nu este să demonstrezi că toate explicațiile sunt confabulații. Este să caracterizezi
+regimurile de fidelitate
+Programul C: Datoria explicativă
+Întrebare:
+Poate dependența acumulată de explicații slabe să prezică eșecul organizațional sau rezistența la corectare?
+Dezvoltă instrumente pentru măsurarea dependenței, calității dovezilor, învechirii, încrederii și costului ieșirii. Studiază proiectele longitudinal. Prezice un scor ridicat al datoriei explicative descoperirea târzie a ipotezelor greșite, escaladarea angajamentului sau refacerea costisitoare a muncii?
+Dacă nu, abandonează sau revizuiește constructul.
+Acea propoziție contează. O știință a limitelor trebuie să fie dispusă să descopere limitele propriilor concepte.
+Programul D: Calitatea distincțiilor
+Întrebare:
+Putem măsura dacă o reprezentare păstrează distincțiile relevante pentru decizie înainte de compresie?
+În medicină, depanarea software, analiza literaturii științifice și analiza politicilor publice, compară agenți cărora li se oferă observații brute, rezumate încărcate de teorie sau reprezentări stratificate. Măsoară acuratețea diagnosticului, diversitatea ipotezelor, calibrarea și viteza corectării.
+Aceasta ar putea testa afirmația centrală a cărții: distincția înaintea explicației îmbunătățește raționamentul în anumite clase de probleme.
+Programul E: Inteligența schimbării modelelor
+Majoritatea benchmarkurilor recompensează selectarea răspunsului corect cu un singur regim fix de raționament.
+Înțelepciunea poate cere altceva: să știi când să schimbi regimul.
+Întrebare:
+Poate un agent să detecteze că modelul său curent eșuează și să selecteze o altă reprezentare, un alt instrument, expert sau o altă scară?
+Acest lucru poate fi formalizat ca metacontrol.
+Un agent ar putea alege între inferență statistică, simulare, raționament simbolic, recuperare de informații, escaladare către oameni, experimentare sau abținere. Performanța ar fi judecată nu doar prin răspunsuri, ci și prin
+calitatea rutării
+Programul F: Comunicarea limitelor
+Oamenii înțeleg frecvent greșit afirmațiile despre incertitudine.
+Întrebare:
+Ce interfețe îi ajută pe utilizatori să înțeleagă corect ce poate și ce nu poate susține un model?
+Compară valorile numerice ale încrederii, intervalele, contraexemplele, hărțile limitelor, exemplele de eșec, afișările provenienței și precizările în limbaj natural. Măsoară încrederea practică a utilizatorilor în sistem și utilizarea greșită.
+O precizare pe care nimeni nu o înțelege nu este o limită comunicată.
+Programul G: Ingineria limitelor instituționale
+Întrebare:
+Ce structuri organizaționale păstrează corectarea epistemică în condiții de stimulente și ierarhie?
+Testează analizele pre-mortem, echipele adverse, dezacordul anonim, replicarea independentă, registrele de predicții, jurnalele de decizie, avocații diavolului prin rotație, colaborarea adversarială și proiectele-pilot reversibile.
+Variabila de rezultat nu este „oamenii s-au simțit ascultați”. Este dacă angajamentele explicative false sunt detectate mai devreme și corectate mai ieftin.
+Programul H: O bibliotecă de teoreme ale limitelor și tipare ale limitelor
+Informatica are rezultate de imposibilitate, limite inferioare, clase de complexitate, compromisuri de tip CAP, teoreme no-free-lunch sub ipoteze definite și rezultate de indecidabilitate. Statistica are limite de identificare și limite ale complexității eșantionării. Fizica are constrângeri de incertitudine și predictibilitate de diverse feluri. Economia studiază limitările informației și ale stimulentelor. Filosofia studiază subdeterminarea, schemele conceptuale și justificarea.
+Aceste rezultate sunt de obicei organizate pe discipline.
+Un program outfinitist ar putea construi o taxonomie interdisciplinară a
+tiparelor limitelor
+păstrându-le totodată riguros ipotezele.
+Scopul nu ar fi să le reducă la „totul este limitat”.
+Scopul ar fi să întrebe dacă există structuri reutilizabile:
+• limite ale compromisurilor;
+• limite de observabilitate;
+• limite de identificabilitate;
+• limite de autoreferință;
+• limite de resurse;
+• orizonturi de predicție;
+• limite de reprezentare;
+• limite de coordonare;
+• limite induse de stimulente;
+• limite adversariale.
+O asemenea bibliotecă ar putea deveni utilă chiar sistemelor IA: înainte de a încerca o sarcină, un agent ar putea interoga dacă sarcina seamănă cu un tipar cunoscut de limită.
+Programul I: Benchmarkuri ale înțelepciunii
+Aceasta este direcția cea mai speculativă.
+Poate fi operaționalizată înțelepciunea fără a o trivializa?
+Nu ca un singur scor.
+Poate ca un ansamblu de capacități:
+• calibrare;
+• conștientizarea domeniului de aplicare;
+• generarea de modele rivale;
+• detectarea limitelor;
+• separarea valorilor de empiric;
+• sensibilitate la reversibilitate;
+• urmărirea consecințelor pe termen lung;
+• capacitatea de abținere;
+• capacitatea de revizuire fără prăbușirea identității;
+• capacitatea de a acționa în pofida incertitudinii nerezolvate.
+Un agent „înțelept” nu ar răspunde doar la întrebări dificile.
+Ar ști ce întrebări depășesc metoda sa actuală, ce decizii sunt reversibile, ce dovezi lipsă merită obținute și ce explicații devin scuze.
+Acesta este un scop mult mai ambițios pentru IA decât elocvența.
+Capitolul 28.
+Înțelepciunea ca sensibilitate la limite
+Ce ar însemna să luăm asta în serios în viața obișnuită?
+Poate că înțelepciunea nu este un depozit de răspunsuri corecte.
+O persoană poate ști enorm de multe și își poate distruge în mod repetat propria viață.
+Poate că înțelepciunea este, în parte,
+sensibilitate la limite
+Medicul înțelept știe ce nu poate arăta scanarea.
+Inginerul înțelept știe ce ipoteze fac simularea utilă.
+Omul de știință înțelept știe când o teorie frumoasă a depășit dovezile.
+Fondatorul înțelept știe ce succes a venit din pricepere și ce succes dintr-un mediu favorabil care poate dispărea.
+Părintele înțelept știe că un model al copilului poate deveni o cușcă.
+Cetățeanul înțelept știe că înțelegerea motivului pentru care apare o nedreptate nu o face dreaptă.
+Sistemul IA înțelept, dacă vom construi vreodată unul, s-ar putea distinge nu prin disponibilitatea de a răspunde la orice, ci prin calitatea refuzurilor, escaladărilor, estimărilor de incertitudine și schimbărilor de model.
+Această perspectivă schimbă modestia.
+Modestia este prezentată adesea ca un stil moral: vorbește încet, admite că te poți înșela, evită aroganța.
+Este prea superficial.
+Un om de știință poate spune „mă pot înșela” fără să ruleze vreun test capabil să demonstreze asta.
+O companie poate adăuga un diapozitiv cu „limitări” după patruzeci de diapozitive de certitudine.
+Un model de limbaj poate adăuga „consultați un expert” la un răspuns al cărui ton rămâne nejustificat de autoritar.
+Modestia reală ține de arhitectură.
+Ea creează canale prin care realitatea poate câștiga.
+Păstrează accesibile dovezile brute.
+Înregistrează predicțiile înaintea rezultatelor.
+Protejează dezacordul.
+Creează căi de revenire.
+Distinge alegerea de necesitate.
+Măsoară calibrarea.
+Marchează limita.
+Modestia devine o proprietate a sistemelor, nu a personalităților.
+Aceasta ar putea fi una dintre contribuțiile cele mai practice ale outfinitismului.
+Capitolul 29.
+Limita științei limitelor
+O carte despre limite ar trebui să privească propriul final cu neîncredere.
+Există un pericol evident în outfinitism.
+Filosofia poate deveni o altă explicație totală.
+Totul eșuează? „Din cauza limitelor.”
+Orice dezacord? „Limite diferite.”
+Orice mister? „Modelul și-a depășit domeniul de aplicare.”
+În acel punct, știința limitelor ar deveni exact tipul de închisoare pe care această carte l-a criticat.
+Așadar, outfinitismul are nevoie de precauții constituționale.
+Prima precauție: fără universalizare pornind de la un tip de limită
+Gödel nu este Turing. Turing nu este Lorenz. Lorenz nu este incertitudine statistică. Incertitudinea statistică nu este dezacord moral.
+Asemănarea nu șterge mecanismul.
+A doua precauție: fiecare limită propusă trebuie să-și precizeze nivelul
+Este o imposibilitate logică, o regularitate empirică, o constrângere tehnologică actuală, un compromis de resurse, o limitare cognitivă sau o convenție socială?
+A treia precauție: fiecare limită flexibilă ar trebui să invite un test al frontierei
+Dacă spunem „oamenii nu pot înțelege X”, ce experiment susține afirmația?
+Dacă spunem „acest model nu poate generaliza”, ce perturbație dezvăluie eșecul?

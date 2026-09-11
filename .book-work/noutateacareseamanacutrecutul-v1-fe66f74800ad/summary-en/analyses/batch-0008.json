@@ -1,0 +1,270 @@
+{
+  "batch": "batch-0008.json",
+  "chapterId": "chapter-0008",
+  "segment": 1,
+  "thesis": "Distinguish inaccessible historical evidence, label-erasing representation and undecidable general semantics from exact finite comparison.",
+  "role": "Conditional impossibility and constructive possibility",
+  "ideas": [
+    {
+      "id": "batch-0008-idea-001",
+      "statement": "Perfect classification from a representation exists exactly when labels are constant on every fiber.",
+      "centrality": 1,
+      "originality": 0.95,
+      "recurrenceCandidate": "preservation",
+      "sourceUnitIds": [
+        "u000264",
+        "u000265",
+        "u000266",
+        "u000267",
+        "u000269",
+        "u000270",
+        "u000271",
+        "u000273",
+        "u000277",
+        "u000278",
+        "u000279"
+      ]
+    },
+    {
+      "id": "batch-0008-idea-002",
+      "statement": "Absolute priority needs access assumptions; finite circuit comparison refutes universal impossibility.",
+      "centrality": 1,
+      "originality": 0.9,
+      "recurrenceCandidate": "possibility",
+      "sourceUnitIds": [
+        "u000255",
+        "u000256",
+        "u000257",
+        "u000258",
+        "u000259",
+        "u000262",
+        "u000282",
+        "u000283",
+        "u000284",
+        "u000285",
+        "u000286",
+        "u000287",
+        "u000288",
+        "u000289"
+      ]
+    }
+  ],
+  "evidenceAndExamples": [
+    {
+      "statement": "Let us rigorously define an evaluator as a procedure that receives observations O and produces a verdict. Observations may include the candidate document, accessible sources, search-engine responses and tool outputs. The complete world may also contain inaccessible documents. If two worlds produce exactly the same observations for the evaluator, the procedure cannot distinguish them on the basis of those observations. This is an elementary identifiability limit.",
+      "sourceUnitIds": [
+        "u000255"
+      ]
+    },
+    {
+      "statement": "We construct two worlds. In world W0, contribution x has no prior work before time t. In world W1, prior work exists in a document the evaluator cannot access. All accessible documents are identical in the two worlds. The training history and evaluator state are also identical. The correct historical verdict differs, but the procedure’s input does not. A deterministic evaluator will produce the same answer in both worlds and be wrong in at least one.",
+      "sourceUnitIds": [
+        "u000256"
+      ]
+    },
+    {
+      "statement": "Randomization does not remove the problem. A randomized evaluator will produce the same answer distribution in the two worlds because its observations have the same distribution. It cannot have probability one of being correct in both. If we assign equal probabilities to the two worlds, the best verdict without further information cannot exceed probability one half of identifying the correct world. With other priors, it can favor the more probable world, but it does not obtain informational certainty.",
+      "sourceUnitIds": [
+        "u000257"
+      ]
+    },
+    {
+      "statement": "This proof does not say that searching for prior work is useless. It says that an absolute guarantee requires assumptions about completeness of access. In a finite, fully enumerated library, we can check the absence of an element under a decidable criterion. In an open history of knowledge, we can produce a conclusion conditional on the sources examined. The difference between these situations must be expressed in the final report, not hidden in the fine print.",
+      "sourceUnitIds": [
+        "u000258"
+      ]
+    },
+    {
+      "statement": "The limit applies to humans, search engines and hybrid systems. It is not a special property of language models. It therefore cannot be used to demonstrate that LLMs are weaker than humans. A relative comparison must supply the same sources and budget or measure the access advantage separately. Otherwise, competence and information are confused.",
+      "sourceUnitIds": [
+        "u000259"
+      ]
+    },
+    {
+      "statement": "A more modest guarantee can be formulated: “we found no prior work in K using procedure P, and the procedure’s coverage was evaluated on a family of similar cases.” This is a verifiable claim. It is not equivalent to historical absence, but it may suffice for a practical decision. Confidence depends on the domain, indexing and the procedure’s ability to find prior work with different vocabulary.",
+      "sourceUnitIds": [
+        "u000260"
+      ]
+    },
+    {
+      "statement": "A negative search result has value only relative to search sensitivity. If the procedure frequently misses known prior work, finding nothing for the candidate is weakly informative. A useful test involves concealing the identities of papers in a controlled way and checking whether they can be retrieved from their contributions. This test does not prove historical completeness, but estimates a component needed to interpret the absence of results.",
+      "sourceUnitIds": [
+        "u000261"
+      ]
+    },
+    {
+      "statement": "The formal conclusion is narrow and strong: no evaluator can universally certify the absence of inaccessible prior work without additional assumptions. This proposition does not imply that recognizing a new difference relative to an accessible library is impossible. An unjustified move from the first to the second would turn an informational limit into a denial of comparison.",
+      "sourceUnitIds": [
+        "u000262"
+      ]
+    },
+    {
+      "statement": "Consider a set X of objects, a deterministic labeling Y:X→{0,1} and a representation φ:X→Z. The question is whether there exists a classifier g:Z→{0,1} that perfectly decides the label using only the representation. The following result is elementary and is not presented as a new theorem of this book. It makes the mechanism of difference loss explicit.",
+      "sourceUnitIds": [
+        "u000264"
+      ]
+    },
+    {
+      "statement": "Proposition. A perfect classifier g with Y=g∘φ exists if and only if Y is constant on every fiber of φ. A fiber is the set of all objects receiving the same representation.",
+      "sourceUnitIds": [
+        "u000265"
+      ]
+    },
+    {
+      "statement": "φ ( x ) = φ ( x ′ ) ⇒ Y ( x ) = Y ( x ′ ) .",
+      "sourceUnitIds": [
+        "u000266"
+      ]
+    },
+    {
+      "statement": "The proof of necessity is immediate. If two objects have the same representation, g receives the same input and produces the same output. To be correct on both, their labels must be equal. The proof of sufficiency constructs g: for each representation z, we choose the common label of the objects in its fiber. The assumption that the label is constant guarantees that the definition does not depend on the chosen object. On representations not reached by φ, g can be defined arbitrarily.",
+      "sourceUnitIds": [
+        "u000267"
+      ]
+    },
+    {
+      "statement": "The proposition is informational: the existence of the function g does not guarantee that it is computable or efficient on an infinite domain. In the finite case, we can construct a decision table. In the general case, computability remains separate from the information-preservation condition.",
+      "sourceUnitIds": [
+        "u000268"
+      ]
+    },
+    {
+      "statement": "The consequence for novelty is precise. If a new contribution and an old one, under the same criterion and reference, map to the same representation, no evaluator restricted exclusively to that representation can be perfect on both. It does not matter how fluent it is, how many parameters it has or how long it reflects. It may guess better using prevalences, but it cannot recover the lost distinction from an identical signal.",
+      "sourceUnitIds": [
+        "u000269"
+      ]
+    },
+    {
+      "statement": "There is, however, an often omitted condition: mere noninjectivity of the representation does not demonstrate failure. A representation can group many paraphrased texts, all with the same label, without losing anything relevant to the task. If φ removes only irrelevant variations, classification can remain perfect. The problem is not that two different texts have the same vector. It is that two texts with different labels provide the same information for the decision.",
+      "sourceUnitIds": [
+        "u000270"
+      ]
+    },
+    {
+      "statement": "Moreover, the criterion and library must be included in the total input. The same contribution may be new relative to K1 and old relative to K2. A candidate representation, however good, is insufficient if the evaluator does not receive the reference. We can define the total object as u=(x,K,C). The theorem applies to the representation of u. This clarification prevents a common error: treating novelty as a fixed label of a text, independent of context.",
+      "sourceUnitIds": [
+        "u000271"
+      ]
+    },
+    {
+      "statement": "For a finite example, suppose we have four equally probable objects. The first two are old, the next two new. Representation Z has two values: one groups the first old object with the first new object, while the other groups the remaining two. In each fiber, the labels are equally mixed. Any classifier based only on Z is wrong on half the objects. If the representation changes so that each fiber contains only objects with the same label, the minimum error becomes zero, even though the representation remains compressed.",
+      "sourceUnitIds": [
+        "u000272"
+      ]
+    },
+    {
+      "statement": "In the discrete probabilistic case, the minimum Bayes risk for binary classification from Z is the sum, over representations, of the minority class mass in each fiber. The formula simultaneously includes representational loss and any label noise.",
+      "sourceUnitIds": [
+        "u000273"
+      ]
+    },
+    {
+      "statement": "R Z o p t = ∑ z ​ min { P ( Y = 0 , Z = z ) , P ( Y = 1 , Z = z ) } .",
+      "sourceUnitIds": [
+        "u000274"
+      ]
+    },
+    {
+      "statement": "For equal class priors, the same bound can be expressed through the total variation distance between the class-conditional representation distributions. Total variation measures how different the distributions are; if they are identical, there is no discriminative signal.",
+      "sourceUnitIds": [
+        "u000275"
+      ]
+    },
+    {
+      "statement": "R Z o p t = 1 − T V ( P Z ∣ Y = 0 , P Z ∣ Y = 1 ) 2 .",
+      "sourceUnitIds": [
+        "u000276"
+      ]
+    },
+    {
+      "statement": "These formulas do not allow automatic estimation of an LLM’s error from an arbitrary vector. The relevant distributions must be known or estimated, and internal representations are generally complex. They do, however, offer a conceptual target for experiments: we seek transformations that reduce label separability, not merely text length. We can measure this reduction directly in controlled finite worlds.",
+      "sourceUnitIds": [
+        "u000277"
+      ]
+    },
+    {
+      "statement": "A corollary concerns the representation budget. With B bits, we can distinguish at most 2 to the power B states. If the family of future questions requires distinguishing more relevant classes, some must be merged. But a single binary question may require much less information than full reconstruction of the document. There is therefore no simple relation of the form “short summary, hence novelty impossible.” The limit depends on how many distinctions must be preserved for the permitted tasks.",
+      "sourceUnitIds": [
+        "u000278"
+      ]
+    },
+    {
+      "statement": "Finally, source access changes the problem. If the evaluator receives Z and can request passages from X, it is no longer limited to Z. The theorem does not prohibit recovering the difference through a new observation. This observation underpins the architecture proposed later: compression for navigation can be combined with verifiable access to the original for decisions that depend on details.",
+      "sourceUnitIds": [
+        "u000279"
+      ]
+    },
+    {
+      "statement": "Some novelty limits arise from computation rather than missing documents. If ideas are arbitrary programs and the criterion requires behavioral equivalence for all inputs, we enter general problems of program semantics. Rice-type results concern the impossibility of total algorithmic decision for nontrivial semantic properties of partial computable functions. The paper by Hemaspaandra and Rothe explicitly discusses the difference between such results and complexity analogues for restricted classes. [ R25 ]",
+      "sourceUnitIds": [
+        "u000281"
+      ]
+    },
+    {
+      "statement": "Delimitation is essential. Undecidable does not mean that no instance can be solved. It means there is no algorithm that halts and correctly decides every instance in the general class. Many concrete programs can be compared, many properties can be proved and restricted classes may be decidable. Invoking computability to declare every novelty detector useless would be an invalid extension of the result.",
+      "sourceUnitIds": [
+        "u000282"
+      ]
+    },
+    {
+      "statement": "We can see the difficulty through a simple construction. From an arbitrary program M and an input w, we construct program P, which simulates M(w) and returns zero if the simulation terminates. If it does not terminate, P produces no result. A universal evaluator able to decide whether P is equivalent to the constant-zero function on all inputs would decide whether M(w) halts. Thus, a general equivalence question can conceal the halting problem. The construction explains the limit without claiming that all novelty tasks have the same difficulty.",
+      "sourceUnitIds": [
+        "u000283"
+      ]
+    },
+    {
+      "statement": "For Boolean circuits with a finite number of inputs, the situation differs. We can evaluate all 2 to the power n inputs and compare truth tables. The procedure always halts. The cost may be high, but the problem is decidable. If the library is finite, we can check whether the candidate’s function coincides with any stored function. This is a constructive counterexample to the claim that relative novelty detection is impossible in principle.",
+      "sourceUnitIds": [
+        "u000284"
+      ]
+    },
+    {
+      "statement": "The system must also be distinguished from its linguistic component. An LLM can translate a description into a circuit, and an exact verifier can decide equivalence. Success of the whole system shows that LLMs can participate usefully in novelty detection, not that their translation is infallible or that the model alone proved everything. We can evaluate translation fidelity and verifier correctness separately. This separation makes the experiment more informative than a monolithic verdict.",
+      "sourceUnitIds": [
+        "u000285"
+      ]
+    },
+    {
+      "statement": "There is also a simple counterargument to the thesis that a model can recognize only objects it has encountered. A comparison rule learned on old pairs can be applied to pairs generated later. If a model correctly reads truth tables and identifies a different row, that exact pair need not have existed in training. We are not claiming that every LLM does this robustly; we are saying that learning’s historical origin is not a proof of impossibility.",
+      "sourceUnitIds": [
+        "u000286"
+      ]
+    },
+    {
+      "statement": "No-free-lunch results are often invoked too broadly. In a world where unknown labels are arbitrary and independent of previous observations, no rule can systematically generalize better than another on average over all labelings. But real problems are not uniformly distributed over all possible functions. They have structure, regularities and criteria. The correct conclusion is that generalization requires inductive assumptions, not that generalization is impossible.",
+      "sourceUnitIds": [
+        "u000287"
+      ]
+    },
+    {
+      "statement": "For novelty, the desired inductive assumption is not “the future always resembles the past.” It may be “the comparison rule remains valid for new objects.” A circuit comparator does not assume that the new circuit is identical to an old one; it assumes that gate semantics and the input domain are stable. This difference between regularity of procedure and regularity of outcome is central. A system can use known rules to identify an unknown difference.",
+      "sourceUnitIds": [
+        "u000288"
+      ]
+    },
+    {
+      "statement": "A clear map of limits emerges. Without information about inaccessible prior work, absolute priority is not identifiable. After a relevant distinction is lost, perfect classification from the remaining representation is impossible. For general programs, certain semantic comparisons are undecidable. Conversely, in finite worlds with explicit criteria, relative novelty can be decided exactly. The empirical question about LLMs begins between these limits: how well do they translate, compare, search and preserve information in tasks where a correct verdict is possible?",
+      "sourceUnitIds": [
+        "u000289"
+      ]
+    }
+  ],
+  "objectionsAndQualifications": [
+    {
+      "statement": "The elementary theorem is not novel, not necessarily computable, and mere compression/noninjectivity is not enough for failure.",
+      "sourceUnitIds": [
+        "u000264",
+        "u000268",
+        "u000270",
+        "u000277",
+        "u000278"
+      ]
+    }
+  ],
+  "audit": {
+    "chapterCovered": true,
+    "meaningPreserved": true,
+    "factsPreserved": true,
+    "notes": "Complete chapter read; preserve conditional impossibilities, proposed protocols and bounded empirical evidence."
+  }
+}

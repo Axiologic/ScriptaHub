@@ -46,11 +46,15 @@
 
   function documentTerms(book, language) {
     const title = termsFor(book.title?.[language] || book.title?.en, language, false);
+    const alternateTitles = Object.entries(book.title || {}).filter(([code]) => code !== language)
+      .flatMap(([, value]) => termsFor(value, language, false));
+    const aliases = [book.sourceId, ...(book.sourceAliases || [])]
+      .flatMap((value) => termsFor(value, language, false));
     const subtitle = termsFor(book.subtitle?.[language] || book.subtitle?.en, language, false);
     const description = termsFor(book.shortDescription?.[language] || book.shortDescription?.en, language, false);
     const category = termsFor(book.category, language, false);
     const keywords = (book.keywords?.[language] || book.keywords?.en || []).flatMap((keyword) => termsFor(keyword, language, false));
-    return [...repeat(title, 5), ...repeat(keywords, 4), ...repeat(subtitle, 2), ...repeat(category, 2), ...description];
+    return [...repeat(title, 6), ...repeat(alternateTitles, 5), ...repeat(aliases, 5), ...repeat(keywords, 4), ...repeat(subtitle, 2), ...repeat(category, 2), ...description];
   }
 
   function buildBm25Index(language, characterMode = false) {

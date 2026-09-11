@@ -1,0 +1,416 @@
+{
+  "language": "en",
+  "chunk": 13,
+  "segments": [
+    {
+      "id": "t000690",
+      "source": "Aceasta demonstrează echivalența pentru continuările formate din operațiile declarate. Dacă politica de alegere a operației consultă o parte a stării care nu se află în rezumat, argumentul nu acoperă automat acea politică. Trebuie fie să includem informația consultată, fie să definim continuările ca secvențe externe fixate și să analizăm separat strategia de alegere.",
+      "translation": "This proves equivalence for continuations composed of the declared operations. If the operation-selection policy consults a part of the state absent from the summary, the argument does not automatically cover that policy. We must either include the information consulted or define continuations as fixed external sequences and analyze the selection strategy separately."
+    },
+    {
+      "id": "t000691",
+      "source": "Într-un sistem cu operații parțiale, trebuie păstrată și admisibilitatea: două stări reunite nu pot avea o operație permisă numai într-una, dacă această diferență contează. Într-un sistem nedeterminist, trebuie comparate mulțimile sau distribuțiile de rezultate potrivit semanticii adoptate. Forma simplă de mai sus privește tranziții deterministe și compatibile cu rezumatul.",
+      "translation": "In a system with partial operations, admissibility must also be preserved: two merged states cannot permit an operation in only one of them if that difference matters. In a nondeterministic system, sets or distributions of outcomes must be compared according to the adopted semantics. The simple form above concerns deterministic transitions compatible with the summary."
+    },
+    {
+      "id": "t000692",
+      "source": "Ceea ce nu demonstrează argumentul este existența unui rezumat mic, calculabil ieftin sau ușor de învățat. Putem avea proprietatea cu α egală cu identitatea, adică păstrând întreaga stare. Aceasta este exactă și poate să nu comprime nimic. Valoarea cercetării începe când găsim interfețe mult mai mici decât istoriile pe care le reprezintă.",
+      "translation": "What the argument does not prove is the existence of a small summary that is inexpensive to compute or easy to learn. The property can hold with α equal to the identity, preserving the entire state. This is exact and may compress nothing. The research gains value when we find interfaces much smaller than the histories they represent."
+    },
+    {
+      "id": "t000693",
+      "source": "A.2. Cum se păstrează siguranța unei aproximări",
+      "translation": "A.2. How an approximation remains sound"
+    },
+    {
+      "id": "t000694",
+      "source": "Fie C mulțimea stărilor concrete încă posibile și a o descriere abstractă care le include: C este inclusă în γ(a). Presupunem că transformarea abstractă F# este sigură, adică toate rezultatele obținute aplicând F oricărei stări din γ(a) sunt incluse în γ(F#(a)).",
+      "translation": "Let C be the set of concrete states still possible and a an abstract description containing them: C is included in γ(a). Suppose the abstract transformation F# is sound, meaning that all results obtained by applying F to any state in γ(a) are included in γ(F#(a))."
+    },
+    {
+      "id": "t000695",
+      "source": "Pentru că C este inclusă în γ(a), rezultatele F(C) sunt incluse în F(γ(a)). Iar această ultimă mulțime este inclusă, prin ipoteza siguranței, în γ(F#(a)). Prin urmare, descrierea abstractă nouă include toate rezultatele concrete reale. Argumentul se repetă la fiecare pas.",
+      "translation": "Because C is included in γ(a), the results F(C) are included in F(γ(a)). By the soundness assumption, that latter set is included in γ(F#(a)). Therefore, the new abstract description includes all actual concrete results. The argument repeats at every step."
+    },
+    {
+      "id": "t000696",
+      "source": "Acum putem înțelege ce înseamnă o verificare reușită. Dacă toate stările din descrierea abstractă satisfac proprietatea cerută, atunci și toate stările concrete o satisfac. Dacă descrierea abstractă admite un caz rău, nu rezultă neapărat că acel caz este real. Poate fi o alarmă falsă introdusă de aproximare.",
+      "translation": "We can now understand what successful verification means. If every state in the abstract description satisfies the required property, every concrete state also satisfies it. If the abstract description admits a bad case, that case is not necessarily real. It may be a false alarm introduced by approximation."
+    },
+    {
+      "id": "t000697",
+      "source": "Pentru căutarea unei soluții, o intersecție abstractă nevidă cu obiectivul nu este suficientă. Candidatul trebuie realizat concret sau verificat într-o reprezentare mai precisă. În schimb, dacă o supraaproximare sigură a rezultatelor nu intersectează deloc obiectivul, putem respinge ramura, fiindcă nici rezultatele reale nu îl pot atinge.",
+      "translation": "When searching for a solution, a nonempty abstract intersection with the goal is insufficient. The candidate must be concretely realized or checked in a more precise representation. Conversely, if a sound overapproximation of the results does not intersect the goal at all, we can reject the branch, because the actual results cannot reach it either."
+    },
+    {
+      "id": "t000698",
+      "source": "Acesta este motivul pentru care abstracțiile sunt foarte bune pentru filtrare, dar cer precauție la acceptare. O aceeași reprezentare poate fi sigură pentru a spune „imposibil” și insuficientă pentru a spune „am găsit”, în funcție de direcția logică a testului.",
+      "translation": "This is why abstractions are very good for filtering but require caution when accepting results. The same representation can be sound for saying “impossible” and insufficient for saying “found it,” depending on the logical direction of the test."
+    },
+    {
+      "id": "t000699",
+      "source": "A.3. De ce rezumatele individuale nu păstrează orice relație",
+      "translation": "A.3. Why individual summaries do not preserve every relation"
+    },
+    {
+      "id": "t000700",
+      "source": "Avem relația R formată din perechile (0, 0) și (1, 1). Proiecția ei asupra primei variabile este {0, 1}; proiecția asupra celei de-a doua este tot {0, 1}. Dacă reconstruim posibilitățile doar din aceste două proiecții, obținem produsul lor: patru perechi.",
+      "translation": "Let relation R consist of the pairs (0, 0) and (1, 1). Its projection onto the first variable is {0, 1}; its projection onto the second is also {0, 1}. If we reconstruct the possibilities using only these two projections, we obtain their product: four pairs."
+    },
+    {
+      "id": "t000701",
+      "source": "Două dintre perechi, (0, 1) și (1, 0), nu aparțineau relației inițiale. Operația „păstrează fiecare componentă separat” a pierdut dependența de egalitate. Nu a pierdut nicio valoare individual posibilă. Tocmai de aceea o verificare care privește numai domeniile fiecărui fir poate rata problema.",
+      "translation": "Two pairs, (0, 1) and (1, 0), did not belong to the original relation. The operation “preserve each component separately” lost the equality dependency. It lost no individually possible value. Precisely for that reason, a check examining only each wire's domain can miss the problem."
+    },
+    {
+      "id": "t000702",
+      "source": "Reconstrucția prin produs este o supraaproximare sigură a lui R. Ea poate fi folosită pentru anumite teste, dar nu ca și cum ar fi relația exactă. Dacă o continuare întreabă dacă x = y, R răspunde întotdeauna afirmativ, în timp ce produsul admite și răspunsul negativ.",
+      "translation": "Reconstruction through the product is a sound overapproximation of R. It can be used for certain tests, but not as though it were the exact relation. If a continuation asks whether x = y, R always answers yes, while the product also admits a negative answer."
+    },
+    {
+      "id": "t000703",
+      "source": "O reparație compactă este să păstrăm cele două domenii și constrângerea x = y. Nu a fost necesară enumerarea tuturor perechilor. În alte relații, o reparație la fel de mică poate să nu existe în limbajul ales. De aceea, cercetarea interfețelor este și cercetarea unui vocabular al relațiilor utile.",
+      "translation": "A compact repair is to preserve both domains and the constraint x = y. Enumerating every pair was unnecessary. For other relations, an equally small repair may not exist in the chosen language. Research into interfaces is therefore also research into a vocabulary of useful relations."
+    },
+    {
+      "id": "t000704",
+      "source": "B. Exerciții conceptuale și răspunsuri comentate",
+      "translation": "B. Conceptual exercises with explained answers"
+    },
+    {
+      "id": "t000705",
+      "source": "1. Un rezumat pentru medie",
+      "translation": "1. A summary for the mean"
+    },
+    {
+      "id": "t000706",
+      "source": "O mașină citește numere pe rând. Păstrează numai suma lor și trebuie să răspundă la final care este media. Este interfața suficientă?",
+      "translation": "A machine reads numbers one at a time. It preserves only their sum and must report their mean at the end. Is the interface sufficient?"
+    },
+    {
+      "id": "t000707",
+      "source": "Nu. Listele [2, 4] și [6] au aceeași sumă, dar medii diferite. Numărul elementelor este distincția lipsă. Perechea „sumă, număr” poate fi actualizată compozițional la adăugarea unui element și permite calcularea mediei pentru liste nevide. Cazul listei vide trebuie tratat explicit, nu ascuns într-o împărțire nepermisă.",
+      "translation": "No. The lists [2, 4] and [6] have the same sum but different means. The element count is the missing distinction. The pair “sum, count” can be updated compositionally when an element is added and allows the mean to be calculated for nonempty lists. The empty-list case must be handled explicitly, rather than hidden in an invalid division."
+    },
+    {
+      "id": "t000708",
+      "source": "2. Aceeași medie, altă întrebare",
+      "translation": "2. The same mean, a different question"
+    },
+    {
+      "id": "t000709",
+      "source": "Presupunem că păstrăm suma și numărul. Putem decide dacă toate elementele listei au fost egale?",
+      "translation": "Suppose we preserve the sum and count. Can we decide whether every element of the list was equal?"
+    },
+    {
+      "id": "t000710",
+      "source": "Nu în general. Listele [1, 3] și [2, 2] au aceeași sumă și același număr de elemente. Putem adăuga o reprezentare potrivită, de exemplu o valoare de referință și un indicator al egalității tuturor elementelor cu ea. Exercițiul arată că o interfață suficientă nu este o esență universală a datelor.",
+      "translation": "Not in general. The lists [1, 3] and [2, 2] have the same sum and element count. We can add a suitable representation, such as a reference value and a flag indicating whether every element equals it. The exercise shows that a sufficient interface is not a universal essence of the data."
+    },
+    {
+      "id": "t000711",
+      "source": "3. Tipul corect, sensul greșit",
+      "translation": "3. Correct type, wrong meaning"
+    },
+    {
+      "id": "t000712",
+      "source": "O operație primește două numere și le adună. Primul este un preț în euro, al doilea o temperatură în grade Celsius. Sistemul verifică numai tipul numeric. Ce lipsește?",
+      "translation": "An operation receives two numbers and adds them. The first is a price in euros, the second a temperature in degrees Celsius. The system checks only the numeric type. What is missing?"
+    },
+    {
+      "id": "t000713",
+      "source": "Lipsește tipul semantic sau contractul care precizează ce mărimi se pot combina. Verificarea executabilității nu dovedește relevanța operației. Soluția nu este interzicerea aritmeticii generale, ci distingerea nivelului brut de date de folosirea justificată într-un model.",
+      "translation": "The semantic type or contract specifying which quantities can be combined is missing. Checking executability does not establish the operation's relevance. The solution is not to prohibit general arithmetic, but to distinguish the raw data level from justified use within a model."
+    },
+    {
+      "id": "t000714",
+      "source": "4. O intersecție nevidă",
+      "translation": "4. A nonempty intersection"
+    },
+    {
+      "id": "t000715",
+      "source": "Analiza spune că o operație poate produce orice număr între 0 și 10. Obiectivul este 7. Putem declara că există o execuție care produce 7?",
+      "translation": "The analysis says an operation can produce any number between 0 and 10. The goal is 7. Can we declare that an execution producing 7 exists?"
+    },
+    {
+      "id": "t000716",
+      "source": "Nu, dacă intervalul este doar o supraaproximare. Rezultatele reale ar putea fi numai 0 și 10. Intersecția arată compatibilitate abstractă, nu realizabilitate. Trebuie verificat un martor concret sau rafinată reprezentarea până când existența devine justificată.",
+      "translation": "No, if the interval is only an overapproximation. The actual results might be only 0 and 10. The intersection shows abstract compatibility, not realizability. A concrete witness must be checked, or the representation refined until existence is justified."
+    },
+    {
+      "id": "t000717",
+      "source": "5. O contradicție din surse",
+      "translation": "5. A contradiction between sources"
+    },
+    {
+      "id": "t000718",
+      "source": "Un document afirmă că Ana este la laborator la ora 10. Altul afirmă că nu este la laborator la aceeași oră. Ce ar trebui să producă sistemul?",
+      "translation": "One document states that Ana is in the laboratory at 10 o'clock. Another states that she is not in the laboratory at the same time. What should the system produce?"
+    },
+    {
+      "id": "t000719",
+      "source": "Mai întâi trebuie să stabilească dacă se referă la aceeași persoană, același loc și aceeași semnificație a momentului. Dacă da și dacă ambele afirmații sunt acceptate ca premise despre aceeași lume, trebuie semnalat conflictul. Poate păstra separat faptul că fiecare sursă a făcut afirmația. Nu trebuie să aleagă automat sursa preferată și nici să transforme incompatibilitatea în permisiunea de a răspunde orice.",
+      "translation": "It must first establish whether they refer to the same person, place and interpretation of the time. If so, and if both statements are accepted as premises about the same world, the conflict must be flagged. It can separately preserve the fact that each source made its statement. It must neither automatically choose the preferred source nor turn incompatibility into permission to answer anything."
+    },
+    {
+      "id": "t000720",
+      "source": "6. O regulă care uită o precondiție",
+      "translation": "6. A rule that forgets a precondition"
+    },
+    {
+      "id": "t000721",
+      "source": "Un circuit rescrie x/x ca 1. Ce trebuie verificat înainte de a introduce regula într-o clasă de egalitate?",
+      "translation": "A circuit rewrites x/x as 1. What must be checked before adding the rule to an equivalence class?"
+    },
+    {
+      "id": "t000722",
+      "source": "Trebuie precizată semantica numerelor și domeniul de definiție. În aritmetica obișnuită, condiția x diferit de zero este esențială. Într-o semantică numerică particulară pot exista și alte cazuri speciale. O regulă corectă sub o precondiție nu poate fi aplicată necondiționat doar fiindcă simplifică expresia.",
+      "translation": "The number semantics and domain of definition must be specified. In ordinary arithmetic, the condition that x is nonzero is essential. Particular numeric semantics may introduce other special cases. A rule correct under a precondition cannot be applied unconditionally merely because it simplifies the expression."
+    },
+    {
+      "id": "t000723",
+      "source": "7. O ambiguitate irelevantă",
+      "translation": "7. An irrelevant ambiguity"
+    },
+    {
+      "id": "t000724",
+      "source": "„Ana îi dă cheia Mariei. Ea pleacă.” Întrebarea este cine are cheia imediat după transfer. Trebuie aleasă identitatea pronumelui?",
+      "translation": "“Ana gives Maria the key. She leaves.” The question is who has the key immediately after the transfer. Must the pronoun's referent be chosen?"
+    },
+    {
+      "id": "t000725",
+      "source": "Nu, în modelul restrâns în care transferul este actual și încheiat, iar plecarea nu schimbă posesia la momentul întrebat. Ambele interpretări dau Maria. Dacă întrebarea devine cine pleacă, ambiguitatea trebuie păstrată sau rezolvată prin informație suplimentară. Relevanța este relativă la continuare.",
+      "translation": "No, in the restricted model where the transfer is actual and complete and departure does not change possession at the time asked about. Both interpretations yield Maria. If the question becomes who leaves, the ambiguity must be preserved or resolved through additional information. Relevance is relative to the continuation."
+    },
+    {
+      "id": "t000726",
+      "source": "8. O explicație cu două surse dependente",
+      "translation": "8. An explanation with two dependent sources"
+    },
+    {
+      "id": "t000727",
+      "source": "Două articole susțin aceeași afirmație, dar ambele copiază un singur raport. Putem considera că avem două confirmări independente?",
+      "translation": "Two articles support the same claim, but both copy a single report. Can we count this as two independent confirmations?"
+    },
+    {
+      "id": "t000728",
+      "source": "Nu doar din numărul articolelor. Proveniența arată dependența comună. Putem avea două reproduceri ale aceleiași surse, nu două observații independente. Un sistem poate număra derivările, sursele documentare și originile informației, dar acestea sunt mărimi diferite.",
+      "translation": "Not from the number of articles alone. Provenance reveals their common dependency. We may have two reproductions of the same source, rather than two independent observations. A system can count derivations, documentary sources and information origins, but these are different quantities."
+    },
+    {
+      "id": "t000729",
+      "source": "9. Un rezultat negativ ambiguu",
+      "translation": "9. An ambiguous negative result"
+    },
+    {
+      "id": "t000730",
+      "source": "Expanderul nu găsește niciun circuit înainte de terminarea bugetului. Ce poate afirma?",
+      "translation": "The expander finds no circuit before its budget runs out. What can it claim?"
+    },
+    {
+      "id": "t000731",
+      "source": "Poate afirma că nu a găsit o soluție în spațiul și bugetul explorate. Nu poate declara imposibilitatea fără o justificare suplimentară. Dacă biblioteca nu conține operațiile necesare, lipsa soluției spune ceva despre limbajul de căutare, nu despre imposibilitatea sarcinii în general.",
+      "translation": "It can state that it found no solution within the explored space and budget. It cannot declare impossibility without further justification. If the library lacks the necessary operations, the absence of a solution says something about the search language, rather than the task's impossibility in general."
+    },
+    {
+      "id": "t000732",
+      "source": "10. O comprimare care șterge proveniența",
+      "translation": "10. Compression that erases provenance"
+    },
+    {
+      "id": "t000733",
+      "source": "Două circuite produc aceeași concluzie, unul dintr-o sursă acceptată, altul dintr-o ipoteză neverificată. Putem păstra numai unul, ales arbitrar?",
+      "translation": "Two circuits produce the same conclusion, one from an accepted source and the other from an unverified hypothesis. Can we preserve only one, chosen arbitrarily?"
+    },
+    {
+      "id": "t000734",
+      "source": "Numai dacă proveniența nu influențează nicio continuare relevantă și dacă rezultatul cerut nu impune un anumit suport. În aplicații epistemice, această condiție este adesea falsă. Putem reuni valoarea și păstra justificările distincte sau putem include statutul sursei în interfață. Echivalența valorică nu este automat echivalență epistemică.",
+      "translation": "Only if provenance affects no relevant continuation and the requested result requires no particular support. In epistemic applications, this condition is often false. We can merge the value while retaining distinct justifications, or include source status in the interface. Value equivalence is not automatically epistemic equivalence."
+    },
+    {
+      "id": "t000735",
+      "source": "11. O reprezentare vectorială exactă pe probe",
+      "translation": "11. A vector representation exact on the samples"
+    },
+    {
+      "id": "t000736",
+      "source": "Un vector permite recuperarea corectă a tuturor rolurilor dintr-un set de o sută de exemple. Ce concluzie este justificată?",
+      "translation": "A vector allows every role in a set of one hundred examples to be recovered correctly. What conclusion is justified?"
+    },
+    {
+      "id": "t000737",
+      "source": "Că reprezentarea și procedura de recuperare au reușit pe acele exemple, în condițiile testate. Nu rezultă exactitatea universală și nici stabilitatea la creșterea numărului de relații. Următoarele teste ar trebui să varieze suprapunerea, similaritatea obiectelor, rolurile și dimensiunea memoriei, incluzând cazuri adversariale.",
+      "translation": "That the representation and recovery procedure succeeded on those examples under the tested conditions. Neither universal exactness nor stability as the number of relations grows follows. Subsequent tests should vary superposition, object similarity, roles and memory size, including adversarial cases."
+    },
+    {
+      "id": "t000738",
+      "source": "12. O abstracție care crește fără oprire",
+      "translation": "12. An abstraction that grows without stopping"
+    },
+    {
+      "id": "t000739",
+      "source": "Fiecare contraexemplu determină sistemul să adauge un caz special. După o mie de exemple, reprezentarea conține aproape o mie de excepții. Este aceasta învățarea unei interfețe suficiente utile?",
+      "translation": "Every counterexample prompts the system to add a special case. After a thousand examples, the representation contains almost a thousand exceptions. Is this the learning of a useful sufficient interface?"
+    },
+    {
+      "id": "t000740",
+      "source": "Poate fi o memorie exactă a cazurilor, dar nu demonstrează o comprimare structurală utilă. Trebuie comparată cu memorarea directă și evaluată pe cazuri noi. Un rezultat negativ poate sugera că limbajul abstracțiilor este nepotrivit sau că familia de probleme nu are regularitatea căutată. Nu trebuie ascuns prin redenumirea excepțiilor ca „concepte”.",
+      "translation": "It may be an exact memory of the cases, but does not demonstrate useful structural compression. It must be compared with direct memorization and evaluated on new cases. A negative result may suggest that the abstraction language is unsuitable or that the problem family lacks the regularity sought. It must not be hidden by renaming exceptions as “concepts.”"
+    },
+    {
+      "id": "t000741",
+      "source": "13. Predicție sau intervenție",
+      "translation": "13. Prediction or intervention"
+    },
+    {
+      "id": "t000742",
+      "source": "Un sistem prezice că oamenii cu umbrele ude au fost în ploaie. Poate deduce că udarea unei umbrele va produce ploaie?",
+      "translation": "A system predicts that people with wet umbrellas have been in the rain. Can it infer that wetting an umbrella will cause rain?"
+    },
+    {
+      "id": "t000743",
+      "source": "Nu. Prima relație este predictivă, în modelul observațiilor. A doua privește o intervenție asupra lumii. Este necesar un model al mecanismelor cauzale. Graful prin care sistemul calculează predicția nu este automat graful cauzal al fenomenului.",
+      "translation": "No. The first relation is predictive within the observation model. The second concerns an intervention in the world. A model of causal mechanisms is required. The graph through which the system computes its prediction is not automatically the phenomenon's causal graph."
+    },
+    {
+      "id": "t000744",
+      "source": "14. Un câștig care dispare după contabilizare",
+      "translation": "14. A gain that disappears after accounting"
+    },
+    {
+      "id": "t000745",
+      "source": "Un sistem răspunde de zece ori mai repede după o compilare costisitoare. Cum decidem dacă este mai eficient?",
+      "translation": "A system answers ten times faster after expensive compilation. How do we decide whether it is more efficient?"
+    },
+    {
+      "id": "t000746",
+      "source": "Precizăm numărul interogărilor și frecvența actualizărilor. Adunăm compilarea, verificarea, memoria și costul răspunsurilor. Putem obține un prag de reutilizare de la care metoda devine avantajoasă. Fără acest regim de utilizare, comparația „mai rapid” este incompletă.",
+      "translation": "We specify the number of queries and the update frequency. We add compilation, verification, memory and answer costs. We may obtain a reuse threshold beyond which the method becomes advantageous. Without specifying that usage regime, the “faster” comparison is incomplete."
+    },
+    {
+      "id": "t000747",
+      "source": "15. Ce ar merita numit progres în înțelegere",
+      "translation": "15. What deserves to be called progress in understanding"
+    },
+    {
+      "id": "t000748",
+      "source": "Un sistem răspunde corect unei întrebări, apoi își schimbă răspunsul după o reformulare care nu schimbă sensul. Alt sistem se abține la prima întrebare, explică ambiguitatea și răspunde după o clarificare relevantă. Care rezultat este mai informativ?",
+      "translation": "One system answers a question correctly, then changes its answer after a rephrasing that leaves the meaning unchanged. Another abstains on the first question, explains the ambiguity and answers after a relevant clarification. Which result is more informative?"
+    },
+    {
+      "id": "t000749",
+      "source": "Depinde de sarcină, dar al doilea oferă o dovadă mai clară a controlului asupra informației lipsă. Primul succes izolat poate fi accidental. Evaluarea înțelegerii trebuie să urmărească familii de variații și reacția la ele, nu doar un răspuns norocos. Capacitatea de a localiza insuficiența reprezentării face parte din competența urmărită.",
+      "translation": "It depends on the task, but the second provides clearer evidence of control over missing information. The first isolated success may be accidental. Evaluating understanding must track families of variations and responses to them, rather than a single lucky answer. The ability to locate an insufficient representation is part of the competence sought."
+    },
+    {
+      "id": "t000750",
+      "source": "C. Glosar de lucru",
+      "translation": "C. Working glossary"
+    },
+    {
+      "id": "t000751",
+      "source": "Abstracție.",
+      "translation": "Abstraction."
+    },
+    {
+      "id": "t000752",
+      "source": "Reprezentare care păstrează anumite proprietăți ale unei stări și omite altele. Valoarea ei depinde de operațiile și întrebările urmărite.",
+      "translation": "A representation that preserves certain properties of a state and omits others. Its value depends on the operations and questions pursued."
+    },
+    {
+      "id": "t000753",
+      "source": "Abținere.",
+      "translation": "Abstention."
+    },
+    {
+      "id": "t000754",
+      "source": "Decizie explicită de a nu emite o concluzie nejustificată. Trebuie deosebită de eșecul tehnic și de imposibilitatea demonstrată.",
+      "translation": "An explicit decision not to issue an unjustified conclusion. It must be distinguished from technical failure and proven impossibility."
+    },
+    {
+      "id": "t000755",
+      "source": "Admisibilitate.",
+      "translation": "Admissibility."
+    },
+    {
+      "id": "t000756",
+      "source": "Condiția în care o operație poate fi aplicată legitim, nu doar executată mecanic.",
+      "translation": "The condition under which an operation can legitimately be applied, rather than merely mechanically executed."
+    },
+    {
+      "id": "t000757",
+      "source": "Algebră relațională.",
+      "translation": "Relational algebra."
+    },
+    {
+      "id": "t000758",
+      "source": "Familie de operații asupra relațiilor, precum selectarea și combinarea tabelelor. În sens mai larg, cartea folosește algebra relațiilor pentru reguli de combinare care păstrează dependențe.",
+      "translation": "A family of operations on relations, such as selecting and combining tables. More broadly, the book uses the algebra of relations for combination rules that preserve dependencies."
+    },
+    {
+      "id": "t000759",
+      "source": "Alternativă.",
+      "translation": "Alternative."
+    },
+    {
+      "id": "t000760",
+      "source": "Caz posibil care nu trebuie combinat arbitrar cu consecințele unui caz incompatibil.",
+      "translation": "A possible case that must not be arbitrarily combined with consequences of an incompatible case."
+    },
+    {
+      "id": "t000761",
+      "source": "Auditabilitate.",
+      "translation": "Auditability."
+    },
+    {
+      "id": "t000762",
+      "source": "Posibilitatea de a examina premisele, transformările și limitele unui rezultat. Auditabilitatea practică include costul acestui examen.",
+      "translation": "The ability to examine a result's premises, transformations and limits. Practical auditability includes the cost of that examination."
+    },
+    {
+      "id": "t000763",
+      "source": "Bază de încredere.",
+      "translation": "Trusted base."
+    },
+    {
+      "id": "t000764",
+      "source": "Componentele și presupunerile de care depinde validitatea verificării întregului sistem.",
+      "translation": "The components and assumptions on which the validity of the entire system's verification depends."
+    },
+    {
+      "id": "t000765",
+      "source": "Bisimulare.",
+      "translation": "Bisimulation."
+    },
+    {
+      "id": "t000766",
+      "source": "Relație între stări care își pot corespunde reciproc pașii observabili într-un model de tranziții.",
+      "translation": "A relation between states that can mutually match one another's observable steps in a transition model."
+    },
+    {
+      "id": "t000767",
+      "source": "CEGAR.",
+      "translation": "CEGAR."
+    },
+    {
+      "id": "t000768",
+      "source": "Rafinarea unui model abstract după constatarea că un contraexemplu aparent nu este realizabil concret.",
+      "translation": "Refining an abstract model after discovering that an apparent counterexample is not concretely realizable."
+    },
+    {
+      "id": "t000769",
+      "source": "CEGIS.",
+      "translation": "CEGIS."
+    },
+    {
+      "id": "t000770",
+      "source": "Îmbunătățirea unui candidat la program folosind intrări pe care acesta încalcă specificația.",
+      "translation": "Improving a candidate program using inputs on which it violates the specification."
+    },
+    {
+      "id": "t000771",
+      "source": "Certificat.",
+      "translation": "Certificate."
+    }
+  ]
+}

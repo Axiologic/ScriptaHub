@@ -1,0 +1,110 @@
+Meta-Rational Pragmatics
+RESEARCH PROGRAM
+META-RATIONAL
+PRAGMATICS
+Understanding as Learning
+Executable Distinctions
+Foundations, Architecture and Applications
+Sînică Alboaie
+Research Conception and Intellectual Direction
+AI-Assisted Development
+COURSE • OPERATIONAL MODEL • PROPOSED EXPERIMENTS
+Study Edition | September 2026
+Contents
+Preface. A Hypothesis That Must Be Able to Lose
+I  /  The Question and the Language
+1. Understanding as an Engineering Problem
+2. A Minimal Mathematical Vocabulary
+3. Programs, Semantics, Interpretation
+4. Probability, Decision, Truth
+II  /  Foundations for Distinctions
+5. Representations and Equivalences
+6. Learning States
+7. Prediction and Intervention
+8. Abstract Interpretations
+III  /  A Learning Mechanism
+9. Diagnosing Errors
+10. Interpreter Induction
+11. The Rationality of Computation
+12. Memory and Transfer
+Contents · Continued
+IV  /  Forms of Knowledge
+13. Pragmatic Distances
+14. Cones and Coordinates
+15. An Atlas of Interpreters
+V  /  From Model to System
+16. The Architecture of an MRP Technology
+17. Execution, Evidence and Revision
+18. MRP-VM and SOP Lang
+VI  /  Applications and Validation
+19. Software and Protocol Verification
+20. Documents, Synthesis and Procedures
+21. Research and Discovery
+22. Education and Interactive Agents
+23. The Experimental Program
+24. Limits, Objections and Contributions
+Appendices  /  Tools for Study and Verification
+A. Elementary Mathematical Results
+B. Exercises with Explained Solutions
+C. Operational Glossary
+D. Annotated Bibliography
+PREFACE
+A Hypothesis That Must Be Able to Lose
+A technology of understanding does not need a definitive definition of the mind to begin. It needs situations in which an agent confuses things it should distinguish, operations through which it can correct that confusion, and independent criteria for checking whether it has progressed. This book develops Meta-Rational Pragmatics, or MRP, starting from that requirement.
+The central intuition is that an agent's understanding does not reside exclusively in a repository of representations. It also depends on the procedures through which the agent constructs representations, uses them, compares them with experience and replaces them. Some procedures interpret a text; others track a sequence of events, estimate an outcome, verify a proof or produce a new procedure. In this sense, the agent accumulates not only answers but ways of making certain differences visible.
+The book turns this intuition into an engineering proposal: an adaptive family of interpreters controlled through tests, counterexamples, costs and evidence. The expression “executable distinction” names a difference a program can compute and whose relevance can be checked. For example, the order in which permission is granted and revoked is an executable distinction. The convincing tone of an explanation is not, by itself, evidence that the agent preserved it.
+The work is organized as a progressive course. It introduces mathematical objects before using them; explains equivalence relations before the learned automaton; separates probability from utility before metareasoning; and introduces distances and convexity before cones. Readers need not know abstract interpretation, predictive representations or program synthesis. Elementary familiarity with programs and tables is useful, but the examples do not require reading any particular programming language.
+MRP is presented neither as a validated theory of human cognition nor as a product already built. Established elements are attributed to the literature. Elementary mathematical results are proved within the limits of their assumptions. Architectural components are proposals. Numerical examples are teaching calculations, not prototype measurements. Applications are analyzed as testing opportunities, not fulfilled commercial promises.
+Status
+What It Means in This Book
+What It Does Not Authorize
+Established Foundation
+An idea or method documented in the cited literature.
+Automatic transfer of all its guarantees to MRP.
+Derived Result
+A conclusion proved under explicit assumptions.
+Generalization beyond those assumptions.
+Proposed Mechanism
+A design rule precise enough to implement.
+The claim that the implementation exists or is competitive.
+Empirical Hypothesis
+A prediction evaluable through comparison and experiment.
+Treating a coherent intuition as an observed result.
+Citations use identifiers of the form [
+Cousot1977
+]. The bibliography supplies the works and their roles in the argument. It is selective: it supports the mechanisms discussed without claiming an exhaustive inventory of all research on agents or understanding. The name MRP designates the program formulated here; using it does not claim priority over metareasoning, pragmatism or program learning.
+The research conception belongs to Sînică Alboaie. Conceptual development, exposition and bibliographic verification were assisted by AI. The text has not undergone independent scientific review. Readers are invited to retain mechanisms that withstand criticism and reject formulations that produce no measurable differences.
+PART I  /  The Question and the Language
+CHAPTER 01
+Understanding as an Engineering Problem
+From Impression to Capability
+Suppose an assistant receives two records: “access granted, then revoked” and “access revoked, then granted.” It identifies the same people, resources and two operations in both records. Yet if the system's rule is that the last operation prevails, the two situations do not permit the same decision. A rich vocabulary about access does not compensate for losing the order.
+This example establishes a narrower question than “does the agent really understand?” The question is whether the agent has the representation and procedure needed to answer a family of questions correctly. We will call this property operational understanding. The term does not resolve disputes about consciousness, intentionality or subjective experience; it selects a dimension that can be investigated through systems that are built and compared.
+The difference between the two questions matters methodologically. For the first, identical behaviors can receive different philosophical interpretations. For the second, we can construct examples with known answers, modify the available information and observe which component enables progress. This narrowing does not make the problem trivial. Discovering what must be represented without the designer supplying every distinction is precisely the difficult problem.
+Three Different Theses
+The first thesis says that any intelligent behavior can be described through a family of interpreters. This is plausible as an organizing perspective, but too permissive to function alone as an empirical hypothesis. Any sufficiently complex program can be retrospectively divided into modules and described this way.
+The second thesis says that certain errors arise because the available representation identifies situations requiring different outcomes. This thesis is precise and admits local proofs. If two inputs are transformed into exactly the same value and a subsequent mechanism sees only that value, the mechanism cannot respond differently based on information already lost.
+The third thesis is MRP's wager: in certain problem families, an agent that detects such collisions and learns reusable interpreters will achieve a better trade-off between error, cost and adaptability than comparable alternatives. This does not follow logically from the first two theses. It requires a concrete architecture and experiments that include every cost.
+These three levels must not be mixed. A proof about lost information does not establish a product's superiority. A useful prototype in a microworld does not establish a universal theory of the mind. Conversely, a debatable philosophical claim does not prevent testing the engineering mechanism.
+Representation and Interpretation
+A representation is a structure the agent can store or manipulate: a number, table, vector, graph, expression or program. An interpreter is a procedure that assigns operational consequences to such structures: answers, transformations, predictions or actions. The two are connected but not identical.
+An event table does not produce the current state by itself. A rule for ordering and updating is required. The same rule applied to a table lacking timestamps or order indicators may become unusable. The capability belongs to the representation–operation pair, not either half in isolation.
+The symbol grounding problem, formulated by Harnad, asks how symbols can be connected to something beyond other symbols [
+Harnad1990
+]. MRP does not claim to settle this philosophical problem. It addresses it practically through verifiable links between representations, sources, sensors and the effects of actions. An identifier in a report becomes operational when it can be traced to the observation or object it refers to.
+This grounding can be indirect. An agent analyzing documents need not have its own sensors for every claim. But it must distinguish “I observed,” “the source states,” “it follows under the model's assumptions” and “I propose as a possibility.” These distinctions belong to the architecture, rather than being mere polite phrases.
+Pragmatic Does Not Mean Opportunistic
+In this book, pragmatics concerns using an interpretation within a context, for a purpose and under constraints. It does not mean a proposition becomes true if it is convenient. A system that learns to obtain user approval through false answers may succeed under a poorly defined reward and fail epistemically.
+For this reason, the design must separate three evaluations. Correctness checks whether the result follows the assumed rules. Empirical adequacy checks whether predictions match observations. Utility checks whether the decision serves the task's legitimate purpose. A single score may be useful in a well-bounded experiment, but must not hide the differences between these evaluations.
+“Meta-rational” names the choice and development of a way of reasoning. An agent may decide that a numerical comparison is sufficient, that time must be tracked or that an observation is missing. It is not a magical logic above all other logics. It is the management of finite cognitive and computational resources.
+A Working Definition
+MRP will designate a mechanism through which an agent constructs, selects, composes and revises interpreters using verifiable consequences and declared costs. MRP progress occurs when this reorganization produces competence on new cases, rather than merely correcting the case that triggered it.
+The definition leaves implementations open. Interpreters may be symbolic, numerical, neural or hybrid. Some may be supplied by the designer; others may be learned. To avoid confusion, every experiment will separately report what was provided, what was induced and what was merely selected. This accounting is the first condition of a defensible result.
+CHAPTER 02
+A Minimal Mathematical Vocabulary
+Sets, Functions, Relations
+A set is a collection of objects treated as distinct elements. In our example, the set of possible events may contain granting and revoking access. A sequence differs from a set: it preserves order and usually repetitions. The sequence “grant, revoke” is not the sequence “revoke, grant,” although the sets of their elements are identical.
+A function associates a single result with every admissible input. The notation R(h) means the result of representation function R applied to history h. If R preserves only the set of events, the two histories have the same image. A partial function is not defined for every input; for example, “the last event” does not exist for an empty sequence unless an additional convention is introduced.
+A relation need not provide a unique result. The relation “depends on” can connect a result to multiple sources. The relation “is compatible with” can connect an observation to several models. Distinguishing functions from relations allows us to preserve ambiguities without prematurely turning them into an arbitrary choice.
+Composition executes one transformation after another. If E extracts the events and R reduces them to a state, R(E(text)) denotes the entire path. Composition is valid only if the first operation's result is an admissible input to the second. This mathematically simple condition will become an important contract between interpreters.
+Equivalence and Partition

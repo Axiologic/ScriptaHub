@@ -1,0 +1,208 @@
+{
+  "batch": "batch-0012.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0012",
+  "chapterTitle": "8. Equivalence has an observer and a budget",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000212",
+      "chapterId": "chapter-0012",
+      "kind": "h1",
+      "text": "8. Equivalence has an observer and a budget",
+      "sourceAnchor": "src-p212",
+      "wordCount": 8
+    },
+    {
+      "id": "u000213",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "8.1. Several questions hidden in a single word",
+      "sourceAnchor": "src-p213",
+      "wordCount": 9
+    },
+    {
+      "id": "u000214",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Are two mechanisms identical if they have the same structure? If they emit the same strings? If they assign the same probabilities to strings? If they respond alike when we modify them? If no available test can distinguish them? Each question defines a different relation.",
+      "sourceAnchor": "src-p214",
+      "wordCount": 45
+    },
+    {
+      "id": "u000215",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Input–output equivalence can ignore internal details. Bisimulation requires a correspondence between transitions and states in a more structural sense. Simulation can be directional: one system reproduces another’s behaviors without the converse being true. Bisimulation metrics for decision processes show how differences with consequences for evaluating decisions can be measured. [13]",
+      "sourceAnchor": "src-p215",
+      "wordCount": 51
+    },
+    {
+      "id": "u000216",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "We do not need a relation to replace them all. We need to choose the relation appropriate to the claim. Compressing an observation log must not be presented as discovering the mechanism. A causal correspondence must not be confused with the physical identity of implementations.",
+      "sourceAnchor": "src-p216",
+      "wordCount": 45
+    },
+    {
+      "id": "u000217",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "8.2. A common contract for two models",
+      "sourceAnchor": "src-p217",
+      "wordCount": 8
+    },
+    {
+      "id": "u000218",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "We fix a common observation space, comparable initial conditions, a family Π of intervention policies and a horizon H. A policy may choose the next action based on observations already received. We denote by P(M,π,H) the distribution of the entire observed trajectory in model M under policy π.",
+      "sourceAnchor": "src-p218",
+      "wordCount": 51
+    },
+    {
+      "id": "u000219",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "d(M,N) = sup{TV(P(M,π,H), P(N,π,H)) : π ∈ Π}",
+      "sourceAnchor": "src-p219",
+      "wordCount": 15
+    },
+    {
+      "id": "u000220",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Total variation distance, TV, is the largest difference in probability that the two distributions assign to the same observable event. For finite discrete spaces, it is half the sum of the absolute differences between probabilities. A value of zero means distributional identity under the fixed contract; a value of one permits perfect separation through an event.",
+      "sourceAnchor": "src-p220",
+      "wordCount": 56
+    },
+    {
+      "id": "u000221",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Strictly speaking, this is generally a pseudometric on models: different internal mechanisms may have zero distance. It can become a metric on classes identifying models indistinguishable under the chosen contract. The word ‘distance’ must not be interpreted as a measure of the ontological difference between mechanisms.",
+      "sourceAnchor": "src-p221",
+      "wordCount": 46
+    },
+    {
+      "id": "u000222",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Before using the formula, the models’ observations and interventions must be aligned. If this alignment is chosen differently for every pair, properties such as the triangle inequality are no longer automatic. For an initial theory, fixing a common interface is safer than simultaneously optimizing the meaning of observations.",
+      "sourceAnchor": "src-p222",
+      "wordCount": 48
+    },
+    {
+      "id": "u000223",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "8.3. A finite observer changes the problem",
+      "sourceAnchor": "src-p223",
+      "wordCount": 8
+    },
+    {
+      "id": "u000224",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "TV allows, by definition, any test on the trajectory. A real observer has limited time, memory and samples. We can restrict the comparison to a class D of tests that respect a declared budget:",
+      "sourceAnchor": "src-p224",
+      "wordCount": 34
+    },
+    {
+      "id": "u000225",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "d(D; M,N) = sup{ |P(M; T=1) − P(N; T=1)| : T ∈ D }",
+      "sourceAnchor": "src-p225",
+      "wordCount": 15
+    },
+    {
+      "id": "u000226",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "This formulation has a precise relative in cryptography: computational indistinguishability. Under hardness assumptions, distributions generated from short seeds can be difficult for computationally limited observers to distinguish from uniform randomness. The existence of general constructions is conditional on assumptions such as the existence of one-way functions; it is not unconditional proof that every apparently random source hides a short rule. [28]",
+      "sourceAnchor": "src-p226",
+      "wordCount": 61
+    },
+    {
+      "id": "u000227",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "An analytical example shows the separation. A deterministic generator transforms an m-bit seed into an n-bit string, where n is greater than m. The output support contains at most 2 to the power m elements. The uniform distribution over all n-bit strings assigns this support probability at most 2 to the power m−n. The statistical distance from uniform is therefore at least 1−2 to the power m−n. Yet efficiently identifying the support may be difficult.",
+      "sourceAnchor": "src-p227",
+      "wordCount": 78
+    },
+    {
+      "id": "u000228",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The conclusion is not that reality is pseudorandom. It is that generator simplicity, statistical distance and the observer’s difficulty are different axes. A program about worlds and representations must keep them separate.",
+      "sourceAnchor": "src-p228",
+      "wordCount": 32
+    },
+    {
+      "id": "u000229",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "8.4. What a test actually measures",
+      "sourceAnchor": "src-p229",
+      "wordCount": 7
+    },
+    {
+      "id": "u000230",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A finite collection of tests can discover a difference. If a test separates the models, we know they are not equivalent in the class containing it. If all attempted tests fail, we do not automatically know that no other permitted test would succeed. Conceptually, the observed maximum is a lower bound on the supremum over all tests, not an upper bound.",
+      "sourceAnchor": "src-p230",
+      "wordCount": 61
+    },
+    {
+      "id": "u000231",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Strong positive claims require either fully enumerated test classes, mathematical guarantees, or statistical bounds for a controlled class. In large investigations, accurate reporting may be more modest: ‘we identified no differences through these tests, with this detection power’. Precise modesty is more informative than a general declaration of equivalence.",
+      "sourceAnchor": "src-p231",
+      "wordCount": 49
+    },
+    {
+      "id": "u000232",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Also, expanding the class of observations, policies or the horizon cannot decrease a distance defined through a supremum, provided the interfaces remain compatible. More opportunities for investigation may reveal hidden differences. This elementary monotonicity provides a consistency check for metrics implemented in a study.",
+      "sourceAnchor": "src-p232",
+      "wordCount": 44
+    },
+    {
+      "id": "u000233",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "8.5. A family of frontiers, not a scale of existence",
+      "sourceAnchor": "src-p233",
+      "wordCount": 11
+    },
+    {
+      "id": "u000234",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "We can seek models that respect a tolerance ε and minimize costs. But the resulting frontier depends on H, Π, observations and the test budget. A cheap model for immediate forecasts may become expensive when we demand long-term control. A compact representation for a single observer may lose its advantage when it must serve multiple questions.",
+      "sourceAnchor": "src-p234",
+      "wordCount": 56
+    },
+    {
+      "id": "u000235",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "These frontiers do not classify entities as ‘more real’ or ‘less real’. They classify the adequacy of representations. The philosophical benefit is precisely avoiding a confusion: a world’s resistance to our descriptions can be investigated without turning a model’s success into a definition of existence.",
+      "sourceAnchor": "src-p235",
+      "wordCount": 45
+    }
+  ]
+}

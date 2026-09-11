@@ -1,0 +1,224 @@
+{
+  "batch": "batch-0005.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0006",
+  "chapterTitle": "Programs, Semantics, Interpretation",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000138",
+      "chapterId": "chapter-0006",
+      "kind": "h1",
+      "text": "Programs, Semantics, Interpretation",
+      "sourceAnchor": "src-p141",
+      "wordCount": 3
+    },
+    {
+      "id": "u000139",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "What Semantics Establishes",
+      "sourceAnchor": "src-p142",
+      "wordCount": 3
+    },
+    {
+      "id": "u000140",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Syntax determines which expressions are well formed. Semantics determines how they are interpreted. In a programming language, it may describe state transitions, an execution's result or the properties commands preserve. Semantics must therefore not be reduced to a static dictionary of meanings. Abstract interpretation explicitly offers multiple semantics and relations between them [ Cousot1977 ].",
+      "sourceAnchor": "src-p143",
+      "wordCount": 53
+    },
+    {
+      "id": "u000141",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Consider a command that adds one to a number. Its semantics must specify whether the number is an unbounded mathematical integer or an integer represented by a fixed number of bits. At the maximum representable value, the answers may differ. Simply saying “it understands addition” conceals an essential modeling choice.",
+      "sourceAnchor": "src-p144",
+      "wordCount": 50
+    },
+    {
+      "id": "u000142",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Operational semantics describes execution steps. Denotational semantics associates a program with a mathematical object describing its behavior. Axiomatic semantics expresses relationships between input conditions and output properties. These perspectives can complement one another. MRP does not replace them with a broader term; it treats them as tools available to the agent.",
+      "sourceAnchor": "src-p145",
+      "wordCount": 51
+    },
+    {
+      "id": "u000143",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "What Pragmatics Adds",
+      "sourceAnchor": "src-p146",
+      "wordCount": 3
+    },
+    {
+      "id": "u000144",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A semantic rule does not always decide by itself whether it is worth applying, which information is missing or which goal must be satisfied. Here we introduce the pragmatic level: choosing the interpretation regime, relevant context and stopping criterion. Once chosen, the interpretation's rules must remain stable enough for verification.",
+      "sourceAnchor": "src-p147",
+      "wordCount": 50
+    },
+    {
+      "id": "u000145",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We can call an interpretation whose domain and obligations are fixed for an execution “stabilized semantics.” This is a convention internal to the book, not a universally accepted classification in the philosophy of language. It enables a useful principle: the agent may change interpretation between revision episodes, but cannot tacitly change the meaning of rules in the middle of a proof.",
+      "sourceAnchor": "src-p148",
+      "wordCount": 61
+    },
+    {
+      "id": "u000146",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "For example, a system may switch from mathematical integers to 32-bit arithmetic. This is not merely an optimization if it changes results. It changes the model; old conclusions must be reexamined wherever the difference matters.",
+      "sourceAnchor": "src-p149",
+      "wordCount": 35
+    },
+    {
+      "id": "u000147",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "The Interpreter as an Object",
+      "sourceAnchor": "src-p150",
+      "wordCount": 5
+    },
+    {
+      "id": "u000148",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "In the proposed model, an interpreter receives input, context, goal and internal state. It produces a result, a new internal state and evidence. Here “evidence” will denote verifiable support: sources, tests, computational traces or proofs, rather than merely the agent's expressed conviction.",
+      "sourceAnchor": "src-p151",
+      "wordCount": 42
+    },
+    {
+      "id": "u000149",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Interpret(input, context, goal, state) = (result, newState, evidence).",
+      "sourceAnchor": "src-p152",
+      "wordCount": 8
+    },
+    {
+      "id": "u000150",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This expression is a conceptual interface, not a complete algorithm. Its fields must be restricted for each concrete interpreter. An order analyzer may require a table with unique indices. A verifier may require a formula in a precise logic. A generator may accept text, but its output will initially have proposal status.",
+      "sourceAnchor": "src-p153",
+      "wordCount": 52
+    },
+    {
+      "id": "u000151",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Context must not become a place to hide unlimited information. If the selector can consult the full text while the baseline predictor receives only a summary, the comparison measures more than interpreter quality. Every experiment will declare exactly what each component can read.",
+      "sourceAnchor": "src-p154",
+      "wordCount": 43
+    },
+    {
+      "id": "u000152",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "Contracts and Composition",
+      "sourceAnchor": "src-p155",
+      "wordCount": 3
+    },
+    {
+      "id": "u000153",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A contract specifies preconditions, promised results and permitted effects. Hoare-style logic expresses the relationship between a precondition, a command and a postcondition. Partial correctness says that if execution terminates and the precondition held, the postcondition holds; termination requires a separate obligation [ SoftwareFoundations ].",
+      "sourceAnchor": "src-p156",
+      "wordCount": 42
+    },
+    {
+      "id": "u000154",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Consider an operation selecting a resource's last event. Its contract may require a nonempty history, a total ordering and unambiguous resource identification. The postcondition says the returned event belongs to the resource and is followed by no other event for that resource. This postcondition can be checked independently of how the operation was implemented.",
+      "sourceAnchor": "src-p157",
+      "wordCount": 54
+    },
+    {
+      "id": "u000155",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Composing two interpreters requires more than matching formats. If the first returns “the last known event,” the second cannot assume “the last event that occurred in the world” without assuming the history is complete. This is an example of semantic incompatibility in an apparently technically correct interface.",
+      "sourceAnchor": "src-p158",
+      "wordCount": 47
+    },
+    {
+      "id": "u000156",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Probabilistic interpreters require more cautious contracts. “It frequently produced correct answers” is not a universal logical postcondition. We can describe the tested domain, evaluation distribution and performance uncertainty. Composing probabilistic components does not turn those results into certainty.",
+      "sourceAnchor": "src-p159",
+      "wordCount": 38
+    },
+    {
+      "id": "u000157",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "Learning as an Interpreter",
+      "sourceAnchor": "src-p160",
+      "wordCount": 4
+    },
+    {
+      "id": "u000158",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A learning procedure interprets data through a family of models and an adjustment criterion. It produces parameters, rules or programs. It can therefore be included in the same interface schema. Yet this does not make every operation identical: changing a temporary result differs from changing the library on which future tasks will depend.",
+      "sourceAnchor": "src-p161",
+      "wordCount": 53
+    },
+    {
+      "id": "u000159",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We will separate working state from consolidated state. A new hypothesis can exist in an experimental branch without becoming an accepted rule. Promoting it requires tests and an explicit decision. This separation lets the agent explore without treating exploration as truth already acquired.",
+      "sourceAnchor": "src-p162",
+      "wordCount": 43
+    },
+    {
+      "id": "u000160",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "What Remains Stable",
+      "sourceAnchor": "src-p163",
+      "wordCount": 3
+    },
+    {
+      "id": "u000161",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "An architecture capable of modifying itself needs a core stable enough to determine which modifications have occurred. The core may be small: version management, execution rules, evidence types and cost accounting. It need not contain every domain concept in advance.",
+      "sourceAnchor": "src-p164",
+      "wordCount": 40
+    },
+    {
+      "id": "u000162",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "MRP becomes interesting if its core enables useful interpreters to develop without rewriting the entire system. Manually supplied components are legitimate, but must be declared separately from learned ones.",
+      "sourceAnchor": "src-p165",
+      "wordCount": 29
+    },
+    {
+      "id": "u000163",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "CHAPTER 04",
+      "sourceAnchor": "src-p166",
+      "wordCount": 2
+    }
+  ]
+}

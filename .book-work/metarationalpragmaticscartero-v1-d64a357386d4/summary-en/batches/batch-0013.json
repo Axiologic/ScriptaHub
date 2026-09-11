@@ -1,0 +1,224 @@
+{
+  "batch": "batch-0013.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0014",
+  "chapterTitle": "The Rationality of Computation",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000375",
+      "chapterId": "chapter-0014",
+      "kind": "h1",
+      "text": "The Rationality of Computation",
+      "sourceAnchor": "src-p380",
+      "wordCount": 4
+    },
+    {
+      "id": "u000376",
+      "chapterId": "chapter-0014",
+      "kind": "h2",
+      "text": "Computing Is Also an Action",
+      "sourceAnchor": "src-p381",
+      "wordCount": 5
+    },
+    {
+      "id": "u000377",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "An agent chooses not only between actions in the world but also between internal operations. It may consult a table, execute a more precise interpreter, request a new observation or construct a hypothesis. Every option consumes time and may change the final decision.",
+      "sourceAnchor": "src-p382",
+      "wordCount": 43
+    },
+    {
+      "id": "u000378",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "The value of computation is the expected gain from an internal operation after subtracting its cost. For a single operation followed by a decision, we can write, without assuming a perfect solution:",
+      "sourceAnchor": "src-p383",
+      "wordCount": 32
+    },
+    {
+      "id": "u000379",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "ValueOfComputation = expected decision gain after computation − decision gain now − computation cost.",
+      "sourceAnchor": "src-p384",
+      "wordCount": 11
+    },
+    {
+      "id": "u000380",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "This formula is not a new MRP law. Metareasoning and learning policies for selecting computations already have experimental formulations, including the work of Callaway and colleagues [ Callaway2018 ]. MRP would expand the repertoire of selectable operations to include constructing and consolidating interpreters.",
+      "sourceAnchor": "src-p385",
+      "wordCount": 41
+    },
+    {
+      "id": "u000381",
+      "chapterId": "chapter-0014",
+      "kind": "h2",
+      "text": "A Computation Worth Performing",
+      "sourceAnchor": "src-p386",
+      "wordCount": 4
+    },
+    {
+      "id": "u000382",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "Assume a hidden state with two equally probable values. A correct answer is worth one unit and an incorrect answer zero. Without information, the best probability of success is 0.5. A perfect test costs 0.1 units on the same utility scale.",
+      "sourceAnchor": "src-p387",
+      "wordCount": 43
+    },
+    {
+      "id": "u000383",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "After the test, success is certain and net value is 0.9. The gain over answering immediately is 0.4. The test is worthwhile in the given model. If it cost 0.6, executing it would reduce total utility. Obtaining the same information may be rational in one application and irrational in another.",
+      "sourceAnchor": "src-p388",
+      "wordCount": 53
+    },
+    {
+      "id": "u000384",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "In practice, tests are imperfect and their value is unknown. The agent must estimate the probability of outcomes and their effects on the decision. Estimating value is itself a computation and must therefore have a budget.",
+      "sourceAnchor": "src-p389",
+      "wordCount": 36
+    },
+    {
+      "id": "u000385",
+      "chapterId": "chapter-0014",
+      "kind": "h2",
+      "text": "Why Myopic Selection Can Fail",
+      "sourceAnchor": "src-p390",
+      "wordCount": 5
+    },
+    {
+      "id": "u000386",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "Consider two hidden, independent and equally probable bits. The task is to answer whether they differ. Without observations, maximum accuracy is 0.5. Learning one bit does not improve this accuracy: the other remains unknown. Learning both raises it to one.",
+      "sourceAnchor": "src-p391",
+      "wordCount": 41
+    },
+    {
+      "id": "u000387",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "If each observation costs 0.1, a policy evaluating only individual operations will reject both: each costs something without immediately improving the decision. A policy evaluating the pair sees a net gain of 0.3. This is a calculated example, not a simulation result.",
+      "sourceAnchor": "src-p392",
+      "wordCount": 44
+    },
+    {
+      "id": "u000388",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "Interpreter composition can produce precisely this complementarity. One operation identifies entities and another relations; separately, neither answers the question. An MRP controller should therefore be tested with different planning horizons. A local rule must not be assumed to resolve every dependency.",
+      "sourceAnchor": "src-p393",
+      "wordCount": 41
+    },
+    {
+      "id": "u000389",
+      "chapterId": "chapter-0014",
+      "kind": "h2",
+      "text": "Avoiding Meta-Regress",
+      "sourceAnchor": "src-p394",
+      "wordCount": 2
+    },
+    {
+      "id": "u000390",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "If every choice requires another choice about how to choose, the architecture never stops. The engineering solution is not an infinitely wise interpreter but a bounded controller: a maximum number of evaluations, an approximate policy and a stopping rule.",
+      "sourceAnchor": "src-p395",
+      "wordCount": 39
+    },
+    {
+      "id": "u000391",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "Initially, selection may combine precondition checking with an empirical estimate of success on task families. Later, the policy can be learned. Even then, it must be compared with a simple rule. Controller complexity is justified only if it produces a measurable advantage.",
+      "sourceAnchor": "src-p396",
+      "wordCount": 42
+    },
+    {
+      "id": "u000392",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "Recent research also applies the rationality of metacomputation to language models [ DeSabbata2025 ]. Merely selecting between a quick answer and an expensive one is therefore not MRP's distinctive contribution. The candidate contribution is the connection between selection, representation diagnosis and the accumulation of new procedures.",
+      "sourceAnchor": "src-p397",
+      "wordCount": 44
+    },
+    {
+      "id": "u000393",
+      "chapterId": "chapter-0014",
+      "kind": "h2",
+      "text": "The Reuse Horizon",
+      "sourceAnchor": "src-p398",
+      "wordCount": 3
+    },
+    {
+      "id": "u000394",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "Building an interpreter may be uneconomical for the current task but economical for many future tasks. This introduces an amortization horizon. Estimated value depends on how often the problem will recur, rule stability and verification cost.",
+      "sourceAnchor": "src-p399",
+      "wordCount": 36
+    },
+    {
+      "id": "u000395",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "A hypothetical example: induction and verification together cost 1,000 milliseconds. The old solution costs 40 milliseconds per task. The new one costs eight, plus two for selection. Savings are 30 milliseconds per use. The investment pays off after 34 uses if all other conditions remain identical.",
+      "sourceAnchor": "src-p400",
+      "wordCount": 47
+    },
+    {
+      "id": "u000396",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "It is insufficient to report that the new interpreter executes five times faster. Construction cost, reuse rate and cases where rule changes invalidate it must be included. A library's advantage concerns its lifetime, not merely its most recent call.",
+      "sourceAnchor": "src-p401",
+      "wordCount": 39
+    },
+    {
+      "id": "u000397",
+      "chapterId": "chapter-0014",
+      "kind": "h2",
+      "text": "Normative Limits of Optimization",
+      "sourceAnchor": "src-p402",
+      "wordCount": 4
+    },
+    {
+      "id": "u000398",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "A computation policy can maximize the utility supplied, but does not decide by itself which objectives are legitimate. The cost of an error to a person cannot be tacitly introduced as a number chosen by the developer. Some applications require constraints that cannot be changed merely to improve an average score.",
+      "sourceAnchor": "src-p403",
+      "wordCount": 51
+    },
+    {
+      "id": "u000399",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "MRP should distinguish the technical objective, approved limits and preferences still needing clarification. In a context with important consequences, abstention and human intervention may be valid actions. A meta-rational architecture does not become responsible merely by rigorously optimizing its own criterion.",
+      "sourceAnchor": "src-p404",
+      "wordCount": 41
+    },
+    {
+      "id": "u000400",
+      "chapterId": "chapter-0014",
+      "kind": "p",
+      "text": "CHAPTER 12",
+      "sourceAnchor": "src-p405",
+      "wordCount": 2
+    }
+  ]
+}

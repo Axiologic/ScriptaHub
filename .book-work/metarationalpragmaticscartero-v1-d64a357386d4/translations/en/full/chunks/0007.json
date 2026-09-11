@@ -1,0 +1,336 @@
+{
+  "language": "en",
+  "chunk": 7,
+  "segments": [
+    {
+      "id": "t000490",
+      "source": "Presupunem că rezultatul unui test determină o utilitate între zero și unu. Diferența dintre utilitățile medii sub P și Q este cel mult TV(P, Q). Astfel, o distanță predictivă mică poate limita eroarea unei evaluări decizionale, dacă utilitatea este într-adevăr calculată din rezultatele modelate.",
+      "translation": "Suppose a test's outcome determines a utility between zero and one. The difference between mean utilities under P and Q is at most TV(P, Q). A small predictive distance can thus bound error in a decision evaluation, provided utility is actually calculated from the modeled outcomes."
+    },
+    {
+      "id": "t000491",
+      "source": "Un al doilea rezultat simplu este util. Dacă estimarea valorii fiecărei acțiuni este la distanță de cel mult e față de valoarea reală și alegem acțiunea cu estimarea maximă, pierderea față de acțiunea realmente optimă este de cel mult 2e. Un termen e apare din subestimarea acțiunii optime, iar celălalt din supraestimarea celei alese.",
+      "translation": "A second simple result is useful. If every action's estimated value is within e of its true value and we choose the action with the highest estimate, the loss relative to the genuinely optimal action is at most 2e. One e term comes from underestimating the optimal action and the other from overestimating the chosen one."
+    },
+    {
+      "id": "t000492",
+      "source": "Aceste limite nu se transferă automat de la un singur pas la orice plan lung. Pentru acțiuni secvențiale trebuie controlate distribuțiile relevante ale traiectoriilor sau propagarea erorilor. O predicție bună a următorului eveniment nu garantează singură o politică bună pe termen lung.",
+      "translation": "These bounds do not automatically transfer from a single step to every long plan. For sequential actions, the relevant trajectory distributions or error propagation must be controlled. Good next-event prediction does not by itself guarantee a good long-term policy."
+    },
+    {
+      "id": "t000493",
+      "source": "Estimarea distanței costă",
+      "translation": "Estimating Distance Has a Cost"
+    },
+    {
+      "id": "t000494",
+      "source": "Distanța exactă presupune cunoașterea distribuțiilor. Din date finite obținem estimări și incertitudine. Un agent care declară două istorii identice fiindcă nu a găsit încă diferențe poate confunda lipsa dovezii cu dovada echivalenței.",
+      "translation": "Exact distance assumes knowledge of the distributions. Finite data yield estimates and uncertainty. An agent declaring two histories identical because it has not yet found differences may confuse absence of evidence with proof of equivalence."
+    },
+    {
+      "id": "t000495",
+      "source": "Pentru primul experiment aș folosi microlumi în care evaluatorul cunoaște distribuțiile reale, iar agentul primește numai eșantioane. Astfel putem măsura cât de bine estimează agentul apropierea și când declară prea devreme suficiența unei reprezentări.",
+      "translation": "For the first experiment, I would use microworlds where the evaluator knows the true distributions while the agent receives only samples. This allows us to measure how well the agent estimates closeness and when it declares a representation sufficient prematurely."
+    },
+    {
+      "id": "t000496",
+      "source": "Rolul distanței este să transforme o metaforă despre „vecinătatea sensurilor” într-o afirmație verificabilă: aceste situații au consecințe apropiate pentru aceste teste, cu această eroare estimată. Abia ulterior merită căutată o reprezentare geometrică eficientă a acestor relații.",
+      "translation": "Distance serves to turn a metaphor about the “neighborhood of meanings” into a verifiable claim: these situations have similar consequences for these tests, with this estimated error. Only afterward is it worth seeking an efficient geometric representation of these relations."
+    },
+    {
+      "id": "t000497",
+      "source": "CAPITOLUL 14",
+      "translation": "CHAPTER 14"
+    },
+    {
+      "id": "t000498",
+      "source": "Conuri și coordonate",
+      "translation": "Cones and Coordinates"
+    },
+    {
+      "id": "t000499",
+      "source": "Ce numim geometrie",
+      "translation": "What We Call Geometry"
+    },
+    {
+      "id": "t000500",
+      "source": "O reprezentare geometrică asociază obiectelor coordonate și folosește relațiile dintre coordonate pentru a exprima o structură relevantă. Alegerea distanței, a dimensiunilor și a transformărilor admise face parte din model. Nu există o singură geometrie implicită a unei colecții de texte, experiențe sau programe.",
+      "translation": "A geometric representation assigns coordinates to objects and uses relationships between coordinates to express relevant structure. The choice of distance, dimensions and admissible transformations forms part of the model. A collection of texts, experiences or programs has no single implicit geometry."
+    },
+    {
+      "id": "t000501",
+      "source": "Teoria spațiilor conceptuale a lui Gärdenfors propune descrierea conceptelor prin dimensiuni de calitate și regiuni geometrice [",
+      "translation": "Gärdenfors's conceptual spaces theory proposes describing concepts through quality dimensions and geometric regions ["
+    },
+    {
+      "id": "t000502",
+      "source": "Gardenfors2000",
+      "translation": "Gardenfors2000"
+    },
+    {
+      "id": "t000503",
+      "source": "]. Ea motivează întrebarea despre forma conceptelor, dar nu dovedește că orice cunoaștere trebuie să fie convexă într-un spațiu fix. Pentru MRP trebuie precizat ce structură vrem să păstrăm: asemănare, ordine, comportament sau preferință decizională.",
+      "translation": "]. It motivates questions about the shape of concepts, but does not prove that all knowledge must be convex in a fixed space. For MRP, the structure to preserve must be specified: similarity, order, behavior or decision preference."
+    },
+    {
+      "id": "t000504",
+      "source": "Convexitate și conuri",
+      "translation": "Convexity and Cones"
+    },
+    {
+      "id": "t000505",
+      "source": "O mulțime este convexă dacă segmentul dintre oricare două puncte ale sale rămâne în interior. Un disc și un cub sunt exemple familiare. Un inel nu este convex: segmentul dintre două puncte opuse poate traversa golul central.",
+      "translation": "A set is convex if the segment between any two of its points remains inside it. A disk and a cube are familiar examples. A ring is not convex: the segment between opposite points can cross the central hole."
+    },
+    {
+      "id": "t000506",
+      "source": "Un con, în sensul folosit aici, este închis la înmulțirea coordonatelor cu un număr nenegativ. Dacă este și convex, combinațiile nenegative ale punctelor sale rămân în con. Un con nu trebuie imaginat numai ca obiectul circular din geometria școlară; poate fi definit prin inegalități liniare în multe dimensiuni [",
+      "translation": "A cone, in the sense used here, is closed under multiplying its coordinates by a nonnegative number. If it is also convex, nonnegative combinations of its points remain in the cone. A cone need not be imagined only as the circular object from school geometry; it can be defined by linear inequalities in many dimensions ["
+    },
+    {
+      "id": "t000507",
+      "source": "Boyd2004",
+      "translation": "Boyd2004"
+    },
+    {
+      "id": "t000508",
+      "source": "Dimensionalitatea mare nu implică neconvexitate. Există mulțimi convexe în orice dimensiune finită. De asemenea, un con poate fi convex. A opune „conuri” unor „forme convexe” ar amesteca două clasificări diferite.",
+      "translation": "High dimensionality does not imply nonconvexity. Convex sets exist in every finite dimension. A cone can also be convex. Opposing “cones” to “convex shapes” would mix two different classifications."
+    },
+    {
+      "id": "t000509",
+      "source": "O derivare decizională",
+      "translation": "A Decision-Theoretic Derivation"
+    },
+    {
+      "id": "t000510",
+      "source": "Presupunem un număr finit de stări posibile ale lumii. Agentul are o distribuție p asupra lor. Fiecare opțiune i este o procedură complet specificată: executarea unui interpretor, urmată de o regulă fixată de alegere a acțiunii pe baza rezultatului. Pentru fiecare stare, procedura are o utilitate netă u_i, care include costurile modelate.",
+      "translation": "Assume finitely many possible world states. The agent has a distribution p over them. Each option i is a fully specified procedure: executing an interpreter, followed by a fixed rule for choosing an action from the result. For each state, the procedure has net utility u_i, including the modeled costs."
+    },
+    {
+      "id": "t000511",
+      "source": "Cuvântul „fixată” este esențial. Dacă procedura internă se schimbă arbitrar în funcție de p, utilitatea ei nu mai este reprezentată, în general, printr-un singur vector constant. Putem include mai multe proceduri candidate, dar nu putem păstra derivarea liniară ignorând această schimbare.",
+      "translation": "The word “fixed” is essential. If the internal procedure changes arbitrarily with p, its utility is generally no longer represented by a single constant vector. We can include multiple candidate procedures, but cannot retain the linear derivation while ignoring that change."
+    },
+    {
+      "id": "t000512",
+      "source": "Utilitatea medie a procedurii i este produsul scalar dintre p și u_i: suma probabilității fiecărei stări înmulțite cu utilitatea în acea stare. Procedura i este preferabilă procedurii j când acest produs este cel puțin la fel de mare.",
+      "translation": "The mean utility of procedure i is the dot product of p and u_i: the sum of each state's probability multiplied by utility in that state. Procedure i is preferred to procedure j when this product is at least as large."
+    },
+    {
+      "id": "t000513",
+      "source": "Regiune(i) = {p: toate coordonatele sunt nenegative, suma lor este 1, iar p · (u_i − u_j) ≥ 0 pentru fiecare j}.",
+      "translation": "Region(i) = {p: every coordinate is nonnegative, their sum is 1, and p · (u_i − u_j) ≥ 0 for every j}."
+    },
+    {
+      "id": "t000514",
+      "source": "Fiecare comparație definește un semispațiu. Intersecția lor cu simplexul probabilităților este o regiune convexă poliedrală. Simplexul este mulțimea tuturor distribuțiilor asupra stărilor enumerate: un segment pentru două stări, un triunghi pentru trei și un analog de dimensiune mai mare în general.",
+      "translation": "Each comparison defines a half-space. Their intersection with the probability simplex is a convex polyhedral region. The simplex is the set of all distributions over the listed states: a segment for two states, a triangle for three and a higher-dimensional analogue in general."
+    },
+    {
+      "id": "t000515",
+      "source": "Trecem acum la ponderi nenormalizate z, toate nenegative. Condițiile de preferință devin omogene: înmulțirea tuturor ponderilor cu același număr pozitiv nu schimbă procedura preferată.",
+      "translation": "We now move to unnormalized weights z, all nonnegative. The preference conditions become homogeneous: multiplying every weight by the same positive number does not change the preferred procedure."
+    },
+    {
+      "id": "t000516",
+      "source": "Con(i) = {z: z ≥ 0 și z · (u_i − u_j) ≥ 0 pentru fiecare j}.",
+      "translation": "Cone(i) = {z: z ≥ 0 and z · (u_i − u_j) ≥ 0 for every j}."
+    },
+    {
+      "id": "t000517",
+      "source": "Această mulțime este un con convex poliedral. Regiunea inițială se obține prin secționarea lui cu planul în care suma ponderilor este unu. Originea este inclusă matematic în con, dar nu reprezintă o distribuție normalizabilă.",
+      "translation": "This set is a convex polyhedral cone. The original region is obtained by intersecting it with the plane where the weights sum to one. The origin is mathematically included in the cone but does not represent a normalizable distribution."
+    },
+    {
+      "id": "t000518",
+      "source": "Un exemplu calculat",
+      "translation": "A Calculated Example"
+    },
+    {
+      "id": "t000519",
+      "source": "Avem două stări posibile și trei proceduri. Prima are utilitățile (1; 0), a doua (0; 1), a treia (0,6; 0,6). Valorile sunt ipotetice și includ toate costurile presupuse. Notăm cu p probabilitatea primei stări.",
+      "translation": "We have two possible states and three procedures. The first has utilities (1; 0), the second (0; 1), the third (0.6; 0.6). These hypothetical values include every assumed cost. Let p denote the probability of the first state."
+    },
+    {
+      "id": "t000520",
+      "source": "Prima procedură are valoarea p, a doua 1 − p, iar a treia 0,6. Prima este optimă pentru p peste 0,6; a doua pentru p sub 0,4; a treia pentru p între 0,4 și 0,6. La frontiere există egalitate între opțiuni.",
+      "translation": "The first procedure has value p, the second 1 − p and the third 0.6. The first is optimal for p above 0.6; the second for p below 0.4; the third for p between 0.4 and 0.6. Options tie at the boundaries."
+    },
+    {
+      "id": "t000521",
+      "source": "În coordonate nenormalizate, a treia procedură este preferată când fiecare dintre cele două ponderi este cel puțin două treimi din cealaltă. Obținem un sector în primul cadran. Conul descrie o familie de stări informaționale în care aceeași procedură este rațional de selectat.",
+      "translation": "In unnormalized coordinates, the third procedure is preferred when each weight is at least two-thirds of the other. We obtain a sector in the first quadrant. The cone describes a family of informational states in which selecting the same procedure is rational."
+    },
+    {
+      "id": "t000522",
+      "source": "Aceasta oferă un sens concret intuiției geometrice: unele „regiuni ale înțelegerii” pot fi regiuni de aplicabilitate decizională. Nu rezultă că orice concept, propoziție sau memorie este un con.",
+      "translation": "This gives the geometric intuition a concrete meaning: some “regions of understanding” may be regions of decision applicability. It does not follow that every concept, proposition or memory is a cone."
+    },
+    {
+      "id": "t000523",
+      "source": "Conuri de implicare și alte semnificații",
+      "translation": "Entailment Cones and Other Meanings"
+    },
+    {
+      "id": "t000524",
+      "source": "Ganea și colaboratorii folosesc conuri de implicare, inclusiv în geometrie hiperbolică, pentru reprezentarea relațiilor ierarhice [",
+      "translation": "Ganea and colleagues use entailment cones, including in hyperbolic geometry, to represent hierarchical relations ["
+    },
+    {
+      "id": "t000525",
+      "source": "Ganea2018",
+      "translation": "Ganea2018"
+    },
+    {
+      "id": "t000526",
+      "source": "]. Acolo motivul construcției este păstrarea unei ordini parțiale. În derivarea noastră, motivul este comparația utilităților așteptate.",
+      "translation": "]. There, the construction is motivated by preserving a partial order. In our derivation, it is motivated by comparing expected utilities."
+    },
+    {
+      "id": "t000527",
+      "source": "Aceste două tipuri de conuri pot fi utile într-un sistem MRP, dar nu sunt interschimbabile. Un concept subordonat într-o taxonomie nu este același lucru cu o procedură optimă într-o regiune a credințelor. Folosirea aceluiași desen nu demonstrează identitatea mecanismelor.",
+      "translation": "These two types of cones may be useful in an MRP system, but they are not interchangeable. A subordinate concept in a taxonomy is not the same as an optimal procedure in a region of beliefs. Using the same drawing does not establish identical mechanisms."
+    },
+    {
+      "id": "t000528",
+      "source": "Ce se întâmplă cu inelele și „găurile”",
+      "translation": "What Happens to Rings and “Holes”"
+    },
+    {
+      "id": "t000529",
+      "source": "Considerăm regiunea dintre două cercuri: punctele pentru care 1 < x² + y² < 4. Ea este neconvexă. Interpretorul care calculează r = x² + y² transformă întrebarea „punctul aparține regiunii?” într-o verificare a intervalului 1 < r < 4.",
+      "translation": "Consider the region between two circles: points satisfying 1 < x² + y² < 4. It is nonconvex. An interpreter computing r = x² + y² transforms the question “does the point belong to the region?” into checking the interval 1 < r < 4."
+    },
+    {
+      "id": "t000530",
+      "source": "Transformarea pierde însă unghiul. Puncte diferite sunt comprimate în aceeași valoare. Nu am eliminat gratuit complexitatea geometrică printr-o schimbare inversabilă de coordonate; am aruncat informația care nu era necesară întrebării radiale. Pentru o întrebare despre direcție, noua reprezentare ar fi insuficientă.",
+      "translation": "The transformation loses the angle, however. Different points are compressed into the same value. We have not freely eliminated geometric complexity through an invertible coordinate change; we have discarded information unnecessary to the radial question. For a question about direction, the new representation would be insufficient."
+    },
+    {
+      "id": "t000531",
+      "source": "Găurile și conectivitatea au un statut diferit de convexitate atunci când permitem numai transformări continue cu inversă continuă. Dar interpretoarele MRP pot fi discontinue și pot comprima informația. De aceea, intuițiile despre inele sau toruri trebuie legate de o clasă explicită de transformări admise.",
+      "translation": "Holes and connectivity have a different status from convexity when only continuous transformations with continuous inverses are allowed. But MRP interpreters may be discontinuous and compress information. Intuitions about rings or tori must therefore be linked to an explicit class of admissible transformations."
+    },
+    {
+      "id": "t000532",
+      "source": "Ipoteza testabilă",
+      "translation": "The Testable Hypothesis"
+    },
+    {
+      "id": "t000533",
+      "source": "Nu aș formula „cunoașterea are forma unor conuri”. Aș formula: pentru această familie de sarcini, o reprezentare prin anumite regiuni geometrice păstrează distincțiile relevante și permite selecția sau transferul mai eficient decât alternativele, la același buget.",
+      "translation": "I would not say “knowledge has the shape of cones.” I would say: for this task family, a representation using particular geometric regions preserves relevant distinctions and enables more efficient selection or transfer than alternatives under the same budget."
+    },
+    {
+      "id": "t000534",
+      "source": "Testul ar compara erorile de aplicabilitate, costul căutării, memoria și transferul. O vizualizare frumoasă nu este o dovadă. Dacă un tabel simplu obține aceleași rezultate cu un cost mai mic, ipoteza geometrică nu a produs încă valoare inginerească.",
+      "translation": "The test would compare applicability errors, search cost, memory and transfer. A beautiful visualization is not evidence. If a simple table achieves the same results at lower cost, the geometric hypothesis has not yet produced engineering value."
+    },
+    {
+      "id": "t000535",
+      "source": "CAPITOLUL 15",
+      "translation": "CHAPTER 15"
+    },
+    {
+      "id": "t000536",
+      "source": "Un atlas de interpretoare",
+      "translation": "An Atlas of Interpreters"
+    },
+    {
+      "id": "t000537",
+      "source": "De ce nu un singur spațiu",
+      "translation": "Why Not a Single Space"
+    },
+    {
+      "id": "t000538",
+      "source": "Aceeași situație poate cere păstrarea ordinii temporale, a identității participanților, a unei relații numerice sau a provenienței unei afirmații. Un spațiu unic poate codifica toate acestea în principiu, dar accesul la fiecare proprietate poate rămâne costisitor sau dificil de verificat.",
+      "translation": "The same situation may require preserving temporal order, participant identity, a numerical relationship or a claim's provenance. A single space can encode all of these in principle, but accessing each property may remain expensive or difficult to verify."
+    },
+    {
+      "id": "t000539",
+      "source": "Propunerea unui atlas este mai modestă: mai multe reprezentări locale, fiecare cu operații bine definite și cu un domeniu de utilizare. Termenul „atlas” este o analogie de organizare. Nu presupune automat o varietate diferențiabilă, coordonate netede sau transformări inversabile între toate reprezentările.",
+      "translation": "The atlas proposal is more modest: multiple local representations, each with well-defined operations and a domain of use. “Atlas” is an organizational analogy. It does not automatically imply a differentiable manifold, smooth coordinates or invertible transformations between every representation."
+    },
+    {
+      "id": "t000540",
+      "source": "Un interpretor temporal poate răspunde despre ultima stare. Un interpretor relațional poate răspunde despre dependențe. Un interpretor documentar poate păstra cine susține fiecare afirmație. Ele pot descrie același episod fără a produce același tip de rezultat.",
+      "translation": "A temporal interpreter may answer questions about the latest state. A relational interpreter may answer questions about dependencies. A documentary interpreter may preserve who supports each claim. They can describe the same episode without producing the same kind of result."
+    },
+    {
+      "id": "t000541",
+      "source": "Traduceri cu contract",
+      "translation": "Translations with Contracts"
+    },
+    {
+      "id": "t000542",
+      "source": "O traducere dintre două reprezentări trebuie să declare ce păstrează. Dacă dintr-un jurnal construim o stare curentă, putem conserva răspunsul la „ce este activ acum?”, dar nu neapărat răspunsul la „de câte ori s-a schimbat?”. O traducere utilă nu trebuie să fie complet reversibilă; trebuie să fie suficientă pentru scopul declarat.",
+      "translation": "A translation between two representations must declare what it preserves. If we construct a current state from a log, we may preserve the answer to “what is active now?” but not necessarily “how often did it change?” A useful translation need not be fully reversible; it must be sufficient for its stated purpose."
+    },
+    {
+      "id": "t000543",
+      "source": "Într-un atlas, legăturile ar fi adaptoare executabile. Fiecare adaptor are precondiții, un tip de ieșire și o afirmație despre conservarea informației. Unele conservări pot fi demonstrate. Altele pot fi numai evaluate pe teste. Statutul trebuie păstrat în metadate și în explicația rezultatului.",
+      "translation": "In an atlas, links would be executable adapters. Each adapter has preconditions, an output type and a claim about information preservation. Some preservation claims may be proved. Others can only be evaluated through tests. Their status must be retained in metadata and the explanation of the result."
+    },
+    {
+      "id": "t000544",
+      "source": "Un test de întoarcere, în care traducem A în B și apoi înapoi, este util pentru detectarea unor pierderi. Dar succesul pe câteva exemple nu dovedește echivalența. În plus, o traducere intenționat compresivă nu trebuie evaluată prin reconstrucția integrală, ci prin conservarea testelor relevante.",
+      "translation": "A round-trip test, translating A into B and back again, is useful for detecting losses. Success on a few examples does not prove equivalence, however. Moreover, an intentionally compressive translation should be evaluated by preservation of relevant tests, not complete reconstruction."
+    },
+    {
+      "id": "t000545",
+      "source": "Compatibilitate locală și contradicție",
+      "translation": "Local Compatibility and Contradiction"
+    },
+    {
+      "id": "t000546",
+      "source": "Două reprezentări pot produce rezultate aparent contradictorii fără să fie logic incompatibile. Una descrie regula formală, cealaltă starea observată. O persoană poate avea dreptul de acces, dar conexiunea poate fi indisponibilă. Contradicția dispare când țintele sunt tipizate corect.",
+      "translation": "Two representations may produce apparently contradictory results without being logically incompatible. One describes the formal rule, the other the observed state. A person may have access rights while the connection is unavailable. The contradiction disappears when targets are typed correctly."
+    },
+    {
+      "id": "t000547",
+      "source": "În alte cazuri, contradicția este reală: două interpretoare afirmă valori diferite despre aceeași variabilă, aceeași perioadă și aceleași ipoteze. Sistemul nu trebuie să le medieze arbitrar. Trebuie să verifice sursele, precondițiile, versiunile și dependențele.",
+      "translation": "In other cases, the contradiction is real: two interpreters assert different values for the same variable, period and assumptions. The system must not arbitrarily average them. It must check sources, preconditions, versions and dependencies."
+    },
+    {
+      "id": "t000548",
+      "source": "Această muncă poate fi reprezentată ca o problemă de satisfacere a constrângerilor. Dacă un set de afirmații nu poate fi simultan adevărat în modelul declarat, agentul caută un subset conflictual și îl marchează. Un solver poate ajuta pentru limbaje potrivite, fără a rezolva automat ambiguitatea limbajului natural care a produs formulele.",
+      "translation": "This work can be represented as a constraint satisfaction problem. If a set of claims cannot all be true in the declared model, the agent seeks a conflicting subset and marks it. A solver can help for suitable languages without automatically resolving the natural-language ambiguity that produced the formulas."
+    },
+    {
+      "id": "t000549",
+      "source": "Operațiile definesc coordonatele",
+      "translation": "Operations Define Coordinates"
+    },
+    {
+      "id": "t000550",
+      "source": "Un atlas MRP nu ar stoca numai valori. Ar stoca și procedurile prin care ele sunt obținute. Coordonata „ultima stare validă” este un program asupra unui istoric. Coordonata „numărul de surse independente” este o procedură asupra unui graf de proveniență. Coordonata „risc estimat” este un model cu propriile date și ipoteze.",
+      "translation": "An MRP atlas would store not only values but also the procedures producing them. The coordinate “latest valid state” is a program over a history. “Number of independent sources” is a procedure over a provenance graph. “Estimated risk” is a model with its own data and assumptions."
+    },
+    {
+      "id": "t000551",
+      "source": "Această legătură permite verificarea unei dimensiuni noi. Putem inspecta programul, putem modifica datele de intrare și putem observa ce se schimbă. O dimensiune numerică învățată fără o interpretare simplă nu este exclusă, dar nu primește automat același tip de justificare.",
+      "translation": "This connection allows a new dimension to be checked. We can inspect the program, modify input data and observe what changes. A learned numerical dimension without a simple interpretation is not excluded, but does not automatically receive the same kind of justification."
+    },
+    {
+      "id": "t000552",
+      "source": "Aici se găsește una dintre ideile centrale ale programului: o nouă dimensiune a înțelegerii poate fi o procedură care produce o distincție anterior inaccesibilă. Geometria rezultată depinde de procedură și de întrebările pentru care o folosim.",
+      "translation": "Here lies one of the program's central ideas: a new dimension of understanding can be a procedure producing a previously inaccessible distinction. The resulting geometry depends on the procedure and the questions for which we use it."
+    },
+    {
+      "id": "t000553",
+      "source": "Cum evaluăm atlasul",
+      "translation": "Evaluating the Atlas"
+    },
+    {
+      "id": "t000554",
+      "source": "Pentru fiecare sarcină putem măsura câte reprezentări au fost consultate, câte traduceri au fost executate, ce informație a fost pierdută și ce cost a avut reconcilierea. Atlasul trebuie comparat cu un spațiu unic suficient de puternic și cu o bibliotecă fixă de vederi.",
+      "translation": "For every task, we can measure how many representations were consulted, how many translations were executed, what information was lost and what reconciliation cost. The atlas must be compared with a sufficiently powerful single space and a fixed library of views."
+    },
+    {
+      "id": "t000555",
+      "source": "Un rezultat favorabil ar fi că adaptarea locală evită reconstruirea întregii reprezentări și transferă proceduri între sarcini. Un rezultat nefavorabil ar fi că adaptoarele, selecția și verificările costă mai mult decât un model comun bine proiectat. Niciuna dintre concluzii nu trebuie anticipată prin metafora aleasă.",
+      "translation": "A favorable result would show local adaptation avoiding reconstruction of the entire representation and transferring procedures between tasks. An unfavorable result would show adapters, selection and checks costing more than a well-designed common model. Neither conclusion should be presumed from the chosen metaphor."
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "batch": "batch-0021.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0021",
+  "chapterTitle": "17. How we recognize a result and avoid self-deception",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000424",
+      "chapterId": "chapter-0021",
+      "kind": "h1",
+      "text": "17. How we recognize a result and avoid self-deception",
+      "sourceAnchor": "src-p424",
+      "wordCount": 9
+    },
+    {
+      "id": "u000425",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "17.1. Each claim has its own measurement",
+      "sourceAnchor": "src-p425",
+      "wordCount": 8
+    },
+    {
+      "id": "u000426",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "‘Predicts well’ may mean low log-loss, calibrated probabilities or frequently choosing the correct symbol. ‘Generates coherently’ may mean respecting invariants over long sequences. ‘Understands interventions’ may mean correctly estimating action effects. These properties must be evaluated separately.",
+      "sourceAnchor": "src-p426",
+      "wordCount": 37
+    },
+    {
+      "id": "u000427",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Log-loss penalizes low probability assigned to the realized event. Calibration compares observed frequencies with stated probabilities in groups of predictions. Choice accuracy can ignore the complete distribution. None automatically replaces the others, and aggregating them into a single score may hide important failures.",
+      "sourceAnchor": "src-p427",
+      "wordCount": 43
+    },
+    {
+      "id": "u000428",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "For constraints, we should report violation frequency as well as time to first violation, severity and context. For long-term predictions, evaluation occurs at multiple horizons. For adaptive systems, the recovery period after a change must also be measured, not merely performance after stabilization.",
+      "sourceAnchor": "src-p428",
+      "wordCount": 43
+    },
+    {
+      "id": "u000429",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "17.2. Absence of violations is not a proof",
+      "sourceAnchor": "src-p429",
+      "wordCount": 9
+    },
+    {
+      "id": "u000430",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "If n independent trials, with the same unknown failure probability p, produce no failure, the probability of that outcome is (1−p) to the power n. An exact one-sided upper bound at confidence level 1−α is 1−α to the power 1/n. For α=0.05 and large n, the approximation is close to 3/n.",
+      "sourceAnchor": "src-p430",
+      "wordCount": 58
+    },
+    {
+      "id": "u000431",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "p(upper) = 1 − α 1/n , after zero failures in n independent trials",
+      "sourceAnchor": "src-p431",
+      "wordCount": 13
+    },
+    {
+      "id": "u000432",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "This is a statistical bound under the stated assumptions, not a guarantee that p is zero. If the trials are strongly dependent, their raw count cannot be entered into the formula as though they were independent. A million symbols from a single trajectory do not automatically equal a million independent experiments.",
+      "sourceAnchor": "src-p432",
+      "wordCount": 51
+    },
+    {
+      "id": "u000433",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "For rare events, we can construct targeted tests that make them accessible. But failure frequency under the targeted distribution must not be reported as natural frequency without correction. There are two questions: how often we reach the critical situation and how well we behave once there.",
+      "sourceAnchor": "src-p433",
+      "wordCount": 46
+    },
+    {
+      "id": "u000434",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "17.3. Separating data and families",
+      "sourceAnchor": "src-p434",
+      "wordCount": 6
+    },
+    {
+      "id": "u000435",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Training, model selection and final evaluation must use distinct information. If we repeatedly inspect the final set and change the method, that set has become part of development. To support transfer, we need held-out mechanisms, parameters or combinations, not merely other sequences produced by the same instance.",
+      "sourceAnchor": "src-p435",
+      "wordCount": 47
+    },
+    {
+      "id": "u000436",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "A protocol may have three levels: new instances from the same distribution, new parameter ranges and new mechanism families. Each level justifies a different claim. Generalization at the first level does not automatically imply generalization at the third.",
+      "sourceAnchor": "src-p436",
+      "wordCount": 38
+    },
+    {
+      "id": "u000437",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Multiple random seeds help estimate variability but do not repair a conceptually narrow sample. A hundred runs of the same favorable world do not replace structural controls. Both variation between runs and variation between types of worlds must be reported.",
+      "sourceAnchor": "src-p437",
+      "wordCount": 40
+    },
+    {
+      "id": "u000438",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "17.4. Fair comparisons and real contributions",
+      "sourceAnchor": "src-p438",
+      "wordCount": 7
+    },
+    {
+      "id": "u000439",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Comparators must receive comparable access to observations and interventions. If a method receives the number of states, a semantic schema or a primitive library, these advantages must be declared. We may include arms with additional information for diagnosis, but we do not mix them into a single ranking.",
+      "sourceAnchor": "src-p439",
+      "wordCount": 48
+    },
+    {
+      "id": "u000440",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Total cost includes hyperparameter search, representation construction, data transformation, validation and response. For a pretrained model, marginal usage cost may be relevant to an application but must not be confused with the cost of discovering the capability from scratch. These are two legitimate perspectives answering different questions.",
+      "sourceAnchor": "src-p440",
+      "wordCount": 47
+    },
+    {
+      "id": "u000441",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "An ablation analysis would disable state merging, library growth, contract verification and active exploration in turn. If performance does not change, the component may be unnecessary in the tested domain. If removal improves results, we have evidence that the added mechanism introduces cost or error.",
+      "sourceAnchor": "src-p441",
+      "wordCount": 45
+    },
+    {
+      "id": "u000442",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "17.5. What an empirical estimate of equivalence cannot say",
+      "sourceAnchor": "src-p442",
+      "wordCount": 10
+    },
+    {
+      "id": "u000443",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "In very large spaces, TV distance between entire distributions cannot be estimated arbitrarily precisely from few observations without additional assumptions. In practice, we can evaluate selected events, discriminator classes or statistics of interest. These define useful tests, but weaker ones than exhaustive verification.",
+      "sourceAnchor": "src-p443",
+      "wordCount": 43
+    },
+    {
+      "id": "u000444",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "The report must specify where a guarantee exists and where there is only an attempt at detection. A proof for a finite class, complete enumeration over a horizon and a statistical test on data are different forms of support. We will not call all of them ‘validation’ without qualification.",
+      "sourceAnchor": "src-p444",
+      "wordCount": 49
+    },
+    {
+      "id": "u000445",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "Conversely, a failed search does not prove that a compact representation does not exist. Perhaps the algorithm did not find it, the language does not express it efficiently, or the budget was insufficient. An impossibility result requires proof within the declared class. A practical limit can be reported as a practical limit and remain valuable.",
+      "sourceAnchor": "src-p445",
+      "wordCount": 55
+    },
+    {
+      "id": "u000446",
+      "chapterId": "chapter-0021",
+      "kind": "h2",
+      "text": "17.6. A register of claims",
+      "sourceAnchor": "src-p446",
+      "wordCount": 6
+    },
+    {
+      "id": "u000447",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "For every conclusion, a register should preserve the exact statement, assumptions, evidence and type of test that could refute it. A claim about memory savings must show what was counted. A claim about discovering a rule must distinguish what was supplied from what was inferred. A claim about transfer must identify what was new.",
+      "sourceAnchor": "src-p447",
+      "wordCount": 54
+    },
+    {
+      "id": "u000448",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "The register is not bureaucracy added to research. It prevents unnoticed migration of conclusions: from ‘works in this family’ to ‘explains understanding’, from ‘we found no violations’ to ‘it is safe’, or from ‘we compressed the description’ to ‘we discovered the world’s laws’.",
+      "sourceAnchor": "src-p448",
+      "wordCount": 43
+    },
+    {
+      "id": "u000449",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "A well-localized negative result can become more useful than a vague positive result. It reveals a missing variable, an incorrect assumption or a resource frontier. Precisely this information allows a future researcher to continue without repeating the same confusion.",
+      "sourceAnchor": "src-p449",
+      "wordCount": 39
+    },
+    {
+      "id": "u000450",
+      "chapterId": "chapter-0021",
+      "kind": "p",
+      "text": "PART V / THE PROGRAM AND ITS FRUITFUL LIMITS",
+      "sourceAnchor": "src-p450",
+      "wordCount": 8
+    }
+  ]
+}

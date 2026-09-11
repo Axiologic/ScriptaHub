@@ -1,0 +1,272 @@
+{
+  "batch": "batch-0017.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0017",
+  "chapterTitle": "Appendix A. Detailed mathematical proofs and examples",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000546",
+      "chapterId": "chapter-0017",
+      "kind": "h1",
+      "text": "Appendix A. Detailed mathematical proofs and examples",
+      "sourceAnchor": "src-p549",
+      "wordCount": 7
+    },
+    {
+      "id": "u000547",
+      "chapterId": "chapter-0017",
+      "kind": "h2",
+      "text": "A.1. From frequencies to decisions: three calculations that must not be confused",
+      "sourceAnchor": "src-p550",
+      "wordCount": 13
+    },
+    {
+      "id": "u000548",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "Consider a world with two classes, new and old. We want to understand the distribution of texts, learning a label and choosing an action separately. These operations are often merged into a single intuition about “what is probable,” although they answer different questions. The following examples are didactic constructions, with numbers chosen for clarity, not empirical findings about language models.",
+      "sourceAnchor": "src-p551",
+      "wordCount": 60
+    },
+    {
+      "id": "u000549",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "First, suppose a corpus contains nine hundred descriptions of idea A and one hundred of idea B. An ideal model of idea identity would assign probabilities of 0.9 and 0.1. If we always choose the most probable idea, we will produce only A. If we sample correctly from the distribution, we will also produce B, in its proportion. If we ask whether B differs from A and provide their definitions, the frequencies do not determine the answer on their own. We have moved from generation to comparison.",
+      "sourceAnchor": "src-p552",
+      "wordCount": 89
+    },
+    {
+      "id": "u000550",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "Now we introduce an evaluative label. In the data, descriptions with a certain rhetorical form S are called “innovative” in 80% of cases, and those without S in 20%. A classifier using only S can perform well if this correlation persists in the test. To find out whether it understands the conceptual difference, we construct a test in which S is independent of exact novelty. If performance falls, we have evidence that the cue mattered. To demonstrate that those frequencies caused its use, we must intervene on the data, not merely observe the correlation.",
+      "sourceAnchor": "src-p553",
+      "wordCount": 94
+    },
+    {
+      "id": "u000551",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "Finally, we choose an action. Even if the probability of novelty is estimated correctly, the decision depends on costs. If checking a candidate is cheap and losing a discovery is costly, the selection threshold can be low. If checking is very expensive, the threshold may rise. Two systems with the same estimated probability can make different decisions without either being less capable of detecting novelty. The difference belongs to policy.",
+      "sourceAnchor": "src-p554",
+      "wordCount": 70
+    },
+    {
+      "id": "u000552",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "We now derive the decomposition of logarithmic loss. For a finite set and distributions P and Q, the average cost is the sum of P(x) multiplied by minus log Q(x). We add and subtract minus log P(x). We obtain the entropy of P and the sum of P(x) log(P(x)/Q(x)), namely the KL divergence. If Q assigns zero probability to an event with positive P, the cost is infinite. Otherwise, the divergence is nonnegative, and the ideal minimum is attained at Q=P.",
+      "sourceAnchor": "src-p555",
+      "wordCount": 90
+    },
+    {
+      "id": "u000553",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "− ∑ x ​ P ( x ) log Q ( x ) = − ∑ x ​ P ( x ) log P ( x ) + ∑ x ​ P ( x ) log P ( x ) Q ( x ) .",
+      "sourceAnchor": "src-p556",
+      "wordCount": 20
+    },
+    {
+      "id": "u000554",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "Why is the divergence nonnegative? We can use the inequality log u≤u−1 for positive u. Applied to the ratio Q(x)/P(x), it shows that the sum of P(x) log(Q(x)/P(x)) is at most the sum of Q(x) minus the sum of P(x), namely zero. Changing the sign gives nonnegativity. This elementary proof explains why the ideal objective does not require eliminating rare events. It requires assigning correct probabilities, including to them.",
+      "sourceAnchor": "src-p557",
+      "wordCount": 81
+    },
+    {
+      "id": "u000555",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "In a model with limited capacity, the family Q may not contain P. Optimization then chooses the best approximation according to average loss. If errors on a rare class cost little in the overall average, the model may sacrifice that class for larger improvements in frequent regions. This is a possible tradeoff mechanism. It is not equivalent to the claim that every rare class will be ignored. A compact rule can simultaneously explain frequent and rare cases.",
+      "sourceAnchor": "src-p558",
+      "wordCount": 77
+    },
+    {
+      "id": "u000556",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "Returning to the prevalence example, for π=0.001, TPR=0.9 and FPR=0.01, the probability that a selection is truly new is 0.0009 divided by 0.01089, or approximately 0.08264. A detector with these characteristics recovers most novel contributions but produces many false alarms. If we lower FPR to 0.001, hypothetically maintaining the same sensitivity, precision becomes approximately 0.474. The example shows how much the false alarm rate matters in a rare-event stream.",
+      "sourceAnchor": "src-p559",
+      "wordCount": 80
+    },
+    {
+      "id": "u000557",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "This analysis does not automatically justify raising the threshold. The threshold may also reduce TPR. The complete curve and verification capacity must be analyzed. If we choose only the safest candidates, we may eliminate precisely the unusual contributions. A selection policy can therefore retain a main channel with high precision and an audit or exploration channel. Their proportions must be set in relation to costs and evaluated, not chosen to produce a convenient score.",
+      "sourceAnchor": "src-p560",
+      "wordCount": 74
+    },
+    {
+      "id": "u000558",
+      "chapterId": "chapter-0017",
+      "kind": "h2",
+      "text": "A.2. Bayes risk, collision and the possible benefit of a summary",
+      "sourceAnchor": "src-p561",
+      "wordCount": 12
+    },
+    {
+      "id": "u000559",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "Let us have a discrete representation Z and a binary label Y. For each value z, a classifier must choose zero or one. If it chooses zero, it errs on the joint mass P(Y=1,Z=z). If it chooses one, it errs on the mass P(Y=0,Z=z). The optimal choice takes the class with greater mass, and the local cost is the smaller mass. The sum of these minima gives the Bayes risk in Chapter 6.",
+      "sourceAnchor": "src-p562",
+      "wordCount": 81
+    },
+    {
+      "id": "u000560",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "This argument shows exactly where inevitable error arises. Not in stylistic complexity or insufficient reasoning, but in the fact that the same observation is compatible with different labels. A better algorithm can attain Bayes risk, but cannot improve on it without additional information or changing the problem. In a finite world with deterministic labels and complete observations, the risk can be zero. After compression, it can become positive.",
+      "sourceAnchor": "src-p563",
+      "wordCount": 68
+    },
+    {
+      "id": "u000561",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "For equal priors, write p0(z)=P(Z=z|Y=0) and p1(z)=P(Z=z|Y=1). The joint mass of each class is half its conditional distribution. We use the identity min(a,b)=(a+b−|a−b|)/2. After summation, we obtain a risk equal to one half minus one quarter of the sum of absolute differences. Total variation is half that sum, which yields the formula in the chapter.",
+      "sourceAnchor": "src-p564",
+      "wordCount": 74
+    },
+    {
+      "id": "u000562",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "T V ( p 0 , p 1 ) = 1 2 ∑ z ​ a b s ( p 0 ( z ) − p 1 ( z ) ) .",
+      "sourceAnchor": "src-p565",
+      "wordCount": 18
+    },
+    {
+      "id": "u000563",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "If p0 and p1 are identical, TV is zero and the minimum error is one half. If the distributions have disjoint supports, TV is one and the minimum error is zero. Between these extremes lie degrees of separability. In a compression experiment, we can ask whether the transformation makes the class distributions more similar with respect to useful information. We do not need to observe an exact collision of real-valued vectors to have practical degradation; they may become closer than the evaluator can resolve.",
+      "sourceAnchor": "src-p566",
+      "wordCount": 84
+    },
+    {
+      "id": "u000564",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "However, informational impossibility must be distinguished from difficulty for an algorithm. Suppose X is a long document that explicitly contains the correct label within a difficult logical relation. A summary Z expresses it clearly. The actual evaluator may have a lower error on Z. This does not contradict the fact that an optimal evaluator with access to X could compute the same summary and decide at least as well. The summary changes cost and accessibility; it does not create additional truth about the world.",
+      "sourceAnchor": "src-p567",
+      "wordCount": 84
+    },
+    {
+      "id": "u000565",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "A constructed example uses documents with many irrelevant sentences and two premises: if A then B; A. The question is whether B follows. A faithful summary can retain only the premises and reduce errors by a limited model. But if the question is whether the document also asserts C, the same summary may be insufficient. Fidelity is task-dependent. A good summary for conclusion B may be poor for inventorying all contributions.",
+      "sourceAnchor": "src-p568",
+      "wordCount": 71
+    },
+    {
+      "id": "u000566",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "We can formulate a compression objective oriented toward a family of questions Q. We want a low-cost representation such that answers to relevant questions are preserved with an error below a threshold. This is a design objective, not a complete method. The difficulty is that questions about novelty may be unknown before reading. If the family Q is too narrow, contributions that change the questions may be lost. If it is unlimited, the requirement approaches preserving all information.",
+      "sourceAnchor": "src-p569",
+      "wordCount": 78
+    },
+    {
+      "id": "u000567",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "A system can manage this tension through two levels. The compact representation serves frequent questions, while the original archive remains accessible for new questions. Cost shifts from complete storage in every context to selective access. The practical guarantee depends on the system’s ability to recognize when it needs the source. Detecting insufficient representation is therefore a separate task that must be evaluated.",
+      "sourceAnchor": "src-p570",
+      "wordCount": 62
+    },
+    {
+      "id": "u000568",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "A subtle consequence is that the model’s explanation may be more informative than its score and still insufficient for the verdict. If the explanation preserves a difference but the score ignores it, the information exists in the output and can be recovered by another aggregator. If the explanation and score were constructed after the same smoothing, both may miss the difference. Evaluation should inspect intermediate objects, not only the final label.",
+      "sourceAnchor": "src-p571",
+      "wordCount": 71
+    },
+    {
+      "id": "u000569",
+      "chapterId": "chapter-0017",
+      "kind": "h2",
+      "text": "A.3. Rare differences and selection models: exact calculations",
+      "sourceAnchor": "src-p572",
+      "wordCount": 9
+    },
+    {
+      "id": "u000570",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "We construct two functions on eight bits. The first returns the XOR of the first two bits. The second returns the same value, except on the input where all eight bits are one, where the value is inverted. The functions differ on exactly one input out of 256. If the library contains only the first function, the second is new under the criterion of extensional equivalence. This label does not depend on how frequently the distinguishing input appears in use.",
+      "sourceAnchor": "src-p573",
+      "wordCount": 80
+    },
+    {
+      "id": "u000571",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "If inputs are uniform and we observe one hundred independent examples with replacement, the probability of not seeing the difference is (255/256) to the power of one hundred, approximately 0.676. With one thousand examples, the probability is approximately 0.01996. To obtain a miss probability of at most 0.05, we need at least 766 observations in this regime. Enumerating all 256 inputs without replacement is, of course, sufficient. The sampling regime matters.",
+      "sourceAnchor": "src-p574",
+      "wordCount": 75
+    },
+    {
+      "id": "u000572",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "If the distinguishing input has probability ε under the real distribution, the general formula is (1−ε) to the power m. For small ε, the exponential approximation exp(−mε) shows that the required budget grows roughly inversely with ε. This is a reason not to equate the absence of an observed difference with functional equivalence. A test can be very long and still miss a rare case if it is not designed to seek it.",
+      "sourceAnchor": "src-p575",
+      "wordCount": 75
+    },
+    {
+      "id": "u000573",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "A symbolic verifier can sometimes avoid sampling by analyzing structure. For the functions above, it directly observes the condition that inverts the output. But we must not generalize from this simple construction to every program. Finding a witness may be computationally difficult. The difference between verifying a supplied witness and discovering one is central to the detector’s operational complexity.",
+      "sourceAnchor": "src-p576",
+      "wordCount": 59
+    },
+    {
+      "id": "u000574",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "Now consider compression. If we retain the outputs on the first 255 inputs in lexicographic order and remove the last input, the two functions receive the same representation. The error comes from a deterministic projection, not a language model. If we later add the final row, the difference becomes identifiable. The example is an executable demonstration of how the verdict depends on the information retained.",
+      "sourceAnchor": "src-p577",
+      "wordCount": 65
+    },
+    {
+      "id": "u000575",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "For repeated selection, consider two classes with equal initial weights. The first is accepted with probability 0.55, the second with 0.50, and only accepted cases return. After t rounds, the weight ratio is 1.1 to the power t. After twenty rounds, the ratio is approximately 6.73. We have not modeled idea quality, the emergence of new contributions or error correction. The calculation shows only how a persistent asymmetry can be amplified in a closed process.",
+      "sourceAnchor": "src-p578",
+      "wordCount": 79
+    },
+    {
+      "id": "u000576",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "If we introduce external ideas in each round and maintain auditing, the dynamics change. Disadvantaged classes can be reintroduced, and acceptance probabilities can change after errors are discovered. Thus, the simple model is not an inevitable prediction of homogenization. It is a tool for formulating the variables to be measured: external input, selection probability, reevaluation rate and their dependence on familiarity.",
+      "sourceAnchor": "src-p579",
+      "wordCount": 61
+    },
+    {
+      "id": "u000577",
+      "chapterId": "chapter-0017",
+      "kind": "p",
+      "text": "These calculations share a purpose. They show that an observed error can have very different sources: the rarity of a distinguishing case, information compression or a repeated selection policy. None should automatically be attributed to the essence of an LLM. Instead, each can be introduced into a controlled experiment and lead to a concrete intervention.",
+      "sourceAnchor": "src-p580",
+      "wordCount": 55
+    }
+  ]
+}

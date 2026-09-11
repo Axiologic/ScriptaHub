@@ -1,0 +1,992 @@
+{
+  "batch": "batch-0009.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0010",
+  "chapterTitle": "The reader's workshop",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000669",
+      "chapterId": "chapter-0010",
+      "kind": "h1",
+      "text": "The reader's workshop",
+      "sourceAnchor": "src-p669",
+      "wordCount": 3
+    },
+    {
+      "id": "u000670",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Step-by-step arguments, exercises with answers and a shared vocabulary for continuing the research.",
+      "sourceAnchor": "src-p670",
+      "wordCount": 13
+    },
+    {
+      "id": "u000671",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "A. Three arguments worth understanding fully",
+      "sourceAnchor": "src-p671",
+      "wordCount": 6
+    },
+    {
+      "id": "u000672",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "A.1. Why an exact interface allows histories to be merged",
+      "sourceAnchor": "src-p672",
+      "wordCount": 11
+    },
+    {
+      "id": "u000673",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Suppose two states s and t have the same summary: α(s) = α(t). Suppose every admissible operation F has a version F# on summaries and α(F(s)) = F#(α(s)). Further suppose the relevant result R can be obtained through a function h of the summary.",
+      "sourceAnchor": "src-p673",
+      "wordCount": 48
+    },
+    {
+      "id": "u000674",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "We apply the same operation F to both states. The resulting summaries are F#(α(s)) and F#(α(t)). They are equal because the arguments are equal and the operation F# is the same. We can repeat the argument for the next operation. After any finite number of steps, the summaries remain equal. The observable results are then equal, because both are calculated through h from the same summary.",
+      "sourceAnchor": "src-p674",
+      "wordCount": 70
+    },
+    {
+      "id": "u000675",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "This proves equivalence for continuations composed of the declared operations. If the operation-selection policy consults a part of the state absent from the summary, the argument does not automatically cover that policy. We must either include the information consulted or define continuations as fixed external sequences and analyze the selection strategy separately.",
+      "sourceAnchor": "src-p675",
+      "wordCount": 52
+    },
+    {
+      "id": "u000676",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "In a system with partial operations, admissibility must also be preserved: two merged states cannot permit an operation in only one of them if that difference matters. In a nondeterministic system, sets or distributions of outcomes must be compared according to the adopted semantics. The simple form above concerns deterministic transitions compatible with the summary.",
+      "sourceAnchor": "src-p676",
+      "wordCount": 55
+    },
+    {
+      "id": "u000677",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "What the argument does not prove is the existence of a small summary that is inexpensive to compute or easy to learn. The property can hold with α equal to the identity, preserving the entire state. This is exact and may compress nothing. The research gains value when we find interfaces much smaller than the histories they represent.",
+      "sourceAnchor": "src-p677",
+      "wordCount": 58
+    },
+    {
+      "id": "u000678",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "A.2. How an approximation remains sound",
+      "sourceAnchor": "src-p678",
+      "wordCount": 7
+    },
+    {
+      "id": "u000679",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Let C be the set of concrete states still possible and a an abstract description containing them: C is included in γ(a). Suppose the abstract transformation F# is sound, meaning that all results obtained by applying F to any state in γ(a) are included in γ(F#(a)).",
+      "sourceAnchor": "src-p679",
+      "wordCount": 50
+    },
+    {
+      "id": "u000680",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Because C is included in γ(a), the results F(C) are included in F(γ(a)). By the soundness assumption, that latter set is included in γ(F#(a)). Therefore, the new abstract description includes all actual concrete results. The argument repeats at every step.",
+      "sourceAnchor": "src-p680",
+      "wordCount": 46
+    },
+    {
+      "id": "u000681",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "We can now understand what successful verification means. If every state in the abstract description satisfies the required property, every concrete state also satisfies it. If the abstract description admits a bad case, that case is not necessarily real. It may be a false alarm introduced by approximation.",
+      "sourceAnchor": "src-p681",
+      "wordCount": 48
+    },
+    {
+      "id": "u000682",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "When searching for a solution, a nonempty abstract intersection with the goal is insufficient. The candidate must be concretely realized or checked in a more precise representation. Conversely, if a sound overapproximation of the results does not intersect the goal at all, we can reject the branch, because the actual results cannot reach it either.",
+      "sourceAnchor": "src-p682",
+      "wordCount": 55
+    },
+    {
+      "id": "u000683",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "This is why abstractions are very good for filtering but require caution when accepting results. The same representation can be sound for saying “impossible” and insufficient for saying “found it,” depending on the logical direction of the test.",
+      "sourceAnchor": "src-p683",
+      "wordCount": 38
+    },
+    {
+      "id": "u000684",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "A.3. Why individual summaries do not preserve every relation",
+      "sourceAnchor": "src-p684",
+      "wordCount": 10
+    },
+    {
+      "id": "u000685",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Let relation R consist of the pairs (0, 0) and (1, 1). Its projection onto the first variable is {0, 1}; its projection onto the second is also {0, 1}. If we reconstruct the possibilities using only these two projections, we obtain their product: four pairs.",
+      "sourceAnchor": "src-p685",
+      "wordCount": 46
+    },
+    {
+      "id": "u000686",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Two pairs, (0, 1) and (1, 0), did not belong to the original relation. The operation “preserve each component separately” lost the equality dependency. It lost no individually possible value. Precisely for that reason, a check examining only each wire's domain can miss the problem.",
+      "sourceAnchor": "src-p686",
+      "wordCount": 45
+    },
+    {
+      "id": "u000687",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Reconstruction through the product is a sound overapproximation of R. It can be used for certain tests, but not as though it were the exact relation. If a continuation asks whether x = y, R always answers yes, while the product also admits a negative answer.",
+      "sourceAnchor": "src-p687",
+      "wordCount": 45
+    },
+    {
+      "id": "u000688",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A compact repair is to preserve both domains and the constraint x = y. Enumerating every pair was unnecessary. For other relations, an equally small repair may not exist in the chosen language. Research into interfaces is therefore also research into a vocabulary of useful relations.",
+      "sourceAnchor": "src-p688",
+      "wordCount": 45
+    },
+    {
+      "id": "u000689",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "B. Conceptual exercises with explained answers",
+      "sourceAnchor": "src-p689",
+      "wordCount": 6
+    },
+    {
+      "id": "u000690",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "1. A summary for the mean",
+      "sourceAnchor": "src-p690",
+      "wordCount": 6
+    },
+    {
+      "id": "u000691",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A machine reads numbers one at a time. It preserves only their sum and must report their mean at the end. Is the interface sufficient?",
+      "sourceAnchor": "src-p691",
+      "wordCount": 25
+    },
+    {
+      "id": "u000692",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "No. The lists [2, 4] and [6] have the same sum but different means. The element count is the missing distinction. The pair “sum, count” can be updated compositionally when an element is added and allows the mean to be calculated for nonempty lists. The empty-list case must be handled explicitly, rather than hidden in an invalid division.",
+      "sourceAnchor": "src-p692",
+      "wordCount": 58
+    },
+    {
+      "id": "u000693",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "2. The same mean, a different question",
+      "sourceAnchor": "src-p693",
+      "wordCount": 7
+    },
+    {
+      "id": "u000694",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Suppose we preserve the sum and count. Can we decide whether every element of the list was equal?",
+      "sourceAnchor": "src-p694",
+      "wordCount": 18
+    },
+    {
+      "id": "u000695",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Not in general. The lists [1, 3] and [2, 2] have the same sum and element count. We can add a suitable representation, such as a reference value and a flag indicating whether every element equals it. The exercise shows that a sufficient interface is not a universal essence of the data.",
+      "sourceAnchor": "src-p695",
+      "wordCount": 52
+    },
+    {
+      "id": "u000696",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "3. Correct type, wrong meaning",
+      "sourceAnchor": "src-p696",
+      "wordCount": 5
+    },
+    {
+      "id": "u000697",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "An operation receives two numbers and adds them. The first is a price in euros, the second a temperature in degrees Celsius. The system checks only the numeric type. What is missing?",
+      "sourceAnchor": "src-p697",
+      "wordCount": 32
+    },
+    {
+      "id": "u000698",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The semantic type or contract specifying which quantities can be combined is missing. Checking executability does not establish the operation's relevance. The solution is not to prohibit general arithmetic, but to distinguish the raw data level from justified use within a model.",
+      "sourceAnchor": "src-p698",
+      "wordCount": 42
+    },
+    {
+      "id": "u000699",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "4. A nonempty intersection",
+      "sourceAnchor": "src-p699",
+      "wordCount": 4
+    },
+    {
+      "id": "u000700",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The analysis says an operation can produce any number between 0 and 10. The goal is 7. Can we declare that an execution producing 7 exists?",
+      "sourceAnchor": "src-p700",
+      "wordCount": 26
+    },
+    {
+      "id": "u000701",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "No, if the interval is only an overapproximation. The actual results might be only 0 and 10. The intersection shows abstract compatibility, not realizability. A concrete witness must be checked, or the representation refined until existence is justified.",
+      "sourceAnchor": "src-p701",
+      "wordCount": 38
+    },
+    {
+      "id": "u000702",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "5. A contradiction between sources",
+      "sourceAnchor": "src-p702",
+      "wordCount": 5
+    },
+    {
+      "id": "u000703",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "One document states that Ana is in the laboratory at 10 o'clock. Another states that she is not in the laboratory at the same time. What should the system produce?",
+      "sourceAnchor": "src-p703",
+      "wordCount": 30
+    },
+    {
+      "id": "u000704",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "It must first establish whether they refer to the same person, place and interpretation of the time. If so, and if both statements are accepted as premises about the same world, the conflict must be flagged. It can separately preserve the fact that each source made its statement. It must neither automatically choose the preferred source nor turn incompatibility into permission to answer anything.",
+      "sourceAnchor": "src-p704",
+      "wordCount": 64
+    },
+    {
+      "id": "u000705",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "6. A rule that forgets a precondition",
+      "sourceAnchor": "src-p705",
+      "wordCount": 7
+    },
+    {
+      "id": "u000706",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A circuit rewrites x/x as 1. What must be checked before adding the rule to an equivalence class?",
+      "sourceAnchor": "src-p706",
+      "wordCount": 19
+    },
+    {
+      "id": "u000707",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The number semantics and domain of definition must be specified. In ordinary arithmetic, the condition that x is nonzero is essential. Particular numeric semantics may introduce other special cases. A rule correct under a precondition cannot be applied unconditionally merely because it simplifies the expression.",
+      "sourceAnchor": "src-p707",
+      "wordCount": 45
+    },
+    {
+      "id": "u000708",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "7. An irrelevant ambiguity",
+      "sourceAnchor": "src-p708",
+      "wordCount": 4
+    },
+    {
+      "id": "u000709",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "“Ana gives Maria the key. She leaves.” The question is who has the key immediately after the transfer. Must the pronoun's referent be chosen?",
+      "sourceAnchor": "src-p709",
+      "wordCount": 24
+    },
+    {
+      "id": "u000710",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "No, in the restricted model where the transfer is actual and complete and departure does not change possession at the time asked about. Both interpretations yield Maria. If the question becomes who leaves, the ambiguity must be preserved or resolved through additional information. Relevance is relative to the continuation.",
+      "sourceAnchor": "src-p710",
+      "wordCount": 49
+    },
+    {
+      "id": "u000711",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "8. An explanation with two dependent sources",
+      "sourceAnchor": "src-p711",
+      "wordCount": 7
+    },
+    {
+      "id": "u000712",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Two articles support the same claim, but both copy a single report. Can we count this as two independent confirmations?",
+      "sourceAnchor": "src-p712",
+      "wordCount": 20
+    },
+    {
+      "id": "u000713",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Not from the number of articles alone. Provenance reveals their common dependency. We may have two reproductions of the same source, rather than two independent observations. A system can count derivations, documentary sources and information origins, but these are different quantities.",
+      "sourceAnchor": "src-p713",
+      "wordCount": 41
+    },
+    {
+      "id": "u000714",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "9. An ambiguous negative result",
+      "sourceAnchor": "src-p714",
+      "wordCount": 5
+    },
+    {
+      "id": "u000715",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The expander finds no circuit before its budget runs out. What can it claim?",
+      "sourceAnchor": "src-p715",
+      "wordCount": 14
+    },
+    {
+      "id": "u000716",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "It can state that it found no solution within the explored space and budget. It cannot declare impossibility without further justification. If the library lacks the necessary operations, the absence of a solution says something about the search language, rather than the task's impossibility in general.",
+      "sourceAnchor": "src-p716",
+      "wordCount": 46
+    },
+    {
+      "id": "u000717",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "10. Compression that erases provenance",
+      "sourceAnchor": "src-p717",
+      "wordCount": 5
+    },
+    {
+      "id": "u000718",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Two circuits produce the same conclusion, one from an accepted source and the other from an unverified hypothesis. Can we preserve only one, chosen arbitrarily?",
+      "sourceAnchor": "src-p718",
+      "wordCount": 25
+    },
+    {
+      "id": "u000719",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Only if provenance affects no relevant continuation and the requested result requires no particular support. In epistemic applications, this condition is often false. We can merge the value while retaining distinct justifications, or include source status in the interface. Value equivalence is not automatically epistemic equivalence.",
+      "sourceAnchor": "src-p719",
+      "wordCount": 46
+    },
+    {
+      "id": "u000720",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "11. A vector representation exact on the samples",
+      "sourceAnchor": "src-p720",
+      "wordCount": 8
+    },
+    {
+      "id": "u000721",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A vector allows every role in a set of one hundred examples to be recovered correctly. What conclusion is justified?",
+      "sourceAnchor": "src-p721",
+      "wordCount": 20
+    },
+    {
+      "id": "u000722",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "That the representation and recovery procedure succeeded on those examples under the tested conditions. Neither universal exactness nor stability as the number of relations grows follows. Subsequent tests should vary superposition, object similarity, roles and memory size, including adversarial cases.",
+      "sourceAnchor": "src-p722",
+      "wordCount": 40
+    },
+    {
+      "id": "u000723",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "12. An abstraction that grows without stopping",
+      "sourceAnchor": "src-p723",
+      "wordCount": 7
+    },
+    {
+      "id": "u000724",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Every counterexample prompts the system to add a special case. After a thousand examples, the representation contains almost a thousand exceptions. Is this the learning of a useful sufficient interface?",
+      "sourceAnchor": "src-p724",
+      "wordCount": 30
+    },
+    {
+      "id": "u000725",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "It may be an exact memory of the cases, but does not demonstrate useful structural compression. It must be compared with direct memorization and evaluated on new cases. A negative result may suggest that the abstraction language is unsuitable or that the problem family lacks the regularity sought. It must not be hidden by renaming exceptions as “concepts.”",
+      "sourceAnchor": "src-p725",
+      "wordCount": 58
+    },
+    {
+      "id": "u000726",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "13. Prediction or intervention",
+      "sourceAnchor": "src-p726",
+      "wordCount": 4
+    },
+    {
+      "id": "u000727",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A system predicts that people with wet umbrellas have been in the rain. Can it infer that wetting an umbrella will cause rain?",
+      "sourceAnchor": "src-p727",
+      "wordCount": 23
+    },
+    {
+      "id": "u000728",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "No. The first relation is predictive within the observation model. The second concerns an intervention in the world. A model of causal mechanisms is required. The graph through which the system computes its prediction is not automatically the phenomenon's causal graph.",
+      "sourceAnchor": "src-p728",
+      "wordCount": 41
+    },
+    {
+      "id": "u000729",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "14. A gain that disappears after accounting",
+      "sourceAnchor": "src-p729",
+      "wordCount": 7
+    },
+    {
+      "id": "u000730",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A system answers ten times faster after expensive compilation. How do we decide whether it is more efficient?",
+      "sourceAnchor": "src-p730",
+      "wordCount": 18
+    },
+    {
+      "id": "u000731",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "We specify the number of queries and the update frequency. We add compilation, verification, memory and answer costs. We may obtain a reuse threshold beyond which the method becomes advantageous. Without specifying that usage regime, the “faster” comparison is incomplete.",
+      "sourceAnchor": "src-p731",
+      "wordCount": 40
+    },
+    {
+      "id": "u000732",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "15. What deserves to be called progress in understanding",
+      "sourceAnchor": "src-p732",
+      "wordCount": 9
+    },
+    {
+      "id": "u000733",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "One system answers a question correctly, then changes its answer after a rephrasing that leaves the meaning unchanged. Another abstains on the first question, explains the ambiguity and answers after a relevant clarification. Which result is more informative?",
+      "sourceAnchor": "src-p733",
+      "wordCount": 38
+    },
+    {
+      "id": "u000734",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "It depends on the task, but the second provides clearer evidence of control over missing information. The first isolated success may be accidental. Evaluating understanding must track families of variations and responses to them, rather than a single lucky answer. The ability to locate an insufficient representation is part of the competence sought.",
+      "sourceAnchor": "src-p734",
+      "wordCount": 53
+    },
+    {
+      "id": "u000735",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "C. Working glossary",
+      "sourceAnchor": "src-p735",
+      "wordCount": 3
+    },
+    {
+      "id": "u000736",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Abstraction. A representation that preserves certain properties of a state and omits others. Its value depends on the operations and questions pursued.",
+      "sourceAnchor": "src-p736",
+      "wordCount": 22
+    },
+    {
+      "id": "u000737",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Abstention. An explicit decision not to issue an unjustified conclusion. It must be distinguished from technical failure and proven impossibility.",
+      "sourceAnchor": "src-p737",
+      "wordCount": 20
+    },
+    {
+      "id": "u000738",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Admissibility. The condition under which an operation can legitimately be applied, rather than merely mechanically executed.",
+      "sourceAnchor": "src-p738",
+      "wordCount": 16
+    },
+    {
+      "id": "u000739",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Relational algebra. A family of operations on relations, such as selecting and combining tables. More broadly, the book uses the algebra of relations for combination rules that preserve dependencies.",
+      "sourceAnchor": "src-p739",
+      "wordCount": 29
+    },
+    {
+      "id": "u000740",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Alternative. A possible case that must not be arbitrarily combined with consequences of an incompatible case.",
+      "sourceAnchor": "src-p740",
+      "wordCount": 16
+    },
+    {
+      "id": "u000741",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Auditability. The ability to examine a result's premises, transformations and limits. Practical auditability includes the cost of that examination.",
+      "sourceAnchor": "src-p741",
+      "wordCount": 19
+    },
+    {
+      "id": "u000742",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Trusted base. The components and assumptions on which the validity of the entire system's verification depends.",
+      "sourceAnchor": "src-p742",
+      "wordCount": 16
+    },
+    {
+      "id": "u000743",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Bisimulation. A relation between states that can mutually match one another's observable steps in a transition model.",
+      "sourceAnchor": "src-p743",
+      "wordCount": 17
+    },
+    {
+      "id": "u000744",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "CEGAR. Refining an abstract model after discovering that an apparent counterexample is not concretely realizable.",
+      "sourceAnchor": "src-p744",
+      "wordCount": 15
+    },
+    {
+      "id": "u000745",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "CEGIS. Improving a candidate program using inputs on which it violates the specification.",
+      "sourceAnchor": "src-p745",
+      "wordCount": 13
+    },
+    {
+      "id": "u000746",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Certificate. An object that allows a claim to be verified within a declared model. It does not automatically certify the external truth of the premises.",
+      "sourceAnchor": "src-p746",
+      "wordCount": 25
+    },
+    {
+      "id": "u000747",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Circuit. A structure of operations and dependencies between values. In this book, the term does not require electronic components or binary values.",
+      "sourceAnchor": "src-p747",
+      "wordCount": 22
+    },
+    {
+      "id": "u000748",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Knowledge compilation. Transforming a representation to make certain queries or operations more efficient, at an explicit upfront cost.",
+      "sourceAnchor": "src-p748",
+      "wordCount": 18
+    },
+    {
+      "id": "u000749",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Compositionality. The ability to derive the whole's behavior from its components and the rules connecting them.",
+      "sourceAnchor": "src-p749",
+      "wordCount": 16
+    },
+    {
+      "id": "u000750",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Congruence. Equivalence preserved by relevant operations and contexts. It allows a component to be replaced without changing the observation of interest.",
+      "sourceAnchor": "src-p750",
+      "wordCount": 21
+    },
+    {
+      "id": "u000751",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Materialized content. The value produced by execution, such as an event table; it is not the same as the circuit source.",
+      "sourceAnchor": "src-p751",
+      "wordCount": 21
+    },
+    {
+      "id": "u000752",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Semantic contract. A specification of the relation between an operation's input and output, including necessary conditions.",
+      "sourceAnchor": "src-p752",
+      "wordCount": 16
+    },
+    {
+      "id": "u000753",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Counterexample. A concrete case that violates a general claim or distinguishes two unjustifiably merged states.",
+      "sourceAnchor": "src-p753",
+      "wordCount": 15
+    },
+    {
+      "id": "u000754",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Correlation. A dependency between values that cannot always be reconstructed from descriptions of each value separately.",
+      "sourceAnchor": "src-p754",
+      "wordCount": 16
+    },
+    {
+      "id": "u000755",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Abstract domain. The space of descriptions used by an analysis, together with the relevant operations and ordering.",
+      "sourceAnchor": "src-p755",
+      "wordCount": 17
+    },
+    {
+      "id": "u000756",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "E-graph. A shared structure for expressions merged through accepted equalities and their compatibility with context.",
+      "sourceAnchor": "src-p756",
+      "wordCount": 15
+    },
+    {
+      "id": "u000757",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Contextual equivalence. The impossibility of distinguishing two constructions through admissible continuations and observations.",
+      "sourceAnchor": "src-p757",
+      "wordCount": 13
+    },
+    {
+      "id": "u000758",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Epoch. A conceptual interval of computation with certain versions and assumptions fixed; changes can open a new epoch.",
+      "sourceAnchor": "src-p758",
+      "wordCount": 18
+    },
+    {
+      "id": "u000759",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Expander. The proposed component that develops and selects circuit continuations relative to a goal and available information.",
+      "sourceAnchor": "src-p759",
+      "wordCount": 17
+    },
+    {
+      "id": "u000760",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Frontier. The collection of values and relations through which a partial construction can interact with future operations.",
+      "sourceAnchor": "src-p760",
+      "wordCount": 17
+    },
+    {
+      "id": "u000761",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Exact guarantee. Preservation of the stated property without loss, within the specified domain and premises.",
+      "sourceAnchor": "src-p761",
+      "wordCount": 15
+    },
+    {
+      "id": "u000762",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Sufficient interface. A summary preserving everything required by relevant continuations and observations within the class analyzed.",
+      "sourceAnchor": "src-p762",
+      "wordCount": 16
+    },
+    {
+      "id": "u000763",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Abstract interpretation. Systematic computation with descriptions of states, usually to obtain sound approximations of behavior.",
+      "sourceAnchor": "src-p763",
+      "wordCount": 15
+    },
+    {
+      "id": "u000764",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Lattice. An ordered structure in which descriptions can be combined through operations corresponding to common bounds.",
+      "sourceAnchor": "src-p764",
+      "wordCount": 16
+    },
+    {
+      "id": "u000765",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Witness. A concrete example demonstrating the existence of a solution, such as a circuit and its verifiable execution.",
+      "sourceAnchor": "src-p765",
+      "wordCount": 18
+    },
+    {
+      "id": "u000766",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Monotonicity. Preserving an order when applying an operation. In information propagation, it enables reasoning about stable refinement.",
+      "sourceAnchor": "src-p766",
+      "wordCount": 17
+    },
+    {
+      "id": "u000767",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Precondition. A requirement on the input or context that makes an operation applicable or guarantees an output property.",
+      "sourceAnchor": "src-p767",
+      "wordCount": 18
+    },
+    {
+      "id": "u000768",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Provenance. The structure of sources and transformations on which a value or conclusion depends.",
+      "sourceAnchor": "src-p768",
+      "wordCount": 14
+    },
+    {
+      "id": "u000769",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Fixed point. A state in which reapplying the operation or rules under consideration no longer changes the description.",
+      "sourceAnchor": "src-p769",
+      "wordCount": 18
+    },
+    {
+      "id": "u000770",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Refinement. Introducing a distinction or narrowing the possibilities. It must be distinguished from revising a withdrawn premise.",
+      "sourceAnchor": "src-p770",
+      "wordCount": 17
+    },
+    {
+      "id": "u000771",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Semiring. A structure with two operations used for alternatives and composition, under algebraic laws suited to the intended computation.",
+      "sourceAnchor": "src-p771",
+      "wordCount": 19
+    },
+    {
+      "id": "u000772",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "SSA. A representation with a single assignment location for each static result name; it does not exclude program loops.",
+      "sourceAnchor": "src-p772",
+      "wordCount": 19
+    },
+    {
+      "id": "u000773",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Overapproximation. A description that includes all real possibilities and may include additional ones.",
+      "sourceAnchor": "src-p773",
+      "wordCount": 13
+    },
+    {
+      "id": "u000774",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Treewidth. A measure of a graph's structural width, relevant to certain decompositions and algorithms; it does not describe all difficulty on its own.",
+      "sourceAnchor": "src-p774",
+      "wordCount": 23
+    },
+    {
+      "id": "u000775",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Question-specific view. A temporary representation optimized for a goal, derived from a richer memory or source.",
+      "sourceAnchor": "src-p775",
+      "wordCount": 16
+    },
+    {
+      "id": "u000776",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "VSA/HDC. Families of high-dimensional distributed representations and operations for encoding, composition and retrieval.",
+      "sourceAnchor": "src-p776",
+      "wordCount": 14
+    },
+    {
+      "id": "u000777",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Widening. A technique for accelerating an analysis's stabilization through a broader approximation, trading off precision.",
+      "sourceAnchor": "src-p777",
+      "wordCount": 15
+    },
+    {
+      "id": "u000778",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "D. A publishable result record",
+      "sourceAnchor": "src-p778",
+      "wordCount": 5
+    },
+    {
+      "id": "u000779",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "The claim and its domain",
+      "sourceAnchor": "src-p779",
+      "wordCount": 5
+    },
+    {
+      "id": "u000780",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Every result of this program should begin with a bounded claim: which circuit family, operations, representation and questions are covered. Phrases such as “understands text” or “eliminates complexity” must be replaced with observable competencies and conditions.",
+      "sourceAnchor": "src-p780",
+      "wordCount": 36
+    },
+    {
+      "id": "u000781",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "What was supplied and what was learned",
+      "sourceAnchor": "src-p781",
+      "wordCount": 7
+    },
+    {
+      "id": "u000782",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The rules written by the researcher, data schemas, external components, predefined interfaces and learned contributions are specified. The cost of building the library and verifiers does not disappear from the explanation. Future researchers must be able to identify the contribution's exact location.",
+      "sourceAnchor": "src-p782",
+      "wordCount": 42
+    },
+    {
+      "id": "u000783",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "Proof and verification",
+      "sourceAnchor": "src-p783",
+      "wordCount": 3
+    },
+    {
+      "id": "u000784",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Mathematical proofs, exhaustive finite checks, empirical tests and exploratory observations are distinguished. Numerical results indicate what was measured and what was calculated by formula. An independent check must reduce the risk of repeating the same error, rather than merely rerun the same procedure.",
+      "sourceAnchor": "src-p784",
+      "wordCount": 43
+    },
+    {
+      "id": "u000785",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "The complete cost",
+      "sourceAnchor": "src-p785",
+      "wordCount": 3
+    },
+    {
+      "id": "u000786",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Learning, compilation, search, verification, memory and updating are reported. The number of expansions evaluated is useful, but does not substitute for time when expansion costs differ greatly. Input size must also be expressed in bits when numerical values grow.",
+      "sourceAnchor": "src-p786",
+      "wordCount": 39
+    },
+    {
+      "id": "u000787",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "Cases that did not work",
+      "sourceAnchor": "src-p787",
+      "wordCount": 5
+    },
+    {
+      "id": "u000788",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Failures, inconsistencies, unresolved cases and budget overruns are published. The report identifies whether the problem lies in interpretation, representation, selection, verification or expression. A well-localized negative result is more useful than a general promise without a diagnosis.",
+      "sourceAnchor": "src-p788",
+      "wordCount": 37
+    },
+    {
+      "id": "u000789",
+      "chapterId": "chapter-0010",
+      "kind": "h3",
+      "text": "What would change the conclusion",
+      "sourceAnchor": "src-p789",
+      "wordCount": 5
+    },
+    {
+      "id": "u000790",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The report ends with the evidence that would invalidate its claim and the experiments needed to extend it. This section is not a formality. It gives human and AI researchers a concrete way to continue without uncritically inheriting the authors' enthusiasm.",
+      "sourceAnchor": "src-p790",
+      "wordCount": 41
+    }
+  ]
+}

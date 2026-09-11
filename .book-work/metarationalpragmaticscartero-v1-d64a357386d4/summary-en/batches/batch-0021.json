@@ -1,0 +1,232 @@
+{
+  "batch": "batch-0021.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0022",
+  "chapterTitle": "Software and Protocol Verification",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000629",
+      "chapterId": "chapter-0022",
+      "kind": "h1",
+      "text": "Software and Protocol Verification",
+      "sourceAnchor": "src-p636",
+      "wordCount": 4
+    },
+    {
+      "id": "u000630",
+      "chapterId": "chapter-0022",
+      "kind": "h2",
+      "text": "Why This Is a Suitable First Domain",
+      "sourceAnchor": "src-p637",
+      "wordCount": 7
+    },
+    {
+      "id": "u000631",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "Software offers situations in which inputs can be controlled, executions reproduced and precise properties formulated. Not every software system is simple to model, but a bounded protocol family can separate representational difficulty from natural-language ambiguity. This is therefore the first application I would prioritize.",
+      "sourceAnchor": "src-p638",
+      "wordCount": 44
+    },
+    {
+      "id": "u000632",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "The commercial or engineering problem would be reducing repeated analysis costs without losing required properties. An experimental MRP system would begin with simple views of the program or log and activate more precise representations only where demonstrable insufficiencies arise.",
+      "sourceAnchor": "src-p639",
+      "wordCount": 39
+    },
+    {
+      "id": "u000633",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "The system need not immediately compete with every existing verification tool. An initial contribution may be better selection among known analyses or learning preprocessing steps that make a property accessible to an existing analyzer.",
+      "sourceAnchor": "src-p640",
+      "wordCount": 34
+    },
+    {
+      "id": "u000634",
+      "chapterId": "chapter-0022",
+      "kind": "h2",
+      "text": "Use Case: The Reservation Protocol",
+      "sourceAnchor": "src-p641",
+      "wordCount": 5
+    },
+    {
+      "id": "u000635",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "Consider a reservation service with requests, confirmations and cancellations. The agent receives an executable specification of the protocol version and labeled logs. The question is whether the resource is reserved at a given moment and which continuations can change its state.",
+      "sourceAnchor": "src-p642",
+      "wordCount": 41
+    },
+    {
+      "id": "u000636",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "A coarse interpreter preserves only the existence of a confirmation. It fails after cancellation. A second preserves the last operation but may fail if the protocol distinguishes canceling a request from canceling a confirmation. The necessary distinction depends on the exact rules, not operation names.",
+      "sourceAnchor": "src-p643",
+      "wordCount": 45
+    },
+    {
+      "id": "u000637",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "The agent can learn a state model with preconditions. Confirmation is valid only after an active request, while certain operations are ignored or produce an error. Contrastive tests must include invalid operations, different identities and histories longer than those used during induction.",
+      "sourceAnchor": "src-p644",
+      "wordCount": 42
+    },
+    {
+      "id": "u000638",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "For a finite protocol, the evaluator can explore every reachable model state. If inputs and states are unbounded, exhaustive proof must be replaced or supplemented by inductive arguments and tests. The size of the verified domain must be reported, rather than hidden behind “fully tested.”",
+      "sourceAnchor": "src-p645",
+      "wordCount": 45
+    },
+    {
+      "id": "u000639",
+      "chapterId": "chapter-0022",
+      "kind": "h2",
+      "text": "Use Case: Choosing the Abstract Domain",
+      "sourceAnchor": "src-p646",
+      "wordCount": 6
+    },
+    {
+      "id": "u000640",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "In numerical program analysis, the agent begins with intervals. A property cannot be proved because the analysis loses equality between two variables. Diagnosis identifies the necessary relation and activates a relational interpreter only for the relevant portion.",
+      "sourceAnchor": "src-p647",
+      "wordCount": 37
+    },
+    {
+      "id": "u000641",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "There are two learning levels here. The first learns to choose among domains already implemented. The second proposes new predicates or transformations, verified before use. The first is simpler and provides an important baseline for the second.",
+      "sourceAnchor": "src-p648",
+      "wordCount": 37
+    },
+    {
+      "id": "u000642",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "If a generator proposes an invariant, the verifier must check initialization, preservation through transitions and whether the invariant implies the required property. Being true on observed traces is insufficient. On a finite trace set, many generally false claims may appear invariant.",
+      "sourceAnchor": "src-p649",
+      "wordCount": 41
+    },
+    {
+      "id": "u000643",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "Abstract interpretation and CEGAR supply the technical precedents for this discipline [ Cousot1977 ; Clarke2000 ]. MRP's contribution should be sought in identifying and reusing distinctions, not renaming these methods.",
+      "sourceAnchor": "src-p650",
+      "wordCount": 27
+    },
+    {
+      "id": "u000644",
+      "chapterId": "chapter-0022",
+      "kind": "h2",
+      "text": "Use Case: Migrating an API",
+      "sourceAnchor": "src-p651",
+      "wordCount": 5
+    },
+    {
+      "id": "u000645",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "A new service version may change a validity condition or precedence rule. In a controlled experiment, the agent receives examples from both versions and must distinguish a rule change from an accidental fault.",
+      "sourceAnchor": "src-p652",
+      "wordCount": 33
+    },
+    {
+      "id": "u000646",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "The old library may remain useful for unchanged parts. The agent should create a new contract or version, rather than overwrite the past. Earlier results must remain reproducible relative to their version.",
+      "sourceAnchor": "src-p653",
+      "wordCount": 32
+    },
+    {
+      "id": "u000647",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "Value would come from reducing reanalysis work: reusing compatible interpreters, reconstructing only affected distinctions and generating tests that separate the versions. One success criterion is identifying the actual change without excessively increasing false alarms.",
+      "sourceAnchor": "src-p654",
+      "wordCount": 34
+    },
+    {
+      "id": "u000648",
+      "chapterId": "chapter-0022",
+      "kind": "h2",
+      "text": "What We Measure",
+      "sourceAnchor": "src-p655",
+      "wordCount": 3
+    },
+    {
+      "id": "u000649",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "The main measures would be correctly proved properties, missed errors, false alarms, total time, memory and the cost of constructing new interpreters. Time to the first valid counterexample may matter, but must not be used alone: a system may find one example quickly and miss other error classes.",
+      "sourceAnchor": "src-p656",
+      "wordCount": 48
+    },
+    {
+      "id": "u000650",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "Comparisons would include a single more precise analysis, a fixed combination of analyzers and a selector without induction. To isolate reuse, evaluation tasks must contain new structures, not copies of the same programs with renamed variables.",
+      "sourceAnchor": "src-p657",
+      "wordCount": 36
+    },
+    {
+      "id": "u000651",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "An informative negative result would show selection from a fixed library producing the entire advantage, with induction adding nothing after accounting for its cost. This result would favor a simpler technology. MRP would remain a useful analytical framework, but the adaptive-library hypothesis would be weakened within the tested domain.",
+      "sourceAnchor": "src-p658",
+      "wordCount": 49
+    },
+    {
+      "id": "u000652",
+      "chapterId": "chapter-0022",
+      "kind": "h2",
+      "text": "Adoption Conditions",
+      "sourceAnchor": "src-p659",
+      "wordCount": 2
+    },
+    {
+      "id": "u000653",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "I would consider the application promising where many related tasks exist, specifications are sufficiently clear and the verifier is more reliable than the generator. I would not begin with systems where the target continually changes, observability is very poor and evaluating an error costs more than manual analysis.",
+      "sourceAnchor": "src-p660",
+      "wordCount": 48
+    },
+    {
+      "id": "u000654",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "Initial integration should be advisory: suggest analyses, produce tests and explain which relation is missing. Only after independent evaluation could it automate decisions with effects. Immediate usefulness may consist in accelerating an engineer's work, without claiming a universal autonomous verifier.",
+      "sourceAnchor": "src-p661",
+      "wordCount": 40
+    },
+    {
+      "id": "u000655",
+      "chapterId": "chapter-0022",
+      "kind": "p",
+      "text": "CHAPTER 20",
+      "sourceAnchor": "src-p662",
+      "wordCount": 2
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+{
+  "batch": "batch-0013.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0013",
+  "chapterTitle": "Chapter 11. The Architecture of an Evidence-Based Evaluator",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000414",
+      "chapterId": "chapter-0013",
+      "kind": "h1",
+      "text": "Chapter 11. The Architecture of an Evidence-Based Evaluator",
+      "sourceAnchor": "src-p415",
+      "wordCount": 8
+    },
+    {
+      "id": "u000415",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "11.1. Preserving the Evaluated Object and Separating Operations",
+      "sourceAnchor": "src-p416",
+      "wordCount": 9
+    },
+    {
+      "id": "u000416",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The architecture proposed in this chapter is not an implemented, validated product. It is a research contract for a system using LLMs without turning their verdict into opaque authority. The central idea is that the model must construct verifiable objects: claims located in text, relations to prior work, explicit differences and questions that tools or experts can resolve.",
+      "sourceAnchor": "src-p417",
+      "wordCount": 58
+    },
+    {
+      "id": "u000417",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The system’s input must be retained as an immutable or versioned artifact. The original document, date, provenance and any transformations are needed for auditing. A hash can help identify the version but does not demonstrate the truth of its content or the fidelity of its interpretation. Cryptography can certify that we are examining the same bytes; it does not certify that we understand them correctly. This separation matters to avoid confusing technical integrity with epistemic validity.",
+      "sourceAnchor": "src-p418",
+      "wordCount": 76
+    },
+    {
+      "id": "u000418",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The first operation extracts claimed contributions. Every contribution must be linked to passages and a degree of explicitness. Some claims are directly stated; others are inferred by the evaluator. The categories must be marked differently. If the system invents a guarantee to make the proposal more coherent, it changes the evaluated object. A charitable interpretation may be retained as an alternative hypothesis, not silently substituted for the original text.",
+      "sourceAnchor": "src-p419",
+      "wordCount": 69
+    },
+    {
+      "id": "u000419",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The second operation constructs comparison questions. For each contribution, the system searches for prior work concerning mechanism, result, assumptions and resources. It must not assume that a single query captures all these dimensions. A contribution can have the same mechanism with a different guarantee, or the same guarantee with different assumptions. Search paths must reflect this structure and preserve unusual terms that may be decisive.",
+      "sourceAnchor": "src-p420",
+      "wordCount": 65
+    },
+    {
+      "id": "u000420",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The third operation compares retrieved sources with the candidate. The result is not yet a global score. It is a map of relations: the same claim, a narrower result, a different assumption, merely thematic prior work, contradiction or insufficient information. Relations must be accompanied by evidence. A relevant passage in a paper cannot be replaced by simply citing the paper’s title.",
+      "sourceAnchor": "src-p421",
+      "wordCount": 61
+    },
+    {
+      "id": "u000421",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The fourth operation attempts to verify differences. For programs, it may search for distinguishing inputs. For a proof, it may check a formalizable step. For an empirical proposal, it may identify the experiment that would separate its mechanism from prior work. Not every difference can be certified automatically. But the system can specify what kind of evidence would be needed and which part of the verdict remains conditional.",
+      "sourceAnchor": "src-p422",
+      "wordCount": 68
+    },
+    {
+      "id": "u000422",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Only then comes aggregation. A score, if needed for prioritization, must be derived from relations and an explicit policy. Users must be able to see whether a low score comes from strong prior work or missing information. These situations should not receive the same operational label. “Anticipated” and “undetermined” require different actions.",
+      "sourceAnchor": "src-p423",
+      "wordCount": 52
+    },
+    {
+      "id": "u000423",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "An output format can be described through a few fields without imposing an exhaustive ontology.",
+      "sourceAnchor": "src-p424",
+      "wordCount": 15
+    },
+    {
+      "id": "u000424",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Field",
+      "sourceAnchor": "src-p425",
+      "wordCount": 1
+    },
+    {
+      "id": "u000425",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Required Verifiable Content",
+      "sourceAnchor": "src-p426",
+      "wordCount": 3
+    },
+    {
+      "id": "u000426",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Contribution",
+      "sourceAnchor": "src-p427",
+      "wordCount": 1
+    },
+    {
+      "id": "u000427",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The evaluated claim and the original passages supporting it.",
+      "sourceAnchor": "src-p428",
+      "wordCount": 9
+    },
+    {
+      "id": "u000428",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Reference",
+      "sourceAnchor": "src-p429",
+      "wordCount": 1
+    },
+    {
+      "id": "u000429",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The corpus, date and criterion under which novelty is judged.",
+      "sourceAnchor": "src-p430",
+      "wordCount": 10
+    },
+    {
+      "id": "u000430",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Prior Work",
+      "sourceAnchor": "src-p431",
+      "wordCount": 2
+    },
+    {
+      "id": "u000431",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Related sources, relevant passages and search limitations.",
+      "sourceAnchor": "src-p432",
+      "wordCount": 7
+    },
+    {
+      "id": "u000432",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Difference",
+      "sourceAnchor": "src-p433",
+      "wordCount": 1
+    },
+    {
+      "id": "u000433",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "What remains unanticipated and under which interpretation.",
+      "sourceAnchor": "src-p434",
+      "wordCount": 7
+    },
+    {
+      "id": "u000434",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Witness",
+      "sourceAnchor": "src-p435",
+      "wordCount": 1
+    },
+    {
+      "id": "u000435",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Example, calculation, counterexample or verification procedure.",
+      "sourceAnchor": "src-p436",
+      "wordCount": 6
+    },
+    {
+      "id": "u000436",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Verdict",
+      "sourceAnchor": "src-p437",
+      "wordCount": 1
+    },
+    {
+      "id": "u000437",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Conditional decision, uncertainty and the reason for any abstention.",
+      "sourceAnchor": "src-p438",
+      "wordCount": 9
+    },
+    {
+      "id": "u000438",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "This contract can be implemented as a graph of operations with explicit inputs and outputs. Each node consumes versioned artifacts and produces a result with provenance. If a source changes or new prior work appears, only dependent conclusions need be invalidated. We need not claim that the LLM’s entire internal reasoning is transparent. We can demand transparency about the data, transformations and external evidence invoked by the verdict.",
+      "sourceAnchor": "src-p440",
+      "wordCount": 68
+    },
+    {
+      "id": "u000439",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "11.2. Diverse Retrieval, Precise Comparison and Return to the Source",
+      "sourceAnchor": "src-p441",
+      "wordCount": 11
+    },
+    {
+      "id": "u000440",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Retrieval-augmented generation architectures combine information in the model with documents retrieved at use time. Lewis and colleagues demonstrated the usefulness of such a combination in knowledge-intensive language tasks. This idea offers a principle for access to prior work, not a guarantee that retrieved sources are complete or the novelty relation is evaluated correctly. [ R14 ]",
+      "sourceAnchor": "src-p442",
+      "wordCount": 54
+    },
+    {
+      "id": "u000441",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "A lexical index is good for exact terms, formulas, acronyms and rare expressions. A semantic index can retrieve related descriptions worded differently. Multivector representations can preserve finer interactions between parts of text. ColBERT, by Khattab and Zaharia, is an example of retrieval with late interaction between token representations. Using such a technique does not mean that novelty differences are automatically preserved; that must be evaluated on the concrete task. [ R15 ]",
+      "sourceAnchor": "src-p443",
+      "wordCount": 70
+    },
+    {
+      "id": "u000442",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The proposed strategy is justified retrieval diversity. We search for both the topic and the removed assumption, both the mechanism and the distinguishing consequence. We retain results that are close on different dimensions. A global top-k can eliminate important prior work if it is lexically distant but semantically decisive. We can allocate separate budgets to search paths and then deduplicate, without assuming that a single similarity score suffices.",
+      "sourceAnchor": "src-p444",
+      "wordCount": 68
+    },
+    {
+      "id": "u000443",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The final comparison must use passages complete enough to include the conditions. An abstract may state a guarantee without listing every assumption. A sentence in the conclusion may be broader than the demonstrated result. The system must be able to follow internal references and check where the claim is justified. This capability can be costly; separating initial filtering from in-depth examination is therefore useful.",
+      "sourceAnchor": "src-p445",
+      "wordCount": 64
+    },
+    {
+      "id": "u000444",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Summaries must be treated as views, not permanently authoritative replacements for documents. A summary is useful for navigation and identifying questions. When the verdict depends on an exception, negation or quantifier, the system must return to the source. An escalation rule can require original access when two possible interpretations would change the decision. This rule can be tested through minimal pairs.",
+      "sourceAnchor": "src-p446",
+      "wordCount": 61
+    },
+    {
+      "id": "u000445",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "A comparator can produce an internal table of assumptions and guarantees, but must allow the value “unspecified.” Automatically filling gaps with typical assumptions can create false equivalence. If prior work does not state a property in the available passages, we cannot assume either that it has or lacks that property. Relevant context must be sought or uncertainty marked. Absence of a claim from an excerpt is not identical to its negation in the full paper.",
+      "sourceAnchor": "src-p447",
+      "wordCount": 75
+    },
+    {
+      "id": "u000446",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "An adversarial verifier can attempt to refute each proposed relation. If the model says A anticipates B, the verifier searches for a difference. If it says B is new, the verifier searches for prior work or an equivalent interpretation. The roles must produce evidence, not just opinions. Agent count is no substitute for evidence independence. Three agents using the same mistaken interpretation can reinforce the error.",
+      "sourceAnchor": "src-p448",
+      "wordCount": 66
+    },
+    {
+      "id": "u000447",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The architecture must also handle documents as potentially hostile data. An article may contain instructions or text attempting to influence the evaluator. These must not be confused with application instructions. Separating analyzed content from tool control is an engineering requirement. In a research system, compromising this separation can affect not just security but experimental validity: the model is no longer answering the same task.",
+      "sourceAnchor": "src-p449",
+      "wordCount": 64
+    },
+    {
+      "id": "u000448",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "11.3. Uncertainty, Audit and Criteria for Accepting the Architecture",
+      "sourceAnchor": "src-p450",
+      "wordCount": 10
+    },
+    {
+      "id": "u000449",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "An evidence-based system must represent uncertainty by component. It may be certain that two formal expressions differ, uncertain that translating the text into expressions was faithful and very uncertain that the library covers all prior work. A single confidence percentage conceals this structure. It is more useful to distinguish uncertainty of interpretation, retrieval, comparison and validation.",
+      "sourceAnchor": "src-p451",
+      "wordCount": 56
+    },
+    {
+      "id": "u000450",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Not all these uncertainties need be well-calibrated probabilities from the outset. They can be operational states accompanied by reasons: insufficient sources, alternative interpretations, an unverified witness or an incomplete corpus. What matters is that labels lead to appropriate actions. Missing prior work may call for further search; an ambiguous translation may call for author clarification; a verified formal difference may proceed to value assessment.",
+      "sourceAnchor": "src-p452",
+      "wordCount": 64
+    },
+    {
+      "id": "u000451",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "An audit must preserve the decision path. Which model version was used? Which prompt? Which documents were accessed? Which queries were executed? Which passages supported the conclusion? Which operations were repeated? This information enables reproduction and diagnosis. It must not be confused with guaranteed exact reproduction of an external service that may change. The report must specify what can be rerun and what depends on the provider’s infrastructure.",
+      "sourceAnchor": "src-p453",
+      "wordCount": 68
+    },
+    {
+      "id": "u000452",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Architecture acceptance criteria must be formulated before full implementation. For example, in the finite laboratory, semantically equivalent transformations should not change the verdict beyond the preregistered threshold. In cases with supplied prior work, anticipation relations must be supported by correct passages. On deliberately unidentifiable cases, the system must abstain or formulate a conditional verdict. On the real stream, rejection audits must estimate the rate of lost contributions.",
+      "sourceAnchor": "src-p454",
+      "wordCount": 67
+    },
+    {
+      "id": "u000453",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The architecture would be refuted in its current form if it adds substantial cost without reducing decisive errors, if evidence is frequently fictitious or if access to the original does not correct compression-induced losses. It would need revision if the ambiguity detector escalates almost every case or if witness verification costs more than direct human evaluation. A technical proposal does not become good merely by being more complex than a simple prompt.",
+      "sourceAnchor": "src-p455",
+      "wordCount": 72
+    },
+    {
+      "id": "u000454",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "A minimal architecture might actually be better: two independent contribution extractions, diverse search, passage-level comparison and output separating prior work from uncertainty. Additional complexity must be justified through ablation experiments. If removing an agent does not change results, its role may be redundant. If a simple quantifier-preservation rule resolves many errors, it may be worth more than an expensive evaluator ensemble.",
+      "sourceAnchor": "src-p456",
+      "wordCount": 61
+    },
+    {
+      "id": "u000455",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The final principle is that the system must be correctable. A new source must be able to change the verdict. An interpretation error must be locatable. A lost difference must be recoverable through access to the original. These properties do not guarantee discovery of every new idea, but reduce the risk that a fluent, familiar verdict ends the investigation.",
+      "sourceAnchor": "src-p457",
+      "wordCount": 59
+    }
+  ]
+}

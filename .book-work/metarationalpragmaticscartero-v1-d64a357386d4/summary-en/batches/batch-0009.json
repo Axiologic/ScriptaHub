@@ -1,0 +1,216 @@
+{
+  "batch": "batch-0009.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0010",
+  "chapterTitle": "Prediction and Intervention",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000252",
+      "chapterId": "chapter-0010",
+      "kind": "h1",
+      "text": "Prediction and Intervention",
+      "sourceAnchor": "src-p256",
+      "wordCount": 3
+    },
+    {
+      "id": "u000253",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "Beyond Visible States",
+      "sourceAnchor": "src-p257",
+      "wordCount": 3
+    },
+    {
+      "id": "u000254",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "In a probabilistic system, two histories may produce different outcomes when the same test is repeated without necessarily representing different states. The difference may arise from randomness. The equivalence criterion must compare distributions, not a single observation.",
+      "sourceAnchor": "src-p258",
+      "wordCount": 37
+    },
+    {
+      "id": "u000255",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "We will write Distribution(test, h) for the distribution of test outcomes after history h. Two histories are predictively equivalent relative to T if these distributions are equal for every test in T. Exact equality is a theoretical object; experimentally, we estimate distributions from samples and report uncertainty.",
+      "sourceAnchor": "src-p259",
+      "wordCount": 48
+    },
+    {
+      "id": "u000256",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "An interactive test includes how actions are chosen. If the first observation determines the next action, the test is an experimental policy, not merely a fixed list. Two systems can be compared only if we use the same test specification and relevant starting conditions.",
+      "sourceAnchor": "src-p260",
+      "wordCount": 44
+    },
+    {
+      "id": "u000257",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "Predictive Representations",
+      "sourceAnchor": "src-p261",
+      "wordCount": 2
+    },
+    {
+      "id": "u000258",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Predictive state representations, or PSRs, describe state through predictions about the outcomes of tests executable on the system. Singh, James and Rudary develop this idea using a system-dynamics matrix whose rows correspond to histories and columns to tests [ Singh2004 ].",
+      "sourceAnchor": "src-p262",
+      "wordCount": 39
+    },
+    {
+      "id": "u000259",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "An example makes the intuition clear. Instead of storing a hidden label such as “latent mode 7,” we can store the probability that a simple check succeeds, the probability that two successive operations succeed and the probability that a reset restores functioning. These coordinates are meaningful because they refer to observations that can be collected.",
+      "sourceAnchor": "src-p263",
+      "wordCount": 55
+    },
+    {
+      "id": "u000260",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Not every list of predictions is a sufficient PSR. There must be a rule for calculating relevant predictions from it and updating it after actions and observations. Choosing a few intuitive questions does not ensure this property.",
+      "sourceAnchor": "src-p264",
+      "wordCount": 37
+    },
+    {
+      "id": "u000261",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "Rank Without Mystery",
+      "sourceAnchor": "src-p265",
+      "wordCount": 3
+    },
+    {
+      "id": "u000262",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A matrix is a numerical table. Its rank measures how many independent columns or rows are needed to describe the table's linear information. If some predictions can be obtained as linear combinations of others, they need not all be stored as independent dimensions.",
+      "sourceAnchor": "src-p266",
+      "wordCount": 43
+    },
+    {
+      "id": "u000263",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "This offers possible compression for suitably structured systems. However, estimating a low rank from finite data does not prove that the real system has exactly that rank. Noise may make columns appear independent, while insufficient tests can hide differences. A useful predictive representation requires both a structural hypothesis and a validation procedure.",
+      "sourceAnchor": "src-p267",
+      "wordCount": 52
+    },
+    {
+      "id": "u000264",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The coefficients of a linear combination must not automatically be interpreted as probabilities. They may be negative, although the final prediction must remain a valid probability. Moreover, updating after observing an event usually involves normalization. Linear compression of predictions does not mean the entire agent becomes a simple average of models.",
+      "sourceAnchor": "src-p268",
+      "wordCount": 51
+    },
+    {
+      "id": "u000265",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "Observing Is Not Intervening",
+      "sourceAnchor": "src-p269",
+      "wordCount": 4
+    },
+    {
+      "id": "u000266",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Consider two models with binary variables. In the first, a hidden variable Z determines both X and Y. In the second, Z determines X and X determines Y. Suppose Z is zero or one with equal probabilities and every link copies the value. In observational data from both models, we always see X = Y.",
+      "sourceAnchor": "src-p270",
+      "wordCount": 54
+    },
+    {
+      "id": "u000267",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "If we intervene and fix X at zero, the difference emerges. In the first model, Y continues to copy Z and is one in half the cases. In the second, Y copies X and becomes zero. The same observational distribution can be compatible with different intervention effects.",
+      "sourceAnchor": "src-p271",
+      "wordCount": 47
+    },
+    {
+      "id": "u000268",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Causal formalism centers on this separation between conditioning, intervention and counterfactual questions [ Pearl2018 ]. For MRP, the practical consequence is that an interpreter trained on correlations does not automatically gain authority to predict the effects of any action. It needs causal assumptions or suitable experimental data.",
+      "sourceAnchor": "src-p272",
+      "wordCount": 45
+    },
+    {
+      "id": "u000269",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A PSR of a controlled system can predict action tests under its identification and coverage conditions. This does not amount to solving every causal question about hidden mechanisms or unobserved counterfactual worlds. Exactly which interventions were available and which prediction class is supported must be specified.",
+      "sourceAnchor": "src-p273",
+      "wordCount": 46
+    },
+    {
+      "id": "u000270",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "Identifiability and Gaps",
+      "sourceAnchor": "src-p274",
+      "wordCount": 3
+    },
+    {
+      "id": "u000271",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A model is identifiable for a question if the available data and assumptions determine the relevant answer. Two models explaining every observation may still differ regarding an untested action. In this situation, refining the internal representation does not itself produce new information about the world.",
+      "sourceAnchor": "src-p275",
+      "wordCount": 45
+    },
+    {
+      "id": "u000272",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The agent must choose between experimentation, explicitly assuming a model or abstaining. Generating an additional explanation is not a fourth route to acquiring information. This limit prevents MRP from becoming a rhetoric of omniscience through internal reorganization.",
+      "sourceAnchor": "src-p276",
+      "wordCount": 37
+    },
+    {
+      "id": "u000273",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "Role in the Architecture",
+      "sourceAnchor": "src-p277",
+      "wordCount": 4
+    },
+    {
+      "id": "u000274",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Predictive interpreters can supply verifiable coordinates, detect collisions and suggest tests that would separate candidate models. A metacontroller can decide whether the information's benefit justifies the experiment. A verifier can check whether the final claim exceeds the domain supported by the data.",
+      "sourceAnchor": "src-p278",
+      "wordCount": 42
+    },
+    {
+      "id": "u000275",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "MRP can thus connect representation with action without reducing every form of understanding to next-symbol prediction. The relevant prediction may concern a protocol, an intervention, a documentary answer or a rule's consequence. Specifying this target is part of the problem, not a detail that can remain implicit.",
+      "sourceAnchor": "src-p279",
+      "wordCount": 47
+    },
+    {
+      "id": "u000276",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "CHAPTER 08",
+      "sourceAnchor": "src-p280",
+      "wordCount": 2
+    }
+  ]
+}

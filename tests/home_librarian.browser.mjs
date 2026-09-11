@@ -14,6 +14,12 @@ try{
  for(const [width,height] of [[1280,720],[1366,768],[1440,900]]){await c.size(width,height);await check('initial desktop fits viewport '+width+'x'+height,'document.documentElement.scrollHeight<=innerHeight&&document.documentElement.scrollWidth<=innerWidth');}
  await c.size(1366,768);
  await check('featured copy aligns with cover top and bottom','(()=>{const cover=document.querySelector(".mission-featured-cover").getBoundingClientRect(),top=document.querySelector(".featured-book-copy>.eyebrow").getBoundingClientRect(),bottom=document.querySelector(".featured-book-actions a").getBoundingClientRect();return Math.abs(top.top-cover.top)<2&&Math.abs(bottom.bottom-cover.bottom)<2})()');
+ await check('Next Book is a borderless carousel control outside the featured surface','(()=>{const n=document.querySelector("[data-featured-next]"),r=n.getBoundingClientRect(),strip=document.querySelector(".home-feature-strip").getBoundingClientRect(),css=getComputedStyle(n);return n.getAttribute("aria-label")==="Next Book"&&n.textContent.trim()==="›"&&r.width<=34&&r.left>strip.right&&css.borderTopWidth==="0px"&&css.backgroundColor==="rgba(0, 0, 0, 0)"})()');
+ await check('View Book aligns with the librarian controls','(()=>{const view=document.querySelector(".featured-book-actions a").getBoundingClientRect(),choice=document.querySelector(".mascot-choice").getBoundingClientRect();return Math.abs(view.right-choice.right)<2})()');
+ const initialFeatured=await c.evaluate('document.querySelector("[data-mission-book]").dataset.bookId');
+ await c.evaluate('document.querySelector("[data-featured-next]").click()');
+ await c.wait(`document.querySelector("[data-mission-book]").dataset.bookId!==${JSON.stringify(initialFeatured)}`);
+ await check('Next Book advances cover, copy and destination together','(()=>{const icon=document.querySelector("[data-mission-book]"),copy=document.querySelector("[data-featured-book] [data-book-view=featured]"),whole=document.querySelector("[data-featured-card-link]");return icon.dataset.bookId===copy.dataset.bookId&&whole.href===document.querySelector(".featured-book-actions a").href})()');
  await c.capture(out+'/screenshots/home-desktop.png');
  await c.evaluate('document.querySelector("[data-mascot-ask]").click();document.querySelector("#mascot-query").value="AI workflows and research"');
  await check('input replaces choices and has close control','[...document.querySelectorAll(".mascot-choice")].every(e=>getComputedStyle(e).display==="none")&&document.querySelector("[data-mascot-cancel]")!==null');

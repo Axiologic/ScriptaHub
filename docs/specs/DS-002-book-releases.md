@@ -127,6 +127,12 @@ The new source document is retained under the new edition's `source/` directory.
 Each history record has a `covers` map to its own immutable images in
 `edition-files/<edition-id>/covers/`. The history displays these covers;
 publication replaces the active book and catalogue images, not archived art.
+The current edition's cover snapshots must match the active cover used by its
+book page and catalogue card. A current-artwork correction refreshes only that
+edition's snapshots; older edition artwork remains immutable. Every edition
+also records `contributors`. Explicit credits take precedence; when none are
+provided, use the `axiologic-research` author with the `scripta-initial`
+statement from `docs/contributors.json`.
 
 Only the newly completed reader languages enter the current manifest. Other
 previous translations remain available through their historical edition and

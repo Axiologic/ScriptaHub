@@ -1,0 +1,69 @@
+A Computation Worth Performing
+Assume a hidden state with two equally probable values. A correct answer is worth one unit and an incorrect answer zero. Without information, the best probability of success is 0.5. A perfect test costs 0.1 units on the same utility scale.
+After the test, success is certain and net value is 0.9. The gain over answering immediately is 0.4. The test is worthwhile in the given model. If it cost 0.6, executing it would reduce total utility. Obtaining the same information may be rational in one application and irrational in another.
+In practice, tests are imperfect and their value is unknown. The agent must estimate the probability of outcomes and their effects on the decision. Estimating value is itself a computation and must therefore have a budget.
+Why Myopic Selection Can Fail
+Consider two hidden, independent and equally probable bits. The task is to answer whether they differ. Without observations, maximum accuracy is 0.5. Learning one bit does not improve this accuracy: the other remains unknown. Learning both raises it to one.
+If each observation costs 0.1, a policy evaluating only individual operations will reject both: each costs something without immediately improving the decision. A policy evaluating the pair sees a net gain of 0.3. This is a calculated example, not a simulation result.
+Interpreter composition can produce precisely this complementarity. One operation identifies entities and another relations; separately, neither answers the question. An MRP controller should therefore be tested with different planning horizons. A local rule must not be assumed to resolve every dependency.
+Avoiding Meta-Regress
+If every choice requires another choice about how to choose, the architecture never stops. The engineering solution is not an infinitely wise interpreter but a bounded controller: a maximum number of evaluations, an approximate policy and a stopping rule.
+Initially, selection may combine precondition checking with an empirical estimate of success on task families. Later, the policy can be learned. Even then, it must be compared with a simple rule. Controller complexity is justified only if it produces a measurable advantage.
+Recent research also applies the rationality of metacomputation to language models [
+DeSabbata2025
+]. Merely selecting between a quick answer and an expensive one is therefore not MRP's distinctive contribution. The candidate contribution is the connection between selection, representation diagnosis and the accumulation of new procedures.
+The Reuse Horizon
+Building an interpreter may be uneconomical for the current task but economical for many future tasks. This introduces an amortization horizon. Estimated value depends on how often the problem will recur, rule stability and verification cost.
+A hypothetical example: induction and verification together cost 1,000 milliseconds. The old solution costs 40 milliseconds per task. The new one costs eight, plus two for selection. Savings are 30 milliseconds per use. The investment pays off after 34 uses if all other conditions remain identical.
+It is insufficient to report that the new interpreter executes five times faster. Construction cost, reuse rate and cases where rule changes invalidate it must be included. A library's advantage concerns its lifetime, not merely its most recent call.
+Normative Limits of Optimization
+A computation policy can maximize the utility supplied, but does not decide by itself which objectives are legitimate. The cost of an error to a person cannot be tacitly introduced as a number chosen by the developer. Some applications require constraints that cannot be changed merely to improve an average score.
+MRP should distinguish the technical objective, approved limits and preferences still needing clarification. In a context with important consequences, abstention and human intervention may be valid actions. A meta-rational architecture does not become responsible merely by rigorously optimizing its own criterion.
+CHAPTER 12
+Memory and Transfer
+Three Memories with Different Roles
+The proposed architecture would separate episodic memory, representation memory and the interpreter library. Episodes preserve what was observed. Representations preserve the results of transformations. The library preserves procedures that can reconstruct, query or modify those results.
+This separation does not require three physical databases. It requires being able to answer three questions: “which information was available?”, “how was it compressed?” and “which operation produced this conclusion?” Without these answers, a representation error can easily be confused with an observation error.
+Complete raw memory is often expensive or inappropriate. Yet irreversible compression limits reinterpretation. MRP should treat retention policy as an explicit choice, with classes of recoverable and unrecoverable information, rather than an infrastructure detail.
+Provenance Without Excessive Promises
+A result should be linked to its input version, interpreter, parameters and the activity that produced it. W3C's PROV model supplies a vocabulary for entities, activities, agents and derivations [
+W3C2013
+]. It can inform log interoperability without requiring every internal component to use the same representation.
+Provenance does not guarantee truth. A false claim may have a perfectly documented history. What we gain is the ability to inspect dependencies, attribute transformations and determine which results must be reconsidered after a change.
+Two documents repeating the same source do not automatically constitute two independent pieces of evidence. A provenance library can reveal their common dependency. Confidence aggregation must account for it, rather than simply count references.
+Transfer as a Test of Abstraction
+There are at least three levels of reuse. Rerunning the same program on different names is a modest level. Reusing a composition on a new structure with different rule combinations is stronger. Transfer to a domain with different observations and validity conditions is harder still.
+An interpreter selecting the last operation may work for both a permission and an updatable preference. It does not follow that it works for a bank balance, where all relevant operations may contribute cumulatively. Superficial similarity between logs does not justify transferring the rule.
+An application contract should specify this difference: is the property determined by the last operation or by aggregating operations? This is itself a possible meta-level of learning. The agent can learn which interpreter family suits a class of processes.
+Consolidation, Forgetting and Migration
+Adding interpreters increases capability but also search cost. Consolidation can merge redundant definitions, introduce parameters and retire inferior variants. Retirement must not erase the history of results depending on them. An old version may remain necessary to reproduce an analysis.
+A retention criterion can combine recent use, estimated value, uniqueness of proven properties and reconstruction cost. This criterion must be tested for catastrophic forgetting: losing a rare but important capability is not automatically justified by its low frequency.
+Migrating a representation requires an explicit transformation. If the new interpreter needs event order and the old memory does not preserve it, migration cannot be complete. The system must mark reconstructed, estimated and unknown segments.
+Long-Term Learning
+An adaptive library's performance must be tracked over time. A learning curve can measure average cost per task as the library grows. A retention curve measures whether old tasks remain solvable. A transfer curve measures advantages on new families.
+These curves may have different shapes. The agent may become faster on familiar tasks but weaker on new ones because the selector favors routine excessively. Or it may generalize better while consuming unsustainable memory. MRP must be evaluated as a dynamic system, not through a single number after training.
+On this view, accumulated knowledge would be more than a repository of propositions. It would be a collection of procedures, results, conditions and evidence enabling the agent to reconstruct a distinction when it becomes relevant. The usefulness of this organization remains an empirical hypothesis, but its components are precise enough to implement.
+PART IV  /  Forms of Knowledge
+CHAPTER 13
+Pragmatic Distances
+Closeness Relative to a Question
+Two descriptions can use very similar words yet require opposite actions. “Permitted until Friday” and “prohibited until Friday” are lexically close but different for an access decision. Conversely, very different formulations can describe the same rule. A distance between texts is not automatically a distance between their consequences.
+For MRP, the starting question is: how different are the results of relevant tests for two histories? This establishes both the distance's purpose and its limits. We are not defining a universal similarity of things, but similarity relative to a declared family of experiments.
+Total Variation
+For two discrete distributions P and Q over the same outcomes, total variation distance is half the sum of absolute differences between their probabilities. It is also the greatest difference between probabilities assigned to the same event.
+TV(P, Q) = 0.5 × the sum, over outcomes, of |P(outcome) − Q(outcome)|.
+If P and Q are distributions of a binary answer, the distance is the absolute difference between the probabilities of answering “yes.” Predictions of 0.2 and 0.7 are at distance 0.5. If they are identical for every outcome, the distance is zero.
+Now fix a test family T. For each test, the two histories induce two distributions over the outcome. The proposed pragmatic distance is the greatest difference between these distributions across the family's tests.
+dT(h1, h2) = the supremum, for t in T, of TV(Pt(. | h1), Pt(. | h2)).
+The supremum is the least upper bound. For a finite test family, it is simply the maximum. If a test includes actions, the distributions concern executing that test within the declared model, not observational conditionings tacitly interpreted as interventions.
+Why It Is a Pseudometric
+The distance is nonnegative and symmetric. It is zero between a history and itself. The triangle inequality follows from the corresponding inequality for each test, followed by taking the supremum. The mathematical appendix provides a step-by-step proof.
+However, distinct histories can have zero distance: family T may not distinguish them. We therefore call the function a pseudometric. Grouping all histories at zero distance yields a metric on the resulting classes. This construction connects distance with the equivalences in chapter 5.
+Behavioral metrics and bisimulation-based distances have important precedents in the study of decision processes [
+Ferns2004
+]. The distance formulated here must not be confused with all those metrics: the choice of tests, rewards and horizon changes the mathematical object.
+Approximation Does Not Automatically Produce Classes
+In practice, we often require not exactly zero distance but a difference below a threshold. A trap appears: the relation “distance is at most the threshold” is not generally transitive.
+For three binary distributions with probabilities 0.00, 0.06 and 0.12, the first two are close at a threshold of 0.08, as are the last two. The first and last are not. If an algorithm merges every close pair through chains, it can produce a class whose members differ far more than the original threshold.
+Approximate clustering therefore requires an additional criterion: maximum class diameter, a center with a controlled radius or an explicit bound on aggregation error. The statement “we represent all similar states through the same concept” is incomplete without this criterion.
+When Distance Controls the Decision

@@ -1,0 +1,296 @@
+{
+  "batch": "batch-0004.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0004",
+  "chapterTitle": "Chapter 2. Probability, Information and Surprise",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000126",
+      "chapterId": "chapter-0004",
+      "kind": "h1",
+      "text": "Chapter 2. Probability, Information and Surprise",
+      "sourceAnchor": "src-p126",
+      "wordCount": 6
+    },
+    {
+      "id": "u000127",
+      "chapterId": "chapter-0004",
+      "kind": "h2",
+      "text": "2.1. Why Low Probability Does Not Mean High Novelty",
+      "sourceAnchor": "src-p127",
+      "wordCount": 10
+    },
+    {
+      "id": "u000128",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "A probabilistic model assigns weights to possible outcomes. If we have a distribution p over a vocabulary, p(w) describes the probability of a symbol w under the modeled conditions. In a language model, the distribution is conditioned on context: the probability of a word after “the capital of France is” differs from its probability across the whole corpus. This elementary difference is crucial. An expression’s global frequency does not by itself determine its probability in a question comparing two ideas.",
+      "sourceAnchor": "src-p128",
+      "wordCount": 81
+    },
+    {
+      "id": "u000129",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "For a sequence of symbols, the chain rule allows the joint probability to be factored into a product of conditional probabilities. This factorization is not a theory of meaning; it is a probabilistic identity. An autoregressive implementation attempts to estimate each factor using the available prefix. [ R02 , R03 ]",
+      "sourceAnchor": "src-p129",
+      "wordCount": 48
+    },
+    {
+      "id": "u000130",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "p ( x 1 , … , x T ) = ∏ i = 1 T p ( x i ∣ x 1 , … , x i − 1 ) .",
+      "sourceAnchor": "src-p130",
+      "wordCount": 16
+    },
+    {
+      "id": "u000131",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "A long sequence can have very low probability even if every step is banal. If each choice has probability one half, a sequence of one hundred choices has probability 2 to the power minus one hundred. The improbability of the entire sequence does not imply that it contains a discovery. This is why a document’s raw surprisal cannot be compared without controlling length and the granularity of representation.",
+      "sourceAnchor": "src-p131",
+      "wordCount": 68
+    },
+    {
+      "id": "u000132",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The informational surprisal of an outcome is the negative logarithm of its probability. Choosing a base-two logarithm expresses information in bits. An outcome with probability one half has one bit of surprisal; one with probability one thousand in a million has approximately ten bits. These values describe rarity relative to the chosen distribution, not the outcome’s epistemic or moral importance. Shannon formulated communication theory precisely by separating the transmission problem from the semantic interpretation of messages. [ R02 ]",
+      "sourceAnchor": "src-p132",
+      "wordCount": 77
+    },
+    {
+      "id": "u000133",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "s ( x ) = − log 2 p ( x ) .",
+      "sourceAnchor": "src-p133",
+      "wordCount": 6
+    },
+    {
+      "id": "u000134",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "A random identifier can have high surprisal without saying anything interesting about the world. A simple equation can have low textual surprisal and important consequences. Moreover, a false statement or typographical error can be improbable. A detector based only on surprisal would therefore also favor noise. Eliminating noise requires additional criteria; at that point, the detector is no longer measuring probability alone.",
+      "sourceAnchor": "src-p134",
+      "wordCount": 62
+    },
+    {
+      "id": "u000135",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Perplexity is the exponential of the average logarithmic loss over symbols. It partially normalizes the effect of length and is useful for evaluating prediction. But comparisons between models with different tokenizations require caution: an average over tokens does not have the same effective unit when one model splits a word into two parts and another into five. In addition, perplexity depends on the context under which it was calculated. Saying that an idea has “low perplexity” without specifying the text, tokenization and conditioning is insufficient for a reproducible analysis.",
+      "sourceAnchor": "src-p135",
+      "wordCount": 89
+    },
+    {
+      "id": "u000136",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The novelty problem is often classificatory rather than generative. We want the probability of a label or relation after seeing the contribution and prior work. This is a different distribution from the contribution’s probability in ordinary language. A text can be highly improbable yet correctly classified as incoherent. A highly predictable text can contain a small but detectable difference relative to explicit prior work.",
+      "sourceAnchor": "src-p136",
+      "wordCount": 64
+    },
+    {
+      "id": "u000137",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "D θ ( x , K , C ) = P θ ( Y = 1 ∣ x , K , C ) .",
+      "sourceAnchor": "src-p137",
+      "wordCount": 12
+    },
+    {
+      "id": "u000138",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "G θ ( x ) = P θ ( X = x ∣ prompt de generare ) .",
+      "sourceAnchor": "src-p138",
+      "wordCount": 10
+    },
+    {
+      "id": "u000139",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The two expressions define different probabilistic objects that cannot be substituted for one another. Their values might coincide accidentally; that coincidence would not make the tasks identical. The generation distribution places weights on texts; the classification distribution places weights on labels conditioned on the text and reference. The argument that a generator favors familiar continuations does not, without further steps, demonstrate that the same system cannot compare a contribution with a library.",
+      "sourceAnchor": "src-p139",
+      "wordCount": 72
+    },
+    {
+      "id": "u000140",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Bayes also shows why a novelty signal can mislead when discoveries are rare. Suppose, in a constructed example, that one thousand out of a million candidates are genuinely new under the chosen criterion. The detector retains nine hundred of them but incorrectly classifies as new one percent of the nine hundred and ninety-nine thousand old candidates. We obtain nine hundred correct cases and nine thousand nine hundred and ninety false alarms. Only approximately 8.26% of the selections are genuine novelties.",
+      "sourceAnchor": "src-p140",
+      "wordCount": 81
+    },
+    {
+      "id": "u000141",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "P P V = π T P R π T P R + ( 1 − π ) F P R .",
+      "sourceAnchor": "src-p141",
+      "wordCount": 16
+    },
+    {
+      "id": "u000142",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Here π is the prevalence of novelty, TPR is the detection rate for new cases and FPR is the false-alarm rate among old cases. The formula follows directly from joint probabilities. It does not say that the detector is useless, but that performance must be judged relative to prevalence and verification capacity. In a discovery filter, the cost of a few false alarms may be acceptable if it prevents the loss of a rare contribution. Choosing the threshold is an operational decision, not an automatic consequence of the score.",
+      "sourceAnchor": "src-p142",
+      "wordCount": 89
+    },
+    {
+      "id": "u000143",
+      "chapterId": "chapter-0004",
+      "kind": "h2",
+      "text": "2.2. What Learning Optimizes and What It Does Not Promise",
+      "sourceAnchor": "src-p143",
+      "wordCount": 11
+    },
+    {
+      "id": "u000144",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Consider a true distribution P and an estimated distribution Q. If we evaluate predictions using logarithmic loss, the average cost of Q decomposes into the entropy of P and the Kullback–Leibler divergence between P and Q. The proof is algebraic: we add and subtract the logarithm of P in the sum defining the loss. The entropy term does not depend on Q; the divergence term is nonnegative.",
+      "sourceAnchor": "src-p144",
+      "wordCount": 68
+    },
+    {
+      "id": "u000145",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "E X ∼ P [ − log Q ( X ) ] = H ( P ) + D K L ( P ‖ Q ) .",
+      "sourceAnchor": "src-p145",
+      "wordCount": 13
+    },
+    {
+      "id": "u000146",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "In the ideal case where the model family contains the correct distribution and optimization finds it, the solution is Q=P. It does not place all the mass on the most frequent outcome. On the contrary, it also reproduces the probabilities of rare events. Confusing minimization of logarithmic loss with exclusively memorizing the distribution’s mode means confusing distribution estimation with a decision rule that chooses only the most probable outcome.",
+      "sourceAnchor": "src-p146",
+      "wordCount": 70
+    },
+    {
+      "id": "u000147",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The practical situation is more difficult. Data are finite, model capacity is limited, optimization is imperfect and the test distribution may differ from the training distribution. A rare event may receive too few examples for the model to learn the relevant structure. In an objective averaged over all examples, improvement on frequent cases may numerically dominate improvement on a rare class. This observation is an argument about error allocation, not a theorem that rare cases are impossible to learn.",
+      "sourceAnchor": "src-p147",
+      "wordCount": 79
+    },
+    {
+      "id": "u000148",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "A model can learn a shared rule that also covers rare cases. If frequent examples enable it to learn addition, it can calculate a sum absent from the data. If it learns only local associations between expressions and labels, generalization will be weaker. The difference cannot be deduced solely from the objective. The same objective can admit solutions with different internal strategies. Identifying the strategy requires tests that prevent solving the task through superficial correlations.",
+      "sourceAnchor": "src-p148",
+      "wordCount": 75
+    },
+    {
+      "id": "u000149",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The model distribution must also be separated from the decoding procedure. Choosing the most probable symbol at each step, sampling and search with multiple hypotheses can produce different behaviors from the same probabilities. Locally choosing the most probable symbol does not guarantee the globally most probable sequence. Increasing temperature can diversify outputs, but it does not turn the distribution into a novelty verifier. Textual diversity and validation of a difference are separate problems.",
+      "sourceAnchor": "src-p149",
+      "wordCount": 73
+    },
+    {
+      "id": "u000150",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "An evaluator answering “new” or “old” technically produces tokens. This observation does not imply that it cannot perform a comparison. An equivalence-checking program also ultimately produces bits, without the nature of its output exhausting the nature of its computation. The relevant question is what information and operations determine the output. Reducing a competence to the form of its final instruction does not constitute a sufficient functional analysis.",
+      "sourceAnchor": "src-p150",
+      "wordCount": 67
+    },
+    {
+      "id": "u000151",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "At the same time, a high probability for the token “new” must not be confused with a well-calibrated epistemic probability of historical priority. It may reflect prompt conventions, preferences introduced through post-training or the fact that hesitant answers were rewarded less. Calibration must be measured on clearly defined events. Research by Guo and colleagues shows, in a neural-classification context, that numerical confidence and empirical correctness can diverge and that post-processing can improve calibration. This does not imply a guarantee for LLM novelty judgments. [ R18 ]",
+      "sourceAnchor": "src-p151",
+      "wordCount": 84
+    },
+    {
+      "id": "u000152",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "A rigorous protocol keeps the internal score, textual verdict and quality of justification separate. An answer can be correct with poorly calibrated confidence, incorrect with a fluent justification, or supported by a justification that identifies the correct difference but aggregates it into an unsuitable score. Reducing all these dimensions to a single percentage prevents understanding the failure mechanism.",
+      "sourceAnchor": "src-p152",
+      "wordCount": 58
+    },
+    {
+      "id": "u000153",
+      "chapterId": "chapter-0004",
+      "kind": "h2",
+      "text": "2.3. Relevant Information and the Limits of Compression",
+      "sourceAnchor": "src-p153",
+      "wordCount": 9
+    },
+    {
+      "id": "u000154",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Entropy measures a variable’s average uncertainty. Mutual information measures how much observing one variable reduces uncertainty about another. In our problem, X can represent the original document, Y the novelty label under a fixed criterion and Z the representation the system constructs. We are interested not only in how much Z retains about X. We want to know whether it retains what is needed for Y.",
+      "sourceAnchor": "src-p154",
+      "wordCount": 66
+    },
+    {
+      "id": "u000155",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "A representation can eliminate almost every detail of the document and still be sufficient for a narrow question. If we want to know whether a circuit ever outputs one, a correctly computed bit can summarize the answer. If we later want to know which inputs produce one, that bit is no longer sufficient. Good compression is not an absolute property. It depends on the family of future questions.",
+      "sourceAnchor": "src-p155",
+      "wordCount": 68
+    },
+    {
+      "id": "u000156",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "For a chain in which Z is derived only from X and the decision uses only Z, processing cannot create information about Y that was missing from the original observation. The intuition can be proved without metaphysics: any rule operating on Z can be simulated by a rule that receives X and first computes Z. Consequently, the best evaluator with access to X cannot be worse than the best evaluator limited to Z, provided resources and decision classes impose no further restrictions.",
+      "sourceAnchor": "src-p156",
+      "wordCount": 82
+    },
+    {
+      "id": "u000157",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "This formulation leaves room for an apparently paradoxical fact. A particular model can perform better on a summary than on the full text. No additional information about the truth of the label has been created; its accessibility to a limited evaluator has changed. The summary can remove distractions, rearrange premises and reduce computational cost. The difference between a particular algorithm’s performance and the optimal performance permitted by the information is fundamental.",
+      "sourceAnchor": "src-p157",
+      "wordCount": 71
+    },
+    {
+      "id": "u000158",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The risk arises when the summary removes not noise but the relevant difference. Suppose two proposals have the same thematic description and differ only in a quantifier: “for every input” versus “for almost all inputs.” If the representation retains the topic and generic result, the two become identical. This is no longer merely a matter of evaluator preference. The information needed for the distinction has disappeared from the channel it receives.",
+      "sourceAnchor": "src-p158",
+      "wordCount": 71
+    },
+    {
+      "id": "u000159",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "At the engineering level, this observation suggests that simply increasing vector dimensionality is not a complete solution. A large representation can ignore a relevant variable, while a small one can retain it explicitly. What matters is the representation objective, the invariant being pursued and the existence of a path back to the source. A novelty system should be able to say not only “these documents are similar,” but also “in what respects we decided to consider them similar and what we removed in the process.”",
+      "sourceAnchor": "src-p159",
+      "wordCount": 85
+    },
+    {
+      "id": "u000160",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "This is where information theory becomes a design discipline. It does not give us a universal metric of originality, but it forces us to ask what differences are preserved, what questions remain answerable and where additional access to the original documents is needed. Novelty cannot be deduced from the number of bits of surprisal. Conversely, losing certain semantically decisive bits can make its detection impossible for a given architecture.",
+      "sourceAnchor": "src-p160",
+      "wordCount": 69
+    }
+  ]
+}

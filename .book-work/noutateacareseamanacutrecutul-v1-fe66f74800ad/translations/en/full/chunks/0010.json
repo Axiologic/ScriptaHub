@@ -1,0 +1,201 @@
+{
+  "language": "en",
+  "chunk": 10,
+  "segments": [
+    {
+      "id": "t000373",
+      "source": "Un laborator finit poate testa și noutatea operațională, dar criteriul trebuie schimbat. Două circuite echivalente pot avea adâncimi sau numere de porți diferite. Dacă noul candidat este mai mic decât toate implementările din bibliotecă, avem un alt tip de noutate relativă. Nu rezultă că este circuitul minim global; pentru aceasta ar trebui explorat un spațiu mai mare sau demonstrată o limită. Fiecare extindere a criteriului aduce o obligație de verificare.",
+      "translation": "A finite laboratory can also test operational novelty, but the criterion must change. Two equivalent circuits can have different depths or gate counts. If the new candidate is smaller than every implementation in the library, we have another type of relative novelty. It does not follow that it is the globally minimal circuit; that would require exploring a larger space or proving a bound. Every extension of the criterion brings a verification obligation."
+    },
+    {
+      "id": "t000374",
+      "source": "9.2. Diferențe rare, coliziuni și familii de test",
+      "translation": "9.2. Rare Differences, Collisions and Test Families"
+    },
+    {
+      "id": "t000375",
+      "source": "Un test critic pentru ipoteza inițială trebuie să includă diferențe rare. Alegem o funcție f și construim g astfel încât să coincidă cu f pe toate intrările, cu excepția uneia. Dacă intrările sunt uniforme, diferența apare cu probabilitatea 2 la puterea minus n. Pentru n egal cu opt, numai o linie din 256 distinge funcțiile. Noutatea funcțională este exactă, dar un eșantion mic de comportamente o poate rata.",
+      "translation": "A critical test of the initial hypothesis must include rare differences. We choose a function f and construct g to coincide with f on every input except one. If inputs are uniform, the difference appears with probability 2 to the power minus n. For n equal to eight, only one row out of 256 distinguishes the functions. Functional novelty is exact, but a small sample of behaviors can miss it."
+    },
+    {
+      "id": "t000376",
+      "source": "Dacă observăm m intrări independente, cu înlocuire, probabilitatea de a rata complet diferența este următoarea:",
+      "translation": "If we observe m independent inputs with replacement, the probability of missing the difference entirely is as follows:"
+    },
+    {
+      "id": "t000377",
+      "source": "Formula nu este despre LLM-uri, ci despre informația furnizată de eșantionare. Pentru a reduce probabilitatea ratării sub α, bugetul trebuie să satisfacă relația derivată prin logaritmare. Această analiză arată că un eșec poate proveni din lipsa unui caz distinctiv, chiar dacă evaluatorul compară perfect toate observațiile primite.",
+      "translation": "The formula concerns the information supplied by sampling, not LLMs. To reduce the probability of missing the difference below α, the budget must satisfy the relation derived by taking logarithms. This analysis shows that failure can result from the absence of a distinguishing case even if the evaluator perfectly compares every observation received."
+    },
+    {
+      "id": "t000378",
+      "source": "Putem compara trei condiții. În prima, modelul vede numai un eșantion care nu conține martorul. În a doua, vede un eșantion care îl conține. În a treia, primește expresiile complete și poate raționa simbolic. Prima condiție nu permite identificarea sigură a diferenței numai din exemple; a doua oferă dovada locală; a treia testează capacitatea de a deduce diferența din structură. Aceste condiții nu trebuie agregate într-o singură rată de succes.",
+      "translation": "We can compare three conditions. In the first, the model sees only a sample without the witness. In the second, it sees a sample containing it. In the third, it receives complete expressions and can reason symbolically. The first condition does not permit reliable identification of the difference from examples alone; the second provides local evidence; the third tests the ability to deduce the difference from structure. These conditions must not be aggregated into a single success rate."
+    },
+    {
+      "id": "t000379",
+      "source": "Pentru a testa netezirea, putem construi o reprezentare care elimină deliberat linia distinctivă sau care păstrează numai categoria tematică a circuitului. Coliziunea este atunci cunoscută prin construcție. Un evaluator bazat exclusiv pe reprezentarea comprimată nu poate distinge perechea. Acest experiment verifică limita informațională a pipeline-ului, nu incapacitatea particulară a unui LLM. Ulterior putem înlocui compresorul deliberat cu un sumarizator lingvistic și măsura cât de des apare o coliziune relevantă.",
+      "translation": "To test smoothing, we can construct a representation that deliberately removes the distinguishing row or retains only the circuit’s thematic category. The collision is then known by construction. An evaluator based exclusively on the compressed representation cannot distinguish the pair. This experiment checks the pipeline’s informational limit, not a particular LLM’s inability. We can subsequently replace the deliberate compressor with a linguistic summarizer and measure how often a relevant collision occurs."
+    },
+    {
+      "id": "t000380",
+      "source": "O altă familie folosește reformulări fără schimbarea funcției. Putem aplica dubla negație, legile lui De Morgan, reordonarea argumentelor comutative și introducerea unor subexpresii redundante. Aceste transformări produc texte diferite cu aceeași etichetă. Dacă modelul le consideră noi doar pentru că expresia este lungă sau neobișnuită, avem un fals pozitiv de originalitate sintactică. Dacă normalizează corect toate expresiile, avem o competență utilă de invarianta semantică.",
+      "translation": "Another family uses reformulations without changing the function. We can apply double negation, De Morgan’s laws, reordering of commutative arguments and introduction of redundant subexpressions. These transformations produce different texts with the same label. If the model considers them new only because the expression is long or unusual, we have a false positive for syntactic originality. If it correctly normalizes all expressions, we have useful semantic-invariance competence."
+    },
+    {
+      "id": "t000381",
+      "source": "Familia complementară schimbă o singură componentă relevantă și păstrează forma cât mai apropiată. Înlocuirea unei porți OR cu XOR poate produce o diferență funcțională locală. Schimbarea domeniului intrărilor poate transforma o echivalență în neechivalență. Mutarea unui cuantificator într-o descriere poate schimba obiectivul. Aceste perechi minimale sunt utile deoarece reduc șansa ca modelul să folosească lungimea sau tema ca indiciu principal.",
+      "translation": "The complementary family changes a single relevant component while keeping the form as close as possible. Replacing an OR gate with XOR can produce a local functional difference. Changing the input domain can turn equivalence into nonequivalence. Moving a quantifier in a description can change the objective. These minimal pairs are useful because they reduce the chance that the model uses length or topic as the main cue."
+    },
+    {
+      "id": "t000382",
+      "source": "Un pericol al seturilor sintetice este apariția unor artefacte. Dacă toate exemplele noi au un nivel suplimentar de paranteze, modelul poate învăța parantezele. Dacă toate exemplele vechi sunt obținute printr-o singură regulă de rescriere, poate recunoaște regula fără comparația generală. Generatorul trebuie să echilibreze lungimea, structura și vocabularul între clase. Mai important, testul trebuie separat pe familii latente de transformări, nu doar prin împărțirea aleatorie a exemplelor aproape identice.",
+      "translation": "One danger of synthetic datasets is the emergence of artifacts. If every new example has an extra level of parentheses, the model can learn the parentheses. If every old example is obtained through a single rewriting rule, it may recognize the rule without general comparison. The generator must balance length, structure and vocabulary between classes. More importantly, the test must be split by latent transformation families, not merely by randomly dividing nearly identical examples."
+    },
+    {
+      "id": "t000383",
+      "source": "Putem păstra o familie de rescrieri exclusiv pentru test, un set de funcții de bază exclusiv pentru test și nume noi pentru fiecare rundă. Aceasta nu garantează absența tuturor scurtăturilor, dar face generalizarea mai exigentă. Rezultatele trebuie raportate pe fiecare familie. O medie bună poate ascunde eșecul exact pe diferențele rare sau pe schimbările de cuantificare care motivează cercetarea.",
+      "translation": "We can reserve a rewriting family exclusively for testing, a set of base functions exclusively for testing and new names for each round. This does not guarantee absence of every shortcut, but it makes generalization more demanding. Results must be reported for each family. A good average can conceal failure precisely on the rare differences or quantification changes motivating the research."
+    },
+    {
+      "id": "t000384",
+      "source": "9.3. Ce ar demonstra un rezultat pozitiv sau negativ",
+      "translation": "9.3. What a Positive or Negative Result Would Demonstrate"
+    },
+    {
+      "id": "t000385",
+      "source": "Să presupunem că un model clasifică corect circuitele noi, recunoaște reformulările vechi și produce martori valizi ai diferenței pe familii nefolosite la pregătirea testului. Rezultatul ar demonstra o capacitate de comparație într-un domeniu finit, sub condițiile experimentului. Ar slăbi puternic teza că orice recunoaștere a noutății este numai recuperarea unor idei memorate. Nu ar demonstra că modelul poate verifica literatura științifică deschisă sau că poate aprecia importanța unei idei.",
+      "translation": "Suppose a model correctly classifies new circuits, recognizes old reformulations and produces valid difference witnesses on families not used in preparing the test. The result would demonstrate comparison ability in a finite domain under the experimental conditions. It would strongly weaken the thesis that every recognition of novelty is merely retrieval of memorized ideas. It would not demonstrate that the model can examine the open scientific literature or assess an idea’s importance."
+    },
+    {
+      "id": "t000386",
+      "source": "Dacă modelul reușește numai când primește tabelele complete, dar nu când primește descrierile, problema pare legată de interpretare sau calcul simbolic. Dacă reușește când martorul este furnizat, dar nu îl poate găsi, separăm verificarea de căutarea martorului. Dacă eșuează chiar și când diferența este evidențiată explicit, putem investiga instrucțiunea, contextul sau capacitatea de a aplica criteriul. Aceste rezultate sunt mai informative decât un simplu „nu înțelege”.",
+      "translation": "If the model succeeds only when given complete tables but not descriptions, the problem seems connected to interpretation or symbolic computation. If it succeeds when the witness is supplied but cannot find it, we separate verification from witness search. If it fails even when the difference is explicitly highlighted, we can investigate the instruction, context or ability to apply the criterion. These results are more informative than simply saying “it does not understand.”"
+    },
+    {
+      "id": "t000387",
+      "source": "Dacă toate modelele eșuează după o compresie care a eliminat martorul și informația structurală, nu avem o comparație utilă între modele. Am construit o sarcină neidentificabilă. Valoarea experimentului este demonstrarea defectului arhitectural. Un detector bun ar trebui cel puțin să recunoască insuficiența informației și să se abțină. Certitudinea unui verdict în această condiție este ea însăși un rezultat de calibrare.",
+      "translation": "If all models fail after compression has removed the witness and structural information, we do not have a useful comparison between models. We have constructed an unidentifiable task. The experiment’s value is to demonstrate the architectural defect. A good detector should at least recognize insufficient information and abstain. Certainty in a verdict under this condition is itself a calibration result."
+    },
+    {
+      "id": "t000388",
+      "source": "Dacă stilul influențează verdictul deși circuitul și biblioteca sunt identice, există un efect comportamental. Pentru a-l interpreta trebuie verificat că variantele descriu exact același circuit. Putem genera descrieri dintr-o gramatică controlată și apoi include variante umane validate. Creșterea realismului lingvistic reduce controlul formal; de aceea, este utilă o progresie de la limbaj controlat la explicații naturale, nu înlocuirea bruscă a uneia cu cealaltă.",
+      "translation": "If style affects the verdict even though the circuit and library are identical, there is a behavioral effect. Interpreting it requires checking that the variants describe exactly the same circuit. We can generate descriptions from a controlled grammar and then include validated human variants. Increasing linguistic realism reduces formal control; a progression from controlled language to natural explanations is therefore useful, rather than abruptly replacing one with the other."
+    },
+    {
+      "id": "t000389",
+      "source": "Un rezultat negativ pe laborator nu dovedește că modelul va eșua în orice sarcină reală. Oamenii pot utiliza analogii și cunoștințe de domeniu care nu sunt bine reprezentate de circuite aleatorii. Dar nici succesul pe sarcini reale apreciate subiectiv nu anulează eșecul formal. Cele două teste măsoară componente diferite. Un program de cercetare bun păstrează tensiunea dintre control și relevanță, în loc să aleagă numai testul favorabil.",
+      "translation": "A negative laboratory result does not prove that the model will fail on every real task. Humans can use analogies and domain knowledge poorly represented by random circuits. But success on subjectively assessed real tasks does not cancel formal failure either. The two tests measure different components. A good research program preserves the tension between control and relevance instead of choosing only the favorable test."
+    },
+    {
+      "id": "t000390",
+      "source": "Pentru raportare, fiecare caz ar trebui să includă expresia sau descrierea, biblioteca, criteriul, eticheta exactă, martorii existenți, transformările stilistice și ieșirea brută a evaluatorului. Dacă modelul propune un circuit intermediar, acesta trebuie păstrat separat de circuitul de referință. Un răspuns corect obținut dintr-o traducere greșită poate fi accidental. Un răspuns greșit dintr-o traducere corectă indică altă problemă.",
+      "translation": "For reporting, each case should include the expression or description, library, criterion, exact label, existing witnesses, stylistic transformations and the evaluator’s raw output. If the model proposes an intermediate circuit, it must be retained separately from the reference circuit. A correct answer obtained from an incorrect translation may be accidental. An incorrect answer from a correct translation indicates another problem."
+    },
+    {
+      "id": "t000391",
+      "source": "Laboratorul poate fi extins către automate finite, expresii regulate pe domenii limitate, relații Datalog finite sau modele cauzale discrete. Fiecare domeniu oferă alte distincții: comportament temporal, cuantificare, dependențe sau intervenții. Extinderea nu trebuie făcută numai pentru a adăuga benchmarkuri. Ea trebuie să testeze o ipoteză precisă despre ce fel de diferență este pierdută sau recunoscută.",
+      "translation": "The laboratory can be extended to finite automata, regular expressions on bounded domains, finite Datalog relations or discrete causal models. Each domain offers different distinctions: temporal behavior, quantification, dependencies or interventions. Extensions should not be made merely to add benchmarks. They must test a precise hypothesis about what kind of difference is lost or recognized."
+    },
+    {
+      "id": "t000392",
+      "source": "Scopul final al laboratorului nu este proclamarea unui câștigător. Este construirea unei anatomii a erorii. Un sistem care ratează antecedentul are nevoie de alt remediu decât unul care îl citește și șterge diferența. Un sistem care poate verifica, dar nu căuta un martor are alt profil decât unul care confundă criteriul. Numai după această anatomie merită discutată scalarea către documente reale.",
+      "translation": "The laboratory’s ultimate aim is not to proclaim a winner. It is to construct an anatomy of error. A system missing prior work needs a different remedy from one that reads it and erases the difference. A system that can verify a witness but not search for one has a different profile from one that confuses the criterion. Only after this anatomy is established is scaling to real documents worth discussing."
+    },
+    {
+      "id": "t000393",
+      "source": "Capitolul 10. Validarea pe cercetare reală",
+      "translation": "Chapter 10. Validation on Real Research"
+    },
+    {
+      "id": "t000394",
+      "source": "10.1. Reconstrucția temporală și limitele testelor retrospective",
+      "translation": "10.1. Temporal Reconstruction and the Limits of Retrospective Tests"
+    },
+    {
+      "id": "t000395",
+      "source": "Un test pe lucrări reale are o atractivitate evidentă: ideile sunt autentice, limbajul este bogat, iar dificultățile seamănă cu cele din utilizare. Dar autenticitatea documentelor nu garantează validitatea etichetelor. Pentru a evalua noutatea la momentul publicării trebuie reconstruit ce era disponibil înainte, ce pretindea lucrarea și după ce criteriu era considerată o contribuție. O bază de date contemporană amestecă ușor documente dinainte și de după evenimentul evaluat.",
+      "translation": "A test on real papers has obvious appeal: the ideas are authentic, the language rich and the difficulties resemble those encountered in use. But document authenticity does not guarantee label validity. Evaluating novelty at publication requires reconstructing what was available beforehand, what the paper claimed and under what criterion it was considered a contribution. A contemporary database can easily mix documents from before and after the event being evaluated."
+    },
+    {
+      "id": "t000396",
+      "source": "Primul principiu este înghețarea temporală a corpusului de referință. Fiecare sursă trebuie să aibă o versiune și o dată verificabile. Preprintul, articolul final și documentația actualizată pot avea conținuturi diferite. Dacă un pasaj decisiv a fost adăugat după data de referință, nu trebuie folosit ca dovadă că ideea era deja cunoscută. Similar, un articol ulterior care explică retrospectiv contribuția nu poate fi tratat ca antecedent.",
+      "translation": "The first principle is temporal freezing of the reference corpus. Every source must have a verifiable version and date. The preprint, final article and updated documentation may have different content. If a decisive passage was added after the reference date, it must not be used as evidence that the idea was already known. Likewise, a later article retrospectively explaining the contribution cannot be treated as prior work."
+    },
+    {
+      "id": "t000397",
+      "source": "Al doilea principiu este recunoașterea limitelor anonimizării. Eliminarea numelor și a titlului nu șterge neapărat identitatea unei lucrări celebre. Formula, setul de date sau structura argumentului pot permite recunoașterea. Un model antrenat după publicare poate cunoaște rezultatul istoric al evaluării. Într-un asemenea test, nu putem atribui automat succesul comparației locale. Trebuie să raportăm posibilitatea contaminării și să folosim analize care o reduc.",
+      "translation": "The second principle is recognizing the limits of anonymization. Removing names and the title does not necessarily erase a famous paper’s identity. Its formula, dataset or argument structure may allow recognition. A model trained after publication may know the historical outcome of the evaluation. In such a test, we cannot automatically attribute success to local comparison. We must report possible contamination and use analyses that reduce it."
+    },
+    {
+      "id": "t000398",
+      "source": "O soluție este combinarea studiului retrospectiv cu un studiu prospectiv. În studiul prospectiv, modelul și procedura sunt fixate înainte de colectarea candidaților. Contribuțiile sunt evaluate înainte să existe un consens public stabil. Ulterior, se urmăresc antecedentele descoperite, validările și revizuirile. Acest design reduce unele forme de contaminare, dar are costuri de timp și nu produce imediat un adevăr final. Cercetarea reală poate rămâne controversată ani întregi.",
+      "translation": "One solution is to combine a retrospective study with a prospective one. In the prospective study, the model and procedure are fixed before candidates are collected. Contributions are evaluated before stable public consensus exists. Subsequently, discovered prior work, validations and revisions are tracked. This design reduces some forms of contamination but costs time and does not immediately produce final truth. Real research can remain controversial for years."
+    },
+    {
+      "id": "t000399",
+      "source": "Candidații prospectivi nu trebuie aleși numai dintre ideile care au trecut deja un filtru LLM. Altfel, populația de test este condiționată de mecanismul suspectat. Este necesar un eșantion independent, eventual stratificat după domeniu, tip de contribuție și grad de maturitate. Ideile respinse sau considerate neclare trebuie păstrate într-un strat separat, nu eliminate fără urmă. Altfel, tocmai cazurile care ar putea confirma ipoteza dispar înaintea evaluării.",
+      "translation": "Prospective candidates must not be selected only from ideas that have already passed an LLM filter. Otherwise, the test population is conditioned on the suspected mechanism. An independent sample is needed, possibly stratified by domain, contribution type and maturity. Rejected or unclear ideas must be retained in a separate layer rather than eliminated without a trace. Otherwise, the very cases that could confirm the hypothesis disappear before evaluation."
+    },
+    {
+      "id": "t000400",
+      "source": "Un protocol realist poate distinge noutatea pretinsă, noutatea susținută de comparația cu antecedente și noutatea rămasă după validarea tehnică. Aceste stări se pot modifica în timp. O propunere poate părea nouă, apoi poate fi anticipată de o sursă găsită ulterior. Poate părea greșită, apoi poate primi o demonstrație. Sistemul trebuie să permită revizuirea verdictului fără a falsifica istoricul. Noutatea evaluată este un obiect cu versiuni, nu o proprietate fixată etern la prima lectură.",
+      "translation": "A realistic protocol can distinguish claimed novelty, novelty supported by comparison with prior work and novelty remaining after technical validation. These states can change over time. A proposal may seem new and then be anticipated by a source discovered later. It may seem wrong and later receive a proof. The system must allow the verdict to be revised without falsifying its history. Evaluated novelty is a versioned object, not a property fixed forever at first reading."
+    },
+    {
+      "id": "t000401",
+      "source": "10.2. Experți, dezacord și etichete verificabile",
+      "translation": "10.2. Experts, Disagreement and Verifiable Labels"
+    },
+    {
+      "id": "t000402",
+      "source": "Experții sunt indispensabili în domenii deschise, dar nu sunt oracole perfecte. Un recenzent poate cunoaște foarte bine o subarie și poate rata o contribuție dintr-o arie vecină. Poate interpreta „nou” ca „important”, poate penaliza lipsa validării sau poate folosi o definiție diferită a problemei. Aceste posibilități nu trebuie folosite pentru a relativiza orice critică. Ele justifică un protocol care cere motive și surse, nu doar note.",
+      "translation": "Experts are indispensable in open domains, but they are not perfect oracles. A reviewer may know one subfield very well yet miss a contribution from a neighboring area. They may interpret “new” as “important,” penalize lack of validation or use a different definition of the problem. These possibilities must not be used to relativize every criticism. They justify a protocol requiring reasons and sources, not just grades."
+    },
+    {
+      "id": "t000403",
+      "source": "O evaluare expertă utilă începe cu extragerea contribuției. Recenzentul trebuie să precizeze ce anume se compară. Apoi identifică antecedentele relevante și descrie relația cu fiecare. În final, separă verdictul asupra diferenței de verdictul asupra corectitudinii și valorii. O justificare de tipul „ideea este incrementală” trebuie tradusă într-o relație concretă: ce parte exista deja și ce parte rămâne. Fără această traducere, acordul dintre evaluatori poate fi doar acord asupra unei impresii.",
+      "translation": "A useful expert evaluation begins by extracting the contribution. The reviewer must specify exactly what is being compared. They then identify relevant prior work and describe the relation to each item. Finally, they separate the verdict on the difference from the verdict on correctness and value. A justification such as “the idea is incremental” must be translated into a concrete relation: what already existed and what remains. Without this translation, agreement between evaluators may be merely agreement on an impression."
+    },
+    {
+      "id": "t000404",
+      "source": "Dezacordul trebuie clasificat. Uneori experții nu sunt de acord asupra sensului textului. Alteori asupra existenței unui antecedent. Alteori asupra relevanței diferenței. Alteori asupra validității tehnice. Aceste dezacorduri cer soluții diferite: clarificare, căutare suplimentară, precizarea criteriului sau experiment. Un singur coeficient de acord nu spune unde se află problema.",
+      "translation": "Disagreement must be classified. Sometimes experts disagree about the text’s meaning. Sometimes about the existence of prior work. Sometimes about the difference’s relevance. Sometimes about technical validity. These disagreements require different remedies: clarification, further search, specifying the criterion or experiment. A single agreement coefficient does not locate the problem."
+    },
+    {
+      "id": "t000405",
+      "source": "Putem păstra etichete multiple și o adjudecare argumentată. Adjudecarea nu trebuie să șteargă pozițiile inițiale. Dacă un nou antecedent schimbă verdictul, jurnalul trebuie să arate schimbarea. Pentru unele cazuri, eticheta corectă poate rămâne „nedeterminat în condițiile curente”. Aceste cazuri nu sunt gunoi statistic. Sunt importante pentru evaluarea abținerii și pentru înțelegerea limitelor sistemului.",
+      "translation": "We can preserve multiple labels and a reasoned adjudication. Adjudication must not erase the initial positions. If newly found prior work changes the verdict, the log must show the change. For some cases, the correct label may remain “undetermined under current conditions.” These cases are not statistical rubbish. They matter for evaluating abstention and understanding the system’s limits."
+    },
+    {
+      "id": "t000406",
+      "source": "O grilă minimală poate fi organizată în două coloane, fără a reduce evaluarea la un formular mecanic.",
+      "translation": "A minimal rubric can be organized in two columns without reducing evaluation to a mechanical form."
+    },
+    {
+      "id": "t000407",
+      "source": "Dimensiune",
+      "translation": "Dimension"
+    },
+    {
+      "id": "t000408",
+      "source": "Întrebarea care trebuie rezolvată",
+      "translation": "The Question to Resolve"
+    },
+    {
+      "id": "t000409",
+      "source": "Contribuția",
+      "translation": "The Contribution"
+    },
+    {
+      "id": "t000410",
+      "source": "Ce afirmație, mecanism sau capacitate pretinde textul că introduce?",
+      "translation": "What claim, mechanism or capability does the text claim to introduce?"
+    },
+    {
+      "id": "t000411",
+      "source": "Antecedentul",
+      "translation": "The Prior Work"
+    }
+  ]
+}

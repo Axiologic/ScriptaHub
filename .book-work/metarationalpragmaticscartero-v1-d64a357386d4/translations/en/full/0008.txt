@@ -1,0 +1,104 @@
+The atlas is not an architectural obligation. It is an organizational hypothesis that can be implemented gradually. An initial system may have only three views and two adapters; what matters is demonstrating what each preserves and when changing views resolves a real difficulty.
+PART V  /  From Model to System
+CHAPTER 16
+The Architecture of an MRP Technology
+A Functional Architecture, Not an Assumed Platform
+We can describe an MRP technology without confusing it with a product already built. It should receive a task, establish which information is needed, select and execute interpreters, verify results and learn from identified insufficiencies. Every verb must correspond to an observable object and transition.
+In this book, MRP-VM designates a possible execution machine for these functions. “Virtual machine” does not necessarily mean a new processor or bytecode. It means an environment controlling the state, calls, dependencies and acceptance conditions of interpretive operations.
+A minimal implementation can use an ordinary database, a graph scheduler and existing executors. Its value would come not from the number of technologies introduced, but from linking an observed problem to a verifiable change in the repertoire.
+Persistent Objects
+Object
+Minimum Content
+Role
+Task
+Question, inputs, success criterion, budget
+Defines what must be solved
+Episode
+Ordered observations, identities, time and sources
+Enables reinterpretation
+Representation
+Values, schema, constructor program, version
+Preserves distinctions
+Interpreter
+Contract, implementation, dependencies, cost
+Transforms and verifies
+Evidence
+Test or proof, assumptions, result, artifacts
+Supports a precise status
+Incident
+Prediction, observation, difference and diagnosis
+Triggers adaptation
+Library
+Approved interpreters and application criteria
+Enables reuse
+These objects must have stable identities. A result cannot point merely to “the temporal interpreter,” because its definition can change. It must identify the version actually executed and the exact inputs or their verifiable identity.
+A cryptographic content identifier can help link artifacts with evidence. It does not establish the result's truth or replace program semantics. Its role is narrower: detecting changes in the content to which verification refers.
+An Interpreter's Contract
+The contract must specify what the interpreter receives and can produce. For a last-operation interpreter, the input may be a sequence of events with identity and total order. The precondition may require every event to have a comparable position. The output is a state value for each key.
+The contract would also declare limits: it ignores events absent from the input; assumes the “last operation prevails” rule; and does not establish that the log is complete. A correct result about the available log is thus not presented as evidence about every real event.
+For a probabilistic interpreter, the contract includes the distribution's target and evaluation conditions. For a solver, it includes the theory and model checked. For an LLM, it may declare the output a textual proposal or candidate program, rather than a certified result.
+The Controller and Executors
+The controller decides which operation comes next. Executors may be symbolic interpreters, programs, statistical models, solvers, database queries or people asked to clarify a specification. A uniform interface does not imply uniform trust in the results.
+An initial controller can use transparent rules: check preconditions, choose the cheapest compatible candidate, execute, evaluate and escalate if an incident occurs. This version provides a baseline for a later learned controller. Without a baseline, any additional complexity can seem useful because it has nothing to be compared with.
+Executors would separately report time, memory consumption, external operations and final state. A timeout is an execution outcome, not proof that the property cannot be established. A parsing error differs from a semantic counterexample.
+The Epistemic Register
+I would separate a result's content from its status. “Permission is active” is content. “Computed exactly from the complete log according to model M” is one status. “Estimated from incomplete observations” is another. The two must not be lost as the result passes through other components.
+A register could distinguish reported observation, hypothesis, derived result, formal verification relative to a model, empirical validation and withdrawn result. These categories do not necessarily form a single hierarchy. A formal proof about a mistaken model and a robust observation about the real system have different limitations.
+Composition should preserve relevant dependencies. A final text based on a hypothesis does not become fact merely because the last stage is a fluent generator. A verifier can confirm a document's form without confirming every claim's truth.
+The Minimal Useful Implementation
+The first implementation needs no complete ecosystem. It needs a family of finite tasks, an operation core, a few initial representations, an execution log, a candidate generator and a separate evaluator. This minimum already allows collision, refinement and transfer to be tested.
+Extensions should be introduced only when they address an identified limit. If selection becomes expensive, develop library indexing. If evaluation consumes too much, study test-selection strategies. If transfer does not emerge, investigate induction or task definitions before adding more components.
+A defensible MRP architecture is one whose advantages can be attributed to its mechanisms. Suggestive names for every component are insufficient; components must be removable one at a time to measure their contributions.
+CHAPTER 17
+Execution, Evidence and Revision
+A Candidate's Lifecycle
+A new interpreter passes through distinct states. First it is a proposal. Then it is checked structurally and executed in a controlled environment. Later it may receive empirical evaluation or formal justification for certain properties. Only after meeting the established criteria is it admitted to the usable library.
+State
+What Is Permitted
+What Is Not Assumed
+Proposed
+Inspection, structural checking
+Semantic correctness
+Executable
+Testing with limited resources
+Generalization
+Evaluated
+Use within the evaluated domain, according to policy
+Universal validity
+Consolidated
+Reuse and monitoring
+Immunity to change
+Suspended
+Diagnosis and reproduction
+Current automatic use
+Withdrawn
+Audit and reproduction of the past
+Recommendation for new cases
+Proofs can accompany different states and cover only part of the contract. “Consolidated” is a library-management decision, not a synonym for “mathematically proved.” This distinction prevents an operational approval from becoming an exaggerated epistemic claim.
+A Complete Walkthrough
+The task is to determine current permission from a log. The initial representation stores only which event types occurred. The agent encounters two histories with identical types but different outcomes. The evaluator confirms that order, rather than noise, explains the difference.
+The generator proposes an interpreter that groups events by person and resource, selects the final position and applies the state rule. Structural checking confirms that the types match. Tests check reversed order, interleaved keys and repeated operations according to the environment's rule.
+An additional verifier may prove, for the finite event language and given implementation, that the result corresponds to the last relevant operation. This proof does not confirm that the real log is complete; it confirms the relationship between input and output within the model.
+After acceptance, the program enters the library. On a new task, the selector must recognize the appropriate rule. If the new protocol is cumulative, the contract does not apply. Correct transfer includes refusing to use an unsuitable abstraction.
+Epochs and Controlled Changes
+Learning changes data interpretation. If an interpreter is replaced during execution, the result may mix versions without clear justification. One solution is to use epochs: each execution sees a stable version of the library and policy.
+A modification produces a new epoch. Old results remain associated with the configuration in which they were obtained. The new interpreter can be tested on copies of tasks before becoming the default. This facilitates reproduction and comparison without requiring the entire system to stop whenever learning occurs.
+The change can be transactional: either the interpreter, representation schema and affected dependencies are updated consistently, or the old version remains active. Transaction is used here as a consistency discipline, not a promise that every external effect can be undone.
+External Effects and Reversibility
+An interpreter reading data differs from one modifying a database or sending a command. Proposed actions must be separated from actual executions. Repeating a check must not inadvertently repeat an irreversible effect.
+For the research prototype, operations can be limited to a simulated environment or copies without external effects. When moving to real applications, permissions, operation idempotence, approvals and effect records must be defined. An idempotent operation has the same effect on state when repeated as when executed once. These requirements are not a philosophical addition; they determine which experiments are reproducible.
+A sandbox limits the consequences of faulty programs but does not establish that their results are correct. Conversely, a proof about a pure function does not authorize every use of it in a system with effects. These problems must be addressed separately.
+Selective Recomputation
+If a source is corrected or an interpreter withdrawn, not everything needs recomputing. We can trace the dependency graph and mark affected results. This optimization assumes, however, that dependencies are recorded sufficiently completely.
+A result that indirectly reads a global configuration without declaring it creates a hidden dependency. Reusing it from memory may be wrong after the configuration changes. An execution's identity therefore includes not only its visible input but also relevant context parameters and versions.
+The recomputation policy can begin with an overapproximation: invalidate every possibly affected result. It can later be refined to avoid unnecessary work. The same logic of precision and cost reappears at infrastructure level.
+What an Execution Trace Explains
+A good trace shows which operations ran, with which inputs and checks. It can explain the process producing the result. It does not automatically supply a causal explanation of the worldly phenomenon or a value-based justification of the chosen objective.
+MRP should deliver these levels separately. A scientific result requires both reproducible computation and adequate models and data. An organizational decision also requires authority and legitimate criteria. Technical transparency is valuable precisely when it does not present itself as the solution to every one of these questions.
+CHAPTER 18
+MRP-VM and SOP Lang
+The Theory Does Not Depend on a Syntax
+MRP describes the organization of interpretations and their learning. SOP Lang may be an option for representing executable compositions, but the theory must not depend on a particular file extension or naming convention. Other languages can implement the same experiment.
+This separation enables two evaluations. We can test whether the MRP mechanism produces transfer and efficiency. Separately, we can test whether SOP circuit representations facilitate composition, provenance tracking and verification. A syntax or parser failure does not automatically invalidate the general hypothesis.
+The Circuit as a Unit of Composition
+In one possible implementation, a circuit is a graph of operations. Nodes execute transformations; links carry values and dependencies. Inputs and outputs are declared. An operation may call a primitive or another circuit, and composition produces a more complex procedure.

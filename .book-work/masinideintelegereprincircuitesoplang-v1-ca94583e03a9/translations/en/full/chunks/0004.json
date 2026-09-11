@@ -1,0 +1,281 @@
+{
+  "language": "en",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000186",
+      "source": "Pentru SOP Lang, acest capitol sugerează un contract general: o operație trebuie să spună dacă produce o concluzie, rafinează o descriere, propune o alternativă sau revizuiește o ipoteză. Toate pot fi circuite, dar nu trebuie combinate ca și cum ar avea aceeași semnificație logică.",
+      "translation": "For SOP Lang, this chapter suggests a general contract: an operation must state whether it produces a conclusion, refines a description, proposes an alternative, or revises a hypothesis. All can be circuits, but they must not be combined as though they had the same logical meaning."
+    },
+    {
+      "id": "t000187",
+      "source": "7. Interpretarea abstractă, explicată prin ceea ce alegem să uităm",
+      "translation": "7. Abstract Interpretation, Explained Through What We Choose to Forget"
+    },
+    {
+      "id": "t000188",
+      "source": "De ce nu calculăm întotdeauna cu valorile exacte",
+      "translation": "Why We Do Not Always Compute with Exact Values"
+    },
+    {
+      "id": "t000189",
+      "source": "Un analizor poate dori să știe dacă un program împarte vreodată la zero. Nu îl interesează fiecare rezultat numeric posibil, ci o proprietate relevantă. Dacă variabila este cu siguranță pozitivă, anumite verificări se simplifică. Dacă poate fi zero, analiza păstrează un avertisment. Ideea interpretării abstracte este să execute un calcul despre proprietăți ale valorilor, în loc să enumere toate valorile. [",
+      "translation": "An analyzer may want to know whether a program ever divides by zero. It is not interested in every possible numerical result, but in a relevant property. If the variable is definitely positive, certain checks become simpler. If it may be zero, the analysis retains a warning. The idea of abstract interpretation is to perform a computation about properties of values rather than enumerate all the values. ["
+    },
+    {
+      "id": "t000190",
+      "source": "Să alegem o abstracție extrem de simplă: paritatea. Numerele sunt rezumate prin „par” sau „impar”. Două numere impare adunate dau un număr par; un număr par și unul impar dau un număr impar. Pentru întrebări despre paritatea unei sume, rezumatul este suficient. Pentru întrebarea „suma este mai mare decât o sută?”, nu este.",
+      "translation": "Let us choose an extremely simple abstraction: parity. Numbers are summarized as “even” or “odd.” Adding two odd numbers gives an even number; adding an even and an odd number gives an odd number. For questions about the parity of a sum, the summary is sufficient. For “is the sum greater than a hundred?” it is not."
+    },
+    {
+      "id": "t000191",
+      "source": "Prin urmare, o abstracție nu este bună sau rea în mod absolut. Este potrivită sau nepotrivită unei familii de operații și întrebări. Această relativitate va deveni esențială pentru construirea circuitelor.",
+      "translation": "An abstraction, therefore, is not good or bad in absolute terms. It is suitable or unsuitable for a family of operations and questions. This relativity will become essential to circuit construction."
+    },
+    {
+      "id": "t000192",
+      "source": "Două punți între concret și abstract",
+      "translation": "Two Bridges Between Concrete and Abstract"
+    },
+    {
+      "id": "t000193",
+      "source": "Notăm cu α operația care transformă o stare concretă în descrierea ei abstractă. De exemplu, α(7) = „impar”. Notăm cu γ interpretarea unei descrieri abstracte ca mulțime de posibilități concrete. Atunci γ(„impar”) este mulțimea numerelor impare. Literele nu ascund un mecanism misterios; denumesc cele două direcții ale legăturii.",
+      "translation": "Let α denote the operation that transforms a concrete state into its abstract description. For example, α(7) = “odd.” Let γ denote the interpretation of an abstract description as a set of concrete possibilities. Then γ(“odd”) is the set of odd numbers. The letters hide no mysterious mechanism; they name the two directions of the connection."
+    },
+    {
+      "id": "t000194",
+      "source": "O operație concretă F transformă valori. O operație abstractă F# transformă descrieri. Pentru siguranță, cerem ca toate rezultatele concrete posibile să fie incluse în descrierea abstractă produsă. Într-o notație compactă:",
+      "translation": "A concrete operation F transforms values. An abstract operation F# transforms descriptions. For soundness, we require every possible concrete result to be included in the abstract description produced. In compact notation:"
+    },
+    {
+      "id": "t000195",
+      "source": "F(γ(a)) ⊆ γ(F#(a)).",
+      "translation": "F(γ(a)) ⊆ γ(F#(a))."
+    },
+    {
+      "id": "t000196",
+      "source": "Formula spune: dacă pornesc de la orice valoare permisă de descrierea a și execut F, nu ajung în afara posibilităților anunțate de F#. O analiză poate anunța prea multe posibilități, dar nu are voie să le elimine pe cele reale atunci când promite această garanție.",
+      "translation": "The formula says: if I start from any value permitted by description a and execute F, I do not end up outside the possibilities announced by F#. An analysis may announce too many possibilities, but when promising this guarantee it must not eliminate the real ones."
+    },
+    {
+      "id": "t000197",
+      "source": "Să folosim intervale. Pentru x în [2, 5], calculul 2x + 1 este cuprins în [5, 11]. Aici intervalul descrie exact rezultatele reale dacă x variază continuu. Pentru valori întregi, el admite și numere pare care nu apar; reprezentarea poate rămâne sigură, dar mai puțin precisă. Domeniul concret contează.",
+      "translation": "Let us use intervals. For x in [2, 5], the computation 2x + 1 falls within [5, 11]. Here the interval describes the actual results exactly if x varies continuously. For integer values, it also admits even numbers that do not occur; the representation may remain sound but less precise. The concrete domain matters."
+    },
+    {
+      "id": "t000198",
+      "source": "Siguranța nu este precizie",
+      "translation": "Soundness Is Not Precision"
+    },
+    {
+      "id": "t000199",
+      "source": "Dacă analiza spune „rezultatul poate fi între 0 și 100”, iar rezultatul real este 7, nu a greșit în sensul de mai sus. Poate fi totuși inutilă pentru obiectiv. Dacă întrebarea este „rezultatul este sub 10?”, descrierea nu decide. O analiză sigură poate răspunde prea des „nu știu”.",
+      "translation": "If an analysis says “the result may be between 0 and 100,” and the actual result is 7, it has not erred in the sense above. It may nevertheless be useless for the objective. If the question is “is the result below 10?” the description does not decide it. A sound analysis may answer “I do not know” too often."
+    },
+    {
+      "id": "t000200",
+      "source": "Cel mai sigur rezumat posibil, „orice se poate întâmpla”, este aproape inutil. De aceea cercetarea trebuie să măsoare simultan siguranța și puterea de discriminare. În cazuri controlate, siguranța poate fi verificată exhaustiv. Puterea de discriminare se poate măsura prin numărul concluziilor decise, al candidaților eliminați corect și al alarmelor false rămase.",
+      "translation": "The soundest possible summary, “anything can happen,” is almost useless. That is why research must measure soundness and discriminating power together. In controlled cases, soundness can be checked exhaustively. Discriminating power can be measured through the number of conclusions decided, candidates correctly eliminated, and false alarms remaining."
+    },
+    {
+      "id": "t000201",
+      "source": "Un rezumat prea precis poate avea costul stării concrete. O reprezentare care păstrează toate lumile posibile nu pierde nimic, dar poate deveni exponențială. Întrebarea inginerească nu este „putem păstra totul?”, ci „ce structură ne permite să păstrăm exact relațiile importante la un cost acceptabil?”.",
+      "translation": "An overly precise summary may cost as much as the concrete state. A representation preserving every possible world loses nothing, but may become exponential. The engineering question is not “can we preserve everything?” but “what structure lets us preserve exactly the important relationships at an acceptable cost?”"
+    },
+    {
+      "id": "t000202",
+      "source": "Exemplul în care intervalele uită prea mult",
+      "translation": "The Example in Which Intervals Forget Too Much"
+    },
+    {
+      "id": "t000203",
+      "source": "Fie x un număr între 0 și 100, iar y = x. Dorim să calculăm x − y. În realitate rezultatul este întotdeauna zero. Dacă păstrăm numai intervalele individuale x în [0, 100] și y în [0, 100], scăderea intervalelor produce [−100, 100]. Analiza este sigură, dar a uitat egalitatea dintre variabile.",
+      "translation": "Let x be a number between 0 and 100, and let y = x. We want to compute x − y. In reality the result is always zero. If we retain only the individual intervals x in [0, 100] and y in [0, 100], interval subtraction produces [−100, 100]. The analysis is sound, but has forgotten the equality between the variables."
+    },
+    {
+      "id": "t000204",
+      "source": "Reparația nu este neapărat enumerarea valorilor lui x. Putem păstra relația x = y. Astfel, expresia se simplifică exact la zero. Acest exemplu arată de ce rafinarea tipului fiecărui fir nu este suficientă în general. Uneori trebuie îmbogățit limbajul relațiilor dintre fire.",
+      "translation": "The repair need not involve enumerating the values of x. We can preserve the relation x = y. The expression then simplifies exactly to zero. This example shows why refining each wire's type is not sufficient in general. Sometimes the language of relationships between wires must be enriched."
+    },
+    {
+      "id": "t000205",
+      "source": "O alegere posibilă este un domeniu de constrângeri liniare. Alta este păstrarea unor egalități simbolice. Fiecare permite anumite operații și impune anumite costuri. Nu există motiv să folosim aceeași abstracție pentru un calcul numeric, o relație de identitate și o ambiguitate de coreferință.",
+      "translation": "One possible choice is a domain of linear constraints. Another is preserving symbolic equalities. Each permits certain operations and imposes certain costs. There is no reason to use the same abstraction for a numerical computation, an identity relation, and a coreference ambiguity."
+    },
+    {
+      "id": "t000206",
+      "source": "Exactitatea compozițională este o condiție mai puternică",
+      "translation": "Compositional Exactness Is a Stronger Condition"
+    },
+    {
+      "id": "t000207",
+      "source": "Pentru anumite operații putem cere mai mult decât siguranța:",
+      "translation": "For certain operations, we can demand more than soundness:"
+    },
+    {
+      "id": "t000208",
+      "source": "α(F(s)) = F#(α(s)).",
+      "translation": "α(F(s)) = F#(α(s))."
+    },
+    {
+      "id": "t000209",
+      "source": "În acest caz, rezumatul după operație poate fi calculat exact din rezumatul anterior. Pentru paritate și adunare, proprietatea funcționează. Pentru paritate și testul „mai mare decât o sută”, nu funcționează dacă vrem un răspuns exact, fiindcă numere cu aceeași paritate pot avea răspunsuri diferite.",
+      "translation": "In this case, the summary after the operation can be computed exactly from the previous summary. For parity and addition, the property holds. For parity and the test “greater than a hundred,” it does not hold if we want an exact answer, because numbers with the same parity may give different answers."
+    },
+    {
+      "id": "t000210",
+      "source": "Această condiție nu spune că α păstrează întreaga stare. Spune că informația eliminată nu mai este necesară operațiilor și observațiilor vizate. În aceste condiții putem folosi rezumatul ca stare a unei căutări comprimate. Vom dezvolta această idee în capitolul despre interfețele suficiente.",
+      "translation": "This condition does not say that α preserves the entire state. It says that the discarded information is no longer needed by the operations and observations under consideration. Under these conditions, we can use the summary as the state of a compressed search. We will develop this idea in the chapter on sufficient interfaces."
+    },
+    {
+      "id": "t000211",
+      "source": "Interpretarea abstractă oferă deci două contribuții distincte proiectului: aproximări sigure pentru eliminarea unor ramuri imposibile și, în clase speciale, reprezentări care permit continuarea exactă fără starea completă. Prima contribuție este mai generală. A doua poate produce reduceri spectaculoase, dar cere demonstrații mai puternice.",
+      "translation": "Abstract interpretation thus offers two distinct contributions to the project: sound approximations for eliminating impossible branches and, in special classes, representations allowing exact continuation without the full state. The first contribution is more general. The second can produce spectacular reductions, but requires stronger proofs."
+    },
+    {
+      "id": "t000212",
+      "source": "Întrebarea de cercetare",
+      "translation": "The Research Question"
+    },
+    {
+      "id": "t000213",
+      "source": "SOP Lang ar putea asocia fiecărei familii de operații una sau mai multe interpretări abstracte. Aceeași operație de transfer poate actualiza simultan un tabel concret de evenimente, o descriere abstractă a posesiei și un rezumat al dependențelor de sursă. Expanderul ar folosi rezumatele ieftine pentru orientare și reprezentările mai bogate atunci când apare o distincție necesară.",
+      "translation": "SOP Lang could associate one or more abstract interpretations with each family of operations. The same transfer operation could simultaneously update a concrete event table, an abstract description of possession, and a summary of source dependencies. The expander would use inexpensive summaries for guidance and richer representations when a necessary distinction arises."
+    },
+    {
+      "id": "t000214",
+      "source": "Aceasta este o propunere, nu o proprietate obținută automat prin scrierea circuitelor. Trebuie verificat că interpretările sunt compatibile, că rezultatele nu sunt confundate și că trecerea la o reprezentare mai bogată nu pierde traseul de justificare. Un sistem cu multe abstracții necoordonate poate fi mai greu de înțeles decât unul cu o singură reprezentare simplă.",
+      "translation": "This is a proposal, not a property obtained automatically by writing circuits. We must verify that the interpretations are compatible, that their results are not confused, and that moving to a richer representation does not lose the justification trail. A system with many uncoordinated abstractions may be harder to understand than one with a single simple representation."
+    },
+    {
+      "id": "t000215",
+      "source": "8. Corelațiile: informația care nu locuiește pe niciun fir singur",
+      "translation": "8. Correlations: Information That Lives on No Single Wire"
+    },
+    {
+      "id": "t000216",
+      "source": "Aceleași valori locale, lumi diferite",
+      "translation": "The Same Local Values, Different Worlds"
+    },
+    {
+      "id": "t000217",
+      "source": "Considerăm două situații cu două variabile binare. În prima, perechile posibile sunt (0, 0) și (1, 1). În a doua, perechile posibile sunt (0, 1) și (1, 0). Privită separat, fiecare variabilă poate fi 0 sau 1 în ambele situații. Privite împreună, situațiile sunt opuse: în prima variabilele sunt egale; în a doua sunt diferite.",
+      "translation": "Consider two situations involving two binary variables. In the first, the possible pairs are (0, 0) and (1, 1). In the second, they are (0, 1) and (1, 0). Considered separately, each variable can be 0 or 1 in both situations. Considered together, the situations are opposites: in the first the variables are equal; in the second they differ."
+    },
+    {
+      "id": "t000218",
+      "source": "Orice reprezentare care păstrează doar mulțimile individuale identifică aceste două situații. Dacă întrebarea finală privește egalitatea, identificarea este greșită. Acest mic exemplu conține esența problemei reprezentărilor distribuite: informația relevantă poate fi în relație, nu în componente luate separat.",
+      "translation": "Any representation preserving only the individual sets identifies these two situations. If the final question concerns equality, that identification is wrong. This small example contains the essence of the problem of distributed representations: relevant information may reside in the relation, not in the components considered separately."
+    },
+    {
+      "id": "t000219",
+      "source": "Nu rezultă că avem nevoie obligatoriu de neuroni sau de vectori mari. Relația „egal” este o reprezentare simbolică foarte compactă a dependenței. Nu rezultă nici că simbolurile rezolvă orice dependență ieftin. Pentru anumite familii de relații, forma compactă poate fi greu de găsit sau greu de utilizat.",
+      "translation": "It does not follow that we necessarily need neurons or large vectors. The relation “equal” is a very compact symbolic representation of the dependency. Nor does it follow that symbols handle every dependency inexpensively. For certain families of relations, a compact form may be difficult to find or difficult to use."
+    },
+    {
+      "id": "t000220",
+      "source": "Un conflict invizibil descrierilor individuale",
+      "translation": "A Conflict Invisible to Individual Descriptions"
+    },
+    {
+      "id": "t000221",
+      "source": "Fie x, y și z valori binare. Impunem că x și y sunt egale, că y și z sunt egale, dar că x și z sunt diferite. Fiecare variabilă, privită izolat, continuă să admită 0 și 1. Fiecare relație luată separat admite combinații. Împreună, relațiile sunt incompatibile.",
+      "translation": "Let x, y, and z be binary values. We impose that x and y are equal, y and z are equal, but x and z differ. Each variable, viewed in isolation, continues to admit 0 and 1. Each relation considered separately admits combinations. Together, the relations are incompatible."
+    },
+    {
+      "id": "t000222",
+      "source": "Putem scrie egalitatea binară ca x ⊕ y = 0, unde ⊕ înseamnă adunare modulo doi: 0 ⊕ 0 și 1 ⊕ 1 sunt zero, iar valorile diferite dau unu. Combinând cele trei ecuații, fiecare variabilă apare de două ori și se anulează. Rămâne 0 = 1. Acesta este un certificat al incompatibilității.",
+      "translation": "We can write binary equality as x ⊕ y = 0, where ⊕ means addition modulo two: 0 ⊕ 0 and 1 ⊕ 1 are zero, while different values give one. Combining the three equations, each variable appears twice and cancels out. This leaves 0 = 1. It is a certificate of incompatibility."
+    },
+    {
+      "id": "t000223",
+      "source": "Nu am explorat toate cele opt atribuiri pentru a obține explicația. Am folosit o algebră potrivită relației. În sisteme mai mari de asemenea ecuații, eliminarea liniară oferă un mecanism general de rezolvare. Cazul nu dovedește superioritatea oricărei abordări globale; arată insuficiența unui rezumat strict individual.",
+      "translation": "We did not explore all eight assignments to obtain the explanation. We used an algebra suited to the relation. In larger systems of such equations, linear elimination provides a general solving mechanism. The case does not prove the superiority of every global approach; it shows the inadequacy of a strictly individual summary."
+    },
+    {
+      "id": "t000224",
+      "source": "Frontiera unui circuit",
+      "translation": "The Frontier of a Circuit"
+    },
+    {
+      "id": "t000225",
+      "source": "Imaginăm că tăiem un circuit parțial în locul în care viitoarele operații se vor conecta. Valorile vizibile pe această tăietură formează frontiera. Pentru a decide ce continuări sunt posibile, putem avea nevoie de valorile lor, de relațiile dintre ele și de condițiile sub care au fost produse.",
+      "translation": "Imagine cutting a partial circuit where future operations will connect. The values visible at this cut form the frontier. To decide which continuations are possible, we may need their values, the relationships among them, and the conditions under which they were produced."
+    },
+    {
+      "id": "t000226",
+      "source": "O frontieră nu este neapărat o listă mică. Dacă problema cere să comparăm toate persoanele între ele, relațiile pot crește repede. Totuși, anumite structuri permit rezumate compacte: o relație de ordine, o partiție în clase de egalitate, un sistem de ecuații sau un graf cu separatoare mici. Căutarea unei interfețe suficiente devine căutarea formei potrivite pentru această frontieră.",
+      "translation": "A frontier is not necessarily a small list. If the problem requires comparing every person with every other, the relationships may grow rapidly. Nevertheless, certain structures allow compact summaries: an order relation, a partition into equality classes, a system of equations, or a graph with small separators. Searching for a sufficient interface becomes a search for the appropriate form of this frontier."
+    },
+    {
+      "id": "t000227",
+      "source": "Un separator este un set de variabile prin care două regiuni ale problemei interacționează. Dacă știm suficient despre separator, putem trata regiunile mai independent. Intuitiv, nu trebuie să cunoaștem toate detaliile din două orașe pentru a calcula interacțiunea lor dacă toate schimburile relevante trec prin câteva porturi bine descrise. Condiția importantă este „toate schimburile relevante”. O legătură ascunsă invalidează separarea.",
+      "translation": "A separator is a set of variables through which two regions of the problem interact. If we know enough about the separator, we can treat the regions more independently. Intuitively, we need not know every detail of two cities to calculate their interaction if all relevant exchanges pass through a few well-described ports. The important condition is “all relevant exchanges.” A hidden connection invalidates the separation."
+    },
+    {
+      "id": "t000228",
+      "source": "De ce „holografic” nu este încă un răspuns",
+      "translation": "Why “Holographic” Is Not Yet an Answer"
+    },
+    {
+      "id": "t000229",
+      "source": "O reprezentare distribuită poate codifica multe relații într-un singur vector. Aceasta schimbă modul accesului la informație, nu elimină nevoia de a o păstra. Dacă o operație de recuperare este aproximativă, trebuie măsurate confuziile. Dacă relațiile sunt suprapuse, trebuie înțeles ce interferențe apar.",
+      "translation": "A distributed representation can encode many relations in a single vector. This changes how information is accessed; it does not eliminate the need to preserve it. If a retrieval operation is approximate, its confusions must be measured. If relations are superposed, the resulting interference must be understood."
+    },
+    {
+      "id": "t000230",
+      "source": "La fel, un simbol compact poate reprezenta o relație foarte mare doar fiindcă interpretul său știe să o reconstruiască sau să o folosească. Complexitatea nu trebuie numărată numai în lungimea simbolului. Trebuie inclusă cunoașterea interpretului. Un identificator de un octet poate trimite la o bibliotecă uriașă; aceasta nu înseamnă că toată biblioteca a fost comprimată în opt biți.",
+      "translation": "Likewise, a compact symbol can represent a very large relation only because its interpreter knows how to reconstruct or use it. Complexity must not be counted solely in the symbol's length. The interpreter's knowledge must be included. A one-byte identifier can refer to an enormous library; that does not mean the entire library has been compressed into eight bits."
+    },
+    {
+      "id": "t000231",
+      "source": "Lecția pentru cercetare este clară: trebuie comparate informația disponibilă, costul accesării și tipurile de erori, nu doar dimensiunea aparentă a unei valori. Întrebarea „simbolic sau distribuit?” devine mai fertilă când o înlocuim cu „ce relații sunt reprezentate, ce operații le pot folosi și cu ce garanții?”.",
+      "translation": "The lesson for research is clear: compare available information, access costs, and types of error, not merely a value's apparent size. The question “symbolic or distributed?” becomes more fruitful when replaced with “which relationships are represented, which operations can use them, and with what guarantees?”"
+    },
+    {
+      "id": "t000232",
+      "source": "PARTEA A III-A",
+      "translation": "PART III"
+    },
+    {
+      "id": "t000233",
+      "source": "Cum comprimăm construcția circuitului",
+      "translation": "How We Compress Circuit Construction"
+    },
+    {
+      "id": "t000234",
+      "source": "De la arborele încercărilor la un graf partajat: condițiile în care două istorii pot avea același viitor relevant.",
+      "translation": "From a tree of attempts to a shared graph: the conditions under which two histories can have the same relevant future."
+    },
+    {
+      "id": "t000235",
+      "source": "9. A executa, a verifica și a descoperi sunt probleme diferite",
+      "translation": "9. Execution, Verification, and Discovery Are Different Problems"
+    },
+    {
+      "id": "t000236",
+      "source": "Circuitul cu fire perfecte poate rămâne greu de construit",
+      "translation": "A Circuit with Perfect Wires May Still Be Hard to Construct"
+    },
+    {
+      "id": "t000237",
+      "source": "Să disciplinăm radical ieșirile: fiecare fir transportă un singur bit, fiecare operație este o poartă logică bine definită, iar toate conexiunile sunt explicite. Putem evalua un asemenea circuit pentru o intrare dată urmărind operațiile. Dar întrebarea „există o intrare care produce unu?” poate necesita un efort foarte diferit.",
+      "translation": "Let us impose radical discipline on outputs: every wire carries a single bit, every operation is a well-defined logic gate, and every connection is explicit. We can evaluate such a circuit for a given input by following its operations. But the question “is there an input that produces one?” may require a very different effort."
+    },
+    {
+      "id": "t000238",
+      "source": "Aceasta este o avertizare importantă pentru SOP Lang. Explozia combinatorială nu apare doar fiindcă valorile sunt texte vagi sau obiecte foarte bogate. Poate apărea și cu valori binare și reguli elementare. Un format disciplinat elimină anumite surse de confuzie, dar nu garantează o căutare eficientă în orice clasă de probleme.",
+      "translation": "This is an important warning for SOP Lang. Combinatorial explosion does not arise only because values are vague texts or very rich objects. It can arise even with binary values and elementary rules. A disciplined format removes certain sources of confusion, but does not guarantee efficient search in every class of problems."
+    },
+    {
+      "id": "t000239",
+      "source": "Dacă un algoritm ar găsi în timp polinomial o intrare satisfăcătoare pentru orice circuit boolean, ar rezolva și formulările standard de satisfiabilitate codificate astfel. Cartea nu deduce de aici că proiectul trebuie abandonat. Deducem doar că o promisiune universală are consecințe teoretice mult mai puternice decât o optimizare inginerească obișnuită.",
+      "translation": "If an algorithm could find a satisfying input for any Boolean circuit in polynomial time, it would also solve standard satisfiability formulations encoded in this way. The book does not infer that the project should be abandoned. We infer only that a universal promise has far stronger theoretical consequences than an ordinary engineering optimization."
+    },
+    {
+      "id": "t000240",
+      "source": "Lecția criptografiei",
+      "translation": "The Lesson of Cryptography"
+    }
+  ]
+}

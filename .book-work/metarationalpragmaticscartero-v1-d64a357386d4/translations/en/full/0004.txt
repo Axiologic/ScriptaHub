@@ -1,0 +1,68 @@
+This is a construction mechanism, not merely post-hoc classification. After every extension, the agent builds a candidate model and confronts it with the system. A counterexample is a sequence on which the candidate's behavior differs from the target's. The sequence can be reduced to locate the missing test.
+In an ideal setting, an equivalence oracle states whether the candidate model is correct and supplies a counterexample when it is not. In a real system, such an oracle is usually replaced by testing. Tappler and colleagues explicitly distinguish a perfect-information setting from learning through sampled traces [
+Tappler2019
+]. Failure to find a counterexample must not be reinterpreted as proof of equivalence.
+Resetting and Experimental Access
+Comparing two continuations from the same situation may require resetting the system or reproducing a history. This may be simple in a simulator. In an organizational workflow, it may be expensive or impossible. The ability to experiment must not be assumed free.
+A learning environment must declare which actions are available, which observations are obtained, whether resetting is possible and whether execution irreversibly changes the world. These conditions determine which algorithms can be applied and which claims can be validated.
+What MRP Gains
+A learned automaton can become a reusable interpreter of history. It can process new events incrementally without continually rereading the entire past. But this efficiency assumes that the learned state preserves the necessary differences within the evaluated domain.
+The experiment must distinguish inducing a new model from selecting a supplied one. Only the former tests the construction of distinctions; both may have engineering value.
+CHAPTER 07
+Prediction and Intervention
+Beyond Visible States
+In a probabilistic system, two histories may produce different outcomes when the same test is repeated without necessarily representing different states. The difference may arise from randomness. The equivalence criterion must compare distributions, not a single observation.
+We will write Distribution(test, h) for the distribution of test outcomes after history h. Two histories are predictively equivalent relative to T if these distributions are equal for every test in T. Exact equality is a theoretical object; experimentally, we estimate distributions from samples and report uncertainty.
+An interactive test includes how actions are chosen. If the first observation determines the next action, the test is an experimental policy, not merely a fixed list. Two systems can be compared only if we use the same test specification and relevant starting conditions.
+Predictive Representations
+Predictive state representations, or PSRs, describe state through predictions about the outcomes of tests executable on the system. Singh, James and Rudary develop this idea using a system-dynamics matrix whose rows correspond to histories and columns to tests [
+Singh2004
+An example makes the intuition clear. Instead of storing a hidden label such as “latent mode 7,” we can store the probability that a simple check succeeds, the probability that two successive operations succeed and the probability that a reset restores functioning. These coordinates are meaningful because they refer to observations that can be collected.
+Not every list of predictions is a sufficient PSR. There must be a rule for calculating relevant predictions from it and updating it after actions and observations. Choosing a few intuitive questions does not ensure this property.
+Rank Without Mystery
+A matrix is a numerical table. Its rank measures how many independent columns or rows are needed to describe the table's linear information. If some predictions can be obtained as linear combinations of others, they need not all be stored as independent dimensions.
+This offers possible compression for suitably structured systems. However, estimating a low rank from finite data does not prove that the real system has exactly that rank. Noise may make columns appear independent, while insufficient tests can hide differences. A useful predictive representation requires both a structural hypothesis and a validation procedure.
+The coefficients of a linear combination must not automatically be interpreted as probabilities. They may be negative, although the final prediction must remain a valid probability. Moreover, updating after observing an event usually involves normalization. Linear compression of predictions does not mean the entire agent becomes a simple average of models.
+Observing Is Not Intervening
+Consider two models with binary variables. In the first, a hidden variable Z determines both X and Y. In the second, Z determines X and X determines Y. Suppose Z is zero or one with equal probabilities and every link copies the value. In observational data from both models, we always see X = Y.
+If we intervene and fix X at zero, the difference emerges. In the first model, Y continues to copy Z and is one in half the cases. In the second, Y copies X and becomes zero. The same observational distribution can be compatible with different intervention effects.
+Causal formalism centers on this separation between conditioning, intervention and counterfactual questions [
+Pearl2018
+]. For MRP, the practical consequence is that an interpreter trained on correlations does not automatically gain authority to predict the effects of any action. It needs causal assumptions or suitable experimental data.
+A PSR of a controlled system can predict action tests under its identification and coverage conditions. This does not amount to solving every causal question about hidden mechanisms or unobserved counterfactual worlds. Exactly which interventions were available and which prediction class is supported must be specified.
+Identifiability and Gaps
+A model is identifiable for a question if the available data and assumptions determine the relevant answer. Two models explaining every observation may still differ regarding an untested action. In this situation, refining the internal representation does not itself produce new information about the world.
+The agent must choose between experimentation, explicitly assuming a model or abstaining. Generating an additional explanation is not a fourth route to acquiring information. This limit prevents MRP from becoming a rhetoric of omniscience through internal reorganization.
+Role in the Architecture
+Predictive interpreters can supply verifiable coordinates, detect collisions and suggest tests that would separate candidate models. A metacontroller can decide whether the information's benefit justifies the experiment. A verifier can check whether the final claim exceeds the domain supported by the data.
+MRP can thus connect representation with action without reducing every form of understanding to next-symbol prediction. The relevant prediction may concern a protocol, an intervention, a documentary answer or a rule's consequence. Specifying this target is part of the problem, not a detail that can remain implicit.
+CHAPTER 08
+Abstract Interpretations
+Sufficient Information for a Property
+Abstract interpretation constructs sound approximations of program behavior. Instead of executing every concrete case, it operates in a domain preserving certain properties and ignoring others [
+Cousot1977
+]. For MRP, this provides a mature example of multiple interpreters with clear mathematical obligations.
+Suppose two variables x and y both equal the same number a, and a lies between zero and ten. An interval representation preserves x between zero and ten and y between zero and ten. Applied independently to both intervals, subtraction produces the interval from minus ten to ten. Yet the concrete result x − y is always zero.
+The problem is not that the intervals were calculated incorrectly. They lost the relation between the variables. A relational interpretation preserving the equality x = y can immediately prove the result. The choice of abstract domain determines which properties become accessible to analysis.
+Sound Approximation
+In overapproximation analysis, the abstract result must include every possible concrete result. It may also include possibilities that do not occur in reality. These produce false alarms, not necessarily analysis errors. An approximation excluding a possible concrete behavior may become unsound for the property pursued.
+We can view an abstract value as a description of a set of concrete states. “x is positive” describes many values. An abstract transformation is sound if, starting from all states described by the input, no possible concrete state after the operation is lost from the output description.
+This obligation is much stronger than “the operation was correct on tested examples.” An empirically learned interpreter does not become a sound abstract analyzer merely by producing intervals or formulas. The relationship between the concrete operation and abstract transformation must be verified.
+Precision and Cost
+More expressive domains can prove properties simpler domains lose, but may require more computation. Some relations matter in one program region and are useless in another. A reasonable strategy starts simply and increases precision where the required property demands it.
+Cousot's introduction to abstract interpretation explains this relationship between the properties pursued, approximation and computable analysis [
+CousotIntro
+]. The MRP extension would be a controller learning which representation change is likely to resolve a particular alarm, without assuming that “more precision” is always free or necessary.
+For example, the interval may suffice to verify that x does not exceed ten. To verify the equality x − y = 0, the relation is decisive. The pragmatic choice depends on the question; each interpretation's soundness depends on its rules.
+Fixed Points and Stopping
+Programs with loops may require repeated information propagation. A fixed point is an analysis state unchanged by another application of the propagation rule. Not every process reaches a fixed point quickly, and some domains allow infinite chains of increasingly precise or increasingly broad approximations.
+Abstract interpretation uses acceleration mechanisms, including widening, to force certain analyses to stabilize [
+CousotIntro
+]. The price may be lost precision. For MRP, the general idea is that a stopping policy must form part of the algorithm. “Keep refining until you understand” does not define a procedure with finite resources.
+A prototype can initially avoid complicated domains and use finite tables or explicit step limits. The restriction is legitimate if the experiment's domain declares it. It becomes problematic only when conclusions are tacitly extended to systems without those limits.
+Two Forms of Evidence
+A formal result may say: under these assumptions about the program and arithmetic, the property holds for every modeled execution. An empirical result may say: on this test distribution, the interpreter had a particular error rate. Both are useful, but they are not interchangeable.
+A hybrid architecture may allow a generator to propose an abstraction and a verifier to check its local soundness. If verification fails, the hypothesis must not be promoted to a sound rule. If verification is incomplete, the result's status must preserve that limit.
+Transfer to MRP
+Abstract interpretation shows that “multiple modes of interpretation” is not a new idea in itself. It also shows how this plurality can be disciplined through formal relations. MRP merits investigation where it adds a measurable mechanism for selecting, constructing and reusing these modes.
+The first plausible application is not an agent inventing its own mathematics without control. It is an agent identifying which relation an analysis lacks, proposing a suitable interpreter and proving or testing exactly which improvement it achieved. This object is more modest, but difficult and useful enough for a real research program.

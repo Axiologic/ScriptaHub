@@ -1,0 +1,232 @@
+{
+  "batch": "batch-0015.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0015",
+  "chapterTitle": "11. The extended family of next-symbol prediction",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000281",
+      "chapterId": "chapter-0015",
+      "kind": "h1",
+      "text": "11. The extended family of next-symbol prediction",
+      "sourceAnchor": "src-p281",
+      "wordCount": 7
+    },
+    {
+      "id": "u000282",
+      "chapterId": "chapter-0015",
+      "kind": "h2",
+      "text": "11.1. A common objective, different mechanisms",
+      "sourceAnchor": "src-p282",
+      "wordCount": 7
+    },
+    {
+      "id": "u000283",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "Any joint distribution over a finite string can be decomposed into successive conditional probabilities. For conditioning events with positive probability, the chain rule gives the identity:",
+      "sourceAnchor": "src-p283",
+      "wordCount": 26
+    },
+    {
+      "id": "u000284",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "P(x₁,…,xₙ) = P(x₁) · P(x₂|x₁) · … · P(xₙ|x₁,…,xₙ₋₁)",
+      "sourceAnchor": "src-p284",
+      "wordCount": 13
+    },
+    {
+      "id": "u000285",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "The identity does not specify how the probabilities are computed. They may come from a table, an automaton, a hidden-state model, a simulator or a neural network. Next-symbol prediction is a common objective, not an ontology or a unique architecture.",
+      "sourceAnchor": "src-p285",
+      "wordCount": 40
+    },
+    {
+      "id": "u000286",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "The link between prediction and compression is technical: probabilities assigned to sequences can be used to encode them, and predictive performance is reflected in description length. Research on language models as compression mechanisms develops this perspective. By itself, it does not establish whether the internal representation identifies the causal mechanisms of the world described. [20]",
+      "sourceAnchor": "src-p286",
+      "wordCount": 55
+    },
+    {
+      "id": "u000287",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "In an LLM with frozen weights, the procedure producing the next-token distribution remains fixed. Context and execution state change. If the weights are also updated, the parameter–state pair can be included in an extended dynamics. The novelty of generated sentences does not demonstrate the emergence of new fundamental instructions in the inference mechanism.",
+      "sourceAnchor": "src-p287",
+      "wordCount": 54
+    },
+    {
+      "id": "u000288",
+      "chapterId": "chapter-0015",
+      "kind": "h2",
+      "text": "11.2. Memory through contexts: the nearest neighbor",
+      "sourceAnchor": "src-p288",
+      "wordCount": 8
+    },
+    {
+      "id": "u000289",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "A fixed-order model estimates the next symbol from the last k symbols. It is easy to interpret: each context has a distribution of continuations. The disadvantage is that the number of possible contexts can grow rapidly with k, while a recurrent dependency may remain hidden beyond any fixed window.",
+      "sourceAnchor": "src-p289",
+      "wordCount": 49
+    },
+    {
+      "id": "u000290",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "Variable-context models allow some situations to use a short past and others a longer one. Context-tree weighting combines models organized in a tree and has compression guarantees for the source classes and conventions analyzed in its theory. These guarantees do not mean that every semantic dependency will be learned efficiently. [17]",
+      "sourceAnchor": "src-p290",
+      "wordCount": 51
+    },
+    {
+      "id": "u000291",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "This family is an indispensable benchmark. Before proposing sophisticated mechanisms for ‘understanding’, we must see how much can be achieved through statistical reuse of contexts. An improvement over a memoryless predictor is not enough; the relevant comparator must benefit from the memory the problem permits.",
+      "sourceAnchor": "src-p291",
+      "wordCount": 45
+    },
+    {
+      "id": "u000292",
+      "chapterId": "chapter-0015",
+      "kind": "h2",
+      "text": "11.3. Memory through state: different histories, the same role",
+      "sourceAnchor": "src-p292",
+      "wordCount": 10
+    },
+    {
+      "id": "u000293",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "A probabilistic automaton can have an internal state updated at each observation. Unlike a suffix tree, it can bring very different histories into the same state. This can allow compact representation of recurrent dependencies, such as modular counting or alternating phases.",
+      "sourceAnchor": "src-p293",
+      "wordCount": 41
+    },
+    {
+      "id": "u000294",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "The difficult problem is not merely estimating probabilities, but finding the state structure. Algorithms exist for discovering sequential patterns that construct hidden states from data and provide convergence results under explicit assumptions. They are a starting point for a new program, not a historical detail to ignore. [18]",
+      "sourceAnchor": "src-p294",
+      "wordCount": 48
+    },
+    {
+      "id": "u000295",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "A study should compare two ways of increasing memory: adding contexts and discovering a recurrent state. When an advantage appears, the important question is whether it comes from a better partition of histories, a structural assumption supplied by the designer, or a budget difference. These three explanations have different scientific values.",
+      "sourceAnchor": "src-p295",
+      "wordCount": 51
+    },
+    {
+      "id": "u000296",
+      "chapterId": "chapter-0015",
+      "kind": "h2",
+      "text": "11.4. Hidden regimes, counters and stacks",
+      "sourceAnchor": "src-p296",
+      "wordCount": 7
+    },
+    {
+      "id": "u000297",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "Hidden-state models separate the generator’s state from visible observations. Filtering updates a belief distribution over the state. Regime-change models can track changes in local regularity; Bayesian online changepoint detection is a formal approach to this problem. [19]",
+      "sourceAnchor": "src-p297",
+      "wordCount": 37
+    },
+    {
+      "id": "u000298",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "A counter adds a form of memory that grows numerically. A stack allows nested structures to be managed: an opening is retained until its corresponding closing appears. For a family of sequences with nesting without a fixed limit, a stack expresses a regularity that a finite collection of contexts cannot represent exactly at all lengths.",
+      "sourceAnchor": "src-p298",
+      "wordCount": 55
+    },
+    {
+      "id": "u000299",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "It does not follow that stacks are the general solution for language. They provide a laboratory in which we know which dependency we seek and can verify transfer to unseen depths. A model may learn the surface format yet fail at deeper nesting. Another may receive its stack from the designer; its success verifies the structure’s usefulness, not its autonomous discovery.",
+      "sourceAnchor": "src-p299",
+      "wordCount": 61
+    },
+    {
+      "id": "u000300",
+      "chapterId": "chapter-0015",
+      "kind": "h2",
+      "text": "11.5. Predicting experiments, not only symbols",
+      "sourceAnchor": "src-p300",
+      "wordCount": 7
+    },
+    {
+      "id": "u000301",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "Predictive State Representations propose describing state through predictions about the outcomes of sequences of actions and observations. Instead of directly asserting which hidden variable exists, we retain a set of predictions that can be updated and used to anticipate other tests. [16]",
+      "sourceAnchor": "src-p301",
+      "wordCount": 42
+    },
+    {
+      "id": "u000302",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "This is a particularly fruitful relative of next-token prediction. The question becomes ‘what will I observe if I perform this sequence of actions?’ rather than merely ‘what appears if I keep watching?’ For the research program, this perspective naturally connects memory, experimentation and control.",
+      "sourceAnchor": "src-p302",
+      "wordCount": 44
+    },
+    {
+      "id": "u000303",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "Nevertheless, it must not automatically be called a complete causal theory. Data-collection policies, identifiability and action coverage remain essential. A predictive representation may be correct only within the domain in which it was defined and trained. Expanding the actions may require new internal distinctions.",
+      "sourceAnchor": "src-p303",
+      "wordCount": 44
+    },
+    {
+      "id": "u000304",
+      "chapterId": "chapter-0015",
+      "kind": "h2",
+      "text": "11.6. Why good prediction does not certify rule compliance",
+      "sourceAnchor": "src-p304",
+      "wordCount": 10
+    },
+    {
+      "id": "u000305",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "A model may assign a very small probability to a forbidden continuation. If that probability is positive, repeated generation may produce a violation. Conversely, an exactly imposed constraint may eliminate the continuation but may be wrong if the real world allows exceptions.",
+      "sourceAnchor": "src-p305",
+      "wordCount": 42
+    },
+    {
+      "id": "u000306",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "Distribution quality, fidelity of generated sequences and validity guarantees must be separated. Regularization or smoothing may improve statistical estimation and avoid premature zero probabilities, but they do not turn an event’s absence into logical impossibility. A system that must respect an invariant needs an additional validation mechanism or a generative class that preserves it by construction.",
+      "sourceAnchor": "src-p306",
+      "wordCount": 56
+    },
+    {
+      "id": "u000307",
+      "chapterId": "chapter-0015",
+      "kind": "p",
+      "text": "This does not establish a simple hierarchy between symbolic and neural approaches. A symbolic mechanism can contain incorrect rules; a neural model can learn a useful structure. The question is which part is estimated, which is imposed, which is verified, and what happens when these parts conflict.",
+      "sourceAnchor": "src-p307",
+      "wordCount": 47
+    }
+  ]
+}

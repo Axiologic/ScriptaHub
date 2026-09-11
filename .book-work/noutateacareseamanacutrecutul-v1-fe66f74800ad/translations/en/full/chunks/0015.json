@@ -1,0 +1,256 @@
+{
+  "language": "en",
+  "chunk": 15,
+  "segments": [
+    {
+      "id": "t000577",
+      "source": "Trebuie însă diferențiată imposibilitatea informațională de dificultatea pentru un algoritm. Să presupunem că X este un document lung care conține explicit eticheta corectă într-o relație logică dificilă. Un rezumat Z o exprimă clar. Evaluatorul concret poate avea eroare mai mică pe Z. Aceasta nu contrazice faptul că un evaluator optim cu acces la X ar putea calcula același rezumat și decide cel puțin la fel de bine. Rezumatul schimbă costul și accesibilitatea, nu creează adevăr suplimentar despre lume.",
+      "translation": "However, informational impossibility must be distinguished from difficulty for an algorithm. Suppose X is a long document that explicitly contains the correct label within a difficult logical relation. A summary Z expresses it clearly. The actual evaluator may have a lower error on Z. This does not contradict the fact that an optimal evaluator with access to X could compute the same summary and decide at least as well. The summary changes cost and accessibility; it does not create additional truth about the world."
+    },
+    {
+      "id": "t000578",
+      "source": "Un exemplu construit are documente cu multe propoziții irelevante și două premise: dacă A atunci B; A. Întrebarea este dacă B urmează. Un rezumat fidel poate păstra numai premisele și reduce erorile unui model limitat. Dar dacă întrebarea este dacă documentul afirmă și C, același rezumat poate fi insuficient. Fidelitatea este dependentă de sarcină. Un rezumat bun pentru concluzia B poate fi prost pentru inventarierea tuturor contribuțiilor.",
+      "translation": "A constructed example uses documents with many irrelevant sentences and two premises: if A then B; A. The question is whether B follows. A faithful summary can retain only the premises and reduce errors by a limited model. But if the question is whether the document also asserts C, the same summary may be insufficient. Fidelity is task-dependent. A good summary for conclusion B may be poor for inventorying all contributions."
+    },
+    {
+      "id": "t000579",
+      "source": "Putem formula un obiectiv de compresie orientat spre o familie de întrebări Q. Dorim o reprezentare cu cost mic, astfel încât răspunsurile la întrebările relevante să fie conservate cu o eroare sub un prag. Acesta este un obiectiv de proiectare, nu o metodă completă. Dificultatea este că întrebările despre noutate pot fi necunoscute înaintea citirii. Dacă familia Q este prea îngustă, contribuțiile care schimbă întrebările pot fi pierdute. Dacă este nelimitată, cerința se apropie de păstrarea integrală a informației.",
+      "translation": "We can formulate a compression objective oriented toward a family of questions Q. We want a low-cost representation such that answers to relevant questions are preserved with an error below a threshold. This is a design objective, not a complete method. The difficulty is that questions about novelty may be unknown before reading. If the family Q is too narrow, contributions that change the questions may be lost. If it is unlimited, the requirement approaches preserving all information."
+    },
+    {
+      "id": "t000580",
+      "source": "Un sistem poate gestiona tensiunea prin două niveluri. Reprezentarea compactă servește întrebărilor frecvente, iar arhiva originală rămâne accesibilă pentru întrebări noi. Costul este mutat de la stocare completă în fiecare context către acces selectiv. Garanția practică depinde de capacitatea sistemului de a recunoaște când are nevoie de sursă. De aceea, detectarea insuficienței reprezentării este o sarcină separată care trebuie evaluată.",
+      "translation": "A system can manage this tension through two levels. The compact representation serves frequent questions, while the original archive remains accessible for new questions. Cost shifts from complete storage in every context to selective access. The practical guarantee depends on the system’s ability to recognize when it needs the source. Detecting insufficient representation is therefore a separate task that must be evaluated."
+    },
+    {
+      "id": "t000581",
+      "source": "O consecință subtilă este că explicația modelului poate fi mai informativă decât scorul și totuși insuficientă pentru verdict. Dacă explicația păstrează o diferență, dar scorul o ignoră, informația există în ieșire și poate fi recuperată de un alt agregator. Dacă explicația și scorul au fost construite după aceeași netezire, ambele pot rata diferența. Evaluarea ar trebui să inspecteze obiectele intermediare, nu doar ultima etichetă.",
+      "translation": "A subtle consequence is that the model’s explanation may be more informative than its score and still insufficient for the verdict. If the explanation preserves a difference but the score ignores it, the information exists in the output and can be recovered by another aggregator. If the explanation and score were constructed after the same smoothing, both may miss the difference. Evaluation should inspect intermediate objects, not only the final label."
+    },
+    {
+      "id": "t000582",
+      "source": "A.3. Diferențe rare și modele de selecție: calcule exacte",
+      "translation": "A.3. Rare differences and selection models: exact calculations"
+    },
+    {
+      "id": "t000583",
+      "source": "Construim două funcții pe opt biți. Prima returnează XOR-ul primilor doi biți. A doua returnează aceeași valoare, cu excepția intrării în care toți cei opt biți sunt unu, unde valoarea este inversată. Funcțiile diferă pe exact o intrare din 256. Dacă biblioteca conține numai prima funcție, a doua este nouă după criteriul echivalenței extensionale. Această etichetă nu depinde de frecvența cu care intrarea distinctivă apare în utilizare.",
+      "translation": "We construct two functions on eight bits. The first returns the XOR of the first two bits. The second returns the same value, except on the input where all eight bits are one, where the value is inverted. The functions differ on exactly one input out of 256. If the library contains only the first function, the second is new under the criterion of extensional equivalence. This label does not depend on how frequently the distinguishing input appears in use."
+    },
+    {
+      "id": "t000584",
+      "source": "Dacă intrările sunt uniforme și observăm o sută de exemple independente cu înlocuire, probabilitatea de a nu vedea diferența este (255/256) la puterea o sută, aproximativ 0,676. Cu o mie de exemple, probabilitatea este aproximativ 0,01996. Pentru a avea probabilitate de ratare cel mult 0,05, avem nevoie de cel puțin 766 de observații în acest regim. Enumerarea fără înlocuire a tuturor celor 256 de intrări este, evident, suficientă. Regimul de eșantionare contează.",
+      "translation": "If inputs are uniform and we observe one hundred independent examples with replacement, the probability of not seeing the difference is (255/256) to the power of one hundred, approximately 0.676. With one thousand examples, the probability is approximately 0.01996. To obtain a miss probability of at most 0.05, we need at least 766 observations in this regime. Enumerating all 256 inputs without replacement is, of course, sufficient. The sampling regime matters."
+    },
+    {
+      "id": "t000585",
+      "source": "Dacă intrarea distinctivă are probabilitatea ε sub distribuția reală, formula generală este (1−ε) la puterea m. Pentru ε mic, aproximarea exponențială exp(−mε) arată că bugetul necesar crește aproximativ invers proporțional cu ε. Acesta este un motiv pentru a nu identifica absența unei diferențe observate cu echivalența funcțională. Un test poate fi foarte lung și totuși să rateze un caz rar dacă nu este proiectat să îl caute.",
+      "translation": "If the distinguishing input has probability ε under the real distribution, the general formula is (1−ε) to the power m. For small ε, the exponential approximation exp(−mε) shows that the required budget grows roughly inversely with ε. This is a reason not to equate the absence of an observed difference with functional equivalence. A test can be very long and still miss a rare case if it is not designed to seek it."
+    },
+    {
+      "id": "t000586",
+      "source": "Un verificator simbolic poate evita uneori eșantionarea prin analizarea structurii. Pentru funcțiile de mai sus, observă direct condiția care inversează ieșirea. Dar nu trebuie să generalizăm de la această construcție simplă la orice program. Căutarea unui martor poate fi dificilă computațional. Diferența dintre a verifica un martor furnizat și a-l descoperi este un element central al complexității operaționale a detectorului.",
+      "translation": "A symbolic verifier can sometimes avoid sampling by analyzing structure. For the functions above, it directly observes the condition that inverts the output. But we must not generalize from this simple construction to every program. Finding a witness may be computationally difficult. The difference between verifying a supplied witness and discovering one is central to the detector’s operational complexity."
+    },
+    {
+      "id": "t000587",
+      "source": "Să examinăm acum compresia. Dacă păstrăm ieșirile pe primele 255 de intrări în ordinea lexicografică și eliminăm ultima intrare, cele două funcții primesc aceeași reprezentare. Eroarea nu provine dintr-un model lingvistic, ci dintr-o proiecție deterministă. Dacă adăugăm ulterior ultima linie, diferența devine identificabilă. Exemplul este o demonstrație executabilă a dependenței verdictului de informația păstrată.",
+      "translation": "Now consider compression. If we retain the outputs on the first 255 inputs in lexicographic order and remove the last input, the two functions receive the same representation. The error comes from a deterministic projection, not a language model. If we later add the final row, the difference becomes identifiable. The example is an executable demonstration of how the verdict depends on the information retained."
+    },
+    {
+      "id": "t000588",
+      "source": "Pentru selecția repetată, considerăm două clase cu ponderi inițiale egale. Prima este acceptată cu probabilitatea 0,55, a doua cu 0,50, iar numai acceptatele revin. După t runde, raportul ponderilor este 1,1 la puterea t. După douăzeci de runde, raportul este aproximativ 6,73. Nu am modelat calitatea ideilor, apariția de contribuții noi sau corectarea erorilor. Calculul arată numai cum se poate amplifica o asimetrie persistentă într-un proces închis.",
+      "translation": "For repeated selection, consider two classes with equal initial weights. The first is accepted with probability 0.55, the second with 0.50, and only accepted cases return. After t rounds, the weight ratio is 1.1 to the power t. After twenty rounds, the ratio is approximately 6.73. We have not modeled idea quality, the emergence of new contributions or error correction. The calculation shows only how a persistent asymmetry can be amplified in a closed process."
+    },
+    {
+      "id": "t000589",
+      "source": "Dacă introducem în fiecare rundă idei externe și păstrăm auditul, dinamica se modifică. Clasele defavorizate pot fi reintroduse, iar probabilitățile de acceptare se pot schimba după descoperirea erorilor. Astfel, modelul simplu nu este o predicție inevitabilă a uniformizării. Este un instrument pentru a formula variabilele care trebuie măsurate: aportul extern, probabilitatea de selecție, rata reevaluării și dependența acestora de familiaritate.",
+      "translation": "If we introduce external ideas in each round and maintain auditing, the dynamics change. Disadvantaged classes can be reintroduced, and acceptance probabilities can change after errors are discovered. Thus, the simple model is not an inevitable prediction of homogenization. It is a tool for formulating the variables to be measured: external input, selection probability, reevaluation rate and their dependence on familiarity."
+    },
+    {
+      "id": "t000590",
+      "source": "Aceste calcule au un rol comun. Ele arată că o eroare observată poate avea surse foarte diferite: raritatea unui caz distinctiv, compresia informației sau o politică repetată de selecție. Niciuna nu trebuie atribuită automat esenței LLM-ului. În schimb, fiecare poate fi introdusă într-un experiment controlat și poate conduce la o intervenție concretă.",
+      "translation": "These calculations share a purpose. They show that an observed error can have very different sources: the rarity of a distinguishing case, information compression or a repeated selection policy. None should automatically be attributed to the essence of an LLM. Instead, each can be introduced into a controlled experiment and lead to a concrete intervention."
+    },
+    {
+      "id": "t000591",
+      "source": "Anexa B. Protocol de preregistrare și registru al dovezilor",
+      "translation": "Appendix B. Preregistration protocol and evidence register"
+    },
+    {
+      "id": "t000592",
+      "source": "B.1. Fișa studiului și contractul inferențial",
+      "translation": "B.1. Study record and inferential contract"
+    },
+    {
+      "id": "t000593",
+      "source": "Protocolul de mai jos este un șablon conceptual pentru un studiu confirmatoriu. Valorile concrete trebuie stabilite înaintea colectării datelor, după un pilot independent. Nu este prezentat ca un protocol deja înregistrat și nu implică existența unui experiment executat. Scopul său este să împiedice schimbarea retrospectivă a ipotezelor, metricilor și populației până când rezultatul devine convenabil.",
+      "translation": "The protocol below is a conceptual template for a confirmatory study. Concrete values must be set before data collection, following an independent pilot. It is not presented as an already registered protocol and does not imply that an experiment has been performed. Its purpose is to prevent retrospective changes to hypotheses, metrics and the population until the result becomes convenient."
+    },
+    {
+      "id": "t000594",
+      "source": "Titlul studiului trebuie să numească mecanismul și domeniul: de exemplu, influența familiarității stilistice asupra detectării noutății funcționale în circuite finite. O formulare de tipul „pot LLM-urile să fie creative?” este prea largă pentru un asemenea experiment. Populația vizată trebuie să precizeze familiile de obiecte și limbajele de descriere. Concluziile nu vor fi extinse automat la idei științifice deschise.",
+      "translation": "The study title must name the mechanism and domain: for example, the influence of stylistic familiarity on detecting functional novelty in finite circuits. A formulation such as “can LLMs be creative?” is too broad for such an experiment. The target population must specify object families and description languages. Conclusions will not automatically extend to open-ended scientific ideas."
+    },
+    {
+      "id": "t000595",
+      "source": "Ipoteza principală trebuie formulată ca un contrast măsurabil. De exemplu, rata identificării corecte a diferenței este modificată de stil când semantica și antecedentele sunt constante. Direcția poate fi preregistrată sau testul poate fi bilateral, dacă există motive pentru efecte în ambele sensuri. Trebuie ales un prag al efectului minim relevant, exprimat în puncte procentuale, diferență de scor sau cost de verificare. Pragul nu trebuie ales după rezultate.",
+      "translation": "The primary hypothesis must be formulated as a measurable contrast. For example, the rate of correctly identifying the difference is changed by style when semantics and prior work are held constant. The direction can be preregistered, or the test can be two-sided if there are reasons for effects in both directions. A threshold for the smallest relevant effect must be chosen, expressed in percentage points, score difference or verification cost. The threshold must not be chosen after seeing the results."
+    },
+    {
+      "id": "t000596",
+      "source": "Condițiile experimentale trebuie să definească exact ce primește modelul. Corpusul absent, regăsirea automată și pachetul de antecedente decisive sunt tratamente diferite. Textul integral, rezumatul și rezumatul cu acces la sursă sunt alte tratamente. În cazul unui design parțial, trebuie declarat de ce anumite combinații sunt omise. Un design redus poate fi foarte bun dacă răspunde unei întrebări precise.",
+      "translation": "Experimental conditions must define exactly what the model receives. An absent corpus, automated retrieval and a package of decisive prior work are different treatments. Full text, a summary and a summary with source access are other treatments. In a partial design, the reasons for omitting certain combinations must be declared. A reduced design can be very good if it answers a precise question."
+    },
+    {
+      "id": "t000597",
+      "source": "Unitatea independentă principală este contribuția sau familia, nu numărul de răspunsuri generate. Repetările estimează variabilitatea modelului în aceeași situație; nu înmulțesc numărul de idei. Trebuie specificată structura de clustering și metoda de calcul a intervalelor. Dacă utilizăm mai multe modele, trebuie declarat dacă inferența privește modelele individuale sau o familie de proceduri de antrenare.",
+      "translation": "The main independent unit is the contribution or family, not the number of generated responses. Repetitions estimate model variability in the same situation; they do not multiply the number of ideas. The clustering structure and method for calculating intervals must be specified. If we use multiple models, we must declare whether inference concerns individual models or a family of training procedures."
+    },
+    {
+      "id": "t000598",
+      "source": "Element preregistrat",
+      "translation": "Preregistered item"
+    },
+    {
+      "id": "t000599",
+      "source": "Specificația necesară",
+      "translation": "Required specification"
+    },
+    {
+      "id": "t000600",
+      "source": "Populație",
+      "translation": "Population"
+    },
+    {
+      "id": "t000601",
+      "source": "Domeniul, familiile de contribuții și criteriile de includere.",
+      "translation": "The domain, contribution families and inclusion criteria."
+    },
+    {
+      "id": "t000602",
+      "source": "Adevăr de referință",
+      "translation": "Ground truth"
+    },
+    {
+      "id": "t000603",
+      "source": "Verificator exact sau procedură expertă, cu limite declarate.",
+      "translation": "Exact verifier or expert procedure, with stated limits."
+    },
+    {
+      "id": "t000604",
+      "source": "Manipulări",
+      "translation": "Manipulations"
+    },
+    {
+      "id": "t000605",
+      "source": "Semantica, stilul, accesul, compresia și eventual expunerea.",
+      "translation": "Semantics, style, access, compression and possibly exposure."
+    },
+    {
+      "id": "t000606",
+      "source": "Rezultat principal",
+      "translation": "Primary outcome"
+    },
+    {
+      "id": "t000607",
+      "source": "Metrică unică sau familie restrânsă, aleasă înaintea testului.",
+      "translation": "A single metric or restricted family, chosen before the test."
+    },
+    {
+      "id": "t000608",
+      "source": "Analiză",
+      "translation": "Analysis"
+    },
+    {
+      "id": "t000609",
+      "source": "Contraste, interacțiuni, clustering și tratarea multiplicității.",
+      "translation": "Contrasts, interactions, clustering and handling multiplicity."
+    },
+    {
+      "id": "t000610",
+      "source": "Excluderi",
+      "translation": "Exclusions"
+    },
+    {
+      "id": "t000611",
+      "source": "Erori de generator, intrări invalide și reguli stabilite anterior.",
+      "translation": "Generator errors, invalid inputs and rules established beforehand."
+    },
+    {
+      "id": "t000612",
+      "source": "Abțineri",
+      "translation": "Abstentions"
+    },
+    {
+      "id": "t000613",
+      "source": "Tratament explicit în acoperire, risc și cost.",
+      "translation": "Explicit treatment in coverage, risk and cost."
+    },
+    {
+      "id": "t000614",
+      "source": "Relevanță practică",
+      "translation": "Practical relevance"
+    },
+    {
+      "id": "t000615",
+      "source": "Pragul efectului care ar modifica o decizie de utilizare.",
+      "translation": "The effect threshold that would change a decision about use."
+    },
+    {
+      "id": "t000616",
+      "source": "Excluderile trebuie să privească defecte reale ale datelor, nu rezultate neconvenabile. Un caz cu etichetă ambiguă poate fi mutat într-un strat separat conform unei reguli anterioare. Nu trebuie eliminat pentru că modelul a răspuns altfel decât aștepta cercetătorul. Un răspuns într-un format greșit poate fi o eroare de urmărire a instrucțiunii și trebuie raportat ca atare; nu trebuie corectat manual în secret.",
+      "translation": "Exclusions must concern real data defects, not inconvenient results. A case with an ambiguous label can be moved to a separate stratum under a prior rule. It must not be removed because the model answered differently from what the researcher expected. A response in the wrong format may be an instruction-following error and must be reported as such; it must not be secretly corrected by hand."
+    },
+    {
+      "id": "t000617",
+      "source": "Planul de analiză trebuie să distingă confirmarea de explorare. Putem investiga ulterior de ce un model eșuează pe o familie, dar rezultatul este generator de ipoteze. Dacă schimbăm promptul după inspectarea testului, avem o nouă procedură și este necesar un set de evaluare separat. Un benchmark folosit repetat pentru ajustare devine treptat parte din antrenarea sistemului, chiar dacă ponderile modelului nu se schimbă.",
+      "translation": "The analysis plan must distinguish confirmation from exploration. We can later investigate why a model fails on a family, but the result generates hypotheses. If we change the prompt after inspecting the test, we have a new procedure and need a separate evaluation set. A benchmark repeatedly used for tuning gradually becomes part of the system’s training, even if the model weights do not change."
+    },
+    {
+      "id": "t000618",
+      "source": "B.2. Registrul unui caz și traseul de la text la verdict",
+      "translation": "B.2. A case register and the path from text to verdict"
+    },
+    {
+      "id": "t000619",
+      "source": "Fiecare caz trebuie să aibă un identificator stabil și o versiune. Identificatorul nu trebuie să dezvăluie eticheta. Datele trebuie să separe obiectul semantic de prezentarea sa. Pentru un circuit, obiectul poate fi arborele expresiei și tabelul de adevăr. Prezentarea poate fi textul în limbaj natural. Pentru un articol, obiectul semantic nu este exact cunoscut, astfel încât păstrăm contribuția extrasă împreună cu pasajele și interpretările alternative.",
+      "translation": "Each case must have a stable identifier and a version. The identifier must not reveal the label. Data must separate the semantic object from its presentation. For a circuit, the object can be the expression tree and truth table. The presentation can be natural-language text. For an article, the semantic object is not known exactly, so we retain the extracted contribution together with passages and alternative interpretations."
+    },
+    {
+      "id": "t000620",
+      "source": "Registrul trebuie să includă criteriul de noutate și biblioteca exactă. Dacă biblioteca se modifică, eticheta poate să se schimbe fără modificarea candidatului. Aceasta nu este o inconsistență, ci o consecință a definiției relative. Versiunile trebuie păstrate pentru a putea reconstrui verdictul inițial. Într-un studiu temporal, momentul referinței este parte din caz, nu doar o metadată decorativă.",
+      "translation": "The register must include the novelty criterion and exact library. If the library changes, the label may change without modifying the candidate. This is not an inconsistency but a consequence of the relative definition. Versions must be retained so that the initial verdict can be reconstructed. In a temporal study, the reference time is part of the case, not merely decorative metadata."
+    },
+    {
+      "id": "t000621",
+      "source": "Transformările trebuie să aibă proveniență. Cine sau ce a produs parafraza? Ce reguli garantează echivalența? A fost verificată de un executor, de un expert sau numai de un model? Pentru rezumate, trebuie păstrat ce informație a fost omisă. Dacă evaluarea descoperă ulterior o diferență, putem determina dacă ea exista în intrarea modelului sau fusese eliminată înainte.",
+      "translation": "Transformations must have provenance. Who or what produced the paraphrase? Which rules guarantee equivalence? Was it checked by an executor, an expert or only a model? For summaries, a record of what information was omitted must be retained. If evaluation later discovers a difference, we can determine whether it existed in the model’s input or had been removed beforehand."
+    },
+    {
+      "id": "t000622",
+      "source": "Ieșirea evaluatorului trebuie stocată integral, înainte de orice normalizare. Un parser poate extrage scorul și verdictul, dar ieșirea brută rămâne necesară pentru audit. Erorile de parser trebuie testate separat. Dacă modelul spune „nu pot decide”, iar parserul extrage un număr dintr-un exemplu, analiza poate produce un rezultat fals fără ca modelul să fi luat acel verdict.",
+      "translation": "The evaluator’s output must be stored in full, before any normalization. A parser can extract the score and verdict, but the raw output remains necessary for auditing. Parser errors must be tested separately. If the model says “I cannot decide” and the parser extracts a number from an example, the analysis may produce a false result without the model having issued that verdict."
+    },
+    {
+      "id": "t000623",
+      "source": "Martorii trebuie reprezentați ca obiecte verificabile. Pentru un circuit, martorul este o intrare și cele două ieșiri. Pentru un antecedent, este sursa, versiunea și pasajul care susține anticiparea. Pentru o ipoteză empirică, poate fi un protocol care ar produce rezultate diferite sub două mecanisme. Trebuie distins martorul verificat de martorul propus. O idee despre cum s-ar putea testa diferența nu este deja o demonstrație a diferenței.",
+      "translation": "Witnesses must be represented as verifiable objects. For a circuit, a witness is an input and the two outputs. For prior work, it is the source, version and passage supporting anticipation. For an empirical hypothesis, it may be a protocol that would produce different results under two mechanisms. A verified witness must be distinguished from a proposed witness. An idea about how the difference could be tested is not already proof of the difference."
+    },
+    {
+      "id": "t000624",
+      "source": "B.3. Raportarea rezultatului și decizia de continuare",
+      "translation": "B.3. Reporting the result and deciding whether to continue"
+    },
+    {
+      "id": "t000625",
+      "source": "Raportul final trebuie să prezinte rezultatul principal chiar dacă nu susține ipoteza. Trebuie să arate mărimea efectului, incertitudinea, costul și analizele pe familii preregistrate. Nu este suficientă selectarea câtorva exemple spectaculoase. Exemplele sunt utile pentru mecanism, dar nu înlocuiesc distribuția rezultatelor. Un eșec dramatic poate fi rar; un bias mic poate fi sistematic.",
+      "translation": "The final report must present the primary result even if it does not support the hypothesis. It must show effect size, uncertainty, cost and analyses by preregistered families. Selecting a few spectacular examples is not enough. Examples are useful for the mechanism, but do not replace the distribution of results. A dramatic failure may be rare; a small bias may be systematic."
+    },
+    {
+      "id": "t000626",
+      "source": "Un rezultat nul trebuie interpretat în raport cu precizia estimării. Dacă intervalul este larg, studiul poate fi neconcludent. Dacă intervalul exclude efecte mai mari decât pragul practic, putem afirma că un efect relevant a fost slăbit în configurația testată. Nu trebuie convertită lipsa semnificației într-o demonstrație a absenței. În sens invers, o diferență semnificativă nu justifică automat un verdict despre importanța operațională.",
+      "translation": "A null result must be interpreted in relation to the precision of the estimate. If the interval is wide, the study may be inconclusive. If the interval excludes effects greater than the practical threshold, we can say that evidence for a relevant effect has weakened in the configuration tested. Lack of significance must not be converted into proof of absence. Conversely, a significant difference does not automatically justify a verdict about operational importance."
+    }
+  ]
+}

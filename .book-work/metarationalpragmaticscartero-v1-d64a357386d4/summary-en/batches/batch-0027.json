@@ -1,0 +1,280 @@
+{
+  "batch": "batch-0027.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0028",
+  "chapterTitle": "Elementary Mathematical Results",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000851",
+      "chapterId": "chapter-0028",
+      "kind": "h1",
+      "text": "Elementary Mathematical Results",
+      "sourceAnchor": "src-p861",
+      "wordCount": 3
+    },
+    {
+      "id": "u000852",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The results below are instructional proofs for the model used in this book. They are not claimed as original theorems. They show exactly where a guarantee arises and which assumptions cannot be removed. We use finite domains when this avoids difficulties with measurability or the existence of an effective representation.",
+      "sourceAnchor": "src-p862",
+      "wordCount": 50
+    },
+    {
+      "id": "u000853",
+      "chapterId": "chapter-0028",
+      "kind": "h2",
+      "text": "A1. The Limit of a Representation That Confounds Labels",
+      "sourceAnchor": "src-p863",
+      "wordCount": 9
+    },
+    {
+      "id": "u000854",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "Consider N examples, each with a correct label, and a representation R. We partition the examples into classes according to their R value. A predictor that sees only R must use the same response distribution for every example in a class.",
+      "sourceAnchor": "src-p864",
+      "wordCount": 41
+    },
+    {
+      "id": "u000855",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "Within a class, the best deterministic answer is the most frequent label. Randomization cannot achieve a higher average accuracy either: the weighted average of label frequencies does not exceed the maximum frequency. The maximum number of correct answers in the class is therefore the frequency of its most common label.",
+      "sourceAnchor": "src-p865",
+      "wordCount": 50
+    },
+    {
+      "id": "u000856",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "Minimum empirical error = 1 − (sum of the majority-label frequencies in each class) / N.",
+      "sourceAnchor": "src-p866",
+      "wordCount": 13
+    },
+    {
+      "id": "u000857",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "For two equally probable histories with the same representation and opposite labels, the minimum error is 0.5. The bound applies to a predictor that receives no other information. If we give it the example's identity or the original history, we have changed the experiment.",
+      "sourceAnchor": "src-p867",
+      "wordCount": 45
+    },
+    {
+      "id": "u000858",
+      "chapterId": "chapter-0028",
+      "kind": "h2",
+      "text": "A2. Sufficiency and Response Factorization",
+      "sourceAnchor": "src-p868",
+      "wordCount": 5
+    },
+    {
+      "id": "u000859",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "Let f be the correct answer to a deterministic question and R a representation on a finite domain. A function g such that f(h) = g(R(h)) for every h exists if and only if all histories with the same R value have the same answer f.",
+      "sourceAnchor": "src-p869",
+      "wordCount": 48
+    },
+    {
+      "id": "u000860",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The forward direction is immediate: the same input to g produces the same result. For the reverse direction, we define g at each R value by its class's common answer. The condition guarantees that the definition is unambiguous.",
+      "sourceAnchor": "src-p870",
+      "wordCount": 38
+    },
+    {
+      "id": "u000861",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The result asserts the existence of a function, not its efficiency. The table g may be enormous. For infinite domains, the mathematical existence of a factorization does not automatically imply a computable procedure or one accessible to the agent.",
+      "sourceAnchor": "src-p871",
+      "wordCount": 39
+    },
+    {
+      "id": "u000862",
+      "chapterId": "chapter-0028",
+      "kind": "h2",
+      "text": "A3. Refinement Does Not Worsen Optimal Risk Without Costs",
+      "sourceAnchor": "src-p872",
+      "wordCount": 9
+    },
+    {
+      "id": "u000863",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "Suppose the new representation preserves the old one and adds D: Rnew(h) = (R(h), D(h)). Any old predictor can be simulated on the new representation by ignoring component D. Therefore, the lowest possible risk on the new representation cannot be greater than the lowest possible risk on the old one.",
+      "sourceAnchor": "src-p873",
+      "wordCount": 52
+    },
+    {
+      "id": "u000864",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The conclusion concerns the optimal predictor within a sufficiently broad class. A concrete algorithm trained on finite data may perform worse after a component is added. Cost, estimation difficulty or overfitting risk may increase. The theorem does not guarantee progress by a real system after every refinement.",
+      "sourceAnchor": "src-p874",
+      "wordCount": 47
+    },
+    {
+      "id": "u000865",
+      "chapterId": "chapter-0028",
+      "kind": "h2",
+      "text": "A4. The Number of Strict Refinements in a Finite Sample",
+      "sourceAnchor": "src-p875",
+      "wordCount": 10
+    },
+    {
+      "id": "u000866",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "A partition of N objects has at most N classes. If we start with K classes and each strict refinement increases the number of classes by at least one, there can be at most N − K strict refinements, provided we do not subsequently merge classes.",
+      "sourceAnchor": "src-p876",
+      "wordCount": 45
+    },
+    {
+      "id": "u000867",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The proof is a counting argument. After m refinements we have at least K + m classes; since K + m cannot exceed N, we obtain m ≤ N − K. The bound says nothing about the cost of finding each refinement. Nor does it say that the final partition generalizes: separating every example may amount only to memorization.",
+      "sourceAnchor": "src-p877",
+      "wordCount": 55
+    },
+    {
+      "id": "u000868",
+      "chapterId": "chapter-0028",
+      "kind": "h2",
+      "text": "A5. The Test Pseudometric",
+      "sourceAnchor": "src-p878",
+      "wordCount": 4
+    },
+    {
+      "id": "u000869",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "For every test t, total variation satisfies TV(P1, P3) ≤ TV(P1, P2) + TV(P2, P3). Each term on the right is at most the corresponding supremum over all tests. Taking the supremum on the left as well, we obtain dT(h1, h3) ≤ dT(h1, h2) + dT(h2, h3).",
+      "sourceAnchor": "src-p879",
+      "wordCount": 49
+    },
+    {
+      "id": "u000870",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "Nonnegativity and symmetry are inherited directly. The distance can be zero between distinct histories because the tests do not separate them. On classes of histories at zero distance, the function becomes a metric. Adding tests cannot decrease this supremum-defined distance, but may increase the cost of estimating it.",
+      "sourceAnchor": "src-p880",
+      "wordCount": 48
+    },
+    {
+      "id": "u000871",
+      "chapterId": "chapter-0028",
+      "kind": "h2",
+      "text": "A6. The 2e Bound for Choosing an Action",
+      "sourceAnchor": "src-p881",
+      "wordCount": 8
+    },
+    {
+      "id": "u000872",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "Assume a finite set of actions. The estimated value of each action differs from its true value by at most e. Let a* denote a truly optimal action and â an action with the highest estimate. The symbol â is simply a name for the choice based on the estimate.",
+      "sourceAnchor": "src-p882",
+      "wordCount": 50
+    },
+    {
+      "id": "u000873",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The true value of a* is at most its estimate plus e. By the definition of the choice, its estimate does not exceed the estimate of â. The estimate of â is at most the true value of â plus e. Combining these three relations, the true value of a* is at most the true value of â plus 2e.",
+      "sourceAnchor": "src-p883",
+      "wordCount": 60
+    },
+    {
+      "id": "u000874",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The result requires error control for every action compared. A small average error, without control of the selected action, does not provide the same guarantee. For long plans, what the estimated value of each policy represents must be justified separately.",
+      "sourceAnchor": "src-p884",
+      "wordCount": 40
+    },
+    {
+      "id": "u000875",
+      "chapterId": "chapter-0028",
+      "kind": "h2",
+      "text": "A7. Zero Errors Does Not Mean Zero Error Rate",
+      "sourceAnchor": "src-p885",
+      "wordCount": 9
+    },
+    {
+      "id": "u000876",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "Assume a fixed candidate, independent tests and the same true error probability r on every test. The probability of observing zero errors in n tests is (1 − r) to the power n. We choose the bound r so that this probability is 0.05. This gives r = 1 − 0.05 to the power 1/n.",
+      "sourceAnchor": "src-p886",
+      "wordCount": 55
+    },
+    {
+      "id": "u000877",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "For n = 100, the bound is approximately 0.0295, or 2.95%. Observing zero errors permits this one-sided 95% confidence bound under the stated model, not the conclusion that error is impossible. For large n, the approximation 3/n is useful because the negative natural logarithm of 0.05 is close to three.",
+      "sourceAnchor": "src-p887",
+      "wordCount": 53
+    },
+    {
+      "id": "u000878",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The frequentist interpretation concerns the procedure's coverage over repetitions of the experiment, not a 95% probability assigned to the fixed parameter without a Bayesian model. The bound does not apply unchanged when the candidate was selected after trying many variants on the same tests.",
+      "sourceAnchor": "src-p888",
+      "wordCount": 44
+    },
+    {
+      "id": "u000879",
+      "chapterId": "chapter-0028",
+      "kind": "h2",
+      "text": "A8. A Simple Control for a Finite Family of Candidates",
+      "sourceAnchor": "src-p889",
+      "wordCount": 10
+    },
+    {
+      "id": "u000880",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "We have K candidates fixed before evaluation, where K is a positive integer, and e and d are numbers strictly between zero and one. For any candidate with a true error rate of at least e, the probability of passing n independent tests without error is at most (1 − e) to the power n, which is at most exp(−n × e).",
+      "sourceAnchor": "src-p890",
+      "wordCount": 61
+    },
+    {
+      "id": "u000881",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "The probability that at least one of the K bad candidates passes is at most the sum of these probabilities: K × exp(−n × e). Independence between candidates is not necessary for this union bound. For the bound to be at most d, it suffices that n be at least [ln(K) + ln(1/d)] / e.",
+      "sourceAnchor": "src-p891",
+      "wordCount": 55
+    },
+    {
+      "id": "u000882",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "This is a limited guarantee: the class must be fixed independently of the evaluation set, the tests must respect the model, and the criterion is passing without errors. An adaptive search that changes the class without limit in response to results requires another analysis. The formula explains why the number of attempts matters; it does not by itself solve all of MRP validation.",
+      "sourceAnchor": "src-p892",
+      "wordCount": 63
+    },
+    {
+      "id": "u000883",
+      "chapterId": "chapter-0028",
+      "kind": "p",
+      "text": "APPENDIX B",
+      "sourceAnchor": "src-p893",
+      "wordCount": 2
+    }
+  ]
+}

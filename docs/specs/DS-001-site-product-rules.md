@@ -33,6 +33,8 @@ The shared header places a Home link with a house icon immediately before Create
 
 Book routes contain one lower-case, punctuation-normalised folder per English title word, in title order, followed by a freshly random `bk-` identifier. Taxonomy, language, author, and arbitrary category folders never enter a book route.
 
+The English title is established before preparing a new book, including when the original manuscript and its filename are Romanian or another language. The source filename remains provenance and a matching alias; it does not determine the public route. For example, `Responsabilitatea.docx` with English title `Responsibility` belongs under `docs/books/responsibility/bk-<random>/`. Private `tasks/` and `.book-work/` names may follow the source filename. Releases of an existing book retain its identity and route; do not create another book because a source or translated filename differs. The project skill `.agents/skills/scriptahub-book/SKILL.md` documents the operational structure and generation procedure.
+
 Every book manifest has localised title, subtitle, short description, cover metadata, and exactly 100 distinct discovery keywords for each of `en`, `fr`, `de`, `es`, `pt`, `it`, `ro`, and `pl`. Every language has a `book.html` landing page. Newly received books become searchable immediately with `publicationStatus: preparing`; their initial pages may have 10–100 real discovery keywords while editorial work continues. Completed releases require exactly 100. This catalogue and interface coverage is separate from translating book readers: new books and new releases receive English and Romanian complete and ten-minute HTML editions automatically. French, German, Spanish, Portuguese, Italian and Polish readers are translated only in response to an explicit request for that book and language. Missing readers are valid until requested and completed; existing translated editions are preserved.
 
 ## 5. Keyword discovery
@@ -53,7 +55,7 @@ The non-visual cloud navigation contains the same destinations so keyboard and a
 
 ## 6. AI Librarian
 
-The AI Librarian accepts a question in the visitor’s own words and returns at most ten catalogue recommendations. Ranking currently runs in the browser over localised titles, subtitles, descriptions, categories, and discovery keywords. Title and keyword signals carry more weight than general description text, and character-level matching tolerates modest spelling or word-form differences.
+The AI Librarian accepts a question in the visitor’s own words and returns at most ten catalogue recommendations. Ranking currently runs in the browser over every localised title, source aliases, the selected-language subtitle, description, category, and discovery keywords. This lets a visitor find the same book by its English route title, translated display title, or delivered source name regardless of interface language. Title, alias, and keyword signals carry more weight than general description text, and character-level matching tolerates modest spelling or word-form differences.
 
 The result page opens directly with recommendations for the submitted question. It does not repeat the question form above the results. A restrained “Help improve these recommendations” action follows the list and opens the separate feedback page with the original question available as context.
 
@@ -70,6 +72,8 @@ All book descriptions are authored editorial metadata in `manifest.shortDescript
 The independent `textShow` component (`docs/assets/text-show.js` and `text-show.css`) owns sentence segmentation, progressive word rendering, playback timing, visibility suspension and completion. The homepage welcome uses a separate narrated SHF film launched by the librarian mascot; `textShow` remains the shared engine for book descriptions. Every short-description card (featured, book-page description, catalogue/search, keyword results and AI Librarian results) uses a silent `textShow` without playback controls, voice actions or a full-message dialog. Its first sentence stays visible while waiting; playback starts when its description becomes visible, pauses outside the viewport or in a hidden tab, and leaves the final sentence visible in result cards. On the book page, `loop: true` repeats all six sentences continuously while visible. The featured card uses `loop: false`, completes once, then yields to the next book. Looping is a component option, not a separate player implementation. Assistive technology receives the complete description once. Reduced-motion mode shows the complete card description without animation.
 
 The featured book can rotate only after its own `textShow` completes, including the final sentence's word animation and reading hold. Loading and hidden time do not count toward presentation time. Hover or keyboard focus on the featured card/cover delays replacement. Changing interface language or replacing results disposes old presentations before mounting new instances. Reserve enough space for the longest sentence to prevent per-sentence layout jumps.
+
+Cover derivatives trim empty export margins, then fit the complete artwork into the portrait canvas using the source corner colour for any added space. Never crop remaining artwork to force the aspect ratio: typographic titles, subtitles and authors must remain visible. `cover.png` stays unchanged; `cover.webp` is 640 × 960 and catalogue `thumbnail.webp` is 320 × 480.
 
 Clicking the cover on a book page opens an in-page modal preview, with a visible, localised close control. Escape and a backdrop click also close it, restore focus to the cover and preserve the book page and scroll position. Never navigate the visitor to a bare image without a return action.
 
@@ -565,6 +569,13 @@ same localized destination as View Book so modifier clicks work. Keep existing
 keyboard-accessible title/action links. Update the whole-card destination on
 every book rotation and language change, and pause rotation while the strip is
 hovered or contains keyboard focus.
+
+The featured strip exposes a small carousel chevron beyond its right-hand
+background surface, in the surrounding gutter. Its localized accessible label
+is `Next Book`. The control must not change the content grid: the `View Book`
+action stays aligned with the librarian controls above. It advances the
+cover, copy and whole-card destination together without navigating, while its
+restrained circular treatment keeps it distinct from `View Book`.
 
 
 ### Scene transitions and transport visibility

@@ -1,0 +1,166 @@
+{
+  "language": "en",
+  "chunk": 3,
+  "segments": [
+    {
+      "id": "t000143",
+      "source": "Problema noutății este adesea clasificatorie, nu generativă. Dorim probabilitatea unei etichete sau a unei relații după ce am văzut contribuția și antecedentele. Aceasta este o distribuție diferită de probabilitatea contribuției în limbajul obișnuit. Un text poate fi foarte improbabil și totuși să fie clasificat corect drept incoerent. Un text foarte previzibil poate conține o diferență mică, dar detectabilă, față de un antecedent explicit.",
+      "translation": "The novelty problem is often classificatory rather than generative. We want the probability of a label or relation after seeing the contribution and prior work. This is a different distribution from the contribution’s probability in ordinary language. A text can be highly improbable yet correctly classified as incoherent. A highly predictable text can contain a small but detectable difference relative to explicit prior work."
+    },
+    {
+      "id": "t000144",
+      "source": "Cele două expresii definesc obiecte probabilistice diferite, care nu pot fi substituite unul altuia. Valorile lor ar putea coincide accidental; această coincidență nu ar face sarcinile identice. Distribuția generării pune o pondere pe texte; distribuția clasificării pune o pondere pe etichete condiționat de text și referință. Argumentul potrivit căruia un generator preferă continuări familiare nu demonstrează, fără pași suplimentari, că același sistem nu poate compara o contribuție cu o bibliotecă.",
+      "translation": "The two expressions define different probabilistic objects that cannot be substituted for one another. Their values might coincide accidentally; that coincidence would not make the tasks identical. The generation distribution places weights on texts; the classification distribution places weights on labels conditioned on the text and reference. The argument that a generator favors familiar continuations does not, without further steps, demonstrate that the same system cannot compare a contribution with a library."
+    },
+    {
+      "id": "t000145",
+      "source": "Bayes arată și de ce un semnal de noutate poate induce în eroare când descoperirile sunt rare. Să presupunem, într-un exemplu construit, că o mie dintr-un milion de candidați sunt realmente noi după criteriul ales. Detectorul păstrează nouă sute dintre aceștia, dar clasifică greșit drept noi unu la sută dintre cei nouă sute nouăzeci și nouă de mii de candidați vechi. Obținem nouă sute de cazuri corecte și nouă mii nouă sute nouăzeci de alarme false. Numai aproximativ 8,26% dintre selecții sunt noutăți reale.",
+      "translation": "Bayes also shows why a novelty signal can mislead when discoveries are rare. Suppose, in a constructed example, that one thousand out of a million candidates are genuinely new under the chosen criterion. The detector retains nine hundred of them but incorrectly classifies as new one percent of the nine hundred and ninety-nine thousand old candidates. We obtain nine hundred correct cases and nine thousand nine hundred and ninety false alarms. Only approximately 8.26% of the selections are genuine novelties."
+    },
+    {
+      "id": "t000146",
+      "source": "Aici π este prevalența noutății, TPR este rata detectării cazurilor noi, iar FPR rata alarmelor false printre cazurile vechi. Formula rezultă direct din probabilitățile comune. Nu spune că detectorul este inutil, ci că performanța trebuie judecată în raport cu prevalența și capacitatea de verificare. Într-un filtru de descoperire, costul câtorva alarme false poate fi acceptabil dacă împiedică pierderea unei contribuții rare. Alegerea pragului este o decizie operațională, nu o consecință automată a scorului.",
+      "translation": "Here π is the prevalence of novelty, TPR is the detection rate for new cases and FPR is the false-alarm rate among old cases. The formula follows directly from joint probabilities. It does not say that the detector is useless, but that performance must be judged relative to prevalence and verification capacity. In a discovery filter, the cost of a few false alarms may be acceptable if it prevents the loss of a rare contribution. Choosing the threshold is an operational decision, not an automatic consequence of the score."
+    },
+    {
+      "id": "t000147",
+      "source": "2.2. Ce optimizează învățarea și ce nu promite",
+      "translation": "2.2. What Learning Optimizes and What It Does Not Promise"
+    },
+    {
+      "id": "t000148",
+      "source": "Considerăm o distribuție reală P și o distribuție estimată Q. Dacă evaluăm predicțiile prin pierdere logaritmică, costul mediu al lui Q se descompune în entropia lui P și divergența Kullback–Leibler dintre P și Q. Demonstrația este algebrică: adunăm și scădem logaritmul lui P în suma care definește pierderea. Termenul de entropie nu depinde de Q; termenul de divergență este nenegativ.",
+      "translation": "Consider a true distribution P and an estimated distribution Q. If we evaluate predictions using logarithmic loss, the average cost of Q decomposes into the entropy of P and the Kullback–Leibler divergence between P and Q. The proof is algebraic: we add and subtract the logarithm of P in the sum defining the loss. The entropy term does not depend on Q; the divergence term is nonnegative."
+    },
+    {
+      "id": "t000149",
+      "source": "În cazul ideal în care familia de modele conține distribuția corectă și optimizarea o găsește, soluția este Q=P. Ea nu pune toată masa pe cel mai frecvent rezultat. Dimpotrivă, reproduce și probabilitățile evenimentelor rare. A confunda minimizarea pierderii logaritmice cu memorarea exclusivă a modului distribuției înseamnă a confunda estimarea distribuției cu o regulă de decizie care alege doar rezultatul cel mai probabil.",
+      "translation": "In the ideal case where the model family contains the correct distribution and optimization finds it, the solution is Q=P. It does not place all the mass on the most frequent outcome. On the contrary, it also reproduces the probabilities of rare events. Confusing minimization of logarithmic loss with exclusively memorizing the distribution’s mode means confusing distribution estimation with a decision rule that chooses only the most probable outcome."
+    },
+    {
+      "id": "t000150",
+      "source": "Situația practică este mai dificilă. Datele sunt finite, capacitatea modelului este limitată, optimizarea este imperfectă, iar distribuția testului poate diferi de cea a antrenării. Un eveniment rar poate primi prea puține exemple pentru ca modelul să învețe structura relevantă. Într-un obiectiv mediat pe toate exemplele, îmbunătățirea cazurilor frecvente poate domina numeric îmbunătățirea unei clase rare. Această observație este un argument de alocare a erorii, nu o teoremă potrivit căreia rarele sunt imposibil de învățat.",
+      "translation": "The practical situation is more difficult. Data are finite, model capacity is limited, optimization is imperfect and the test distribution may differ from the training distribution. A rare event may receive too few examples for the model to learn the relevant structure. In an objective averaged over all examples, improvement on frequent cases may numerically dominate improvement on a rare class. This observation is an argument about error allocation, not a theorem that rare cases are impossible to learn."
+    },
+    {
+      "id": "t000151",
+      "source": "Un model poate învăța o regulă comună care acoperă și cazuri rare. Dacă exemplele frecvente îi permit să învețe adunarea, el poate calcula o sumă care nu apare în date. Dacă învață numai asocieri locale între expresii și etichete, generalizarea va fi mai slabă. Diferența nu poate fi dedusă exclusiv din obiectiv. Același obiectiv poate admite soluții cu strategii interne diferite. Pentru a identifica strategia trebuie proiectate teste care împiedică rezolvarea prin corelații superficiale.",
+      "translation": "A model can learn a shared rule that also covers rare cases. If frequent examples enable it to learn addition, it can calculate a sum absent from the data. If it learns only local associations between expressions and labels, generalization will be weaker. The difference cannot be deduced solely from the objective. The same objective can admit solutions with different internal strategies. Identifying the strategy requires tests that prevent solving the task through superficial correlations."
+    },
+    {
+      "id": "t000152",
+      "source": "Mai trebuie separată distribuția modelului de procedura de decodare. Alegerea celui mai probabil simbol la fiecare pas, eșantionarea și căutarea cu mai multe ipoteze pot produce comportamente diferite plecând de la aceleași probabilități. Alegerea locală a celui mai probabil simbol nu garantează obținerea celei mai probabile secvențe globale. Creșterea temperaturii poate diversifica rezultatele, dar nu transformă distribuția într-un verificator de noutate. Diversitatea textuală și validarea diferenței sunt probleme separate.",
+      "translation": "The model distribution must also be separated from the decoding procedure. Choosing the most probable symbol at each step, sampling and search with multiple hypotheses can produce different behaviors from the same probabilities. Locally choosing the most probable symbol does not guarantee the globally most probable sequence. Increasing temperature can diversify outputs, but it does not turn the distribution into a novelty verifier. Textual diversity and validation of a difference are separate problems."
+    },
+    {
+      "id": "t000153",
+      "source": "Un evaluator care răspunde cu „nou” sau „vechi” produce, tehnic, tokeni. Din această observație nu rezultă că nu poate executa o comparație. Și un program de verificare a echivalenței produce în final biți, fără ca natura ieșirii să epuizeze natura calculului. Întrebarea relevantă este ce informație și ce operații determină ieșirea. Reducerea unei competențe la forma ultimei sale instrucțiuni nu constituie o analiză funcțională suficientă.",
+      "translation": "An evaluator answering “new” or “old” technically produces tokens. This observation does not imply that it cannot perform a comparison. An equivalence-checking program also ultimately produces bits, without the nature of its output exhausting the nature of its computation. The relevant question is what information and operations determine the output. Reducing a competence to the form of its final instruction does not constitute a sufficient functional analysis."
+    },
+    {
+      "id": "t000154",
+      "source": "În același timp, probabilitatea mare a tokenului „nou” nu trebuie confundată cu o probabilitate epistemică bine calibrată a priorității istorice. Ea poate reflecta convențiile promptului, preferințele introduse prin postantrenare sau faptul că răspunsurile ezitante au fost mai puțin recompensate. Calibrarea trebuie măsurată pe evenimente clar definite. Cercetarea lui Guo și colaboratorilor arată, într-un context de clasificare neuronală, că încrederea numerică și corectitudinea empirică pot diverge și că postprocesarea poate îmbunătăți calibrarea. Nu rezultă de aici o garanție pentru judecățile de noutate ale LLM-urilor. [",
+      "translation": "At the same time, a high probability for the token “new” must not be confused with a well-calibrated epistemic probability of historical priority. It may reflect prompt conventions, preferences introduced through post-training or the fact that hesitant answers were rewarded less. Calibration must be measured on clearly defined events. Research by Guo and colleagues shows, in a neural-classification context, that numerical confidence and empirical correctness can diverge and that post-processing can improve calibration. This does not imply a guarantee for LLM novelty judgments. ["
+    },
+    {
+      "id": "t000155",
+      "source": "R18",
+      "translation": "R18"
+    },
+    {
+      "id": "t000156",
+      "source": "Un protocol riguros păstrează separat scorul intern, verdictul textual și calitatea justificării. Poate exista un răspuns corect cu încredere prost calibrată, un răspuns greșit cu justificare fluentă sau o justificare care identifică diferența corectă, dar o agregă într-un scor nepotrivit. Reducerea tuturor acestor dimensiuni la un singur procent împiedică înțelegerea mecanismului de eșec.",
+      "translation": "A rigorous protocol keeps the internal score, textual verdict and quality of justification separate. An answer can be correct with poorly calibrated confidence, incorrect with a fluent justification, or supported by a justification that identifies the correct difference but aggregates it into an unsuitable score. Reducing all these dimensions to a single percentage prevents understanding the failure mechanism."
+    },
+    {
+      "id": "t000157",
+      "source": "2.3. Informația relevantă și limitele comprimării",
+      "translation": "2.3. Relevant Information and the Limits of Compression"
+    },
+    {
+      "id": "t000158",
+      "source": "Entropia măsoară incertitudinea medie a unei variabile. Informația mutuală măsoară cât reduce observarea unei variabile incertitudinea despre alta. În problema noastră, X poate reprezenta documentul original, Y eticheta de noutate după un criteriu fix, iar Z reprezentarea pe care o construiește sistemul. Nu ne interesează numai cât de mult păstrează Z despre X. Ne interesează dacă păstrează ceea ce este necesar pentru Y.",
+      "translation": "Entropy measures a variable’s average uncertainty. Mutual information measures how much observing one variable reduces uncertainty about another. In our problem, X can represent the original document, Y the novelty label under a fixed criterion and Z the representation the system constructs. We are interested not only in how much Z retains about X. We want to know whether it retains what is needed for Y."
+    },
+    {
+      "id": "t000159",
+      "source": "O reprezentare poate elimina aproape toate detaliile documentului și totuși să fie suficientă pentru o întrebare îngustă. Dacă vrem să știm dacă un circuit produce vreodată valoarea unu, un bit calculat corect poate rezuma răspunsul. Dacă vrem ulterior să aflăm pe ce intrări produce unu, acel bit nu mai este suficient. Compresia bună nu este o proprietate absolută. Ea depinde de familia de întrebări viitoare.",
+      "translation": "A representation can eliminate almost every detail of the document and still be sufficient for a narrow question. If we want to know whether a circuit ever outputs one, a correctly computed bit can summarize the answer. If we later want to know which inputs produce one, that bit is no longer sufficient. Good compression is not an absolute property. It depends on the family of future questions."
+    },
+    {
+      "id": "t000160",
+      "source": "Pentru un lanț în care Z este derivat numai din X, iar decizia folosește numai Z, prelucrarea nu poate crea informație despre Y care lipsea din observația originală. Intuiția poate fi demonstrată fără metafizică: orice regulă care operează pe Z poate fi simulată de o regulă care primește X și calculează mai întâi Z. Prin urmare, cel mai bun evaluator care are acces la X nu poate fi mai slab decât cel mai bun evaluator limitat la Z, dacă resursele și clasele de decizie nu impun alte restricții.",
+      "translation": "For a chain in which Z is derived only from X and the decision uses only Z, processing cannot create information about Y that was missing from the original observation. The intuition can be proved without metaphysics: any rule operating on Z can be simulated by a rule that receives X and first computes Z. Consequently, the best evaluator with access to X cannot be worse than the best evaluator limited to Z, provided resources and decision classes impose no further restrictions."
+    },
+    {
+      "id": "t000161",
+      "source": "Această formulare lasă loc unui fapt aparent paradoxal. Un model concret poate performa mai bine pe un rezumat decât pe textul integral. Nu a fost creată informație suplimentară despre adevărul etichetei; a fost schimbată accesibilitatea ei pentru un evaluator limitat. Rezumatul poate elimina distrageri, poate rearanja premisele și poate reduce costul de calcul. Diferența dintre performanța unui algoritm concret și performanța optimă permisă de informație este fundamentală.",
+      "translation": "This formulation leaves room for an apparently paradoxical fact. A particular model can perform better on a summary than on the full text. No additional information about the truth of the label has been created; its accessibility to a limited evaluator has changed. The summary can remove distractions, rearrange premises and reduce computational cost. The difference between a particular algorithm’s performance and the optimal performance permitted by the information is fundamental."
+    },
+    {
+      "id": "t000162",
+      "source": "Riscul apare când rezumatul elimină nu zgomotul, ci diferența relevantă. Să presupunem că două propuneri au aceeași descriere tematică și diferă numai printr-un cuantificator: „pentru fiecare intrare” față de „pentru aproape toate intrările”. Dacă reprezentarea păstrează tema și rezultatul generic, cele două devin identice. Nu mai este vorba doar despre o preferință a evaluatorului. Informația necesară distincției a dispărut din canalul pe care acesta îl primește.",
+      "translation": "The risk arises when the summary removes not noise but the relevant difference. Suppose two proposals have the same thematic description and differ only in a quantifier: “for every input” versus “for almost all inputs.” If the representation retains the topic and generic result, the two become identical. This is no longer merely a matter of evaluator preference. The information needed for the distinction has disappeared from the channel it receives."
+    },
+    {
+      "id": "t000163",
+      "source": "La nivel de inginerie, această observație sugerează că simpla creștere a dimensiunii vectorului nu este o soluție completă. O reprezentare mare poate ignora o variabilă relevantă, iar una mică o poate păstra explicit. Contează obiectivul de reprezentare, invarianta urmărită și existența unei căi de întoarcere la sursă. Un sistem de noutate ar trebui să poată spune nu doar „aceste documente sunt similare”, ci și „în ce privințe am decis să le consider similare și ce am eliminat în acest proces”.",
+      "translation": "At the engineering level, this observation suggests that simply increasing vector dimensionality is not a complete solution. A large representation can ignore a relevant variable, while a small one can retain it explicitly. What matters is the representation objective, the invariant being pursued and the existence of a path back to the source. A novelty system should be able to say not only “these documents are similar,” but also “in what respects we decided to consider them similar and what we removed in the process.”"
+    },
+    {
+      "id": "t000164",
+      "source": "Acesta este punctul în care teoria informației devine o disciplină de proiectare. Ea nu ne oferă o metrică universală a originalității, dar ne obligă să întrebăm ce diferențe sunt conservate, ce întrebări rămân rezolvabile și unde este necesar accesul suplimentar la documentele originale. Noutatea nu poate fi dedusă din numărul de biți ai surprizei. În schimb, pierderea anumitor biți semantic decisivi poate face detectarea ei imposibilă pentru o arhitectură dată.",
+      "translation": "This is where information theory becomes a design discipline. It does not give us a universal metric of originality, but it forces us to ask what differences are preserved, what questions remain answerable and where additional access to the original documents is needed. Novelty cannot be deduced from the number of bits of surprisal. Conversely, losing certain semantically decisive bits can make its detection impossible for a given architecture."
+    },
+    {
+      "id": "t000165",
+      "source": "Capitolul 3. Ce învață un model lingvistic și cum ajunge să judece",
+      "translation": "Chapter 3. What a Language Model Learns and How It Comes to Judge"
+    },
+    {
+      "id": "t000166",
+      "source": "3.1. De la tokeni la o procedură condiționată",
+      "translation": "3.1. From Tokens to a Conditioned Procedure"
+    },
+    {
+      "id": "t000167",
+      "source": "Un model lingvistic nu primește ideile ca obiecte ideale, deja separate de formularea lor. Primește o secvență de unități discrete, numite tokeni. Tokenizarea poate fragmenta cuvinte, poate păstra simboluri matematice separat și poate reprezenta diferit două formulări apropiate. Înainte de orice judecată asupra originalității există, așadar, un canal de codificare. Această observație nu implică automat pierderea sensului, dar introduce o primă variabilă de control: dificultatea unei sarcini nu trebuie confundată cu dificultatea reprezentării textului în tokenizarea utilizată.",
+      "translation": "A language model does not receive ideas as ideal objects already separated from their formulation. It receives a sequence of discrete units called tokens. Tokenization can split words, keep mathematical symbols separate and represent two similar formulations differently. Before any judgment of originality, there is therefore an encoding channel. This observation does not automatically imply loss of meaning, but it introduces a first control variable: task difficulty must not be confused with the difficulty of representing the text in the tokenization used."
+    },
+    {
+      "id": "t000168",
+      "source": "Tokenii sunt transformați în vectori. În arhitectura Transformer, mecanismele de atenție permit combinarea informației din poziții diferite, folosind ponderi dependente de reprezentările curente. Straturile succesive modifică aceste reprezentări, iar ieșirea produce scoruri pentru continuări. Lucrarea care a introdus Transformerul descrie această organizare în contextul modelării secvențelor. Ea nu demonstrează prin arhitectură competențe generale de raționament sau evaluare a originalității. [",
+      "translation": "Tokens are transformed into vectors. In the Transformer architecture, attention mechanisms allow information from different positions to be combined using weights dependent on the current representations. Successive layers modify these representations, and the output produces scores for continuations. The paper that introduced the Transformer describes this organization in the context of sequence modeling. The architecture does not demonstrate general reasoning or originality-assessment capabilities. ["
+    },
+    {
+      "id": "t000169",
+      "source": "R03",
+      "translation": "R03"
+    },
+    {
+      "id": "t000170",
+      "source": "Pentru problema noastră, atenția trebuie înțeleasă funcțional. Ea poate permite ca o condiție dintr-un paragraf să influențeze interpretarea unei garanții din alt paragraf. Dar existența unei căi de comunicare între poziții nu garantează că modelul urmărește condiția corectă. O arhitectură poate exprima un calcul fără ca ponderile învățate să îl implementeze fiabil. A spune „modelul poate acorda atenție întregului document” este o afirmație despre accesul structural; a spune „modelul compară toate ipotezele relevante” este o afirmație despre comportament.",
+      "translation": "For our problem, attention must be understood functionally. It can allow a condition in one paragraph to influence interpretation of a guarantee in another. But a communication path between positions does not guarantee that the model tracks the correct condition. An architecture can express a computation without the learned weights implementing it reliably. Saying “the model can attend to the entire document” is a claim about structural access; saying “the model compares all relevant assumptions” is a claim about behavior."
+    },
+    {
+      "id": "t000171",
+      "source": "Un programator poate privi un LLM ca pe un interpret aproximativ al unei sarcini formulate în text. Promptul specifică un contract incomplet, exemplele și contextul furnizează date, iar modelul produce o ieșire conform regularităților învățate. Această analogie este utilă, cu condiția să nu fie luată literal. Nu există neapărat o separare internă stabilă între parser, planificator, memorie și verificator. Totuși, în evaluarea externă putem construi teste distincte pentru înțelegerea instrucțiunii, extragerea afirmațiilor, regăsirea antecedentelor și aplicarea criteriului.",
+      "translation": "A programmer can view an LLM as an approximate interpreter of a task formulated in text. The prompt specifies an incomplete contract, examples and context supply data, and the model produces an output according to learned regularities. This analogy is useful provided it is not taken literally. There is not necessarily a stable internal separation between parser, planner, memory and verifier. Nevertheless, in external evaluation we can construct separate tests for understanding the instruction, extracting claims, retrieving prior work and applying the criterion."
+    },
+    {
+      "id": "t000172",
+      "source": "Învățarea din context reprezintă adaptarea comportamentului folosind exemplele din prompt, fără actualizarea parametrilor în timpul acelei interacțiuni. Brown și colaboratorii au documentat rezultate importante de tip few-shot pentru un model autoregresiv mare. Aceste rezultate arată că performanța nu este descrisă complet de întrebarea „a existat exact acest exemplu în antrenare?”. Nu garantează însă învățarea oricărei reguli noi din câteva exemple. [",
+      "translation": "In-context learning is adaptation of behavior using examples in the prompt, without updating parameters during that interaction. Brown and colleagues documented important few-shot results for a large autoregressive model. These results show that performance is not fully described by the question “did this exact example exist in training?” They do not, however, guarantee learning any new rule from a few examples. ["
+    },
+    {
+      "id": "t000173",
+      "source": "R04",
+      "translation": "R04"
+    },
+    {
+      "id": "t000174",
+      "source": "Într-un test de noutate, contextul poate defini chiar lumea de referință. Putem furniza o bibliotecă de trei mecanisme și cere modelului să determine dacă un al patrulea este echivalent cu unul dintre ele. Dacă numele mecanismelor sunt generate aleator după fixarea modelului, recunoașterea după reputație devine mai dificilă. Modelul trebuie să folosească definițiile locale. Reușita ar demonstra o competență de comparație într-o lume controlată; eșecul ar indica un obstacol concret, fără a spune imediat care strat intern îl produce.",
+      "translation": "In a novelty test, the context can define the reference world itself. We can supply a library of three mechanisms and ask the model to determine whether a fourth is equivalent to one of them. If the mechanism names are generated randomly after the model is fixed, recognition by reputation becomes harder. The model must use local definitions. Success would demonstrate comparison competence in a controlled world; failure would indicate a concrete obstacle without immediately identifying which internal layer produces it."
+    }
+  ]
+}

@@ -1,0 +1,840 @@
+{
+  "batch": "batch-0005.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0006",
+  "chapterTitle": "How We Compress Circuit Construction",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000227",
+      "chapterId": "chapter-0006",
+      "kind": "h1",
+      "text": "How We Compress Circuit Construction",
+      "sourceAnchor": "src-p227",
+      "wordCount": 5
+    },
+    {
+      "id": "u000228",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "From a tree of attempts to a shared graph: the conditions under which two histories can have the same relevant future.",
+      "sourceAnchor": "src-p228",
+      "wordCount": 21
+    },
+    {
+      "id": "u000229",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "9. Execution, Verification, and Discovery Are Different Problems",
+      "sourceAnchor": "src-p229",
+      "wordCount": 8
+    },
+    {
+      "id": "u000230",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "A Circuit with Perfect Wires May Still Be Hard to Construct",
+      "sourceAnchor": "src-p230",
+      "wordCount": 11
+    },
+    {
+      "id": "u000231",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Let us impose radical discipline on outputs: every wire carries a single bit, every operation is a well-defined logic gate, and every connection is explicit. We can evaluate such a circuit for a given input by following its operations. But the question “is there an input that produces one?” may require a very different effort.",
+      "sourceAnchor": "src-p231",
+      "wordCount": 55
+    },
+    {
+      "id": "u000232",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This is an important warning for SOP Lang. Combinatorial explosion does not arise only because values are vague texts or very rich objects. It can arise even with binary values and elementary rules. A disciplined format removes certain sources of confusion, but does not guarantee efficient search in every class of problems.",
+      "sourceAnchor": "src-p232",
+      "wordCount": 52
+    },
+    {
+      "id": "u000233",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "If an algorithm could find a satisfying input for any Boolean circuit in polynomial time, it would also solve standard satisfiability formulations encoded in this way. The book does not infer that the project should be abandoned. We infer only that a universal promise has far stronger theoretical consequences than an ordinary engineering optimization.",
+      "sourceAnchor": "src-p233",
+      "wordCount": 54
+    },
+    {
+      "id": "u000234",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "The Lesson of Cryptography",
+      "sourceAnchor": "src-p234",
+      "wordCount": 4
+    },
+    {
+      "id": "u000235",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "In cryptography, a transformation may be easy to execute and difficult to invert under the conditions assumed by the security model. Knowing the algorithm does not, by itself, provide an efficient method for finding a preimage. One-way functions formalize this asymmetry as a hardness assumption, not as a proven truth about every apparently complicated function. [ 7 ]",
+      "sourceAnchor": "src-p235",
+      "wordCount": 56
+    },
+    {
+      "id": "u000236",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "For machines of understanding, the relevant analogy is limited and precise: transparent rules do not automatically eliminate the difficulty of discovering the right input, plan, or circuit. We are not claiming that language interpretation is a cryptographic function. We are using an established example in which the direction of computation matters fundamentally.",
+      "sourceAnchor": "src-p236",
+      "wordCount": 52
+    },
+    {
+      "id": "u000237",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "There is also the positive lesson of certificates. A result can be accompanied by an object easier to verify than to discover. For a SOP Lang circuit, the certificate may specify the premises used, operations applied, and conditions satisfied. But the certificate validates a formal relationship relative to those premises; it does not prove that an external source is telling the truth.",
+      "sourceAnchor": "src-p237",
+      "wordCount": 62
+    },
+    {
+      "id": "u000238",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Four Places Where We Can Hide the Cost",
+      "sourceAnchor": "src-p238",
+      "wordCount": 8
+    },
+    {
+      "id": "u000239",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We can hide cost in the library: each operation appears simple because someone previously built a very powerful mechanism. We can hide it in the representation: a compact state refers to an enormous object. We can hide it in preprocessing: queries are fast only after costly compilation. We can hide it in the evaluator: verifying a contract is itself a difficult problem.",
+      "sourceAnchor": "src-p239",
+      "wordCount": 62
+    },
+    {
+      "id": "u000240",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "An experimental result must declare where these costs lie. For a system used for a million questions, expensive compilation may be excellent. For a single new question, the same solution may be uneconomical. There is no contradiction; the usage regime changes.",
+      "sourceAnchor": "src-p240",
+      "wordCount": 41
+    },
+    {
+      "id": "u000241",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Likewise, an algorithm using a table of all possible answers may have fast queries. Without further arguments, that does not make it an efficient algorithm for learning or constructing the table. The ideal sufficient interface may exist mathematically and be too difficult to obtain in practice.",
+      "sourceAnchor": "src-p241",
+      "wordCount": 46
+    },
+    {
+      "id": "u000242",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "What Kind of Efficiency We Seek",
+      "sourceAnchor": "src-p242",
+      "wordCount": 6
+    },
+    {
+      "id": "u000243",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The proposed program seeks efficiency conditional on structure. There may be domains with few relevant state classes, relations with simple algebra, small frontiers, or reusable libraries. In such domains, search compression can be decisive. In other domains, the system must recognize budget limits and provide an explicitly incomplete result.",
+      "sourceAnchor": "src-p243",
+      "wordCount": 49
+    },
+    {
+      "id": "u000244",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A reasonable objective is not “we will never branch,” but “we will not branch separately over histories we can prove have the same relevant future.” This reformulation preserves the ambition while removing an unjustified claim to make every computation easy.",
+      "sourceAnchor": "src-p244",
+      "wordCount": 40
+    },
+    {
+      "id": "u000245",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "There is another benefit not reducible to speed: even when search remains expensive, a disciplined representation can reveal why it is expensive. We can identify the relation connecting many variables, the unresolved ambiguity, or the operation for which we lack a sufficient summary. Explaining the cost is itself a research result.",
+      "sourceAnchor": "src-p245",
+      "wordCount": 51
+    },
+    {
+      "id": "u000246",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "10. Continuation Equivalence: When Two Histories Are the Same State",
+      "sourceAnchor": "src-p246",
+      "wordCount": 10
+    },
+    {
+      "id": "u000247",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "The Example of an Automaton Reading Digits",
+      "sourceAnchor": "src-p247",
+      "wordCount": 7
+    },
+    {
+      "id": "u000248",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Imagine a device that reads a string of digits and must decide at the end whether the represented number is divisible by three. It need not retain the entire string. It can retain the remainder on division by three. Very different histories thus arrive at the same internal state.",
+      "sourceAnchor": "src-p248",
+      "wordCount": 49
+    },
+    {
+      "id": "u000249",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Why is this legitimate? If two prefixes give the same remainder, any suffix of digits appended to both again produces the same final remainder. No permitted future can distinguish the prefixes for the question under consideration. They do not have the same text, length, or numerical value. They have the same relevance for continuation.",
+      "sourceAnchor": "src-p249",
+      "wordCount": 54
+    },
+    {
+      "id": "u000250",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This idea is central to automata theory and the family of Myhill–Nerode theorems. Extensions to register automata and symbolic traces show that equivalences may require preserving relations, not merely a simple finite label. [ 8 ]",
+      "sourceAnchor": "src-p250",
+      "wordCount": 35
+    },
+    {
+      "id": "u000251",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Contextual Equivalence",
+      "sourceAnchor": "src-p251",
+      "wordCount": 2
+    },
+    {
+      "id": "u000252",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "For two partial circuits A and B, we can ask whether every permitted continuation K produces the same relevant observation when attached to A or B. Schematically:",
+      "sourceAnchor": "src-p252",
+      "wordCount": 27
+    },
+    {
+      "id": "u000253",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A ≡Q B when, for every permitted K, Obs(K[A]) = Obs(K[B]).",
+      "sourceAnchor": "src-p253",
+      "wordCount": 14
+    },
+    {
+      "id": "u000254",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Q indicates the family of questions or observations that matter. If we observe only the numerical result, two circuits may be equivalent. If we also observe energy consumption, latency, external effects, or provenance, that equivalence may disappear. There is no equivalence without specifying what we are willing to ignore.",
+      "sourceAnchor": "src-p254",
+      "wordCount": 49
+    },
+    {
+      "id": "u000255",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Take two routes arriving at the same station at the same time. For continuing a journey, they may be equivalent. For reimbursing expenses, they may differ. For a question about places visited, history is essential. The same summary does not serve every purpose.",
+      "sourceAnchor": "src-p255",
+      "wordCount": 43
+    },
+    {
+      "id": "u000256",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Why This Is More Than Memoizing Results",
+      "sourceAnchor": "src-p256",
+      "wordCount": 7
+    },
+    {
+      "id": "u000257",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Ordinary memoization reuses a function's result for the same input. Contextual equivalence can merge different inputs and different histories when their difference does not affect continuation. It is a semantic compression of state, not merely avoidance of identical repetition.",
+      "sourceAnchor": "src-p257",
+      "wordCount": 39
+    },
+    {
+      "id": "u000258",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "For the sum of a sequence, we can retain the partial sum. For its mean, the sum alone is insufficient: we also need the number of elements. For the median, the sum and count are not generally sufficient. These examples show that the size of the required state depends on the future question and the permitted operations.",
+      "sourceAnchor": "src-p258",
+      "wordCount": 57
+    },
+    {
+      "id": "u000259",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A chosen summary can be tested by searching for a pair of histories it merges and a continuation that separates them. Such a triple—two histories and a continuation—is a concrete counterexample to sufficiency. We need not discuss vaguely whether the summary “seems to preserve meaning.” We can seek the exact situation in which it does not.",
+      "sourceAnchor": "src-p259",
+      "wordCount": 58
+    },
+    {
+      "id": "u000260",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Similarity Is Not Equivalence",
+      "sourceAnchor": "src-p260",
+      "wordCount": 4
+    },
+    {
+      "id": "u000261",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Two expressions may give similar results on observed examples and different results on others. The functions x + 1 and 3x + 1 coincide at x = 0, but not at x = 1. A semantic identifier constructed solely from the first example would merge them unjustifiably.",
+      "sourceAnchor": "src-p261",
+      "wordCount": 43
+    },
+    {
+      "id": "u000262",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A feature vector or fingerprint computed over a set of tests can be useful for finding candidate equivalences. Exact verification can follow. If the domain is finite and tested exhaustively, observations can decide equivalence on that domain. If the domain is unbounded, a finite number of tests does not automatically become a universal proof.",
+      "sourceAnchor": "src-p262",
+      "wordCount": 54
+    },
+    {
+      "id": "u000263",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Likewise, a source hash detects syntactic identity with the known technical risks of the scheme used; it does not prove that different sources have the same meaning. An auditable machine must distinguish representational equality, tested equality, and proven equality.",
+      "sourceAnchor": "src-p263",
+      "wordCount": 39
+    },
+    {
+      "id": "u000264",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Bisimulation and Interactive Systems",
+      "sourceAnchor": "src-p264",
+      "wordCount": 4
+    },
+    {
+      "id": "u000265",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "For a process interacting with its environment, we care about more than a final result. Two states may be considered equivalent if every observable step from one can be matched by a step from the other, preserving the relation between the resulting states. This is the intuition of bisimulation.",
+      "sourceAnchor": "src-p265",
+      "wordCount": 49
+    },
+    {
+      "id": "u000266",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The exact conditions depend on the model: agent-chosen actions, environmental actions, nondeterminism, and probabilities are not interchangeable. For SOP Lang, the practical lesson is that an interface suitable for a pure function may be insufficient for an agent capable of acting. Relevant possibilities for interaction must also be preserved.",
+      "sourceAnchor": "src-p266",
+      "wordCount": 49
+    },
+    {
+      "id": "u000267",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The definition through all continuations is a semantic ideal. It tells us what should be preserved. It does not yet give us an efficient procedure for deciding equivalence. The next chapter seeks sufficient local conditions that can be checked on the library's operations.",
+      "sourceAnchor": "src-p267",
+      "wordCount": 43
+    },
+    {
+      "id": "u000268",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "11. Sufficient Interfaces: A Small Proposition with Large Consequences",
+      "sourceAnchor": "src-p268",
+      "wordCount": 9
+    },
+    {
+      "id": "u000269",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "A Summary's Contract",
+      "sourceAnchor": "src-p269",
+      "wordCount": 3
+    },
+    {
+      "id": "u000270",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Let s be the complete state of a partial construction and α(s) its summary. For every permitted operation F, assume there is an operation on summaries, F#, such that summarizing after execution coincides with executing on the summary. Also assume that the final answer can be computed from the summary through a function h.",
+      "sourceAnchor": "src-p270",
+      "wordCount": 55
+    },
+    {
+      "id": "u000271",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "α(F(s)) = F#(α(s)); R(s) = h(α(s)).",
+      "sourceAnchor": "src-p271",
+      "wordCount": 11
+    },
+    {
+      "id": "u000272",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The first condition says that the summary can be continued. The second says that it preserves the final observation. Together, they allow the complete state to be replaced with the summary for any sequence of operations from that library.",
+      "sourceAnchor": "src-p272",
+      "wordCount": 39
+    },
+    {
+      "id": "u000273",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The argument is a simple induction. Initially, the summary is correct by definition. If the summary corresponds to the state before a step, the first condition preserves that correspondence after the step. Repeating this maintains the correspondence through to the end. The second condition then produces the correct answer. There is no mysterious appeal to intelligence here, but a property of the representation and operations.",
+      "sourceAnchor": "src-p273",
+      "wordCount": 65
+    },
+    {
+      "id": "u000274",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "The Example of Affine Functions",
+      "sourceAnchor": "src-p274",
+      "wordCount": 5
+    },
+    {
+      "id": "u000275",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A function of the form f(x) = ax + b can be represented by the pair (a, b). If permitted operations add a constant to the result or multiply it by a constant and then add another, the function remains affine. We do not need the list of all previous operations to continue the functional computation.",
+      "sourceAnchor": "src-p275",
+      "wordCount": 55
+    },
+    {
+      "id": "u000276",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "For example, if f(x) = 2x + 3 and we add 5, we obtain 2x + 8. If we then multiply by 3 and add 1, we obtain 6x + 25. The summary updates through arithmetic on two coefficients. Different histories producing the same coefficients have the same behavior for permitted continuations.",
+      "sourceAnchor": "src-p276",
+      "wordCount": 49
+    },
+    {
+      "id": "u000277",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "But if we add the operation “square the result,” the affine family is no longer closed. The pair can no longer describe every result exactly. We can enrich the representation to polynomials or prohibit the operation at this level of the search. This is an explicit decision, not a hidden exception.",
+      "sourceAnchor": "src-p277",
+      "wordCount": 51
+    },
+    {
+      "id": "u000278",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "When the Tree Becomes a Graph",
+      "sourceAnchor": "src-p278",
+      "wordCount": 6
+    },
+    {
+      "id": "u000279",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Assume a search with n stages. At each stage there are at most M distinct summaries, and at most r extensions are attempted from each. If we merge all constructions with the same summary at the same stage, the number of extension evaluations is at most on the order of nMr.",
+      "sourceAnchor": "src-p279",
+      "wordCount": 51
+    },
+    {
+      "id": "u000280",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Number of extensions evaluated ≤ n · M · r.",
+      "sourceAnchor": "src-p280",
+      "wordCount": 7
+    },
+    {
+      "id": "u000281",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This is not a theorem about all program synthesis. It assumes that the summarized state contains everything affecting future steps, including the stage or budget when relevant. It assumes a precisely specified library and a layered search scheme. The cost of evaluating, normalizing, and comparing summaries must be multiplied in separately. For an arbitrary graph, we cannot replace its entire structure with a stage number without justification.",
+      "sourceAnchor": "src-p281",
+      "wordCount": 67
+    },
+    {
+      "id": "u000282",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "If M grows exponentially with problem size, the bound does not provide polynomial efficiency. If the summary must be discovered through a search harder than the problem itself, the online advantage may hide a prior cost. If we count every path, the resulting numbers may require more and more bits, and operations on them no longer have constant cost.",
+      "sourceAnchor": "src-p282",
+      "wordCount": 59
+    },
+    {
+      "id": "u000283",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Why the Frontier Must Be Summarized",
+      "sourceAnchor": "src-p283",
+      "wordCount": 6
+    },
+    {
+      "id": "u000284",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A construction may produce two values, x and y. A future operation may compare them. Then a separate summary of x and a separate summary of y are insufficient if their relationship has been lost. State α(s) must represent their shared frontier in the context of permitted continuations.",
+      "sourceAnchor": "src-p284",
+      "wordCount": 49
+    },
+    {
+      "id": "u000285",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Anything affecting whether a continuation is permitted must also be included. If an operation consumes a resource, two circuits with the same output but different remaining resources are not equivalent for all future plans. If a conclusion must be supported by a particular class of sources, relevant provenance cannot be discarded merely because the computed value coincides.",
+      "sourceAnchor": "src-p285",
+      "wordCount": 57
+    },
+    {
+      "id": "u000286",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We can nevertheless separate levels. Value equivalence may suffice to guide a search. To emit the result, we retain a witness and check provenance. But if future choices themselves depend on provenance, it must be included in the state used by the search. Otherwise, compression may eliminate the only acceptable variant.",
+      "sourceAnchor": "src-p286",
+      "wordCount": 51
+    },
+    {
+      "id": "u000287",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "The Research Program Hidden in the Proposition",
+      "sourceAnchor": "src-p287",
+      "wordCount": 7
+    },
+    {
+      "id": "u000288",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The underlying mathematics is not new: it is related to dynamic programming, homomorphisms, and semantic congruences. SOP Lang's possible contribution would be identifying such interfaces for useful families of reasoning and learning them from texts, examples, and counterexamples.",
+      "sourceAnchor": "src-p288",
+      "wordCount": 38
+    },
+    {
+      "id": "u000289",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We should investigate whether a system can begin with a rich representation, observe regularities among continuations, and propose a smaller summary. A verifier would then try to find a counterexample. An accepted summary could become the interface of a reusable circuit. Through repetition, the system would learn not just programs, but forms of state in which programs become easier to construct.",
+      "sourceAnchor": "src-p289",
+      "wordCount": 61
+    },
+    {
+      "id": "u000290",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This is the book's most ambitious hypothesis. It is not confirmed by proving a property for a human-provided representation. The experiments must be organized around precisely the gap between “a sufficient summary exists” and “the system discovers it at a useful cost.”",
+      "sourceAnchor": "src-p290",
+      "wordCount": 42
+    },
+    {
+      "id": "u000291",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "12. Dynamic Programming, Knowledge Compilation, and Graphs of Alternatives",
+      "sourceAnchor": "src-p291",
+      "wordCount": 9
+    },
+    {
+      "id": "u000292",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "The Same Subproblem, Several Paths to It",
+      "sourceAnchor": "src-p292",
+      "wordCount": 7
+    },
+    {
+      "id": "u000293",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Dynamic programming avoids repeatedly solving equivalent subproblems. To find an inexpensive path, for example, we do not necessarily retain every route reaching a node. Under suitable conditions, we retain the relevant minimum cost and a predecessor. But those conditions matter: if the objective requires never revisiting a city, the visit history may become part of the state.",
+      "sourceAnchor": "src-p293",
+      "wordCount": 57
+    },
+    {
+      "id": "u000294",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The same lesson applies to circuits. We cannot merge constructions merely because they produce the same value now. We must know that the discarded past no longer affects the permissibility or value of the future. Dynamic programming succeeds when a well-chosen state makes subproblems independent of irrelevant historical details.",
+      "sourceAnchor": "src-p294",
+      "wordCount": 49
+    },
+    {
+      "id": "u000295",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Knowledge Compilation",
+      "sourceAnchor": "src-p295",
+      "wordCount": 2
+    },
+    {
+      "id": "u000296",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We can transform a knowledge base into a representation in which certain questions are easier to answer. Compilation may be expensive, but repeated queries may justify the investment. Darwiche and Marquis's map compares precisely the trade-offs among representational compactness, efficient queries, and available transformations. [ 10 ]",
+      "sourceAnchor": "src-p296",
+      "wordCount": 45
+    },
+    {
+      "id": "u000297",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "There is no universally winning format. A structure may allow rapid compatibility checks while making updates difficult. Another may be compact for one family of formulas and very large for another. The choice must start from anticipated questions and changes.",
+      "sourceAnchor": "src-p297",
+      "wordCount": 40
+    },
+    {
+      "id": "u000298",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "For SOP Lang, a book or case file could be compiled into a graph of entities, events, and justifications. But ingestion costs, interpretation corrections, and adaptation to unanticipated questions must be included in the evaluation. A perfect summary for today's questions may be a poor archive for tomorrow's research.",
+      "sourceAnchor": "src-p298",
+      "wordCount": 49
+    },
+    {
+      "id": "u000299",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "The Width of Relations",
+      "sourceAnchor": "src-p299",
+      "wordCount": 4
+    },
+    {
+      "id": "u000300",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "In many problems, difficulty depends on how many variables must be handled together during an elimination or separation step. The notion of treewidth formalizes one aspect of this width. AND/OR decompositions and AOMDDs exploit conditional independences for more compact representations and computations. [ 11 ]",
+      "sourceAnchor": "src-p300",
+      "wordCount": 44
+    },
+    {
+      "id": "u000301",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Intuitively, if two large regions interact through only two variables, we can summarize each region relative to those two variables. If the interaction passes through almost every variable, the summary may become enormous. The total number of variables is not the only indicator of difficulty; the shape of their connections matters.",
+      "sourceAnchor": "src-p301",
+      "wordCount": 51
+    },
+    {
+      "id": "u000302",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Nevertheless, graph width does not exhaust exploitable structure. Relations may have algebraic properties or functional dependencies that reduce computation even when the graph appears dense. Work on variable elimination in the presence of functional dependencies illustrates this possibility. [ 12 ] The system must therefore be able to recognize both structural separation and the appropriate algebra.",
+      "sourceAnchor": "src-p302",
+      "wordCount": 54
+    },
+    {
+      "id": "u000303",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "E-Graphs: Many Equal Expressions, One Shared Space",
+      "sourceAnchor": "src-p303",
+      "wordCount": 7
+    },
+    {
+      "id": "u000304",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "An e-graph retains families of expressions that the accepted rules declare equivalent. Instead of choosing immediately between a + 0 and a, we can represent them in the same class and continue exploring. Equality propagates through compatible contexts. We later extract an expression suited to a cost criterion. The egg system is a practical reference point for this organization. [ 17 ]",
+      "sourceAnchor": "src-p304",
+      "wordCount": 59
+    },
+    {
+      "id": "u000305",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This differs from retaining alternative interpretations. Expressions in the same equality class must be equal under the semantics and assumptions in use. Two interpretations of a pronoun are not automatically equal; they are alternatives that may produce different answers. Both can share a graph, but sharing does not authorize confusing their meanings.",
+      "sourceAnchor": "src-p305",
+      "wordCount": 52
+    },
+    {
+      "id": "u000306",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Rewrite rules must also be checked. Transforming a division x/x into 1 requires a condition such as x being nonzero under appropriate numerical semantics. With effects or special values, even familiar rewrites may require care. A library of unverified equalities turns compression into a source of systematic errors.",
+      "sourceAnchor": "src-p306",
+      "wordCount": 49
+    },
+    {
+      "id": "u000307",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Compression Does Not Eliminate Every Explosion",
+      "sourceAnchor": "src-p307",
+      "wordCount": 6
+    },
+    {
+      "id": "u000308",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A shared graph can become very large. Equality saturation sometimes needs guidance to reach complex optimizations within practical budgets; research on sketch-guided methods explicitly studies this issue. [ 30 ] Saying “we use an e-graph” is not a complete answer to the problem of controlling search.",
+      "sourceAnchor": "src-p308",
+      "wordCount": 44
+    },
+    {
+      "id": "u000309",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "SOP Lang could combine representations: equality classes for provably identical expressions, packed graphs for alternative interpretations, and abstractions for filtering. What matters is that every connection has a declared meaning. Equality, possibility, implication, and similarity must not become four labels for the same ambiguous edge.",
+      "sourceAnchor": "src-p309",
+      "wordCount": 45
+    },
+    {
+      "id": "u000310",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "13. Types, Backward Requirements, and Counterexample-Guided Refinement",
+      "sourceAnchor": "src-p310",
+      "wordCount": 7
+    },
+    {
+      "id": "u000311",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Types as Initial Filters",
+      "sourceAnchor": "src-p311",
+      "wordCount": 4
+    },
+    {
+      "id": "u000312",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A type can state that an operation takes a person and an event, not two numbers. A richer type can state that the event is a transfer and the person its recipient. Refinement types add logical conditions to basic properties. In synthesis, they can eliminate incompatible compositions before concrete execution. Research on synthesis from refinement types explores this direction. [ 13 ]",
+      "sourceAnchor": "src-p312",
+      "wordCount": 60
+    },
+    {
+      "id": "u000313",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Yet type compatibility does not mean an operation is useful for the goal. Thousands of operations may take and produce texts. A discipline that sees only the type “text” does not guide search sufficiently. We need contracts stating the relationship between input and output.",
+      "sourceAnchor": "src-p313",
+      "wordCount": 44
+    },
+    {
+      "id": "u000314",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "Propagating Requirements Backward",
+      "sourceAnchor": "src-p314",
+      "wordCount": 3
+    },
+    {
+      "id": "u000315",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "If the objective requires a positive result and the proposed operation computes x − 5, a necessary requirement is x > 5. If the objective requires identifying the possessor of an object after a transfer, the operation needs the identities of the object and recipient and the relevant temporal conditions. The resulting requirements can become subproblems.",
+      "sourceAnchor": "src-p315",
+      "wordCount": 54
+    },
+    {
+      "id": "u000316",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "For a deterministic operation, the weakest precondition of a goal is the set of inputs guaranteeing that goal after execution. We need not be able to compute it exactly in every case. A necessary condition may suffice to reject certain branches. A sufficient condition may allow others to be accepted soundly. These two directions of approximation must be labeled distinctly.",
+      "sourceAnchor": "src-p316",
+      "wordCount": 60
+    },
+    {
+      "id": "u000317",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "An expander can bring together what is possible going forward and what is necessary going backward. If the two do not intersect, the branch is impossible within the model. If they intersect, the branch remains a candidate. A nonempty intersection does not prove the existence of a concrete execution satisfying all relations lost through approximation.",
+      "sourceAnchor": "src-p317",
+      "wordCount": 55
+    },
+    {
+      "id": "u000318",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "CEGAR: When an Alarm Reveals the Model's Limits",
+      "sourceAnchor": "src-p318",
+      "wordCount": 8
+    },
+    {
+      "id": "u000319",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Suppose interval analysis sees x and y in [0, 100] and reports that x − y could be negative. The concrete model, however, contains y = x. The abstract counterexample, such as x = 0 and y = 100, is infeasible. Instead of declaring the program wrong, we enrich the abstraction with the missing relation.",
+      "sourceAnchor": "src-p319",
+      "wordCount": 51
+    },
+    {
+      "id": "u000320",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This is the intuition of CEGAR: begin with an abstract model, check a candidate counterexample, and refine the model when the counterexample is spurious. The foundational paper formulates this cycle for system verification. [ 16 ] In SOP Lang, a related mechanism could introduce a semantic distinction precisely when its absence produces a suspicious derivation.",
+      "sourceAnchor": "src-p320",
+      "wordCount": 53
+    },
+    {
+      "id": "u000321",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Not every refinement should be accepted. One that adds almost the entire concrete state may solve the current case and destroy the advantage. We must measure how many errors it eliminates and how much it enlarges the representation. Refinement is an investment, not a cost-free good.",
+      "sourceAnchor": "src-p321",
+      "wordCount": 46
+    },
+    {
+      "id": "u000322",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "CEGIS: When a Candidate Program Is Wrong",
+      "sourceAnchor": "src-p322",
+      "wordCount": 7
+    },
+    {
+      "id": "u000323",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "In counterexample-guided synthesis, we construct a candidate satisfying the current examples. A verifier seeks an input on which the candidate violates the specification. If it finds one, we add the case and construct another candidate. Here we repair the candidate program, not necessarily the analysis abstraction. Syntax-guided synthesis explicitly separates the grammar of permitted programs from the behavioral specification. [ 15 ]",
+      "sourceAnchor": "src-p323",
+      "wordCount": 60
+    },
+    {
+      "id": "u000324",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The distinction between CEGAR and CEGIS is practically useful. If a false interpretation is admitted because the summary lost a relation, the problem lies in the abstraction. If the summary is adequate but the chosen circuit computes something else, the problem lies in the candidate. If the text was misinterpreted at the outset, both mechanisms may flawlessly verify the wrong problem.",
+      "sourceAnchor": "src-p324",
+      "wordCount": 61
+    },
+    {
+      "id": "u000325",
+      "chapterId": "chapter-0006",
+      "kind": "h3",
+      "text": "A Cycle for Learning Interfaces",
+      "sourceAnchor": "src-p325",
+      "wordCount": 5
+    },
+    {
+      "id": "u000326",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "We can propose a third object of refinement: the very relation by which we merge states. The system proposes that two frontiers are equivalent. A verifier seeks a continuation distinguishing them. When it finds one, we add the missing feature to the interface. When it finds none within a limited budget, the result must be labeled “no counterexample found,” not automatically “equivalence proved.”",
+      "sourceAnchor": "src-p326",
+      "wordCount": 63
+    },
+    {
+      "id": "u000327",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "TYGAR is a precedent for using type-guided abstraction refinement to control synthesis. [ 14 ] The proposed research extends the question to semantic representations of situations and circuit frontiers, without assuming that this transfer is automatic.",
+      "sourceAnchor": "src-p327",
+      "wordCount": 34
+    },
+    {
+      "id": "u000328",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A success would be repeatedly discovering small interfaces that generalize to new problems. An informative failure would be a situation in which every counterexample requires a new exception and the representation grows almost in proportion to all memorized cases. This would show that we have not yet found the right structure, or that the problem family does not offer it in the form sought.",
+      "sourceAnchor": "src-p328",
+      "wordCount": 64
+    },
+    {
+      "id": "u000329",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "PART IV",
+      "sourceAnchor": "src-p329",
+      "wordCount": 2
+    }
+  ]
+}

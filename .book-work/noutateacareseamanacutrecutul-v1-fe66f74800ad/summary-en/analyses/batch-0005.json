@@ -1,0 +1,214 @@
+{
+  "batch": "batch-0005.json",
+  "chapterId": "chapter-0005",
+  "segment": 1,
+  "thesis": "Novelty judgment is a chain of information transformations whose failures need separate diagnoses.",
+  "role": "Functional model analysis",
+  "ideas": [
+    {
+      "id": "batch-0005-idea-001",
+      "statement": "Access, interpretation, criterion and aggregation failures call for different remedies.",
+      "centrality": 1,
+      "originality": 0.85,
+      "recurrenceCandidate": "diagnosis",
+      "sourceUnitIds": [
+        "u000179",
+        "u000180",
+        "u000181",
+        "u000183",
+        "u000184",
+        "u000186",
+        "u000190"
+      ]
+    },
+    {
+      "id": "batch-0005-idea-002",
+      "statement": "Retrieval similarity is not contribution identity; contextual counterfactual worlds distinguish comparison from reputation.",
+      "centrality": 0.95,
+      "originality": 0.85,
+      "recurrenceCandidate": "contract",
+      "sourceUnitIds": [
+        "u000168",
+        "u000169",
+        "u000170",
+        "u000174",
+        "u000175"
+      ]
+    }
+  ],
+  "evidenceAndExamples": [
+    {
+      "statement": "A language model does not receive ideas as ideal objects already separated from their formulation. It receives a sequence of discrete units called tokens. Tokenization can split words, keep mathematical symbols separate and represent two similar formulations differently. Before any judgment of originality, there is therefore an encoding channel. This observation does not automatically imply loss of meaning, but it introduces a first control variable: task difficulty must not be confused with the difficulty of representing the text in the tokenization used.",
+      "sourceUnitIds": [
+        "u000163"
+      ]
+    },
+    {
+      "statement": "Tokens are transformed into vectors. In the Transformer architecture, attention mechanisms allow information from different positions to be combined using weights dependent on the current representations. Successive layers modify these representations, and the output produces scores for continuations. The paper that introduced the Transformer describes this organization in the context of sequence modeling. The architecture does not demonstrate general reasoning or originality-assessment capabilities. [ R03 ]",
+      "sourceUnitIds": [
+        "u000164"
+      ]
+    },
+    {
+      "statement": "For our problem, attention must be understood functionally. It can allow a condition in one paragraph to influence interpretation of a guarantee in another. But a communication path between positions does not guarantee that the model tracks the correct condition. An architecture can express a computation without the learned weights implementing it reliably. Saying “the model can attend to the entire document” is a claim about structural access; saying “the model compares all relevant assumptions” is a claim about behavior.",
+      "sourceUnitIds": [
+        "u000165"
+      ]
+    },
+    {
+      "statement": "A programmer can view an LLM as an approximate interpreter of a task formulated in text. The prompt specifies an incomplete contract, examples and context supply data, and the model produces an output according to learned regularities. This analogy is useful provided it is not taken literally. There is not necessarily a stable internal separation between parser, planner, memory and verifier. Nevertheless, in external evaluation we can construct separate tests for understanding the instruction, extracting claims, retrieving prior work and applying the criterion.",
+      "sourceUnitIds": [
+        "u000166"
+      ]
+    },
+    {
+      "statement": "In-context learning is adaptation of behavior using examples in the prompt, without updating parameters during that interaction. Brown and colleagues documented important few-shot results for a large autoregressive model. These results show that performance is not fully described by the question “did this exact example exist in training?” They do not, however, guarantee learning any new rule from a few examples. [ R04 ]",
+      "sourceUnitIds": [
+        "u000167"
+      ]
+    },
+    {
+      "statement": "In a novelty test, the context can define the reference world itself. We can supply a library of three mechanisms and ask the model to determine whether a fourth is equivalent to one of them. If the mechanism names are generated randomly after the model is fixed, recognition by reputation becomes harder. The model must use local definitions. Success would demonstrate comparison competence in a controlled world; failure would indicate a concrete obstacle without immediately identifying which internal layer produces it.",
+      "sourceUnitIds": [
+        "u000168"
+      ]
+    },
+    {
+      "statement": "The term “semantic representation” must be used modestly. A vector can correlate strongly with useful meanings or relations without constituting a complete, stable and interpretable description of the idea. In a retrieval system, we care whether vector proximity brings relevant documents. In a verifier, we care whether differences between assumptions and conclusions are preserved. The same representation can be suitable for the first operation and insufficient for the second.",
+      "sourceUnitIds": [
+        "u000169"
+      ]
+    },
+    {
+      "statement": "It would be a design error to treat the thematic vector as the identity of the contribution. Two papers about the same problem must be close for retrieval to work. Precisely for that reason, their proximity should not be used directly as evidence that no difference exists. A representation optimized to bring relevant documents together may compress distinctions that the final comparison must reintroduce. A good semantic neighbor is not automatically prior work that anticipates the contribution.",
+      "sourceUnitIds": [
+        "u000170"
+      ]
+    },
+    {
+      "statement": "Consequently, evaluating LLMs must begin with a functional diagram of the available information, not assumptions about what the model “knows.” What text does it receive? What parts are truncated? What instruction defines novelty? What sources are added? What output form is requested? An incorrect answer can originate at any of these points. Without this decomposition, the explanation “the model repeats the past” risks becoming a universal label applied to very different failures.",
+      "sourceUnitIds": [
+        "u000171"
+      ]
+    },
+    {
+      "statement": "Memorization and generalization are not mutually exclusive states of a model. A system can memorize certain sequences while also learning regularities applicable to new sequences. For novelty detection, both capacities can be useful or problematic. Memorizing prior work helps reject a rediscovery. Memorizing a paper’s reputation can contaminate a retrospective test. Generalizing a comparison rule helps identify differences; overgeneralizing a category can erase the very exception that matters.",
+      "sourceUnitIds": [
+        "u000173"
+      ]
+    },
+    {
+      "statement": "Showing that the model can produce familiar fragments is not enough to conclude that every verdict retrieves fragments. But absence of literal reproduction does not prove conceptual comparison either. A model can reformulate a memorized association. Evaluation must construct situations in which memorization and comparison make different predictions: changed names, reversed relations, assumptions moved between candidates and prior work, and cases in which familiar wording conceals the wrong conclusion.",
+      "sourceUnitIds": [
+        "u000174"
+      ]
+    },
+    {
+      "statement": "A useful test is a controlled reversal of the world. In one condition, the library contains method A and the candidate proposes B. In another, the same pair is reversed and the library contains B. If the label depends on the reference, the verdict must change coherently. An evaluator that always declares B newer because B uses sophisticated vocabulary fails to respect the task’s local definition. This manipulation is more informative than simply requesting further explanations.",
+      "sourceUnitIds": [
+        "u000175"
+      ]
+    },
+    {
+      "statement": "Models used as assistants are generally not fully described by autoregressive pretraining. There may be stages of supervised fine-tuning and preference optimization. Ouyang and colleagues describe a procedure combining human demonstrations, answer comparisons and learning from feedback. Rafailov and colleagues propose a direct preference optimization method without constructing the entire reward-learning loop in the same way. These papers show that the final policy can be modified to favor particular types of answer. They do not establish that the preferences introduced are necessarily hostile to novelty. [ R05 , R06 ]",
+      "sourceUnitIds": [
+        "u000176"
+      ]
+    },
+    {
+      "statement": "In our problem, post-training is a causal candidate that must be separated from pretraining. If human evaluators prefer cautious, explicit and conventional formulations, the system may learn to produce or appreciate them. If evaluation examples reward mentioning standard terms, those terms may become cues. But these are hypotheses about data and objectives. They cannot be demonstrated merely by observing that an answer is conservative.",
+      "sourceUnitIds": [
+        "u000177"
+      ]
+    },
+    {
+      "statement": "We could compare a base model with its fine-tuned version, but the comparison does not automatically isolate a single mechanism. Instruction-following ability, style, answer length and context use may all change simultaneously. A causal evaluation requires either more controlled interventions or a limited interpretation: “a difference between two training procedures,” not “the pure effect of a preference for conformity.”",
+      "sourceUnitIds": [
+        "u000178"
+      ]
+    },
+    {
+      "statement": "Model-generated explanations are useful as objects to verify, not as direct access to the verdict’s internal cause. A model can produce a plausible explanation after selecting its score from other cues. To test whether prior work was decisive, we can remove or modify it and observe the behavioral change. To test whether a difference was understood, we can request a prediction that depends on it. Intervening on information is stronger than mere textual introspection.",
+      "sourceUnitIds": [
+        "u000179"
+      ]
+    },
+    {
+      "statement": "One verification strategy separates verdict from witness. The model must identify an earlier passage anticipating the contribution or a case in which the candidate and prior work behave differently. The witness can be checked independently. If the score says “new” but the witness is false, we have a detectable error. If the witness is correct but the score too low, the problem shifts to the relevance or aggregation criterion. This separation reduces dependence on explanatory fluency.",
+      "sourceUnitIds": [
+        "u000180"
+      ]
+    },
+    {
+      "statement": "Finally, a model’s competence must not automatically be attributed to the entire system, or vice versa. An LLM with access to search, computation and verifiers can perform differently from the same LLM in isolation. A contribution found by a symbolic verifier does not prove that the model solved the problem alone. But using a verifier does not invalidate the system’s usefulness either. Reporting must specify who proposed the comparison, who executed it and who certified the result.",
+      "sourceUnitIds": [
+        "u000181"
+      ]
+    },
+    {
+      "statement": "An evaluator can miss an idea because prior work is absent. This is a coverage failure. It can receive the prior work but omit the relevant paragraph. This is a failure of effective context access. It can read the paragraph and confuse the quantifiers. This is an interpretation failure. It can identify the difference and mistakenly judge it unimportant. This is a failure to apply the criterion. It can produce all the correct elements but an inconsistent final score. This is an aggregation or instruction failure.",
+      "sourceUnitIds": [
+        "u000183"
+      ]
+    },
+    {
+      "statement": "The distinctions matter because the remedies differ. Expanding the search engine can improve coverage but does not resolve confusion between “there exists” and “for all.” A more explicit prompt can improve adherence to the criterion but does not supply the missing document. A larger model can reduce some errors but cannot recover information permanently removed by an intermediate summary. Without diagnosis, increasing inference cost risks producing only longer explanations of the same error.",
+      "sourceUnitIds": [
+        "u000184"
+      ]
+    },
+    {
+      "statement": "There are also failures of information positioning. Lost in the Middle reported performance dependent on the position of relevant information in long contexts for the models and tasks tested. This does not demonstrate that all future models will have the same problem. It does, however, provide a concrete reason to control document order and the location of decisive prior work in experiments. [ R16 ]",
+      "sourceUnitIds": [
+        "u000185"
+      ]
+    },
+    {
+      "statement": "A novelty filter is especially exposed because the important difference can be small relative to the text’s total length. If the document contains ten pages of familiar context and one sentence changing the scope of the guarantee, success depends on the operational attention given to that sentence. Correctly summarizing most of the document is not enough. A local error can reverse the global verdict.",
+      "sourceUnitIds": [
+        "u000186"
+      ]
+    },
+    {
+      "statement": "Let us construct a simple case. The prior work sorts a collection in memory, while the candidate claims the same order using sequential access to external data. A thematic evaluator may observe that both are sorting algorithms. An operational evaluator must compare the access model and resources. If the task asks about novelty in the computed function, the two may be equivalent. If it asks about novelty in the execution model, the difference may be central. The verdict cannot be judged without knowing the evaluation contract.",
+      "sourceUnitIds": [
+        "u000187"
+      ]
+    },
+    {
+      "statement": "Another constructed case concerns negating an assumption. One text says that the procedure requires an authenticated channel. Another claims that this requirement can be replaced by a different assumption. A model normalizing the second formulation to the first can make the text more familiar but less faithful. This “correction” is not necessarily intentional. It may result from the most probable interpretation. Nevertheless, for detecting unusual contributions, intention is secondary; preserving the difference is what matters.",
+      "sourceUnitIds": [
+        "u000188"
+      ]
+    },
+    {
+      "statement": "The tendency to produce evaluations matching the user’s tone must also be controlled. If the prompt asks “why is this idea revolutionary?”, the task already implies a verdict. If it asks “why is this merely a banal variation?”, it creates another pressure. A benchmark comparing only affirmative versions of the same question does not measure epistemic stability. Favorable, neutral and skeptical formulations must be tested on the same content without suggesting that any one represents the truth.",
+      "sourceUnitIds": [
+        "u000189"
+      ]
+    },
+    {
+      "statement": "This chapter’s conclusion is functional. “The LLM judges novelty” is not an elementary operation. It is a chain of transformations and choices, some implemented by the model, others by the surrounding application. The familiarity hypothesis becomes scientifically useful only when located within such a chain and when an intervention can distinguish the proposed mechanism from alternative explanations.",
+      "sourceUnitIds": [
+        "u000190"
+      ]
+    }
+  ],
+  "objectionsAndQualifications": [
+    {
+      "statement": "Attention pathways do not prove competence; base versus post-trained comparisons confound several changes.",
+      "sourceUnitIds": [
+        "u000165",
+        "u000176",
+        "u000177",
+        "u000178"
+      ]
+    }
+  ],
+  "audit": {
+    "chapterCovered": true,
+    "meaningPreserved": true,
+    "factsPreserved": true,
+    "notes": "Complete chapter read; preserve conditional impossibilities, proposed protocols and bounded empirical evidence."
+  }
+}

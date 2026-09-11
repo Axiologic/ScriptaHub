@@ -1,0 +1,216 @@
+{
+  "batch": "batch-0010.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0011",
+  "chapterTitle": "Abstract Interpretations",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000277",
+      "chapterId": "chapter-0011",
+      "kind": "h1",
+      "text": "Abstract Interpretations",
+      "sourceAnchor": "src-p281",
+      "wordCount": 2
+    },
+    {
+      "id": "u000278",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "Sufficient Information for a Property",
+      "sourceAnchor": "src-p282",
+      "wordCount": 5
+    },
+    {
+      "id": "u000279",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Abstract interpretation constructs sound approximations of program behavior. Instead of executing every concrete case, it operates in a domain preserving certain properties and ignoring others [ Cousot1977 ]. For MRP, this provides a mature example of multiple interpreters with clear mathematical obligations.",
+      "sourceAnchor": "src-p283",
+      "wordCount": 40
+    },
+    {
+      "id": "u000280",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Suppose two variables x and y both equal the same number a, and a lies between zero and ten. An interval representation preserves x between zero and ten and y between zero and ten. Applied independently to both intervals, subtraction produces the interval from minus ten to ten. Yet the concrete result x − y is always zero.",
+      "sourceAnchor": "src-p284",
+      "wordCount": 57
+    },
+    {
+      "id": "u000281",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The problem is not that the intervals were calculated incorrectly. They lost the relation between the variables. A relational interpretation preserving the equality x = y can immediately prove the result. The choice of abstract domain determines which properties become accessible to analysis.",
+      "sourceAnchor": "src-p285",
+      "wordCount": 42
+    },
+    {
+      "id": "u000282",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "Sound Approximation",
+      "sourceAnchor": "src-p286",
+      "wordCount": 2
+    },
+    {
+      "id": "u000283",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "In overapproximation analysis, the abstract result must include every possible concrete result. It may also include possibilities that do not occur in reality. These produce false alarms, not necessarily analysis errors. An approximation excluding a possible concrete behavior may become unsound for the property pursued.",
+      "sourceAnchor": "src-p287",
+      "wordCount": 45
+    },
+    {
+      "id": "u000284",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "We can view an abstract value as a description of a set of concrete states. “x is positive” describes many values. An abstract transformation is sound if, starting from all states described by the input, no possible concrete state after the operation is lost from the output description.",
+      "sourceAnchor": "src-p288",
+      "wordCount": 48
+    },
+    {
+      "id": "u000285",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "This obligation is much stronger than “the operation was correct on tested examples.” An empirically learned interpreter does not become a sound abstract analyzer merely by producing intervals or formulas. The relationship between the concrete operation and abstract transformation must be verified.",
+      "sourceAnchor": "src-p289",
+      "wordCount": 42
+    },
+    {
+      "id": "u000286",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "Precision and Cost",
+      "sourceAnchor": "src-p290",
+      "wordCount": 3
+    },
+    {
+      "id": "u000287",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "More expressive domains can prove properties simpler domains lose, but may require more computation. Some relations matter in one program region and are useless in another. A reasonable strategy starts simply and increases precision where the required property demands it.",
+      "sourceAnchor": "src-p291",
+      "wordCount": 40
+    },
+    {
+      "id": "u000288",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Cousot's introduction to abstract interpretation explains this relationship between the properties pursued, approximation and computable analysis [ CousotIntro ]. The MRP extension would be a controller learning which representation change is likely to resolve a particular alarm, without assuming that “more precision” is always free or necessary.",
+      "sourceAnchor": "src-p292",
+      "wordCount": 45
+    },
+    {
+      "id": "u000289",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "For example, the interval may suffice to verify that x does not exceed ten. To verify the equality x − y = 0, the relation is decisive. The pragmatic choice depends on the question; each interpretation's soundness depends on its rules.",
+      "sourceAnchor": "src-p293",
+      "wordCount": 39
+    },
+    {
+      "id": "u000290",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "Fixed Points and Stopping",
+      "sourceAnchor": "src-p294",
+      "wordCount": 4
+    },
+    {
+      "id": "u000291",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Programs with loops may require repeated information propagation. A fixed point is an analysis state unchanged by another application of the propagation rule. Not every process reaches a fixed point quickly, and some domains allow infinite chains of increasingly precise or increasingly broad approximations.",
+      "sourceAnchor": "src-p295",
+      "wordCount": 44
+    },
+    {
+      "id": "u000292",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Abstract interpretation uses acceleration mechanisms, including widening, to force certain analyses to stabilize [ CousotIntro ]. The price may be lost precision. For MRP, the general idea is that a stopping policy must form part of the algorithm. “Keep refining until you understand” does not define a procedure with finite resources.",
+      "sourceAnchor": "src-p296",
+      "wordCount": 49
+    },
+    {
+      "id": "u000293",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A prototype can initially avoid complicated domains and use finite tables or explicit step limits. The restriction is legitimate if the experiment's domain declares it. It becomes problematic only when conclusions are tacitly extended to systems without those limits.",
+      "sourceAnchor": "src-p297",
+      "wordCount": 39
+    },
+    {
+      "id": "u000294",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "Two Forms of Evidence",
+      "sourceAnchor": "src-p298",
+      "wordCount": 4
+    },
+    {
+      "id": "u000295",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A formal result may say: under these assumptions about the program and arithmetic, the property holds for every modeled execution. An empirical result may say: on this test distribution, the interpreter had a particular error rate. Both are useful, but they are not interchangeable.",
+      "sourceAnchor": "src-p299",
+      "wordCount": 44
+    },
+    {
+      "id": "u000296",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A hybrid architecture may allow a generator to propose an abstraction and a verifier to check its local soundness. If verification fails, the hypothesis must not be promoted to a sound rule. If verification is incomplete, the result's status must preserve that limit.",
+      "sourceAnchor": "src-p300",
+      "wordCount": 43
+    },
+    {
+      "id": "u000297",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "Transfer to MRP",
+      "sourceAnchor": "src-p301",
+      "wordCount": 3
+    },
+    {
+      "id": "u000298",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Abstract interpretation shows that “multiple modes of interpretation” is not a new idea in itself. It also shows how this plurality can be disciplined through formal relations. MRP merits investigation where it adds a measurable mechanism for selecting, constructing and reusing these modes.",
+      "sourceAnchor": "src-p302",
+      "wordCount": 43
+    },
+    {
+      "id": "u000299",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The first plausible application is not an agent inventing its own mathematics without control. It is an agent identifying which relation an analysis lacks, proposing a suitable interpreter and proving or testing exactly which improvement it achieved. This object is more modest, but difficult and useful enough for a real research program.",
+      "sourceAnchor": "src-p303",
+      "wordCount": 52
+    },
+    {
+      "id": "u000300",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "PART III / A Learning Mechanism",
+      "sourceAnchor": "src-p304",
+      "wordCount": 5
+    },
+    {
+      "id": "u000301",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "CHAPTER 09",
+      "sourceAnchor": "src-p305",
+      "wordCount": 2
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+import json,pathlib
+p=pathlib.Path(__file__).parent
+s=json.load(open(p/'synthesis.json'));d=json.load(open(p/'draft.json'))
+adds=[(0,2,'''This also separates an excuse from a justification. Circumstances may reduce blame without making conduct right. Conversely, a justified action need not be pleasant or successful in every respect. Reliability alone is insufficient: someone can administer an unjust practice with extraordinary consistency. Responsible character therefore includes examining what deserves loyalty, not merely keeping an assigned routine.''',[44,51,52,53,54,355],[1]),(1,2,'''Protection must not become control that ignores a person's remaining preferences. Where a choice cannot be expressed, interests, previously known wishes and independent safeguards become more important, not less. A person's inability to object cannot be treated as permission. Conversely, respecting vulnerability does not require allowing dangerous conduct to continue; proportionate protection serves a different purpose from imposing blame that the person could not bear.''',[119,120,122,123],[2]),(2,2,'''The right to refuse assistance matters because an offer can conceal someone else's project for the recipient's life. Refusal under coercion or without accessible information raises different questions, but anticipated benefit alone does not settle them. Measurements likewise remain useful without exhausting the goal: recording contact is not identical to improving a life, and a single outcome cannot capture every dimension of dignity.''',[210,217,218],[3]),(3,2,'''These duties include acknowledging where expertise ends. A philosopher does not acquire authority over every practical field by mastering arguments, and an affected person need not produce a sophisticated theory before deserving respectful treatment. At the same time, testimony should be heard and examined rather than declared infallible. Clarity makes both arguments and their costs available for questioning.''',[239,241,242,243,244],[2,4]),(5,1,'''A genuine response also examines the conditions that made harm possible. Removing the most visible employee while leaving the incentives unchanged may preserve the problem; invoking a general culture failure without investigating individual acts may conceal it differently. Learning requires room to admit errors and a credible expectation that admission will lead to correction rather than either automatic destruction or automatic absolution.''',[313,314,320],[4,6])]
+for sec,idx,text,ids,cs in adds:
+ par=d['sections'][sec]['paragraphs'][idx];par['text']+=' '+text
+ par['sourceUnitIds']=sorted(set(par['sourceUnitIds']+[f'u{x:06}' for x in ids]));par['clusterIds']=sorted(set(par['clusterIds']+[f'cluster-{x:03}' for x in cs]))
+# Incorporate the draft's explicitly cited supporting examples and qualifications
+# into the same editorial clusters, preserving the existing idea graph.
+for sec in d['sections']:
+ o=next(x for x in s['outline'] if x['id']==sec['id'])
+ o['clusterIds']=sorted(set(o['clusterIds'])|{c for par in sec['paragraphs'] for c in par['clusterIds']})
+for par in [x for sec in d['sections'] for x in sec['paragraphs']]+d['conclusion']:
+ cs=[c for c in s['clusters'] if c['id'] in par['clusterIds']]
+ supported={u for c in cs for u in c['sourceUnitIds']}
+ cs[0]['sourceUnitIds']=sorted(set(cs[0]['sourceUnitIds'])|(set(par['sourceUnitIds'])-supported))
+for name,j in [('draft.json',d),('synthesis.json',s)]: (p/name).write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n')

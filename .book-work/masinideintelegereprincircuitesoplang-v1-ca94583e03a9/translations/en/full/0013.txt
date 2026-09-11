@@ -1,0 +1,82 @@
+This proves equivalence for continuations composed of the declared operations. If the operation-selection policy consults a part of the state absent from the summary, the argument does not automatically cover that policy. We must either include the information consulted or define continuations as fixed external sequences and analyze the selection strategy separately.
+In a system with partial operations, admissibility must also be preserved: two merged states cannot permit an operation in only one of them if that difference matters. In a nondeterministic system, sets or distributions of outcomes must be compared according to the adopted semantics. The simple form above concerns deterministic transitions compatible with the summary.
+What the argument does not prove is the existence of a small summary that is inexpensive to compute or easy to learn. The property can hold with α equal to the identity, preserving the entire state. This is exact and may compress nothing. The research gains value when we find interfaces much smaller than the histories they represent.
+A.2. How an approximation remains sound
+Let C be the set of concrete states still possible and a an abstract description containing them: C is included in γ(a). Suppose the abstract transformation F# is sound, meaning that all results obtained by applying F to any state in γ(a) are included in γ(F#(a)).
+Because C is included in γ(a), the results F(C) are included in F(γ(a)). By the soundness assumption, that latter set is included in γ(F#(a)). Therefore, the new abstract description includes all actual concrete results. The argument repeats at every step.
+We can now understand what successful verification means. If every state in the abstract description satisfies the required property, every concrete state also satisfies it. If the abstract description admits a bad case, that case is not necessarily real. It may be a false alarm introduced by approximation.
+When searching for a solution, a nonempty abstract intersection with the goal is insufficient. The candidate must be concretely realized or checked in a more precise representation. Conversely, if a sound overapproximation of the results does not intersect the goal at all, we can reject the branch, because the actual results cannot reach it either.
+This is why abstractions are very good for filtering but require caution when accepting results. The same representation can be sound for saying “impossible” and insufficient for saying “found it,” depending on the logical direction of the test.
+A.3. Why individual summaries do not preserve every relation
+Let relation R consist of the pairs (0, 0) and (1, 1). Its projection onto the first variable is {0, 1}; its projection onto the second is also {0, 1}. If we reconstruct the possibilities using only these two projections, we obtain their product: four pairs.
+Two pairs, (0, 1) and (1, 0), did not belong to the original relation. The operation “preserve each component separately” lost the equality dependency. It lost no individually possible value. Precisely for that reason, a check examining only each wire's domain can miss the problem.
+Reconstruction through the product is a sound overapproximation of R. It can be used for certain tests, but not as though it were the exact relation. If a continuation asks whether x = y, R always answers yes, while the product also admits a negative answer.
+A compact repair is to preserve both domains and the constraint x = y. Enumerating every pair was unnecessary. For other relations, an equally small repair may not exist in the chosen language. Research into interfaces is therefore also research into a vocabulary of useful relations.
+B. Conceptual exercises with explained answers
+1. A summary for the mean
+A machine reads numbers one at a time. It preserves only their sum and must report their mean at the end. Is the interface sufficient?
+No. The lists [2, 4] and [6] have the same sum but different means. The element count is the missing distinction. The pair “sum, count” can be updated compositionally when an element is added and allows the mean to be calculated for nonempty lists. The empty-list case must be handled explicitly, rather than hidden in an invalid division.
+2. The same mean, a different question
+Suppose we preserve the sum and count. Can we decide whether every element of the list was equal?
+Not in general. The lists [1, 3] and [2, 2] have the same sum and element count. We can add a suitable representation, such as a reference value and a flag indicating whether every element equals it. The exercise shows that a sufficient interface is not a universal essence of the data.
+3. Correct type, wrong meaning
+An operation receives two numbers and adds them. The first is a price in euros, the second a temperature in degrees Celsius. The system checks only the numeric type. What is missing?
+The semantic type or contract specifying which quantities can be combined is missing. Checking executability does not establish the operation's relevance. The solution is not to prohibit general arithmetic, but to distinguish the raw data level from justified use within a model.
+4. A nonempty intersection
+The analysis says an operation can produce any number between 0 and 10. The goal is 7. Can we declare that an execution producing 7 exists?
+No, if the interval is only an overapproximation. The actual results might be only 0 and 10. The intersection shows abstract compatibility, not realizability. A concrete witness must be checked, or the representation refined until existence is justified.
+5. A contradiction between sources
+One document states that Ana is in the laboratory at 10 o'clock. Another states that she is not in the laboratory at the same time. What should the system produce?
+It must first establish whether they refer to the same person, place and interpretation of the time. If so, and if both statements are accepted as premises about the same world, the conflict must be flagged. It can separately preserve the fact that each source made its statement. It must neither automatically choose the preferred source nor turn incompatibility into permission to answer anything.
+6. A rule that forgets a precondition
+A circuit rewrites x/x as 1. What must be checked before adding the rule to an equivalence class?
+The number semantics and domain of definition must be specified. In ordinary arithmetic, the condition that x is nonzero is essential. Particular numeric semantics may introduce other special cases. A rule correct under a precondition cannot be applied unconditionally merely because it simplifies the expression.
+7. An irrelevant ambiguity
+“Ana gives Maria the key. She leaves.” The question is who has the key immediately after the transfer. Must the pronoun's referent be chosen?
+No, in the restricted model where the transfer is actual and complete and departure does not change possession at the time asked about. Both interpretations yield Maria. If the question becomes who leaves, the ambiguity must be preserved or resolved through additional information. Relevance is relative to the continuation.
+8. An explanation with two dependent sources
+Two articles support the same claim, but both copy a single report. Can we count this as two independent confirmations?
+Not from the number of articles alone. Provenance reveals their common dependency. We may have two reproductions of the same source, rather than two independent observations. A system can count derivations, documentary sources and information origins, but these are different quantities.
+9. An ambiguous negative result
+The expander finds no circuit before its budget runs out. What can it claim?
+It can state that it found no solution within the explored space and budget. It cannot declare impossibility without further justification. If the library lacks the necessary operations, the absence of a solution says something about the search language, rather than the task's impossibility in general.
+10. Compression that erases provenance
+Two circuits produce the same conclusion, one from an accepted source and the other from an unverified hypothesis. Can we preserve only one, chosen arbitrarily?
+Only if provenance affects no relevant continuation and the requested result requires no particular support. In epistemic applications, this condition is often false. We can merge the value while retaining distinct justifications, or include source status in the interface. Value equivalence is not automatically epistemic equivalence.
+11. A vector representation exact on the samples
+A vector allows every role in a set of one hundred examples to be recovered correctly. What conclusion is justified?
+That the representation and recovery procedure succeeded on those examples under the tested conditions. Neither universal exactness nor stability as the number of relations grows follows. Subsequent tests should vary superposition, object similarity, roles and memory size, including adversarial cases.
+12. An abstraction that grows without stopping
+Every counterexample prompts the system to add a special case. After a thousand examples, the representation contains almost a thousand exceptions. Is this the learning of a useful sufficient interface?
+It may be an exact memory of the cases, but does not demonstrate useful structural compression. It must be compared with direct memorization and evaluated on new cases. A negative result may suggest that the abstraction language is unsuitable or that the problem family lacks the regularity sought. It must not be hidden by renaming exceptions as “concepts.”
+13. Prediction or intervention
+A system predicts that people with wet umbrellas have been in the rain. Can it infer that wetting an umbrella will cause rain?
+No. The first relation is predictive within the observation model. The second concerns an intervention in the world. A model of causal mechanisms is required. The graph through which the system computes its prediction is not automatically the phenomenon's causal graph.
+14. A gain that disappears after accounting
+A system answers ten times faster after expensive compilation. How do we decide whether it is more efficient?
+We specify the number of queries and the update frequency. We add compilation, verification, memory and answer costs. We may obtain a reuse threshold beyond which the method becomes advantageous. Without specifying that usage regime, the “faster” comparison is incomplete.
+15. What deserves to be called progress in understanding
+One system answers a question correctly, then changes its answer after a rephrasing that leaves the meaning unchanged. Another abstains on the first question, explains the ambiguity and answers after a relevant clarification. Which result is more informative?
+It depends on the task, but the second provides clearer evidence of control over missing information. The first isolated success may be accidental. Evaluating understanding must track families of variations and responses to them, rather than a single lucky answer. The ability to locate an insufficient representation is part of the competence sought.
+C. Working glossary
+Abstraction.
+A representation that preserves certain properties of a state and omits others. Its value depends on the operations and questions pursued.
+Abstention.
+An explicit decision not to issue an unjustified conclusion. It must be distinguished from technical failure and proven impossibility.
+Admissibility.
+The condition under which an operation can legitimately be applied, rather than merely mechanically executed.
+Relational algebra.
+A family of operations on relations, such as selecting and combining tables. More broadly, the book uses the algebra of relations for combination rules that preserve dependencies.
+Alternative.
+A possible case that must not be arbitrarily combined with consequences of an incompatible case.
+Auditability.
+The ability to examine a result's premises, transformations and limits. Practical auditability includes the cost of that examination.
+Trusted base.
+The components and assumptions on which the validity of the entire system's verification depends.
+Bisimulation.
+A relation between states that can mutually match one another's observable steps in a transition model.
+CEGAR.
+Refining an abstract model after discovering that an apparent counterexample is not concretely realizable.
+CEGIS.
+Improving a candidate program using inputs on which it violates the specification.
+Certificate.

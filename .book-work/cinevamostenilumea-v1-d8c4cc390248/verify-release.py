@@ -1,0 +1,14 @@
+from pathlib import Path
+import subprocess,hashlib,json,collections,re
+from lxml import html
+w=Path(__file__).parent;b=json.loads((w/'pdf-build.json').read_text());assert hashlib.sha256((w/'book/en/book.pdf').read_bytes()).hexdigest()==b['pdfSha256'];info=subprocess.check_output(['pdfinfo',str(w/'book/en/book.pdf')],text=True);pages=int(re.search(r'Pages:\s+(\d+)',info)[1]);pdftext=subprocess.check_output(['pdftotext',str(w/'book/en/book.pdf'),'-'],text=True);print('pages',pages);results={}
+for form in ['full','short']:
+ roots=[html.fromstring((w/f'book/{lang}/{form}_content.html').read_text()) for lang in ['en','ro']]
+ shapes=[collections.Counter(x.tag for x in r.iter()) for r in roots];assert shapes[0]==shapes[1];results[form]=dict(shapes[0]);print(form,shapes[0])
+ for lang,r in zip(['en','ro'],roots):
+  assert r.get('lang')==lang
+  ids=r.xpath('//@id');assert len(ids)==len(set(ids))
+  for target in r.xpath('//@src'):
+   assert (w/f'book/{lang}'/target).exists(),target
+r=html.fromstring((w/'book/en/full_content.html').read_text());texts=r.xpath('//body//text()[not(ancestor::script) and not(ancestor::style)]');tokens=lambda s:collections.Counter(re.findall(r'\w+',s.lower()));src=tokens(' '.join(texts));pdf=tokens(re.sub(r'[-\u00ad\u2010]\s*\n', '', pdftext));pdf=pdf | tokens(pdftext);missing=src-pdf;print('PDF missing tokens',sum(missing.values()),missing.most_common(25));print('source hash',hashlib.sha256((w/'book/ro/full_content.html').read_bytes()).hexdigest()==json.loads((w/'source-extraction-review.json').read_text())['canonicalRomanianSha256'])
+(w/'qa/structure-review.json').write_text(json.dumps({'structures':results,'pdfPages':pages,'missingPdfTokens':missing,'pdfSha256':b['pdfSha256']},indent=2)+'\n')

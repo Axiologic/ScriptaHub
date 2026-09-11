@@ -1,0 +1,66 @@
+Suppose a test's outcome determines a utility between zero and one. The difference between mean utilities under P and Q is at most TV(P, Q). A small predictive distance can thus bound error in a decision evaluation, provided utility is actually calculated from the modeled outcomes.
+A second simple result is useful. If every action's estimated value is within e of its true value and we choose the action with the highest estimate, the loss relative to the genuinely optimal action is at most 2e. One e term comes from underestimating the optimal action and the other from overestimating the chosen one.
+These bounds do not automatically transfer from a single step to every long plan. For sequential actions, the relevant trajectory distributions or error propagation must be controlled. Good next-event prediction does not by itself guarantee a good long-term policy.
+Estimating Distance Has a Cost
+Exact distance assumes knowledge of the distributions. Finite data yield estimates and uncertainty. An agent declaring two histories identical because it has not yet found differences may confuse absence of evidence with proof of equivalence.
+For the first experiment, I would use microworlds where the evaluator knows the true distributions while the agent receives only samples. This allows us to measure how well the agent estimates closeness and when it declares a representation sufficient prematurely.
+Distance serves to turn a metaphor about the “neighborhood of meanings” into a verifiable claim: these situations have similar consequences for these tests, with this estimated error. Only afterward is it worth seeking an efficient geometric representation of these relations.
+CHAPTER 14
+Cones and Coordinates
+What We Call Geometry
+A geometric representation assigns coordinates to objects and uses relationships between coordinates to express relevant structure. The choice of distance, dimensions and admissible transformations forms part of the model. A collection of texts, experiences or programs has no single implicit geometry.
+Gärdenfors's conceptual spaces theory proposes describing concepts through quality dimensions and geometric regions [
+Gardenfors2000
+]. It motivates questions about the shape of concepts, but does not prove that all knowledge must be convex in a fixed space. For MRP, the structure to preserve must be specified: similarity, order, behavior or decision preference.
+Convexity and Cones
+A set is convex if the segment between any two of its points remains inside it. A disk and a cube are familiar examples. A ring is not convex: the segment between opposite points can cross the central hole.
+A cone, in the sense used here, is closed under multiplying its coordinates by a nonnegative number. If it is also convex, nonnegative combinations of its points remain in the cone. A cone need not be imagined only as the circular object from school geometry; it can be defined by linear inequalities in many dimensions [
+Boyd2004
+High dimensionality does not imply nonconvexity. Convex sets exist in every finite dimension. A cone can also be convex. Opposing “cones” to “convex shapes” would mix two different classifications.
+A Decision-Theoretic Derivation
+Assume finitely many possible world states. The agent has a distribution p over them. Each option i is a fully specified procedure: executing an interpreter, followed by a fixed rule for choosing an action from the result. For each state, the procedure has net utility u_i, including the modeled costs.
+The word “fixed” is essential. If the internal procedure changes arbitrarily with p, its utility is generally no longer represented by a single constant vector. We can include multiple candidate procedures, but cannot retain the linear derivation while ignoring that change.
+The mean utility of procedure i is the dot product of p and u_i: the sum of each state's probability multiplied by utility in that state. Procedure i is preferred to procedure j when this product is at least as large.
+Region(i) = {p: every coordinate is nonnegative, their sum is 1, and p · (u_i − u_j) ≥ 0 for every j}.
+Each comparison defines a half-space. Their intersection with the probability simplex is a convex polyhedral region. The simplex is the set of all distributions over the listed states: a segment for two states, a triangle for three and a higher-dimensional analogue in general.
+We now move to unnormalized weights z, all nonnegative. The preference conditions become homogeneous: multiplying every weight by the same positive number does not change the preferred procedure.
+Cone(i) = {z: z ≥ 0 and z · (u_i − u_j) ≥ 0 for every j}.
+This set is a convex polyhedral cone. The original region is obtained by intersecting it with the plane where the weights sum to one. The origin is mathematically included in the cone but does not represent a normalizable distribution.
+A Calculated Example
+We have two possible states and three procedures. The first has utilities (1; 0), the second (0; 1), the third (0.6; 0.6). These hypothetical values include every assumed cost. Let p denote the probability of the first state.
+The first procedure has value p, the second 1 − p and the third 0.6. The first is optimal for p above 0.6; the second for p below 0.4; the third for p between 0.4 and 0.6. Options tie at the boundaries.
+In unnormalized coordinates, the third procedure is preferred when each weight is at least two-thirds of the other. We obtain a sector in the first quadrant. The cone describes a family of informational states in which selecting the same procedure is rational.
+This gives the geometric intuition a concrete meaning: some “regions of understanding” may be regions of decision applicability. It does not follow that every concept, proposition or memory is a cone.
+Entailment Cones and Other Meanings
+Ganea and colleagues use entailment cones, including in hyperbolic geometry, to represent hierarchical relations [
+Ganea2018
+]. There, the construction is motivated by preserving a partial order. In our derivation, it is motivated by comparing expected utilities.
+These two types of cones may be useful in an MRP system, but they are not interchangeable. A subordinate concept in a taxonomy is not the same as an optimal procedure in a region of beliefs. Using the same drawing does not establish identical mechanisms.
+What Happens to Rings and “Holes”
+Consider the region between two circles: points satisfying 1 < x² + y² < 4. It is nonconvex. An interpreter computing r = x² + y² transforms the question “does the point belong to the region?” into checking the interval 1 < r < 4.
+The transformation loses the angle, however. Different points are compressed into the same value. We have not freely eliminated geometric complexity through an invertible coordinate change; we have discarded information unnecessary to the radial question. For a question about direction, the new representation would be insufficient.
+Holes and connectivity have a different status from convexity when only continuous transformations with continuous inverses are allowed. But MRP interpreters may be discontinuous and compress information. Intuitions about rings or tori must therefore be linked to an explicit class of admissible transformations.
+The Testable Hypothesis
+I would not say “knowledge has the shape of cones.” I would say: for this task family, a representation using particular geometric regions preserves relevant distinctions and enables more efficient selection or transfer than alternatives under the same budget.
+The test would compare applicability errors, search cost, memory and transfer. A beautiful visualization is not evidence. If a simple table achieves the same results at lower cost, the geometric hypothesis has not yet produced engineering value.
+CHAPTER 15
+An Atlas of Interpreters
+Why Not a Single Space
+The same situation may require preserving temporal order, participant identity, a numerical relationship or a claim's provenance. A single space can encode all of these in principle, but accessing each property may remain expensive or difficult to verify.
+The atlas proposal is more modest: multiple local representations, each with well-defined operations and a domain of use. “Atlas” is an organizational analogy. It does not automatically imply a differentiable manifold, smooth coordinates or invertible transformations between every representation.
+A temporal interpreter may answer questions about the latest state. A relational interpreter may answer questions about dependencies. A documentary interpreter may preserve who supports each claim. They can describe the same episode without producing the same kind of result.
+Translations with Contracts
+A translation between two representations must declare what it preserves. If we construct a current state from a log, we may preserve the answer to “what is active now?” but not necessarily “how often did it change?” A useful translation need not be fully reversible; it must be sufficient for its stated purpose.
+In an atlas, links would be executable adapters. Each adapter has preconditions, an output type and a claim about information preservation. Some preservation claims may be proved. Others can only be evaluated through tests. Their status must be retained in metadata and the explanation of the result.
+A round-trip test, translating A into B and back again, is useful for detecting losses. Success on a few examples does not prove equivalence, however. Moreover, an intentionally compressive translation should be evaluated by preservation of relevant tests, not complete reconstruction.
+Local Compatibility and Contradiction
+Two representations may produce apparently contradictory results without being logically incompatible. One describes the formal rule, the other the observed state. A person may have access rights while the connection is unavailable. The contradiction disappears when targets are typed correctly.
+In other cases, the contradiction is real: two interpreters assert different values for the same variable, period and assumptions. The system must not arbitrarily average them. It must check sources, preconditions, versions and dependencies.
+This work can be represented as a constraint satisfaction problem. If a set of claims cannot all be true in the declared model, the agent seeks a conflicting subset and marks it. A solver can help for suitable languages without automatically resolving the natural-language ambiguity that produced the formulas.
+Operations Define Coordinates
+An MRP atlas would store not only values but also the procedures producing them. The coordinate “latest valid state” is a program over a history. “Number of independent sources” is a procedure over a provenance graph. “Estimated risk” is a model with its own data and assumptions.
+This connection allows a new dimension to be checked. We can inspect the program, modify input data and observe what changes. A learned numerical dimension without a simple interpretation is not excluded, but does not automatically receive the same kind of justification.
+Here lies one of the program's central ideas: a new dimension of understanding can be a procedure producing a previously inaccessible distinction. The resulting geometry depends on the procedure and the questions for which we use it.
+Evaluating the Atlas
+For every task, we can measure how many representations were consulted, how many translations were executed, what information was lost and what reconciliation cost. The atlas must be compared with a sufficiently powerful single space and a fixed library of views.
+A favorable result would show local adaptation avoiding reconstruction of the entire representation and transferring procedures between tasks. An unfavorable result would show adapters, selection and checks costing more than a well-designed common model. Neither conclusion should be presumed from the chosen metaphor.

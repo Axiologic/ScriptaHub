@@ -1,0 +1,63 @@
+To simplify analysis, intermediate results can have unique identities within an execution. Instead of tacitly modifying a value, we produce a new one and record the dependency. This single-assignment discipline helps track provenance without excluding controlled persistent state.
+An acyclic graph can be executed in dependency order. Recursive or iterative processes require an additional mechanism: an explicit loop, a fixed point or the opening of a new stage. Merely drawing a graph resolves neither termination nor effect management.
+A Small Core, an Extensible Library
+The core would implement operations needing direct support: data access, type checking, certain computations and communication with executors. Most higher-level compositions could be declarative circuits. A new interpreter would thus become an inspectable library object, rather than an opaque platform modification.
+The distinction between primitive and circuit must be visible in system documentation. Otherwise, the agent may be claimed to have learned a capability actually hidden inside a complex manually supplied operation. An evaluator must see exactly what was compiled, learned and called.
+File organization can define command namespaces, but this convention is not a cognitive contribution. It becomes useful if it simplifies component discovery, versioning and reuse. MRP evaluation must remain centered on capabilities, not organizational aesthetics.
+Controlled Language and Intermediate Representation
+A controlled-language interface can make circuits easier to read. For a rigorously defined fragment, we can require textual and intermediate representations to be interconvertible without semantic loss within that fragment. This is a verifiable design requirement.
+We cannot extend the same promise to every natural-language sentence. Ambiguity, presuppositions and context may permit several interpretations. The translator must preserve alternatives or request clarification, rather than arbitrarily declare that it extracted the “exact meaning.”
+A verification loop can compare a circuit's effects with positive and negative examples supplied by the user. These examples do not resolve every ambiguity, but they make the translation open to challenge. Stabilized meaning becomes the accepted contract for that operation.
+The Role of Language Models
+An LLM can translate a request into a circuit proposal, generate tests and suggest a new distinction. It can also serve as a probabilistic executor when no suitable symbolic procedure exists. The architecture must allow these roles without confusing proposal with verification.
+If the same model generates the program and every test, its errors may be correlated. Independent evaluators, specification-generated tests or human interventions are needed for important properties. Independence does not necessarily mean another model brand; it means a source of constraints that does not repeat the same unverified assumption.
+Initially, a hybrid system can be very useful even if most program ideas come from an LLM. But the experimental report must say so. MRP's contribution may be verification, consolidation and reuse, rather than the initial generation of every concept.
+A Composition Example Without Artificial Syntax
+For a documentary synthesis, a circuit can receive a document and a family of questions. One stage identifies candidate passages. Another separates the author's claims from quotations and hypotheses. A third constructs answers with references to passages. A verifier checks whether the summary preserves the required exceptions.
+If the verifier finds a sentence in which a hypothesis became fact, the incident need not require a new text generator. It may require an interpreter preserving the modality of claims and a composition rule prohibiting its loss. This new operation can be reused in other documents.
+The circuit makes the distinction visible; MRP decides when it must be constructed and whether consolidation is worthwhile. This is the functional relationship between the two levels. Neither should be presented as an already validated solution for all of natural language.
+PART VI  /  Applications and Validation
+CHAPTER 19
+Software and Protocol Verification
+Why This Is a Suitable First Domain
+Software offers situations in which inputs can be controlled, executions reproduced and precise properties formulated. Not every software system is simple to model, but a bounded protocol family can separate representational difficulty from natural-language ambiguity. This is therefore the first application I would prioritize.
+The commercial or engineering problem would be reducing repeated analysis costs without losing required properties. An experimental MRP system would begin with simple views of the program or log and activate more precise representations only where demonstrable insufficiencies arise.
+The system need not immediately compete with every existing verification tool. An initial contribution may be better selection among known analyses or learning preprocessing steps that make a property accessible to an existing analyzer.
+Use Case: The Reservation Protocol
+Consider a reservation service with requests, confirmations and cancellations. The agent receives an executable specification of the protocol version and labeled logs. The question is whether the resource is reserved at a given moment and which continuations can change its state.
+A coarse interpreter preserves only the existence of a confirmation. It fails after cancellation. A second preserves the last operation but may fail if the protocol distinguishes canceling a request from canceling a confirmation. The necessary distinction depends on the exact rules, not operation names.
+The agent can learn a state model with preconditions. Confirmation is valid only after an active request, while certain operations are ignored or produce an error. Contrastive tests must include invalid operations, different identities and histories longer than those used during induction.
+For a finite protocol, the evaluator can explore every reachable model state. If inputs and states are unbounded, exhaustive proof must be replaced or supplemented by inductive arguments and tests. The size of the verified domain must be reported, rather than hidden behind “fully tested.”
+Use Case: Choosing the Abstract Domain
+In numerical program analysis, the agent begins with intervals. A property cannot be proved because the analysis loses equality between two variables. Diagnosis identifies the necessary relation and activates a relational interpreter only for the relevant portion.
+There are two learning levels here. The first learns to choose among domains already implemented. The second proposes new predicates or transformations, verified before use. The first is simpler and provides an important baseline for the second.
+If a generator proposes an invariant, the verifier must check initialization, preservation through transitions and whether the invariant implies the required property. Being true on observed traces is insufficient. On a finite trace set, many generally false claims may appear invariant.
+Abstract interpretation and CEGAR supply the technical precedents for this discipline [
+Cousot1977
+Clarke2000
+]. MRP's contribution should be sought in identifying and reusing distinctions, not renaming these methods.
+Use Case: Migrating an API
+A new service version may change a validity condition or precedence rule. In a controlled experiment, the agent receives examples from both versions and must distinguish a rule change from an accidental fault.
+The old library may remain useful for unchanged parts. The agent should create a new contract or version, rather than overwrite the past. Earlier results must remain reproducible relative to their version.
+Value would come from reducing reanalysis work: reusing compatible interpreters, reconstructing only affected distinctions and generating tests that separate the versions. One success criterion is identifying the actual change without excessively increasing false alarms.
+What We Measure
+The main measures would be correctly proved properties, missed errors, false alarms, total time, memory and the cost of constructing new interpreters. Time to the first valid counterexample may matter, but must not be used alone: a system may find one example quickly and miss other error classes.
+Comparisons would include a single more precise analysis, a fixed combination of analyzers and a selector without induction. To isolate reuse, evaluation tasks must contain new structures, not copies of the same programs with renamed variables.
+An informative negative result would show selection from a fixed library producing the entire advantage, with induction adding nothing after accounting for its cost. This result would favor a simpler technology. MRP would remain a useful analytical framework, but the adaptive-library hypothesis would be weakened within the tested domain.
+Adoption Conditions
+I would consider the application promising where many related tasks exist, specifications are sufficiently clear and the verifier is more reliable than the generator. I would not begin with systems where the target continually changes, observability is very poor and evaluating an error costs more than manual analysis.
+Initial integration should be advisory: suggest analyses, produce tests and explain which relation is missing. Only after independent evaluation could it automate decisions with effects. Immediate usefulness may consist in accelerating an engineer's work, without claiming a universal autonomous verifier.
+CHAPTER 20
+Documents, Synthesis and Procedures
+The Summary as a Lossy Representation
+A summary compresses. The question is not whether it loses information, but whether it loses information needed for its use. A summary for general orientation and one for applying a procedure have different criteria. The same reduction may be acceptable in the first case and dangerous in the second.
+MRP would represent this requirement through a family of relevant questions and transformations. Entities, conditions, exceptions, temporality and claim status must be preserved insofar as they affect answers. We do not assume this family can cover every future question.
+A documentary result would include the summary, links to source passages and a report on checks performed. This would allow the user to distinguish “I found no exception” from “I checked every relevant section of this document according to the defined procedure.”
+Use Case: A Procedure with Exceptions
+Imagine an internal procedure: requests are approved automatically below a certain value, except those involving a critical resource; exceptions require additional approval. This text is an invented example, not a description of an actual legal or organizational arrangement.
+A summary preserving only the threshold may produce wrong answers. Its representation confuses two requests with the same value but different resources. The counterexample indicates a conditional distinction, not necessarily a fluency problem.
+A new interpreter can extract the general rule, exception and precedence relation. Another can check whether a summary sentence omits a necessary condition. For a controlled fragment, rules can become executable predicates. For ambiguous texts, the system must retain candidate interpretations and mark the unresolved question.
+Tests would vary request value, resource type and the presence of approval. Evaluation cases would include differently worded exceptions and unseen combinations, not merely copied uses of “except.” This separates lexical recognition from preservation of the logical relation.
+Use Case: Claims and Attribution
+A report says a team supports hypothesis H but the results do not yet confirm it. A faulty summary may state H directly. The lost information is not a numerical datum but modality and attribution: who supports what and with which status.
+A documentary circuit could construct records containing the claim's content, attributed author, hypothetical or asserted character, source passage and relation to evidence. This representation does not guarantee correct extraction, but allows these dimensions to be tested separately.

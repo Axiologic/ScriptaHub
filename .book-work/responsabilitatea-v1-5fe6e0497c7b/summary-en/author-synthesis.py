@@ -1,0 +1,18 @@
+import json,pathlib
+p=pathlib.Path(__file__).parent
+a=[json.load(open(f)) for f in sorted((p/'analyses').glob('*.json'))]
+spec=[
+('distinctions','From blame to justified demands','Causal contribution, blame, role, repair and prevention ask different questions. Moral luck complicates assessment without erasing agency.', ['distinctions','justification'],1,.9,.8),
+('capacity','Agency without abandoning vulnerability','Responsibility tracks supported capacity and real alternatives, while worth and protection do not depend on reciprocity.', ['capacity','vulnerability'],1,1,.85),
+('limits','Help without unlimited sacrifice','Serious need supports real obligations, but cumulative burden, special ties, autonomy and the helper’s own life constrain demands.', ['help','limits'],1,1,.95),
+('institutions','Making accountability work','Power, knowledge and coordination must connect reports to decisions and correction; shared responsibility does not mean identical blame.', ['institutions','distribution','knowledge'],1,1,.9),
+('evidence','Evidence and the limits of explanation','Research informs judgment but requires bounded interpretation and normative premises; theological argument does not settle practical duties.', ['evidence'],.9,.85,.8),
+('repair','Repair and a possible future','Protection, truth, repair, punishment and forgiveness have different functions; learning must allow correction without erasing accountability.', ['repair'],.9,.5,.85)
+]
+clusters=[]
+for key,label,s,keys,c,r,o in spec:
+ pairs=[(x,y) for x in a for y in x['ideas'] if y['recurrenceCandidate'] in keys]
+ clusters.append(dict(id='cluster-'+key,label=label,synthesis=s,centrality=c,recurrence=r,originality=o,score=.5*c+.25*r+.25*o,selected=True,chapterIds=sorted({x['chapterId'] for x,y in pairs}),sourceUnitIds=sorted({u for x,y in pairs for u in y['sourceUnitIds']}),ideaIds=[y['id'] for x,y in pairs]))
+outlines=[('01','An obligation is more than a verdict','Separate responsibility’s dimensions and qualify agency.',350,['distinctions','evidence']),('02','Capacity, vulnerability and respect','Connect development, hardship, care and moral standing.',360,['capacity','limits']),('03','How much help can be demanded?','Present genuine duties and strongest limits.',350,['limits','evidence']),('04','Power must come with ways to answer','Join work, citizenship, science and automated decisions.',400,['institutions','evidence']),('05','What power cannot explain away','Preserve the theological examination without resolving belief.',230,['distinctions','capacity','evidence']),('06','Repairing a shared world','Integrate practical map, repair and finite obligations.',300,['repair','institutions','limits'])]
+j=dict(centralMessage='Responsibility is a justifiable distribution of finite duties proportionate to real capacity, knowledge and power, not merely blame for the past. Neither innocence nor limitation removes every obligation, and vulnerability is not a condition of moral inferiority.',clusters=clusters,outline=[dict(id='section-'+i,title=t,purpose=p,budgetWords=b,clusterIds=['cluster-'+x for x in cs]) for i,t,p,b,cs in outlines],chapterCoverage=[dict(chapterId=x['chapterId'],clusterIds=[c['id'] for c in clusters if x['chapterId'] in c['chapterIds']]) for x in a],audit=dict(allAnalysesUsed=True,centralMessageCovered=True,redundancyMerged=True,notes='All fourteen analyses reviewed; historical perspectives integrated into thematic distinctions. Front matter, duplicate contents and bibliography excluded from idea ranking. No split chapters.'))
+(p/'synthesis.json').write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n')

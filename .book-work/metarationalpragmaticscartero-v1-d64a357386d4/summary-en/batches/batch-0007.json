@@ -1,0 +1,216 @@
+{
+  "batch": "batch-0007.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0008",
+  "chapterTitle": "Representations and Equivalences",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000187",
+      "chapterId": "chapter-0008",
+      "kind": "h1",
+      "text": "Representations and Equivalences",
+      "sourceAnchor": "src-p190",
+      "wordCount": 3
+    },
+    {
+      "id": "u000188",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "What the Agent May Forget",
+      "sourceAnchor": "src-p191",
+      "wordCount": 5
+    },
+    {
+      "id": "u000189",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Every finite representation selects. It preserves some differences and ignores others. The problem is not eliminating every loss, but identifying losses incompatible with the task. A summary omitting the cover's color may be perfectly adequate for analyzing arguments. The same summary is insufficient for identifying the edition by its appearance.",
+      "sourceAnchor": "src-p192",
+      "wordCount": 50
+    },
+    {
+      "id": "u000190",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "We fix a family T of tests. A test may be a question with a verifiable answer or a procedure for interacting with the environment. Initially, we consider deterministic tests. Two histories are equivalent relative to T if every test in T produces the same answer for both histories.",
+      "sourceAnchor": "src-p193",
+      "wordCount": 49
+    },
+    {
+      "id": "u000191",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "h1 is T-equivalent to h2 exactly when Test(h1) = Test(h2) for every Test in T.",
+      "sourceAnchor": "src-p194",
+      "wordCount": 16
+    },
+    {
+      "id": "u000192",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The relation is reflexive, symmetric and transitive because equality of answers has these properties. It produces a partition of histories. This partition specifies which information can be ignored without changing answers to the declared tests. It does not specify what can be ignored for every imaginable future question.",
+      "sourceAnchor": "src-p195",
+      "wordCount": 48
+    },
+    {
+      "id": "u000193",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "The Sufficient Representation",
+      "sourceAnchor": "src-p196",
+      "wordCount": 3
+    },
+    {
+      "id": "u000194",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "A representation R is sufficient for T if every test can be solved using only R(h). In a finite domain without computational restrictions, this is equivalent to requiring that R not merge histories with different answers to a relevant test.",
+      "sourceAnchor": "src-p197",
+      "wordCount": 41
+    },
+    {
+      "id": "u000195",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The proof is direct. If two histories receive the same representation, any function seeing only the representation will produce the same result for them. It therefore cannot reproduce two different answers. Conversely, if all answers within each R class are identical, we can assign that answer to the class. This constructs a function on representations that reproduces the test.",
+      "sourceAnchor": "src-p198",
+      "wordCount": 59
+    },
+    {
+      "id": "u000196",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The result concerns information. The constructed function may require a very large table or be difficult to compute. Information sufficiency is not the same as efficient access to it. A raw archive may contain everything needed, while a specialized procedure makes the information usable within an acceptable time.",
+      "sourceAnchor": "src-p199",
+      "wordCount": 48
+    },
+    {
+      "id": "u000197",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The partition induced by T is the coarsest partition sufficient for these tests. Any other sufficient representation must preserve at least its distinctions. This formulation does not imply unique syntax: the same classes can be encoded through numbers, labels, programs or other objects.",
+      "sourceAnchor": "src-p200",
+      "wordCount": 43
+    },
+    {
+      "id": "u000198",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "A Provable Limit",
+      "sourceAnchor": "src-p201",
+      "wordCount": 3
+    },
+    {
+      "id": "u000199",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "We return to granting and revoking access. Suppose every history is fully available before compression, the last operation determines the state, and the representation preserves only the set of operations. The two orderings receive the same representation. If they occur with equal probabilities, no predictor seeing only that representation can exceed an expected accuracy of 50% on this pair.",
+      "sourceAnchor": "src-p202",
+      "wordCount": 59
+    },
+    {
+      "id": "u000200",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "A deterministic predictor must choose an answer and is wrong on one case. A randomized predictor saying “yes” with probability p has accuracy 0.5 × p + 0.5 × (1 − p), still 0.5. Randomization does not reconstruct the lost order.",
+      "sourceAnchor": "src-p203",
+      "wordCount": 40
+    },
+    {
+      "id": "u000201",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The claim ceases to apply if the predictor sees another information source: memory of the episode, a case identifier correlated with the answer or the raw history. An experiment about information loss must therefore control every input channel, not just the vector the author calls the “representation.”",
+      "sourceAnchor": "src-p204",
+      "wordCount": 47
+    },
+    {
+      "id": "u000202",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "For a finite labeled dataset, the best classification based exclusively on R chooses the majority label in each R class. The minimum number of errors is the total number of examples minus the sum of the majority frequencies across classes. This bound can be calculated exactly, providing a diagnostic tool before training a more complex predictor.",
+      "sourceAnchor": "src-p205",
+      "wordCount": 56
+    },
+    {
+      "id": "u000203",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "Refinement as Learning",
+      "sourceAnchor": "src-p206",
+      "wordCount": 3
+    },
+    {
+      "id": "u000204",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "If a new function D separates the confused cases, we can define Rnew(h) = (R(h), D(h)). The new representation preserves the old information and adds the distinction. D may be a computable question: the last operation, the number of cancellations, the existence of an exception or the author of a statement.",
+      "sourceAnchor": "src-p207",
+      "wordCount": 53
+    },
+    {
+      "id": "u000205",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "This is what the expression “a dimension is a program” means. The dimension need not be an uninterpreted real number. It may be a discrete result or a relational structure. The agent learns an operation that changes what it can observe in its own data.",
+      "sourceAnchor": "src-p208",
+      "wordCount": 45
+    },
+    {
+      "id": "u000206",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Refinement may require no new external observations, but it is not computationally free. Computing D may require rereading a long archive. If the archive was discarded, D may become impossible to apply retrospectively. Memory design determines which kinds of later learning remain possible.",
+      "sourceAnchor": "src-p209",
+      "wordCount": 43
+    },
+    {
+      "id": "u000207",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "What Compression Does Not Guarantee",
+      "sourceAnchor": "src-p210",
+      "wordCount": 5
+    },
+    {
+      "id": "u000208",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "A representation sufficient for today's questions may be insufficient for tomorrow's. We can manage this limit by preserving sources, using multiple representations and allowing requests for new observations. We cannot eliminate it with a universal assertion that “the agent understood the essence.” Operational essence must be related to a family of uses.",
+      "sourceAnchor": "src-p211",
+      "wordCount": 52
+    },
+    {
+      "id": "u000209",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Information theory distinguishes measuring and encoding information from semantically interpreting messages; this boundary is explicit in Shannon's work [ Shannon1948 ]. MRP adds a design question: which information must be conserved for relevant tests and decisions? A highly compressed file may remain difficult to use, while a redundant representation may enable rapid answers.",
+      "sourceAnchor": "src-p212",
+      "wordCount": 51
+    },
+    {
+      "id": "u000210",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The final criterion is therefore not “how small is the memory?” but “which competence is preserved, at what construction and usage cost, for which task distribution?” This question will govern both interpreter learning and evaluation.",
+      "sourceAnchor": "src-p213",
+      "wordCount": 35
+    },
+    {
+      "id": "u000211",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "CHAPTER 06",
+      "sourceAnchor": "src-p214",
+      "wordCount": 2
+    }
+  ]
+}

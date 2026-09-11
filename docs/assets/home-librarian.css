@@ -59,6 +59,7 @@ body[data-home-page="true"] .mascot-question button{border-radius:50%!important}
 :root body[data-home-page="true"] .mascot-choice-icon{width:38px;height:38px;background:none}
 :root body[data-home-page="true"] .mascot-question{order:-1;border-radius:8px;padding:12px;background:color-mix(in srgb,var(--panel) 85%,transparent)}
 :root body[data-home-page="true"] .home-feature-strip{min-height:204px}
+:root body[data-home-page="true"] .home-feature-strip{overflow:visible}
 :root body[data-home-page="true"] .home-feature-strip>.featured-card-link{position:absolute;inset:0;z-index:5;border-radius:inherit;cursor:pointer}
 :root body[data-home-page="true"] .home-feature-strip[aria-busy="true"]>.featured-card-link{pointer-events:none}
 :root body[data-home-page="true"] .home-feature-strip:focus-within{outline:2px solid var(--green);outline-offset:3px}
@@ -114,9 +115,14 @@ body[data-home-page="true"] .mascot-question button{border-radius:50%!important}
  :root body[data-home-page="true"] .home-feature-strip .featured-book-copy>.eyebrow{margin-top:0;line-height:1}
  :root body[data-home-page="true"] .home-feature-strip .featured-book-actions{margin-top:auto;padding:0;flex:none}
 }
+:root body[data-home-page="true"] .featured-book-actions{position:relative;z-index:6;align-items:flex-end}
 :root body[data-home-page="true"] .featured-book-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:0 14px;border:1px solid var(--green);border-radius:7px;background:var(--button-bg);color:var(--button-ink);font-size:var(--action-font-size);font-weight:760;letter-spacing:.01em;text-decoration:none}
 :root body[data-home-page="true"] .featured-book-actions a:hover,:root body[data-home-page="true"] .featured-book-actions a:focus-visible{background:var(--button-hover);border-color:var(--button-hover);color:var(--button-ink)}
 :root body[data-home-page="true"] .featured-book-actions a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+:root body[data-home-page="true"] .featured-carousel-next{position:absolute;z-index:7;top:50%;right:-42px;width:28px;height:42px;padding:0;display:grid;place-items:center;transform:translateY(-50%);border:0;background:transparent;color:var(--ink);box-shadow:none;cursor:pointer;transition:color .18s ease,transform .18s ease}
+:root body[data-home-page="true"] .featured-carousel-next span{display:block;font-family:Georgia,"Times New Roman",serif;font-size:36px;font-weight:800;line-height:.8;transform:translateY(-1px)}
+:root body[data-home-page="true"] .featured-carousel-next:is(:hover,:focus-visible){background:transparent;color:var(--button-ink);transform:translateY(-50%) scale(1.12)}
+:root body[data-home-page="true"] .featured-carousel-next:focus-visible{outline:2px solid var(--green);outline-offset:3px}
 /* The header green frames quiet, recessed grey choices in Light. */
 :root:not(:is([data-theme="dark"],[data-theme="dark-orange"])) body[data-home-page="true"] .mascot-entrance,
 :root:not(:is([data-theme="dark"],[data-theme="dark-orange"])) body[data-home-page="true"] .home-feature-strip{background:color-mix(in srgb,var(--brand-green) 85%,transparent);backdrop-filter:blur(.8px);--ink:#062e29;--content:#073e37;--muted:#073e37;--content-soft:#073e37;--green:#064c42;--panel:#f1faf6;--field:#e2f4eb;--line:#06745e}
@@ -132,6 +138,9 @@ body[data-home-page="true"] .mascot-question button{border-radius:50%!important}
 :root:not(:is([data-theme="dark"],[data-theme="dark-orange"])) body[data-home-page="true"] .home-loading-progress::after{background:var(--button-bg)}
 
 :root:not(:is([data-theme="dark"],[data-theme="dark-orange"])) body[data-home-page="true"] .featured-book-actions a:is(:hover,:focus-visible){background:var(--inset-hover);border-color:transparent;color:var(--inset-ink)}
+:root:not(:is([data-theme="dark"],[data-theme="dark-orange"])) body[data-home-page="true"] .featured-carousel-next{border:0;background:transparent;color:var(--inset-ink);box-shadow:none}
+:root:not(:is([data-theme="dark"],[data-theme="dark-orange"])) body[data-home-page="true"] .featured-carousel-next:is(:hover,:focus-visible){background:transparent;color:var(--button-ink)}
+@media(max-width:650px){:root body[data-home-page="true"] .featured-carousel-next{right:-30px;width:25px;height:36px}}
 
 /* Geometric icons stay centred independently of text font and browser padding. */
 .mascot-question button svg{display:block;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}

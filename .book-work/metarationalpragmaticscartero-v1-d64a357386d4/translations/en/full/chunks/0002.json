@@ -1,0 +1,381 @@
+{
+  "language": "en",
+  "chunk": 2,
+  "segments": [
+    {
+      "id": "t000111",
+      "source": "O relație de echivalență este reflexivă, simetrică și tranzitivă. Reflexivitatea cere ca orice obiect să fie echivalent cu el însuși. Simetria cere ca echivalența să funcționeze în ambele direcții. Tranzitivitatea cere ca, dacă primul obiect este echivalent cu al doilea și al doilea cu al treilea, primul să fie echivalent cu al treilea.",
+      "translation": "An equivalence relation is reflexive, symmetric and transitive. Reflexivity requires every object to be equivalent to itself. Symmetry requires equivalence to work in both directions. Transitivity requires that if the first object is equivalent to the second and the second to the third, the first is equivalent to the third."
+    },
+    {
+      "id": "t000112",
+      "source": "O asemenea relație împarte domeniul în clase disjuncte, numite clase de echivalență. Colecția claselor este o partiție. Dacă grupăm istorii după rezultatul R(h), obținem automat o partiție: aceeași valoare R înseamnă aceeași clasă. O reprezentare poate fi înțeleasă, așadar, drept o modalitate de a spune ce diferențe ignorăm.",
+      "translation": "Such a relation divides the domain into disjoint classes called equivalence classes. The collection of classes is a partition. Grouping histories by the result R(h) automatically yields a partition: the same R value means the same class. A representation can therefore be understood as a way of specifying which differences we ignore."
+    },
+    {
+      "id": "t000113",
+      "source": "O partiție rafinează alta atunci când separă unele clase fără să unească elemente care erau deja separate. De exemplu, clasificarea documentelor după tip și an rafinează clasificarea numai după tip. Ea poate păstra informația veche și adăuga informație nouă. Nu rezultă însă că va produce automat un algoritm mai bun: poate crește costul și poate cere mai multe date pentru estimare.",
+      "translation": "One partition refines another when it separates some classes without merging elements already separated. For example, classifying documents by type and year refines classification by type alone. It can preserve old information and add new information. This does not mean it will automatically produce a better algorithm: it may increase cost and require more estimation data."
+    },
+    {
+      "id": "t000114",
+      "source": "Vom folosi uneori termenul „spațiu cât”. El desemnează mulțimea claselor de echivalență, nu un spațiu geometric special. Înlocuim fiecare istoric concret cu clasa tuturor istoriilor considerate echivalente. Geometria, dacă există, trebuie adăugată ulterior printr-o distanță sau altă structură.",
+      "translation": "We will sometimes use the term “quotient space.” It denotes the set of equivalence classes, not a special geometric space. We replace each concrete history with the class of all histories considered equivalent. Geometry, if any, must subsequently be added through a distance or another structure."
+    },
+    {
+      "id": "t000115",
+      "source": "Ordine și grafuri",
+      "translation": "Orders and Graphs"
+    },
+    {
+      "id": "t000116",
+      "source": "O ordine parțială permite compararea unor perechi, fără să oblige la compararea tuturor. Un interpretor care păstrează ordinea evenimentelor și unul care păstrează sursele documentare pot fi incomparabili: fiecare conservă o informație pe care celălalt o ignoră. Nu există neapărat un singur șir de reprezentări, de la „proastă” la „bună”.",
+      "translation": "A partial order allows some pairs to be compared without requiring every pair to be comparable. An interpreter preserving event order and another preserving documentary sources may be incomparable: each conserves information the other ignores. There need not be a single sequence of representations from “bad” to “good.”"
+    },
+    {
+      "id": "t000117",
+      "source": "Un graf este format din noduri și legături. În MRP, nodurile pot fi operații sau rezultate; legăturile pot reprezenta dependențe. Dacă un calcul trebuie să primească mai întâi două rezultate, graful precizează această condiție. Un graf orientat fără cicluri permite ordonarea operațiilor astfel încât fiecare să vină după dependențele sale. Aceasta se numește ordonare topologică.",
+      "translation": "A graph consists of nodes and links. In MRP, nodes may be operations or results; links may represent dependencies. If a computation must first receive two results, the graph specifies that condition. A directed graph without cycles allows operations to be ordered so that each follows its dependencies. This is called a topological ordering."
+    },
+    {
+      "id": "t000118",
+      "source": "Un ciclu nu este obligatoriu o eroare. Poate descrie repetarea unei actualizări până la stabilizare. Dar trebuie introdusă o regulă care explică ce se repetă, ce stare se schimbă și când se oprește procesul. Un desen circular nu este încă un algoritm executabil.",
+      "translation": "A cycle is not necessarily an error. It may describe repeating an update until stabilization. But a rule must explain what repeats, which state changes and when the process stops. A circular drawing is not yet an executable algorithm."
+    },
+    {
+      "id": "t000119",
+      "source": "Predicat și invariant",
+      "translation": "Predicate and Invariant"
+    },
+    {
+      "id": "t000120",
+      "source": "Un predicat este o proprietate care poate fi adevărată sau falsă despre un obiect, în modelul ales. „Toate evenimentele au un indice de ordine” este un predicat asupra unui tabel. Un invariant este o proprietate care trebuie să rămână adevărată pe parcursul unei execuții sau al unei clase de transformări.",
+      "translation": "A predicate is a property that can be true or false of an object within the chosen model. “Every event has an order index” is a predicate on a table. An invariant is a property that must remain true throughout an execution or a class of transformations."
+    },
+    {
+      "id": "t000121",
+      "source": "Pentru o bibliotecă MRP, un invariant posibil este că orice rezultat acceptat păstrează identificatorii surselor folosite. Nu înseamnă că sursele sunt adevărate; înseamnă că originea rezultatului nu se pierde. Alt invariant poate cere ca o operație declarată numai pentru citire să nu modifice starea externă.",
+      "translation": "For an MRP library, one possible invariant is that every accepted result preserves the identifiers of the sources used. This does not mean the sources are true; it means the result's origin is not lost. Another invariant may require an operation declared read-only not to modify external state."
+    },
+    {
+      "id": "t000122",
+      "source": "O demonstrație pornește din ipoteze și folosește reguli explicite pentru a obține o concluzie. Un test execută unul sau mai multe cazuri. O demonstrație poate acoperi toate cazurile din model; un test nu primește această putere doar pentru că este automatizat. La rândul ei, o demonstrație nu verifică singură dacă modelul descrie corect lumea reală.",
+      "translation": "A proof starts from assumptions and uses explicit rules to obtain a conclusion. A test executes one or more cases. A proof may cover every case in the model; a test does not acquire that power merely by being automated. In turn, a proof does not by itself check whether the model correctly describes the real world."
+    },
+    {
+      "id": "t000123",
+      "source": "Cost și dimensiune",
+      "translation": "Cost and Size"
+    },
+    {
+      "id": "t000124",
+      "source": "Dimensiunea unei probleme poate fi numărul evenimentelor, numărul interpretoarelor candidate sau lungimea maximă a programelor căutate. O procedură liniară vizitează un număr de elemente proporțional cu dimensiunea. Una exponențială poate dubla spațiul de căutare la fiecare extensie cu o unitate. Aceste diferențe explică de ce o idee logic corectă poate fi impracticabilă.",
+      "translation": "A problem's size may be the number of events, the number of candidate interpreters or the maximum length of programs being searched. A linear procedure visits a number of elements proportional to the size. An exponential one may double the search space with every unit increase. These differences explain why a logically correct idea can be impractical."
+    },
+    {
+      "id": "t000125",
+      "source": "Noțiunile de calculabilitate și complexitate separă existența unui algoritm de resursele necesare executării lui. Tratările introductive din informatica teoretică dezvoltă această distincție sistematic [",
+      "translation": "Computability and complexity distinguish the existence of an algorithm from the resources needed to execute it. Introductory treatments of theoretical computer science develop this distinction systematically ["
+    },
+    {
+      "id": "t000126",
+      "source": "Barak",
+      "translation": "Barak"
+    },
+    {
+      "id": "t000127",
+      "source": "]. Pentru MRP, ea se traduce într-o cerință: fiecare mecanism de inducție trebuie să aibă limite de căutare, de timp și de memorie, chiar dacă descrierea sa conceptuală este foarte generală.",
+      "translation": "]. For MRP, it translates into a requirement: every induction mechanism must have search, time and memory limits, even if its conceptual description is very general."
+    },
+    {
+      "id": "t000128",
+      "source": "Obiect matematic",
+      "translation": "Mathematical Object"
+    },
+    {
+      "id": "t000129",
+      "source": "Exemplu MRP",
+      "translation": "MRP Example"
+    },
+    {
+      "id": "t000130",
+      "source": "Întrebarea practică",
+      "translation": "The Practical Question"
+    },
+    {
+      "id": "t000131",
+      "source": "Funcție",
+      "translation": "Function"
+    },
+    {
+      "id": "t000132",
+      "source": "Reducerea istoricului la starea curentă.",
+      "translation": "Reducing history to the current state."
+    },
+    {
+      "id": "t000133",
+      "source": "Ce intrări acceptă și ce pierde?",
+      "translation": "Which inputs does it accept, and what does it lose?"
+    },
+    {
+      "id": "t000134",
+      "source": "Partiție",
+      "translation": "Partition"
+    },
+    {
+      "id": "t000135",
+      "source": "Istorii cu aceeași reprezentare.",
+      "translation": "Histories with the same representation."
+    },
+    {
+      "id": "t000136",
+      "source": "Ce situații sunt confundate?",
+      "translation": "Which situations are confused?"
+    },
+    {
+      "id": "t000137",
+      "source": "Predicat",
+      "translation": "Predicate"
+    },
+    {
+      "id": "t000138",
+      "source": "Existența unei ordini complete.",
+      "translation": "The existence of a complete ordering."
+    },
+    {
+      "id": "t000139",
+      "source": "Poate fi verificat înaintea execuției?",
+      "translation": "Can it be checked before execution?"
+    },
+    {
+      "id": "t000140",
+      "source": "Graf",
+      "translation": "Graph"
+    },
+    {
+      "id": "t000141",
+      "source": "Dependențele dintre operații.",
+      "translation": "Dependencies between operations."
+    },
+    {
+      "id": "t000142",
+      "source": "Ce trebuie calculat sau invalidat?",
+      "translation": "What must be computed or invalidated?"
+    },
+    {
+      "id": "t000143",
+      "source": "Ordine parțială",
+      "translation": "Partial Order"
+    },
+    {
+      "id": "t000144",
+      "source": "Compararea informației păstrate.",
+      "translation": "Comparing preserved information."
+    },
+    {
+      "id": "t000145",
+      "source": "Care reprezentare o poate reproduce pe alta?",
+      "translation": "Which representation can reproduce another?"
+    },
+    {
+      "id": "t000146",
+      "source": "Vocabularul nu este ornament. El ne va permite să transformăm expresii precum „agentul vede altfel problema” în afirmații despre funcții, clase, programe și rezultate observabile.",
+      "translation": "This vocabulary is not decoration. It will let us turn expressions such as “the agent sees the problem differently” into claims about functions, classes, programs and observable results."
+    },
+    {
+      "id": "t000147",
+      "source": "CAPITOLUL 03",
+      "translation": "CHAPTER 03"
+    },
+    {
+      "id": "t000148",
+      "source": "Programe, semantică, interpretare",
+      "translation": "Programs, Semantics, Interpretation"
+    },
+    {
+      "id": "t000149",
+      "source": "Ce fixează o semantică",
+      "translation": "What Semantics Establishes"
+    },
+    {
+      "id": "t000150",
+      "source": "Sintaxa stabilește ce expresii sunt bine formate. Semantica stabilește cum sunt interpretate. Într-un limbaj de programare, ea poate descrie tranzițiile de stare, rezultatul unei execuții sau proprietățile pe care comenzile le conservă. Prin urmare, semantica nu trebuie redusă la un dicționar static de sensuri. Interpretarea abstractă oferă explicit multiple semantici și relații între ele [",
+      "translation": "Syntax determines which expressions are well formed. Semantics determines how they are interpreted. In a programming language, it may describe state transitions, an execution's result or the properties commands preserve. Semantics must therefore not be reduced to a static dictionary of meanings. Abstract interpretation explicitly offers multiple semantics and relations between them ["
+    },
+    {
+      "id": "t000151",
+      "source": "Cousot1977",
+      "translation": "Cousot1977"
+    },
+    {
+      "id": "t000152",
+      "source": "Să luăm o comandă care adaugă unu la un număr. Semantica trebuie să precizeze dacă numărul este un întreg matematic nelimitat sau un întreg reprezentat pe un număr fix de biți. La valoarea maximă reprezentabilă, răspunsurile pot diferi. A spune numai „înțelege adunarea” ascunde o alegere esențială de model.",
+      "translation": "Consider a command that adds one to a number. Its semantics must specify whether the number is an unbounded mathematical integer or an integer represented by a fixed number of bits. At the maximum representable value, the answers may differ. Simply saying “it understands addition” conceals an essential modeling choice."
+    },
+    {
+      "id": "t000153",
+      "source": "O semantică operațională descrie pașii execuției. Una denotațională asociază programului un obiect matematic care îi descrie comportamentul. Una axiomatică exprimă relații între condiții de intrare și proprietăți de ieșire. Aceste perspective pot fi complementare. MRP nu le înlocuiește printr-un termen mai larg; le tratează ca instrumente disponibile agentului.",
+      "translation": "Operational semantics describes execution steps. Denotational semantics associates a program with a mathematical object describing its behavior. Axiomatic semantics expresses relationships between input conditions and output properties. These perspectives can complement one another. MRP does not replace them with a broader term; it treats them as tools available to the agent."
+    },
+    {
+      "id": "t000154",
+      "source": "Ce adaugă pragmatica",
+      "translation": "What Pragmatics Adds"
+    },
+    {
+      "id": "t000155",
+      "source": "O regulă semantică nu decide întotdeauna singură dacă merită aplicată, ce informație lipsește sau ce scop trebuie satisfăcut. Aici introducem nivelul pragmatic: alegerea regimului de interpretare, a contextului relevant și a criteriului de oprire. După alegere, regulile interpretării trebuie să rămână suficient de stabile pentru verificare.",
+      "translation": "A semantic rule does not always decide by itself whether it is worth applying, which information is missing or which goal must be satisfied. Here we introduce the pragmatic level: choosing the interpretation regime, relevant context and stopping criterion. Once chosen, the interpretation's rules must remain stable enough for verification."
+    },
+    {
+      "id": "t000156",
+      "source": "Putem numi „semantică stabilizată” o interpretare al cărei domeniu și ale cărei obligații sunt fixate pentru o execuție. Este o convenție internă a cărții, nu o clasificare universal acceptată a filosofiei limbajului. Ea permite un principiu util: agentul poate schimba interpretarea între episoade de revizuire, dar nu poate modifica tacit sensul regulilor în mijlocul unei demonstrații.",
+      "translation": "We can call an interpretation whose domain and obligations are fixed for an execution “stabilized semantics.” This is a convention internal to the book, not a universally accepted classification in the philosophy of language. It enables a useful principle: the agent may change interpretation between revision episodes, but cannot tacitly change the meaning of rules in the middle of a proof."
+    },
+    {
+      "id": "t000157",
+      "source": "De exemplu, un sistem poate trece de la întregi matematici la aritmetică pe 32 de biți. Aceasta nu reprezintă o simplă optimizare dacă schimbă rezultatele. Este schimbarea modelului; concluziile vechi trebuie reexaminate acolo unde diferența contează.",
+      "translation": "For example, a system may switch from mathematical integers to 32-bit arithmetic. This is not merely an optimization if it changes results. It changes the model; old conclusions must be reexamined wherever the difference matters."
+    },
+    {
+      "id": "t000158",
+      "source": "Interpretorul ca obiect",
+      "translation": "The Interpreter as an Object"
+    },
+    {
+      "id": "t000159",
+      "source": "În modelul propus, un interpretor primește intrare, context, scop și stare internă. Produce un rezultat, o stare internă nouă și evidențe. Cuvântul „evidență” va desemna aici un suport verificabil: surse, teste, urme de calcul sau demonstrații, nu simpla convingere exprimată de agent.",
+      "translation": "In the proposed model, an interpreter receives input, context, goal and internal state. It produces a result, a new internal state and evidence. Here “evidence” will denote verifiable support: sources, tests, computational traces or proofs, rather than merely the agent's expressed conviction."
+    },
+    {
+      "id": "t000160",
+      "source": "Interpretează(intrare, context, scop, stare) = (rezultat, stareNouă, evidențe).",
+      "translation": "Interpret(input, context, goal, state) = (result, newState, evidence)."
+    },
+    {
+      "id": "t000161",
+      "source": "Această expresie este o interfață conceptuală, nu un algoritm complet. Câmpurile trebuie restrânse pentru fiecare interpretor concret. Un analizor de ordine poate cere un tabel cu indici unici. Un verificator poate cere o formulă într-o logică precisă. Un generator poate accepta text, dar rezultatul său va avea inițial statut de propunere.",
+      "translation": "This expression is a conceptual interface, not a complete algorithm. Its fields must be restricted for each concrete interpreter. An order analyzer may require a table with unique indices. A verifier may require a formula in a precise logic. A generator may accept text, but its output will initially have proposal status."
+    },
+    {
+      "id": "t000162",
+      "source": "Contextul nu trebuie să devină un loc în care ascundem informație nelimitată. Dacă selectorul poate consulta textul integral, dar predictorul de referință primește numai un rezumat, comparația nu măsoară doar calitatea interpretoarelor. Orice experiment va declara exact ce poate citi fiecare componentă.",
+      "translation": "Context must not become a place to hide unlimited information. If the selector can consult the full text while the baseline predictor receives only a summary, the comparison measures more than interpreter quality. Every experiment will declare exactly what each component can read."
+    },
+    {
+      "id": "t000163",
+      "source": "Contracte și compoziție",
+      "translation": "Contracts and Composition"
+    },
+    {
+      "id": "t000164",
+      "source": "Un contract precizează precondiții, rezultate promise și efecte permise. Logica de tip Hoare exprimă relația dintre o precondiție, o comandă și o postcondiție. Corectitudinea parțială spune că, dacă execuția se termină și precondiția era adevărată, postcondiția este adevărată; terminarea necesită o obligație separată [",
+      "translation": "A contract specifies preconditions, promised results and permitted effects. Hoare-style logic expresses the relationship between a precondition, a command and a postcondition. Partial correctness says that if execution terminates and the precondition held, the postcondition holds; termination requires a separate obligation ["
+    },
+    {
+      "id": "t000165",
+      "source": "SoftwareFoundations",
+      "translation": "SoftwareFoundations"
+    },
+    {
+      "id": "t000166",
+      "source": "Considerăm o operație care selectează ultimul eveniment al unei resurse. Contractul poate cere ca istoricul să fie nevid, ordinea să fie totală și identificarea resursei neambiguă. Postcondiția spune că evenimentul returnat aparține resursei și nu este urmat de alt eveniment al aceleiași resurse. Această postcondiție poate fi verificată independent de modul în care operația a fost implementată.",
+      "translation": "Consider an operation selecting a resource's last event. Its contract may require a nonempty history, a total ordering and unambiguous resource identification. The postcondition says the returned event belongs to the resource and is followed by no other event for that resource. This postcondition can be checked independently of how the operation was implemented."
+    },
+    {
+      "id": "t000167",
+      "source": "Compoziția a două interpretoare cere mai mult decât potrivirea unor formate. Dacă primul întoarce „ultimul eveniment cunoscut”, al doilea nu poate presupune „ultimul eveniment care a existat în lume” fără ipoteza completitudinii istoricului. Acesta este un exemplu de incompatibilitate semantică într-o interfață aparent corectă tehnic.",
+      "translation": "Composing two interpreters requires more than matching formats. If the first returns “the last known event,” the second cannot assume “the last event that occurred in the world” without assuming the history is complete. This is an example of semantic incompatibility in an apparently technically correct interface."
+    },
+    {
+      "id": "t000168",
+      "source": "Interpretoarele probabiliste cer contracte mai prudente. „A produs frecvent răspunsuri corecte” nu este o postcondiție logică universală. Putem descrie domeniul testat, distribuția de evaluare și incertitudinea performanței. Compoziția unor componente probabiliste nu transformă aceste rezultate în certitudine.",
+      "translation": "Probabilistic interpreters require more cautious contracts. “It frequently produced correct answers” is not a universal logical postcondition. We can describe the tested domain, evaluation distribution and performance uncertainty. Composing probabilistic components does not turn those results into certainty."
+    },
+    {
+      "id": "t000169",
+      "source": "Învățarea ca interpretor",
+      "translation": "Learning as an Interpreter"
+    },
+    {
+      "id": "t000170",
+      "source": "O procedură de învățare interpretează datele printr-o familie de modele și un criteriu de ajustare. Ea produce parametri, reguli sau programe. Astfel, poate fi inclusă în aceeași schemă de interfață. Totuși, acest lucru nu face toate operațiile identice: schimbarea unui rezultat temporar diferă de schimbarea bibliotecii pe care vor depinde sarcinile viitoare.",
+      "translation": "A learning procedure interprets data through a family of models and an adjustment criterion. It produces parameters, rules or programs. It can therefore be included in the same interface schema. Yet this does not make every operation identical: changing a temporary result differs from changing the library on which future tasks will depend."
+    },
+    {
+      "id": "t000171",
+      "source": "Vom separa starea de lucru de starea consolidată. O ipoteză nouă poate exista într-o ramură experimentală fără a deveni regulă acceptată. Promovarea ei presupune teste și o decizie explicită. Această separare permite agentului să exploreze fără a trata explorarea ca adevăr deja dobândit.",
+      "translation": "We will separate working state from consolidated state. A new hypothesis can exist in an experimental branch without becoming an accepted rule. Promoting it requires tests and an explicit decision. This separation lets the agent explore without treating exploration as truth already acquired."
+    },
+    {
+      "id": "t000172",
+      "source": "Ce rămâne stabil",
+      "translation": "What Remains Stable"
+    },
+    {
+      "id": "t000173",
+      "source": "O arhitectură capabilă să se modifice are nevoie de un nucleu suficient de stabil pentru a determina ce modificări au avut loc. Nucleul poate fi mic: administrarea versiunilor, regulile de execuție, tipurile de evidențe și contabilizarea costurilor. Nu trebuie să conțină dinainte toate conceptele domeniului.",
+      "translation": "An architecture capable of modifying itself needs a core stable enough to determine which modifications have occurred. The core may be small: version management, execution rules, evidence types and cost accounting. It need not contain every domain concept in advance."
+    },
+    {
+      "id": "t000174",
+      "source": "MRP devine interesantă dacă nucleul permite dezvoltarea unor interpretoare utile fără rescrierea întregului sistem. Componentele furnizate manual sunt legitime, dar trebuie declarate separat de cele învățate.",
+      "translation": "MRP becomes interesting if its core enables useful interpreters to develop without rewriting the entire system. Manually supplied components are legitimate, but must be declared separately from learned ones."
+    },
+    {
+      "id": "t000175",
+      "source": "CAPITOLUL 04",
+      "translation": "CHAPTER 04"
+    },
+    {
+      "id": "t000176",
+      "source": "Probabilitate, decizie, adevăr",
+      "translation": "Probability, Decision, Truth"
+    },
+    {
+      "id": "t000177",
+      "source": "Incertitudinea nu este contradicție",
+      "translation": "Uncertainty Is Not Contradiction"
+    },
+    {
+      "id": "t000178",
+      "source": "Un agent poate să nu știe dacă există acces chiar dacă sistemul real are o stare precisă. Poate lipsi un eveniment, o sursă poate fi nesigură sau politica se poate fi schimbat. Necunoașterea stării și contradicția dintre două afirmații sunt situații diferite. Arhitectura trebuie să le poată reprezenta separat.",
+      "translation": "An agent may not know whether access is available even when the real system has a precise state. An event may be missing, a source unreliable or the policy changed. Not knowing the state and a contradiction between two statements are different situations. The architecture must represent them separately."
+    },
+    {
+      "id": "t000179",
+      "source": "O probabilitate este o valoare între zero și unu atribuită unui rezultat într-un model. Pentru rezultate care se exclud reciproc și acoperă toate posibilitățile considerate, probabilitățile însumează unu. O distribuție este colecția acestor valori. Ea descrie incertitudinea agentului sau regularitatea unui mecanism, în funcție de modelul folosit.",
+      "translation": "A probability is a value between zero and one assigned to an outcome within a model. For mutually exclusive outcomes covering every possibility considered, probabilities sum to one. A distribution is the collection of these values. It describes the agent's uncertainty or a mechanism's regularity, depending on the model used."
+    },
+    {
+      "id": "t000180",
+      "source": "Media unei variabile aleatoare nu este rezultatul care se va produce neapărat. Este suma rezultatelor posibile înmulțite cu probabilitățile lor, pentru un domeniu finit. Un rezultat cu probabilitate mică poate totuși apărea; un agent bine calibrat nu este unul ale cărui predicții individuale se adeveresc întotdeauna.",
+      "translation": "The mean of a random variable is not the outcome that will necessarily occur. In a finite domain, it is the sum of possible outcomes multiplied by their probabilities. An unlikely outcome may still occur; a well-calibrated agent is not one whose individual predictions always come true."
+    },
+    {
+      "id": "t000181",
+      "source": "Actualizarea unei credințe",
+      "translation": "Updating a Belief"
+    },
+    {
+      "id": "t000182",
+      "source": "Să presupunem un exemplu fictiv: înaintea unui test, agentul atribuie probabilitate 0,2 existenței unei defecțiuni. Un semnal apare în 90% dintre cazurile cu defecțiune și în 10% dintre cele fără defecțiune. După apariția semnalului, probabilitatea actualizată este 0,18 împărțit la 0,26, adică aproximativ 0,692.",
+      "translation": "Consider a fictional example: before a test, the agent assigns a probability of 0.2 to a fault being present. A signal occurs in 90% of faulty cases and 10% of cases without a fault. After the signal appears, the updated probability is 0.18 divided by 0.26, approximately 0.692."
+    },
+    {
+      "id": "t000183",
+      "source": "Calculul compară două moduri în care semnalul ar fi putut apărea: 0,2 × 0,9 din cazuri provin din defecțiuni, iar 0,8 × 0,1 din cazuri nu provin din defecțiuni. Noul rezultat este o probabilitate condiționată, nu o demonstrație. El depinde de corectitudinea ratelor inițiale și de aplicabilitatea lor situației curente.",
+      "translation": "The calculation compares two ways the signal could have appeared: 0.2 × 0.9 of cases arise from faults, while 0.8 × 0.1 do not. The new result is a conditional probability, not a proof. It depends on the correctness of the initial rates and their applicability to the current situation."
+    },
+    {
+      "id": "t000184",
+      "source": "Un interpretor MRP poate efectua această actualizare. Altul poate contesta modelul care furnizează ratele. Schimbarea numerelor într-un model și schimbarea modelului sunt două operații diferite; a doua poate necesita experiențe suplimentare, nu numai recalcularea primei.",
+      "translation": "An MRP interpreter can perform this update. Another can challenge the model supplying the rates. Changing numbers within a model and changing the model are different operations; the second may require additional experience, rather than merely recalculating the first."
+    },
+    {
+      "id": "t000185",
+      "source": "Pierdere și alegere",
+      "translation": "Loss and Choice"
+    }
+  ]
+}

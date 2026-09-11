@@ -1,0 +1,200 @@
+{
+  "batch": "batch-0006.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0007",
+  "chapterTitle": "Probability, Decision, Truth",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000164",
+      "chapterId": "chapter-0007",
+      "kind": "h1",
+      "text": "Probability, Decision, Truth",
+      "sourceAnchor": "src-p167",
+      "wordCount": 3
+    },
+    {
+      "id": "u000165",
+      "chapterId": "chapter-0007",
+      "kind": "h2",
+      "text": "Uncertainty Is Not Contradiction",
+      "sourceAnchor": "src-p168",
+      "wordCount": 4
+    },
+    {
+      "id": "u000166",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "An agent may not know whether access is available even when the real system has a precise state. An event may be missing, a source unreliable or the policy changed. Not knowing the state and a contradiction between two statements are different situations. The architecture must represent them separately.",
+      "sourceAnchor": "src-p169",
+      "wordCount": 49
+    },
+    {
+      "id": "u000167",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "A probability is a value between zero and one assigned to an outcome within a model. For mutually exclusive outcomes covering every possibility considered, probabilities sum to one. A distribution is the collection of these values. It describes the agent's uncertainty or a mechanism's regularity, depending on the model used.",
+      "sourceAnchor": "src-p170",
+      "wordCount": 50
+    },
+    {
+      "id": "u000168",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "The mean of a random variable is not the outcome that will necessarily occur. In a finite domain, it is the sum of possible outcomes multiplied by their probabilities. An unlikely outcome may still occur; a well-calibrated agent is not one whose individual predictions always come true.",
+      "sourceAnchor": "src-p171",
+      "wordCount": 47
+    },
+    {
+      "id": "u000169",
+      "chapterId": "chapter-0007",
+      "kind": "h2",
+      "text": "Updating a Belief",
+      "sourceAnchor": "src-p172",
+      "wordCount": 3
+    },
+    {
+      "id": "u000170",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Consider a fictional example: before a test, the agent assigns a probability of 0.2 to a fault being present. A signal occurs in 90% of faulty cases and 10% of cases without a fault. After the signal appears, the updated probability is 0.18 divided by 0.26, approximately 0.692.",
+      "sourceAnchor": "src-p173",
+      "wordCount": 52
+    },
+    {
+      "id": "u000171",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "The calculation compares two ways the signal could have appeared: 0.2 × 0.9 of cases arise from faults, while 0.8 × 0.1 do not. The new result is a conditional probability, not a proof. It depends on the correctness of the initial rates and their applicability to the current situation.",
+      "sourceAnchor": "src-p174",
+      "wordCount": 52
+    },
+    {
+      "id": "u000172",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "An MRP interpreter can perform this update. Another can challenge the model supplying the rates. Changing numbers within a model and changing the model are different operations; the second may require additional experience, rather than merely recalculating the first.",
+      "sourceAnchor": "src-p175",
+      "wordCount": 39
+    },
+    {
+      "id": "u000173",
+      "chapterId": "chapter-0007",
+      "kind": "h2",
+      "text": "Loss and Choice",
+      "sourceAnchor": "src-p176",
+      "wordCount": 3
+    },
+    {
+      "id": "u000174",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "A loss function assigns a cost to a decision in a situation. If incorrectly granting access causes a loss of 100 and incorrectly denying it a loss of 1, the rational threshold is not a probability of 0.5. Assuming zero cost for correct decisions and probability p that access is legitimate, granting access has expected loss 100 × (1 − p), while denying it has loss p.",
+      "sourceAnchor": "src-p177",
+      "wordCount": 66
+    },
+    {
+      "id": "u000175",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Granting access is preferable only when p exceeds 100/101, approximately 0.9901. This is a calculation about a fictional cost matrix, not an access-policy recommendation. It shows why the same uncertainty can lead to different decisions under different objectives.",
+      "sourceAnchor": "src-p178",
+      "wordCount": 40
+    },
+    {
+      "id": "u000176",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Preferences do not, however, change the distribution of truth. The threshold may legitimately be changed; the probability must not be falsified to justify the desired decision. A transparent system can state: “I consider the event likely, but the cost of an error requires further checking.”",
+      "sourceAnchor": "src-p179",
+      "wordCount": 45
+    },
+    {
+      "id": "u000177",
+      "chapterId": "chapter-0007",
+      "kind": "h2",
+      "text": "Evaluating Probabilities",
+      "sourceAnchor": "src-p180",
+      "wordCount": 2
+    },
+    {
+      "id": "u000178",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Proper scoring rules are designed so that honest probabilistic prediction optimizes the expected score. Gneiting and Raftery analyze this class of methods and the distinction between calibration and the informative sharpness of predictions [ Gneiting2007 ]. In an MRP experiment, these methods can prevent evaluation from being reduced to merely choosing the majority label.",
+      "sourceAnchor": "src-p181",
+      "wordCount": 52
+    },
+    {
+      "id": "u000179",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "For a binary outcome y equal to zero or one, a common form of Brier loss is (p − y)². If the true probability is q, expected loss can be rewritten as (p − q)² + q × (1 − q). The second term does not depend on prediction p. The first is minimized when p = q. This derivation explains why the score favors correct probabilities, not merely correct labels.",
+      "sourceAnchor": "src-p182",
+      "wordCount": 67
+    },
+    {
+      "id": "u000180",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "The score cannot make data representative by itself. An agent evaluated only on easy situations can score excellently and perform poorly precisely in important cases. The test distribution is part of the experiment's specification.",
+      "sourceAnchor": "src-p183",
+      "wordCount": 34
+    },
+    {
+      "id": "u000181",
+      "chapterId": "chapter-0007",
+      "kind": "h2",
+      "text": "Abstention and Information",
+      "sourceAnchor": "src-p184",
+      "wordCount": 3
+    },
+    {
+      "id": "u000182",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Abstention is an action with its own cost: delay, human intervention or a lost opportunity. It must be treated neither as absolute failure nor as a free solution. A useful technology will report the response rate, error among supplied answers and the cost of referred cases together.",
+      "sourceAnchor": "src-p185",
+      "wordCount": 47
+    },
+    {
+      "id": "u000183",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "More precise knowledge has value when it can change the decision in a sufficiently important way. A new observation that changes no relevant behavior may have scientific value but little operational value in the current episode. In a research program, learning's long-term value must be accounted for separately from immediate success.",
+      "sourceAnchor": "src-p186",
+      "wordCount": 51
+    },
+    {
+      "id": "u000184",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "For MRP, probability describes what the agent estimates, loss expresses what matters for the task, and verification establishes what support exists. These are three distinct objects. Keeping them separate enables metareasoning that saves computation without turning economy into permission to invent facts.",
+      "sourceAnchor": "src-p187",
+      "wordCount": 42
+    },
+    {
+      "id": "u000185",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "PART II / Foundations for Distinctions",
+      "sourceAnchor": "src-p188",
+      "wordCount": 5
+    },
+    {
+      "id": "u000186",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "CHAPTER 05",
+      "sourceAnchor": "src-p189",
+      "wordCount": 2
+    }
+  ]
+}
