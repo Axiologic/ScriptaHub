@@ -51,5 +51,9 @@
   const languageNames = { en: 'English', fr: 'Français', de: 'Deutsch', es: 'Español', pt: 'Português', it: 'Italiano', ro: 'Română', pl: 'Polski' };
   const unavailableMessage = (language, uiLanguage = language) => unavailableLabels[locale(uiLanguage)].replace('{language}', languageNames[locale(language)]);
   const preparationLabels = { en: "In preparation", fr: "En préparation", de: "In Vorbereitung", es: "En preparación", pt: "Em preparação", it: "In preparazione", ro: "În lucru", pl: "W przygotowaniu" };
-  globalThis.ScriptaReading = { labels, preparationLabels, supported, locale, formatName, available, requestUrl, readingUrl, mailUrl, unavailableMessage };
+  const pdfDownloadName = (title, editionNumber) => {
+    const stem = String(title || 'book').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'book';
+    return `${stem}${editionNumber ? `-edition-${editionNumber}` : ''}.pdf`;
+  };
+  globalThis.ScriptaReading = { labels, preparationLabels, supported, locale, formatName, available, requestUrl, readingUrl, mailUrl, unavailableMessage, pdfDownloadName };
 })();

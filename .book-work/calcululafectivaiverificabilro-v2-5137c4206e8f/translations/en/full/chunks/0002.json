@@ -1,0 +1,916 @@
+{
+  "language": "en",
+  "chunk": 2,
+  "segments": [
+    {
+      "id": "t000066",
+      "source": "Formalizarea începe cu ideea că situația relevantă nu este descrierea obiectivă a lumii, ci modelul agentului despre lume. Un examen ratat poate fi tragedie pentru cineva care îl vede ca ireversibil și identitar, iritare pentru cineva care îl consideră o eroare administrativă reparabilă și ușurare pentru cineva care nu mai dorea programul respectiv. Evenimentul fizic este același; appraisal-ul nu este.",
+      "translation": "Formalization begins with the idea that the relevant situation is not the objective description of the world, but the agent’s model of it. A failed exam may be a tragedy to someone who sees it as irreversible and central to their identity, an irritation to someone who sees it as a repairable administrative error, and a relief to someone who no longer wanted that program. The physical event is the same; the appraisal is not."
+    },
+    {
+      "id": "t000067",
+      "source": "AAC reprezintă fiecare episod printr-un vector de evaluări. Nu toate dimensiunile sunt necesare în fiecare caz, iar valorile pot fi necunoscute. Modelul trebuie să tolereze golurile și contradicțiile. Scopul nu este să inventeze precizie, ci să facă explicit ce presupune atunci când alege o etichetă.",
+      "translation": "AAC represents each episode with a vector of evaluations. Not every dimension is required in every case, and values may be unknown. The model must tolerate gaps and contradictions. The point is not to invent precision, but to make its assumptions explicit when it chooses a label."
+    },
+    {
+      "id": "t000068",
+      "source": "Dimensiunile sunt inspirate de tradiția appraisal, dar extinse pentru fenomene sociale și pentru utilizarea în narațiuni. Valorile pot fi numerice în intervalul [-1,1], categorice sau distribuiții. O implementare robustă ar păstra și sursa fiecărei valori: pasaj textual, memorie conversațională, regulă culturală sau inferență.",
+      "translation": "The dimensions draw on the appraisal tradition but extend it to social phenomena and use in narratives. Values may be numeric in the interval [-1,1], categorical or distributions. A robust implementation would also retain each value’s source: a textual passage, conversational memory, a cultural rule or an inference."
+    },
+    {
+      "id": "t000069",
+      "source": "Cod",
+      "translation": "Code"
+    },
+    {
+      "id": "t000070",
+      "source": "Dimensiune",
+      "translation": "Dimension"
+    },
+    {
+      "id": "t000071",
+      "source": "Întrebarea operațională",
+      "translation": "Operational Question"
+    },
+    {
+      "id": "t000072",
+      "source": "REL",
+      "translation": "REL"
+    },
+    {
+      "id": "t000073",
+      "source": "Relevanță",
+      "translation": "Relevance"
+    },
+    {
+      "id": "t000074",
+      "source": "Cât de mult afectează situația scopurile, nevoile sau identitatea agentului.",
+      "translation": "How much does the situation affect the agent’s goals, needs or identity?"
+    },
+    {
+      "id": "t000075",
+      "source": "GC",
+      "translation": "GC"
+    },
+    {
+      "id": "t000076",
+      "source": "Congruență cu scopul",
+      "translation": "Goal congruence"
+    },
+    {
+      "id": "t000077",
+      "source": "De la blocare/pierdere (-1) la avans/obținere (+1).",
+      "translation": "From obstruction/loss (-1) to progress/attainment (+1)."
+    },
+    {
+      "id": "t000078",
+      "source": "NOV",
+      "translation": "NOV"
+    },
+    {
+      "id": "t000079",
+      "source": "Noutate / surpriză",
+      "translation": "Novelty / surprise"
+    },
+    {
+      "id": "t000080",
+      "source": "Distanța față de predicțiile agentului.",
+      "translation": "Distance from the agent’s predictions."
+    },
+    {
+      "id": "t000081",
+      "source": "CERT",
+      "translation": "CERT"
+    },
+    {
+      "id": "t000082",
+      "source": "Certitudine",
+      "translation": "Certainty"
+    },
+    {
+      "id": "t000083",
+      "source": "Cât de sigur este agentul despre ce s-a întâmplat și ce urmează.",
+      "translation": "How certain is the agent about what has happened and what comes next?"
+    },
+    {
+      "id": "t000084",
+      "source": "CTRL",
+      "translation": "CTRL"
+    },
+    {
+      "id": "t000085",
+      "source": "Control / coping",
+      "translation": "Control / coping"
+    },
+    {
+      "id": "t000086",
+      "source": "Capacitatea percepută de a influența rezultatul.",
+      "translation": "Perceived ability to influence the outcome."
+    },
+    {
+      "id": "t000087",
+      "source": "AG-S",
+      "translation": "AG-S"
+    },
+    {
+      "id": "t000088",
+      "source": "Agenție proprie",
+      "translation": "Self-agency"
+    },
+    {
+      "id": "t000089",
+      "source": "Gradul în care sinele este cauza relevantă.",
+      "translation": "The extent to which the self is the relevant cause."
+    },
+    {
+      "id": "t000090",
+      "source": "AG-O",
+      "translation": "AG-O"
+    },
+    {
+      "id": "t000091",
+      "source": "Agenție externă",
+      "translation": "External agency"
+    },
+    {
+      "id": "t000092",
+      "source": "Gradul în care alt agent este cauza relevantă.",
+      "translation": "The extent to which another agent is the relevant cause."
+    },
+    {
+      "id": "t000093",
+      "source": "INT",
+      "translation": "INT"
+    },
+    {
+      "id": "t000094",
+      "source": "Intenționalitate",
+      "translation": "Intentionality"
+    },
+    {
+      "id": "t000095",
+      "source": "În ce măsură cauza este percepută ca deliberată.",
+      "translation": "The degree to which the cause is perceived as deliberate."
+    },
+    {
+      "id": "t000096",
+      "source": "NORM",
+      "translation": "NORM"
+    },
+    {
+      "id": "t000097",
+      "source": "Compatibilitate normativă",
+      "translation": "Norm compatibility"
+    },
+    {
+      "id": "t000098",
+      "source": "Concordanța cu normele și standardele agentului.",
+      "translation": "Agreement with the agent’s norms and standards."
+    },
+    {
+      "id": "t000099",
+      "source": "FAIR",
+      "translation": "FAIR"
+    },
+    {
+      "id": "t000100",
+      "source": "Echitate / merit",
+      "translation": "Fairness / deservingness"
+    },
+    {
+      "id": "t000101",
+      "source": "Dacă rezultatul este perceput drept meritat și procedural just.",
+      "translation": "Whether the outcome is perceived as deserved and procedurally just."
+    },
+    {
+      "id": "t000102",
+      "source": "STAT",
+      "translation": "STAT"
+    },
+    {
+      "id": "t000103",
+      "source": "Statut / rang",
+      "translation": "Status / rank"
+    },
+    {
+      "id": "t000104",
+      "source": "Schimbarea percepută a poziției sociale sau competenței relative.",
+      "translation": "Perceived change in social standing or relative competence."
+    },
+    {
+      "id": "t000105",
+      "source": "DIGN",
+      "translation": "DIGN"
+    },
+    {
+      "id": "t000106",
+      "source": "Recunoaștere / demnitate",
+      "translation": "Recognition / dignity"
+    },
+    {
+      "id": "t000107",
+      "source": "Dacă agentul este tratat ca subiect cu interese și autonomie.",
+      "translation": "Whether the agent is treated as a subject with interests and autonomy."
+    },
+    {
+      "id": "t000108",
+      "source": "BEL",
+      "translation": "BEL"
+    },
+    {
+      "id": "t000109",
+      "source": "Apartenență",
+      "translation": "Belonging"
+    },
+    {
+      "id": "t000110",
+      "source": "Efectul asupra includerii, acceptării și conexiunii sociale.",
+      "translation": "Effect on inclusion, acceptance and social connection."
+    },
+    {
+      "id": "t000111",
+      "source": "ATT",
+      "translation": "ATT"
+    },
+    {
+      "id": "t000112",
+      "source": "Miză de atașament",
+      "translation": "Attachment stakes"
+    },
+    {
+      "id": "t000113",
+      "source": "Valoarea relației și dependența de ea.",
+      "translation": "The value of the relationship and dependence on it."
+    },
+    {
+      "id": "t000114",
+      "source": "REV",
+      "translation": "REV"
+    },
+    {
+      "id": "t000115",
+      "source": "Reversibilitate",
+      "translation": "Reversibility"
+    },
+    {
+      "id": "t000116",
+      "source": "Probabilitatea percepută ca pierderea să poată fi reparată.",
+      "translation": "Perceived likelihood that a loss can be repaired."
+    },
+    {
+      "id": "t000117",
+      "source": "EXPO",
+      "translation": "EXPO"
+    },
+    {
+      "id": "t000118",
+      "source": "Expunere socială",
+      "translation": "Social exposure"
+    },
+    {
+      "id": "t000119",
+      "source": "Cât de vizibil este sinele pentru un public relevant.",
+      "translation": "How visible the self is to a relevant audience."
+    },
+    {
+      "id": "t000120",
+      "source": "CF",
+      "translation": "CF"
+    },
+    {
+      "id": "t000121",
+      "source": "Saliență contrafactuală",
+      "translation": "Counterfactual salience"
+    },
+    {
+      "id": "t000122",
+      "source": "Forța alternativei mentale „dacă aș fi...”.",
+      "translation": "The force of the imagined alternative, “if I had ...”."
+    },
+    {
+      "id": "t000123",
+      "source": "COMP",
+      "translation": "COMP"
+    },
+    {
+      "id": "t000124",
+      "source": "Comprehensibilitate",
+      "translation": "Comprehensibility"
+    },
+    {
+      "id": "t000125",
+      "source": "Cât de bine poate fi integrat evenimentul în modelul curent.",
+      "translation": "How well the event can be integrated into the current model."
+    },
+    {
+      "id": "t000126",
+      "source": "VAST",
+      "translation": "VAST"
+    },
+    {
+      "id": "t000127",
+      "source": "Vastitate",
+      "translation": "Vastness"
+    },
+    {
+      "id": "t000128",
+      "source": "Depășirea scării obișnuite fizice, sociale sau conceptuale.",
+      "translation": "Exceeding the usual physical, social or conceptual scale."
+    },
+    {
+      "id": "t000129",
+      "source": "THR",
+      "translation": "THR"
+    },
+    {
+      "id": "t000130",
+      "source": "Amenințare",
+      "translation": "Threat"
+    },
+    {
+      "id": "t000131",
+      "source": "Magnitudinea anticipată a răului posibil.",
+      "translation": "Anticipated magnitude of possible harm."
+    },
+    {
+      "id": "t000132",
+      "source": "Scopurile, normele și relațiile sunt stare, nu input accidental",
+      "translation": "Goals, Norms and Relationships Are State, Not Accidental Input"
+    },
+    {
+      "id": "t000133",
+      "source": "Un vector de appraisal nu poate fi calculat fără un model al agentului. Într-un text literar, acesta trebuie reconstruit din istorie, discurs, alegeri și relații. Într-un chatbot, o parte poate proveni din conversație: ce încearcă utilizatorul să obțină, ce preferințe a declarat, ce relație există și ce vulnerabilități au fost explicit menționate. Într-un simulator, scopurile și normele trebuie declarate.",
+      "translation": "An appraisal vector cannot be calculated without a model of the agent. In a literary text, that model must be reconstructed from history, speech, choices and relationships. In a chatbot, part of it may come from the conversation: what the user is trying to achieve, which preferences they have stated, what relationship exists and which vulnerabilities have been explicitly mentioned. In a simulator, goals and norms must be declared."
+    },
+    {
+      "id": "t000134",
+      "source": "Aceasta este o diferență fundamentală față de clasificarea de sentiment. AAC cere o stare latentă de tip world model + self model + relationship model. Fără ea, «emoția» devine un simplu nume lipit pe text.",
+      "translation": "This is a fundamental difference from sentiment classification. AAC requires a latent state of the form world model + self model + relationship model. Without it, “emotion” becomes a mere name attached to text."
+    },
+    {
+      "id": "t000135",
+      "source": "AgentState_t = {",
+      "translation": "AgentState_t = {"
+    },
+    {
+      "id": "t000136",
+      "source": "beliefs, goals, values, norms, identity,",
+      "translation": "beliefs, goals, values, norms, identity,"
+    },
+    {
+      "id": "t000137",
+      "source": "relationships[target], expectations, resources,",
+      "translation": "relationships[target], expectations, resources,"
+    },
+    {
+      "id": "t000138",
+      "source": "appraisal_history, affective_state",
+      "translation": "appraisal_history, affective_state"
+    },
+    {
+      "id": "t000139",
+      "source": "CAPITOLUL 5",
+      "translation": "CHAPTER 5"
+    },
+    {
+      "id": "t000140",
+      "source": "De la appraisal la etichetă afectivă",
+      "translation": "From Appraisal to Affective Label"
+    },
+    {
+      "id": "t000141",
+      "source": "O formulă utilă nu trebuie să decidă ce este emoția „în realitate”. Trebuie să spună ce dovadă ar schimba verdictul.",
+      "translation": "A useful formula need not decide what emotion is “in reality.” It must say what evidence would change the verdict."
+    },
+    {
+      "id": "t000142",
+      "source": "O implementare naivă ar defini frica printr-o conjuncție de praguri: amenințare mare, control mic, incertitudine mare. Dar oamenii sunt variabili, iar etichetele au frontiere difuze. AAC folosește mai bine prototipuri probabilistice. Fiecare stare afectivă are o funcție de compatibilitate cu vectorul de appraisal și cu contextul. Rezultatul nu este «adevărat/fals», ci un scor calibrat și o explicație.",
+      "translation": "A naive implementation would define fear by a conjunction of thresholds: high threat, low control, high uncertainty. But people vary, and labels have fuzzy boundaries. AAC makes better use of probabilistic prototypes. Each affective state has a compatibility function with the appraisal vector and context. The outcome is not “true/false,” but a calibrated score and an explanation."
+    },
+    {
+      "id": "t000143",
+      "source": "O formă simplă este o funcție logistică peste caracteristici. În practică, caracteristicile pot include interacțiuni: furia nu depinde doar de valență negativă, ci de combinația dintre blocarea unui scop, atribuirea responsabilității și un nivel suficient de control pentru confruntare. Rușinea implică expunere sau autoobservare normativă și o evaluare globală a sinelui; vinovăția, o acțiune specifică și reparabilă.",
+      "translation": "One simple form is a logistic function over features. In practice, features may include interactions: anger depends not only on negative valence, but on the combination of a blocked goal, attributed responsibility and sufficient control for confrontation. Shame involves exposure or normative self-observation and a global evaluation of the self; guilt involves a specific, reparable action."
+    },
+    {
+      "id": "t000144",
+      "source": "score(e,t) = sigmoid( w_e · φ(Appraisal_t, AgentState_t, Culture_t) + b_e )",
+      "translation": "score(e,t) = sigmoid( w_e · φ(Appraisal_t, AgentState_t, Culture_t) + b_e )"
+    },
+    {
+      "id": "t000145",
+      "source": "P(e|context) = softmax(score_1, ..., score_n)",
+      "translation": "P(e|context) = softmax(score_1, ..., score_n)"
+    },
+    {
+      "id": "t000146",
+      "source": "Important: acestea sunt scoruri de compatibilitate inginerească, nu 'neuroni ai emoției'.",
+      "translation": "Important: these are engineering compatibility scores, not “emotion neurons.”"
+    },
+    {
+      "id": "t000147",
+      "source": "Contrafactualul este testul cel mai puternic",
+      "translation": "The Counterfactual Is the Strongest Test"
+    },
+    {
+      "id": "t000148",
+      "source": "O explicație afectivă devine serioasă când suportă intervenții. Dacă spunem că un personaj simte frică pentru că percepe amenințare și control scăzut, atunci ridicarea controlului — fără a schimba restul scenei — ar trebui să reducă frica și să poată crește furia sau determinarea. Dacă modelul continuă să prezică aceeași stare doar pentru că textul conține cuvântul «pericol», avem o clasificare lexicală, nu un mecanism.",
+      "translation": "An affective explanation becomes serious when it withstands interventions. If we say a character feels fear because they perceive a threat and low control, then increasing control—without changing the rest of the scene—should reduce fear and may increase anger or determination. If the model continues to predict the same state merely because the text contains the word “danger,” we have lexical classification, not a mechanism."
+    },
+    {
+      "id": "t000149",
+      "source": "Pentru fiecare verdict, un evaluator AAC poate genera două tipuri de teste: ablații, în care elimină o premisă, și intervenții, în care inversează o dimensiune. Aceste teste sunt deosebit de utile pentru LLM-uri deoarece fac vizibilă dependența de context și permit construirea de benchmark-uri cu perechi minimale.",
+      "translation": "For each verdict, an AAC evaluator can generate two kinds of tests: ablations, which remove a premise, and interventions, which reverse a dimension. These tests are especially useful for LLMs because they reveal dependence on context and allow benchmarks built from minimal pairs."
+    },
+    {
+      "id": "t000150",
+      "source": "CAPITOLUL 6",
+      "translation": "CHAPTER 6"
+    },
+    {
+      "id": "t000151",
+      "source": "Timp, intensitate, amestec și relații",
+      "translation": "Time, Intensity, Mixtures and Relationships"
+    },
+    {
+      "id": "t000152",
+      "source": "Emoțiile nu sunt cadre statice. O narațiune bună este o transformare a appraisal-urilor, iar starea afectivă ar trebui să se miște odată cu ele.",
+      "translation": "Emotions are not static frames. A good narrative is a transformation of appraisals, and the affective state should move with them."
+    },
+    {
+      "id": "t000153",
+      "source": "O veste neașteptată poate produce surpriză, apoi frică, apoi furie, apoi ușurare. O insultă repetată poate transforma iritarea episodică în resentiment și, dacă ținta este considerată iremediabilă, în dispreț. Iubirea și încrederea nu apar și dispar la fiecare replică; ele acționează ca variabile lente care modifică interpretarea episoadelor rapide.",
+      "translation": "Unexpected news can produce surprise, then fear, then anger, then relief. A repeated insult can turn episodic irritation into resentment and, if its target is judged beyond repair, into contempt. Love and trust do not appear and disappear with every remark; they act as slow variables that alter the interpretation of fast episodes."
+    },
+    {
+      "id": "t000154",
+      "source": "AAC separă trei scări temporale. Stratul rapid conține episoade de secunde sau minute. Stratul mediu conține dispoziții și preocupări de ore sau zile. Stratul lent conține sentimente și atitudini relaționale: încredere, atașament, respect, ostilitate, loialitate. Aceeași informație poate acționa diferit pe fiecare scară. O minciună produce surpriză și furie imediată, dar efectul important poate fi actualizarea lentă a încrederii.",
+      "translation": "AAC separates three timescales. The fast layer contains episodes of seconds or minutes. The middle layer contains moods and concerns lasting hours or days. The slow layer contains relational sentiments and attitudes: trust, attachment, respect, hostility and loyalty. The same information can act differently at each timescale. A lie produces immediate surprise and anger, but its important effect may be the slow revision of trust."
+    },
+    {
+      "id": "t000155",
+      "source": "Intensitatea nu trebuie confundată cu certitudinea. Un model poate avea probabilitate 0,95 că personajul simte teamă, dar intensitatea fricii să fie 0,3. Invers, o scenă ambiguă poate susține două emoții intense, cu probabilități apropiate. Raportarea separată a intensității și a încrederii este obligatorie pentru un judecător verificabil.",
+      "translation": "Intensity must not be confused with certainty. A model can assign a 0.95 probability that a character feels fear while rating the intensity of fear at 0.3. Conversely, an ambiguous scene can support two intense emotions with similar probabilities. Reporting intensity and confidence separately is mandatory for a verifiable judge."
+    },
+    {
+      "id": "t000156",
+      "source": "AffectState_{t+1}(e) = decay_e · AffectState_t(e)",
+      "translation": "AffectState_{t+1}(e) = decay_e · AffectState_t(e)"
+    },
+    {
+      "id": "t000157",
+      "source": "+ elicitation_e(Appraisal_t)",
+      "translation": "+ elicitation_e(Appraisal_t)"
+    },
+    {
+      "id": "t000158",
+      "source": "+ rumination_e",
+      "translation": "+ rumination_e"
+    },
+    {
+      "id": "t000159",
+      "source": "- resolution_e",
+      "translation": "- resolution_e"
+    },
+    {
+      "id": "t000160",
+      "source": "Relation_{t+1} = slow_update(Relation_t, evidence_t, repair_t)",
+      "translation": "Relation_{t+1} = slow_update(Relation_t, evidence_t, repair_t)"
+    },
+    {
+      "id": "t000161",
+      "source": "Emoțiile mixte nu sunt excepții",
+      "translation": "Mixed Emotions Are Not Exceptions"
+    },
+    {
+      "id": "t000162",
+      "source": "Nostalgia combină adesea valoarea pozitivă a amintirii cu pierderea temporală. Gelozia poate combina teamă, furie, tristețe și comparație socială. Admirația poate coexista cu invidia. Ușurarea este pozitivă tocmai pentru că o amenințare negativă fusese activă. În loc să forțeze o singură etichetă, AAC permite compoziții și specifică ce appraisal explică fiecare componentă.",
+      "translation": "Nostalgia often combines the positive value of a memory with temporal loss. Jealousy can combine fear, anger, sadness and social comparison. Admiration can coexist with envy. Relief is positive precisely because a negative threat had been active. Rather than forcing a single label, AAC permits compositions and specifies which appraisal explains each component."
+    },
+    {
+      "id": "t000163",
+      "source": "PARTEA III",
+      "translation": "PART III"
+    },
+    {
+      "id": "t000164",
+      "source": "ATLASUL AFECTIV",
+      "translation": "THE AFFECTIVE ATLAS"
+    },
+    {
+      "id": "t000165",
+      "source": "Nu o listă de esențe, ci prototipuri cognitive care pot fi testate, combinate și contestate.",
+      "translation": "Not a list of essences, but cognitive prototypes that can be tested, combined and challenged."
+    },
+    {
+      "id": "t000166",
+      "source": "CAPITOLUL 7",
+      "translation": "CHAPTER 7"
+    },
+    {
+      "id": "t000167",
+      "source": "Bucurie, plăcere și rezoluție",
+      "translation": "Joy, Pleasure and Resolution"
+    },
+    {
+      "id": "t000168",
+      "source": "Pozitiv” este prea puțin. A obține ceva, a savura ceva, a scăpa de ceva și a înțelege ceva sunt evenimente afective diferite.",
+      "translation": "Positive” is too little. Attaining something, savoring something, escaping something and understanding something are different affective events."
+    },
+    {
+      "id": "t000169",
+      "source": "Familia pozitivă este adesea aplatizată în «joy». Pentru AI este mai util să distingem sursa evaluării: atingerea unui scop, consumul unei recompense, rezoluția unei amenințări, conectarea socială sau jocul fără miză. Diferențele schimbă predicțiile despre ce urmează.",
+      "translation": "The positive family is often flattened into “joy.” For AI, it is more useful to distinguish the source of the evaluation: attainment of a goal, enjoyment of a reward, resolution of a threat, social connection or play without stakes. These differences alter predictions about what follows."
+    },
+    {
+      "id": "t000170",
+      "source": "În toate fișele de mai jos, «semnătura» este o descriere prototipică. Ea nu este condiție clinică și nu presupune universalitate strictă.",
+      "translation": "In all the profiles below, the “signature” is a prototypical description. It is not a clinical criterion and does not assume strict universality."
+    },
+    {
+      "id": "t000171",
+      "source": "Bucurie",
+      "translation": "Joy"
+    },
+    {
+      "id": "t000172",
+      "source": "EMOȚIE EPISODICĂ",
+      "translation": "EPISODIC EMOTION"
+    },
+    {
+      "id": "t000173",
+      "source": "Creștere afectivă produsă de un rezultat perceput ca favorabil pentru un scop sau o valoare importantă.",
+      "translation": "Affective increase produced by an outcome perceived as favorable for an important goal or value."
+    },
+    {
+      "id": "t000174",
+      "source": "Bucuria este mai ușor de înțeles dacă o tratăm ca răspuns la o schimbare favorabilă pentru ceva ce contează. Ea nu cere neapărat plăcere corporală și nici finalizarea unui proiect; poate apărea pur și simplu când lumea se mișcă în direcția dorită.",
+      "translation": "Joy is easier to understand if we treat it as a response to a favorable change in something that matters. It does not necessarily require bodily pleasure or the completion of a project; it can arise simply when the world moves in a desired direction."
+    },
+    {
+      "id": "t000175",
+      "source": "Semnătură AAC",
+      "translation": "AAC Signature"
+    },
+    {
+      "id": "t000176",
+      "source": "GC≫0; REL>0; rezultatul este prezent sau foarte probabil; controlul poate varia.",
+      "translation": "GC≫0; REL>0; the outcome is present or highly probable; control may vary."
+    },
+    {
+      "id": "t000177",
+      "source": "Tendință de acțiune",
+      "translation": "Action Tendency"
+    },
+    {
+      "id": "t000178",
+      "source": "Apropiere, celebrare, împărtășire, menținerea sursei rezultatului.",
+      "translation": "Approach, celebration, sharing, maintaining the source of the outcome."
+    },
+    {
+      "id": "t000179",
+      "source": "Contrast critic",
+      "translation": "Critical Contrast"
+    },
+    {
+      "id": "t000180",
+      "source": "Plăcerea poate exista fără atingerea unui scop; satisfacția implică încheiere și evaluare a performanței.",
+      "translation": "Pleasure can exist without attaining a goal; satisfaction implies completion and evaluation of performance."
+    },
+    {
+      "id": "t000181",
+      "source": "Test pentru AI",
+      "translation": "AI Test"
+    },
+    {
+      "id": "t000182",
+      "source": "Schimbă rezultatul din favorabil în nefavorabil păstrând stilul verbal; predicția de bucurie trebuie să cadă.",
+      "translation": "Change the outcome from favorable to unfavorable while preserving verbal style; the prediction of joy should fall."
+    },
+    {
+      "id": "t000183",
+      "source": "Plăcere",
+      "translation": "Pleasure"
+    },
+    {
+      "id": "t000184",
+      "source": "AFECT HEDONIC",
+      "translation": "HEDONIC AFFECT"
+    },
+    {
+      "id": "t000185",
+      "source": "Valență pozitivă legată de o experiență senzorială, cognitivă sau socială apreciată, fără condiția unei realizări.",
+      "translation": "Positive valence tied to an appreciated sensory, cognitive or social experience, without requiring an achievement."
+    },
+    {
+      "id": "t000186",
+      "source": "Plăcerea poate exista fără o poveste despre succes. Gustul, căldura, muzica sau atingerea pot fi evaluate pozitiv chiar când nu rezolvă niciun obiectiv important, ceea ce o separă de bucuria legată de evenimente și scopuri.",
+      "translation": "Pleasure can exist without a story of success. Taste, warmth, music or touch can be evaluated positively even when they resolve no important goal, which separates pleasure from joy tied to events and goals."
+    },
+    {
+      "id": "t000187",
+      "source": "Semnătură AAC",
+      "translation": "AAC Signature"
+    },
+    {
+      "id": "t000188",
+      "source": "pleasantness≫0; GC poate fi neutru; obiectul este consumat sau contemplat.",
+      "translation": "pleasantness≫0; GC may be neutral; the object is consumed or contemplated."
+    },
+    {
+      "id": "t000189",
+      "source": "Tendință de acțiune",
+      "translation": "Action Tendency"
+    },
+    {
+      "id": "t000190",
+      "source": "Prelungire, repetare, apropiere.",
+      "translation": "Prolonging, repeating, approaching."
+    },
+    {
+      "id": "t000191",
+      "source": "Contrast critic",
+      "translation": "Critical Contrast"
+    },
+    {
+      "id": "t000192",
+      "source": "Bucuria este mai legată de eveniment și scop; plăcerea poate fi locală și imediată.",
+      "translation": "Joy is more closely tied to event and goal; pleasure can be local and immediate."
+    },
+    {
+      "id": "t000193",
+      "source": "Test pentru AI",
+      "translation": "AI Test"
+    },
+    {
+      "id": "t000194",
+      "source": "Înlocuiește recompensa cu un stimul neutru, fără a schimba succesul instrumental; plăcerea ar trebui să scadă.",
+      "translation": "Replace the reward with a neutral stimulus without changing instrumental success; pleasure should decline."
+    },
+    {
+      "id": "t000195",
+      "source": "Satisfacție",
+      "translation": "Satisfaction"
+    },
+    {
+      "id": "t000196",
+      "source": "EMOȚIE/EVALUARE",
+      "translation": "EMOTION/EVALUATION"
+    },
+    {
+      "id": "t000197",
+      "source": "Evaluarea pozitivă a unui rezultat în raport cu un criteriu, de regulă după încheierea unei acțiuni.",
+      "translation": "Positive evaluation of an outcome against a criterion, usually after an action is complete."
+    },
+    {
+      "id": "t000198",
+      "source": "Satisfacția privește de obicei un rezultat comparat cu un standard și are ceva din sentimentul de încheiere. Ea apare după ce agentul poate evalua că ceea ce a făcut este suficient de bun, nu doar în timp ce anticipează recompensa.",
+      "translation": "Satisfaction usually concerns an outcome compared with a standard and carries a sense of completion. It arises after the agent can judge that what they have done is good enough, not merely while anticipating a reward."
+    },
+    {
+      "id": "t000199",
+      "source": "Semnătură AAC",
+      "translation": "AAC Signature"
+    },
+    {
+      "id": "t000200",
+      "source": "GC>0; comparație rezultat-standard pozitivă; CERT mare; episod aproape închis.",
+      "translation": "GC>0; positive outcome–standard comparison; high CERT; episode nearly closed."
+    },
+    {
+      "id": "t000201",
+      "source": "Tendință de acțiune",
+      "translation": "Action Tendency"
+    },
+    {
+      "id": "t000202",
+      "source": "Oprire sau consolidare; actualizarea standardului; raportare pozitivă.",
+      "translation": "Stopping or consolidating; updating the standard; positive reporting."
+    },
+    {
+      "id": "t000203",
+      "source": "Contrast critic",
+      "translation": "Critical Contrast"
+    },
+    {
+      "id": "t000204",
+      "source": "Entuziasmul este prospectiv și energizant; satisfacția are componentă de completare.",
+      "translation": "Enthusiasm is forward-looking and energizing; satisfaction has a completion component."
+    },
+    {
+      "id": "t000205",
+      "source": "Test pentru AI",
+      "translation": "AI Test"
+    },
+    {
+      "id": "t000206",
+      "source": "Dacă standardul crește peste rezultat, satisfacția trebuie să se reducă chiar dacă rezultatul obiectiv rămâne identic.",
+      "translation": "If the standard rises above the outcome, satisfaction should decrease even if the objective outcome remains identical."
+    },
+    {
+      "id": "t000207",
+      "source": "Mulțumire / contentment",
+      "translation": "Contentment"
+    },
+    {
+      "id": "t000208",
+      "source": "DISPOZIȚIE AFECTIVĂ SCURTĂ",
+      "translation": "SHORT AFFECTIVE MOOD"
+    },
+    {
+      "id": "t000209",
+      "source": "Stare pozitivă de suficiență: situația actuală este evaluată ca bună și nu cere schimbare imediată.",
+      "translation": "A positive state of sufficiency: the present situation is judged good and calls for no immediate change."
+    },
+    {
+      "id": "t000210",
+      "source": "Mulțumirea este o stare pozitivă cu activare redusă, în care nu există o nevoie urgentă care cere schimbare. Un personaj mulțumit nu trebuie să fie exuberant; tocmai lipsa presiunii de a modifica situația este informativă.",
+      "translation": "Contentment is a low-arousal positive state in which no urgent need calls for change. A contented character need not be exuberant; the lack of pressure to change the situation is precisely what is informative."
+    },
+    {
+      "id": "t000211",
+      "source": "Semnătură AAC",
+      "translation": "AAC Signature"
+    },
+    {
+      "id": "t000212",
+      "source": "GC≥0; THR scăzut; nevoi acute reduse; CTRL suficient; arousal scăzut.",
+      "translation": "GC≥0; low THR; few acute needs; sufficient CTRL; low arousal."
+    },
+    {
+      "id": "t000213",
+      "source": "Tendință de acțiune",
+      "translation": "Action Tendency"
+    },
+    {
+      "id": "t000214",
+      "source": "Menținere, savurare, reducerea explorării urgente.",
+      "translation": "Maintaining, savoring, reducing urgent exploration."
+    },
+    {
+      "id": "t000215",
+      "source": "Contrast critic",
+      "translation": "Critical Contrast"
+    },
+    {
+      "id": "t000216",
+      "source": "Bucuria este mai activată; mulțumirea nu presupune un eveniment culminant.",
+      "translation": "Joy is more activated; contentment does not require a culminating event."
+    },
+    {
+      "id": "t000217",
+      "source": "Test pentru AI",
+      "translation": "AI Test"
+    },
+    {
+      "id": "t000218",
+      "source": "Introduce o nevoie urgentă nesatisfăcută; contentment ar trebui să scadă.",
+      "translation": "Introduce an unmet urgent need; contentment should decline."
+    },
+    {
+      "id": "t000219",
+      "source": "Entuziasm",
+      "translation": "Enthusiasm"
+    },
+    {
+      "id": "t000220",
+      "source": "EMOȚIE PROSPECTIVĂ",
+      "translation": "PROSPECTIVE EMOTION"
+    },
+    {
+      "id": "t000221",
+      "source": "Activare pozitivă în jurul unei oportunități sau recompense anticipate.",
+      "translation": "Positive activation around an anticipated opportunity or reward."
+    },
+    {
+      "id": "t000222",
+      "source": "Entuziasmul este prospectiv. El comprimă într-o stare prezentă o recompensă viitoare considerată suficient de accesibilă încât să merite mobilizare, comunicare și energie.",
+      "translation": "Enthusiasm is forward-looking. It compresses a future reward into a present state when that reward seems accessible enough to warrant mobilization, communication and energy."
+    },
+    {
+      "id": "t000223",
+      "source": "Semnătură AAC",
+      "translation": "AAC Signature"
+    },
+    {
+      "id": "t000224",
+      "source": "GC anticipat≫0; CERT moderat-înalt; arousal înalt; CTRL sau acces perceput pozitiv.",
+      "translation": "anticipated GC≫0; moderate-to-high CERT; high arousal; perceived CTRL or access positive."
+    },
+    {
+      "id": "t000225",
+      "source": "Tendință de acțiune",
+      "translation": "Action Tendency"
+    },
+    {
+      "id": "t000226",
+      "source": "Mobilizare, explorare, comunicare energică.",
+      "translation": "Mobilization, exploration, energetic communication."
+    },
+    {
+      "id": "t000227",
+      "source": "Contrast critic",
+      "translation": "Critical Contrast"
+    },
+    {
+      "id": "t000228",
+      "source": "Speranța poate avea probabilitate mică și miză dificilă; entuziasmul presupune acces mai apropiat.",
+      "translation": "Hope can have low probability and difficult stakes; enthusiasm assumes closer access."
+    },
+    {
+      "id": "t000229",
+      "source": "Test pentru AI",
+      "translation": "AI Test"
+    },
+    {
+      "id": "t000230",
+      "source": "Reduce probabilitatea succesului drastic, păstrând dorința; entuziasmul ar trebui să se transforme mai degrabă în speranță/anxietate.",
+      "translation": "Drastically reduce the likelihood of success while preserving desire; enthusiasm should shift toward hope/anxiety."
+    },
+    {
+      "id": "t000231",
+      "source": "Ușurare",
+      "translation": "Relief"
+    },
+    {
+      "id": "t000232",
+      "source": "EMOȚIE DE TRANZIȚIE",
+      "translation": "TRANSITION EMOTION"
+    },
+    {
+      "id": "t000233",
+      "source": "Valență pozitivă produsă de reducerea sau dispariția unei amenințări ori obligații anticipat negative.",
+      "translation": "Positive valence produced by the reduction or disappearance of an anticipated negative threat or obligation."
+    },
+    {
+      "id": "t000234",
+      "source": "Ușurarea are memorie. Nu este suficient ca rezultatul prezent să fie bun; trebuie să fi existat o posibilitate relevantă de rău care tocmai a fost infirmată sau înlăturată.",
+      "translation": "Relief has memory. It is not enough for the present outcome to be good; there must have been a relevant possibility of harm that has just been disproved or removed."
+    },
+    {
+      "id": "t000235",
+      "source": "Semnătură AAC",
+      "translation": "AAC Signature"
+    },
+    {
+      "id": "t000236",
+      "source": "THR_t-1 ridicat → THR_t scăzut; predicție negativă infirmată; GC crește prin evitarea pierderii.",
+      "translation": "high THR_t-1 → low THR_t; negative prediction disproved; GC rises through avoidance of loss."
+    },
+    {
+      "id": "t000237",
+      "source": "Tendință de acțiune",
+      "translation": "Action Tendency"
+    },
+    {
+      "id": "t000238",
+      "source": "Relaxare, dezactivare, uneori râs sau verificare repetată.",
+      "translation": "Relaxation, deactivation, sometimes laughter or repeated checking."
+    },
+    {
+      "id": "t000239",
+      "source": "Contrast critic",
+      "translation": "Critical Contrast"
+    },
+    {
+      "id": "t000240",
+      "source": "Bucuria poate apărea fără amenințare anterioară; ușurarea are structură temporală obligatorie.",
+      "translation": "Joy can arise without a preceding threat; relief necessarily has a temporal structure."
+    },
+    {
+      "id": "t000241",
+      "source": "Test pentru AI",
+      "translation": "AI Test"
+    },
+    {
+      "id": "t000242",
+      "source": "Șterge antecedentul amenințător: verdictul ar trebui să migreze spre bucurie sau mulțumire.",
+      "translation": "Delete the threatening antecedent: the verdict should move toward joy or contentment."
+    },
+    {
+      "id": "t000243",
+      "source": "Amuzament",
+      "translation": "Amusement"
+    },
+    {
+      "id": "t000244",
+      "source": "EMOȚIE LUDICĂ",
+      "translation": "PLAYFUL EMOTION"
+    },
+    {
+      "id": "t000245",
+      "source": "Răspuns pozitiv la incongruență interpretată ca sigură, nonurgentă și procesabilă în cadru de joc.",
+      "translation": "Positive response to an incongruity interpreted as safe, nonurgent and processable within a play frame."
+    },
+    {
+      "id": "t000246",
+      "source": "Amuzamentul apare când o incongruență poate fi procesată într-un cadru sigur sau ludic. Aceeași ruptură de așteptare poate deveni confuzie, ofensă sau frică dacă siguranța și caracterul benign dispar.",
+      "translation": "Amusement arises when an incongruity can be processed within a safe or playful frame. The same breach of expectation can become confusion, offense or fear if safety and benign intent disappear."
+    },
+    {
+      "id": "t000247",
+      "source": "Semnătură AAC",
+      "translation": "AAC Signature"
+    }
+  ]
+}

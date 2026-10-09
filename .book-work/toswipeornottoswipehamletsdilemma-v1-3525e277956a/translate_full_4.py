@@ -1,0 +1,23 @@
+import json
+from pathlib import Path
+p=Path('.book-work/toswipeornottoswipehamletsdilemma-v1-3525e277956a/translations/ro/full/chunks/0004.json')
+d=json.loads(p.read_text())
+t=[
+"Impactul economic nu se oprește aici. «Purtarea stranie» a lui Hamlet creează un nou sector de locuri de muncă: supravegherea regală. Dintr-odată, de la Rosencrantz și Guildenstern până la biata Ofelia, toți lucrează în domeniul în plină dezvoltare al urmăririi lui Hamlet. Este ca un reality-show non-stop, dar cu mai multe monologuri și mai puține jacuzziuri.",
+"Apropo de Ofelia, să nu trecem cu vederea industria înfloritoare a florilor. Obiceiul ei de a împărți flori simbolice trebuie să fi fost o binecuvântare pentru florarii locali. «Rozmarin pentru amintire» nu este doar un vers poetic, ci un slogan de marketing iscusit. Dacă Ofelia ar fi trăit azi, ar fi fost o influenceriță pe Instagram asociată cu FTD: «Folosiți codul NEBUNIE pentru o reducere de 20% la următorul buchet!»",
+"Să vorbim despre piața imobiliară din Elsinore. Cu atâtea ascultări pe furiș, probabil a apărut o cerere bruscă de case cu pereți mai groși și mai puține perdele plasate oportun. Și să nu uităm nevoia tot mai mare de pasaje secrete a castelului. Iată locuri de muncă: breasla «Tâmplarilor Furișați» trebuie să fi lucrat peste program!",
+"Dar adevăratul geniu economic al lui Hamlet este crearea primei economii bazate pe fantome. Gândiți-vă: fără spiritul bătrânului Hamlet, n-ar exista piesa, răzbunarea și, cu siguranță, nici boomul economic. Este un stimul ectoplasmatic de primă mână! Poate că Hamlet nu amâna, ci lăsa pur și simplu efectul de multiplicare să-și facă treaba.",
+"Să nu uităm sectorul divertismentului. Piesa din interiorul piesei lui Hamlet nu este doar un truc inteligent, ci creează locuri de muncă. Gândiți-vă la actorii angajați, scenografii însărcinați cu decorurile și croitorii contractați pentru costume. Hamlet a revigorat de unul singur teatrul danez! Lasă loc, Broadway: Elsinore este noua capitală culturală.",
+"Dar industria săpatului de morminte? Mulțumită meditațiilor existențiale ale lui Hamlet (și atitudinii sale cam nepăsătoare față de viața omenească), afacerea groparilor înflorește. E o piață în creștere, cu clienți captivi: iată siguranța locului de muncă!",
+"Desigur, nu putem vorbi despre hamletonomie fără negoțul înfloritor cu otravă. De la urechi la vârfurile spadelor și cupele de vin, cererea de amestecuri mortale este uriașă. Ar stârni invidia lui Walter White. Breaking Bad? Mai degrabă Breaking Denmark!",
+"Poate cea mai strălucită mișcare economică din piesă este decizia lui Hamlet de a-i trimite pe Rosencrantz și Guildenstern în Anglia. Nu este doar un procedeu al intrigii, ci diplomație internațională și relații comerciale la un loc. Hamlet: prinț, filosof și pionier al negocierilor pentru Brexit.",
+"Știu ce gândiți: «Dar, profesore, nu mor cu toții la sfârșit? Cum poate fi asta bun pentru economie?» Uitați de profitabila industrie funerară! Ca să nu mai vorbim despre boomul din sectorul «prinț norvegian cuceritor». Fortinbras nu ocupă doar Danemarca, ci îi stimulează economia printr-o preluare ostilă. Este economia scurgerii bogăției de sus în jos, în stil medieval!",
+"În concluzie, Hamlet nu este doar o tragedie, ci o lecție magistrală despre stimularea economiei prin cheltuieli motivate de răzbunare. Adevărata tragedie este că Hamlet nu a trăit destul ca să vadă roadele muncii sale. Ar fi putut schimba «A fi sau a nu fi» în «A cumpăra sau a nu cumpăra» și deveni primul filosof-economist al Danemarcei.",
+"Așa că, data viitoare când cineva spune că o diplomă în literatura engleză nu e practică, amintește-i ce forță economică este Hamlet. La urma urmei, după cuvintele Bardului, «Nu există nimic bun sau rău în sine, gândirea îl face astfel». Iar dacă te gândești destul, poți transforma și cel mai posomorât prinț danez într-un vizionar al economiei.",
+"Acum, dacă îmi dați voie, mă duc să investesc pe piața în ascensiune a replicilor craniului «vai, sărmanul Yorick». Aud că va fi enormă în Danemarca trimestrul acesta.",
+"Capitolul al patrulea — Hamlet 2.0: actualizarea de care avea nevoie tragedia",
+"Doamnelor, domnilor și curteni non-binari, bine ați venit la ultimul act al satirei noastre shakespeariene! E timpul să-l târâm pe Hamlet, chiar dacă se împotrivește, în secolul XXI. Țineți-vă bine: îi facem melancolicului danez o transformare digitală atât de necesară."
+]
+assert len(t)==len(d['segments']),(len(t),len(d['segments']))
+for x,v in zip(d['segments'],t):x['translation']=v
+p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

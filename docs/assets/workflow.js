@@ -296,7 +296,7 @@
         const label = edition.label?.[lang] || edition.label?.en || `Edition ${edition.number}`;
         const changes = edition.changes?.[lang] || edition.changes?.en || "";
         const date = preparing ? "" : new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(new Date(`${edition.publishedAt}T12:00:00`));
-        const downloads = Object.entries(edition.pdf || {}).map(([code, path]) => `<a href="../${escape(book.directory)}/${escape(path)}" download>${escape(words.download)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`).join("");
+        const downloads = Object.entries(edition.pdf || {}).map(([code, path]) => `<a href="../${escape(book.directory)}/${escape(path)}" download="${escape(globalThis.ScriptaReading.pdfDownloadName(book.title.en, edition.number))}">${escape(words.download)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`).join("");
         const readingWords = globalThis.ScriptaReading.labels[lang];
         const readers = Object.entries(edition.readers || {}).flatMap(([code, formats]) => Object.entries(formats).map(([format, path]) => `<a href="../${escape(book.directory)}/${escape(path)}">${escape(format === "shortContent" ? readingWords.short : readingWords.full)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`)).join("");
         const coverPath = edition.covers?.[lang] || edition.covers?.en;

@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+"""Direct Romanian translation of the ten-minute reader chunk."""
+import json
+from pathlib import Path
+w=Path(__file__).resolve().parents[1];p=w/'translations/ro/short/chunks/0001.json';d=json.loads(p.read_text())
+t=[
+'Descifrând «Hoțul de cărți» de Markus Zusak — Ediția de zece minute',
+'Descifrând «Hoțul de cărți» de Markus Zusak',
+'Ediția de zece minute',
+'Acest ghid de interpretare repovestește evenimente importante și finalul romanului lui Markus Zusak',
+'Hoțul de cărți',
+'. Cititorii care vor să descopere singuri deznodământul romanului ar trebui să îl citească mai întâi. Cele patru capitole o urmăresc pe Liesel Meminger în Germania nazistă, de la moartea fratelui ei și sosirea pe Himmel Street până la descoperirea cărțile pot păstra memoria, susține relațiile și opune rezistență limbajului asupririi. Eseul folosește vocea narativă a Morții pentru a lega durerea personală de distrugerile mai ample ale războiului.',
+'Introducere: cuvintele ca teren de luptă',
+'Introducerea susține că vorbele pot fi folosite atât pentru a controla oamenii, cât și pentru a-i ajuta să reziste. Ea așază cărțile furate de Liesel în opoziție cu arderile de cărți și propaganda nazistă, apoi prezintă lectura ca mijloc de recâștigare a unei voci proprii. Prezentările capitolelor trec de la naratorul neobișnuit, Moartea, la familia adoptivă a lui Liesel, la înțelegerea ei tot mai profundă a războiului și la pierderile din finalul romanului. Introducerea trage și o concluzie actuală despre limbaj și rezistență, dar povestea rămâne ancorată în viața lui Liesel sub nazism.',
+'Capitolul întâi: Moartea și prima carte furată',
+'Moartea povestește romanul în timp ce poartă povara numeroaselor vieți pierdute în război. Liesel, care nu a împlinit încă zece ani, călătorește cu mama și fratele ei mai mic spre o familie adoptivă. Fratele moare pe drum, iar ea ia',
+'Manualul groparului',
+'după înmormântarea lui, deși încă nu știe să citească. Eseul interpretează primul furt ca răspuns la pierdere: cartea devine o legătură materială cu fratele și cu viața pe care a lăsat-o în urmă.',
+'Pe Himmel Street, Rosa Hubermann pare aspră, în timp ce Hans îi oferă răbdare și grijă. Hans stă cu Liesel în nopțile marcate de coșmaruri și începe să o învețe alfabetul în pivniță. Cititul îi oferă o cale de a înțelege durerea și de a clădi încredere în el. Capitolul urmărește apoi prietenia cu Rudy Steiner și sosirea lui Max Vandenburg, un evreu ascuns de familia Hubermann. Perspectiva Morții păstrează vizibilă fragilitatea acestor legături chiar și atunci când Liesel găsește clipe de speranță.',
+'Capitolul al doilea: să înveți să citești și să aparții',
+'Al doilea capitol revine la primele luni ale lui Liesel în familia Hubermann. Amintirile despre fratele ei îi întrerup viața obișnuită, iar felul dur al Rosei o sperie la început. Hans răspunde coșmarurilor ei prin sprijin discret. Când îi arată manualul furat, încep lecțiile lor de citit din fiecare noapte. Eseul subliniază că lecțiile înseamnă mai mult decât școală: o ajută pe Liesel să înțeleagă despărțirea și să formeze o legătură cu tatăl adoptiv.',
+'Pe măsură ce învață să citească, Liesel vede tot mai mult din lumea politică de dincolo de casă. Rudy îi devine prieten apropiat și dovedește că jocul poate supraviețui sub opresiune. Svasticile și ostilitatea publică față de evrei fac războiul imposibil de ignorat. Casa familiei Hubermann nu este nici sigură, nici înstărită, dar devine un loc unde Liesel poate învăța și se poate atașa de alții. Moartea continuă să o urmărească, iar capitolul contrastează în mod repetat fragilitatea acestor relații cu valoarea lor.',
+'Capitolul al treilea: cărțile, Max și limitele tăcerii',
+'Al treilea capitol pune alfabetizarea lui Liesel în opoziție cu frica și tăcerea impusă. Ea descoperă biblioteca bogată a primarului când adună rufele pentru Rosa, apoi începe să o viziteze în secret. Cărțile îi deschid alte lumi și îi oferă o cale de a gândi dincolo de limbajul oficial din jur. În interpretarea eseului, furtul lor devine un act de sfidare, nu o simplă dorință de a le avea.',
+'Când Hans îl adăpostește pe Max în pivniță, gesturile tăcute de grijă ale familiei devin mai periculoase. Liesel se împrietenește treptat cu el. Poveștile, lectura împreună și experiența pierderii îi ajută să comunice în ciuda fricii din jurul ascunzătorii sale. Sirenele de raid aerian și apropierea războiului măresc presiunea asupra Himmel Street. Capitolul prezintă lectura cu voce tare a lui Liesel ca alinare pentru Max, Hans, Rosa și alții. Cuvintele nu pot opri bombele, dar pot păstra legătura și speranța în timpul așteptării.',
+'Capitolul al patrulea: prețul supraviețuirii',
+'Ultimul capitol povestește bombardarea Himmel Street și moartea celor mai apropiați oameni ai lui Liesel, inclusiv Hans, Rosa și Rudy. Liesel supraviețuiește fiindcă scrie în pivniță. Iese ținând cartea propriei vieți în timp ce strada din jur a fost distrusă. Ghidul nu prezintă supraviețuirea ca pe o victorie simplă: durerea ei rămâne apăsătoare, iar oamenii iubiți nu pot fi aduși înapoi prin povestire.',
+'Eseul o urmărește pe Liesel dincolo de război, până la bătrânețe, apoi revine la privirea Morții asupra capacității umane de cruzime și bunătate. Leagă finalul romanului de puterea limbajului: propaganda nazistă a folosit cuvintele pentru persecuție, în timp ce lectura și scrisul au ajutat-o pe Liesel să își amintească, să aibă grijă de alții și să reziste tăcerii. Capitolul extinde preocuparea la autoritarismul modern, susținând că vorbele contează ori de câte ori frica amenință gândirea și compasiunea. Invitația finală este să examinăm cum sunt folosite poveștile, cui i se permite să vorbească și ce se poate păstra prin lectură.',
+'Citește pasajele corespunzătoare din ediția integrală',
+'Introducere: cuvinte și rezistență',
+'Capitolul întâi: Moartea și prima carte a lui Liesel',
+'Capitolul al doilea: casa familiei Hubermann',
+'Capitolul al treilea: cărțile și Max',
+'Capitolul al patrulea: bombardament și supraviețuire',
+'Bibliografie'
+]
+assert len(t)==len(d['segments']),(len(t),len(d['segments']))
+for s,v in zip(d['segments'],t):s['translation']=v
+p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

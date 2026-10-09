@@ -48,6 +48,8 @@ class ReadingRoutesTests(unittest.TestCase):
                     self.assertEqual(len(pdfs), int(bool(english_pdf)))
                     if pdfs:
                         self.assertEqual((page.parent / unquote(pdfs[0]['href'])).resolve(), (DOCS / english_pdf).resolve())
+                        self.assertTrue(pdfs[0]['download'].endswith('.pdf'))
+                        self.assertNotEqual(pdfs[0]['download'], 'book.pdf')
                     notices = [a for _, a in elements if 'data-translation-notice' in a]
                     missing = next((name for name, key in [('read', 'fullContent'), ('short', 'shortContent')] if key not in edition), None)
                     self.assertEqual(len(notices), int(bool(missing)))

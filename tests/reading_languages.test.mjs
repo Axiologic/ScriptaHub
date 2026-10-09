@@ -3,6 +3,10 @@ import assert from 'node:assert/strict';
 import '../docs/assets/reading.js';
 
 const reading = globalThis.ScriptaReading;
+test('PDF download filenames use the book title and distinguish historical editions', () => {
+  assert.equal(reading.pdfDownloadName('Beauty: The Anatomy of Fascination'), 'beauty-the-anatomy-of-fascination.pdf');
+  assert.equal(reading.pdfDownloadName('Beauty: The Anatomy of Fascination', 2), 'beauty-the-anatomy-of-fascination-edition-2.pdf');
+});
 const root = 'https://example.test/library/';
 const book = { id: 'bk-test', currentEdition: 'edition-2', directory: 'books/a/bk-test', title: { en: 'A & B' }, editions: Object.fromEntries(reading.supported.map(code => [code, { book: `books/a/bk-test/${code}/book.html` }])) };
 book.editions.en.fullContent = 'books/a/bk-test/en/full_content.html';

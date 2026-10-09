@@ -64,6 +64,10 @@ def prepare(source: Path, destination: Path, language: str, work: Path, maximum_
         target = (source.parent / parsed.path).resolve()
         if target == source.resolve():
             target = destination.resolve()
+        elif target.parent == source.parent.resolve() and target.name in {"full_content.html", "short_content.html"}:
+            # A short reader's chapter links should open its translated full
+            # reader, rather than the English source beside the source HTML.
+            target = destination.parent.resolve() / target.name
         relative = os.path.relpath(target, destination.parent.resolve())
         if parsed.query: relative += '?' + parsed.query
         if parsed.fragment: relative += '#' + parsed.fragment

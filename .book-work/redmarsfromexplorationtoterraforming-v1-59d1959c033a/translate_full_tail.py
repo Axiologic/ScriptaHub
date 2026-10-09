@@ -1,0 +1,33 @@
+import json
+from pathlib import Path
+
+root = Path(__file__).parent / 'translations/ro/full/chunks'
+translations = {
+    't000050': 'Primii O Sută, o echipă multinațională de oameni de știință, călătoresc spre Marte la bordul navei Ares. Din echipă fac parte mai multe personaje importante, printre care carismaticul și idealistul John Boone, liderul pragmatic Frank Chalmers și geologa rusă Maya Toitovna. În timpul călătoriei încep să apară divergențe în grup, prevestind conflictele politice și personale care vor izbucni după asolizare.',
+    't000051': 'Întemeierea primei colonii marțiene',
+    't000052': 'După sosirea pe Marte, Primii O Sută întemeiază prima așezare, Underhill, și încep să facă planeta locuibilă. Apar tensiuni când diferitele facțiuni ale grupului dezbat viitorul planetei. Omul de știință Sax Russell susține o terraformare rapidă, care să facă Marte mai asemănător cu Pământul. Ann Clayborne, o altă figură importantă, se opune și insistă ca Marte să fie păstrat în starea sa naturală.',
+    't000053': 'Dezbaterea despre terraformare',
+    't000054': 'Una dintre temele centrale ale romanului Marte Roșie este dezbaterea etică privind terraformarea. Sax conduce eforturile de a încălzi Marte prin eliberarea gazelor cu efect de seră, urmărind să-i transforme atmosfera astfel încât să susțină viața omenească. Ann, dimpotrivă, crede că acest lucru ar distruge frumusețea și integritatea naturală a planetei. Ruptura dintre „terraformatori” și „conservatori” devine una dintre principalele surse de conflict ale romanului și reprezintă tensiunea mai largă dintre progresul științific și etica mediului.',
+    't000055': 'Implicarea corporațiilor pământene și rezistența marțiană',
+    't000056': 'Pe măsură ce colonia marțiană crește, corporațiile și guvernele de pe Pământ încep să vadă în Marte o planetă bogată în resurse, numai bună de exploatat. Ele îi presează pe coloniști să sprijine extragerea resurselor, mai ales mineritul. Acest lucru amplifică tensiunile dintre coloniștii care își doresc o societate marțiană independentă și capabilă să se întrețină singură și puterile de pe Pământ, care privesc Marte ca pe o prelungire a propriilor interese. Frank Chalmers, unul dintre principalii lideri politici, este prins între aceste forțe potrivnice. Deși a încercat inițial să mențină ordinea și să gestioneze influența Pământului, controlul corporativ tot mai mare și exploatarea resurselor marțiene au dus la tulburări. Printre coloniștii care vor independență față de corporațiile pământene apare o mișcare de rezistență tot mai puternică',
+    't000057': 'Revoluția marțiană',
+    't000058': 'Punctul culminant al romanului este o rebeliune generală împotriva controlului exercitat de Pământ. Când tensiunile dau în clocot, mai mulți dintre Primii O Sută, alături de coloniști veniți mai târziu, se răscoală împotriva puterilor corporative și a guvernelor care încearcă să controleze resursele și viitorul planetei. În ciuda încercărilor sale de a media, Frank Chalmers se găsește în centrul acestui conflict. În timpul revoluției, infrastructura marțiană este avariată și se instalează haosul. Unii coloniști fug în ținuturile îndepărtate ale planetei pentru a întemeia așezări noi și independente, în timp ce alții rămân să continue lupta. Revolta este înăbușită brutal de Pământ, dar pregătește conflictele viitoare dintre Marte și planeta sa de origine din volumele următoare ale trilogiei.',
+    't000059': 'Asasinarea lui John Boone',
+    't000060': 'John Boone, primul om care a pășit pe Marte și un susținător important al cooperării pașnice, devine o figură centrală în lupta pentru viitorul planetei. Pe măsură ce influența lui crește, idealismul său amenință anumite facțiuni, inclusiv pe Frank Chalmers, care îl vede ca pe un rival la conducere. Într-un moment decisiv se dezvăluie că Frank, printr-un gest calculat, a pus la cale asasinarea lui Boone, zguduind întreaga colonie.',
+    't000061': 'Urmările și germenii conflictelor viitoare',
+    't000062': 'La sfârșitul romanului, colonia este dezbinată. Deși Pământul păstrează controlul, au fost semănate semințele unei mișcări mai ample pentru independența marțiană. Personajele sunt risipite pe planetă, iar viitorul lui Marte rămâne nesigur. Tensiunile persistente dintre Pământ și Marte, alături de disputele științifice și etice privind terraformarea, pregătesc următoarele volume ale trilogiei, Marte Verde și Marte Albastră.',
+    't000063': 'Concluzie',
+    't000064': 'Marte Roșie este un roman bogat în straturi de sens, care examinează în amănunt provocările colonizării unei lumi noi. El nu abordează doar dilemele etice ale terraformării, punând sub semnul întrebării consecințele morale ale modificării unui întreg ecosistem, ci explorează și luptele politice și sociale care apar inevitabil atunci când omenirea încearcă să se stabilească la o nouă frontieră. Momente importante, precum sosirea Primilor O Sută, pun în mișcare relațiile complicate dintre coloniști și scot la lumină motivațiile și aspirațiile diferite ale acestor primi pionieri. Pe măsură ce tensiunile cresc, povestea împletește teme ale puterii, identității și rezistenței, culminând cu revoluția marțiană, care cuprinde lupta pentru autonomie și autodeterminare.',
+    't000065': 'Explorarea acestor teme pregătește nu numai volumele următoare ale trilogiei, ci îi invită pe cititori să se gândească la întrebări mai largi despre viitorul omenirii. Romanul ne îndeamnă să ne întrebăm ce înseamnă să fii pionier într-o lume nouă și ce responsabilități aduce o asemenea încercare. În cele din urmă, Marte Roșie nu este doar o poveste despre supraviețuire și conflict, ci și o meditație profundă asupra naturii civilizației și a implicațiilor etice ale dorinței noastre de a ne extinde în cosmos. Urmărind călătoriile personajelor, suntem îndemnați să privim critic propriile structuri sociale și viitorurile posibile ale omenirii pe Marte și dincolo de el.',
+    't000066': 'Bibliografie',
+    't000067': '“The Case for Mars: The Plan to Settle the Red Planet and Why We Must" de Robert Zubrin',
+    't000068': '"Mars Direct: Space Exploration, the Red Planet, and the Future of Space Travel" de Robert Zubrin',
+    't000069': '"Packing for Mars: The Curious Science of Life in the Void" de Mary Roach',
+    't000070': '"Terraforming: The Creating of Habitable Worlds" de Jack Williamson',
+}
+for filename in ('0010.json', '0011.json'):
+    path = root / filename
+    data = json.loads(path.read_text())
+    for segment in data['segments']:
+        segment['translation'] = translations[segment['id']]
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')

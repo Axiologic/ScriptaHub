@@ -1,0 +1,21 @@
+import json
+from pathlib import Path
+
+path = Path(__file__).parent / 'chunks/0003.json'
+data = json.loads(path.read_text())
+translations = [
+    "Îngrozit de propria creație, Victor face ceea ce ar face orice savant rațional: fuge. Abandonează ființa, lăsând-o să se descurce singură, în speranța că, dacă ignoră problema, ea va dispărea. Desigur, nimic nu este atât de simplu, iar fuga lui Victor marchează începutul unui coșmar care îl va urmări tot restul vieții.",
+    "În acest prim capitol al poveștii lui Victor vedem arcul clasic al ambiției transformate în dezastru. La început are intenții nobile; la urma urmei, cine nu ar vrea să învingă moartea și să dea viață celor lipsiți de ea? Dar obsesia oarbă de a atinge măreția îl conduce pe un drum primejdios de pe care nu mai poate întoarce. Și, cum vom vedea curând, urmările faptelor lui sunt mult mai înfricoșătoare decât și-ar fi putut imagina.",
+    "Drumul lui Victor Frankenstein în lumea cunoașterii interzise abia începe și este deja limpede că încercarea lui de a crea viață poate avea urmări foarte întunecate și mortale.",
+    "Capitolul doi — Nașterea monstrului",
+    "În al doilea capitol din «Frankenstein», viața lui Victor începe să se destrame mai repede decât un costum de Halloween făcut în grabă. După ce își creează ființa într-un acces de ambiție științifică și regretă imediat, încearcă să revină la normal, dacă se poate numi «normal» să ignori amintirea vie și uriașă a hotărârii tale cumplite. Dar, după cum știm cu toții, nu poți pur și simplu fugi de probleme. Te ajung din urmă, iar în cazul lui Victor, acest lucru este cu atât mai adevărat.",
+    "După ce abandonează creatura, Victor se prăbușește mintal și fizic. Îl lovește o boală atât de puternică, încât pare mai puțin o gripă obișnuită și mai mult un caz de «mi se năruie conștiința morală». Luni întregi stă la pat, îngrijit de prietenul său Henry Clerval, sosit de curând la Ingolstadt. Să ne oprim o clipă la ironie: în timp ce Victor zace și își revine după monstrul creat, ființa este undeva afară, vie și fără cea mai mică idee ce să facă cu noua ei existență. Victor evită să dea ochii cu propria creație, dar problemele lui sunt departe de a se încheia.",
+    "Prezența lui Henry este o rază de lumină în această perioadă întunecată. Bunătatea și entuziasmul lui îl ajută treptat pe Victor să-și revină. Când își recapătă în sfârșit sănătatea, Victor promite să nu se mai gândească la creatură. «Gata cu treburile monstruoase», își spune. «De acum mă întorc la studiul obișnuit.» Frumos gând, dar știm cu toții că nu se va întâmpla așa. Faptul că ignoră monstrul nu îl face să dispară.",
+    "Victor încearcă să-și continue viața, reia studiile și petrece timp cu Henry, dornic să învețe și să exploreze universitatea. Bucuria de viață a lui Henry este molipsitoare și, o vreme, pare că Victor chiar și-ar putea uita experimentul sumbru. Dar scurta liniște se destramă când primește o scrisoare de la tatăl său, Alphonse Frankenstein. Vestea îl lovește ca un trăsnet: fratele lui cel mai mic, William, a fost ucis.",
+    "Copleșit de durere, Victor se întoarce imediat acasă, la Geneva. Drumul este lung și plin de spaimă, deoarece îl bântuie gândul că propria creație, cea «abandonată», ar putea fi răspunzătoare de moartea fratelui. Ajuns la Geneva, vizitează locul crimei, învăluit de păduri întunecate și de o liniște neliniștitoare. Mergând singur, vede în depărtare o siluetă în umbră. Printre copaci se ascunde creatura căreia i-a dat viață. Atunci, totul i se limpezește: creația lui este răspunzătoare de tragedie.",
+    "Victor este copleșit de vină și groază, dar spune cuiva ce bănuiește? Nu. În loc să mărturisească faptul că s-ar putea să fi lăsat din greșeală liber un ucigaș care îi amenință familia, tace. Se convinge că nimeni nu l-ar crede, ceea ce, să fim sinceri, poate fi o temere întemeiată. «Am creat viață din greșeală într-un experiment ratat, iar acum creația mea ucide oameni» nu este tocmai cea mai credibilă poveste. Dar totuși, să tacă? Nu este cea mai bună alegere.",
+]
+assert len(data['segments']) == len(translations)
+for segment, translation in zip(data['segments'], translations):
+    segment['translation'] = translation
+path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')

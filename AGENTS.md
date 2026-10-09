@@ -47,7 +47,8 @@
   Preserve `shortDescriptionEditorial` provenance; legacy enrichment must not
   overwrite reviewed copy. Use `docs/assets/book-view.js` for shared book views
   and the uniform `textShow` lifecycle rather than duplicating card markup.
-- Before book maintenance, scan `tasks/` with `python3 tools/book_tasks.py scan`.
+- Before book maintenance, scan `tasks/` and `income/` with
+  `python3 tools/book_tasks.py scan`.
   Read `tasks/RELEASE-PROGRESS.md` and `tasks/release-progress.json` first and
   resume their existing workspaces and chunk files. Update them with
   `python3 tools/book_tasks.py status` after each meaningful step and before
@@ -62,8 +63,14 @@
   create duplicate releases. Process queued versions in numeric order.
   Prepare the complete EN/RO readers, ten-minute editions, refreshed metadata,
   100 discovery keywords and cover derivatives before installing a release.
-  Keep archived source files and all prior downloads. After the complete conversion is validated and its PDF is installed, remove the delivered DOCX from `tasks/`, only after verifying an identical SHA-256 source copy in the edition archive. Keep unfinished deliveries in `tasks/`. See `docs/specs/DS-002-book-releases.md`
-  for the staging, translation and release procedure.
+  Keep source filename, version and SHA-256 provenance and all prior downloads,
+  without archived DOC/DOCX binary copies. After the complete conversion is
+  validated and its PDF is installed, remove the delivered DOC/DOCX from
+  `tasks/` or `income/` only after verifying its SHA-256 against the installed
+  edition's provenance record. Keep unfinished deliveries in `tasks/` or
+  `income/`; defer the `income/` cleanup until all incoming conversions are
+  complete. See `docs/specs/DS-002-book-releases.md` for the staging,
+  translation and release procedure.
 - **Make incoming work visible immediately.** After identifying a source,
   create the new book's landing pages and searchable catalogue entry, or add
   the matching book's new edition-history record, marked **In preparation**
@@ -306,5 +313,8 @@
   without closing open scripts. Do not mark a draft, recording or planned visual
   revision as a finished film; verify current text, packaged audio, measured
   duration and visual review separately. Review all requested scripts before
-  batch voice generation. Current book-introduction scope is all books, with
-  a source-grounded marketing hook and maximum two-minute measured duration.
+  batch voice generation. Current book-introduction production scope is a
+  curated selection of substantial, distinctive, philosophically deep books
+  after their EN/RO editions pass release QA, with a source-grounded marketing
+  hook and maximum two-minute measured duration. Preserve existing films and
+  the Animation proposal action for books without a film.

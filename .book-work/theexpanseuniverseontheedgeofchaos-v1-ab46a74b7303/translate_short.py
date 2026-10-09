@@ -1,0 +1,35 @@
+import json
+from pathlib import Path
+
+root = Path('.book-work/theexpanseuniverseontheedgeofchaos-v1-ab46a74b7303/translations/ro/short/chunks')
+translations = {
+    't000001': 'Universul The Expanse: la marginea haosului — Ediția de zece minute',
+    't000002': 'Universul The Expanse: la marginea haosului',
+    't000003': 'The Expanse imaginează un sistem solar populat în care plecarea de pe Pământ nu a pus capăt luptelor pentru resurse, putere și identitate. Pământul, Marte și Centura depind unele de altele, deși concurează pentru control. În această ordine instabilă apare protomolecula, o tehnologie extraterestră care tulbură granițele biologiei și fizicii. Cartea citește serialul prin cinci perspective legate între ele: relațiile umane, societățile divizate, filosofia, politica și călătoriile navei Rocinante. Întrebarea sa centrală este dacă expansiunea tehnologică poate fi însoțită de creștere morală și socială.',
+    't000004': 'Protomolecula și Rocinante',
+    't000005': 'Primul capitol pune alături două imagini. Protomolecula este o putere pe care oamenii se străduiesc să o înțeleagă și sunt ispitiți să o folosească. Poate transforma materia și sistemele vii, devenind astfel un mod de a întreba ce se întâmplă când capacitatea depășește judecata. Rocinante, dimpotrivă, este un refugiu la scară umană. Membrii echipajului se contrazic, vin din lumi diferite și au loialități aflate în conflict, dar învață să se bazeze unii pe alții. Nava îi leagă prin muncă, risc și grijă reciprocă. Tehnologia poate lărgi câmpul acțiunii, însă relațiile le dau oamenilor un motiv să decidă cum ar trebui folosită.',
+    't000006': 'Comparația oferă cărții un punct de plecare clar. O descoperire puternică nu ține loc de etică și nici nu garantează progresul. Încrederea echipajului nu apare automat; se formează prin alegeri repetate, făcute sub presiune. The Expanse face vizibile aceste alegeri într-un cadru destul de mare încât să micșoreze orice individ.',
+    't000007': 'Citește integral capitolul întâi',
+    't000008': 'Un sistem solar divizat',
+    't000009': 'Pământul rămâne aglomerat și afectat de presiunea asupra mediului. Marte a construit o societate ambițioasă în jurul tehnologiei, disciplinei și speranței de a transforma planeta într-una locuibilă. Locuitorii Centurii trăiesc în stații și nave, extrag resurse pentru planetele interioare și se adaptează fizic la gravitația redusă. Aceste diferențe fac din fiecare populație mai mult decât o etichetă politică. Aerul, apa, hrana, gravitația, munca și dezvoltarea corpului modelează ceea ce membrii ei pot aștepta de la viață. Dependența Centurii de clienți puternici transformă interdependența economică într-o sursă de resentiment și rezistență.',
+    't000010': 'Al doilea capitol întreabă dacă expansiunea schimbă omenirea sau doar răspândește vechile inegalități într-un spațiu mai mare. Aceleași motoare și stații care fac colonizarea posibilă creează noi ierarhii. Pământul, Marte și Centura au nevoie unele de altele, dar fiecare își spune o poveste care îi justifică propriile priorități. Cooperarea este posibilă, însă trebuie să treacă atât peste inegalități materiale, cât și peste suspiciuni moștenite.',
+    't000011': 'Citește integral capitolul al doilea',
+    't000012': 'Identitate, sens și cercetare',
+    't000013': 'Al treilea capitol trece de la geografie la oamenii schimbați de ea. Gravitațiile diferite remodelează corpurile; migrațiile și crizele remodelează identitățile. Căutarea lui Julie Mao de către Miller devine o căutare a sensului, în timp ce alte personaje se confruntă cu distanța dintre loialitatea față de o comunitate și responsabilitatea față de cei din afara ei. Protomolecula adâncește problema, punând oamenii în fața unor forme de viață și inteligență care nu încap în categoriile obișnuite. Ce înseamnă să fii om și cât se poate schimba o persoană rămânând totuși recognoscibilă?',
+    't000014': 'Capitolul privește și curiozitatea științifică drept răspuns la frică. Prax Meng și Elvi Okoye reprezintă efortul de a cerceta fenomene ciudate, nu de a le reduce la povești familiare. Munca lor nu poate înlătura pericolul, dar oferă o cale disciplinată de a învăța din el. Interesul filosofic al cărții stă în această combinație de vulnerabilitate și cercetare: oamenii caută sens în fața unui univers care nu se organizează potrivit așteptărilor lor.',
+    't000015': 'Citește integral capitolul al treilea',
+    't000016': 'Dinamica puterii',
+    't000017': 'Politica pune în mișcare evenimentele din The Expanse. Guvernul Pământului trebuie să administreze populații uriașe și resurse puține, păstrându-și totodată influența. Marte are forță militară și tehnologică, dar depinde de comerț. Centura furnizează minerale valoroase și muncă, în timp ce se luptă să obțină bunurile de bază. Deciziile lui Chrisjen Avasarala ilustrează compromisurile conducerii statului, iar facțiunile rivale arată cât de repede poate frica să transforme interdependența în rivalitate. Controlul transportului, hranei, aerului și noilor tehnologii este, așadar, politic în aceeași măsură în care este tehnic.',
+    't000018': 'Al patrulea capitol nu descrie o despărțire stabilă între cei puternici și cei lipsiți de putere. Noile descoperiri schimbă echilibrul, iar alianțele se modifică pe măsură ce actorii încearcă să își protejeze oamenii. Capitolul îi îndeamnă pe cititori să privească dincolo de discursurile despre destin și să observe sistemele practice care permit unei societăți să supraviețuiască. Legăturile economice pot sprijini cooperarea, dar numai dacă participanții pot contesta exploatarea și negocia puterea.',
+    't000019': 'Citește integral capitolul al patrulea',
+    't000020': 'Călătorii în necunoscut',
+    't000021': 'Al cincilea capitol urmărește Rocinante în misiuni care poartă echipajul de la rivalități familiare spre întâlniri dincolo de sistemul solar cunoscut. Aventurile îmbină anchete, lupte, prime contacte și decizii privitoare la structuri extraterestre. Porțile inelare lărgesc cadrul fizic, dar și incertitudinea: personajele trebuie să acționeze înainte de a înțelege pe deplin forțele cu care se confruntă. Originile lor diferite fac din navă un mic test al cooperării dincolo de diviziunile descrise mai devreme.',
+    't000022': 'Concluzia revine la măsura centrală a progresului din carte. Drumul tot mai departe în spațiu nu șterge luptele pentru identitate și resurse. Supraviețuirea depinde și de adaptare, învățare științifică, empatie și capacitatea de a colabora peste granițe politice. The Expanse folosește scara cosmică pentru a ascuți o întrebare obișnuită: când apare o putere nouă, ce fel de oameni și instituții vor decide ce să facă cu ea?',
+    't000023': 'Citește integral capitolul al cincilea',
+}
+for path in sorted(root.glob('*.json')):
+    data = json.loads(path.read_text(encoding='utf-8'))
+    for segment in data['segments']:
+        segment['translation'] = translations[segment['id']]
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+print('Translated 23 short-reader segments')

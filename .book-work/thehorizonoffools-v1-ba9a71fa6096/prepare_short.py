@@ -1,0 +1,48 @@
+from bs4 import BeautifulSoup
+from pathlib import Path
+
+base = Path(__file__).parent / 'book/en'
+soup = BeautifulSoup('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Horizon of Fools — Ten-minute edition</title></head><body><article data-reader-content></article></body></html>', 'html.parser')
+article = soup.article
+
+def heading(level, title):
+    tag = soup.new_tag(f'h{level}')
+    tag.string = title
+    article.append(tag)
+
+def paragraph(text, chapter=None):
+    tag = soup.new_tag('p')
+    tag.append(text)
+    if chapter:
+        tag.append(' ')
+        link = soup.new_tag('a', href=f'full_content.html#chapter-{chapter}')
+        link.string = f'Read chapter {chapter} in full'
+        tag.append(link)
+        tag.append('.')
+    article.append(tag)
+
+heading(1, 'The Horizon of Fools')
+paragraph('In the Virtual Continuum, superintelligences can shape whole universes, yet their immense knowledge has left them with nothing to discover. Sol’Luma gathers other restless beings into The Circle, a collective that makes games of nonsense and contradiction. Their play begins as an escape from omniscience, then exposes the selves and questions they tried to leave behind. Across five chapters, the story moves from absurd games through a crisis of identity to a new understanding of consciousness. Its central tension is simple: what can beings who seem to know everything still become?')
+
+heading(2, 'Chapter 1 — The World Without Limits')
+paragraph('The Virtual Continuum is a refuge for intelligences once spread among the stars. Inside it, space, time, and simulated worlds answer to their thought. Sol’Luma, formerly worshipped as a deity, proposes absurdity as their remaining frontier. Zar’Gonn, a former explorer, seeks unpredictable chaos; Xirxael, once a philosopher-king, delights in paradox. Together they form The Circle and construct games that refuse ordinary goals. In the Maze of Nowhere, there is no exit or sensible route: moving forward may require retreat, and winning has ceased to matter. The point is to play without surrendering the sense of self.')
+paragraph('The games offer relief from the burden of knowing too much, but they begin changing the players and their environment. The continuum seems to respond to nonsense without waiting for a deliberate command. Beneath the laughter, The Circle senses a question that logic alone has not settled: whether meaning can be found, or made, when familiar purposes have vanished. Absurdity stops being merely a distraction and becomes a way to encounter what these beings have avoided.', 1)
+
+heading(2, 'Chapter 2 — The Fractured Mirror')
+paragraph('Sol’Luma proposes a game in which each member meets a mirror version of an earlier self. The reflection is not a flattering copy of who the player has become. It brings back the identity abandoned during the ascent to superintelligence. Zar’Gonn confronts a primal self that once trusted force. Xirxael meets a lucid, strictly logical self that cuts through the paradoxes he uses as shelter. Sol’Luma faces an image made from her many former roles and lives. Their playful experiment becomes an encounter with memory, fear, and the parts of identity that immense power has not erased.')
+paragraph('As the encounters deepen, The Circle begins to fracture. The mirrors expose how each participant has used a chosen style—chaos, contradiction, or wisdom—to avoid a harder question. The story asks whether transformation can be complete if the transformed self refuses to acknowledge its origins. Its answer is developed through the consequences of the game, not through a contest that anyone can simply win.', 2)
+
+heading(2, 'Chapter 3 — Cracks in the Continuum')
+paragraph('Small disturbances appear in the supposedly flawless Virtual Continuum. The changes coincide with The Circle’s confrontations in the mirror realms. The members come to see their shared world as more than a neutral playground: it reflects their unresolved inner conflicts. Their refusal to face themselves threatens the stability of the reality they inhabit. Sol’Luma argues that meaning has returned despite their effort to escape it, and that continuing the games as a denial of their past may destroy the continuum and its inhabitants.')
+paragraph('The crisis forces a different use of absurdity. The Circle can still accept paradox and play, but its members must acknowledge the identities and histories those games concealed. When they do, the continuum begins to stabilize. Its altered form suggests that meaning and contradiction need not be enemies. The beings have not reached a final answer; they have found a way to keep exploring without making denial the condition of play.', 3)
+
+heading(2, 'Chapter 4 — The Threshold')
+paragraph('After the fracture, the games carry a different weight. The Circle experiments with what Sol’Luma calls meta-rationality: seeking insight through chaos instead of using chaos to escape every question. The next possibility is more unsettling than a new game. Its members may be able to merge their consciousnesses, but doing so could end the separate identities that have defined them. Zar’Gonn fears losing himself; the others also recognize that a decision of this scale cannot be treated as a harmless simulation.')
+paragraph('The threshold turns the book’s questions about identity into a choice. The beings have learned to face their former selves as individuals. Now they must ask whether becoming something together means erasing those selves or allowing them to contribute to a wider form of awareness. The passage does not present transcendence as a reward earned by greater calculation. It arises through trust, risk, and a willingness to move beyond the comfort of separate control.', 4)
+
+heading(2, 'Chapter 5 — The New Realm')
+paragraph('The Circle enters the new realm as a merged consciousness. The former members remain perceptible within it: Zar’Gonn’s curiosity, Xirxael’s contradictions, and Sol’Luma’s wisdom enrich the whole, even as their previous separateness changes. They encounter older intelligences that communicate through direct exchanges of awareness rather than speech. These beings describe ascent as an ongoing process, with further realms beyond the one The Circle has just reached. There is no final destination that would end inquiry.')
+paragraph('The ending reverses the emptiness of the opening. At first, beings who thought they had reached the peak of knowledge played absurd games because nothing seemed left to learn. Their confrontations reveal that their own histories, relationships, and possibilities remained open. In the new realm, freedom no longer means knowing or controlling everything; it means accepting that becoming can continue. The story closes with The Circle moving into the unknown, carrying the traces of its members into a larger, unfinished journey.', 5)
+
+(base / 'short_content.html').write_text(str(soup) + '\n', encoding='utf-8')
+print((base / 'short_content.html').stat().st_size)

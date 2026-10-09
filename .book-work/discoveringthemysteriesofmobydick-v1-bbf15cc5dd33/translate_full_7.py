@@ -1,0 +1,17 @@
+from pathlib import Path
+import json
+p=Path('.book-work/discoveringthemysteriesofmobydick-v1-bbf15cc5dd33/translations/ro/full/chunks/0007.json')
+d=json.loads(p.read_text())
+t=[
+'La sfârșitul capitolului, Ishmael se gândește la lecțiile furtunii: rezistența spiritului uman, puterea unității și forța neclintită a naturii. Înțelege că ei fac parte dintr-o poveste mai mare, care le împletește viețile cu misterele existenței. Furia oceanului a dezvăluit adevărul călătoriei lor: nu urmăresc doar o balenă, ci descoperă adâncurile propriei umanități în mijlocul haosului mării.',
+'Concluzie',
+'Călătoria corabiei Pequod peste oceanul nesfârșit scoate la iveală misterele profunde din povestea lui Moby Dick. Fiecare capitol dezvăluie nu numai încercările fizice ale echipajului, ci și întrebările existențiale mai adânci care apar în fața puterii copleșitoare a naturii. Prin aventuri, lupte și confruntări cu stihiile, ambiția, obsesia și spiritul uman se împletesc.',
+'Un mister esențial este atracția mării, simbol al aventurii și autocunoașterii. Plecarea lui Ishmael din viața obișnuită reflectă dorința universală de a cerceta necunoscutul. Oceanul îi oglindește psihicul și îi stârnește reflecții profunde despre identitate și existență. În întinderea aceasta vastă, marinarii își înfruntă cele mai adânci temeri și aspirații, arătând cât de plin de încercări este drumul spre înțelegerea de sine.',
+'Obsesia lui Ahab pentru Moby Dick adaugă un alt strat de complexitate: latura întunecată a ambiției. El întruchipează lupta împotriva destinului, iar urmărirea sa neobosită arată cât de departe poate merge omul în căutarea răzbunării și a sensului. Obsesia este și un avertisment asupra prețului unui singur țel urmărit cu orice cost. Tensiunea de pe Pequod arată fragilitatea relațiilor când ambiția umbrește camaraderia și ne îndeamnă să cântărim aspirația în raport cu responsabilitatea morală.',
+'Lupta cu natura se impune pe tot parcursul voiajului. Oceanul, frumos și înfricoșător deopotrivă, încearcă rezistența și unitatea echipajului. În fața furtunilor, Ishmael descoperă că adevărata putere nu stă numai în curajul fiecărui om, ci și în solidaritatea lor. Bătălia cu valurile devine o metaforă a condiției umane și a rezistenței necesare pentru a traversa călătoria agitată a vieții. Experiența împărtășită creează legături adânci între marinari și subliniază rolul comunității în depășirea greutăților.',
+'Întâlnirea cu necunoscutul este o parte însemnată a căutării lor. Pe măsură ce echipajul se apropie de Moby Dick, voiajul devine o cercetare existențială mai largă. Marea balenă albă simbolizează complexitatea vieții: ambiția, teama și ceea ce rămâne de neatins în existență. Reflecțiile lui Ishmael arată că adevărata descoperire nu constă în învingerea balenei, ci în revelațiile născute din urmărirea ei.',
+'Această explorare a lui Moby Dick arată că povestea trece dincolo de vânătoarea literală a unei balene. Ea devine o meditație asupra experienței umane, plină de întrebări care răsună mult după ultima pagină. Marea, obsesia lui Ahab și lupta cu natura îi invită pe cititori să se gândească la propriile călătorii, motive și adevăruri mai adânci, ascunse sub suprafața existenței. Prin aceste mistere, Moby-Dick devine o cercetare profundă a ceea ce înseamnă să fii om în mijlocul complexității fără sfârșit a vieții.',
+]
+assert len(t)==len(d['segments'])
+for s,x in zip(d['segments'],t):s['translation']=x
+p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

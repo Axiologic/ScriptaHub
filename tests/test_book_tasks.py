@@ -7,6 +7,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import book_tasks as tasks
+import build_books
 
 
 class TaskTests(unittest.TestCase):
@@ -24,6 +25,25 @@ class TaskTests(unittest.TestCase):
         path = self.root / "tasks" / name
         path.write_bytes(content)
         return path
+
+    def test_pending_cover_snapshot_breaks_existing_hard_link(self):
+        source = self.book / "en/cover.webp"
+        source.parent.mkdir(parents=True, exist_ok=True)
+        source.write_bytes(b"new cover")
+        snapshot = self.book / "edition-files/edition-2/covers/en.webp"
+        snapshot.parent.mkdir(parents=True, exist_ok=True)
+        snapshot.hardlink_to(source)
+        edition = {"id": "edition-2", "status": "preparing", "covers": {"en": "edition-files/edition-2/covers/en.webp"}}
+
+        build_books.snapshot_edition_covers(self.book, edition, refresh_pending=True)
+        self.assertEqual(snapshot.read_bytes(), b"new cover")
+        self.assertFalse(snapshot.samefile(source))
+        source.write_bytes(b"revised cover")
+        self.assertEqual(snapshot.read_bytes(), b"new cover")
+
+        build_books.snapshot_edition_covers(self.book, edition, refresh_pending=True)
+        self.assertEqual(snapshot.read_bytes(), b"revised cover")
+        self.assertFalse(snapshot.samefile(source))
 
     def test_filename_matching_versions_and_new_titles(self):
         self.delivery("AssistOs_v3.DOCX")
@@ -101,6 +121,11 @@ class TaskTests(unittest.TestCase):
         self.assertEqual((self.book / "en/book.pdf").read_bytes(), b"new pdf")
         self.assertEqual((self.book / old["covers"]["en"]).read_bytes(), b"old cover")
         self.assertEqual((self.book / history["editions"][1]["covers"]["en"]).read_bytes(), b"new cover")
+        source_record = history["editions"][1]["source"]
+        self.assertEqual(source_record["filename"], source.name)
+        self.assertEqual(source_record["sha256"], tasks.sha256(source))
+        self.assertNotIn("path", source_record)
+        self.assertFalse((self.book / "edition-files/edition-2/source").exists())
         self.assertEqual((self.book / "en/cover.webp").read_bytes(), b"new cover")
         self.assertIn("fr", old["readers"])
         self.assertFalse((self.book / "fr/full_content.html").exists())
@@ -125,6 +150,38 @@ class TaskTests(unittest.TestCase):
         self.assertEqual((self.book / history["editions"][0]["covers"]["en"]).read_bytes(), b"old cover")
         self.assertEqual((self.book / history["editions"][1]["covers"]["en"]).read_bytes(), b"new cover")
         self.assertEqual((self.book / history["editions"][2]["covers"]["en"]).read_bytes(), b"third cover")
+        self.assertNotIn("path", history["editions"][2]["source"])
+
+    def test_pdf_source_remains_archived_for_a_new_edition(self):
+        source = self.delivery("AssistOS_v2.pdf", b"delivered PDF")
+        (self.book / "en").mkdir()
+        (self.book / "en/book.pdf").write_bytes(b"prior PDF")
+        work = tasks.prepare(source, "en", root=self.root)
+        (work / "book/en/book.pdf").write_bytes(b"reader PDF")
+        with patch.object(tasks, "validate_stage", return_value=[]):
+            tasks.install(work, self.root)
+        history = tasks.read(self.book / "editions.json")
+        source_record = history["editions"][1]["source"]
+        self.assertEqual(source_record["sha256"], tasks.sha256(source))
+        self.assertEqual((self.book / source_record["path"]).read_bytes(), b"delivered PDF")
+
+    def test_incoming_pdf_retains_only_source_hash(self):
+        incoming = self.root / "income/AssistOS"
+        incoming.mkdir(parents=True)
+        source = incoming / "content.pdf"
+        source.write_bytes(b"old source PDF")
+        (self.book / "en").mkdir()
+        (self.book / "en/book.pdf").write_bytes(b"prior PDF")
+        work = tasks.prepare(source, "en", root=self.root)
+        (work / "book/en/book.pdf").write_bytes(b"clean reader PDF")
+        with patch.object(tasks, "validate_stage", return_value=[]):
+            tasks.install(work, self.root)
+        history = tasks.read(self.book / "editions.json")
+        current = history["editions"][1]
+        self.assertEqual(current["source"]["sha256"], tasks.sha256(source))
+        self.assertNotIn("path", current["source"])
+        self.assertFalse((self.book / "edition-files/edition-2/source").exists())
+        self.assertEqual((self.book / history["editions"][0]["pdf"]["en"]).read_bytes(), b"prior PDF")
 
     def test_first_release_promotes_announced_draft_without_duplicate_edition(self):
         work = tasks.prepare(self.delivery("New_Book.docx"), "en", root=self.root)
@@ -142,6 +199,13 @@ class TaskTests(unittest.TestCase):
                 (work / "book" / code / name).write_bytes(b"draft cover")
         tasks.announce(work, self.root)
         self.assertIsNone(tasks.read(target / "editions.json")["currentEdition"])
+        # Draft artwork can be improved before the first release. It must
+        # update the visible cover and its pending-history snapshot.
+        (work / "book/en/cover.webp").write_bytes(b"revised draft cover")
+        tasks.announce(work, self.root)
+        self.assertEqual((target / "en/cover.webp").read_bytes(), b"revised draft cover")
+        pending = tasks.read(target / "editions.json")["editions"][0]
+        self.assertEqual((target / pending["covers"]["en"]).read_bytes(), b"revised draft cover")
         (work / "book/en/book.pdf").write_bytes(b"first PDF")
         (work / "book/en/cover.webp").write_bytes(b"final cover")
         with patch.object(tasks, "validate_stage", return_value=[]):

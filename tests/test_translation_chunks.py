@@ -9,6 +9,23 @@ import html_translation_chunks as chunks
 
 
 class ChunkTests(unittest.TestCase):
+    def test_short_reader_links_to_translated_full_reader(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            source = root / 'en/short_content.html'
+            source.parent.mkdir()
+            source.write_text('<html lang="en"><body><a href="full_content.html#chapter-1">Read chapter</a></body></html>')
+            destination = root / 'ro/short_content.html'
+            work = root / 'work'
+            chunks.prepare(source, destination, 'ro', work)
+            path = next((work / 'chunks').glob('*.json'))
+            data = json.loads(path.read_text())
+            data['segments'][0]['translation'] = 'Citește capitolul'
+            path.write_text(json.dumps(data))
+            chunks.assemble(work)
+            self.assertIn('href="full_content.html#chapter-1"', destination.read_text())
+            self.assertNotIn('../en/full_content.html', destination.read_text())
+
     def test_round_trip_preserves_structure_assets_and_literal_code(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

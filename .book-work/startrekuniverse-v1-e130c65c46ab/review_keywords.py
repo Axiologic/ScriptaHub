@@ -1,0 +1,10 @@
+import hashlib,importlib.util,json
+from pathlib import Path
+w=Path(__file__).parent;p=w/'book/manifest.json';s=w/'book/en/short_content.html'
+spec=importlib.util.spec_from_file_location('build_books','tools/build_books.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+phrases='''space adventures|starships|alien encounters|future societies|human progress|Federation|cooperation across differences|Klingons|Romulans|Borg|physical journey|imagined technologies|political institutions|pivotal stories|optimism|ethical choices|hopeful vision|violence|scarcity|Prime Directive|less developed civilizations|respect for another culture|domination|strict non-intervention|suffering|cultural relativism|responsibility|good intentions|identity|Vulcan logic|human emotion|Klingon heritage|Federation upbringing|personhood|artificial consciousness|holodeck|reality|knowledge|self|science|invention|warp drive|transporters|replicators|medical tricorders|androids|speculative science|real research|faster-than-light travel|quantum teleportation|communicators|portable display devices|phones and tablets|technical forecast|moral decisions|abundance|fair society|machine and person|medical tools|access|trust|judgment|curiosity|learning|public service|autonomy|Klingon honor politics|Romulan secrecy|forced collective|freedom|security|belonging|diplomacy|conquest|development aid|cultural imperialism|gender and sexuality|trial of humanity|moral growth|Dominion War|survival|cooperation|difficult choices|war|memory|fear|distance|conflict|human dignity|frontier'''.split('|')
+norm=m.keyword_normalise(m.keyword_source_text(s));missing=[x for x in phrases if m.keyword_normalise(x) not in norm]
+print('count',len(phrases),'distinct',len(set(phrases)),'missing',missing)
+if len(phrases)!=90 or len(set(phrases))!=90 or missing:raise SystemExit(1)
+d=json.loads(p.read_text());d['keywordReview']={'sourceHash':hashlib.sha256(s.read_bytes()).hexdigest(),'phrases':phrases,'status':'reviewed-source-grounded'}
+p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

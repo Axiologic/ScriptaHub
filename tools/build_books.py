@@ -721,7 +721,17 @@ def snapshot_edition_covers(book_root: Path, edition: dict, source_root: Path | 
             continue
         destination = book_root / "edition-files" / edition["id"] / "covers" / f"{language}{source.suffix}"
         destination.parent.mkdir(parents=True, exist_ok=True)
-        if replace or not destination.exists():
+        if replace and destination.exists():
+            # A pending cover may have been staged as a hard link to the active
+            # cover. Replacing the directory entry keeps edition artwork
+            # independent and avoids SameFileError (or mutating other links).
+            temporary = destination.with_name(f".{destination.name}.{uuid.uuid4().hex}.tmp")
+            try:
+                shutil.copy2(source, temporary)
+                os.replace(temporary, destination)
+            finally:
+                temporary.unlink(missing_ok=True)
+        elif not destination.exists():
             shutil.copy2(source, destination)
         covers[language] = destination.relative_to(book_root).as_posix()
 
@@ -916,6 +926,24 @@ def book_availability_note(book: dict[str, object], language: str) -> str:
     return f'<p class="book-availability-note" data-book-availability-note><span>{html.escape(animation_label)}</span><span title="{html.escape(names, quote=True)}">{html.escape(words[2])}: {html.escape(codes)}</span><span>{html.escape(words[3])}: {count}</span></p>'
 
 
+_pdf_page_count_cache: dict[Path, tuple[int, int, int]] = {}
+
+
+def pdf_page_count(path: Path) -> int:
+    """Read the current PDF's physical page count once per build."""
+    stat = path.stat()
+    cached = _pdf_page_count_cache.get(path)
+    if cached and cached[:2] == (stat.st_mtime_ns, stat.st_size):
+        return cached[2]
+    info = subprocess.run(["pdfinfo", str(path)], capture_output=True, text=True, check=True)
+    match = re.search(r"^Pages:\s+(\d+)\s*$", info.stdout, flags=re.MULTILINE)
+    if not match:
+        raise ValueError(f"Cannot determine page count for {path}")
+    count = int(match.group(1))
+    _pdf_page_count_cache[path] = (stat.st_mtime_ns, stat.st_size, count)
+    return count
+
+
 def book_page(
     book: dict[str, object], language: str, page_path: Path, has_content: bool,
 ) -> str:
@@ -946,9 +974,12 @@ def book_page(
         else:
             actions.append(f'<span class="button button-quiet" aria-disabled="true">{html.escape(words[format_name])}</span>')
     english_pdf = book["editions"].get("en", {}).get("pdf")
+    current_pdf = DOCS / str(book["directory"]) / english_pdf if english_pdf else None
+    eyebrow = "SCRIPTAHUB DRAFT BOOK" if current_pdf and current_pdf.is_file() and pdf_page_count(current_pdf) < 25 else f"{topic} · ScriptaHub"
     if english_pdf:
         pdf_href = relpath(DOCS / str(book["directory"]) / english_pdf, page_dir)
-        actions.append(f'<a class="button button-quiet" data-download-pdf href="{html.escape(pdf_href, quote=True)}" download>{html.escape(words["download"])}</a>')
+        pdf_name = f'{slugify(book["title"]["en"])}.pdf'
+        actions.append(f'<a class="button button-quiet" data-download-pdf href="{html.escape(pdf_href, quote=True)}" download="{html.escape(pdf_name, quote=True)}">{html.escape(words["download"])}</a>')
     animation = animation_record(book)
     workflow_query = urlencode({"book": str(book["directory"]), "lang": language})
     animation_url = (relpath(DOCS / animation["page"], page_dir) + "?" + urlencode({"lang": language})) if animation else (relpath(DOCS / "animation-request/index.html", page_dir) + "?" + workflow_query)
@@ -1013,7 +1044,7 @@ def book_page(
     <header class="site-header"><a class="wordmark" href="{html.escape(home)}">ScriptaHub<span>.com</span></a><div class="header-tools"><a class="header-create" data-create-link href="{html.escape(create_page, quote=True)}?lang={language}">{html.escape(BOOK_ACTIONS[language]["create"])}</a><div class="site-scale" aria-label="Site text size"><button type="button" data-site-smaller aria-label="Decrease site size">A−</button><button type="button" data-site-size aria-label="Reset site size">100%</button><button type="button" data-site-larger aria-label="Increase site size">A+</button></div>{theme_switcher()}<label class="language-picker"><span class="sr-only">Language</span><select onchange="location.href=this.value">{language_options}</select></label></div></header>
     {status_note}<article class="book-hero">
       <button class="cover-link" type="button" data-cover-preview aria-label="{html.escape(title, quote=True)}"><img src="cover.webp" alt="{html.escape(title)}"></button>
-      <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(topic)} · ScriptaHub</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead" data-text-show>{html.escape(description)}</p>{availability}</div><div class="book-actions">{"".join(actions)}</div><nav class="book-side-actions" aria-label="{html.escape(BOOK_TOOL_LABELS[language], quote=True)}">{"".join(side_actions)}</nav>{book_availability_note(book, language)}</div>
+      <div class="book-details"><div class="book-copy"><p class="eyebrow">{html.escape(eyebrow)}</p><h1>{html.escape(title)}</h1><p class="book-subtitle">{html.escape(subtitle)}</p><p class="lead" data-text-show>{html.escape(description)}</p>{availability}</div><div class="book-actions">{"".join(actions)}</div><nav class="book-side-actions" aria-label="{html.escape(BOOK_TOOL_LABELS[language], quote=True)}">{"".join(side_actions)}</nav>{book_availability_note(book, language)}</div>
       <aside class="book-keyword-widget" aria-label="{html.escape(words['keywords'], quote=True)}"><div class="keyword-cloud book-keyword-cloud" data-book-keyword-cloud></div></aside>
     </article>
     {about_book_section(book, language)}{site_footer(page_dir, language)}

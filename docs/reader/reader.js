@@ -92,6 +92,8 @@ async function configureLanguageSelector() {
     }
     const book = collection.books.find((item) => item.directory === directory);
     if (!book) return;
+    const historicalEdition = query.get('pdf')?.match(/\/edition-files\/edition-(\d+)\//);
+    downloadLink.download = reading.pdfDownloadName(book.title.en, historicalEdition?.[1]);
     const preferred = reading.locale(query.get('language'));
     const uiLanguage = reading.locale(query.get('lang') || preferred);
     const format = query.get('format') || (readingMode === 'ten-minute' ? 'short' : 'read');

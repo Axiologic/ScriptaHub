@@ -1,0 +1,22 @@
+import json
+from pathlib import Path
+p=Path('.book-work/toswipeornottoswipehamletsdilemma-v1-3525e277956a/translations/ro/full/chunks/0006.json')
+d=json.loads(p.read_text())
+t=[
+"La urma urmei, adevărata tragedie a lui Hamlet nu este finalul însângerat, ci ocazia pierdută de a crea o aplicație de succes. Gândiți-vă: o platformă completă pentru planuri de răzbunare, exerciții de monolog și rezolvarea dilemelor etice. Am putea s-o numim «DaneTech» sau «Valea Elsinore». Uitați de «A fi sau a nu fi»; întrebarea adevărată este «A lista compania la bursă sau nu?»",
+"Iată-l, oameni buni: Hamlet pentru era digitală. O lume în care monologurile devin videoclipuri virale, otrava e înlocuită de criminalitatea informatică, iar «Vai, sărmanul Yorick» devine un filtru popular pe Instagram. E mai bună decât piesa originală? Voi hotărâți. Sigur este că în Hamlet 2.0 piesa nu mai este capcana; aplicația este cea care va prinde conștiința regelui.",
+"Și vă las cu un ultim gând: într-o lume a actualizărilor permanente, poate adevărata înțelepciune stă în vorbele lui Hamlet: «Sunt mai multe lucruri în cer și pe pământ, Horațio, decât visează filosofia ta». Sau sistemul de operare al telefonului tău, dacă tot veni vorba.",
+"Cursul s-a încheiat. Nu uitați să apreciați și să vă abonați la canalul familiei regale daneze de pe YouTube la ieșire!",
+"Concluzie",
+"În timp ce tragem cortina peste călătoria noastră ireverențioasă printr-un Elsinore digitalizat, merită să reflectăm la implicațiile mai largi ale acestei reimaginări jucăușe. Hamlet al nostru digital, cu monologurile sale pe telefon și vendetele virale, poate părea foarte departe de creația originală a lui Shakespeare. Totuși, acest exercițiu de modernizare atinge o problemă reală și urgentă a lumii de azi: distanța tot mai mare dintre literatura clasică și generația crescută în mediul digital.",
+"Arta cuvântului scris, exemplificată de proza și poezia măiastră ale lui Shakespeare, reprezintă un vârf al expresiei umane și al realizării culturale. Opere precum Hamlet au dăinuit secole tocmai fiindcă vorbesc despre experiențe și emoții omenești universale. Însă, într-o epocă a limitelor de 280 de caractere și a atenției trecătoare, aceste texte dense și nuanțate le pot părea tot mai inaccesibile cititorilor tineri.",
+"Provocarea nu este lipsa de relevanță a operelor clasice, ci schimbarea felului în care informația este consumată și prelucrată în epoca digitală. Tinerii de azi, obișnuiți cu ritmul rapid al rețelelor sociale și cu satisfacția instantanee a conținutului digital, se pot apropia greu de ritmul mai lent și mai contemplativ al literaturii clasice.",
+"Totuși, temele din opere ca Hamlet — identitatea, moralitatea, puterea și condiția umană — sunt poate mai relevante ca oricând în lumea noastră hiperconectată. Întrebarea devine atunci: cum reducem această distanță? Cum facem bogăția literaturii clasice accesibilă și atrăgătoare pentru o generație crescută cu meme-uri și rețele sociale?",
+"Modernizarea noastră umoristică a lui Hamlet oferă o posibilă cale. Reașezând temele eterne într-un context contemporan, creăm legături între clasic și modern. Nu este vorba despre simplificarea sau diminuarea marilor opere, ci despre noi puncte de intrare care rezonează cu experiențele de azi.",
+"Umorul poate fi un instrument deosebit de puternic în acest demers. Dezarmează, atrage și face necunoscutul mai abordabil. Când râdem de un Hamlet transformat în meme sau de un Polonius obsedat de LinkedIn, nu îl batjocorim pe Shakespeare, ci celebrăm relevanța persistentă a personajelor și temelor sale.",
+"Mai mult, această abordare încurajează gândirea critică și alfabetizarea media. Trasând paralele între monologurile lui Hamlet și postările de pe rețelele sociale sau între intrigile de la curte și dramele online, îi invităm pe cititori să observe atât aspectele durabile ale naturii umane, cât și felurile specifice în care epoca digitală ne modelează experiențele și exprimarea acestor teme universale.",
+"Desigur, modernizarea clasicilor prin umor nu înlocuiește întâlnirea cu textele originale. Ar trebui să fie o poartă de intrare, să trezească interesul și o senzație de apropiere care să încurajeze explorarea mai profundă. Scopul nu este să-l înlocuim pe Shakespeare cu meme-uri, ci să folosim meme-urile ca pe un pod spre Shakespeare."
+]
+assert len(t)==len(d['segments']),(len(t),len(d['segments']))
+for x,v in zip(d['segments'],t):x['translation']=v
+p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

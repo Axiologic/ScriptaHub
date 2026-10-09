@@ -1,0 +1,721 @@
+{
+  "language": "ro",
+  "chunk": 55,
+  "segments": [
+    {
+      "id": "t009191",
+      "source": "Set model; each cell has an attribute set; return cells whose set is a superset of the required set.",
+      "translation": ""
+    },
+    {
+      "id": "t009192",
+      "source": "Problem 525. Reading a layered map legend (A1)",
+      "translation": ""
+    },
+    {
+      "id": "t009193",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009194",
+      "source": "A map legend translates symbols into properties. One location may have several properties at the same time.",
+      "translation": ""
+    },
+    {
+      "id": "t009195",
+      "source": "Given facts.",
+      "translation": ""
+    },
+    {
+      "id": "t009196",
+      "source": "Legend: tree=forest, wavy line=river, double line=road, arch=bridge, square=village, triangle=hill. Cells: A1 has forest, road; A2 has bridge, river; B1 has bridge, forest, river, road; B2 has road, village. Cross-domain check: a survey team starts work at 12:00 and works for 2 hour(s) without a break.",
+      "translation": ""
+    },
+    {
+      "id": "t009197",
+      "source": "Rules.",
+      "translation": ""
+    },
+    {
+      "id": "t009198",
+      "source": "A cell satisfies the task only if it has every required attribute. Extra attributes do not disqualify it unless the task says so. For the cross-domain check, finishing time = starting time + duration.",
+      "translation": ""
+    },
+    {
+      "id": "t009199",
+      "source": "Task.",
+      "translation": ""
+    },
+    {
+      "id": "t009200",
+      "source": "Which cell or cells satisfy all of these conditions: river, road? Explain by intersecting the clues. Cross-domain check: at what time does the team finish?",
+      "translation": ""
+    },
+    {
+      "id": "t009201",
+      "source": "Step-by-step solution.",
+      "translation": ""
+    },
+    {
+      "id": "t009202",
+      "source": "1. Convert the requested symbols into the attribute set ['river', 'road']. 2. Check each cell for every required attribute. 3. The matching set is ['B1']. Cross-domain check: 12+2=14, so the team finishes at 14:00.",
+      "translation": ""
+    },
+    {
+      "id": "t009203",
+      "source": "Answer.",
+      "translation": ""
+    },
+    {
+      "id": "t009204",
+      "source": "B1 Cross-domain answer: 14:00.",
+      "translation": ""
+    },
+    {
+      "id": "t009205",
+      "source": "Knowledge takeaway.",
+      "translation": ""
+    },
+    {
+      "id": "t009206",
+      "source": "Map reading often means intersecting clues rather than recognizing one symbol in isolation.",
+      "translation": ""
+    },
+    {
+      "id": "t009207",
+      "source": "Formal model.",
+      "translation": ""
+    },
+    {
+      "id": "t009208",
+      "source": "Set model; each cell has an attribute set; return cells whose set is a superset of the required set.",
+      "translation": ""
+    },
+    {
+      "id": "t009209",
+      "source": "G6. Choosing a settlement site",
+      "translation": ""
+    },
+    {
+      "id": "t009210",
+      "source": "Problem 526. Choosing a safe settlement site: case 1",
+      "translation": ""
+    },
+    {
+      "id": "t009211",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009212",
+      "source": "Human settlements depend on several factors at once. Some conditions may be compulsory while others are preferences.",
+      "translation": ""
+    },
+    {
+      "id": "t009213",
+      "source": "Given facts.",
+      "translation": ""
+    },
+    {
+      "id": "t009214",
+      "source": "Candidate sites: Site A: water=yes, road=yes, flood-zone=no, nearby farmland score=2; Site B: water=yes, road=no, flood-zone=no, nearby farmland score=4; Site C: water=yes, road=yes, flood-zone=yes, nearby farmland score=4; Site D: water=no, road=yes, flood-zone=no, nearby farmland score=6. Cross-domain check: a local committee has 12 members, requires at least 7 present for quorum, and 11 are present.",
+      "translation": ""
+    },
+    {
+      "id": "t009215",
+      "source": "Rules.",
+      "translation": ""
+    },
+    {
+      "id": "t009216",
+      "source": "A valid site must have water, road access, and must not be in the flood zone. Among valid sites, choose the one with the highest farmland score. For the cross-domain check, quorum exists when present members ≥ the stated threshold.",
+      "translation": ""
+    },
+    {
+      "id": "t009217",
+      "source": "Task.",
+      "translation": ""
+    },
+    {
+      "id": "t009218",
+      "source": "Which site should be selected under the stated mandatory conditions and preference rule? Cross-domain check: is quorum met?",
+      "translation": ""
+    },
+    {
+      "id": "t009219",
+      "source": "Step-by-step solution.",
+      "translation": ""
+    },
+    {
+      "id": "t009220",
+      "source": "1. Separate mandatory conditions from the preference. 2. Filtering by water, road, and flood safety leaves ['Site A']. 3. Compare only the farmland scores of feasible sites: Site A=2. 4. Site A has the best score among valid sites. Cross-domain check: compare 11 with 7; 11≥7 is true.",
+      "translation": ""
+    },
+    {
+      "id": "t009221",
+      "source": "Answer.",
+      "translation": ""
+    },
+    {
+      "id": "t009222",
+      "source": "Site A. Cross-domain answer: quorum is met.",
+      "translation": ""
+    },
+    {
+      "id": "t009223",
+      "source": "Knowledge takeaway.",
+      "translation": ""
+    },
+    {
+      "id": "t009224",
+      "source": "Good decisions first satisfy hard constraints and only then optimize among the remaining options.",
+      "translation": ""
+    },
+    {
+      "id": "t009225",
+      "source": "Formal model.",
+      "translation": ""
+    },
+    {
+      "id": "t009226",
+      "source": "Constraint-satisfaction problem followed by a score maximization over feasible options.",
+      "translation": ""
+    },
+    {
+      "id": "t009227",
+      "source": "Problem 527. Choosing a safe settlement site: case 2",
+      "translation": ""
+    },
+    {
+      "id": "t009228",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009229",
+      "source": "Human settlements depend on several factors at once. Some conditions may be compulsory while others are preferences.",
+      "translation": ""
+    },
+    {
+      "id": "t009230",
+      "source": "Given facts.",
+      "translation": ""
+    },
+    {
+      "id": "t009231",
+      "source": "Candidate sites: Site A: water=yes, road=yes, flood-zone=no, nearby farmland score=3; Site B: water=yes, road=no, flood-zone=no, nearby farmland score=3; Site C: water=yes, road=yes, flood-zone=yes, nearby farmland score=5; Site D: water=no, road=yes, flood-zone=no, nearby farmland score=5. Cross-domain check: researchers collected 13 reports, but 4 are exact duplicate copies that add no new independent information.",
+      "translation": ""
+    },
+    {
+      "id": "t009232",
+      "source": "Rules.",
+      "translation": ""
+    },
+    {
+      "id": "t009233",
+      "source": "A valid site must have water, road access, and must not be in the flood zone. Among valid sites, choose the one with the highest farmland score. For the cross-domain check, independent reports = total reports − duplicate copies.",
+      "translation": ""
+    },
+    {
+      "id": "t009234",
+      "source": "Task.",
+      "translation": ""
+    },
+    {
+      "id": "t009235",
+      "source": "Which site should be selected under the stated mandatory conditions and preference rule? Cross-domain check: how many non-duplicate reports remain?",
+      "translation": ""
+    },
+    {
+      "id": "t009236",
+      "source": "Step-by-step solution.",
+      "translation": ""
+    },
+    {
+      "id": "t009237",
+      "source": "1. Separate mandatory conditions from the preference. 2. Filtering by water, road, and flood safety leaves ['Site A']. 3. Compare only the farmland scores of feasible sites: Site A=3. 4. Site A has the best score among valid sites. Cross-domain check: 13−4=9 independent reports remain.",
+      "translation": ""
+    },
+    {
+      "id": "t009238",
+      "source": "Answer.",
+      "translation": ""
+    },
+    {
+      "id": "t009239",
+      "source": "Site A. Cross-domain answer: 9 independent reports.",
+      "translation": ""
+    },
+    {
+      "id": "t009240",
+      "source": "Knowledge takeaway.",
+      "translation": ""
+    },
+    {
+      "id": "t009241",
+      "source": "Good decisions first satisfy hard constraints and only then optimize among the remaining options.",
+      "translation": ""
+    },
+    {
+      "id": "t009242",
+      "source": "Formal model.",
+      "translation": ""
+    },
+    {
+      "id": "t009243",
+      "source": "Constraint-satisfaction problem followed by a score maximization over feasible options.",
+      "translation": ""
+    },
+    {
+      "id": "t009244",
+      "source": "Problem 528. Choosing a safe settlement site: case 3",
+      "translation": ""
+    },
+    {
+      "id": "t009245",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009246",
+      "source": "Human settlements depend on several factors at once. Some conditions may be compulsory while others are preferences.",
+      "translation": ""
+    },
+    {
+      "id": "t009247",
+      "source": "Given facts.",
+      "translation": ""
+    },
+    {
+      "id": "t009248",
+      "source": "Candidate sites: Site A: water=yes, road=yes, flood-zone=no, nearby farmland score=2; Site B: water=yes, road=no, flood-zone=no, nearby farmland score=4; Site C: water=yes, road=yes, flood-zone=yes, nearby farmland score=4; Site D: water=no, road=yes, flood-zone=no, nearby farmland score=6. Cross-domain check: on a field sketch, 1 cm represents 5 km and two checkpoints are 5 cm apart.",
+      "translation": ""
+    },
+    {
+      "id": "t009249",
+      "source": "Rules.",
+      "translation": ""
+    },
+    {
+      "id": "t009250",
+      "source": "A valid site must have water, road access, and must not be in the flood zone. Among valid sites, choose the one with the highest farmland score. For the cross-domain check, real distance = sketch distance × kilometres per centimetre.",
+      "translation": ""
+    },
+    {
+      "id": "t009251",
+      "source": "Task.",
+      "translation": ""
+    },
+    {
+      "id": "t009252",
+      "source": "Which site should be selected under the stated mandatory conditions and preference rule? Cross-domain check: what real distance separates the checkpoints?",
+      "translation": ""
+    },
+    {
+      "id": "t009253",
+      "source": "Step-by-step solution.",
+      "translation": ""
+    },
+    {
+      "id": "t009254",
+      "source": "1. Separate mandatory conditions from the preference. 2. Filtering by water, road, and flood safety leaves ['Site A']. 3. Compare only the farmland scores of feasible sites: Site A=2. 4. Site A has the best score among valid sites. Cross-domain check: 5×5=25 km.",
+      "translation": ""
+    },
+    {
+      "id": "t009255",
+      "source": "Answer.",
+      "translation": ""
+    },
+    {
+      "id": "t009256",
+      "source": "Site A. Cross-domain answer: 25 km.",
+      "translation": ""
+    },
+    {
+      "id": "t009257",
+      "source": "Knowledge takeaway.",
+      "translation": ""
+    },
+    {
+      "id": "t009258",
+      "source": "Good decisions first satisfy hard constraints and only then optimize among the remaining options.",
+      "translation": ""
+    },
+    {
+      "id": "t009259",
+      "source": "Formal model.",
+      "translation": ""
+    },
+    {
+      "id": "t009260",
+      "source": "Constraint-satisfaction problem followed by a score maximization over feasible options.",
+      "translation": ""
+    },
+    {
+      "id": "t009261",
+      "source": "Problem 529. Choosing a safe settlement site: case 4",
+      "translation": ""
+    },
+    {
+      "id": "t009262",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009263",
+      "source": "Human settlements depend on several factors at once. Some conditions may be compulsory while others are preferences.",
+      "translation": ""
+    },
+    {
+      "id": "t009264",
+      "source": "Given facts.",
+      "translation": ""
+    },
+    {
+      "id": "t009265",
+      "source": "Candidate sites: Site A: water=yes, road=yes, flood-zone=no, nearby farmland score=3; Site B: water=yes, road=no, flood-zone=no, nearby farmland score=3; Site C: water=yes, road=yes, flood-zone=yes, nearby farmland score=5; Site D: water=no, road=yes, flood-zone=no, nearby farmland score=5. Cross-domain check: a survey team starts work at 8:00 and works for 2 hour(s) without a break.",
+      "translation": ""
+    },
+    {
+      "id": "t009266",
+      "source": "Rules.",
+      "translation": ""
+    },
+    {
+      "id": "t009267",
+      "source": "A valid site must have water, road access, and must not be in the flood zone. Among valid sites, choose the one with the highest farmland score. For the cross-domain check, finishing time = starting time + duration.",
+      "translation": ""
+    },
+    {
+      "id": "t009268",
+      "source": "Task.",
+      "translation": ""
+    },
+    {
+      "id": "t009269",
+      "source": "Which site should be selected under the stated mandatory conditions and preference rule? Cross-domain check: at what time does the team finish?",
+      "translation": ""
+    },
+    {
+      "id": "t009270",
+      "source": "Step-by-step solution.",
+      "translation": ""
+    },
+    {
+      "id": "t009271",
+      "source": "1. Separate mandatory conditions from the preference. 2. Filtering by water, road, and flood safety leaves ['Site A']. 3. Compare only the farmland scores of feasible sites: Site A=3. 4. Site A has the best score among valid sites. Cross-domain check: 8+2=10, so the team finishes at 10:00.",
+      "translation": ""
+    },
+    {
+      "id": "t009272",
+      "source": "Answer.",
+      "translation": ""
+    },
+    {
+      "id": "t009273",
+      "source": "Site A. Cross-domain answer: 10:00.",
+      "translation": ""
+    },
+    {
+      "id": "t009274",
+      "source": "Knowledge takeaway.",
+      "translation": ""
+    },
+    {
+      "id": "t009275",
+      "source": "Good decisions first satisfy hard constraints and only then optimize among the remaining options.",
+      "translation": ""
+    },
+    {
+      "id": "t009276",
+      "source": "Formal model.",
+      "translation": ""
+    },
+    {
+      "id": "t009277",
+      "source": "Constraint-satisfaction problem followed by a score maximization over feasible options.",
+      "translation": ""
+    },
+    {
+      "id": "t009278",
+      "source": "Problem 530. Choosing a safe settlement site: case 5",
+      "translation": ""
+    },
+    {
+      "id": "t009279",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009280",
+      "source": "Human settlements depend on several factors at once. Some conditions may be compulsory while others are preferences.",
+      "translation": ""
+    },
+    {
+      "id": "t009281",
+      "source": "Given facts.",
+      "translation": ""
+    },
+    {
+      "id": "t009282",
+      "source": "Candidate sites: Site A: water=yes, road=yes, flood-zone=no, nearby farmland score=2; Site B: water=yes, road=no, flood-zone=no, nearby farmland score=4; Site C: water=yes, road=yes, flood-zone=yes, nearby farmland score=4; Site D: water=no, road=yes, flood-zone=no, nearby farmland score=6. Cross-domain check: a local committee has 16 members, requires at least 9 present for quorum, and 14 are present. Mixed-domain verification: a regional archive has 55 map sheets and receives 1 additional sheets during the exercise.",
+      "translation": ""
+    },
+    {
+      "id": "t009283",
+      "source": "Rules.",
+      "translation": ""
+    },
+    {
+      "id": "t009284",
+      "source": "A valid site must have water, road access, and must not be in the flood zone. Among valid sites, choose the one with the highest farmland score. For the cross-domain check, quorum exists when present members ≥ the stated threshold. For this verification, the final number of sheets equals starting sheets plus received sheets.",
+      "translation": ""
+    },
+    {
+      "id": "t009285",
+      "source": "Task.",
+      "translation": ""
+    },
+    {
+      "id": "t009286",
+      "source": "Which site should be selected under the stated mandatory conditions and preference rule? Cross-domain check: is quorum met? Mixed-domain verification: how many sheets are available after the delivery?",
+      "translation": ""
+    },
+    {
+      "id": "t009287",
+      "source": "Step-by-step solution.",
+      "translation": ""
+    },
+    {
+      "id": "t009288",
+      "source": "1. Separate mandatory conditions from the preference. 2. Filtering by water, road, and flood safety leaves ['Site A']. 3. Compare only the farmland scores of feasible sites: Site A=2. 4. Site A has the best score among valid sites. Cross-domain check: compare 14 with 9; 14≥9 is true. Mixed-domain verification: 55+1=56.",
+      "translation": ""
+    },
+    {
+      "id": "t009289",
+      "source": "Answer.",
+      "translation": ""
+    },
+    {
+      "id": "t009290",
+      "source": "Site A. Cross-domain answer: quorum is met. Mixed-domain answer: 56 map sheets.",
+      "translation": ""
+    },
+    {
+      "id": "t009291",
+      "source": "Knowledge takeaway.",
+      "translation": ""
+    },
+    {
+      "id": "t009292",
+      "source": "Good decisions first satisfy hard constraints and only then optimize among the remaining options.",
+      "translation": ""
+    },
+    {
+      "id": "t009293",
+      "source": "Formal model.",
+      "translation": ""
+    },
+    {
+      "id": "t009294",
+      "source": "Constraint-satisfaction problem followed by a score maximization over feasible options.",
+      "translation": ""
+    },
+    {
+      "id": "t009295",
+      "source": "G7. Relief and movement cost",
+      "translation": ""
+    },
+    {
+      "id": "t009296",
+      "source": "Problem 531. Terrain and travel cost from Riverbend",
+      "translation": ""
+    },
+    {
+      "id": "t009297",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009298",
+      "source": "Equal-looking distances can require different effort because terrain differs. A simple cost model makes that effect explicit.",
+      "translation": ""
+    },
+    {
+      "id": "t009299",
+      "source": "Given facts.",
+      "translation": ""
+    },
+    {
+      "id": "t009300",
+      "source": "Terrain energy costs per segment: {'plain': 1, 'forest': 2, 'hill': 3, 'marsh': 4}. Three routes from Riverbend to Alder: R1=['plain', 'hill', 'plain']; R2=['forest', 'forest', 'plain']; R3=['plain', 'marsh']. The traveler can spend at most 10 energy units.",
+      "translation": ""
+    },
+    {
+      "id": "t009301",
+      "source": "Rules.",
+      "translation": ""
+    },
+    {
+      "id": "t009302",
+      "source": "The energy of a route is the sum of its terrain costs. A route above the energy limit is infeasible. Among feasible routes, minimize energy.",
+      "translation": ""
+    },
+    {
+      "id": "t009303",
+      "source": "Task.",
+      "translation": ""
+    },
+    {
+      "id": "t009304",
+      "source": "Which route is feasible and uses the least energy?",
+      "translation": ""
+    },
+    {
+      "id": "t009305",
+      "source": "Step-by-step solution.",
+      "translation": ""
+    },
+    {
+      "id": "t009306",
+      "source": "1. Compute route totals: R1=5, R2=5, R3=5. 2. Discard any total above 10. 3. The smallest remaining total is R1=5.",
+      "translation": ""
+    },
+    {
+      "id": "t009307",
+      "source": "Answer.",
+      "translation": ""
+    },
+    {
+      "id": "t009308",
+      "source": "Route R1, using 5 energy units.",
+      "translation": ""
+    },
+    {
+      "id": "t009309",
+      "source": "Knowledge takeaway.",
+      "translation": ""
+    },
+    {
+      "id": "t009310",
+      "source": "Relief changes the cost of movement; “shortest” and “easiest” are not automatically the same.",
+      "translation": ""
+    },
+    {
+      "id": "t009311",
+      "source": "Formal model.",
+      "translation": ""
+    },
+    {
+      "id": "t009312",
+      "source": "Weighted paths with a feasibility budget; sum costs and choose the minimum feasible path.",
+      "translation": ""
+    },
+    {
+      "id": "t009313",
+      "source": "Problem 532. Terrain and travel cost from Meadow",
+      "translation": ""
+    },
+    {
+      "id": "t009314",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009315",
+      "source": "Equal-looking distances can require different effort because terrain differs. A simple cost model makes that effect explicit.",
+      "translation": ""
+    },
+    {
+      "id": "t009316",
+      "source": "Given facts.",
+      "translation": ""
+    },
+    {
+      "id": "t009317",
+      "source": "Terrain energy costs per segment: {'plain': 1, 'forest': 2, 'hill': 3, 'marsh': 4}. Three routes from Meadow to Cedar: R1=['plain', 'hill', 'plain']; R2=['plain', 'forest', 'plain', 'plain']; R3=['plain', 'marsh']. The traveler can spend at most 10 energy units.",
+      "translation": ""
+    },
+    {
+      "id": "t009318",
+      "source": "Rules.",
+      "translation": ""
+    },
+    {
+      "id": "t009319",
+      "source": "The energy of a route is the sum of its terrain costs. A route above the energy limit is infeasible. Among feasible routes, minimize energy.",
+      "translation": ""
+    },
+    {
+      "id": "t009320",
+      "source": "Task.",
+      "translation": ""
+    },
+    {
+      "id": "t009321",
+      "source": "Which route is feasible and uses the least energy?",
+      "translation": ""
+    },
+    {
+      "id": "t009322",
+      "source": "Step-by-step solution.",
+      "translation": ""
+    },
+    {
+      "id": "t009323",
+      "source": "1. Compute route totals: R1=5, R2=5, R3=5. 2. Discard any total above 10. 3. The smallest remaining total is R1=5.",
+      "translation": ""
+    },
+    {
+      "id": "t009324",
+      "source": "Answer.",
+      "translation": ""
+    },
+    {
+      "id": "t009325",
+      "source": "Route R1, using 5 energy units.",
+      "translation": ""
+    },
+    {
+      "id": "t009326",
+      "source": "Knowledge takeaway.",
+      "translation": ""
+    },
+    {
+      "id": "t009327",
+      "source": "Relief changes the cost of movement; “shortest” and “easiest” are not automatically the same.",
+      "translation": ""
+    },
+    {
+      "id": "t009328",
+      "source": "Formal model.",
+      "translation": ""
+    },
+    {
+      "id": "t009329",
+      "source": "Weighted paths with a feasibility budget; sum costs and choose the minimum feasible path.",
+      "translation": ""
+    },
+    {
+      "id": "t009330",
+      "source": "Problem 533. Terrain and travel cost from Elm",
+      "translation": ""
+    },
+    {
+      "id": "t009331",
+      "source": "Knowledge context.",
+      "translation": ""
+    },
+    {
+      "id": "t009332",
+      "source": "Equal-looking distances can require different effort because terrain differs. A simple cost model makes that effect explicit.",
+      "translation": ""
+    },
+    {
+      "id": "t009333",
+      "source": "Given facts.",
+      "translation": ""
+    }
+  ]
+}

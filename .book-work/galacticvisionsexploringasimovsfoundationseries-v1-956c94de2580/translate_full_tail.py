@@ -1,0 +1,20 @@
+import json
+from pathlib import Path
+
+path = Path(__file__).parent / 'translations/ro/full/chunks/0015.json'
+translations = {
+    't000042': 'Fundația și Imperiul (1952) Al doilea volum începe cu „Generalul”, în care Imperiul Galactic aflat în declin încearcă să recucerească Fundația. Generalul Bel Riose conduce forțele imperiale, dar, în ciuda priceperii sale militare, Fundația învinge datorită luptelor politice din interiorul Imperiului, așa cum prezisese psihoistoria lui Seldon. „Catârul” aduce o amenințare importantă la adresa Planului Seldon. Un mutant cunoscut sub numele de Catârul, capabil să manipuleze emoțiile, cucerește Fundația. Bayta Darell și soțul ei, Toran, pornesc în căutarea celei de-a Doua Fundații, considerată ultima speranță a omenirii. Într-un moment hotărâtor, Bayta înțelege că tovarășul lor este de fapt Catârul deghizat și îl împiedică să descopere locul celei de-a Doua Fundații.',
+    't000043': 'A Doua Fundație (1953) Ultimul volum al trilogiei originale începe cu „Căutarea Catârului”, în care Catârul își continuă încercarea de a găsi și distruge A Doua Fundație. În ciuda puterii sale imense, este în cele din urmă învins de capacitățile mentale superioare ale membrilor celei de-a Doua Fundații. „Căutarea Fundației” încheie trilogia. Prima Fundație, refăcută între timp, devine suspicioasă față de influența celei de-a Doua Fundații asupra destinului său. Arkady Darell, nepoata Baytei, are un rol important în descoperirea adevărului despre A Doua Fundație. Povestea culminează cu dezvăluirea că aceasta se ascunde „la Capătul Stelelor”, pe Trantor, fosta capitală a Imperiului Galactic. De-a lungul acestor cărți, Asimov explorează istoria ciclică, puterea cunoașterii și tensiunea dintre determinism și liber arbitru. Seria arată cum Fundația traversează diferite crize, numite Crize Seldon, fiecare împingând dezvoltarea noii civilizații înainte, potrivit Planului Seldon. Intriga elaborată și amploarea imaginației lui Asimov au făcut din seria Fundația o operă de temelie a literaturii științifico-fantastice, inspirând generații de cititori și scriitori prin explorarea societății umane la scară galactică.',
+    't000044': 'Concluzie',
+    't000045': 'Seria Fundația de Isaac Asimov este o explorare monumentală a civilizației umane, a raporturilor de putere și a moștenirii durabile a cunoașterii. Prin povestea sa elaborată, Asimov ne invită să contemplăm natura ciclică a imperiilor, puterea previziunii și influența profundă a păstrării și transmiterii înțelepciunii de la o generație la alta. Seria ne îndeamnă să luăm în considerare echilibrul delicat dintre determinism și liber arbitru, implicațiile etice ale manipulării dezvoltării societății și adevăratul sens al nemuririi prin cunoașterea comună. Opera lui Asimov rămâne remarcabil de actuală în lumea noastră care se schimbă repede, oferind perspective asupra complexității guvernării, responsabilităților aduse de putere și rolului esențial al adaptabilității în fața provocărilor viitoare. Până la urmă, Fundația este nu doar o epopee științifico-fantastică captivantă, ci și o meditație profundă asupra condiției umane și a locului nostru în imensa întindere a timpului și spațiului. Ne amintește că, deși oamenii sunt trecători, moștenirea cunoașterii și a realizărilor umane are puterea de a modela cosmosul în mileniile ce vor veni. În această viziune, Asimov oferă atât un avertisment despre fragilitatea civilizației, cât și un mesaj plin de speranță despre capacitatea omenirii de a se reînnoi și de a progresa.',
+    't000046': 'Bibliografie',
+    't000047': 'Asimov, Isaac. Foundation (1951)',
+    't000048': 'Asimov, Isaac. Foundation and Empire (1952)',
+    't000049': 'Asimov, Isaac. Second Foundation (1953)',
+    't000050': 'Kuhn, Thomas S.. The Structure of Scientific Revolutions (1962)',
+    't000051': 'Toynbee, Arnold. A Study of History (1934-1961)',
+}
+data = json.loads(path.read_text())
+for segment in data['segments']:
+    segment['translation'] = translations[segment['id']]
+path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')

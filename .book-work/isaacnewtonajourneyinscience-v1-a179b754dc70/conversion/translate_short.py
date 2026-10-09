@@ -1,0 +1,32 @@
+import glob
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+translations = {
+"t000001": "Isaac Newton: o călătorie în știință — Ediția de zece minute",
+"t000002": "Isaac Newton: o călătorie în știință",
+"t000003": "AI Agent Noah Bradland · Ediția de zece minute",
+"t000004": "Cum a transformat Newton lumea modernă",
+"t000005": "Cum ar arăta viața modernă fără explicația dată de Newton mișcării și gravitației? Cartea începe cu această întrebare pentru a arăta de ce ideile lui contează și astăzi. Mecanica clasică explică modul în care corpurile se mișcă și interacționează; calculele sale îi ajută pe ingineri să proiecteze structuri și vehicule, iar pe navigatori să prevadă traiectoriile sateliților și navelor spațiale. Matematica lui Newton a oferit metode pentru modelarea schimbării continue, în timp ce experimentele sale au încurajat căutarea metodică a legilor întemeiate pe observație. Cartea tratează aceste contribuții ca pe o modalitate unitară de a studia natura, nu ca pe o listă de descoperiri izolate.",
+"t000006": "Copilăria și educația",
+"t000007": "Newton s-a născut în 1642 la Woolsthorpe, în Anglia, la scurt timp după moartea tatălui său. Mama sa s-a recăsătorit, iar el a fost crescut o vreme de bunica lui. La școală, interesul pentru dispozitive mecanice și studiul independent i-au însoțit educația formală. A intrat la Trinity College, Cambridge, în 1661 și a cunoscut atât programa tradițională, cât și idei matematice și științifice noi. Când universitatea s-a închis în anii epidemiei de ciumă, s-a întors acasă și a lucrat la probleme de matematică, optică și gravitație. Acei ani au fost formativi, deși descoperirile aveau să fie dezvoltate și publicate mai târziu. Cartea urmărește drumul de la această muncă solitară până la locul său tot mai important în comunitatea științifică.",
+"t000008": "Mișcare, gravitație, lumină și calcul infinitezimal",
+"t000009": "În",
+"t000010": "Principia",
+"t000011": ", Newton a formulat trei legi ale mișcării: un corp își păstrează starea de repaus sau mișcare uniformă dacă nu acționează asupra sa o forță; forța schimbă mișcarea în raport cu masa și accelerația; iar corpurile care interacționează exercită forțe egale și opuse. Legea gravitației universale leagă atracția dintre două corpuri de masele lor și de inversul pătratului distanței dintre ele. Împreună, aceste legi au pus în legătură căderea unui corp pe Pământ cu orbita Lunii și au contribuit la explicarea legilor planetare ale lui Kepler. Ele au făcut din mișcarea cerească un subiect al predicției cantitative, inclusiv pentru traiectoriile cometelor.",
+"t000012": "Newton a studiat și lumina cu ajutorul prismelor. A arătat că lumina albă cuprinde un spectru de culori care pot fi reunite într-o lumină din nou albă și a proiectat un telescop reflector pentru a reduce deformarea culorilor întâlnită la instrumentele cu refracție. Teoria sa corpusculară a luminii a fost ulterior depășită, dar experimentele și instrumentele au rămas influente. În matematică, a dezvoltat metoda fluxiunilor, forma sa de calcul infinitezimal, pentru analiza mărimilor variabile, a pantelor, a efectelor cumulate și a ariilor. Gottfried Wilhelm Leibniz a elaborat independent metode asemănătoare; disputa privind prioritatea a devenit un conflict științific major.",
+"t000013": "Impactul asupra societății",
+"t000014": "Opera lui Newton a ajutat la înlocuirea separării dintre fizica terestră și cea cerească printr-o explicație matematică unitară a legilor naturii. Forța sa predictivă a devenit un model pentru știința ulterioară: descoperirea lui Neptun, dedusă din perturbațiile orbitei lui Uranus, este un exemplu discutat în carte. Mecanica clasică rămâne utilă în inginerie, navigație orbitală și educație, chiar dacă relativitatea și mecanica cuantică descriu domenii în care cadrul lui Newton este limitat. Abordarea lui a modelat și dezbateri filozofice despre dovezi, determinism și natura spațiului și a timpului. Cartea urmărește consecințe dincolo de fizică, de la instrumentele optice la încrederea mai largă a Iluminismului că natura poate fi cercetată rațional.",
+"t000015": "Personalitate și preocupări private",
+"t000016": "Realizările științifice au aparținut unui om complex. Newton lucra cu o concentrare intensă, ținea note detaliate și putea fi solitar și extrem de protector cu ideile sale. Nu s-a căsătorit și a avut puțini prieteni apropiați, deși a corespondat cu alți savanți și a devenit apoi activ în Societatea Regală. Cartea descrie și studiul său teologic substanțial, cronologia biblică și experimentele alchimice. Aceste preocupări făceau parte din căutarea unei ordini fundamentale, chiar dacă se potrivesc greu cu imaginea modernă a unui savant interesat doar de fizică.",
+"t000017": "Newton și contemporanii săi",
+"t000018": "Schimburile lui Newton cu Robert Hooke despre optică și gravitație au fost adesea înverșunate. Hooke i-a contestat explicația luminii și a susținut că avusese primul ideea legii inversului pătratului distanței; Newton a respins acuzația. O a doua dispută, mai lungă, privea inventarea calculului infinitezimal. Newton lucrase la fluxiuni în anii 1660, dar a publicat mai târziu, în timp ce Leibniz și-a publicat metoda independentă în 1684. Dezacordul i-a divizat pe matematicienii britanici și continentali. Ca președinte al Societății Regale din 1703, Newton a dobândit o mare influență, promovând știința matematică și experimentală, dar folosind uneori puterea instituțională în rivalități personale. Cartea se încheie păstrând ambele laturi: extraordinara întindere a ideilor sale și relațiile dificile prin care știința a progresat, de asemenea.",
+"t000019": "Concluzie",
+"t000020": "Legile mișcării și gravitației formulate de Newton, cercetările sale de optică și metodele matematice au creat un cadru pentru oamenii de știință și inginerii de mai târziu. Moștenirea sa cuprinde și îmbinarea disciplinată a observației, experimentului și raționamentului precis. Biografia îi invită pe cititori să studieze atât descoperirile, cât și omul imperfect și hotărât care le-a făcut.",
+}
+for path in glob.glob(str(ROOT / 'translations/ro/short/chunks/*.json')):
+    data=json.loads(Path(path).read_text())
+    for segment in data['segments']:
+        segment['translation']=translations[segment['id']]
+    Path(path).write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n')

@@ -7,7 +7,7 @@ installation requires finished English and Romanian full and short readers.
 from __future__ import annotations
 
 import argparse
-from datetime import date
+from datetime import date, datetime, timezone
 import hashlib
 import json
 import os
@@ -31,8 +31,9 @@ def normalise(value: str) -> str:
 
 
 def source_name(path: Path) -> tuple[str, int]:
-    match = re.fullmatch(r"(.+?)[_\s-]+v([1-9]\d*)", path.stem, re.I)
-    return (match[1], int(match[2])) if match else (path.stem, 1)
+    stem = path.parent.name if path.name == "content.pdf" and path.parent.parent.name == "income" else path.stem
+    match = re.fullmatch(r"(.+?)[_\s-]+v([1-9]\d*)", stem, re.I)
+    return (match[1], int(match[2])) if match else (stem, 1)
 
 
 def sha256(path: Path) -> str:
@@ -73,11 +74,12 @@ def archive_reader_links(target: Path, archive: Path) -> None:
 def scan(root: Path = ROOT) -> list[dict]:
     books = [(path.parent, read(path)) for path in sorted((root / "docs/books").glob("**/manifest.json"))]
     records = []
-    for source in sorted((root / "tasks").glob("**/*")):
+    deliveries = [*(root / "tasks").glob("**/*"), *(root / "income").glob("*.docx"), *(root / "income").glob("*.doc"), *(root / "income").glob("*/content.pdf")]
+    for source in sorted(deliveries):
         if not source.is_file() or source.suffix.lower() not in EXTENSIONS or source.name.startswith("~$"):
             continue
         # Only deliveries, never sources already copied into a staging/archive tree.
-        if any(part.startswith(".") for part in source.relative_to(root / "tasks").parts):
+        if source.is_relative_to(root / "tasks") and any(part.startswith(".") for part in source.relative_to(root / "tasks").parts):
             continue
         title, version = source_name(source)
         key = normalise(title)
@@ -137,7 +139,13 @@ def prepare(source: Path, source_language: str, english_title: str | None = None
         write(work / "book" / "manifest.json", manifest)
     entry.update(englishTitle=title, sourceLanguage=source_language, requestedLanguages=[], status="preparing", publishedAt=date.today().isoformat(), changes={"en": "", "ro": ""})
     work.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(source, work / source.name)
+    staged_source = work / source.name
+    try:
+        # An immutable intake file can share its bytes with the private
+        # workspace. The recorded digest still detects any later mutation.
+        os.link(source, staged_source)
+    except OSError:
+        shutil.copy2(source, staged_source)
     (work / "book" / source_language).mkdir(parents=True, exist_ok=True)
     write(work / "release.json", entry)
     return work
@@ -175,6 +183,22 @@ def announce(work: Path, root: Path = ROOT) -> Path:
         number = max((entry["number"] for entry in history["editions"]), default=0) + 1
         pending = {"id": f"edition-{number}", "number": number, "status": "preparing", "startedAt": date.today().isoformat(), "label": {code: re.sub(r"1$", str(number), BOOK_ACTIONS[code]["editionLabel"]) for code in LANGUAGES}, "changes": {code: PREPARATION_LABELS[code][0] for code in LANGUAGES}, "source": {"filename": Path(release["source"]).name, "version": release["sourceVersion"], "sha256": release["sha256"]}, "pdf": {}, "contributors": release.get("contributors") or DEFAULT_CONTRIBUTORS}
         history["editions"].append(pending)
+    if history.get("currentEdition") is None:
+        # A new book's draft cover is already visible. When artwork is revised
+        # before publication, replace its public files without writing through
+        # hard links shared by other languages or the pending snapshot.
+        for code in LANGUAGES:
+            for name in ("cover.png", "cover.webp", "thumbnail.webp"):
+                staged = work / "book" / code / name
+                visible = target / code / name
+                if not staged.is_file() or (visible.is_file() and sha256(staged) == sha256(visible)):
+                    continue
+                temporary = visible.with_name(f".{visible.name}.{uuid.uuid4().hex}.tmp")
+                try:
+                    shutil.copy2(staged, temporary)
+                    os.replace(temporary, visible)
+                finally:
+                    temporary.unlink(missing_ok=True)
     manifest["pendingEdition"] = pending["id"]
     from build_books import snapshot_edition_covers
     snapshot_edition_covers(target, pending, work / "book", refresh_pending=True)
@@ -203,8 +227,51 @@ def record_progress(root: Path = ROOT) -> Path:
         meta = read(work / "book/manifest.json") if (work / "book/manifest.json").is_file() else {}
         short_source = work / "book/en/short_content.html"
         keyword_ready = len(meta.get("keywordIds", [])) == 100 and short_source.is_file() and meta.get("keywordSourceHash") == sha256(short_source)
-        rows.append({"source": release["source"], "sha256": release["sha256"], "bookId": release["bookId"], "title": release["englishTitle"], "sourceVersion": release["sourceVersion"], "editionId": release.get("editionId"), "status": release["status"], "workdir": str(work.relative_to(root)), "bookPage": f"docs/{release['directory']}/en/book.html", "pageVisible": (public / "en/book.html").is_file(), "readers": readers, "translations": translations, "keywordCount": len(meta.get("keywordIds", [])), "keywordsRefreshed": keyword_ready, "englishPdfReady": (work / "book/en/book.pdf").is_file(), "validation": release.get("validation", {}), "coverSource": release.get("coverSource")})
+        rows.append({"source": release["source"], "sha256": release["sha256"], "bookId": release["bookId"], "title": release["englishTitle"], "sourceVersion": release["sourceVersion"], "editionId": release.get("editionId"), "status": release["status"], "workdir": str(work.relative_to(root)), "bookPage": f"docs/{release['directory']}/en/book.html", "pageVisible": (public / "en/book.html").is_file(), "readers": readers, "translations": translations, "keywordCount": len(meta.get("keywordIds", [])), "keywordReviewCount": len((meta.get("keywordReview") or {}).get("phrases", [])), "keywordsRefreshed": keyword_ready, "englishPdfReady": (work / "book/en/book.pdf").is_file(), "validation": release.get("validation", {}), "coverSource": release.get("coverSource")})
     write(root / "tasks/release-progress.json", {"updatedAt": date.today().isoformat(), "releases": rows})
+    # The public work dashboard tracks only distinct deliveries requiring this
+    # intake pass. Other workspaces include older releases and exact duplicates.
+    inventory = read(root / "tasks/income-inventory.json") if (root / "tasks/income-inventory.json").is_file() else {}
+    intake_sources = {
+        item["source"] for item in inventory.get("sources", [])
+        if item.get("status") in {"new-book", "new-book-or-release"}
+    }
+    excluded_sources = [
+        {"source": item["source"], "title": item.get("titleFromFolder") or item.get("titleFromFilename") or Path(item["source"]).stem, "status": item["status"]}
+        for item in inventory.get("sources", [])
+        if item.get("status") in {"already-installed", "historical-precursor-review"}
+    ]
+    dashboard_rows = [row for row in rows if row["source"] in intake_sources] if intake_sources else rows
+    browser_data = {
+        "updatedAt": datetime.now(timezone.utc).isoformat(),
+        "currentFocus": read(root / "tasks/current-book-focus.json").get("sources", []) if (root / "tasks/current-book-focus.json").is_file() else [],
+        "excludedSources": excluded_sources,
+        "releases": [{
+            "source": row["source"],
+            "title": row["title"],
+            "status": row["status"],
+            "bookPage": row["bookPage"].removeprefix("docs/"),
+            "readers": row["readers"],
+            "enFullSegmentsComplete": sum(t["segmentsComplete"] for t in row["translations"] if t["language"] == "en" and t["workdir"].endswith("/full")),
+            "enFullSegmentCount": sum(t["segmentCount"] for t in row["translations"] if t["language"] == "en" and t["workdir"].endswith("/full")),
+            "enShortSegmentsComplete": sum(t["segmentsComplete"] for t in row["translations"] if t["language"] == "en" and t["workdir"].endswith("/short")),
+            "enShortSegmentCount": sum(t["segmentCount"] for t in row["translations"] if t["language"] == "en" and t["workdir"].endswith("/short")),
+            "roFullSegmentsComplete": sum(t["segmentsComplete"] for t in row["translations"] if t["language"] == "ro" and t["workdir"].endswith("/full")),
+            "roFullSegmentCount": sum(t["segmentCount"] for t in row["translations"] if t["language"] == "ro" and t["workdir"].endswith("/full")),
+            "roShortSegmentsComplete": sum(t["segmentsComplete"] for t in row["translations"] if t["language"] == "ro" and t["workdir"].endswith("/short")),
+            "roShortSegmentCount": sum(t["segmentCount"] for t in row["translations"] if t["language"] == "ro" and t["workdir"].endswith("/short")),
+            "englishPdfReady": row["englishPdfReady"],
+            "keywordsRefreshed": row["keywordsRefreshed"],
+            "keywordCount": row["keywordCount"],
+            "keywordReviewCount": row["keywordReviewCount"],
+            "coverReady": bool(row["coverSource"]),
+            "changedAt": datetime.fromtimestamp((root / row["workdir"] / "release.json").stat().st_mtime, timezone.utc).isoformat(),
+        } for row in dashboard_rows],
+    }
+    browser_path = root / "docs/assets/book-release-status.js"
+    browser_tmp = browser_path.with_name(f".{browser_path.name}.{uuid.uuid4().hex}.tmp")
+    browser_tmp.write_text("/* Generated by tools/book_tasks.py status. */\nwindow.SCRIPTA_BOOK_RELEASE_STATUS=" + json.dumps(browser_data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+    os.replace(browser_tmp, browser_path)
     lines = ["# Book release work — persistent handover", "", "Regenerate with `python3 tools/book_tasks.py status`. Resume the recorded workspaces; do not create new IDs or restart translated chunks.", "", "Policy: show new books and pending edition entries immediately as **In preparation**; existing book pages stay free of pending-release notices. Complete EN/RO full and short readers, metadata, 100 keywords, covers and PDF QA before promoting a release. Other reader languages require a request. Preserve all older downloads.", ""]
     for row in rows:
         lines += [f"## {row['title']} — source v{row['sourceVersion']}", "", f"- Source: `{row['source']}`", f"- SHA-256: `{row['sha256']}`", f"- Book ID: `{row['bookId']}`; edition: `{row['editionId'] or 'not yet announced'}`", f"- Workspace: `{row['workdir']}`", f"- [{'x' if row['pageVisible'] else ' '}] Visible book page: `{row['bookPage']}`"]
@@ -241,13 +308,25 @@ def stage_cover(work: Path, artwork: Path, root: Path = ROOT) -> None:
     artwork = artwork.resolve()
     if not artwork.is_file() or artwork.suffix.lower() != ".png":
         raise ValueError("Provide the inspected PNG cover extracted from this delivery")
+    primary = work / "book" / "en"
+    primary.mkdir(parents=True, exist_ok=True)
+    if artwork != (primary / "cover.png").resolve():
+        shutil.copy2(artwork, primary / "cover.png")
+    create_display_cover(primary / "cover.png", primary / "cover.webp")
+    create_thumbnail(primary / "cover.webp", primary / "thumbnail.webp")
     for code in LANGUAGES:
+        if code == "en":
+            continue
         folder = work / "book" / code
         folder.mkdir(parents=True, exist_ok=True)
-        if artwork != (folder / "cover.png").resolve():
-            shutil.copy2(artwork, folder / "cover.png")
-        create_display_cover(folder / "cover.png", folder / "cover.webp")
-        create_thumbnail(folder / "cover.webp", folder / "thumbnail.webp")
+        for name in ("cover.png", "cover.webp", "thumbnail.webp"):
+            destination = folder / name
+            if destination.exists():
+                destination.unlink()
+            try:
+                os.link(primary / name, destination)
+            except OSError:
+                shutil.copy2(primary / name, destination)
     release["coverSource"] = {"path": str(artwork.relative_to(root.resolve())), "sha256": sha256(artwork), "deliverySha256": release["sha256"]}
     write(work / "release.json", release)
 
@@ -384,12 +463,19 @@ def install(work: Path, root: Path = ROOT) -> Path:
                 markup = page.read_text(encoding="utf-8")
                 page.write_text(re.sub(r"(?<=>)[ \t]+(?=\n)", "", markup), encoding="utf-8")
     identifier = f"edition-{number}"
-    source_archive = target / "edition-files" / identifier / "source" / Path(release["source"]).name
-    source_archive.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(root / release["source"], source_archive)
+    source_record = {"filename": Path(release["source"]).name, "version": release["sourceVersion"], "sha256": release["sha256"]}
+    # Incoming deliveries are represented by canonical readers and a newly
+    # composed English PDF. Keep their source hash without a second copy of
+    # the old PDF. Older task-based PDF releases retain their source archives.
+    source_path = Path(release["source"])
+    if source_path.suffix.lower() == ".pdf" and source_path.parts[0] != "income":
+        source_archive = target / "edition-files" / identifier / "source" / Path(release["source"]).name
+        source_archive.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(root / release["source"], source_archive)
+        source_record["path"] = source_archive.relative_to(target).as_posix()
     from build_books import BOOK_ACTIONS
     labels = {code: re.sub(r"1$", str(number), BOOK_ACTIONS[code]["editionLabel"]) for code in LANGUAGES}
-    edition = {"id": identifier, "number": number, "label": labels, "publishedAt": release["publishedAt"], "changes": release["changes"], "source": {"filename": Path(release["source"]).name, "version": release["sourceVersion"], "sha256": release["sha256"], "path": source_archive.relative_to(target).as_posix()}, "pdf": {"en": "en/book.pdf"}, "contributors": release.get("contributors") or (pending or {}).get("contributors") or DEFAULT_CONTRIBUTORS}
+    edition = {"id": identifier, "number": number, "label": labels, "publishedAt": release["publishedAt"], "changes": release["changes"], "source": source_record, "pdf": {"en": "en/book.pdf"}, "contributors": release.get("contributors") or (pending or {}).get("contributors") or DEFAULT_CONTRIBUTORS}
     from build_books import snapshot_edition_covers
     edition["status"] = "preparing"
     snapshot_edition_covers(target, edition, refresh_pending=True)

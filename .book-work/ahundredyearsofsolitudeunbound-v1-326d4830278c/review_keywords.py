@@ -1,0 +1,11 @@
+import hashlib, importlib.util, json
+from pathlib import Path
+w=Path(__file__).parent;p=w/'book/manifest.json';s=w/'book/en/short_content.html'
+spec=importlib.util.spec_from_file_location('build_books','tools/build_books.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+phrases='''shifting time|repeated choices|troubled love|town’s destruction|ordinary and impossible|family’s history|emotional shape|generations inherit names|desires and mistakes|physical isolation|failure to understand|earlier warnings|familiar pattern|outside commerce|inventions and alchemy|Melquíades|time can feel circular|events and names recur|insomnia plague|memory itself|label objects|magical realism|ordinary fears|distorted time and space|family habits|family repeats itself|biological line|knowledge|power|intimacy|solitude|Úrsula|household|obsession|estrangement|practical memory|learn from experience|women of the household|resistance to love|desire|fear|exclusion|family tree|love and war|Remedios Moscote|immersion in war|public purpose|political conflict|private solitude|passionate bond|lasting regret|Remedios the Beauty|extraordinary ascent|simple remedy|jealousies|arrival of the train|commercial power|new forms of violence|outside industry|banana company|modern machinery|exploitation|massacre|authorities seek to deny|historical force|political power|collective forgetting|private cycles|Melquíades’ parchments|prophecy|Aureliano Babilonia|last wind|recurring names|Buendías’ extinction|pressure of change|marvelous events|war|death|intimate family history|whole community|listen|choose differently|final prophecy|town’s decline|memory|destruction|insomnia plague threatens memory|practical memory contrasts|family’s repeated inability|Macondo’s disappearance'''.split('|')
+norm=m.keyword_normalise(m.keyword_source_text(s))
+missing=[x for x in phrases if m.keyword_normalise(x) not in norm]
+print('count',len(phrases),'distinct',len(set(phrases)),'missing',missing)
+if len(phrases)!=90 or len(set(phrases))!=90 or missing:raise SystemExit(1)
+d=json.loads(p.read_text());d['keywordReview']={'sourceHash':hashlib.sha256(s.read_bytes()).hexdigest(),'phrases':phrases,'status':'reviewed-source-grounded'}
+p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

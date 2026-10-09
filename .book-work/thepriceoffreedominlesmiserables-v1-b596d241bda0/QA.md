@@ -1,0 +1,9 @@
+# The Price of Freedom in Les Misérables — release QA
+
+- Source: `income/The_Price_of_Freedom_in_Les_Misérables/content.pdf`, 41 pages, SHA-256 `b596d241bda00a9b7d4572612189d63687d26a5987cd78cfdabb93988f7b1089`. Source remains in `income/` pending final cleanup.
+- Retained the original essay on source pages 7–33 (page 33 only the conclusion's final paragraph) and the Hugo bibliography entry on page 41. Removed promotional opening, retired project references, adaptation advertising, unrelated AI appendix and old rights page. The retained English text is about 5,900 tokens. No retired-brand or promotional matches remain in the four readers.
+- EN/RO full and ten-minute HTML exist. Romanian full translation passes the 82-segment chunk check; Romanian short translation passes the 27-segment check. Short-read links point to each language's full reader.
+- English PDF was generated from the canonical English full HTML, not translated. It has 19 portrait pages. Visual inspection of the first and last page found legible text and complete ending/bibliography. Normalized PDF text matches HTML at a 0.9993 sequence ratio; the small difference is punctuation/tokenization.
+- A newly generated cover replaces the obsolete `15 minutes` badge and anachronistic Eiffel Tower. It uses nineteenth-century Paris barricade art and the corrected title. The source artwork remains preserved privately; release cover derivatives were staged with `book_tasks.py cover`.
+- Eight language metadata records have six distinct source-specific description sentences each, at most 14 words per sentence. The 90 editorial keyword phrases are literal English short-read matches. `rebuild-keywords` passed and each language has 100 distinct terms; obvious local translation errors were corrected in the incremental cache.
+- `python3 tools/book_tasks.py check` reports `Release is ready`.

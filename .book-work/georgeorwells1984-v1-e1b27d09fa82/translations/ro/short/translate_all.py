@@ -1,0 +1,35 @@
+import json
+from pathlib import Path
+folder=Path(__file__).parent/'chunks'
+translations={
+ 't000001':'1984 de George Orwell — ediția de zece minute',
+ 't000002':'1984 de George Orwell',
+ 't000003':'''Această lectură în patru părți a romanului lui Orwell urmărește o singură întrebare: cum poate un stat să facă propria versiune a realității mai puternică decât memoria, limbajul și relațiile unei persoane? Capitolele trec de la mecanismele vizibile ale controlului la presiunea asupra gândirii și intimității, apoi la urmărirea puterii de dragul puterii de către Partid.''',
+ 't000004':'1. Totalitarismul și controlul social',
+ 't000005':'''Oceania are un Partid Interior care conduce, un Partid Exterior care administrează și o populație mult mai numeroasă de proli. Imaginea Fratelui cel Mare dă acestei ierarhii un chip. Teleecranele, informatorii și Poliția Gândirii fac supravegherea să pară permanentă, astfel încât oamenii învață să se controleze singuri. Amenințarea de a fi șterși din memoria publică adaugă fricii ceva dincolo de arestare sau pedeapsă.''',
+ 't000006':'''Capitolul subliniază că forța singură nu explică stabilitatea Partidului. Documentele publice sunt schimbate, afirmațiile de ieri dispar, iar dublugânditul îi obișnuiește pe cetățeni să accepte contradicții. Rutinele uniforme și suspiciunea slăbesc legăturile independente. Furia organizată este redirecționată spre ritualuri oficiale precum Săptămâna Urii și cele Două Minute de Ură. Când oamenii nu se pot sprijini pe o memorie comună ori unii pe alții, rezistența devine mai greu de imaginat și coordonat.''',
+ 't000007':'''Societatea lui Orwell este, așadar, mai mult decât o colecție de reguli crude. Este un sistem care unește supravegherea, rescrierea istoriei, izolarea socială și dirijarea emoțiilor. Capitolul îi invită pe cititori să observe cum se întăresc reciproc aceste mecanisme: frica descurajează dezacordul, iar un trecut mereu modificat face dezacordul greu de dovedit.''',
+ 't000008':'2. Limbajul și manipularea gândirii',
+ 't000009':'''Nouvorba este concepută să restrângă, nu să îmbogățească, numărul cuvintelor disponibile. În relatarea capitolului, Partidul elimină sensurile legate de libertatea politică și judecata independentă, astfel încât opoziția să fie mai greu de formulat. Munca lui Syme la dicționar întruchipează această ambiție. Aici, limbajul nu este doar un mijloc de a comunica gânduri; devine o graniță în jurul celor care pot fi exprimate și împărtășite.''',
+ 't000010':'''Lozinci ale Partidului precum „Războiul este pace” se bazează pe dublugândit. Repetiția face contradicția să pară familiară, în timp ce propaganda umple afișele, emisiunile, educația și lecturile copiilor. La Ministerul Adevărului, Winston schimbă ziarele vechi pentru a le potrivi afirmațiilor actuale ale Partidului. Odată rescrisă arhiva, cetățenii pierd un reper stabil cu care să confrunte prezentul și trecutul.''',
+ 't000011':'''Capitolul leagă aceste practici fără a susține că orice schimbare de vocabular produce același efect. Îngrijorarea sa privește concentrarea deliberată a puterii asupra limbajului, educației și arhivelor. Dacă un guvern stabilește cuvintele, lecțiile și dovezile care supraviețuiesc, cetățenii trebuie să se lupte atât ca să numească un dezacord, cât și ca să arate de ce contează.''',
+ 't000012':'3. Relațiile umane și rezistența',
+ 't000013':'''Relația privată dintre Winston și Julia le oferă un loc în care pot vorbi și acționa în afara așteptărilor Partidului. Camera închiriată pare să îi adăpostească de teleecrane, iar intimitatea fizică sfidează un regim care tratează atașamentul ca rival al loialității. Totuși, secretul nu poate înlătura frica. Fiecare trebuie să se întrebe în cine poate avea încredere, iar posibilitatea trădării pătrunde până în legătura lor cea mai apropiată.''',
+ 't000014':'''O’Brien exploatează speranța lui Winston că altcineva i-ar putea împărtăși opoziția. Copiii sunt încurajați să-și denunțe părinții, iar amintirile lui Winston despre mama lui contrastează cu această suspiciune cultivată. Jurnalul, prespapierul de sticlă și discuțiile despre trecut sunt mici încercări de a păstra un sine și o istorie pe care Partidul să nu le poată scrie în întregime. Julia rezistă mai mult prin plăceri private imediate decât printr-un program de schimbare politică.''',
+ 't000015':'''Capitolul nu prezintă aceste forme de rezistență drept sigure. Winston și Julia sunt capturați, torturați și despărțiți. Soarta lor arată cum poate puterea să atace încrederea de care depinde acțiunea colectivă. În același timp, simplul efort de a avea o viață privată dezvăluie ce trebuie Partidul să reprime fără încetare: atașamentul, memoria și dorința de a-ți alege propriile angajamente.''',
+ 't000016':'4. Puterea, adevărul și natura umană',
+ 't000017':'''Ultimul capitol întreabă ce mai dorește Partidul după ce a obținut deja supunerea. Explicația lui O’Brien arată spre puterea însăși: dominația trebuie să treacă dincolo de comportament, până la convingeri și identitate. Ministerul Adevărului rescrie evenimentele, iar dublugânditul cere acceptarea ultimei versiuni chiar când ea contrazice memoria. Partidul urmărește ca autoritatea sa să devină măsura realității.''',
+ 't000018':'''Interogatoriul lui Winston împinge această pretenție până la limită. Tortura este folosită nu doar pentru a smulge o declarație, ci și pentru a schimba felul în care el se înțelege pe sine și îi vede pe ceilalți. Camera 101 îi întoarce cea mai puternică teamă împotriva legăturii cu Julia. Capitolul tratează acest moment ca pe o întrebare despre fragilitatea identității sub presiune extremă, nu ca pe dovada lipsei oricărei capacități umane de libertate.''',
+ 't000019':'''Împreună, cele patru capitole descriu o succesiune: controlează mediul, restrânge limbajul, slăbește relațiile și revendică autoritatea asupra adevărului. Întrebarea rămasă este cum își pot proteja oamenii dovezile comune, gândirea independentă și încrederea înainte ca aceste sprijiniri să fie demontate.''',
+ 't000020':'Capitolele sursă',
+ 't000021':'Totalitarismul și controlul social',
+ 't000022':'Limbajul și manipularea gândirii',
+ 't000023':'Relațiile umane și rezistența',
+ 't000024':'Puterea, adevărul și natura umană',
+}
+for p in sorted(folder.glob('*.json')):
+ d=json.loads(p.read_text())
+ for seg in d['segments']:seg['translation']=translations[seg['id']]
+ p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+assert len(translations)==24
+print('translated',len(translations))

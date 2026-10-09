@@ -91,6 +91,8 @@ and the project `Animation/` structure.
 Finish readers, English PDF, reviewed metadata, 100 keywords per language, cover
 provenance and QA before installation. Pass the stage gate, preserve history on
 install, then pass catalogue and internal-link checks. Keep unfinished sources in
-`tasks/`. Remove a delivered DOCX only after its installed edition contains an
-identical SHA-256 source archive and the conversion/PDF are validated. Report
-actual completion separately from remote deployment.
+`tasks/` or `income/`. Remove a delivered DOC/DOCX only after its installed
+edition contains an identical SHA-256 provenance record and the conversion/PDF
+are validated; keep the filename, version and hash without a DOC/DOCX binary
+archive. For `income/`, defer source cleanup until all incoming conversions are
+complete. Report actual completion separately from remote deployment.
