@@ -974,18 +974,17 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/exploring/formal/logic/an/ai/assisted/educational/journey/bk-dc5527e5da744e89/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
+- [x] RO full_content.html
 - [x] RO short_content.html
-- Translation `.book-work/exploringformallogicanaiassistededucationaljourney-v1-bc57ff5a86bb/translations/ro/full`: **25/28 chunks**, 612/700 segments complete.
-  Resume at `0012.json`; preserve already filled segments.
+- Translation `.book-work/exploringformallogicanaiassistededucationaljourney-v1-bc57ff5a86bb/translations/ro/full`: **28/28 chunks**, 700/700 segments complete.
 - Translation `.book-work/exploringformallogicanaiassistededucationaljourney-v1-bc57ff5a86bb/translations/ro/short`: **1/1 chunks**, 31/31 segments complete.
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -1180,12 +1179,14 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-740d5293db1a4a44`; edition: `edition-1`
 - Workspace: `.book-work/grimmsfairytales-v1-1debe6f66c73`
 - [x] Visible book page: `docs/books/grimms/fairy/tales/bk-740d5293db1a4a44/en/book.html`
-- [ ] EN full_content.html
+- [x] EN full_content.html
 - [ ] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
+- Translation `.book-work/grimmsfairytales-v1-1debe6f66c73/translations/ro/full`: **2/65 chunks**, 33/964 segments complete.
+  Resume at `0003.json`; preserve already filled segments.
 - [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
@@ -2428,17 +2429,19 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-0e20ca1e477f4441`; edition: `edition-1`
 - Workspace: `.book-work/theenchantedapril-v1-fed6e4c0e5d6`
 - [x] Visible book page: `docs/books/the/enchanted/april/bk-0e20ca1e477f4441/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/theenchantedapril-v1-fed6e4c0e5d6/translations/ro/full`: **54/54 chunks**, 1638/1638 segments complete.
+- Translation `.book-work/theenchantedapril-v1-fed6e4c0e5d6/translations/ro/short`: **1/1 chunks**, 19/19 segments complete.
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -2633,12 +2636,14 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-afcbc779a9ab45f4`; edition: `edition-1`
 - Workspace: `.book-work/thelifeandadventuresofrobinsoncrusoe-v1-4365aa3088f2`
 - [x] Visible book page: `docs/books/the/life/and/adventures/of/robinson/crusoe/bk-afcbc779a9ab45f4/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN full_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
+- Translation `.book-work/thelifeandadventuresofrobinsoncrusoe-v1-4365aa3088f2/translations/ro/full`: **0/82 chunks**, 0/715 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
 - [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
@@ -2700,17 +2705,18 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-81ab5a2589434136`; edition: `edition-1`
 - Workspace: `.book-work/thelostworld-v1-2ebda2ee8051`
 - [x] Visible book page: `docs/books/the/lost/world/bk-81ab5a2589434136/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/thelostworld-v1-2ebda2ee8051/translations/ro/full`: **49/49 chunks**, 658/658 segments complete.
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -3044,18 +3050,17 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/the/unfinished/world/bk-525b4f0a08874dcd/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
+- [x] RO full_content.html
 - [x] RO short_content.html
-- Translation `.book-work/theunfinishedworld-v1-13ea46790093/translations/ro/full`: **6/11 chunks**, 586/998 segments complete.
-  Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/theunfinishedworld-v1-13ea46790093/translations/ro/full`: **11/11 chunks**, 998/998 segments complete.
 - Translation `.book-work/theunfinishedworld-v1-13ea46790093/translations/ro/short`: **1/1 chunks**, 75/75 segments complete.
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -3388,10 +3393,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/we/manufacture/our/own/masters/bk-230ef166f61a40b3/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
+- [x] RO full_content.html
 - [x] RO short_content.html
-- Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/full`: **4/15 chunks**, 171/771 segments complete.
-  Resume at `0003.json`; preserve already filled segments.
+- Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/full`: **15/15 chunks**, 771/771 segments complete.
 - Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/short`: **1/1 chunks**, 56/56 segments complete.
 - [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
 - [x] English PDF staged
@@ -3410,17 +3414,19 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-706bafa5570244fc`; edition: `edition-1`
 - Workspace: `.book-work/whitefang-v1-6df6a30c4c22`
 - [x] Visible book page: `docs/books/white/fang/bk-706bafa5570244fc/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/whitefang-v1-6df6a30c4c22/translations/ro/full`: **48/48 chunks**, 612/612 segments complete.
+- Translation `.book-work/whitefang-v1-6df6a30c4c22/translations/ro/short`: **1/1 chunks**, 58/58 segments complete.
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -3477,12 +3483,14 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-00afa2b3800046b9`; edition: `edition-1`
 - Workspace: `.book-work/wutheringheights-v1-52853a6b2f4f`
 - [x] Visible book page: `docs/books/wuthering/heights/bk-00afa2b3800046b9/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN full_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
-- [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] RO short_content.html
+- Translation `.book-work/wutheringheights-v1-52853a6b2f4f/translations/ro/full`: **10/181 chunks**, 60/1009 segments complete.
+  Resume at `0011.json`; preserve already filled segments.
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
