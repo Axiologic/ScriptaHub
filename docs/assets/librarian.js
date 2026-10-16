@@ -15,6 +15,16 @@
     ro: { kicker: "Bibliotecarul AI", results: (count) => `${count} ${count === 1 ? "recomandare" : "recomandări"}`, score: "potrivire", keywords: "Idei potrivite", details: "Vezi cartea", feedback: "Ajută-ne să îmbunătățim recomandările", feedbackNote: "Spune-ne ce a înțeles bine Bibliotecarul și ce i-a scăpat." },
     pl: { kicker: "Bibliotekarz AI", results: (count) => `${count} rekomendacj${count === 1 ? "a" : "i"}`, score: "dopasowanie", keywords: "Pasujące idee", details: "Zobacz książkę", feedback: "Pomóż ulepszyć rekomendacje", feedbackNote: "Powiedz nam, co Bibliotekarz dobrze zrozumiał, a co pominął." },
   };
+  const noMatch = {
+    en: "No books match this question yet. Try another subject or browse the full library.",
+    fr: "Aucun livre ne correspond encore à cette question. Essayez un autre sujet ou parcourez la bibliothèque.",
+    de: "Zu dieser Frage passt noch kein Buch. Versuchen Sie ein anderes Thema oder stöbern Sie in der Bibliothek.",
+    es: "Todavía no hay libros para esta pregunta. Prueba otro tema o explora la biblioteca.",
+    pt: "Ainda não há livros para esta pergunta. Experimente outro tema ou explore a biblioteca.",
+    it: "Non ci sono ancora libri per questa domanda. Prova un altro argomento o esplora la biblioteca.",
+    ro: "Nu există încă o carte potrivită pentru această întrebare. Încearcă alt subiect sau răsfoiește biblioteca.",
+    pl: "Nie ma jeszcze książek pasujących do tego pytania. Spróbuj innego tematu lub przejrzyj bibliotekę.",
+  };
 
   const stopWords = {
     en: "a an and are as at be book books by can do for from how i in is it me my of on or read should that the this to want what which with without would you your",
@@ -35,7 +45,7 @@
     if (!removeStops) return terms;
     const blocked = new Set(normalise(stopWords[language] || stopWords.en).split(" "));
     const useful = terms.filter((term) => !blocked.has(term));
-    return useful.length ? useful : terms;
+    return useful;
   };
   const repeat = (items, count) => Array.from({ length: count }, () => items).flat();
   const ngrams = (items) => items.flatMap((term) => {
@@ -99,11 +109,31 @@
     }).filter((item) => item.strength > 0).sort((left, right) => right.strength - left.strength || left.keyword.localeCompare(right.keyword)).slice(0, 6).map((item) => item.keyword);
   }
 
+  function oneEditApart(left, right) {
+    if (left.length < 5 || right.length < 5 || Math.abs(left.length - right.length) > 1 || left === right) return false;
+    let a = 0, b = 0, edits = 0;
+    while (a < left.length && b < right.length) {
+      if (left[a] === right[b]) { a += 1; b += 1; continue; }
+      if (++edits > 1) return false;
+      if (left.length >= right.length) a += 1;
+      if (right.length >= left.length) b += 1;
+    }
+    return edits + Number(a < left.length || b < right.length) <= 1;
+  }
+
   function rankBooks(query, language) {
     const queryTerms = termsFor(query, language);
-    const wordScores = bm25(buildBm25Index(language), queryTerms);
+    if (!queryTerms.length) return [];
+    const wordIndex = buildBm25Index(language);
+    const wordScores = bm25(wordIndex, queryTerms);
     const characterScores = bm25(buildBm25Index(language, true), ngrams(queryTerms));
-    return wordScores.map((result, index) => ({ ...result, score: result.score + characterScores[index].score * .055, keywords: matchedKeywords(result.book, queryTerms, language) }))
+    return wordScores.map((result, index) => {
+      const titleTerms = Object.values(result.book.title || {}).flatMap((title) => termsFor(title, language, false));
+      const titleExact = queryTerms.some((term) => titleTerms.includes(term));
+      const titleTypo = !titleExact && queryTerms.some((term) => titleTerms.some((candidate) => oneEditApart(term, candidate)));
+      return { ...result, score: result.score + characterScores[index].score * .055 + (titleExact ? 8 : titleTypo ? 5 : 0), keywords: matchedKeywords(result.book, queryTerms, language), exactScore: result.score, terms: wordIndex.documents[index].frequencies };
+    })
+      .filter((result) => result.exactScore > 0 || queryTerms.some((term) => [...result.terms.keys()].some((candidate) => oneEditApart(term, candidate))))
       .sort((left, right) => right.score - left.score || String(left.book.title?.[language] || left.book.title?.en).localeCompare(String(right.book.title?.[language] || right.book.title?.en))).slice(0, 10);
   }
 
@@ -128,7 +158,7 @@
     const feedbackRequest = query ? `#${new URLSearchParams({ request: query }).toString()}` : "";
     document.title = `${words.kicker} · ScriptaHub`;
     ScriptaBookView.unmount(root);
-    root.innerHTML = `<section class="librarian-results librarian-results-page" aria-live="polite"><header><div><p class="eyebrow">${escape(words.results(results.length))}</p><h1>“${escape(query)}”</h1></div></header><div class="librarian-results-list">${results.map((result, index) => resultMarkup(result, index, maximum, language, words)).join("")}</div><div class="librarian-results-help"><a class="librarian-feedback-link" href="feedback.html?${feedbackParams.toString()}${feedbackRequest}"><span>${escape(words.feedback)}</span><small>${escape(words.feedbackNote)}</small></a></div></section>`;
+    root.innerHTML = `<section class="librarian-results librarian-results-page" aria-live="polite"><header><div><p class="eyebrow">${escape(words.results(results.length))}</p><h1>“${escape(query)}”</h1></div></header><div class="librarian-results-list">${results.length ? results.map((result, index) => resultMarkup(result, index, maximum, language, words)).join("") : `<p>${escape(noMatch[language])} <a href="../all-books/index.html?lang=${language}">${escape(language === "ro" ? "Toate cărțile" : "All Books")}</a></p>`}</div><div class="librarian-results-help"><a class="librarian-feedback-link" href="feedback.html?${feedbackParams.toString()}${feedbackRequest}"><span>${escape(words.feedback)}</span><small>${escape(words.feedbackNote)}</small></a></div></section>`;
     ScriptaBookView.mount(root);
   }
 

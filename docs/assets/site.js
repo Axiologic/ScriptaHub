@@ -19,6 +19,7 @@
   };
   const homeLabels = { en: "Home", fr: "Accueil", de: "Startseite", es: "Inicio", pt: "Início", it: "Home", ro: "Acasă", pl: "Strona główna" };
   const createLabels = { en: "Create", fr: "Créer", de: "Erstellen", es: "Crear", pt: "Criar", it: "Crea", ro: "Creează", pl: "Utwórz" };
+  const allBooksLabels = { en: "All Books", fr: "Tous les livres", de: "Alle Bücher", es: "Todos los libros", pt: "Todos os livros", it: "Tutti i libri", ro: "Toate cărțile", pl: "Wszystkie książki" };
   const legalFooterLabels = {
     en: { terms: "Terms", privacy: "Privacy", cookies: "Cookies & local storage", notice: "Legal notice", ai: "AI transparency" },
     fr: { terms: "Conditions", privacy: "Confidentialité", cookies: "Cookies et stockage local", notice: "Mentions légales", ai: "Transparence IA" },
@@ -273,6 +274,18 @@
       const url = new URL(link.getAttribute("href"), location.href);
       url.searchParams.set("lang", language);
       link.href = url.href;
+    });
+    document.querySelectorAll(".site-header .header-tools").forEach((tools) => {
+      let link = tools.querySelector("[data-all-books-link]");
+      if (!link) {
+        link = document.createElement("a");
+        link.className = "header-all-books";
+        link.dataset.allBooksLink = "";
+        tools.querySelector("[data-create-link]")?.insertAdjacentElement("afterend", link);
+      }
+      link.textContent = allBooksLabels[language];
+      link.href = new URL(`all-books/index.html?lang=${language}`, siteRootUrl).href;
+      if (document.body.dataset.allBooksPage === "true") link.setAttribute("aria-current", "page");
     });
     document.querySelectorAll(".site-header .header-tools").forEach((tools) => {
       if(document.body.dataset.homePage==="true"){tools.querySelector("[data-header-librarian]")?.remove();return;}

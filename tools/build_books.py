@@ -1204,7 +1204,7 @@ def version_shared_assets(source: str, page_dir: Path, versions: dict[Path, str]
 
 def shared_asset_versions() -> dict[Path, str]:
     paths = [COLLECTION_SCRIPT, DOCS / "favicon.ico", DOCS / "reader/reader.css", DOCS / "reader/reader.js", *[DOCS / "assets" / name for name in (
-        "site.js", "site.css", "text-show.js", "text-show.css", "book-view.js",
+        "site.js", "site.css", "all-books.js", "all-books.css", "text-show.js", "text-show.css", "book-view.js",
         "librarian.js", "workflow.js", "reading.js", "home-librarian.css",
         "home-librarian.js", "animation.js", "animation.css", "dictation.js", "keyword-cloud.js", "librarian-icon-orange.svg", "librarian-icon-nord.svg", "librarian-mascot.js", "librarian-icon.svg", "librarian-icon.png", "shf/shf-player.js")]]
     return {path.resolve(): hashlib.sha256(path.read_bytes()).hexdigest()[:12] for path in paths if path.is_file()}

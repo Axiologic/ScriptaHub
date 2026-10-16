@@ -74,12 +74,14 @@ def archive_reader_links(target: Path, archive: Path) -> None:
 def scan(root: Path = ROOT) -> list[dict]:
     books = [(path.parent, read(path)) for path in sorted((root / "docs/books").glob("**/manifest.json"))]
     records = []
-    deliveries = [*(root / "tasks").glob("**/*"), *(root / "income").glob("*.docx"), *(root / "income").glob("*.doc"), *(root / "income").glob("*/content.pdf")]
+    deliveries = [*(root / "tasks").glob("**/*"), *(root / "income").glob("**/*")]
     for source in sorted(deliveries):
         if not source.is_file() or source.suffix.lower() not in EXTENSIONS or source.name.startswith("~$"):
             continue
         # Only deliveries, never sources already copied into a staging/archive tree.
         if source.is_relative_to(root / "tasks") and any(part.startswith(".") for part in source.relative_to(root / "tasks").parts):
+            continue
+        if source.is_relative_to(root / "income") and any(part.startswith(".") for part in source.relative_to(root / "income").parts):
             continue
         title, version = source_name(source)
         key = normalise(title)
@@ -95,7 +97,7 @@ def scan(root: Path = ROOT) -> list[dict]:
             directory, book = matches[0]
             history = read(directory / "editions.json") if (directory / "editions.json").exists() else {"editions": []}
             editions = history["editions"]
-            matching = next((item for item in editions if item.get("source", {}).get("sha256") == record["sha256"]), None)
+            matching = next((item for item in editions if item.get("source", {}).get("sha256") == record["sha256"] or any(paired.get("sha256") == record["sha256"] for paired in item.get("source", {}).get("pairedSources", []))), None)
             seen = matching is not None
             current_version = max((int(item.get("source", {}).get("version", item["number"])) for item in editions if item.get("status") != "preparing"), default=0)
             explicit_version = bool(re.search(r"[_\s-]+v[1-9]\d*$", source.stem, re.I))
@@ -112,7 +114,7 @@ def scan(root: Path = ROOT) -> list[dict]:
     for item in records:
         groups.setdefault((item.get("bookId", normalise(item["filenameTitle"])), item["sourceVersion"]), []).append(item)
     for items in groups.values():
-        if len({item["sha256"] for item in items}) > 1:
+        if len({item["sha256"] for item in items}) > 1 and not all(item["status"] == "already-imported" for item in items):
             for item in items:
                 item["status"] = "ambiguous-source"
     return sorted(records, key=lambda item: (normalise(item["filenameTitle"]), item["sourceVersion"], item["source"]))
@@ -475,6 +477,8 @@ def install(work: Path, root: Path = ROOT) -> Path:
         source_record["path"] = source_archive.relative_to(target).as_posix()
     from build_books import BOOK_ACTIONS
     labels = {code: re.sub(r"1$", str(number), BOOK_ACTIONS[code]["editionLabel"]) for code in LANGUAGES}
+    if release.get("pairedSources"):
+        source_record["pairedSources"] = release["pairedSources"]
     edition = {"id": identifier, "number": number, "label": labels, "publishedAt": release["publishedAt"], "changes": release["changes"], "source": source_record, "pdf": {"en": "en/book.pdf"}, "contributors": release.get("contributors") or (pending or {}).get("contributors") or DEFAULT_CONTRIBUTORS}
     from build_books import snapshot_edition_covers
     edition["status"] = "preparing"
