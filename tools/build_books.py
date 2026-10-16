@@ -57,6 +57,16 @@ SOURCE_LANGUAGE_CODES = {code.upper(): code for code in LANGUAGES}
 # The only authored keyword vocabulary: ten real-world shelf categories for
 # each broad section. All remaining terms are extracted from each short read.
 SHELF_CATEGORIES = {
+    "education": {
+        "en": "education|primary education|elementary education|reasoning skills|problem solving|geography education|history education|civic education|environmental education|curriculum design",
+        "fr": "éducation|enseignement primaire|école élémentaire|compétences de raisonnement|résolution de problèmes|enseignement de la géographie|enseignement de l’histoire|éducation civique|éducation à l’environnement|conception des programmes",
+        "de": "Bildung|Grundschulbildung|Primarstufe|Denkfähigkeiten|Problemlösen|Geographieunterricht|Geschichtsunterricht|politische Bildung|Umweltbildung|Lehrplangestaltung",
+        "es": "educación|educación primaria|enseñanza elemental|habilidades de razonamiento|resolución de problemas|enseñanza de geografía|enseñanza de historia|educación cívica|educación ambiental|diseño curricular",
+        "pt": "educação|ensino primário|ensino fundamental|habilidades de raciocínio|resolução de problemas|ensino de geografia|ensino de história|educação cívica|educação ambiental|desenho curricular",
+        "it": "istruzione|istruzione primaria|scuola elementare|abilità di ragionamento|risoluzione dei problemi|didattica della geografia|didattica della storia|educazione civica|educazione ambientale|progettazione curricolare",
+        "ro": "educație|învățământ primar|școală primară|abilități de raționament|rezolvarea problemelor|predarea geografiei|predarea istoriei|educație civică|educație ecologică|proiectare curriculară",
+        "pl": "edukacja|edukacja wczesnoszkolna|szkoła podstawowa|umiejętności rozumowania|rozwiązywanie problemów|nauczanie geografii|nauczanie historii|edukacja obywatelska|edukacja ekologiczna|projektowanie programu nauczania",
+    },
     "technology": {
         "en": "artificial intelligence|machine learning|computer science|software engineering|information systems|data science|automation|software architecture|language models|digital technology",
         "fr": "intelligence artificielle|apprentissage automatique|informatique|génie logiciel|systèmes d’information|science des données|automatisation|architecture logicielle|modèles de langage|technologie numérique",
@@ -134,14 +144,14 @@ SUBJECT_TAGS = {
 # the ten subject tags above they produce 25 terms readers actually use to find
 # a field, a method, a literary mode, or a societal problem.
 TOPICS = {
-    "en": {"technology": "intelligent and trustworthy technologies", "science": "research, evidence, and the systems that make knowledge usable", "fiction": "speculative futures, human choices, and technological change", "philosophy": "foundations, limits, and the conditions of reasoning", "business": "innovation, organizations, and economic change", "society": "institutions, freedom, power, and collective life"},
-    "fr": {"technology": "les technologies intelligentes et dignes de confiance", "science": "la recherche, les preuves et les systèmes qui rendent le savoir utilisable", "fiction": "les futurs spéculatifs, les choix humains et le changement technologique", "philosophy": "les fondements, les limites et les conditions du raisonnement", "business": "l’innovation, les organisations et le changement économique", "society": "les institutions, la liberté, le pouvoir et la vie collective"},
-    "de": {"technology": "intelligente und vertrauenswürdige Technologien", "science": "Forschung, Evidenz und Systeme für nutzbares Wissen", "fiction": "spekulative Zukünfte, menschliche Entscheidungen und technologischen Wandel", "philosophy": "Grundlagen, Grenzen und Bedingungen des Denkens", "business": "Innovation, Organisationen und wirtschaftlichen Wandel", "society": "Institutionen, Freiheit, Macht und gemeinschaftliches Leben"},
-    "es": {"technology": "tecnologías inteligentes y fiables", "science": "investigación, evidencia y sistemas que hacen utilizable el conocimiento", "fiction": "futuros especulativos, decisiones humanas y cambio tecnológico", "philosophy": "fundamentos, límites y condiciones del razonamiento", "business": "innovación, organizaciones y cambio económico", "society": "instituciones, libertad, poder y vida colectiva"},
-    "pt": {"technology": "tecnologias inteligentes e confiáveis", "science": "pesquisa, evidências e sistemas que tornam o conhecimento utilizável", "fiction": "futuros especulativos, escolhas humanas e mudança tecnológica", "philosophy": "fundamentos, limites e condições do raciocínio", "business": "inovação, organizações e mudança econômica", "society": "instituições, liberdade, poder e vida coletiva"},
-    "it": {"technology": "tecnologie intelligenti e affidabili", "science": "ricerca, evidenza e sistemi che rendono utilizzabile la conoscenza", "fiction": "futuri speculativi, scelte umane e cambiamento tecnologico", "philosophy": "fondamenti, limiti e condizioni del ragionamento", "business": "innovazione, organizzazioni e cambiamento economico", "society": "istituzioni, libertà, potere e vita collettiva"},
-    "ro": {"technology": "tehnologii inteligente și de încredere", "science": "cercetare, dovezi și sisteme care fac cunoașterea utilizabilă", "fiction": "viitoruri speculative, alegeri umane și schimbare tehnologică", "philosophy": "fundamente, limite și condițiile raționării", "business": "inovare, organizații și schimbare economică", "society": "instituții, libertate, putere și viață colectivă"},
-    "pl": {"technology": "inteligentne i godne zaufania technologie", "science": "badania, dowody i systemy czyniące wiedzę użyteczną", "fiction": "spekulatywne przyszłości, ludzkie wybory i zmianę technologiczną", "philosophy": "podstawy, granice i warunki rozumowania", "business": "innowacje, organizacje i zmianę gospodarczą", "society": "instytucje, wolność, władzę i życie zbiorowe"},
+    "en": {"technology": "intelligent and trustworthy technologies", "science": "research, evidence, and the systems that make knowledge usable", "fiction": "speculative futures, human choices, and technological change", "philosophy": "foundations, limits, and the conditions of reasoning", "business": "innovation, organizations, and economic change", "society": "institutions, freedom, power, and collective life", "education": "teaching, learning, and reasoning across school subjects"},
+    "fr": {"technology": "les technologies intelligentes et dignes de confiance", "science": "la recherche, les preuves et les systèmes qui rendent le savoir utilisable", "fiction": "les futurs spéculatifs, les choix humains et le changement technologique", "philosophy": "les fondements, les limites et les conditions du raisonnement", "business": "l’innovation, les organisations et le changement économique", "society": "les institutions, la liberté, le pouvoir et la vie collective", "education": "l’enseignement, l’apprentissage et le raisonnement dans les matières scolaires"},
+    "de": {"technology": "intelligente und vertrauenswürdige Technologien", "science": "Forschung, Evidenz und Systeme für nutzbares Wissen", "fiction": "spekulative Zukünfte, menschliche Entscheidungen und technologischen Wandel", "philosophy": "Grundlagen, Grenzen und Bedingungen des Denkens", "business": "Innovation, Organisationen und wirtschaftlichen Wandel", "society": "Institutionen, Freiheit, Macht und gemeinschaftliches Leben", "education": "Lehren, Lernen und Denken in den Schulfächern"},
+    "es": {"technology": "tecnologías inteligentes y fiables", "science": "investigación, evidencia y sistemas que hacen utilizable el conocimiento", "fiction": "futuros especulativos, decisiones humanas y cambio tecnológico", "philosophy": "fundamentos, límites y condiciones del razonamiento", "business": "innovación, organizaciones y cambio económico", "society": "instituciones, libertad, poder y vida colectiva", "education": "la enseñanza, el aprendizaje y el razonamiento en las materias escolares"},
+    "pt": {"technology": "tecnologias inteligentes e confiáveis", "science": "pesquisa, evidências e sistemas que tornam o conhecimento utilizável", "fiction": "futuros especulativos, escolhas humanas e mudança tecnológica", "philosophy": "fundamentos, limites e condições do raciocínio", "business": "inovação, organizações e mudança econômica", "society": "instituições, liberdade, poder e vida coletiva", "education": "ensino, aprendizagem e raciocínio nas disciplinas escolares"},
+    "it": {"technology": "tecnologie intelligenti e affidabili", "science": "ricerca, evidenza e sistemi che rendono utilizzabile la conoscenza", "fiction": "futuri speculativi, scelte umane e cambiamento tecnologico", "philosophy": "fondamenti, limiti e condizioni del ragionamento", "business": "innovazione, organizzazioni e cambiamento economico", "society": "istituzioni, libertà, potere e vita collettiva", "education": "insegnamento, apprendimento e ragionamento nelle materie scolastiche"},
+    "ro": {"technology": "tehnologii inteligente și de încredere", "science": "cercetare, dovezi și sisteme care fac cunoașterea utilizabilă", "fiction": "viitoruri speculative, alegeri umane și schimbare tehnologică", "philosophy": "fundamente, limite și condițiile raționării", "business": "inovare, organizații și schimbare economică", "society": "instituții, libertate, putere și viață colectivă", "education": "predare, învățare și raționament în disciplinele școlare"},
+    "pl": {"technology": "inteligentne i godne zaufania technologie", "science": "badania, dowody i systemy czyniące wiedzę użyteczną", "fiction": "spekulatywne przyszłości, ludzkie wybory i zmianę technologiczną", "philosophy": "podstawy, granice i warunki rozumowania", "business": "innowacje, organizacje i zmianę gospodarczą", "society": "instytucje, wolność, władzę i życie zbiorowe", "education": "nauczanie, uczenie się i rozumowanie w przedmiotach szkolnych"},
 }
 
 ABOUT_BOOK_TITLES = {
@@ -311,6 +321,8 @@ def parse_book_page(page: Path) -> dict[str, str]:
 def subject_group(category: str, title: str, description: str = "") -> str:
     """Classify the subject, using the editorial synopsis when a category is broad."""
     sample = f"{category} {title} {description}".lower()
+    if "education" in category.lower() or "learning" in category.lower():
+        return "education"
     if any(token in sample for token in ("literature", "literary", "science fiction", "cosmic", "political & social sf", "human & philosophical sf", "philosophical fiction", "speculative fiction")):
         return "fiction"
     if any(token in sample for token in ("business", "startups", "investment", "economy")):
@@ -1888,8 +1900,9 @@ def check() -> list[str]:
                                 problems.append(f"{book['id']}: missing or unsafe historical reader: {reader_path}")
                 if manifest.get("currentEdition") and manifest["currentEdition"] != history.get("currentEdition"):
                     problems.append(f"{book['id']}: current edition differs between manifest and history")
-                if manifest.get("currentEdition") and manifest.get("releasePolicy") == "en-ro-on-request":
-                    for required_language in ("en", "ro"):
+                if manifest.get("currentEdition") and manifest.get("releasePolicy") in {"en-ro-on-request", "en-only-editorial"}:
+                    required_languages = ("en",) if manifest["releasePolicy"] == "en-only-editorial" else ("en", "ro")
+                    for required_language in required_languages:
                         if any(key not in manifest.get("editions", {}).get(required_language, {}) for key in ("fullContent", "shortContent")):
                             problems.append(f"{book['id']}: new releases require complete and short {required_language} readers")
             except (json.JSONDecodeError, OSError):

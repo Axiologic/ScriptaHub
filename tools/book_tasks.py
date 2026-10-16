@@ -353,7 +353,10 @@ def validate_stage(work: Path, root: Path = ROOT) -> list[str]:
         staged_cover = work / "book" / code / "cover.png"
         if staged_cover.is_file() and sha256(staged_cover) != artwork.get("sha256"):
             errors.append(f"Staged {code} cover differs from this delivery's selected artwork")
-    permitted = set(AUTOMATIC_LANGUAGES) | set(release.get("requestedLanguages", []))
+    required = tuple(release.get("automaticLanguages", AUTOMATIC_LANGUAGES))
+    if required not in (("en",), AUTOMATIC_LANGUAGES):
+        errors.append("Automatic reader languages must be English or English and Romanian")
+    permitted = set(required) | set(release.get("requestedLanguages", []))
     if not permitted.issubset(LANGUAGES):
         errors.append("Unsupported requested language")
     for language in LANGUAGES:
@@ -401,8 +404,8 @@ def validate_stage(work: Path, root: Path = ROOT) -> list[str]:
             for name in ("cover.png", "cover.webp", "thumbnail.webp"):
                 if not (work / "book" / language / name).is_file():
                     errors.append(f"Missing cover asset: {language}/{name}")
-    if not all(release.get("changes", {}).get(code) for code in AUTOMATIC_LANGUAGES):
-        errors.append("English and Romanian release notes are required")
+    if not all(release.get("changes", {}).get(code) for code in required):
+        errors.append("Release notes are required for each published reader language")
     if not (work / "book/en/book.pdf").is_file():
         errors.append("Missing English PDF download")
     return errors
@@ -493,7 +496,7 @@ def install(work: Path, root: Path = ROOT) -> Path:
     manifest = read(target / "manifest.json")
     manifest["currentEdition"] = identifier
     manifest["publicationStatus"] = "published"
-    manifest["releasePolicy"] = "en-ro-on-request"
+    manifest["releasePolicy"] = "en-only-editorial" if release.get("automaticLanguages") == ["en"] else "en-ro-on-request"
     manifest.pop("pendingEdition", None)
     manifest["sourceAliases"] = sorted(set(manifest.get("sourceAliases", []) + [source_name(Path(release["source"]))[0]]))
     from build_books import edition_record

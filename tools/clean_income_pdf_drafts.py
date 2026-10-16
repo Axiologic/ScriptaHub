@@ -31,7 +31,7 @@ TOC_LINE = re.compile(
     r"(?:a\s+letter\s+to\s+(?:the\s+)?readers\s+and\s+supporters\s+of\s+outfinitygift)\s*\.+\s*\d+",
     re.I,
 )
-BRAND = re.compile(r"outfinity\s*gift|outfinitygift|outfinitygift\.com", re.I)
+BRAND = re.compile(r"outfinity\s*gift|outfinitygift|outfinitygift\.com|outfinity\s+project", re.I)
 SENTENCE_END = re.compile(r"(?<!\bMr)(?<!\bDr)(?<!\bMs)(?<!\bSt)(?<!\bMrs)[.!?][”\"’']?(?:\s+|$)")
 CREATIVE_REFERENCE = "income/The_Unwritten_Masterpiece___A_Treatise_on_Literary_Futility_and_the_Illusion_of_Profundity/content.pdf"
 CROSS_PAGE_PROJECT = {

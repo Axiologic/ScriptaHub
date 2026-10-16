@@ -1596,7 +1596,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] RO full_content.html
 - [x] RO short_content.html
 - Translation `.book-work/meaningasapath-v1-b9caba07e097/translations/ro/short`: **2/2 chunks**, 25/25 segments complete.
-- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
@@ -3415,17 +3415,17 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/we/manufacture/our/own/masters/bk-230ef166f61a40b3/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [x] RO full_content.html
-- [x] RO short_content.html
+- [ ] RO full_content.html
+- [ ] RO short_content.html
 - Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/full`: **15/15 chunks**, 771/771 segments complete.
 - Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/short`: **1/1 chunks**, 56/56 segments complete.
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
-- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [x] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -3483,18 +3483,18 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Workspace: `.book-work/worldasasystem1000reasoningproblemsgrades14en-v1-d8c732e8a9fd`
 - [x] Visible book page: `docs/books/world/as/a/system/1000/reasoning/problems/for/grades/14/bk-23ae7f73b3284615/en/book.html`
 - [x] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
 - Translation `.book-work/worldasasystem1000reasoningproblemsgrades14en-v1-d8c732e8a9fd/translations/ro/full`: **0/107 chunks**, 0/17415 segments complete.
   Resume at `0001.json`; preserve already filled segments.
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -3508,7 +3508,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] EN full_content.html
 - [x] EN short_content.html
 - [ ] RO full_content.html
-- [x] RO short_content.html
+- [ ] RO short_content.html
 - Translation `.book-work/wutheringheights-v1-52853a6b2f4f/translations/ro/full`: **10/181 chunks**, 60/1009 segments complete.
   Resume at `0011.json`; preserve already filled segments.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
@@ -3517,6 +3517,6 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.

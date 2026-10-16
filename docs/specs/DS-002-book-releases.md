@@ -6,7 +6,11 @@ manifests and edition history. DS-001 remains the product specification.
 ## Language policy
 
 Prepare complete and ten-minute readers in English and Romanian for each new
-book and release. Translate other languages only after a visitor/editor requests
+book and release. An explicit editor request may limit a named intake batch to
+English complete and ten-minute readers; record `automaticLanguages: ["en"]`
+in its release workspaces and `releasePolicy: en-only-editorial` in published
+manifests. Preserve any translation already completed in staging without
+publishing it as part of that English-only release. Translate other languages only after a visitor/editor requests
 that book and language. Eight-language interface and discovery metadata remain
 available regardless of reader availability. Do not use a translated landing
 page as evidence that a full reader exists.
