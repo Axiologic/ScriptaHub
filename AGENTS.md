@@ -290,7 +290,7 @@
   black surround; use #ff7900 for Dark Orange and preserve both remembered light
   and dark variants across reader toggles. SHF artwork themes stay independent.
 
-- Default the site and reader to Dark Orange when no valid appearance preference
+- Default the site and reader to Light Green when no valid appearance preference
   is saved; preserve explicit preferences and apply the default before first paint.
 
 - Book-associated forms use the shared compact `data-book-workflow` heading

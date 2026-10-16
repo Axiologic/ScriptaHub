@@ -63,7 +63,7 @@ const progressKey = `axiologic-reader:progress:v1:${sourceId}`;
 const isLocalFilePreview = window.location.protocol === 'file:';
 
 function sharedSiteTheme() {
-  try { const theme=window.localStorage.getItem(siteThemeKey);return ['light','orange','nord','dark','dark-orange'].includes(theme)?theme:'dark-orange'; } catch { return 'dark-orange'; }
+  try { const theme=window.localStorage.getItem(siteThemeKey);return ['light','orange','nord','dark','dark-orange'].includes(theme)?theme:'light'; } catch { return 'light'; }
 }
 
 const lightSiteTheme = (() => {

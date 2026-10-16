@@ -5,38 +5,25 @@
   if (!host || !collection) return;
 
   const shelves = [
-    ["ai-systems", "AI systems", "Sisteme AI"],
-    ["ai-society", "AI and society", "AI și societate"],
-    ["computing", "Computing and software", "Informatică și software"],
-    ["research", "Research and scientific methods", "Cercetare și metode științifice"],
-    ["mathematics", "Mathematics and logic", "Matematică și logică"],
-    ["natural-science", "Natural sciences", "Științe naturale"],
-    ["space", "Space and astronomy", "Spațiu și astronomie"],
-    ["knowledge", "Knowledge and reasoning", "Cunoaștere și raționament"],
-    ["ethics", "Ethics and meaning", "Etică și sens"],
-    ["religion", "Religion and myth", "Religie și mit"],
-    ["money", "Money and finance", "Bani și finanțe"],
-    ["economics", "Economics", "Economie"],
-    ["business", "Business and entrepreneurship", "Afaceri și antreprenoriat"],
-    ["politics", "Politics and power", "Politică și putere"],
-    ["rights", "Rights and freedom", "Drepturi și libertate"],
+    ["ai-technology", "AI and technology", "AI și tehnologie"],
+    ["science-learning", "Science and learning", "Știință și învățare"],
+    ["philosophy", "Philosophy and meaning", "Filosofie și sens"],
     ["society", "Society and culture", "Societate și cultură"],
+    ["politics", "Politics and institutions", "Politică și instituții"],
     ["history", "History and biography", "Istorie și biografii"],
-    ["education", "Education and learning", "Educație și învățare"],
+    ["economy", "Economy and work", "Economie și muncă"],
     ["classics", "Literary classics", "Clasici literari"],
-    ["literary-guides", "Guides to literature", "Ghiduri literare"],
+    ["literary-guides", "Books about books", "Cărți despre cărți"],
     ["science-fiction", "Science fiction", "Science-fiction"],
-    ["fantasy", "Fantasy and horror", "Fantasy și horror"],
-    ["literary-fiction", "Literary fiction", "Ficțiune literară"],
-    ["speculative", "Speculative ideas", "Idei speculative"],
+    ["literary-fiction", "Fiction, fantasy and horror", "Ficțiune, fantasy și horror"],
   ];
   const shelfTranslations = {
-    fr: ["Systèmes d’IA", "IA et société", "Informatique et logiciels", "Recherche et méthodes scientifiques", "Mathématiques et logique", "Sciences naturelles", "Espace et astronomie", "Savoir et raisonnement", "Éthique et sens", "Religion et mythes", "Argent et finance", "Économie", "Affaires et entrepreneuriat", "Politique et pouvoir", "Droits et liberté", "Société et culture", "Histoire et biographies", "Éducation et apprentissage", "Classiques littéraires", "Guides littéraires", "Science-fiction", "Fantastique et horreur", "Fiction littéraire", "Idées spéculatives"],
-    de: ["KI-Systeme", "KI und Gesellschaft", "Informatik und Software", "Forschung und wissenschaftliche Methoden", "Mathematik und Logik", "Naturwissenschaften", "Weltraum und Astronomie", "Wissen und Denken", "Ethik und Sinn", "Religion und Mythos", "Geld und Finanzen", "Wirtschaft", "Unternehmen und Gründung", "Politik und Macht", "Rechte und Freiheit", "Gesellschaft und Kultur", "Geschichte und Biografien", "Bildung und Lernen", "Literarische Klassiker", "Literaturführer", "Science-Fiction", "Fantasy und Horror", "Literarische Fiktion", "Spekulative Ideen"],
-    es: ["Sistemas de IA", "IA y sociedad", "Informática y software", "Investigación y métodos científicos", "Matemáticas y lógica", "Ciencias naturales", "Espacio y astronomía", "Conocimiento y razonamiento", "Ética y sentido", "Religión y mito", "Dinero y finanzas", "Economía", "Negocios y emprendimiento", "Política y poder", "Derechos y libertad", "Sociedad y cultura", "Historia y biografías", "Educación y aprendizaje", "Clásicos literarios", "Guías literarias", "Ciencia ficción", "Fantasía y terror", "Ficción literaria", "Ideas especulativas"],
-    pt: ["Sistemas de IA", "IA e sociedade", "Informática e software", "Investigação e métodos científicos", "Matemática e lógica", "Ciências naturais", "Espaço e astronomia", "Conhecimento e raciocínio", "Ética e sentido", "Religião e mito", "Dinheiro e finanças", "Economia", "Negócios e empreendedorismo", "Política e poder", "Direitos e liberdade", "Sociedade e cultura", "História e biografias", "Educação e aprendizagem", "Clássicos literários", "Guias literários", "Ficção científica", "Fantasia e terror", "Ficção literária", "Ideias especulativas"],
-    it: ["Sistemi di IA", "IA e società", "Informatica e software", "Ricerca e metodi scientifici", "Matematica e logica", "Scienze naturali", "Spazio e astronomia", "Conoscenza e ragionamento", "Etica e significato", "Religione e mito", "Denaro e finanza", "Economia", "Impresa e imprenditorialità", "Politica e potere", "Diritti e libertà", "Società e cultura", "Storia e biografie", "Educazione e apprendimento", "Classici letterari", "Guide letterarie", "Fantascienza", "Fantasy e horror", "Narrativa letteraria", "Idee speculative"],
-    pl: ["Systemy AI", "AI i społeczeństwo", "Informatyka i oprogramowanie", "Badania i metody naukowe", "Matematyka i logika", "Nauki przyrodnicze", "Kosmos i astronomia", "Wiedza i rozumowanie", "Etyka i sens", "Religia i mit", "Pieniądze i finanse", "Ekonomia", "Biznes i przedsiębiorczość", "Polityka i władza", "Prawa i wolność", "Społeczeństwo i kultura", "Historia i biografie", "Edukacja i nauka", "Klasyka literatury", "Przewodniki literackie", "Fantastyka naukowa", "Fantasy i horror", "Proza literacka", "Idee spekulatywne"],
+    fr: ["IA et technologie", "Sciences et apprentissage", "Philosophie et sens", "Société et culture", "Politique et institutions", "Histoire et biographies", "Économie et travail", "Classiques littéraires", "Livres sur les livres", "Science-fiction", "Fiction, fantastique et horreur"],
+    de: ["KI und Technologie", "Wissenschaft und Lernen", "Philosophie und Sinn", "Gesellschaft und Kultur", "Politik und Institutionen", "Geschichte und Biografien", "Wirtschaft und Arbeit", "Literarische Klassiker", "Bücher über Bücher", "Science-Fiction", "Fiktion, Fantasy und Horror"],
+    es: ["IA y tecnología", "Ciencia y aprendizaje", "Filosofía y sentido", "Sociedad y cultura", "Política e instituciones", "Historia y biografías", "Economía y trabajo", "Clásicos literarios", "Libros sobre libros", "Ciencia ficción", "Ficción, fantasía y terror"],
+    pt: ["IA e tecnologia", "Ciência e aprendizagem", "Filosofia e sentido", "Sociedade e cultura", "Política e instituições", "História e biografias", "Economia e trabalho", "Clássicos literários", "Livros sobre livros", "Ficção científica", "Ficção, fantasia e terror"],
+    it: ["IA e tecnologia", "Scienza e apprendimento", "Filosofia e significato", "Società e cultura", "Politica e istituzioni", "Storia e biografie", "Economia e lavoro", "Classici letterari", "Libri sui libri", "Fantascienza", "Narrativa, fantasy e horror"],
+    pl: ["AI i technologia", "Nauka i edukacja", "Filozofia i znaczenie", "Społeczeństwo i kultura", "Polityka i instytucje", "Historia i biografie", "Gospodarka i praca", "Klasyka literatury", "Książki o książkach", "Fantastyka naukowa", "Proza, fantasy i horror"],
   };
   const ui = {
     en: ["All Books", "Browse the complete library by subject. Every book appears in one shelf; use search to find a title or idea across all shelves.", "Search books, subjects or ideas", "books across", "shelves", "No books match your search.", "Categories"],
@@ -53,45 +40,35 @@
   const local = (value, language) => value?.[language] || value?.en || "";
   const label = (shelf, language) => shelfTranslations[language]?.[shelves.indexOf(shelf)] || (language === "ro" ? shelf[2] : shelf[1]);
 
-  // A stable editorial shelf for each book, derived from its existing subject and title.
+  // Use the book's authored category and group first; titles only resolve broad subgenres.
   function shelfFor(book) {
     const title = normalise(book.title?.en);
     const category = normalise(book.category);
     const group = book.group;
     if (group === "fiction") {
       if (/quick guide to notorious conspiracy theories/.test(title)) return "society";
-      if (/hitchhiker.s guide|oriven and origaya|science and wisdom of limits/.test(title)) return "science-fiction";
-      if (/guide|explor|navigat|unveil|revealing|discovering|journey.*(hobbit|gatsby|alchemist)|hidden|wisdom of|impact on|take on|unbound|world of|universe|vision of|mysteries of|dilemma|freedom: jane|chaos$/.test(title)) return "literary-guides";
+      if (/alice|catcher in the rye|moby dick or the whale$|^oliver twist$|^peter pan$|^pride and prejudice$|robinson crusoe|white fang|wuthering heights|yellow wallpaper|call of the wild|enchanted april|ferdinand count fathom|the lost world$/.test(title)) return "classics";
+      if (/oriven and origaya|science and wisdom of limits|warhammer 40,000|asimov.s foundation|cyberpunk 2077|three.body problem|^sg 1 universe$|^star trek universe$|^star wars universe$|^the expanse universe/.test(title)) return "science-fiction";
+      if (/guide|explor|navigat|unveil|revealing|discovering|journey.*(hobbit|gatsby|alchemist)|hidden|wisdom of|impact on|take on|unbound|world of|universe|vision of|mysteries of|dilemma|freedom: jane|chaos$|glimpse into|george orwell.s 1984|grimms fairy tales|shadows and lights.*two cities|metamorphoses of don quixote|price of freedom in les miserables|unlocking markus/.test(title)) return "literary-guides";
       if (/science fiction|human & philosophical sf|political & social sf/.test(category) || /star trek|star wars|warhammer|foundation|three.body|expanse|cyberpunk|altered carbon|matrix|sg 1|robots|galactic|mars|solips|substrate|omnis|oriven|dystopia/.test(title)) return "science-fiction";
-      if (/dracula|frankenstein|sleepy hollow|jekyll|veil|basilisk|predator/.test(title)) return "fantasy";
-      if (/alice|catcher in the rye|moby dick|oliver twist|peter pan|pride and prejudice|robinson crusoe|white fang|wuthering heights|yellow wallpaper|call of the wild|enchanted april|ferdinand count fathom|lost world/.test(title)) return "classics";
-      if (/specul|philosoph|experiment/.test(category)) return "speculative";
       return "literary-fiction";
     }
-    if (/education|learning|grades|curious kids|introductory guide/.test(title + " " + category)) return "education";
-    if (/einstein|newton|darwin|tesla|edison|leonardo|steve jobs|elon musk|frederick douglass/.test(title)) return "history";
-    if (/space|astronom|alien|planetary sky/.test(title)) return "space";
-    if (group === "business") return /econom|capitalism|keynes|marshall|crash|finance|investing/.test(title + " " + category) ? "economics" : "business";
-    if (/bitcoin|bank|money|finance|currency|satoshi|asset management|financial/.test(title)) return "money";
-    if (category === "economics" || /scarcity|markets|capitalism|economic/.test(title)) return "economics";
-    if (/logic|mathematics|equations|calculus/.test(title)) return "mathematics";
-    if (/religion|kabbalah|taoism|jesus|prays|messiah|gospel/.test(title)) return "religion";
-    if (/rights|freedom|liberty|serfdom|responsibility|permission|copy|saved|nobility/.test(title)) return "rights";
-    if (/power|rule|control|government|institutions|contract|strategist|masters|predator|civilization|civilisation/.test(title + " " + category)) return "politics";
-    if (group === "technology") return /\bai\b|agent|intelligence|\brag\b|\blm\b|coherence|judgment|bias/.test(title) || category === "ai systems & infrastructure" ? "ai-systems" : "computing";
-    if (group === "science") {
-      if (/flat earth/.test(title)) return "natural-science";
-      if (/research|executable|scientific|rules|relevance/.test(title + " " + category)) return "research";
-      if (/technology|machine|circuits|symbolic/.test(title + " " + category)) return "computing";
-      return "natural-science";
-    }
-    if (group === "philosophy") {
-      if (/outfinit|reality|reason|knowing|explanation|logic|evidence|meaning/.test(title + " " + category)) return "knowledge";
-      return "ethics";
-    }
-    if (/\bai\b|digital|feed|internet|technology|machine/.test(title)) return "ai-society";
-    if (/history|ancient|holocaust|war|peace|conspirac/.test(title)) return "history";
-    if (/future|world|speculat/.test(title)) return "speculative";
+    if (/einstein|newton|darwin|tesla|edison|leonardo|steve jobs|elon musk|frederick douglass|holocaust|ancient civilisations|ancient civilizations|war and peace/.test(title)) return "history";
+    if (/100 dangerous questions|anti-idiocracy|beauty: the anatomy|ecology of predation|enthusiasm: the missing energy|^memes for 2030$|history and future of social technologies|the necessary mask/.test(title)) return "society";
+    if (/exploring formal logic/.test(title)) return "science-learning";
+    if (/^revocable nobility$/.test(title)) return "politics";
+    if (/the animal that prays|the messiah factory|the ultimate sense of life/.test(title)) return "philosophy";
+    if (/the book sends no notifications|^one more try$|^eden before mars$|^eden was a jungle$|^is there light at the end of the tunnel|the voluptuous apocalypse/.test(title)) return "society";
+    if (category === "ai systems & infrastructure") return "ai-technology";
+    if (group === "philosophy") return "philosophy";
+    if (/technology|artificial intelligence/.test(category) && group !== "business") return "ai-technology";
+    if (category === "economics" || group === "business") return "economy";
+    if (group === "technology") return "ai-technology";
+    if (group === "science" || /science|research|education/.test(category)) return "science-learning";
+    if (/capitalism|market|money|finance|bank|bitcoin|currency|scarcity|salary|servitude|economic|business|entrepreneur/.test(title)) return "economy";
+    if (/government|institution|power|rule|control|contract|strategist|masters|state|politic|predator|civilization|civilisation|rights|freedom|liberty|permission|responsibility|nobility/.test(title + " " + category)) return "politics";
+    if (/\bai\b|artificial intelligence|digital|internet|machine|agent|\bagi\b/.test(title)) return "ai-technology";
+    if (/learning|grades|curious kids|logic|mathematics|equations|astronom|alien|planetary sky/.test(title)) return "science-learning";
     return "society";
   }
 

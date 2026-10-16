@@ -21,7 +21,7 @@ Generated files are replaced from their sources. Do not patch generated book pag
 The site has these product surfaces:
 
 - `docs/index.html`: the library entrance, introduction, keyword cloud, featured book, and dynamic keyword results.
-- `docs/all-books/`: a public, searchable view of the complete catalogue with one subject shelf per book, alphabetical titles within each shelf, and selected-language book links. Show 20–30 browsable categories; collapse the category jump list on narrow screens so books remain near the top. Shelves never enter book routes.
+- `docs/all-books/`: a public, searchable view of the complete catalogue with one subject shelf per book, alphabetical titles within each shelf, and selected-language book links. Use a smaller set of broad, intelligible shelves, aiming for roughly 20 books per shelf as the collection grows; prefer authored subject metadata over incidental title words, and keep AI-subject books in AI and technology. Collapse the category jump list on narrow screens so books remain near the top. Shelves never enter book routes.
 - Localised `book.html` files: one book’s title, description, discovery cloud, reading actions, feedback action, edition history, and an About Book presentation.
 - Canonical reader HTML: full and ten-minute reading modes, language selection, theme, text controls, and Read Aloud where supported.
 - `docs/librarian/`: question-specific recommendations and a separate recommendation-feedback page.
@@ -125,7 +125,7 @@ The homepage librarian and its choices render before the catalogue is available.
 
 ## 11. Reader editions
 
-Reader editions are canonical HTML. Repairs and translations use the chunk workflow in the `book-reader-translations` skill. PDFs remain English source editions and are not translated. The reader keeps language selection usable and uses the same single-state light/dark toggle as the main site. Compact mobile reader headers and footers must not overlap content or wrap into chaotic control rows.
+Reader editions are canonical HTML. Repairs and translations use the chunk workflow in the `book-reader-translations` skill. PDFs remain English source editions and are not translated. On desktop, the reader stage is centred and bounded by the same 1240px measure as the bottom progress control, with side gutters; on phones it uses the available width. The reader keeps language selection usable and uses the same single-state light/dark toggle as the main site. Compact mobile reader headers and footers must not overlap content or wrap into chaotic control rows.
 
 The language selected in the header is the preferred reading language. Book pages have no additional reading-language selector. Full and ten-minute actions open that language's exact format when available, otherwise the same format in English, preserving `lang` in navigation. The reader header uses the same language preference and English fallback. Never substitute a short edition for a complete book or a complete book for a short edition. If neither the selected nor English format exists, its reading action is unavailable rather than linking to a nonexistent file.
 Chapter links inside a translated ten-minute edition open the complete reader in that same language when it exists; they do not jump back to the English source reader.
@@ -484,9 +484,10 @@ CSS/JS alongside other shared assets. Verify navigation and refresh with externa
 application scripts blocked so a light-green flash cannot be masked by fast JS.
 
 
-Dark Orange is the default when no valid saved theme exists, including the
+Light Green is the default when no valid saved theme exists, including the
 synchronous head bootstrap and reader. Preserve an explicit saved preference.
-Its logo/navigation bar is near-black (#080808), with the orange band behind it.
+Dark Orange remains an opt-in appearance; its logo/navigation bar is near-black
+(#080808), with the orange band behind it.
 The additional short book-introduction batch targets 2–3 measured minutes,
 concentrating on the book's message, questions and reason to read; preserve
 original visual identity and source-grounded curiosity without fictional spoilers.

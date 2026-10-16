@@ -184,7 +184,7 @@
     document.querySelectorAll("[data-site-size]").forEach((button) => { button.onclick = () => applySiteScale(1, true); });
   };
   const storedTheme = () => {
-    try { const theme=localStorage.getItem(siteThemeKey); return ["light","orange","nord","dark","dark-orange"].includes(theme)?theme:"dark-orange"; } catch { return "dark-orange"; }
+    try { const theme=localStorage.getItem(siteThemeKey); return ["light","orange","nord","dark","dark-orange"].includes(theme)?theme:"light"; } catch { return "light"; }
   };
   const ensureThemeToggle = () => {
     document.querySelectorAll(".theme-switcher").forEach((control) => {
@@ -195,7 +195,7 @@
     });
   };
   const applyTheme = (theme, persist = false) => {
-    const selected = ["light","orange","nord","dark","dark-orange"].includes(theme) ? theme : "dark-orange";
+    const selected = ["light","orange","nord","dark","dark-orange"].includes(theme) ? theme : "light";
     document.documentElement.dataset.theme = selected;
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
       button.textContent = {light:"☼",orange:"◒",nord:"◈",dark:"☾","dark-orange":"◑"}[selected];
