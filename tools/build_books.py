@@ -265,6 +265,11 @@ def keyword_source_text(page: Path) -> str:
     source = re.sub(r"<(script|style)\b[^>]*>.*?</\1>", " ", source, flags=re.IGNORECASE | re.DOTALL)
     main_match = re.search(r"<main\b[^>]*>(.*?)</main>", source, flags=re.IGNORECASE | re.DOTALL)
     source = main_match.group(1) if main_match else source
+    # The title and delivery credits belong to catalogue metadata, not to
+    # reader discovery terms extracted from the short edition.
+    source = re.sub(r"<h1\b[^>]*>.*?</h1>", " ", source, flags=re.IGNORECASE | re.DOTALL)
+    source = re.sub(r'<p\b[^>]*class="[^"]*\b(?:source-credit|edition-credit)\b[^"]*"[^>]*>.*?</p>', " ", source, flags=re.IGNORECASE | re.DOTALL)
+    source = re.sub(r'<p\b[^>]*>[^<]*\bAI Agent\b[^<]*</p>', " ", source, flags=re.IGNORECASE | re.DOTALL)
     source = re.sub(r"<figure\b[^>]*>.*?</figure>", " ", source, flags=re.IGNORECASE | re.DOTALL)
     source = re.sub(
         r"<p\b[^>]*>(?:(?!</p>).)*(?:KDP|publishing rights|Author(?:&#x27;|&apos;|’|')s Note|available for free|ScriptaHub|all (?:the )?free books|Venture Studio)(?:(?!</p>).)*</p>",
@@ -367,6 +372,8 @@ acknowledgements appendix author book chapter conclusion contents copyright edit
 footnote introduction note notes page pages part preface reader readers reading references section sections scripta
 scriptahub summary table text volume complete minute minutes online original opening synthesis publishing website kdp
 alboaie sinica
+agent narrative narratives thread threads perspective perspectives contextualization insights masterpiece
+contributor discussion passage passages analysis analyses overview timeless
 """.split())
 
 
@@ -1588,6 +1595,8 @@ def rebuild_keywords(manifest_paths: list[Path] | None = None) -> int:
         }
         for phrase in candidates:
             labels = {language: translations[language][phrase] for language in LANGUAGES}
+            if any(keyword_normalise(labels[language]) == keyword_normalise(manifest["title"][language]) for language in LANGUAGES):
+                continue
             if any(keyword_normalise(labels[language]) in seen[language] for language in LANGUAGES):
                 continue
             identifiers.append(keyword_identifier(phrase))

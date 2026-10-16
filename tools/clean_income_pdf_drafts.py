@@ -35,11 +35,18 @@ BRAND = re.compile(r"outfinity\s*gift|outfinitygift|outfinitygift\.com|outfinity
 SENTENCE_END = re.compile(r"(?<!\bMr)(?<!\bDr)(?<!\bMs)(?<!\bSt)(?<!\bMrs)[.!?][”\"’']?(?:\s+|$)")
 CREATIVE_REFERENCE = "income/The_Unwritten_Masterpiece___A_Treatise_on_Literary_Futility_and_the_Illusion_of_Profundity/content.pdf"
 CROSS_PAGE_PROJECT = {
+    "income/Outfinitism___Redefining_the_Infinity/content.pdf": (72, 73, ""),
     "income/AI_and_the_New_Educational_Frontier/content.pdf": (7, 8, ""),
     "income/Navigating_the_Unknown__Bilbo_s_Journey_in_The_Hobbit/content.pdf": (
         5, 6, "This book introduces Bilbo’s story and explores the themes of personal "
     ),
     "income/The_Mirage_of_Stability_in_Financial_Crisis/content.pdf": (5, 6, ""),
+}
+PROJECT_ONLY_PAGES = {
+    # The first Outfinitism manuscript devoted its eighth chapter entirely to
+    # the retired gifting project. Keep the philosophical chapters and mark
+    # this omission in the historical edition's change note.
+    "income/Outfinitism___Redefining_the_Infinity/content.pdf": set(range(104, 117)) | set(range(135, 139)),
 }
 # The PDF prefaces sometimes attach a useful description to a project plug.
 # Keep that description as an editorial sentence while dropping the plug.
@@ -182,6 +189,11 @@ def clean_one(folder: Path) -> dict:
         text = record["text"]
         page = record["page"]
 
+        if page in PROJECT_ONLY_PAGES.get(source_report["source"], set()):
+            removed.append({**record, "reason": "former-project-chapter"})
+            p.getparent().remove(p)
+            continue
+
         # The repeated rights notice occupies a separate page. Remove the
         # complete page, including generic restriction paragraphs left after
         # the old brand header, rather than just its first paragraph.
@@ -227,7 +239,7 @@ def clean_one(folder: Path) -> dict:
 
     if in_letter:
         flags.append({"page": source_report["pageCount"], "reason": "letter-reached-end-of-file", "text": ""})
-    if not letters_found:
+    if not letters_found and source_report["source"] not in PROJECT_ONLY_PAGES:
         flags.append({"page": None, "reason": "letter-heading-not-found", "text": ""})
     if letters_found != letters_ended:
         flags.append({"page": None, "reason": "letter-signature-not-found", "text": f"{letters_found} headings; {letters_ended} signatures"})

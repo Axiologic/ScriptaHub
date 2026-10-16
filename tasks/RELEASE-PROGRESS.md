@@ -905,12 +905,12 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-bb4cc31c30ce476f`; edition: `edition-1`
 - Workspace: `.book-work/dracula-v1-d1b8bf963779`
 - [x] Visible book page: `docs/books/dracula/bk-bb4cc31c30ce476f/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN full_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
@@ -1180,12 +1180,12 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Workspace: `.book-work/grimmsfairytales-v1-1debe6f66c73`
 - [x] Visible book page: `docs/books/grimms/fairy/tales/bk-740d5293db1a4a44/en/book.html`
 - [x] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
 - Translation `.book-work/grimmsfairytales-v1-1debe6f66c73/translations/ro/full`: **2/65 chunks**, 33/964 segments complete.
   Resume at `0003.json`; preserve already filled segments.
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
@@ -1682,12 +1682,12 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-25833774f45341f0`; edition: `edition-1`
 - Workspace: `.book-work/mobydickorthewhale-v1-87d42498a826`
 - [x] Visible book page: `docs/books/moby/dick/or/the/whale/bk-25833774f45341f0/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN full_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
@@ -1840,12 +1840,12 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-6eedba63e3704bc8`; edition: `edition-1`
 - Workspace: `.book-work/olivertwist-v1-27ec38da5724`
 - [x] Visible book page: `docs/books/oliver/twist/bk-6eedba63e3704bc8/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN full_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
@@ -2364,12 +2364,12 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-3d089c4dadb048d3`; edition: `edition-1`
 - Workspace: `.book-work/theadventuresofferdinandcountfathomparti-v1-5cee39d4616a`
 - [x] Visible book page: `docs/books/the/adventures/of/ferdinand/count/fathom/part/i/bk-3d089c4dadb048d3/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN full_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
@@ -2385,12 +2385,12 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - Book ID: `bk-3bbca23e054f437d`; edition: `edition-1`
 - Workspace: `.book-work/theadventuresofferdinandcountfathompartii-v1-c65915d6f417`
 - [x] Visible book page: `docs/books/the/adventures/of/ferdinand/count/fathom/part/ii/bk-3bbca23e054f437d/en/book.html`
-- [ ] EN full_content.html
-- [ ] EN short_content.html
+- [x] EN full_content.html
+- [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
-- [ ] English PDF staged
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
@@ -2664,7 +2664,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] RO short_content.html
 - Translation `.book-work/thelifeandadventuresofrobinsoncrusoe-v1-4365aa3088f2/translations/ro/full`: **0/82 chunks**, 0/715 segments complete.
   Resume at `0001.json`; preserve already filled segments.
-- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 10)
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.

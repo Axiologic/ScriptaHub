@@ -295,7 +295,7 @@
         const current = preparing ? `<span class="publication-status">${escape(globalThis.ScriptaReading.preparationLabels[lang])}</span>` : edition.id === history.currentEdition ? `<span class="edition-date">${escape(words.current)}</span>` : "";
         const label = edition.label?.[lang] || edition.label?.en || `Edition ${edition.number}`;
         const changes = edition.changes?.[lang] || edition.changes?.en || "";
-        const date = preparing ? "" : new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(new Date(`${edition.publishedAt}T12:00:00`));
+        const date = preparing ? "" : edition.datePrecision === "year" ? edition.publishedAt.slice(0, 4) : new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(new Date(`${edition.publishedAt}T12:00:00`));
         const downloads = Object.entries(edition.pdf || {}).map(([code, path]) => `<a href="../${escape(book.directory)}/${escape(path)}" download="${escape(globalThis.ScriptaReading.pdfDownloadName(book.title.en, edition.number))}">${escape(words.download)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`).join("");
         const readingWords = globalThis.ScriptaReading.labels[lang];
         const readers = Object.entries(edition.readers || {}).flatMap(([code, formats]) => Object.entries(formats).map(([format, path]) => `<a href="../${escape(book.directory)}/${escape(path)}">${escape(format === "shortContent" ? readingWords.short : readingWords.full)} · ${escape(collection.supportedLanguages.find((item) => item.code === code)?.name || code)}</a>`)).join("");

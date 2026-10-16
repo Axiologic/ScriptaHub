@@ -15,12 +15,12 @@ from lxml import html
 ROOT = Path(__file__).resolve().parents[1]
 CANDIDATES = ROOT / '.book-work/income-pdf-candidates'
 SUMMARY_PAGES = {
-    'income/Dracula/content.pdf': range(21, 25),
-    'income/Grimms__Fairy_Tales/content.pdf': range(13, 19),
-    'income/Moby_Dick_Or_The_Whale/content.pdf': range(24, 28),
-    'income/Oliver_Twist/content.pdf': range(23, 27),
-    'income/The_Adventures_of_Ferdinand_Count_Fathom___Part_I/content.pdf': range(21, 26),
-    'income/The_Adventures_of_Ferdinand_Count_Fathom___Part_II/content.pdf': range(22, 27),
+    'income/Dracula/content.pdf': (*range(5, 7), *range(21, 25)),
+    'income/Grimms__Fairy_Tales/content.pdf': (*range(6, 8), *range(13, 19)),
+    'income/Moby_Dick_Or_The_Whale/content.pdf': (*range(12, 14), *range(24, 28)),
+    'income/Oliver_Twist/content.pdf': (*range(9, 11), *range(23, 27)),
+    'income/The_Adventures_of_Ferdinand_Count_Fathom___Part_I/content.pdf': (*range(7, 9), *range(21, 26)),
+    'income/The_Adventures_of_Ferdinand_Count_Fathom___Part_II/content.pdf': (*range(7, 9), *range(22, 27)),
     'income/The_Life_and_Adventures_of_Robinson_Crusoe/content.pdf': range(12, 17),
 }
 FIRST_CONTENT_PAGE = {
@@ -41,6 +41,7 @@ SOURCE_CREDITS = {
     'income/The_Adventures_of_Ferdinand_Count_Fathom___Part_II/content.pdf': 'Tobias Smollett · delivered edition: AI Agent Taler Vox',
     'income/The_Life_and_Adventures_of_Robinson_Crusoe/content.pdf': 'Daniel Defoe · delivered edition: AI Agent Taler Vox',
 }
+ROBINSON_CHAPTER_PAGES = (18, 33, 48, 69, 94, 110, 126, 137, 149, 168, 182, 198, 218, 233, 252, 269, 288, 306, 325, 342)
 STYLE = 'body{margin:0;background:#fff;color:#1b2424;font:1.06rem/1.68 Georgia,serif}article{max-width:74ch;margin:auto;padding:2rem 1.2rem}h1,h2,h3{font-family:system-ui,sans-serif;line-height:1.25}h1{font-size:2rem}h2{margin-top:2em}h3{margin-top:1.4em}p{text-align:justify;hyphens:auto;margin:.8em 0}.edition-credit,.source-credit{text-align:left}section{margin:0}a{color:#116766}@media print{article{max-width:none;padding:0}h1,h2,h3{break-after:avoid}}'
 OLD_BRAND = re.compile(r'outfinity\s*gift|outfinitygift|outfinity\s+project|all rights reserved', re.I)
 END_SENTENCE = re.compile(r'(?<=[.!?])\s+(?=[“"\'‘’A-Z])')
@@ -62,11 +63,13 @@ def render_paragraphs(value: str) -> list[str]:
     return [f'<p>{escape(item)}</p>' for item in output if item]
 
 
-def source_section(section: html.HtmlElement, page: int) -> str:
+def source_section(section: html.HtmlElement, page: int, source: str | None = None) -> str:
     parts = [f'<section id="source-page-{page}" data-source-page="{page}">']
+    if source == 'income/The_Life_and_Adventures_of_Robinson_Crusoe/content.pdf' and page in ROBINSON_CHAPTER_PAGES:
+        parts.append(f'<span id="chapter-{ROBINSON_CHAPTER_PAGES.index(page) + 1}"></span>')
     for p in section.xpath('./p'):
         value = tidy(p.text_content())
-        if not value or value == str(page):
+        if not value or re.fullmatch(r'\d{1,4}', value):
             continue
         if OLD_BRAND.search(value):
             raise ValueError(f'Retired notice remained on source page {page}: {value[:100]}')
@@ -96,7 +99,7 @@ def main() -> None:
     work = args.workspace.resolve()
     release = json.loads((work/'release.json').read_text())
     source = release['source']
-    if source not in SUMMARY_PAGES or release['status'] != 'preparing':
+    if source not in SUMMARY_PAGES or release['status'] not in ({'preparing', 'installed'} if args.force else {'preparing'}):
         parser.error('Not one of the reviewed incoming PDF workspaces')
     candidate = CANDIDATES / release['sha256'][:16]
     report = json.loads((candidate/'cleaning-report.json').read_text())
@@ -115,12 +118,13 @@ def main() -> None:
         shutil.copy2(short, qa/'previous-short_content.html')
     if args.force or not (qa/'prepared.json').exists():
         selected_full = [(page, section) for page, section in sorted(pages.items()) if page >= FIRST_CONTENT_PAGE[source]]
-        write_reader(full, title, SOURCE_CREDITS[source], [source_section(section, page) for page, section in selected_full], False)
-        if not short.exists() or (args.force and not (qa/'previous-short_content.html').exists()):
+        write_reader(full, title, SOURCE_CREDITS[source], [source_section(section, page, source) for page, section in selected_full], False)
+        generated_short = not short.exists() or (args.force and 'A short reading guide drawn from the delivered' in short.read_text())
+        if generated_short:
             selected = list(SUMMARY_PAGES[source])
             if any(page not in pages for page in selected):
                 parser.error('One or more summary pages are absent after cleaning')
-            write_reader(short, title, SOURCE_CREDITS[source], [source_section(pages[page], page) for page in selected], True)
+            write_reader(short, title, SOURCE_CREDITS[source], [source_section(pages[page], page, source) for page in selected], True)
         else:
             markup = short.read_text()
             if 'OutfinityGift' in markup or 'outfinitygift' in markup.lower():
@@ -128,7 +132,7 @@ def main() -> None:
             if '(c) Outfinity SRL, Iasi.' not in markup:
                 markup = markup.replace('</h1>', '</h1><p class="edition-credit">Edition: (c) Outfinity SRL, Iasi.</p>', 1)
                 short.write_text(markup)
-        receipt = {'source':source,'sourceSha256':release['sha256'],'cleaningReport':str((candidate/'cleaning-report.json').relative_to(ROOT)),'retainedPages':sorted(pages),'fullReaderSha256':sha256(full.read_bytes()).hexdigest(),'shortReaderSha256':sha256(short.read_bytes()).hexdigest(),'shortPages':list(SUMMARY_PAGES[source]) if not (qa/'previous-short_content.html').exists() else 'existing editorial short reader retained'}
+        receipt = {'source':source,'sourceSha256':release['sha256'],'cleaningReport':str((candidate/'cleaning-report.json').relative_to(ROOT)),'retainedPages':sorted(pages),'fullReaderSha256':sha256(full.read_bytes()).hexdigest(),'shortReaderSha256':sha256(short.read_bytes()).hexdigest(),'shortPages':list(SUMMARY_PAGES[source]) if generated_short else 'existing editorial short reader retained'}
         (qa/'prepared.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
     print(full, short)
 
