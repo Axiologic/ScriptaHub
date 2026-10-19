@@ -73,6 +73,25 @@ class TaskTests(unittest.TestCase):
         self.assertEqual((self.book / "editions.json").read_bytes(), before)
         self.assertFalse((self.book / "edition-files").exists())
 
+    def test_retained_keywords_must_match_previous_manifest(self):
+        source = self.delivery("AssistOs_v2.docx")
+        work = tasks.prepare(source, "en", root=self.root)
+        release = tasks.read(work / "release.json")
+        release["retainPreviousKeywords"] = True
+        tasks.write(work / "release.json", release)
+        previous = tasks.read(self.book / "manifest.json")
+        previous.update(keywordIds=["original"], keywords={"en": ["original"]}, keywordSourceHash="old-hash")
+        tasks.write(self.book / "manifest.json", previous)
+        tasks.write(work / "book/manifest.json", previous)
+        short = work / "book/en/short_content.html"
+        short.parent.mkdir(parents=True, exist_ok=True)
+        short.write_text('<html lang="en">' + ('word ' * 110) + '</html>')
+        error = "Discovery keywords must be refreshed from this release's English short reader"
+        self.assertNotIn(error, tasks.validate_stage(work, self.root))
+        previous["keywords"]["en"] = ["changed"]
+        tasks.write(work / "book/manifest.json", previous)
+        self.assertIn(error, tasks.validate_stage(work, self.root))
+
     def test_announcement_is_visible_without_replacing_the_current_release(self):
         (self.book / "en").mkdir()
         (self.book / "en/book.pdf").write_bytes(b"published PDF")

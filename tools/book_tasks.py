@@ -379,7 +379,11 @@ def validate_stage(work: Path, root: Path = ROOT) -> list[str]:
     else:
         manifest = read(manifest_path)
         short_source = work / "book/en/short_content.html"
-        if not short_source.is_file() or manifest.get("keywordSourceHash") != sha256(short_source):
+        retained = release.get("retainPreviousKeywords") is True
+        previous_path = root / "docs" / release["directory"] / "manifest.json"
+        previous = read(previous_path) if retained and previous_path.is_file() else {}
+        retained_valid = retained and bool(previous.get("keywordSourceHash")) and all(manifest.get(field) == previous.get(field) for field in ("keywordIds", "keywords", "keywordSourceHash"))
+        if not short_source.is_file() or (manifest.get("keywordSourceHash") != sha256(short_source) and not retained_valid):
             errors.append("Discovery keywords must be refreshed from this release's English short reader")
         if manifest.get("id") != release["bookId"]:
             errors.append("Manifest book ID differs from staged release")
@@ -483,6 +487,8 @@ def install(work: Path, root: Path = ROOT) -> Path:
     if release.get("pairedSources"):
         source_record["pairedSources"] = release["pairedSources"]
     edition = {"id": identifier, "number": number, "label": labels, "publishedAt": release["publishedAt"], "changes": release["changes"], "source": source_record, "pdf": {"en": "en/book.pdf"}, "contributors": release.get("contributors") or (pending or {}).get("contributors") or DEFAULT_CONTRIBUTORS}
+    edition["readers"] = {code: {kind: f"{code}/{name}" for kind, name in (("fullContent", "full_content.html"), ("shortContent", "short_content.html")) if (target / code / name).is_file()} for code in LANGUAGES}
+    edition["readers"] = {code: values for code, values in edition["readers"].items() if values}
     from build_books import snapshot_edition_covers
     edition["status"] = "preparing"
     snapshot_edition_covers(target, edition, refresh_pending=True)

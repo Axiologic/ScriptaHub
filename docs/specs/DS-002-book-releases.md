@@ -107,6 +107,10 @@ meaningful step and before a context switch or hand-off.
    while the hash matches and every phrase occurs in the current reader.
    Do not add book-specific vocabulary to the build code. Correct localised
    labels in the translation cache and rebuild when review finds mistranslations.
+   When an editor explicitly requests no new translations for a release, retain
+   the previous edition's discovery terms and their original source hash instead.
+   Record `retainPreviousKeywords: true` in the release; the stage check verifies
+   that identifiers, labels and source hash match the published manifest exactly.
 5. Inspect the cover in every incoming document, including revisions. Use
    `python3 tools/book_tasks.py cover .book-work/WORKSPACE EXTRACTED_COVER.png`
    to record its source and delivery hashes, retain it as `cover.png`, and

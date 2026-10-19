@@ -915,7 +915,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -1191,7 +1191,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -1606,6 +1606,28 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
+## Meaning as a Path — source v2
+
+- Source: `income/Meaning_as_a_path/Meaning_as_a_Path.docx`
+- SHA-256: `52c98b941bb187bc9284610efa84269a44eaabc6083756f80a7b256e22d47e2d`
+- Book ID: `bk-85adcf86fc264f11`; edition: `edition-2`
+- Workspace: `.book-work/meaningasapath-v2-52c98b941bb1`
+- [x] Visible book page: `docs/books/meaning/as/a/path/bk-85adcf86fc264f11/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/meaningasapath-v2-52c98b941bb1/translations/ro/short`: **2/2 chunks**, 33/33 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [x] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
 ## The Messiah Factory — source v1
 
 - Source: `income/MESSIAH_FACTORY.docx`
@@ -1692,7 +1714,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -1850,7 +1872,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -2374,7 +2396,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -2395,7 +2417,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
@@ -2670,7 +2692,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Verify reader structure, local images and translation completeness against the source.
 - [ ] Refresh descriptions, About Book and release notes in all interface languages.
 - [x] Inspect and record this delivery's cover; preserve historical covers.
-- [ ] Install the staged edition and preserve historical readers and downloads.
+- [x] Install the staged edition and preserve historical readers and downloads.
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
