@@ -5,13 +5,12 @@
   "reviewStatus": "independent-review-passed",
   "privateOnly": true,
   "scriptSha256": "d5d33e9e2539f2c37d27909ca9dbbff40ecb86a0465a9f15b9824a87a5cc3add",
-  "artSha256": "172d18e963fa6e1e37c1fd328a34b5b02f7f815ec44d27cbb6af1f916dcd875b",
-  "sceneVisualSha256": "172d18e963fa6e1e37c1fd328a34b5b02f7f815ec44d27cbb6af1f916dcd875b",
+  "artSha256": "5485cf40d6613b7a9cfe91f4113ad48f8a08f440a68365a7614d6797993ddd76",
+  "sceneVisualSha256": null,
   "planSha256": "92baf382afb9d61efac3e0cae5d6f012db58e846534a55a38d4955c65d5a5334",
   "inspection": {
-    "preview": "/tmp/borrowed-credibility-review-20260911/borrowed-credibility-introduction.html",
-    "contactSheet": "/tmp/borrowed-credibility-review-20260911/qa/contact-sheet.png",
-    "frames": 24,
+    "screenshots": "presentations/borrowed-credibility/qa/screenshots",
+    "frames": 48,
     "themes": [
       "color",
       "paper",
@@ -20,8 +19,7 @@
     "sentences": 8,
     "paused": true,
     "muted": true,
-    "captionPolicy": "one sentence per frame",
-    "labelBounds": "presentations/borrowed-credibility/qa/label-bounds.json"
+    "qa": "presentations/borrowed-credibility/qa/browser-review.json"
   },
   "mapping": [
     {
@@ -344,25 +342,81 @@
   ],
   "independentReview": {
     "status": "passed",
-    "reviewer": "production_2",
-    "scope": "Independent semantic and full-size frame review of all eight approved cues.",
-    "checks": {
-      "sourceAndPlan": "matched approved narration and cue plan",
-      "frames": 24,
-      "themes": [
-        "color",
-        "paper",
-        "night"
+    "reviewer": "independent-review-subagent (fresh context, 2026-10-22)",
+    "reviewedAt": "2026-10-22T17:55:26.643Z",
+    "scope": "Rendered implementation of the approved cues: caption band and legibility, overlap, contact, clipping, crowding, alignment, and regression against the 2026-09-11 approved art, in Color, Paper and Night.",
+    "rounds": [
+      {
+        "verdict": "failed",
+        "defects": "Affiliation card on desk; Measurement label touching dots; manuscript drift; table legs near caption; cue gaps."
+      },
+      {
+        "verdict": "failed",
+        "defects": "Editor frown at scene 2 sentence 2; Affiliation card 5 px from desk corner."
+      },
+      {
+        "verdict": "passed",
+        "defects": "none in scope"
+      }
+    ],
+    "notes": "2026-10-22 repair: removed misdirected overhead-desk moveTo that pushed a grey slab into the caption band (also present in Sept art) and reduced the desk to a thin flat surface edge (no nested panel); slip hand now appears at beat 1 for the slip cue; slips lowered to unblock the Manuscript heading; scene 3 manuscript fixed in place (drift move removed) with label fitted; second citation note moved off the manuscript; clock outlined; table legs shortened; editor expression determined->neutral; affiliation card kept inside stage and clear of desk.",
+    "residualConcerns": {
+      "artDirectionForEditor": [
+        "Scene 1 does not show the famous name kept separate from the evidence (Known laboratory appears printed on the paper).",
+        "Scene 2 sentence 1 lacks several papers and a clock (only a text card); gaze shift is subtle.",
+        "Scene 4 reader looks worried, has no visible hand, and the affiliation card moves but is not defocused; tilted desk swallows the body.",
+        "Night artwork is not re-coloured (light cards on near-black; navy legs faint).",
+        "Generic text cards stand in for action; limited distinctive identity."
       ],
-      "paused": true,
-      "muted": true,
-      "renderedText": "passed: 24 frames, no issues",
-      "structural": "passed",
-      "faceClearance": "verified reviewer, reader and hand/desk compositions leave faces unobscured",
-      "labelScale": "verified readable at 1200px",
-      "meaning": "manuscript, affiliation slips, reviewer time limit, citation/funding notes, book evidence and reader hand gestures remain concrete and source-specific"
+      "sharedRuntimeForCoordinator": [
+        "Phone 393 px: play overlay covers the Manuscript heading; art very small.",
+        "Scene counter low contrast."
+      ]
     },
-    "evidenceDirectory": "/tmp/borrowed-credibility-review-20260911/qa",
-    "contactSheet": "/tmp/borrowed-credibility-review-20260911/qa/contact-sheet.png"
-  }
+    "artSha256": "5485cf40d6613b7a9cfe91f4113ad48f8a08f440a68365a7614d6797993ddd76",
+    "scriptSha256": "d5d33e9e2539f2c37d27909ca9dbbff40ecb86a0465a9f15b9824a87a5cc3add"
+  },
+  "previousReviews": [
+    {
+      "status": "passed",
+      "reviewer": "production_2",
+      "scope": "Independent semantic and full-size frame review of all eight approved cues.",
+      "checks": {
+        "sourceAndPlan": "matched approved narration and cue plan",
+        "frames": 24,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "paused": true,
+        "muted": true,
+        "renderedText": "passed: 24 frames, no issues",
+        "structural": "passed",
+        "faceClearance": "verified reviewer, reader and hand/desk compositions leave faces unobscured",
+        "labelScale": "verified readable at 1200px",
+        "meaning": "manuscript, affiliation slips, reviewer time limit, citation/funding notes, book evidence and reader hand gestures remain concrete and source-specific"
+      },
+      "evidenceDirectory": "/tmp/borrowed-credibility-review-20260911/qa",
+      "contactSheet": "/tmp/borrowed-credibility-review-20260911/qa/contact-sheet.png",
+      "artSha256": "172d18e963fa6e1e37c1fd328a34b5b02f7f815ec44d27cbb6af1f916dcd875b",
+      "sceneVisualSha256": "172d18e963fa6e1e37c1fd328a34b5b02f7f815ec44d27cbb6af1f916dcd875b",
+      "inspection": {
+        "preview": "/tmp/borrowed-credibility-review-20260911/borrowed-credibility-introduction.html",
+        "contactSheet": "/tmp/borrowed-credibility-review-20260911/qa/contact-sheet.png",
+        "frames": 24,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "sentences": 8,
+        "paused": true,
+        "muted": true,
+        "captionPolicy": "one sentence per frame",
+        "labelBounds": "presentations/borrowed-credibility/qa/label-bounds.json"
+      }
+    }
+  ],
+  "sceneVisualSha256Note": "No producer for the earlier formula found; artSha256 (as checked by build-book-film.mjs) is authoritative."
 }

@@ -1,3 +1,13 @@
+# Production resumed — 2026-10-22
+
+Resumed at the editor's request: finish films in progress first, in parallel, then new films for books without one.
+
+- ScriptaSkillSet was re-cloned from GitHub (AssistOS-AI/ScriptaSkillSet, a4025c7); the previous local checkout was missing.
+- **Do not run `tools/shf/refresh-player-runtime.mjs`** until the skill runtime is reconciled: the published `docs/assets/shf/shf-player.js` contains local improvements (persisted theme/volume/mute settings, settings panel layout) that the GitHub skill runtime lacks; regenerating would remove them.
+- Qwen3-TTS 1.7B CustomVoice reinstalled locally on CPU (`.agents/skills/theatrical-audio/runtime/qwen.json`). The new torch/numpy versions change the voice-cache fingerprint, so older projects re-synthesize on their next render.
+- Night theme: people default to a lightened version of their own coat colour (`tools/shf/stage-authoring.mjs`), and the night `hair` token is `#56677C` (3.4:1 on the night background) in both the published player and the skill's `runtime/themes.js`. Skill change to commit separately in ScriptaSkillSet.
+- Every published film needs an independent visual review (a reviewer who did not make the art) before it counts as finished; see `tasks/published-film-caption-review.json`.
+
 # Paused at the editor's request
 
 Production was stopped on 2026-09-11. Resume only after an explicit user request.

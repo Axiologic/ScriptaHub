@@ -1,57 +1,310 @@
-import fs from 'node:fs';import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';import {storyPerson,storyGesture} from '../../../tools/shf/people-poses.mjs';
+// Beyond the Last Stone — authoritative book-owned art (repair round 5, 2026-10-22).
+// Rewrites every scene's visual in work/scenes.json; spoken lines, audio and the
+// emotional plan stay untouched. Run: node presentations/beyond-the-last-stone/work/art.mjs
+// Cast use the rigged library people (open eyes, 12 dynamic expressions, gestures,
+// gaze) with book-owned prehistoric dress; each identity keeps its own coat in
+// Color, Paper and Night. No in-art text except the book's cover title.
+import fs from 'node:fs';
+import {stageAuthor} from '../../../tools/shf/stage-authoring.mjs';
+import {ASSETS} from '../../../.agents/skills/shf-presentation-creator/scripts/lib/asset-library.mjs';
+
 const file=new URL('./scenes.json',import.meta.url),scenes=JSON.parse(fs.readFileSync(file));
-const C={ink:'#39464e',ochre:'#c58437',red:'#a95844',ice:'#a5c6d3',snow:'#dfebec',hide:'#b49b76',cream:'#eee1c2',ember:'#eaa245',grain:'#d1af56',skin:'#d8a783',green:'#718d74'};
-const obj=(q,id,x,y,kids,meaning,k=1)=>q.add(q.object(id,x,y,kids,meaning,k));const solid=(q,d,fill)=>q.n('path',{d,fill});
-const appear=(q,id,b,offset=0)=>q.actions.push({actor:id,action:'appear',beat:b,offsetMs:offset,durationMs:800});const vanish=(q,id,b,offset=0)=>q.actions.push({actor:id,action:'disappear',beat:b,offsetMs:offset,durationMs:650});
-function feel(q,id,b,emotion,gesture){q.actions.push({actor:id,action:'character.express',emotion,beat:b,durationMs:900});if(gesture)storyGesture(q,id,b,gesture,1600)}
-function person(q,id,x,y,identity,coat,k=.8,seated=false){storyPerson(q,id,x,y,{identity,coat,scale:k,seated});const o=q.objects.at(-1),old=o.visual.children,parts=new Map(old.map(n=>[n.id,n]));o.visual.children=[parts.get('$asset.legL'),parts.get('$asset.legR'),parts.get('$asset.armL'),{...solid(q,'M-35 -179Q0 -190 35 -177L48 -68L8 -78L-22 -64L-45 -79Z',coat),id:'$asset.hide-wrap'},{...q.path('M-34 -159L29 -115M-29 -110L26 -101',C.cream,3),id:'$asset.hide-cord'},{...q.n('rect',{x:-9,y:-197,width:18,height:24,rx:6,fill:parts.get('$asset.head').children.find(n=>n.type==='ellipse').attrs.fill}),id:'$asset.neck'},parts.get('$asset.armR'),parts.get('$asset.head')].filter(Boolean);const groundContrast=node=>{for(const key of ['fill','stroke'])if(node.attrs?.[key]&&node.attrs[key]!=='none')node.themeAttrs={...node.themeAttrs,night:{...node.themeAttrs?.night,[key]:C.ink}};for(const child of node.children||[])groundContrast(child)};for(const side of ['L','R'])groundContrast(parts.get('$asset.leg'+side));o.meaning='Imagined prehistoric participant in simple hide clothing; expressive fiction, not an archaeological portrait.';return o;}
-function arm(o,side,d,x,y){const a=o.visual.children.find(n=>n.id==='$asset.arm'+side);a.children[0].attrs.d=d;a.children[1].attrs.cx=x;a.children[1].attrs.cy=y;}
-function stone(q,id,x,y,k=.5){obj(q,id,x,y,[solid(q,'M-25 1Q-28 -16 -4 -21Q22 -25 27 -2Q24 19 1 21Q-24 19 -25 1Z',C.hide),q.path('M-16 -8Q-1 -19 13 -8',C.cream,3)],'A finite movable stone, not a meal or a completed infinite collection',k)}
-function parcel(q,id,x,y,k=1){obj(q,id,x,y,[solid(q,'M-47 -22Q-21 -47 17 -37L47 -9L40 23L-35 25Z',C.hide),q.path('M-32 -26L35 20M-31 22L34 -23',C.red,5)],'A hide-wrapped travel bundle resting on ground or held by a participant',k)}
-function ground(q,id,d,color=C.snow){obj(q,id,0,0,[solid(q,d,color)],'Actual terrain supporting the scene, not decorative panel lines')}
-function flame(q,id,x,y,k=.6){obj(q,id,x,y,[q.path('M-41 10L37 -8M-30 -10L43 13',C.ink,11),solid(q,'M-29 0Q-33 -29 -7 -63Q-5 -26 11 -31L21 -52Q51 -8 20 9Q-7 26 -29 0Z',C.ember),solid(q,'M-11 0Q-6 -20 5 -31Q30 13 -11 0Z',C.red)],'Small camp fire with actual embers and fuel',k)}
-function forearm(q,id,x,y,coat=C.ochre){obj(q,id,x,y,[solid(q,'M121 -43Q65 -35 16 -11L5 -8L11 14L68 1L121 -4Z',coat),solid(q,'M-12 -9Q-6 -17 8 -11L23 -4L18 12L1 14L-12 5Z',C.skin),q.path('M-6 -3L8 0M-6 3L8 6',C.ink,2)],'A clothed forearm remains continuous with the nearby kneeling body while fingers grip the stone')}
-// Camp: four substantial figures consider a remembered season against the empty ridge.
-{
-const q=stageAuthor();ground(q,'far-ridges','M60 327L223 243L376 281L541 211L745 282L925 238L1150 321V547H60Z',C.ice);ground(q,'dry-floor','M54 466Q337 423 595 469Q855 435 1157 467V558H54Z',C.cream);obj(q,'river',1120,400,[solid(q,'M-27 -105Q-96 -44 -20 -13Q19 9 -64 85H-12Q70 18 20 -23Q-26 -52 2 -105Z',C.ice),solid(q,'M-10 -9Q15 -26 36 -9L38 12H-14Z',C.ink)],'The source black river rock and low water differ from Kee’s remembered year');
-parcel(q,'kee-seat',479,486,.72);person(q,'ar',259,536,'person-14-neutral',C.red,.83);person(q,'kee',479,536,'person-19-neutral',C.ochre,.61,true);person(q,'karr',748,536,'person-20-neutral',C.hide,.82);person(q,'orra',1031,527,'person-11-neutral',C.green,.85);
-flame(q,'embers',630,518,.7);for(let i=0;i<6;i++){stone(q,'memory-'+i,415+i*30,548,.42);appear(q,'memory-'+i,3,200+i*160)}
-obj(q,'antler',783,425,[q.path('M-23 42L12 -52M2 -18L30 -25M8 -37L-10 -55',C.cream,8)],'Karr’s antler is held near the fire while stories are considered');
-parcel(q,'packed-hide',965,527,.7);obj(q,'orra-grip',987,477,[q.path('M40 -45Q10 -6 -5 24',C.green,14),q.dot(-5,24,7,C.skin)],'Orra’s hand reaches the travel bundle before lifting it');appear(q,'orra-grip',5);vanish(q,'orra.armL',5);q.move('packed-hide',5,983,495,2200);q.move('orra-grip',5,1005,445,2200);
-feel(q,'ar',1,'worried','reflect');feel(q,'ar',2,'worried','question');feel(q,'kee',3,'curious','explain');feel(q,'karr',4,'curious','explain');feel(q,'orra',4,'determined','resolve');feel(q,'ar',5,'determined','release');q.move('antler',4,776,429,1700);
-scenes[0].visual=q.finish('Cold-weather camp: remembered six waiting days, an empty ridge, changed water level and actual packing ground the book-first invitation.');
+const GROUND=545; // shared floor contact; captions stay below ~585
+
+// Stable cast: identity, dress and night variants (see work/visual-bible.json).
+const CAST={
+ ar:{identity:'person-15',hair:'curls',hairColor:'#2f2220',nightHair:'#9a6f55',skin:'#8a5a42',coat:'#b4513a',night:'#d9735a',fur:'#e8d6b8',scale:.84,meaning:'Ar, a young hunter who asks what people have actually seen.'},
+ taan:{identity:'person-16',hair:'short',hairColor:'#7a4a2a',skin:'#d9a07e',coat:'#c8962f',night:'#e2b54f',fur:'#efe2c6',scale:.82,meaning:'Taan, Ar’s companion who carries spears and first names the bear.'},
+ karr:{identity:'person-20',hair:'bob',hairColor:'#6d625a',skin:'#b98262',coat:'#6f5a93',night:'#a48ccd',fur:'#e3d7c3',beard:true,scale:.86,meaning:'Karr, the storyteller who keeps what stories can carry.'},
+ kee:{identity:'person-23',hair:'bun',hairColor:'#c9c6c0',skin:'#7a5040',coat:'#3f8a76',night:'#62b79f',fur:'#eadfca',build:.92,scale:.76,meaning:'Kee, the oldest member, who remembers rivers, herds and names.'},
+ lu:{identity:'person-17',hair:'short',hairColor:'#3a2a24',nightHair:'#94705a',skin:'#7a5040',coat:'#4f7fb4',night:'#7fa9d9',fur:'#eadfca',glasses:false,scale:.56,meaning:'Lu, a child who asks about the track and plays with counting stones.'}
+};
+const LEG={fill:'#6b5140',night:'#a08a74'},SHOE={fill:'#3d2e25',night:'#c4b19a'};
+
+const walk=(node,fn)=>{fn(node);for(const c of node.children||[])walk(c,fn);};
+function castMember(a,id,x,emotion,{scale,y=GROUND,pupilsY=0,gaze={},hideArmR=false,kneel=null}={}){
+ const c=CAST[id],opts={coat:c.coat,dynamicExpressions:true,skin:c.skin,hair:c.hair,hairColor:c.hairColor,glasses:false,beard:!!c.beard,collar:'none'};
+ if(c.build)opts.build=c.build;
+ const visual=ASSETS[`${c.identity}-${emotion}`]('$asset',opts);
+ visual.children=visual.children.filter(p=>p.id!=='$asset.shadow');
+ // Prehistoric dress: remove zipper, pocket and buttons; the gold scarf becomes a fur collar.
+ const drop=new Set();
+ for(const p of visual.children){
+  if(p.type==='line'||(p.type==='path'&&p.attrs.d?.startsWith('M-8 -174')))drop.add(p);
+  if(p.type==='rect'&&p.attrs.fill==='$coatShade')drop.add(p);
+  if(p.type==='circle'&&p.attrs.fill==='$gold')drop.add(p);
+  if(p.type==='path'&&p.attrs.fill==='$gold'){
+   if(p.attrs.d.startsWith('M11 -175'))drop.add(p); // hanging scarf tail
+   else{p.attrs.d='M-31 -183Q0 -171 31 -183L27 -167Q0 -157 -27 -167Z';p.attrs.fill=c.fur;p.themeAttrs={night:{fill:c.fur}};}
+  }
+ }
+ visual.children=visual.children.filter(p=>!drop.has(p));
+ walk(visual,node=>{
+  const at=node.attrs||{},night={};
+  for(const k of ['fill','stroke']){
+   if(at[k]===c.coat)night[k]=c.night;
+   if(at[k]==='$trouser'){at[k]=LEG.fill;night[k]=LEG.night;}
+  }
+  // Round 4: near-black hair vanishes on the Night stage; it takes a lighter warm brown there.
+  if(c.nightHair&&at.fill===c.hairColor)night.fill=c.nightHair;
+  if(Object.keys(night).length)node.themeAttrs={...node.themeAttrs,night:{...node.themeAttrs?.night,...night}};
+ });
+ // Book-owned expression repair: the library 'skeptical' mouth rises into a smirk and
+ // 'curious' arches into a frown. Skeptical becomes a flat, slightly lopsided mouth with
+ // narrowed lids (skin-coloured upper lids); curious becomes a small open, interested smile.
+ const head=visual.children.find(p=>p.id==='$asset.head');
+ const group=state=>head.children.find(p=>p.id==='$asset.expression.'+state);
+ // Round 3: the skeptical lids no longer clamp the pupils. Only the eye under the lowered
+ // (right) brow narrows, to y -4; the other keeps a thin lid; the raised brow stays.
+ group('skeptical').children[0].attrs.d='M-9 21 Q0 21 9 24';
+ group('skeptical').children.splice(1,0,
+  {id:'$asset.expression.skeptical.lids',type:'path',attrs:{d:'M-18 -8H-2V-5.5H-18Z M4 -8H20V-4H4Z',fill:c.skin,stroke:'none'}},
+  {id:'$asset.expression.skeptical.lidline',type:'path',attrs:{d:'M5 -4H19',fill:'none',stroke:'$structural','stroke-width':2,'stroke-linecap':'round'}});
+ group('curious').children[0].attrs.d='M-7 19 Q0 27 7 19';
+ // Round 3: the library's skeptical base asset adds a permanent squint line through both eyes
+ // ('M-17 0 L-4 0 M7 0 L20 0'), which clamped Ar's pupils for every expression; remove it.
+ head.children=head.children.filter(p=>p.attrs?.d!=='M-17 0 L-4 0 M7 0 L20 0');
+ // Round 3: the library 'inspired' mouth is a filled open grin that reads as laughing at the
+ // viewer; it becomes a closed, quiet smile under lifted brows (wonder rather than a laugh).
+ group('inspired').children[0].attrs={...group('inspired').children[0].attrs,d:'M-8 19 Q0 26 9 18',fill:'none'};
+ const eyes=head.children.find(p=>p.id==='$asset.eyes'),pupils=eyes.children.find(p=>p.id==='$asset.pupils');
+ // Round 3: centre the pupils in the whites (the library bakes a +2 rightward bias), so a
+ // lookAt to the left (−4) visibly turns the eyes instead of landing near centre.
+ for(const p of pupils.children)p.attrs.cx-=2;
+ if(pupilsY)pupils.transform={...pupils.transform,y:pupilsY};
+ // Authored gaze held by an expression: whites plus pupils shifted (dx,dy), drawn first inside
+ // that expression group, so while it is shown the eyes look exactly where this beat needs.
+ for(const [state,[dx,dy]] of Object.entries(gaze)){
+  const whites=eyes.children.filter(p=>p.type==='ellipse').map((p,i)=>({id:`$asset.expression.${state}.gazeWhite${i}`,type:'ellipse',attrs:{...p.attrs}}));
+  const dots=pupils.children.map((p,i)=>({id:`$asset.expression.${state}.gazePupil${i}`,type:'circle',attrs:{...p.attrs,cx:p.attrs.cx+dx,cy:p.attrs.cy+dy}}));
+  group(state).children.unshift(...whites,...dots);
+ }
+ // Round 4: the bent hand-to-chin arm is a separate object (chinArm below), so the rig's own
+ // right arm is hidden while it shows and returns by an arm swap with no overlap.
+ const armR=visual.children.find(p=>p.id==='$asset.armR');
+ if(hideArmR)armR.opacity=0;
+ // Round 4: kneeling (Lu laying counting stones). The upper body sits down by kneel.drop and leans
+ // kneel.lean degrees toward the stones about the hem; only the shoes show under the hem; the right
+ // arm reaches down so the hand lands beside the ground where each stone is placed.
+ if(kneel){
+  for(const leg of ['legL','legR']){const g=visual.children.find(p=>p.id==='$asset.'+leg);g.children=g.children.filter(p=>p.attrs.fill==='$structural');}
+  armR.children[0].attrs.d='M32 -156 Q56 -132 62 -100';
+  Object.assign(armR.children.find(p=>p.type==='circle').attrs,{cx:64,cy:-92,r:10});
+  const keep=new Set(['$asset.legL','$asset.legR']);
+  const upper={id:'$asset.upper',type:'g',attrs:{},origin:[0,-75],transform:{x:0,y:kneel.drop,rotate:kneel.lean},children:visual.children.filter(p=>!keep.has(p.id))};
+  visual.children=[...visual.children.filter(p=>keep.has(p.id)),upper];
+ }
+ for(const leg of ['legL','legR']){
+  const g=visual.children.find(p=>p.id==='$asset.'+leg)||visual.children.find(p=>p.id==='$asset.upper')?.children.find(p=>p.id==='$asset.'+leg);
+  for(const p of g.children)if(p.attrs.fill==='$structural'){p.attrs.fill=SHOE.fill;p.themeAttrs={night:{fill:SHOE.night}};}
+ }
+ a.add({id,asset:'custom',x,y,scale:scale??c.scale,visual,meaning:c.meaning,options:{rig:'character',dynamicExpressions:true}});
+ return structuredClone(armR);
 }
-// Snow: a weathered paw impression supports a limited inference, never a visible bear.
-{
-const q=stageAuthor();ground(q,'high-ground','M57 424L298 326L474 373L654 285L822 329L1134 295V548H57Z',C.ice);ground(q,'old-snow','M76 473Q335 433 551 474L694 430L875 502L1138 461V551H76Z',C.snow);
-obj(q,'pine-trunk',1014,534,[solid(q,'M-33 0L-19 -256L17 -254L31 0Z',C.hide),q.path('M-15 -181L-67 -216M13 -150L71 -190',C.ink,10),q.path('M-20 -108L15 -139M-19 -89L18 -121M-17 -72L20 -102',C.cream,4),q.path('M-30 -180Q-50 -173 -41 -156M-28 -180Q-42 -164 -28 -157',C.ink,4)],'One rough tree holds dark hair and claw cuts beside the inspected tracks');
-obj(q,'old-track',534,470,[q.n('ellipse',{cx:0,cy:5,rx:53,ry:33,fill:'#82a8bc'}),...[-35,-12,12,35].map((x,i)=>q.n('ellipse',{cx:x,cy:-27-Math.abs(i-1.5)*2,rx:11,ry:15,fill:'#82a8bc'})),q.path('M-21 -8L-4 9L-12 19M9 -9L23 12',C.cream,4),q.path('M-32 -36L-33 -47M-11 -42V-53M12 -42V-53M34 -35L36 -46',C.ink,3)],'Old bear paw impression with four front cuts, softened edge and icy bottom; current bear location is unknown');
-const ar=person(q,'ar',353,532,'person-14-neutral',C.red,.91,true);arm(ar,'R','M32 -156Q94 -127 145 -69',145,-69);person(q,'taan',847,532,'person-04-neutral',C.ochre,.86);person(q,'orra',681,401,'person-11-neutral',C.green,.62);
-for(let i=0;i<6;i++){obj(q,'higher-step-'+i,626+i*25,474-i*16,[q.n('ellipse',{cx:i%2?8:-8,cy:0,rx:6,ry:12,fill:C.hide})],'Human footprints choose higher ground; no invented animal position');appear(q,'higher-step-'+i,3,i*200)}
-person(q,'karr',176,532,'person-20-neutral',C.hide,.77);appear(q,'karr',5);feel(q,'ar',1,'curious');feel(q,'taan',1,'worried','recoil');feel(q,'ar',2,'curious','reflect');feel(q,'orra',3,'determined','resolve');feel(q,'taan',4,'determined','release');feel(q,'karr',5,'curious','explain');feel(q,'ar',6,'curious','question');
-scenes[1].visual=q.finish('The track is physically inspected beside related tree evidence; higher-ground movement acts under uncertainty without showing a bear or resolving the risk.');
+// Round 4: a person's right arm as its own object, drawn in front of the person. 'bent' is the
+// hand-to-chin pose: a slightly darker sleeve tone (shading, no outline) crossing the fur collar,
+// the hand raised in front of the chin's right side; 'straight' is the rig's own hanging arm.
+function armObject(a,id,owner,x,arm,pose,meaning){
+ const c=CAST[owner],k=c.scale;arm=structuredClone(arm);delete arm.opacity;
+ if(pose==='bent'){
+  const shade=(hex,f)=>'#'+[1,3,5].map(i=>Math.round(parseInt(hex.slice(i,i+2),16)*f).toString(16).padStart(2,'0')).join('');
+  Object.assign(arm.children[0].attrs,{d:'M32 -158 Q56 -136 47 -118 Q36 -150 19 -184',stroke:shade(c.coat,.84),'stroke-linejoin':'round'});
+  arm.children[0].themeAttrs={night:{stroke:shade(c.night,.84)}};
+  Object.assign(arm.children.find(p=>p.type==='circle').attrs,{cx:17,cy:-193,r:10});
+  arm.children.push({id:'$asset.armR.knuckles',type:'path',attrs:{d:'M10 -196Q14 -193 11 -189',fill:'none',stroke:shade(c.skin,.72),'stroke-width':1.6,'stroke-linecap':'round'}});
+ }
+ a.add({id,asset:'custom',x,y:GROUND,scale:k,visual:{id:'$asset',type:'g',attrs:{},anchors:{left:[-70,0],right:[70,0],top:[0,-70],bottom:[0,70]},children:[arm]},meaning});
 }
-// Council from a higher angle: added numbers cannot multiply a fixed food supply.
-{
-const q=stageAuthor();ground(q,'council-ground','M55 286Q300 205 585 261Q854 229 1150 299V554H55Z',C.cream);obj(q,'food-hide',291,425,[solid(q,'M-119 -80Q-81 -99 -40 -78L12 -94L120 -53L97 75L42 62L-9 88L-103 55Z',C.hide)],'A single hide carries the finite dried food, roots and bitter seeds');
-for(let i=0;i<3;i++)obj(q,'dried-food-'+i,240+i*42,405+(i%2)*16,[solid(q,'M-13 -30Q-18 0 -10 30L10 25L16 -26Z',C.red),q.path('M-6 -20L4 15',C.cream,2)],'Non-graphic dried food remains the same quantity during counting');obj(q,'roots',285,469,[q.path('M-35 0L17 -18M-18 15L35 -12M8 19L31 8',C.ochre,10)],'Remaining roots');obj(q,'seeds',336,379,[solid(q,'M-24 -18Q0 -31 24 -18L33 26Q0 44 -34 25Z',C.grain),q.path('M-18 -18H18',C.ink,3)],'Bitter-seed bag');
-for(let i=0;i<5;i++)stone(q,'food-day-'+i,390+i*36,462,.43);
-for(let j=0;j<3;j++){const b=j+2,start=612+j*36,end=570+j*36;forearm(q,'lu-grip-'+j,start,442,C.green);stone(q,'extra-'+j,start,442,.43);for(const id of ['lu-grip-'+j,'extra-'+j])appear(q,id,b);q.move('lu-grip-'+j,b,end,462,1800);q.move('extra-'+j,b,end,462,1800);vanish(q,'lu-grip-'+j,b,2400)}
-const lu=person(q,'lu',700,538,'person-16-neutral',C.green,.71,true);vanish(q,'lu.armL',2);appear(q,'lu.armL',5);q.move('lu',3,736,538,1800);q.move('lu',4,772,538,1800);
-const kee=person(q,'kee',163,539,'person-19-neutral',C.ochre,.72,true);arm(kee,'R','M32 -156Q112 -143 136 -104',136,-104);feel(q,'lu',1,'happy');feel(q,'kee',2,'happy','explain');feel(q,'lu',3,'surprised');feel(q,'lu',4,'happy');feel(q,'kee',5,'curious','reflect');
-q.label('food-label','Food for five days',300,310,29);q.label('count-label','One more stone',616,323,29);for(const id of ['food-label','count-label'])q.objects.find(o=>o.id===id).visual.children[0].attrs.fill=C.ink;appear(q,'count-label',2);
-scenes[2].visual=q.finish('A condensed physical counting council: five food days remain finite as Lu places three more stones, shuffling beside the row; this is not a completed infinity or extra food.');
+
+for(const [index,s]of scenes.entries()){
+ const a=stageAuthor(),{n,path,tint,text}=a;
+ const obj=(id,x,y,kids,meaning,k=1)=>a.add(a.object(id,x,y,kids,meaning,k));
+ // Stage-coordinate drawing whose object origin sits at its visual centre, so gaze targets are true.
+ const absObj=(id,cx,cy,kids,meaning)=>obj(id,cx,cy,[{...n('g'),transform:{x:-cx,y:-cy},children:kids}],meaning);
+ const fill=(d,color,night=color)=>tint(n('path',{d,fill:color}),night);
+ const oval=(cx,cy,rx,ry,color,night=color)=>tint(n('ellipse',{cx,cy,rx,ry,fill:color}),night);
+ const stroke=(d,color,w,night=color)=>tint(path(d,color,w),night);
+ const act=(actor,beat,action,extra={})=>a.actions.push({actor,action,beat,durationMs:850,...extra});
+ // Round 4: expression crossfades take 400 ms and finish before 10% of each sentence, so an authored
+ // gaze overlay never shows a second pair of pupils in a reviewed frame.
+ const feel=(id,beat,emotion,offsetMs=200)=>act(id,beat,'character.express',{emotion,offsetMs,durationMs:400});
+ const look=(id,target,beat,offsetMs=300)=>act(id,beat,'lookAt',{target,offsetMs,durationMs:700});
+ const gesture=(id,beat,g,offsetMs=1150,durationMs=2400)=>act(id,beat,'character.gesture',{gesture:g,offsetMs,durationMs});
+ const walkTo=(id,beat,x,offsetMs=1200,durationMs=1600)=>act(id,beat,'walkTo',{x,offsetMs,durationMs});
+ const appear=(id,beat,offsetMs=250,durationMs=900)=>act(id,beat,'appear',{offsetMs,durationMs});
+ const performance=[];
+ const dashed=d=>{const p=stroke(d,'#5a3a2a',4,'#3d2a20');p.attrs={...p.attrs,'stroke-dasharray':'3 9',opacity:.5};return p;};
+
+ // A flat tapered band along a quadratic centreline: rivers and trails without round caps.
+ const ribbon=([x0,y0],[cx,cy],[x2,y2],w0,w1,color,night,steps=18)=>{const L=[],R=[];for(let i=0;i<=steps;i++){const t=i/steps,u=1-t;
+  const x=u*u*x0+2*t*u*cx+t*t*x2,y=u*u*y0+2*t*u*cy+t*t*y2,dx=2*u*(cx-x0)+2*t*(x2-cx),dy=2*u*(cy-y0)+2*t*(y2-cy),len=Math.hypot(dx,dy),w=(w0+(w1-w0)*t)/2;
+  L.push(`${(x-dy/len*w).toFixed(1)} ${(y+dx/len*w).toFixed(1)}`);R.push(`${(x+dy/len*w).toFixed(1)} ${(y-dx/len*w).toFixed(1)}`);}
+  return fill('M'+L.join('L')+'L'+R.reverse().join('L')+'Z',color,night);};
+ // Ochre outline bison in the manner of a cave painting: strokes only, so it reads as an image, not an animal.
+ const cavePainting=(dx,dy)=>[stroke(`M${dx-38} ${dy}Q${dx-44} ${dy-26} ${dx-24} ${dy-34}Q${dx-8} ${dy-52} ${dx+14} ${dy-42}Q${dx+38} ${dy-36} ${dx+40} ${dy-12}L${dx+38} ${dy}Z`,'#b5743a',4,'#e0a463'),
+  stroke(`M${dx-56} ${dy-14}a12 11 0 1 0 24 0a12 11 0 1 0 -24 0`,'#b5743a',4,'#e0a463'),stroke(`M${dx-50} ${dy-22}Q${dx-58} ${dy-30} ${dx-50} ${dy-34}`,'#b5743a',4,'#e0a463'),
+  stroke(`M${dx-30} ${dy}L${dx-34} ${dy+18}M${dx-18} ${dy}L${dx-16} ${dy+18}M${dx+20} ${dy}L${dx+16} ${dy+18}M${dx+32} ${dy}L${dx+36} ${dy+18}`,'#b5743a',4,'#e0a463')];
+ // Recognisable, reusable book-owned props (each drawn once per scene, never labelled).
+ const hearth=(id,x,meaning,k=1)=>obj(id,x,GROUND,[
+  ...[-58,-30,0,30,58].map((dx,i)=>oval(dx,-6+(i%2)*2,16,10,'#857a70','#9b9188')),
+  stroke('M-44 -10L40 -30M-40 -30L44 -10','#7a5235',11,'#a77a52'),
+  fill('M-30 -22Q-34 -64 -6 -92Q-4 -64 10 -58Q14 -82 30 -96Q44 -60 32 -22Z','#e5733a','#f08a4e'),
+  fill('M-14 -22Q-16 -48 2 -66Q6 -44 18 -40Q22 -30 16 -22Z','#f4c04e','#f7d26e')
+ ],meaning,k);
+ const foodHide=(id,x,meaning)=>obj(id,x,GROUND,[
+  fill('M-52 -2Q-60 -22 -38 -26Q0 -34 40 -26Q60 -22 52 -2Q0 6 -52 -2Z','#b08657','#c29a6c'),
+  ...[[-24,-16],[2,-19],[26,-15]].map(([x,y])=>fill(`M${x-11} ${y+4}Q${x-12} ${y-6} ${x} ${y-7}Q${x+12} ${y-6} ${x+11} ${y+4}Z`,'#7c3d2b','#a65a43'))
+ ],meaning);
+ const paw=(cx,cy,k=1,color='#4a3a31')=>[
+  fill(`M${cx-24*k} ${cy+6*k}Q${cx-28*k} ${cy-14*k} ${cx} ${cy-14*k}Q${cx+28*k} ${cy-14*k} ${cx+24*k} ${cy+6*k}Q${cx} ${cy+18*k} ${cx-24*k} ${cy+6*k}Z`,color),
+  ...[-23,-11.5,0,11.5,23].map((dx,i)=>oval(cx+dx*k,cy-(23+(i===0||i===4?0:5))*k,6.5*k,5.5*k,color)),
+  ...[-23,-11.5,0,11.5,23].map((dx,i)=>stroke(`M${cx+dx*k} ${cy-(31+(i===0||i===4?0:5))*k}L${cx+dx*1.12*k} ${cy-(38+(i===0||i===4?0:5))*k}`,color,3))
+ ];
+
+ if(index===0){
+  // The missing herd: an empty pass beyond the ridges, the river at the black rock,
+  // and three people around one small fire and one small food hide.
+  absObj('river',120,440,[ribbon([235,270],[150,420],[-40,515],24,92,'#7fa8c8','#3f6f94'),
+   fill('M72 454L78 436L92 420L112 412L134 414L150 424L160 440L162 454Z','#57524d','#8d8780'),
+   fill('M92 420L112 412L134 414L126 426L104 430Z','#78716a','#aca59d'),
+   stroke('M72 454L78 436L92 420L112 412L134 414L150 424L160 440L162 454','#3a3632',3,'#c4beb6'),
+   stroke('M62 458Q86 452 110 458Q136 464 170 456','#cfe0ec',4,'#7fa8c8')],'The low river reaches the black rock, which sits in it like the back of a sleeping animal.');
+  absObj('empty-route',1000,420,[ribbon([1068,540],[1000,420],[965,286],70,14,'#dcc394','#4e4436')],'An empty trail runs up into the pass; no animal or fresh hoof sign is on it.');
+  absObj('far-ridges',600,240,[fill('M0 292L0 226L130 208L270 240L430 172L600 228L750 192L870 244L905 292Z','#d6c09e','#2c3540'),fill('M1025 292L1070 232L1200 204L1200 292Z','#d6c09e','#2c3540')],'Flat ridges frame an empty pass on the right where the herd should appear.');
+  hearth('embers',540,'A small fire: the camp’s only warmth while the herd is late.');
+  foodHide('food-hide',438,'The remaining food, small enough to sit on one hide.');
+  castMember(a,'kee',330,'worried',{pupilsY:3,gaze:{sad:[4,-2]}});castMember(a,'karr',660,'neutral');castMember(a,'ar',870,'skeptical',{gaze:{skeptical:[3,-4]}});
+  // Line 1 — restrained urgency: Karr offers a hopeful story; Kee watches the food; Ar watches the empty pass.
+  feel('kee',1,'worried');look('kee','food-hide',1,150);act('kee',1,'reach',{offsetMs:900,durationMs:3800});
+  // Round 4: Karr's open-palmed storytelling peaks at ~2.8 s and holds through the midpoint (~3.7 s).
+  feel('karr',1,'determined');look('karr','kee',1,300);gesture('karr',1,'invite',300,5200);
+  // Ar's skeptical face carries its own up-right gaze at the pass; lookAt (no 'up', which tilts the head
+  // away) turns the head toward it. Both settle by 1 s and hold through the midpoint.
+  feel('ar',1,'skeptical',200);look('ar','empty-route',1,300);
+  // Line 2 — grounded concern: Ar comes back toward the fire; Karr's confidence falls; Kee asks what now.
+  walkTo('ar',2,830,250,1100);feel('ar',2,'worried',300);look('ar','karr',2,1700);
+  feel('karr',2,'worried',500);gesture('karr',2,'recoil',1800,2400);
+  act('kee',2,'lookAt',{target:'karr',up:true,offsetMs:300,durationMs:700});feel('kee',2,'sad',400);gesture('kee',2,'question',600,6200); // raised open palms peak ~3.6 s, held to ~5.4 s (midpoint ~4.8 s), eyes on Karr
+  performance.push('1: Kee worried, eyes lowered to the food hide and her hand reaching toward it; Karr determined, open-armed story; Ar skeptical (flat mouth, one narrowed eye, raised brow), head turned and eyes raised up-right to the empty pass.','2: Ar steps back toward the fire, worried; Karr’s confidence falls and he draws his arms in; Kee turns to Karr, sad, with a questioning gesture.');
+ }else if(index===1){
+  // Which signs can guide us? Observation (bear prints in old snow) beside memory (a faint remembered herd).
+  // Round 4: route-a is drawn before the high ground and tapers to a point inside it, so the left
+  // fork climbs to the foot of the ridge and passes behind it instead of ending on top of it.
+  absObj('route-a',560,380,[ribbon([650,478],[566,388],[486,272],44,2,'#dcc394','#4e4436')],'One route climbs toward the high ground and passes behind the ridge.');
+  absObj('high-ground',260,270,[fill('M0 300L0 212Q120 162 250 176Q380 190 512 280L540 300Z','#cdb592','#2c3540')],'High ground on the left; one route climbs it.');
+  absObj('route-b',920,440,[ribbon([650,478],[900,418],[1230,394],44,16,'#dcc394','#4e4436')],'A second route leaves along the low ground.');
+  obj('old-snow',600,515,[fill('M-170 8Q-178 -24 -120 -30Q0 -40 120 -30Q178 -24 170 8Q170 32 0 34Q-170 32 -170 8Z','#dbe6ee','#c3d1db')],'A patch of old snow where signs can be inspected.');
+  obj('old-track',600,515,[...paw(-95,14,.95),...paw(10,0,.95),...paw(112,16,.95)],'Three large bear prints with claw marks: something that was seen, not where the bear is now.');
+  // The remembered herd is told, not present: ochre cave-painting outlines (no fill) rising on
+  // story-smoke whose base sits on Karr's raised right hand (the 'reflect' pose peaks with the hand
+  // at about stage (978,371) for x 930, scale .86), high above the ground line, faded out before line 2.
+  // The object origin is the hand, so the appear scale grows the memory out of his hand.
+  absObj('remembered-herd',980,362,[{...n('g',{opacity:.62}),children:[
+   stroke('M974 360Q962 330 972 302Q984 276 958 262Q938 252 926 246','#c79a6a',4,'#d9b48a'),
+   stroke('M981 358Q996 326 986 296Q976 268 996 246','#c79a6a',4,'#d9b48a'),
+   stroke('M988 360Q1012 334 1010 306Q1008 280 1040 266Q1062 256 1078 252','#c79a6a',4,'#d9b48a'),
+   ...cavePainting(905,222),...cavePainting(1000,206),...cavePainting(1090,226)]}],'A remembered herd drawn like an ochre cave painting on story-smoke rising from Karr’s raised hand: what stories carry, not animals present today.');
+  castMember(a,'taan',150,'neutral');castMember(a,'ar',320,'curious',{gaze:{curious:[4,4]}});castMember(a,'karr',930,'neutral',{gaze:{inspired:[3,-4]}});
+  // Line 1 — interested contrast: Ar points at the prints; Taan stares at them; Karr raises the remembered herd.
+  // Round 4: Ar's pointing arm angles down at the snow patch (reach, −46°) by ~1.5 s and is held past the
+  // midpoint (~4.4 s) to ~6.8 s; his curious face holds eyes lowered right to the prints.
+  feel('ar',1,'curious');look('ar','old-track',1,250);act('ar',1,'reach',{offsetMs:900,durationMs:1300,untilMs:7450});
+  feel('taan',1,'surprised',400);look('taan','old-track',1,400);
+  // Karr glances at the prints, then lifts his eyes (held by his inspired face) and head to the memory
+  // from ~2 s; his right hand rises to head height by ~3.6 s and holds through the midpoint while
+  // the smoke and herd rise from it; hand and memory come down together before line 2.
+  look('karr','old-track',1,250);feel('karr',1,'inspired',1300);look('karr','remembered-herd',1,1300);
+  gesture('karr',1,'reflect',900,5600);appear('remembered-herd',1,3000,900);act('remembered-herd',1,'disappear',{offsetMs:5300,durationMs:1000});
+  // Line 2 — quiet tension: two routes, no answer; faces turn uncertain and toward each other.
+  appear('route-a',2,250,1100);appear('route-b',2,700,1100);
+  feel('ar',2,'worried',300);look('ar','karr',2,1100);gesture('ar',2,'question',2000,2400);
+  feel('taan',2,'skeptical',300);look('taan','route-a',2,700);
+  feel('karr',2,'worried',250);look('karr','ar',2,600);
+  performance.push('1: Ar curious, pointing arm held at the prints; Taan surprised (“Bear,” he whispers); Karr inspired (quiet smile), eyes and head lifted to the memory as he raises his right hand to head height and a remembered herd rises from that hand like an ochre cave painting on story-smoke; hand and memory come down before line 2.','2: Two routes appear; Ar worried, turning to Karr with an open question; Taan skeptical (flat mouth, narrowed lids) eyeing the fork; Karr worried, eyes and head turned left to meet Ar’s gaze. No route is chosen.');
+ }else if(index===2){
+  // Thought beside the fire: everyone is on the same ground under low ridges. Karr stands left of the
+  // hearth and argues across fire and food toward Kee; the child Lu kneels laying counting stones
+  // beside Kee; Ar listens on the right. The fire sits between Karr and Kee, touching neither.
+  absObj('fire-ridges',600,245,[fill('M0 292L0 238L160 214L330 236L520 190L700 224L860 196L1040 232L1200 210L1200 292Z','#d6c09e','#2c3540')],'Low ridges behind the camp put the fireside circle on firm ground.');
+  // Round 4 layout: Karr left of the hearth argues across fire and food toward Kee; the child Lu
+  // kneels between Kee and Ar, laying his counting stones, so the line-2 looks meet him.
+  hearth('council-ground',330,'The shared hearth between Karr and Kee.',1.05);
+  foodHide('food-hide',462,'The remaining dried food Kee is counting.');
+  obj('roots',540,GROUND,[...[-14,4,20].map((dx,i)=>fill(`M${dx-9} -6Q${dx-12} -28 ${dx+1} -${36+i*3}Q${dx+12} -28 ${dx+9} -6Q${dx} 2 ${dx-9} -6Z`,'#9c6b45','#b9845b')),stroke('M-14 -34L-18 -46M5 -40L4 -52M21 -38L26 -50','#6f8f4a',3,'#8fb365')],'Three dug roots with their green tops.');
+  obj('seeds',548,GROUND,[fill('M30 -2Q32 -18 46 -20H74Q88 -18 90 -2Z','#7a5235','#a77a52'),...[[46,-22],[56,-26],[66,-22],[52,-30],[62,-31],[74,-24]].map(([x,y])=>oval(x,y,4,3,'#d6b25e','#e5c87a'))],'A bark bowl of gathered seeds.');
+  // Lu kneels and leans toward the stones; his right hand reaches the ground beside him (hand ≈ x+37).
+  const LU0=915,STEP=24,HAND=38;
+  castMember(a,'karr',170,'neutral');castMember(a,'kee',690,'neutral',{gaze:{happy:[4,3]}});
+  castMember(a,'lu',LU0,'curious',{gaze:{curious:[4,4]},kneel:{drop:62,lean:10}});
+  castMember(a,'ar',1060,'neutral',{gaze:{relieved:[-4,4]}});
+  // Stones are drawn in front of the kneeling child; each lands under his hand as he shuffles left.
+  [0,1,2,3,4,5].forEach(i=>obj('stone-'+(i+1),LU0+HAND-i*STEP,GROUND+3,[oval(0,0,[11,9,12,10,9,11][i],[8,7,9,8,7,8][i],['#8a8580','#9b8f84','#7d7873','#958b80','#867f78','#a09486'][i],'#aaa49d'),oval(-3,-3,4,2,'#b8b2ac','#cfc9c2')],'Counting stone '+(i+1)+': a stone extends the count, not the food.'));
+  // Line 1 — lively warmth: Lu lays stone after stone (eyes lowered to them); Kee counts the food;
+  // Karr argues toward her across the fire. Each stone appears as Lu's hand touches the ground there;
+  // his hand rests on it ~0.3 s, then lifts (release) as he shuffles one stone-width left. Last stone ≈ 4.1 s.
+  feel('lu',1,'curious');look('lu','stone-1',1,250);
+  [0,1,2,3,4,5].forEach(i=>{const t=850+i*650;appear('stone-'+(i+1),1,t,380);
+   if(i<5){gesture('lu',1,'release',t+300,350);act('lu',1,'moveTo',{x:LU0-(i+1)*STEP,offsetMs:t+330,durationMs:290});}});
+  feel('kee',1,'skeptical');look('kee','food-hide',1,300);look('kee','karr',1,2400);gesture('kee',1,'question',2800,4200);
+  feel('karr',1,'determined',300);look('karr','kee',1,300);gesture('karr',1,'explain',1100,5600);
+  feel('ar',1,'happy',400);look('ar','karr',1,400);
+  // Line 2 — human warmth: courage, shared memory and one another. Kee turns to Lu with eyes lowered to
+  // him and opens her arms toward him (peak ~3.5 s, held to ~5.3 s past the ~4.7 s midpoint); Lu looks
+  // up at her, happy; Ar looks down at Lu warmly; Karr relaxes.
+  feel('kee',2,'happy',250);look('kee','lu',2,350);gesture('kee',2,'invite',600,6000);
+  feel('lu',2,'happy',500);act('lu',2,'lookAt',{target:'kee',up:true,offsetMs:700,durationMs:700});
+  feel('karr',2,'relieved',400);gesture('karr',2,'release',1400,2200);
+  look('ar','lu',2,600);feel('ar',2,'relieved',400);
+  performance.push('1: Lu curious, kneeling and leaning to the ground, eyes lowered, laying six stones one by one with his right hand as he shuffles along the row; Kee skeptical over the food, then answering Karr with an open question; Karr, left of the hearth, determined, pointing his argument at her across the fire and food; Ar amused, listening.','2: Kee smiles, eyes lowered to Lu, and opens her arms toward him; Lu looks up at her, happy; Karr relaxes; Ar looks down at Lu warmly.');
+ }else{
+  // Join the River People: the first hungry camp, a path toward the ridge gap, Orra's ash route
+  // partly wiped on a hide, and the book itself as the invitation.
+  // The path leaves the camp ground in front of the people and recedes, narrowing, into the ridge gap.
+  absObj('far-path',790,330,[ribbon([300,544],[480,545],[660,544],8,38,'#dcc394','#4e4436'),ribbon([658,544],[770,542],[776,440],38,22,'#dcc394','#4e4436'),ribbon([776,442],[782,356],[800,294],22,9,'#dcc394','#4e4436')],'A path from the camp ground toward the gap in the ridge; where it leads is left to the reader.');
+  absObj('camp-ridge',600,250,[fill('M0 292L0 236L140 200L300 230L470 186L650 236L766 292Z','#d6c09e','#2c3540'),fill('M830 292L872 242L886 239L886 292Z','#d6c09e','#2c3540'),fill('M1124 292L1124 236L1200 252L1200 292Z','#d6c09e','#2c3540')],'Low ridges beyond the first camp, continuing behind the book, with a gap the path leads into.');
+  hearth('camp-fire',300,'The fire of the first hungry camp.');
+  obj('reading-cloth',515,GROUND,[fill('M-56 -2Q-64 -20 -46 -26Q0 -34 46 -26Q64 -20 56 -2Q0 6 -56 -2Z','#c49a68','#c9a274'),stroke('M-40 -12Q-20 -22 0 -14','#5a3a2a',4,'#3d2a20'),dashed('M6 -14Q22 -10 38 -20')],'A hide carrying a charcoal route line, part of it wiped away: guidance without a guarantee.');
+  obj('opening-book',1000,GROUND,[
+   fill('M122 -322H132V0H122Z','#f3e7d3','#e2e7dc'),
+   fill('M-122 -330H110Q122 -330 122 -318V-6Q122 6 110 6H-122Z','#8e3b2a','#b4513a'),
+   fill('M-122 -330H-96V6H-122Z','#6d2c20','#8e3b2a'),
+   text('Beyond',12,-266,50,'#fbf3e4'),text('the Last',12,-200,50,'#fbf3e4'),text('Stone',12,-134,50,'#fbf3e4'),
+   oval(-8,-58,22,13,'#c9b8a0'),oval(28,-56,18,12,'#b9a68c'),oval(10,-80,17,11,'#dccbb2')
+  ],'Beyond the Last Stone itself, with a small cairn on its cover: the invitation to read on from the first camp.');
+  obj('bookmark',1000,GROUND,[fill('M58 -348V-322H84V-348L71 -339Z','#3f8a76','#62b79f')],'A bookmark at the opening chapter, Fire After the Herd.');
+  castMember(a,'kee',165,'curious');castMember(a,'karr',425,'neutral');const arArm=castMember(a,'ar',640,'neutral',{hideArmR:true,gaze:{inspired:[3,-4]}});
+  // Ar's right arm is swapped, never doubled: the hand-to-chin arm shows in line 1 and is cut to the
+  // hanging arm at the start of line 2 (round 5: no fade, so no ghost or armless frames).
+  armObject(a,'ar-chin-arm','ar',640,arArm,'bent','Ar’s right arm bent, his hand at his chin: thinking along the path.');
+  armObject(a,'ar-arm','ar',640,arArm,'straight','Ar’s right arm lowered again as he turns back to the camp.');
+  // Line 1 — wonder: Ar looks along the path; an idea can guide without certainty.
+  appear('reading-cloth',1,250,900);
+  // Ar stands with his hand under his chin (a bent arm drawn in his rig, no rotating gesture);
+  // his inspired face holds a quiet smile and eyes raised up-right along the receding path, and
+  // lookAt turns his head toward the ridge gap (the far-path origin), settled by 1 s through the midpoint.
+  feel('ar',1,'inspired',200);look('ar','far-path',1,300);
+  feel('karr',1,'curious',250);look('karr','ar',1,600);
+  feel('kee',1,'curious',250);look('kee','ar',1,900);
+  // Line 2 — inviting concern: Ar turns back to the camp; Kee invites the viewer in.
+  // Round 5: the arm swap is a hard cut on the beat-2 boundary (in the silence after line 1): both
+  // tracks change within 1 ms, so no sampled frame shows a ghost arm, a missing arm or two arms.
+  // The head turn to Kee starts with the cut. The inspired→curious change is a separate instant cut
+  // 160 ms later (off the arm cut): any crossfade blends the inspired gaze overlay with the base
+  // pupils and shows a doubled grey pair, so the face switches within 1 ms instead.
+  act('ar-chin-arm',2,'disappear',{offsetMs:0,durationMs:1});act('ar-arm',2,'appear',{offsetMs:0,durationMs:1});
+  look('ar','kee',2,0);act('ar',2,'character.express',{emotion:'curious',offsetMs:160,durationMs:1});
+  feel('kee',2,'happy',250);gesture('kee',2,'invite',1100,2600);
+  feel('karr',2,'worried',300);gesture('karr',2,'question',1500,2400);
+  appear('bookmark',2,1600,900);
+  performance.push('1: Ar inspired and reflective, hand raised to his chin, a quiet closed smile, head and eyes turned up-right along the path into the ridge gap; Kee and Karr turn to him, curious.','2: Ar lowers his hand early and turns back to the camp, curious; Kee smiles and opens her arms in invitation; Karr shows the concern of the hungry camp with an open question; a bookmark marks where to begin.');
+ }
+ const meanings=[
+  'Flat ridges, an empty trail into the pass and the river at the black rock frame three distinct River People around one small fire and one food hide; Karr’s hopeful story meets Kee’s and Ar’s concern.',
+  'Ar points at three bear prints in old snow while Taan stares; as Karr raises his hand, a remembered herd rises from it on story-smoke as ochre cave-painting outlines and fades again. Two unlabelled routes appear and the three turn to one another without choosing.',
+  'Under low ridges, Karr stands beside the shared hearth and argues across the fire and the remaining food, roots and seeds toward Kee; the child Lu kneels beside her laying six counting stones while Ar listens; the circle then warms as Kee and Ar turn to Lu.',
+  'At the first hungry camp Ar, hand to chin, looks along a path toward the ridge gap, beside a hide whose route line is partly wiped; Kee invites the viewer in, and the book with its bookmark marks where to begin.'
+ ];
+ s.visual={...a.finish(meanings[index]),performance};
 }
-// Settlement: practical record reception across strangers, then the actual opening chapter.
-{
-const q=stageAuthor();ground(q,'settlement-floor','M56 417Q266 382 458 416Q832 370 1157 424V555H56Z',C.cream);
-obj(q,'grain-store',865,514,[solid(q,'M-166 -62V-241L0 -310L166 -241V-62Z',C.hide),solid(q,'M-167 -62H167V-41H-167Z',C.ochre),...[-125,-35,65,130].map(x=>solid(q,`M${x-14} -41L${x-21} 0H${x+19}L${x+11} -41Z`,C.ink)),solid(q,'M-142 -232H143V-72H-142Z',C.cream),...Array.from({length:6},(_,i)=>{const x=-106+(i%3)*94,y=-73-Math.floor(i/3)*98;return solid(q,`M${x-26} ${y-50}Q${x} ${y-65} ${x+26} ${y-50}L${x+34} ${y}Q${x} ${y+22} ${x-34} ${y}Z`,i%2?C.grain:C.red)})],'Raised grain store on stone feet, with jars actually supported on floor and inner shelf');obj(q,'store-shelf',865,354,[q.path('M-143 0H143',C.ochre,8)],'Interior shelf supports upper jars');
-for(let i=0;i<6;i++)obj(q,'grain-row-'+i,83+i*24,420,[q.path('M0 0V-75',C.green,4),solid(q,'M-2 -35Q-25 -48 -16 -64Q-1 -58 0 -35M2 -47Q24 -59 16 -76Q1 -67 2 -47Z',C.grain)],'Planted grain rows from which storage is supplied');
-parcel(q,'clerk-seat',351,486,.8);const clerk=person(q,'clerk',351,540,'person-03-neutral',C.red,.78,true);arm(clerk,'R','M32 -156Q99 -128 132 -93',132,-93);const visitor=person(q,'visitor',540,540,'person-11-neutral',C.green,.8);arm(visitor,'L','M-34 -157Q-58 -131 -46 -97',-46,-97);
-obj(q,'counting-counter',432,475,[solid(q,'M-145 -8H145V15H-145Z',C.hide),q.path('M-125 15V63M125 15V63','$ink',8)],'The source registration counter has a physical surface supporting wet clay');
-obj(q,'guest-mark',455,450,[q.n('rect',{x:-21,y:-15,width:42,height:32,rx:7,fill:C.ochre}),q.path('M-10 1L0 -9L10 1M0 -8V10',C.cream,4)],'A guest mark is pressed into wet clay, then physically received by a household');obj(q,'marking-stylus',436,426,[q.path('M-17 -20L18 27','$ink',5)],'Clerk’s stylus touches the clay before the mark is received');vanish(q,'marking-stylus',2,2400);q.move('guest-mark',2,503,450,2200);feel(q,'clerk',1,'curious','explain');feel(q,'visitor',2,'curious');q.actions.push({actor:'visitor',action:'walkTo',beat:3,x:610,y:540,durationMs:2300});q.move('guest-mark',3,573,450,2300);feel(q,'clerk',3,'curious','reflect');
-const settlement=q.objects.map(o=>o.id);for(const id of settlement)if(id!=='marking-stylus')vanish(q,id,4);
-obj(q,'reading-cloth',611,508,[solid(q,'M-436 -37H427L460 32H-460Z',C.red)],'A reading cloth supports the actual book, not an emblem for the city');obj(q,'opening-book',610,385,[solid(q,'M-326 -124Q-163 -157 0 -110Q163 -157 326 -124V120Q169 89 0 129Q-166 89 -326 120Z',C.cream),q.path('M0 -110V127',C.ochre,5),q.text('Fire After the Herd',-157,-22,32,C.ink),q.path('M-277 19H-54M-277 41H-76M65 -53H258M65 -29H242M65 -5H249',C.hide,4)],'Open the actual novel at its first chapter; no late plot imagery');obj(q,'first-chapter-marker',650,300,[solid(q,'M-16 -56H16V33L0 20L-16 33Z',C.red)],'Bookmark directs the reader to the opening');for(const id of ['reading-cloth','opening-book','first-chapter-marker'])appear(q,id,4,900);q.move('first-chapter-marker',5,335,300,2400);
-scenes[3].visual=q.finish('Stored grain and received clay marks make coordination material; the closing volume returns the reader to the first chapter without revealing later political outcomes.');
-}
-fs.writeFileSync(file,JSON.stringify(scenes,null,2)+'\n');console.log('Four original material Beyond the Last Stone compositions authored.');
+fs.writeFileSync(file,JSON.stringify(scenes,null,2)+'\n');
+console.log('Beyond the Last Stone art written for '+scenes.length+' scenes.');

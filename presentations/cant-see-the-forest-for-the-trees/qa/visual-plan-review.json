@@ -4,7 +4,7 @@
   "reviewType": "visual-plan-review",
   "reviewStatus": "independent-review-passed",
   "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
-  "artSha256": "3007afb5b32b4424f415f1a52484b9f736de6da6d4b7c3699568762d96038e2d",
+  "artSha256": "74de9349e54f651ad7144685328c6a3ffe48a376f1147504f1e30855cb0874ae",
   "sceneVisualSha256": "b6e7a867056a7ea61cbb0e7db07135589dead3313a66ec08fac365ee9994472f",
   "planSha256": "c0d5888c29745c425d8da013370431236ac3a9415f6d56e4eb14382229fbcd14",
   "mapping": [
@@ -387,24 +387,626 @@
   },
   "independentReview": {
     "status": "passed",
-    "reviewer": "production_0",
+    "reviewer": "independent-reviewer-r4",
+    "reviewedAt": "2026-10-22T19:59:52.288155Z",
+    "artSha256": "74de9349e54f651ad7144685328c6a3ffe48a376f1147504f1e30855cb0874ae",
     "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
-    "artSha256": "3007afb5b32b4424f415f1a52484b9f736de6da6d4b7c3699568762d96038e2d",
-    "scope": "Independent review of authored source/cue alignment and all 24 current full-size frames.",
-    "reviewedAt": "2026-09-11T16:20:55.481Z",
-    "evidence": {
-      "frames": 24,
+    "evidenceRun": "node presentations/cant-see-the-forest-for-the-trees/build.mjs --output=<scratch staging> from the existing work/scenes.json (art.mjs not rerun; staging SHF 1301167 bytes sha256 d5bea664…c4d89a; exports HTML sha256 055a7a0a…401a2a), then SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/cant-see-the-forest-for-the-trees: 23 checks, 48 frames, 0 errors, durationMs 79538, muted and paused; own tabs closed.",
+    "framesInspected": {
+      "count": 176,
+      "files": "qa/screenshots (48 qa-film frames + phone-393/320); reviewer sweep: edge-start (150 ms), edge-end (-60 ms) and 10/20/30/50/80% of each of 8 sentences in color/paper/night (144 frames), phone 393 and 320 px at 3/26/47/70 s (8), transition frames at scene-1 s2 +200/500/800/1100 ms, scene-2 s2 +0/400/800, scene-3 s2 +0/200/500/900, scene-4 s1 -500..+1000 and s2 +0..+1200 ms (24); 2x crops of scene-1 author (s1-50, s2-10, walk), scene-3 author (Color/Paper/Night s2-50), scene-4 pair (Color/Paper/Night s1-50)",
       "themes": [
         "color",
-        "paper",
-        "night"
+        "paper(light)",
+        "night(dark)"
       ],
-      "faces": "clear",
-      "titles": "contained",
-      "captions": "clear",
-      "backingRectangles": "contained",
-      "scale": "coherent across scenes",
-      "audio": "Not evaluated; no listening approval claimed."
+      "probe": "scene-4 polished-explanation opacity 0 until ~1.0 s, fully opaque from 1.5 s; resident walks x 840->773 (rendered) 0.9-2.0 s; no flicker.",
+      "limitation": "No audible playback; no physical-device test."
+    },
+    "round3Resolution": {
+      "R3-1": "resolved: at s2-10 (and later) the author stands right of the desk end; desk top and legs clear of his body; finger tip short of the cover.",
+      "R3-2": "resolved: index finger aimed at the ? circle, tip short of the drip column and circle; uncertain face at s2-10, small closed smile with raised brows by s2-50 (Color/Paper/Night).",
+      "R3-3": "resolved: card floats between and above both heads with clear space; palm and pointing hand whole and visible throughout s1 in all themes.",
+      "R3-4": "resolved: fingers-together palm at chest height angled toward the resident, worried face; resident angry, pointing at the palm across a short gap; reads as confrontation, not a greeting."
+    },
+    "passedAspects": [
+      "duration 79.5 s (<2 min)",
+      "caption band clear of art in all frames; 0 caption overlaps/label overflow",
+      "flat backgrounds, no frames or nested panels",
+      "one short scene title per scene",
+      "character identities distinct in all three themes; Night hair keeps silhouettes",
+      "scene-2 Night icons legible",
+      "expressions/gestures match each sentence cue",
+      "phone 393/320 art and captions contained (chapter counter wrap ignored per brief)"
+    ],
+    "defects": {
+      "major": [],
+      "moderate": [],
+      "minor": [
+        {
+          "id": "R4-m1",
+          "scene": "scene-01",
+          "sentence": 2,
+          "what": "During the brisk walk (≈0.3–1.0 s into the sentence) the author passes behind the desk: at +500 ms the laptop masks his lower face and torso, at +800 ms the right desk leg crosses his trousers. Occlusion is consistent (behind, not through) and he is clear by the 10% frame.",
+          "fix": "Optional: walk him in front of the desk or fade/accelerate the transit."
+        },
+        {
+          "id": "R4-m2",
+          "scene": "scene-01",
+          "sentence": 1,
+          "what": "Left desk leg nearly touches the author's front shoe while he stands behind the desk; the trailing hand grazes the desk end at s2-10.",
+          "fix": "Optional: shift the leg a few px right."
+        },
+        {
+          "id": "R4-m3",
+          "scene": "scene-02",
+          "sentence": 2,
+          "what": "Author's open palm points at empty space left of the router rather than at the hub.",
+          "fix": "Optional: angle the hand toward the hub."
+        },
+        {
+          "id": "R4-m4",
+          "scene": "scene-03",
+          "sentence": 2,
+          "what": "Author fades in in place (semi-transparent ghost at +200 ms) instead of stepping in.",
+          "fix": "Optional: short walk-in or faster reveal."
+        },
+        {
+          "id": "R4-m5",
+          "scene": "scene-04",
+          "sentence": 1,
+          "what": "Operator's −11° backward lean is subtle at 1200 px; Night resident's dark pointing hand has modest contrast on #06090F though legible.",
+          "fix": "Optional polish."
+        }
+      ]
+    },
+    "verdict": "passed"
+  },
+  "history": [
+    {
+      "artSha256": "3007afb5b32b4424f415f1a52484b9f736de6da6d4b7c3699568762d96038e2d",
+      "reviewStatus": "independent-review-passed",
+      "inspection": {
+        "privatePreview": "/tmp/cant-see-current/cant-see-the-forest-for-the-trees-introduction.html",
+        "contactSheet": "/tmp/cant-current-contact.png",
+        "frames": 24,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "muted": true,
+        "paused": true,
+        "renderedText": {
+          "valid": true,
+          "frames": 24,
+          "issues": []
+        }
+      },
+      "independentReview": {
+        "status": "passed",
+        "reviewer": "production_0",
+        "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
+        "artSha256": "3007afb5b32b4424f415f1a52484b9f736de6da6d4b7c3699568762d96038e2d",
+        "scope": "Independent review of authored source/cue alignment and all 24 current full-size frames.",
+        "reviewedAt": "2026-09-11T16:20:55.481Z",
+        "evidence": {
+          "frames": 24,
+          "themes": [
+            "color",
+            "paper",
+            "night"
+          ],
+          "faces": "clear",
+          "titles": "contained",
+          "captions": "clear",
+          "backingRectangles": "contained",
+          "scale": "coherent across scenes",
+          "audio": "Not evaluated; no listening approval claimed."
+        }
+      },
+      "supersededAt": "2026-10-22T17:29:21.785Z",
+      "supersededBecause": "Expanded 48-frame QA (sentence midpoints) found clipped labels, a spine line through the book title, cards over cards, a label/line through a character, captions touching legs and dark-on-dark stage labels in Night."
+    },
+    {
+      "artSha256": "35ec77573cfa86e3c3c7795cc1c3e6c95dd0439732f9b9d4ef6f3089246da707",
+      "reviewStatus": "author-review-complete-independent-review-pending",
+      "independentReview": {
+        "status": "pending",
+        "required": "Independent reviewer must inspect qa/screenshots for art 35ec7757... and set status passed with reviewer/artSha256/scriptSha256 before node build.mjs installs it.",
+        "artSha256": "35ec77573cfa86e3c3c7795cc1c3e6c95dd0439732f9b9d4ef6f3089246da707",
+        "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b"
+      },
+      "supersededAt": "2026-10-22",
+      "supersededBecause": "Replaced by independent-reviewer-2026-10-22 review of art 35ec7757..."
+    },
+    {
+      "artSha256": "35ec77573cfa86e3c3c7795cc1c3e6c95dd0439732f9b9d4ef6f3089246da707",
+      "reviewStatus": "independent-review-failed",
+      "independentReview": {
+        "status": "failed",
+        "reviewer": "independent-reviewer-2026-10-22",
+        "reviewedAt": "2026-10-22T17:37:14.242230Z",
+        "artSha256": "35ec77573cfa86e3c3c7795cc1c3e6c95dd0439732f9b9d4ef6f3089246da707",
+        "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
+        "evidenceRun": "Fresh SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs run: valid, 23/23 checks, 48 frames, 0 JS errors, durationMs 79538, muted and paused.",
+        "framesInspected": {
+          "count": 50,
+          "files": "qa/screenshots/{color,paper,night}-0{0..3}-{first,sentence-1,sentence-2,last}.png plus phone-393.png and phone-320.png",
+          "themes": [
+            "color",
+            "paper(light)",
+            "night(dark)"
+          ]
+        },
+        "defects": [
+          {
+            "scene": "scene-01",
+            "sentences": [
+              1,
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "all scene-01 frames (first, sentence-1, sentence-2, last) and phone-393/320",
+            "what": "The coral 'smoothing' wave crest touches the coral quote \"How sharp is the cost?\" in the ORIGINAL card: the bottom of 'w' in 'How' and of 'st' in 'cost' merge into the wave stroke in the same hue (a line through words).",
+            "measurement": "color-00-sentence-1.png (1076 px wide): coral ink runs continuously with no background gap at x=348 (y190-203), x=354 (y193-203) and x=510 (y194-203); neighbouring columns show only 1-2 px gaps (x=346, 352, 504-508). Identical in Paper and Night; at phone sizes the contact merges further.",
+            "fix": "Lower the wave (or raise the quote) so that at least ~6 px of card background separates the wave crests from the quote glyphs; recheck all scene-01 frames."
+          }
+        ],
+        "checkedClear": {
+          "captionBand": "No artwork text inside the caption rectangle in any sampled frame; closest are scene-03 'keep asking' and scene-04 sharp/smooth draft cards (~20 px above caption) and character feet beside, not under, caption text.",
+          "silhouettes": "No character crosses labels, cards or captions.",
+          "fonts": "Display and caption fonts rendered (bundled-font check passed); no fallback seen.",
+          "themes": "All labels and characters visible in Color, Light and Dark; Night stage labels light; coral Night coats distinct.",
+          "clutter": "Flat backgrounds, no decorative frames.",
+          "counts": "Three margin marks for doubt/urgency/responsibility match sentence; two specialists; two drafts in final scene.",
+          "duration": "79.538 s (under two minutes).",
+          "boilerplate": "docs/books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1/Animation/index.html contains only the shared shell scripts; no production notes or badges (still the earlier published film)."
+        },
+        "nonBlockingObservations": [
+          "scene-03 sentence 1: both specialists smile while the authored emotion is 'thoughtful concern'.",
+          "scene-01: book cover reads only 'FOREST / for the Trees' (truncated title, likely deliberate).",
+          "phone-320: player counter '01 / 04' wraps to two lines (shared player, not this film).",
+          "scene-02 sentence 2 names companies, research, politics and technologies but shows a single PLAN card; not contradictory."
+        ],
+        "published": false,
+        "audio": "Not evaluated; no listening approval claimed."
+      },
+      "supersededAt": "2026-10-22T17:58:25.082978Z",
+      "supersededBecause": "Art redesigned to 13a920f4…; independent-reviewer-r1 reviewed the new art."
+    },
+    {
+      "artSha256": "13a920f493869f984062fa14d405f726e378dbdfd18af171f41d35258a881905",
+      "reviewStatus": "independent-review-failed",
+      "independentReview": {
+        "status": "failed",
+        "reviewer": "independent-reviewer-r1",
+        "reviewedAt": "2026-10-22T17:58:25.082978Z",
+        "artSha256": "13a920f493869f984062fa14d405f726e378dbdfd18af171f41d35258a881905",
+        "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
+        "evidenceRun": "node build.mjs --output=<scratch staging> (refreshed exports/), then SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs: valid, 23/23 checks, 48 frames, 0 JS errors, 0 caption overlaps, 0 label overflow, durationMs 79538, muted and paused.",
+        "framesInspected": {
+          "count": 50,
+          "files": "qa/screenshots/{color,paper,night}-0{0..3}-{first,sentence-1,sentence-2,last}.png plus phone-393.png and phone-320.png; face crops zoomed 2-3x for scenes 1, 3 and 4",
+          "themes": [
+            "color",
+            "paper(light)",
+            "night(dark)"
+          ],
+          "limitation": "qa-film captures phone widths only for scene 1."
+        },
+        "defects": [
+          {
+            "id": "R1-1",
+            "severity": "blocking",
+            "scene": "scene-04",
+            "sentences": [
+              1
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/{color,paper,night}-03-sentence-1.png",
+            "what": "The translucent 'All systems align.' sheet sits on top of the operator and resident: its three grey text lines run straight across both faces (eyes/brows), the figures are washed out behind it, and the sheet has a tan outline frame with a wavy bottom edge (a framed panel over characters). Text lines through faces violate label/silhouette separation; the conflict being hidden reads as a rendering glitch rather than as concealment.",
+            "fix": "Make the polished explanation an opaque, unframed card that covers the pair completely (or slides in front of their bodies with its text lines kept above their heads), then lift/slide it away; never let text strokes cross faces. Drop the outline stroke."
+          },
+          {
+            "id": "R1-2",
+            "severity": "blocking",
+            "scene": "scene-04",
+            "sentences": [
+              1,
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-03-sentence-2.png, *-03-last.png",
+            "what": "The 'real conflict' is never acted out. The operator and resident stand side by side facing the viewer with arms down and no mutual gaze; at the sentence-2 midpoint both wear mild smiles. The sentence is about something that became 'less true' and has an inviting-challenge cue, but no tension is visible.",
+            "fix": "Turn the pair toward each other, with contrasting worried and angry faces and explaining/recoil hands held through sentence 2, so the uncovered disagreement stays readable when the narrator says to ask what became less true."
+          },
+          {
+            "id": "R1-3",
+            "severity": "blocking",
+            "scene": "scene-04",
+            "sentences": [
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-03-sentence-2.png, *-03-last.png",
+            "what": "'Begin with the edited manuscript': the magnifier floats in empty space above the operator's head on the right (and drifts further right by scene end), far from the manuscript card beside the author on the left. The author faces the viewer with his hands down and does not look or gesture at the manuscript. The visual says 'inspect the people', not 'begin with the edited manuscript'.",
+            "fix": "Put the magnifier over the manuscript card, or in the author's hand aimed at it, with the author's gaze on the card and an inviting hand toward it. Optionally, let the '?' on the card link to the uncovered conflict."
+          },
+          {
+            "id": "R1-4",
+            "severity": "blocking",
+            "scene": "scene-03",
+            "sentences": [
+              1
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-02-sentence-1.png",
+            "what": "The specialists do not 'tend a necessary part'. The planner's clipboard floats in mid-air beside her head (not held) and the gauge hangs almost touching her hair, so props crowd her silhouette. Both stand facing the viewer with their hands at their sides and do not look at the gauge or the valve. The engineer (orange) is far below the valve, and her V-shaped brows read as anger, not 'thoughtful concern'.",
+            "fix": "Have the planner hold the clipboard and look up at the gauge, with clear space between the gauge and her head. Have the engineer reach up to or turn the valve with concerned (not angry) brows. Both should face their own section, away from the leaking joint behind them."
+          },
+          {
+            "id": "R1-5",
+            "severity": "blocking",
+            "scene": "scene-03",
+            "sentences": [
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-02-sentence-2.png, *-02-last.png",
+            "what": "'The author remains uncertain, but keeps asking…': the author enters at the far right edge, crowded about 10 px behind the engineer, faces the viewer with a broad smile and his arms down, and does not look or gesture at the red question circle or the leak. The broad smile contradicts 'remains uncertain', and no asking is embodied.",
+            "fix": "Bring the author toward the centre near the leak/question (not behind the engineer). Use a thoughtful, slightly uncertain expression (cautious hope at most a small smile), raise his hand in a question gesture and turn his gaze to the leak, holding this through the sentence midpoint."
+          },
+          {
+            "id": "R1-6",
+            "severity": "moderate",
+            "scene": "scene-01",
+            "sentences": [
+              1,
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-00-*.png",
+            "what": "The author stands detached at the far left, about 90 px from the desk, facing the viewer in every midpoint frame, and never looks at the drafts or the laptop. The laptop screen is blank. The cue 'sharp original sentence become smoother while its question fades' is only half shown: the Original card keeps full-strength red throughout, and only the Smoothed card gains a faint zig-zag ghost.",
+            "fix": "Seat or stand the author at the desk, looking up at the cards during sentence 1 (disappointed), and dim/desaturate the original question as the smoothed version appears. In sentence 2, turn his gaze/invite gesture to the book cover."
+          },
+          {
+            "id": "R1-7",
+            "severity": "minor",
+            "scene": "scene-02",
+            "sentences": [
+              1,
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-01-*.png",
+            "what": "In sentence 1 the red '?' floats outside the passage card's left edge and the author does not look at the passage. In sentence 2/last, the three connector lines meet in empty space between the router's antennas instead of attaching to the router, and they start about 20 px below the icons. In Night, the red '?' is low-contrast on black.",
+            "fix": "Anchor the '?' inside the card margin or at the author's raised hand. End the connectors on the router body. Brighten the Night '?' colour."
+          }
+        ],
+        "checkedClear": {
+          "previousRound": "All four round-1 fixes are present: the scene-01 zig-zag is separated from the quote, the full cover title is shown, the scene-02 companies/research/politics/router sequence is in place, and the specialists no longer smile in scene-03 sentence 1.",
+          "captionBand": "No artwork crosses the caption band in any frame.",
+          "themes": "Coats and labels are distinct and readable in Color, Light and Dark; the Night coats are lightened correctly.",
+          "identity": "The five people (author, planner, engineer, operator, resident) have distinct hair, skin and coat colours, and the author stays consistent across scenes.",
+          "backgrounds": "Flat backgrounds and no decorative frames, except the scene-04 sheet outline (R1-1).",
+          "duration": "79.538 s (under 2 minutes)."
+        }
+      },
+      "supersededAt": "2026-10-22T18:24:07.390406Z",
+      "supersededBecause": "Art regenerated as 54958ae5... for round-2 repairs; re-reviewed by independent-reviewer-r2."
+    },
+    {
+      "artSha256": "54958ae5dd5825eef254c3c1a910b5f9aa1d91f6940348501b0892f9d8ee712f",
+      "reviewStatus": "independent-review-failed",
+      "independentReview": {
+        "status": "failed",
+        "reviewer": "independent-reviewer-r2",
+        "reviewedAt": "2026-10-22T18:24:07.390406Z",
+        "artSha256": "54958ae5dd5825eef254c3c1a910b5f9aa1d91f6940348501b0892f9d8ee712f",
+        "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
+        "evidenceRun": "node presentations/cant-see-the-forest-for-the-trees/build.mjs --output=<scratch staging> (exports/ refreshed from current work/scenes.json), then SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/cant-see-the-forest-for-the-trees: valid, 23/23 checks, 48 frames, 0 JS errors, 0 caption overlaps, 0 label overflow, durationMs 79538 (1:19.5, under 2 min), muted and paused.",
+        "framesInspected": {
+          "count": 50,
+          "files": "qa/screenshots/{color,paper,night}-0{0..3}-{first,sentence-1,sentence-2,last}.png plus phone-393.png and phone-320.png; author/specialist/pair face and gesture crops zoomed 3-8x; Night pixel contrast sampled for scene 2 icons",
+          "themes": [
+            "color",
+            "paper(light)",
+            "night(dark)"
+          ],
+          "limitation": "qa-film captures phone widths only for scene 1 at its first frame; no audible playback."
+        },
+        "round1Resolution": {
+          "R1-1": "resolved (opaque unframed card above heads; no strokes over faces)",
+          "R1-2": "partly resolved (mutual gaze and worried/angry faces present; arm gestures still identical, see R2-4)",
+          "R1-3": "resolved (magnifier on manuscript lines, handle toward author)",
+          "R1-4": "resolved (gauge clear of head; valve gripped at hand height)",
+          "R1-5": "resolved (author beside leak, uncertain face, question circle)",
+          "R1-6": "resolved (laptop with text, smoothed card, book pointing)",
+          "R1-7": "resolved for '?' placement and link endpoints; antenna crossings remain (R2-6)"
+        },
+        "passedChecks": [
+          "captions in a clear band in all frames",
+          "no overlaps between labels, silhouettes and captions",
+          "flat backgrounds without frames or nested panels",
+          "characters distinct (author glasses/green coat; planner purple; engineer orange with bun; operator blue with beard; resident grey hair, red coat) in all three themes",
+          "duration 79.5 s"
+        ],
+        "defects": [
+          {
+            "id": "R2-1",
+            "severity": "blocking",
+            "scene": "scene-04",
+            "sentences": [
+              1,
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/{color,paper,night}-03-{first,sentence-1,sentence-2,last}.png (resident at x~760-870, y~350-370)",
+            "what": "The resident (grey hair, red coat) has an unexplained white horizontal bar across her chest/scarf at collar height (apparently the mirrored V-collar flattened into a rectangle), plus a stray thin peach line across her hair above the glasses. Reads as a rendering artifact on a main character in every theme and frame of the scene.",
+            "fix": "Render the resident's collar as a proper mirrored V-collar (or remove it) and remove the stray forehead/hair stroke; verify the mirrored rig parts at 3x zoom."
+          },
+          {
+            "id": "R2-2",
+            "severity": "blocking",
+            "scene": "scene-02 and scene-04",
+            "sentences": [
+              "scene-02 s2",
+              "scene-04 s2"
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-01-sentence-2.png, *-01-last.png, *-03-sentence-2.png, *-03-last.png",
+            "what": "The author's face for 'engaged clarity' (scene 2, 'The book follows a similar pattern...') and 'determined'/'inviting challenge' (scene 4, 'Begin with the edited manuscript...') is drawn with steep V brows and a flat clenched mouth, which reads as an angry scowl. The narration and emotional plan are calm invitation, so the closing invitation looks hostile.",
+            "fix": "Use level or slightly raised brows with a small closed smile or soft open mouth for engaged clarity; for inviting challenge use level focused brows and a slight confident smile, with an open palm toward the manuscript."
+          },
+          {
+            "id": "R2-3",
+            "severity": "blocking",
+            "scene": "scene-02",
+            "sentences": [
+              2
+            ],
+            "themes": [
+              "night"
+            ],
+            "frames": "qa/screenshots/night-01-sentence-2.png, night-01-last.png",
+            "what": "In Night the factory chimney (rgb 59,58,57), the microscope eyepiece cap and stage/arm (rgb 14,32,45) and the microscope base (59,58,57) sit on the near-black stage (6,9,15). The cap and stage are effectively invisible (~1.3:1), so the 'research' microscope loses its shape and the factory loses its chimney.",
+            "fix": "Give these parts Night-theme tokens with at least ~3:1 contrast against the stage (for example light slate #9fb3c8 for the cap/stage and mid grey #8a8a8a for the chimney/base)."
+          },
+          {
+            "id": "R2-4",
+            "severity": "major",
+            "scene": "scene-04",
+            "sentences": [
+              1,
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-03-sentence-1.png, *-03-sentence-2.png",
+            "what": "The planned 'open defending hand, leaning back' of the operator renders as the same straight horizontal arm ending in a fist as the resident's accusing point. The two mirrored fists meet mid-gap and read as symmetric pointing or a fist bump, not accusation and defence. The operator shows no visible lean back.",
+            "fix": "Bend the operator's elbow and raise an open palm (fingers visible) at chest height toward the resident, tilt the torso and head back a few degrees, and keep the resident's extended index-finger point. Different arm silhouettes make the conflict legible."
+          },
+          {
+            "id": "R2-5",
+            "severity": "minor",
+            "scene": "scene-01",
+            "sentences": [
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-00-sentence-2.png",
+            "what": "On 'a book about systems that miss the damage they cause' the author has a wide open-mouth laughing grin, which is too gleeful for the planned 'clear interest' (intensity 0.35) and clashes with 'damage'. His pointing arm also ends in a fist about 140 px short of the book.",
+            "fix": "Use a closed or slight smile with raised brows, and an open hand or index point that clearly reaches toward the book cover."
+          },
+          {
+            "id": "R2-6",
+            "severity": "minor",
+            "scene": "scene-02",
+            "sentences": [
+              2
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-01-sentence-2.png (router at x~475-600, y~385-465)",
+            "what": "The left and right link lines run diagonally through the router's antenna stems before ending on the body, so the lines and antennas form crossed X shapes, which looks tangled. The author's pointing fist also aims at empty space left of the network rather than at the domains or the hub.",
+            "fix": "Move the antennas to the outer ends of the router body, or end the diagonal links inside the antennas so no line crosses an antenna. Aim the author's open hand toward the hub or the three domains."
+          },
+          {
+            "id": "R2-7",
+            "severity": "minor",
+            "scene": "scene-04",
+            "sentences": [
+              1
+            ],
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "frames": "qa/screenshots/*-03-sentence-1.png; *-03-first.png and *-03-last.png show the empty upper half",
+            "what": "The 'All systems align.' card floats in empty space above the pair and never softens or partially masks the conflict, so 'harder to notice' is only stated, not shown. Outside sentence 1 the upper half of the stage is empty, leaving the composition bottom-heavy.",
+            "fix": "Without crossing faces, let the card descend so its lower edge partly covers the pair's raised arms or the gap between them, so the disagreement is half-hidden. Then lift it away in sentence 2. Alternatively, dim the pair under it slightly."
+          }
+        ]
+      }
+    },
+    {
+      "artSha256": "ff695e53238d719711704a5a078a62063002e77609ad376c39013827e3142701",
+      "reviewStatus": "independent-review-failed",
+      "inspection": {
+        "privatePreview": "/tmp/cant-see-current/cant-see-the-forest-for-the-trees-introduction.html",
+        "contactSheet": "/tmp/cant-current-contact.png",
+        "frames": 24,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "muted": true,
+        "paused": true,
+        "renderedText": {
+          "valid": true,
+          "frames": 24,
+          "issues": []
+        }
+      },
+      "independentReview": {
+        "status": "failed",
+        "reviewer": "independent-reviewer-r3",
+        "reviewedAt": "2026-10-22T19:28:55.297985Z",
+        "artSha256": "ff695e53238d719711704a5a078a62063002e77609ad376c39013827e3142701",
+        "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
+        "evidenceRun": "node presentations/cant-see-the-forest-for-the-trees/build.mjs --output=<scratch staging> (export hash 5f0b1044… unchanged), then SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/cant-see-the-forest-for-the-trees: valid, 23 checks, 48 frames, 0 JS errors, durationMs 79538 (1:19.5 <= 2:00), muted, paused.",
+        "framesInspected": {
+          "count": 50,
+          "files": "qa/screenshots/{color,paper,night}-0{0..3}-{first,sentence-1,sentence-2,last}.png plus phone-393.png and phone-320.png; 3-4x crops of scene-01 author, scene-03 author, scene-04 pair",
+          "themes": [
+            "color",
+            "paper(light)",
+            "night(dark)"
+          ]
+        },
+        "round2Resolution": {
+          "R2-1": "resolved",
+          "R2-2": "resolved",
+          "R2-3": "resolved (Night scene-2 icons legible)",
+          "R2-4": "partly resolved (no fists; see R3-3, R3-4)",
+          "R2-5": "resolved (finger short of cover; but see R3-1)",
+          "R2-6": "resolved",
+          "R2-7": "not acceptable as executed (see R3-3)"
+        },
+        "passedAspects": [
+          "duration 79.5 s",
+          "caption band clear of art in all frames",
+          "flat backgrounds, no frames/nested panels",
+          "character identities distinct in all three themes",
+          "scene-02 Night contrast",
+          "scene-01 s1 and scene-02 expressions match plan"
+        ],
+        "defects": [
+          {
+            "id": "R3-1",
+            "scene": "scene-01",
+            "sentence": 2,
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "what": "Author stands behind the desk's right end: the right desk leg runs vertically through the middle of his trousers and the desktop cuts across his torso, so leg and figure merge (silhouettes not separated).",
+            "fix": "Shorten the desk / move its right leg inward (x<=650) or stop the author right of the desk end, clear of the leg, while keeping the pointing finger short of the cover."
+          },
+          {
+            "id": "R3-2",
+            "scene": "scene-03",
+            "sentence": 2,
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "what": "Author's raised hand toward the drip/question is a fingerless round ball (no palm or index finger), and his face keeps the same worried frown as both specialists; the plan's 'cautious hope' for 'keeps asking where people can still make a useful difference' has no visible cue.",
+            "fix": "Draw an open palm or index finger aimed at the '?' (customArm), and in the second half switch to INTEREST-type face (raised brows, small closed hopeful smile) while keeping uncertainty in the brows."
+          },
+          {
+            "id": "R3-3",
+            "scene": "scene-04",
+            "sentence": 1,
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "what": "The 'All systems align.' card's lower corners clip the operator's raised hand (only thumb and finger stubs poke out beside the corner) and swallow the resident's forearm, so the pointing anger gesture is invisible while 'real conflict' is spoken; it reads as a z-order/cropping glitch or as the pair jointly holding a banner, and a text label overlaps character silhouettes.",
+            "fix": "Either keep both hands fully visible with the card clear of them, or make the occlusion unambiguous (card bottom well below both wrists so whole hands are hidden); avoid partial finger clipping at the card edge."
+          },
+          {
+            "id": "R3-4",
+            "scene": "scene-04",
+            "sentence": 2,
+            "themes": [
+              "color",
+              "paper",
+              "night"
+            ],
+            "what": "Once the card lifts, the operator's raised open palm with spread fingers sits at shoulder/head height facing out and reads as a friendly wave/hello rather than a defensive 'hold on' (PRODUCTION.md claims chest height); with the resident pointing into empty space ~170 px away the confrontation reads as a greeting.",
+            "fix": "Lower the palm to chest height, fingers together, angled toward the resident's finger, and make the backward lean visible."
+          }
+        ],
+        "verdict": "failed"
+      }
+    }
+  ],
+  "revision": {
+    "date": "2026-10-22",
+    "entry": "art.mjs (idempotent collision/contrast repair over review-revision/scenes.before-collision-repair-3007afb5.json; legacy rail-yard generator archived as review-revision/legacy-railyard-art.mjs)",
+    "changes": [
+      "scene-01: author left of caption; shorter desk with  legs above caption band; cards raised; missing-edge label under SMOOTHED card with ; closed book cover beside desk with spine at edge (no line through FOREST); ? moved inside ORIGINAL card",
+      "scene-02: passage, marks and cards separated (no overlapping panels); stage labels ",
+      "scene-03: metrics / ledger / operations in one non-overlapping row; INTERVENTION card and keep-asking line placed between the people, clear of operations and the author; planner outside caption; stage labels ; coral author keeps a coral Night coat",
+      "scene-04: question card above POLISHED/REAL CONFLICT; review route and sharp/smooth draft cards stacked without clipping; sharp draft text centred in its card; author outside caption; coral operator keeps a coral Night coat"
+    ],
+    "authorInspection": {
+      "qa": "qa/browser-review.json valid: 23 checks, 48 frames (first, each spoken-sentence midpoint, last x 4 scenes x color/paper/night), 0 JS errors, 79538 ms",
+      "geometry": "Own SVG-space measurement at 1200 and 720 px over sentence start/mid/end and scene end: no text-caption, text-object or object-caption intersections except the intended wave over the ORIGINAL draft card",
+      "frames": "All 48 qa/screenshots and phone-393/phone-320 inspected by eye in Color, Paper (Light) and Night: no clipping, collisions, fallback fonts or illegible stage labels",
+      "candidate": {
+        "shf": "staging build, sha256 825f150c0d62c971308a9c96a98656a5cf79783cbad915824e9ef69a7c43b32e",
+        "export": "exports/cant-see-the-forest-for-the-trees-introduction.html sha256 96eb1fa1c33aa106c7164ea41fee3ab4a4b446cca5396666cec6d0521d0028e6"
+      },
+      "determinism": "Two independent staging builds produced identical .shf bytes (sha256 825f150c...b32e) and the same export (96eb1fa1...28e6). After the independent review passes, node build.mjs should install Animation/cant-see-the-forest-for-the-trees-introduction.shf with that sha256; staging folders were session-local scratch and need not survive.",
+      "framesInspectedAfterFinalArt": "color/paper/night contact sheets for all four scenes rebuilt at art 35ec7757 (the last change was theme-neutral except the coral Night coats in scenes 3-4, which were inspected in Night) plus phone-393/320"
     }
   }
 }

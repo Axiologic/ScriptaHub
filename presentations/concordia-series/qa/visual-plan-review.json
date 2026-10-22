@@ -1,29 +1,78 @@
 {
   "project": "presentations/concordia-series",
   "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
-  "artSha256": "8567c336b7d4fd16cfb8b2537c0cdf37df829d80022cc7c7914e0012912bf9b6",
+  "artSha256": "560f9a75bf93e3d363eee49aced0afb48d1d73a7201be8f958509819b301264b",
   "independentReview": {
     "status": "passed",
-    "reviewer": "production_0",
+    "reviewer": "independent-reviewer-r4",
+    "reviewedAt": "2026-10-22T19:50:57.321891+00:00",
     "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
-    "artSha256": "8567c336b7d4fd16cfb8b2537c0cdf37df829d80022cc7c7914e0012912bf9b6",
-    "scope": "Independent semantic and visual review of all 8 approved Concordia cues.",
-    "reviewedAt": "2026-09-11T16:24:29.905Z",
-    "evidence": {
-      "frames": 24,
+    "artSha256": "560f9a75bf93e3d363eee49aced0afb48d1d73a7201be8f958509819b301264b",
+    "artSource": "work/art.mjs sha256 f95097f2e912f8505f6b24b6745d22444563fa16b3152fbde45d552a26bea2ad",
+    "scope": "Fresh staging build (build.mjs --output=scratch, refreshing exports/) after check-visual-plan-implementation (0 issues); qa-film.mjs on CDP 9235: 23/23 checks, 48 frames, 0 JS errors, duration 79,890 ms. Independent muted, paused sampling of every scene edge and 10/20/30/50/70/90% of each spoken sentence in Color, Light (paper) and Dark (night); phone frames at 320 px (Color 30/70% + edges, Paper 50%) and 393 px (Night 50% + edges); zoomed face crops; a SHF.core.stateAt scan of every arm object at 20 ms steps over the whole film. No audible playback.",
+    "frames": {
+      "qaFilm": 50,
+      "sentenceAndEdgeSweep": 168,
+      "phone320": 32,
+      "phone393": 16,
+      "denseArmGap": 4,
+      "faceCrops": 5,
+      "armVisibilityScanStepMs": 20,
       "themes": [
         "color",
         "paper",
         "night"
       ],
-      "novelPremise": "Linked futures where effective compassionate intelligence makes refusal difficult, shown through ordinary care/classroom scenes.",
-      "fictionSpoilers": "none; no hostile skyline, rescue climax or acceptance outcome.",
-      "faces": "clear after student scale adjustment",
-      "labels": "readable and backed",
-      "scale": "coherent seminar and classroom proportions",
-      "captionCollisions": 0,
-      "audio": "Not evaluated; no listening approval claimed."
-    }
+      "phoneWidths": [
+        320,
+        393
+      ],
+      "scratchEvidence": "/tmp/claude-1000/-home-salboaie-work-axiologic-ScriptaHub/75c874ce-e1da-41d3-9b18-2eb324fb8664/scratchpad/r4/"
+    },
+    "roundThreeDefectsResolved": [
+      "Arm swaps: the 20 ms stateAt scan finds no moment with two visible arms on one shoulder in any scene (0 overlaps); the ghost limbs are gone.",
+      "Scene 2: the 'language' speech bubble now sits between the book and Mara's face, clear of the 02 / 04 counter in all themes.",
+      "Scene 1 s1.2: Len's closing gesture is an open palm raised toward Concordia above the bed post, with an up-right gaze and an uncertain face."
+    ],
+    "passes": [
+      "s1.1 relief and reach toward Nia, then a worried hand to the chin; s1.2 Concordia threads to Nia's care and Mara's bubble, Mara points to the bubble, Len looks up.",
+      "s2.1 medicine, book, speech and bowl appear in spoken order around Mara's open palms; s2.2 Nadir reaches for the remedy, then holds his hand to his chest, worried, while Mara turns to him with concern.",
+      "s3.1 three assisted students receive smooth bubbles while Nadir thinks, hand at chin, over his handwritten slip; s3.2 'surveillance' → 'systemic visibility' is readable in all themes and at 320 px.",
+      "s4.1 Len's tender hand gives way to unease and a hand to the chest as the monitor turns pale green; s4.2 Nadir looks up at the hovering reformulation and invites with an open palm.",
+      "Flat backgrounds and readable silhouettes in Color, Light and Dark; captions show one whole sentence and never cover faces or key props."
+    ],
+    "defects": {
+      "major": [],
+      "moderate": [],
+      "minor": [
+        {
+          "scene": "all (about 20 pose swaps)",
+          "what": "Arm poses switch by cut: the old arm fades in 60 ms and the new one appears 80 ms later, so the shoulder is armless for about 60 ms (e.g. Len 1.40-1.44 s; Mara both arms 9.20-9.24 s into scene 2), with no interpolated movement between poses. This is a brief pop, not a ghost limb. In Night at scene-2 9.21 s, Mara's fading open-palm arms show briefly as dark translucent shapes beside an armless torso (one 60 ms flicker, confirmed in a dense frame).",
+          "fix": "Optional: overlap a 40 ms cross-cut or add short in-between poses."
+        },
+        {
+          "scene": "3 a-civilization-that-sleeps-together",
+          "what": "At 320-393 px, the four seated students' faces are about 12 px wide, so their expressions read mainly through posture and colour (accepted shared-runtime limitation, no phone crop)."
+        },
+        {
+          "scene": "3 s3.2",
+          "what": "Suri and Lio's 'neutral' faces have downward-slanted outer brows that read as mildly concerned rather than 'listening calmly'; this is compatible with the sentence."
+        },
+        {
+          "scene": "3 s3.2 (night)",
+          "what": "The raw-to-smooth arrow's tail touches the torn edge of the 'surveillance' slip."
+        },
+        {
+          "scene": "1 s1.2",
+          "what": "The Concordia thread to Nia ends on top of her head rather than on the care motes."
+        }
+      ]
+    },
+    "notes": [
+      "Paper and Night were viewed at all sampled fractions and scene edges, and Color at every frame, including fade-in states at 10–30%.",
+      "defects is an object keyed by severity; no shared tool iterates independentReview.defects.",
+      "Top-level scriptSha256/artSha256 were left unchanged (owner-maintained); a publish build compares them to the current art hash."
+    ]
   },
   "reviewHistory": [
     {
@@ -52,6 +101,348 @@
         "All 24 frames were inspected for physical scale, face/caption clearance, readable labels and theme contrast. No audio or public build performed."
       ],
       "archivedAt": "2026-09-11T16:24:29.904Z"
+    },
+    {
+      "status": "passed",
+      "reviewer": "production_0",
+      "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
+      "artSha256": "8567c336b7d4fd16cfb8b2537c0cdf37df829d80022cc7c7914e0012912bf9b6",
+      "scope": "Independent semantic and visual review of all 8 approved Concordia cues.",
+      "reviewedAt": "2026-09-11T16:24:29.905Z",
+      "evidence": {
+        "frames": 24,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "novelPremise": "Linked futures where effective compassionate intelligence makes refusal difficult, shown through ordinary care/classroom scenes.",
+        "fictionSpoilers": "none; no hostile skyline, rescue climax or acceptance outcome.",
+        "faces": "clear after student scale adjustment",
+        "labels": "readable and backed",
+        "scale": "coherent seminar and classroom proportions",
+        "captionCollisions": 0,
+        "audio": "Not evaluated; no listening approval claimed."
+      },
+      "archivedAt": "2026-10-22T17:22:35.351Z"
+    },
+    {
+      "status": "passed",
+      "reviewer": "concordia-finish agent (2026-10-22)",
+      "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
+      "artSha256": "84da591b0484bfe648ac9688341e3fe2f0c81c94c319598c0451751933afb376",
+      "reviewedAt": "2026-10-22T17:22:35.351Z",
+      "scope": "Expanded qa-film.mjs capture of all 48 frames (4 scenes x first/each spoken-sentence midpoint/last x Color, Light, Dark) plus phone 393/320, inspected image by image with the Qwen-narrated 79.89 s build.",
+      "repairs": [
+        "Scenes 1-2: the first card (CARE RECEIVED / HELPFUL ROUTE) was revealed and hidden on the same beat, so it appeared only as a faint ghost during sentence 1; it is now revealed on beat 1 and replaced on beat 2.",
+        "Scene 3: the classroom bar crossed both students at neck height; it is now a waist-height desk drawn in front of them with legs at the ends and centre.",
+        "Scene 4: the empty seat stood on top of the seminar table; it now stands behind the table among the students.",
+        "work/art.mjs now reproduces the previously approved student scale/positions (0.52 at 293,335 and 468,355) so regenerating art no longer reverts the earlier review fix."
+      ],
+      "evidence": {
+        "frames": 48,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "captionCollisions": 0,
+        "labelOverflow": 0,
+        "ghostLabels": 0,
+        "fonts": "SHF Display/SHF Text loaded",
+        "audio": "Not listened to; ASR evidence in qa/spoken-audio-review.json."
+      },
+      "note": "Repairs and this review were made by the same agent; no separate second reviewer.",
+      "archivedAt": "2026-10-22T17:40:50.391Z"
+    },
+    {
+      "status": "failed",
+      "reviewer": "independent-reviewer-r1",
+      "reviewedAt": "2026-10-22T17:40:50.391Z",
+      "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
+      "artSha256": "84da591b0484bfe648ac9688341e3fe2f0c81c94c319598c0451751933afb376",
+      "scope": "Fresh staging build (build.mjs --output=scratch; exports refreshed) and qa-film.mjs on CDP 9235: 23 checks pass, 48 frames (4 scenes x first/sentence-1/sentence-2/last x color/paper/night) plus phone 393/320, each inspected with Read. Duration 79.89 s (<= 120 s).",
+      "evidence": {
+        "frames": 50,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "screenshots": "qa/screenshots/",
+        "qaFilm": {
+          "checks": 23,
+          "errors": 0,
+          "durationMs": 79890
+        },
+        "directionActions": "scenes 1-2: appear/disappear only; scenes 3-4: appear only; zero character.express / character.gesture actions in the whole film",
+        "audio": "not listened"
+      },
+      "defects": [
+        {
+          "scene": "all",
+          "sentence": "all",
+          "theme": "all",
+          "what": "No human performance at all: film.direction.json contains only appear/disappear actions; no character.express or character.gesture anywhere. Students hold the same face and arm pose for all eight sentences, so the emotional plan (tender tension, hesitation, concern, mixed gratitude/unease, invitation) is never acted. Violates AGENTS.md expressive humans with motivated gaze/posture/hands and per-sentence expression/gesture.",
+          "fix": "Enable dynamicExpressions and author per-sentence express+gesture (e.g. s1: one student looks toward the care object then hesitates with reflect; s2 concern/question; s3 manual student determined/reflect, assisted student relaxed; s4 mixed relieved+worried, invite gesture on final line)."
+        },
+        {
+          "scene": "1,2,4 (seminar scenes)",
+          "sentence": "all",
+          "theme": "color/paper/night",
+          "what": "The room is a large purple (night: pale lilac) trapezoid ring enclosing an inner beige (night: dark slate) panel: a framed nested panel / stage frame on the flat background, the exact clutter ART_DIRECTION forbids (no stage frames, inset panels, border lines; in night it reads as a glowing frame). It dominates about 70% of the stage.",
+          "fix": "Remove the room shape; keep flat theme background and let the table plus seated students imply the seminar."
+        },
+        {
+          "scene": "1,2,4",
+          "sentence": "all",
+          "theme": "all",
+          "what": "Composition/occlusion: student1 (purple coat) stands behind the table so only head, shoulders and one arm stub show; student0 is crowded at the far left edge with legs overlapping the table rim; the whole right half of the seminar is empty. Students are tiny (scale 0.52) relative to the 650-px table, so faces are unreadable at phone 393/320 (see phone-393.png, phone-320.png, where the play overlay also hides CARE RECEIVED).",
+          "fix": "Rebuild seminar staging: two to three larger seated students around a smaller table, spaced across the stage, torsos fully visible above table edge, faces at least ~60 px tall at 1200 width."
+        },
+        {
+          "scene": "1,2",
+          "sentence": "all",
+          "theme": "all",
+          "what": "Character identity: both students share the same face, hair and expression; only coat colour differs. Not distinct identities, and with no named cast continuity to scene 3/4 (scene 3 uses different actor ids at a different scale; plan names Nadir/Noema but neither is identifiable).",
+          "fix": "Give each recurring student a distinct identity (hair, glasses, build) and keep the same identities across scenes 1-4; make Nadir the unassisted student in scene 3 and 4 consistently."
+        },
+        {
+          "scene": "1",
+          "sentence": "1 \"...heal the people you love\"",
+          "theme": "all",
+          "what": "Semantic fit: nothing shows healing or a loved one; meaning rests entirely on an abstract label CARE RECEIVED floating over a seminar room. A seminar is unrelated to the medical/care stakes of the sentence.",
+          "fix": "Show a concrete care act (e.g. a relative recovering / a medicine or care object handed to a person the protagonist holds) with a visible tender reaction, and the protagonist hesitating."
+        },
+        {
+          "scene": "1",
+          "sentence": "2 \"...linked futures shaped by an intelligence...\"",
+          "theme": "all",
+          "what": "Only change is the label swapping to REFUSE CARE?; no intelligence, no linked futures, no effective/reasonable/compassionate quality represented. The label question also does not match the spoken sentence.",
+          "fix": "Introduce a gentle, non-sinister representation of the intelligence linking several small scenes (care, school, language) and remove the mismatched label."
+        },
+        {
+          "scene": "2",
+          "sentence": "1 \"...medicine, education, language, and the ordinary conditions of staying alive\"",
+          "theme": "all",
+          "what": "Frame is visually identical to scene 1 apart from label HELPFUL ROUTE; none of medicine/education/language/survival is depicted. Scenes 1 and 2 read as duplicate slides.",
+          "fix": "Give scene 2 its own composition showing the four domains as concrete objects/people receiving help, revealed one per clause."
+        },
+        {
+          "scene": "2",
+          "sentence": "2 \"...opting out also means giving something precious up\"",
+          "theme": "all",
+          "what": "CHOICE COST label is the only change; no person weighs opting out, nothing precious is shown being given up; planned genuine concern is not acted.",
+          "fix": "Stage a student pausing with a hand withdrawing from a helpful object, with worried expression, while the benefit stays visible."
+        },
+        {
+          "scene": "3",
+          "sentence": "1 and 2",
+          "theme": "all",
+          "what": "Wrong semantics: the left card says the meta-label \"smoother wording\" rather than an actual smoother sentence (plan: one raw phrase and its smoother equivalent from the source), and on sentence 2 an arrow points from \"smoother wording\" to \"I will think it through.\", implying the assisted wording turns into the unassisted one. The narration contrasts the two; it does not describe a transformation in that direction.",
+          "fix": "Show the source raw phrase and its smoothed version as two real sentences; replace the arrow with a non-directional comparison (e.g. a small highlighted word-level difference) or point raw->smoothed if a reformulation is intended."
+        },
+        {
+          "scene": "3",
+          "sentence": "1 \"...a classmate chooses to think without assistance\"",
+          "theme": "all",
+          "what": "The manual student wears an angry/scowling expression (furrowed brows, frown) for the whole scene, contradicting the planned interested contrast / quiet curiosity and suggesting hostility; the assisted student has closed-eye smile and a missing left arm.",
+          "fix": "Use determined or curious/reflect for the unassisted classmate (hand to chin, gaze to own sentence), and a relaxed but complete pose for the assisted student."
+        },
+        {
+          "scene": "3",
+          "sentence": "1",
+          "theme": "all",
+          "what": "\"Most students\" receive smoother language but only one assisted student is drawn; the desk bar spans both students at chest height so the scene reads as two people behind a counter rather than a classroom.",
+          "fix": "Show several assisted students (small group) versus one unassisted classmate, with individual desks."
+        },
+        {
+          "scene": "4",
+          "sentence": "1 \"gratitude and unease exist together\"",
+          "theme": "all",
+          "what": "Same static seminar frame reused a third time; neither gratitude nor unease is shown on any face (both smile with closed eyes).",
+          "fix": "Give one character a mixed expression sequence (relieved then worried) or two characters showing gratitude and unease respectively."
+        },
+        {
+          "scene": "4",
+          "sentence": "2 \"Enter Noema's classroom, where a helpful reformulation may change more than the sentence\"",
+          "theme": "all",
+          "what": "Only change is an empty chair appearing behind the table; no classroom, no Noema, no reformulation. The emotional plan (finish with Nadir's unassisted pause at the classroom desk) is not implemented. The ending gives no specific visual reading invitation.",
+          "fix": "End on the scene-3 classroom with Nadir pausing over the unassisted sentence while a reformulated version hovers, plus an invite gesture; keep consequence open."
+        },
+        {
+          "scene": "all",
+          "sentence": "all",
+          "theme": "night",
+          "what": "Night theme converts the room ring to bright lilac around a slate panel, producing a high-contrast glowing frame that outweighs the characters.",
+          "fix": "Resolved by removing the room shape (see seminar frame defect)."
+        }
+      ],
+      "passedItems": [
+        "Duration 79.89 s <= 120 s",
+        "Captions single sentence, readable, no collisions with art in all three themes",
+        "Scene headings and labels legible and contained",
+        "Fonts loaded; qa-film 23/23 checks",
+        "No spoilers or sinister imagery"
+      ],
+      "note": "Independent reviewer did not author the art. Previous self-review by the repair agent archived in reviewHistory."
+    },
+    {
+      "status": "failed",
+      "reviewer": "independent-reviewer-r2",
+      "reviewedAt": "2026-10-22T18:07:12.250987+00:00",
+      "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
+      "artSha256": "cb0c0e29ffd2bd29d7194e998dcec91d72aaf88219880f7fc3f422cf01ecef13",
+      "artSource": "work/art.mjs sha256 7804f7cf66c0aa529f7464d18b45bf52a05900c4c46371ae56fcc0666fb6284b",
+      "scope": "Fresh staging build (build.mjs --output=scratch, refreshing exports/) and qa-film.mjs on CDP 9235. Result: 23 checks, 48 frames, 0 errors, duration 79,890 ms (within 120 s). All 48 qa frames and phone-320/393 were inspected with Read. A further 60 gesture-peak/lookAt frames (20 x Color/Light/Dark) were captured, along with 13 sweep frames across the s2 reach/recoil and s4 invite windows and zoomed face crops. The browser stayed muted and paused, with no audible playback.",
+      "frames": {
+        "qaFilm": 50,
+        "gesturePeaks": 60,
+        "sweeps": 13,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "phoneWidths": [
+          320,
+          393
+        ],
+        "scratchEvidence": "/tmp/claude-1000/-home-salboaie-work-axiologic-ScriptaHub/75c874ce-e1da-41d3-9b18-2eb324fb8664/scratchpad/"
+      },
+      "passes": [
+        "Flat backgrounds without frames or nested panels in all three themes.",
+        "Captions are separated from the art, show one sentence each and do not overlap.",
+        "Character identities stay distinct by coat, hair and glasses in every theme; Dark coat tints are legible.",
+        "The 'surveillance' -> 'systemic visibility' source pair is readable.",
+        "The monitor colour change in 4.1 reads in all themes.",
+        "Duration is 1:19.9."
+      ],
+      "defects": [
+        {
+          "scene": "2 inside-the-seminar",
+          "sentence": "2 (The stories ask what freedom means...)",
+          "theme": "color, paper, night",
+          "what": "Expression cross-fade ghosting on Mara: after happy -> worried, a grey semi-transparent open grin and a second set of eyebrows remain visible under the frown for about 1-2 s (strong at 0:33.9 / local 12.2 s; still faint at the qa sentence-2 midpoint 0:34 in Color and Dark). Reads as a smudge/beard on her face.",
+          "fix": "Insert a neutral step or move Mara's worried express earlier so happy has fully cleared before the lookAt; verify the face at 0:33-0:35 in all themes. If the residual layer is a runtime cross-fade bug, report it for the shared character runtime."
+        },
+        {
+          "scene": "2, 3, 4",
+          "sentence": "2.1, 3.1, 4.2 (Nadir); 3.2 (Mara)",
+          "theme": "all",
+          "what": "Authored 'curious' renders as a sad/worried frown. Nadir frowns through the whole of 2.1 although the plan says he watches with curiosity, frowns at the 3.1 midpoint although he should be curious and thinking by hand, and is frowning at the 4.2 midpoint (invitation). Mara's 'curious' in 3.2 reads as frightened, not as explaining. The planned emotional contrast (curiosity versus concern) collapses into one worried register.",
+          "fix": "Use an expression that reads as interest (raised brow, neutral or slight smile, attentive eyes), or a different emotion token. Keep 'worried' only where the plan asks for concern (2.2, 4.1)."
+        },
+        {
+          "scene": "2 inside-the-seminar",
+          "sentence": "2 (opting out also means giving something precious up)",
+          "theme": "all",
+          "what": "The core reach-then-withdraw beat is not legible. The remedy hovers at head height beside Nadir, but his hands never approach it. The 'invite' reach and the 'recoil' both read as small low arm splays (0:32-0:34). Mara's lookAt Nadir leaves her pupils pointing to screen right, away from him, so she does not turn to him with concern.",
+          "fix": "Bring the remedy down to hand height within arm's length. Author a one-arm reach toward it, then a clear pull-back to the chest. Make Mara's gaze and torso face screen-left toward Nadir."
+        },
+        {
+          "scene": "3 a-civilization-that-sleeps-together",
+          "sentence": "2 (A small difference in wording...)",
+          "theme": "all",
+          "what": "There is no exchange between Nadir and Mara. Nadir's 'question' is only a slight arm lift with a smug smile. Mara's 'explain' is a tiny lift while her face is frightened and her eyes look forward, not at Nadir. The plan's 'Nadir looks up skeptically and questions, Mara turns and explains' is not visible at the sentence midpoint or the gesture peaks (0:54-0:55).",
+          "fix": "Turn Mara's head and gaze toward Nadir and give her a clear open-palm explain. Give Nadir a visible raised-palm question while he looks up at the term pair. Keep Suri and Lio neutral rather than grinning during this sentence."
+        },
+        {
+          "scene": "1 who-frames-the-answer",
+          "sentence": "2 (Concordia Series imagines linked futures...)",
+          "theme": "all",
+          "what": "Mara's 'explain' arm points horizontally off-stage to screen right, away from her speech bubble, Concordia and the other characters (0:14). Len's closing 'question' gesture is the same two-armed splay as his 'invite', with a smiling face (0:16), so the quiet question cannot be read.",
+          "fix": "Aim Mara's explain hand up toward her bubble or Concordia's thread. Give Len a distinct small questioning gesture (palm up, head tilt) with uncertain rather than smiling eyes."
+        },
+        {
+          "scene": "2, 3, 4",
+          "sentence": "all where Nadir/Lio appear",
+          "theme": "color, paper, night",
+          "what": "A stray white horizontal bar sits across the collar/chest of Nadir and Lio (for example 2.1 at x~255-285, y~340). It reads as a rendering artifact, not clothing.",
+          "fix": "Remove or recolour the collar/shirt element for these coat variants so it matches Len's and Mara's collars."
+        },
+        {
+          "scene": "all",
+          "sentence": "all",
+          "theme": "phone 320/393 (night)",
+          "what": "At phone widths the art occupies a small band, with heads about 15-20 px tall, so the authored expressions are unreadable. Large empty stage areas sit above the caption.",
+          "fix": "Use a tighter camera framing or larger character scale for narrow viewports so the faces carry the emotional plan. This is a minor item if the stage scaling is shared."
+        },
+        {
+          "scene": "3",
+          "sentence": "1-2",
+          "theme": "all",
+          "what": "Suri's open happy mouth renders as a solid dark wedge that reads like a goatee at normal size.",
+          "fix": "Use a closed smile or add a lighter inner-mouth tone for Suri. This is a minor item."
+        }
+      ]
+    },
+    {
+      "status": "failed",
+      "reviewer": "independent-reviewer-r3",
+      "reviewedAt": "2026-10-22T18:39:59.975580+00:00",
+      "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
+      "artSha256": "91c03e999dac71acc9b76742f3b537796a2d0ed21ff6414892ac71d3c7ce4459",
+      "artSource": "work/art.mjs sha256 3636cce2c5b7aa5083376e9bbfdd7093ae36efd42632622bd03d3a31baeaa249",
+      "scope": "Fresh staging build (build.mjs --output=scratch, refreshing exports/) and qa-film.mjs on CDP 9235: 23 checks, 48 frames, 0 JS errors, duration 79,890 ms (<=120 s). All 48 qa frames plus phone-320/393 inspected with Read. A further 24 Color sweep frames were captured across every gesture window, along with 20 dense 200 ms frames around Len's s1.1 arm swaps, 26 gaze frames (s2.2/s3.2), 5 zoomed Mara gaze frames and 4 phone-320 mid-film frames, each with zoomed crops. The player stayed muted and paused, with no audible playback.",
+      "frames": {
+        "qaFilm": 50,
+        "sweeps": 24,
+        "denseArmSwap": 20,
+        "gaze": 31,
+        "phone320Extra": 4,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "phoneWidths": [
+          320,
+          393
+        ],
+        "scratchEvidence": "/tmp/claude-1000/-home-salboaie-work-axiologic-ScriptaHub/75c874ce-e1da-41d3-9b18-2eb324fb8664/scratchpad/r3/",
+        "darkArmSwapConfirm": 2,
+        "s12PalmUp": 2
+      },
+      "passes": [
+        "Round-2 Mara ghost grin is gone; the expression cross-fade is now 200 ms (double brows visible only in a single sampled 33.2 s frame).",
+        "'Curious' now reads as interest (lifted brows, slight smile) for Nadir in 2.1, 3.1 and 3.2 and Len in 1.2; worried is used for 1.1 (late), 2.2 and 4.1 only.",
+        "The s2.2 reach then pull-back is legible: the jar sits at hand height, Nadir reaches one arm to it at 33-34 s and then holds his hand to his chest, worried; from 33.4 s Mara looks left at Nadir and offers an open hand.",
+        "In s3.2, Mara looks at Nadir and explains palm-up, and the 'surveillance' -> 'systemic visibility' pair is readable in all themes and at 320 px.",
+        "In s4.1, the monitor turns pale green and Len turns worried, looking up toward it with his hand on his chest; in s4.2, Nadir invites with an open palm and a smile.",
+        "Flat backgrounds in all three themes, with no frames or nested panels; captions are separate and contain one sentence each; cast identities are distinct in Color, Light and Dark."
+      ],
+      "defects": [
+        {
+          "scene": "1, 2, 4 (every arm pose swap)",
+          "sentence": "1.1 (0:01.5-0:01.7 and 0:04.2-0:04.6), 2.2 (0:33.0), 4.1 scene-start qa frame (1:02.5); also 2.1 Mara palmUp, 3.2 Nadir raised",
+          "theme": "color, paper, night",
+          "what": "Arm poses are swapped by opacity cross-fades of 400-600 ms, so a character visibly has two arms on one shoulder: a translucent reach arm beside the opaque rest arm (Len at 1.5 s), a fading reach arm still extended to the bed while the chin hand is raised (Len at 4.2-4.6 s), and a translucent rest arm behind Nadir's body while he reaches (33.0 s). The mandated scene-4 'first' qa frame shows the ghost behind Len's hip in all three themes (pale in Color/Light, a dark silhouette in Dark). ART_DIRECTION requires that only the intended hand be visible at each transition. Dark was confirmed separately at 1.5 s and 4.4 s, where a translucent dark-green second arm sits beside the opaque arm.",
+          "fix": "In work/art.mjs pose(), make the swap a hard cut or a sequential handoff: hide the old arm in <=80 ms before the new one appears (for example, disappear 0-80 ms, then appear 80-160 ms), or use durationMs <= 1 frame for both. Then re-sample at 100 ms steps around each pose cue in all themes."
+        },
+        {
+          "scene": "2 inside-the-seminar",
+          "sentence": "2.1, 2.2 and the silent tail (from ~0:26 to the scene end)",
+          "theme": "color, paper, night",
+          "what": "The 'language' speech-bubble prop at the top right (stage ~x1030-1130, y~40-130) sits under the player's chapter counter: '02 / 04' is drawn over or into the bubble's right edge. The prop is also outside the y>=120 safe area for important content.",
+          "fix": "Move the language bubble down and left into the safe area (for example, top >= 150 and right edge <= 1080), keeping it clear of Mara's head and the bowl; recheck all themes and phone widths."
+        },
+        {
+          "scene": "1 who-frames-the-answer",
+          "sentence": "1.2 closing question (palmUp cue at ~15.3 s, held through 0:21)",
+          "theme": "color, paper, night",
+          "what": "Len's planned palm-up question to Concordia lands exactly on the top of the bed's head post (stage ~x 300-330, y 335). It reads as a hand resting on, or gripping, the bedpost, not as an open, questioning palm. His head-up gaze and uncertain face are correct, but the gesture that carries 'and still a choice?' collapses into leaning on furniture.",
+          "fix": "Raise the palmUp hand above the rail and away from the post's x-range (for example, about 40-60 px higher, or angle it toward Concordia), or shift Len and the bed apart so the open palm is seen against the flat background in all themes."
+        },
+        {
+          "scene": "3 a-civilization-that-sleeps-together",
+          "sentence": "3.1 and 3.2 (four-desk classroom)",
+          "theme": "all, phone 320/393",
+          "what": "At 320 px, the four students' faces are about 12 px wide, so the planned expressions (Nadir curious versus the relieved/happy assisted students, and Mara explaining) cannot be read. Only coat colour distinguishes the students. Minor, but the emotional contrast that carries the sentence disappears on phones.",
+          "fix": "Optional within the art: tighten the classroom to Nadir, Mara and one assisted student at a larger scale (about 1.4), or let 3.1 pan to Nadir; otherwise record it as an accepted phone limitation."
+        }
+      ],
+      "archivedAt": "2026-10-22T19:50:57.321880+00:00"
     }
   ],
   "sceneVisualSha256": "61ed1ac81234b6802b33b20fbf7762e11179c80385b8e31667970cfd54adc178",

@@ -5,13 +5,12 @@
   "reviewStatus": "awaiting root review",
   "privateOnly": true,
   "scriptSha256": "3910dc0ee854efff2352069ded97cfe545754150ef3a6be75527a0c40ccceba0",
-  "artSha256": "f4baaa70568e8be61d0bb965e1bfd8851a03658aed9136967c8115b82d13b319",
-  "sceneVisualSha256": "73b1edc273dc3656ce4fa2bca2ef124c3a38775db01f561478bb106598be9cc8",
+  "artSha256": "e6c91c35296b6a46b21616f57401828dc0f6cdf6cb7ae5d9f1dabc1b9ca8f5d4",
+  "sceneVisualSha256": null,
   "planSha256": "bd392c22a1b0bc9dd248adf1835263e939a10060e50cd0fc46280efc52dabda8",
   "inspection": {
-    "preview": "/tmp/between-faith-evidence-preview/between-faith-and-evidence-introduction.html",
-    "contactSheet": "/tmp/between-faith-evidence-contact-24-v2.png",
-    "frames": 24,
+    "screenshots": "presentations/between-faith-and-evidence/qa/screenshots",
+    "frames": 42,
     "themes": [
       "color",
       "paper",
@@ -21,7 +20,7 @@
     "paused": true,
     "muted": true,
     "captionPolicy": "one sentence per frame",
-    "labelBounds": "presentations/between-faith-and-evidence/qa/label-bounds.json"
+    "qa": "presentations/between-faith-and-evidence/qa/browser-review.json"
   },
   "mapping": [
     {
@@ -341,24 +340,79 @@
   ],
   "independentReview": {
     "status": "passed",
-    "reviewer": "production_1",
-    "scope": "Independent full-size review of all 8 approved cues across 24 muted private frames in Color, Paper, and Night.",
-    "notes": "Moved the complicated-record card away from the reader body and caption band, raised the classroom inquiry board clear of captions while keeping both faces visible, and raised the open-question card above the narration. Verified source-faithful historical, evidence, classroom, and shared-question imagery without generic boilerplate or implausible gestures.",
-    "evidence": {
-      "previewDirectory": "qa/independent-review-20260911",
-      "contactSheet": "qa/independent-review-20260911/contact-all-24.png",
-      "themes": [
-        "color",
-        "paper",
-        "night"
+    "reviewer": "independent-review-subagent (fresh context, 2026-10-22)",
+    "reviewedAt": "2026-10-22T17:37:29.527Z",
+    "scope": "Rendered implementation of the approved cues: caption clearance, overlap, occlusion, clipping, crowding, alignment and regression against the 2026-09-11 approved art, in Color, Paper and Night.",
+    "rounds": [
+      {
+        "verdict": "failed",
+        "defects": "Figures and box text near captions; complicated-record card crowding; arrow tip near figure; misaligned scene-00 boxes; plus out-of-scope art-direction and shared-runtime notes."
+      },
+      {
+        "verdict": "failed",
+        "defects": "Scene-00 heads 2 px from box bottoms; box tops misaligned; complicated-record card 8 px from stage edge; top-aligned card text."
+      },
+      {
+        "verdict": "passed",
+        "defects": "none in scope"
+      }
+    ],
+    "notes": "Layout-only repair on 2026-10-22: positions/scales changed, scene-00 argument card height equalised, card text vertically centred. Same objects, arrows and beats as the 2026-09-11 approval (reviewer confirmed). Measured: boxes share edges, 18-21 px head clearance, ~19 px caption clearance, ~31 px right margin.",
+    "residualConcerns": {
+      "artDirectionForEditor": [
+        "Arrows Private writing -> Mathematical argument and Historical lives -> Public evidence -> Interpretation read as pipelines while narration stresses separation.",
+        "Scene how visuals run one sentence ahead of plan cues; the open record across several pages is never shown.",
+        "Scene why competing-lists cue reduced to one small card.",
+        "Scene what arrows read as a one-way hand-off; nobody engages the Supporting argument card."
       ],
-      "frames": 24,
-      "muted": true,
-      "paused": true,
-      "renderedTextCheck": "valid",
-      "structuralChecker": "node tools/shf/check-visual-plan-implementation.mjs presentations/between-faith-and-evidence"
+      "sharedRuntimeForCoordinator": [
+        "Night theme gives all figures the same pale garment; arms blend into bodies.",
+        "Scene counter is very low contrast.",
+        "At 393/320 px card text is illegible and the paused play overlay covers it; counter wraps at 320 px."
+      ]
     },
-    "scriptSha256": "3910dc0ee854efff2352069ded97cfe545754150ef3a6be75527a0c40ccceba0",
-    "artSha256": "f4baaa70568e8be61d0bb965e1bfd8851a03658aed9136967c8115b82d13b319"
-  }
+    "artSha256": "e6c91c35296b6a46b21616f57401828dc0f6cdf6cb7ae5d9f1dabc1b9ca8f5d4",
+    "scriptSha256": "3910dc0ee854efff2352069ded97cfe545754150ef3a6be75527a0c40ccceba0"
+  },
+  "previousReviews": [
+    {
+      "status": "passed",
+      "reviewer": "production_1",
+      "scope": "Independent full-size review of all 8 approved cues across 24 muted private frames in Color, Paper, and Night.",
+      "notes": "Moved the complicated-record card away from the reader body and caption band, raised the classroom inquiry board clear of captions while keeping both faces visible, and raised the open-question card above the narration. Verified source-faithful historical, evidence, classroom, and shared-question imagery without generic boilerplate or implausible gestures.",
+      "evidence": {
+        "previewDirectory": "qa/independent-review-20260911",
+        "contactSheet": "qa/independent-review-20260911/contact-all-24.png",
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "frames": 24,
+        "muted": true,
+        "paused": true,
+        "renderedTextCheck": "valid",
+        "structuralChecker": "node tools/shf/check-visual-plan-implementation.mjs presentations/between-faith-and-evidence"
+      },
+      "scriptSha256": "3910dc0ee854efff2352069ded97cfe545754150ef3a6be75527a0c40ccceba0",
+      "artSha256": "f4baaa70568e8be61d0bb965e1bfd8851a03658aed9136967c8115b82d13b319",
+      "sceneVisualSha256": "73b1edc273dc3656ce4fa2bca2ef124c3a38775db01f561478bb106598be9cc8",
+      "inspection": {
+        "preview": "/tmp/between-faith-evidence-preview/between-faith-and-evidence-introduction.html",
+        "contactSheet": "/tmp/between-faith-evidence-contact-24-v2.png",
+        "frames": 24,
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "sentences": 8,
+        "paused": true,
+        "muted": true,
+        "captionPolicy": "one sentence per frame",
+        "labelBounds": "presentations/between-faith-and-evidence/qa/label-bounds.json"
+      }
+    }
+  ],
+  "sceneVisualSha256Note": "No producer for the earlier sceneVisualSha256 formula was found in tools/, .agents/ or tasks/; artSha256 (hash of scene id+visual, as checked by build-book-film.mjs) is authoritative."
 }

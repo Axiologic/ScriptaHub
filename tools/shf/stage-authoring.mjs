@@ -9,7 +9,11 @@ export function stageAuthor(){
  const label=(id,value,x,y,size=32)=>add(art.object(id,x,y,[art.text(value,0,0,size)],value));
  const link=(id,from,to,beat,meaning,color='$ink')=>{connections.push({id,from:{node:from,anchor:'right'},to:{node:to,anchor:'left'},width:4,color,meaning});actions.push({actor:id,action:'connection.draw',beat,durationMs:1800});};
  const finish=meaning=>({objects,actions,connections,meaning});
- const person=(id,x,y,{coat='#496580',night='#a4bfd7',skin='#bd896c',hair='#393333',hairStyle='short',pose='attentive',scale=1}={})=>{
+ // Night coats keep each person's own hue (lightened for the dark stage), so a
+ // cast never collapses into one pale-blue figure.
+ const nightOf=hex=>{const v=parseInt(String(hex).replace('#',''),16);if(Number.isNaN(v))return '#a4bfd7';const mix=c=>Math.round(c+(255-c)*.45);return '#'+[v>>16&255,v>>8&255,v&255].map(mix).map(c=>c.toString(16).padStart(2,'0')).join('');};
+ const person=(id,x,y,{coat='#496580',night,skin='#bd896c',hair='#393333',hairStyle='short',pose='attentive',scale=1}={})=>{
+  night=night||nightOf(coat);
   const {n,tint,path,object}=art,low=pose==='concerned',open=pose==='open';
   return add(object(id,x,y,[
    tint(n('path',{d:low?'M-40 -16Q-9 -36 31 -12L49 106H-49Z':'M-35 -22Q0 -36 35 -22L49 106H-49Z',fill:coat}),night),

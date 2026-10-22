@@ -1,0 +1,131 @@
+{
+  "project": "incomplete-tribes",
+  "reviewHistory": [
+    {
+      "status": "failed",
+      "reviewer": "independent-reviewer-new-r1",
+      "round": 1,
+      "scriptSha256": "1b3354f3423360e4f426d4c2aa12cc5e9ef240abd044a53ec62376928aac05bb",
+      "artSha256": "e213f52546e389863c87f404ef33f2c5a1edbdacea39d6f7caffac30f06ca295",
+      "reviewedAt": "2026-10-22T20:10:24.238584+00:00",
+      "scope": "Independent visual review of published film presentations/incomplete-tribes (export exports/incomplete-tribes-introduction.html).",
+      "evidence": {
+        "qaFilm": {
+          "command": "SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/incomplete-tribes",
+          "valid": true,
+          "checks": 23,
+          "sampledFrames": 51,
+          "jsErrors": 0
+        },
+        "durationMs": 86796,
+        "durationWithinTwoMinutes": true,
+        "frames": {
+          "qaFilmFrames": 51,
+          "extraFrames1200": 66,
+          "extraLateFrames": "scene 3 sentences 1-2 at 75/90/100%",
+          "phoneFrames393": 22,
+          "phone320": 2,
+          "total": 147
+        },
+        "framePoints": "scene first/last edges, 15%, 30% and 50% of every spoken sentence; extra 75-100% for scene 3 sentences 1-2",
+        "themes": [
+          "color",
+          "paper",
+          "night"
+        ],
+        "widths": [
+          1200,
+          393,
+          320
+        ],
+        "muted": true,
+        "paused": true,
+        "audiblePlayback": false,
+        "audio": "Not evaluated; no listening approval claimed."
+      },
+      "defects": {
+        "major": [],
+        "moderate": [
+          "Scene 2 'Deep, Never Total', sentences 1-2: the club member (bald, amber coat) holds the 'determined' expression with furrowed brows and a down-turned mouth through the calm definition and the first half of the chess-club sentence (until about 2.6 s into it). In all three themes it reads as anger, not the planned 'precise focus' or 'light amusement'.",
+          "Scene 2: the member never stands inside the open chess-club ring. From his first frame he is placed on the ring's open end (x~640), outside the table area. So the sentence-4 'walk out through the gap' reads as a short step toward the partner, not as exit from the club, which weakens the 'Exit and dissent stay open' beat."
+        ],
+        "minor": [
+          "Shared identities person-03, person-18 and person-12 show a white pill-shaped bar across the scarf/collar. In every theme it reads as a floating patch rather than clothing.",
+          "Scene 3 sentence 1: the clay dashed 'sorting line' appears only at about 65% of the sentence and remains a straight cut. Nothing shows the sort failing, so it can read as a successful division.",
+          "Scene 3 sentence 2: the rival's 'loss' is only the blue flag sliding halfway down its pole late in the sentence. The beat is legible but understated.",
+          "Scene 3 sentence 3: the AI monitor sits on the bridge-cd endpoint, so the bridge passes behind the prop. Flag A's pole is drawn over the bridge-ab end. This is small visual clutter.",
+          "Night theme, scene 1: the builder's dark navy hair has low contrast against the near-black stage, though the face remains readable.",
+          "Scene 1 sentence 3: by the midpoint all three group members already show negative expressions. The 'We love, build' warmth appears only briefly before the turn to enemies.",
+          "Phone 393 px: 'Tournament rules' and the open-book Prelude page text are very small. The caption still carries the meaning."
+        ]
+      },
+      "notes": "Captions are one sentence, contained and clear of art. Scene headings are bold and contained. There are no ghost or duplicated limbs and no props drawn over faces. Character identities are consistent across Color/Light/Dark. Shared-player chapter counter wrap at 320 px and the MUTE tooltip are ignored per instructions. No art, spoken lines or audio were edited."
+    }
+  ],
+  "independentReview": {
+    "status": "failed",
+    "reviewer": "independent-reviewer-new-r2",
+    "round": 2,
+    "scriptSha256": "578f3b25dfe5b51b1732d923be2a1c98b55592d2be4773b86285d381ecd19dd3",
+    "scriptHashMethod": "sha256(JSON.stringify(scenes.map(({id,lines})=>({id,lines})))) as in work/migration-state.json",
+    "artSha256": "82884cb58aea837e7b7c71caf9cef29c9e45c20a4aee49d8197708ed2cbb4d87",
+    "artMjsSha256": "da83951f7214a001d2f70833a7ec6a92b6429b06422a1049530ec151c9e2a6ea",
+    "reviewedAt": "2026-10-22T20:32:48.125831+00:00",
+    "scope": "Independent round-2 visual review of published film presentations/incomplete-tribes (export exports/incomplete-tribes-introduction.html, rebuilt 2026-10-22 22:18 after art.mjs revision).",
+    "evidence": {
+      "qaFilm": {
+        "command": "SCRIPTA_CDP_URL=http://127.0.0.1:9235 node tools/shf/qa-film.mjs presentations/incomplete-tribes",
+        "valid": true,
+        "checks": 23,
+        "sampledFrames": 51,
+        "jsErrors": 0
+      },
+      "durationMs": 86796,
+      "durationWithinTwoMinutes": true,
+      "frames": {
+        "qaFilmFrames": 51,
+        "extraFrames1200": 150,
+        "phoneFrames393": 56,
+        "phone320": 17,
+        "total": 274
+      },
+      "framePoints": "scene edges (+150 ms, end-150 ms) and 15%, 30%, 50%, 85% of every spoken sentence at 1200 px in Color/Light/Dark; 30% and 60% at 393 px in Color/Dark; 50% at 320 px in Light",
+      "themes": [
+        "color",
+        "paper",
+        "night"
+      ],
+      "widths": [
+        1200,
+        393,
+        320
+      ],
+      "muted": true,
+      "paused": true,
+      "audiblePlayback": false,
+      "audio": "Not evaluated; no listening approval claimed."
+    },
+    "round1Resolution": {
+      "scene2MemberAngryExpression": "resolved: member is calm/smiling through sentences 1-2 in all themes",
+      "scene2MemberOutsideRing": "resolved: member stands inside the chess-club ring from sentence 1 and exits into the overlapping second ring in sentence 4",
+      "scene3SortingLine": "resolved: dashed line appears by 30% and bridges are marked crossing it by 50%, so the sort visibly fails",
+      "scarfPillPatch": "resolved: collar reads as a shirt V",
+      "scene1WarmthBeforeTurn": "resolved: linked arms and smiles at 15-30% before the wall and worried faces"
+    },
+    "defects": {
+      "major": [],
+      "moderate": [
+        "Scene 2 'Deep, Never Total', sentences 3-4 and scene end (about 15 s): the green 'other loyalty' floor ring has the wrong draw order. Its back arc and open rounded end are painted across the partner's shins and over the member's lower leg/shoe. The orange club ring correctly sits behind the same feet. This prop-over-person glitch appears in Color, Light and Dark. It is visible at native 1200 px without zoom and most prominent on the pale Night trousers (e.g. night-1200-1-edge-z). Fix: draw the ring's back arc behind the figures, or move its open end clear of the legs."
+      ],
+      "minor": [
+        "Night theme: the dark-haired woman with glasses (scene 1 group) gets steel-blue/grey hair, which reads older than her dark navy hair in Color/Light. Her coat, skin and glasses still keep her identity.",
+        "Scene 3 sentence 2: the blue flag slides fully out of view by about 85%, and a bare pole remains to the end. 'Lose' is legible, but a vanished flag slightly echoes 'erased'. The pole also pierces the protective ring outline.",
+        "Scene 3 sentence 4: an orange open arc from the AI beat stays around the AI island during the closing invitation, with no clear new meaning. This is mild clutter beside the book.",
+        "Phone 393/320 px: 'Tournament rules', the 'I disagree' bubble and the open-book Prelude/chapter titles are very small. The caption still carries the meaning.",
+        "Light theme, scene 3 sentence 4: the open book's white pages sit on the near-white stage. Only the orange cover and faint page lines separate them; the book is still legible.",
+        "Night theme, scene 3 sentence 1 (15-50%): faint dark rectangular compositing boxes appear behind fading islands and half-drawn bridges. They are near-invisible at normal brightness and may be a headless raster artifact."
+      ]
+    },
+    "notes": "Each caption is one whole sentence, contained and clear of art in all 274 inspected frames. Every contact sheet was read for Color, Light and Dark at 1200 px, and every phone sheet at 393/320 px. Scene headings are bold and contained. There are no ghost or duplicated limbs and no props over faces. Expressions follow the emotional plan: curiosity, then warmth turning to unease in scene 1; calm focus, light amusement and relief in scene 2; insight, hope and alertness in scene 3. At the start of scene 3 sentence 2 in Night, a near-invisible residual of the fading dashed sorting line remains; it was not counted. scriptSha256 here uses the migration-state.json method. Round 1's 1b3354... value used an undocumented method, so the mismatch does not by itself indicate a script change. The spoken lines match the approved export (qa-film check passed). The shared-player chapter counter wrap at 320 px and the MUTE tooltip are ignored per instructions. No art, spoken lines or audio were edited."
+  }
+}

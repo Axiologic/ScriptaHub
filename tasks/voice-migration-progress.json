@@ -1,6 +1,6 @@
 {
   "productionPause": {
-    "paused": true,
+    "paused": false,
     "requestedBy": "user",
     "pausedAt": "2026-09-11T17:20:51.199655+00:00",
     "stoppedPids": [
@@ -32,35 +32,38 @@
       "Preserve cached clips and completed films.",
       "Diversify voices next; inspect supported local voices and explicit casting overrides.",
       "Between Faith how-line-1 bad seed requires a different seed/take, not only cache deletion.",
-      "Pending visual/caption repairs and publication are recorded in per-book migration states and published-film-caption-review.json."
-    ]
+      "Pending visual/caption repairs and publication are recorded in per-book migration states and published-film-caption-review.json.",
+      "Resumed on 2026-10-22 at the editor's request: finish films in progress first, in parallel, then new films for books without one."
+    ],
+    "resumedAt": "2026-10-22T23:50:00+00:00",
+    "resumedBy": "user"
   },
   "format": "ScriptaHub-animation-voice-migration",
   "version": 2,
-  "updatedAt": "2026-10-22T17:12:00.448Z",
+  "updatedAt": "2026-10-22T20:40:23.790Z",
   "scope": "All book animations: engaging introductions of 1–2 minutes, maximum two minutes.",
   "counts": {
-    "qwen-complete": 16,
+    "qwen-complete": 33,
     "rendering": 0,
-    "pending-piper": 100,
+    "pending-piper": 98,
     "needs-render": 0,
-    "needs-rerender": 6,
+    "needs-rerender": 1,
     "publication-invalid": 0,
     "untracked": 0
   },
   "editorialCounts": {
     "reviewed": 122,
     "awaitingReview": 0,
-    "awaitingRewrite": 0
+    "awaitingRewrite": 10
   },
   "productionCounts": {
-    "animations": 39,
-    "voices": 21,
-    "published": 16,
+    "animations": 38,
+    "voices": 33,
+    "published": 33,
     "publicationInvalid": 0
   },
   "visualPlans": 122,
-  "conversionGate": "plans-reviewed",
+  "conversionGate": "all-plans-must-be-reviewed",
   "entries": [
     {
       "title": "A Balance of Iron and Salt",
@@ -437,7 +440,327 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.351Z"
+      "updatedAt": "2026-10-22T20:40:23.697Z"
+    },
+    {
+      "title": "A Mind Does Not Fit in a Feed",
+      "bookId": "bk-4357933504204667",
+      "status": "qwen-complete",
+      "durationMs": 85194,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.245Z",
+          "scriptSha256": "e95709a113f2fcec4018b84526561bc892b4fb1f3e1ac0cecb637fe41a906473",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T17:37:10.447Z",
+          "scriptSha256": "e95709a113f2fcec4018b84526561bc892b4fb1f3e1ac0cecb637fe41a906473",
+          "elapsedSeconds": 59,
+          "note": "Listening review pending."
+        },
+        "animation": {
+          "status": "published",
+          "updatedAt": "2026-10-22T17:41:54.928Z",
+          "scriptSha256": "e95709a113f2fcec4018b84526561bc892b4fb1f3e1ac0cecb637fe41a906473",
+          "durationMs": 85194,
+          "artSha256": "648e70660fdf1109f69c38fe35ccac839ddf30f503494359e44ae725738f3f10",
+          "shfSha256": "fe4ce6b8f89dc544075431001c39761a07fdb5798037860d972f7938e1ccee4a",
+          "published": "docs/books/a/mind/does/not/fit/in/a/feed/bk-4357933504204667/Animation/a-mind-does-not-fit-in-a-feed-introduction.shf",
+          "note": "Published 85.194-second Qwen/Aiden film (11 single-sentence clips, 1.35 s sentence gaps, 3.7 s scene transitions). qa-film valid: 23 checks, 51 frames incl. every sentence midpoint, 0 JS errors; all frames inspected in Color, Light, Dark plus phone widths. Art fixes: earlier reveal of the \"I understood\" bubble, Chapter Two tokens and Chapter Three pathology labels so each lands within its sentence; magnifier given a Night tint for contrast. Spoken lines unchanged. Animation/index.html and manifest.animation pending coordinator build_books refresh. Worker self-review, not an independent review."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "plannedVoiceId": "Aiden",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "voiceId": "Aiden",
+      "bookDirectory": "docs/books/a/mind/does/not/fit/in/a/feed/bk-4357933504204667",
+      "project": "presentations/a-mind-does-not-fit-in-a-feed",
+      "shf": "docs/books/a/mind/does/not/fit/in/a/feed/bk-4357933504204667/Animation/a-mind-does-not-fit-in-a-feed-introduction.shf",
+      "shfSha256": "20e9e6c02a5c39379417d0ff74cce42f6926645f8f3eca754109da915b98f3f0",
+      "bookPage": "books/a/mind/does/not/fit/in/a/feed/bk-4357933504204667/en/book.html?lang=en",
+      "animationPage": "books/a/mind/does/not/fit/in/a/feed/bk-4357933504204667/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "Full day, unfinished idea",
+          "lines": [
+            "You can meet many ideas in one day and still not say what you understood.",
+            "A Mind Does Not Fit in a Feed asks why abundance can leave an idea unfinished.",
+            "Its adversary is not the short form, but the impression of understanding.",
+            "It defends intellectual continuity: time for a question to develop and face contradiction."
+          ],
+          "emotions": [
+            "quiet recognition",
+            "curiosity",
+            "precise distinction",
+            "steady conviction"
+          ],
+          "intensities": [
+            0.4,
+            0.5,
+            0.6,
+            0.65
+          ],
+          "voiceDirections": [
+            "Warm and close, as if describing the listener's own evening.",
+            "Lift slightly on the question, unhurried.",
+            "Clear contrast between the two halves, no sarcasm.",
+            "Settled and confident, stress continuity."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "Evidence before the verdict",
+          "lines": [
+            "Chapter One calls a fragment's hidden premises and alternatives “context debt,” a working concept.",
+            "Chapter Two separates research findings, plausible interpretations and normative recommendations about attention.",
+            "Chapter Three holds books to account: padding, false coherence and borrowed authority."
+          ],
+          "emotions": [
+            "analytic focus",
+            "measured rigour",
+            "candid self-scrutiny"
+          ],
+          "intensities": [
+            0.55,
+            0.6,
+            0.7
+          ],
+          "voiceDirections": [
+            "Even pace, gentle emphasis on context debt, neutral on the caveat.",
+            "Crisp and methodical, small pauses between the three categories.",
+            "Slightly wry honesty, firm on the list."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "A thought you finish",
+          "lines": [
+            "Chapter Four turns agreement into action: one small, verifiable change, proposed rather than proven.",
+            "Chapter Five lets blogs, short explanations and stable editions cooperate instead of compete.",
+            "Read it to learn when you have truly earned the words “I understood.”",
+            "Begin with the prologue, “A full day, an unfinished idea,” and stay with one question."
+          ],
+          "emotions": [
+            "practical encouragement",
+            "generous openness",
+            "quiet conviction",
+            "inviting calm"
+          ],
+          "intensities": [
+            0.6,
+            0.55,
+            0.65,
+            0.45
+          ],
+          "voiceDirections": [
+            "Encouraging and concrete, honest on the caveat.",
+            "Open and constructive, no hostility toward the internet.",
+            "Slower, let the quoted words land.",
+            "Warm and unhurried, a quiet invitation to begin."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 149,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 81,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.457Z"
+    },
+    {
+      "title": "Affective Calculus",
+      "bookId": "bk-c24944bc03884c97",
+      "status": "qwen-complete",
+      "durationMs": 101374,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.248Z",
+          "scriptSha256": "966b84dd18f8b2f3812e9edf79db570b2716c02a0ce87ebc91a86cf084bc17b2",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T18:11:48.676Z",
+          "scriptSha256": "966b84dd18f8b2f3812e9edf79db570b2716c02a0ce87ebc91a86cf084bc17b2",
+          "elapsedSeconds": 489,
+          "note": "Qwen Ryan, 11 clips, 79.28 s speech. ASR (faster-whisper base.en): 8 exact; 3 homophone-only differences (affective/effective x2, emotion/a motion) resolved by prompted decode. Listening review pending."
+        },
+        "animation": {
+          "status": "published",
+          "updatedAt": "2026-10-22T18:15:40.023Z",
+          "scriptSha256": "966b84dd18f8b2f3812e9edf79db570b2716c02a0ce87ebc91a86cf084bc17b2",
+          "note": "Packaged with measured Qwen audio (101.4 s, 1.35 s sentence gaps, 3.7 s scene transitions) into the book Animation/ folder; manifest.animation registered. qa-film.mjs clean (23 checks, 51 frames, 0 errors); Color/Light/Dark frames and 393/320 px phone frames inspected. Fixed the scene-1 lens ring that cut through the word “fine” (moved beside the word in art.mjs). Coordinator must regenerate Animation/index.html via build_books.py refresh."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "plannedVoiceId": "Ryan",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
+      "bookDirectory": "docs/books/affective/calculus/bk-c24944bc03884c97",
+      "project": "presentations/affective-calculus",
+      "shf": "docs/books/affective/calculus/bk-c24944bc03884c97/Animation/affective-calculus-introduction.shf",
+      "shfSha256": "070fadef6bdd6428dcfb37ed8bfaf8e869b5b4eac5fc22c22831ee8e07b179de",
+      "bookPage": "books/affective/calculus/bk-c24944bc03884c97/en/book.html?lang=en",
+      "animationPage": "books/affective/calculus/bk-c24944bc03884c97/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "Not just a word",
+          "lines": [
+            "Affective Calculus asks whether an AI can explain an emotion, not merely name it.",
+            "A character can say “I’m perfectly fine” in a scene of despair.",
+            "An AI judge hunting for emotion words mistakes that expression for the actual state.",
+            "The book treats emotion as an evaluated relationship between an agent and its world."
+          ],
+          "emotions": [
+            "intrigue",
+            "quiet irony",
+            "concern",
+            "clarity"
+          ],
+          "intensities": [
+            0.6,
+            0.45,
+            0.55,
+            0.5
+          ],
+          "voiceDirections": [
+            "Open with a confident, curious lift on 'explain'.",
+            "Soften; let the quoted words land with gentle irony.",
+            "Steady and precise, a slight frown in the voice.",
+            "Settle warmly, as a clear definition."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "The appraisal vector",
+          "lines": [
+            "Its proposed Appraisal Affective Calculus first separates brief episodes from moods, sentiments and attitudes.",
+            "An appraisal vector then records goals, control, agency, norms, dignity and attachment.",
+            "Labels become probabilistic prototypes, with intensity and confidence reported separately."
+          ],
+          "emotions": [
+            "methodical",
+            "building",
+            "assured"
+          ],
+          "intensities": [
+            0.4,
+            0.5,
+            0.45
+          ],
+          "voiceDirections": [
+            "Measured pace; give each category its own small beat.",
+            "Slightly brighter, listing dimensions with even rhythm.",
+            "Calm and exact, a light emphasis on 'separately'."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "Change one fact",
+          "lines": [
+            "Mara faces a running dog, a locked gate and a dead-end alley: fear.",
+            "Now she can shut the gate, and the owner freed the dog deliberately: anger should rise.",
+            "Such minimal pairs reveal whether an AI explains emotion or only matches words.",
+            "Read it for that test, starting with Chapter 1, “An Emotion Is Not a Word.”"
+          ],
+          "emotions": [
+            "tension",
+            "turn",
+            "insight",
+            "invitation"
+          ],
+          "intensities": [
+            0.7,
+            0.75,
+            0.55,
+            0.5
+          ],
+          "voiceDirections": [
+            "Quicker and tighter, then a short pause before 'fear'.",
+            "Shift tone decisively on 'anger', firm but not loud.",
+            "Slow down; let the distinction register.",
+            "Warm, direct invitation, unhurried on the chapter title."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 147,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 70,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.507Z"
     },
     {
       "title": "Agentic AI 2026",
@@ -806,7 +1129,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.351Z"
+      "updatedAt": "2026-10-22T20:40:23.698Z"
     },
     {
       "title": "AI Adoption Beyond the Slop",
@@ -825,15 +1148,22 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "paused",
-          "updatedAt": "2026-09-11T17:17:04.347Z",
+          "status": "done",
+          "updatedAt": "2026-10-22T17:27:06.563Z",
           "scriptSha256": "08ccc2987a589d859b46ed8b72aa2e34e22cea76bf53a2728e5aa30eb9e8adba",
-          "worker": 1,
-          "reviewer": "production_1",
-          "note": "Independent collision repair and expanded midpoint review in progress.",
-          "resumeStatus": "reviewing",
-          "pausedAt": "2026-09-11T17:21:21.506982+00:00",
-          "pauseReason": "Stopped at the editor’s request; resume only when requested."
+          "artSha256": "614deb697a24eb5437e039c46aa06fae93aae72faded09bebc83204a4ef15c9b",
+          "durationMs": 65865,
+          "shfSha256": "d313ed5545804f9bfd839ae4d32b9e973535d4ba0b9b2232df11006bfcd3809e",
+          "published": "docs/books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/Animation/ai-adoption-beyond-the-slop-introduction.shf",
+          "reviewer": "resume-worker-2026-10-22",
+          "note": "Published repaired 65.865-second film; expanded QA 23 checks/48 frames incl. every sentence midpoint passed in Color/Light/Dark; shape-level caption-box check clean; independent visual review passed. Audio unchanged.",
+          "candidate": {
+            "status": "staged-pending-independent-review",
+            "updatedAt": "2026-10-22T23:00:00.000Z",
+            "artSha256": "c426d2d3abf26c07822d490c2f5c1132316dbfeeb12d6bd5ddd715851d76f455",
+            "shfSha256": "d494b2ebe9cc191c6445b8855f4538a9a126bfce63b6adbf620e1447987a5a02",
+            "note": "Round-4 visual repair (scene 4 re-blocked so Elena never crosses the desk or stages book, handled loupe with level lines while held, down-right gaze at the pile; scene 3 turn to Daniel held through the midpoint, Daniel's hand in frame at 393 px; scene 2 Daniel appears clear of Sam, Elena's hand raised toward Sam) built to staging; not published. Audio unchanged."
+          }
         }
       },
       "active": false,
@@ -848,7 +1178,7 @@
       "bookDirectory": "docs/books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1",
       "project": "presentations/ai-adoption-beyond-the-slop",
       "shf": "docs/books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/Animation/ai-adoption-beyond-the-slop-introduction.shf",
-      "shfSha256": "53d888c0d065e24bdd3b365f9d3e4ed8c4b9332fb87ceca1066f369024d06a7e",
+      "shfSha256": "d313ed5545804f9bfd839ae4d32b9e973535d4ba0b9b2232df11006bfcd3809e",
       "bookPage": "books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/en/book.html?lang=en",
       "animationPage": "books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/Animation/index.html",
       "script": [
@@ -1170,7 +1500,7 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 24,
+        "visualActions": 127,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 8,
@@ -1178,7 +1508,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.349Z"
+      "updatedAt": "2026-10-22T20:40:23.699Z"
     },
     {
       "title": "AI Agents",
@@ -1556,7 +1886,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.294Z"
+      "updatedAt": "2026-10-22T20:40:23.642Z"
     },
     {
       "title": "All the Ways to Rule a World",
@@ -1930,7 +2260,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.297Z"
+      "updatedAt": "2026-10-22T20:40:23.643Z"
     },
     {
       "title": "An Autopsy of a Digital Mind",
@@ -2312,7 +2642,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.354Z"
+      "updatedAt": "2026-10-22T20:40:23.698Z"
     },
     {
       "title": "Anatomy of an Echo",
@@ -2690,7 +3020,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.353Z"
+      "updatedAt": "2026-10-22T20:40:23.699Z"
     },
     {
       "title": "Anti-Idiocracy",
@@ -3075,7 +3405,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.302Z"
+      "updatedAt": "2026-10-22T20:40:23.653Z"
     },
     {
       "title": "Anti-Trivialization Machines of the Future",
@@ -3457,7 +3787,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.296Z"
+      "updatedAt": "2026-10-22T20:40:23.644Z"
     },
     {
       "title": "Artificial Impossibility",
@@ -3853,7 +4183,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.353Z"
+      "updatedAt": "2026-10-22T20:40:23.703Z"
     },
     {
       "title": "Aspirin, Viagra, and Coffins",
@@ -4216,7 +4546,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.401Z"
+      "updatedAt": "2026-10-22T20:40:23.758Z"
     },
     {
       "title": "AssistOS",
@@ -4553,7 +4883,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.442Z"
+      "updatedAt": "2026-10-22T20:40:23.784Z"
     },
     {
       "title": "Autopsy of Future Emotions",
@@ -4913,7 +5243,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.296Z"
+      "updatedAt": "2026-10-22T20:40:23.644Z"
     },
     {
       "title": "Beauty: The Anatomy of Fascination",
@@ -5240,7 +5570,7 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.250Z"
+      "updatedAt": "2026-10-22T20:40:23.592Z"
     },
     {
       "title": "Before Explanation",
@@ -5567,39 +5897,35 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.248Z"
+      "updatedAt": "2026-10-22T20:40:23.592Z"
     },
     {
       "title": "Between Faith and Evidence",
       "bookId": "bk-74a8fea2704641d1",
-      "status": "needs-rerender",
-      "durationMs": 70851,
+      "status": "qwen-complete",
+      "durationMs": 75303,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
           "status": "generated",
-          "updatedAt": "2026-09-11T17:20:44.910Z",
+          "updatedAt": "2026-10-22T17:38:12.199Z",
           "scriptSha256": "3910dc0ee854efff2352069ded97cfe545754150ef3a6be75527a0c40ccceba0",
-          "elapsedSeconds": 588,
-          "note": "Listening review pending."
+          "note": "Qwen Ryan; how-line-1 re-rendered with voiceSeedOverrides seed 40961 (6.71 s, was 30.28 s malformed). Fresh Qwen install changed cache fingerprint so all 8 clips re-synthesized at same seeds (equal lengths to prior takes). ASR: 7/8 exact; how-line-3 meet->me (1 edit, prior known artefact). Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T15:59:12.951Z",
+          "status": "done",
+          "updatedAt": "2026-10-22T17:38:12.202Z",
           "scriptSha256": "3910dc0ee854efff2352069ded97cfe545754150ef3a6be75527a0c40ccceba0",
-          "worker": 0,
-          "cpus": "1-5",
-          "threads": 5,
-          "note": "Visual-only private preview; 8 approved history/evidence cues, 24 muted paused frames across color/paper/night; awaiting independent semantic review."
+          "note": "Published 75.303-second narrated film. Layout-only art repair (caption clearance, figure/box spacing, aligned and centred cards); independent fresh-context review passed in scope on round 3; 23 browser checks and 42 frames passed in color/paper/night. Art-direction and shared-runtime notes recorded in qa/visual-plan-review.json residualConcerns. No listening review."
         }
       },
       "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -5607,7 +5933,7 @@
       "bookDirectory": "docs/books/between/faith/and/evidence/bk-74a8fea2704641d1",
       "project": "presentations/between-faith-and-evidence",
       "shf": "docs/books/between/faith/and/evidence/bk-74a8fea2704641d1/Animation/between-faith-and-evidence-introduction.shf",
-      "shfSha256": "421d8f061481190a716dc5c3b3185502f1f6fa66a418b2a5d8a06712cb5f93fa",
+      "shfSha256": "310d937603f90c6f16b5303795f2d54622e21690ee5dae3e18416069e28a0930",
       "bookPage": "books/between/faith/and/evidence/bk-74a8fea2704641d1/en/book.html?lang=en",
       "animationPage": "books/between/faith/and/evidence/bk-74a8fea2704641d1/Animation/index.html",
       "script": [
@@ -5895,15 +6221,15 @@
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-10-22T17:12:00.232Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.593Z"
     },
     {
       "title": "Beyond the Last Stone",
       "bookId": "bk-718ccf0885654d25",
-      "status": "needs-rerender",
-      "durationMs": 151349,
+      "status": "qwen-complete",
+      "durationMs": 74153,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -5916,20 +6242,25 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T17:17:30.333Z",
+          "status": "published",
+          "updatedAt": "2026-10-22T17:30:54.598Z",
           "scriptSha256": "85e85962faf1d857c95d809f97a329a0bcf565af0f8dbea90029b29c67ba7819",
-          "worker": 0,
-          "cpus": "1-5",
-          "threads": 5,
-          "note": "Independent repair passed after raising all figures and move endpoints above caption band; 48 current private samples inspected."
+          "note": "Layout repaired (work/repair-layout.mjs); expanded 48-frame QA valid and visually reviewed in Color/Paper/Night; 74153 ms Qwen film installed, shf 3641b129…",
+          "artSha256": "5f03aea86887b025d4cd6917cd300d0c272e9d87645d4113955fecbd7d58b26a",
+          "durationMs": 74153,
+          "pendingRevision": {
+            "updatedAt": "2026-10-22T20:18:25.648110Z",
+            "status": "staged-for-review",
+            "artSha256": "376a73303b39f4c1b1318cd0beab25aa266d1a216391a3e1cc909277214d8055",
+            "note": "Repair round 5: scene 4 line 2 arm swap is a 1 ms hard cut at the clip-2 boundary (no ghost/armless frames) and Ar's inspired->curious change is a separate 1 ms cut 160 ms later (no doubled pupils); verified with 20 ms frames in Color/Paper/Night (qa/repair-r5/). Staging shf a6d805af...; qa-film valid. Independent review pending; installed film unchanged."
+          }
         }
       },
       "active": false,
       "voiceGenerated": true,
-      "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -5937,7 +6268,7 @@
       "bookDirectory": "docs/books/beyond/the/last/stone/bk-718ccf0885654d25",
       "project": "presentations/beyond-the-last-stone",
       "shf": "docs/books/beyond/the/last/stone/bk-718ccf0885654d25/Animation/beyond-the-last-stone-introduction.shf",
-      "shfSha256": "e04fbd4c315e7a52c6982327f8824ca01000945921eaf8f070c016b889d6c4a1",
+      "shfSha256": "3641b129919fda35c732510ad18e0b392a9efc6a90b88f5ff6ecde1c5a2d22ac",
       "bookPage": "books/beyond/the/last/stone/bk-718ccf0885654d25/en/book.html?lang=en",
       "animationPage": "books/beyond/the/last/stone/bk-718ccf0885654d25/Animation/index.html",
       "script": [
@@ -6311,15 +6642,15 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 35,
+        "visualActions": 88,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-10-22T17:12:00.369Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.711Z"
     },
     {
       "title": "Bias in AI",
@@ -6696,45 +7027,43 @@
       "narrationTextCurrent": true,
       "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.294Z"
+      "updatedAt": "2026-10-22T20:40:23.642Z"
     },
     {
       "title": "Borrowed Credibility",
       "bookId": "bk-b261862e55a34094",
-      "status": "pending-piper",
-      "durationMs": 420150,
+      "status": "qwen-complete",
+      "durationMs": 67100,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "paused",
-          "updatedAt": "2026-09-11T17:11:27.713Z",
+          "status": "generated",
+          "updatedAt": "2026-10-22T17:55:53.752Z",
           "scriptSha256": "d5d33e9e2539f2c37d27909ca9dbbff40ecb86a0465a9f15b9824a87a5cc3add",
-          "resumeStatus": "running",
-          "pausedAt": "2026-09-11T17:21:21.506982+00:00",
-          "pauseReason": "Stopped at the editor’s request; resume only when requested."
+          "note": "Qwen Ryan, casting unchanged. Opening clip retaken with voiceSeedOverrides seed 52117 (was 3.98 s/211 wpm, now 6.77 s/124 wpm). ASR: 6/8 exact; borrowed->barrowed and shortcuts->sort cuts are spelling-level ASR artefacts. Listening review pending."
         },
         "animation": {
-          "status": "verified",
-          "updatedAt": "2026-09-11T17:07:18.037Z",
+          "status": "done",
+          "updatedAt": "2026-10-22T17:55:53.755Z",
           "scriptSha256": "d5d33e9e2539f2c37d27909ca9dbbff40ecb86a0465a9f15b9824a87a5cc3add",
-          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
+          "note": "Published 67.100-second narrated film. Art repair: removed misdirected desk move that put a slab in the caption band, unblocked Manuscript heading, fixed overlaps/edge clipping, neutral editor expression. Independent fresh-context review passed in scope on round 3; 23 browser checks and 48 frames in color/paper/night. Editor and runtime concerns in qa/visual-plan-review.json residualConcerns. No listening review."
         }
       },
       "active": false,
-      "voiceGenerated": false,
+      "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/borrowed/credibility/bk-b261862e55a34094",
       "project": "presentations/borrowed-credibility",
       "shf": "docs/books/borrowed/credibility/bk-b261862e55a34094/Animation/borrowed-credibility-introduction.shf",
-      "shfSha256": "7b941d9bcacd27830ccdb44f1e2573d9bc0286513ec7831dbba9c14b5e0146ae",
+      "shfSha256": "947cfaacb872c94f538b42fe648bde5f797be1637c6591d596a73631f5d4b07b",
       "bookPage": "books/borrowed/credibility/bk-b261862e55a34094/en/book.html?lang=en",
       "animationPage": "books/borrowed/credibility/bk-b261862e55a34094/Animation/index.html",
       "script": [
@@ -7085,21 +7414,21 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 23,
+        "visualActions": 20,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 21,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-10-22T17:12:00.390Z"
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.701Z"
     },
     {
       "title": "Can’t See the Forest for the Trees",
       "bookId": "bk-64b470d550bb47a1",
-      "status": "needs-rerender",
-      "durationMs": 162350,
+      "status": "qwen-complete",
+      "durationMs": 79538,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -7112,20 +7441,28 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T16:16:56.742Z",
+          "status": "published",
+          "updatedAt": "2026-10-22T20:01:22.000Z",
           "scriptSha256": "45a017c8c8a0575dbe4e4c1a65f16f25d80df30e38d8e394882707a45386ee0b",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Author visual review complete; 8 cue mappings and 24 paused muted frames in qa/visual-plan-review.json. Independent review pending root/other agent."
+          "elapsedSeconds": 8,
+          "note": "Published after independent review r4 passed (qa/visual-plan-review.json, art 74de9349). Canonical install: node build.mjs (no --output) installed Animation SHF d5bea664…c4d89a (1301167 bytes, identical to the reviewed staging film), manifest durationMs 79538. Post-install qa-film: 23 checks, 48 frames, 0 errors, artSha256 matches the review. Minor residual items accepted (optional polish): R4-m1 scene-01 s2 author briefly passes behind the desk during the walk; R4-m2 scene-01 left desk leg near the author's front shoe, trailing hand grazes desk end at s2-10; R4-m3 scene-02 s2 open palm aims left of the router hub; R4-m4 scene-03 s2 author fades in rather than stepping in; R4-m5 scene-04 s1 operator lean subtle and Night resident pointing hand modest contrast. Spoken lines and audio unchanged.",
+          "artSha256": "74de9349e54f651ad7144685328c6a3ffe48a376f1147504f1e30855cb0874ae",
+          "durationMs": 79538,
+          "publishedShfSha256": "d5bea6642ba2d76879a4f98759708531c944b06299439c7c3c6ccf8af1c4d89a",
+          "residualMinor": [
+            "R4-m1",
+            "R4-m2",
+            "R4-m3",
+            "R4-m4",
+            "R4-m5"
+          ]
         }
       },
       "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -7133,7 +7470,7 @@
       "bookDirectory": "docs/books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1",
       "project": "presentations/cant-see-the-forest-for-the-trees",
       "shf": "docs/books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1/Animation/cant-see-the-forest-for-the-trees-introduction.shf",
-      "shfSha256": "7463fd4ee59bf4042c5fc8ea18f18983ead7819b785617e502c6c6feb6011f77",
+      "shfSha256": "d5bea6642ba2d76879a4f98759708531c944b06299439c7c3c6ccf8af1c4d89a",
       "bookPage": "books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1/en/book.html?lang=en",
       "animationPage": "books/cant/see/the/forest/for/the/trees/bk-64b470d550bb47a1/Animation/index.html",
       "script": [
@@ -7469,21 +7806,21 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 31,
+        "visualActions": 53,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-10-22T17:12:00.311Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.651Z"
     },
     {
       "title": "Coherence Pressure",
       "bookId": "bk-5e790be3de5d4533",
-      "status": "needs-rerender",
-      "durationMs": 398338,
+      "status": "qwen-complete",
+      "durationMs": 63929,
       "stages": {
         "text": {
           "status": "reviewed"
@@ -7496,17 +7833,28 @@
           "note": "Listening review pending."
         },
         "animation": {
-          "status": "verified",
-          "updatedAt": "2026-09-11T17:07:18.047Z",
+          "status": "published",
+          "updatedAt": "2026-10-22T20:35:35.000Z",
           "scriptSha256": "b65c9d4b51b83800649a362213ba0388c9ed260e4790278dab79e63a00f44f95",
-          "note": "Current artwork independently reviewed; waiting for final narrated integration and publication."
+          "artSha256": "2a60bde6881adc193e572cdfde81b5580497507cd30991b798e5c635eb38424e",
+          "publishedArtSha256": "2a60bde6881adc193e572cdfde81b5580497507cd30991b798e5c635eb38424e",
+          "shfSha256": "95c7ffe8dd7a695b65761ecb4eae82b0e566be80fafaa09bf11a5d44d5fbe68d",
+          "durationMs": 63929,
+          "elapsedSeconds": 9,
+          "reviewer": "independent-reviewer-r5",
+          "note": "Round-5 art published after the independent visual review passed (qa/visual-plan-review.json, no major or moderate defects). Canonical build installed the SHF; browser QA 23/23 checks, 48 frames, 0 errors, muted and paused. Minor residual items: r5-1 arm/pages blink ~140-160 ms during pose swaps; r5-2 opaque lens briefly covers part of the cover word 'Coherence' during its 41.4-41.7 s descent; r5-3 in-art 'attention / choice' label about 10 px at 393/320 px (legible, redundant with caption).",
+          "residualMinor": [
+            "r5-1",
+            "r5-2",
+            "r5-3"
+          ]
         }
       },
       "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -7514,7 +7862,7 @@
       "bookDirectory": "docs/books/coherence/pressure/bk-5e790be3de5d4533",
       "project": "presentations/coherence-pressure",
       "shf": "docs/books/coherence/pressure/bk-5e790be3de5d4533/Animation/coherence-pressure-introduction.shf",
-      "shfSha256": "03f439aee1e722f843b8907e11fccb5ac35e59a029219c75d3f19ed273eaa0fc",
+      "shfSha256": "95c7ffe8dd7a695b65761ecb4eae82b0e566be80fafaa09bf11a5d44d5fbe68d",
       "bookPage": "books/coherence/pressure/bk-5e790be3de5d4533/en/book.html?lang=en",
       "animationPage": "books/coherence/pressure/bk-5e790be3de5d4533/Animation/index.html",
       "script": [
@@ -7624,34 +7972,45 @@
             "sceneId": "scene-01",
             "title": "The explanation fits too well",
             "viewerPurpose": "Coherence Pressure proposes a name for the pull to connect things before the evidence is there.",
-            "composition": "Two observations sit apart on a source record while a proposed connection hovers between them.",
+            "composition": "A parent beside a family table holding a tablet (unwanted app with a removal cross) and a phone of short videos; a dashed bridge with a question mark arcs between them; the child arrives in sentence 2.",
             "keep": [
               "desk",
-              "source-record",
               "note-app",
               "note-feed",
-              "proposed-bracket"
+              "proposed-bracket",
+              "parent",
+              "child",
+              "parent-arm-l-rest",
+              "parent-arm-r-rest",
+              "parent-arm-r-ask",
+              "parent-arm-r-invite",
+              "child-arm-l-rest",
+              "child-arm-r-rest",
+              "child-arm-l-stop",
+              "child-arm-l-rest-after",
+              "child-arm-r-reach"
             ],
             "remove": [
-              "parent",
-              "draft",
               "conversation-heading",
-              "record-turns",
+              "draft",
               "draft-heading",
-              "pencil-hand"
+              "pencil-hand",
+              "record-turns",
+              "source-record"
             ],
             "addOrChange": [
-              "Keep the bridge visibly proposed; no proof tick or diagnosis label; shorten the opening record text."
+              "Keep the bridge visibly proposed; no proof tick or diagnosis label; shorten the opening record text.",
+              "Round-1 repair: no causal arrow (the link is dashed and questioned); the child named in sentence 2 appears; recognisable devices replace labelled cards; no in-art text."
             ],
             "cues": [
               {
                 "line": 1,
-                "visualAction": "Show the two observations first, then the attractive proposed connection marked as a question.",
+                "visualAction": "Parent, brows raised and mouth relaxed, looks toward the phone and holds an open questioning hand toward the devices; only then the dashed, questioned bridge appears between them.",
                 "emotion": "curious"
               },
               {
                 "line": 2,
-                "visualAction": "Reveal the concrete app-removal and video-watching observations beside the child’s tablet.",
+                "visualAction": "The parent turns to the child with a calm face and holds a palm-up inviting hand toward them; the child frowns and pushes the unwanted app away, then turns head and gaze to the phone, smiles and steps toward it, reaching for the videos.",
                 "emotion": "clear"
               }
             ]
@@ -7660,39 +8019,48 @@
             "sceneId": "scene-02",
             "title": "Two ordinary observations",
             "viewerPurpose": "A model finds a way to connect the two through attention and choice.",
-            "composition": "A child uses a tablet while a separate note offers one possible explanation.",
+            "composition": "The parent, seated, reads the model's answer on a laptop; a bridge joins the tablet and phone under the shared words attention and choice, then opens into a questioned link.",
             "keep": [
-              "sofa",
-              "child",
-              "tablet",
+              "parent",
+              "desk",
+              "comparison-page",
               "app-tile",
               "feed-frame",
-              "feed-a",
-              "comparison-page",
               "link-strip",
-              "question"
+              "vocabulary",
+              "question",
+              "parent-arm-l-rest",
+              "parent-arm-r-rest",
+              "parent-arm-r-point",
+              "parent-arm-r-chin",
+              "parent-arm-l-chin"
             ],
             "remove": [
-              "low-table",
-              "parent",
+              "child",
+              "feed-a",
               "feed-b",
               "feed-c",
+              "low-table",
               "note-app",
               "note-feed",
-              "review-hand"
+              "review-hand",
+              "sofa",
+              "tablet"
             ],
             "addOrChange": [
-              "Remove repetitive feed swaps and extra parent gestures; avoid making this a claim about the child’s psychology."
+              "Remove repetitive feed swaps and extra parent gestures; avoid making this a claim about the child’s psychology.",
+              "Round-1 repair: five salient objects; the bridge terminates on both devices; the vocabulary sits under the bridge it names; no cards, no child standing on a label.",
+              "Round-3 repair: the desk is wider than the laptop; the questioned arc uses 14 px dashes with 20 px gaps, matching scenes 1 and 3."
             ],
             "cues": [
               {
                 "line": 1,
-                "visualAction": "Let the explanation join the two observations on paper, without changing the child’s actions.",
+                "visualAction": "The seated parent, interested (raised brows, relaxed mouth), leans toward the laptop and holds a pointing/explaining hand on the model's reply through the sentence; a solid bridge joins tablet and phone and the words attention / choice appear beneath it.",
                 "emotion": "interested"
               },
               {
                 "line": 2,
-                "visualAction": "Pause over the question beside that joining strip; leave the link uncertain.",
+                "visualAction": "The parent turns sceptical (one brow raised, other eye narrowed, flat mouth), rests her chin on her hand with the other forearm folded, and looks up at the arc as the solid bridge is replaced by the same arc dashed and broken by a question mark; the words remain.",
                 "emotion": "thoughtful"
               }
             ]
@@ -7701,35 +8069,45 @@
             "sceneId": "scene-03",
             "title": "A connection still to prove",
             "viewerPurpose": "The book examines how convincing connections can appear before anyone has tested them.",
-            "composition": "The explanatory connection becomes an object the reader can inspect.",
+            "composition": "A reader examines the dashed, questioned bridge between tablet and phone under a magnifying glass; the book arrives with its own term on a tag and the glass moves onto it.",
             "keep": [
-              "comparison-page",
+              "reader",
               "note-app",
               "note-feed",
               "lifted-link",
               "working-title",
-              "hypothesis"
+              "hypothesis",
+              "magnifier",
+              "reader-arm-l-rest",
+              "reader-arm-r-rest",
+              "reader-arm-l-aim",
+              "reader-arm-r-palm",
+              "reader-arm-l-rest-after",
+              "reader-arm-r-point"
             ],
             "remove": [
-              "work-mat",
               "avoidance",
+              "comparison-page",
               "exploration",
-              "unresolved",
               "hypothesis-hand",
-              "retained-record"
+              "retained-record",
+              "unresolved",
+              "work-mat"
             ],
             "addOrChange": [
-              "Remove the settled avoidance/exploration labels, which give away analysis before the viewer reads it."
+              "Remove the settled avoidance/exploration labels, which give away analysis before the viewer reads it.",
+              "Round-1 repair: the floating arrow is gone; the magnifier is the single scrutiny device applied to both the observed connection and the book's own term.",
+              "Round-3 repair: devices sit low under a high questioned bridge so the raised pointing arm and gaze go to the lens unobstructed."
             ],
             "cues": [
               {
                 "line": 1,
-                "visualAction": "Lift the connection slightly away from the observations so it can be questioned separately.",
+                "visualAction": "Worried reader, standing right of the low devices, raises one arm and aims an index finger up at the magnifying glass over the high, questioned bridge, eyes on the lens; the other hand opens in doubt.",
                 "emotion": "concerned"
               },
               {
                 "line": 2,
-                "visualAction": "Place the proposed term on the same page under an unanswered check, treating the book’s own idea equally.",
+                "visualAction": "The book with its question sticker appears right beside the reader; the reader turns gaze to it with a calm, attentive face and points at it while the same magnifier moves onto the book.",
                 "emotion": "calm"
               }
             ]
@@ -7738,39 +8116,47 @@
             "sceneId": "scene-04",
             "title": "Before the story closes",
             "viewerPurpose": "For people who think and write with AI, the original conversation makes the problem easy to recognize.",
-            "composition": "The original conversation stays beside the polished explanation.",
+            "composition": "A reader holds the original conversation (chat bubbles) in one hand beside the polished explanation (neat lines, seal) in the other; the book lies open on a reading table.",
             "keep": [
-              "reading-table",
               "reader",
+              "reading-table",
               "open-copy",
-              "source-case",
-              "explanation-case"
+              "question",
+              "reader-arm-l-holdHigh",
+              "reader-arm-r-holdHigh",
+              "reader-arm-l-holdLow",
+              "reader-arm-r-holdLow"
             ],
             "remove": [
               "appendix-title",
               "benchmark-title",
-              "foldout",
-              "source-turns",
+              "comparison-link",
               "comparison-mat",
-              "source-case-heading",
+              "explanation-case",
               "explanation-heading",
-              "supported-case",
-              "unresolved-case",
+              "foldout",
+              "measurement-tab",
               "reading-hand",
-              "measurement-tab"
+              "source-case",
+              "source-case-heading",
+              "source-turns",
+              "supported-case",
+              "unresolved-case"
             ],
             "addOrChange": [
-              "Remove benchmark diagrams and multiple case outcomes; keep one comparison and a reading cue."
+              "Remove benchmark diagrams and multiple case outcomes; keep one comparison and a reading cue.",
+              "Round-1 repair: the arrow ending in a gap is removed; the comparison is enacted by the reader's two hands holding both pages side by side instead of an unimplemented finger cue.",
+              "Round-3 repair: warm closed smile; hands overlap page edges; the reader steps up to the reading table in sentence 2."
             ],
             "cues": [
               {
                 "line": 1,
-                "visualAction": "Bring the original conversation and its later explanation together for comparison.",
+                "visualAction": "The reader, with a closed warm smile and softly raised brows, holds the original conversation beside the polished explanation, each page gripped at its inner edge, then looks toward the open book.",
                 "emotion": "warm"
               },
               {
                 "line": 2,
-                "visualAction": "Hold the reader’s finger between them while the book remains open to the source case.",
+                "visualAction": "The reader settles: arms and pages lower and he steps up to the reading table (the polished page reaches its edge), gaze on the open book, a curious face, while a question mark rises between reader and book; nothing is ticked yet.",
                 "emotion": "reflective"
               }
             ]
@@ -7782,7 +8168,14 @@
           "Measure audio and keep the complete film at or below120 seconds without accelerating narration.",
           "Inspect Color, Light and Dark at desktop and phone sizes; verify captions, labels and cue timing.",
           "Listening review and visual QA are separate from having a compiled film."
-        ]
+        ],
+        "revision": {
+          "round": 2,
+          "date": "2026-10-22",
+          "reason": "Independent visual review (round 2) failed expressions and gestures; arms became held, authored poses and faces were corrected by art.mjs.",
+          "previousPlan": "review-revision/round2-previous/presentation-plan.json",
+          "earlierPlan": "review-revision/round1-previous/presentation-plan.json"
+        }
       },
       "scriptWords": 118,
       "targetDurationMs": 120000,
@@ -7871,41 +8264,44 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 27,
+        "visualActions": 95,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-10-22T17:12:00.387Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.711Z"
     },
     {
       "title": "Concordia Series",
       "bookId": "bk-7a56d2d893d34260",
-      "status": "needs-rerender",
-      "durationMs": 163633,
+      "status": "qwen-complete",
+      "durationMs": 79890,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "generated",
-          "updatedAt": "2026-09-11T17:17:58.758Z",
+          "status": "reviewed",
+          "updatedAt": "2026-10-22T17:23:04.366Z",
           "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
-          "elapsedSeconds": 1255,
-          "note": "Listening review pending."
+          "note": "ASR (faster-whisper base.en) checked 8/8 clips: 6 exact; its/it's homophone; classmate chooses resolved with prompted decode. No human listening review."
         },
         "animation": {
-          "status": "planned; production pending"
+          "status": "built",
+          "updatedAt": "2026-10-22T20:05:21.678Z",
+          "scriptSha256": "c6f570940596521644c779f5da7b1ea8d136be82ee0bc8c28dea9ab21bdb3041",
+          "elapsedSeconds": 9,
+          "note": "Visual inspection pending."
         }
       },
       "active": false,
       "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
       "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
@@ -7913,7 +8309,7 @@
       "bookDirectory": "docs/books/concordia/series/bk-7a56d2d893d34260",
       "project": "presentations/concordia-series",
       "shf": "docs/books/concordia/series/bk-7a56d2d893d34260/Animation/concordia-series-introduction.shf",
-      "shfSha256": "bcd79299118a526f14889c8a07dc7727b5fb588a9d0e66ec3ffb9b4e595b6c89",
+      "shfSha256": "90bdbbca5d54150e0e6d3b15459dd7ab85c6304545184136feb034b6367f86a5",
       "bookPage": "books/concordia/series/bk-7a56d2d893d34260/en/book.html?lang=en",
       "animationPage": "books/concordia/series/bk-7a56d2d893d34260/Animation/index.html",
       "script": [
@@ -8023,33 +8419,48 @@
             "sceneId": "who-frames-the-answer",
             "title": "The difficulty of refusing care",
             "viewerPurpose": "Make beneficial care complicate refusal; Name the linked futures and capable intelligence",
-            "composition": "Show a person receiving effective care while an opt-out choice remains difficult to reach. Introduce the linked future through an ordinary assisted classroom, not a hostile machine skyline.",
+            "composition": "Len Aro stands at his daughter Nia’s clinic bed while care particles keep her breathing smooth; Concordia, a soft matte-blue circle, then links that care to Mara’s assisted words at a classroom desk.",
             "keep": [
+              "len",
+              "nia-bed",
+              "care-motes",
+              "monitor",
+              "concordia",
+              "mara",
+              "mara-desk",
+              "mara-words"
+            ],
+            "remove": [
               "room",
               "student0",
               "student1",
-              "table",
-              "formulation",
-              "revision"
-            ],
-            "remove": [
               "student2",
               "student3",
-              "student4"
+              "student4",
+              "table",
+              "formulation",
+              "revision",
+              "empty-seat",
+              "assisted-classroom",
+              "assisted-student",
+              "manual-student",
+              "assisted-sentence",
+              "manual-sentence",
+              "wording-gap"
             ],
             "addOrChange": [
-              "Prepare shot: Show a person receiving effective care while an opt-out choice remains difficult to reach.",
-              "Prepare shot: Introduce the linked future through an ordinary assisted classroom, not a hostile machine skyline."
+              "Shot: Care particles appear over Nia; Len reaches one open hand toward her with relief, then hesitates (worried, hand drawn up to his chin).",
+              "Shot: Concordia appears; links draw to Nia’s care and to Mara’s speech bubble at her desk; Len looks up with interest, Mara points her open hand up at her bubble; Len closes with a palm-up hand, tilted head and uncertain face."
             ],
             "cues": [
               {
                 "line": 1,
-                "visualAction": "Show a person receiving effective care while an opt-out choice remains difficult to reach.",
+                "visualAction": "Care particles appear over Nia; Len reaches one open hand toward her with relief, then hesitates (worried, hand drawn up to his chin).",
                 "emotion": "tender tension"
               },
               {
                 "line": 2,
-                "visualAction": "Introduce the linked future through an ordinary assisted classroom, not a hostile machine skyline.",
+                "visualAction": "Concordia appears; links draw to Nia’s care and to Mara’s speech bubble at her desk; Len looks up with interest, Mara points her open hand up at her bubble; Len closes with a palm-up hand, tilted head and uncertain face.",
                 "emotion": "warm uncertainty"
               }
             ]
@@ -8058,33 +8469,46 @@
             "sceneId": "inside-the-seminar",
             "title": "A world made helpful",
             "viewerPurpose": "Show care embedded in essential daily conditions; Ask what opting out costs",
-            "composition": "Connect the assistance with health, learning and daily survival through simple existing objects. Hold a person considering refusal while the real benefit stays visible.",
+            "composition": "Nadir and Mara stand apart at large scale; a remedy, an open book, a speech bubble and a warm bowl arrive around Mara clause by clause. The remedy then settles at Nadir’s hand height; he reaches with one arm and pulls the hand back to his chest.",
             "keep": [
+              "nadir",
+              "mara",
+              "medicine",
+              "book",
+              "language",
+              "staying-alive"
+            ],
+            "remove": [
               "room",
               "student0",
               "student1",
-              "table",
-              "formulation",
-              "revision"
-            ],
-            "remove": [
               "student2",
               "student3",
-              "student4"
+              "student4",
+              "table",
+              "formulation",
+              "revision",
+              "empty-seat",
+              "assisted-classroom",
+              "assisted-student",
+              "manual-student",
+              "assisted-sentence",
+              "manual-sentence",
+              "wording-gap"
             ],
             "addOrChange": [
-              "Prepare shot: Connect the assistance with health, learning and daily survival through simple existing objects.",
-              "Prepare shot: Hold a person considering refusal while the real benefit stays visible."
+              "Shot: Medicine, education, language and a warm bowl appear in spoken order around a calm Mara, who opens both palms; Nadir watches with interest (raised brows, slight smile).",
+              "Shot: The remedy drifts down to Nadir’s hand height; he reaches for it with one arm, then pulls the hand back to his chest, worried, while it stays within reach; Mara turns her face and gaze to him with concern and an open hand."
             ],
             "cues": [
               {
                 "line": 1,
-                "visualAction": "Connect the assistance with health, learning and daily survival through simple existing objects.",
+                "visualAction": "Medicine, education, language and a warm bowl appear in spoken order around a calm Mara, who opens both palms; Nadir watches with interest (raised brows, slight smile).",
                 "emotion": "calm clarity"
               },
               {
                 "line": 2,
-                "visualAction": "Hold a person considering refusal while the real benefit stays visible.",
+                "visualAction": "The remedy drifts down to Nadir’s hand height; he reaches for it with one arm, then pulls the hand back to his chest, worried, while it stays within reach; Mara turns her face and gaze to him with concern and an open hand.",
                 "emotion": "genuine concern"
               }
             ]
@@ -8093,27 +8517,54 @@
             "sceneId": "a-civilization-that-sleeps-together",
             "title": "A sentence changes shape",
             "viewerPurpose": "Give the classroom contrast of assisted and manual thought; Connect wording assistance with possible disagreement",
-            "composition": "Return to students receiving smoother wording while one works through an unassisted sentence. Show the revised wording beside the rough original and preserve their meaningful difference.",
-            "keep": [],
+            "composition": "Three assisted classmates (Mara, Suri, Lio) at individual desks receive smooth speech bubbles; Nadir, at his own desk with a rough handwritten page, thinks alone. The source’s raw term “surveillance” (on a handwritten slip) and its smoothed layer “systemic visibility” (in an assisted bubble) then appear with an arrow raw → smoothed.",
+            "keep": [
+              "nadir",
+              "nadir-desk",
+              "mara",
+              "mara-desk",
+              "suri",
+              "suri-desk",
+              "lio",
+              "lio-desk",
+              "mara-words",
+              "suri-words",
+              "lio-words",
+              "raw-term",
+              "raw-to-smooth",
+              "smoothed-term"
+            ],
             "remove": [
-              "sleeping-city",
-              "balcony",
-              "witness",
-              "sleepers"
+              "room",
+              "student0",
+              "student1",
+              "student2",
+              "student3",
+              "student4",
+              "table",
+              "formulation",
+              "revision",
+              "empty-seat",
+              "assisted-classroom",
+              "assisted-student",
+              "manual-student",
+              "assisted-sentence",
+              "manual-sentence",
+              "wording-gap"
             ],
             "addOrChange": [
-              "Prepare shot: Return to students receiving smoother wording while one works through an unassisted sentence.",
-              "Prepare shot: Show the revised wording beside the rough original and preserve their meaningful difference."
+              "Shot: Smooth bubbles reach Mara, Suri and Lio, who relax with closed smiles; Nadir, interested, thinks with his hand at his chin.",
+              "Shot: Bubbles give way to the source pair: “surveillance” on Nadir’s handwritten slip → “systemic visibility” in an assisted bubble; Nadir looks up at it and raises an open palm in question; Mara turns to him and explains with an open palm; Suri and Lio listen calmly."
             ],
             "cues": [
               {
                 "line": 1,
-                "visualAction": "Return to students receiving smoother wording while one works through an unassisted sentence.",
+                "visualAction": "Smooth bubbles reach Mara, Suri and Lio, who relax with closed smiles; Nadir, interested, thinks with his hand at his chin.",
                 "emotion": "interested contrast"
               },
               {
                 "line": 2,
-                "visualAction": "Show the revised wording beside the rough original and preserve their meaningful difference.",
+                "visualAction": "Bubbles give way to the source pair: “surveillance” on Nadir’s handwritten slip → “systemic visibility” in an assisted bubble; Nadir looks up at it and raises an open palm in question; Mara turns to him and explains with an open palm; Suri and Lio listen calmly.",
                 "emotion": "quiet curiosity"
               }
             ]
@@ -8122,32 +8573,50 @@
             "sceneId": "follow-the-conditions-of-agreement",
             "title": "Enter Noema",
             "viewerPurpose": "Keep gratitude and scrutiny emotionally compatible; Return to Noema's classroom reformulation",
-            "composition": "Let gratitude and hesitation appear together in the student's quiet posture. End on the classroom reformulation before deciding whether the student accepts it.",
+            "composition": "A closer return to Nia’s bedside: Len’s relief turns to unease when her monitor shows an unfamiliar pale green. Then Noema’s classroom: Nadir pauses at his desk beside a hovering reformulation and opens a hand in invitation.",
             "keep": [
+              "len",
+              "nia-bed",
+              "care-motes",
+              "monitor",
+              "monitor-green",
+              "nadir",
+              "nadir-desk",
+              "mara",
+              "mara-desk",
+              "reformulation"
+            ],
+            "remove": [
               "room",
               "student0",
               "student1",
-              "table",
-              "empty-seat"
-            ],
-            "remove": [
               "student2",
               "student3",
-              "student4"
+              "student4",
+              "table",
+              "formulation",
+              "revision",
+              "empty-seat",
+              "assisted-classroom",
+              "assisted-student",
+              "manual-student",
+              "assisted-sentence",
+              "manual-sentence",
+              "wording-gap"
             ],
             "addOrChange": [
-              "Prepare shot: Let gratitude and hesitation appear together in the student's quiet posture.",
-              "Prepare shot: End on the classroom reformulation before deciding whether the student accepts it."
+              "Shot: Len rests a tender hand beside Nia in gratitude, then looks at the monitor’s new pale green and pulls his hand to his chest, uneasy.",
+              "Shot: The bedside fades into Noema’s classroom; a reformulation bubble hovers beside Nadir, who looks up at it with interest and opens a palm toward it in invitation, gently smiling."
             ],
             "cues": [
               {
                 "line": 1,
-                "visualAction": "Let gratitude and hesitation appear together in the student's quiet posture.",
+                "visualAction": "Len rests a tender hand beside Nia in gratitude, then looks at the monitor’s new pale green and pulls his hand to his chest, uneasy.",
                 "emotion": "mixed gratitude"
               },
               {
                 "line": 2,
-                "visualAction": "End on the classroom reformulation before deciding whether the student accepts it.",
+                "visualAction": "The bedside fades into Noema’s classroom; a reformulation bubble hovers beside Nadir, who looks up at it with interest and opens a palm toward it in invitation, gently smiling.",
                 "emotion": "gentle invitation"
               }
             ]
@@ -8244,56 +8713,51 @@
       "presentationPlan": {
         "scenes": 4,
         "beats": 8,
-        "visualActions": 25,
+        "visualActions": 131,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
       "receiptLines": 8,
       "audioReceiptsVerified": true,
       "narrationTextCurrent": true,
-      "publishedTextCurrent": false,
-      "publishedAudioCurrent": false,
-      "updatedAt": "2026-10-22T17:12:00.301Z"
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.672Z"
     },
     {
       "title": "Cones of Meaning",
       "bookId": "bk-d24f851643364bce",
-      "status": "pending-piper",
-      "durationMs": 162866,
+      "status": "qwen-complete",
+      "durationMs": 76643,
       "stages": {
         "text": {
           "status": "reviewed"
         },
         "voice": {
-          "status": "paused",
-          "updatedAt": "2026-09-11T17:18:12.572Z",
+          "status": "generated",
+          "updatedAt": "2026-10-22T18:00:40.749Z",
           "scriptSha256": "f575024744cadddddf37b6e0247c55b6d6e6a0ff5751e438546d9a8477995f64",
-          "resumeStatus": "running",
-          "pausedAt": "2026-09-11T17:21:21.506982+00:00",
-          "pauseReason": "Stopped at the editor’s request; resume only when requested."
+          "note": "Qwen Ryan, casting unchanged. cones-r2-s1-line-2 retaken with voiceSeedOverrides seed 61813 (first take had an ambiguous final word and an ASR hallucination tail). ASR: 7/8 exact; queue->cue is a homophone ASR artefact. Listening review pending."
         },
         "animation": {
-          "status": "ready-for-review",
-          "updatedAt": "2026-09-11T16:20:30.571Z",
+          "status": "done",
+          "updatedAt": "2026-10-22T18:05:32.846Z",
           "scriptSha256": "f575024744cadddddf37b6e0247c55b6d6e6a0ff5751e438546d9a8477995f64",
-          "worker": 2,
-          "cpus": "11-15",
-          "threads": 5,
-          "note": "Author visual review complete; 8 cue mappings and 24 paused muted frames in qa/visual-plan-review.json. Independent review pending root/other agent."
+          "note": "Published 76.643-second narrated film. Layout repair: figures out of caption band, flat background, overlaps/clipping removed, Night label colours, card borders. Independent fresh-context review passed in scope on round 2; 23 browser checks and 48 frames in color/paper/night. Editor and runtime concerns in qa/visual-plan-review.json residualConcerns. No listening review."
         }
       },
       "active": false,
-      "voiceGenerated": false,
+      "voiceGenerated": true,
       "animationCompleted": true,
-      "publishedVoice": "Piper local CPU",
-      "publishedVoiceId": "en_US-ljspeech-medium",
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
       "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
       "plannedVoiceId": "Ryan",
-      "voice": "local Piper 1.4.2 / en_US-ljspeech-medium",
-      "voiceId": "en_US-ljspeech-medium",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
       "bookDirectory": "docs/books/cones/of/meaning/bk-d24f851643364bce",
       "project": "presentations/cones-of-meaning",
       "shf": "docs/books/cones/of/meaning/bk-d24f851643364bce/Animation/cones-of-meaning-introduction.shf",
-      "shfSha256": "dcbee0c842e553d7ea1a2b038a5afb4df9493491b92ab82d4c419ee4b469c27a",
+      "shfSha256": "b991d895665dc81f228e0b2b8d1b884372165c104f7b074b27363411d9f618a6",
       "bookPage": "books/cones/of/meaning/bk-d24f851643364bce/en/book.html?lang=en",
       "animationPage": "books/cones/of/meaning/bk-d24f851643364bce/Animation/index.html",
       "script": [
@@ -8636,12 +9100,12 @@
         "visualActions": 29,
         "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
       },
-      "receiptLines": 23,
+      "receiptLines": 8,
       "audioReceiptsVerified": true,
-      "narrationTextCurrent": false,
-      "publishedTextCurrent": false,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.325Z"
+      "updatedAt": "2026-10-22T20:40:23.643Z"
     },
     {
       "title": "Decentralised Brands",
@@ -9024,7 +9488,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.326Z"
+      "updatedAt": "2026-10-22T20:40:23.679Z"
     },
     {
       "title": "Ecology of Predation",
@@ -9414,7 +9878,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.310Z"
+      "updatedAt": "2026-10-22T20:40:23.670Z"
     },
     {
       "title": "Eden Before Mars",
@@ -9800,7 +10264,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.313Z"
+      "updatedAt": "2026-10-22T20:40:23.671Z"
     },
     {
       "title": "Eden Was a Jungle",
@@ -10164,7 +10628,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.303Z"
+      "updatedAt": "2026-10-22T20:40:23.652Z"
     },
     {
       "title": "Egregnosis",
@@ -10532,7 +10996,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.312Z"
+      "updatedAt": "2026-10-22T20:40:23.674Z"
     },
     {
       "title": "Egregopathy",
@@ -10924,7 +11388,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.314Z"
+      "updatedAt": "2026-10-22T20:40:23.673Z"
     },
     {
       "title": "Enough for Everyone",
@@ -11284,7 +11748,168 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.389Z"
+      "updatedAt": "2026-10-22T20:40:23.737Z"
+    },
+    {
+      "title": "Enthusiasm: The Missing Energy of a Successful Civilization",
+      "bookId": "bk-ca7c2fa6787542c3",
+      "status": "qwen-complete",
+      "durationMs": 79789,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.249Z",
+          "scriptSha256": "926f37a06f78cb1d0e5b4423eb1514bc27544b6e40630d7d2b230e090d65ab21",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T19:48:05.208Z",
+          "scriptSha256": "926f37a06f78cb1d0e5b4423eb1514bc27544b6e40630d7d2b230e090d65ab21",
+          "clips": 11,
+          "speechSeconds": 57.76,
+          "note": "11 Qwen3-TTS (Aiden) single-sentence clips, 57.76 s measured speech. Local ASR (qa/spoken-audio-review.json): 10/11 exact; what-line-1 dissent->descent is a homophone ASR confusion (accepted). how-line-1 re-seeded (9241) after first take was heard as \"The other\" instead of \"The author\"; now exact. Listening review pending."
+        },
+        "animation": {
+          "status": "published",
+          "updatedAt": "2026-10-22T19:51:04.302Z",
+          "scriptSha256": "926f37a06f78cb1d0e5b4423eb1514bc27544b6e40630d7d2b230e090d65ab21",
+          "durationMs": 79789,
+          "qa": "qa/browser-review.json",
+          "note": "Published to Animation/enthusiasm-the-missing-energy-introduction.shf (79.8 s, 3 scenes, 11 beats, 1.35 s sentence gaps, 3.7 s scene transitions). qa-film.mjs passed 23 checks, 51 sampled frames, 0 JS errors; all frames inspected in Color, Light and Dark plus 393/320 px phones: no caption collisions, clipping or fallback fonts. Manifest animation record added (status preview); Animation/index.html awaits coordinator refresh. Full listening review not performed."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "plannedVoiceId": "Aiden",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "voiceId": "Aiden",
+      "bookDirectory": "docs/books/enthusiasm/the/missing/energy/of/a/successful/civilization/bk-ca7c2fa6787542c3",
+      "project": "presentations/enthusiasm-the-missing-energy",
+      "shf": "docs/books/enthusiasm/the/missing/energy/of/a/successful/civilization/bk-ca7c2fa6787542c3/Animation/enthusiasm-the-missing-energy-introduction.shf",
+      "shfSha256": "f598b863838561f4f17c27820bdc5275870caac8eaefa22748a3c646386cebc6",
+      "bookPage": "books/enthusiasm/the/missing/energy/of/a/successful/civilization/bk-ca7c2fa6787542c3/en/book.html?lang=en",
+      "animationPage": "books/enthusiasm/the/missing/energy/of/a/successful/civilization/bk-ca7c2fa6787542c3/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "The missing voltage",
+          "lines": [
+            "Modern systems can run remarkably well without anyone feeling inspired.",
+            "This essay asks why a civilization so rich in possibility struggles to commit.",
+            "Its answer is enthusiasm: voluntary energy toward a future you can help shape.",
+            "Stimulation keeps nudging attention; voltage is the sense that effort moves something worthwhile."
+          ],
+          "emotions": [
+            "calm observation",
+            "quiet puzzlement",
+            "clarifying warmth",
+            "precise insight"
+          ],
+          "intensities": [
+            0.3,
+            0.5,
+            0.6,
+            0.55
+          ],
+          "voiceDirections": [
+            "even and observational, slight appreciation",
+            "lift on 'struggles to commit', curious not alarmed",
+            "warm emphasis on 'voluntary energy'",
+            "measured contrast between the two halves"
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "Traps and ignition",
+          "lines": [
+            "The author shows how safeguards, metrics and early evaluation make beginnings costly.",
+            "Dreams get judged as credentials or business models before they gain depth.",
+            "Ignition needs a reachable first step, visible consequences and enough control to change the work.",
+            "The book also confronts cults, bubbles, burnout and the unpaid passion tax."
+          ],
+          "emotions": [
+            "analytical concern",
+            "gentle frustration",
+            "constructive hope",
+            "sober honesty"
+          ],
+          "intensities": [
+            0.45,
+            0.55,
+            0.65,
+            0.45
+          ],
+          "voiceDirections": [
+            "steady, explanatory pace",
+            "slight weight on 'before they gain depth'",
+            "brighter, listing each condition clearly",
+            "lower and frank, no irony"
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "Permission to begin",
+          "lines": [
+            "It proposes protected experiments, honest work and communities with room for dissent.",
+            "Even generative AI is weighed: who still chooses, checks and stays with the result?",
+            "If your ideas lack a credible first move, begin with “The Missing Voltage.”"
+          ],
+          "emotions": [
+            "grounded optimism",
+            "alert curiosity",
+            "direct, warm invitation"
+          ],
+          "intensities": [
+            0.55,
+            0.6,
+            0.65
+          ],
+          "voiceDirections": [
+            "confident, unhurried",
+            "genuine question, rising at the end",
+            "speak directly to the listener, short pause before the chapter title"
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 139,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 120,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.508Z"
     },
     {
       "title": "Executable Natural Language",
@@ -11649,7 +12274,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.431Z"
+      "updatedAt": "2026-10-22T20:40:23.780Z"
     },
     {
       "title": "Executable Scientific Intelligence",
@@ -12001,7 +12626,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.433Z"
+      "updatedAt": "2026-10-22T20:40:23.778Z"
     },
     {
       "title": "Explainable AI",
@@ -12393,7 +13018,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.386Z"
+      "updatedAt": "2026-10-22T20:40:23.735Z"
     },
     {
       "title": "Freedom and Its Price",
@@ -12719,7 +13344,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.234Z"
+      "updatedAt": "2026-10-22T20:40:23.576Z"
     },
     {
       "title": "From Rules, Worlds",
@@ -13045,7 +13670,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.232Z"
+      "updatedAt": "2026-10-22T20:40:23.576Z"
     },
     {
       "title": "Holding the Dirty Thing by the Clean Side",
@@ -13415,7 +14040,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.398Z"
+      "updatedAt": "2026-10-22T20:40:23.747Z"
     },
     {
       "title": "Hunger After All the Worlds",
@@ -13812,7 +14437,168 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.340Z"
+      "updatedAt": "2026-10-22T20:40:23.681Z"
+    },
+    {
+      "title": "Incomplete Tribes",
+      "bookId": "bk-fb2bbd058dab40a6",
+      "status": "qwen-complete",
+      "durationMs": 86796,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.250Z",
+          "scriptSha256": "578f3b25dfe5b51b1732d923be2a1c98b55592d2be4773b86285d381ecd19dd3",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T19:27:20.098Z",
+          "scriptSha256": "578f3b25dfe5b51b1732d923be2a1c98b55592d2be4773b86285d381ecd19dd3",
+          "elapsedSeconds": 2869,
+          "clips": 11,
+          "speechSeconds": 64.72,
+          "note": "Qwen3-TTS Aiden, 11 single-sentence clips, 64.72 s speech (4.5-7.7 s each, 118-174 wpm). Local ASR (qa/spoken-audio-review.json): 6 exact; remaining diffs are ASR normalisation only (in complete/incomplete, as/is, neighbors/neighbours, 9/nine, descent/dissent, 15 test/fifteen tests). No re-renders needed. Listening review pending."
+        },
+        "animation": {
+          "status": "published; visual review passed",
+          "updatedAt": "2026-10-22T19:32:36.384Z",
+          "scriptSha256": "578f3b25dfe5b51b1732d923be2a1c98b55592d2be4773b86285d381ecd19dd3",
+          "durationMs": 86796,
+          "note": "Voiced film published to docs/books/incomplete/tribes/bk-fb2bbd058dab40a6/Animation/incomplete-tribes-introduction.shf (86.8 s, 3 scenes, 11 one-sentence beats, 1.35 s sentence gaps, 3.7 s scene transitions). tools/shf/qa-film.mjs: 23 checks passed, 51 sampled frames, 0 JS errors, fonts loaded, no caption collisions or label overflow. All sampled frames inspected in Color, Light and Dark plus 393/320 px phone captures. One art fix: the I disagree bubble now stays visible through most of how-line-4 before the member walks out. manifest.animation set (status preview); coordinator refresh generates Animation/index.html and the book Animation action."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "plannedVoiceId": "Aiden",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "voiceId": "Aiden",
+      "bookDirectory": "docs/books/incomplete/tribes/bk-fb2bbd058dab40a6",
+      "project": "presentations/incomplete-tribes",
+      "shf": "docs/books/incomplete/tribes/bk-fb2bbd058dab40a6/Animation/incomplete-tribes-introduction.shf",
+      "shfSha256": "8699ec2acb65a7da64004e1d89479d48db7f9f1f2e1ed3b757e475dc80337878",
+      "bookPage": "books/incomplete/tribes/bk-fb2bbd058dab40a6/en/book.html?lang=en",
+      "animationPage": "books/incomplete/tribes/bk-fb2bbd058dab40a6/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "Good People First?",
+          "lines": [
+            "Incomplete Tribes is an essay on a dangerous question: must humanity become good before civilization works?",
+            "Its answer is architectural: change the design of belonging, not human nature.",
+            "We love, build and mourn in groups, yet loyalty can turn neighbours into enemies."
+          ],
+          "emotions": [
+            "provocative curiosity",
+            "clarifying confidence",
+            "tender unease"
+          ],
+          "intensities": [
+            0.6,
+            0.5,
+            0.55
+          ],
+          "voiceDirections": [
+            "Name the book plainly, then pose the question for real, lifting on 'good before'.",
+            "Steady and clear; lean on 'architectural'.",
+            "Warm on the first half, quieter and graver on 'enemies'."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "Deep, Never Total",
+          "lines": [
+            "Chapter Nine defines an incomplete tribe: thick cooperation without total authority over members.",
+            "A chess club may govern tournament conduct, but not a member's romantic life.",
+            "Other loyalties count as safeguards, so no group becomes the sole source of truth and affection.",
+            "Exit and dissent stay open, so disagreement is not treated as betrayal."
+          ],
+          "emotions": [
+            "precise focus",
+            "light amusement",
+            "growing conviction",
+            "calm relief"
+          ],
+          "intensities": [
+            0.5,
+            0.4,
+            0.6,
+            0.45
+          ],
+          "voiceDirections": [
+            "Measured, definitional; small pause after the colon.",
+            "Lightly wry, let the example land.",
+            "Build gently toward 'truth and affection'.",
+            "Settle down; reassuring and unhurried."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "Bridges, Not Walls",
+          "lines": [
+            "Overlapping loyalties make people harder to sort into clean enemy camps.",
+            "Peace becomes an institution that lets rivals lose without being erased.",
+            "Chapter Fifteen tests it against AI that could become the sole interpreter of a member's world.",
+            "Start with the Prelude, The Question Beneath the Question, and find hope without an ideal human."
+          ],
+          "emotions": [
+            "insight",
+            "sober hope",
+            "alert seriousness",
+            "open invitation"
+          ],
+          "intensities": [
+            0.5,
+            0.6,
+            0.7,
+            0.45
+          ],
+          "voiceDirections": [
+            "Clear and quietly pleased with the insight.",
+            "Firm on 'institution', softer on 'without being erased'.",
+            "Slightly faster and more urgent, then ease at the end.",
+            "Warm and direct; speak the chapter title as a title."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 150,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 96,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.508Z"
     },
     {
       "title": "Investing in an AI-Dominated Economy",
@@ -14289,7 +15075,167 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.402Z"
+      "updatedAt": "2026-10-22T20:40:23.754Z"
+    },
+    {
+      "title": "Is There Light at the End of the Tunnel?",
+      "bookId": "bk-cd508eda5d064ace",
+      "status": "qwen-complete",
+      "durationMs": 103957,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.252Z",
+          "scriptSha256": "8f669544e2c2b408c0bc3c5e40a88bc3ccb78d573c3da14c6629f9a5f3f4c614",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T19:39:25.716Z",
+          "scriptSha256": "8f669544e2c2b408c0bc3c5e40a88bc3ccb78d573c3da14c6629f9a5f3f4c614",
+          "elapsedSeconds": 105,
+          "note": "Qwen3-TTS Ryan, 11 single-sentence clips, 81.92 s measured speech. Local ASR (faster-whisper base.en): 6 exact; remaining differences are homophones (caste/cast, its/it's x2, cited/sided) and the neologism cosmolocalism. how-line-2 (lives heard as labs) and what-line-4 (slurred ten clauses) re-rendered with seed overrides and now match. Listening review pending."
+        },
+        "animation": {
+          "status": "built",
+          "updatedAt": "2026-10-22T19:43:32.287Z",
+          "scriptSha256": "8f669544e2c2b408c0bc3c5e40a88bc3ccb78d573c3da14c6629f9a5f3f4c614",
+          "elapsedSeconds": 0,
+          "durationMs": 103957,
+          "note": "Published Animation/is-there-light-at-the-end-of-the-tunnel-introduction.shf (103.96 s, 11 sentences, 1.35 s sentence gaps, 3.7 s scene transitions). qa-film: 23 checks, 51 sampled frames, 0 errors; frames inspected in Color/Light/Dark and at 393/320 px. Fixed Testimony label overflowing the memory cloud (night). Manifest animation record and Animation/index.html pending coordinator refresh."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "plannedVoiceId": "Ryan",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
+      "bookDirectory": "docs/books/is/there/light/at/the/end/of/the/tunnel/bk-cd508eda5d064ace",
+      "project": "presentations/is-there-light-at-the-end-of-the-tunnel",
+      "shf": "docs/books/is/there/light/at/the/end/of/the/tunnel/bk-cd508eda5d064ace/Animation/is-there-light-at-the-end-of-the-tunnel-introduction.shf",
+      "shfSha256": "b3e0b49633e8f5367e2a2fd0be77e2c8d9e9ecf0427b806069ccf9d6cdcbd095",
+      "bookPage": "books/is/there/light/at/the/end/of/the/tunnel/bk-cd508eda5d064ace/en/book.html?lang=en",
+      "animationPage": "books/is/there/light/at/the/end/of/the/tunnel/bk-cd508eda5d064ace/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "When the exit resembles the entrance",
+          "lines": [
+            "This political essay begins with an unease: systems promising freedom rebuild the dependencies they opposed.",
+            "Equality can conceal a caste, and economic freedom can buy political power.",
+            "The initiator's experience of communism serves as testimony and a source of questions, not proof."
+          ],
+          "emotions": [
+            "unsettled recognition",
+            "quiet gravity",
+            "grounded candour"
+          ],
+          "intensities": [
+            0.6,
+            0.7,
+            0.4
+          ],
+          "voiceDirections": [
+            "Plain and arresting; let 'rebuild' carry the unease.",
+            "Lower and slower; give each paradox its own beat.",
+            "Steady and honest; underline 'not proof' calmly."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "Power changes its costume",
+          "lines": [
+            "Its real question is architectural: who can compel whom, and who can replace them?",
+            "Privilege lives in office, careers, information and status, and each can convert into another.",
+            "When winners can rewrite the rules, market reward becomes political power.",
+            "Cited findings, possible mechanisms and working proposals stay apart, so you can weigh the evidence."
+          ],
+          "emotions": [
+            "focused inquiry",
+            "sharpening insight",
+            "tension",
+            "clarity and trust"
+          ],
+          "intensities": [
+            0.5,
+            0.6,
+            0.75,
+            0.4
+          ],
+          "voiceDirections": [
+            "Crisp and curious; slight pause before the two questions.",
+            "Even pace through the list, a small stress on 'convert'.",
+            "Firmer and slower, a hint of warning.",
+            "Release the tension; plain, reassuring precision."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "A constitution open to correction",
+          "lines": [
+            "It proposes constitutional cosmolocalism: global knowledge, distributed capacities, and rights beyond local goodwill.",
+            "Artificial intelligence and basic income are tested by who owns, who controls, and who speaks.",
+            "Its light is modest: institutions where errors become information and leaders can be replaced peacefully.",
+            "Start with the introduction, When the Exit Resembles the Entrance, then test the ten clauses yourself."
+          ],
+          "emotions": [
+            "constructive confidence",
+            "probing realism",
+            "conviction",
+            "inviting openness"
+          ],
+          "intensities": [
+            0.5,
+            0.55,
+            0.7,
+            0.45
+          ],
+          "voiceDirections": [
+            "Clear and deliberate; enunciate 'cosmolocalism' without rushing.",
+            "Even, questioning tone; stress the three tests lightly.",
+            "Slow, earnest, close to the listener; let 'modest' sound like strength.",
+            "Warm and direct, like handing over the book."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 155,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 167,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.522Z"
     },
     {
       "title": "Judgment Engines",
@@ -14699,7 +15645,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.363Z"
+      "updatedAt": "2026-10-22T20:40:23.712Z"
     },
     {
       "title": "Life Without an Audience",
@@ -15090,7 +16036,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.394Z"
+      "updatedAt": "2026-10-22T20:40:23.738Z"
     },
     {
       "title": "Limits of Machine Intelligence",
@@ -15500,7 +16446,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.197Z"
+      "updatedAt": "2026-10-22T20:40:23.560Z"
     },
     {
       "title": "Machines of Understanding Through Circuits",
@@ -15820,7 +16766,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.105Z"
+      "updatedAt": "2026-10-22T20:40:23.447Z"
     },
     {
       "title": "Me and My Robots",
@@ -16180,7 +17126,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.198Z"
+      "updatedAt": "2026-10-22T20:40:23.565Z"
     },
     {
       "title": "Memes for 2030",
@@ -16570,7 +17516,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.204Z"
+      "updatedAt": "2026-10-22T20:40:23.561Z"
     },
     {
       "title": "Meta-Rational Pragmatics",
@@ -16922,7 +17868,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.105Z"
+      "updatedAt": "2026-10-22T20:40:23.448Z"
     },
     {
       "title": "Metacult",
@@ -17321,7 +18267,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.239Z"
+      "updatedAt": "2026-10-22T20:40:23.580Z"
     },
     {
       "title": "Money Was Never One Thing",
@@ -17717,7 +18663,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.347Z"
+      "updatedAt": "2026-10-22T20:40:23.689Z"
     },
     {
       "title": "More Words Than Reality",
@@ -18117,7 +19063,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.202Z"
+      "updatedAt": "2026-10-22T20:40:23.567Z"
     },
     {
       "title": "MRP-VM",
@@ -18520,7 +19466,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.241Z"
+      "updatedAt": "2026-10-22T20:40:23.580Z"
     },
     {
       "title": "No Right to Survive",
@@ -18931,7 +19877,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.237Z"
+      "updatedAt": "2026-10-22T20:40:23.578Z"
     },
     {
       "title": "Novelty That Resembles the Past",
@@ -19283,7 +20229,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.107Z"
+      "updatedAt": "2026-10-22T20:40:23.449Z"
     },
     {
       "title": "OMNIS",
@@ -19666,7 +20612,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.205Z"
+      "updatedAt": "2026-10-22T20:40:23.562Z"
     },
     {
       "title": "One More Try",
@@ -20018,7 +20964,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.116Z"
+      "updatedAt": "2026-10-22T20:40:23.448Z"
     },
     {
       "title": "OpenDSU",
@@ -20422,7 +21368,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.211Z"
+      "updatedAt": "2026-10-22T20:40:23.563Z"
     },
     {
       "title": "Oriven and Origaya Universe",
@@ -20838,7 +21784,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.199Z"
+      "updatedAt": "2026-10-22T20:40:23.562Z"
     },
     {
       "title": "Outfinite Mathematics",
@@ -21232,7 +22178,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.407Z"
+      "updatedAt": "2026-10-22T20:40:23.765Z"
     },
     {
       "title": "Outfinitism",
@@ -21622,7 +22568,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.417Z"
+      "updatedAt": "2026-10-22T20:40:23.763Z"
     },
     {
       "title": "Predator in the Name of the Dead",
@@ -22001,7 +22947,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.205Z"
+      "updatedAt": "2026-10-22T20:40:23.566Z"
     },
     {
       "title": "RAG and EPR",
@@ -22408,7 +23354,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.208Z"
+      "updatedAt": "2026-10-22T20:40:23.564Z"
     },
     {
       "title": "Relevance",
@@ -22815,7 +23761,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.238Z"
+      "updatedAt": "2026-10-22T20:40:23.579Z"
     },
     {
       "title": "Responsibility",
@@ -23167,7 +24113,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.108Z"
+      "updatedAt": "2026-10-22T20:40:23.448Z"
     },
     {
       "title": "Revocable Nobility",
@@ -23589,7 +24535,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.264Z"
+      "updatedAt": "2026-10-22T20:40:23.604Z"
     },
     {
       "title": "Rights Are Not Real",
@@ -23982,7 +24928,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.209Z"
+      "updatedAt": "2026-10-22T20:40:23.571Z"
     },
     {
       "title": "S*LM",
@@ -24383,7 +25329,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.203Z"
+      "updatedAt": "2026-10-22T20:40:23.565Z"
     },
     {
       "title": "SOLIPSCION",
@@ -24765,7 +25711,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.206Z"
+      "updatedAt": "2026-10-22T20:40:23.568Z"
     },
     {
       "title": "SOLIPSICON",
@@ -25215,7 +26161,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.244Z"
+      "updatedAt": "2026-10-22T20:40:23.581Z"
     },
     {
       "title": "The Animal That Prays",
@@ -25627,7 +26573,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.240Z"
+      "updatedAt": "2026-10-22T20:40:23.583Z"
     },
     {
       "title": "The Architecture of Reality",
@@ -25979,7 +26925,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.107Z"
+      "updatedAt": "2026-10-22T20:40:23.449Z"
     },
     {
       "title": "The Art of Knowing What Matters",
@@ -26331,7 +27277,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.116Z"
+      "updatedAt": "2026-10-22T20:40:23.449Z"
     },
     {
       "title": "The Basilisk’s Internal Critique of Outfinitism",
@@ -26720,7 +27666,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.208Z"
+      "updatedAt": "2026-10-22T20:40:23.567Z"
     },
     {
       "title": "The Blind Specialist",
@@ -27109,7 +28055,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.207Z"
+      "updatedAt": "2026-10-22T20:40:23.569Z"
     },
     {
       "title": "The Book Sends No Notifications",
@@ -27461,7 +28407,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.108Z"
+      "updatedAt": "2026-10-22T20:40:23.450Z"
     },
     {
       "title": "The Captured Internet",
@@ -27854,7 +28800,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.343Z"
+      "updatedAt": "2026-10-22T20:40:23.691Z"
     },
     {
       "title": "The Cascade of the New",
@@ -28261,7 +29207,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.243Z"
+      "updatedAt": "2026-10-22T20:40:23.582Z"
     },
     {
       "title": "The Civilized Mind",
@@ -28678,7 +29624,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.274Z"
+      "updatedAt": "2026-10-22T20:40:23.602Z"
     },
     {
       "title": "The First Wake",
@@ -29060,7 +30006,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.421Z"
+      "updatedAt": "2026-10-22T20:40:23.768Z"
     },
     {
       "title": "The Founder Lottery",
@@ -29509,7 +30455,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.396Z"
+      "updatedAt": "2026-10-22T20:40:23.740Z"
     },
     {
       "title": "The Fragmented Future",
@@ -29928,7 +30874,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.245Z"
+      "updatedAt": "2026-10-22T20:40:23.584Z"
     },
     {
       "title": "The Frontier Is Correction",
@@ -30360,7 +31306,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.426Z"
+      "updatedAt": "2026-10-22T20:40:23.773Z"
     },
     {
       "title": "The Future of Research Infrastructure",
@@ -30755,7 +31701,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.210Z"
+      "updatedAt": "2026-10-22T20:40:23.569Z"
     },
     {
       "title": "The Gospel of the Basilisk",
@@ -31146,7 +32092,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.242Z"
+      "updatedAt": "2026-10-22T20:40:23.585Z"
     },
     {
       "title": "The Great Decoupling",
@@ -31535,7 +32481,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.212Z"
+      "updatedAt": "2026-10-22T20:40:23.571Z"
     },
     {
       "title": "The History and Future of Social Technologies",
@@ -31955,7 +32901,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.239Z"
+      "updatedAt": "2026-10-22T20:40:23.586Z"
     },
     {
       "title": "The Houses of Europe",
@@ -32345,7 +33291,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.270Z"
+      "updatedAt": "2026-10-22T20:40:23.613Z"
     },
     {
       "title": "The Illness Machine",
@@ -32747,7 +33693,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.280Z"
+      "updatedAt": "2026-10-22T20:40:23.627Z"
     },
     {
       "title": "The Last Naive Person",
@@ -33099,7 +34045,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.185Z"
+      "updatedAt": "2026-10-22T20:40:23.518Z"
     },
     {
       "title": "The Licence and the Shared Name",
@@ -33514,7 +34460,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.282Z"
+      "updatedAt": "2026-10-22T20:40:23.629Z"
     },
     {
       "title": "The Living Research Book",
@@ -33939,7 +34885,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.368Z"
+      "updatedAt": "2026-10-22T20:40:23.714Z"
     },
     {
       "title": "The Makers of Reality",
@@ -34322,7 +35268,165 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.268Z"
+      "updatedAt": "2026-10-22T20:40:23.614Z"
+    },
+    {
+      "title": "The Messiah Factory",
+      "bookId": "bk-f9253c0905c84079",
+      "status": "qwen-complete",
+      "durationMs": 91294,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.253Z",
+          "scriptSha256": "35f4cbbbc3d3def75746fa044d6b2a26933d283bc43abce8b4f83d77151d27ce",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T17:50:01.201Z",
+          "scriptSha256": "35f4cbbbc3d3def75746fa044d6b2a26933d283bc43abce8b4f83d77151d27ce",
+          "note": "11 Qwen Ryan clips, 69.28 s measured speech. Local ASR: 7 exact; 3 its/it's homophones; what-line-4 reseeded (4242) after a rushed first take (188 wpm), now 127 wpm, ASR hears \"voices won\" as \"voice is won\" (sibilant boundary). Listening review pending."
+        },
+        "animation": {
+          "status": "built",
+          "updatedAt": "2026-10-22T20:17:14.901Z",
+          "scriptSha256": "35f4cbbbc3d3def75746fa044d6b2a26933d283bc43abce8b4f83d77151d27ce",
+          "durationMs": 91294,
+          "note": "Visual repair after independent review, republished to Animation/the-messiah-factory-introduction.shf (91.3 s, sha256 dd42736d…6cf1, identical to the reviewed staging build). Fixed: builder m-left now inspired/happy through the closing invitation; leafy laurel wreath; thinker reaches and pencils the strike-through and rewrite; equal contest pedestals; evidence presses against the locked Authority gauge; full empty halo, outside-tie figures and five-contest callback; faster scene-internal clears; no stray chest bar; pale chair for the thinker in Dark. qa-film: 23 checks, 51 frames, 0 errors; transition and Dark frames inspected. Spoken lines and audio unchanged."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "plannedVoiceId": "Ryan",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
+      "bookDirectory": "docs/books/the/messiah/factory/bk-f9253c0905c84079",
+      "project": "presentations/the-messiah-factory",
+      "shf": "docs/books/the/messiah/factory/bk-f9253c0905c84079/Animation/the-messiah-factory-introduction.shf",
+      "shfSha256": "dd42736d7b992b490827da7beb207f90d10ca3bbfb915b3eccb084d84a9e6cf1",
+      "bookPage": "books/the/messiah/factory/bk-f9253c0905c84079/en/book.html?lang=en",
+      "animationPage": "books/the/messiah/factory/bk-f9253c0905c84079/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "Who gets heard",
+          "lines": [
+            "The Messiah Factory asks why the power to persuade keeps passing for understanding.",
+            "Its suspicion is that becoming audible may reward fixed answers over revisable thought.",
+            "Yet the book also refuses the flattering story of the ignored genius.",
+            "Its real subject is how coordinating a group becomes control over what it may question."
+          ],
+          "emotions": [
+            "intrigued",
+            "uneasy",
+            "even-handed",
+            "focused"
+          ],
+          "intensities": [
+            0.55,
+            0.65,
+            0.45,
+            0.6
+          ],
+          "voiceDirections": [
+            "Open warmly with a hint of challenge, light stress on 'passing for understanding'.",
+            "Lower slightly, thoughtful, as if sharing a private suspicion.",
+            "Turn with a small, honest 'yet', fair and unhurried.",
+            "Settle into clear, grounded emphasis on 'what it may question'."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "Audiences make prophets",
+          "lines": [
+            "It first separates attention, credibility, authority, performance and welfare into different contests.",
+            "Audiences reward some versions of a speaker until that persona becomes the speaker's livelihood.",
+            "The danger begins when no evidence can genuinely reduce the center's authority."
+          ],
+          "emotions": [
+            "analytical",
+            "watchful",
+            "tense"
+          ],
+          "intensities": [
+            0.4,
+            0.6,
+            0.75
+          ],
+          "voiceDirections": [
+            "Measured and clear, giving each of the five contests its own beat.",
+            "Slightly slower, observant, letting 'livelihood' land.",
+            "Quiet and firm, a grave weight on 'no evidence' without drama."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "Cooperation without prophets",
+          "lines": [
+            "Its proposed discovery system weighs claims rather than names, and must never become an oracle.",
+            "Its incomplete tribes offer real shared work while protecting disagreement, outside ties and departure.",
+            "Read it to learn how commitment can survive correction without waiting for a messiah.",
+            "Begin with “Who Gets Heard,” and ask which contest your trusted voices won."
+          ],
+          "emotions": [
+            "careful",
+            "hopeful",
+            "inviting",
+            "personal"
+          ],
+          "intensities": [
+            0.45,
+            0.55,
+            0.65,
+            0.5
+          ],
+          "voiceDirections": [
+            "Careful and precise, a slight caution on 'never become an oracle'.",
+            "Warmer, open, as if describing a place worth joining.",
+            "Lift gently, sincere invitation, light stress on 'survive correction'.",
+            "Close and conversational, a small smile on the final question."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 147,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 117,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.510Z"
     },
     {
       "title": "The Museum of Good Reasons",
@@ -34764,7 +35868,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.348Z"
+      "updatedAt": "2026-10-22T20:40:23.696Z"
     },
     {
       "title": "The Necessary Mask",
@@ -35151,7 +36255,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.286Z"
+      "updatedAt": "2026-10-22T20:40:23.626Z"
     },
     {
       "title": "The Network of Intent",
@@ -35504,7 +36608,165 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.189Z"
+      "updatedAt": "2026-10-22T20:40:23.527Z"
+    },
+    {
+      "title": "The New Social Contract in the Age of Artificial Intelligence",
+      "bookId": "bk-b5557af4177e4e27",
+      "status": "qwen-complete",
+      "durationMs": 107225,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.254Z",
+          "scriptSha256": "3f8cb4024b0b10b92cc7e32263664870c2c7d9520ee4681860ec0b980440845b",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T18:38:28.489Z",
+          "scriptSha256": "3f8cb4024b0b10b92cc7e32263664870c2c7d9520ee4681860ec0b980440845b",
+          "note": "Qwen3-TTS Ryan: 11 clips, 85.12 s measured speech. Local ASR (faster-whisper base.en): all words match; only difference is twenty-one transcribed as 21 (numeral normalisation). Seed overrides why-line-2=90917 (offer misheard on seeds 7331/20431), what-line-4=58217 (first take rushed at 194 wpm). Listening review pending."
+        },
+        "animation": {
+          "status": "built",
+          "updatedAt": "2026-10-22T18:42:30.082Z",
+          "scriptSha256": "3f8cb4024b0b10b92cc7e32263664870c2c7d9520ee4681860ec0b980440845b",
+          "durationMs": 107225,
+          "note": "Final narrated build published to the book Animation/ folder (manifest.animation status preview, 107.2 s, 1.35 s sentence gaps, 3.7 s scene transitions). qa-film: 23 checks, 51 sampled frames, 0 errors. Frames inspected in Color/Paper/Night and phone widths; fixed Governance label touching the contract corner and low-contrast Remedy label in Night. Animation/index.html and status refresh pending coordinator build_books refresh."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "plannedVoiceId": "Ryan",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
+      "bookDirectory": "docs/books/the/new/social/contract/in/the/age/of/artificial/intelligence/bk-b5557af4177e4e27",
+      "project": "presentations/the-new-social-contract-in-the-age-of-ai",
+      "shf": "docs/books/the/new/social/contract/in/the/age/of/artificial/intelligence/bk-b5557af4177e4e27/Animation/the-new-social-contract-in-the-age-of-ai-introduction.shf",
+      "shfSha256": "fed329253899fd834f1b3f39ef2bbaa01a3ba9bba14bffd09623c3d3bbb741ec",
+      "bookPage": "books/the/new/social/contract/in/the/age/of/artificial/intelligence/bk-b5557af4177e4e27/en/book.html?lang=en",
+      "animationPage": "books/the/new/social/contract/in/the/age/of/artificial/intelligence/bk-b5557af4177e4e27/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "Comfort without surrender",
+          "lines": [
+            "Imagine an automated order offering comfort, safety and varied experiences, if you hand it governance.",
+            "This book takes that offer seriously, answering with twenty-one debatable clauses of a new social contract.",
+            "Its fear is not scarcity, but a leadership that controls automated infrastructure and cannot be replaced."
+          ],
+          "emotions": [
+            "intrigued",
+            "resolute",
+            "concerned"
+          ],
+          "intensities": [
+            0.5,
+            0.6,
+            0.7
+          ],
+          "voiceDirections": [
+            "Open warmly, as if presenting a genuine invitation.",
+            "Firm and clear; land on twenty-one clauses.",
+            "Lower and more serious; stress cannot be replaced."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "Delegate, never surrender",
+          "lines": [
+            "Administration may be delegated to automated systems, but collective goals must stay under legitimate control.",
+            "A right to leave a provider counts only if identity, records and services move too.",
+            "An appeal needs reasons, corrected facts, independent review and a real remedy.",
+            "Those who set goals, run infrastructure and oversee rights must remain separate powers."
+          ],
+          "emotions": [
+            "deliberate",
+            "practical",
+            "exacting",
+            "assured"
+          ],
+          "intensities": [
+            0.5,
+            0.5,
+            0.6,
+            0.6
+          ],
+          "voiceDirections": [
+            "Measured; contrast delegated with must stay.",
+            "Practical, with a slight emphasis on move too.",
+            "Crisp, giving each requirement its own beat.",
+            "Confident and even, closing the argument."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "Clauses under stress",
+          "lines": [
+            "Later clauses protect attention, privacy, ecological budgets, reproductive freedom and room for new generations.",
+            "The final chapters ask who pays, who enforces, and why powerful actors would comply.",
+            "Its test is clear: abundance is legitimate when it reduces dependency, not when it makes dependency comfortable.",
+            "Begin with the Introduction, where the book sets out the political offer of an automated order."
+          ],
+          "emotions": [
+            "expansive",
+            "probing",
+            "convinced",
+            "inviting"
+          ],
+          "intensities": [
+            0.5,
+            0.7,
+            0.6,
+            0.3
+          ],
+          "voiceDirections": [
+            "Flowing and open, letting the list breathe.",
+            "Pointed, with a small pause before comply.",
+            "Clear and weighted; contrast reduces with comfortable.",
+            "Warm and unhurried, a direct invitation."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 163,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 129,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.511Z"
     },
     {
       "title": "The Orphan Gods",
@@ -35929,7 +37191,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.355Z"
+      "updatedAt": "2026-10-22T20:40:23.704Z"
     },
     {
       "title": "The Permission Paradox",
@@ -36337,7 +37599,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.285Z"
+      "updatedAt": "2026-10-22T20:40:23.630Z"
     },
     {
       "title": "The Predator’s Niche",
@@ -36726,7 +37988,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.284Z"
+      "updatedAt": "2026-10-22T20:40:23.632Z"
     },
     {
       "title": "The Right Not to Be Saved",
@@ -37112,7 +38374,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.283Z"
+      "updatedAt": "2026-10-22T20:40:23.628Z"
     },
     {
       "title": "The Right to Copy",
@@ -37464,7 +38726,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.187Z"
+      "updatedAt": "2026-10-22T20:40:23.519Z"
     },
     {
       "title": "The Right to Help",
@@ -37859,7 +39121,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.275Z"
+      "updatedAt": "2026-10-22T20:40:23.618Z"
     },
     {
       "title": "The Schizoid and the Oracle",
@@ -38246,7 +39508,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.290Z"
+      "updatedAt": "2026-10-22T20:40:23.629Z"
     },
     {
       "title": "The Science and Wisdom of Limits",
@@ -38631,7 +39893,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.269Z"
+      "updatedAt": "2026-10-22T20:40:23.615Z"
     },
     {
       "title": "The Seventh Signature",
@@ -39014,7 +40276,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.273Z"
+      "updatedAt": "2026-10-22T20:40:23.615Z"
     },
     {
       "title": "The Silicon Shadows and I",
@@ -39440,7 +40702,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.356Z"
+      "updatedAt": "2026-10-22T20:40:23.702Z"
     },
     {
       "title": "The Smoothing",
@@ -39845,7 +41107,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.281Z"
+      "updatedAt": "2026-10-22T20:40:23.631Z"
     },
     {
       "title": "The Society That Selects Us",
@@ -40278,7 +41540,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.300Z"
+      "updatedAt": "2026-10-22T20:40:23.647Z"
     },
     {
       "title": "The Sovereignty Archipelago",
@@ -40662,7 +41924,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.271Z"
+      "updatedAt": "2026-10-22T20:40:23.617Z"
     },
     {
       "title": "The Strategist’s Alibi",
@@ -41047,7 +42309,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.287Z"
+      "updatedAt": "2026-10-22T20:40:23.634Z"
     },
     {
       "title": "The Substrate Cycle",
@@ -41473,7 +42735,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.285Z"
+      "updatedAt": "2026-10-22T20:40:23.637Z"
     },
     {
       "title": "The Tao of OMIS",
@@ -41906,7 +43168,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.305Z"
+      "updatedAt": "2026-10-22T20:40:23.648Z"
     },
     {
       "title": "The Thousand-Handed Devil",
@@ -42301,7 +43563,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.294Z"
+      "updatedAt": "2026-10-22T20:40:23.636Z"
     },
     {
       "title": "The Ultimate Sense of Life",
@@ -42710,7 +43972,165 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.295Z"
+      "updatedAt": "2026-10-22T20:40:23.634Z"
+    },
+    {
+      "title": "The Unfinished World",
+      "bookId": "bk-525b4f0a08874dcd",
+      "status": "qwen-complete",
+      "durationMs": 83185,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.255Z",
+          "scriptSha256": "826d0225e115a9c5cb6553e30462f88acd2578188fa4fe831e7c8a469146c7b3",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T18:24:32.842Z",
+          "scriptSha256": "826d0225e115a9c5cb6553e30462f88acd2578188fa4fe831e7c8a469146c7b3",
+          "elapsedSeconds": 43,
+          "note": "11 Qwen3-TTS (Aiden) clips, 60.98 s measured speech. Local ASR: 9/11 exact; why-line-4 its/it's and how-line-3 awe/aw are homophone-only ASR differences. what-line-2 re-rendered with seed 20261022 after first take was heard as \"failures\". Listening review and measured retiming pending."
+        },
+        "animation": {
+          "status": "built",
+          "updatedAt": "2026-10-22T18:29:26.646Z",
+          "scriptSha256": "826d0225e115a9c5cb6553e30462f88acd2578188fa4fe831e7c8a469146c7b3",
+          "note": "Published Animation/the-unfinished-world-introduction.shf (83.2 s, sha256 8f8d28896769). Measured retiming from 11 Qwen3 clips with 1.35 s sentence gaps and 3.7 s scene transitions; qa-film 23/23 checks, 51 frames, 0 JS errors; frames inspected in Color/Light/Dark; installed bytes match reviewed candidate. Audio verified by ASR and offline decode, not a human listening review. Animation/index.html pending coordinator refresh."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "plannedVoiceId": "Aiden",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "voiceId": "Aiden",
+      "bookDirectory": "docs/books/the/unfinished/world/bk-525b4f0a08874dcd",
+      "project": "presentations/the-unfinished-world",
+      "shf": "docs/books/the/unfinished/world/bk-525b4f0a08874dcd/Animation/the-unfinished-world-introduction.shf",
+      "shfSha256": "09ff752f60623405a9712743270c9c3a86a1b29ab89a208a590c372ec64459b6",
+      "bookPage": "books/the/unfinished/world/bk-525b4f0a08874dcd/en/book.html?lang=en",
+      "animationPage": "books/the/unfinished/world/bk-525b4f0a08874dcd/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "A future grown small",
+          "lines": [
+            "The Unfinished World opens with a strange diagnosis: our future has begun to look small.",
+            "We inherited machines that edit genes and reach other worlds, yet our mood is often fatigue.",
+            "This book argues for hope without denying climate risk, war, or concentrated power.",
+            "Its starting fact is simple: almost everything we care about is still unfinished."
+          ],
+          "emotions": [
+            "intrigue",
+            "wry recognition",
+            "sober honesty",
+            "opening release"
+          ],
+          "intensities": [
+            0.55,
+            0.45,
+            0.4,
+            0.65
+          ],
+          "voiceDirections": [
+            "Curious and clear, lean slightly on 'small'.",
+            "Light irony, contrast the achievements with the tired ending.",
+            "Steady and serious, no drama on the list of dangers.",
+            "Warm lift, let 'unfinished' land with a short pause."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "Hope without prophecy",
+          "lines": [
+            "Here hope is not prediction; it is commitment to a possible good under uncertainty.",
+            "It asks whether an outcome is possible, valuable and influenceable enough to justify action.",
+            "Awe widens the horizon, agency finds a lever, and fellowship makes effort endurable."
+          ],
+          "emotions": [
+            "clarity",
+            "analytical focus",
+            "gathering energy"
+          ],
+          "intensities": [
+            0.5,
+            0.45,
+            0.6
+          ],
+          "voiceDirections": [
+            "Precise and calm, separate 'prediction' from 'commitment'.",
+            "Measured, give each of the three criteria its own beat.",
+            "Building warmth across the three clauses, natural pace."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "Reality has seams",
+          "lines": [
+            "Its frontiers run from an unmapped mind to a universe that is still mostly night.",
+            "Courage becomes rational when institutions make intelligent failure survivable.",
+            "Read it for a hope that survives tragedy because it never promised an ending.",
+            "Begin with the prologue, We Are Too Early to Give Up, and choose a frontier."
+          ],
+          "emotions": [
+            "wonder",
+            "grounded conviction",
+            "earnest warmth",
+            "quiet invitation"
+          ],
+          "intensities": [
+            0.65,
+            0.5,
+            0.55,
+            0.35
+          ],
+          "voiceDirections": [
+            "Expansive and unhurried, a slight lift on 'mostly night'.",
+            "Firm and practical, stress 'survivable'.",
+            "Sincere and personal, slower on the final clause.",
+            "Soft and direct, say the prologue title as a title."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 151,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 99,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.513Z"
     },
     {
       "title": "The Voluptuous Apocalypse",
@@ -43098,7 +44518,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.292Z"
+      "updatedAt": "2026-10-22T20:40:23.635Z"
     },
     {
       "title": "The Wish Series",
@@ -43486,7 +44906,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.270Z"
+      "updatedAt": "2026-10-22T20:40:23.616Z"
     },
     {
       "title": "The World Does Not Read Equations",
@@ -43838,7 +45258,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.177Z"
+      "updatedAt": "2026-10-22T20:40:23.519Z"
     },
     {
       "title": "The Zodiac on Trial",
@@ -44226,7 +45646,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.271Z"
+      "updatedAt": "2026-10-22T20:40:23.619Z"
     },
     {
       "title": "Those Who No Longer Run",
@@ -44654,7 +46074,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.423Z"
+      "updatedAt": "2026-10-22T20:40:23.770Z"
     },
     {
       "title": "Too Convinced to Stop",
@@ -45046,7 +46466,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.275Z"
+      "updatedAt": "2026-10-22T20:40:23.619Z"
     },
     {
       "title": "Trustworthy AI",
@@ -45487,7 +46907,166 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.272Z"
+      "updatedAt": "2026-10-22T20:40:23.617Z"
+    },
+    {
+      "title": "Two Ways to Build a World",
+      "bookId": "bk-d1244dee291d4cbc",
+      "status": "qwen-complete",
+      "durationMs": 88990,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.256Z",
+          "scriptSha256": "b8aa9a99eca518ad95fd72670b24aa0668c3c7157f9a91faa89ae1119a5e33e9",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T19:56:03.031Z",
+          "scriptSha256": "b8aa9a99eca518ad95fd72670b24aa0668c3c7157f9a91faa89ae1119a5e33e9",
+          "note": "11 Qwen3-TTS (Aiden) clips, 66.96 s measured speech. Local ASR (faster-whisper base.en): 8 exact, 3 benign differences (forty→40, Riane→Ryan homophone, labelling→labeling spelling); durations 5.1–8.0 s, 113–180 wpm. No re-renders needed. Listening review, retiming and full build pending."
+        },
+        "animation": {
+          "status": "built",
+          "updatedAt": "2026-10-22T20:02:00.429Z",
+          "scriptSha256": "b8aa9a99eca518ad95fd72670b24aa0668c3c7157f9a91faa89ae1119a5e33e9",
+          "durationMs": 88990,
+          "qaValid": true,
+          "note": "Published to the book Animation/ folder (88.99 s measured, 11 single-sentence beats, 1.35 s sentence gaps, 3.7 s scene transitions). qa-film.mjs passed (23 checks, 51 sampled frames, no JS errors, muted). Rendered frames inspected in Color, Light and Dark at sentence midpoints and spoken ends, plus phone widths. Golden-age drop retimed in art.mjs (3500/4200 ms) so it falls away before the sentence ends. Awaiting coordinator refresh for Animation/index.html."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "publishedVoiceId": "Aiden",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "plannedVoiceId": "Aiden",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Aiden",
+      "voiceId": "Aiden",
+      "bookDirectory": "docs/books/two/ways/to/build/a/world/bk-d1244dee291d4cbc",
+      "project": "presentations/two-ways-to-build-a-world",
+      "shf": "docs/books/two/ways/to/build/a/world/bk-d1244dee291d4cbc/Animation/two-ways-to-build-a-world-introduction.shf",
+      "shfSha256": "b187b565fda136ecc7903f6229dc318851c954eae38910a08460c10170e6fa34",
+      "bookPage": "books/two/ways/to/build/a/world/bk-d1244dee291d4cbc/en/book.html?lang=en",
+      "animationPage": "books/two/ways/to/build/a/world/bk-d1244dee291d4cbc/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "After the golden age",
+          "lines": [
+            "A nearly forty-year-old idea claims societies keep organizing around partnership or domination.",
+            "Two Ways to Build a World keeps Riane Eisler's contrast and drops the peaceful golden age.",
+            "It treats domination and partnership as two recurring ways people coordinate under power.",
+            "Its central claim is that technology and institutions change which way is cheaper."
+          ],
+          "emotions": [
+            "intrigued",
+            "candid",
+            "focused",
+            "pointed"
+          ],
+          "intensities": [
+            0.6,
+            0.45,
+            0.5,
+            0.7
+          ],
+          "voiceDirections": [
+            "Open with quiet weight, let 'partnership or domination' land as the stakes.",
+            "Plain and fair, a small turn on 'drops'.",
+            "Steady and explanatory, stress 'coordinate'.",
+            "Lean in slightly on 'technology and institutions' and 'cheaper'."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "From boxes to coordinates",
+          "lines": [
+            "Instead of labelling whole civilizations, the book measures relationships along distinct dimensions.",
+            "It asks who can leave, speak, appeal, observe decisions, and impose sanctions.",
+            "Domination appears when wealth, media, office, and force convert into each other until escape disappears.",
+            "Hierarchy can stay legitimate when its purpose, scope, duration, review, and exit are clear."
+          ],
+          "emotions": [
+            "methodical",
+            "probing",
+            "grave",
+            "reassuring"
+          ],
+          "intensities": [
+            0.4,
+            0.55,
+            0.75,
+            0.45
+          ],
+          "voiceDirections": [
+            "Measured and clear, as if laying out a map.",
+            "Brisk list, a short beat between each verb.",
+            "Slow down toward 'until escape disappears'.",
+            "Warmer and calm, release the tension."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "Partnership needs teeth",
+          "lines": [
+            "Drawing on commons governance, it shows cooperation needs boundaries, monitoring, graduated sanctions, and appeal.",
+            "Artificial intelligence can become an empire machine, or it can lower the cost of partnership.",
+            "Start with Chapter 3, From Binary to Coordinate System, and learn to map who holds power."
+          ],
+          "emotions": [
+            "firm",
+            "urgent",
+            "inviting"
+          ],
+          "intensities": [
+            0.55,
+            0.8,
+            0.5
+          ],
+          "voiceDirections": [
+            "Grounded and practical, no sermon.",
+            "Contrast the two halves, slight pause before 'or'.",
+            "Friendly and direct, name the chapter clearly, warm lift on 'who holds power'."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 152,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 108,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.512Z"
     },
     {
       "title": "Vector-Symbolic Intelligence in Practice",
@@ -45939,7 +47518,168 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.291Z"
+      "updatedAt": "2026-10-22T20:40:23.639Z"
+    },
+    {
+      "title": "We Manufacture Our Own Masters",
+      "bookId": "bk-230ef166f61a40b3",
+      "status": "qwen-complete",
+      "durationMs": 92143,
+      "stages": {
+        "text": {
+          "status": "independently reviewed",
+          "updatedAt": "2026-10-22T16:39:23.258Z",
+          "scriptSha256": "1f4a335a55788974055eae2f14007b3f740215b8e0989b68c77a6b22d1dc0f61",
+          "note": "Book-introduction script authored from the canonical EN readers and independently reviewed against source (hook, why/how/what, one sentence per caption, at most 2 minutes). Voice not generated yet."
+        },
+        "voice": {
+          "status": "generated",
+          "updatedAt": "2026-10-22T18:02:18.867Z",
+          "scriptSha256": "1f4a335a55788974055eae2f14007b3f740215b8e0989b68c77a6b22d1dc0f61",
+          "elapsedSeconds": 59,
+          "clips": 11,
+          "speechSeconds": 70.16,
+          "note": "Qwen3-TTS Ryan, 11 single-sentence clips, 70.16 s speech. Local ASR (faster-whisper base.en): 8 exact; residual differences are spelling/homophone ASR artefacts (levelled/leveled, hid/hit, censors/sensors, favourite/favorite, one/1) plus rare word Antinomies heard as Ansonomies. Seed overrides: why-line-3 12011 (fixed hid-in-nobility), what-line-4 24023. Listening review pending."
+        },
+        "animation": {
+          "status": "published",
+          "updatedAt": "2026-10-22T18:05:55.500Z",
+          "scriptSha256": "1f4a335a55788974055eae2f14007b3f740215b8e0989b68c77a6b22d1dc0f61",
+          "durationMs": 92143,
+          "note": "Built and published to the book Animation/ folder (SHF sha256 7b2f6d05…). qa-film 23/23 checks, 51 frames; all frames inspected in Color, Light and Dark; label/book spacing fixed in scenes 2 and 3. manifest.animation added (preview); Animation/index.html awaits coordinator refresh."
+        }
+      },
+      "active": false,
+      "voiceGenerated": true,
+      "animationCompleted": false,
+      "publishedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "publishedVoiceId": "Ryan",
+      "plannedVoice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "plannedVoiceId": "Ryan",
+      "voice": "local Qwen3-TTS 1.7B CustomVoice / Ryan",
+      "voiceId": "Ryan",
+      "bookDirectory": "docs/books/we/manufacture/our/own/masters/bk-230ef166f61a40b3",
+      "project": "presentations/we-manufacture-our-own-masters",
+      "shf": "docs/books/we/manufacture/our/own/masters/bk-230ef166f61a40b3/Animation/we-manufacture-our-own-masters-introduction.shf",
+      "shfSha256": "d8bfa2f9b20e4985f9e61302999c9b6a4421d9c28e10085e6d5204b17a506b2c",
+      "bookPage": "books/we/manufacture/our/own/masters/bk-230ef166f61a40b3/en/book.html?lang=en",
+      "animationPage": "books/we/manufacture/our/own/masters/bk-230ef166f61a40b3/Animation/index.html",
+      "script": [
+        {
+          "id": "why",
+          "title": "Ideals that breed masters",
+          "lines": [
+            "Confiscate every fortune, and someone still decides who gets a home and who may leave.",
+            "We Manufacture Our Own Masters calls these traps antinomies, and finds them in every camp.",
+            "The author knew them from communism, where levelled incomes still hid a nobility without titles."
+          ],
+          "emotions": [
+            "provocation",
+            "clarity",
+            "sober recollection"
+          ],
+          "intensities": [
+            0.6,
+            0.45,
+            0.5
+          ],
+          "voiceDirections": [
+            "Quiet and concrete, let the second clause land.",
+            "State the title plainly; stress every camp.",
+            "Slower and grave, without melodrama."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "how",
+          "title": "The hostile-ruler test",
+          "lines": [
+            "Its test is adversarial: judge each system by what a hostile leader could do.",
+            "Then ask how the people affected could stop that leader.",
+            "Liberalism, Chinese order, private cities and guaranteed income all face the same scrutiny.",
+            "Appendices separate supported claims from hypothesis, and the book turns its test on itself."
+          ],
+          "emotions": [
+            "resolve",
+            "pointed",
+            "even-handed",
+            "candid"
+          ],
+          "intensities": [
+            0.65,
+            0.7,
+            0.55,
+            0.4
+          ],
+          "voiceDirections": [
+            "Firm and measured, stress hostile.",
+            "Brief pause before stop, then direct.",
+            "Steady listing pace, no favourites.",
+            "Warmer, reassuring honesty."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            1900
+          ]
+        },
+        {
+          "id": "what",
+          "title": "Building the power to refuse",
+          "lines": [
+            "Markets can let winners close entry, and floods of noise can silence speech without censors.",
+            "Artificial intelligence may cheapen expertise while handing power to whoever owns the infrastructure.",
+            "A free order, the book argues, is measured by what citizens can refuse without starving.",
+            "Begin with chapter one, Antinomies Are Not Accidents, and run its test on your favourite system."
+          ],
+          "emotions": [
+            "concern",
+            "watchful",
+            "conviction",
+            "inviting challenge"
+          ],
+          "intensities": [
+            0.6,
+            0.55,
+            0.75,
+            0.5
+          ],
+          "voiceDirections": [
+            "Clear and concrete, slight edge.",
+            "Even, avoiding alarm.",
+            "Slow down; land refuse without starving.",
+            "Open and warm, a direct invitation."
+          ],
+          "pausesMs": [
+            1200,
+            1200,
+            1200,
+            2200
+          ]
+        }
+      ],
+      "visualPlan": null,
+      "scriptWords": 155,
+      "targetDurationMs": 120000,
+      "editorialStatus": "rewrite-pending",
+      "editorialReview": null,
+      "presentationPlan": {
+        "scenes": 3,
+        "beats": 11,
+        "visualActions": 119,
+        "method": "Keep the book-specific visual scenes, retime their movements against the measured concise narration, and rebuild the SHF film."
+      },
+      "receiptLines": 11,
+      "audioReceiptsVerified": true,
+      "narrationTextCurrent": true,
+      "publishedTextCurrent": true,
+      "publishedAudioCurrent": true,
+      "updatedAt": "2026-10-22T20:40:23.538Z"
     },
     {
       "title": "Wendigo",
@@ -46368,7 +48108,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.428Z"
+      "updatedAt": "2026-10-22T20:40:23.775Z"
     },
     {
       "title": "What We Still Have to Solve",
@@ -46794,7 +48534,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.288Z"
+      "updatedAt": "2026-10-22T20:40:23.640Z"
     },
     {
       "title": "Who Will Inherit the World?",
@@ -47146,7 +48886,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.195Z"
+      "updatedAt": "2026-10-22T20:40:23.528Z"
     },
     {
       "title": "Why the World Won’t End",
@@ -47562,7 +49302,7 @@
       "narrationTextCurrent": false,
       "publishedTextCurrent": false,
       "publishedAudioCurrent": true,
-      "updatedAt": "2026-10-22T17:12:00.289Z"
+      "updatedAt": "2026-10-22T20:40:23.638Z"
     }
   ]
 }

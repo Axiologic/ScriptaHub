@@ -1,22 +1,24 @@
 # Progres migrare voci pentru animații
 
-Actualizat: 2026-10-22T17:12:00.448Z
+Actualizat: 2026-10-22T20:40:23.790Z
 
 Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.
 
 ## Situație
 
-- Voci Qwen finalizate: **16**
+- Voci Qwen finalizate: **33**
 - În conversie: **0**
-- Încă pe Piper: **100**
+- Încă pe Piper: **98**
 - Pregătite pentru conversie: **0**
-- De refăcut după schimbarea textului: **6**
+- De refăcut după schimbarea textului: **1**
 - Publicare SHF invalidă: **0**
 - Fără proiect asociat: **0**
 
 ## Voci Qwen finalizate
 
 - A Balance of Iron and Salt — Ryan (73 s)
+- A Mind Does Not Fit in a Feed — Aiden (85 s)
+- Affective Calculus — Ryan (101 s)
 - Agentic AI 2026 — Ryan (69 s)
 - AI Adoption Beyond the Slop — Aiden (66 s)
 - AI Agents — Aiden (64 s)
@@ -31,12 +33,25 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - Autopsy of Future Emotions — Ryan (77 s)
 - Beauty: The Anatomy of Fascination — Ryan (76 s)
 - Before Explanation — Ryan (71 s)
+- Between Faith and Evidence — Ryan (75 s)
+- Beyond the Last Stone — Ryan (74 s)
 - Bias in AI — Aiden (67 s)
+- Borrowed Credibility — Ryan (67 s)
+- Can’t See the Forest for the Trees — Ryan (80 s)
+- Coherence Pressure — Ryan (64 s)
+- Concordia Series — Ryan (80 s)
+- Cones of Meaning — Ryan (77 s)
+- Enthusiasm: The Missing Energy of a Successful Civilization — Aiden (80 s)
+- Incomplete Tribes — Aiden (87 s)
+- Is There Light at the End of the Tunnel? — Ryan (104 s)
+- The Messiah Factory — Ryan (91 s)
+- The New Social Contract in the Age of Artificial Intelligence — Ryan (107 s)
+- The Unfinished World — Aiden (83 s)
+- Two Ways to Build a World — Aiden (89 s)
+- We Manufacture Our Own Masters — Ryan (92 s)
 
 ## Încă pe Piper
 
-- Borrowed Credibility — en_US-ljspeech-medium (420 s)
-- Cones of Meaning — en_US-ljspeech-medium (163 s)
 - Decentralised Brands — en_US-ljspeech-medium (162 s)
 - Ecology of Predation — en_US-ljspeech-medium (168 s)
 - Eden Before Mars — en_US-ljspeech-medium (153 s)
@@ -138,9 +153,4 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 
 ## De refăcut după schimbarea textului
 
-- Between Faith and Evidence — Ryan (71 s)
-- Beyond the Last Stone — Ryan (151 s)
-- Can’t See the Forest for the Trees — Ryan (162 s)
-- Coherence Pressure — Ryan (398 s)
-- Concordia Series — Ryan (164 s)
 - The Right to Copy — Ryan (75 s)

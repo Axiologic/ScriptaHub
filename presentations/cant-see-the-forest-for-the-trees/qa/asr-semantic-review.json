@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-22T17:29:21.785Z",
+  "reviewer": "production worker (author of 2026-10-22 collision repair)",
+  "source": "qa/spoken-audio-review.json",
+  "inputSha256": "e94c7af04ead31ddb30a5d5c5875938bdabb5a1b5e1beded8c947d5c60a1872c",
+  "clips": [
+    {
+      "id": "scene-03-line-1",
+      "audioSha256": "ece2ddba0c777921578223b3df43c02cb0ac560b149323a822d7ce39a347ad16",
+      "expected": "Each specialist can tend a necessary part while the consequences of the whole escape attention.",
+      "batchAsr": "Each specialist can tend to necessary part while the consequences of the whole escape Keep attention.",
+      "checks": [
+        {
+          "method": "faster-whisper base.en int8, word timestamps, VAD, beam 1",
+          "heard": "Each specialist can tend to necessary part while the consequences of the whole escape attention."
+        },
+        {
+          "method": "same model, beam 5, word timestamps",
+          "heard": "... whole escape[4.42-4.86 p0.98] SCAPE[4.86-5.06 p0.40] ATTENTION[5.06-5.58]"
+        },
+        {
+          "method": "isolated segment 4.30-5.70 s, beam 5",
+          "heard": "(wh)ole escape attention."
+        },
+        {
+          "method": "isolated segment 1.25-2.20 s, beam 5",
+          "heard": "contend in necessary (unstressed article read three different ways: to / in / a)"
+        }
+      ],
+      "verdict": "accepted",
+      "reason": "The inserted keep/scape token appears only in full-clip beam-5 decoding with low confidence (0.40); beam-1 and the isolated tail both decode a single clean \"escape attention\", so it is a decoder artifact, not a repeated syllable. The a/to difference is a reduced schwa after tend (~0.2 s) that ASR guesses differently each pass; the sentence meaning and pronunciation of content words are intact."
+    },
+    {
+      "id": "scene-03-line-2",
+      "verdict": "accepted",
+      "reason": "Word-level decode matches all 15 words; the trailing // tokens in the batch report are a silence hallucination after 4.52 s."
+    }
+  ],
+  "scope": "Semantic review of ASR evidence only; no audible listening review performed; receipts remain requires-listening-review."
+}
