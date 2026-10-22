@@ -118,7 +118,10 @@ meaningful step and before a context switch or hand-off.
    Run `announce` again to expose the pending edition's cover, and
    `python3 tools/build_books.py refresh-covers` after installing new art.
    Do not silently reuse artwork from the previous release. Stage an English source PDF
-   as `book/en/book.pdf`; never generate translated non-English PDFs.
+   as `book/en/book.pdf`. For a Romanian DOC/DOCX delivery also render
+   `ro/book.pdf` from the Romanian reader with a copyright page (`--language ro
+   --copyright-book`) and record it as the edition's `pdf.ro`; never make PDFs of
+   translations. Delete the DOC/DOCX once its language PDF is installed.
 6. Fill dated EN/RO release notes explaining the substantive changes. Verify
    source/translation completeness and local image/table rendering before
    installation. The automated stage check is a structural gate; it cannot
@@ -170,3 +173,14 @@ edition identifier. The visitor reviews and sends it in their email application.
 Record accepted requests against the requested book/release before translating
 extra languages. Do not silently update all older translations when publishing
 a new English/Romanian release.
+
+## Completing an installed release
+
+When a source changes after chunk preparation, `python3 tools/html_translation_chunks.py
+refresh WORKDIR` re-prepares the chunks, keeps the replaced set under `previous/`
+and reuses every translation whose source text is unchanged. When Romanian (or a
+missing English reader) is requested for an already installed current edition,
+`python3 tools/book_tasks.py complete-readers WORKSPACE` copies only missing
+finished readers into the published book, never overwrites, updates the manifest
+reader records and lifts an English-only release policy once both EN and RO
+readers exist. Then refresh the catalogue and run both checks.

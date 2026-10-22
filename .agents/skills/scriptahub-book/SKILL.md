@@ -86,9 +86,14 @@ metadata rendered through shared `textShow`, not an SHF film. For requested film
 use `shf-presentation-creator` and `theatrical-audio`, English narration by default,
 and the project `Animation/` structure.
 
+Resume a translation whose source changed with `html_translation_chunks.py refresh`;
+add finished readers to an installed current edition with `book_tasks.py
+complete-readers` (see DS-002).
+
 ## Completion
 
-Finish readers, English PDF, reviewed metadata, 100 keywords per language, cover
+Finish readers, English PDF (plus a Romanian PDF with a copyright page for a
+Romanian DOC/DOCX delivery), reviewed metadata, 100 keywords per language, cover
 provenance and QA before installation. Pass the stage gate, preserve history on
 install, then pass catalogue and internal-link checks. Keep unfinished sources in
 `tasks/` or `income/`. Remove a delivered DOC/DOCX only after its installed

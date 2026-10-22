@@ -1,140 +1,146 @@
 # Progres migrare voci pentru animații
 
-Actualizat: 2026-10-09T13:51:16.456Z
+Actualizat: 2026-10-22T17:12:00.448Z
 
 Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.
 
 ## Situație
 
-- Voci Qwen finalizate: **0**
+- Voci Qwen finalizate: **16**
 - În conversie: **0**
-- Încă pe Piper: **0**
+- Încă pe Piper: **100**
 - Pregătite pentru conversie: **0**
-- De refăcut după schimbarea textului: **0**
-- Publicare SHF invalidă: **122**
+- De refăcut după schimbarea textului: **6**
+- Publicare SHF invalidă: **0**
 - Fără proiect asociat: **0**
 
-## Publicare SHF invalidă
+## Voci Qwen finalizate
 
-- A Balance of Iron and Salt
-- Agentic AI 2026
-- AI Adoption Beyond the Slop
-- AI Agents
-- All the Ways to Rule a World
-- An Autopsy of a Digital Mind
-- Anatomy of an Echo
-- Anti-Idiocracy
-- Anti-Trivialization Machines of the Future
-- Artificial Impossibility
-- Aspirin, Viagra, and Coffins
-- AssistOS
-- Autopsy of Future Emotions
-- Beauty: The Anatomy of Fascination
-- Before Explanation
-- Between Faith and Evidence
-- Beyond the Last Stone
-- Bias in AI
-- Borrowed Credibility
-- Can’t See the Forest for the Trees
-- Coherence Pressure
-- Concordia Series
-- Cones of Meaning
-- Decentralised Brands
-- Ecology of Predation
-- Eden Before Mars
-- Eden Was a Jungle
-- Egregnosis
-- Egregopathy
-- Enough for Everyone
-- Executable Natural Language
-- Executable Scientific Intelligence
-- Explainable AI
-- Freedom and Its Price
-- From Rules, Worlds
-- Holding the Dirty Thing by the Clean Side
-- Hunger After All the Worlds
-- Investing in an AI-Dominated Economy
-- Judgment Engines
-- Life Without an Audience
-- Limits of Machine Intelligence
-- Machines of Understanding Through Circuits
-- Me and My Robots
-- Memes for 2030
-- Meta-Rational Pragmatics
-- Metacult
-- Money Was Never One Thing
-- More Words Than Reality
-- MRP-VM
-- No Right to Survive
-- Novelty That Resembles the Past
-- OMNIS
-- One More Try
-- OpenDSU
-- Oriven and Origaya Universe
-- Outfinite Mathematics
-- Outfinitism
-- Predator in the Name of the Dead
-- RAG and EPR
-- Relevance
-- Responsibility
-- Revocable Nobility
-- Rights Are Not Real
-- S*LM
-- SOLIPSCION
-- SOLIPSICON
-- The Animal That Prays
-- The Architecture of Reality
-- The Art of Knowing What Matters
-- The Basilisk’s Internal Critique of Outfinitism
-- The Blind Specialist
-- The Book Sends No Notifications
-- The Captured Internet
-- The Cascade of the New
-- The Civilized Mind
-- The First Wake
-- The Founder Lottery
-- The Fragmented Future
-- The Frontier Is Correction
-- The Future of Research Infrastructure
-- The Gospel of the Basilisk
-- The Great Decoupling
-- The History and Future of Social Technologies
-- The Houses of Europe
-- The Illness Machine
-- The Last Naive Person
-- The Licence and the Shared Name
-- The Living Research Book
-- The Makers of Reality
-- The Museum of Good Reasons
-- The Necessary Mask
-- The Network of Intent
-- The Orphan Gods
-- The Permission Paradox
-- The Predator’s Niche
-- The Right Not to Be Saved
-- The Right to Copy
-- The Right to Help
-- The Schizoid and the Oracle
-- The Science and Wisdom of Limits
-- The Seventh Signature
-- The Silicon Shadows and I
-- The Smoothing
-- The Society That Selects Us
-- The Sovereignty Archipelago
-- The Strategist’s Alibi
-- The Substrate Cycle
-- The Tao of OMIS
-- The Thousand-Handed Devil
-- The Ultimate Sense of Life
-- The Voluptuous Apocalypse
-- The Wish Series
-- The World Does Not Read Equations
-- The Zodiac on Trial
-- Those Who No Longer Run
-- Too Convinced to Stop
-- Trustworthy AI
-- Vector-Symbolic Intelligence in Practice
-- Wendigo
-- What We Still Have to Solve
-- Who Will Inherit the World?
-- Why the World Won’t End
+- A Balance of Iron and Salt — Ryan (73 s)
+- Agentic AI 2026 — Ryan (69 s)
+- AI Adoption Beyond the Slop — Aiden (66 s)
+- AI Agents — Aiden (64 s)
+- All the Ways to Rule a World — Ryan (76 s)
+- An Autopsy of a Digital Mind — Ryan (74 s)
+- Anatomy of an Echo — Ryan (82 s)
+- Anti-Idiocracy — Aiden (71 s)
+- Anti-Trivialization Machines of the Future — Aiden (68 s)
+- Artificial Impossibility — Aiden (67 s)
+- Aspirin, Viagra, and Coffins — Ryan (72 s)
+- AssistOS — Ryan (69 s)
+- Autopsy of Future Emotions — Ryan (77 s)
+- Beauty: The Anatomy of Fascination — Ryan (76 s)
+- Before Explanation — Ryan (71 s)
+- Bias in AI — Aiden (67 s)
+
+## Încă pe Piper
+
+- Borrowed Credibility — en_US-ljspeech-medium (420 s)
+- Cones of Meaning — en_US-ljspeech-medium (163 s)
+- Decentralised Brands — en_US-ljspeech-medium (162 s)
+- Ecology of Predation — en_US-ljspeech-medium (168 s)
+- Eden Before Mars — en_US-ljspeech-medium (153 s)
+- Eden Was a Jungle — en_US-ljspeech-medium (154 s)
+- Egregnosis — en_US-ljspeech-medium (160 s)
+- Egregopathy — en_US-ljspeech-medium (149 s)
+- Enough for Everyone — en_US-ljspeech-medium (429 s)
+- Executable Natural Language — en_US-ljspeech-medium (715 s)
+- Executable Scientific Intelligence — en_US-ljspeech-medium (735 s)
+- Explainable AI — en_US-ljspeech-medium (421 s)
+- Freedom and Its Price — en_US-ljspeech-medium (70 s)
+- From Rules, Worlds — en_US-ljspeech-medium (73 s)
+- Holding the Dirty Thing by the Clean Side — en_US-ljspeech-medium (148 s)
+- Hunger After All the Worlds — en_US-ljspeech-medium (146 s)
+- Investing in an AI-Dominated Economy — en_US-ljspeech-medium (266 s)
+- Judgment Engines — en_US-ljspeech-medium (191 s)
+- Life Without an Audience — en_US-ljspeech-medium (415 s)
+- Limits of Machine Intelligence — en_US-ljspeech-medium (156 s)
+- Machines of Understanding Through Circuits — en_US-ljspeech-medium (73 s)
+- Me and My Robots — en_US-ljspeech-medium (165 s)
+- Memes for 2030 — en_US-ljspeech-medium (157 s)
+- Meta-Rational Pragmatics — en_US-ljspeech-medium (74 s)
+- Metacult — en_US-ljspeech-medium (161 s)
+- Money Was Never One Thing — en_US-ljspeech-medium (425 s)
+- More Words Than Reality — en_US-ljspeech-medium (162 s)
+- MRP-VM — en_US-ljspeech-medium (161 s)
+- No Right to Survive — en_US-ljspeech-medium (165 s)
+- Novelty That Resembles the Past — en_US-ljspeech-medium (73 s)
+- OMNIS — en_US-ljspeech-medium (172 s)
+- One More Try — en_US-ljspeech-medium (71 s)
+- OpenDSU — en_US-ljspeech-medium (156 s)
+- Oriven and Origaya Universe — en_US-ljspeech-medium (169 s)
+- Outfinite Mathematics — en_US-ljspeech-medium (716 s)
+- Outfinitism — en_US-ljspeech-medium (720 s)
+- Predator in the Name of the Dead — en_US-ljspeech-medium (160 s)
+- RAG and EPR — en_US-ljspeech-medium (156 s)
+- Relevance — en_US-ljspeech-medium (152 s)
+- Responsibility — en_US-ljspeech-medium (70 s)
+- Revocable Nobility — en_US-ljspeech-medium (164 s)
+- Rights Are Not Real — en_US-ljspeech-medium (154 s)
+- S*LM — en_US-ljspeech-medium (161 s)
+- SOLIPSCION — en_US-ljspeech-medium (173 s)
+- SOLIPSICON — en_US-ljspeech-medium (160 s)
+- The Animal That Prays — en_US-ljspeech-medium (147 s)
+- The Architecture of Reality — en_US-ljspeech-medium (69 s)
+- The Art of Knowing What Matters — en_US-ljspeech-medium (70 s)
+- The Basilisk’s Internal Critique of Outfinitism — en_US-ljspeech-medium (158 s)
+- The Blind Specialist — en_US-ljspeech-medium (154 s)
+- The Book Sends No Notifications — en_US-ljspeech-medium (70 s)
+- The Captured Internet — en_US-ljspeech-medium (443 s)
+- The Cascade of the New — en_US-ljspeech-medium (163 s)
+- The Civilized Mind — en_US-ljspeech-medium (158 s)
+- The First Wake — en_US-ljspeech-medium (708 s)
+- The Founder Lottery — en_US-ljspeech-medium (443 s)
+- The Fragmented Future — en_US-ljspeech-medium (156 s)
+- The Frontier Is Correction — en_US-ljspeech-medium (740 s)
+- The Future of Research Infrastructure — en_US-ljspeech-medium (163 s)
+- The Gospel of the Basilisk — en_US-ljspeech-medium (164 s)
+- The Great Decoupling — en_US-ljspeech-medium (158 s)
+- The History and Future of Social Technologies — en_US-ljspeech-medium (150 s)
+- The Houses of Europe — en_US-ljspeech-medium (165 s)
+- The Illness Machine — en_US-ljspeech-medium (160 s)
+- The Last Naive Person — en_US-ljspeech-medium (69 s)
+- The Licence and the Shared Name — en_US-ljspeech-medium (157 s)
+- The Living Research Book — en_US-ljspeech-medium (420 s)
+- The Makers of Reality — en_US-ljspeech-medium (163 s)
+- The Museum of Good Reasons — en_US-ljspeech-medium (146 s)
+- The Necessary Mask — en_US-ljspeech-medium (175 s)
+- The Network of Intent — en_US-ljspeech-medium (77 s)
+- The Orphan Gods — en_US-ljspeech-medium (366 s)
+- The Permission Paradox — en_US-ljspeech-medium (157 s)
+- The Predator’s Niche — en_US-ljspeech-medium (180 s)
+- The Right Not to Be Saved — en_US-ljspeech-medium (173 s)
+- The Right to Help — en_US-ljspeech-medium (152 s)
+- The Schizoid and the Oracle — en_US-ljspeech-medium (176 s)
+- The Science and Wisdom of Limits — en_US-ljspeech-medium (168 s)
+- The Seventh Signature — en_US-ljspeech-medium (167 s)
+- The Silicon Shadows and I — en_US-ljspeech-medium (369 s)
+- The Smoothing — en_US-ljspeech-medium (151 s)
+- The Society That Selects Us — en_US-ljspeech-medium (162 s)
+- The Sovereignty Archipelago — en_US-ljspeech-medium (166 s)
+- The Strategist’s Alibi — en_US-ljspeech-medium (172 s)
+- The Substrate Cycle — en_US-ljspeech-medium (165 s)
+- The Tao of OMIS — en_US-ljspeech-medium (167 s)
+- The Thousand-Handed Devil — en_US-ljspeech-medium (163 s)
+- The Ultimate Sense of Life — en_US-ljspeech-medium (148 s)
+- The Voluptuous Apocalypse — en_US-ljspeech-medium (179 s)
+- The Wish Series — en_US-ljspeech-medium (166 s)
+- The World Does Not Read Equations — en_US-ljspeech-medium (69 s)
+- The Zodiac on Trial — en_US-ljspeech-medium (162 s)
+- Those Who No Longer Run — en_US-ljspeech-medium (671 s)
+- Too Convinced to Stop — en_US-ljspeech-medium (157 s)
+- Trustworthy AI — en_US-ljspeech-medium (158 s)
+- Vector-Symbolic Intelligence in Practice — en_US-ljspeech-medium (162 s)
+- Wendigo — en_US-ljspeech-medium (708 s)
+- What We Still Have to Solve — en_US-ljspeech-medium (164 s)
+- Who Will Inherit the World? — en_US-ljspeech-medium (77 s)
+- Why the World Won’t End — en_US-ljspeech-medium (165 s)
+
+## De refăcut după schimbarea textului
+
+- Between Faith and Evidence — Ryan (71 s)
+- Beyond the Last Stone — Ryan (151 s)
+- Can’t See the Forest for the Trees — Ryan (162 s)
+- Coherence Pressure — Ryan (398 s)
+- Concordia Series — Ryan (164 s)
+- The Right to Copy — Ryan (75 s)

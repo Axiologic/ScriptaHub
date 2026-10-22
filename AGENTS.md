@@ -26,8 +26,11 @@
   validates local HTML targets and fragment anchors without contacting the web.
 - Reader editions are canonical HTML files. For any repair or new translation,
   use the `book-reader-translations` skill and its chunk workflow. Do not
-  translate PDFs and do not use an external translation service; PDFs remain
-  English source editions only.
+  translate PDFs and do not use an external translation service. Every edition
+  has an English PDF; a book delivered as a Romanian DOC/DOCX also gets a
+  Romanian PDF with a copyright page, rendered from its canonical Romanian
+  reader (`tools/render_clean_income_pdf.py --language ro --copyright-book`).
+  Editions keep PDFs, never DOC/DOCX; delete a DOCX once its language PDF exists.
 - Interface support is not a request to translate a whole book. For every new
   book or new release, automatically prepare complete and ten-minute HTML
   editions in **English and Romanian only**. Translate readers into `fr`, `de`,
@@ -102,8 +105,11 @@
   `thumbnail.webp`, never the source canvas, so a wide PDF/export canvas
   cannot make a cover look like a small icon inside a white frame.
 - Cover derivatives must preserve all artwork after trimming empty export margins.
-  Fit it into the portrait canvas using the source background; never crop titles
-  or authors to force the aspect ratio. Keep `cover.png` unchanged.
+  Fit it into the portrait canvas, padding with a blurred extension of the
+  artwork's own edges (never the export-canvas colour, which leaves white
+  bands); never crop titles or authors to force the aspect ratio. Keep
+  `cover.png` unchanged. A book whose only cover is a text title page gets an
+  authored cover; keep the replaced page in its workspace.
 - Every new release must inspect and select the cover from its own delivered
   document, even if it resembles the previous cover. Record it with
   `python3 tools/book_tasks.py cover WORKSPACE EXTRACTED_COVER.png`; the release
@@ -145,7 +151,8 @@
   languages. The header language is the preferred reading language; book pages
   have no additional reading-language selector. Reading actions open the selected
   format in that language when available, otherwise the same English format.
-  Current PDF downloads always use the English source. Keep historical downloads.
+  PDF downloads use the interface-language PDF when the book has one (a
+  Romanian original), otherwise English. Keep historical downloads.
   Missing translations are requested only by clicking the localised unavailability
   sentence, preserving book, target, format and interface language in the form URL.
   Never append “Request translation” to reading actions or language options.

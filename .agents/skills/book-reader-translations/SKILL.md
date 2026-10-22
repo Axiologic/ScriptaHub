@@ -10,7 +10,8 @@ their multilingual coverage needs repair. Translate the chunk JSON directly as
 the agent; do not call an external translation service. The English reader
 edition is the canonical source for further translations. For an original
 Romanian DOCX, retain its Romanian HTML and translate that HTML into English.
-Never translate PDFs or create non-English PDF editions.
+Never translate PDFs or make PDFs of translations. A Romanian original keeps
+its own Romanian PDF (see the scriptahub-book skill).
 
 New books and releases get complete and ten-minute HTML in **English and
 Romanian only** automatically. Every other language requires an explicit

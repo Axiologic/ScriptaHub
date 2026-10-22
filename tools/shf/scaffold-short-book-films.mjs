@@ -5,7 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { stageAuthor } from './stage-authoring.mjs';
 
 const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const plans = JSON.parse(fs.readFileSync(path.join(repository, '.book-work/intake-20260911/short-film-plans.json'), 'utf8'));
+// Optional argument: another plans file (default: the 2026-09-11 intake batch).
+const plans = JSON.parse(fs.readFileSync(path.resolve(repository, process.argv[2] || '.book-work/intake-20260911/short-film-plans.json'), 'utf8'));
 const write = (file, value) => {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, typeof value === 'string' ? value : JSON.stringify(value, null, 2) + '\n');
@@ -39,7 +40,9 @@ function visual(plan, sceneIndex) {
     'before-explanation': [...[-120,-30,60].map((x,i)=>n('path',{d:`M${x-70}-110L${x+70}-75L${x+45} 115L${x-85} 88Z`,fill:i%2?a:b,opacity:.35+i*.18,stroke:i===2?a:b,'stroke-width':4})),n('circle',{cx:55,cy:20,r:35,fill:'#fff',opacity:.72})],
     'who-will-inherit-the-world': [n('path',{d:'M0 120V35M0 35L-105-28M0 35L105-28M-105-28L-155-105M-105-28L-55-108M105-28L55-108M105-28L155-105',...common}),...[-155,-55,55,155].map((x,i)=>n('circle',{cx:x,cy:i%2?-108:-105,r:29,fill:i%2?a:b})),n('circle',{cx:0,cy:122,r:38,fill:a})]
   };
-  const shape = s.object('motif', 600, 295, motifs[plan.slug], plan.motif);
+  // Newer plans carry their own motif as plain SVG shapes: [{tag, attrs}].
+  const nodes = motifs[plan.slug] || (plan.motifShapes || []).map(({ tag, attrs }) => n(tag, attrs));
+  const shape = s.object('motif', 600, 295, nodes, plan.motif);
   s.add(shape);
   const labels = plan.scenes[sceneIndex].labels;
   labels.forEach((label, index) => {

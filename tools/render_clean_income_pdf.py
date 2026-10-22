@@ -94,11 +94,12 @@ section.copyright-page p { text-align: left; font-size: 8.6pt; }
         if target is None and len(headings)>=2:target=headings[1]
         if target is not None:target.addprevious(page)
         else:body.insert(0,page)
-    output=(work/f'publication/{args.language}') if work else destination.parent/'.publication'
+    # Print intermediates stay in the workspace, never beside published files.
+    output=(work/f'publication/{args.language}') if work else ROOT/'.book-work/reports/pdf-builds'/sha256(str(destination).encode()).hexdigest()[:16]
     output.mkdir(parents=True,exist_ok=True)
     print_html=output/'clean-publication.html'
     print_html.write_bytes(etree.tostring(doc,method='html',encoding='utf-8',doctype='<!doctype html>'))
-    HTML(filename=str(print_html),base_url=str(source.parent)).write_pdf(str(destination),pdf_tags=True)
+    HTML(string=print_html.read_text(encoding='utf-8'),base_url=str(source.parent)).write_pdf(str(destination),pdf_tags=True)
     receipt={'sourceHtml':str(source),'sourceHtmlSha256':sha256(source.read_bytes()).hexdigest(),'pdf':str(destination),'pdfSha256':sha256(destination.read_bytes()).hexdigest(),'engine':'WeasyPrint','pageSize':'6 x 9 inches','language':args.language,'input':f'Complete canonical {args.language} HTML reader'}
     (output/'pdf-build.json').write_text(json.dumps(receipt,indent=2)+'\n')
     print(destination)

@@ -609,16 +609,15 @@ def create_display_cover(source: Path, destination: Path) -> None:
     """
     destination.parent.mkdir(parents=True, exist_ok=True)
     try:
-        background = subprocess.check_output(
-            ["convert", str(source), "-format", "%[pixel:p{0,0}]", "info:"],
-            text=True, stderr=subprocess.DEVNULL,
-        ).strip()
+        # Pad with a blurred extension of the artwork's own edges, not the
+        # export canvas colour, so a white margin never becomes white bands.
         subprocess.run(
             [
-                "convert", str(source), "-fuzz", "3%", "-trim", "+repage",
-                "-resize", "640x960", "-background", background,
-                "-gravity", "center", "-extent", "640x960",
-                "-quality", "90", str(destination),
+                "convert", str(source), "-alpha", "remove", "-alpha", "off",
+                "-fuzz", "3%", "-trim", "+repage", "-write", "mpr:art", "+delete",
+                "(", "mpr:art", "-resize", "640x960^", "-gravity", "center", "-extent", "640x960", "-blur", "0x24", ")",
+                "(", "mpr:art", "-resize", "640x960", ")",
+                "-gravity", "center", "-composite", "-quality", "90", str(destination),
             ],
             check=True,
             stdout=subprocess.DEVNULL,

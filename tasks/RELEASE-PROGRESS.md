@@ -907,10 +907,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/dracula/bk-bb4cc31c30ce476f/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/dracula-v1-d1b8bf963779/translations/ro/full`: **76/258 chunks**, 609/1817 segments complete.
-  Resume at `0023.json`; preserve already filled segments.
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/dracula-v1-d1b8bf963779/translations/ro/full`: **258/258 chunks**, 1817/1817 segments complete.
 - Translation `.book-work/dracula-v1-d1b8bf963779/translations/ro/short`: **2/2 chunks**, 25/25 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
@@ -1188,7 +1187,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] RO short_content.html
 - Translation `.book-work/grimmsfairytales-v1-1debe6f66c73/translations/ro/full`: **161/161 chunks**, 998/998 segments complete.
 - Translation `.book-work/grimmsfairytales-v1-1debe6f66c73/translations/ro/short`: **2/2 chunks**, 34/34 segments complete.
-- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
 - [ ] Verify reader structure, local images and translation completeness against the source.
@@ -1709,10 +1708,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/moby/dick/or/the/whale/bk-25833774f45341f0/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/mobydickorthewhale-v1-87d42498a826/translations/ro/full`: **0/339 chunks**, 0/2224 segments complete.
-  Resume at `0001.json`; preserve already filled segments.
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/mobydickorthewhale-v1-87d42498a826/translations/ro/full`: **339/339 chunks**, 2224/2224 segments complete.
 - Translation `.book-work/mobydickorthewhale-v1-87d42498a826/translations/ro/short`: **2/2 chunks**, 39/39 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
@@ -1870,10 +1868,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/oliver/twist/bk-6eedba63e3704bc8/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/olivertwist-v1-27ec38da5724/translations/ro/full`: **249/253 chunks**, 1599/1624 segments complete.
-  Resume at `0239.json`; preserve already filled segments.
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/olivertwist-v1-27ec38da5724/translations/ro/full`: **253/253 chunks**, 1624/1624 segments complete.
 - Translation `.book-work/olivertwist-v1-27ec38da5724/translations/ro/short`: **2/2 chunks**, 30/30 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
@@ -3519,10 +3516,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/world/as/a/system/1000/reasoning/problems/for/grades/14/bk-23ae7f73b3284615/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/worldasasystem1000reasoningproblemsgrades14en-v1-d8c732e8a9fd/translations/ro/full`: **0/277 chunks**, 0/17416 segments complete.
-  Resume at `0001.json`; preserve already filled segments.
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/worldasasystem1000reasoningproblemsgrades14en-v1-d8c732e8a9fd/translations/ro/full`: **277/277 chunks**, 17416/17416 segments complete.
 - Translation `.book-work/worldasasystem1000reasoningproblemsgrades14en-v1-d8c732e8a9fd/translations/ro/short`: **3/3 chunks**, 27/27 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
