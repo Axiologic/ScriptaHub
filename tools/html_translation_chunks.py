@@ -2,6 +2,7 @@
 """Stable local HTML chunks for direct agent translation; no translation service.
 
 Prepare -> fill each JSON segment's translation -> check -> assemble.
+After a source change, refresh re-prepares and reuses translations by source text.
 Existing work and destinations are never overwritten without --force.
 """
 from __future__ import annotations
@@ -133,6 +134,36 @@ def assemble(work: Path, force: bool = False) -> None:
     print(f"Assembled {destination}")
 
 
+def refresh(work: Path) -> None:
+    """Re-prepare against a changed source, carrying translations over by exact source text."""
+    manifest = json.loads((work / "manifest.json").read_text())
+    previous = {}
+    for path in sorted((work / "chunks").glob("*.json")):
+        for segment in json.loads(path.read_text())["segments"]:
+            if segment.get("translation", "").strip():
+                previous.setdefault(segment["source"], segment["translation"])
+    # Keep the replaced chunks; completed work must never be lost.
+    backup = work / "previous" / manifest["sourceHash"][:12]
+    if not backup.exists():
+        backup.mkdir(parents=True)
+        for name in ("manifest.json", "template.html"):
+            if (work / name).exists():
+                (backup / name).write_bytes((work / name).read_bytes())
+        (backup / "chunks").mkdir()
+        for path in (work / "chunks").glob("*.json"):
+            (backup / "chunks" / path.name).write_bytes(path.read_bytes())
+    prepare(Path(manifest["source"]), Path(manifest["destination"]), manifest["language"], work, force=True)
+    reused = total = 0
+    for path in sorted((work / "chunks").glob("*.json")):
+        payload = json.loads(path.read_text())
+        for segment in payload["segments"]:
+            total += 1
+            if segment["source"] in previous:
+                segment["translation"] = previous[segment["source"]]; reused += 1
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding="utf-8")
+    print(f"Reused {reused}/{total} translations; previous chunks kept in {backup}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -143,13 +174,14 @@ def main() -> int:
     prepare_parser.add_argument("--workdir", required=True, type=Path)
     prepare_parser.add_argument("--maximum-words", type=int, default=700)
     prepare_parser.add_argument("--force", action="store_true")
-    for command in ("check", "assemble"):
+    for command in ("check", "assemble", "refresh"):
         p = sub.add_parser(command); p.add_argument("workdir", type=Path)
         if command == "assemble": p.add_argument("--force", action="store_true")
     args = parser.parse_args()
     try:
         if args.command == "prepare": prepare(args.source, args.destination, args.language, args.workdir, args.maximum_words, args.force)
         elif args.command == "assemble": assemble(args.workdir, args.force)
+        elif args.command == "refresh": refresh(args.workdir)
         else:
             manifest, _, _ = validate(args.workdir); print(f"All {manifest['slotCount']} segments are translated")
     except (ValueError, OSError, KeyError) as error:

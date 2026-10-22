@@ -21,6 +21,8 @@
     if (supported.includes(source)) url.searchParams.set("source", source);
     return url;
   };
+  // A book delivered in another language also has that language's original PDF.
+  const pdfPath = (book, language) => book.editions[locale(language)]?.pdf || book.editions.en?.pdf || null;
   const readingUrl = (book, language, format, uiLanguage, siteRoot, source = "") => {
     language = locale(language);
     uiLanguage = locale(uiLanguage);
@@ -30,7 +32,8 @@
     const edition = book.editions[language];
     const url = new URL("reader/index.html", siteRoot);
     url.search = new URLSearchParams({ id: `${book.id}:${book.currentEdition || "edition-1"}:${language}:${format}`, book: book.directory, language, lang: uiLanguage, format, mode: format === "short" ? "ten-minute" : "full", title: `${book.title[language] || book.title.en} · ${format === "short" ? labels[uiLanguage].short : labels[uiLanguage].full}`, html: `../${edition[format === "short" ? "shortContent" : "fullContent"]}`, back: `../${book.editions[uiLanguage].book}?lang=${uiLanguage}` }).toString();
-    if (book.editions.en?.pdf) url.searchParams.set("pdf", `../${book.editions.en.pdf}`);
+    const pdf = pdfPath(book, uiLanguage);
+    if (pdf) url.searchParams.set("pdf", `../${pdf}`);
     return url;
   };
   const mailUrl = (book, { target, format, uiLanguage, source = "", name = "", email = "", note = "" }) => {
@@ -55,5 +58,5 @@
     const stem = String(title || 'book').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'book';
     return `${stem}${editionNumber ? `-edition-${editionNumber}` : ''}.pdf`;
   };
-  globalThis.ScriptaReading = { labels, preparationLabels, supported, locale, formatName, available, requestUrl, readingUrl, mailUrl, unavailableMessage, pdfDownloadName };
+  globalThis.ScriptaReading = { labels, preparationLabels, supported, locale, formatName, available, requestUrl, readingUrl, mailUrl, unavailableMessage, pdfDownloadName, pdfPath };
 })();

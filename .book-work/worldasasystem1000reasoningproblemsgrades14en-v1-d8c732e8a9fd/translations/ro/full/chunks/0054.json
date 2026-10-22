@@ -3,778 +3,338 @@
   "chunk": 54,
   "segments": [
     {
-      "id": "t009036",
-      "source": "Directed graph; edge X→Y means water can flow from X to Y; query reachability.",
+      "id": "t003678",
+      "source": "1. A minimum=11, maximum=15; B minimum=11, maximum=15. 2. Test A_min > B_max: 11>15 is False. 3. If false, at least one allowed pair of values defeats the “definitely greater” claim.",
       "translation": ""
     },
     {
-      "id": "t009037",
-      "source": "G4. Neighbours and borders",
-      "translation": ""
-    },
-    {
-      "id": "t009038",
-      "source": "Problem 516. Crossing the fictional border network of Elm",
-      "translation": ""
-    },
-    {
-      "id": "t009039",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t009040",
-      "source": "Political maps can be treated as adjacency networks. This lets us reason about border crossings without relying on memorized real-world geography.",
-      "translation": ""
-    },
-    {
-      "id": "t009041",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t009042",
-      "source": "Countries are represented by the fictional states Elm, Kite, Willow, Stone, Oak, Fern. Shared borders: Elm–Kite, Kite–Willow, Willow–Stone, Elm–Oak, Oak–Fern, Fern–Stone.",
-      "translation": ""
-    },
-    {
-      "id": "t009043",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t009044",
-      "source": "Crossing one border corresponds to traversing one graph edge. A route may use only listed borders. A state is unavoidable only if every feasible route passes through it.",
-      "translation": ""
-    },
-    {
-      "id": "t009045",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t009046",
-      "source": "What is the fewest number of border crossings needed to travel from Elm to Stone? Is Kite necessarily crossed?",
-      "translation": ""
-    },
-    {
-      "id": "t009047",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t009048",
-      "source": "1. Turn each shared border into an undirected link. 2. A shortest-link search gives distance 3 from Elm to Stone. 3. Remove Kite and check whether Stone is still reachable from Elm. 4. It is still reachable, so Kite is not unavoidable.",
-      "translation": ""
-    },
-    {
-      "id": "t009049",
+      "id": "t003679",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t009050",
-      "source": "3 border crossing(s); Kite is not unavoidable.",
+      "id": "t003680",
+      "source": "No. The intervals do not justify saying A is definitely greater than B.",
       "translation": ""
     },
     {
-      "id": "t009051",
+      "id": "t003681",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t009052",
-      "source": "Neighbourhood on a map is a graph relation; shortest routes and unavoidable transit points are different questions.",
+      "id": "t003682",
+      "source": "Robust conclusions must remain true across all values allowed by the uncertainty.",
       "translation": ""
     },
     {
-      "id": "t009053",
+      "id": "t003683",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t009054",
-      "source": "Undirected graph; shortest path length plus reachability after deleting a candidate vertex.",
+      "id": "t003684",
+      "source": "Interval arithmetic / worst-case comparison.",
       "translation": ""
     },
     {
-      "id": "t009055",
-      "source": "Problem 517. Crossing the fictional border network of Stone",
+      "id": "t003685",
+      "source": "Problem 205. Reasoning with uncertain intervals: case 5",
       "translation": ""
     },
     {
-      "id": "t009056",
+      "id": "t003686",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t009057",
-      "source": "Political maps can be treated as adjacency networks. This lets us reason about border crossings without relying on memorized real-world geography.",
+      "id": "t003687",
+      "source": "Measurements and historical dates can be uncertain. An interval represents a range of possibilities rather than one exact number.",
       "translation": ""
     },
     {
-      "id": "t009058",
+      "id": "t003688",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t009059",
-      "source": "Countries are represented by the fictional states Stone, Linden, Fern, Meadow, Riverbend, Alder. Shared borders: Stone–Linden, Linden–Fern, Fern–Meadow, Stone–Riverbend, Alder–Meadow.",
+      "id": "t003689",
+      "source": "Two measurements are uncertain intervals. A is between 12 and 16. B is between 11 and 15. A statement “A is definitely greater than B” is valid only if A’s minimum is greater than B’s maximum.",
       "translation": ""
     },
     {
-      "id": "t009060",
+      "id": "t003690",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t009061",
-      "source": "Crossing one border corresponds to traversing one graph edge. A route may use only listed borders. A state is unavoidable only if every feasible route passes through it.",
+      "id": "t003691",
+      "source": "For a definite comparison under interval uncertainty, test the worst cases. Overlapping intervals usually prevent a strict guaranteed ordering.",
       "translation": ""
     },
     {
-      "id": "t009062",
+      "id": "t003692",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t009063",
-      "source": "What is the fewest number of border crossings needed to travel from Stone to Meadow? Is Linden necessarily crossed?",
+      "id": "t003693",
+      "source": "Can we conclude that A is definitely greater than B? What comparison is justified?",
       "translation": ""
     },
     {
-      "id": "t009064",
+      "id": "t003694",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t009065",
-      "source": "1. Turn each shared border into an undirected link. 2. A shortest-link search gives distance 3 from Stone to Meadow. 3. Remove Linden and check whether Meadow is still reachable from Stone. 4. It is not reachable, so Linden is unavoidable.",
+      "id": "t003695",
+      "source": "1. A minimum=12, maximum=16; B minimum=11, maximum=15. 2. Test A_min > B_max: 12>15 is False. 3. If false, at least one allowed pair of values defeats the “definitely greater” claim.",
       "translation": ""
     },
     {
-      "id": "t009066",
+      "id": "t003696",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t009067",
-      "source": "3 border crossing(s); Linden is unavoidable.",
+      "id": "t003697",
+      "source": "No. The intervals do not justify saying A is definitely greater than B.",
       "translation": ""
     },
     {
-      "id": "t009068",
+      "id": "t003698",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t009069",
-      "source": "Neighbourhood on a map is a graph relation; shortest routes and unavoidable transit points are different questions.",
+      "id": "t003699",
+      "source": "Robust conclusions must remain true across all values allowed by the uncertainty.",
       "translation": ""
     },
     {
-      "id": "t009070",
+      "id": "t003700",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t009071",
-      "source": "Undirected graph; shortest path length plus reachability after deleting a candidate vertex.",
+      "id": "t003701",
+      "source": "Interval arithmetic / worst-case comparison.",
       "translation": ""
     },
     {
-      "id": "t009072",
-      "source": "Problem 518. Crossing the fictional border network of Stone",
+      "id": "t003702",
+      "source": "N17. Counterfactual reasoning",
       "translation": ""
     },
     {
-      "id": "t009073",
+      "id": "t003703",
+      "source": "Problem 206. Counterfactual intervention: close the gate",
+      "translation": ""
+    },
+    {
+      "id": "t003704",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t009074",
-      "source": "Political maps can be treated as adjacency networks. This lets us reason about border crossings without relying on memorized real-world geography.",
+      "id": "t003705",
+      "source": "Counterfactual reasoning asks what the model predicts if one condition were changed while the rest of the causal structure is held fixed.",
       "translation": ""
     },
     {
-      "id": "t009075",
+      "id": "t003706",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t009076",
-      "source": "Countries are represented by the fictional states Stone, Kite, Willow, Birch, Cedar, Riverbend. Shared borders: Stone–Kite, Kite–Willow, Willow–Birch, Stone–Cedar, Cedar–Riverbend, Riverbend–Birch.",
+      "id": "t003707",
+      "source": "Causal rules for a simplified town model: heavy rain → high river; high river AND unclosed gate → flooded square; flooded square → market closes. Actual facts: heavy rain occurred and the gate was not closed.",
       "translation": ""
     },
     {
-      "id": "t009077",
+      "id": "t003708",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t009078",
-      "source": "Crossing one border corresponds to traversing one graph edge. A route may use only listed borders. A state is unavoidable only if every feasible route passes through it.",
+      "id": "t003709",
+      "source": "A counterfactual intervention changes one specified fact and then recomputes consequences from the rules. Keep all other stated rules the same unless the intervention changes them.",
       "translation": ""
     },
     {
-      "id": "t009079",
+      "id": "t003710",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t009080",
-      "source": "What is the fewest number of border crossings needed to travel from Stone to Birch? Is Kite necessarily crossed?",
+      "id": "t003711",
+      "source": "Under the intervention “close the gate”, what changes in the consequences?",
       "translation": ""
     },
     {
-      "id": "t009081",
+      "id": "t003712",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t009082",
-      "source": "1. Turn each shared border into an undirected link. 2. A shortest-link search gives distance 3 from Stone to Birch. 3. Remove Kite and check whether Birch is still reachable from Stone. 4. It is still reachable, so Kite is not unavoidable.",
+      "id": "t003713",
+      "source": "1. Actual chain gives high river, then flood, then market closure. 2. Intervene: set gate=closed. 3. The flood rule requires an unclosed gate, so flooding no longer follows. 4. Without flooding, market closure does not follow.",
       "translation": ""
     },
     {
-      "id": "t009083",
+      "id": "t003714",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t009084",
-      "source": "3 border crossing(s); Kite is not unavoidable.",
+      "id": "t003715",
+      "source": "With the gate closed, the model no longer implies flooding or market closure.",
       "translation": ""
     },
     {
-      "id": "t009085",
+      "id": "t003716",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t009086",
-      "source": "Neighbourhood on a map is a graph relation; shortest routes and unavoidable transit points are different questions.",
+      "id": "t003717",
+      "source": "A counterfactual is not ordinary storytelling; it is a controlled change followed by recomputation.",
       "translation": ""
     },
     {
-      "id": "t009087",
+      "id": "t003718",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t009088",
-      "source": "Undirected graph; shortest path length plus reachability after deleting a candidate vertex.",
+      "id": "t003719",
+      "source": "Structural causal rules with a do-style intervention on one variable.",
       "translation": ""
     },
     {
-      "id": "t009089",
-      "source": "Problem 519. Crossing the fictional border network of Zephyr",
+      "id": "t003720",
+      "source": "Problem 207. Counterfactual intervention: remove heavy rain",
       "translation": ""
     },
     {
-      "id": "t009090",
+      "id": "t003721",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t009091",
-      "source": "Political maps can be treated as adjacency networks. This lets us reason about border crossings without relying on memorized real-world geography.",
+      "id": "t003722",
+      "source": "Counterfactual reasoning asks what the model predicts if one condition were changed while the rest of the causal structure is held fixed.",
       "translation": ""
     },
     {
-      "id": "t009092",
+      "id": "t003723",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t009093",
-      "source": "Countries are represented by the fictional states Zephyr, Birch, Fern, Oak, Linden, Harbor. Shared borders: Zephyr–Birch, Birch–Fern, Fern–Oak, Zephyr–Linden, Linden–Harbor, Harbor–Oak.",
+      "id": "t003724",
+      "source": "Causal rules for a simplified town model: heavy rain → high river; high river AND unclosed gate → flooded square; flooded square → market closes. Actual facts: heavy rain occurred and the gate was not closed.",
       "translation": ""
     },
     {
-      "id": "t009094",
+      "id": "t003725",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t009095",
-      "source": "Crossing one border corresponds to traversing one graph edge. A route may use only listed borders. A state is unavoidable only if every feasible route passes through it.",
+      "id": "t003726",
+      "source": "A counterfactual intervention changes one specified fact and then recomputes consequences from the rules. Keep all other stated rules the same unless the intervention changes them.",
       "translation": ""
     },
     {
-      "id": "t009096",
+      "id": "t003727",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t009097",
-      "source": "What is the fewest number of border crossings needed to travel from Zephyr to Oak? Is Birch necessarily crossed?",
+      "id": "t003728",
+      "source": "Under the intervention “remove heavy rain”, what changes in the consequences?",
       "translation": ""
     },
     {
-      "id": "t009098",
+      "id": "t003729",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t009099",
-      "source": "1. Turn each shared border into an undirected link. 2. A shortest-link search gives distance 3 from Zephyr to Oak. 3. Remove Birch and check whether Oak is still reachable from Zephyr. 4. It is still reachable, so Birch is not unavoidable.",
+      "id": "t003730",
+      "source": "1. Intervene: heavy rain=false. 2. Then high river is not generated by the first rule. 3. Without high river, flooding and market closure are not generated.",
       "translation": ""
     },
     {
-      "id": "t009100",
+      "id": "t003731",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t009101",
-      "source": "3 border crossing(s); Birch is not unavoidable.",
+      "id": "t003732",
+      "source": "Without heavy rain, the model generates neither high river, flood, nor market closure.",
       "translation": ""
     },
     {
-      "id": "t009102",
+      "id": "t003733",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t009103",
-      "source": "Neighbourhood on a map is a graph relation; shortest routes and unavoidable transit points are different questions.",
+      "id": "t003734",
+      "source": "A counterfactual is not ordinary storytelling; it is a controlled change followed by recomputation.",
       "translation": ""
     },
     {
-      "id": "t009104",
+      "id": "t003735",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t009105",
-      "source": "Undirected graph; shortest path length plus reachability after deleting a candidate vertex.",
+      "id": "t003736",
+      "source": "Structural causal rules with a do-style intervention on one variable.",
       "translation": ""
     },
     {
-      "id": "t009106",
-      "source": "Problem 520. Crossing the fictional border network of Birch",
+      "id": "t003737",
+      "source": "Problem 208. Counterfactual intervention: keep gate open",
       "translation": ""
     },
     {
-      "id": "t009107",
+      "id": "t003738",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t009108",
-      "source": "Political maps can be treated as adjacency networks. This lets us reason about border crossings without relying on memorized real-world geography.",
+      "id": "t003739",
+      "source": "Counterfactual reasoning asks what the model predicts if one condition were changed while the rest of the causal structure is held fixed.",
       "translation": ""
     },
     {
-      "id": "t009109",
+      "id": "t003740",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t009110",
-      "source": "Countries are represented by the fictional states Birch, Oak, Alder, Riverbend, Dover, Kite. Shared borders: Birch–Oak, Oak–Alder, Alder–Riverbend, Birch–Dover, Kite–Riverbend.",
+      "id": "t003741",
+      "source": "Causal rules for a simplified town model: heavy rain → high river; high river AND unclosed gate → flooded square; flooded square → market closes. Actual facts: heavy rain occurred and the gate was not closed.",
       "translation": ""
     },
     {
-      "id": "t009111",
+      "id": "t003742",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t009112",
-      "source": "Crossing one border corresponds to traversing one graph edge. A route may use only listed borders. A state is unavoidable only if every feasible route passes through it.",
+      "id": "t003743",
+      "source": "A counterfactual intervention changes one specified fact and then recomputes consequences from the rules. Keep all other stated rules the same unless the intervention changes them.",
       "translation": ""
     },
     {
-      "id": "t009113",
+      "id": "t003744",
       "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t009114",
-      "source": "What is the fewest number of border crossings needed to travel from Birch to Riverbend? Is Oak necessarily crossed?",
-      "translation": ""
-    },
-    {
-      "id": "t009115",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t009116",
-      "source": "1. Turn each shared border into an undirected link. 2. A shortest-link search gives distance 3 from Birch to Riverbend. 3. Remove Oak and check whether Riverbend is still reachable from Birch. 4. It is not reachable, so Oak is unavoidable.",
-      "translation": ""
-    },
-    {
-      "id": "t009117",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t009118",
-      "source": "3 border crossing(s); Oak is unavoidable.",
-      "translation": ""
-    },
-    {
-      "id": "t009119",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t009120",
-      "source": "Neighbourhood on a map is a graph relation; shortest routes and unavoidable transit points are different questions.",
-      "translation": ""
-    },
-    {
-      "id": "t009121",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t009122",
-      "source": "Undirected graph; shortest path length plus reachability after deleting a candidate vertex.",
-      "translation": ""
-    },
-    {
-      "id": "t009123",
-      "source": "G5. Maps, legends, and clues",
-      "translation": ""
-    },
-    {
-      "id": "t009124",
-      "source": "Problem 521. Reading a layered map legend (A1)",
-      "translation": ""
-    },
-    {
-      "id": "t009125",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t009126",
-      "source": "A map legend translates symbols into properties. One location may have several properties at the same time.",
-      "translation": ""
-    },
-    {
-      "id": "t009127",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t009128",
-      "source": "Legend: tree=forest, wavy line=river, double line=road, arch=bridge, square=village, triangle=hill. Cells: A1 has forest, road; A2 has bridge, river; B1 has forest, river, road; B2 has road, village. Cross-domain check: a survey team starts work at 8:00 and works for 2 hour(s) without a break.",
-      "translation": ""
-    },
-    {
-      "id": "t009129",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t009130",
-      "source": "A cell satisfies the task only if it has every required attribute. Extra attributes do not disqualify it unless the task says so. For the cross-domain check, finishing time = starting time + duration.",
-      "translation": ""
-    },
-    {
-      "id": "t009131",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t009132",
-      "source": "Which cell or cells satisfy all of these conditions: forest, road? Explain by intersecting the clues. Cross-domain check: at what time does the team finish?",
-      "translation": ""
-    },
-    {
-      "id": "t009133",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t009134",
-      "source": "1. Convert the requested symbols into the attribute set ['forest', 'road']. 2. Check each cell for every required attribute. 3. The matching set is ['A1', 'B1']. Cross-domain check: 8+2=10, so the team finishes at 10:00.",
-      "translation": ""
-    },
-    {
-      "id": "t009135",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t009136",
-      "source": "A1, B1 Cross-domain answer: 10:00.",
-      "translation": ""
-    },
-    {
-      "id": "t009137",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t009138",
-      "source": "Map reading often means intersecting clues rather than recognizing one symbol in isolation.",
-      "translation": ""
-    },
-    {
-      "id": "t009139",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t009140",
-      "source": "Set model; each cell has an attribute set; return cells whose set is a superset of the required set.",
-      "translation": ""
-    },
-    {
-      "id": "t009141",
-      "source": "Problem 522. Reading a layered map legend (A2)",
-      "translation": ""
-    },
-    {
-      "id": "t009142",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t009143",
-      "source": "A map legend translates symbols into properties. One location may have several properties at the same time.",
-      "translation": ""
-    },
-    {
-      "id": "t009144",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t009145",
-      "source": "Legend: tree=forest, wavy line=river, double line=road, arch=bridge, square=village, triangle=hill. Cells: A1 has forest, road; A2 has bridge, river, village; B1 has forest, river, road; B2 has road, village. Cross-domain check: a local committee has 8 members, requires at least 5 present for quorum, and 8 are present.",
-      "translation": ""
-    },
-    {
-      "id": "t009146",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t009147",
-      "source": "A cell satisfies the task only if it has every required attribute. Extra attributes do not disqualify it unless the task says so. For the cross-domain check, quorum exists when present members ≥ the stated threshold.",
-      "translation": ""
-    },
-    {
-      "id": "t009148",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t009149",
-      "source": "Which cell or cells satisfy all of these conditions: bridge, river? Explain by intersecting the clues. Cross-domain check: is quorum met?",
-      "translation": ""
-    },
-    {
-      "id": "t009150",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t009151",
-      "source": "1. Convert the requested symbols into the attribute set ['bridge', 'river']. 2. Check each cell for every required attribute. 3. The matching set is ['A2']. Cross-domain check: compare 8 with 5; 8≥5 is true.",
-      "translation": ""
-    },
-    {
-      "id": "t009152",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t009153",
-      "source": "A2 Cross-domain answer: quorum is met.",
-      "translation": ""
-    },
-    {
-      "id": "t009154",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t009155",
-      "source": "Map reading often means intersecting clues rather than recognizing one symbol in isolation.",
-      "translation": ""
-    },
-    {
-      "id": "t009156",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t009157",
-      "source": "Set model; each cell has an attribute set; return cells whose set is a superset of the required set.",
-      "translation": ""
-    },
-    {
-      "id": "t009158",
-      "source": "Problem 523. Reading a layered map legend (B1)",
-      "translation": ""
-    },
-    {
-      "id": "t009159",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t009160",
-      "source": "A map legend translates symbols into properties. One location may have several properties at the same time.",
-      "translation": ""
-    },
-    {
-      "id": "t009161",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t009162",
-      "source": "Legend: tree=forest, wavy line=river, double line=road, arch=bridge, square=village, triangle=hill. Cells: A1 has forest, road; A2 has bridge, river; B1 has forest, river, road; B2 has forest, road, village. Cross-domain check: researchers collected 9 reports, but 4 are exact duplicate copies that add no new independent information.",
-      "translation": ""
-    },
-    {
-      "id": "t009163",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t009164",
-      "source": "A cell satisfies the task only if it has every required attribute. Extra attributes do not disqualify it unless the task says so. For the cross-domain check, independent reports = total reports − duplicate copies.",
-      "translation": ""
-    },
-    {
-      "id": "t009165",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t009166",
-      "source": "Which cell or cells satisfy all of these conditions: forest, river? Explain by intersecting the clues. Cross-domain check: how many non-duplicate reports remain?",
-      "translation": ""
-    },
-    {
-      "id": "t009167",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t009168",
-      "source": "1. Convert the requested symbols into the attribute set ['forest', 'river']. 2. Check each cell for every required attribute. 3. The matching set is ['B1']. Cross-domain check: 9−4=5 independent reports remain.",
-      "translation": ""
-    },
-    {
-      "id": "t009169",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t009170",
-      "source": "B1 Cross-domain answer: 5 independent reports.",
-      "translation": ""
-    },
-    {
-      "id": "t009171",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t009172",
-      "source": "Map reading often means intersecting clues rather than recognizing one symbol in isolation.",
-      "translation": ""
-    },
-    {
-      "id": "t009173",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t009174",
-      "source": "Set model; each cell has an attribute set; return cells whose set is a superset of the required set.",
-      "translation": ""
-    },
-    {
-      "id": "t009175",
-      "source": "Problem 524. Reading a layered map legend (B2)",
-      "translation": ""
-    },
-    {
-      "id": "t009176",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t009177",
-      "source": "A map legend translates symbols into properties. One location may have several properties at the same time.",
-      "translation": ""
-    },
-    {
-      "id": "t009178",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t009179",
-      "source": "Legend: tree=forest, wavy line=river, double line=road, arch=bridge, square=village, triangle=hill. Cells: A1 has forest, hill, road; A2 has bridge, river; B1 has forest, river, road; B2 has road, village. Cross-domain check: on a field sketch, 1 cm represents 6 km and two checkpoints are 8 cm apart.",
-      "translation": ""
-    },
-    {
-      "id": "t009180",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t009181",
-      "source": "A cell satisfies the task only if it has every required attribute. Extra attributes do not disqualify it unless the task says so. For the cross-domain check, real distance = sketch distance × kilometres per centimetre.",
-      "translation": ""
-    },
-    {
-      "id": "t009182",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t009183",
-      "source": "Which cell or cells satisfy all of these conditions: hill, road? Explain by intersecting the clues. Cross-domain check: what real distance separates the checkpoints?",
-      "translation": ""
-    },
-    {
-      "id": "t009184",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t009185",
-      "source": "1. Convert the requested symbols into the attribute set ['hill', 'road']. 2. Check each cell for every required attribute. 3. The matching set is ['A1']. Cross-domain check: 8×6=48 km.",
-      "translation": ""
-    },
-    {
-      "id": "t009186",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t009187",
-      "source": "A1 Cross-domain answer: 48 km.",
-      "translation": ""
-    },
-    {
-      "id": "t009188",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t009189",
-      "source": "Map reading often means intersecting clues rather than recognizing one symbol in isolation.",
-      "translation": ""
-    },
-    {
-      "id": "t009190",
-      "source": "Formal model.",
       "translation": ""
     }
   ]

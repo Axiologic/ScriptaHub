@@ -222,6 +222,8 @@ def record_progress(root: Path = ROOT) -> Path:
         readers = {code: {name: (work / "book" / code / name).is_file() for name in ("full_content.html", "short_content.html")} for code in AUTOMATIC_LANGUAGES}
         translations = []
         for manifest in sorted((work / "translations").glob("**/manifest.json")):
+            if "previous" in manifest.relative_to(work / "translations").parts:
+                continue  # replaced chunk sets kept by html_translation_chunks.py refresh
             info = read(manifest)
             chunks = [read(chunk) for chunk in sorted((manifest.parent / "chunks").glob("*.json"))]
             next_chunk = next((f"{chunk['chunk']:04d}.json" for chunk in chunks if any(not s.get("translation", "").strip() for s in chunk["segments"])), None)
@@ -247,6 +249,7 @@ def record_progress(root: Path = ROOT) -> Path:
     browser_data = {
         "updatedAt": datetime.now(timezone.utc).isoformat(),
         "currentFocus": read(root / "tasks/current-book-focus.json").get("sources", []) if (root / "tasks/current-book-focus.json").is_file() else [],
+        "workPlan": read(root / "tasks/work-plan.json") if (root / "tasks/work-plan.json").is_file() else None,
         "excludedSources": excluded_sources,
         "releases": [{
             "source": row["source"],
@@ -515,6 +518,49 @@ def install(work: Path, root: Path = ROOT) -> Path:
     return target
 
 
+def complete_readers(work: Path, root: Path = ROOT) -> Path:
+    """Add finished EN/RO readers to an installed current edition without a new release.
+
+    Used when Romanian is requested after an English-only editorial release.
+    Never overwrites a published reader."""
+    release = read(work / "release.json")
+    if release.get("status") != "installed":
+        raise ValueError("Use install for releases that are not yet installed")
+    target = root / "docs" / release["directory"]
+    history = read(target / "editions.json")
+    current = next((item for item in history["editions"] if item["id"] == history.get("currentEdition")), None)
+    if not current or current.get("source", {}).get("sha256") != release["sha256"]:
+        raise ValueError("This workspace is not the current published edition")
+    staged = []
+    for code in AUTOMATIC_LANGUAGES:
+        for name in ("full_content.html", "short_content.html"):
+            source, destination = work / "book" / code / name, target / code / name
+            if destination.is_file():
+                continue
+            if not source.is_file():
+                raise ValueError(f"Missing finished reader: {code}/{name}")
+            markup = source.read_text(encoding="utf-8")
+            if "TRANSLATION:" in markup or not re.search(rf'<html\b[^>]*\blang=["\x27]{code}', markup, re.I):
+                raise ValueError(f"Incomplete reader: {code}/{name}")
+            staged.append((source, destination))
+    for source, destination in staged:
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(re.sub(r"(?<=>)[ \t]+(?=\n)", "", source.read_text(encoding="utf-8")), encoding="utf-8")
+        assets = source.parent / "assets"
+        if assets.is_dir() and not (destination.parent / "assets").exists():
+            shutil.copytree(assets, destination.parent / "assets")
+    from build_books import LANGUAGES as LANGUAGE_NAMES, edition_record
+    manifest = read(target / "manifest.json")
+    manifest["editions"] = {code: edition_record(target, code) for code in LANGUAGES}
+    manifest["availableLanguages"] = [LANGUAGE_NAMES[code] for code, item in manifest["editions"].items() if "fullContent" in item or "shortContent" in item]
+    if all((target / code / name).is_file() for code in AUTOMATIC_LANGUAGES for name in ("full_content.html", "short_content.html")):
+        release["automaticLanguages"] = list(AUTOMATIC_LANGUAGES)
+        write(work / "release.json", release)
+        manifest["releasePolicy"] = "en-ro-on-request"
+    write(target / "manifest.json", manifest)
+    return target
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -527,7 +573,7 @@ def main() -> int:
     cover = commands.add_parser("cover")
     cover.add_argument("workdir", type=Path)
     cover.add_argument("artwork", type=Path)
-    for command in ("check", "install", "announce"):
+    for command in ("check", "install", "announce", "complete-readers"):
         sub = commands.add_parser(command); sub.add_argument("workdir", type=Path)
     args = parser.parse_args()
     try:
@@ -546,6 +592,8 @@ def main() -> int:
             return int(bool(errors))
         elif args.command == "announce":
             print(announce(args.workdir))
+        elif args.command == "complete-readers":
+            print(complete_readers(args.workdir))
         else:
             print(install(args.workdir))
     except (ValueError, OSError, KeyError) as error:

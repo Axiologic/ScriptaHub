@@ -3,823 +3,318 @@
   "chunk": 6,
   "segments": [
     {
-      "id": "t000956",
-      "source": "Northfield is in Green Valley. Green Valley is in Republic B. Republic B is in the continent of Aurora.",
+      "id": "t000427",
+      "source": "Is North Fork upstream of Clearwater? Can water from North Fork reach Clearwater through the stated network?",
       "translation": ""
     },
     {
-      "id": "t000957",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t000958",
-      "source": "If X is contained in Y and Y is contained in Z, then X is contained in Z. The reverse inference is not valid: knowing that two places are in one country does not prove that they are in the same region.",
-      "translation": ""
-    },
-    {
-      "id": "t000959",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t000960",
-      "source": "Is Northfield in Republic B?",
-      "translation": ""
-    },
-    {
-      "id": "t000961",
+      "id": "t000428",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t000962",
-      "source": "1. Follow the chain city→region→country. 2. Containment is transitive, so the city is in the country.",
+      "id": "t000429",
+      "source": "1. Rewrite the facts as arrows: Willow Stream→Clearwater, North Fork→Clearwater, Clearwater→Pine River. 2. Follow arrows starting from North Fork. 3. An arrow path reaches Clearwater, so North Fork is upstream of Clearwater.",
       "translation": ""
     },
     {
-      "id": "t000963",
+      "id": "t000430",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t000964",
-      "source": "Yes, Northfield is in Republic B.",
+      "id": "t000431",
+      "source": "Yes; water from North Fork can reach Clearwater.",
       "translation": ""
     },
     {
-      "id": "t000965",
+      "id": "t000432",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t000966",
-      "source": "Hierarchies support upward transitive inference, but they do not justify arbitrary reverse inferences.",
+      "id": "t000433",
+      "source": "A river network can be reasoned about like any directed network; following the arrows is more reliable than guessing from names.",
       "translation": ""
     },
     {
-      "id": "t000967",
+      "id": "t000434",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t000968",
-      "source": "Containment relation with transitivity; answer membership queries while rejecting invalid converse inference.",
+      "id": "t000435",
+      "source": "Directed graph; edge X→Y means water can flow from X to Y; query reachability.",
       "translation": ""
     },
     {
-      "id": "t000969",
-      "source": "Problem 47. Nested places: Harbor, Highridge, and Republic A",
+      "id": "t000436",
+      "source": "G4. Neighbours and borders",
       "translation": ""
     },
     {
-      "id": "t000970",
+      "id": "t000437",
+      "source": "Problem 16. Crossing the fictional border network of Birch",
+      "translation": ""
+    },
+    {
+      "id": "t000438",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t000971",
-      "source": "Geography uses nested categories: a locality can be inside a region, a region inside a state, and a state inside a continent.",
+      "id": "t000439",
+      "source": "Political maps can be treated as adjacency networks. This lets us reason about border crossings without relying on memorized real-world geography.",
       "translation": ""
     },
     {
-      "id": "t000972",
+      "id": "t000440",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t000973",
-      "source": "Harbor is in Highridge. Highridge is in Republic A. Republic A is in the continent of Aurora.",
+      "id": "t000441",
+      "source": "Countries are represented by the fictional states Birch, Cedar, Northfield, Pine, Alder, Willow. Shared borders: Birch–Cedar, Cedar–Northfield, Northfield–Pine, Birch–Alder, Alder–Willow, Willow–Pine.",
       "translation": ""
     },
     {
-      "id": "t000974",
+      "id": "t000442",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t000975",
-      "source": "If X is contained in Y and Y is contained in Z, then X is contained in Z. The reverse inference is not valid: knowing that two places are in one country does not prove that they are in the same region.",
+      "id": "t000443",
+      "source": "Crossing one border corresponds to traversing one graph edge. A route may use only listed borders. A state is unavoidable only if every feasible route passes through it.",
       "translation": ""
     },
     {
-      "id": "t000976",
+      "id": "t000444",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t000977",
-      "source": "Is Harbor in Aurora?",
+      "id": "t000445",
+      "source": "What is the fewest number of border crossings needed to travel from Birch to Pine? Is Cedar necessarily crossed?",
       "translation": ""
     },
     {
-      "id": "t000978",
+      "id": "t000446",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t000979",
-      "source": "1. Follow city→region→country→continent. 2. Transitivity carries membership through the chain.",
+      "id": "t000447",
+      "source": "1. Turn each shared border into an undirected link. 2. A shortest-link search gives distance 3 from Birch to Pine. 3. Remove Cedar and check whether Pine is still reachable from Birch. 4. It is still reachable, so Cedar is not unavoidable.",
       "translation": ""
     },
     {
-      "id": "t000980",
+      "id": "t000448",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t000981",
-      "source": "Yes, Harbor is in Aurora.",
+      "id": "t000449",
+      "source": "3 border crossing(s); Cedar is not unavoidable.",
       "translation": ""
     },
     {
-      "id": "t000982",
+      "id": "t000450",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t000983",
-      "source": "Hierarchies support upward transitive inference, but they do not justify arbitrary reverse inferences.",
+      "id": "t000451",
+      "source": "Neighbourhood on a map is a graph relation; shortest routes and unavoidable transit points are different questions.",
       "translation": ""
     },
     {
-      "id": "t000984",
+      "id": "t000452",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t000985",
-      "source": "Containment relation with transitivity; answer membership queries while rejecting invalid converse inference.",
+      "id": "t000453",
+      "source": "Undirected graph; shortest path length plus reachability after deleting a candidate vertex.",
       "translation": ""
     },
     {
-      "id": "t000986",
-      "source": "Problem 48. Nested places: Grove, Coastland, and Republic A",
+      "id": "t000454",
+      "source": "Problem 17. Crossing the fictional border network of Elm",
       "translation": ""
     },
     {
-      "id": "t000987",
+      "id": "t000455",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t000988",
-      "source": "Geography uses nested categories: a locality can be inside a region, a region inside a state, and a state inside a continent.",
+      "id": "t000456",
+      "source": "Political maps can be treated as adjacency networks. This lets us reason about border crossings without relying on memorized real-world geography.",
       "translation": ""
     },
     {
-      "id": "t000989",
+      "id": "t000457",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t000990",
-      "source": "Grove is in Coastland. Coastland is in Republic A. Republic A is in the continent of Meridian.",
+      "id": "t000458",
+      "source": "Countries are represented by the fictional states Elm, Iris, Alder, Yarrow, Cedar, Harbor. Shared borders: Elm–Iris, Iris–Alder, Alder–Yarrow, Elm–Cedar, Cedar–Harbor, Harbor–Yarrow.",
       "translation": ""
     },
     {
-      "id": "t000991",
+      "id": "t000459",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t000992",
-      "source": "If X is contained in Y and Y is contained in Z, then X is contained in Z. The reverse inference is not valid: knowing that two places are in one country does not prove that they are in the same region.",
+      "id": "t000460",
+      "source": "Crossing one border corresponds to traversing one graph edge. A route may use only listed borders. A state is unavoidable only if every feasible route passes through it.",
       "translation": ""
     },
     {
-      "id": "t000993",
+      "id": "t000461",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t000994",
-      "source": "Can we conclude that Republic A is in Grove?",
+      "id": "t000462",
+      "source": "What is the fewest number of border crossings needed to travel from Elm to Yarrow? Is Iris necessarily crossed?",
       "translation": ""
     },
     {
-      "id": "t000995",
+      "id": "t000463",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t000996",
-      "source": "1. The facts go from smaller units to larger units. 2. No rule allows country→city, so the reverse claim is unsupported.",
+      "id": "t000464",
+      "source": "1. Turn each shared border into an undirected link. 2. A shortest-link search gives distance 3 from Elm to Yarrow. 3. Remove Iris and check whether Yarrow is still reachable from Elm. 4. It is still reachable, so Iris is not unavoidable.",
       "translation": ""
     },
     {
-      "id": "t000997",
+      "id": "t000465",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t000998",
-      "source": "No. The containment relation cannot be reversed.",
+      "id": "t000466",
+      "source": "3 border crossing(s); Iris is not unavoidable.",
       "translation": ""
     },
     {
-      "id": "t000999",
+      "id": "t000467",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t001000",
-      "source": "Hierarchies support upward transitive inference, but they do not justify arbitrary reverse inferences.",
+      "id": "t000468",
+      "source": "Neighbourhood on a map is a graph relation; shortest routes and unavoidable transit points are different questions.",
       "translation": ""
     },
     {
-      "id": "t001001",
+      "id": "t000469",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t001002",
-      "source": "Containment relation with transitivity; answer membership queries while rejecting invalid converse inference.",
+      "id": "t000470",
+      "source": "Undirected graph; shortest path length plus reachability after deleting a candidate vertex.",
       "translation": ""
     },
     {
-      "id": "t001003",
-      "source": "Problem 49. Nested places: Iris, Northland, and Republic B",
+      "id": "t000471",
+      "source": "Problem 18. Crossing the fictional border network of Riverbend",
       "translation": ""
     },
     {
-      "id": "t001004",
+      "id": "t000472",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t001005",
-      "source": "Geography uses nested categories: a locality can be inside a region, a region inside a state, and a state inside a continent.",
+      "id": "t000473",
+      "source": "Political maps can be treated as adjacency networks. This lets us reason about border crossings without relying on memorized real-world geography.",
       "translation": ""
     },
     {
-      "id": "t001006",
+      "id": "t000474",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t001007",
-      "source": "Iris is in Northland. Northland is in Republic B. Republic B is in the continent of Aurora.",
+      "id": "t000475",
+      "source": "Countries are represented by the fictional states Riverbend, Kite, Fern, Oak, Cedar, Northfield. Shared borders: Riverbend–Kite, Kite–Fern, Fern–Oak, Riverbend–Cedar, Cedar–Northfield, Northfield–Oak.",
       "translation": ""
     },
     {
-      "id": "t001008",
+      "id": "t000476",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t001009",
-      "source": "If X is contained in Y and Y is contained in Z, then X is contained in Z. The reverse inference is not valid: knowing that two places are in one country does not prove that they are in the same region.",
+      "id": "t000477",
+      "source": "Crossing one border corresponds to traversing one graph edge. A route may use only listed borders. A state is unavoidable only if every feasible route passes through it.",
       "translation": ""
     },
     {
-      "id": "t001010",
+      "id": "t000478",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t001011",
-      "source": "Which larger units contain Iris?",
+      "id": "t000479",
+      "source": "What is the fewest number of border crossings needed to travel from Riverbend to Oak? Is Kite necessarily crossed?",
       "translation": ""
     },
     {
-      "id": "t001012",
+      "id": "t000480",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t001013",
-      "source": "1. Read the direct container: Northland. 2. Propagate upward to Republic B and Aurora.",
+      "id": "t000481",
+      "source": "1. Turn each shared border into an undirected link. 2. A shortest-link search gives distance 3 from Riverbend to Oak. 3. Remove Kite and check whether Oak is still reachable from Riverbend. 4. It is still reachable, so Kite is not unavoidable.",
       "translation": ""
     },
     {
-      "id": "t001014",
+      "id": "t000482",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t001015",
-      "source": "Northland, Republic B, and Aurora.",
+      "id": "t000483",
+      "source": "3 border crossing(s); Kite is not unavoidable.",
       "translation": ""
     },
     {
-      "id": "t001016",
+      "id": "t000484",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t001017",
-      "source": "Hierarchies support upward transitive inference, but they do not justify arbitrary reverse inferences.",
+      "id": "t000485",
+      "source": "Neighbourhood on a map is a graph relation; shortest routes and unavoidable transit points are different questions.",
       "translation": ""
     },
     {
-      "id": "t001018",
+      "id": "t000486",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t001019",
-      "source": "Containment relation with transitivity; answer membership queries while rejecting invalid converse inference.",
+      "id": "t000487",
+      "source": "Undirected graph; shortest path length plus reachability after deleting a candidate vertex.",
       "translation": ""
     },
     {
-      "id": "t001020",
-      "source": "Problem 50. Nested places: Cedar, Northland, and Republic D",
+      "id": "t000488",
+      "source": "Problem 19. Crossing the fictional border network of Oak",
       "translation": ""
     },
     {
-      "id": "t001021",
+      "id": "t000489",
       "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t001022",
-      "source": "Geography uses nested categories: a locality can be inside a region, a region inside a state, and a state inside a continent.",
-      "translation": ""
-    },
-    {
-      "id": "t001023",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001024",
-      "source": "Cedar is in Northland. Northland is in Republic D. Republic D is in the continent of Pacifica.",
-      "translation": ""
-    },
-    {
-      "id": "t001025",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t001026",
-      "source": "If X is contained in Y and Y is contained in Z, then X is contained in Z. The reverse inference is not valid: knowing that two places are in one country does not prove that they are in the same region.",
-      "translation": ""
-    },
-    {
-      "id": "t001027",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t001028",
-      "source": "Does being in Republic D prove two cities share a region?",
-      "translation": ""
-    },
-    {
-      "id": "t001029",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t001030",
-      "source": "1. Two cities can belong to the same country while belonging to different regions. 2. The region relation is therefore not deducible from country membership alone.",
-      "translation": ""
-    },
-    {
-      "id": "t001031",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t001032",
-      "source": "No. Country membership alone is insufficient to identify the region.",
-      "translation": ""
-    },
-    {
-      "id": "t001033",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t001034",
-      "source": "Hierarchies support upward transitive inference, but they do not justify arbitrary reverse inferences.",
-      "translation": ""
-    },
-    {
-      "id": "t001035",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t001036",
-      "source": "Containment relation with transitivity; answer membership queries while rejecting invalid converse inference.",
-      "translation": ""
-    },
-    {
-      "id": "t001037",
-      "source": "H1. Ordering events",
-      "translation": ""
-    },
-    {
-      "id": "t001038",
-      "source": "Problem 51. Ordering the events of Westmoor",
-      "translation": ""
-    },
-    {
-      "id": "t001039",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t001040",
-      "source": "Historical chronology often starts from partial information: some events are ordered relative to others even when exact dates are not known.",
-      "translation": ""
-    },
-    {
-      "id": "t001041",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001042",
-      "source": "Market charter happened before Bridge opening. Bridge opening happened before New school. Flood happened after Market charter.",
-      "translation": ""
-    },
-    {
-      "id": "t001043",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t001044",
-      "source": "“Before” is transitive: if A is before B and B is before C, then A is before C. If two events are not connected by the facts, their relative order may be undetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001045",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t001046",
-      "source": "What must be true about the order of Market charter and New school? Can the exact order of Flood and Bridge opening be determined?",
-      "translation": ""
-    },
-    {
-      "id": "t001047",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t001048",
-      "source": "1. From Market charter before Bridge opening and Bridge opening before New school, infer Market charter before New school. 2. Flood is only constrained to be after Market charter. There is no stated relation between Flood and Bridge opening. 3. Therefore the first comparison is forced but the second is underdetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001049",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t001050",
-      "source": "Market charter must be before New school. The relative order of Flood and Bridge opening cannot be determined from the given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001051",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t001052",
-      "source": "A careful reasoner distinguishes what must be true from what merely could be true.",
-      "translation": ""
-    },
-    {
-      "id": "t001053",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t001054",
-      "source": "Partial order / directed acyclic graph; use transitive closure and detect incomparable events.",
-      "translation": ""
-    },
-    {
-      "id": "t001055",
-      "source": "Problem 52. Ordering the events of Coastland",
-      "translation": ""
-    },
-    {
-      "id": "t001056",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t001057",
-      "source": "Historical chronology often starts from partial information: some events are ordered relative to others even when exact dates are not known.",
-      "translation": ""
-    },
-    {
-      "id": "t001058",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001059",
-      "source": "Founding happened before Market charter. Market charter happened before Flood. Bridge opening happened after Founding.",
-      "translation": ""
-    },
-    {
-      "id": "t001060",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t001061",
-      "source": "“Before” is transitive: if A is before B and B is before C, then A is before C. If two events are not connected by the facts, their relative order may be undetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001062",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t001063",
-      "source": "What must be true about the order of Founding and Flood? Can the exact order of Bridge opening and Market charter be determined?",
-      "translation": ""
-    },
-    {
-      "id": "t001064",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t001065",
-      "source": "1. From Founding before Market charter and Market charter before Flood, infer Founding before Flood. 2. Bridge opening is only constrained to be after Founding. There is no stated relation between Bridge opening and Market charter. 3. Therefore the first comparison is forced but the second is underdetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001066",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t001067",
-      "source": "Founding must be before Flood. The relative order of Bridge opening and Market charter cannot be determined from the given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001068",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t001069",
-      "source": "A careful reasoner distinguishes what must be true from what merely could be true.",
-      "translation": ""
-    },
-    {
-      "id": "t001070",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t001071",
-      "source": "Partial order / directed acyclic graph; use transitive closure and detect incomparable events.",
-      "translation": ""
-    },
-    {
-      "id": "t001072",
-      "source": "Problem 53. Ordering the events of Coastland",
-      "translation": ""
-    },
-    {
-      "id": "t001073",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t001074",
-      "source": "Historical chronology often starts from partial information: some events are ordered relative to others even when exact dates are not known.",
-      "translation": ""
-    },
-    {
-      "id": "t001075",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001076",
-      "source": "New school happened before Flood. Flood happened before Market charter. Bridge opening happened after New school.",
-      "translation": ""
-    },
-    {
-      "id": "t001077",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t001078",
-      "source": "“Before” is transitive: if A is before B and B is before C, then A is before C. If two events are not connected by the facts, their relative order may be undetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001079",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t001080",
-      "source": "What must be true about the order of New school and Market charter? Can the exact order of Bridge opening and Flood be determined?",
-      "translation": ""
-    },
-    {
-      "id": "t001081",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t001082",
-      "source": "1. From New school before Flood and Flood before Market charter, infer New school before Market charter. 2. Bridge opening is only constrained to be after New school. There is no stated relation between Bridge opening and Flood. 3. Therefore the first comparison is forced but the second is underdetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001083",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t001084",
-      "source": "New school must be before Market charter. The relative order of Bridge opening and Flood cannot be determined from the given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001085",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t001086",
-      "source": "A careful reasoner distinguishes what must be true from what merely could be true.",
-      "translation": ""
-    },
-    {
-      "id": "t001087",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t001088",
-      "source": "Partial order / directed acyclic graph; use transitive closure and detect incomparable events.",
-      "translation": ""
-    },
-    {
-      "id": "t001089",
-      "source": "Problem 54. Ordering the events of Coastland",
-      "translation": ""
-    },
-    {
-      "id": "t001090",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t001091",
-      "source": "Historical chronology often starts from partial information: some events are ordered relative to others even when exact dates are not known.",
-      "translation": ""
-    },
-    {
-      "id": "t001092",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001093",
-      "source": "Bridge opening happened before Flood. Flood happened before Market charter. New school happened after Bridge opening.",
-      "translation": ""
-    },
-    {
-      "id": "t001094",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t001095",
-      "source": "“Before” is transitive: if A is before B and B is before C, then A is before C. If two events are not connected by the facts, their relative order may be undetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001096",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t001097",
-      "source": "What must be true about the order of Bridge opening and Market charter? Can the exact order of New school and Flood be determined?",
-      "translation": ""
-    },
-    {
-      "id": "t001098",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t001099",
-      "source": "1. From Bridge opening before Flood and Flood before Market charter, infer Bridge opening before Market charter. 2. New school is only constrained to be after Bridge opening. There is no stated relation between New school and Flood. 3. Therefore the first comparison is forced but the second is underdetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001100",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t001101",
-      "source": "Bridge opening must be before Market charter. The relative order of New school and Flood cannot be determined from the given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001102",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t001103",
-      "source": "A careful reasoner distinguishes what must be true from what merely could be true.",
-      "translation": ""
-    },
-    {
-      "id": "t001104",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t001105",
-      "source": "Partial order / directed acyclic graph; use transitive closure and detect incomparable events.",
-      "translation": ""
-    },
-    {
-      "id": "t001106",
-      "source": "Problem 55. Ordering the events of Eastvale",
-      "translation": ""
-    },
-    {
-      "id": "t001107",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t001108",
-      "source": "Historical chronology often starts from partial information: some events are ordered relative to others even when exact dates are not known.",
-      "translation": ""
-    },
-    {
-      "id": "t001109",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001110",
-      "source": "Market charter happened before Founding. Founding happened before Flood. Bridge opening happened after Market charter.",
-      "translation": ""
-    },
-    {
-      "id": "t001111",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t001112",
-      "source": "“Before” is transitive: if A is before B and B is before C, then A is before C. If two events are not connected by the facts, their relative order may be undetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001113",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t001114",
-      "source": "What must be true about the order of Market charter and Flood? Can the exact order of Bridge opening and Founding be determined?",
-      "translation": ""
-    },
-    {
-      "id": "t001115",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t001116",
-      "source": "1. From Market charter before Founding and Founding before Flood, infer Market charter before Flood. 2. Bridge opening is only constrained to be after Market charter. There is no stated relation between Bridge opening and Founding. 3. Therefore the first comparison is forced but the second is underdetermined.",
-      "translation": ""
-    },
-    {
-      "id": "t001117",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t001118",
-      "source": "Market charter must be before Flood. The relative order of Bridge opening and Founding cannot be determined from the given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t001119",
-      "source": "Knowledge takeaway.",
       "translation": ""
     }
   ]

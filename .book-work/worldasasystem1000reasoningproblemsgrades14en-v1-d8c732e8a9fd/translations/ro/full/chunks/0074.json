@@ -3,753 +3,343 @@
   "chunk": 74,
   "segments": [
     {
-      "id": "t012232",
-      "source": "Robust conclusions must remain true across all values allowed by the uncertainty.",
+      "id": "t004984",
+      "source": "A valid site must have water, road access, and must not be in the flood zone. Among valid sites, choose the one with the highest farmland score. For the cross-domain check, real distance = sketch distance × kilometres per centimetre.",
       "translation": ""
     },
     {
-      "id": "t012233",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t012234",
-      "source": "Interval arithmetic / worst-case comparison.",
-      "translation": ""
-    },
-    {
-      "id": "t012235",
-      "source": "Problem 702. Reasoning with uncertain intervals: case 2",
-      "translation": ""
-    },
-    {
-      "id": "t012236",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t012237",
-      "source": "Measurements and historical dates can be uncertain. An interval represents a range of possibilities rather than one exact number.",
-      "translation": ""
-    },
-    {
-      "id": "t012238",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t012239",
-      "source": "Two measurements are uncertain intervals. A is between 9 and 13. B is between 13 and 17. A statement “A is definitely greater than B” is valid only if A’s minimum is greater than B’s maximum.",
-      "translation": ""
-    },
-    {
-      "id": "t012240",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t012241",
-      "source": "For a definite comparison under interval uncertainty, test the worst cases. Overlapping intervals usually prevent a strict guaranteed ordering.",
-      "translation": ""
-    },
-    {
-      "id": "t012242",
+      "id": "t004985",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t012243",
-      "source": "Can we conclude that A is definitely greater than B? What comparison is justified?",
+      "id": "t004986",
+      "source": "Which site should be selected under the stated mandatory conditions and preference rule? Cross-domain check: what real distance separates the checkpoints?",
       "translation": ""
     },
     {
-      "id": "t012244",
+      "id": "t004987",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t012245",
-      "source": "1. A minimum=9, maximum=13; B minimum=13, maximum=17. 2. Test A_min > B_max: 9>17 is False. 3. If false, at least one allowed pair of values defeats the “definitely greater” claim.",
+      "id": "t004988",
+      "source": "1. Separate mandatory conditions from the preference. 2. Filtering by water, road, and flood safety leaves ['Site A']. 3. Compare only the farmland scores of feasible sites: Site A=2. 4. Site A has the best score among valid sites. Cross-domain check: 2×2=4 km.",
       "translation": ""
     },
     {
-      "id": "t012246",
+      "id": "t004989",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t012247",
-      "source": "No. The intervals do not justify saying A is definitely greater than B.",
+      "id": "t004990",
+      "source": "Site A. Cross-domain answer: 4 km.",
       "translation": ""
     },
     {
-      "id": "t012248",
+      "id": "t004991",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t012249",
-      "source": "Robust conclusions must remain true across all values allowed by the uncertainty.",
+      "id": "t004992",
+      "source": "Good decisions first satisfy hard constraints and only then optimize among the remaining options.",
       "translation": ""
     },
     {
-      "id": "t012250",
+      "id": "t004993",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t012251",
-      "source": "Interval arithmetic / worst-case comparison.",
+      "id": "t004994",
+      "source": "Constraint-satisfaction problem followed by a score maximization over feasible options.",
       "translation": ""
     },
     {
-      "id": "t012252",
-      "source": "Problem 703. Reasoning with uncertain intervals: case 3",
+      "id": "t004995",
+      "source": "G7. Relief and movement cost",
       "translation": ""
     },
     {
-      "id": "t012253",
+      "id": "t004996",
+      "source": "Problem 281. Terrain and travel cost from Linden",
+      "translation": ""
+    },
+    {
+      "id": "t004997",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t012254",
-      "source": "Measurements and historical dates can be uncertain. An interval represents a range of possibilities rather than one exact number.",
+      "id": "t004998",
+      "source": "Equal-looking distances can require different effort because terrain differs. A simple cost model makes that effect explicit.",
       "translation": ""
     },
     {
-      "id": "t012255",
+      "id": "t004999",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t012256",
-      "source": "Two measurements are uncertain intervals. A is between 10 and 14. B is between 13 and 17. A statement “A is definitely greater than B” is valid only if A’s minimum is greater than B’s maximum.",
+      "id": "t005000",
+      "source": "Terrain energy costs per segment: {'plain': 1, 'forest': 2, 'hill': 3, 'marsh': 4}. Three routes from Linden to Stone: R1=['plain', 'hill', 'plain']; R2=['forest', 'forest', 'plain']; R3=['plain', 'marsh']. The traveler can spend at most 9 energy units.",
       "translation": ""
     },
     {
-      "id": "t012257",
+      "id": "t005001",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t012258",
-      "source": "For a definite comparison under interval uncertainty, test the worst cases. Overlapping intervals usually prevent a strict guaranteed ordering.",
+      "id": "t005002",
+      "source": "The energy of a route is the sum of its terrain costs. A route above the energy limit is infeasible. Among feasible routes, minimize energy.",
       "translation": ""
     },
     {
-      "id": "t012259",
+      "id": "t005003",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t012260",
-      "source": "Can we conclude that A is definitely greater than B? What comparison is justified?",
+      "id": "t005004",
+      "source": "Which route is feasible and uses the least energy?",
       "translation": ""
     },
     {
-      "id": "t012261",
+      "id": "t005005",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t012262",
-      "source": "1. A minimum=10, maximum=14; B minimum=13, maximum=17. 2. Test A_min > B_max: 10>17 is False. 3. If false, at least one allowed pair of values defeats the “definitely greater” claim.",
+      "id": "t005006",
+      "source": "1. Compute route totals: R1=5, R2=5, R3=5. 2. Discard any total above 9. 3. The smallest remaining total is R1=5.",
       "translation": ""
     },
     {
-      "id": "t012263",
+      "id": "t005007",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t012264",
-      "source": "No. The intervals do not justify saying A is definitely greater than B.",
+      "id": "t005008",
+      "source": "Route R1, using 5 energy units.",
       "translation": ""
     },
     {
-      "id": "t012265",
+      "id": "t005009",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t012266",
-      "source": "Robust conclusions must remain true across all values allowed by the uncertainty.",
+      "id": "t005010",
+      "source": "Relief changes the cost of movement; “shortest” and “easiest” are not automatically the same.",
       "translation": ""
     },
     {
-      "id": "t012267",
+      "id": "t005011",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t012268",
-      "source": "Interval arithmetic / worst-case comparison.",
+      "id": "t005012",
+      "source": "Weighted paths with a feasibility budget; sum costs and choose the minimum feasible path.",
       "translation": ""
     },
     {
-      "id": "t012269",
-      "source": "Problem 704. Reasoning with uncertain intervals: case 4",
+      "id": "t005013",
+      "source": "Problem 282. Terrain and travel cost from Northfield",
       "translation": ""
     },
     {
-      "id": "t012270",
+      "id": "t005014",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t012271",
-      "source": "Measurements and historical dates can be uncertain. An interval represents a range of possibilities rather than one exact number.",
+      "id": "t005015",
+      "source": "Equal-looking distances can require different effort because terrain differs. A simple cost model makes that effect explicit.",
       "translation": ""
     },
     {
-      "id": "t012272",
+      "id": "t005016",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t012273",
-      "source": "Two measurements are uncertain intervals. A is between 11 and 15. B is between 13 and 17. A statement “A is definitely greater than B” is valid only if A’s minimum is greater than B’s maximum.",
+      "id": "t005017",
+      "source": "Terrain energy costs per segment: {'plain': 1, 'forest': 2, 'hill': 3, 'marsh': 4}. Three routes from Northfield to Oak: R1=['plain', 'hill', 'plain']; R2=['plain', 'forest', 'plain', 'plain']; R3=['plain', 'marsh']. The traveler can spend at most 9 energy units.",
       "translation": ""
     },
     {
-      "id": "t012274",
+      "id": "t005018",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t012275",
-      "source": "For a definite comparison under interval uncertainty, test the worst cases. Overlapping intervals usually prevent a strict guaranteed ordering.",
+      "id": "t005019",
+      "source": "The energy of a route is the sum of its terrain costs. A route above the energy limit is infeasible. Among feasible routes, minimize energy.",
       "translation": ""
     },
     {
-      "id": "t012276",
+      "id": "t005020",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t012277",
-      "source": "Can we conclude that A is definitely greater than B? What comparison is justified?",
+      "id": "t005021",
+      "source": "Which route is feasible and uses the least energy?",
       "translation": ""
     },
     {
-      "id": "t012278",
+      "id": "t005022",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t012279",
-      "source": "1. A minimum=11, maximum=15; B minimum=13, maximum=17. 2. Test A_min > B_max: 11>17 is False. 3. If false, at least one allowed pair of values defeats the “definitely greater” claim.",
+      "id": "t005023",
+      "source": "1. Compute route totals: R1=5, R2=5, R3=5. 2. Discard any total above 9. 3. The smallest remaining total is R1=5.",
       "translation": ""
     },
     {
-      "id": "t012280",
+      "id": "t005024",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t012281",
-      "source": "No. The intervals do not justify saying A is definitely greater than B.",
+      "id": "t005025",
+      "source": "Route R1, using 5 energy units.",
       "translation": ""
     },
     {
-      "id": "t012282",
+      "id": "t005026",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t012283",
-      "source": "Robust conclusions must remain true across all values allowed by the uncertainty.",
+      "id": "t005027",
+      "source": "Relief changes the cost of movement; “shortest” and “easiest” are not automatically the same.",
       "translation": ""
     },
     {
-      "id": "t012284",
+      "id": "t005028",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t012285",
-      "source": "Interval arithmetic / worst-case comparison.",
+      "id": "t005029",
+      "source": "Weighted paths with a feasibility budget; sum costs and choose the minimum feasible path.",
       "translation": ""
     },
     {
-      "id": "t012286",
-      "source": "Problem 705. Reasoning with uncertain intervals: case 5",
+      "id": "t005030",
+      "source": "Problem 283. Terrain and travel cost from Linden",
       "translation": ""
     },
     {
-      "id": "t012287",
+      "id": "t005031",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t012288",
-      "source": "Measurements and historical dates can be uncertain. An interval represents a range of possibilities rather than one exact number.",
+      "id": "t005032",
+      "source": "Equal-looking distances can require different effort because terrain differs. A simple cost model makes that effect explicit.",
       "translation": ""
     },
     {
-      "id": "t012289",
+      "id": "t005033",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t012290",
-      "source": "Two measurements are uncertain intervals. A is between 12 and 16. B is between 13 and 17. A statement “A is definitely greater than B” is valid only if A’s minimum is greater than B’s maximum.",
+      "id": "t005034",
+      "source": "Terrain energy costs per segment: {'plain': 1, 'forest': 2, 'hill': 3, 'marsh': 4}. Three routes from Linden to Juniper: R1=['plain', 'hill', 'plain']; R2=['forest', 'forest', 'plain']; R3=['plain', 'marsh']. The traveler can spend at most 9 energy units.",
       "translation": ""
     },
     {
-      "id": "t012291",
+      "id": "t005035",
       "source": "Rules.",
       "translation": ""
     },
     {
-      "id": "t012292",
-      "source": "For a definite comparison under interval uncertainty, test the worst cases. Overlapping intervals usually prevent a strict guaranteed ordering.",
+      "id": "t005036",
+      "source": "The energy of a route is the sum of its terrain costs. A route above the energy limit is infeasible. Among feasible routes, minimize energy.",
       "translation": ""
     },
     {
-      "id": "t012293",
+      "id": "t005037",
       "source": "Task.",
       "translation": ""
     },
     {
-      "id": "t012294",
-      "source": "Can we conclude that A is definitely greater than B? What comparison is justified?",
+      "id": "t005038",
+      "source": "Which route is feasible and uses the least energy?",
       "translation": ""
     },
     {
-      "id": "t012295",
+      "id": "t005039",
       "source": "Step-by-step solution.",
       "translation": ""
     },
     {
-      "id": "t012296",
-      "source": "1. A minimum=12, maximum=16; B minimum=13, maximum=17. 2. Test A_min > B_max: 12>17 is False. 3. If false, at least one allowed pair of values defeats the “definitely greater” claim.",
+      "id": "t005040",
+      "source": "1. Compute route totals: R1=5, R2=5, R3=5. 2. Discard any total above 9. 3. The smallest remaining total is R1=5.",
       "translation": ""
     },
     {
-      "id": "t012297",
+      "id": "t005041",
       "source": "Answer.",
       "translation": ""
     },
     {
-      "id": "t012298",
-      "source": "No. The intervals do not justify saying A is definitely greater than B.",
+      "id": "t005042",
+      "source": "Route R1, using 5 energy units.",
       "translation": ""
     },
     {
-      "id": "t012299",
+      "id": "t005043",
       "source": "Knowledge takeaway.",
       "translation": ""
     },
     {
-      "id": "t012300",
-      "source": "Robust conclusions must remain true across all values allowed by the uncertainty.",
+      "id": "t005044",
+      "source": "Relief changes the cost of movement; “shortest” and “easiest” are not automatically the same.",
       "translation": ""
     },
     {
-      "id": "t012301",
+      "id": "t005045",
       "source": "Formal model.",
       "translation": ""
     },
     {
-      "id": "t012302",
-      "source": "Interval arithmetic / worst-case comparison.",
+      "id": "t005046",
+      "source": "Weighted paths with a feasibility budget; sum costs and choose the minimum feasible path.",
       "translation": ""
     },
     {
-      "id": "t012303",
-      "source": "N17. Counterfactual reasoning",
+      "id": "t005047",
+      "source": "Problem 284. Terrain and travel cost from Grove",
       "translation": ""
     },
     {
-      "id": "t012304",
-      "source": "Problem 706. Counterfactual intervention: close the gate",
-      "translation": ""
-    },
-    {
-      "id": "t012305",
+      "id": "t005048",
       "source": "Knowledge context.",
       "translation": ""
     },
     {
-      "id": "t012306",
-      "source": "Counterfactual reasoning asks what the model predicts if one condition were changed while the rest of the causal structure is held fixed.",
+      "id": "t005049",
+      "source": "Equal-looking distances can require different effort because terrain differs. A simple cost model makes that effect explicit.",
       "translation": ""
     },
     {
-      "id": "t012307",
+      "id": "t005050",
       "source": "Given facts.",
       "translation": ""
     },
     {
-      "id": "t012308",
-      "source": "Causal rules for a simplified town model: heavy rain → high river; high river AND unclosed gate → flooded square; flooded square → market closes. Actual facts: heavy rain occurred and the gate was not closed. Cross-domain check: a local committee has 12 members, requires at least 7 present for quorum, and 11 are present.",
-      "translation": ""
-    },
-    {
-      "id": "t012309",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t012310",
-      "source": "A counterfactual intervention changes one specified fact and then recomputes consequences from the rules. Keep all other stated rules the same unless the intervention changes them. For the cross-domain check, quorum exists when present members ≥ the stated threshold.",
-      "translation": ""
-    },
-    {
-      "id": "t012311",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t012312",
-      "source": "Under the intervention “close the gate”, what changes in the consequences? Cross-domain check: is quorum met?",
-      "translation": ""
-    },
-    {
-      "id": "t012313",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t012314",
-      "source": "1. Actual chain gives high river, then flood, then market closure. 2. Intervene: set gate=closed. 3. The flood rule requires an unclosed gate, so flooding no longer follows. 4. Without flooding, market closure does not follow. Cross-domain check: compare 11 with 7; 11≥7 is true.",
-      "translation": ""
-    },
-    {
-      "id": "t012315",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t012316",
-      "source": "With the gate closed, the model no longer implies flooding or market closure. Cross-domain answer: quorum is met.",
-      "translation": ""
-    },
-    {
-      "id": "t012317",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t012318",
-      "source": "A counterfactual is not ordinary storytelling; it is a controlled change followed by recomputation.",
-      "translation": ""
-    },
-    {
-      "id": "t012319",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t012320",
-      "source": "Structural causal rules with a do-style intervention on one variable.",
-      "translation": ""
-    },
-    {
-      "id": "t012321",
-      "source": "Problem 707. Counterfactual intervention: remove heavy rain",
-      "translation": ""
-    },
-    {
-      "id": "t012322",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t012323",
-      "source": "Counterfactual reasoning asks what the model predicts if one condition were changed while the rest of the causal structure is held fixed.",
-      "translation": ""
-    },
-    {
-      "id": "t012324",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t012325",
-      "source": "Causal rules for a simplified town model: heavy rain → high river; high river AND unclosed gate → flooded square; flooded square → market closes. Actual facts: heavy rain occurred and the gate was not closed. Cross-domain check: researchers collected 13 reports, but 4 are exact duplicate copies that add no new independent information.",
-      "translation": ""
-    },
-    {
-      "id": "t012326",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t012327",
-      "source": "A counterfactual intervention changes one specified fact and then recomputes consequences from the rules. Keep all other stated rules the same unless the intervention changes them. For the cross-domain check, independent reports = total reports − duplicate copies.",
-      "translation": ""
-    },
-    {
-      "id": "t012328",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t012329",
-      "source": "Under the intervention “remove heavy rain”, what changes in the consequences? Cross-domain check: how many non-duplicate reports remain?",
-      "translation": ""
-    },
-    {
-      "id": "t012330",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t012331",
-      "source": "1. Intervene: heavy rain=false. 2. Then high river is not generated by the first rule. 3. Without high river, flooding and market closure are not generated. Cross-domain check: 13−4=9 independent reports remain.",
-      "translation": ""
-    },
-    {
-      "id": "t012332",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t012333",
-      "source": "Without heavy rain, the model generates neither high river, flood, nor market closure. Cross-domain answer: 9 independent reports.",
-      "translation": ""
-    },
-    {
-      "id": "t012334",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t012335",
-      "source": "A counterfactual is not ordinary storytelling; it is a controlled change followed by recomputation.",
-      "translation": ""
-    },
-    {
-      "id": "t012336",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t012337",
-      "source": "Structural causal rules with a do-style intervention on one variable.",
-      "translation": ""
-    },
-    {
-      "id": "t012338",
-      "source": "Problem 708. Counterfactual intervention: keep gate open",
-      "translation": ""
-    },
-    {
-      "id": "t012339",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t012340",
-      "source": "Counterfactual reasoning asks what the model predicts if one condition were changed while the rest of the causal structure is held fixed.",
-      "translation": ""
-    },
-    {
-      "id": "t012341",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t012342",
-      "source": "Causal rules for a simplified town model: heavy rain → high river; high river AND unclosed gate → flooded square; flooded square → market closes. Actual facts: heavy rain occurred and the gate was not closed. Cross-domain check: on a field sketch, 1 cm represents 5 km and two checkpoints are 3 cm apart.",
-      "translation": ""
-    },
-    {
-      "id": "t012343",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t012344",
-      "source": "A counterfactual intervention changes one specified fact and then recomputes consequences from the rules. Keep all other stated rules the same unless the intervention changes them. For the cross-domain check, real distance = sketch distance × kilometres per centimetre.",
-      "translation": ""
-    },
-    {
-      "id": "t012345",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t012346",
-      "source": "Under the intervention “keep gate open”, what changes in the consequences? Cross-domain check: what real distance separates the checkpoints?",
-      "translation": ""
-    },
-    {
-      "id": "t012347",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t012348",
-      "source": "1. Gate already remains open. 2. Heavy rain gives high river. 3. High river plus open gate gives flood, then market closure. Cross-domain check: 3×5=15 km.",
-      "translation": ""
-    },
-    {
-      "id": "t012349",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t012350",
-      "source": "The original chain remains: flood and market closure occur. Cross-domain answer: 15 km.",
-      "translation": ""
-    },
-    {
-      "id": "t012351",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t012352",
-      "source": "A counterfactual is not ordinary storytelling; it is a controlled change followed by recomputation.",
-      "translation": ""
-    },
-    {
-      "id": "t012353",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t012354",
-      "source": "Structural causal rules with a do-style intervention on one variable.",
-      "translation": ""
-    },
-    {
-      "id": "t012355",
-      "source": "Problem 709. Counterfactual intervention: prevent high river",
-      "translation": ""
-    },
-    {
-      "id": "t012356",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t012357",
-      "source": "Counterfactual reasoning asks what the model predicts if one condition were changed while the rest of the causal structure is held fixed.",
-      "translation": ""
-    },
-    {
-      "id": "t012358",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t012359",
-      "source": "Causal rules for a simplified town model: heavy rain → high river; high river AND unclosed gate → flooded square; flooded square → market closes. Actual facts: heavy rain occurred and the gate was not closed. Cross-domain check: a survey team starts work at 12:00 and works for 2 hour(s) without a break.",
-      "translation": ""
-    },
-    {
-      "id": "t012360",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t012361",
-      "source": "A counterfactual intervention changes one specified fact and then recomputes consequences from the rules. Keep all other stated rules the same unless the intervention changes them. For the cross-domain check, finishing time = starting time + duration.",
-      "translation": ""
-    },
-    {
-      "id": "t012362",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t012363",
-      "source": "Under the intervention “prevent high river”, what changes in the consequences? Cross-domain check: at what time does the team finish?",
-      "translation": ""
-    },
-    {
-      "id": "t012364",
-      "source": "Step-by-step solution.",
-      "translation": ""
-    },
-    {
-      "id": "t012365",
-      "source": "1. Intervene directly: high river=false. 2. Even with rain, the counterfactual intervention fixes high river as prevented for this question. 3. Flood requires high river, so it does not follow. Cross-domain check: 12+2=14, so the team finishes at 14:00.",
-      "translation": ""
-    },
-    {
-      "id": "t012366",
-      "source": "Answer.",
-      "translation": ""
-    },
-    {
-      "id": "t012367",
-      "source": "Preventing the high river blocks the flood and market closure in this model. Cross-domain answer: 14:00.",
-      "translation": ""
-    },
-    {
-      "id": "t012368",
-      "source": "Knowledge takeaway.",
-      "translation": ""
-    },
-    {
-      "id": "t012369",
-      "source": "A counterfactual is not ordinary storytelling; it is a controlled change followed by recomputation.",
-      "translation": ""
-    },
-    {
-      "id": "t012370",
-      "source": "Formal model.",
-      "translation": ""
-    },
-    {
-      "id": "t012371",
-      "source": "Structural causal rules with a do-style intervention on one variable.",
-      "translation": ""
-    },
-    {
-      "id": "t012372",
-      "source": "Problem 710. Counterfactual intervention: keep market open",
-      "translation": ""
-    },
-    {
-      "id": "t012373",
-      "source": "Knowledge context.",
-      "translation": ""
-    },
-    {
-      "id": "t012374",
-      "source": "Counterfactual reasoning asks what the model predicts if one condition were changed while the rest of the causal structure is held fixed.",
-      "translation": ""
-    },
-    {
-      "id": "t012375",
-      "source": "Given facts.",
-      "translation": ""
-    },
-    {
-      "id": "t012376",
-      "source": "Causal rules for a simplified town model: heavy rain → high river; high river AND unclosed gate → flooded square; flooded square → market closes. Actual facts: heavy rain occurred and the gate was not closed. Cross-domain check: a local committee has 16 members, requires at least 9 present for quorum, and 14 are present.",
-      "translation": ""
-    },
-    {
-      "id": "t012377",
-      "source": "Rules.",
-      "translation": ""
-    },
-    {
-      "id": "t012378",
-      "source": "A counterfactual intervention changes one specified fact and then recomputes consequences from the rules. Keep all other stated rules the same unless the intervention changes them. For the cross-domain check, quorum exists when present members ≥ the stated threshold.",
-      "translation": ""
-    },
-    {
-      "id": "t012379",
-      "source": "Task.",
-      "translation": ""
-    },
-    {
-      "id": "t012380",
-      "source": "Under the intervention “keep market open”, what changes in the consequences? Cross-domain check: is quorum met?",
-      "translation": ""
-    },
-    {
-      "id": "t012381",
-      "source": "Step-by-step solution.",
+      "id": "t005051",
+      "source": "Terrain energy costs per segment: {'plain': 1, 'forest': 2, 'hill': 3, 'marsh': 4}. Three routes from Grove to Cedar: R1=['plain', 'hill', 'plain']; R2=['plain', 'forest', 'plain', 'plain']; R3=['plain', 'marsh']. The traveler can spend at most 9 energy units.",
       "translation": ""
     }
   ]

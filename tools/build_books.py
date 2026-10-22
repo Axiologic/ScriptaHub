@@ -818,9 +818,10 @@ def reader_href(book: dict[str, object], language: str, page_path: Path, format_
         "lang": ui_language,
         "format": format_name,
     }
-    english_pdf = book["editions"].get("en", {}).get("pdf")
-    if english_pdf:
-        params["pdf"] = relpath(book_directory / str(english_pdf), reader_directory)
+    # Books delivered in another language also offer that original PDF.
+    reader_pdf = book["editions"].get(ui_language, {}).get("pdf") or book["editions"].get("en", {}).get("pdf")
+    if reader_pdf:
+        params["pdf"] = relpath(book_directory / str(reader_pdf), reader_directory)
     return f'{relpath(reader_directory / "index.html", page_path.parent)}?{urlencode(params)}'
 
 
@@ -995,9 +996,10 @@ def book_page(
     english_pdf = book["editions"].get("en", {}).get("pdf")
     current_pdf = DOCS / str(book["directory"]) / english_pdf if english_pdf else None
     eyebrow = "SCRIPTAHUB DRAFT BOOK" if current_pdf and current_pdf.is_file() and pdf_page_count(current_pdf) < 25 else f"{topic} · ScriptaHub"
-    if english_pdf:
-        pdf_href = relpath(DOCS / str(book["directory"]) / english_pdf, page_dir)
-        pdf_name = f'{slugify(book["title"]["en"])}.pdf'
+    page_pdf = book["editions"].get(language, {}).get("pdf") or english_pdf
+    if page_pdf:
+        pdf_href = relpath(DOCS / str(book["directory"]) / page_pdf, page_dir)
+        pdf_name = f'{slugify(book["title"]["en"])}{"" if page_pdf == english_pdf else "-" + language}.pdf'
         actions.append(f'<a class="button button-quiet" data-download-pdf href="{html.escape(pdf_href, quote=True)}" download="{html.escape(pdf_name, quote=True)}">{html.escape(words["download"])}</a>')
     animation = animation_record(book)
     workflow_query = urlencode({"book": str(book["directory"]), "lang": language})

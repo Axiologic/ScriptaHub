@@ -1001,7 +1001,11 @@
       link.textContent = link.dataset.readingLabel;
     }
     const pdf = document.querySelector("[data-download-pdf]");
-    if (pdf && book.editions.en?.pdf) pdf.href = new URL(book.editions.en.pdf, siteRootUrl).href;
+    const pdfPath = reading.pdfPath(book, language);
+    if (pdf && pdfPath) {
+      pdf.href = new URL(pdfPath, siteRootUrl).href;
+      pdf.download = reading.pdfDownloadName(book.title.en).replace(/\.pdf$/, pdfPath === book.editions.en?.pdf ? ".pdf" : `-${reading.locale(language)}.pdf`);
+    }
   }
 
   const language = selectedLanguage();

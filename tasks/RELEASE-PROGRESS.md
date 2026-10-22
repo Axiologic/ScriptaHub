@@ -909,6 +909,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
+- Translation `.book-work/dracula-v1-d1b8bf963779/translations/ro/full`: **76/258 chunks**, 609/1817 segments complete.
+  Resume at `0023.json`; preserve already filled segments.
+- Translation `.book-work/dracula-v1-d1b8bf963779/translations/ro/short`: **2/2 chunks**, 25/25 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -1181,10 +1184,10 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/grimms/fairy/tales/bk-740d5293db1a4a44/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/grimmsfairytales-v1-1debe6f66c73/translations/ro/full`: **2/65 chunks**, 33/964 segments complete.
-  Resume at `0003.json`; preserve already filled segments.
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/grimmsfairytales-v1-1debe6f66c73/translations/ro/full`: **161/161 chunks**, 998/998 segments complete.
+- Translation `.book-work/grimmsfairytales-v1-1debe6f66c73/translations/ro/short`: **2/2 chunks**, 34/34 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -1708,6 +1711,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
+- Translation `.book-work/mobydickorthewhale-v1-87d42498a826/translations/ro/full`: **0/339 chunks**, 0/2224 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/mobydickorthewhale-v1-87d42498a826/translations/ro/short`: **2/2 chunks**, 39/39 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -1866,6 +1872,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
+- Translation `.book-work/olivertwist-v1-27ec38da5724/translations/ro/full`: **249/253 chunks**, 1599/1624 segments complete.
+  Resume at `0239.json`; preserve already filled segments.
+- Translation `.book-work/olivertwist-v1-27ec38da5724/translations/ro/short`: **2/2 chunks**, 30/30 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -2388,8 +2397,10 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/the/adventures/of/ferdinand/count/fathom/part/i/bk-3d089c4dadb048d3/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/theadventuresofferdinandcountfathomparti-v1-5cee39d4616a/translations/ro/full`: **133/133 chunks**, 841/841 segments complete.
+- Translation `.book-work/theadventuresofferdinandcountfathomparti-v1-5cee39d4616a/translations/ro/short`: **3/3 chunks**, 33/33 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -2409,8 +2420,10 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/the/adventures/of/ferdinand/count/fathom/part/ii/bk-3bbca23e054f437d/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/theadventuresofferdinandcountfathompartii-v1-c65915d6f417/translations/ro/full`: **134/134 chunks**, 838/838 segments complete.
+- Translation `.book-work/theadventuresofferdinandcountfathompartii-v1-c65915d6f417/translations/ro/short`: **3/3 chunks**, 31/31 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -2682,10 +2695,10 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/the/life/and/adventures/of/robinson/crusoe/bk-afcbc779a9ab45f4/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/thelifeandadventuresofrobinsoncrusoe-v1-4365aa3088f2/translations/ro/full`: **0/82 chunks**, 0/715 segments complete.
-  Resume at `0001.json`; preserve already filled segments.
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/thelifeandadventuresofrobinsoncrusoe-v1-4365aa3088f2/translations/ro/full`: **196/196 chunks**, 1024/1024 segments complete.
+- Translation `.book-work/thelifeandadventuresofrobinsoncrusoe-v1-4365aa3088f2/translations/ro/short`: **2/2 chunks**, 65/65 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -3437,10 +3450,10 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/we/manufacture/our/own/masters/bk-230ef166f61a40b3/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/full`: **15/15 chunks**, 771/771 segments complete.
-- Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/short`: **1/1 chunks**, 56/56 segments complete.
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/full`: **39/39 chunks**, 772/772 segments complete.
+- Translation `.book-work/wemanufactureourownmastersen-v1-df32f401d268/translations/ro/short`: **2/2 chunks**, 57/57 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -3508,8 +3521,9 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] EN short_content.html
 - [ ] RO full_content.html
 - [ ] RO short_content.html
-- Translation `.book-work/worldasasystem1000reasoningproblemsgrades14en-v1-d8c732e8a9fd/translations/ro/full`: **0/107 chunks**, 0/17415 segments complete.
+- Translation `.book-work/worldasasystem1000reasoningproblemsgrades14en-v1-d8c732e8a9fd/translations/ro/full`: **0/277 chunks**, 0/17416 segments complete.
   Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/worldasasystem1000reasoningproblemsgrades14en-v1-d8c732e8a9fd/translations/ro/short`: **3/3 chunks**, 27/27 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
@@ -3529,10 +3543,10 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [x] Visible book page: `docs/books/wuthering/heights/bk-00afa2b3800046b9/en/book.html`
 - [x] EN full_content.html
 - [x] EN short_content.html
-- [ ] RO full_content.html
-- [ ] RO short_content.html
-- Translation `.book-work/wutheringheights-v1-52853a6b2f4f/translations/ro/full`: **10/181 chunks**, 60/1009 segments complete.
-  Resume at `0011.json`; preserve already filled segments.
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/wutheringheights-v1-52853a6b2f4f/translations/ro/full`: **186/186 chunks**, 1054/1054 segments complete.
+- Translation `.book-work/wutheringheights-v1-52853a6b2f4f/translations/ro/short`: **2/2 chunks**, 28/28 segments complete.
 - [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
 - [x] English PDF staged
 - [ ] Inspect representative PDF pages, including figures and tables.
