@@ -1,0 +1,64 @@
+{
+  "batch": "batch-0004.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0003",
+  "chapterTitle": "Capitolul 2 — Trusa de unelte clasică",
+  "segment": 2,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000260",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Al treilea culoar plătește o datorie veche. K-Means avea nevoie să alegi tu numărul de grupuri și găsea cinci grupuri în zgomot pur. Imaginează-ți în schimb un festival de muzică văzut de la o dronă. Nimeni nu-ți spune câte grupuri de prieteni sunt. Un grup e pur și simplu oriunde oamenii stau aproape unii de alții, se întinde cât timp mulțimea rămâne deasă, iar cei câțiva care rătăcesc între scene nu aparțin niciunui grup. Density-based clustering („gruparea după densitate”: un grup e oriunde punctele stau înghesuite) funcționează așa, iar DBSCAN e exemplul clasic: găsește atâtea grupuri câte sugerează densitatea, de orice formă, și îi etichetează pe rătăciți drept noise („zgomot”). Asta răspunde pe jumătate problemei feței de pe Marte. Dată fiind o împrăștiere la întâmplare, o metodă bazată pe densitate va raporta adesea o singură pată mare sau mai ales zgomot, nu cinci grupuri ordonate, deși tot tu alegi ce înseamnă „aproape”, iar o alegere neatentă poate scoate grupuri din nimic ca orice altă metodă. O a doua familie, hierarchical clustering („gruparea ierarhică”), construiește în schimb un arbore genealogic. Unește cele mai asemănătoare două elemente, apoi următoarele două, până când totul e un singur grup, iar tu decizi abia apoi unde tai arborele, în trei ramuri sau în treizeci.",
+      "sourceAnchor": null,
+      "wordCount": 209
+    },
+    {
+      "id": "u000261",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Pe același culoar se vând și imaginile care apar pe orice slide despre embeddings, listele lungi de numere prin care capitolele următoare așază cuvinte și imagini pe o hartă a sensului: un nor de puncte colorate în două dimensiuni, cu insule ordonate de elemente asemănătoare. Sunt făcute de obicei cu metode numite t-SNE și UMAP , care turtesc sute de dimensiuni pe o pagină încercând să țină fiecare punct lângă vecinii lui cei mai apropiați. Gândește-te la harta lumii de pe peretele unei clase, pe care Groenlanda pare cam cât Africa. Orice hartă plată a unei planete rotunde deformează ceva, iar hărțile acestea păstrează vecinătățile cu prețul a aproape tot restul. Mărimea unei insule și distanța dintre două insule înseamnă adesea foarte puțin, iar setări diferite pot rupe un grup real în mai multe sau pot lipi două laolaltă. Tratează insulele ca pe niște indicii care merită deschise, niciodată ca pe niște descoperiri.",
+      "sourceAnchor": null,
+      "wordCount": 152
+    },
+    {
+      "id": "u000262",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Ultimul culoar stă acolo unde se întâlnesc datele etichetate și cele neetichetate. Adesea ai câteva sute de tichete etichetate și o sută de mii neetichetate. Semi-supervised learning („învățarea semi-supervizată”: puține răspunsuri, multe exemple fără răspuns) le folosește pe amândouă: antrenezi pe puținele etichete, lași modelul să eticheteze restul acolo unde e foarte sigur, reantrenezi pe grămada mai mare și repeți, ca o angajată nouă care învață din cazurile marcate de mentorul ei și apoi din propriile judecăți de care e cea mai sigură. Riscul e limpede: greșelile făcute cu încredere se întorc în antrenare drept adevăr, iar metoda merge cel mai bine când clasele formează grupuri bine despărțite. Weak supervision („supervizarea slabă”: etichete scrise de reguli imperfecte, nu de oameni caz cu caz) vine din partea cealaltă. În loc să eticheteze exemplele unul câte unul, experții scriu reguli rapide și imperfecte, printre ele și vechile reguli pe cuvinte-cheie ale filtrelor de spam, iar un model învață din locurile în care regulile cad de acord și din cele în care se contrazic. Regulile erau prea grosolane ca să fie produsul; sunt destul de bune ca să fie profesorul. Împreună cu active learning și învățarea auto-supervizată, pe care le vom întâlni mai târziu în carte, ele umplu spațiul dintre o cheie de răspunsuri completă și niciuna.",
+      "sourceAnchor": null,
+      "wordCount": 214
+    },
+    {
+      "id": "u000263",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Clasele rare, precum puținele fraude dintre milioane de plăți cinstite, au și ele tratamente standard. Poți schimba ponderile din loss, ceea ce se numește reweighting („reponderare”), ca fiecare fraudă ratată să coste cât sute de alarme false, sau poți face resampling („reeșantionare”) pe datele de antrenare, arătându-i modelului cazurile rare mai des sau pe cele comune mai rar. Ambele îl fac pe model să fie atent la cazurile rare. Ambele îi deformează însă și simțul despre cât de comun e lucrul rar, așa că scorurile lui trebuie recalibrate, adică verificate și corectate după cât de des se întâmplă lucrurile în realitate, înainte ca cineva să le citească drept probabilități.",
+      "sourceAnchor": null,
+      "wordCount": 109
+    },
+    {
+      "id": "u000264",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Fiecare metodă din acest capitol a presupus în tăcere că datele sunt un tabel de rânduri independente, care pot fi amestecate liber. Multe date valoroase nu sunt așa. Vin ordonate în timp, sub formă de rețea sau ca o listă a cărei ordine e tot rostul, iar asemenea date își primesc subcapitolul lor mai târziu, după ce vom avea la îndemână mașinăria deep learning. Spre mașinăria aceasta mergem acum. Tot ce am văzut până aici a depins de cineva care alege trăsături bune pentru model; următorul capitol e despre modele care învață să și le construiască singure. Povestea lui începe cu un titlu de ziar din 1958 și cu o promisiune care s-a dovedit cu mult prematură.",
+      "sourceAnchor": null,
+      "wordCount": 117
+    },
+    {
+      "id": "u000265",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Mai departe. Dacă te-ai întrebat cum alegi praguri ca acelea pentru riscul unui deployment, subcapitolul 10.3 răspunde, iar dacă te-ai întrebat dacă acel 0,83 al unui model merită crezut ca probabilitate, răspunde subcapitolul 10.5. Cum deosebești o cauză de ceva care doar se mișcă odată cu ea e subiectul subcapitolului 11.1. Iar dacă te-ai întrebat ce faci cu date care vin ordonate în timp, ca rețea sau ca listă ordonată, subcapitolul 8.3 răspunde.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    }
+  ]
+}

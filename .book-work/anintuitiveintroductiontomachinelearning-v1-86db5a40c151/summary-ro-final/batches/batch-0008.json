@@ -1,0 +1,432 @@
+{
+  "batch": "batch-0008.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0006",
+  "chapterTitle": "Capitolul 5 — Cum se construiesc și cum rulează modelele",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000374",
+      "chapterId": "chapter-0006",
+      "kind": "h1",
+      "text": "Capitolul 5 — Cum se construiesc și cum rulează modelele",
+      "sourceAnchor": "capitolul-5-cum-se-construiesc-și-cum-rulează-modelele",
+      "wordCount": 9
+    },
+    {
+      "id": "u000375",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "5.1 Cutia de Lego",
+      "sourceAnchor": "cutia-de-lego",
+      "wordCount": 5
+    },
+    {
+      "id": "u000376",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Să zicem că decizi să construiești de la zero un clasificator de imagini, înarmat doar cu cele două idei din subcapitolele trecute: un strat e o grilă de ponderi, iar un teanc de straturi cu îndoituri între ele poate învăța aproape orice. Zece mii de fotografii cu cifre scrise de mână, etichetate. Cât de greu poate fi?",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000377",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Primul tău design e cel evident. Aplatizezi fiecare fotografie într-un rând lung de pixeli, 784 pentru o imagine mică de 28 pe 28, și dai rândul unui dense layer („strat dens”: fiecare intrare legată de fiecare neuron) cu câteva sute de neuroni, apoi încă unuia, apoi zece ieșiri pentru cele zece cifre. Îl antrenezi. Merge, mai mult sau mai puțin: cam 97% corect. Încurajator. Apoi încerci fotografii reale, de 224 pe 224, color, și designul se prăbușește. Doar primul strat ar avea nevoie de 150.000 de intrări înmulțite cu câteva sute de neuroni, zeci de milioane de ponderi, doar ca să se uite la pixeli. Mai rău, un „7” mutat cu doi pixeli la dreapta ajunge pe intrări complet diferite, iar modelul trebuie să-l învețe din nou de la zero. N-are idee că un șapte e un șapte oriunde ar sta.",
+      "sourceAnchor": null,
+      "wordCount": 142
+    },
+    {
+      "id": "u000378",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Tocmai ai descoperit de ce există convoluțiile. Înlocuiește primele straturi dense cu lupele inspectorilor din povestea creierului pisicii, fiecare o grilă mică de ponderi folosită la fel în toate pozițiile, cu pasul de pooling între ele, care micșorează hărțile. Numărul de ponderi scade de o mie de ori. Șaptele mutat e recunoscut pentru că lupa care l-a găsit în stânga îl găsește și în dreapta. Rețeaua ta are acum forma pe care o aveau cititoarele de cifre ale lui LeCun în anii ’90 și citește fotografii reale.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000379",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Încurajat, o faci mai adâncă. Dacă patru straturi sunt bune, sigur douăzeci sunt mai bune? Le pui unul peste altul și antrenezi. Loss-ul nu scade. Stă pe loc. Încerci treizeci de straturi și devine mai rău decât versiunea cu patru, chiar pe datele de antrenare, ceea ce ar trebui să fie imposibil: o rețea mai adâncă ar putea măcar s-o copieze pe cea mică și să nu facă nimic în straturile în plus. Ceva din antrenarea însăși eșuează. Acesta e zidul de care s-a lovit deep learning-ul pe la 2014, iar două invenții l-au dărâmat.",
+      "sourceAnchor": null,
+      "wordCount": 95
+    },
+    {
+      "id": "u000380",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Prima a venit din urmărirea numerelor. Când un semnal trece prin multe straturi, scara lui alunecă: după câteva straturi, toate valorile sunt minuscule, după încă câteva, totul e uriaș, iar gradient descent se descurcă prost cu ambele. Remediul a fost aproape jenant de practic. După fiecare strat, readuci numerele într-un interval standard, așa cum un termostat readuce camera la douăzeci de grade orice vreme ar fi afară. Asta e normalization („normalizarea”), introdusă în 2015 sub numele de batch normalization, iar cu ea, împreună cu o inițializare atentă a ponderilor, rețelele adânci au devenit mult mai ușor de antrenat. Modelele de limbaj folosesc un termostat puțin diferit, câte unul pentru fiecare token în loc de unul pentru fiecare batch.",
+      "sourceAnchor": null,
+      "wordCount": 118
+    },
+    {
+      "id": "u000381",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A doua a venit din întrebarea de ce o rețea mai adâncă nu poate măcar s-o copieze pe una mai mică. În teorie poate, dar să învețe să lase un semnal să treacă printr-un strat neschimbat e surprinzător de greu pentru un teanc de ponderi care pornesc la întâmplare. Atunci de ce s-o pui să învețe asta? Dă-i fiecărui strat un ocol. În loc ca un strat să-și înlocuiască intrarea cu ieșirea, el își adaugă ieșirea la intrare, iar suma merge mai departe. Stratul trebuie să învețe doar ce să schimbe; dacă n-are nimic de adăugat, zero e un lucru ușor de învățat, iar semnalul trece neatins. Aceasta e residual connection („conexiunea reziduală”: rețeaua învață doar restul, diferența), iar arhitectura construită pe ea, ResNet (residual network), a câștigat competiția ImageNet din 2015 cu 152 de straturi, o adâncime mult peste orice funcționase cu un an înainte. Inginerii pot recunoaște tiparul dintr-o altă lume: un lanț de middleware în care fiecare pas poate modifica o cerere sau o poate lăsa să treacă neatinsă, în loc de unul în care fiecare pas trebuie să reconstruiască toată cererea de la zero. Și a mai fost un bonus. Backpropagation, vina care merge înapoi de la ieșire, avea acum o bandă expres: putea curge direct pe ocoluri, fără să fie diluată de fiecare strat din cale.",
+      "sourceAnchor": null,
+      "wordCount": 221
+    },
+    {
+      "id": "u000382",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Rețeaua ta de treizeci de straturi se antrenează acum minunat. Obține 99,8% pe fotografiile de antrenare. Pe fotografii noi, abia 91%. Ai construit un tocilar: a memorat fotografiile de antrenare în loc să învețe să citească cifre. Unul dintre remedii, în formă de strat, e destul de ciudat ca să rămână în minte. În timpul antrenării, oprești la întâmplare o parte dintre neuronii fiecărui strat, alții la fiecare pas. La folosirea reală, nu oprești nimic. Rețeaua nu se mai poate baza pe niciun neuron anume că va fi mereu acolo, așa că învață redundant, mai mulți neuroni împărțind fiecare sarcină. Acesta e dropout -ul („abandonul”, de la neuronii care ies temporar din joc) și e versiunea neuronală a unui manager care trimite la întâmplare oameni acasă în timpul repetițiilor, ca echipa să învețe să se acopere reciproc. Scorul pe fotografii noi urcă la 96%.",
+      "sourceAnchor": null,
+      "wordCount": 145
+    },
+    {
+      "id": "u000383",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Fă un pas înapoi și uită-te la ce ai construit, pentru că toată cutia e acum pe masă.",
+      "sourceAnchor": null,
+      "wordCount": 18
+    },
+    {
+      "id": "u000384",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Există două feluri de piese. Primul fel face munca și ține ponderi învățate, iar fiecare piesă întruchipează un pariu despre date. Dense layer -ul nu pariază pe nimic; leagă totul de tot, ceea ce îl face general și scump. Convolution-ul pariază că lucrurile apropiate țin împreună și că un tipar înseamnă același lucru oriunde ar apărea, pariul potrivit pentru imagini, sunet și orice stă pe o grilă. Recurrent layer -ul pariază că lucrurile vin în ordine și că trecutul contează. Attention layer -ul („stratul de atenție”), inima modelelor de limbaj de azi, pariază că orice din intrare poate conta pentru orice altceva și lasă intrarea însăși să decidă ce. Când pariul unui strat se potrivește cu datele, el învață din mult mai puține exemple, pentru că nu trebuie să descopere ce presupune deja. Când pariul e greșit, nicio cantitate de date nu-l salvează complet.",
+      "sourceAnchor": null,
+      "wordCount": 144
+    },
+    {
+      "id": "u000385",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Al doilea fel e instalația: piese cu puține sau deloc ponderi, care există ca să țină primul fel antrenabil. Normalizarea, termostatul. Conexiunea reziduală, ocolul. Dropout-ul, zilele libere de la repetiții. Activation function-ul, îndoitura dintre straturi, atât de subțire încât abia contează ca piesă și atât de esențială încât nu o lași niciodată deoparte. Iar la intrare, pentru orice vine ca nume și nu ca număr, embedding layer -ul („stratul de embedding”): un tabel de căutare cu un rând pentru fiecare token, produs sau utilizator posibil, ale cărui rânduri sunt învățate. E felul în care începe un model de limbaj. Spre deosebire de Lego-ul adevărat, însă, piesele nu sunt gata când le îmbini: fiecare își capătă forma abia în antrenare, alături de vecinele ei, așa că un strat scos dintr-un model antrenat nu poate fi pur și simplu prins în altul fără antrenare suplimentară.",
+      "sourceAnchor": null,
+      "wordCount": 143
+    },
+    {
+      "id": "u000386",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Acum dezvăluirea care face diagramele de arhitectură lizibile. Din afară, grădina zoologică de nume de modele, ResNet, U-Net, BERT, GPT, pare nesfârșită. Dinăuntru, aproape toate sunt aceleași vreo zece piese, aranjate în ordini diferite. Iar aranjamentul urmează un tipar pe care tocmai l-ai redescoperit singur: muncitori specializați, plini de presupuneri, aproape de intrare, unde datele își mai au structura brută, și muncitori generali, fără presupuneri, aproape de ieșire, unde structura a fost deja redusă la dovezi. Un model de vorbire începe cu convoluții peste sunet și se termină cu straturi dense. Un Transformer începe cu un embedding și se termină cu un strat dens și un softmax („maximul blând”: piesa de instalație care transformă un rând de scoruri în procente care însumează o sută) peste vocabular. Softmax-ul face fiecare scor pozitiv ridicând un număr fix la puterea scorului, apoi împarte fiecare rezultat la totalul lor; din cauza puterilor, un scor cu doar câteva puncte peste celelalte ia aproape toată probabilitatea, motiv pentru care un model pare adesea mai hotărât decât arată scorurile lui brute. Mijloacele diferă. Capetele sunt aproape mereu aceleași. Cât despre cine proiectează un mijloc nou, de cele mai multe ori nimeni nu o face de la zero: echipele iau un plan care și-a dovedit deja valoarea, schimbă câte o piesă pe rând și păstrează schimbarea doar dacă scorul pe simulare se îmbunătățește; există și căutări automate care încearcă mii de aranjamente, dar costul lor face ca cea mai mare parte a muncii practice să fie refolosire atentă.",
+      "sourceAnchor": null,
+      "wordCount": 250
+    },
+    {
+      "id": "u000387",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Dacă vrei un model mental confortabil, gândește-te la un pipeline de date. Fiecare strat e o etapă care primește un tensor de o formă și emite un tensor de altă formă. Convoluțiile fac hărțile mai mici și mai adânci, pooling-ul le înjumătățește, straturile dense schimbă lungimea unui vector. Arhitectura e o semnătură de tip, formă la intrare, formă la ieșire, iar cele mai multe discuții reale de design sunt despre ce forme curg pe unde. Primul lucru de făcut cu orice model necunoscut e să afișezi forma după fiecare etapă.",
+      "sourceAnchor": null,
+      "wordCount": 90
+    },
+    {
+      "id": "u000388",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Ai acum o rețea care funcționează și o idee despre rostul fiecărei părți. Ce nu ai încă e o senzație a costului, și mai ales de ce după-amiaza petrecută antrenând-o va părea un fleac, în anii următori, pe lângă costul simplei ei rulări.",
+      "sourceAnchor": null,
+      "wordCount": 43
+    },
+    {
+      "id": "u000389",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "5.2 Cele două vieți ale unui model",
+      "sourceAnchor": "cele-două-vieți-ale-unui-model",
+      "wordCount": 8
+    },
+    {
+      "id": "u000390",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Un restaurant are două zile complet diferite. E anul dinainte de deschidere: bucătarul gustă sute de variante ale fiecărui fel, ajustează sarea, schimbă furnizorul, rescrie meniul de trei ori, arzând bani fără niciun client la orizont. Și e ziua deschiderii, și fiecare zi de după: rețetele sunt fixe, bucătăria le execută, iar singura întrebare e câte farfurii pot ieși pe oră și cu ce cost.",
+      "sourceAnchor": null,
+      "wordCount": 65
+    },
+    {
+      "id": "u000391",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Un model are exact aceste două vieți, iar aproape tot ce e confuz în economia machine learning-ului vine din amestecarea lor.",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000392",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Prima viață e training-ul („antrenarea”). E bucla din prefață, rulată serios: forward pass, măsori eroarea, backward pass („trecerea înapoi”), ajustezi fiecare pondere, următorul batch. Se întâmplă o dată, sau o dată per versiune. E anul dinainte de deschidere. A doua viață e inference („inferența”, adică a trage concluzii): modelul e gata, ponderile lui sunt înghețate, iar tu îi dai intrări și culegi răspunsuri. Intră o fotografie, iese „pisică”. Intră un prompt, iese un token. E ziua deschiderii, repetată la fiecare cerere, cât timp modelul e în serviciu. Aici imaginea restaurantului se rupe într-un fel instructiv: o bucătărie adevărată învață din fiecare reclamație din ziua deschiderii, pe când un model nu învață nimic de la al milionulea client, iar ce greșește va continua să greșească până când cineva antrenează o versiune nouă.",
+      "sourceAnchor": null,
+      "wordCount": 131
+    },
+    {
+      "id": "u000393",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Ce e exact diferit între cele două? Parcurge un singur pas de antrenare și numără ce trebuie să țină mașina în memorie. Forward pass-ul trece intrarea prin fiecare strat, dar trebuie să și ia notițe : rezultatul intermediar de la fiecare strat, pentru că backward pass-ul va avea nevoie de ele ca să urmărească vina, exact cum inspectorul din atelierul de mobilă avea nevoie să vadă munca fiecărui post. Apoi backward pass-ul calculează un gradient pentru fiecare pondere, adică încă o copie de mărimea modelului. Apoi optimizatorul, dacă e Adam, ține pentru fiecare pondere o memorie a gradienților recenți, adică încă două copii. Adună totul, iar antrenarea unui model are nevoie de câteva ori mai multă memorie decât simpla păstrare a ponderilor și de aproximativ trei ori calculul unui forward pass, la fiecare pas, timp de milioane de pași.",
+      "sourceAnchor": null,
+      "wordCount": 138
+    },
+    {
+      "id": "u000394",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Inferența aruncă aproape toate acestea. Fără notițe, pentru că nu va fi urmărită nicio vină înapoi. Fără gradienți, pentru că nu se va schimba nimic. Fără starea optimizatorului. Ponderile stau în memorie, intrarea se înmulțește prin ele și iese răspunsul. E doar forward pass-ul, o dată. De aceea un model care a avut nevoie de un cluster de plăci video ca să fie antrenat poate rula adesea pe hardware mult mai modest, uneori chiar pe un telefon; și de aceea rularea unui model e ieftină per cerere, dar poate deveni totuși costul dominant, pentru că ziua deschiderii se întâmplă de un milion de ori.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000395",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Cele două vieți au și bug-uri diferite, iar recunoașterea vieții în care te afli economisește ore. Problemele de antrenare sunt despre dacă modelul învață : loss-ul nu scade, sau scade și apoi explodează, sau scade pe setul de antrenare în timp ce crește pe cel de validare. Acelea sunt probleme de learning rate, probleme de date, tocilarul care memorează și leneșul care nu învață destul. Problemele de inferență sunt despre viteză, memorie și consecvență : răspunsul durează prea mult, modelul nu încape pe dispozitiv sau aceeași intrare dă răspunsuri puțin diferite în producție față de notebook. Ultima are o cauză clasică. Dropout-ul oprește semnale în timpul antrenării și trebuie oprit el însuși la inferență; uită linia care trece modelul în modul de evaluare și răspunsurile din producție se clatină la întâmplare.",
+      "sourceAnchor": null,
+      "wordCount": 129
+    },
+    {
+      "id": "u000396",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Undeva între cele două vieți stă un truc pe care inginerii îl întâlnesc mereu: batching -ul („gruparea în loturi”). La o brutărie, încălzirea cuptorului costă la fel fie că coci o pâine, fie douăzeci, așa că îl umpli. O placă video e la fel. Adesea, partea scumpă a inferenței e mutarea ponderilor din memorie în procesor, iar costul acesta se plătește o dată per forward pass, oricâte intrări ar merge împreună. Așa că serverele de inferență așteaptă câteva milisecunde ca să adune cereri, le pun într-un singur tensor de batch și le trec prin model împreună. Asta costă atât de puțin pentru că un batch de treizeci și două e doar un tabel mai înalt în aceeași înmulțire. Compromisul e între latență și debit (throughput), iar oricine a reglat o coadă de mesaje va recunoaște butonul.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000397",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Modelele de limbaj adaugă o răsucire zilei deschiderii care merită înțeleasă, pentru că explică facturile. Un clasificator rulează un forward pass per cerere. Un model de limbaj rulează un forward pass pentru fiecare token pe care îl generează , pentru că fiecare token nou e dat înapoi ca intrare pentru următorul. Un răspuns de cinci sute de cuvinte înseamnă câteva sute de forward pass-uri, unul după altul, iar modelul nu-l poate începe pe al doilea până nu l-a terminat pe primul. De aceea răspunsurile lungi costă mai mult decât cele scurte, de aceea tokenii de ieșire sunt de obicei mai scumpi decât cei de intrare și de aceea atâta efort de inginerie merge în cache-uirea rezultatelor intermediare de la tokenii anteriori, ca să nu fie recalculate de fiecare dată.",
+      "sourceAnchor": null,
+      "wordCount": 128
+    },
+    {
+      "id": "u000398",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Ca să faci totul concret, urmărește o singură cerere până la factură. Să zicem că o companie rulează un asistent de suport pe un model de limbaj găzduit care taxează, în cifre rotunde, un dolar pe milion de tokeni de intrare și patru dolari pe milion de tokeni de ieșire. Întrebarea unui client, plus instrucțiunile și cele trei pasaje găsite pentru asistent, ajung la două mii de tokeni. Răspunsul are trei sute de tokeni. Intrarea costă două mii de milionimi de dolar, o cincime de cent. Ieșirea costă o mie două sute de milionimi, puțin peste o zecime de cent. O conversație, cam o treime de cent. Pare nimic până când asistentul gestionează patruzeci de mii de conversații pe zi, moment în care ajunge la vreo o sută treizeci de dolari pe zi și cam cincizeci de mii pe an, iar departamentul financiar începe să întrebe de ce tokenii de ieșire costă de patru ori mai mult decât cei de intrare. Mare parte din răspuns e bucla token cu token de mai sus: tokenii de ieșire se produc unul câte unul, fiecare cu forward pass-ul lui, în timp ce tokenii de intrare sunt procesați toți împreună, într-un singur batch. E diferența dintre a servi un fel deja pus în farfurie și a găti fiecare lingură la comandă. Aceeași aritmetică explică de ce inginerii echipei își petrec timpul cu prompturi mai scurte, cache-uri și modele mai mici pentru întrebările ușoare.",
+      "sourceAnchor": null,
+      "wordCount": 239
+    },
+    {
+      "id": "u000399",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Așadar: antrenarea e anul scump de gustat și ajustat; inferența e ziua ieftină și repetată de servit, care pe durata vieții unui model folosit pe scară largă ajunge adesea să coste mai mult; iar fișierul modelului care trece dintr-o viață în alta nu e altceva decât teancul de grile din capitolul anterior, cu fiecare număr în sfârșit liniștit. Între cele două vieți mai e una, mai scurtă, în care un model terminat se întoarce la școală câteva săptămâni pentru o sarcină mai îngustă. Aceea e fine-tuning-ul („reglajul fin”), care va primi mai târziu un subcapitol al lui.",
+      "sourceAnchor": null,
+      "wordCount": 97
+    },
+    {
+      "id": "u000400",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Înainte să părăsim sala mașinilor, un ocol. Toate rețelele neuronale de până acum din carte au stocat cunoștințele în același fel: ca ponderi învățate încet, prin gradient descent. Există o idee mai veche și mai ciudată despre cum ar putea ține minte o mașină, una care învață într-un singur pas și tratează un gând ca pe un șir foarte lung, aproape aleatoriu, de numere. A influențat discret felul în care oamenii gândesc despre embeddings și merită un subcapitol al ei.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000401",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "5.3 Un alt fel de memorie",
+      "sourceAnchor": "un-alt-fel-de-memorie",
+      "wordCount": 7
+    },
+    {
+      "id": "u000402",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Ia două monede corecte și aruncă fiecare de zece mii de ori, notând rezultatele ca două șiruri lungi de cap și pajură. Acum compară șirurile poziție cu poziție. În câte poziții se potrivesc?",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000403",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "În jur de cinci mii, cu o sută în plus sau în minus. Așa arată, pur și simplu, întâmplarea. Și iată lucrul care face posibilă o întreagă ramură a informaticii: e practic imposibil, în zece mii de aruncări, să obții din întâmplare două șiruri care se potrivesc în șase mii de poziții. Șansele sunt astronomic de mici. Așa că în lumea șirurilor de zece mii de biți, „aleatoriu” înseamnă „cam pe jumătate asemănător”, iar orice e vizibil mai asemănător de atât nu poate fi o coincidență. Trebuie să însemne ceva.",
+      "sourceAnchor": null,
+      "wordCount": 90
+    },
+    {
+      "id": "u000404",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Acesta e punctul de plecare al hyperdimensional computing („calcul hiperdimensional”: calcul cu vectori de mii de dimensiuni), numit și vector symbolic architectures („arhitecturi simbolice vectoriale”), pe scurt VSA, o idee dezvoltată de-a lungul mai multor decenii de cercetători precum Tony Plate și Pentti Kanerva. E o abordare care nu învață deloc prin gradient descent, iar a o vedea alături de rețelele neuronale clarifică ce face de fapt fiecare.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000405",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Ideea începe cu o atribuire îndrăzneață. Fiecare concept primește un șir aleatoriu de zece mii de biți, tras o dată și neschimbat niciodată. CÂINE e un șir aleatoriu. PISICĂ e altul. STĂPÂN, ANA, LUNI, fiecare își primește pe al lui. Datorită faptului cu monedele, toate aceste șiruri sunt aproape la fel de departe unul de altul, cam pe jumătate asemănătoare, ceea ce e felul vectorial de a spune „fără legătură”. Încă nu s-a învățat nimic. Șirurile sunt doar nume, destul de lungi încât să nu poată fi confundate vreodată.",
+      "sourceAnchor": null,
+      "wordCount": 89
+    },
+    {
+      "id": "u000406",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Apoi vin două operații, iar împreună sunt toată gramatica.",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000407",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Prima e bundling („înmănunchere”): aduni vectorii, făcând un vot majoritar pe fiecare poziție. Înmănunchezi CÂINE și PISICĂ și obții un șir nou, să-i zicem ANIMALE, vizibil mai mult decât pe jumătate asemănător cu CÂINE și vizibil mai mult decât pe jumătate asemănător cu PISICĂ. Rezultatul seamănă cu ingredientele lui. Poți înmănunchea o duzină de lucruri într-un singur vector și să-l întrebi mai târziu „CÂINE e aici?”, primind un da sigur prin măsurarea asemănării. Bundling-ul e o mulțime, stocată ca un singur șir. Fiecare element nou adaugă puțin zgomot peste toate celelalte: cu zece mii de biți, o mulțime de la câteva zeci până la vreo două sute de elemente poate fi încă interogată sigur, iar dincolo de asta ecourile membrilor încep să se scufunde în zgomot.",
+      "sourceAnchor": null,
+      "wordCount": 126
+    },
+    {
+      "id": "u000408",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A doua e binding („legarea”): combini doi vectori cu XOR, care pune 1 acolo unde biții diferă și 0 acolo unde coincid; altfel spus, întoarce biții unui vector acolo unde celălalt are 1. Leagă CÂINE de STĂPÂN și obții un șir care e cam pe jumătate asemănător cu CÂINE și pe jumătate cu STĂPÂN, adică nu seamănă cu niciunul. E un nume nou, fără legătură. Iar XOR are o proprietate minunată: leagă rezultatul din nou de STĂPÂN și iese CÂINE, exact, pentru că al doilea XOR întoarce la loc exact biții pe care i-a întors primul. Binding-ul lipește două lucruri într-o pereche, iar lipiciul e reversibil.",
+      "sourceAnchor": null,
+      "wordCount": 106
+    },
+    {
+      "id": "u000409",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Pune-le pe amândouă împreună și poți stoca o întreagă înregistrare într-un singur vector. Un rând de bază de date precum animal: CÂINE, stăpân: ANA, zi: LUNI devine (ANIMAL legat de CÂINE) înmănuncheat cu (STĂPÂN legat de ANA) înmănuncheat cu (ZI legată de LUNI). Un singur șir de zece mii de biți. Ca să întrebi „cine e stăpânul?”, legi înregistrarea de STĂPÂN; partea ANA iese clar, iar celelalte părți devin zgomot pe care îl spală simpla lungime a vectorului. E un key-value store în care întregul tabel, cheile și căutarea sunt toate același fel de obiect: un șir lung de biți.",
+      "sourceAnchor": null,
+      "wordCount": 100
+    },
+    {
+      "id": "u000410",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Dacă ai folosit vreodată un Bloom filter (o structură care răspunde rapid „există X în mulțime?”, cu o mică șansă de eroare), asta îți va părea cunoscut. Și un Bloom filter stochează o mulțime într-un șir de biți de mărime fixă, și el răspunde rapid la întrebări de apartenență și și el își plătește compactitatea cu o mică șansă de confuzie. Calculul hiperdimensional e ideea aceasta crescută mare: nu doar „există X în mulțime?”, ci „cu ce e X în pereche?”, cu structura datelor trăind în aritmetică.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000411",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Acum, de ce i-ar păsa unui inginer care lucrează cu rețele neuronale?",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u000412",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Pentru că comparația lămurește. Într-o rețea neuronală, cunoștințele trăiesc în ponderi, iar ca să ajungă acolo e nevoie de milioane de pași de gradient. În calculul hiperdimensional, cunoștințele trăiesc în vectorii înșiși, iar ca să ajungă acolo e nevoie de un bundle sau un bind. Nu există buclă de antrenare. A învăța un fapt nou e o operație, iar a-l uita e tot o operație. Asta e aproape de felul în care se poartă o bază de date și foarte departe de felul în care se poartă o rețea, unde adăugarea unui singur fapt nou înseamnă încă o rundă de antrenare și unde a-l împiedica pe un model să uite o abilitate veche în timp ce învață una nouă e o durere de cap cunoscută, cu numele puțin dramatic de catastrophic forgetting („uitare catastrofală”).",
+      "sourceAnchor": null,
+      "wordCount": 134
+    },
+    {
+      "id": "u000413",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Abordarea explică ceva și despre embeddings, unde lucrurile asemănătoare primesc vectori apropiați. Faptul cu monedele îți spune de ce poate funcționa așa ceva în sute de dimensiuni. Într-un spațiu cu multe dimensiuni e o cantitate enormă de loc: poți așeza milioane de concepte astfel încât fiecare să fie departe de toate celelalte și să ai totuși o noțiune clară de „mai aproape decât întâmplarea”. Intuiția din puține dimensiuni nu mai funcționează aici. În trei dimensiuni nu poți înghesui multe puncte toate departe unele de altele. În zece mii, poți înghesui mai multe decât vei avea vreodată nevoie, iar abundența aceasta de loc e cea pe care se sprijină discret și embeddings, și hipervectorii. E faptul care, în povestea vecinilor celor mai apropiați, făcea din toată lumea un străin, văzut din partea cealaltă. Punctele aleatorii din multe dimensiuni sunt toate cam la fel de departe unele de altele. Pentru o căutare de vecini pe features brute, unde „aproape” trebuia să însemne ceva, asta strică totul; pentru calculul hiperdimensional, ale cărui nume sunt menite să nu aibă legătură între ele, e exact ce trebuie. Embeddings învățate fac apoi munca suplimentară de a apropia lucrurile înrudite.",
+      "sourceAnchor": null,
+      "wordCount": 193
+    },
+    {
+      "id": "u000414",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Există un preț și el e motivul pentru care calculul hiperdimensional a rămas mai mult în laboratoare de cercetare și hardware specializat decât în IDE-ul tău (mediul de dezvoltare, editorul de cod). Numele aleatorii nu știu nimic. CÂINE și PISICĂ pornesc la fel de străine una de alta ca CÂINE și SPREADSHEET, iar orice asemănare dintre ele trebuie construită de mână sau prin bundling. O rețea neuronală, în schimb, descoperă că câinii și pisicile țin împreună din milioane de exemple și descoperă structuri pe care nu s-a gândit nimeni să le codifice. Calculul hiperdimensional e robust la zgomot, rapid, transparent și ieftin de rulat pe dispozitive mici, de aceea atrage interes pentru senzori și cipuri cu consum mic și de aceea unii cercetători îl văd ca pe un model al felului în care ar putea funcționa memoria într-un creier. Dar nu învață din date brute cum învață rețelele.",
+      "sourceAnchor": null,
+      "wordCount": 148
+    },
+    {
+      "id": "u000415",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "E tentant să le vezi ca rivale și mai util să le vezi ca complementare. Rețelele sunt excelente la transformarea intrărilor brute și dezordonate, pixeli, sunet, text, în vectori cu sens. Metodele hiperdimensionale sunt excelente la compunerea vectorilor în structuri, înregistrări, secvențe, relații și la interogarea lor fără nicio antrenare în plus. Mai multe grupuri de cercetare experimentează exact cu această predare de ștafetă: o rețea ca strat de percepție care produce vectori, iar aritmetica hipervectorilor ca strat de memorie și raționament care îi stochează și îi combină.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000416",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Și mai e un motiv să ții minte subcapitolul acesta pentru mai târziu. Mecanismul de attention, căutarea în dicționar „cu aproximație” din inima modelelor mari de limbaj de azi, e și el un mod de a stoca și regăsi perechi cheie-valoare sub formă de vectori și de a amesteca multe dintre ele într-una singură. A venit din altă direcție și e învățat, nu atribuit, dar când vei vedea întrebări potrivite cu chei ca să scoată valori, s-ar putea să te gândești la o înregistrare legată de STĂPÂN și la ANA ieșind din zgomot.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000417",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Turul sălii mașinilor e aproape gata. Știm din ce e făcută o rețea, cum se îmbină piesele ei, ce se întâmplă în anul antrenării și în ziua deschiderii și am văzut un drum pe care domeniul nu l-a ales. Rămâne o întrebare practică, pe care o pune orice proiect înainte să înceapă: câte date, cât de mare un model și câți bani sunt de ajuns?",
+      "sourceAnchor": null,
+      "wordCount": 65
+    },
+    {
+      "id": "u000418",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "5.4 Cât e destul",
+      "sourceAnchor": "cât-e-destul",
+      "wordCount": 5
+    },
+    {
+      "id": "u000419",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Oricine s-a apucat de chitară la vârsta adultă cunoaște forma primului an. În prima lună, progresul e spectaculos: de la un acord bâjbâit la o melodie întreagă. Pe la șase luni, câștigurile sunt încă reale, dar mai mici, și fiecare costă mai multe seri. În al doilea an, încă o sută de ore din aceleași exerciții abia te mai urnesc, iar ce te-ar ajuta e cu totul altceva: un profesor care vede obiceiul care te ține pe loc sau un instrument mai bun, care ține acordajul. Exersatul contează în continuare. Doar că nu mai e piedica principală.",
+      "sourceAnchor": null,
+      "wordCount": 97
+    },
+    {
+      "id": "u000420",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Modelele învață pe același fel de curbă, iar întrebările pe care oamenii le pun cel mai des despre un proiect (de câte exemple avem nevoie, ne-ar ajuta un model mai mare, cât o să coste toate astea) sunt de fapt întrebări despre locul de pe curbă în care se află.",
+      "sourceAnchor": null,
+      "wordCount": 50
+    },
+    {
+      "id": "u000421",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Începe cu unealta cea mai practică, pentru că răspunde la prima întrebare pentru datele tale, nu pentru ale altcuiva. Antrenează modelul pe 10% din datele de antrenare, apoi pe 20%, apoi pe 50%, apoi pe toate, și măsoară de fiecare dată eroarea pe același set de validare. Pune cele patru puncte pe un grafic. Asta e o learning curve („curbă de învățare”: cum scade eroarea pe măsură ce modelul primește mai multe date), iar forma ei e un verdict. Dacă eroarea de validare încă scade abrupt la 100%, mai multe exemple vor ajuta foarte probabil, iar etichetarea unui nou lot e bani bine cheltuiți. Dacă s-a aplatizat, mai multe date de același fel vor aduce puțin; ești chitaristul din anul al doilea. Combin-o cu un obicei simplu, să citești mereu eroarea de antrenare lângă cea de validare, și de obicei îți dai seama de ce manetă să tragi. O diferență mare între cele două, care se îngustează pe măsură ce cresc datele, arată tot tocilarul, flămând de exemple, iar mai multe date vor ajuta. Două erori mari și apropiate arată un model prea simplu pentru sarcină, pe care mai multe exemple nu-l vor vindeca, dar un model mai expresiv sau trăsături mai bune ar putea. Două erori mici și o curbă plată înseamnă că ești aproape de tot ce îți pot spune datele acestea, iar următorul câștig va veni din etichete mai curate sau dintr-o întrebare mai bine pusă.",
+      "sourceAnchor": null,
+      "wordCount": 239
+    },
+    {
+      "id": "u000422",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Oamenii tot vor un număr și e corect să dăm ordine de mărime aproximative, atâta timp cât sunt citite ca puncte de plecare pentru experimentul de mai sus, nu ca promisiuni. Un clasificator simplu pe date tabelare curate, cu câteva trăsături informative, e adesea util cu câteva sute până la câteva mii de rânduri etichetate pe clasă, iar clasa mai rară dictează de obicei necesarul: o mie de fraude contează mai mult decât un milion de plăți cinstite. Un model de imagini construit prin transfer learning, pornind de la o rețea antrenată deja pe milioane de alte fotografii, se poate descurca bine cu câteva sute până la câteva mii de fotografii. Ca să înveți un model de limbaj un format sau un ton, prin fine-tuning sau cu LoRA, o metodă ușoară care antrenează doar un mic adaos la modelul înghețat, e nevoie adesea de sute până la câteva mii de exemple alese cu grijă, nu de milioane; ca să-i dai cunoștințe noi, e de obicei mai bine să folosești regăsirea, adică să-l lași să caute informația în documentele tale chiar în timp ce răspunde. Iar pre-antrenarea de la zero a unui model mare de limbaj e alt univers, cu text de antrenare măsurat în mii de miliarde de tokeni.",
+      "sourceAnchor": null,
+      "wordCount": 209
+    },
+    {
+      "id": "u000423",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Două avertismente însoțesc fiecare dintre aceste numere. Calitatea bate cantitatea, cu mult: etichetele „flaky” de vineri după-amiaza nu devin mai bune când sunt mai multe; doar predau mai apăsat lecția greșită. Iar exemplele trebuie să acopere cazurile pe care modelul le va întâlni. Aici imaginea chitarei se rupe. Pentru un muzician, o oră de game seamănă mult cu alta. Pentru un model, o mie de exemple care sunt aproape copii unele ale altora îl învață cam cât unul singur, în timp ce o sută de exemple din colțurile în care greșește îl învață foarte mult. Asta e toată ideea din spatele active learning („învățare activă”), în care modelul arată singur exemplele pe care ar vrea cel mai mult să le eticheteze un om, și a obiceiului deloc spectaculos de a elimina duplicatele înainte de antrenare.",
+      "sourceAnchor": null,
+      "wordCount": 135
+    },
+    {
+      "id": "u000424",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Acum întrebarea mai mare, cea din spatele unui deceniu de titluri de ziar: de ce s-au tot făcut modelele mai mari? Pentru că, cel puțin la modelele de limbaj, „mai mare” s-a dovedit previzibil. În 2020, o echipă de la OpenAI condusă de Jared Kaplan a antrenat familii de modele de limbaj de mărimi foarte diferite, pe cantități diferite de text, și a descoperit că loss-ul scădea pe curbe remarcabil de netede pe măsură ce creșteau numărul de parametri, cantitatea de date și cantitatea de calcul, de-a lungul multor ordine de mărime. Desenate pe axe logaritmice, curbele erau aproape niște drepte. Aceste regularități se numesc scaling laws („legi de scalare”: cum scade eroarea, previzibil, când crești modelul, datele și calculul), iar importanța lor practică a fost enormă. Un laborator putea antrena ieftin o serie de modele mici, putea trasa dreapta prin ele și putea prezice cam cât de bine s-ar descurca un model de o sută de ori mai mare, înainte să cheltuiască banii. Previzibilitatea aceasta, mai mult decât orice descoperire anume, e cea care le-a făcut pe organizații dispuse să cheltuiască zeci de milioane pe o singură antrenare.",
+      "sourceAnchor": null,
+      "wordCount": 189
+    },
+    {
+      "id": "u000425",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Doi ani mai târziu, o echipă de la DeepMind condusă de Jordan Hoffmann a corectat rețeta. Articolul lor, cunoscut de obicei după numele modelului, Chinchilla, punea de fapt o întrebare de brutărie. Să zicem că ai un buget fix pentru o extindere. Cuptoarele fără făină stau degeaba; făina fără cuptoare se învechește în magazie. Undeva există un echilibru. La modelele de limbaj, cuptoarele sunt parametrii și făina e textul de antrenare, iar studiul din 2022 a conchis că modelele mari ale vremii erau aproape numai cuptoare: pentru un buget de calcul dat, era mai bine să antrenezi un model mai mic pe mai mult text, crescându-le pe amândouă cam în același ritm. O regulă practică rămasă de aici, cam douăzeci de tokeni de antrenare pentru fiecare parametru, e încă citată pe larg. Chinchilla însuși, cu 70 de miliarde de parametri antrenați pe aproximativ 1.400 de miliarde de tokeni, a depășit modelul Gopher al aceleiași DeepMind, de patru ori mai mare, antrenat cu cam același calcul.",
+      "sourceAnchor": null,
+      "wordCount": 166
+    }
+  ]
+}

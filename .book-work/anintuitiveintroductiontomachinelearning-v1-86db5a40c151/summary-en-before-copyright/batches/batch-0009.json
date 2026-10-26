@@ -1,0 +1,256 @@
+{
+  "batch": "batch-0009.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0007",
+  "chapterTitle": "Chapter 6 — The Other Machine",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000429",
+      "chapterId": "chapter-0007",
+      "kind": "h1",
+      "text": "Chapter 6 — The Other Machine",
+      "sourceAnchor": "chapter-6-the-other-machine",
+      "wordCount": 5
+    },
+    {
+      "id": "u000430",
+      "chapterId": "chapter-0007",
+      "kind": "h2",
+      "text": "6.1 A Thousand Models of a Coffee Cup",
+      "sourceAnchor": "a-thousand-models-of-a-coffee-cup",
+      "wordCount": 9
+    },
+    {
+      "id": "u000431",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Close your eyes and have someone put an object in your hand. Touch it with one fingertip. You feel something smooth and curved. That could be many things. Slide the finger up and you meet an edge, a rim. Slide it sideways and down, and you find a loop sticking out. Coffee cup. Three touches, perhaps four, and you are certain, even though no single touch told you much.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000432",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Now do it again, but grab the object with your whole hand. You know instantly. No sliding, no sequence of guesses.",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000433",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "This small experiment sits at the heart of one of the boldest recent attempts to explain how the brain works, and its author began his career not as a neuroscientist but as an engineer. Jeff Hawkins designed the PalmPilot, one of the first successful handheld computers, then spent the following decades on what he considered the more interesting problem: how the neocortex, the wrinkled outer layer of the brain where perception, language and planning live, actually computes. He laid out his early ideas in On Intelligence in 2004 and a fuller theory in A Thousand Brains in 2021. What follows is that theory as he and his colleagues tell it. It is influential, it is debated, and it is a wonderful way to think about how a brain might do what no network in this book yet does well.",
+      "sourceAnchor": null,
+      "wordCount": 139
+    },
+    {
+      "id": "u000434",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "The story starts with an older and stranger observation. In 1978, the neuroscientist Vernon Mountcastle pointed out something that should have been more surprising than it was. The neocortex has areas for vision, for hearing, for touch, for language, for planning. You would expect each to be built differently, the way a graphics card differs from a network card. Under the microscope, they are not. The tissue looks almost the same everywhere: the same layers, the same cell types, the same wiring pattern, repeated in small vertical units called cortical columns . Mountcastle proposed that the cortex runs the same algorithm everywhere, and that what makes one area “visual” is simply that it is connected to the eyes.",
+      "sourceAnchor": null,
+      "wordCount": 117
+    },
+    {
+      "id": "u000435",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "The most striking evidence came from an experiment that sounds like science fiction. Around 2000, a team at MIT led by Mriganka Sur rewired newborn ferrets so that signals from their eyes were sent to the part of the brain that normally processes sound. The “auditory” cortex learned to see. It developed orientation-tuned maps much like those of a visual cortex, and the animals responded to light through it. People who are born blind show a gentler version of the same thing: their visual cortex is put to work on touch, for example when reading Braille. One algorithm, many uses. For a programmer, it is a familiar idea: one well-written generic library, instantiated with different input types.",
+      "sourceAnchor": null,
+      "wordCount": 117
+    },
+    {
+      "id": "u000436",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "So what does each column compute? Here is where Hawkins makes his biggest claim. In a convolutional network, each inspector sees only a fragment, and only the last one sees “cat”. In the Thousand Brains theory, every column learns complete models of whole objects . There are, by Hawkins’ estimate, about 150,000 columns in the human neocortex, each roughly the size of a grain of rice. Each one, receiving input from its own small patch of skin or retina, tries to recognize the whole cup on its own.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000437",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "How can a column hold a whole object if it only ever feels one small patch at a time? The answer is the key idea of the theory: reference frames . A column does not just record “smooth, curved”. It records “smooth and curved at this location on the object ”. As your finger moves, the column tracks where on the cup the finger now is, and stores what it feels there. The cup becomes a little map: rim up here, handle over there, flat base at the bottom, every feature pinned to a location in the cup’s own coordinate system. In the theory, the column knows where the finger is from the movement itself: the brain knows which motor command it has just sent, so it can update the finger’s position on the cup the way a sailor without GPS updates her position from speed and heading. This is what grid cells, described below, are thought to do for the whole body in a room.",
+      "sourceAnchor": null,
+      "wordCount": 164
+    },
+    {
+      "id": "u000438",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "If you have ever worked with a game engine or a 3D scene graph, you already know this structure. Every object has its own local coordinate system, and its parts are positioned relative to it: the cup’s handle is at (+4, 0, 3) in the cup’s frame, regardless of where in the room the cup stands or how it is rotated. Move the cup, and the handle moves with it, because the relationship is stored, not the absolute position. A dictionary keyed by location, holding features as values: that is a column’s model of an object.",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000439",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "The idea of location-tracking cells is not speculation. In 1971 John O’Keefe found place cells in the rat hippocampus, neurons that fire when the animal is at one particular spot in a room. In 2005 May-Britt and Edvard Moser found grid cells nearby, neurons that fire at many spots arranged in a strikingly regular triangular grid, like a coordinate system laid over the floor. The three shared the Nobel Prize in 2014. Hawkins’ theory proposes that the neocortex reuses a version of this navigation machinery inside every column, not to track where you are in a room, but where your finger is on a cup, or where your eyes are on a face.",
+      "sourceAnchor": null,
+      "wordCount": 113
+    },
+    {
+      "id": "u000440",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Now the second experiment makes sense. With one finger, a single column has to move and collect several observations before its map settles on “cup”. With the whole hand, many columns each get one observation at once. Each is still uncertain on its own: the thumb thinks cup or bowl, the index finger cup or jug, the middle finger cup or can. But they talk to each other, and only one object is consistent with all their observations together. They vote , and the vote settles in an instant. You saw this principle already, in the random forest’s crowd of half-blind experts; and engineers know it from distributed systems, where replicas that each hold the full state reach a decision by quorum. The Thousand Brains theory suggests the brain does recognition by something like consensus among thousands of independent models, each with the whole picture and a different, partial view.",
+      "sourceAnchor": null,
+      "wordCount": 149
+    },
+    {
+      "id": "u000441",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "The theory makes one further, more daring claim. If columns are the same everywhere, and if columns in sensory areas organize knowledge in reference frames, then columns in the areas for language, mathematics and planning might do the same. Thinking, in this view, is a kind of movement through maps of concepts, just as touching is movement over a map of an object. That sounds abstract, but there is suggestive evidence. In a 2016 study, researchers trained people to think about made-up birds that differed only in the lengths of their necks and legs. As participants mentally “moved” between birds, brain areas that normally carry grid-cell signals for physical space showed a grid-like pattern for this abstract space of bird shapes.",
+      "sourceAnchor": null,
+      "wordCount": 121
+    },
+    {
+      "id": "u000442",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Why should an engineer care about a theory of the cortex? Because it highlights, sharply, what today’s networks lack. A CNN recognizes a cat largely from a bag of features, which is why it can be fooled by elephant-skin texture on a cat-shaped outline. It has no explicit map of where the parts are relative to each other. Geoffrey Hinton’s capsule networks, proposed in 2017, were one attempt to give networks exactly such relative positions. Language models, for their part, learn without moving, touching or acting in the world at all. And the brain learns continuously, a new object in a few touches, without forgetting the old ones, the property whose absence in networks we met as catastrophic forgetting. The theory also leans on another familiar feature: at any moment, only a small percentage of cortical neurons are active, giving long, sparse patterns with the same enormous room for distinct meanings that made hypervectors work.",
+      "sourceAnchor": null,
+      "wordCount": 155
+    },
+    {
+      "id": "u000443",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "It is important to hold all this with the right grip. The Thousand Brains theory is one coherent proposal, not settled science. Many neuroscientists are skeptical of parts of it, especially the claim that every column learns complete object models, and the evidence for grid-like reference frames throughout the neocortex is still incomplete. What makes it valuable, even if parts turn out to be wrong, is that it is precise enough to test and engineered enough to build. Hawkins’ company has been doing exactly that, trying to turn the theory into software.",
+      "sourceAnchor": null,
+      "wordCount": 92
+    },
+    {
+      "id": "u000444",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "If columns build models by predicting what they will feel at the next location, then prediction must be doing a great deal of work in the brain. A whole school of neuroscience now argues that prediction is not one function among many, but the brain’s fundamental job. And that brings us, unexpectedly, very close to the idea at the heart of every language model.",
+      "sourceAnchor": null,
+      "wordCount": 64
+    },
+    {
+      "id": "u000445",
+      "chapterId": "chapter-0007",
+      "kind": "h2",
+      "text": "6.2 The Prediction Machine",
+      "sourceAnchor": "the-prediction-machine",
+      "wordCount": 5
+    },
+    {
+      "id": "u000446",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "You are sitting in your kitchen late at night, reading. Suddenly the room feels different, and it takes you a second to understand why. The fridge has stopped humming.",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000447",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Notice what just happened. For the past hour, the hum was entering your ears continuously, and you heard nothing. The moment it disappeared, you noticed. Your brain did not report the sound; it reported the change . Or try this one: walking down a dark staircase, you put your foot down for one more step, and there is no step. The jolt that goes through your whole body is out of proportion to the few centimeters you dropped. What jolted you was not the floor. It was the failure of a prediction you did not know you were making.",
+      "sourceAnchor": null,
+      "wordCount": 98
+    },
+    {
+      "id": "u000448",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "A large and growing school of neuroscience takes these everyday moments as the key to the whole brain. Its central claim, usually called predictive processing or predictive coding , is that the brain is not mainly a device for receiving signals from the world. It is a device for predicting them. Higher areas constantly send predictions down toward the senses: given what I believe is going on, here is what you should be seeing and hearing next. The senses compare those predictions with what actually arrives, and only the difference, the prediction error , travels back up. When the prediction is good, very little needs to be sent. When something surprising happens, the error rises through the levels until some level revises its story. The errors are also the lessons: each surprise nudges the higher areas’ story a little, so the next prediction is closer, much as the loss nudges a model in training, and over a lifetime of surprises the predictions become good enough that most of the day is silence.",
+      "sourceAnchor": null,
+      "wordCount": 170
+    },
+    {
+      "id": "u000449",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "The idea is older than computers. In the 1860s, the physicist Hermann von Helmholtz described perception as “unconscious inference”, the brain guessing at the causes of its sensations. In 1999, Rajesh Rao and Dana Ballard showed that a network built on this principle reproduced some odd properties of real neurons in the visual cortex. The neuroscientist Karl Friston generalized it into an ambitious mathematical theory, and philosophers and neuroscientists such as Andy Clark ( Surfing Uncertainty ), Anil Seth ( Being You ) and Lisa Feldman Barrett ( How Emotions Are Made ) have spent the past decade exploring what it would mean for how we see, feel and even experience ourselves.",
+      "sourceAnchor": null,
+      "wordCount": 106
+    },
+    {
+      "id": "u000450",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Engineers have been using this exact trick for decades, in every video you have ever streamed. A video file does not store every frame as a full picture. It stores one complete frame, then for the following frames it stores only what differs from a prediction, usually “the same as before, perhaps shifted a little”. A shot of someone talking in front of a still wall costs almost nothing after the first frame, because almost nothing is surprising. A cut to a new scene is expensive, because everything is. Your brain, according to predictive processing, handles the world the same way: send the expectation down, send only the surprise up. It is an extraordinarily efficient design for a system that runs on twenty watts. The codec picture breaks in one revealing place. A codec’s predictions are fixed rules, and it always defers to the frame that actually arrives; a brain learns its predictions, and when they are strong enough it can overrule the senses, as the next paragraph shows.",
+      "sourceAnchor": null,
+      "wordCount": 169
+    },
+    {
+      "id": "u000451",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "This view explains some things that are otherwise puzzling. You cannot tickle yourself, and a 1998 study by Sarah-Jayne Blakemore, Daniel Wolpert and Chris Frith showed why: when you move your own hand, your brain predicts the touch precisely, so there is no prediction error to feel, and the sensation is muted. When someone else does it, the touch is unpredictable, and it tickles. Optical illusions become easier to understand too. In the hollow-mask illusion, the inside of a mask, which is concave, looks convincingly like a normal face bulging toward you. Your brain’s prediction that faces bulge outward is so strong that it overrides the evidence from your eyes. Anil Seth puts it provocatively: what you experience as reality is a kind of “controlled hallucination”, the brain’s best guess, constantly corrected by the senses.",
+      "sourceAnchor": null,
+      "wordCount": 135
+    },
+    {
+      "id": "u000452",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "If this reminds you of something, it should. A language model is also a prediction machine. Its core training is a single task, predicting the next piece of text, and its learning signal is exactly a prediction error: how much probability it failed to give to what actually came next. That parallel is real, and it is one reason the field finds predictive processing so interesting. The differences are just as instructive. The brain predicts in order to act and to keep its body alive, from moment to moment, and it never stops learning. A language model predicts text, learns mostly in one enormous training run, and is then frozen. It predicts; it does not live with the consequences of its predictions.",
+      "sourceAnchor": null,
+      "wordCount": 122
+    },
+    {
+      "id": "u000453",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "How does a brain learn, if not by backpropagation? This is one of neuroscience’s great open questions, but the oldest answer is still a good starting point. In 1949 the psychologist Donald Hebb proposed that when one neuron repeatedly helps to make another fire, the connection between them grows stronger. The neuroscientist Carla Shatz later summed it up in a phrase generations of students have remembered: cells that fire together wire together. The important thing about Hebbian learning is that it is local . Each connection adjusts using only information available right where it is, the activity of the two neurons it joins. Backpropagation, by contrast, needs the error measured at the very end of the network carried back precisely through every layer, the workshop inspector walking the whole line. Real neurons do not seem to have such an inspector. Engineers know the difference well: a system where each service tunes its own cache from its own traffic, versus one central optimizer that must see everything. Local rules are robust and cheap; global ones are precise and expensive. Finding learning rules that are both local and powerful is an active research area on both sides.",
+      "sourceAnchor": null,
+      "wordCount": 194
+    },
+    {
+      "id": "u000454",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "There is one more trick in the brain that machine learning has already borrowed, and it involves sleep. Your brain seems to have two memory systems with very different speeds. The hippocampus , a curled structure deep inside, learns fast: a single experience, such as where you parked this morning, can be stored in one go. The neocortex learns slowly, gradually extracting general knowledge from many experiences. In 1995, James McClelland, Bruce McNaughton and Randall O’Reilly argued that this split is no accident. A system that learned everything quickly in one place would overwrite old knowledge with every new event, exactly the catastrophic forgetting we met earlier. So the brain records new experiences quickly in the hippocampus, and then, especially during sleep, replays them to the cortex again and again, interleaved with older memories, so the cortex can absorb them without erasing what it already knows. Recordings in rats in the 1990s showed exactly this: the sequence of place cells that fired while a rat ran a maze fired again, in order and faster, while it slept. Machine learning uses the same trick: when a model is taught something new, mixing a share of old examples into the new training data, called rehearsal, is one of the simplest and most effective defenses against catastrophic forgetting, and it is often used when language models are fine-tuned.",
+      "sourceAnchor": null,
+      "wordCount": 224
+    },
+    {
+      "id": "u000455",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "If you have worked with databases, you know this design. Writes go first into a fast, append-only log; later, a background process compacts them into the main, carefully organized storage. Many modern storage engines are built exactly like that. And DeepMind’s reinforcement learning agent that learned Atari games did something similar: it stored its past experiences in a buffer and replayed them to itself in shuffled order while learning, an idea its authors explicitly connected to the hippocampus.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    },
+    {
+      "id": "u000456",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Put the two sections of this chapter side by side and a picture of the brain emerges that is very different from a stack of grids trained once with backpropagation. It is a machine that predicts before it perceives, that moves in order to learn, that holds thousands of small models and lets them vote, that records fast and consolidates slowly, and that does all of it on the power of a dim light bulb. Neither theory is final, each has serious critics, and they do not agree with each other everywhere. But machine learning has borrowed from this machine before, convolutions from the visual cortex and replay from the hippocampus, and there is every reason to think it will borrow again: learning that never stops and never overwrites, maps of objects and ideas, surprise as the currency of learning, and an efficiency that today’s data centers can only envy.",
+      "sourceAnchor": null,
+      "wordCount": 150
+    },
+    {
+      "id": "u000457",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "One image has run through both sections: the map. Grid cells mapping a room, columns mapping a coffee cup, perhaps the cortex mapping ideas. When we return to the machines, the first thing we will see is that they, too, have learned to build maps, not of rooms, but of meanings.",
+      "sourceAnchor": null,
+      "wordCount": 51
+    },
+    {
+      "id": "u000458",
+      "chapterId": "chapter-0007",
+      "kind": "p",
+      "text": "Going further. If you wondered what a language model’s own prediction game looks like up close, section 7.3 lets you watch a model learn it. Whether machines can also learn by acting in the world, as brains do, is taken up in section 7.6. Why fine-tuning risks catastrophic forgetting is part of section 9.2, and how teams guard against it when they update a model, rehearsal included, is part of section 11.5.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    }
+  ]
+}

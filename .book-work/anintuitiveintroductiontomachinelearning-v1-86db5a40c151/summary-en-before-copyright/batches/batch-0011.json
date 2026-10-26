@@ -1,0 +1,192 @@
+{
+  "batch": "batch-0011.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0008",
+  "chapterTitle": "Chapter 7 — Language and Meaning",
+  "segment": 2,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000523",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Two things set the size. The first is cost. The work of attention, as the detectives’ meeting warned, quadruples when the text doubles, and the KV cache, the stored badges and files of earlier tokens, grows with every token on the board, for every conversation being served at once. A longer board is slower and hungrier for memory, which is why long inputs cost more and why engineers have fought so hard to make them cheaper. One common trick is to cache the reading of a fixed beginning: when every request opens with the same long instructions and documents, their badges and files are computed once and reused, and providers often bill those cached tokens at a discount. The second thing is training. A model learns to use the positions it has practiced on, through the position information mixed into each token. Hand a model trained only on short texts a very long one and it meets positions it has never seen, and its output usually falls apart. Long boards are typically taught in a later stage of training, on long documents, with adjustments to the way positions are written. The size of the board is a property of training, not a number someone can simply raise in a configuration file.",
+      "sourceAnchor": null,
+      "wordCount": 211
+    },
+    {
+      "id": "u000524",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "What happens at the edge? The model itself never decides. The application around it must act before the text reaches the model, and it has three choices. It can refuse, telling the user the conversation is too long. It can cut, usually dropping the oldest part, which is exactly where the instructions tend to live, as in the migration story. Or it can condense, like a clerk who, when the board fills, rewrites the oldest notes as a short summary in one corner and erases the rest. A summary loses detail by design: the one-second rule may survive as “be careful with locks”. And here is the point that surprises most people. The model never sees what was cut and has no way to know anything is missing. It does not feel a gap. It answers from what is on the board as if that were everything there ever was. Well-built applications therefore pin what must not be lost, rewriting the critical instructions at the top of the board on every turn.",
+      "sourceAnchor": null,
+      "wordCount": 172
+    },
+    {
+      "id": "u000525",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Inside the limit, the board is not read evenly. In a 2023 study titled Lost in the Middle , researchers placed the answer to a question at different positions among some twenty retrieved documents. Models used it best when it sat near the beginning or the end, and noticeably worse when it sat in the middle. Newer models do much better on the simplest version of the test, finding one planted sentence in a long text, often called a needle in a haystack. But real work is harder than finding a needle: it means combining several facts scattered across the board, and on such tasks quality still tends to decline as the board fills. More text is also more distraction, because passages that look relevant but are not still pull at the model’s attention. The practical habits follow directly: put the important things at the start or the end, keep the board tidy, and prefer fetching the relevant pages over pasting everything.",
+      "sourceAnchor": null,
+      "wordCount": 161
+    },
+    {
+      "id": "u000526",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "That also settles the question of long context versus RAG, which the open-book exam answered only briefly. For a handful of documents that fit comfortably, paste them: it is the simplest arrangement, the model sees everything, and there is no search step to get wrong. For a whole wiki, retrieval still wins, on cost and space and because of the uneven reading just described. Many real systems use both, retrieval to choose what matters and a generous board to hold it.",
+      "sourceAnchor": null,
+      "wordCount": 81
+    },
+    {
+      "id": "u000527",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Compare the board with the index card of the recurrent networks. The card had no edge, but it faded: old details were overwritten little by little. The board does not fade, and every word on it is as legible as when it was written, but it has a hard edge, and beyond it there is nothing at all.",
+      "sourceAnchor": null,
+      "wordCount": 58
+    },
+    {
+      "id": "u000528",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "How, then, does a chat assistant “remember” you from one conversation to the next? The board is still wiped. What persists is a notebook carried between meetings. The application saves notes, facts you mentioned, preferences, summaries of earlier chats, in ordinary storage, and at the start of a new conversation writes the relevant ones back onto the fresh board, often choosing them with the same kind of search that retrieval uses. The model’s weights do not change. Memory, in these products, is text written back onto the board, which also means it can be shown to you, deleted, or be out of date, like any note.",
+      "sourceAnchor": null,
+      "wordCount": 106
+    },
+    {
+      "id": "u000529",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Agents live on the board too, and they fill it quickly, because every tool result lands there: a file that was read, a test log, a page of search results. Builders manage with the same tools an organized person uses. They have the agent summarize older steps, the clerk again. They give it a notes file that it writes to and rereads, a to-do list kept on disk instead of on the board. And they split large jobs into sub-tasks handed to fresh copies of the model, each with a clean board, which report back only a short result, the way a lead engineer does not read every log but asks colleagues for a summary.",
+      "sourceAnchor": null,
+      "wordCount": 115
+    },
+    {
+      "id": "u000530",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Here the whiteboard picture breaks, in two places. A person reads a board with eyes that skip: you glance past the lunch menu without reading it. The model processes every token on the board at every step of its writing; nothing is skipped, everything is weighed, even if the weight is close to zero. That is where both the cost and the dilution come from: every irrelevant line costs computation and competes, a little, for attention. And a real whiteboard has a fixed area however you write, while the model’s board is counted in tokens, so the same content can take far more room in one form than in another: a pasted JSON dump or a long stack trace can eat thousands of tokens for a few lines of meaning.",
+      "sourceAnchor": null,
+      "wordCount": 130
+    },
+    {
+      "id": "u000531",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "So the board is the model’s whole world while it works: no senses, no yesterday, only text and the weights frozen at the end of training. That sharpens a question the book has so far left open. How does a system that only ever learned to continue text manage, with nothing but a board of words, to reason, translate and write working code?",
+      "sourceAnchor": null,
+      "wordCount": 63
+    },
+    {
+      "id": "u000532",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.6 Why Guessing the Next Word Goes So Far",
+      "sourceAnchor": "why-guessing-the-next-word-goes-so-far",
+      "wordCount": 10
+    },
+    {
+      "id": "u000533",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Go back to the new engineer, the one who read the entire wiki in her first month, and give her a game. She is shown the opening of a postmortem she has never seen and must guess the next sentence. “At 14:02 the checkout service began returning errors. The on-call engineer rolled back the morning’s deploy, but the errors continued. The root cause was…” A guess based on which words usually follow “root cause was” will do poorly. To guess well, she has to reason that a failure which survives a rollback was probably not in the code, so perhaps a configuration change, an expired certificate, a dependency, the database. She needs a picture of how the system works. Reward her only for guessing well, make her play the game billions of times on every subject people write about, and she will be pushed to learn whatever makes text predictable: grammar first, because it is everywhere, then facts, then the patterns of arithmetic, the habits of code, the way arguments go.",
+      "sourceAnchor": null,
+      "wordCount": 172
+    },
+    {
+      "id": "u000534",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "That is the most common answer to that open question, and it is worth stating carefully. The next-word game is simple to set but not simple to win. Its answer key contains everything people write down, so a very good player has to capture a great deal of whatever produced the text. Nothing in the training says “learn to reason” or “learn to translate”; those skills are learned, to the degree they are, because they lower the loss. It is the same idea as predictive processing in the brain, prediction as a route to a model of what produces the signal, with one difference: the brain predicts its own senses, while the language model predicts text, a second-hand record of the world.",
+      "sourceAnchor": null,
+      "wordCount": 122
+    },
+    {
+      "id": "u000535",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "A second way to see it is through compression. The weights of a large model take up many times less space than the text it was trained on, so it cannot store that text word for word, although it does memorize some passages that appear many times. Information theory has long known that a good predictor and a good compressor are two faces of the same thing, and to compress well you keep the regularities and drop the accidents. Regularities are what generalization is made of. The crammer had room to memorize every answer; a language model does not, so it is pushed toward the patterns instead.",
+      "sourceAnchor": null,
+      "wordCount": 107
+    },
+    {
+      "id": "u000536",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "One consequence surprised even the people who first saw it at scale. Write a few examples on the board, “cheval: horse, chien: dog, chat:”, and the model continues the pattern, though not a single weight changes. This is in-context learning , made famous by the 2020 paper that introduced GPT-3, titled Language Models are Few-Shot Learners . Part of the explanation is that training text is full of lists, tables, exercises and repeated formats, where noticing a pattern earlier on the page is the best way to predict what comes later, so a model good at the game learns to pick up patterns from its own board. Researchers have found specific circuits in Transformers, called induction heads, that copy patterns of this kind and seem to account for part of the effect, though not all of it. It is learning in a loose sense only: it lasts exactly as long as the examples stay on the board.",
+      "sourceAnchor": null,
+      "wordCount": 155
+    },
+    {
+      "id": "u000537",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Why does size matter so much, when a small model playing the same game produces the keyboard’s loops? The overall loss falls smoothly and predictably as models, data and compute grow together, along the scaling curves we met when asking how much data is enough. Specific abilities, though, can look as if they appear suddenly. On three-digit addition, small models score near zero, and above some size accuracy climbs fast. This was called emergence , and it is contested. A 2023 paper argued that many sudden jumps are partly a product of how they are scored: if a sum counts only when every digit is right, steady improvement on each digit shows up as an abrupt jump in the all-or-nothing score, and with a gentler measure the curve often looks smooth. Other tasks seem to need several skills at once, and a task that needs all of them can look abrupt even when each skill improves gradually. A fair summary: underneath, improvement is mostly gradual, but what a model is useful for can change abruptly as it crosses thresholds that matter to us.",
+      "sourceAnchor": null,
+      "wordCount": 182
+    },
+    {
+      "id": "u000538",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The same mechanics explain where these models fail, often on things that look trivial. Ask how many r’s are in “strawberry” and a strong model may get it wrong, because it never sees letters, only tokens; spelling is a learned fact about each token, like a phone number known by heart, not something it looks at. Ask it to multiply two eight-digit numbers in one go and it struggles, because every token receives the same fixed amount of computation, one forward pass through the same number of layers, whether the question is two plus two or a long multiplication. Writing out the steps buys it more passes: each intermediate result written on the board becomes input for the next token. That is why asking for step-by-step working, a technique researchers named chain of thought in 2022, helps, and why reasoning models are trained to write long working before they answer. Spending more computation at answer time, by writing longer chains or by sampling several attempts and checking them, is called test-time compute , and it has become a second dial next to model size: the same chess player plays better at classical time controls than at blitz. Every token of thinking is a forward pass someone pays for, and whether the written reasoning is the real cause of the answer is a separate question.",
+      "sourceAnchor": null,
+      "wordCount": 223
+    },
+    {
+      "id": "u000539",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The game has also outgrown words. Cut an image into small patches, turn each patch into a vector the way a token becomes an embedding, and place the patches on the board next to the words; sound can be cut up in a similar way. A model trained on such mixed boards learns to predict across them, and some models also produce image or sound tokens of their own. This is how multimodal assistants read screenshots, charts and photographs. Nothing fundamental changed. The board simply holds more than text.",
+      "sourceAnchor": null,
+      "wordCount": 89
+    },
+    {
+      "id": "u000540",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Does the model, then, understand? There are two serious camps. One, voiced in a much-cited 2021 paper by Emily Bender, Timnit Gebru and colleagues that called these systems stochastic parrots, holds that a model trained on the form of language alone stitches patterns together without access to meaning, and that its fluency misleads us. The other holds that predicting well forces a model to build internal structure that works like a model of what the text is about. A small but striking piece of evidence was published in 2023: researchers trained a Transformer only on sequences of legal moves in the board game Othello, never showing it a board, and found that the current state of the board could be read out of its internal numbers, and that altering those numbers changed its next move accordingly. That is a toy, far from human language, and both camps agree these models are not people; they disagree about whether understanding is the right word for what they have. This book’s stance is the practical one: judge a model by its behavior on honest tests, with problems it cannot have seen, beware of test questions that leaked into its training text, and keep the open question open.",
+      "sourceAnchor": null,
+      "wordCount": 204
+    },
+    {
+      "id": "u000541",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The chapter on the brain noted that language models learn without moving, touching or acting. Research on world models tries to close that gap: models that predict what happens next if a given action is taken, a flight simulator learned from data rather than programmed. Video models trained to predict the next frames are being tested as simulators for robots and game agents, and robots are learning from the results of their own movements. It is early work, and whether such models capture physics or merely plausible-looking pixels is itself debated.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000542",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Here the picture of the new engineer breaks. She has a body, goals, colleagues to ask and a memory that carries over from one day to the next; she reads the wiki in order to do a job, and she lives with the consequences when she is wrong. The model reads in order to predict, keeps nothing from one conversation to the next, and weighs every page by how often its patterns recur rather than by whether it deserves trust.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000543",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "One word kept returning through this section: scale. Bigger models, more text, more computation, more thinking at answer time. That closes our tour of language and meaning. Before we turn to how models are taught and how they fail, two things remain: the machines that make pictures rather than read them, and the handful of blueprints that engineers combine all of these pieces into.",
+      "sourceAnchor": null,
+      "wordCount": 64
+    },
+    {
+      "id": "u000544",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Going further. If you wondered how long whiteboards are made affordable, and how state-space models bring back the fading card of the recurrent networks, section 8.4 looks at both more closely. Whether a model can tell when it does not know is the subject of section 10.5, and whether the reasoning a model writes out is the real cause of its answer is taken up in section 10.6. And why a document handed to the model can turn into an attack is explained in section 11.3.",
+      "sourceAnchor": null,
+      "wordCount": 90
+    }
+  ]
+}

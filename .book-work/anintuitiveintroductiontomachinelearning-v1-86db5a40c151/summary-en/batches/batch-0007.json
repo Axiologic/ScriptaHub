@@ -1,0 +1,448 @@
+{
+  "batch": "batch-0007.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0006",
+  "chapterTitle": "Chapter 5 — How Models Are Built and Run",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000373",
+      "chapterId": "chapter-0006",
+      "kind": "h1",
+      "text": "Chapter 5 — How Models Are Built and Run",
+      "sourceAnchor": "chapter-5-how-models-are-built-and-run",
+      "wordCount": 8
+    },
+    {
+      "id": "u000374",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "5.1 The Box of Lego",
+      "sourceAnchor": "the-box-of-lego",
+      "wordCount": 6
+    },
+    {
+      "id": "u000375",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Suppose you decide to build an image classifier from scratch, armed with nothing but the two ideas from the last sections: a layer is a grid of weights, and a stack of layers with bends between them can learn almost anything. Ten thousand photos of handwritten digits, labeled. How hard can it be?",
+      "sourceAnchor": null,
+      "wordCount": 53
+    },
+    {
+      "id": "u000376",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Your first design is the obvious one. Flatten each photo into a long row of pixels, 784 of them for a small 28-by-28 image, and feed that row into a dense layer with a few hundred neurons, then another, then ten outputs for the ten digits. Train it. It works, more or less: about 97% correct. Encouraging. Then you try real photos, 224 by 224 in color, and the design collapses. The first layer alone would need 150,000 inputs times a few hundred neurons, tens of millions of weights, just to look at the pixels. Worse, a “7” shifted two pixels to the right lands on completely different inputs, and your model has to learn it all over again from scratch. It has no idea that a seven is a seven wherever it sits.",
+      "sourceAnchor": null,
+      "wordCount": 135
+    },
+    {
+      "id": "u000377",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "You have just discovered why convolutions exist. Replace the first dense layers with the inspectors’ magnifying glasses from the story of the cat’s brain, each a small grid of weights shared by every position, with the pooling step between them that shrinks the maps. The number of weights drops by a thousandfold. The shifted seven is recognized because the glass that found it on the left finds it on the right. Your network now has the shape that LeCun’s digit readers had in the 1990s, and it reads real photos.",
+      "sourceAnchor": null,
+      "wordCount": 90
+    },
+    {
+      "id": "u000378",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Emboldened, you make it deeper. If four layers are good, surely twenty are better? You stack them and train. The loss does not fall. It sits there. You try thirty layers and it gets worse than the four-layer version, on the training data, which should be impossible: a deeper network could at least copy the shallow one and do nothing in the extra layers. Something in the training itself is failing. This is the wall that deep learning hit around 2014, and two inventions knocked it down.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000379",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The first came from watching the numbers. As a signal passes through many layers, its scale drifts: after a few layers every value is tiny, after a few more everything is enormous, and gradient descent copes badly with either. The fix was almost embarrassingly practical. After each layer, rescale the numbers back to a standard range, the way a thermostat brings a room back to twenty degrees whatever the weather outside. This is normalization , introduced in 2015 under the name batch normalization, and with it, together with careful initialization of the weights, deep networks became far easier to train. Language models use a slightly different thermostat, one per token rather than one per batch.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000380",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The second came from asking why a deeper network could not at least copy a shallower one. It could in theory, but learning to pass a signal through a layer unchanged is surprisingly hard for a stack of weights that starts out random. So why make it learn that? Give every layer a bypass. Instead of a layer replacing its input with its output, it adds its output to the input, and the sum moves on. The layer only has to learn what to change; if it has nothing to add, zero is an easy thing to learn, and the signal flows through untouched. This is the residual connection , and the architecture built on it, ResNet, won the 2015 ImageNet competition with 152 layers, a depth far beyond anything that had worked a year earlier. Engineers may recognize the pattern from a different world: a middleware chain where each step can modify a request or pass it along untouched, rather than one where each step must rebuild the whole request from scratch. And there was a bonus. Backpropagation, the blame walking back from the output, now had an express lane: it could flow straight down the bypasses without being diluted by every layer in between.",
+      "sourceAnchor": null,
+      "wordCount": 205
+    },
+    {
+      "id": "u000381",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Your thirty-layer network trains beautifully now. It scores 99.8% on the training photos. On new photos it manages 91%. You have built a crammer: it has memorized the training photos instead of learning to read digits. One remedy for it, in layer form, is odd enough to be memorable. During training, randomly switch off a fraction of the neurons in each layer, different ones on every step. During real use, switch nothing off. The network can no longer rely on any particular neuron always being there, so it learns redundantly, many neurons sharing each job. This is dropout , and it is the neural version of a manager who randomly sends people home during rehearsals so the team learns to cover for each other. Your new-photo score climbs to 96%.",
+      "sourceAnchor": null,
+      "wordCount": 130
+    },
+    {
+      "id": "u000382",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Step back and look at what you have built, because the whole box is now on the table.",
+      "sourceAnchor": null,
+      "wordCount": 18
+    },
+    {
+      "id": "u000383",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "There are two kinds of pieces. The first kind does the work and holds learned weights, and each one embodies a bet about the data. The dense layer bets nothing; it connects everything to everything, which makes it general and expensive. The convolution bets that nearby things belong together and that a pattern means the same thing wherever it appears, the right bet for images, audio and anything on a grid. The recurrent layer bets that things arrive in order and the past matters. The attention layer , the heart of today’s language models, bets that anything in the input might matter to anything else, and lets the input itself decide what. When a layer’s bet matches the data, it learns from far fewer examples, because it does not have to discover what it already assumes. When the bet is wrong, no amount of data fully rescues it.",
+      "sourceAnchor": null,
+      "wordCount": 147
+    },
+    {
+      "id": "u000384",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The second kind is plumbing: pieces with few or no weights that exist to keep the first kind trainable. Normalization, the thermostat. The residual connection, the bypass. Dropout, the rehearsal sick days. The activation function, the bend between layers, so thin it hardly counts as a piece and so essential you never leave it out. And at the door, for anything that arrives as a name rather than a number, the embedding layer : a lookup table with one row per possible token, product or user, whose rows are learned. It is how a language model begins. Unlike real Lego, though, the pieces are not finished when you snap them together: each one takes its shape during training, alongside its neighbors, so a layer pulled out of one trained model cannot simply be clicked into another without further training.",
+      "sourceAnchor": null,
+      "wordCount": 138
+    },
+    {
+      "id": "u000385",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Now the reveal that makes architecture diagrams readable. From the outside, the zoo of model names, ResNet, U-Net, BERT, GPT, looks endless. From the inside, nearly all of them are these same ten or so pieces, arranged in different orders. And the arrangement follows a pattern you have just rediscovered on your own: specialized, assumption-rich workers near the input, where the data still has its raw structure, and general, assumption-free workers near the output, where the structure has been boiled down to evidence. A speech model starts with convolutions over audio and ends with dense layers. A Transformer starts with an embedding and ends with a dense layer and a softmax over the vocabulary, the plumbing piece that turns a row of scores into percentages adding to one hundred. It makes every score positive by raising a fixed number to the power of the score, then divides each result by their total; because of the powers, a score just a few points ahead of the rest ends up with nearly all the percentage, which is why a model often looks more decisive than its raw scores suggest. The middles differ. The ends are nearly always the same. As for who designs a new middle, mostly nobody does from scratch: teams take a blueprint that has already proved itself, change one piece at a time and keep the change only if the mock-exam score improves; automated searches that try thousands of arrangements exist too, but their expense means most practical work is careful reuse.",
+      "sourceAnchor": null,
+      "wordCount": 253
+    },
+    {
+      "id": "u000386",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "If you want a mental model that feels comfortable, think of a data pipeline. Each layer is a stage that accepts a tensor of one shape and emits a tensor of another. Convolutions make the maps smaller and deeper, pooling halves them, dense layers change the length of a vector. The architecture is a type signature, shape in to shape out, and most real design conversations are about which shapes flow where. The first thing to do with any unfamiliar model is to print the shape after every stage.",
+      "sourceAnchor": null,
+      "wordCount": 89
+    },
+    {
+      "id": "u000387",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "You now have a working network, and a notion of why each part of it is there. What you do not yet have is a feel for what it costs, and in particular why the afternoon you spent training it will be dwarfed, over the following years, by the cost of simply running it.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000388",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "5.2 The Two Lives of a Model",
+      "sourceAnchor": "the-two-lives-of-a-model",
+      "wordCount": 8
+    },
+    {
+      "id": "u000389",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A restaurant has two completely different days. There is the year before it opens: the chef tasting hundreds of versions of each dish, adjusting the salt, changing the supplier, rewriting the menu three times, burning through money with no customers in sight. And there is opening day, and every day after it: the recipes are fixed, the kitchen executes them, and the only question is how many plates can go out per hour and at what cost.",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000390",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "A model has exactly these two lives, and almost everything confusing about the economics of machine learning comes from mixing them up.",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000391",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The first life is training. This is the loop from the preface, run in earnest: forward pass, measure the error, backward pass, nudge every weight, next batch. It happens once, or once per version. It is the year before opening. The second life is inference : the model is finished, its weights are frozen, and you hand it inputs and collect answers. A photo goes in, “cat” comes out. A prompt goes in, a token comes out. This is opening day, repeated for every request, for as long as the model is in service. Here the restaurant picture breaks in an instructive way: a real kitchen learns from every complaint on opening day, while a model learns nothing from its millionth customer, and whatever it gets wrong it will keep getting wrong until someone trains a new version.",
+      "sourceAnchor": null,
+      "wordCount": 137
+    },
+    {
+      "id": "u000392",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "What exactly is different between the two? Walk through one training step and count what the machine has to keep in memory. The forward pass runs the input through every layer, but it must also keep notes : the intermediate result at every layer, because the backward pass will need them to trace the blame, exactly as the inspector in the furniture workshop needed to see each station’s work. Then the backward pass computes a gradient for every weight, which is a second copy of the model’s size. Then the optimizer, if it is Adam, keeps a running memory of past gradients for each weight, which is two more copies. Add it up and training a model needs several times the memory of simply holding its weights, and roughly three times the compute of a forward pass, per step, for millions of steps.",
+      "sourceAnchor": null,
+      "wordCount": 142
+    },
+    {
+      "id": "u000393",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Inference throws nearly all of that away. No notes, because nothing will be traced back. No gradients, because nothing will change. No optimizer state. The weights sit in memory, the input multiplies through them, and the answer comes out. It is the forward pass alone, once. This is why a model that needed a cluster of graphics cards to train can often run on far smaller hardware, sometimes even a phone; and it is why running a model is cheap per request but can still become the dominant cost, because opening day happens a million times.",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000394",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The two lives also have different bugs, and recognizing which life you are in saves hours. Training problems are about whether the model learns : the loss does not fall, or falls and then explodes, or falls on the training set while rising on validation. Those are learning-rate problems, data problems, the crammer that memorizes and the slacker that never learns enough. Inference problems are about speed, memory and consistency : the answer takes too long, the model does not fit on the device, or the same input gives slightly different answers in production than it did in the notebook. The last one has a classic cause. Dropout switches signals off during training and must be switched off itself at inference; forget the one line that flips the model into evaluation mode, and your production answers wobble randomly.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000395",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Somewhere between the two lives sits a trick that engineers meet constantly: batching . At a bakery, the oven costs the same to heat whether you bake one loaf or twenty, so you fill it. A graphics card is the same. Often, the expensive part of inference is moving the weights from memory into the processor, and that cost is paid once per forward pass no matter how many inputs ride along. So inference servers wait a few milliseconds to collect requests, stack them into one batch tensor, and run them through together. This costs so little because a batch of thirty-two is just a taller table in the same multiplication. The trade-off is latency against throughput, and anyone who has tuned a message queue will recognize the dial.",
+      "sourceAnchor": null,
+      "wordCount": 128
+    },
+    {
+      "id": "u000396",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Language models add one twist to opening day that is worth understanding, because it explains the bills. A classifier runs one forward pass per request. A language model runs one forward pass per token it generates , because each new token is fed back in as input for the next. A five-hundred-word answer is several hundred forward passes, one after another, and the model cannot start the second until the first is done. That is why long answers cost more than short ones, why output tokens are usually priced higher than input tokens, and why so much engineering effort goes into caching the intermediate results from earlier tokens so they are not recomputed every time.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000397",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "To make all of this concrete, follow one request to the bill. Say a company runs a customer-support assistant on a hosted language model that charges, in round numbers, one dollar per million tokens in and four dollars per million tokens out. A customer’s question, plus the instructions and the three retrieved passages the assistant was given, comes to two thousand tokens. The answer is three hundred tokens. The input costs two thousand millionths of a dollar, a fifth of a cent. The output costs twelve hundred millionths, a little over a tenth of a cent. One conversation, about a third of a cent. That sounds like nothing until the assistant handles forty thousand conversations a day, at which point it is roughly a hundred and thirty dollars a day and about fifty thousand a year, and the finance team starts asking why output tokens cost four times as much as input tokens. Much of the answer is the token-by-token loop above: the output tokens are produced one at a time, each with its own forward pass, while the input tokens are all processed together in one batch. It is the difference between serving a dish that is already plated and cooking each spoonful to order. The same arithmetic explains why the engineers on the team spend their time on shorter prompts, caching, and smaller models for the easy questions.",
+      "sourceAnchor": null,
+      "wordCount": 230
+    },
+    {
+      "id": "u000398",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "So: training is the expensive year of tasting and adjusting; inference is the cheap, repeated day of serving, which over the life of a widely used model often ends up costing more; and the model file that passes from one life to the other is nothing but the pile of grids from the previous chapter, with every number finally at rest. Between the two lives there is a shorter one, in which a finished model goes back to school for a few weeks on a narrower job. That is fine-tuning, which gets a section of its own later in the book.",
+      "sourceAnchor": null,
+      "wordCount": 101
+    },
+    {
+      "id": "u000399",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Before we leave the engine room, one detour. Every neural network in this book so far has stored knowledge the same way: as weights learned slowly by gradient descent. There is an older and stranger idea for how a machine might remember, one that learns in a single step and treats a thought as a very long, nearly random string of numbers. It has been quietly influencing how people think about embeddings, and it deserves a section of its own.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000400",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "5.3 A Different Kind of Memory",
+      "sourceAnchor": "a-different-kind-of-memory",
+      "wordCount": 7
+    },
+    {
+      "id": "u000401",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Take two fair coins and flip each one ten thousand times, writing down the results as two long strings of heads and tails. Now compare the strings position by position. How many positions match?",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000402",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "About five thousand, give or take a hundred. That is simply what chance looks like. And here is the thing that makes a whole branch of computing possible: it is practically impossible, in ten thousand flips, to get two strings that match in six thousand positions by accident. The odds are astronomically small. So in the world of ten-thousand-bit strings, “random” means “about half alike”, and anything noticeably more alike than half cannot be a coincidence. It has to mean something.",
+      "sourceAnchor": null,
+      "wordCount": 81
+    },
+    {
+      "id": "u000403",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "This is the starting point of hyperdimensional computing , also called vector symbolic architectures, or VSA, an idea developed over several decades by researchers such as Tony Plate and Pentti Kanerva. It is an approach that does not learn by gradient descent at all, and seeing it side by side with neural networks sharpens what each one is actually doing.",
+      "sourceAnchor": null,
+      "wordCount": 59
+    },
+    {
+      "id": "u000404",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The idea begins with a bold assignment. Every concept gets a random string of ten thousand bits, drawn once and never changed. DOG is a random string. CAT is another. OWNER, ANA, MONDAY, each gets its own. Because of the coin-flip fact, all these strings are nearly equally far from one another, about half alike, which is the vector way of saying “unrelated”. Nothing has been learned yet. The strings are just names, long enough that no two will ever be confused.",
+      "sourceAnchor": null,
+      "wordCount": 82
+    },
+    {
+      "id": "u000405",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Then come two operations, and together they are the whole grammar.",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000406",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The first is bundling : add vectors together, by taking a majority vote at each position. Bundle DOG and CAT and you get a new string, call it PETS, that is noticeably more than half alike to DOG, and noticeably more than half alike to CAT. The result resembles its ingredients. You can bundle a dozen things into one vector and still ask of it, later, “is DOG in here?”, and get a confident yes by measuring similarity. Bundling is a set, stored as a single string. Each new item adds a little noise to all the others: with ten thousand bits, a set of a few dozen to a couple of hundred items can still be queried reliably, and beyond that the echoes of the members begin to sink into the noise.",
+      "sourceAnchor": null,
+      "wordCount": 132
+    },
+    {
+      "id": "u000407",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The second is binding : combine two vectors with XOR, which writes a 1 wherever their bits differ and a 0 wherever they agree; put another way, it flips the bits of one vector wherever the other has a 1. Bind DOG with OWNER and you get a string that is about half alike to DOG and half alike to OWNER, which is to say it looks like neither. It is a new, unrelated name. And XOR has a lovely property: bind the result with OWNER again, and DOG drops out, exact, because the second XOR flips back exactly the bits the first one flipped. Binding glues two things into a pair, and the glue is reversible.",
+      "sourceAnchor": null,
+      "wordCount": 116
+    },
+    {
+      "id": "u000408",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Put the two together and you can store a whole record in one vector. A database row such as pet: DOG, owner: ANA, day: MONDAY becomes (PET bound with DOG) bundled with (OWNER bound with ANA) bundled with (DAY bound with MONDAY). One string of ten thousand bits. To ask “who is the owner?”, bind the record with OWNER; the ANA part falls out clearly, and the other parts turn into noise that the sheer length of the vector washes away. It is a key-value store where the entire table, the keys and the lookup are all the same kind of object: a long string of bits.",
+      "sourceAnchor": null,
+      "wordCount": 107
+    },
+    {
+      "id": "u000409",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "If you have ever used a Bloom filter, this will feel familiar. A Bloom filter also stores a set in a fixed-size bit array, also answers membership questions quickly, and also pays for its compactness with a small chance of confusion. Hyperdimensional computing is that idea grown up: not just “is X in the set?” but “what is X paired with?”, with the structure of the data living in the arithmetic.",
+      "sourceAnchor": null,
+      "wordCount": 71
+    },
+    {
+      "id": "u000410",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Now, why should an engineer who works with neural networks care?",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000411",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Because the comparison is clarifying. In a neural network, knowledge lives in the weights, and getting it there takes millions of gradient steps. In hyperdimensional computing, knowledge lives in the vectors themselves, and getting it there takes one bundle or one bind. There is no training loop. Learning a new fact is one operation, and forgetting it is one operation too. That is close to how a database behaves and very far from how a network behaves, where adding a single new fact means another round of training, and where a model that must not forget an old skill while learning a new one is a known headache, with the slightly dramatic name catastrophic forgetting .",
+      "sourceAnchor": null,
+      "wordCount": 115
+    },
+    {
+      "id": "u000412",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The approach also explains something about embeddings, where similar things get nearby vectors. The coin-flip fact tells you why that works at all in hundreds of dimensions. In a high-dimensional space there is an enormous amount of room: you can place millions of concepts so that each is far from all the others, and still have a clear notion of “closer than chance”. Low-dimensional intuition fails here. In three dimensions you cannot fit many mutually distant points. In ten thousand, you can fit more than you will ever need, and that abundance of room is what both embeddings and hypervectors quietly rely on. This is the fact that made everyone a stranger in the story of the nearest neighbors, seen from the other side. Random points in many dimensions are all about equally far apart. For nearest-neighbor search on raw features, where “near” was supposed to mean something, that is ruinous; for hyperdimensional computing, whose names are meant to be unrelated, it is exactly what is wanted. Learned embeddings then do the extra work of pulling related things close.",
+      "sourceAnchor": null,
+      "wordCount": 179
+    },
+    {
+      "id": "u000413",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "There is a price, and it is why hyperdimensional computing has stayed mostly in research labs and specialized hardware rather than in your IDE (integrated development environment, your code editor). The random names know nothing. DOG and CAT start out as unrelated as DOG and SPREADSHEET, and any similarity between them has to be built in by hand or by bundling. A neural network, by contrast, discovers that dogs and cats belong together from millions of examples, and discovers structure nobody thought to encode. Hyperdimensional computing is robust to noise, fast, transparent and cheap to run on tiny devices, which is why it attracts interest for sensors and low-power chips, and why some researchers see it as a model of how memory might work in a brain. But it does not learn from raw data the way networks do.",
+      "sourceAnchor": null,
+      "wordCount": 139
+    },
+    {
+      "id": "u000414",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "It is tempting to see the two as rivals, and more useful to see them as complementary. Networks are superb at turning messy raw input, pixels, audio, text, into meaningful vectors. Hyperdimensional methods are superb at composing vectors into structures, records, sequences, relations, and querying them without any further training. Several research groups are experimenting with exactly that handoff: a network as the perception layer that produces vectors, and hypervector arithmetic as the memory and reasoning layer that stores and combines them.",
+      "sourceAnchor": null,
+      "wordCount": 82
+    },
+    {
+      "id": "u000415",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "And there is one more reason to keep this section in mind for later. The attention mechanism, the fuzzy dictionary lookup at the heart of today’s large language models, is also a way of storing and retrieving key-value pairs as vectors, and of blending many of them into one. It arrived from a different direction and is learned rather than assigned, but when you see queries matched against keys to pull out values, you may find yourself thinking of a record bound with OWNER, and ANA falling out of the noise.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000416",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The engine room tour is nearly over. We know what a network is made of, how its pieces snap together, what happens on training day and on opening day, and we have seen one road not taken. One practical question remains, the one every project asks before it starts: how much data, how large a model and how much money is enough?",
+      "sourceAnchor": null,
+      "wordCount": 62
+    },
+    {
+      "id": "u000417",
+      "chapterId": "chapter-0006",
+      "kind": "h2",
+      "text": "5.4 How Much Is Enough",
+      "sourceAnchor": "how-much-is-enough",
+      "wordCount": 6
+    },
+    {
+      "id": "u000418",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Anyone who has taken up the guitar as an adult knows the shape of the first year. In the first month, progress is dramatic: from fumbling a single chord to strumming a whole song. By month six the gains are still real, but smaller, and each one costs more evenings. By the second year, another hundred hours of the same exercises barely moves you, and what would help is something else entirely: a teacher who spots the habit holding you back, or a better instrument that stays in tune. Practice still matters. It has simply stopped being the bottleneck.",
+      "sourceAnchor": null,
+      "wordCount": 99
+    },
+    {
+      "id": "u000419",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Models learn along the same kind of curve, and the questions people ask most about a project, how many examples do we need, would a bigger model help, what will all this cost, are really questions about where on that curve they are standing.",
+      "sourceAnchor": null,
+      "wordCount": 44
+    },
+    {
+      "id": "u000420",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Start with the most practical tool, because it answers the first question for your own data rather than for someone else’s. Train the model on 10% of the training data, then on 20%, then 50%, then all of it, and each time measure the error on the same validation set. Plot the four points. This is a learning curve , and its shape is a verdict. If the validation error is still falling steeply at 100%, more examples will very likely help, and labeling another batch is money well spent. If it has flattened, more of the same data will buy little; you are the guitarist in year two. Combine it with a simple habit, always reading the training error beside the validation error, and you can usually tell which lever to pull. A large gap between the two that narrows as data grows is the crammer again, starved of examples, and more data will help. Two high errors close together mean a model too simple for the job, which more examples will not cure, though a more expressive model or better features might. Both errors low and flat means you are near what this data can tell you, and the next gain will come from cleaner labels or a sharper question.",
+      "sourceAnchor": null,
+      "wordCount": 211
+    },
+    {
+      "id": "u000421",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "People still want a number, and it is fair to give rough orders of magnitude, as long as they are read as starting points for that experiment rather than as promises. A simple classifier on clean tabular data with a handful of informative features is often useful with a few hundred to a few thousand labeled rows per class, and the rarer class usually sets the requirement: a thousand frauds matter more than a million honest payments. An image model built by transfer learning, starting from a network already trained on millions of other photos, can do well with a few hundred to a few thousand photos. Teaching a language model a format or a tone, by fine-tuning it or with LoRA, a light method that trains only a small add-on to the frozen model, often takes hundreds to a few thousand carefully chosen examples, not millions; giving it new knowledge is usually better done with retrieval, letting it look facts up in your documents as it answers. And pretraining a large language model from scratch is another universe, with training text measured in trillions of tokens.",
+      "sourceAnchor": null,
+      "wordCount": 187
+    },
+    {
+      "id": "u000422",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Two warnings travel with every one of those numbers. Quality beats quantity, by a wide margin: the Friday-afternoon “flaky” labels do not improve when there are more of them; they only teach the wrong lesson more firmly. And the examples must cover the cases the model will meet. Here the guitar picture breaks. For a musician, one hour of scales is much like another. For a model, a thousand examples that are near copies of each other teach about as much as one, while a hundred examples from the corners where it fails teach a great deal. That is the whole idea behind active learning , in which the model itself points to the examples it would most like a human to label, and behind the unglamorous habit of removing duplicates before training.",
+      "sourceAnchor": null,
+      "wordCount": 132
+    },
+    {
+      "id": "u000423",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Now the larger question, the one behind a decade of headlines: why did models keep getting bigger? Because, for language models at least, bigger turned out to be predictable. In 2020 a team at OpenAI led by Jared Kaplan trained families of language models of very different sizes on different amounts of text, and found that the loss fell along remarkably smooth curves as the number of parameters, the amount of data and the amount of compute grew, across many orders of magnitude. Drawn on logarithmic axes, the curves were close to straight lines. These regularities are called scaling laws , and their practical importance was enormous. A lab could train a series of small models cheaply, draw the line through them, and predict roughly how well a model a hundred times larger would do before spending the money. That predictability, more than any single breakthrough, is what made organizations willing to spend tens of millions on one training run.",
+      "sourceAnchor": null,
+      "wordCount": 159
+    },
+    {
+      "id": "u000424",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "Two years later, a team at DeepMind led by Jordan Hoffmann corrected the recipe. Their paper, usually known by the name of its model, Chinchilla, asked what is really a bakery question. Suppose you have a fixed budget for an expansion. Ovens without flour sit idle; flour without ovens goes stale in the storeroom. Somewhere there is a balance. For language models the ovens are parameters and the flour is training text, and the 2022 study concluded that the large models of the day were nearly all ovens: for a given compute budget, it was better to train a smaller model on more text, growing the two roughly in step. A rule of thumb that came out of it, about twenty training tokens per parameter, is still widely quoted. Chinchilla itself, with 70 billion parameters trained on about 1.4 trillion tokens, outperformed DeepMind’s own Gopher, four times its size, trained with roughly the same compute.",
+      "sourceAnchor": null,
+      "wordCount": 156
+    },
+    {
+      "id": "u000425",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The bakery picture breaks in two instructive places. First, the Chinchilla balance minimizes the cost of training alone. A model that will answer billions of questions is paid for mostly on opening day, so many recent models are deliberately smaller than “optimal” and trained on far more than twenty tokens per parameter, because a small model is cheaper to serve for years. Second, a bakery’s returns are understood: double the ovens and the flour and you bake about twice the bread. Scaling laws are empirical regularities with no agreed theory behind them. They predict the average loss on the next token, not whether a particular skill will appear; whether skills really switch on suddenly at some size is still debated. And nothing guarantees that the lines stay straight forever.",
+      "sourceAnchor": null,
+      "wordCount": 129
+    },
+    {
+      "id": "u000426",
+      "chapterId": "chapter-0006",
+      "kind": "p",
+      "text": "The flour, it turns out, is finite. In 2024 the research group Epoch AI estimated the stock of reasonably good public human-written text at a few hundred trillion tokens, with wide uncertainty, and projected that, at the pace of the time, the largest training runs could use it up sometime between 2026 and 2032. The industry has three responses. Curate better: filter, deduplicate and weight the text, because a well-chosen trillion tokens beats a careless three. Repeat carefully: a few passes over the same text still help, though less each time. And make more: synthetic data , text written by models for training models. It works best where the output can be checked, such as math problems with verifiable answers or code that must pass its tests, so that wrong examples can be caught and thrown away. Where it cannot be checked, there is a known risk: researchers have shown that models trained, generation after generation, mainly on the output of earlier models tend to lose the rare and unusual parts of the original data, like a photocopy of a photocopy, a narrowing called model collapse .",
+      "sourceAnchor": null,
+      "wordCount": 185
+    }
+  ]
+}

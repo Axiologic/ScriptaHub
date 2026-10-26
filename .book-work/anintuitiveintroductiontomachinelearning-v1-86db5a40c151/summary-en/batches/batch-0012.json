@@ -1,0 +1,376 @@
+{
+  "batch": "batch-0012.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0009",
+  "chapterTitle": "Chapter 8 — Making Pictures, Building Systems",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000546",
+      "chapterId": "chapter-0009",
+      "kind": "h1",
+      "text": "Chapter 8 — Making Pictures, Building Systems",
+      "sourceAnchor": "chapter-8-making-pictures-building-systems",
+      "wordCount": 6
+    },
+    {
+      "id": "u000547",
+      "chapterId": "chapter-0009",
+      "kind": "h2",
+      "text": "8.1 Learning to Draw",
+      "sourceAnchor": "learning-to-draw",
+      "wordCount": 5
+    },
+    {
+      "id": "u000548",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "A child learns to draw a cat in a particular way. Not by studying the rules of cat anatomy, and not by tracing. She draws a wobbly blob, looks at it, decides something is wrong, fixes the ears, looks again, fixes the tail. Each pass is a small correction toward “more like a cat”. After enough passes, and enough cats seen, the blob becomes a cat she has never seen before, because it is hers.",
+      "sourceAnchor": null,
+      "wordCount": 75
+    },
+    {
+      "id": "u000549",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Everything in this book until now has been about recognizing, predicting and deciding. This section is about the other direction: making things. Pictures, mostly, because they are where the ideas are easiest to see, but the same ideas produce music, molecules, voices and video. And the strange, satisfying thing is that the most successful method of all turned out to work very much like the child: not drawing in one stroke, but correcting a mess, a little at a time.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000550",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The oldest idea is to force a network to summarize and then rebuild. Picture a courier who must describe a photo over the phone in exactly thirty words, to a colleague who then has to redraw it. “A tabby cat, sitting, facing left, on a red cushion, window behind, afternoon light.” Thirty words cannot hold a photo. To make the redrawing come out well, the describer has to learn what matters about cats and cushions and light, and the drawer has to learn how those things look. Train the two together on a million photos, scoring them on how close the redrawn picture is to the original, and the thirty-word description becomes a remarkably rich summary. This is an autoencoder : an encoder that squeezes the input down to a short code, and a decoder that expands the code back. The code sits in a space where, as on the map of word meanings, nearby codes mean similar pictures. The catch is that most points in that space do not correspond to any real photo, so you cannot simply pick a random code and expect a good cat. A refinement from 2013, the variational autoencoder , teaches the encoder to spread its codes smoothly, so that random codes decode into plausible, if blurry, images. The blurriness was the problem that the next idea attacked.",
+      "sourceAnchor": null,
+      "wordCount": 222
+    },
+    {
+      "id": "u000551",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "In 2014 Ian Goodfellow and colleagues proposed a game. Two networks. One, the generator , makes images from random noise. The other, the discriminator , is shown a mix of real photos and the generator’s fakes and must say which is which. The discriminator is trained to get better at spotting fakes; the generator is trained to fool it. Neither is ever told what a cat looks like. The generator learns only from the discriminator’s verdicts, and the discriminator learns only from being right or wrong. It is a forger and an art expert locked in a room: as the expert sharpens, the forger must improve, and vice versa, until the forgeries are good enough that the expert is guessing. These are generative adversarial networks , GANs, and for several years they produced the sharpest synthetic faces anyone had seen, the kind that filled websites of people who do not exist. Their weakness was the training itself: a game between two players is unstable in ways a single loss is not, the two can chase each other in circles, and the generator sometimes learns one very convincing face and produces it again and again, a failure called mode collapse. Engineers who have debugged a feedback loop between two services will recognize the feeling.",
+      "sourceAnchor": null,
+      "wordCount": 210
+    },
+    {
+      "id": "u000552",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Then, around 2020, the field settled on a third idea, and it is the one behind most of the image generators you have probably used.",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000553",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Take a photograph and add a little static to it, the way an old television does when the aerial is loose. Add a little more. And more, for a few hundred steps, until nothing is left but static. That direction is easy; a script can do it, and no learning is involved. Now ask a network to do the opposite, one step at a time: here is a slightly noisy picture, tell me what the noise is, so I can subtract it. That is a prediction problem with an answer key, because you added the noise yourself and know exactly what it was. Train the network on millions of photos at every level of noise. It becomes very good at the single skill of looking at a noisy image and saying what should be removed. That skill is learnable even though the noise is random, because the picture beneath it is not: to tell which speckles are static, the network has to know what real photos look like, that fur has texture and skies are smooth, so learning to denoise is, secretly, learning what the world looks like.",
+      "sourceAnchor": null,
+      "wordCount": 188
+    },
+    {
+      "id": "u000554",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Now start from pure static and apply that skill a few hundred times. Each pass removes a little noise and reveals a little structure, the way a Polaroid develops, or the way the child’s blob becomes a cat through small corrections. Unlike the child, though, the network never decides to draw a cat and never steps back to look at the whole: at every pass it answers only the question “what noise is here?”, which is one reason a generated hand can have six fingers without anything in the process objecting. The result is a photo that was never taken: the network’s idea of what the static might have been hiding. Each run starts from different static, and different static hides different photos, which is why the same prompt gives a different picture every time; the starting static is drawn from a number called the seed, and reusing the seed with the same prompt and settings usually gives the same picture again. This is a diffusion model , and the name comes from the physics of ink spreading in water, run backwards. It trains stably, because every step is an ordinary prediction with a known answer, and it is far less prone to collapse, because it learns to denoise toward every kind of picture it was shown.",
+      "sourceAnchor": null,
+      "wordCount": 216
+    },
+    {
+      "id": "u000555",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The text prompt arrives through one more piece. At every denoising step, the network is also shown a description, encoded by a language model into the same kind of address as the word embeddings, and it is trained on captioned photos to remove noise in a way that matches the caption . “A tabby cat on a red cushion” is a hand on the child’s shoulder at each correction, nudging the ears toward tabby and the background toward red. How hard the hand pushes is a dial: many generators run each denoising step twice, once with the caption and once without, and push the result further in the direction of the difference; turning that dial, often called guidance, up makes the picture follow the words more literally, at the cost of variety and sometimes of realism. Image generators such as Stable Diffusion, the later versions of DALL-E and Midjourney are built on this idea. One engineering refinement, popularized by Stable Diffusion, explains why some of them can run on ordinary hardware: instead of denoising the full-size image, they denoise the short code from an autoencoder, the thirty-word description, and decode it to pixels only at the end. Working in that compressed space is many times cheaper.",
+      "sourceAnchor": null,
+      "wordCount": 205
+    },
+    {
+      "id": "u000556",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "For someone who builds or buys these systems, three practical facts fall out of the mechanics. First, generation is slow by nature: dozens to hundreds of forward passes per image, which is why so much research goes into needing fewer. Second, the model can only denoise toward what it has seen, which is why it struggles with hands, text in images and unusual combinations, and why it reproduces the biases of its photo collection with great fidelity. Third, the same recipe transfers: add noise to audio, molecules or video frames instead of pixels, and you have a music generator, a drug-candidate generator or a video model. The step from pictures to everything else was mostly a change of data. Nor does a generator usually copy the pictures it was trained on, since it learns to denoise toward millions of pictures at once and none in particular; but an image that appeared many times in the training collection, a famous painting or a widely shared photo, can come out almost exactly, a case of memorizing with legal consequences.",
+      "sourceAnchor": null,
+      "wordCount": 177
+    },
+    {
+      "id": "u000557",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "There is a line worth drawing between this section and the game of guessing the next word. A language model builds its output one token after another, each conditioned on the ones before, like writing a sentence left to right. A diffusion model refines the whole output at once, over many passes, like sculpting. Both are prediction machines trained with an answer key the data provides for free: the next word, the added noise. That family of tricks, learning from data that labels itself, has a name: self-supervised learning.",
+      "sourceAnchor": null,
+      "wordCount": 89
+    },
+    {
+      "id": "u000558",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "We have now seen most of the individual machines. The next section is about how they are combined: the handful of arrangements that engineers reach for again and again, and the problems that each one was invented to solve.",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000559",
+      "chapterId": "chapter-0009",
+      "kind": "h2",
+      "text": "8.2 Blueprints",
+      "sourceAnchor": "blueprints",
+      "wordCount": 3
+    },
+    {
+      "id": "u000560",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Every experienced software engineer carries a small set of shapes in her head. A queue between a producer and a consumer. A cache in front of a slow store. A load balancer fanning out to replicas. She does not reinvent them for each project; she recognizes the problem, reaches for the shape, and spends her creativity on the parts that are new. Machine learning has reached the same stage. Underneath the hundreds of model names there are perhaps a dozen arrangements that keep coming back, each one invented for a specific pain. This section is a walk through the ones you will meet most, told the way engineers actually learn patterns: here is the problem, here is the shape that solved it, here is where it breaks.",
+      "sourceAnchor": null,
+      "wordCount": 127
+    },
+    {
+      "id": "u000561",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Begin with translation, because it forced the first great shape. A French sentence must become an English one, and the two have different lengths and different word orders; the adjective that follows the noun in French comes before it in English. You cannot translate word by word. The arrangement that worked, around 2014, was to split the job in two. An encoder reads the whole French sentence and condenses it into a representation, a set of vectors that capture what was said. A decoder then writes the English sentence from that representation, one word at a time, consulting it as it goes. Read everything, then write. This encoder–decoder blueprint is behind translation, summarization, speech-to-text and image captioning, anything where the input is one thing and the output is another thing of a different shape. The original Transformer paper of 2017 was exactly this: an encoder stack and a decoder stack, with attention between them. Where it breaks: if the input is enormous, squeezing it through a fixed representation loses detail, which is one reason attention between encoder and decoder was such a relief; the decoder could look back at every input word instead of one summary.",
+      "sourceAnchor": null,
+      "wordCount": 197
+    },
+    {
+      "id": "u000562",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Then a curious split happened. Researchers noticed that the two halves were useful on their own. Keep only the encoder, train it to fill in masked-out words in a sentence, and you get a model that is superb at understanding text but does not generate it: that is BERT (bidirectional encoder representations from transformers), from 2018, and it still powers a great deal of search and classification. Keep only the decoder, train it to predict the next word, and you get a model that writes : that is the GPT family, and with it the whole game of guessing the next word. Encoder-only for reading, decoder-only for writing. When you see a model described as one or the other, you now know which half of the translation machine it is.",
+      "sourceAnchor": null,
+      "wordCount": 129
+    },
+    {
+      "id": "u000563",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The second shape comes from a scaling problem every search engineer hits. You have a million documents and a user’s query, and you want the best matches in milliseconds. Running an expensive model on every query–document pair is impossible. So split the model into two towers : one encodes documents, one encodes queries, and both produce addresses on the same map of meaning. The document tower runs once, ahead of time, over the whole collection, and the results go into a nearest-neighbor index. At query time only the query tower runs, and the search is a lookup. This two-tower or dual-encoder blueprint is behind semantic search, the retrieval half of RAG, and most recommendation systems, where the two towers are “user” and “item”. It is the same trade a database makes when it builds an index at write time to make reads cheap. Where it breaks: because the towers never see each other’s input, they cannot catch subtle interactions between a specific query and a specific document, which is why serious systems add a slower cross-encoder that re-reads the top fifty candidates with both texts side by side, the librarian-then-expert arrangement of the open-book exam.",
+      "sourceAnchor": null,
+      "wordCount": 195
+    },
+    {
+      "id": "u000564",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The two-tower idea has a sibling that solved a different problem: how do you learn good addresses when you have no labels at all? The answer, called contrastive learning , is to teach a model that two views of the same thing should land close together and views of different things far apart. Two crops of the same photo, close; crops of different photos, far. A photo and its caption, close; a photo and someone else’s caption, far. The model called CLIP (contrastive language–image pre-training), trained in 2021 on hundreds of millions of image–caption pairs this way, is a big part of the reason many image generators can understand a text prompt, and the reason you can search your photo library by typing “beach at sunset”.",
+      "sourceAnchor": null,
+      "wordCount": 127
+    },
+    {
+      "id": "u000565",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The third shape is about money. Language models got better as they got bigger, but every token had to pass through every weight, so a model ten times larger cost ten times more to run. The way out was an old idea, revived. Instead of one enormous dense layer, keep sixteen smaller ones, the experts , and in front of them a tiny router that looks at each token and sends it to the two experts best suited to it. Fourteen experts sit idle for that token. The model as a whole has the capacity of all sixteen, but each token pays for two. This mixture of experts blueprint is how several of the largest language models of recent years keep their serving costs manageable, and at heart it is a hospital’s triage desk: a quick look, then the right specialist, rather than every patient seeing every doctor. The router is itself a small learned layer, trained together with the experts: tokens an expert handles well get routed to it more, and the expert gets better at them, so specialties emerge on their own, though they are rarely neat topics such as “the mathematics expert” and tend to be finer patterns, such as punctuation or particular kinds of word. Where it breaks: the router has to be trained to spread the load, or a few experts end up doing everything, and the full set of experts must still fit in memory even though most are idle at any moment.",
+      "sourceAnchor": null,
+      "wordCount": 248
+    },
+    {
+      "id": "u000566",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The fourth shape is the newest, and it is less a network than a loop around one. A language model on its own can only emit text. But text can be a command: “call the weather API for Rome”, “run this SQL database query”, “open this file”. Wrap the model in a loop that reads its output, executes any such command, feeds the result back in, and asks the model what to do next, and you have an agent . Goal in, then think, act, observe, think again, until the model says it is done. What makes an assistant able to book a flight, debug a repository or answer a question it needs to look up is, at its core, this loop. Engineers will recognize it as a read-eval-print loop with a language model in the evaluator’s seat. The model learns which tools exist from the context itself: each tool’s name, purpose and arguments are written there as plain text, and the model has been fine-tuned on many examples of emitting a call in a fixed format. It never runs anything itself; the surrounding program reads the call, runs it and writes the result back on the whiteboard. Where it breaks: every step is a chance to go wrong, errors compound, and a model that hallucinates in one answer can hallucinate a plan. The craft of building agents is mostly the craft of constraining them: tools with narrow contracts, checks between steps, and a human in the loop for anything irreversible. The most serious way an agent goes wrong, though, is not a mistake but an attacker.",
+      "sourceAnchor": null,
+      "wordCount": 266
+    },
+    {
+      "id": "u000567",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Two more shapes deserve a sentence each, because you will see their names. The U-Net , from medical imaging in 2015, is an encoder–decoder for images with bypasses connecting each level of the encoder to the matching level of the decoder, so fine detail is not lost in the squeeze; it has been the workhorse inside many diffusion models. And the Siamese network , one of the oldest, from the early 1990s, runs the same tower on two inputs to judge whether they match, the shape behind signature verification and face unlock on your phone.",
+      "sourceAnchor": null,
+      "wordCount": 94
+    },
+    {
+      "id": "u000568",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Step back and three habits of mind cover nearly everything in this section. First, split the model where the data splits: input from output, query from document, routing from work. Second, move cost from request time to build time wherever you can: index the documents, cache the detectives’ notes, pre-compute the towers. Third, when a single model is not enough, wrap it rather than enlarging it: a re-ranker behind a retriever, a router in front of experts, a loop around a language model. None of these is unique to machine learning. They are the same instincts that produce good distributed systems, applied to a new kind of component.",
+      "sourceAnchor": null,
+      "wordCount": 108
+    },
+    {
+      "id": "u000569",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "These blueprints were drawn mostly for text, images and tables of independent rows. A good deal of the data that industry actually works with comes in other shapes, a sequence in time, a web of connections, a ranked list, and the next section is about them.",
+      "sourceAnchor": null,
+      "wordCount": 46
+    },
+    {
+      "id": "u000570",
+      "chapterId": "chapter-0009",
+      "kind": "h2",
+      "text": "8.3 Data With a Shape of Its Own",
+      "sourceAnchor": "data-with-a-shape-of-its-own",
+      "wordCount": 9
+    },
+    {
+      "id": "u000571",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "On the wall of a harbor master’s office hangs a tide table for the whole year. Nobody printed it by averaging a random sample of past days. Its makers know that the sea rises and falls twice a day, that the range grows and shrinks over the month with the moon, and that tomorrow follows from today. The data has a shape in time, and anyone who ignores that shape will predict worse than a fisherman with a calendar.",
+      "sourceAnchor": null,
+      "wordCount": 79
+    },
+    {
+      "id": "u000572",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Early in the book we said that regression and classification cover most of what supervised learning is used for. That is true of the underlying methods, but it hides how much industrial machine learning is something more specific: forecasting, spotting what does not belong, reasoning over networks, and deciding what to show people first. Each has its own habits and, above all, its own way of being measured.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000573",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Begin with time. A time series is a sequence of measurements in order: daily sales, hourly traffic, a sensor’s temperature every second. Forecasters read it as several stories told at once: a trend , the slow drift up or down; seasonality , patterns that repeat on a calendar, Monday mornings, December, the last day of the month; and a remainder that looks like noise. Classical methods such as exponential smoothing model these stories directly, giving recent days more weight than old ones. A popular modern approach turns the problem back into a table: for each day, add columns holding last week’s value, the same day last year, the average of the past month, whether it is a holiday. These are lag features , and with them boosted trees become formidable forecasters; in a large public competition held in 2020 on Walmart sales data, many of the leading entries were built this way. More recently, forecasting models pretrained on many thousands of unrelated series aim to forecast a new series with little or no training of their own, much as a pretrained language model is adapted to a new task.",
+      "sourceAnchor": null,
+      "wordCount": 186
+    },
+    {
+      "id": "u000574",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "What changes most is the exam. One of this book’s first warnings was never to choose the test set at random for anything that unfolds over time, and forecasters turn that warning into a procedure called backtesting . Pretend it is last January: train on everything before it, forecast February, and score. Then move the pretend date to February and do it again, and again, walking forward through the history. Every forecast was made using only the past, as it will be in production, and you get a dozen honest scores instead of one. And a serious forecast is never a single number. “We will sell 1,200 units next week” is half an answer; “between 1,000 and 1,450, with 90% confidence” lets the warehouse decide how much stock to hold. Such a forecast interval is one of the ways of saying how sure a model is. The tide table breaks as a picture exactly here: the tides obey the moon, which keeps its schedule, while sales obey people, who do not. A sudden new regulation or a viral video is in none of the history, and no backtest will warn you of it.",
+      "sourceAnchor": null,
+      "wordCount": 195
+    },
+    {
+      "id": "u000575",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Distance from every cluster is one way to catch the odd one out, and anomaly detection has a whole toolbox beyond it. An isolation forest plays the decision tree’s twenty questions in reverse. It asks random questions about random features and counts how many it takes to cut each point off on its own. A normal server, deep inside a crowd of similar ones, takes many questions to single out; a strange one is isolated in two or three. A second approach borrows the autoencoder: train it to redraw normal data, and whatever it redraws badly, with a large reconstruction error , is unlike anything it learned. A third is humbler and often the most useful: compare each value with the same hour in previous weeks, a seasonal baseline , so that the Monday morning surge stops being an emergency every Monday. Whatever the method, the hard part is the threshold. Every detector produces a score, and someone has to decide where the pager rings, the same trade-off as with the drifting server at the start of the book. Good teams tune that line on a log of past incidents, and revisit it after every holiday that set it off.",
+      "sourceAnchor": null,
+      "wordCount": 198
+    },
+    {
+      "id": "u000576",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Some data is not a list or a table but a web. Payments connect accounts, bonds connect atoms, microservices call one another. In such data, the most telling fact about a node is often who it is connected to: an account that looks innocent on its own is suspicious when it shares a phone number and a device with ten accounts already caught for fraud. Picture a village in which news travels by gossip. On the first evening, every house hears from its immediate neighbors and updates its opinion. On the second evening, those updated opinions travel again, so each house now carries a little of what its neighbors’ neighbors thought. After a few evenings, every house’s view blends its own with a wide circle around it. A graph neural network , or GNN, does exactly this with vectors. In each round, which is one layer, every node gathers its neighbors’ vectors, combines them with its own through learned weights, and updates. This is message passing , and it is close kin to attention, with the meeting restricted to the detectives you are actually connected to. GNNs are used to flag fraud rings and to predict the properties of molecules, and DeepMind reported in 2020 that they had improved arrival-time estimates in Google Maps. The village picture breaks in a known way: after too many evenings of gossip everyone sounds alike, and the nodes lose what made them different. This over-smoothing is one reason most GNNs use only a few rounds.",
+      "sourceAnchor": null,
+      "wordCount": 249
+    },
+    {
+      "id": "u000577",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Then there is the shape behind much of the commercial web: a ranked list. When you open a streaming service or a shop, the system is not classifying anything. It must choose, out of millions of items, the ten to show you, in order. Picture a good bookshop clerk. You describe what you like, and she does not read every book in the shop on your behalf. She first pulls fifty plausible books off the shelves, quickly, by rough categories she knows well; then she looks at those fifty carefully, thinking about you in particular, and hands you the best five, in order. Recommender systems use the same funnel: a cheap retrieval stage that narrows millions to hundreds, and a slower ranking stage that orders them. The librarian and the expert who answer questions from documents work the same way, and so do the two towers of search.",
+      "sourceAnchor": null,
+      "wordCount": 148
+    },
+    {
+      "id": "u000578",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The retrieval stage often rests on an idea made famous by the Netflix Prize, a public competition run from 2006 to 2009 to improve the company’s film recommendations. Arrange the ratings as a huge table, users down the side and films across the top, and almost every cell is empty. Collaborative filtering fills the empty cells from the pattern of the filled ones, and its most successful form, matrix factorization , gives every user and every film a short list of numbers, a learned taste profile, so that a user’s predicted rating for a film is how well their two lists line up. Those lists are embeddings, learned from behavior instead of text. To find the films nearest a user’s taste among millions, nobody compares against every one; systems use the library-style index met with the nearest neighbors, which searches only the likeliest section and accepts a small risk of missing the very best match. Such an index is called approximate nearest-neighbor search, and a vector database is, at its heart, one of them.",
+      "sourceAnchor": null,
+      "wordCount": 173
+    },
+    {
+      "id": "u000579",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "A ranked list also needs its own metric. Accuracy does not care about order, but the user does: the right film in position one is worth far more than the same film in position forty. Ranking metrics such as NDCG (normalized discounted cumulative gain) give each good item less credit the lower down the list it appears. And two problems belong to recommenders in particular. A new user or a new book has no history at all, the cold start problem, and must be handled with content, popularity, or simply by asking. And the clerk learns only from what customers did with the books she chose to show them. A book she never shows is never bought, so it never looks good, so she never shows it. This is a feedback loop, the model’s own choices shaping the data it will learn from next, and it runs inside every recommender; it is why such systems deliberately show a little of something new.",
+      "sourceAnchor": null,
+      "wordCount": 162
+    },
+    {
+      "id": "u000580",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "One more shape deserves a name. Sometimes the answer itself has structure: a label for every word in a sentence, marking names, dates and amounts; a box around every pedestrian in a camera frame; a mask over every pixel that belongs to a tumor. These tasks, called sequence labeling , object detection and segmentation , are classification repeated at many places at once, and the U-Net is a common blueprint for the pixel-level ones.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000581",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "All of these shapes still rely on the same machinery, gradient descent and the box of Lego. That machinery, too, was simplified in the telling, and the next section opens up the plumbing.",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000582",
+      "chapterId": "chapter-0009",
+      "kind": "h2",
+      "text": "8.4 What the Plumbing Hides",
+      "sourceAnchor": "what-the-plumbing-hides",
+      "wordCount": 6
+    },
+    {
+      "id": "u000583",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Go back to the hiker feeling her way down a mountain in fog. That picture was true, but a large training run gives her much more equipment, and a few pieces of the box of Lego were described in ways that would mislead you in a modern model’s code. This section opens the rest of the kit.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000584",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Start with the walking. A sled on a snowy slope does not stop in every dip; it keeps sliding through small bumps. Momentum in training is the same: each step blends the current slope with the recent direction of travel, so the jitter of mini-batches averages out and small hollows are crossed rather than explored. Adam, mentioned earlier, adds a second memory: how large each weight’s recent slopes have been. Weights with consistently steep slopes take smaller steps; weights that rarely get a signal take larger ones. These two memories are the two extra copies of the model that training must keep in memory.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000585",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Then the schedule. Runners warm up before they sprint, and training does too: at the start the optimizer’s memories are empty, and a full-sized stride can throw the model somewhere it never recovers from. The learning rate therefore follows a recipe: it rises from near zero over the first few hundred or few thousand steps, the warmup , then slowly falls for the rest of the run, so the walker settles gently into the valley at the end. Weight decay pulls every weight slightly toward zero at each step, regularization built into the walk. The random starting weights, too, are scaled to each layer’s number of inputs, so that a signal neither fades nor swells across a hundred layers; this initialization was normalization’s partner in the rescue of deep networks. And for the rare step that goes badly wrong, there is a handrail, which the telephone game mentioned only in passing. The twin of the vanishing gradient is the exploding gradient : a batch whose slope is suddenly enormous, so that a single step can undo days of training, one cause of the loss that “falls and then explodes”. Gradient clipping caps how large any single gradient may be, the way a handrail keeps one slip from becoming a fall.",
+      "sourceAnchor": null,
+      "wordCount": 208
+    },
+    {
+      "id": "u000586",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The hiker picture breaks in two places. A hiker has one stride, while Adam gives every weight its own, a billion small walkers moving together. And some of these routines work better than anyone can fully explain; warmup in particular is standard practice with only partial theory behind it.",
+      "sourceAnchor": null,
+      "wordCount": 49
+    },
+    {
+      "id": "u000587",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "How are these settings chosen? The early answer was “by watching the mock exams”, but nobody tries every combination. Random search , drawing settings at random from sensible ranges, often beats a neat grid, because usually only one or two settings really matter and a grid wastes most of its tries varying the others. Bayesian optimization fits a quick model of the score as a function of the settings, often the Gaussian process with its flexible wire, and uses its uncertainty to choose the next setting worth trying.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000588",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Now the thermostat, which the box of Lego left only half explained: images and text need different ones. Batch normalization is a thermostat for the whole building: it rescales each feature by its average and spread across the examples in a batch. That works beautifully for images in large, uniform batches. Text is different. Sentences in a batch have different lengths, and a model generating an answer works on one token of one conversation at a time, where batch statistics are unavailable or misleading. So Transformers use layer normalization , a thermostat in every room: each token’s vector is rescaled using only its own numbers. Many recent language models use a cheaper cousin, RMSNorm , which rescales the vector’s size without shifting its average. The thermostat picture is too simple in one respect: each normalization also has a few learned weights, so every layer can choose the temperature it prefers.",
+      "sourceAnchor": null,
+      "wordCount": 148
+    },
+    {
+      "id": "u000589",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "The detectives’ meeting had its plumbing simplified too. Position first. The original Transformer wrote a fixed house number, a pattern of waves, on each word’s file. Many modern models instead use RoPE (rotary position embedding), which turns each question and each badge by an angle that grows with position, a clock hand advancing one notch per word. When two words compare notes, what survives in the match score is the difference between their angles, so the model mostly sees how far apart two words sit rather than their house numbers. A model knows only the angles it saw in training, so stretching it to longer texts usually means rescaling them and training a little more on long documents, the later stage of training met with the whiteboard.",
+      "sourceAnchor": null,
+      "wordCount": 127
+    },
+    {
+      "id": "u000590",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Then the cost. The battle for longer contexts is fought on three fronts. The first leaves the mathematics untouched. FlashAttention , published in 2022, computes exactly the same attention, but in tiles small enough to fit in the graphics card’s fastest memory, never writing out the full table of match scores. Since moving data, not arithmetic, was the bottleneck, this alone often made attention several times faster. The second changes who may meet: in sliding-window attention , each word consults only the last few thousand words, and stacked layers let information hop further. The third front goes back to the recurrent networks and their index card.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    }
+  ]
+}

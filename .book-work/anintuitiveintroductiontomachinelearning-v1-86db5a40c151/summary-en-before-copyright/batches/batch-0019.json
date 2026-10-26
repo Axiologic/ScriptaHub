@@ -1,0 +1,3160 @@
+{
+  "batch": "batch-0019.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0013",
+  "chapterTitle": "Appendices",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000795",
+      "chapterId": "chapter-0013",
+      "kind": "h1",
+      "text": "Appendices",
+      "sourceAnchor": "appendices",
+      "wordCount": 1
+    },
+    {
+      "id": "u000796",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Appendix A — The Math Behind Each Section",
+      "sourceAnchor": "appendix-a-the-math-behind-each-section",
+      "wordCount": 7
+    },
+    {
+      "id": "u000797",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "This appendix collects the formulas the sections deliberately left out. Each one is followed by what every symbol means and how the formula matches the picture you already know. Throughout, x is an input, y is the correct answer, ŷ (“y-hat”) is the model’s prediction, w is a weight, b is a bias and n is the number of examples.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    },
+    {
+      "id": "u000798",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "1.2 Measuring mistakes",
+      "sourceAnchor": "measuring-mistakes",
+      "wordCount": 4
+    },
+    {
+      "id": "u000799",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "For numbers, the usual loss is the mean squared error : take each miss, square it, and average.",
+      "sourceAnchor": null,
+      "wordCount": 17
+    },
+    {
+      "id": "u000800",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "MSE = 1 n ∑ i = 1 n ( y i − y ̂ i ) 2 \\text{MSE} = \\frac{1}{n}\\sum_{i = 1}^{n}\\left( y_{i} - {\\hat{y}}_{i} \\right)^{2}",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000801",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The Σ (sigma) simply means “add up over all examples”. Squaring makes every miss positive and makes big misses count disproportionately: a miss of 10 contributes 100, a miss of 1 contributes 1.",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000802",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "For yes-or-no answers, the usual loss is cross-entropy . If the model gave probability p to the correct answer, the loss for that example is:",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000803",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L = − log ⁡ p L = - \\log p",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000804",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "If the model was confident and right (p close to 1), the loss is close to 0. If it was confident and wrong (p close to 0), the logarithm shoots toward infinity. That is the weather forecaster who promised 99% sun.",
+      "sourceAnchor": null,
+      "wordCount": 41
+    },
+    {
+      "id": "u000805",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "1.3 K-Means and PCA",
+      "sourceAnchor": "k-means-and-pca",
+      "wordCount": 5
+    },
+    {
+      "id": "u000806",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "K-Means looks for k centers, written μ (mu), that make the total squared distance from every point to its nearest center as small as possible:",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000807",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "min μ 1 , … , μ k ∑ i = 1 n min j ∥ x i − μ j ∥ 2 \\min_{\\mu_{1},\\ldots,\\mu_{k}}\\sum_{i = 1}^{n}\\min_{j} \\parallel x_{i} - \\mu_{j} \\parallel^{2}",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000808",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The double bars mean distance. The pizza-station procedure (assign houses, move stations, repeat) is a way of reducing this quantity step by step.",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000809",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "PCA computes the covariance matrix of the data, a table saying how much every pair of features moves together, and finds its eigenvectors : the directions along which the data is most spread out. The first eigenvector is “how powerful is the laptop”, the second “how portable”, and so on. Each eigenvector’s eigenvalue says how much of the spread it captures.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    },
+    {
+      "id": "u000810",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.1 Linear and logistic regression",
+      "sourceAnchor": "linear-and-logistic-regression",
+      "wordCount": 6
+    },
+    {
+      "id": "u000811",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "y ̂ = w ⋅ x + b p = σ ( w ⋅ x + b ) = 1 1 + e − ( w ⋅ x + b ) \\hat{y} = w \\cdot x + b\\quad\\quad\\quad\\quad p = \\sigma(w \\cdot x + b) = \\frac{1}{1 + e^{- (w \\cdot x + b)}}",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000812",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "On the left, the ruler: w · x is the weighted sum of the inputs (each input times its weight, added up), and b shifts the whole line up or down. On the right, the dimmer: σ (sigma, the sigmoid function) squeezes any number into the range from 0 to 1. Large positive scores give values near 1, large negative scores give values near 0, and a score of exactly 0 gives 0.5, the decision boundary. Linear regression is trained by minimizing MSE; logistic regression by minimizing cross-entropy.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000813",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.2 Distance for nearest neighbors",
+      "sourceAnchor": "distance-for-nearest-neighbors",
+      "wordCount": 6
+    },
+    {
+      "id": "u000814",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The most common distance is the ordinary straight-line (Euclidean) distance, Pythagoras in many dimensions:",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u000815",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "d ( a , b ) = ∑ j ( a j − b j ) 2 d(a,b) = \\sqrt{\\sum_{j}^{}\\left( a_{j} - b_{j} \\right)^{2}}",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000816",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Every feature j contributes its squared difference, which is exactly why a feature measured in large units dominates the sum unless you rescale.",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000817",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.3 Entropy, Gini and information gain",
+      "sourceAnchor": "entropy-gini-and-information-gain",
+      "wordCount": 7
+    },
+    {
+      "id": "u000818",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "If a group contains classes in proportions p₁, p₂ and so on:",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u000819",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "H = − ∑ k p k log ⁡ 2 p k G = 1 − ∑ k p k 2 H = - \\sum_{k}^{}p_{k}\\log_{2}p_{k}\\quad\\quad\\quad\\quad G = 1 - \\sum_{k}^{}p_{k}^{2}",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000820",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Both equal 0 for a perfectly tidy sock drawer (one class only) and reach their maximum for an even mix. With two classes at 50/50, entropy is exactly 1 bit: you need one yes-or-no question to resolve the uncertainty. Information gain is the entropy before a split minus the size-weighted average entropy of the groups after it. The tree picks the question with the largest gain.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000821",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.4 Ensembles",
+      "sourceAnchor": "ensembles",
+      "wordCount": 3
+    },
+    {
+      "id": "u000822",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "A random forest averages (or takes a majority vote over) the predictions of its T trees:",
+      "sourceAnchor": null,
+      "wordCount": 16
+    },
+    {
+      "id": "u000823",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "y ̂ = 1 T ∑ t = 1 T h t ( x ) \\hat{y} = \\frac{1}{T}\\sum_{t = 1}^{T}h_{t}(x)",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000824",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Gradient boosting builds its model as a running sum. Each new small tree h is trained on what the current model still gets wrong, and is added with a small weight ν (nu), the boosting learning rate:",
+      "sourceAnchor": null,
+      "wordCount": 37
+    },
+    {
+      "id": "u000825",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "F m ( x ) = F m − 1 ( x ) + ν h m ( x ) F_{m}(x) = F_{m - 1}(x) + \\nu\\, h_{m}(x)",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000826",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "This is the publishing house: draft, plus a careful fraction of the editor’s fix, plus a careful fraction of the copy editor’s fix, and so on.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000827",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.5 Bayes’ rule",
+      "sourceAnchor": "bayes-rule",
+      "wordCount": 4
+    },
+    {
+      "id": "u000828",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "P ( H ∣ E ) = P ( E ∣ H ) P ( H ) P ( E ) P(H \\mid E) = \\frac{P(E \\mid H)\\, P(H)}{P(E)}",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000829",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "H is a hypothesis (the patient has the disease) and E the evidence (the test came back positive). P(H) is the prior, P(H | E) the posterior, and P(E | H) how likely the evidence would be if the hypothesis were true. Take the test of section 2.5, 99% accurate, for a disease that one person in ten thousand has. Out of a million people, a hundred are ill and about 99 of them test positive; 1% of the 999,900 healthy people, about 9,999, test positive too. So a positive result means the disease with probability about 99 / (99 + 9,999), roughly 1%. Naive Bayes multiplies one factor P(E | H) per piece of evidence, as if each were independent of the others.",
+      "sourceAnchor": null,
+      "wordCount": 127
+    },
+    {
+      "id": "u000830",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "3.1 The neuron",
+      "sourceAnchor": "the-neuron",
+      "wordCount": 4
+    },
+    {
+      "id": "u000831",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "a = f ( w ⋅ x + b ) ReLU ( z ) = max ⁡ ( 0 , z ) a = f(w \\cdot x + b)\\quad\\quad\\quad\\quad\\text{ReLU}(z) = \\max(0,z)",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000832",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The neuron computes the weighted sum, adds the bias and passes the result through an activation function f. For the apartment checklist, w = (10, 4, 1), b = −11 and f is the step function: output 1 if the result is at least 0. A layer is many neurons side by side, which in practice is one matrix multiplication; an MLP is several layers in a row, with an activation function after each.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000833",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "3.2 Gradient descent and backpropagation",
+      "sourceAnchor": "gradient-descent-and-backpropagation",
+      "wordCount": 6
+    },
+    {
+      "id": "u000834",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "w ← w − η ∂ L ∂ w w \\leftarrow w - \\eta\\,\\frac{\\partial L}{\\partial w}",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u000835",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The arrow means “replace w with”. The fraction ∂L/∂w is the partial derivative of the loss L with respect to w: how much the error would change if you nudged this one weight a little, holding all others still. That is the slope under your boots in the direction of w. The minus sign points downhill, and η (eta) is the learning rate, the stride length.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000836",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Backpropagation computes all these slopes efficiently with the chain rule . If the loss depends on an intermediate value z, and z depends on w, then:",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000837",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "∂ L ∂ w = ∂ L ∂ z ⋅ ∂ z ∂ w \\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial z} \\cdot \\frac{\\partial z}{\\partial w}",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000838",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "This is the workshop inspector walking back along the line: the blame arriving at a station, multiplied by how strongly that station’s setting affected its output.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000839",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "3.4 The recurrent update",
+      "sourceAnchor": "the-recurrent-update",
+      "wordCount": 5
+    },
+    {
+      "id": "u000840",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "h t = tanh ⁡ ( W x t + U h t − 1 + b ) h_{t} = \\tanh\\left( Wx_{t} + Uh_{t - 1} + b \\right)",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000841",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The new hidden state h at step t is computed from the current input x and the previous hidden state, through two learned weight matrices W and U. The function tanh squeezes values into the range from −1 to 1. This is the reduce from the section: new accumulator from current item and old accumulator. During backpropagation, the blame passes through U once per step, which is where vanishing gradients come from.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000842",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "4.2 Scaling and TF-IDF",
+      "sourceAnchor": "scaling-and-tf-idf",
+      "wordCount": 5
+    },
+    {
+      "id": "u000843",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Standard scaling turns every feature into “how many spreads away from the average”:",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u000844",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "x ′ = x − μ σ x' = \\frac{x - \\mu}{\\sigma}",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000845",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "where μ (mu) is the feature’s average and σ (sigma) its standard deviation, both computed on the training set only. (Here σ is the spread, not the sigmoid of section 2.1; mathematics reuses its few Greek letters freely.) After scaling, a value of 2 means “two spreads above typical” in every feature alike, whatever the original units.",
+      "sourceAnchor": null,
+      "wordCount": 58
+    },
+    {
+      "id": "u000846",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "TF-IDF weights a word by how often it appears in this document (term frequency, TF) and how rare it is across all N documents (inverse document frequency, IDF):",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000847",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "tfidf ( w , d ) = tf ( w , d ) ⋅ log ⁡ N df ( w ) \\text{tfidf}(w,d) = \\text{tf}(w,d) \\cdot \\log\\frac{N}{\\text{df}(w)}",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000848",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "If a word appears in every document, df equals N, the logarithm is zero, and the word counts for nothing. A word that appears in one document in a thousand gets a weight near log 1000, about 6.9.",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000849",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "4.3 A layer as a matrix multiplication",
+      "sourceAnchor": "a-layer-as-a-matrix-multiplication",
+      "wordCount": 8
+    },
+    {
+      "id": "u000850",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "With X a batch of inputs (one row per example), W a layer’s weight matrix (one column per neuron) and b its bias vector:",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000851",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Y = f ( X W + b ) X : ( n × d in ) , W : ( d in × d out ) , Y : ( n × d out ) Y = f(XW + b)\\quad\\quad X:\\left( n \\times d_{\\text{in}} \\right),\\mspace{6mu} W:\\left( d_{\\text{in}} \\times d_{\\text{out}} \\right),\\mspace{6mu} Y:\\left( n \\times d_{\\text{out}} \\right)",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000852",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The shapes must line up like dominoes: the number of columns of X has to equal the number of rows of W. Each cell of Y is one dot product, one neuron applied to one example, and all n × d_out of them can be computed in parallel. A whole network is this line repeated, with the output of one layer becoming the X of the next.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000853",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The memory needed just to hold a model’s weights is the number of parameters times the bytes per parameter:",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000854",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "memory ≈ P × bytes per weight 7 × 10 9 × 4 bytes = 28 GB (32-bit) , 7 × 10 9 × 0.5 bytes = 3.5 GB (4-bit) \\text{memory} \\approx P \\times \\text{bytes per weight}\\quad\\quad 7 \\times 10^{9} \\times 4\\text{ bytes} = 28\\text{ GB (32-bit)},\\quad 7 \\times 10^{9} \\times 0.5\\text{ bytes} = 3.5\\text{ GB (4-bit)}",
+      "sourceAnchor": null,
+      "wordCount": 61
+    },
+    {
+      "id": "u000855",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "That is what quantization buys. Training needs several times more, for the stored intermediate results, the gradients and the optimizer’s memory (section 5.2).",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000856",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "5.3 Hypervectors",
+      "sourceAnchor": "hypervectors",
+      "wordCount": 3
+    },
+    {
+      "id": "u000857",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "For two binary hypervectors a and b of length D, similarity is measured by the fraction of positions where they agree, derived from the Hamming distance (the number of positions where they differ):",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000858",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "sim ( a , b ) = 1 − Hamming ( a , b ) D \\text{sim}(a,b) = 1 - \\frac{\\text{Hamming}(a,b)}{D}",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000859",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "For two random vectors this is close to 0.5, and the spread around 0.5 shrinks like one over the square root of D. With D = 10,000 the spread is about half a percent, which is why 0.6 already means “definitely related”.",
+      "sourceAnchor": null,
+      "wordCount": 45
+    },
+    {
+      "id": "u000860",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Binding is bitwise XOR, written ⊕, and it undoes itself:",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000861",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "( a ⊕ b ) ⊕ b = a (a \\oplus b) \\oplus b = a",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u000862",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Bundling several vectors, written +, is a majority vote at each position (with an even number of vectors, ties are broken at random). A record is a bundle of bound pairs, and querying it is one more bind followed by a nearest-neighbor search among the known vectors:",
+      "sourceAnchor": null,
+      "wordCount": 46
+    },
+    {
+      "id": "u000863",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "R = ( PET ⊕ DOG ) + ( OWNER ⊕ ANA ) R ⊕ OWNER ≈ ANA R = \\left( \\text{PET} \\oplus \\text{DOG} \\right) + \\left( \\text{OWNER} \\oplus \\text{ANA} \\right)\\quad\\quad R \\oplus \\text{OWNER} \\approx \\text{ANA}",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000864",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The approximately-equal sign is the noise from the other pairs in the bundle; the length of the vectors is what keeps it small.",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000865",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "7.1 Cosine similarity",
+      "sourceAnchor": "cosine-similarity",
+      "wordCount": 4
+    },
+    {
+      "id": "u000866",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "cos ⁡ ( θ ) = a ⋅ b ∥ a ∥ ∥ b ∥ \\cos(\\theta) = \\frac{a \\cdot b}{\\parallel a \\parallel \\, \\parallel b \\parallel}",
+      "sourceAnchor": null,
+      "wordCount": 18
+    },
+    {
+      "id": "u000867",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The top is the dot product: multiply the vectors coordinate by coordinate and add up. The bottom divides by both lengths, which removes size from the comparison and leaves only direction. The result is 1 for the same direction (the pancake recipe for 4 and for 40), 0 for unrelated directions and −1 for opposite ones.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000868",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "7.2 Attention",
+      "sourceAnchor": "attention",
+      "wordCount": 3
+    },
+    {
+      "id": "u000869",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Attention ( Q , K , V ) = softmax ( Q K ⊤ d k ) V \\text{Attention}(Q,K,V) = \\text{softmax}\\left( \\frac{QK^{\\top}}{\\sqrt{d_{k}}} \\right)V",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000870",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Q, K and V are matrices with one row per word: the questions, the badges and the files. They come from the word embeddings X through three learned matrices: Q = X·W_Q, K = X·W_K, V = X·W_V. The product Q·Kᵀ is a table of match scores, one for every pair of words. Dividing by the square root of d_k, the number of coordinates in each key, keeps those scores from growing so large that softmax becomes all-or-nothing. Softmax turns each row of scores into percentages that add up to 100%:",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000871",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "softmax ( z ) i = e z i ∑ j e z j \\text{softmax}(z)_{i} = \\frac{e^{z_{i}}}{\\sum_{j}^{}e^{z_{j}}}",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000872",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Multiplying by V produces, for every word, the blend of files it listened to. This is the fuzzy dictionary lookup, written in matrix form. Multi-head attention runs several copies with different learned matrices and concatenates the results.",
+      "sourceAnchor": null,
+      "wordCount": 37
+    },
+    {
+      "id": "u000873",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "7.3 Training and sampling a language model",
+      "sourceAnchor": "training-and-sampling-a-language-model",
+      "wordCount": 8
+    },
+    {
+      "id": "u000874",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Pretraining minimizes the cross-entropy of the next token, averaged over every position in every text:",
+      "sourceAnchor": null,
+      "wordCount": 15
+    },
+    {
+      "id": "u000875",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L = − 1 T ∑ t = 1 T log ⁡ p ( x t ∣ x 1 , … , x t − 1 ) L = - \\frac{1}{T}\\sum_{t = 1}^{T}\\log p\\left( x_{t} \\mid x_{1},\\ldots,x_{t - 1} \\right)",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000876",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Read the vertical bar as “given”: the probability the model assigned to the real token at position t, given all the tokens before it. Temperature τ (tau) divides the scores z before the softmax:",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000877",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "p i = e z i / τ ∑ j e z j / τ p_{i} = \\frac{e^{z_{i}/\\tau}}{\\sum_{j}^{}e^{z_{j}/\\tau}}",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000878",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "A small τ exaggerates the differences between scores, so the top token wins almost always; a large τ flattens them, so less likely tokens get a real chance.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000879",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "8.1 Diffusion",
+      "sourceAnchor": "diffusion",
+      "wordCount": 3
+    },
+    {
+      "id": "u000880",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The forward process adds a little Gaussian noise at each of T steps, so that after enough steps the image is indistinguishable from static:",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000881",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "x t = 1 − β t x t − 1 + β t ε , ε ∼ 𝒩 ( 0 , I ) x_{t} = \\sqrt{1 - \\beta_{t}}\\, x_{t - 1} + \\sqrt{\\beta_{t}}\\,\\varepsilon,\\quad\\quad\\varepsilon \\sim \\mathcal{N}(0,I)",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000882",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "β (beta) is a small number controlling how much noise step t adds, and ε (epsilon) is the random noise. The network is trained on one simple regression: given the noisy image and the step number, predict the noise that was added.",
+      "sourceAnchor": null,
+      "wordCount": 42
+    },
+    {
+      "id": "u000883",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L = ∥ ε − ε θ ( x t , t ) ∥ 2 L = \\left. \\parallel\\varepsilon - \\varepsilon_{\\theta}\\left( x_{t},t \\right) \\right.\\parallel^{2}",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000884",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Generation starts from pure noise and runs the steps in reverse, each time subtracting the network’s predicted noise. The GAN objective, by contrast, is a two-player game: the discriminator D maximizes its accuracy at telling real from generated, and the generator G minimizes it.",
+      "sourceAnchor": null,
+      "wordCount": 44
+    },
+    {
+      "id": "u000885",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "8.2 Mixture of experts and contrastive loss",
+      "sourceAnchor": "mixture-of-experts-and-contrastive-loss",
+      "wordCount": 8
+    },
+    {
+      "id": "u000886",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "In a mixture-of-experts layer, a router produces a weight for each of E experts and only the top k are run:",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000887",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "y = ∑ i ∈ top- k g i ( x ) Expert i ( x ) y = \\sum_{i \\in \\text{top-}k}^{}g_{i}(x)\\,\\text{Expert}_{i}(x)",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000888",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The g values are softmax scores from the router, so the output is a weighted blend of a few experts’ answers, and the others cost nothing for this token.",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000889",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The contrastive loss behind models like CLIP treats, within a batch of N pairs, each image’s own caption as the positive and the other N − 1 captions as negatives:",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000890",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L = − log ⁡ e sim ( a i , b i ) / τ ∑ j = 1 N e sim ( a i , b j ) / τ L = - \\log\\frac{e^{\\text{sim}\\left( a_{i},b_{i} \\right)/\\tau}}{\\sum_{j = 1}^{N}e^{\\text{sim}\\left( a_{i},b_{j} \\right)/\\tau}}",
+      "sourceAnchor": null,
+      "wordCount": 46
+    },
+    {
+      "id": "u000891",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "It is cross-entropy over “which caption belongs to this image”, with cosine similarity as the score and a temperature τ (tau) as in section 7.3.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000892",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "9.1 Q-learning",
+      "sourceAnchor": "q-learning",
+      "wordCount": 3
+    },
+    {
+      "id": "u000893",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Q ( s , a ) ← Q ( s , a ) + α [ r + γ max a ′ Q ( s ′ , a ′ ) − Q ( s , a ) ] Q(s,a) \\leftarrow Q(s,a) + \\alpha\\left\\lbrack r + \\gamma\\max_{a'}Q(s',a') - Q(s,a) \\right\\rbrack",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000894",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "After taking action a in state s, receiving reward r and arriving in state s′, the agent compares its old estimate Q(s, a) with a better-informed one: the reward it just got plus the discounted value of the best move from where it landed. It moves its estimate part of the way toward that, by a step size α (alpha). γ (gamma), the discount factor, is a number just below 1. This is the cheese value seeping backwards through the maze, one junction at a time.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000895",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "9.2 LoRA and preference learning",
+      "sourceAnchor": "lora-and-preference-learning",
+      "wordCount": 6
+    },
+    {
+      "id": "u000896",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "LoRA freezes a weight matrix W and learns a small correction written as the product of two thin matrices:",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000897",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "W ′ = W + B A , B : ( d × r ) , A : ( r × d ) , r ≪ d W' = W + BA,\\quad\\quad B:(d \\times r),\\mspace{6mu} A:(r \\times d),\\mspace{6mu} r \\ll d",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000898",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "For a 4,096-by-4,096 matrix and a rank r of 8, the correction has about 65,000 trainable numbers instead of 16.8 million, a reduction of roughly 250 times.",
+      "sourceAnchor": null,
+      "wordCount": 31
+    },
+    {
+      "id": "u000899",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "In RLHF, a reward model r is trained from pairs where answer y₊ was preferred to y₋, so that the preferred answer scores higher with probability given by a sigmoid of the difference:",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000900",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "P ( y + ≻ y − ) = σ ( r ( x , y + ) − r ( x , y − ) ) P\\left( y_{+} \\succ y_{-} \\right) = \\sigma\\left( r\\left( x,y_{+} \\right) - r\\left( x,y_{-} \\right) \\right)",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000901",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The language model is then optimized to maximize r while a penalty keeps it close to the model it started from. DPO folds both steps into one, training the model directly on the preference pairs.",
+      "sourceAnchor": null,
+      "wordCount": 35
+    },
+    {
+      "id": "u000902",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "10.1 Regularization",
+      "sourceAnchor": "regularization",
+      "wordCount": 3
+    },
+    {
+      "id": "u000903",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L2 regularization adds a penalty for large weights to the loss, with a strength λ (lambda) that you choose:",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000904",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L total = L data + λ ∑ j w j 2 L_{\\text{total}} = L_{\\text{data}} + \\lambda\\sum_{j}^{}w_{j}^{2}",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000905",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The model now has to justify every large weight by a real reduction in error, the mathematical version of the reviewer who rejects complexity that does not pay for itself. L1 regularization uses absolute values instead of squares and tends to push unhelpful weights all the way to zero.",
+      "sourceAnchor": null,
+      "wordCount": 49
+    },
+    {
+      "id": "u000906",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "10.3 Metrics",
+      "sourceAnchor": "metrics",
+      "wordCount": 3
+    },
+    {
+      "id": "u000907",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "With TP, FP and FN the counts of true positives, false positives and false negatives:",
+      "sourceAnchor": null,
+      "wordCount": 15
+    },
+    {
+      "id": "u000908",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Precision = T P T P + F P Recall = T P T P + F N F 1 = 2 ⋅ Precision ⋅ Recall Precision + Recall \\text{Precision} = \\frac{TP}{TP + FP}\\quad\\quad\\text{Recall} = \\frac{TP}{TP + FN}\\quad\\quad F_{1} = \\frac{2 \\cdot \\text{Precision} \\cdot \\text{Recall}}{\\text{Precision} + \\text{Recall}}",
+      "sourceAnchor": null,
+      "wordCount": 51
+    },
+    {
+      "id": "u000909",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Precision divides by everything the alert flagged; recall divides by everything that was really there. For numeric predictions:",
+      "sourceAnchor": null,
+      "wordCount": 18
+    },
+    {
+      "id": "u000910",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "MAE = 1 n ∑ i = 1 n | y i − y ̂ i | RMSE = 1 n ∑ i = 1 n ( y i − y ̂ i ) 2 \\text{MAE} = \\frac{1}{n}\\sum_{i = 1}^{n}\\left| y_{i} - {\\hat{y}}_{i} \\right|\\quad\\quad\\text{RMSE} = \\sqrt{\\frac{1}{n}\\sum_{i = 1}^{n}\\left( y_{i} - {\\hat{y}}_{i} \\right)^{2}}",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000911",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "The vertical bars in MAE mean “ignore the sign”. RMSE is the square root of MSE from section 1.2, which brings it back to the original units while keeping its extra sensitivity to large misses.",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000912",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "11.4 Differential privacy",
+      "sourceAnchor": "differential-privacy",
+      "wordCount": 4
+    },
+    {
+      "id": "u000913",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "A randomized computation M is ε-differentially private if, for any two datasets D and D′ that differ only in one person’s data, and any set S of possible results:",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000914",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "P ( M ( D ) ∈ S ) ≤ e ε P ( M ( D ′ ) ∈ S ) P\\left( M(D) \\in S \\right) \\leq e^{\\varepsilon}\\, P\\left( M(D') \\in S \\right)",
+      "sourceAnchor": null,
+      "wordCount": 27
+    },
+    {
+      "id": "u000915",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "ε (epsilon) is the privacy budget. With a small ε, e^ε is close to 1, so any result is almost exactly as likely whether or not you were included, and nobody looking at it can tell much about you. Budgets add up: releasing k results computed with budget ε each costs at most kε in total, which is the arithmetic behind the warning in section 11.4 that every answer released spends a little of the budget.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    },
+    {
+      "id": "u000916",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Appendix B — Dictionary of Metaphors",
+      "sourceAnchor": "appendix-b-dictionary-of-metaphors",
+      "wordCount": 5
+    },
+    {
+      "id": "u000917",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Every picture in the book, with the technical term it stands for, so you can move between the two languages when reading documentation or talking with specialists.",
+      "sourceAnchor": null,
+      "wordCount": 27
+    },
+    {
+      "id": "u000918",
+      "chapterId": "chapter-0013",
+      "kind": "th",
+      "text": "Section",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u000919",
+      "chapterId": "chapter-0013",
+      "kind": "th",
+      "text": "Picture",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u000920",
+      "chapterId": "chapter-0013",
+      "kind": "th",
+      "text": "Technical term",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000921",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000922",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The recipe and the apprentice",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000923",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "classic programming vs. machine learning",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000924",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000925",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The answer key on the back of the page",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000926",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "supervised learning, labels, loss",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000927",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000928",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Sorting the closet in the dark; pizza delivery stations",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000929",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "clustering, K-Means",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000930",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000931",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The shadow on the wall; laptop spec sheets",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000932",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "dimensionality reduction, PCA (principal component analysis)",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000933",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000934",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The face on Mars",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000935",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "clusters found in pure noise",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000936",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000937",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Practice book, mock exam, real exam",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000938",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "training, validation and test sets",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000939",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000940",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Hours of study vs. what is in your head",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000941",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "hyperparameters vs. parameters",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000942",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000943",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The ruler on springs",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000944",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "linear regression, squared error",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000945",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000946",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The dimmer switch",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000947",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "sigmoid, logistic regression",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000948",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000949",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Tell me who your neighbors are; the sections of a library",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000950",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "k-nearest neighbors (k-NN); approximate nearest-neighbor index",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000951",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000952",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "In 500 dimensions everyone is a stranger",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000953",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "curse of dimensionality",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000954",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000955",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Twenty questions, git bisect",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000956",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "decision tree, information gain",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000957",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000958",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The sock drawer",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000959",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "entropy, Gini index",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000960",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000961",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The ox at the country fair; the council of half-blind experts",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000962",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "random forest, bagging",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000963",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000964",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The publishing house",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000965",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "gradient boosting",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000966",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000967",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The road with the widest empty strip between two villages; the inner village turned into a valley",
+      "sourceAnchor": null,
+      "wordCount": 17
+    },
+    {
+      "id": "u000968",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "support vector machine (SVM), margin, kernel trick",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000969",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000970",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The doctor’s suspicion before and after the evidence; the lazy doctor",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000971",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Bayes’ rule, prior and posterior, naive Bayes",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000972",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000973",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The music festival seen from a drone; the flat world map on the classroom wall; the flexible wire pinned at known points",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000974",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "density-based clustering (DBSCAN), t-SNE and UMAP, Gaussian processes",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000975",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000976",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The apartment checklist; the paging rule",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000977",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "perceptron, weights, bias",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000978",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000979",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Chained currency conversions",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000980",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "why networks need activation functions",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000981",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000982",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Walking down in the fog; the flapping autoscaler",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000983",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "gradient descent, learning rate",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000984",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000985",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The workshop inspector walking back along the line; distributed tracing",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u000986",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "backpropagation",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u000987",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000988",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Inspectors with magnifying glasses",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000989",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "convolutional network, kernel",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000990",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000991",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The linter rule applied to every line",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000992",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "weight sharing",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000993",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000994",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The telephone game; a reduce with a small accumulator; one index card vs. a notebook with switches",
+      "sourceAnchor": null,
+      "wordCount": 17
+    },
+    {
+      "id": "u000995",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "recurrent network, hidden state, vanishing gradient, LSTM gates",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000996",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000997",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The paper airplane and the pigeon; the sound desk with a million sliders",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u000998",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "artificial vs. biological neurons",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000999",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001000",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The folder of messy tickets; the row of checkboxes",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001001",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "data preparation, one-hot encoding, feature engineering",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001002",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001003",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The file with a hundred million decimals",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001004",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "tensors, shapes, a model as stored weights",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001005",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001006",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "JPEG for weights",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001007",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "quantization",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u001008",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001009",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The four recruiters: scoring sheet, flowchart, gut feeling, eyes led by each CV",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u001010",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "feature importance: linear weights, tree-based importance, hidden features, attention",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001011",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001012",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Shuffling one feature’s values; the twins splitting the credit",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001013",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "permutation importance, correlated features",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001014",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001015",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The box of Lego: workers and plumbing",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001016",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "layer types, architecture",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001017",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001018",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The thermostat; the bypass; rehearsal sick days",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001019",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "normalization, residual connections, dropout",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001020",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001021",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The year before opening; opening day",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001022",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "training vs. inference",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001023",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001024",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Filling the bakery oven",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001025",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "batching",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u001026",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001027",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The bill for one conversation",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001028",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "inference cost, output vs. input tokens",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001029",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001030",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Ten thousand coin flips; a grown-up Bloom filter",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001031",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "hyperdimensional computing, VSA (vector symbolic architectures)",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001032",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001033",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The guitarist’s first year; ovens and flour; a photocopy of a photocopy",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001034",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "learning curve, scaling laws, compute-optimal training (Chinchilla), synthetic data and model collapse",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001035",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001036",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The coffee cup in the dark; the scene graph",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001037",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "cortical columns, reference frames",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001038",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001039",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Fingers voting; replicas reaching quorum",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001040",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "voting between columns",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001041",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001042",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The fridge that stops humming; the video codec",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001043",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "predictive processing, prediction error",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001044",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001045",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Each service tuning its own cache",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001046",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Hebbian (local) learning",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001047",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001048",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The write-ahead log compacted at night",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001049",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "hippocampal replay, complementary learning systems",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001050",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001051",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The city map of meanings; color codes",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001052",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "embeddings",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u001053",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001054",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The pancake recipe for 4 and for 40",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001055",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "cosine similarity",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001056",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001057",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The detectives’ meeting; the fuzzy dictionary lookup",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001058",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "self-attention: query, key, value",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001059",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001060",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The phone keyboard; guess the next word",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001061",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "next-token prediction, pretraining",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001062",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001063",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The new hire: wiki, shadowing, code review",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001064",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "pretraining, fine-tuning, RLHF",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001065",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001066",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The meeting-room whiteboard",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001067",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "context window",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001068",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001069",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The open-book exam",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001070",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "retrieval-augmented generation (RAG)",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001071",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001072",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Living on a whiteboard; the clerk who condenses old notes; the notebook carried between meetings",
+      "sourceAnchor": null,
+      "wordCount": 15
+    },
+    {
+      "id": "u001073",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "context window limits, context compaction, persistent memory",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001074",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001075",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The new engineer guessing the next line of a postmortem; classical chess vs. blitz",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u001076",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "next-token prediction, chain of thought, test-time compute",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001077",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001078",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Thirty words over the phone",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001079",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "autoencoder",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u001080",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001081",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The child correcting a blob; the forger and the expert",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001082",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "diffusion models, GANs (generative adversarial networks)",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001083",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001084",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The index built at write time; the triage desk; the REPL (read-eval-print loop)",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u001085",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "two towers, mixture of experts, agents",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001086",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001087",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The harbor master’s tide table; pretending it is last January",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001088",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "time series, trend and seasonality, backtesting",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001089",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001090",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Village gossip; the bookshop clerk",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001091",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "graph neural networks, message passing; recommender systems: retrieval and ranking",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001092",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001093",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The sled; the runner’s warm-up; the handrail",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001094",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "momentum, warmup, gradient clipping",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001095",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001096",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "A thermostat for the building vs. one in every room; the orchestra too large for one room",
+      "sourceAnchor": null,
+      "wordCount": 17
+    },
+    {
+      "id": "u001097",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "batch vs. layer normalization; data, tensor and pipeline parallelism",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001098",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "9.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001099",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Clicker training; the cheese maze",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001100",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "reinforcement learning, Q-learning",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001101",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "9.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001102",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The lunch dilemma",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001103",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "exploration vs. exploitation",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001104",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "9.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001105",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The boat circling the lagoon",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001106",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "reward hacking",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001107",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "9.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001108",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Medical school, residency, feedback; the translator’s notebook; the leash",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001109",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "pretraining, transfer learning, fine-tuning, LoRA, RLHF, policy gradients and PPO, distillation",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u001110",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001111",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The crammer and the slacker",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001112",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "overfitting and underfitting",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001113",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001114",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Clever Hans; tomorrow’s newspaper",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001115",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "data leakage",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001116",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001117",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The smoke alarm; the pager",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001118",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "precision and recall",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001119",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001120",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The funhouse mirror; works on my machine",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001121",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "bias in data",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001122",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001123",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The weather forecaster checked over a whole year",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001124",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "calibration, reliability diagram, temperature scaling",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001125",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001126",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The fair coin; the toaster shown to a cat-and-dog classifier",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001127",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "aleatoric vs. epistemic uncertainty, out-of-distribution detection",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001128",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001129",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The mechanic without a manual: look, poke, probe",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001130",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "interpretability, mechanistic interpretability",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001131",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001132",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Splitting the restaurant bill; “approved if your income were higher”",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001133",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "SHAP (Shapley values), counterfactual explanations",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001134",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001135",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The rooster and the sunrise; the coin that decides who gets the discount",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u001136",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "correlation vs. causation, confounders, randomized controlled experiments (A/B tests)",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001137",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001138",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The wine judges served the same wine three times; school league tables",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001139",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "LLM-as-a-judge, evaluation noise, Goodhart’s law",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001140",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001141",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The assistant who obeys every note on her desk",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001142",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "prompt injection, indirect prompt injection",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001143",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001144",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Stickers on a stop sign; the bitter recipe card",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001145",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "adversarial examples, data poisoning, backdoors",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001146",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001147",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The secret coin flip; the grandmothers’ kitchens",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001148",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "randomized response, differential privacy, federated learning",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001149",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001150",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The egg in the baked cake",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001151",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "machine unlearning",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001152",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001153",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The restaurant a year after opening; the new flour; the garden that needs a gardener",
+      "sourceAnchor": null,
+      "wordCount": 15
+    },
+    {
+      "id": "u001154",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "MLOps, training-serving skew, drift monitoring",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001155",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001156",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "The island of California on old maps",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001157",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "forecasting AI progress, the AGI (artificial general intelligence) debate",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001158",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001159",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "King Midas’s wish",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001160",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "alignment, reward hacking, goal specification",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001161",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001162",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Twenty steps that each succeed nineteen times in twenty",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001163",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "agents, error compounding",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001164",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Appendix C — Where to Go Next",
+      "sourceAnchor": "appendix-c-where-to-go-next",
+      "wordCount": 6
+    },
+    {
+      "id": "u001165",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "When the apprentice of section 1.1 finally leaves the kitchen, what helps next is not another book about cakes but an oven, some flour and a few recipes worth getting wrong. This appendix is that kind of send-off: a short, opinionated list of well-known resources that have stayed useful for years, and a suggested order for using them. Nearly all of them are in English, and most are free. Pick one course, one book and one tool to start; collecting resources is not the same as learning from them.",
+      "sourceAnchor": null,
+      "wordCount": 90
+    },
+    {
+      "id": "u001166",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "Free courses",
+      "sourceAnchor": "free-courses",
+      "wordCount": 2
+    },
+    {
+      "id": "u001167",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Andrew Ng’s Machine Learning Specialization (Stanford and DeepLearning.AI, on Coursera) is the gentlest next step after this book, covering Chapters 1 to 3 again with the mathematics switched on; his Deep Learning Specialization continues from there. Practical Deep Learning for Coders from fast.ai (course.fast.ai) goes the other way round, top down: you train a working model in the first lesson and open the hood later. Stanford publishes lectures from three classic courses: CS229 (machine learning, with the mathematics of Appendix A in full), CS231n (deep learning for computer vision, the territory of sections 3.3 and 8.1) and CS224n (natural language processing with deep learning, the territory of Chapter 7). Andrej Karpathy’s Neural Networks: Zero to Hero builds backpropagation (section 3.2) and then a small GPT (section 7.3) from scratch, in code you type yourself.",
+      "sourceAnchor": null,
+      "wordCount": 142
+    },
+    {
+      "id": "u001168",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "Books",
+      "sourceAnchor": "books",
+      "wordCount": 1
+    },
+    {
+      "id": "u001169",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "An Introduction to Statistical Learning , by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani, first written with examples in R and, since 2023, also in a Python edition; free online (statlearning.com). The best companion to Chapter 2.",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u001170",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Hands-On Machine Learning , by Aurélien Géron. Earlier editions use Scikit-Learn, Keras and TensorFlow; the 2025 edition is built on Scikit-Learn and PyTorch. The most practical of the list.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u001171",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Dive into Deep Learning , by Aston Zhang, Zachary Lipton, Mu Li and Alexander Smola; free and runnable at d2l.ai, every chapter a notebook.",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u001172",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Understanding Deep Learning , by Simon Prince (2023), clear and well illustrated, with a free PDF.",
+      "sourceAnchor": null,
+      "wordCount": 15
+    },
+    {
+      "id": "u001173",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Deep Learning , by Ian Goodfellow, Yoshua Bengio and Aaron Courville (2016), free at deeplearningbook.org. Older, but still the standard reference for the foundations.",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u001174",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Pattern Recognition and Machine Learning , by Christopher Bishop (2006), and Probabilistic Machine Learning: An Introduction (2022) with its Advanced Topics sequel (2023), by Kevin Murphy. Both take the probabilistic view of section 2.5 all the way down. Demanding; read them after one of the books above.",
+      "sourceAnchor": null,
+      "wordCount": 47
+    },
+    {
+      "id": "u001175",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Reinforcement Learning: An Introduction , by Richard Sutton and Andrew Barto (second edition, 2018), free online. Chapter 9’s dog, maze and boat, done properly.",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u001176",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "For the questions of the deeper sections and of the last chapter, three shorter books help: Christoph Molnar’s Interpretable Machine Learning (free online) for section 10.6, Chip Huyen’s Designing Machine Learning Systems for section 11.5, and Judea Pearl and Dana Mackenzie’s The Book of Why for the rooster of section 11.1.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u001177",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "Tools to try",
+      "sourceAnchor": "tools-to-try",
+      "wordCount": 3
+    },
+    {
+      "id": "u001178",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Jupyter notebooks, or Google Colab , which runs them in a browser, often with a free graphics card for small experiments.",
+      "sourceAnchor": null,
+      "wordCount": 20
+    },
+    {
+      "id": "u001179",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "scikit-learn (scikit-learn.org), for everything in Chapter 2 and most of sections 10.1 and 10.3; its user guide is a good textbook in disguise.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u001180",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "PyTorch (pytorch.org), for building and training networks from Chapters 3 to 5.",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u001181",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Hugging Face (huggingface.co), for downloading pretrained models and datasets, and for its free courses on language models.",
+      "sourceAnchor": null,
+      "wordCount": 18
+    },
+    {
+      "id": "u001182",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Kaggle (kaggle.com), for datasets, competitions and short tutorials, and for reading how other people solved the same problem.",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u001183",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "A suggested order",
+      "sourceAnchor": "a-suggested-order",
+      "wordCount": 3
+    },
+    {
+      "id": "u001184",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Start where this book started. Take a small table of real data, apartment prices or support tickets, split it as section 1.4 taught, and train the ruler of section 2.1, a tree from section 2.3 and a boosted ensemble from section 2.4 in scikit-learn. Plot the learning curve of section 5.4 and see whether your model is the crammer or the slacker of section 10.1.",
+      "sourceAnchor": null,
+      "wordCount": 71
+    },
+    {
+      "id": "u001185",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Then build a small network by hand, following Karpathy or the early chapters of Dive into Deep Learning , until backpropagation (section 3.2) stops feeling like magic. Fine-tune a pretrained image model on a few hundred photos of your own, as in section 9.2, and run the saliency check of section 10.6 to see what it looks at; you may find your own snow.",
+      "sourceAnchor": null,
+      "wordCount": 66
+    },
+    {
+      "id": "u001186",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Next, language. Embed a few thousand of your own documents (section 7.1), build the open-book assistant of section 7.4 on top of them, and write a private evaluation set of fifty questions before you start tuning anything (section 11.2). If you are curious about agents, give a model one narrow, read-only tool and watch the loop of section 8.2 at work, with the permissions of section 11.3 in mind.",
+      "sourceAnchor": null,
+      "wordCount": 74
+    },
+    {
+      "id": "u001187",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "At each step, keep the habits of Chapters 1 and 10: a sealed test set, a check of the training and validation errors side by side, the metric that matches the mistakes your users can afford, and a look at the errors group by group. Compare every model with the simplest one that could possibly work, because sometimes, as section 11.5 put it, the right move is to write the rule. Everything else, as the preface promised, is the same loop, run again.",
+      "sourceAnchor": null,
+      "wordCount": 84
+    }
+  ]
+}

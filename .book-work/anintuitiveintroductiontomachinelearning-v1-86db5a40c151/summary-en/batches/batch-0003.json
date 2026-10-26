@@ -1,0 +1,528 @@
+{
+  "batch": "batch-0003.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0003",
+  "chapterTitle": "Chapter 2 — The Classic Toolbox",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000200",
+      "chapterId": "chapter-0003",
+      "kind": "h1",
+      "text": "Chapter 2 — The Classic Toolbox",
+      "sourceAnchor": "chapter-2-the-classic-toolbox",
+      "wordCount": 5
+    },
+    {
+      "id": "u000201",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.1 A Ruler, Some Springs and a Dimmer Switch",
+      "sourceAnchor": "a-ruler-some-springs-and-a-dimmer-switch",
+      "wordCount": 10
+    },
+    {
+      "id": "u000202",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Take a wooden board and hammer in a nail for every apartment sold in your neighborhood last year: left to right is the size, bottom to top is the price. You now have a cloud of nails that drifts upward, roughly, as you move right. Tie a short spring to each nail, pointing straight up or down, and clip all the springs to a long, rigid ruler. Then let go.",
+      "sourceAnchor": null,
+      "wordCount": 70
+    },
+    {
+      "id": "u000203",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Where does the ruler come to rest?",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000204",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "It wobbles, the springs pull from above and below, and it settles in the one position where the total energy stored in the springs is as small as it can be. That position is the line of linear regression , the oldest and still one of the most useful models in this book. You did not have to calculate anything. The springs did it. A computer has no springs, and for a straight line it does not need them: a formula gives the resting position directly, in one calculation. For models with no such formula, the computer imitates the wobbling ruler step by step, which is the walk down the mountain of the next chapter.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000205",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Why springs, and not pieces of string? Because the energy in a stretched spring grows with the square of the stretch. Pull a spring twice as far and it stores four times the energy. That is precisely what linear regression minimizes: the sum of the squared vertical distances between the points and the line. And it explains something you may have seen go wrong in practice. Add one penthouse that sold for ten times the price of anything else on the street, and its spring is stretched so far that it drags the whole ruler toward itself. The other predictions get worse, on the whole, to accommodate one extreme point, an outlier . A single nail can bend the line for everyone.",
+      "sourceAnchor": null,
+      "wordCount": 121
+    },
+    {
+      "id": "u000206",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "This little physical model turns up in engineering constantly. Plot an API (application programming interface) endpoint’s latency against the size of the request payload and you usually get a cloud drifting upward. Let the springs settle and the ruler gives you a sentence a product manager can use: every extra megabyte costs roughly so many milliseconds, on top of a fixed overhead. The slope and the starting height are the only two numbers the model learned, and unlike almost every other model in this book, you can read them and argue with them. With many inputs, reading the weights as a ranking of importance takes more care than it seems, as a later chapter shows.",
+      "sourceAnchor": null,
+      "wordCount": 115
+    },
+    {
+      "id": "u000207",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "But some questions cannot be answered by a ruler, because the answer is not a number. Will this deployment fail? Is this payment fraud? Will this customer cancel? Ask a straight line, and it will cheerfully predict 1.7, or minus 0.3, which mean nothing as answers to a yes-or-no question.",
+      "sourceAnchor": null,
+      "wordCount": 52
+    },
+    {
+      "id": "u000208",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The fix is charming. First compute the same kind of weighted score as before, adding up the evidence. Then pass that score through a dimmer switch. When the score is very low, the light is off: zero, no. When it is very high, the light is fully on: one, yes. In between, the light brightens smoothly, and you read its brightness as a probability. A reading of 0.83 means “fairly likely yes”. The S-shaped curve of the dimmer is called the sigmoid , and the whole arrangement, score plus dimmer, is logistic regression , despite the name a classification method. One caution about the picture: a dimmer’s brightness is simply where the knob is set, but the model’s 0.83 is an honest probability only if training made it one, and many models turn out to be more confident than their track record justifies; checking this is called calibration.",
+      "sourceAnchor": null,
+      "wordCount": 148
+    },
+    {
+      "id": "u000209",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Picture it applied to your deployment history. Each past deployment comes with a few facts: how many lines changed, how many services were touched, whether the database schema moved, what hour it went out. Each is labeled with whether a rollback followed. The model learns how much each fact should push the score, and every new deployment gets a risk between 0 and 1. You might require a second reviewer above 0.3, and refuse Friday evening deployments above 0.6. Notice that those thresholds are not the model’s decision; they are yours, and they say how much risk your team can stomach. That theme will come back with some force.",
+      "sourceAnchor": null,
+      "wordCount": 111
+    },
+    {
+      "id": "u000210",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Under both models sits the same structure: each input is multiplied by a weight that says how much it matters, the results are added, and a constant called the bias shifts everything up or down. Linear regression stops there. Logistic regression adds the dimmer. And the place where the dimmer reads exactly 0.5, the line between yes and no, is called the decision boundary . Hold on to that idea, because in the next chapter you will discover that logistic regression is, quietly, a single artificial neuron.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000211",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "So far, so tidy. Now the ruler shows its limits, and the first limit is in its name: it is straight.",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000212",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Every engineer who has load-tested a service has seen a relationship that is not. At 20% CPU, latency is fine. At 40%, still fine. At 60%, fine. At 85%, requests start queuing and latency shoots up like a hockey stick. A straight ruler through those points does something terrible: it underestimates latency precisely in the region you care about most, near saturation. The remedy is often not a fancier algorithm but better inputs. Hand the model the load squared, or the logarithm of a quantity, and a straight line in the new inputs becomes a curve in the old ones. Which extra inputs to offer comes mostly from plotting the data and knowing the domain: queues blow up near saturation, and sizes and waiting times tend to spread over many orders of magnitude. Then you try the candidates on the mock exam; the next chapter is the story of models that learn such bends for themselves.",
+      "sourceAnchor": null,
+      "wordCount": 156
+    },
+    {
+      "id": "u000213",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The second limit is subtler, and it is not really about the ruler at all. Ice cream sales and drownings rise and fall together, beautifully, on a straight line. Ice cream does not cause drowning; summer causes both. In engineering data the same illusion is everywhere. The services with the most tests often have the most bug reports, not because tests create bugs but because those are the biggest, busiest, most critical services. A large weight means two things move together. It never, on its own, means one causes the other: a model fitted to historical data can only report what went together, and telling a cause from a fellow traveler takes an experiment, such as the A/B tests that split traffic at random, which the last chapter takes up.",
+      "sourceAnchor": null,
+      "wordCount": 131
+    },
+    {
+      "id": "u000214",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The ruler makes a strong assumption about the world: that it is, more or less, a straight line. What if you refused to assume anything at all, and simply asked the neighbors?",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000215",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.2 Tell Me Who Your Neighbors Are",
+      "sourceAnchor": "tell-me-who-your-neighbors-are",
+      "wordCount": 8
+    },
+    {
+      "id": "u000216",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "You have just moved to a new city and found an apartment you like. The asking price seems high, but you have no idea what is normal here. You do not build a pricing model. You look up the five apartments most like this one that sold recently, same street, similar size, similar floor, and average their prices. If the asking price is far above that average, you negotiate.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000217",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Without noticing, you have run k-nearest neighbors , with k equal to five. It may be the most human algorithm in this book, because it is how we reason about almost everything new. A restaurant is probably good if the three friends whose taste is closest to yours loved it. A film is probably worth watching if people who liked the same films as you rated it highly. Many “customers like you also bought” boxes on shopping sites are this idea running at industrial scale. Real recommender systems add a good deal to it.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000218",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "It is also quietly at work in engineering tools. Picture a bug tracker receiving a new report: “Login button does nothing on Safari”. Before anyone triages it, the tool looks up its nearest neighbors among existing issues and finds “Sign-in click unresponsive on macOS browser”, filed last week, already assigned, already half fixed. The words barely overlap, so the tool cannot simply count shared words; it measures how close the meanings are, with a trick a later chapter explains, and the duplicate is caught before two engineers spend an afternoon on the same problem. Or picture an incident tool that, the moment an alert fires, shows the five past incidents most similar to this one, with links to how each was resolved. Often the fix is sitting in one of those postmortems.",
+      "sourceAnchor": null,
+      "wordCount": 132
+    },
+    {
+      "id": "u000219",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "What makes k-NN unusual is that it does no learning in advance at all. There is no training phase in which weights are fitted. The model is the data, stored as it is. All the work happens when a question arrives: measure the distance from the new case to every stored case, take the k closest, and let them vote on a category or average their numbers. It is the laziest algorithm imaginable, and that laziness comes with a gift. Every prediction can be explained by pointing at real examples: we think this apartment is worth this much because of these five sales. The price comes at scale: measuring the distance to a hundred million stored cases for every question is too slow, so real systems build an index in advance, a little like the sections of a library, that jumps to the right neighborhood and checks only a few thousand candidates. They occasionally return the second-nearest neighbor instead of the nearest, a trade almost everyone accepts; these are the vector databases that reappear later in the book.",
+      "sourceAnchor": null,
+      "wordCount": 178
+    },
+    {
+      "id": "u000220",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The one setting you must choose is k, and it behaves like a dial between nervousness and blur. With k equal to one, a single odd neighbor, a mislabeled ticket or a sale between relatives, decides everything. With k equal to five hundred, you are averaging over half the city, and every apartment looks the same. Somewhere in between lies a sensible value, and you find it the usual way: by trying a few on the mock exam.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    },
+    {
+      "id": "u000221",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "So far, the neighbors have been wise. Now something strange happens, and it is one of the genuinely counterintuitive facts of this field.",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000222",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "On a street map, “near” is obvious. Two dimensions, and your eye does the job. But suppose you describe each person not by two numbers but by five hundred: height, age, income, the number of books they own, how many hours they sleep, their favorite color encoded as a number, and on and on. Pick any two people. On some of those five hundred traits they are bound to differ a lot. Add up all those differences, and everyone ends up roughly equally far from everyone else. Your “nearest” neighbor is barely nearer than your farthest. In a high-dimensional space, everyone is a stranger.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000223",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "This is the curse of dimensionality , and it is why k-NN works best with a modest number of meaningful features, or after something has compressed many raw features into a few informative ones. And like clustering, it falls into the scaling trap: unless the features are rescaled, the one with the biggest numbers dominates every distance.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000224",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Asking the neighbors works beautifully when you know what makes two things similar. When you don’t, when there are dozens of features and only a few of them matter, you need a different strategy. Instead of comparing everything at once, you would want to ask the right questions, in the right order. Which is exactly how the game of twenty questions is won.",
+      "sourceAnchor": null,
+      "wordCount": 63
+    },
+    {
+      "id": "u000225",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.3 Twenty Questions",
+      "sourceAnchor": "twenty-questions",
+      "wordCount": 4
+    },
+    {
+      "id": "u000226",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The release goes out in two hours, and something in the last two hundred commits broke the checkout page. Nobody knows which commit. Testing them one by one would take all night.",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000227",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Then someone types git bisect , and the mood in the room changes. Bisect checks out the commit in the middle and asks one question: is the bug here? Whatever the answer, half the suspects are gone. Another question, another half. After eight questions, two hundred commits have shrunk to one, and the culprit is on the screen before the coffee is cold.",
+      "sourceAnchor": null,
+      "wordCount": 62
+    },
+    {
+      "id": "u000228",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "What makes bisect so satisfying is not the speed of the computer. It is the quality of the questions. Each one is chosen to remove as much uncertainty as possible, whatever the answer turns out to be.",
+      "sourceAnchor": null,
+      "wordCount": 37
+    },
+    {
+      "id": "u000229",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "You have played this game since childhood. In twenty questions, a beginner opens with “Is it a Chihuahua?” and learns almost nothing from the inevitable “no”. A good player opens with “Does it have four legs?”, because either answer cuts the world in half. Then “Does it bark?”, then “Is it small?”. Three questions in, the candidates have collapsed to a handful.",
+      "sourceAnchor": null,
+      "wordCount": 62
+    },
+    {
+      "id": "u000230",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "A decision tree is this game, played by a machine that has studied thousands of past rounds. You have seen the hand-drawn version of it many times: the triage checklist in an emergency room, the mechanic’s diagnostic flowchart, the “have you tried restarting it?” script at a help desk. Someone experienced wrote those flowcharts from years of cases. A decision tree writes them automatically, from data.",
+      "sourceAnchor": null,
+      "wordCount": 66
+    },
+    {
+      "id": "u000231",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "To do that, it needs a way to tell a good question from a bad one, and the answer comes from an unlikely place: your sock drawer. A drawer containing only black socks is perfectly tidy; reach in blindly and you know what you will get. A drawer with half black and half white socks is as messy as it gets; every grab is a coin toss. Entropy and the Gini index are two ways of putting a number on that messiness. A good question is one that turns one messy drawer into two tidier ones. The amount of tidying is called information gain , and at every step the tree simply tries every feature and every possible cut-off (“more than 400 lines changed?”, “size above 54 square meters?”) and keeps the question with the largest gain. Then it repeats the process inside each new drawer. Add up how much tidying each feature was responsible for across all the questions in the tree, and you have a ranking of the features: a useful first look at which ones mattered, though not an impartial one, for reasons a later chapter explains.",
+      "sourceAnchor": null,
+      "wordCount": 189
+    },
+    {
+      "id": "u000232",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Picture what this produces on your own history. Feed a tree every pull request merged in the last two years, each labeled with whether it was reverted within a week. It might come back with a runbook nobody ever wrote down: does it touch database migrations? If yes, is it larger than a few hundred lines? If yes, was it reviewed by only one person? Then the revert rate is high. Each path from the top of the tree to a leaf reads like a rule a senior engineer might state, which is exactly why trees are loved in places where decisions must be explained, such as credit approvals and compliance checks. They also have pleasant manners: they handle numbers and categories alike, and they do not care that one feature is in euros and another in years. A tree only ever asks whether a value is above or below a cut-off, and rescaling a feature moves the cut-off along with the values without changing which examples fall on which side, so the scaling trap that caught the neighbors never touches it.",
+      "sourceAnchor": null,
+      "wordCount": 182
+    },
+    {
+      "id": "u000233",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "It all sounds ideal. But the tree has two character flaws, and they are serious.",
+      "sourceAnchor": null,
+      "wordCount": 15
+    },
+    {
+      "id": "u000234",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The first is impatience. A skilled player thinks a few questions ahead; sometimes a slightly worse first question sets up a brilliant second one. A tree never does this. At each step it grabs the best question available right now and never reconsiders. It is greedy , in the technical sense.",
+      "sourceAnchor": null,
+      "wordCount": 50
+    },
+    {
+      "id": "u000235",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The second flaw is worse: a tree does not know when to stop asking. Left alone, it keeps splitting until every drawer is perfectly tidy, which on real data often means only one or a few examples per leaf. It ends up asking things like “Is it 54.3 square meters, on the third floor, with a green front door?”. That question separates one apartment from all others in the training data, and it is useless for any apartment the tree has not seen. The tree has stopped learning patterns and started memorizing. The usual cure is to set limits in advance: no more than, say, six questions deep, no drawer with fewer than twenty examples, or no question that tidies less than some minimum. These are hyperparameters, chosen by watching the mock exam.",
+      "sourceAnchor": null,
+      "wordCount": 134
+    },
+    {
+      "id": "u000236",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Worse still, the memorizing is unstable. Change a handful of rows in the training data and the first question might change, and with it everything below. Two analysts training trees on almost the same data can get trees that look nothing alike. A single tree, in other words, is a brilliant but erratic expert: readable, fast, and far too impressed by the particular cases it happened to see.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000237",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "There is a fix, and it comes from an observation made at a country fair more than a century ago. What if, instead of one erratic expert, you asked a whole crowd of them?",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000238",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.4 The Wisdom of Crowds, and of Editors",
+      "sourceAnchor": "the-wisdom-of-crowds-and-of-editors",
+      "wordCount": 9
+    },
+    {
+      "id": "u000239",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "In the autumn of 1906, the statistician Francis Galton, then in his eighties, wandered through a livestock fair in Plymouth and came across a contest. For a small fee, visitors could guess the weight of an ox once it had been slaughtered and dressed. About eight hundred people entered: butchers and farmers who knew cattle, and plenty of clerks and families who did not. Galton, who had a low opinion of the average person’s judgment, collected the tickets afterwards, curious to see how well the crowd had done.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000240",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The individual guesses were all over the place. But when he took the middle value of all of them, it landed within about one percent of the true weight. The crowd, as a crowd, had been almost exactly right. Galton published the result the following year in the journal Nature, under the title Vox Populi .",
+      "sourceAnchor": null,
+      "wordCount": 55
+    },
+    {
+      "id": "u000241",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Why did it work? Because each person’s error pointed in a different direction. One guessed too high because the ox looked big from where he stood; another too low because she was thinking of a smaller breed. Independent mistakes, added together, largely cancel. What survives is the part everyone saw correctly.",
+      "sourceAnchor": null,
+      "wordCount": 51
+    },
+    {
+      "id": "u000242",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Now return to the erratic decision tree from the last section, the brilliant expert who memorizes every quirk of the cases it saw. A random forest builds a Galton crowd out of such experts, and the clever part is how it makes them independent. Each tree receives a slightly different copy of the training data, drawn at random so that some rows appear more than once and others are missing; this is called a bootstrap sample . And at every question it asks, each tree may only consider a few features chosen at random. Every expert is half-blind in a different way, so each one makes different mistakes. When the forest votes, or averages, the individual quirks cancel, just like the guesses at the fair. Training many models on bootstrap samples and combining them is called bagging ; adding the random choice of features is what makes it a forest.",
+      "sourceAnchor": null,
+      "wordCount": 148
+    },
+    {
+      "id": "u000243",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "But the fair has a darker version, and it explains the design. Imagine that before anyone wrote a ticket, one loud farmer announced his guess to the whole crowd. Half the people would anchor on it. Their errors would no longer be independent; they would all lean the same way, and averaging would not cancel anything. The crowd would become a choir singing one man’s wrong note.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000244",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Trees face exactly this danger. If one feature in your data is very strong, every tree will want to ask about it first, and they will all make the same mistakes together. Hiding a random subset of features from each tree at each step is the forest’s way of keeping the loud farmer out of the room.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000245",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "You already know this principle from code review. A second reviewer with exactly your background, your habits and your blind spots catches little you would not have caught yourself. A reviewer who thinks about security while you think about performance catches far more, precisely because your blind spots differ. Diversity is not a nice extra. It is the heart of the mechanism.",
+      "sourceAnchor": null,
+      "wordCount": 62
+    },
+    {
+      "id": "u000246",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "There is a second way to turn weak experts into a strong one, and it looks less like a crowd and more like a publishing house.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000247",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "An author writes a rough first draft. An editor reads it and fixes only the structural problems; she does not rewrite the book. A copy editor then fixes only the clumsy sentences the editor left behind. A proofreader catches the remaining typos. Nobody redoes the whole job. Each person specializes in what the previous ones got wrong, and the book that comes out is far better than any of them could have produced alone.",
+      "sourceAnchor": null,
+      "wordCount": 74
+    },
+    {
+      "id": "u000248",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Gradient boosting works like this. The first small tree makes a rough guess, say of how long a delivery will take. The second tree is not asked to predict delivery times at all. It is asked to predict the errors of the first tree: where it was too optimistic, where too pessimistic. The third tree predicts what is still wrong after the first two, and so on, for hundreds of rounds. Each tree on its own is crude, little more than a few questions deep, yet the chain of corrections becomes remarkably precise.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000249",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "If your company scores payments for fraud, predicts which customers will cancel, or estimates delivery times from a table of a few dozen columns, there is a good chance a boosted model is doing the work, from one of the well-known libraries such as XGBoost, LightGBM or CatBoost. On that kind of tabular data, these models are usually the ones to beat, and they frequently beat neural networks. The reason is that a table usually arrives with its features already made: a few dozen of them, each meaningful on its own, where sharp thresholds such as “more than three failed logins” carry the signal. Networks earn their keep by building features out of raw pixels and words; on a table there is little left for them to build, while trees handle mixed units and sharp cut-offs naturally.",
+      "sourceAnchor": null,
+      "wordCount": 137
+    },
+    {
+      "id": "u000250",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The two methods fix opposite weaknesses, and the field has names for both. A random forest takes detailed experts who overreact to the particular data they saw, and calms them down by averaging; it reduces variance . Boosting takes simple experts who are systematically too crude, and sharpens them by correction; it reduces bias , here meaning an error that always leans the same way (not the constant added by the ruler; a later chapter sorts out the word’s several meanings). In practice, a forest is a robust default that forgives sloppy settings, while boosting usually wins on accuracy but needs supervision, mainly knowing when to stop adding trees before the editors start correcting noise. For a forest, more trees do not cause overfitting, the memorizing that spoiled the single tree: the crowd’s average simply stops changing after a few hundred, and the only cost is time. For boosting, each new tree chases what is still wrong, and after a while that is mostly noise, so you stop when the mock-exam score stops improving.",
+      "sourceAnchor": null,
+      "wordCount": 172
+    },
+    {
+      "id": "u000251",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "And one limit applies to both. If the data is skewed for everyone, if the ox was weighed on a broken scale, no crowd and no chain of editors will straighten it.",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000252",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The ruler, the neighbors, the trees and the crowds are not the whole toolbox, though, and a few of the other tools deserve at least a quick look before we move on.",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000253",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.5 The Aisles We Walked Past",
+      "sourceAnchor": "the-aisles-we-walked-past",
+      "wordCount": 7
+    },
+    {
+      "id": "u000254",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Walk into a large hardware store for a box of screws and you go straight down the one aisle you need, past forty others full of tools you have never used. This chapter’s tour of the classic toolbox was a walk of that kind. It went down three aisles, the ruler, the neighbors and the trees, plus the crowds built out of trees, because those ideas carry most of the weight on business data. But open the documentation of any machine learning library and the list of methods runs to pages. A few of those names carry ideas the earlier sections had no room for.",
+      "sourceAnchor": null,
+      "wordCount": 105
+    },
+    {
+      "id": "u000255",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Start with the border. The dimmer’s decision boundary was simply wherever training happened to leave it. Picture instead two villages on either side of a wide plain, and a commission asked to build a road between them that belongs to neither. Many roads would separate the houses. The commission picks the one that leaves the broadest strip of empty land on both sides, on the theory that a road hugging one village’s fences will be wrong about the first new house built at its edge. That is the support vector machine , or SVM: of all the boundaries that separate two classes, it chooses the one with the widest margin . Only the houses nearest the road decide where it goes; they are the support vectors that give the method its name, and every house further back could move without changing anything. Real data is rarely cleanly separable, so the practical version lets a few houses stand on the wrong side of the road, at a price.",
+      "sourceAnchor": null,
+      "wordCount": 165
+    },
+    {
+      "id": "u000256",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The second idea is the clever one. Some villages cannot be separated by any straight road, because one is a ring around the other. The SVM’s answer, the kernel trick , is to judge the land in a richer space where a straight road does work. Add each house’s distance from the center as an extra coordinate, and the inner village becomes a valley and the outer one a hill, easily split by a flat cut. The trick is that the SVM never builds that richer space. All it needs is how similar each pair of houses is, and a kernel (unrelated to the kernels of the image networks in the next chapter) is a formula that computes the similarity the pair would have in the richer space, even an infinitely large one, without ever going there. Through the late 1990s and the 2000s, SVMs were among the strongest general-purpose classifiers, and they remain a sensible choice for small datasets with many features, such as a few hundred patients described by thousands of measurements. The picture breaks in two places. The widest road lives in a space the kernel invented, which nobody can draw or walk along. And comparing every pair of houses becomes expensive once there are millions of them, which is part of why boosted trees and networks took over on large data.",
+      "sourceAnchor": null,
+      "wordCount": 224
+    },
+    {
+      "id": "u000257",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The second aisle is about belief. A doctor sees a patient with a cough. Before any test, she already has a sense of how common each illness is this month: colds are everywhere, pneumonia is rarer. That starting suspicion is the prior . Then evidence arrives, a fever, a crackle in the lungs, and for each one she asks how likely that symptom would be under each illness and shifts her suspicion accordingly. What she believes at the end is the posterior . The rule that says exactly how to do the shifting is Bayes’ rule , from an essay by the minister Thomas Bayes published in 1763, after his death, and it is the honest way to combine what you believed with what you have just seen. Its most useful lesson for engineers is the one people most often get wrong. A test that is 99% accurate, for a disease that one person in ten thousand has, will still produce mostly false alarms, because the prior was so small. The same arithmetic returns whenever a model hunts for something rare, and it is why accuracy alone says so little about such models.",
+      "sourceAnchor": null,
+      "wordCount": 190
+    },
+    {
+      "id": "u000258",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Now make the doctor lazy. Suppose she pretends that every symptom is unrelated to every other, so that a fever tells her nothing about whether to expect a cough. Then each symptom becomes a separate multiplication of her odds, and the arithmetic becomes trivial. That shortcut is naive Bayes , and “naive” is the honest word, because the assumption is false almost everywhere: “free” and “money” are not independent in an email. Yet methods of this kind powered many of the learning spam filters that replaced the hand-written rules at the start of this book, and naive Bayes is still a surprisingly strong first model for text. It ranks emails well even though the probabilities it computes are badly exaggerated, because counting related evidence twice inflates its confidence without usually changing which way it leans. Here the picture breaks in a useful direction. A doctor who ignored how symptoms travel together would be a bad doctor, and the method that does exactly that works anyway. A wrong assumption can be harmless for ranking and harmful for confidence, which is a lesson about every simplification, including this book’s.",
+      "sourceAnchor": null,
+      "wordCount": 186
+    },
+    {
+      "id": "u000259",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "A relative from the same aisle deserves a sentence, because it will come back later in the book. A Gaussian process predicts a number together with how unsure it is. Think of a flexible wire pinned at every known point: tight near the pins, swinging freely in the long gaps between them, so that its uncertainty grows wherever data is thin. It becomes slow on large datasets but is excellent on small, expensive ones, which is why it is used to choose hyperparameters; it also belongs among the tools for saying how sure a model is. The wire picture hides the one real choice: how stiff the wire is, how far one pin’s influence reaches, is set by the analyst or tuned from the data, and a badly chosen stiffness produces confident nonsense between the pins.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000260",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The third aisle settles an old debt. K-Means needed you to choose the number of groups, and it would find five groups in pure noise. Picture instead a music festival seen from a drone. Nobody tells you how many groups of friends there are. A group is simply wherever people stand close together, it extends as far as the crowd stays dense, and the few people wandering between stages belong to no group at all. Density-based clustering , of which DBSCAN is the classic example, works this way: it finds as many groups as the density suggests, of whatever shape, and labels the stragglers as noise . That answers the face on Mars halfway. Given random scatter, a density method will often report one big blob or mostly noise rather than five tidy clusters, though you still choose what “close” means, and a careless choice can conjure groups like any other method. A second family, hierarchical clustering , builds a family tree instead. It merges the two most similar items, then the next two, until everything is one group, and you decide afterwards where to cut the tree, into three branches or thirty.",
+      "sourceAnchor": null,
+      "wordCount": 190
+    },
+    {
+      "id": "u000261",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The same aisle sells the pictures that appear on every slide about embeddings, the long lists of numbers by which later chapters place words and images on a map of meaning: a cloud of colored dots in two dimensions, with neat islands of similar items. They are usually made by methods called t-SNE and UMAP , which squash hundreds of dimensions onto a page while trying to keep each point’s nearest neighbors near it. Think of the flat world map on a classroom wall, on which Greenland looks about as big as Africa. Every flat map of a round planet distorts something, and these maps keep neighborhoods at the cost of almost everything else. The size of an island and the distance between two islands often mean very little, and different settings can split one real group into several or glue two together. Treat the islands as hints worth opening, never as findings.",
+      "sourceAnchor": null,
+      "wordCount": 152
+    },
+    {
+      "id": "u000262",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "The last aisle sits where labeled and unlabeled data meet. Often you have a few hundred labeled tickets and a hundred thousand unlabeled ones. Semi-supervised learning uses both: train on the few labels, let the model label the rest where it is very confident, retrain on the larger pile, and repeat, like a new employee who learns from the cases her mentor marked and then from her own surest judgments. The risk is plain, since confident mistakes are fed back as truth, and the method works best when the classes form well-separated groups. Weak supervision comes from the other side. Instead of labeling examples one by one, experts write quick, imperfect rules, the old keyword rules of spam filtering among them, and a model learns from where the rules agree and disagree. The rules were too crude to be the product; they are good enough to be the teacher. Together with active learning and self-supervision, which come up later in the book, these fill the space between a full answer key and none.",
+      "sourceAnchor": null,
+      "wordCount": 173
+    },
+    {
+      "id": "u000263",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Rare classes, such as the few frauds among millions of honest payments, have standard treatments too. You can reweight the loss, so that each missed fraud costs as much as hundreds of false alarms, or resample the training data, showing the model the rare cases more often or the common ones less often. Both make the model pay attention to what is rare. Both also distort its sense of how common the rare thing is, so its scores must be recalibrated, checked and corrected against how often things really happen, before anyone reads them as probabilities.",
+      "sourceAnchor": null,
+      "wordCount": 96
+    }
+  ]
+}

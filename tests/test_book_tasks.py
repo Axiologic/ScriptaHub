@@ -64,6 +64,21 @@ class TaskTests(unittest.TestCase):
         self.delivery("AssistOS_v2.docx", b"two")
         self.assertEqual({r["status"] for r in tasks.scan(self.root)}, {"ambiguous-source"})
 
+    def test_pending_paired_language_sources_are_not_ambiguous(self):
+        en = self.delivery("AssistOS_v2.docx", b"English manuscript")
+        work = tasks.prepare(en, "en", root=self.root)
+        ro = self.delivery("AssistOS_RO_v2.docx", b"Romanian manuscript")
+        manifest = tasks.read(self.book / "manifest.json")
+        manifest["sourceAliases"] = ["AssistOS_RO"]
+        tasks.write(self.book / "manifest.json", manifest)
+        release = tasks.read(work / "release.json")
+        release["pairedSources"] = [{"filename": ro.name, "language": "ro", "sha256": tasks.sha256(ro)}]
+        tasks.write(work / "release.json", release)
+        tasks.announce(work, self.root)
+        rows = tasks.scan(self.root)
+        self.assertEqual([r["status"] for r in rows], ["preparing", "preparing"])
+        self.assertEqual({r["matchedEdition"] for r in rows}, {"edition-2"})
+
     def test_incomplete_translation_cannot_modify_a_published_book(self):
         source = self.delivery("AssistOs_v2.docx")
         work = tasks.prepare(source, "en", root=self.root)
@@ -131,6 +146,7 @@ class TaskTests(unittest.TestCase):
             (work / "book" / code / "full_content.html").write_text("new reader")
             (work / "book" / code / "cover.webp").write_bytes(b"new cover")
         (work / "book/en/book.pdf").write_bytes(b"new pdf")
+        (work / "book/ro/book.pdf").write_bytes(b"Romanian pdf")
         # Structural validation is tested separately; isolate installation mechanics.
         with patch.object(tasks, "validate_stage", return_value=[]):
             tasks.install(work, self.root)
@@ -138,6 +154,7 @@ class TaskTests(unittest.TestCase):
         old = history["editions"][0]
         self.assertEqual((self.book / old["pdf"]["en"]).read_bytes(), b"old pdf")
         self.assertEqual((self.book / "en/book.pdf").read_bytes(), b"new pdf")
+        self.assertEqual(history["editions"][1]["pdf"]["ro"], "ro/book.pdf")
         self.assertEqual((self.book / old["covers"]["en"]).read_bytes(), b"old cover")
         self.assertEqual((self.book / history["editions"][1]["covers"]["en"]).read_bytes(), b"new cover")
         source_record = history["editions"][1]["source"]

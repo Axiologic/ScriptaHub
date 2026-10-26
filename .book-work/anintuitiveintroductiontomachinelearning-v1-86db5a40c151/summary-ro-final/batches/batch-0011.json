@@ -1,0 +1,488 @@
+{
+  "batch": "batch-0011.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0008",
+  "chapterTitle": "Capitolul 7 — Limbaj și sens",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000461",
+      "chapterId": "chapter-0008",
+      "kind": "h1",
+      "text": "Capitolul 7 — Limbaj și sens",
+      "sourceAnchor": "capitolul-7-limbaj-și-sens",
+      "wordCount": 5
+    },
+    {
+      "id": "u000462",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.1 O hartă în care sensul are o adresă",
+      "sourceAnchor": "o-hartă-în-care-sensul-are-o-adresă",
+      "wordCount": 10
+    },
+    {
+      "id": "u000463",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Deschide orice selector de culori și scrie #1E90FF . Obții un albastru luminos, prietenos. Schimbă-l în #1E80EF și obții un albastru aproape identic, cu o nuanță mai închis. Schimbă-l în #FFD700 și obții auriu. Fără să te gândești, ai folosit una dintre cele mai puternice idei din machine learning-ul modern.",
+      "sourceAnchor": null,
+      "wordCount": 49
+    },
+    {
+      "id": "u000464",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Un cod de culoare e o adresă. Cele trei coordonate ale lui spun cât roșu, verde și albastru să amesteci, iar lucrul remarcabil e că spațiul pe care îl definesc are sens . Culorile cu adrese apropiate seamănă între ele. Și direcțiile înseamnă ceva: mută orice culoare în direcția „mai mult roșu” și se încălzește, oricare ar fi culoarea de la care ai pornit. Nimeni nu trebuie să-ți explice că bleumarinul și albastrul regal sunt rude. Adresele lor o spun deja.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000465",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Acum imaginează-ți că faci același lucru pentru cuvinte. Dă-i fiecărui cuvânt din limbă o adresă, nu cu trei coordonate, ci cu sute, și aranjează adresele astfel încât cuvintele cu sensuri asemănătoare să locuiască aproape. Într-un oraș al cuvintelor bine cartografiat, „câine” stă lângă „pisică” și „hamster”, „bani” stă pe aceeași stradă cu „credit” și „dobândă”, iar „rege” stă ușă în ușă cu „regină”. O astfel de adresă se numește embedding („încorporare”: cuvântul e încorporat ca punct într-un spațiu de numere): o listă de numere, lungă de la câteva sute la câteva mii, care așază un cuvânt, o propoziție, o imagine sau un produs pe o hartă a sensului. Lungimea o alege proiectantul, ca hiperparametru: mai multe coordonate lasă loc pentru distincții mai fine, dar costă mai multă memorie și o căutare mai lentă.",
+      "sourceAnchor": null,
+      "wordCount": 133
+    },
+    {
+      "id": "u000466",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Momentul în care ideea a captat imaginația publicului a venit în 2013, când o echipă de la Google condusă de Tomas Mikolov a publicat o metodă numită word2vec. Oamenii au început să facă aritmetică cu adresele ei și au descoperit ceva straniu. Ia adresa lui „rege”, scade „bărbat”, adaugă „femeie” și uită-te ce locuiește cel mai aproape de rezultat, lăsând deoparte cuvintele de la care ai pornit. Foarte des, e „regină”. Drumul de la bărbat la femeie pe hartă s-a dovedit a fi cam același cu drumul de la rege la regină. Direcțiile din spațiul cuvintelor, ca direcțiile din spațiul culorilor, purtau sens.",
+      "sourceAnchor": null,
+      "wordCount": 103
+    },
+    {
+      "id": "u000467",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Cine a decis aceste adrese? Nimeni. Au fost învățate, iar principiul din spatele învățării e mai vechi decât calculatoarele. În 1957, lingvistul J. R. Firth scria că un cuvânt se cunoaște după compania pe care o ține. Un model care citește miliarde de propoziții observă că „rege” și „regină” apar în companii asemănătoare: „… a domnit”, „l-au încoronat pe …”, „… și curtea”. De fiecare dată când vede două cuvinte în companii asemănătoare, le apropie puțin adresele. După destulă lectură, harta se desenează singură. În word2vec, apropierea e un mic joc de ghicit: pornind de la adresa unui cuvânt, ghicești ce cuvinte apar lângă el într-o propoziție. Fiecare ghicire greșită trimite un gradient care mută puțin adresele, iar cuvintele care țin aceeași companie sunt împinse în aceleași direcții până ajung vecine.",
+      "sourceAnchor": null,
+      "wordCount": 128
+    },
+    {
+      "id": "u000468",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Pentru un inginer, câștigul e imediat, pentru că transformă „găsește ceva asemănător” în „găsește ceva apropiat”. Scrie „funcție care reîncearcă apelurile HTTP eșuate” într-o căutare semantică prin cod. Căutarea simplă în text nu găsește nimic, pentru că funcția pe care o vrei se numește with_backoff , iar comentariul ei vorbește despre „întârziere exponențială la erori tranzitorii”. Dar calculează embedding-ul întrebării tale și al fiecărei funcții din cod, iar with_backoff stă chiar lângă întrebarea ta pe hartă. Cuvintele sunt diferite; sensul e apropiat. Același truc îi permite unui sistem de tichete să prindă un duplicat ale cărui cuvinte abia se suprapun cu ale originalului: grupează „Nu mă pot loga pe Safari”, „Butonul de sign-in e mort pe Mac” și „Autentificarea eșuează în browserul Apple” într-un singur cluster de duplicate și alimentează rafturile de „produse similare” din multe magazine online. Căutarea celor mai apropiați vecini și clustering-ul merg dintr-odată și pe text. Și propozițiile sau documentele întregi primesc o singură adresă: un model citește textul cu attention, mecanismul din subcapitolul următor, condensează adresele dependente de context pe care le-a construit pentru fiecare cuvânt într-o singură listă de numere, adesea făcând pur și simplu media lor, și e antrenat astfel încât o întrebare și pasajul care îi răspunde să ajungă aproape unul de altul.",
+      "sourceAnchor": null,
+      "wordCount": 212
+    },
+    {
+      "id": "u000469",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Există o subtilitate în felul în care se măsoară „aproape”, iar bucătăria o explică cel mai bine. O rețetă de clătite pentru patru persoane și aceeași rețetă pentru patruzeci au cantități foarte diferite, dar proporții identice. Măsurate prin distanță brută, sunt departe una de alta. Măsurate prin direcție , prin raportul dintre ingrediente, sunt aceeași rețetă. Embeddings se compară de obicei în al doilea fel, cu cosine similarity („asemănarea cosinus”: se uită la unghiul dintre două adrese și ignoră lungimea lor). Așa, un document lung și o notiță scurtă despre același subiect sunt vecini, cum și trebuie.",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000470",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "E ușor să te lași purtat de entuziasm aici, deci două avertismente. Întâi, coordonatele nu au nume. Nu există o „axă a regalității” spre care să poți arăta; direcțiile cu sens sunt amestecuri ale multor coordonate deodată. Apoi, aritmetica cu regele și regina e reală, dar capricioasă. Merge minunat pentru exemple alese și inegal pentru multe altele. Tratează aritmetica asta ca pe o tendință a hărții, nu ca pe o lege a naturii. Și pentru că harta e învățată din ce scriu oamenii, le învață și prejudecățile: primele hărți de cuvinte așezau „nurse” („asistentă”) mai aproape de „she” („ea”) și „engineer” („inginer”) mai aproape de „he” („el”), reproducând fidel compania pe care o țin aceste cuvinte în textele obișnuite; iar o hartă fidelă nu e același lucru cu una dreaptă.",
+      "sourceAnchor": null,
+      "wordCount": 130
+    },
+    {
+      "id": "u000471",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Și mai e o problemă, mai adâncă, pe care poate ai observat-o deja. Citește aceste două propoziții: „M-am odihnit pe o bancă în parc.” „Am depus banii la bancă.” Într-o hartă ca a lui word2vec, „bancă” are o singură adresă. Nu poate locui și în parc, și lângă bani în același timp, așa că ajunge stingheră undeva la mijloc, nu prea potrivită pentru niciunul dintre sensuri.",
+      "sourceAnchor": null,
+      "wordCount": 66
+    },
+    {
+      "id": "u000472",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Ce vrem de fapt e o adresă care se mută în funcție de cuvintele din jur. Exact asta au construit cercetătorii începând din 2017, iar ca să vedem cum, trebuie să intrăm într-o cameră plină de detectivi.",
+      "sourceAnchor": null,
+      "wordCount": 37
+    },
+    {
+      "id": "u000473",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.2 Ședința detectivilor",
+      "sourceAnchor": "ședința-detectivilor",
+      "wordCount": 4
+    },
+    {
+      "id": "u000474",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Pe canalul de chat al echipei apare un mesaj: „iar a căzut.”",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u000475",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Știi imediat ce a căzut. Nu pentru că o spune mesajul, ci pentru că ochii tăi au sărit deja în sus pe canal, au trecut peste planurile de prânz și peste linkul la o prezentare de la o conferință și au aterizat pe mesajul de acum douăzeci de minute despre serviciul de plăți care dă timeout-uri. Înțelegerea ta a lui „iar a căzut” a fost asamblată din celelalte mesaje, fiecare cântărit după cât de relevant părea. Planurile de prânz n-au primit aproape nicio pondere. Mesajul despre plăți a primit aproape toată ponderea.",
+      "sourceAnchor": null,
+      "wordCount": 92
+    },
+    {
+      "id": "u000476",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Această privire, repetată pentru fiecare cuvânt dintr-un text, e ideea din inima Transformer-ului. Se numește attention („atenție”), iar ca să vezi cum o face o mașină, imaginează-ți o cameră.",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000477",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Transformă propoziția „După ce m-am odihnit pe banca din parc, am depus banii la bancă” într-o cameră cu câte un detectiv pentru fiecare cuvânt. Fiecare detectiv are de rezolvat o problemă, anume ce înseamnă el însuși aici, și fiecare poartă trei lucruri. Un bilet cu o întrebare , numit query („interogare”): „Am nevoie de cineva care să-mi spună ce fel de bancă sunt.” Un ecuson , numit key („cheie”), care anunță ce poate oferi: „Sunt o activitate de odihnă în aer liber” sau „Sunt o acțiune financiară”. Și un dosar , numit value („valoare”), cu informația pe care o va da oricui îl ascultă.",
+      "sourceAnchor": null,
+      "wordCount": 101
+    },
+    {
+      "id": "u000478",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Ședința începe. Fiecare detectiv își citește întrebarea, se plimbă prin cameră și o compară cu ecusonul fiecăruia. Cu cât potrivirea e mai bună, cu atât îi acordă mai multă atenție acelui detectiv. Apoi fiecare detectiv își rescrie propria identitate ca un amestec al dosarelor detectivilor pe care i-a ascultat, mai ales de la cele mai bune potriviri, puțin de la rest. Prima „bancă” găsește o potrivire puternică în „odihnit” și iese din ședință ca banca, locul de stat jos . A doua găsește potriviri puternice în „depus” și „banii” și iese ca banca, instituția . Același cuvânt, două identități, decise de context, și decise din nou pentru fiecare propoziție.",
+      "sourceAnchor": null,
+      "wordCount": 107
+    },
+    {
+      "id": "u000479",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Dacă ești programator, iată momentul în care s-ar putea să se lege totul. Folosești dicționare în fiecare zi. Cauți o cheie; dacă se potrivește exact, primești valoarea ei; dacă nu, nu primești nimic. Attention e aceeași operație, în varianta „moale”. Întrebarea ta e comparată cu fiecare cheie din tabel și, în loc de o singură potrivire exactă, fiecare cheie primește un scor de potrivire. Scorurile devin procente care însumează o sută și primești înapoi un amestec al tuturor valorilor, ponderat cu acele procente: mai ales cea mai bună potrivire, puțin din a doua, o urmă din tot restul. Attention e o căutare în dicționar „cu aproximație”, făcută de fiecare cuvânt asupra fiecărui alt cuvânt, toate în același timp. Comparația însăși e aritmetică simplă: întrebarea și ecusonul sunt amândouă liste de numere, iar scorul de potrivire e produsul lor scalar, înmulțirea și adunarea din lista de bifat pentru apartamente, mare atunci când cele două liste arată în direcții asemănătoare; softmax-ul transformă apoi scorurile în procente.",
+      "sourceAnchor": null,
+      "wordCount": 164
+    },
+    {
+      "id": "u000480",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Această ultimă parte, toate în același timp, e ce telefonul fără fir n-ar fi putut face niciodată. Nimeni nu șoptește. Fiecare cuvânt poate consulta direct orice alt cuvânt, oricât de departe ar sta, iar pentru că consultările sunt independente unele de altele, o placă video le poate rula pe toate în paralel.",
+      "sourceAnchor": null,
+      "wordCount": 52
+    },
+    {
+      "id": "u000481",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Iată punctul subtil, ușor de înțeles greșit. Ce învață de fapt modelul? Nu scorurile de potrivire dintre anumite cuvinte; acelea sunt recalculate pentru fiecare propoziție nouă. Fiecare cuvânt pornește de la embedding-ul lui, iar trei transformări învățate fac din acel embedding o întrebare, un ecuson și un dosar. Antrenarea îi învață pe detectivi cum să scrie, în general, întrebări bune, ecusoane bune și dosare utile. De aceea un Transformer se descurcă cu propoziții pe care nu le-a văzut niciodată: regulile de scris notițe rămân valabile, chiar și într-o cameră nouă.",
+      "sourceAnchor": null,
+      "wordCount": 90
+    },
+    {
+      "id": "u000482",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "O singură ședință nu ajunge, așa că Transformer-ele țin mai multe în paralel. Gândește-te la code review: trei revieweri, fiecare concentrat pe altceva, securitate, performanță și lizibilitate, prind mai mult decât unul singur care încearcă să urmărească totul. În multi-head attention („atenție cu mai multe capete”), mai multe ședințe rulează una lângă alta pe aceeași propoziție, fiecare cu propriul stil de întrebări și ecusoane. Un head poate învăța să urmărească gramatica, cărui substantiv îi aparține un verb; altul, referințele, la ce se referă „el”; altul, subiectul. Un Transformer block complet e o astfel de ședință cu mai multe capete, urmată de o mică rețea neuronală pe care fiecare detectiv o folosește în particular ca să digeră ce a auzit. Modelele mari pun zeci de astfel de blocuri unul peste altul, așa că identitățile sunt rafinate iar și iar.",
+      "sourceAnchor": null,
+      "wordCount": 138
+    },
+    {
+      "id": "u000483",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Două detalii completează imaginea. Întâi, ședința descrisă nu are simțul ordinii. „Câinele mușcă omul” și „omul mușcă câinele” aduc în cameră aceiași trei detectivi. Așa că embedding-ul de pornire al fiecărui cuvânt e combinat cu informație despre poziția lui în propoziție. Transformer-ul original adăuga pur și simplu fiecărui embedding un tipar fix de numere, altul pentru fiecare poziție, ca un număr de casă scris pe fiecare dosar; modelele moderne folosesc de obicei o schemă mai isteață, care vine mai târziu în carte. Apoi, modelele care generează text, cum e familia GPT (generative pre-trained transformer, „transformer generativ pre-antrenat”), adaugă o regulă: fiecare detectiv poate consulta doar detectivii din stânga lui. Când scrii o propoziție, nu poți consulta cuvinte pe care nu le-ai scris încă. Aceasta e causal mask („masca cauzală”: ascunde viitorul), iar exemplul nostru o respectă, pentru că „odihnit” vine înaintea primei „bănci”, iar „depus” și „banii” vin înaintea celei de-a doua. Când indiciul vine mai târziu, ca în „banca era udă de ploaie”, detectivul pentru „banca” nu poate lămuri singur sensul, dar „udă” și „ploaie” se pot uita înapoi la „banca” și pot duce mai departe sensul lămurit în propriile rânduri, iar de acolo se prezice cuvântul următor; modelele construite doar pentru citit, precum BERT, renunță la mască și lasă fiecare cuvânt să se uite în ambele direcții.",
+      "sourceAnchor": null,
+      "wordCount": 219
+    },
+    {
+      "id": "u000484",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Fă un pas înapoi și compară asta cu o rețea multistrat obișnuită. Acea rețea aplică aceleași ponderi fixe fiecărei intrări. E funcționarul de la ghișeu care aplică același regulament oricărui dosar care-i trece prin față. Un Transformer calculează o atenție proaspătă pentru fiecare intrare. E managerul care citește tot dosarul și decide, întrebare cu întrebare, ce documente contează. Managerul are însă un preț. Pentru că fiecare cuvânt îl consultă pe fiecare, dublarea lungimii unui text cam cvadruplează munca atenției. De aceea orice model are o lungime maximă de context, iar mărirea ei a fost una dintre marile bătălii de inginerie ale domeniului.",
+      "sourceAnchor": null,
+      "wordCount": 102
+    },
+    {
+      "id": "u000485",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Un avertisment înainte să ieșim din cameră. Detectivii nu înțeleg nimic și nu intenționează nimic. „A asculta” e o medie ponderată a unor liste de numere, iar atenția reală e rareori atât de ordonată ca în desen: e de obicei mai împrăștiată, iar head-uri diferite se uită la lucruri foarte diferite. Tiparele de atenție sunt un indiciu despre ce face un model, niciodată o explicație completă.",
+      "sourceAnchor": null,
+      "wordCount": 66
+    },
+    {
+      "id": "u000486",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Articolul din 2017 a introdus Transformer-ul ca pe un mod mai bun de a traduce între limbi. Puțini au ghicit ce avea să se întâmple când cineva a luat această arhitectură, a făcut-o uriașă și a antrenat-o pe cel mai simplu joc imaginabil: ghicește cuvântul următor.",
+      "sourceAnchor": null,
+      "wordCount": 46
+    },
+    {
+      "id": "u000487",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.3 Jocul ghicitului cuvântului următor",
+      "sourceAnchor": "jocul-ghicitului-cuvântului-următor",
+      "wordCount": 6
+    },
+    {
+      "id": "u000488",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Încearcă asta pe telefon. Deschide un mesaj, scrie „Eu cred că” și apoi apasă întruna sugestia din mijloc pe care ți-o oferă tastatura. În câteva apăsări vei obține ceva de genul „Eu cred că este cel mai bun mod de a fi cel mai bun mod de a fi”, învârtindu-se la nesfârșit. Tastatura ta e un model de limbaj minuscul. A învățat ce cuvânt tinde să urmeze după care și, fără nicio idee mai largă despre unde merge propoziția, se învârte în cerc.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000489",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Acum ține minte propoziția aceea caraghioasă, pentru că iată cel mai surprinzător fapt din această carte. Un large language model („model mare de limbaj”), pe scurt LLM, genul care scrie eseuri, explică clauze juridice și îți completează codul, joacă exact același joc. În prima și cea mai mare fază a antrenării, învață să ghicească următoarea bucată de text, nimic mai mult. Diferențele sunt de scară și de arhitectură: e de multe mii de ori mai mare decât modelul tastaturii tale, e un Transformer ai cărui detectivi pot consulta tot textul de până atunci și a citit o parte substanțială din internetul public, foarte multe cărți și o cantitate enormă de cod. Undeva de-a lungul acestei scări, nonsensul care se învârte în cerc devine ceva care arată foarte mult a înțelegere. De ce funcționează exact atât de bine e încă o întrebare de cercetare deschisă.",
+      "sourceAnchor": null,
+      "wordCount": 144
+    },
+    {
+      "id": "u000490",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Întâi, un detaliu despre ce anume se ghicește. Modelele nu văd cuvinte; văd tokens („jetoane”), bucăți de cuvinte. Un cuvânt comun e de obicei un singur token, iar unul mai rar e tăiat în bucăți, ceva de genul „ne” + „crez” + „ut”. Pentru textul în engleză, un token are în medie cam trei-patru caractere. Limbile care apar mai rar în datele de antrenare tind să fie tăiate în bucăți mai multe și mai mici, așa că același mesaj costă mai mulți tokeni în română sau în greacă decât în engleză, ceea ce contează, pentru că API-urile facturează și limitează după tokeni. Tăierea se decide înainte ca modelul să fie antrenat, de un simplu program statistic: pornește de la caractere individuale și lipește iar și iar perechea care apare cel mai des într-un eșantion mare de text, „t” cu „h” în „th”, apoi „th” cu „e” în „the”, până când vocabularul ajunge la mărimea aleasă, așa că tot ce era des întâlnit în acel eșantion primește tokeni ieftini, cât un cuvânt întreg, iar restul e tăiat în bucăți.",
+      "sourceAnchor": null,
+      "wordCount": 176
+    },
+    {
+      "id": "u000491",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Uită-te acum cum învață jocul detectivii din subcapitolul trecut. Șeful aduce o propoziție cu ultimul cuvânt acoperit: „Am mers la bancă să scot niște ___”. În prima zi, detectivii sunt noi-nouți, iar biletele și ecusoanele lor sunt aleatorii. „Bancă” îl ascultă mai ales pe „mers”, iar cea mai bună ghicire a echipei e „porumbei”. Șeful descoperă cuvântul: „bani”. Loss-ul măsoară cât de puțină probabilitate a dat echipa răspunsului corect, iar backpropagation îi dă fiecărui detectiv partea lui de vină. „Bancă” își ajustează, foarte puțin, felul în care își scrie întrebările, ca data viitoare să caute ecusoane de genul „acțiune financiară”. „Să scot” își ajustează ecusonul ca să fie mai ușor de găsit. Apoi vine următoarea propoziție, și următoarea, miliarde, despre orice subiect despre care scriu oamenii. Ca să prezici următorul cuvânt dintr-o rețetă trebuie să știi ceva despre gătit; dintr-un manual de fizică, ceva despre fizică; dintr-un fișier Python, ceva despre Python. Jocul e simplu. Ca să-l câștigi, trebuie să absorbi o mare parte din lume.",
+      "sourceAnchor": null,
+      "wordCount": 165
+    },
+    {
+      "id": "u000492",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Rezultatul acestei faze, numită pretraining („pre-antrenare”: antrenarea generală dinaintea celei specializate), e uimitor de bine informat și ciudat de nefolositor. Imaginează-ți o ingineră nouă care, în prima lună, citește tot wiki-ul companiei, fiecare repository și fiecare tichet deschis vreodată. Știe enorm de multe. Dar pune-i o întrebare și s-ar putea să-ți răspundă cu încă trei întrebări, pentru că pe wiki întrebările sunt adesea urmate de alte întrebări. A învățat să continue documente, nu să ajute oameni.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000493",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Așa că noua angajată mai trece prin două școli. În a doua, fine-tuning, învață lângă colegi seniori: mii de exemple de cereri urmate de un răspuns bun și util, până când forma „cineva întreabă, eu ajut” devine a doua natură. În a treia primește ceva asemănător unui code review. Oamenilor li se arată două dintre răspunsurile ei la aceeași cerere și îl aleg pe cel mai bun, iar ea învață treptat ce preferă evaluatorii: răspunsuri mai clare, mai corecte, mai atente. Această ultimă etapă se numește de obicei RLHF (reinforcement learning from human feedback, „învățare prin recompensă din feedback uman”). Spre deosebire de o angajată adevărată, modelul nu-și amintește nimic din aceste școli, iar ultima are o capcană: evaluatorii recompensează răspunsurile care li se par corecte, ceea ce nu e chiar același lucru cu răspunsurile corecte.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000494",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Acum avem toate piesele de care e nevoie ca să urmărim un model de limbaj lucrând, cu încetinitorul, din clipa în care îți trimiți mesajul. Tot ce am construit până acum se adună aici, așa că ia-o cadru cu cadru.",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000495",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Scrii „Opusul lui cald este”. Primul lucru care se întâmplă n-are nicio legătură cu inteligența: un tokenizer , un simplu program de căutare, taie textul în bucăți și înlocuiește fiecare bucată cu numărul ei dintr-un vocabular fix de, de obicei, zeci de mii până la vreo două sute de mii de intrări. Propoziția ta e acum o listă scurtă de numere întregi.",
+      "sourceAnchor": null,
+      "wordCount": 61
+    },
+    {
+      "id": "u000496",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Al doilea cadru e stratul de embedding, portarul. Fiecare număr e folosit ca număr de rând într-un tabel mare și rândul se întoarce: un vector de câteva mii de numere. Câte un rând pentru fiecare token. Pune-le unul peste altul și ai un tensor cu forma (tokeni, lățime), un spreadsheet cu un rând per token. Se amestecă și informație despre poziția fiecărui token, ca modelul să știe care a venit primul.",
+      "sourceAnchor": null,
+      "wordCount": 71
+    },
+    {
+      "id": "u000497",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Al treilea cadru e cel lung. Tabelul trece prin blocurile Transformer, unul după altul, zeci la un model mare. În fiecare bloc are loc ședința detectivilor: fiecare rând consultă rândurile dinaintea lui și se rescrie ca amestec al celor auzite. Apoi fiecare rând trece, separat, printr-o mică rețea densă, partea din bloc în care, cred cercetătorii, stă o mare parte din cunoștințele factuale ale modelului. Legăturile reziduale duc semnalul original pe ocolul fiecărui pas, normalizarea ține numerele în interval, iar prin toate acestea forma nu se schimbă niciodată: intră atâtea rânduri, ies tot atâtea, fiecare puțin mai bogat decât înainte. Până la ultimul bloc, rândul pentru „este” nu mai înseamnă doar „este”. A absorbit „opusul”, „lui” și „cald” și codifică acum ceva de genul „urmează un cuvânt despre temperatură, inversul lui cald”.",
+      "sourceAnchor": null,
+      "wordCount": 132
+    },
+    {
+      "id": "u000498",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Al patrulea cadru se uită doar la acel ultim rând. E înmulțit cu încă o matrice mare, cu câte o coloană pentru fiecare intrare din vocabular, producând un scor pentru fiecare token următor posibil, cam o sută de mii de scoruri. Softmax le transformă în probabilități. „Rece” ia aproape tot; „răcoros” și „înghețat” iau firimituri.",
+      "sourceAnchor": null,
+      "wordCount": 55
+    },
+    {
+      "id": "u000499",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Al cincilea cadru alege un token după acele probabilități, iar al șaselea e bucla: tokenul ales e adăugat la intrare și tot forward pass-ul rulează din nou ca să producă tokenul de după el. Un forward pass per token: de aici vine factura. Ca să nu reia ședința de la zero de fiecare dată, modelul păstrează în memorie ecusoanele și dosarele fiecărui token anterior, într-un depozit numit KV cache (key–value cache, „cache de chei și valori”), și doar detectivul celui mai nou token trebuie să se plimbe prin cameră. Acest cache e o mare parte din motivul pentru care conversațiile lungi au nevoie de atâta memorie pe placa video. Bucla se oprește când modelul alege un token special de „sfârșit”, pe care a învățat să-l prezică, din milioane de exemple care se încheiau cu el, atunci când un text e complet; aplicația fixează și o limită strictă, pentru cazul în care nu-l alege niciodată.",
+      "sourceAnchor": null,
+      "wordCount": 155
+    },
+    {
+      "id": "u000500",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Asta e toată mașina. Niciun pas din ea nu e misterios luat separat: o căutare, un teanc de înmulțiri de matrice cu câteva îndoituri, un softmax, o aruncare de zar, apoi totul de la capăt. Ce e misterios, și ce încearcă încă cercetătorii să înțeleagă, e cum încap atâtea cunoștințe și atâta raționament aparent în numerele folosite de acele înmulțiri.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    },
+    {
+      "id": "u000501",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Un buton stă în al cincilea cadru, alegerea: cât de aventuroasă e ea depinde de o setare numită temperature („temperatură”, cu sensul din fizică: mai cald înseamnă mai multă agitație). Aproape de zero, modelul alege aproape mereu tokenul cel mai probabil: previzibil, repetabil, uneori plictisitor. Asta vrei când extragi câmpuri din facturi în JSON (un format standard pentru date structurate). Dă temperatura mai sus și tokenii mai puțin probabili își primesc șansa: rezultatul devine mai variat și mai inventiv, dar și mai predispus la erori. Asta ai putea vrea când cauți nume de produse. E diferența dintre un muzician care cântă după partitură și unul care improvizează. Pe dedesubt, butonul e simplu: scorurile sunt împărțite la temperatură înainte ca softmax-ul să le transforme în probabilități, așa că o temperatură mică lărgește diferențele și favoritul ia aproape tot, iar una mare le strânge și candidații din urmă primesc o șansă reală.",
+      "sourceAnchor": null,
+      "wordCount": 150
+    },
+    {
+      "id": "u000502",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Mai e un lucru de înțeles despre felul în care trăiesc aceste modele. Tot ce știe modelul despre conversația ta stă în context window -ul lui („fereastra de context”), iar cea mai bună imagine pentru ea e o tablă dintr-o sală de ședințe. Modelul citește toată tabla înainte de fiecare cuvânt pe care îl scrie. Dar nu învață din ședință, iar când ședința se termină, tabla e ștearsă. Mâine nu-și va aminti conversația de azi decât dacă o scrie cineva din nou pe tablă. Documentele lungi, conversațiile lungi și bazele de cod mari se luptă toate pentru spațiu pe acea tablă.",
+      "sourceAnchor": null,
+      "wordCount": 101
+    },
+    {
+      "id": "u000503",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Și acum partea incomodă. Lucrezi cu un asistent și el scrie o linie de cod ordonată care apelează client.get_json_safe() . Arată exact ca o metodă pe care ar avea-o biblioteca. O rulezi. Metoda nu există și n-a existat niciodată.",
+      "sourceAnchor": null,
+      "wordCount": 41
+    },
+    {
+      "id": "u000504",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Asta se numește hallucination („halucinație”), iar numele o face să sune ca o defecțiune. Nu e. Amintește-ți pentru ce a fost antrenat modelul: să producă cea mai plauzibilă continuare a textului. Plauzibilul și adevărul coincid de obicei, și de aceea aceste modele sunt atât de utile. Când se despart, când modelul nu știe ceva, el de multe ori nu tace. Produce lucrul care sună cel mai plauzibil, fluent și sigur pe el, pentru că acesta e, înainte de toate, jocul pentru care a fost antrenat.",
+      "sourceAnchor": null,
+      "wordCount": 85
+    },
+    {
+      "id": "u000505",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Așadar, ce faci cu o colegă strălucită care a citit tot, scrie minunat și rareori spune „nu știu”? Același lucru pe care l-ai face cu o angajată nouă strălucită. Nu-i mai ceri să răspundă din memorie și îi dai documentele.",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000506",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.4 Examenul cu cartea deschisă",
+      "sourceAnchor": "examenul-cu-cartea-deschisă",
+      "wordCount": 6
+    },
+    {
+      "id": "u000507",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Imaginează-ți o companie care lansează un asistent intern, un model de limbaj legat la unealta ei de chat. La unsprezece noaptea, un inginer de gardă îl întreabă: „Care e procedura noastră de escaladare dacă API-ul de plăți cade în afara orelor de program?”",
+      "sourceAnchor": null,
+      "wordCount": 43
+    },
+    {
+      "id": "u000508",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Răspunsul vine instantaneu, bine structurat și complet sigur pe el. Trezește-l pe al doilea om de gardă după cincisprezece minute. Anunță-l pe șeful departamentului de inginerie după treizeci. Deschide un canal de incident numit cu data zilei. Sună exact ca o procedură. Și e inventat de la cap la coadă. Modelul n-a văzut niciodată runbook-urile („manualele de operațiuni”) acestei companii; a văzut procedurile a mii de alte companii și a produs cel mai plauzibil amestec al lor. Procedura reală spune să suni mai întâi furnizorul de plăți.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000509",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Nimic nu e stricat la model. E angajata nouă și strălucită din subcapitolul trecut, rugată să răspundă din memorie despre un document pe care nu l-a citit niciodată. Remediul e cel pe care l-ar alege orice manager bun: las-o să răspundă cu cartea deschisă și dă-i un bibliotecar rapid care să-i aducă paginile potrivite.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000510",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Acest aranjament se numește retrieval-augmented generation („generare îmbogățită prin regăsire”), pe scurt RAG. Înainte ca modelul să răspundă, un pas de căutare găsește pasajele cele mai relevante pentru întrebare și le lipește în prompt, împreună cu instrucțiunea de a răspunde din acele pasaje și de a spune de unde vine fiecare afirmație. Scrisul rămâne treaba modelului. Memoria devine treaba căutării. Să lipești toate documentele în prompt și să sari peste căutare merge pentru o mână de documente; pentru un wiki întreg n-ar încăpea pe tablă, ar costa bani pentru fiecare token la fiecare întrebare, iar modelele citesc o tablă înghesuită mai puțin atent decât una scurtă.",
+      "sourceAnchor": null,
+      "wordCount": 106
+    },
+    {
+      "id": "u000511",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Rulează din nou întrebarea de noapte, cu RAG pus la punct. Căutarea găsește pagina cu procedura de gardă și runbook-ul de plăți și pune trei pasaje relevante pe tabla modelului. Acum răspunsul spune să suni mai întâi furnizorul, citează numărul de suport al furnizorului din runbook și dă linkuri spre ambele pagini. Inginerul poate da click și verifica. Diferența nu e inteligența; e accesul. Modelul preferă pasajele în locul memoriei lui doar pentru că i se cere asta și pentru că asistenții trec prin fine-tuning pe multe exemple de răspunsuri date din textul primit; de obicei ascultă, dar când un pasaj contrazice ceva ce modelul „știe” foarte ferm, poate aluneca înapoi spre memorie, încă un motiv să verifici citatele.",
+      "sourceAnchor": null,
+      "wordCount": 119
+    },
+    {
+      "id": "u000512",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Ca să găsească pasaje, documentele trebuie pregătite dinainte, iar aici stă cea mai mare parte a meșteșugului. Fiecare document e tăiat în chunks („bucăți”) de câteva sute de tokeni, ca și cum ai tăia un manual în cartonașe. Fiecare cartonaș primește un embedding, iar cartonașele intră într-o bază de date care poate găsi rapid cei mai apropiați vecini ai oricărei întrebări. Mărimea cartonașelor se dovedește foarte importantă. Taie prea mărunțit și o rețetă ajunge cu ingredientele pe un cartonaș și pașii pe altul, așa că niciun cartonaș nu răspunde la „cum o fac?”. Taie prea mare și fiecare cartonaș vorbește despre cinci lucruri diferite, așa că niciunul nu se potrivește bine cu nimic.",
+      "sourceAnchor": null,
+      "wordCount": 113
+    },
+    {
+      "id": "u000513",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Apoi sunt întrebările pe care embeddings le tratează prost, iar inginerii dau repede de ele. Întreabă „ce înseamnă eroarea E1047?” și o căutare bazată doar pe sens poate întoarce un pasaj despre E1074, pentru că pentru un embedding două coduri care arată la fel stau foarte aproape. Identificatorii exacți, numele de funcții și numerele de tichete sunt specialitatea căutării clasice după cuvinte-cheie. Așa că sistemele practice folosesc hybrid search („căutare hibridă”), combinând rezultatele după cuvinte-cheie cu cele după vectori, și adaugă adesea un al doilea model, mai lent, care re-ranks („reordonează”) candidații: bibliotecarul aduce cincizeci de cărți, iar un expert le citește și le păstrează pe cele mai bune cinci.",
+      "sourceAnchor": null,
+      "wordCount": 110
+    },
+    {
+      "id": "u000514",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Beneficiile sunt concrete, și de aceea atâtea companii construiesc astfel de sisteme. Cunoștințele pot fi actualizate actualizând documentele, fără reantrenare. Răspunsurile pot cita surse, ca oamenii să le poată verifica. Datele private rămân în propriul tău depozit, aduse doar când o întrebare are nevoie de ele. Odată aduse, însă, datele sunt citite de model ca orice alt text, ceea ce ridică întrebări de încredere și de confidențialitate.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000515",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Mai e și un efect secundar pe care nu-l planifică nimeni. Un sistem RAG e necruțător cu documentația. Dacă runbook-ul e vechi de doi ani, asistentul îl va cita acum exact și sigur pe el. Echipele care lansează un astfel de asistent descoperă adesea că prima lui realizare adevărată e să arate ce pagini din wiki n-a mai întreținut nimeni.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    },
+    {
+      "id": "u000516",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Iar bibliotecarul nu e perfect. Dacă aduce pagina greșită, scriitorul o citează cu convingere totală. Se poate și să aducă doar o parte din ce trebuie: când un răspuns are nevoie de bucăți din mai multe documente, o singură căutare aduce adesea doar una, pentru că niciun pasaj nu e aproape de întrebarea întreagă, așa că sistemele care se descurcă aici îl lasă pe model să caute de mai multe ori, câte o sub-întrebare pe rând, o buclă cu o unealtă de căutare în mână. Calitatea unui sistem RAG e plafonată de calitatea căutării lui, așa că merită să măsori separat cele două jumătăți: a adus pasajul potrivit și l-a folosit corect? Cele mai eficiente echipe strâng câteva zeci de întrebări reale de la utilizatori reali, împreună cu pasajele care ar trebui să le răspundă, și rulează acest set de fiecare dată când schimbă tăierea în chunks, embeddings sau promptul, exact ca pe o suită de teste de regresie.",
+      "sourceAnchor": null,
+      "wordCount": 159
+    },
+    {
+      "id": "u000517",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Înainte să lăsăm limbajul în urmă, mai rămân două întrebări: cât vede de fapt un model dintr-o conversație lungă și de ce un joc atât de simplu ca ghicitul cuvântului următor ajunge atât de departe. Prima începe cu o veche cunoștință din comisia de recrutare.",
+      "sourceAnchor": null,
+      "wordCount": 45
+    },
+    {
+      "id": "u000518",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.5 Viața pe o tablă",
+      "sourceAnchor": "viața-pe-o-tablă",
+      "wordCount": 6
+    },
+    {
+      "id": "u000519",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Îți amintești de comisia de recrutare, cele patru recrutoare care triau două sute de CV-uri, fiecare decizând în felul ei ce contează. A patra, care lasă fiecare CV să-i conducă privirea, a trebuit să aștepte limbajul, pentru că ea e attention: felul ei de a citi e ședința detectivilor. Aici întrebarea „cine decide?” are răspunsul cel mai interesant. Nimeni n-a decis dinainte că „bancă” trebuie să-l asculte pe „bani”; asta se stabilește din nou în fiecare propoziție. Ce modelează antrenarea, cum a arătat jocul ghicitului, sunt transformările care scriu, în general, întrebările și ecusoanele. De-a lungul a miliarde de propoziții, aceste transformări ajung să codifice, în fond, „ce fel de cuvânt tinde să ajute un cuvânt ca mine”. Relevanța nu-i e dată modelului. E o abilitate pe care o dobândește pentru că relevanța se plătește în jocul cuvântului următor. Head-uri diferite dobândesc noțiuni diferite de relevanță, pentru că fiecare pornește de la alte numere aleatorii și nimic nu le obligă să cadă de acord; în practică, unele head-uri se dovedesc aproape redundante și pot fi scoase cu pierderi mici, în timp ce altele duc o mare parte din greu.",
+      "sourceAnchor": null,
+      "wordCount": 189
+    }
+  ]
+}

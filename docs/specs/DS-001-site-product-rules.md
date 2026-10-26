@@ -132,7 +132,7 @@ Reader editions are canonical HTML. Repairs and translations use the chunk workf
 The language selected in the header is the preferred reading language. Book pages have no additional reading-language selector. Full and ten-minute actions open that language's exact format when available, otherwise the same format in English, preserving `lang` in navigation. The reader header uses the same language preference and English fallback. Never substitute a short edition for a complete book or a complete book for a short edition. If neither the selected nor English format exists, its reading action is unavailable rather than linking to a nonexistent file.
 Chapter links inside a translated ten-minute edition open the complete reader in that same language when it exists; they do not jump back to the English source reader.
 
-When a selected-language format is missing, show the localised “This reading edition is not yet available in …” sentence as a link to `translate/index.html`, preserving book, target, format and interface language. This notice is the request entry point; reading buttons and language options must not append “Request translation” or its equivalents. Changing language or clicking an ordinary reading action never opens the request form. Current book-page and reader PDF downloads always use the English source PDF, independently of interface or HTML reading language. Preserve archived edition downloads.
+When a selected-language format is missing, show the localised “This reading edition is not yet available in …” sentence as a link to `translate/index.html`, preserving book, target, format and interface language. This notice is the request entry point; reading buttons and language options must not append “Request translation” or its equivalents. Changing language or clicking an ordinary reading action never opens the request form. Current book-page and reader PDF downloads prefer the interface-language original PDF when available, and otherwise use the English PDF. Preserve archived edition downloads and their explicitly selected language.
 
 PDF download links save a filename derived from the English book title. Downloads from edition history append the edition number so multiple releases remain distinguishable. The underlying current and archived PDF paths stay stable.
 
@@ -556,10 +556,10 @@ centred flex layout must not shrink it to the icon-only close link. Integration
 QA must measure the loaded player stage on desktop and mobile, not only the X.
 
 Site typography uses a 19.84px root base: the new 100% equals the former 124%.
-Header size controls run from 100% to 150% in 5-point steps, with 100% as reset
+Header size controls run from 40% to 150% in 5-point steps, with 100% as reset
 and default. Store this rebased preference separately from the old scale and
 apply it before first paint. Reader text shares the 24% baseline increase with
-its own 100–150% text control; PDF fit/zoom remains a document-viewing control.
+its own 40–150% text control, including 80%, 60% and 40%; PDF fit/zoom remains a document-viewing control.
 
 At increased text sizes, allow header controls to wrap and book panels to grow
 to their content. Mobile reading actions may wrap their labels with sufficient

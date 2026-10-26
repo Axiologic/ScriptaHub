@@ -1,0 +1,104 @@
+{
+  "batch": "batch-0014.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0009",
+  "chapterTitle": "Capitolul 8 — Imagini generate, sisteme construite",
+  "segment": 2,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000586",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Apoi programul. Alergătorii se încălzesc înainte de sprint, iar antrenarea la fel: la început memoriile optimizatorului sunt goale, iar un pas de mărime normală poate arunca modelul undeva de unde nu-și mai revine. De aceea learning rate-ul urmează o rețetă: crește de la aproape zero în primele câteva sute sau câteva mii de pași, warmup -ul („încălzirea”), apoi scade încet în restul antrenării, ca drumeața să se așeze ușor în vale la final. Weight decay („atenuarea ponderilor”) trage fiecare pondere puțin spre zero la fiecare pas, regularizarea încorporată în mers. Și ponderile de pornire, alese la întâmplare, sunt scalate după numărul de intrări al fiecărui strat, ca un semnal să nu se stingă și să nu se umfle de-a lungul a o sută de straturi; această initialization („inițializare”) a fost partenera normalizării în salvarea rețelelor adânci. Iar pentru pasul rar care iese foarte prost, există o balustradă, pe care telefonul fără fir a pomenit-o doar în treacăt. Geamănul gradientului care se stinge e exploding gradient -ul („gradientul care explodează”): un batch a cărui pantă devine brusc atât de mare încât un singur pas poate anula zile de antrenare, una dintre cauzele loss-ului care „scade și apoi explodează”. Gradient clipping („tăierea gradientului”: plafonarea mărimii lui) limitează cât de mare poate fi orice gradient, cum o balustradă împiedică o alunecare să devină o cădere.",
+      "sourceAnchor": null,
+      "wordCount": 222
+    },
+    {
+      "id": "u000587",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Imaginea drumeței se rupe în două locuri. O drumeață are un singur pas, pe când Adam îi dă fiecărei ponderi pasul ei, un miliard de drumeți mici care merg împreună. Iar unele dintre aceste rutine funcționează mai bine decât poate explica cineva pe deplin; warmup-ul, mai ales, e practică standard cu doar o teorie parțială în spate.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000588",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Cum se aleg aceste setări? Răspunsul de la începutul cărții era „urmărind simulările”, dar nimeni nu încearcă toate combinațiile. Random search („căutarea la întâmplare”), care trage setări la întâmplare din intervale rezonabile, bate adesea o grilă ordonată, pentru că de obicei doar una sau două setări contează cu adevărat, iar o grilă își irosește cele mai multe încercări variindu-le pe celelalte. Bayesian optimization („optimizarea bayesiană”, după regula lui Bayes) potrivește un model rapid al scorului în funcție de setări, adesea procesul gaussian, cu sârma lui flexibilă, și folosește incertitudinea lui ca să aleagă următoarea setare care merită încercată.",
+      "sourceAnchor": null,
+      "wordCount": 98
+    },
+    {
+      "id": "u000589",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Acum termostatul, pe care cutia de Lego l-a lăsat explicat doar pe jumătate: imaginile și textul au nevoie de termostate diferite. Batch normalization („normalizarea pe lot”) e un termostat pentru toată clădirea: rescalează fiecare trăsătură după media și împrăștierea ei pe exemplele dintr-un batch. Asta merge minunat pentru imagini în batch-uri mari și uniforme. Textul e altfel. Propozițiile dintr-un batch au lungimi diferite, iar un model care generează un răspuns lucrează pe câte un token dintr-o singură conversație, unde statisticile de batch lipsesc sau induc în eroare. De aceea Transformer-ele folosesc layer normalization („normalizarea pe strat”), câte un termostat în fiecare cameră: vectorul fiecărui token e rescalat folosind doar propriile lui numere. Multe modele de limbaj recente folosesc o rudă mai ieftină, RMSNorm (root mean square normalization, „normalizarea după media pătratică”), care rescalează mărimea vectorului fără să-i mute media. Imaginea termostatului e prea simplă într-o privință: fiecare normalizare are și câteva ponderi învățate, așa că fiecare strat își poate alege temperatura preferată.",
+      "sourceAnchor": null,
+      "wordCount": 162
+    },
+    {
+      "id": "u000590",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Și instalația ședinței detectivilor a fost simplificată. Întâi poziția. Transformer-ul original scria pe dosarul fiecărui cuvânt un număr de casă fix, un tipar de valuri. Multe modele moderne folosesc în schimb RoPE (rotary position embedding, „codificarea poziției prin rotație”), care rotește fiecare întrebare și fiecare ecuson cu un unghi ce crește cu poziția, ca un ac de ceas care înaintează o gradație la fiecare cuvânt. Când două cuvinte își compară notițele, în scorul de potrivire rămâne diferența dintre unghiurile lor, așa că modelul vede mai ales cât de departe stau două cuvinte, nu numerele lor de casă. Un model cunoaște doar unghiurile văzute la antrenare, așa că întinderea lui la texte mai lungi înseamnă de obicei rescalarea lor și încă puțină antrenare pe documente lungi, etapa ulterioară pomenită când vorbeam despre tablă.",
+      "sourceAnchor": null,
+      "wordCount": 132
+    },
+    {
+      "id": "u000591",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Apoi costul. Bătălia pentru contexte mai lungi se dă pe trei fronturi. Primul lasă matematica neatinsă. FlashAttention , publicat în 2022, calculează exact aceeași atenție, dar pe bucăți destul de mici cât să încapă în memoria cea mai rapidă a plăcii video, fără să scrie vreodată tabelul complet al scorurilor de potrivire. Cum mutarea datelor, nu aritmetica, era blocajul, doar asta a făcut adesea atenția de câteva ori mai rapidă. Al doilea schimbă cine are voie să se întâlnească: în sliding-window attention („atenția cu fereastră glisantă”), fiecare cuvânt consultă doar ultimele câteva mii de cuvinte, iar straturile puse unul peste altul lasă informația să sară mai departe. Al treilea front se întoarce la rețelele recurente și la fișa lor.",
+      "sourceAnchor": null,
+      "wordCount": 118
+    },
+    {
+      "id": "u000592",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "State-space models („modele în spațiul stărilor”), precum Mamba , reiau acel rezumat în mers cu o matematică mai bună. Necazul RNN-ului era că fiecare actualizare a rezumatului o așteaptă pe cea dinainte, așa că antrenarea nu poate rula în paralel. Modelele în spațiul stărilor aleg o regulă de actualizare destul de simplă, în esență o sumă ponderată în mers, încât toate rezumatele pot fi calculate deodată la antrenare, cam cum totalurile parțiale ale unei liste pot fi calculate în paralel printr-o contabilitate isteață. La generare se poartă din nou ca un RNN: un rezumat de dimensiune fixă actualizat o dată pe token, fără un KV cache care crește odată cu conversația, cu un cost total care crește doar proporțional cu lungimea textului. Mamba, introdus în 2023 de Albert Gu și Tri Dao, a făcut actualizarea să depindă de cuvântul curent, așa că modelul alege, cuvânt cu cuvânt, ce păstrează și ce lasă să se estompeze, ca porțile LSTM-ului. Ideea se rupe exact unde se rupea fișa. Un rezumat de dimensiune fixă trebuie să lase ceva să cadă, iar să-și amintească o frază exactă de foarte departe îi e mai greu decât atenției, care ține totul pe tablă. De aceea mai multe modele recente sunt hybrids („hibrizi”): mai ales straturi în spațiul stărilor, cu câteva straturi de atenție printre ele, fișa pentru esență și tabla pentru detalii.",
+      "sourceAnchor": null,
+      "wordCount": 225
+    },
+    {
+      "id": "u000593",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Nici atenția n-a fost vreodată doar despre limbaj. Pătrățelele de imagine pe care asistenții multimodali le pun pe tablă vin din 2020, când cercetători de la Google au tăiat imagini în pătrate de șaisprezece pe șaisprezece pixeli, au tratat fiecare pătrat ca pe un cuvânt și au dat șirul unui Transformer. Acest vision transformer („transformer pentru imagini”) a egalat cele mai bune rețele convoluționale, dar numai când a fost antrenat pe colecții foarte mari de imagini. Motivul e pariul convoluției: ea presupune de la bun început că pixelii apropiați țin împreună, pe când atenția trebuie să învețe asta din date, iar ca să învețe are nevoie de exemple.",
+      "sourceAnchor": null,
+      "wordCount": 108
+    },
+    {
+      "id": "u000594",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Acum scara. Nicio placă nu poate ține singură un model mare, așa că el e antrenat pe mii. Imaginează-ți o orchestră mult prea mare pentru orice sală de repetiții. În data parallelism („paralelismul pe date”), copii identice repetă pasaje diferite în săli diferite și cad de acord asupra acelorași corecturi după fiecare rundă: fiecare copie a modelului vede alte exemple, iar gradienții lor sunt mediați. În tensor parallelism („paralelismul pe tensori”), un compartiment al orchestrei e împărțit între săli, fiecare placă înmulțind o parte dintr-o singură grilă mare, lucru posibil pentru că produsele scalare nu depind unele de altele. În pipeline parallelism („paralelismul în bandă”), muzica trece din sală în sală, fiecare cântând propria porțiune de straturi. Antrenările reale le combină pe toate trei, mai ales cu aritmetică pe șaisprezece biți sau mai puțini. Imaginea se rupe pentru că muzicienii pot cânta în timp ce se așteaptă unii pe alții; plăcile care trebuie să schimbe gigabytes după fiecare pas stau degeaba, iar mare parte din inginerie se duce pe ascunderea acestei așteptări.",
+      "sourceAnchor": null,
+      "wordCount": 172
+    },
+    {
+      "id": "u000595",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "O bună parte din această instalație servește învățarea fără să spună mare lucru despre ea. Capitolul următor trece la învățarea însăși, la felurile în care e învățat un model, iar ele se dovedesc mult mai multe decât cheia de răspunsuri de pe spatele paginii.",
+      "sourceAnchor": null,
+      "wordCount": 44
+    },
+    {
+      "id": "u000596",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Mai departe. Dacă te-ai întrebat de ce generatoarele de imagini exagerează prejudecățile imaginilor din care au învățat și cum propriile alegeri ale unui sistem de recomandare îl pot prinde într-o buclă de feedback, subcapitolul 10.4 răspunde la amândouă. Cum poate învăța un model din date care se etichetează singure, trucul din spatele modelelor de limbaj și al celor de difuzie, se explică în subcapitolul 9.2. Iar cel mai grav fel în care poate greși un agent, un atacator și nu o eroare, e subiectul subcapitolului 11.3.",
+      "sourceAnchor": null,
+      "wordCount": 89
+    }
+  ]
+}

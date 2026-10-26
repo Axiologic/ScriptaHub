@@ -1,0 +1,3144 @@
+{
+  "batch": "batch-0020.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0013",
+  "chapterTitle": "Anexe",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000796",
+      "chapterId": "chapter-0013",
+      "kind": "h1",
+      "text": "Anexe",
+      "sourceAnchor": "anexe",
+      "wordCount": 1
+    },
+    {
+      "id": "u000797",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Anexa A — Matematica din spatele fiecărui subcapitol",
+      "sourceAnchor": "anexa-a-matematica-din-spatele-fiecărui-subcapitol",
+      "wordCount": 7
+    },
+    {
+      "id": "u000798",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Această anexă adună formulele lăsate intenționat deoparte în subcapitole. Fiecare e urmată de ce înseamnă fiecare simbol și de felul în care formula se potrivește cu imaginea pe care o cunoști deja. Peste tot, x e o intrare, y e răspunsul corect, ŷ („y-căciulă”) e predicția modelului, w e o pondere (weight), b e un bias, iar n e numărul de exemple.",
+      "sourceAnchor": null,
+      "wordCount": 62
+    },
+    {
+      "id": "u000799",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "1.2 Măsurarea greșelilor",
+      "sourceAnchor": "măsurarea-greșelilor",
+      "wordCount": 4
+    },
+    {
+      "id": "u000800",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Pentru numere, loss-ul obișnuit e mean squared error (MSE, „eroarea pătratică medie”): iei fiecare greșeală, o ridici la pătrat și faci media.",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000801",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "MSE = 1 n ∑ i = 1 n ( y i − y ̂ i ) 2 \\text{MSE} = \\frac{1}{n}\\sum_{i = 1}^{n}\\left( y_{i} - {\\hat{y}}_{i} \\right)^{2}",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000802",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Σ (sigma) înseamnă pur și simplu „adună peste toate exemplele”. Ridicarea la pătrat face fiecare greșeală pozitivă și face ca greșelile mari să conteze disproporționat: o greșeală de 10 contribuie cu 100, una de 1 cu 1.",
+      "sourceAnchor": null,
+      "wordCount": 37
+    },
+    {
+      "id": "u000803",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Pentru răspunsuri cu da sau nu, loss-ul obișnuit e cross-entropy („entropia încrucișată”). Dacă modelul a dat probabilitatea p răspunsului corect, loss-ul pentru acel exemplu e:",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000804",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L = − log ⁡ p L = - \\log p",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000805",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Dacă modelul a fost sigur și a avut dreptate (p aproape de 1), loss-ul e aproape 0. Dacă a fost sigur și a greșit (p aproape de 0), loss-ul crește spre infinit. Asta e meteorologa care a promis 99% soare.",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000806",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "1.3 K-Means și PCA",
+      "sourceAnchor": "k-means-și-pca",
+      "wordCount": 5
+    },
+    {
+      "id": "u000807",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "K-Means caută k centre, notate μ (miu), care fac cât mai mică distanța pătratică totală de la fiecare punct la centrul cel mai apropiat:",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000808",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "min μ 1 , … , μ k ∑ i = 1 n min j ∥ x i − μ j ∥ 2 \\min_{\\mu_{1},\\ldots,\\mu_{k}}\\sum_{i = 1}^{n}\\min_{j}\\left. \\parallel x_{i} - \\mu_{j} \\right.\\parallel^{2}",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000809",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Barele duble înseamnă distanță. Procedura cu punctele de pizza (aloci casele, muți punctele, repeți) e un mod de a micșora această cantitate pas cu pas.",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000810",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "PCA calculează covariance matrix -ul datelor („matricea de covarianță”, un tabel care spune cât de mult se mișcă împreună fiecare pereche de trăsături) și îi găsește eigenvectors („vectorii proprii”): direcțiile de-a lungul cărora datele sunt cel mai împrăștiate. Primul vector propriu e „cât de puternic e laptopul”, al doilea „cât de portabil” și tot așa. Eigenvalue -ul fiecărui vector propriu („valoarea proprie”) spune câtă din împrăștiere prinde.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000811",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.1 Regresia liniară și cea logistică",
+      "sourceAnchor": "regresia-liniară-și-cea-logistică",
+      "wordCount": 7
+    },
+    {
+      "id": "u000812",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "y ̂ = w ⋅ x + b p = σ ( w ⋅ x + b ) = 1 1 + e − ( w ⋅ x + b ) \\hat{y} = w \\cdot x + b\\quad\\quad\\quad\\quad p = \\sigma(w \\cdot x + b) = \\frac{1}{1 + e^{- (w \\cdot x + b)}}",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000813",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "În stânga, rigla: w · x e suma ponderată a intrărilor (fiecare intrare înmulțită cu ponderea ei, apoi adunate), iar b mută toată linia în sus sau în jos. În dreapta, variatorul: σ (sigma, funcția sigmoid) strânge orice număr în intervalul de la 0 la 1. Scorurile mari pozitive dau valori aproape de 1, cele mari negative valori aproape de 0, iar un scor de exact 0 dă 0,5, granița de decizie. Regresia liniară se antrenează minimizând MSE; cea logistică minimizând cross-entropy.",
+      "sourceAnchor": null,
+      "wordCount": 82
+    },
+    {
+      "id": "u000814",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.2 Distanța pentru cei mai apropiați vecini",
+      "sourceAnchor": "distanța-pentru-cei-mai-apropiați-vecini",
+      "wordCount": 8
+    },
+    {
+      "id": "u000815",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Cea mai folosită distanță e distanța obișnuită în linie dreaptă (euclidiană), Pitagora în multe dimensiuni:",
+      "sourceAnchor": null,
+      "wordCount": 15
+    },
+    {
+      "id": "u000816",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "d ( a , b ) = ∑ j ( a j − b j ) 2 d(a,b) = \\sqrt{\\sum_{j}^{}\\left( a_{j} - b_{j} \\right)^{2}}",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000817",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Fiecare trăsătură j contribuie cu diferența ei la pătrat și tocmai de aceea o trăsătură măsurată în unități mari domină suma dacă nu rescalezi.",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000818",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.3 Entropie, Gini și information gain",
+      "sourceAnchor": "entropie-gini-și-information-gain",
+      "wordCount": 7
+    },
+    {
+      "id": "u000819",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Dacă un grup conține clase în proporțiile p₁, p₂ și așa mai departe:",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u000820",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "H = − ∑ k p k log ⁡ 2 p k G = 1 − ∑ k p k 2 H = - \\sum_{k}^{}p_{k}\\log_{2}p_{k}\\quad\\quad\\quad\\quad G = 1 - \\sum_{k}^{}p_{k}^{2}",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000821",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Amândouă sunt 0 pentru un sertar de șosete perfect ordonat (o singură clasă) și ating maximul pentru un amestec egal. Cu două clase 50/50, entropia e exact 1 bit: ai nevoie de o singură întrebare da/nu ca să lămurești incertitudinea. Information gain e entropia de dinaintea unei împărțiri minus media, ponderată după mărime, a entropiei grupurilor de după ea. Arborele alege întrebarea cu cel mai mare câștig.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000822",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.4 Ansambluri (ensembles)",
+      "sourceAnchor": "ansambluri-ensembles",
+      "wordCount": 4
+    },
+    {
+      "id": "u000823",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Un random forest face media (sau votul majoritar) predicțiilor celor T arbori ai lui:",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u000824",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "y ̂ = 1 T ∑ t = 1 T h t ( x ) \\hat{y} = \\frac{1}{T}\\sum_{t = 1}^{T}h_{t}(x)",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000825",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Gradient boosting își construiește modelul ca o sumă cumulată. Fiecare arbore mic nou h e antrenat pe ce greșește încă modelul curent și e adăugat cu o pondere mică ν (niu), learning rate-ul boosting-ului:",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000826",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "F m ( x ) = F m − 1 ( x ) + ν h m ( x ) F_{m}(x) = F_{m - 1}(x) + \\nu\\, h_{m}(x)",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000827",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Aceasta e editura: ciorna, plus o fracțiune atentă din corectura editoarei, plus o fracțiune atentă din corectura redactorului și tot așa.",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000828",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "2.5 Regula lui Bayes",
+      "sourceAnchor": "regula-lui-bayes",
+      "wordCount": 5
+    },
+    {
+      "id": "u000829",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "P ( H ∣ E ) = P ( E ∣ H ) P ( H ) P ( E ) P(H \\mid E) = \\frac{P(E \\mid H)\\, P(H)}{P(E)}",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000830",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "H e o ipoteză (pacientul are boala), iar E e dovada (testul a ieșit pozitiv). P(H) e prior-ul, P(H | E) e posterior-ul, iar P(E | H) arată cât de probabilă ar fi dovada dacă ipoteza ar fi adevărată. Ia testul din subcapitolul 2.5, exact în 99% din cazuri, pentru o boală pe care o are un om din zece mii. Dintr-un milion de oameni, o sută sunt bolnavi și cam 99 dintre ei ies pozitivi; 1% dintre cei 999.900 de oameni sănătoși, adică vreo 9.999, ies și ei pozitivi. Așa că un rezultat pozitiv înseamnă boala cu o probabilitate de aproximativ 99 / (99 + 9.999), cam 1%. Naive Bayes înmulțește câte un factor P(E | H) pentru fiecare dovadă, ca și cum fiecare ar fi independentă de celelalte.",
+      "sourceAnchor": null,
+      "wordCount": 133
+    },
+    {
+      "id": "u000831",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "3.1 Neuronul",
+      "sourceAnchor": "neuronul",
+      "wordCount": 3
+    },
+    {
+      "id": "u000832",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "a = f ( w ⋅ x + b ) ReLU ( z ) = max ⁡ ( 0 , z ) a = f(w \\cdot x + b)\\quad\\quad\\quad\\quad\\text{ReLU}(z) = \\max(0,z)",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000833",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Neuronul calculează suma ponderată, adaugă bias-ul și trece rezultatul printr-o funcție de activare f. Pentru lista de bifat a apartamentelor, w = (10, 4, 1), b = −11, iar f e funcția treaptă: ieșirea e 1 dacă rezultatul e cel puțin 0. Un strat înseamnă mulți neuroni alăturați, adică, în practică, o singură înmulțire de matrice; un MLP înseamnă mai multe straturi la rând, cu o funcție de activare după fiecare.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000834",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "3.2 Gradient descent și backpropagation",
+      "sourceAnchor": "gradient-descent-și-backpropagation",
+      "wordCount": 6
+    },
+    {
+      "id": "u000835",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "w ← w − η ∂ L ∂ w w \\leftarrow w - \\eta\\,\\frac{\\partial L}{\\partial w}",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u000836",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Săgeata înseamnă „înlocuiește-l pe w cu”. Fracția ∂L/∂w e partial derivative -ul („derivata parțială”) loss-ului L în raport cu w: cât s-ar schimba eroarea dacă ai mișca puțin doar această pondere, ținându-le pe toate celelalte pe loc. E panta de sub bocanci în direcția lui w. Semnul minus arată în jos, iar η (eta) e learning rate-ul, lungimea pasului.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    },
+    {
+      "id": "u000837",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Backpropagation calculează toate aceste pante eficient, cu chain rule („regula lanțului”). Dacă loss-ul depinde de o valoare intermediară z, iar z depinde de w, atunci:",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000838",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "∂ L ∂ w = ∂ L ∂ z ⋅ ∂ z ∂ w \\frac{\\partial L}{\\partial w} = \\frac{\\partial L}{\\partial z} \\cdot \\frac{\\partial z}{\\partial w}",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000839",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Acesta e inspectorul atelierului mergând înapoi pe linie: vina care ajunge la un post, înmulțită cu cât de puternic a influențat setarea acelui post ieșirea lui.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000840",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "3.4 Actualizarea recurentă",
+      "sourceAnchor": "actualizarea-recurentă",
+      "wordCount": 4
+    },
+    {
+      "id": "u000841",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "h t = tanh ⁡ ( W x t + U h t − 1 + b ) h_{t} = \\tanh\\left( Wx_{t} + Uh_{t - 1} + b \\right)",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000842",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Noua stare ascunsă h la pasul t e calculată din intrarea curentă x și starea ascunsă anterioară, prin două matrice de ponderi învățate, W și U. Funcția tanh strânge valorile în intervalul de la −1 la 1. Acesta e reduce-ul din subcapitol: acumulatorul nou, calculat din elementul curent și acumulatorul vechi. În timpul backpropagation, vina trece prin U o dată la fiecare pas, și de aici vin vanishing gradients.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000843",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "4.2 Scalare și TF-IDF",
+      "sourceAnchor": "scalare-și-tf-idf",
+      "wordCount": 5
+    },
+    {
+      "id": "u000844",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Scalarea standard transformă fiecare trăsătură în „la câte abateri standard de medie se află”:",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u000845",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "x ′ = x − μ σ x' = \\frac{x - \\mu}{\\sigma}",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000846",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "unde μ (miu) e media trăsăturii, iar σ (sigma) abaterea ei standard, amândouă calculate doar pe setul de antrenare. (Aici σ e împrăștierea, nu sigmoida din subcapitolul 2.1; matematica își refolosește fără jenă puținele litere grecești.) După scalare, o valoare de 2 înseamnă „două abateri standard peste medie” în orice trăsătură, oricare ar fi fost unitățile inițiale.",
+      "sourceAnchor": null,
+      "wordCount": 58
+    },
+    {
+      "id": "u000847",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "TF-IDF ponderează un cuvânt după cât de des apare în acest document (term frequency, TF) și cât de rar e în toate cele N documente (inverse document frequency, IDF):",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000848",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "tfidf ( w , d ) = tf ( w , d ) ⋅ log ⁡ N df ( w ) \\text{tfidf}(w,d) = \\text{tf}(w,d) \\cdot \\log\\frac{N}{\\text{df}(w)}",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000849",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Dacă un cuvânt apare în fiecare document, df e egal cu N, logaritmul e zero și cuvântul nu contează deloc. Un cuvânt care apare într-un document din o mie primește o pondere aproape de log 1000, cam 6,9.",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000850",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "4.3 Un strat ca înmulțire de matrice",
+      "sourceAnchor": "un-strat-ca-înmulțire-de-matrice",
+      "wordCount": 8
+    },
+    {
+      "id": "u000851",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Cu X un batch de intrări (un rând per exemplu), W matricea de ponderi a stratului (o coloană per neuron) și b vectorul lui de bias:",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000852",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Y = f ( X W + b ) , X : ( n × d in ) , W : ( d in × d out ) , Y : ( n × d out ) Y = f(XW + b),\\quad\\quad X:\\left( n \\times d_{\\text{in}} \\right),\\mspace{6mu} W:\\left( d_{\\text{in}} \\times d_{\\text{out}} \\right),\\mspace{6mu} Y:\\left( n \\times d_{\\text{out}} \\right)",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000853",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Formele trebuie să se potrivească precum piesele de domino: numărul de coloane ale lui X trebuie să fie egal cu numărul de rânduri ale lui W. Fiecare celulă din Y e un produs scalar, un neuron aplicat unui exemplu, iar toate cele n × d_out pot fi calculate în paralel. O rețea întreagă e această linie repetată, cu ieșirea unui strat devenind X-ul următorului.",
+      "sourceAnchor": null,
+      "wordCount": 64
+    },
+    {
+      "id": "u000854",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Memoria necesară doar ca să ții ponderile unui model e numărul de parametri înmulțit cu octeții per parametru:",
+      "sourceAnchor": null,
+      "wordCount": 18
+    },
+    {
+      "id": "u000855",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "memorie ≈ P × octeți per pondere 7 × 10 9 × 4 octeți = 28 GB (32 de biți) , 7 × 10 9 × 0.5 octeți = 3.5 GB (4 biți) \\text{memorie} \\approx P \\times \\text{octeți per pondere}\\quad\\quad 7 \\times 10^{9} \\times 4\\text{ octeți} = 28\\text{ GB (32 de biți)},\\quad 7 \\times 10^{9} \\times 0.5\\text{ octeți} = 3.5\\text{ GB (4 biți)}",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000856",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Asta e economia pe care o aduce cuantizarea. Antrenarea are nevoie de câteva ori mai mult, pentru rezultatele intermediare păstrate, gradienți și memoria optimizatorului (subcapitolul 5.2).",
+      "sourceAnchor": null,
+      "wordCount": 27
+    },
+    {
+      "id": "u000857",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "5.3 Hipervectori",
+      "sourceAnchor": "hipervectori",
+      "wordCount": 3
+    },
+    {
+      "id": "u000858",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Pentru doi hipervectori binari a și b de lungime D, asemănarea se măsoară prin fracțiunea pozițiilor în care sunt de acord, derivată din Hamming distance („distanța Hamming”, numărul de poziții în care diferă):",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000859",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "sim ( a , b ) = 1 − Hamming ( a , b ) D \\text{sim}(a,b) = 1 - \\frac{\\text{Hamming}(a,b)}{D}",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000860",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Pentru doi vectori aleatori, valoarea e aproape 0,5, iar împrăștierea în jurul lui 0,5 scade ca unu supra radical din D. Cu D = 10.000, împrăștierea e de vreo jumătate de procent, de aceea 0,6 înseamnă deja „sigur înrudiți”.",
+      "sourceAnchor": null,
+      "wordCount": 42
+    },
+    {
+      "id": "u000861",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Binding-ul e XOR bit cu bit, notat ⊕, și se anulează singur:",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000862",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "( a ⊕ b ) ⊕ b = a (a \\oplus b) \\oplus b = a",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u000863",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Bundling-ul mai multor vectori, notat +, e un vot majoritar pe fiecare poziție (când numărul vectorilor e par, egalitățile se rup la întâmplare). O înregistrare e un bundle de perechi legate, iar interogarea ei e încă un bind urmat de o căutare a celui mai apropiat vecin printre vectorii cunoscuți:",
+      "sourceAnchor": null,
+      "wordCount": 49
+    },
+    {
+      "id": "u000864",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "R = ( ANIMAL ⊕ CÂINE ) + ( STĂPÂN ⊕ ANA ) , R ⊕ STĂPÂN ≈ ANA R = \\left( \\text{ANIMAL} \\oplus \\text{CÂINE} \\right) + \\left( \\text{STĂPÂN} \\oplus \\text{ANA} \\right),\\quad\\quad R \\oplus \\text{STĂPÂN} \\approx \\text{ANA}",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000865",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Semnul „aproximativ egal” e zgomotul de la celelalte perechi din bundle; lungimea vectorilor e cea care îl ține mic.",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000866",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "7.1 Cosine similarity",
+      "sourceAnchor": "cosine-similarity",
+      "wordCount": 4
+    },
+    {
+      "id": "u000867",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "cos ⁡ ( θ ) = a ⋅ b ∥ a ∥ ∥ b ∥ \\cos(\\theta) = \\frac{a \\cdot b}{\\parallel a \\parallel \\, \\parallel b \\parallel}",
+      "sourceAnchor": null,
+      "wordCount": 18
+    },
+    {
+      "id": "u000868",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Sus e produsul scalar: înmulțești vectorii coordonată cu coordonată și aduni. Jos se împarte la ambele lungimi, ceea ce scoate mărimea din comparație și lasă doar direcția. Rezultatul e 1 pentru aceeași direcție (rețeta de clătite pentru 4 și pentru 40), 0 pentru direcții fără legătură și −1 pentru direcții opuse.",
+      "sourceAnchor": null,
+      "wordCount": 51
+    },
+    {
+      "id": "u000869",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "7.2 Attention",
+      "sourceAnchor": "attention",
+      "wordCount": 3
+    },
+    {
+      "id": "u000870",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Attention ( Q , K , V ) = softmax ( Q K ⊤ d k ) V \\text{Attention}(Q,K,V) = \\text{softmax}\\left( \\frac{QK^{\\top}}{\\sqrt{d_{k}}} \\right)V",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000871",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Q, K și V sunt matrice cu un rând per cuvânt: întrebările, ecusoanele și dosarele. Se obțin din embedding-urile X prin trei matrice învățate: Q = X·W_Q, K = X·W_K, V = X·W_V. Produsul Q·Kᵀ e un tabel de scoruri de potrivire, câte unul pentru fiecare pereche de cuvinte. Împărțirea la radical din d_k, numărul de coordonate al fiecărei chei, împiedică scorurile să crească atât de mult încât softmax să devină „totul sau nimic”. Softmax transformă fiecare rând de scoruri în procente care însumează 100%:",
+      "sourceAnchor": null,
+      "wordCount": 90
+    },
+    {
+      "id": "u000872",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "softmax ( z ) i = e z i ∑ j e z j \\text{softmax}(z)_{i} = \\frac{e^{z_{i}}}{\\sum_{j}^{}e^{z_{j}}}",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000873",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Înmulțirea cu V produce, pentru fiecare cuvânt, amestecul dosarelor pe care le-a ascultat. Aceasta e căutarea în dicționar „cu aproximație”, scrisă sub formă de matrice. Multi-head attention rulează mai multe copii, cu matrice învățate diferite, și lipește rezultatele unul lângă altul.",
+      "sourceAnchor": null,
+      "wordCount": 41
+    },
+    {
+      "id": "u000874",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "7.3 Antrenarea unui model de limbaj și alegerea tokenilor",
+      "sourceAnchor": "antrenarea-unui-model-de-limbaj-și-alegerea-tokenilor",
+      "wordCount": 10
+    },
+    {
+      "id": "u000875",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Pretraining-ul minimizează cross-entropy-ul tokenului următor, mediat peste fiecare poziție din fiecare text:",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u000876",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L = − 1 T ∑ t = 1 T log ⁡ p ( x t ∣ x 1 , … , x t − 1 ) L = - \\frac{1}{T}\\sum_{t = 1}^{T}\\log p\\left( x_{t} \\mid x_{1},\\ldots,x_{t - 1} \\right)",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000877",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Citește bara verticală ca „dat fiind”: probabilitatea pe care a dat-o modelul tokenului real de la poziția t, dați fiind toți tokenii dinaintea lui. Temperatura τ (tau) împarte scorurile z înainte de softmax:",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000878",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "p i = e z i / τ ∑ j e z j / τ p_{i} = \\frac{e^{z_{i}/\\tau}}{\\sum_{j}^{}e^{z_{j}/\\tau}}",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000879",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Un τ mic exagerează diferențele dintre scoruri, așa că tokenul de top câștigă aproape mereu; un τ mare le aplatizează, așa că tokenii mai puțin probabili primesc o șansă reală.",
+      "sourceAnchor": null,
+      "wordCount": 30
+    },
+    {
+      "id": "u000880",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "8.1 Difuzie",
+      "sourceAnchor": "difuzie",
+      "wordCount": 3
+    },
+    {
+      "id": "u000881",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Procesul înainte adaugă puțin zgomot gaussian la fiecare dintre cei T pași, astfel încât, după destui pași, imaginea nu se mai deosebește de puricii unui televizor fără semnal:",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000882",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "x t = 1 − β t x t − 1 + β t ε , ε ∼ 𝒩 ( 0 , I ) x_{t} = \\sqrt{1 - \\beta_{t}}\\, x_{t - 1} + \\sqrt{\\beta_{t}}\\,\\varepsilon,\\quad\\quad\\varepsilon \\sim \\mathcal{N}(0,I)",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000883",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "β (beta) e un număr mic care controlează cât zgomot adaugă pasul t, iar ε (epsilon) e zgomotul aleator. Rețeaua e antrenată pe o singură regresie simplă: dată fiind imaginea zgomotoasă și numărul pasului, prezice zgomotul care a fost adăugat.",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000884",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L = ∥ ε − ε θ ( x t , t ) ∥ 2 L = \\left. \\parallel\\varepsilon - \\varepsilon_{\\theta}\\left( x_{t},t \\right) \\right.\\parallel^{2}",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000885",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Generarea pornește de la zgomot pur și rulează pașii invers, scăzând de fiecare dată zgomotul prezis de rețea. Obiectivul unui GAN, în schimb, e un joc în doi: discriminatorul D își maximizează acuratețea în a deosebi realul de generat, iar generatorul G o minimizează.",
+      "sourceAnchor": null,
+      "wordCount": 44
+    },
+    {
+      "id": "u000886",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "8.2 Mixture of experts și contrastive loss",
+      "sourceAnchor": "mixture-of-experts-și-contrastive-loss",
+      "wordCount": 8
+    },
+    {
+      "id": "u000887",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Într-un strat mixture-of-experts, un router produce o pondere pentru fiecare dintre cei E experți și doar primii k sunt rulați:",
+      "sourceAnchor": null,
+      "wordCount": 20
+    },
+    {
+      "id": "u000888",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "y = ∑ i ∈ top- k g i ( x ) Expert i ( x ) y = \\sum_{i \\in \\text{top-}k}^{}g_{i}(x)\\,\\text{Expert}_{i}(x)",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000889",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Valorile g sunt scoruri softmax de la router, așa că ieșirea e un amestec ponderat al răspunsurilor câtorva experți, iar ceilalți nu costă nimic pentru acest token.",
+      "sourceAnchor": null,
+      "wordCount": 27
+    },
+    {
+      "id": "u000890",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Contrastive loss-ul din spatele modelelor precum CLIP tratează, într-un batch de N perechi, propria descriere a fiecărei imagini drept exemplul pozitiv și celelalte N − 1 descrieri drept negative:",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000891",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L = − log ⁡ e sim ( a i , b i ) / τ ∑ j = 1 N e sim ( a i , b j ) / τ L = - \\log\\frac{e^{\\text{sim}\\left( a_{i},b_{i} \\right)/\\tau}}{\\sum_{j = 1}^{N}e^{\\text{sim}\\left( a_{i},b_{j} \\right)/\\tau}}",
+      "sourceAnchor": null,
+      "wordCount": 46
+    },
+    {
+      "id": "u000892",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "E cross-entropy peste „ce descriere îi aparține acestei imagini”, cu cosine similarity drept scor și o temperatură τ (tau) ca în subcapitolul 7.3.",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000893",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "9.1 Q-learning",
+      "sourceAnchor": "q-learning",
+      "wordCount": 3
+    },
+    {
+      "id": "u000894",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Q ( s , a ) ← Q ( s , a ) + α [ r + γ max a ′ Q ( s ′ , a ′ ) − Q ( s , a ) ] Q(s,a) \\leftarrow Q(s,a) + \\alpha\\left\\lbrack r + \\gamma\\max_{a'}Q(s',a') - Q(s,a) \\right\\rbrack",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000895",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "După ce face acțiunea a în starea s, primește recompensa r și ajunge în starea s′, agentul își compară vechea estimare Q(s, a) cu una mai bine informată: recompensa tocmai primită plus valoarea actualizată (discounted) a celei mai bune mutări din locul în care a ajuns. Își mută estimarea o parte din drum spre ea, cu un pas α (alfa). γ (gama), factorul de actualizare, e un număr puțin sub 1. Aceasta e valoarea brânzei care se scurge înapoi prin labirint, intersecție cu intersecție.",
+      "sourceAnchor": null,
+      "wordCount": 85
+    },
+    {
+      "id": "u000896",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "9.2 LoRA și învățarea din preferințe",
+      "sourceAnchor": "lora-și-învățarea-din-preferințe",
+      "wordCount": 7
+    },
+    {
+      "id": "u000897",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "LoRA îngheață o matrice de ponderi W și învață o corectură mică, scrisă ca produsul a două matrice subțiri:",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000898",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "W ′ = W + B A , B : ( d × r ) , A : ( r × d ) , r ≪ d W' = W + BA,\\quad\\quad B:(d \\times r),\\mspace{6mu} A:(r \\times d),\\mspace{6mu} r \\ll d",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000899",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Pentru o matrice de 4.096 pe 4.096 și un rang r de 8, corectura are cam 65.000 de numere antrenabile în loc de 16,8 milioane, o reducere de aproximativ 250 de ori.",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000900",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "În RLHF, un reward model r e antrenat din perechi în care răspunsul y₊ a fost preferat lui y₋, astfel încât răspunsul preferat să primească un scor mai mare cu probabilitatea dată de un sigmoid al diferenței:",
+      "sourceAnchor": null,
+      "wordCount": 37
+    },
+    {
+      "id": "u000901",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "P ( y + ≻ y − ) = σ ( r ( x , y + ) − r ( x , y − ) ) P\\left( y_{+} \\succ y_{-} \\right) = \\sigma\\left( r\\left( x,y_{+} \\right) - r\\left( x,y_{-} \\right) \\right)",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000902",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Modelul de limbaj e apoi optimizat să maximizeze r, în timp ce o penalizare îl ține aproape de modelul de la care a pornit. DPO contopește cei doi pași într-unul singur, antrenând modelul direct pe perechile de preferințe.",
+      "sourceAnchor": null,
+      "wordCount": 38
+    },
+    {
+      "id": "u000903",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "10.1 Regularizare",
+      "sourceAnchor": "regularizare",
+      "wordCount": 3
+    },
+    {
+      "id": "u000904",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Regularizarea L2 adaugă la loss o penalizare pentru ponderile mari, cu o tărie λ (lambda) pe care o alegi tu:",
+      "sourceAnchor": null,
+      "wordCount": 20
+    },
+    {
+      "id": "u000905",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "L total = L data + λ ∑ j w j 2 L_{\\text{total}} = L_{\\text{data}} + \\lambda\\sum_{j}^{}w_{j}^{2}",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000906",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Modelul trebuie acum să-și justifice fiecare pondere mare printr-o reducere reală a erorii, versiunea matematică a reviewer-ului care respinge complexitatea care nu-și justifică prețul. Regularizarea L1 folosește valori absolute în loc de pătrate și tinde să împingă ponderile inutile exact la zero.",
+      "sourceAnchor": null,
+      "wordCount": 42
+    },
+    {
+      "id": "u000907",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "10.3 Metrici",
+      "sourceAnchor": "metrici",
+      "wordCount": 3
+    },
+    {
+      "id": "u000908",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Cu TP, FP și FN numărul de true positives, false positives și false negatives:",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u000909",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Precision = T P T P + F P Recall = T P T P + F N F 1 = 2 ⋅ Precision ⋅ Recall Precision + Recall \\text{Precision} = \\frac{TP}{TP + FP}\\quad\\quad\\text{Recall} = \\frac{TP}{TP + FN}\\quad\\quad F_{1} = \\frac{2 \\cdot \\text{Precision} \\cdot \\text{Recall}}{\\text{Precision} + \\text{Recall}}",
+      "sourceAnchor": null,
+      "wordCount": 51
+    },
+    {
+      "id": "u000910",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Precizia împarte la tot ce a semnalat alerta; recall-ul împarte la tot ce exista de fapt. Pentru predicții numerice:",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000911",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "MAE = 1 n ∑ i = 1 n | y i − y ̂ i | RMSE = 1 n ∑ i = 1 n ( y i − y ̂ i ) 2 \\text{MAE} = \\frac{1}{n}\\sum_{i = 1}^{n}\\left| y_{i} - {\\hat{y}}_{i} \\right|\\quad\\quad\\text{RMSE} = \\sqrt{\\frac{1}{n}\\sum_{i = 1}^{n}\\left( y_{i} - {\\hat{y}}_{i} \\right)^{2}}",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000912",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Barele verticale din MAE înseamnă „ignoră semnul”. RMSE e radicalul din MSE din subcapitolul 1.2, care îl readuce la unitățile inițiale păstrându-i sensibilitatea sporită la greșelile mari.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000913",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "11.4 Differential privacy",
+      "sourceAnchor": "differential-privacy",
+      "wordCount": 4
+    },
+    {
+      "id": "u000914",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Un calcul aleator M este ε-diferențial privat dacă, pentru oricare două seturi de date D și D′ care diferă doar prin datele unei singure persoane și pentru orice mulțime S de rezultate posibile:",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000915",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "P ( M ( D ) ∈ S ) ≤ e ε P ( M ( D ′ ) ∈ S ) P\\left( M(D) \\in S \\right) \\leq e^{\\varepsilon}\\, P\\left( M(D') \\in S \\right)",
+      "sourceAnchor": null,
+      "wordCount": 27
+    },
+    {
+      "id": "u000916",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "ε (epsilon) e bugetul de confidențialitate. Cu un ε mic, e^ε e aproape de 1, așa că orice rezultat e aproape exact la fel de probabil fie că ai fost inclus, fie că nu, iar nimeni care se uită la el nu poate afla mare lucru despre tine. Bugetele se adună: publicarea a k rezultate calculate fiecare cu bugetul ε costă în total cel mult kε, iar aceasta e aritmetica din spatele avertismentului din subcapitolul 11.4 că fiecare răspuns publicat cheltuiește puțin din buget.",
+      "sourceAnchor": null,
+      "wordCount": 86
+    },
+    {
+      "id": "u000917",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Anexa B — Dicționarul metaforelor",
+      "sourceAnchor": "anexa-b-dicționarul-metaforelor",
+      "wordCount": 4
+    },
+    {
+      "id": "u000918",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Fiecare imagine din carte, alături de termenul tehnic pe care îl reprezintă, ca să poți trece ușor dintr-o limbă în alta când citești documentație sau vorbești cu specialiști.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000919",
+      "chapterId": "chapter-0013",
+      "kind": "th",
+      "text": "Subcapitol",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u000920",
+      "chapterId": "chapter-0013",
+      "kind": "th",
+      "text": "Imaginea",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u000921",
+      "chapterId": "chapter-0013",
+      "kind": "th",
+      "text": "Termenul tehnic",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000922",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000923",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Rețeta și ucenicul",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000924",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "programare clasică vs. machine learning",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000925",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000926",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Cheia de răspunsuri de pe spatele paginii",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000927",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "supervised learning, labels, loss",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000928",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000929",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Sortatul dulapului pe întuneric; punctele de livrare a pizzei",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000930",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "clustering, K-Means",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000931",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000932",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Umbra de pe perete; fișele tehnice ale laptopurilor",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000933",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "dimensionality reduction, PCA (principal component analysis)",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000934",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000935",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Fața de pe Marte",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000936",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "clustere găsite în zgomot pur",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000937",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000938",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Culegerea, simularea, examenul real",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000939",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "training, validation și test sets",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000940",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "1.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000941",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Orele de învățat vs. ce ai în cap",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000942",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "hyperparameters vs. parameters",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000943",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000944",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Rigla cu arcuri",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000945",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "linear regression, squared error",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000946",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000947",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Variatorul de lumină",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000948",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "sigmoid, logistic regression",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000949",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000950",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Spune-mi cine îți sunt vecinii; secțiunile unei biblioteci",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000951",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "k-nearest neighbors (k-NN); approximate nearest-neighbor index",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000952",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000953",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "În 500 de dimensiuni toată lumea e străină",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000954",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "curse of dimensionality",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000955",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000956",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Douăzeci de întrebări, git bisect",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000957",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "decision tree, information gain",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000958",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000959",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Sertarul cu șosete",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000960",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "entropy, Gini index",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000961",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000962",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Boul de la târg; consiliul experților pe jumătate orbi",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000963",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "random forest, bagging",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000964",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000965",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Editura",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u000966",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "gradient boosting",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000967",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000968",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Drumul cu cea mai lată fâșie goală între două sate; satul din interior devenit vale",
+      "sourceAnchor": null,
+      "wordCount": 15
+    },
+    {
+      "id": "u000969",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "support vector machine (SVM), margin, kernel trick",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000970",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000971",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Bănuiala doctoriței înainte și după dovezi; doctorița leneșă",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000972",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Bayes’ rule, prior și posterior, naive Bayes",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000973",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "2.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000974",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Festivalul de muzică văzut de la o dronă; harta lumii de pe peretele clasei; sârma flexibilă prinsă în punctele cunoscute",
+      "sourceAnchor": null,
+      "wordCount": 20
+    },
+    {
+      "id": "u000975",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "density-based clustering (DBSCAN), t-SNE și UMAP, Gaussian processes",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000976",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000977",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Lista de bifat pentru apartamente; regula de alertă",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000978",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "perceptron, weights, bias",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000979",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000980",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Conversii valutare înlănțuite",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000981",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "de ce au nevoie rețelele de activation functions",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u000982",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000983",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Coborâtul prin ceață; autoscaler-ul care oscilează",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000984",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "gradient descent, learning rate",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000985",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000986",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Inspectorul care parcurge înapoi linia din atelier; distributed tracing",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000987",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "backpropagation",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u000988",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000989",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Inspectorii cu lupe",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000990",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "convolutional neural network, kernel",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000991",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000992",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Regula de linter aplicată fiecărei linii",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u000993",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "weight sharing",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000994",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "3.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000995",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Telefonul fără fir; un reduce cu un acumulator mic; o singură fișă de notițe vs. un carnet cu comutatoare",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u000996",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "recurrent neural network, hidden state, vanishing gradient, LSTM gates",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000997",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000998",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Avionul de hârtie și porumbelul; mixerul cu un milion de cursoare",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000999",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "neuroni artificiali vs. biologici",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001000",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001001",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Folderul cu tichete dezordonate; rândul de căsuțe",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001002",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "data preparation, one-hot encoding, feature engineering",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001003",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001004",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Fișierul cu o sută de milioane de zecimale",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001005",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "tensors, shapes, modelul ca ponderi stocate",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001006",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001007",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "JPEG pentru ponderi",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001008",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "quantization",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u001009",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001010",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Cele patru recrutoare: fișa de punctaj, schema logică, intuiția, privirea condusă de fiecare CV",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u001011",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "feature importance: linear weights, tree-based importance, hidden features, attention",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001012",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "4.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001013",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Amestecarea valorilor unei singure trăsături; gemenii care își împart meritul",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001014",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "permutation importance, correlated features",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001015",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001016",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Cutia de Lego: muncitori și instalații",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001017",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "tipuri de straturi (layers), arhitectură",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001018",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001019",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Termostatul; ocolul; zilele libere de la repetiții",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001020",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "normalization, residual connections, dropout",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001021",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001022",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Anul dinainte de deschidere; ziua deschiderii",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001023",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "training vs. inference",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001024",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001025",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Cuptorul de pâine umplut",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001026",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "batching",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u001027",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001028",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Factura unei conversații",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001029",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "costul inferenței, tokeni de ieșire vs. de intrare",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001030",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001031",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Zece mii de aruncări de monedă; un Bloom filter crescut mare",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u001032",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "hyperdimensional computing, VSA (vector symbolic architectures)",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001033",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "5.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001034",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Primul an la chitară; cuptoarele și făina; o fotocopie după o fotocopie",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001035",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "learning curve, scaling laws, compute-optimal training (Chinchilla), synthetic data și model collapse",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001036",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001037",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Cana de cafea pe întuneric; scene graph-ul",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001038",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "cortical columns, reference frames",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001039",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001040",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Degetele care votează; replicile care ajung la quorum",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001041",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "votul dintre coloane",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001042",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001043",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Frigiderul care se oprește din zumzet; codecul video",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001044",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "predictive processing, prediction error",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001045",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001046",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Fiecare serviciu își reglează propriul cache",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001047",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Hebbian learning (învățare locală)",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001048",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "6.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001049",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Log-ul append-only compactat noaptea",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001050",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "hippocampal replay, complementary learning systems",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001051",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001052",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Harta orașului sensurilor; codurile de culoare",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001053",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "embeddings",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u001054",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001055",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Rețeta de clătite pentru 4 și pentru 40",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001056",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "cosine similarity",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001057",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001058",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Ședința detectivilor; căutarea în dicționar „cu aproximație”",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001059",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "self-attention: query, key, value",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001060",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001061",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Tastatura telefonului; ghicitul cuvântului următor",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001062",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "next-token prediction, pretraining",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001063",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001064",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Angajata nouă: wiki, învățat lângă seniori, code review",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001065",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "pretraining, fine-tuning, RLHF",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001066",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001067",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Tabla din sala de ședințe",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001068",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "context window",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001069",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001070",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Examenul cu cartea deschisă",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001071",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "retrieval-augmented generation (RAG)",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001072",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001073",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Viața pe o tablă; grefierul care condensează notițele vechi; carnetul purtat între ședințe",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u001074",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "context window limits, context compaction, persistent memory",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001075",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "7.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001076",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Inginera nouă care ghicește continuarea unui postmortem; partida clasică vs. blitz",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u001077",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "next-token prediction, chain of thought, test-time compute",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001078",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001079",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Treizeci de cuvinte la telefon",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001080",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "autoencoder",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u001081",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001082",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Copilul care corectează o pată; falsificatorul și expertul",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001083",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "diffusion models, GANs (generative adversarial networks)",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001084",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001085",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Indexul construit la scriere; biroul de triaj; REPL-ul",
+      "sourceAnchor": null,
+      "wordCount": 8
+    },
+    {
+      "id": "u001086",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "two towers, mixture of experts, agents",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001087",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001088",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Tabelul mareelor al căpitanului de port; „prefă-te că e ianuarie anul trecut”",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001089",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "time series, trend și seasonality, backtesting",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001090",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001091",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Bârfa din sat; vânzătoarea din librărie",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001092",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "graph neural networks, message passing; recommender systems: retrieval și ranking",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001093",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001094",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Sania; încălzirea alergătorului; balustrada",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001095",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "momentum, warmup, gradient clipping",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001096",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "8.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001097",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Un termostat pentru toată clădirea vs. unul în fiecare cameră; orchestra prea mare pentru o singură sală",
+      "sourceAnchor": null,
+      "wordCount": 17
+    },
+    {
+      "id": "u001098",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "batch vs. layer normalization; data, tensor și pipeline parallelism",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001099",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "9.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001100",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Dresajul cu clicker; labirintul cu brânză",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001101",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "reinforcement learning, Q-learning",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001102",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "9.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001103",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Dilema prânzului",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001104",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "exploration vs. exploitation",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001105",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "9.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001106",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Barca ce se învârte în lagună",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001107",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "reward hacking",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001108",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "9.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001109",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Facultatea, rezidențiatul, feedback-ul; carnețelul traducătoarei; lesa",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001110",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "pretraining, transfer learning, fine-tuning, LoRA, RLHF, policy gradients și PPO, distillation",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u001111",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001112",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Tocilarul și leneșul",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001113",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "overfitting și underfitting",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001114",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001115",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Clever Hans; ziarul de mâine",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001116",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "data leakage",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001117",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001118",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Alarma de fum; pagerul",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001119",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "precision și recall",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001120",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001121",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Oglinda strâmbă; „pe mașina mea merge”",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001122",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "bias în date",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001123",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001124",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Meteorologa verificată pe un an întreg",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001125",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "calibration, reliability diagram, temperature scaling",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001126",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001127",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Moneda corectă; prăjitorul de pâine arătat unui clasificator de pisici și câini",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001128",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "aleatoric vs. epistemic uncertainty, out-of-distribution detection",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001129",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001130",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Mecanica fără manual: se uită, intervine, sondează",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u001131",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "interpretability, mechanistic interpretability",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001132",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "10.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001133",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Împărțirea notei de plată la restaurant; „ați fi fost aprobat dacă venitul ar fi fost mai mare”",
+      "sourceAnchor": null,
+      "wordCount": 17
+    },
+    {
+      "id": "u001134",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "SHAP (Shapley values), counterfactual explanations",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001135",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.1",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001136",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Cocoșul și răsăritul; moneda care decide cine primește reducerea",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u001137",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "correlation vs. causation, confounders, randomized controlled experiments (A/B tests)",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001138",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.2",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001139",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Degustătorii cărora li se servește de trei ori același vin; clasamentele școlilor",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001140",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "LLM-as-a-judge, evaluation noise, Goodhart’s law",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001141",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001142",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Asistenta care face orice îi spune orice bilet de pe birou",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u001143",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "prompt injection, indirect prompt injection",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001144",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.3",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001145",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Abțibildurile de pe indicatorul de stop; fișa de rețetă cu ingredient amar",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001146",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "adversarial examples, data poisoning, backdoors",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001147",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001148",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Banul aruncat în secret; bucătăriile bunicilor",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001149",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "randomized response, differential privacy, federated learning",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001150",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.4",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001151",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Oul din cozonacul copt",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u001152",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "machine unlearning",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001153",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.5",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001154",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Restaurantul la un an după deschidere; făina nouă; grădina care are nevoie de grădinar",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u001155",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "MLOps, training-serving skew, drift monitoring",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001156",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001157",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Insula California de pe hărțile vechi",
+      "sourceAnchor": null,
+      "wordCount": 6
+    },
+    {
+      "id": "u001158",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "prognozele despre progresul AI, dezbaterea despre AGI (artificial general intelligence)",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001159",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001160",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Dorința regelui Midas",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u001161",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "alignment, reward hacking, specificarea scopurilor",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001162",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "11.6",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u001163",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "Douăzeci de pași, fiecare reușit de nouăsprezece ori din douăzeci",
+      "sourceAnchor": null,
+      "wordCount": 10
+    },
+    {
+      "id": "u001164",
+      "chapterId": "chapter-0013",
+      "kind": "td",
+      "text": "agents, acumularea erorilor (error compounding)",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u001165",
+      "chapterId": "chapter-0013",
+      "kind": "h2",
+      "text": "Anexa C — Mai departe",
+      "sourceAnchor": "anexa-c-mai-departe",
+      "wordCount": 4
+    },
+    {
+      "id": "u001166",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Când ucenicul din subcapitolul 1.1 iese în sfârșit din bucătărie, nu-l mai ajută încă o carte despre prăjituri, ci un cuptor, ceva făină și câteva rețete pe care merită să le strice. Anexa aceasta e un astfel de rămas-bun: o listă scurtă, aleasă cu părtinire, de resurse cunoscute care au rămas utile ani la rând, plus o ordine în care le poți folosi. Aproape toate sunt în engleză, iar cele mai multe sunt gratuite. Alege un curs, o carte și o unealtă ca să începi; a aduna resurse nu e același lucru cu a învăța din ele.",
+      "sourceAnchor": null,
+      "wordCount": 98
+    },
+    {
+      "id": "u001167",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "Cursuri gratuite",
+      "sourceAnchor": "cursuri-gratuite",
+      "wordCount": 2
+    },
+    {
+      "id": "u001168",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Machine Learning Specialization a lui Andrew Ng (Stanford și DeepLearning.AI, pe Coursera) e pasul următor cel mai blând după această carte: reia Capitolele 1–3 cu matematica pornită; Deep Learning Specialization , tot a lui, continuă de acolo. Practical Deep Learning for Coders de la fast.ai (course.fast.ai) merge invers, de sus în jos: antrenezi un model funcțional în prima lecție și deschizi capota mai târziu. Stanford publică prelegerile a trei cursuri clasice: CS229 (machine learning, cu matematica din Anexa A pe larg), CS231n (deep learning pentru computer vision, teritoriul subcapitolelor 3.3 și 8.1) și CS224n (procesarea limbajului natural cu deep learning, teritoriul Capitolului 7). Neural Networks: Zero to Hero al lui Andrej Karpathy construiește de la zero backpropagation (subcapitolul 3.2) și apoi un GPT mic (subcapitolul 7.3), în cod pe care îl scrii cu mâna ta.",
+      "sourceAnchor": null,
+      "wordCount": 143
+    },
+    {
+      "id": "u001169",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "Cărți",
+      "sourceAnchor": "cărți",
+      "wordCount": 1
+    },
+    {
+      "id": "u001170",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "An Introduction to Statistical Learning , de Gareth James, Daniela Witten, Trevor Hastie și Robert Tibshirani, scrisă inițial cu exemple în R și, din 2023, și într-o ediție cu Python; gratuită online (statlearning.com). Cel mai bun însoțitor pentru Capitolul 2.",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u001171",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Hands-On Machine Learning , de Aurélien Géron. Edițiile mai vechi folosesc Scikit-Learn, Keras și TensorFlow; ediția din 2025 e construită pe Scikit-Learn și PyTorch. Cea mai practică din listă.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u001172",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Dive into Deep Learning , de Aston Zhang, Zachary Lipton, Mu Li și Alexander Smola; gratuită și executabilă pe d2l.ai, fiecare capitol fiind un notebook.",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u001173",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Understanding Deep Learning , de Simon Prince (2023), clară și bine ilustrată, cu PDF gratuit.",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u001174",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Deep Learning , de Ian Goodfellow, Yoshua Bengio și Aaron Courville (2016), gratuită pe deeplearningbook.org. Mai veche, dar tot referința standard pentru fundamente.",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u001175",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Pattern Recognition and Machine Learning , de Christopher Bishop (2006), și Probabilistic Machine Learning: An Introduction (2022), cu continuarea Advanced Topics (2023), de Kevin Murphy. Amândouă duc până la capăt privirea probabilistică din subcapitolul 2.5. Solicitante; citește-le după una dintre cărțile de mai sus.",
+      "sourceAnchor": null,
+      "wordCount": 44
+    },
+    {
+      "id": "u001176",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Reinforcement Learning: An Introduction , de Richard Sutton și Andrew Barto (ediția a doua, 2018), gratuită online. Câinele, labirintul și barca din Capitolul 9, tratate cum se cuvine.",
+      "sourceAnchor": null,
+      "wordCount": 27
+    },
+    {
+      "id": "u001177",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Pentru întrebările din subcapitolele care merg mai adânc și din ultimul capitol ajută trei cărți mai scurte: Interpretable Machine Learning a lui Christoph Molnar (gratuită online) pentru subcapitolul 10.6, Designing Machine Learning Systems a lui Chip Huyen pentru subcapitolul 11.5 și The Book of Why a lui Judea Pearl și Dana Mackenzie pentru cocoșul din subcapitolul 11.1.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    },
+    {
+      "id": "u001178",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "Unelte de încercat",
+      "sourceAnchor": "unelte-de-încercat",
+      "wordCount": 3
+    },
+    {
+      "id": "u001179",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Notebook-urile Jupyter sau Google Colab , care le rulează în browser, adesea cu o placă video gratuită pentru experimente mici.",
+      "sourceAnchor": null,
+      "wordCount": 19
+    },
+    {
+      "id": "u001180",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "scikit-learn (scikit-learn.org), pentru tot ce e în Capitolul 2 și pentru cea mai mare parte din subcapitolele 10.1 și 10.3; ghidul lui de utilizare e un manual bun deghizat.",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u001181",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "PyTorch (pytorch.org), pentru construirea și antrenarea rețelelor din Capitolele 3–5.",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u001182",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Hugging Face (huggingface.co), pentru descărcarea de modele preantrenate și seturi de date și pentru cursurile lui gratuite despre modele de limbaj.",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u001183",
+      "chapterId": "chapter-0013",
+      "kind": "li",
+      "text": "Kaggle (kaggle.com), pentru seturi de date, competiții și tutoriale scurte, dar și ca să citești cum au rezolvat alții aceeași problemă.",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u001184",
+      "chapterId": "chapter-0013",
+      "kind": "h3",
+      "text": "O ordine posibilă",
+      "sourceAnchor": "o-ordine-posibilă",
+      "wordCount": 3
+    },
+    {
+      "id": "u001185",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Începe de unde a început cartea. Ia un tabel mic cu date reale, prețuri de apartamente sau tichete de suport, împarte-l cum te-a învățat subcapitolul 1.4 și antrenează în scikit-learn rigla din subcapitolul 2.1, un arbore din subcapitolul 2.3 și un ansamblu cu boosting din subcapitolul 2.4. Desenează curba de învățare din subcapitolul 5.4 și vezi dacă modelul tău e tocilarul sau leneșul din subcapitolul 10.1.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u001186",
+      "chapterId": "chapter-0013",
+      "kind": "p",
+      "text": "Apoi construiește de mână o rețea mică, urmându-l pe Karpathy sau primele capitole din Dive into Deep Learning , până când backpropagation (subcapitolul 3.2) nu mai pare magie. Fă fine-tuning unui model de imagini preantrenat pe câteva sute de fotografii ale tale, ca în subcapitolul 9.2, și rulează verificarea cu saliency maps din subcapitolul 10.6 ca să vezi la ce se uită; s-ar putea să-ți găsești propria zăpadă.",
+      "sourceAnchor": null,
+      "wordCount": 70
+    }
+  ]
+}

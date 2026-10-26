@@ -1,0 +1,56 @@
+{
+  "batch": "batch-0013.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0009",
+  "chapterTitle": "Chapter 8 — Making Pictures, Building Systems",
+  "segment": 2,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000590",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "State-space models , such as Mamba , revisit that running summary with better mathematics. The RNN’s trouble was that each update of the summary waits for the one before, so training cannot run in parallel. State-space models choose an update rule simple enough, at heart a weighted running sum, that all the summaries can be computed at once during training, much as running totals can be computed in parallel by clever bookkeeping. At generation time they behave like an RNN again: a fixed-size summary updated once per token, no KV cache growing with the conversation, and a total cost that grows only in proportion to the length of the text. Mamba, introduced in 2023 by Albert Gu and Tri Dao, made the update depend on the current word, so the model chooses, word by word, what to keep and what to let fade, like the LSTM’s gates. The idea breaks exactly where the index card broke. A fixed-size summary must drop something, and recalling one exact phrase from far back is harder for it than for attention, which keeps everything on the whiteboard. That is why several recent models are hybrids : mostly state-space layers with a few attention layers mixed in, the index card for the gist and the whiteboard for the details.",
+      "sourceAnchor": null,
+      "wordCount": 211
+    },
+    {
+      "id": "u000591",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Attention was never only about language, either. The image patches that multimodal assistants place on their board go back to 2020, when researchers at Google cut images into squares of sixteen by sixteen pixels, treated each square as a word, and fed the sequence to a Transformer. This vision transformer matched the best convolutional networks, but only when trained on very large collections of images. The reason is the convolution’s bet: it assumes from the start that nearby pixels belong together, while attention must learn that from the data, and learning it takes examples.",
+      "sourceAnchor": null,
+      "wordCount": 94
+    },
+    {
+      "id": "u000592",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Now the scale. No single card can hold a large model, so it is trained on thousands. Picture an orchestra far too large for any rehearsal room. In data parallelism , identical copies rehearse different passages in different rooms and agree on the same corrections after every round: each copy of the model sees different examples, and their gradients are averaged. In tensor parallelism , one section of the orchestra is split across rooms, each card multiplying part of a single large grid, possible because the dot products do not depend on each other. In pipeline parallelism , the music passes from room to room, each playing its own stretch of layers. Real runs combine all three, mostly in sixteen-bit arithmetic or less. The picture breaks because musicians can play while waiting for each other; cards that must exchange gigabytes after every step sit idle, and much of the engineering goes into hiding that wait.",
+      "sourceAnchor": null,
+      "wordCount": 152
+    },
+    {
+      "id": "u000593",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Much of this plumbing serves the teaching without saying much about it. The next chapter turns to the teaching itself, the ways a model is taught, and there turn out to be many more of them than the answer key on the back of the page.",
+      "sourceAnchor": null,
+      "wordCount": 46
+    },
+    {
+      "id": "u000594",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Going further. If you wondered why image generators exaggerate the biases of the pictures they learned from, and how a recommender’s own choices can trap it in a feedback loop, section 10.4 takes up both. How a model can learn from data that labels itself, the trick behind both language and diffusion models, is explained in section 9.2. And the most serious way an agent goes wrong, an attacker rather than a mistake, is the subject of section 11.3.",
+      "sourceAnchor": null,
+      "wordCount": 82
+    }
+  ]
+}

@@ -108,8 +108,11 @@ async function configureLanguageSelector() {
       notice.href = reading.requestUrl(book, uiLanguage, format, uiLanguage, new URL('../', location.href), preferred).href;
       notice.hidden = false;
     }
-    // Preserve archived edition downloads, while current readers always use the English PDF.
-    if (!supplied.pdf.includes('/edition-files/')) supplied.pdf = book.editions.en?.pdf ? new URL(`../${book.editions.en.pdf}`, location.href).href : '';
+    // Keep historical downloads; current editions prefer the interface-language PDF.
+    if (!supplied.pdf.includes('/edition-files/')) {
+      const pdfPath = reading.pdfPath(book, uiLanguage);
+      supplied.pdf = pdfPath ? new URL(`../${pdfPath}`, location.href).href : '';
+    }
 
     languageSelect.addEventListener('change', () => {
       const url = reading.readingUrl(book, languageSelect.value, format, languageSelect.value, new URL('../', location.href), preferred);
@@ -125,7 +128,7 @@ const state = {
   type: '',
   source: '',
   progress: readStored(progressKey, {}),
-  preferences: { ...readStored(preferenceKey, {}), fontSize: Math.max(1.16, Math.min(1.74, Number(readStored(preferenceKey, {}).fontSize) || 1.16)), theme: sharedSiteTheme().startsWith('dark') ? 'night' : 'paper' },
+  preferences: { ...readStored(preferenceKey, {}), fontSize: Math.max(.464, Math.min(1.74, Number(readStored(preferenceKey, {}).fontSize) || 1.16)), theme: sharedSiteTheme().startsWith('dark') ? 'night' : 'paper' },
   pdf: { document: null, page: 1, zoom: 1.15, fit: true, task: null, native: false, source: '' },
   epub: { book: null, rendition: null },
   htmlFrame: null,
@@ -306,7 +309,7 @@ function changeTextSize(delta) {
     state.pdf.zoom = Math.max(.55, Math.min(3, state.pdf.zoom + delta * .14));
     renderPdfPage(state.pdf.page);
   } else {
-    state.preferences.fontSize = Math.max(1.16, Math.min(1.74, Number((state.preferences.fontSize + delta * .058).toFixed(3))));
+    state.preferences.fontSize = Math.max(.464, Math.min(1.74, Number((state.preferences.fontSize + delta * .058).toFixed(3))));
     applyTextSize();
     savePreferences();
   }

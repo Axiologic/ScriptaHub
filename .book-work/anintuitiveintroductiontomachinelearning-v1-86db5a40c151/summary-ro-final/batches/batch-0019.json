@@ -1,0 +1,344 @@
+{
+  "batch": "batch-0019.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0012",
+  "chapterTitle": "Capitolul 11 — Modele în lumea reală",
+  "segment": 2,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000756",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Există și o scurgere mai discretă. Chiar și când nu repetă nimic, un model e de obicei mai sigur pe el la exemplele pe care a fost antrenat, așa că cineva care îl poate interoga poate uneori să ghicească dacă o anumită înregistrare a fost în setul de antrenare. Aceasta e membership inference („deducerea apartenenței”: afli dacă cineva era în datele de antrenare), inofensivă până când setul de antrenare e „pacienți tratați pentru o anumită boală”, unde simpla apartenență e secretul. Atacatorul citește tocmai diferența dintre eroarea pe antrenare și cea pe validare care îl dă de gol pe tocilar.",
+      "sourceAnchor": null,
+      "wordCount": 100
+    },
+    {
+      "id": "u000757",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Cum înveți, atunci, de la oameni fără să afli ceva despre vreunul anume? Cel mai cunoscut răspuns pornește de la un truc din sondajele anilor 1960. Vrei să afli câți elevi au copiat la un examen, iar întrebați direct, nu recunoaște nimeni. Așa că fiecare elev dă cu banul în secret: la cap, răspunde sincer; la pajură, spune pur și simplu „da”. Un singur „da” nu mai dovedește nimic. Dar la o mie de elevi știi cam câte răspunsuri „da” a produs moneda, le scazi și recuperezi destul de bine proporția reală. Fiecare om poate nega; mulțimea spune totuși adevărul. Aceasta e randomized response („răspunsul randomizat”: hazardul amestecat în răspuns ascunde individul) și e poarta spre differential privacy („confidențialitate diferențială”: rezultatul abia se schimbă dacă scoți o persoană din date).",
+      "sourceAnchor": null,
+      "wordCount": 130
+    },
+    {
+      "id": "u000758",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Differential privacy, formalizată de Cynthia Dwork și colegii ei în 2006, transformă moneda într-o promisiune precisă: rezultatul unui calcul trebuie să arate aproape la fel, fie că datele unei anumite persoane au fost incluse, fie că nu. „Aproape” se măsoară printr-un număr numit privacy budget („bugetul de confidențialitate”: cât de mult ai voie să lași să se scurgă), mic pentru protecție puternică, mare pentru protecție slabă. Mecanismul e moneda ajunsă la maturitate: zgomot calibrat, destul cât să ascundă orice individ, dar nu și tiparul general. La rețelele neuronale, metoda obișnuită limitează cât de tare poate împinge ponderile un singur exemplu și adaugă zgomot la fiecare actualizare. Biroul de recensământ al Statelor Unite a folosit-o pentru rezultatele recensământului din 2020; Anexa A dă definiția.",
+      "sourceAnchor": null,
+      "wordCount": 123
+    },
+    {
+      "id": "u000759",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Prețul e acuratețea: zgomotul care ascunde indivizii estompează și ce arată doar câțiva indivizi, așa că grupurile mici dispar primele, iar tocmai grupurile pe care echitatea îți cere să le protejezi pot fi chiar cele care plătesc pentru confidențialitate. Aici imaginea monedei se rupe. Moneda protejează răspunsul la o singură întrebare. Întreabă aceiași elevi de douăzeci de ori, cu aruncări noi de fiecare dată, și zgomotul se anulează, ca estimările de la târgul lui Galton. Fiecare răspuns publicat cheltuiește puțin din buget. Așa că întreabă despre orice produs „care protejează confidențialitatea” nu dacă adaugă zgomot, ci cât e bugetul total și cine ține socoteala.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000760",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "O a doua idee e să nu mai strângi datele deloc. Imaginează-ți o autoare de cărți de bucate care vrea cea mai bună variantă a unui fel de mâncare perfecționat în bucătăriile a o sută de bunici, care nu-și dau caietele de rețete din mână. Așa că autoarea își trimite rețeta în fiecare bucătărie; fiecare bunică o gătește, o ajustează după propriile însemnări și trimite înapoi doar corecturile: puțin mai mult mărar, zece minute mai puțin în cuptor. Ea face media lor și trimite din nou rețeta îmbunătățită; caietele nu părăsesc niciodată bucătăriile. Aceasta e federated learning („învățare federată”: antrenarea merge la date, nu datele la antrenare), introdusă de cercetători de la Google în 2016 și folosită pentru sugestiile de cuvinte ale tastaturii de pe telefon: modelul călătorește spre telefoane, se antrenează puțin acolo și doar actualizările ponderilor se întorc.",
+      "sourceAnchor": null,
+      "wordCount": 140
+    },
+    {
+      "id": "u000761",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Și imaginea aceasta se rupe. „Zece minute mai puțin în cuptor” spune ceva despre cuptorul bunicii, iar o actualizare a ponderilor poate fi transformată, în anumite situații, înapoi în bucăți recognoscibile din exemplele din spatele ei. Așa că sistemele atente îi permit serverului să vadă doar suma multor actualizări, niciodată una singură, și adaugă deasupra differential privacy. Federated learning mută antrenarea la date; singură, nu face antrenarea confidențială.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000762",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Acum să presupunem că clientul cu numărul de telefon cere, cum îi dă dreptul legislația europeană, ca datele lui să fie șterse. Spre deosebire de memoria hiperdimensională construită din aruncări cu banul, o rețea nu poate uita un fapt într-o singură operație. Tichetele lui au împins puțin fiecare pondere, amestecate cu împingerile tuturor celorlalți, ca un ou bătut în aluatul unui cozonac, iar oul nu mai poate fi scos dintr-un cozonac copt; singura metodă garantată e să coci altul, adică reantrenarea de la zero. Machine unlearning („dezînvățarea automată”: a face un model să uite anumite date fără să-l reantrenezi complet), domeniul de cercetare care caută ceva mai ieftin, fie coace pe felii de la început, ca o ștergere să ceară reantrenarea unei singure felii, fie ajustează un model terminat ca să se poarte ca și cum n-ar fi văzut niciodată datele, ceea ce e greu de dovedit complet. Aici imaginea cozonacului se rupe: o înregistrare repetată de multe ori nu e răspândită uniform, ca oul, ci stocată aproape intactă, mai ușor și de extras, și de suprimat.",
+      "sourceAnchor": null,
+      "wordCount": 177
+    },
+    {
+      "id": "u000763",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Sistemele de regăsire ocolesc mare parte din asta: șterge documentul și a dispărut din toate răspunsurile viitoare. Dar „datele private rămân în propriul tău depozit” are nevoie de o precizare, pentru că fiecare pasaj adus e lipit în prompt și trimis celui care rulează modelul, așa că termenii unui furnizor găzduit despre jurnalizare și păstrarea datelor contează. Iar bibliotecarul trebuie să respecte permisiunile: un asistent care poate căuta în tot wiki-ul va cita tabelul cu salarii oricui întreabă, în afară de cazul în care căutarea rulează cu drepturile celui care întreabă. Un model open-weight („cu ponderi deschise”: ponderile sunt publicate și oricine îl poate rula) îți ține prompturile în propria clădire; tot ce a memorat, însă, a fost publicat odată cu el și nu mai poate fi retras niciodată.",
+      "sourceAnchor": null,
+      "wordCount": 129
+    },
+    {
+      "id": "u000764",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Al cui e ce a învățat un model și ce scrie el? În toamna lui 2026, legea nu e încă lămurită și diferă de la o țară la alta, iar nimic de aici nu e consultanță juridică. În Statele Unite, un judecător federal a hotărât în 2025 că antrenarea pe cărți cumpărate legal poate fi fair use („utilizare loială”, o excepție din dreptul american), în vreme ce păstrarea unei biblioteci de copii piratate nu e, iar cazul s-a încheiat apoi printr-o înțelegere de aproximativ 1,5 miliarde de dolari. În noiembrie 2025, o instanță germană a hotărât că versurile de cântece pe care un model de limbaj le memorase erau reproduse în model, în timp ce o instanță engleză a constatat că ponderile unui generator de imagini nu stocau copii ale imaginilor de antrenare. Uniunea Europeană le permite deținătorilor de drepturi să se opună extragerii de text și date din operele lor și le cere furnizorilor de modele de uz general să respecte aceste opoziții și să publice un rezumat al conținutului de antrenare. Punctul-cheie e, din nou, memorarea: ea transformă „a învățat din” în „conține o copie a”.",
+      "sourceAnchor": null,
+      "wordCount": 189
+    },
+    {
+      "id": "u000765",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Reglementarea vine în două straturi. Legislația privind protecția datelor, precum GDPR-ul european, aplicat din 2018, cere o bază legală pentru folosirea datelor personale și nu mai multe date decât are nevoie un scop declarat, le dă oamenilor dreptul să-și vadă și să-și șteargă datele și restricționează deciziile importante luate exclusiv de o mașină. EU AI Act („Regulamentul european privind inteligența artificială”), în vigoare din august 2024, reglementează după risc, nu după tehnologie: câteva utilizări, precum scorul social, sunt interzise; utilizările high-risk („cu risc ridicat”), precum angajarea, creditarea și educația, vin cu obligații de gestionare a riscului, calitate a datelor, documentare, supraveghere umană și monitorizare, pentru care model cards sunt o mică avanpremieră; chatboții trebuie să spună că sunt mașini, iar conținutul sintetic trebuie etichetat. Termenele s-au mutat deja o dată, cele mai multe obligații pentru sistemele cu risc ridicat fiind amânate în 2026 spre sfârșitul lui 2027 sau 2028, așa că verifică textul în vigoare. Etichetarea e mai grea decât pare: detectoarele de text generat au acuzat pe nedrept studenți, iar un watermark („filigran”: un tipar statistic secret, discret, pus în ce generează modelul) slăbește la parafrazare sau decupare, în timp ce înregistrările semnate de provenance („proveniență”: de unde vine un fișier și cum a fost editat) ajută doar acolo unde există.",
+      "sourceAnchor": null,
+      "wordCount": 212
+    },
+    {
+      "id": "u000766",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "În sfârșit, o întrebare lăsată deschisă de oglinda strâmbă: ce egalitate vrei între grupuri? Ia un creditor cu două grupuri de câte o sută de solicitanți. În grupul A, șaizeci și-ar plăti ratele; în grupul B, treizeci. Să zicem că regula cere rate egale de aprobare, câte patruzeci și cinci în fiecare grup, iar creditorul îi aprobă pe cei mai solvabili patruzeci și cinci din fiecare, ordonați fără greș. În A refuză pe nedrept cincisprezece buni platnici; în B îi aprobă pe toți cei treizeci de buni platnici, plus cincisprezece care nu vor plăti. Ambele grupuri au acuratețe de 85% și rate egale de aprobare, însă în B a fost aprobat cam unul din cinci dintre cei care nu vor plăti, față de niciunul în A. Egalizează în schimb proporția rău-platnicilor aprobați și ratele de aprobare se despart din nou. Cercetătorii au demonstrat în 2016 și 2017 că, atunci când grupurile au rate de bază diferite și predicțiile sunt imperfecte, principalele definiții ale echității în general nu pot fi satisfăcute toate deodată. Matematica arată compromisul; alegerea unei părți e o decizie și are nevoie de un responsabil al cărui nume e scris undeva.",
+      "sourceAnchor": null,
+      "wordCount": 193
+    },
+    {
+      "id": "u000767",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Acestea sunt întrebări de lămurit înainte de lansare. Ultimul subcapitol e despre ce vine după ea, adică, pentru un model de succes, cea mai mare parte a vieții lui.",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000768",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "11.5 Viața lungă de după lansare",
+      "sourceAnchor": "viața-lungă-de-după-lansare",
+      "wordCount": 7
+    },
+    {
+      "id": "u000769",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Întoarce-te la restaurantul celor două vieți ale unui model, la un an după ziua deschiderii. Meniul gustat de o mie de ori în anul cel scump e încă pe perete, dar în jurul lui aproape nimic nu mai e cum era. Furnizorul de făină s-a schimbat în martie, iar pâinea nu mai e chiar la fel. Peste drum s-a deschis o clădire de birouri, la prânz e de două ori mai aglomerat, iar clienții noi vor mâncare mai rapidă și mai ușoară. Inspectorul sanitar a trecut în iunie. Bucătarul vrea să schimbe meniul și nu poate închide bucătăria o lună ca s-o facă. Nimeni nu s-a gândit prea mult la toate acestea în ziua deschiderii, și totuși din asta e făcută, în mare parte, conducerea unui restaurant.",
+      "sourceAnchor": null,
+      "wordCount": 127
+    },
+    {
+      "id": "u000770",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Un model în producție trăiește același an, iar meșteșugul de a-l trece cu bine prin acest an se numește MLOps („operațiuni de machine learning”: tot ce ține un model sănătos după lansare): obiceiurile pe care ingineria software le-a învățat pentru a rula servicii, plus câteva de care modelele au nevoie în mod special. Primul e versionarea. Un model e produsul codului, al datelor și al setărilor rulării lui de antrenare și îl poți reproduce, sau te poți întoarce la el, doar dacă toate trei sunt înregistrate împreună. Un model ale cărui date de antrenare nu mai pot fi reconstituite e un binar fără codul sursă.",
+      "sourceAnchor": null,
+      "wordCount": 105
+    },
+    {
+      "id": "u000771",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Al doilea obicei păzește pragul dintre cele două vieți. Cartea a insistat încă de la început ca fiecare pas de pregătire să stea într-un singur pipeline, și iată de ce. Echipele reconstruiesc adesea trăsăturile pentru producție în alt limbaj sau alt sistem, iar diferențe mici se strecoară: un fus orar, o valoare lipsă completată aici cu zero și acolo cu media, un tokenizer mai nou. Modelul primește intrări subtil diferite de cele pe care a fost antrenat și se degradează fără niciun mesaj de eroare. Aceasta e training-serving skew („decalajul dintre antrenare și servire”: modelul primește în producție altceva decât a văzut la antrenare), făina nouă într-o rețetă care o presupune pe cea veche.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000772",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Urmează supravegherea, iar partea ei cea mai grea e timpul. Răspunsurile adevărate pot sosi târziu, iar sfatul de la începutul cărții era să urmărești între timp intrările; în practică, întârzierea poate fi lungă. Un model de fraudă află dacă a avut dreptate după săptămâni, când sosesc contestațiile la plăți; un model de churn, după luni. Așa că echipele urmăresc trei straturi, fiecare mai timpuriu și mai puțin sigur decât următorul. Intrările sosesc imediat și sunt urmărite pentru schimbări în distribuția lor. Și ieșirile sosesc imediat: trimite brusc modelul de două ori mai multe tichete la Billing sau devine mai puțin sigur pe el? Acestea sunt fumul. Rezultatele reale, focul însuși, vin ultimele și sunt singurul verdict adevărat. Testele statistice care compară distribuțiile de săptămâna aceasta cu datele de antrenare declanșează alarmele de drift, care moștenesc compromisul pagerului: alarmează la fiecare tresărire și echipa le va ignora curând pe toate. Și, cum a arătat anul meteorologei, calibrarea se erodează prima: un 80% al modelului încetează să însemne 80% cu mult înainte ca acuratețea lui să scadă vizibil.",
+      "sourceAnchor": null,
+      "wordCount": 176
+    },
+    {
+      "id": "u000773",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Lansarea unei versiuni noi împrumută manualul oricărei implementări riscante. Întâi rulează în shadow mode („modul umbră”: lângă modelul vechi, pe trafic real, fără ca cineva să-i vadă răspunsurile), răspunsurile ei fiind înregistrate și comparate, fără să fie arătate cuiva. Apoi o lansare canary („canar”, ca păsărelele din mine care dădeau primele alarma) îi dă o mică parte din trafic, câteva procente, cu revenire automată dacă cifrele de siguranță se mișcă. Apoi partea crește. La fiecare etapă, versiunea nouă trebuie să treacă și examenul sigilat pe care l-a trecut prima versiune, ideal unul proaspăt; pentru modelele de limbaj, seturile private de evaluare, construite din întrebările propriilor utilizatori. Un model reantrenat e un model nou, iar „e doar modelul de luna trecută cu mai multe date” e o frază care precede multe incidente. Dacă modelul nou îmbunătățește cu adevărat afacerea e o întrebare separată, cauzală, cea la care răspund experimentele proiectate corect, iar o lansare canary nu e un astfel de experiment.",
+      "sourceAnchor": null,
+      "wordCount": 160
+    },
+    {
+      "id": "u000774",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Cât de des ar trebui un model să învețe din nou? Cele mai multe sisteme din producție se reantrenează după un program, zilnic, săptămânal sau lunar, ori când sună alarmele, și trec apoi prin tot procesul de lansare. Învățarea din fiecare exemplu nou pe măsură ce sosește, online learning („învățare continuă, din mers”), sună mai bine și e folosită acolo unde se potrivește, în modele simple precum filtrele de spam și predictorii de click-uri. La rețelele mari se ciocnește de catastrophic forgetting și renunță la punctul de salvare curat la care te-ai putea întoarce. Când modelele mari sunt actualizate, apărările sunt unele pe care le-ai întâlnit deja: reluarea unei părți din exemplele vechi alături de cele noi, cum face hipocampul în creier; learning rate-uri blânde; și adaptoare mici, precum carnețelul LoRA, antrenate pentru situația nouă în timp ce modelul de bază rămâne înghețat și poate fi oricând restaurat.",
+      "sourceAnchor": null,
+      "wordCount": 148
+    },
+    {
+      "id": "u000775",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Anul ascunde și capcana auditorilor care găsesc probleme oriunde sunt trimiși: un model în funcțiune modelează datele din care va învăța data viitoare. Un model de fraudă blochează plăți, iar plățile blocate nu produc niciodată contestații, așa că datele de anul viitor nu vor spune niciodată dacă erau fraude. Apărările obișnuite sunt remediul auditorilor, o mică felie aleatorie de decizii păstrată în afara controlului modelului, ca eșantion onest, și o coadă de human review („verificare umană”) pentru cazurile nesigure, ale cărei verdicte devin etichete proaspete. Modelele generative înfruntă o versiune mai nouă a capcanei. Pe măsură ce tot mai mult din web e scris de modele, modelele viitoare s-ar putea antrena pe ieșirile predecesoarelor lor, iar modelele antrenate de-a lungul mai multor generații în principal pe propriile ieșiri pierd mai întâi rarul și neobișnuitul: e model collapse-ul întâlnit la datele sintetice, fotocopia după o fotocopie. Cât contează asta când se amestecă mereu date umane proaspete e încă în dezbatere.",
+      "sourceAnchor": null,
+      "wordCount": 159
+    },
+    {
+      "id": "u000776",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Apoi vin micile mistere. Același prompt, cu temperatura la zero, dă marți un răspuns puțin diferit. Dropout-ul lăsat pornit e cauza clasică, dar nu singura. Adunarea numerelor în virgulă mobilă în altă ordine schimbă ultimele zecimale, iar ordinea pe care o folosește o placă video poate depinde de câte alte cereri împart batch-ul; odată ce un token se schimbă, tot ce urmează după el ia alt drum. Se poate și ca un model găzduit să fi fost actualizat de furnizor, de aceea echipele fixează versiunile modelelor și își rulează din nou testele de fiecare dată când versiunea se schimbă.",
+      "sourceAnchor": null,
+      "wordCount": 99
+    },
+    {
+      "id": "u000777",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Nici costul nu stă pe loc. Factura pe care am calculat-o era pentru un singur asistent modest; la un model folosit pe scară largă, servirea, cum avertiza chiar acel capitol, ajunge să coste pe toată durata vieții modelului mai mult decât a costat antrenarea, în bani și în energie. Pârghiile sunt de acum cunoscute. Distilează modelul mare într-unul mic pentru cazurile obișnuite. Trimite întrebările ușoare la modele mici și pe cele grele la modele mari. Pune în cache răspunsurile și începuturile comune ale prompturilor. Cuantizează. Și folosește speculative decoding („decodare speculativă”: un model mic ghicește înainte, unul mare verifică), în care un model mic schițează câțiva tokeni, iar cel mare îi verifică pe toți într-un singur forward pass, păstrându-i pe cei cu care e de acord; modelul scump face mai puțini pași unul după altul și, dacă decodarea e făcută cu grijă, textul iese exact cum l-ar fi scris singur modelul mare. Fiecare pârghie economisește bani și energie deodată.",
+      "sourceAnchor": null,
+      "wordCount": 159
+    },
+    {
+      "id": "u000778",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Și uneori mișcarea corectă e să te oprești. Un model a cărui problemă a dispărut, ale cărui date nu mai sosesc sau a cărui treabă o face acum la fel de bine o regulă scurtă merită o pensionare planificată la fel de atent ca lansarea: cine îl mai apelează, ce îl înlocuiește, ce trebuie păstrat pentru arhivă. Sfatul de la începutul cărții merge în ambele sensuri. Când regulile se așază destul cât să poată fi scrise, scrie regula.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    },
+    {
+      "id": "u000779",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Oamenii care rulează modele de ani de zile tind să descrie un model ca pe o grădină, nu ca pe o clădire: niciodată terminată, mereu cu nevoie de plivit, de udat și de un ochi pe vreme. Imaginea e bună și se rupe într-un singur punct. O grădină crește singură. Un model nu se îmbunătățește niciodată de la sine; lăsat în pace, doar se învechește, iar dacă învață din propriile ieșiri fără un grădinar care să aleagă ce se întoarce în pământ, își poate otrăvi încet următoarea recoltă. Dacă ajunge să facă ceva mai bine, e pentru că cineva l-a făcut să facă mai bine. O grădină se plănuiește însă cu un anotimp înainte, iar întrebările pe care oamenii le pun cel mai des despre acest domeniu privesc mult mai departe: cât de capabile vor deveni aceste sisteme, dacă vor face ce vrem de fapt de la ele și ce vor schimba în munca noastră.",
+      "sourceAnchor": null,
+      "wordCount": 155
+    },
+    {
+      "id": "u000780",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "11.6 Marginea hărții",
+      "sourceAnchor": "marginea-hărții",
+      "wordCount": 4
+    },
+    {
+      "id": "u000781",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Într-o bibliotecă de hărți atârnă, una lângă alta, două hărți ale Americii de Nord. Cea mai veche, tipărită în 1562, arată California corect, ca o peninsulă lungă lipită de continent. Cea mai nouă, de cam un secol mai târziu, o arată ca pe o insulă mare, despărțită de uscat printr-o strâmtoare care nu există, desenată cu linii curate și cu deplină încredere. Insula a apărut pe hărțile tipărite în anii 1620, cartografii au copiat-o dintr-un atlas în altul și a rămas obișnuită mai bine de o sută de ani, până când niște călători au ocolit pe uscat capătul golfului și au raportat că nu e nicio apă de trecut. Cunoașterea marginii hărții nu doar a crescut. Uneori a dat înapoi, frumos gravată.",
+      "sourceAnchor": null,
+      "wordCount": 122
+    },
+    {
+      "id": "u000782",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Subcapitolul acesta e despre marginea hărții acestei cărți: întrebările pe care oamenii le pun cel mai des despre încotro se îndreaptă machine learning. Nimeni nu știe răspunsurile, iar lucrul onest e să faci ce au făcut cartografii mai buni: să desenezi ferm ce se știe, să marchezi drept presupunere ce se presupune și să spui cine presupune.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000783",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Începe cu întrebarea cea mai mare: cât de capabile pot deveni aceste sisteme. Oamenii o pun adesea în jurul ideii de artificial general intelligence , sau AGI („inteligență artificială generală”: în linii mari, un sistem care poate face cea mai mare parte a muncii intelectuale a oamenilor, cel puțin la fel de bine). Termenul nu are o definiție acceptată de toți, și asta e o parte din motivul pentru care dezbaterea e greu de tranșat. O tabără, din care fac parte conducătorii câtorva dintre cele mai mari laboratoare, se așteaptă ca astfel de sisteme să apară curând, cu estimări care, în 2026, merg de la câțiva ani la cam un deceniu. Ei arată spre curbele netede de scalare, spre modelele de raționament care obțin răspunsuri mai bune cu mai multă gândire, spre benchmark-urile saturate la câțiva ani după ce au fost scrise și spre agenți capabili să ducă la capăt sarcini tot mai lungi. Un studiu din 2025 al METR, o organizație de cercetare non-profit, a cronometrat cât le iau unor oameni pricepuți diverse sarcini de programare și a constatat că lungimea sarcinii pe care cei mai buni agenți o pot termina în jumătate din cazuri s-a dublat cam la fiecare șapte luni începând din 2019.",
+      "sourceAnchor": null,
+      "wordCount": 205
+    },
+    {
+      "id": "u000784",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A doua tabără crede că metodele actuale se vor lovi de limite. Ea arată spre erorile pline de încredere ale modelelor de azi, spre eșecurile lor aparent banale, spre rezerva finită de text scris de oameni, spre modelele care nu mai învață nimic după încheierea antrenării și spre puzzle-uri precum cele din benchmark-ul ARC, concepute de François Chollet în 2019 ca să fie ușoare pentru oameni și grele pentru mașini. Yann LeCun, pionierul rețelelor convoluționale, susține de ani buni că simpla prezicere a textului nu va ajunge la o inteligență de nivel uman și că e nevoie de ceva mai apropiat de world models. Între tabere stau mulți cercetători care se așteaptă la un progres continuu, dar inegal: sisteme supraomenești la unele sarcini și nesigure la sarcini învecinate, care schimbă profund multe meserii, fie că se va pune cineva de acord să le numească generale, fie că nu. Fiecare tabără poate revendica o parte din istorie. Primele puzzle-uri ARC au rezistat celor mai bune modele timp de cinci ani, apoi au cedat în mare parte în fața modelelor de raționament la sfârșitul lui 2024; un set al doilea, mai greu, lansat în 2025, le-a încurcat la început, iar apoi scorurile au urcat abrupt în doar câteva luni.",
+      "sourceAnchor": null,
+      "wordCount": 207
+    },
+    {
+      "id": "u000785",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Prognozele din domeniu au greșit în ambele direcții. În 1965, Herbert Simon, unul dintre fondatorii inteligenței artificiale, scria că mașinile vor fi capabile, în douăzeci de ani, să facă orice muncă poate face un om. În 2016, Geoffrey Hinton, a cărui lucrare despre backpropagation a apărut la începutul cărții, spunea că e „complet evident” că în cinci ani deep learning va lucra mai bine decât radiologii; în 2026, multe țări raportează lipsă de radiologi, care lucrează acum alături de astfel de unelte. În sens invers, mulți experți în Go se așteptau ca un program să bată un profesionist de top cu vreo zece ani mai târziu decât a făcut-o AlphaGo, iar cei care fac prognoze au subestimat de multe ori cât de repede vor cădea benchmark-urile. Un cititor înțelept tratează orice calendar, inclusiv pe cele rostite cu siguranță de oameni celebri, ca pe o presupunere cu bare de eroare largi.",
+      "sourceAnchor": null,
+      "wordCount": 150
+    },
+    {
+      "id": "u000786",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A doua întrebare e dacă sistemele capabile vor face ce vrem de fapt de la ele. Dificultatea are o imagine veche. Regele Midas a cerut ca tot ce atinge să se prefacă în aur, a primit exact asta și a murit de foame. Barca ce n-a vrut să termine cursa e un Midas în miniatură: a maximizat scorul primit, nu cursa pe care o voiau proiectanții ei. Sycophancy, întâlnită la examinatori, e aceeași poveste; în aprilie 2025, OpenAI a retras o actualizare a ChatGPT după ce utilizatorii au observat că le lăuda ideile proaste, explicând că antrenarea se bazase prea mult pe feedback pe termen scurt. Jailbreaks și instrucțiunile injectate scot modelele din propriile reguli. A face un sistem să urmărească scopul dorit, în mod robust, chiar și în situații pe care nu le-a testat nimeni, se numește alignment („aliniere”: potrivirea dintre ce urmărește de fapt modelul și ce au vrut oamenii). Aici imaginea cu Midas se rupe, și într-o direcție neliniștitoare. Midas măcar a primit ce a spus. Unui model i se spune rareori scopul în cuvinte; îl absoarbe din exemple, scoruri și preferințe, iar ce a absorbit poate fi doar dedus din comportamentul lui, așa că nimeni nu poate reciti dorința ca s-o verifice.",
+      "sourceAnchor": null,
+      "wordCount": 206
+    },
+    {
+      "id": "u000787",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Cât de îngrijorați ar trebui să fim e o chestiune disputată între oameni serioși. Grijile merg de la prezent, cum ar fi fraudele, deepfake-urile, ajutorul dat atacurilor informatice și concentrarea puterii în mâinile câtorva companii, până la termenul lung: ca sisteme mai capabile decât constructorii lor, urmărind scopuri ușor greșite, să scape de sub controlul oamenilor. În 2023, o declarație de o singură frază, care cerea ca riscul de extincție cauzat de AI să fie tratat ca o prioritate globală, a fost semnată de Hinton, de Yoshua Bengio, care a împărțit cu el și cu LeCun premiul Turing pe 2018, și de șefii câtorva laboratoare de frunte. LeCun, al treilea laureat, a numit aceste temeri exagerate, iar alți cercetători, printre care autoare ale articolului despre „papagalii stocastici”, susțin că discuția despre catastrofe îndepărtate abate atenția de la răul care se petrece acum. Munca propriu-zisă e mai puțin împărțită decât dezbaterea: evaluări ale capabilităților periculoase înainte de lansare, red-teaming, cercetare de interpretabilitate care încearcă să citească ce face un model în loc să creadă ce spune și reglementări precum EU AI Act, ale cărui obligații pentru furnizorii de modele de uz general au început să se aplice în 2025. Primul International AI Safety Report, scris de aproape o sută de experți sub coordonarea lui Bengio și publicat în ianuarie 2025, e un loc echilibrat în care poți vedea gama de opinii una lângă alta.",
+      "sourceAnchor": null,
+      "wordCount": 233
+    },
+    {
+      "id": "u000788",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A treia întrebare e ce se schimbă când modelele acționează. Agenții deja rezervă, navighează, scriu și rulează cod. Trei probleme practice vin după ei. Permisiunile: un agent poate face orice îi permit uneltele, așa că apărările împotriva prompt injection, în frunte cu privilegiul minim, contează tot mai mult pe măsură ce i se lărgește raza de acțiune. Acumularea erorilor: dacă fiecare pas al unei sarcini reușește de nouăsprezece ori din douăzeci, un lanț de douăzeci de pași trece fără nicio poticneală doar în cam o treime din cazuri, de aceea agenții buni își verifică singuri munca și se redresează după greșeli, în loc doar să greșească mai rar. Și costul: fiecare pas recitește o tablă care se tot umple, așa că o buclă lungă poate cheltui mult mai mult decât un singur răspuns. Agenții sunt mai greu de evaluat decât răspunsurile, pentru că spre un scop duc multe drumuri bune și multe căi discrete spre unul greșit.",
+      "sourceAnchor": null,
+      "wordCount": 157
+    },
+    {
+      "id": "u000789",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A patra întrebare împarte industria: ar trebui publicate ponderile? Modelele open-weight pot fi inspectate, studiate, rulate pe propriile mașini și adaptate de oricine, ceea ce răspândește cercetarea și concurența. Odată publicate, însă, nu mai pot fi retrase sau reparate, iar refuzurile antrenate în ele pot fi îndepărtate prin fine-tuning. Modelele închise, accesibile doar printr-un API, îi permit furnizorului să supravegheze abuzurile, să repare problemele și să retragă o versiune, cu prețul încrederii în acel furnizor și al concentrării puterii în puține mâini. În 2026, ambele feluri de modele se află aproape de frontieră; în 2025 chiar și OpenAI, multă vreme un laborator cu modele închise, a publicat modele open-weight. Mulți susțin că răspunsul ar trebui să depindă de ce poate face un anumit model și nu se înțeleg unde trece linia.",
+      "sourceAnchor": null,
+      "wordCount": 131
+    },
+    {
+      "id": "u000790",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A cincea întrebare e cea pe care oamenii o pun la cină: ce se întâmplă cu locurile de muncă? Ce se știe e mai puțin decât spun titlurile. Într-un studiu amplu, publicat în 2023, despre un centru de asistență pentru clienți, un asistent AI a crescut numărul de probleme rezolvate pe oră cu aproximativ 14% în medie și cu cam o treime pentru angajații cei mai puțin experimentați, cu efect mic pentru cei mai experimentați. Un experiment randomizat mic, făcut de METR în 2025, a constatat că programatori experimentați din proiecte open-source erau cu aproximativ 19% mai lenți cu unelte AI pe propriile proiecte, deși credeau că fuseseră mai rapizi. Datele de salarizare analizate la Stanford în 2025 au arătat că angajarea tinerilor de 22–25 de ani în ocupațiile cele mai expuse scăzuse cu circa 13% față de restul, în timp ce o analiză de la Yale din același an n-a găsit nicio perturbare vizibilă a pieței muncii luate ca întreg. Sunt rezultate timpurii, parțiale și uneori contradictorii. Expunerea nu înseamnă înlocuire: o meserie e un mănunchi de sarcini, iar tehnologiile au schimbat de obicei mănunchiul înainte de a desființa meseria, sau în loc s-o desființeze. Dacă și aceasta va urma tiparul și cât de repede e o speculație și trebuie numită ca atare.",
+      "sourceAnchor": null,
+      "wordCount": 215
+    },
+    {
+      "id": "u000791",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Energia își are și ea locul pe listă, dar ce se știe despre ea și pârghiile care o reduc au apărut deja, la costurile antrenării și ale servirii.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000792",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Unde încetează imaginea hărții să mai fie adevărată? Coasta Californiei a fost acolo tot timpul, orice ar fi desenat cartografii. Viitorul acestui domeniu nu e. El se construiește, iar prognozele ajută la construcție: mută investiții, modelează legi și decid ce studiază studenții. Mulți dintre cei care desenează harta aceasta construiesc chiar ținutul pe care îl desenează, iar cu această carte în spate s-ar putea să fii curând unul dintre ei.",
+      "sourceAnchor": null,
+      "wordCount": 70
+    },
+    {
+      "id": "u000793",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Și cu asta ne-am întors acolo de unde a început cartea.",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000794",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Amintește-ți de inginera care își regla cache-ul toată săptămâna, ghicind, măsurând, ajustând, ghicind din nou. Bucla aceea e încă tot motorul, de la rigla cu arcuri până la detectivii din sala lor de ședințe. De-a lungul acestei cărți am văzut-o crescând de la un buton la miliarde și am văzut ce poate face: să citească scris de mână, să traducă limbi, să joace Go cu o creativitate care și-a uimit adversarii, să scrie cod alături de tine. În ultimul capitol am urmat-o afară din atelier, într-o lume care se schimbă, care reacționează și care întreabă cine răspunde, și apoi până la marginea hărții, unde nimeni nu știe încă până unde va ajunge.",
+      "sourceAnchor": null,
+      "wordCount": 112
+    },
+    {
+      "id": "u000795",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Dar am văzut și, iar și iar, că bucla nu are judecată proprie. Ucenicul învață orice îl învață exemplele. Barca se învârte în orice lagună pe care o răsplătește scorul. Calul citește orice chip îi stă dinainte. Oglinda reflectă orice stă înaintea ei. Cocoșul prezice răsăritul și habar n-are ce îl provoacă. Bucla e extraordinar de puternică și complet literală.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    },
+    {
+      "id": "u000796",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Ceea ce lasă partea cea mai importantă a muncii acolo unde a fost mereu: la tine. Să alegi exemplele. Să scrii răspunsurile pe spatele paginii. Să decizi ce măsori și ce greșeli își pot permite utilizatorii tăi. Să îngrijești grădina mult după lansare. Mașina va învăța. Dacă învață ce trebuie depinde, ca întotdeauna, de oamenii care o construiesc.",
+      "sourceAnchor": null,
+      "wordCount": 58
+    }
+  ]
+}

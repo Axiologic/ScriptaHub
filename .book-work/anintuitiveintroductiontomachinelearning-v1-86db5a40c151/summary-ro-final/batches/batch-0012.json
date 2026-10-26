@@ -1,0 +1,232 @@
+{
+  "batch": "batch-0012.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0008",
+  "chapterTitle": "Capitolul 7 — Limbaj și sens",
+  "segment": 2,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000520",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Tot de aceea ponderile de atenție explică mai puțin decât par. Un head poate acorda multă atenție unui cuvânt și poate transmite foarte puțin de la el, în timp ce munca decisivă se petrece în alt strat. Cercetătorii au dezbătut chestiunea în două articole din 2019 cu titluri memorabile, Attention is not Explanation („Atenția nu e explicație”) și Attention is not not Explanation („Atenția nu e ne-explicație”), iar rezumatul onest rămâne cel de atunci: un indiciu, nu un verdict.",
+      "sourceAnchor": null,
+      "wordCount": 79
+    },
+    {
+      "id": "u000521",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "A patra recrutoare mai are o limită, cea mai fizică dintre toate: își poate îndrepta privirea doar spre ce se află pe biroul din fața ei. Pentru un model de limbaj, biroul acela e fereastra de context, iar mărimea și forma ei decid foarte multe despre ce poate face modelul.",
+      "sourceAnchor": null,
+      "wordCount": 50
+    },
+    {
+      "id": "u000522",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "O ingineră petrece o după-amiază cu un asistent, planificând o migrare a bazei de date. În primul mesaj stabilește regulile: tabela de comenzi nu are voie să fie blocată niciodată mai mult de o secundă și nicio operație grea nu are voie să ruleze în timpul programului de lucru european. Trei ore, patruzeci de mesaje și câteva dump-uri de schemă lipite mai târziu, asistentul propune voios un pas care blochează tabela de comenzi douăzeci de minute, la unsprezece dimineața. N-a devenit neatent în vreun sens omenesc. Fie primul ei mesaj nu mai e deloc pe tablă, fie e încă acolo, îngropat sub o mulțime de scris ulterior, iar modelul i-a dat prea puțină greutate.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000523",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Subcapitolul acesta se uită mai atent la tablă: cât de mare e, ce îi stabilește mărimea, ce se întâmplă la marginea ei și cum construiesc oamenii sisteme care se poartă ca și cum tabla ar fi mai mare decât este.",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000524",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Tabla se măsoară în tokeni și ține totul, nu doar mesajele tale: instrucțiunile adăugate de aplicație, documentele regăsite, rezultatele uneltelor și fiecare cuvânt din răspunsurile modelului însuși. Modelele de limbaj din 2020 aveau table de vreo două mii de tokeni, câteva pagini. Pe la mijlocul anilor 2020, tablele de o sută de mii până la câteva sute de mii de tokeni deveniseră obișnuite, iar unele modele acceptau un milion sau mai mult. Cu trei-patru caractere pe token, o pagină în engleză de vreo cinci sute de cuvinte înseamnă foarte aproximativ șapte sute de tokeni, deci o tablă de o sută de mii de tokeni ține cam o sută patruzeci de pagini, un roman scurt.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000525",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Două lucruri stabilesc mărimea. Primul e costul. Munca atenției, cum avertiza ședința detectivilor, se cvadruplează când textul se dublează, iar KV cache-ul, ecusoanele și dosarele păstrate ale tokenilor anteriori, crește cu fiecare token de pe tablă, pentru fiecare conversație servită în același timp. O tablă mai lungă e mai lentă și consumă mai multă memorie, de aceea intrările lungi costă mai mult și de aceea inginerii s-au luptat atât să le facă mai ieftine. Un truc des întâlnit e să păstrezi în cache citirea unui început fix: când fiecare cerere începe cu aceleași instrucțiuni și documente lungi, ecusoanele și dosarele lor sunt calculate o dată și refolosite, iar furnizorii facturează adesea acești tokeni din cache cu reducere. Al doilea lucru e antrenarea. Un model învață să folosească pozițiile pe care s-a exersat, prin informația de poziție amestecată în fiecare token. Dă-i unui model antrenat doar pe texte scurte unul foarte lung și va întâlni poziții pe care nu le-a văzut niciodată, iar rezultatul de obicei se destramă. Tablele lungi sunt predate de regulă într-o etapă ulterioară a antrenării, pe documente lungi, cu ajustări ale felului în care se scriu pozițiile. Mărimea tablei e o proprietate a antrenării, nu un număr pe care cineva îl poate pur și simplu mări într-un fișier de configurare.",
+      "sourceAnchor": null,
+      "wordCount": 213
+    },
+    {
+      "id": "u000526",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Ce se întâmplă la margine? Modelul însuși nu decide niciodată. Aplicația din jurul lui trebuie să acționeze înainte ca textul să ajungă la model și are trei variante. Poate refuza, spunându-i utilizatorului că conversația e prea lungă. Poate tăia, de obicei partea cea mai veche, exact acolo unde tind să stea instrucțiunile, ca în povestea migrării. Sau poate condensa, ca un grefier care, când se umple tabla, rescrie notițele cele mai vechi ca un scurt rezumat într-un colț și șterge restul. Un rezumat pierde detalii prin definiție: regula de o secundă poate supraviețui ca „ai grijă cu blocările”. Și iată punctul care îi surprinde pe cei mai mulți. Modelul nu vede niciodată ce a fost tăiat și nu are cum să știe că lipsește ceva. Nu simte un gol. Răspunde din ce e pe tablă ca și cum asta ar fi fost tot ce a existat vreodată. De aceea aplicațiile bine construite fixează ce nu are voie să se piardă, rescriind instrucțiunile critice în capul tablei la fiecare tură.",
+      "sourceAnchor": null,
+      "wordCount": 169
+    },
+    {
+      "id": "u000527",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "În interiorul limitei, tabla nu e citită uniform. Într-un studiu din 2023 intitulat Lost in the Middle („Pierdut la mijloc”), cercetătorii au pus răspunsul la o întrebare în diferite poziții printre vreo douăzeci de documente regăsite. Modelele l-au folosit cel mai bine când stătea aproape de început sau de sfârșit și vizibil mai prost când stătea la mijloc. Modelele mai noi se descurcă mult mai bine la versiunea cea mai simplă a testului, găsirea unei singure propoziții plantate într-un text lung, numită adesea acul din carul cu fân. Dar munca reală e mai grea decât găsirea unui ac: înseamnă combinarea mai multor fapte împrăștiate pe tablă, iar la asemenea sarcini calitatea tinde încă să scadă pe măsură ce tabla se umple. Mai mult text înseamnă și mai multă distragere, pentru că pasajele care par relevante, dar nu sunt, tot trag de atenția modelului. Obiceiurile practice decurg direct de aici: pune lucrurile importante la început sau la sfârșit, ține tabla ordonată și preferă să aduci paginile relevante în loc să lipești totul.",
+      "sourceAnchor": null,
+      "wordCount": 171
+    },
+    {
+      "id": "u000528",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Așa se lămurește și întrebarea context lung sau RAG, la care examenul cu cartea deschisă răspunsese doar pe scurt. Pentru o mână de documente care încap lejer, lipește-le: e aranjamentul cel mai simplu, modelul vede tot și nu există niciun pas de căutare care să greșească. Pentru un wiki întreg, regăsirea câștigă în continuare, prin cost și spațiu și din cauza lecturii inegale descrise mai sus. Multe sisteme reale le folosesc pe amândouă, regăsirea ca să aleagă ce contează și o tablă generoasă ca să-l țină.",
+      "sourceAnchor": null,
+      "wordCount": 86
+    },
+    {
+      "id": "u000529",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Compară tabla cu fișa rețelelor recurente. Fișa n-avea margine, dar se estompa: detaliile vechi erau suprascrise puțin câte puțin. Tabla nu se estompează, iar fiecare cuvânt de pe ea e la fel de lizibil ca atunci când a fost scris, dar are o margine fermă, iar dincolo de ea nu e absolut nimic.",
+      "sourceAnchor": null,
+      "wordCount": 53
+    },
+    {
+      "id": "u000530",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Cum își „amintește” atunci un asistent de chat de tine de la o conversație la alta? Tabla tot e ștearsă. Ce persistă e un carnet purtat între ședințe. Aplicația salvează notițe, fapte pe care le-ai pomenit, preferințe, rezumate ale conversațiilor anterioare, într-un depozit obișnuit, iar la începutul unei conversații noi le scrie pe cele relevante înapoi pe tabla proaspătă, alegându-le adesea cu același fel de căutare folosit la regăsire. Ponderile modelului nu se schimbă. Memoria, în aceste produse, e text scris înapoi pe tablă, ceea ce înseamnă și că ți se poate arăta, poate fi ștearsă sau poate deveni învechită, ca orice notiță.",
+      "sourceAnchor": null,
+      "wordCount": 103
+    },
+    {
+      "id": "u000531",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Agenții trăiesc și ei pe tablă și o umplu repede, pentru că fiecare rezultat al unei unelte ajunge acolo: un fișier citit, un log de teste, o pagină de rezultate de căutare. Cei care construiesc agenți se descurcă cu aceleași unelte pe care le folosește un om organizat. Îl pun pe agent să rezume pașii mai vechi, din nou grefierul. Îi dau un fișier de notițe în care scrie și pe care îl recitește, o listă de sarcini ținută pe disc în loc de pe tablă. Și împart lucrările mari în subsarcini date unor copii proaspete ale modelului, fiecare cu tabla curată, care raportează înapoi doar un rezultat scurt, așa cum un inginer principal nu citește fiecare log, ci le cere colegilor un rezumat.",
+      "sourceAnchor": null,
+      "wordCount": 124
+    },
+    {
+      "id": "u000532",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Aici imaginea tablei se rupe, în două locuri. Un om citește o tablă cu ochi care sar: treci cu privirea peste meniul de prânz fără să-l citești. Modelul procesează fiecare token de pe tablă la fiecare pas al scrisului; nimic nu e sărit, totul e cântărit, chiar dacă greutatea e aproape zero. De aici vin și costul, și diluarea: fiecare rând irelevant costă calcul și concurează, puțin, pentru atenție. Iar o tablă adevărată are o suprafață fixă oricum ai scrie, în timp ce tabla modelului se numără în tokeni, așa că același conținut poate ocupa mult mai mult loc într-o formă decât în alta: un dump JSON lipit sau un stack trace lung pot mânca mii de tokeni pentru câteva rânduri de sens.",
+      "sourceAnchor": null,
+      "wordCount": 123
+    },
+    {
+      "id": "u000533",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Așadar tabla e toată lumea modelului cât timp lucrează: fără simțuri, fără ziua de ieri, doar text și ponderile înghețate la sfârșitul antrenării. Asta ascute o întrebare pe care cartea a lăsat-o până acum deschisă. Cum reușește un sistem care a învățat doar să continue text să raționeze, să traducă și să scrie cod care funcționează, având la dispoziție doar o tablă cu cuvinte?",
+      "sourceAnchor": null,
+      "wordCount": 64
+    },
+    {
+      "id": "u000534",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.6 De ce ajunge atât de departe ghicitul cuvântului următor",
+      "sourceAnchor": "de-ce-ajunge-atât-de-departe-ghicitul-cuvântului-următor",
+      "wordCount": 11
+    },
+    {
+      "id": "u000535",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Întoarce-te la inginera nouă, cea care a citit tot wiki-ul în prima lună, și dă-i un joc. I se arată începutul unui postmortem pe care nu l-a văzut niciodată și trebuie să ghicească propoziția următoare. „La 14:02, serviciul de checkout a început să întoarcă erori. Inginerul de gardă a făcut rollback la deployment-ul de dimineață, dar erorile au continuat. Cauza principală a fost…” O ghicire bazată pe ce cuvinte urmează de obicei după „cauza principală a fost” va da rezultate slabe. Ca să ghicească bine, trebuie să judece că o defecțiune care supraviețuiește unui rollback probabil nu era în cod, deci poate o schimbare de configurare, un certificat expirat, o dependență, baza de date. Are nevoie de o imagine a felului în care funcționează sistemul. Recompenseaz-o doar pentru ghicit bine, pune-o să joace jocul de miliarde de ori, pe orice subiect despre care scriu oamenii, și va fi împinsă să învețe orice face textul previzibil: întâi gramatica, pentru că e peste tot, apoi faptele, apoi tiparele aritmeticii, obiceiurile codului, felul în care se desfășoară argumentele.",
+      "sourceAnchor": null,
+      "wordCount": 176
+    },
+    {
+      "id": "u000536",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Acesta e cel mai des întâlnit răspuns la acea întrebare rămasă deschisă și merită formulat cu grijă. Jocul cuvântului următor e simplu de pus, dar nu e simplu de câștigat. Cheia lui de răspunsuri conține tot ce scriu oamenii, așa că un jucător foarte bun trebuie să surprindă o mare parte din ce a produs textul. Nimic din antrenare nu spune „învață să raționezi” sau „învață să traduci”; aceste abilități sunt învățate, în măsura în care sunt, pentru că scad loss-ul. E aceeași idee ca procesarea predictivă din creier, predicția ca drum spre un model al lucrului care produce semnalul, cu o diferență: creierul își prezice propriile simțuri, în timp ce modelul de limbaj prezice text, o înregistrare de mâna a doua a lumii.",
+      "sourceAnchor": null,
+      "wordCount": 124
+    },
+    {
+      "id": "u000537",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Un al doilea mod de a vedea lucrurile e prin compresie. Ponderile unui model mare ocupă de multe ori mai puțin spațiu decât textul pe care a fost antrenat, așa că nu-l poate păstra cuvânt cu cuvânt, deși memorează unele pasaje care apar de foarte multe ori. Teoria informației știe de mult că un bun predictor și un bun compresor sunt două fețe ale aceluiași lucru, iar ca să comprimi bine păstrezi regularitățile și renunți la accidente. Din regularități e făcută generalizarea. Tocilarul avea loc să memoreze fiecare răspuns; un model de limbaj nu are, așa că e împins spre tipare.",
+      "sourceAnchor": null,
+      "wordCount": 101
+    },
+    {
+      "id": "u000538",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "O consecință i-a surprins chiar și pe cei care au văzut-o primii la scară mare. Scrie câteva exemple pe tablă, „cheval: cal, chien: câine, chat:”, iar modelul continuă tiparul, deși nicio pondere nu se schimbă. Asta e in-context learning („învățare în context”: modelul preia un tipar din exemplele de pe tablă, fără să-și schimbe ponderile), făcută celebră de articolul din 2020 care a prezentat GPT-3, intitulat Language Models are Few-Shot Learners („Modelele de limbaj învață din câteva exemple”). O parte din explicație e că textul de antrenare e plin de liste, tabele, exerciții și formate repetate, unde a observa un tipar mai sus pe pagină e cel mai bun mod de a prezice ce vine mai jos, așa că un model bun la joc învață să preia tipare de pe propria tablă. Cercetătorii au găsit în Transformer-e circuite anume, numite induction heads („capete de inducție”), care copiază tipare de acest fel și par să explice o parte a efectului, deși nu tot. E învățare doar într-un sens larg: durează exact cât timp exemplele rămân pe tablă.",
+      "sourceAnchor": null,
+      "wordCount": 176
+    },
+    {
+      "id": "u000539",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "De ce contează mărimea atât de mult, când un model mic care joacă același joc produce buclele tastaturii? Loss-ul general scade lin și previzibil pe măsură ce modelele, datele și calculul cresc împreună, de-a lungul curbelor de scalare pe care le-am întâlnit când ne-am întrebat câte date sunt de ajuns. Abilitățile concrete pot însă părea că apar brusc. La adunarea numerelor de trei cifre, modelele mici obțin aproape zero, iar peste o anumită mărime acuratețea urcă repede. Fenomenul a fost numit emergence („emergență”: abilități care par să apară brusc peste o anumită scară) și e disputat. Un articol din 2023 a susținut că multe salturi bruște sunt în parte un produs al felului în care sunt notate: dacă o sumă contează doar când fiecare cifră e corectă, îmbunătățirea constantă la fiecare cifră apare ca un salt abrupt în scorul de tip totul-sau-nimic, iar cu o măsură mai blândă curba arată adesea lină. Alte sarcini par să ceară mai multe abilități deodată, iar o sarcină care le cere pe toate poate părea abruptă chiar dacă fiecare abilitate se îmbunătățește treptat. Un rezumat corect: dedesubt, îmbunătățirea e mai ales treptată, dar lucrurile la care un model e util se pot schimba brusc când trece praguri care contează pentru noi.",
+      "sourceAnchor": null,
+      "wordCount": 207
+    },
+    {
+      "id": "u000540",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Aceeași mecanică explică unde greșesc aceste modele, adesea la lucruri care par banale. Întreabă câte litere r are cuvântul englezesc „strawberry” și un model puternic poate greși, pentru că nu vede niciodată litere, doar tokeni; ortografia e un fapt învățat despre fiecare token, ca un număr de telefon știut pe de rost, nu ceva la care se uită. Cere-i să înmulțească dintr-odată două numere de opt cifre și se chinuie, pentru că fiecare token primește aceeași cantitate fixă de calcul, un forward pass prin același număr de straturi, fie că întrebarea e doi plus doi, fie o înmulțire lungă. Scrierea pașilor îi dă mai multe treceri: fiecare rezultat intermediar scris pe tablă devine intrare pentru tokenul următor. De aceea ajută cererea de a lucra pas cu pas, tehnică pe care cercetătorii au numit-o chain of thought („lanț de gândire”) în 2022, și de aceea modelele de raționament sunt antrenate să scrie calcule lungi înainte să răspundă. Cheltuirea mai multor calcule în momentul răspunsului, prin lanțuri mai lungi sau prin mai multe încercări care sunt apoi verificate, se numește test-time compute („calcul în momentul răspunsului”: modelul primește mai mult timp de gândire la fiecare întrebare) și a devenit un al doilea buton lângă mărimea modelului: același jucător de șah joacă mai bine o partidă clasică decât una de blitz. Fiecare token de gândire e un forward pass pe care îl plătește cineva, iar dacă raționamentul scris e cauza reală a răspunsului e o întrebare separată.",
+      "sourceAnchor": null,
+      "wordCount": 244
+    },
+    {
+      "id": "u000541",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Jocul a depășit și cuvintele. Taie o imagine în pătrățele mici, transformă fiecare pătrățel într-un vector așa cum un token devine embedding și pune pătrățelele pe tablă lângă cuvinte; și sunetul poate fi tăiat într-un mod asemănător. Un model antrenat pe astfel de table amestecate învață să prezică peste ele, iar unele modele produc și ele tokeni de imagine sau de sunet. Așa citesc capturi de ecran, grafice și fotografii asistenții numiți multimodal („multimodali”: care lucrează cu mai multe feluri de date, text, imagini, sunet). Nimic fundamental nu s-a schimbat. Tabla ține pur și simplu mai mult decât text.",
+      "sourceAnchor": null,
+      "wordCount": 99
+    },
+    {
+      "id": "u000542",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Înțelege, deci, modelul? Există două tabere serioase. Una, exprimată într-un articol mult citat din 2021 al lui Emily Bender, Timnit Gebru și colegilor lor, care numea aceste sisteme „papagali stocastici”, susține că un model antrenat doar pe forma limbajului coase tipare fără acces la sens și că fluența lui ne induce în eroare. Cealaltă susține că a prezice bine obligă un model să-și construiască o structură internă care funcționează ca un model al lucrului despre care e textul. O dovadă mică, dar izbitoare, a fost publicată în 2023: cercetătorii au antrenat un Transformer doar pe șiruri de mutări legale din jocul de masă Othello, fără să-i arate vreodată tabla, și au descoperit că starea curentă a tablei de joc putea fi citită din numerele lui interne, iar modificarea acelor numere îi schimba în mod corespunzător mutarea următoare. E o jucărie, departe de limbajul omenesc, iar ambele tabere sunt de acord că aceste modele nu sunt oameni; se despart în privința întrebării dacă „înțelegere” e cuvântul potrivit pentru ce au. Poziția cărții e cea practică: judecă un model după comportamentul lui la teste oneste, cu probleme pe care nu are cum să le fi văzut, ferește-te de întrebările de test ajunse în textul lui de antrenare și ține întrebarea deschisă.",
+      "sourceAnchor": null,
+      "wordCount": 209
+    },
+    {
+      "id": "u000543",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Capitolul despre creier observa că modelele de limbaj învață fără să se miște, să atingă sau să acționeze. Cercetarea despre world models („modele ale lumii”: un fel de simulator interior al consecințelor) încearcă să închidă golul acesta: modele care prezic ce urmează dacă se face o anumită acțiune, un simulator de zbor învățat din date în loc să fie programat. Modelele video antrenate să prezică următoarele cadre sunt testate ca simulatoare pentru roboți și agenți din jocuri, iar roboții învață din rezultatele propriilor mișcări. Domeniul e abia la început, iar dacă asemenea modele surprind fizica sau doar pixeli care arată plauzibil e și ea o chestiune disputată.",
+      "sourceAnchor": null,
+      "wordCount": 107
+    },
+    {
+      "id": "u000544",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Aici se rupe imaginea inginerei noi. Ea are un corp, scopuri, colegi pe care îi poate întreba și o memorie care se păstrează de la o zi la alta; citește wiki-ul ca să-și facă treaba și trăiește cu consecințele când greșește. Modelul citește ca să prezică, nu păstrează nimic de la o conversație la alta și cântărește fiecare pagină după cât de des îi revin tiparele, nu după cât de mult merită încredere.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000545",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Un cuvânt a tot revenit în acest subcapitol: scara. Modele mai mari, mai mult text, mai mult calcul, mai multă gândire în momentul răspunsului. Aici se încheie capitolul despre limbaj și sens. Înainte să trecem la felul în care sunt învățate modelele și la felul în care dau greș, mai rămân două lucruri: mașinile care fac imagini în loc să le citească și mâna de planuri de arhitectură în care inginerii combină toate aceste piese.",
+      "sourceAnchor": null,
+      "wordCount": 75
+    },
+    {
+      "id": "u000546",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Mai departe. Dacă te-ai întrebat cum devin suportabile tablele lungi și cum readuc state-space models fișa care se estompează a rețelelor recurente, subcapitolul 8.4 le privește pe amândouă mai de aproape. Dacă un model își poate da seama când nu știe e subiectul subcapitolului 10.5, iar dacă raționamentul pe care îl scrie un model e cauza reală a răspunsului său se discută în subcapitolul 10.6. Iar de ce un document dat modelului se poate transforma într-un atac se explică în subcapitolul 11.3.",
+      "sourceAnchor": null,
+      "wordCount": 86
+    }
+  ]
+}

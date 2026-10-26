@@ -99,6 +99,8 @@ def scan(root: Path = ROOT) -> list[dict]:
             editions = history["editions"]
             matching = next((item for item in editions if item.get("source", {}).get("sha256") == record["sha256"] or any(paired.get("sha256") == record["sha256"] for paired in item.get("source", {}).get("pairedSources", []))), None)
             seen = matching is not None
+            if matching:
+                record["matchedEdition"] = matching["id"]
             current_version = max((int(item.get("source", {}).get("version", item["number"])) for item in editions if item.get("status") != "preparing"), default=0)
             explicit_version = bool(re.search(r"[_\s-]+v[1-9]\d*$", source.stem, re.I))
             if not explicit_version and not seen:
@@ -114,6 +116,10 @@ def scan(root: Path = ROOT) -> list[dict]:
     for item in records:
         groups.setdefault((item.get("bookId", normalise(item["filenameTitle"])), item["sourceVersion"]), []).append(item)
     for items in groups.values():
+        # Explicitly paired manuscript hashes belong to one edition, including
+        # while that edition is still being prepared.
+        if all(item.get("matchedEdition") for item in items) and len({item["matchedEdition"] for item in items}) == 1:
+            continue
         if len({item["sha256"] for item in items}) > 1 and not all(item["status"] == "already-imported" for item in items):
             for item in items:
                 item["status"] = "ambiguous-source"
@@ -185,6 +191,8 @@ def announce(work: Path, root: Path = ROOT) -> Path:
         number = max((entry["number"] for entry in history["editions"]), default=0) + 1
         pending = {"id": f"edition-{number}", "number": number, "status": "preparing", "startedAt": date.today().isoformat(), "label": {code: re.sub(r"1$", str(number), BOOK_ACTIONS[code]["editionLabel"]) for code in LANGUAGES}, "changes": {code: PREPARATION_LABELS[code][0] for code in LANGUAGES}, "source": {"filename": Path(release["source"]).name, "version": release["sourceVersion"], "sha256": release["sha256"]}, "pdf": {}, "contributors": release.get("contributors") or DEFAULT_CONTRIBUTORS}
         history["editions"].append(pending)
+    if release.get("pairedSources"):
+        pending["source"]["pairedSources"] = release["pairedSources"]
     if history.get("currentEdition") is None:
         # A new book's draft cover is already visible. When artwork is revised
         # before publication, replace its public files without writing through
@@ -489,7 +497,7 @@ def install(work: Path, root: Path = ROOT) -> Path:
     labels = {code: re.sub(r"1$", str(number), BOOK_ACTIONS[code]["editionLabel"]) for code in LANGUAGES}
     if release.get("pairedSources"):
         source_record["pairedSources"] = release["pairedSources"]
-    edition = {"id": identifier, "number": number, "label": labels, "publishedAt": release["publishedAt"], "changes": release["changes"], "source": source_record, "pdf": {"en": "en/book.pdf"}, "contributors": release.get("contributors") or (pending or {}).get("contributors") or DEFAULT_CONTRIBUTORS}
+    edition = {"id": identifier, "number": number, "label": labels, "publishedAt": release["publishedAt"], "changes": release["changes"], "source": source_record, "pdf": {code: f"{code}/book.pdf" for code in LANGUAGES if (target / code / "book.pdf").is_file()}, "contributors": release.get("contributors") or (pending or {}).get("contributors") or DEFAULT_CONTRIBUTORS}
     edition["readers"] = {code: {kind: f"{code}/{name}" for kind, name in (("fullContent", "full_content.html"), ("shortContent", "short_content.html")) if (target / code / name).is_file()} for code in LANGUAGES}
     edition["readers"] = {code: values for code, values in edition["readers"].items() if values}
     from build_books import snapshot_edition_covers

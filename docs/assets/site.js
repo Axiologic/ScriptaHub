@@ -163,7 +163,7 @@
     const stored = localStorage.getItem("scripta-language");
     return [requested, pageLanguage, stored, browserLanguage(), "en"].find((item) => supported.includes(item));
   };
-  const boundedSiteScale = value => Number.isFinite(Number(value)) ? Math.max(1, Math.min(1.5, Number(value))) : 1;
+  const boundedSiteScale = value => Number.isFinite(Number(value)) ? Math.max(.4, Math.min(1.5, Number(value))) : 1;
   const savedSiteScale = () => {
     try { return boundedSiteScale(localStorage.getItem(siteScaleKey) ?? 1); } catch { return 1; }
   };
@@ -172,7 +172,7 @@
     document.documentElement.style.setProperty("--site-scale", scale.toFixed(2));
     document.documentElement.dataset.largeText = String(scale >= 1.25);
     document.querySelectorAll("[data-site-size]").forEach((node) => { node.textContent = `${Math.round(scale * 100)}%`; });
-    document.querySelectorAll("[data-site-smaller]").forEach(node => { node.disabled = scale <= 1; });
+    document.querySelectorAll("[data-site-smaller]").forEach(node => { node.disabled = scale <= .4; });
     document.querySelectorAll("[data-site-larger]").forEach(node => { node.disabled = scale >= 1.5; });
     if (persist) try { localStorage.setItem(siteScaleKey, scale.toFixed(2)); } catch { /* Storage is optional. */ }
     requestAnimationFrame(() => document.dispatchEvent(new CustomEvent("scriptahub:scalechange", { detail: { scale } })));

@@ -1,0 +1,456 @@
+{
+  "batch": "batch-0006.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0005",
+  "chapterTitle": "Chapter 4 — What a Model Is Made Of",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000317",
+      "chapterId": "chapter-0005",
+      "kind": "h1",
+      "text": "Chapter 4 — What a Model Is Made Of",
+      "sourceAnchor": "chapter-4-what-a-model-is-made-of",
+      "wordCount": 8
+    },
+    {
+      "id": "u000318",
+      "chapterId": "chapter-0005",
+      "kind": "h2",
+      "text": "4.1 It Is Not a Brain",
+      "sourceAnchor": "it-is-not-a-brain",
+      "wordCount": 7
+    },
+    {
+      "id": "u000319",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Imagine explaining your work to a friend who is a neurologist. You say your team is training a neural network to spot defective welds. She lights up, and asks whether the network has something like a visual cortex, whether it gets tired, whether it can forget. For a moment you don’t know how to answer, because the honest reply is that your network has about as much in common with her patients’ brains as a paper airplane has with a pigeon. Both fly. The resemblance stops there.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000320",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "To see how little they share, watch one second in the life of each.",
+      "sourceAnchor": null,
+      "wordCount": 14
+    },
+    {
+      "id": "u000321",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Start with a single neuron in your friend’s patient, somewhere in the part of the cortex that handles touch. It is a cell, with a body about the width of a hair and a tangle of thin branches reaching out to thousands of other cells. Each branch ends in a synapse, a microscopic gap where chemicals, not wires, carry the signal across. In this one second, pulses arrive at those synapses from all directions: a few hundred from this neighbor, a dozen from that one, a burst from a third. Some arrivals push the cell toward firing; some hold it back. Inside, charge builds up like water behind a dam. Three or four times during the second, the charge crosses a threshold and the cell fires: a sharp electrical spike that races down its single output fiber to everyone it is connected to. Then the charge collapses and the dam starts filling again. Nothing about the spikes is a number. What the next cells receive is a rhythm: how many spikes, how close together, in what pattern over time. Meanwhile, quietly, the synapses themselves are changing. One that was used heavily grows a little stronger; the chemistry takes minutes and hours, and some of it will be consolidated tonight, during sleep. The whole cell, doing all of this, consumes about as much power as a dust mote falling.",
+      "sourceAnchor": null,
+      "wordCount": 228
+    },
+    {
+      "id": "u000322",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Now the same second for one neuron in your weld detector. It is a row of numbers in a table. A vector of inputs arrives, perhaps a few hundred values. Each is multiplied by its weight, the products are added, a bias is added, and the total is passed through a bend, ReLU, that turns negative results into zero. One number comes out. That is the whole second, and in truth it took a few billionths of one. No rhythm, no timing, no chemistry; nothing in the cell changed, because weights change only during training, and this is not training. It will do exactly the same thing, with exactly the same numbers, the next time the same input arrives, and the time after that, forever. In principle, at least; one small exception waits near the end of the book. When a chatbot answers the same question differently each time, though, the randomness is mostly added afterwards, on purpose: the network produces practically the same list of probabilities every time, and a separate step rolls dice to pick a word from it.",
+      "sourceAnchor": null,
+      "wordCount": 181
+    },
+    {
+      "id": "u000323",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "So why the name? In 1943, a neurophysiologist, Warren McCulloch, and a young logician, Walter Pitts, wrote a paper arguing that a nerve cell could be thought of as a tiny logic unit: it receives signals from many cells, adds them up, and if the total crosses a threshold, it fires to the cells downstream. That picture, many inputs, one threshold, one output, is exactly the apartment checklist of the previous chapter. Rosenblatt borrowed it for the perceptron fifteen years later, and the word “neural” has clung to the field ever since. It is the central idea that truly crossed over: a unit that weighs many inputs, decides whether to pass something on, and is wired to many others like it. Everything else in the second you just watched, the timing, the chemistry, the slow growth, the twenty watts for the whole brain, did not come along.",
+      "sourceAnchor": null,
+      "wordCount": 147
+    },
+    {
+      "id": "u000324",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Even the word “layer” has drifted. Your visual cortex does have layers, and Hubel and Wiesel’s hierarchy was a real inspiration for convolutional networks. But the brain’s wiring is a dense tangle of loops, with signals running backwards and sideways as much as forwards. The clean left-to-right stack of a network looks like a diagram of a brain from a textbook, not like a brain.",
+      "sourceAnchor": null,
+      "wordCount": 65
+    },
+    {
+      "id": "u000325",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Why does any of this matter to someone who just wants to use these tools well? Because the metaphor quietly shapes expectations, and the expectations are wrong in both directions.",
+      "sourceAnchor": null,
+      "wordCount": 30
+    },
+    {
+      "id": "u000326",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "In one direction, the brain comparison makes networks sound more capable than they are. People assume a network “understands” images the way they do, or “remembers” a conversation, or “knows” when it is unsure. The weld detector does not understand welds. It has learned a very good function from pixel patterns to a number, and it can be fooled by a change in lighting that no human inspector would even notice. And it often does not know what it does not know, which is one root of the hallucinations we will meet later.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000327",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "In the other direction, the comparison makes networks sound more mysterious than they are. Engineers who would never hesitate to debug a compiler sometimes treat a trained network as an oracle, something you can only poke at from the outside. That is a mistake. A network is a function made of arithmetic, every step of which you can print, plot and inspect. The next few sections do exactly that.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000328",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "It helps to replace the brain picture with a humbler one. Think of the sound desk at a concert, the long board with hundreds of sliders, each one shaping a little of what comes out of the speakers. A neural network is that board with a million sliders, or a billion. Training is the long process of finding the slider positions that make the output match the examples. The desk breaks in one important place: on a real desk every slider has a label and does one thing, while in a network no single slider means anything on its own, and what thousands of them do together is still hard to work out, so hard that reading a network has become a research field of its own. That picture is less exciting than a brain in a box, and far more useful. It tells you that the network can only produce what its arithmetic allows, that everything it knows is in the slider positions, and that if you can read the sliders, nothing inside is, in principle, beyond reach.",
+      "sourceAnchor": null,
+      "wordCount": 179
+    },
+    {
+      "id": "u000329",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "And yet. The paper airplane does fly. The same humble arithmetic, scaled up and arranged well, recognizes faces, translates languages and writes code, things that twenty years ago people said would require understanding the brain first. Perhaps the most honest way to put it is this: we did not copy the brain. We borrowed one idea from it and then went our own way, and we are still a little surprised at where that way has led.",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000330",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The sliders, though, raise a practical question that the brain metaphor was hiding. A slider moves a number. So before anything can be fed into this machine, a photo, a sentence, a customer, a song, it has to become numbers. That turns out to be a craft of its own, and many of the quiet failures in machine learning happen there, before any model is even involved.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000331",
+      "chapterId": "chapter-0005",
+      "kind": "h2",
+      "text": "4.2 Turning the World into Numbers",
+      "sourceAnchor": "turning-the-world-into-numbers",
+      "wordCount": 7
+    },
+    {
+      "id": "u000332",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Picture an engineer on her first week in a new job, handed a folder and a sentence: “Build us something that predicts which support tickets will escalate.” The folder contains three years of tickets, exported from four different systems. She opens the first file expecting a tidy table and finds what every engineer eventually finds: a mess.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000333",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The ticket text is free-form English, with typos, pasted stack traces and the occasional angry paragraph in all capitals. Dates are in three formats. The “priority” column says P1 in one system, Critical in another, and 1 in a third. The customer’s country is sometimes a code, sometimes a name, sometimes blank. Some rows are duplicates. Some have the resolution time filled in as −1. And the one thing she needs, a label saying whether the ticket escalated, lives in a different file, joined by an ID that does not always match.",
+      "sourceAnchor": null,
+      "wordCount": 92
+    },
+    {
+      "id": "u000334",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Nothing in the folder is a number a model can use. This section is about the craft of making it so, and it is the part of machine learning that no demo ever shows and most practitioners spend much of their time on. Surveys of data scientists keep finding the same thing: preparing data takes more of their week than modeling does, often far more.",
+      "sourceAnchor": null,
+      "wordCount": 65
+    },
+    {
+      "id": "u000335",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Start with the easiest feature, and watch it turn out not to be easy. Resolution time, in hours. It is already a number, so it can go straight in, right? Look at the values: most tickets resolve in two to fifty hours, a handful take six hundred, and a few say −1. The −1 is someone’s way of writing “unknown”, and if she leaves it, the model will learn that a ticket resolved in negative one hour is a very special kind of ticket. Missing values have to be found and decided on: dropped, filled with a typical value, or marked with a separate “was missing” flag so the model can learn that the gap itself means something. Then there are the six-hundred-hour tickets. On a straight scale they dwarf everything else, and we have already seen what one far-off nail does to a ruler on springs. A common move is to take the logarithm: two hours becomes about 0.7, fifty becomes about 3.9, six hundred about 6.4. The distances now reflect how people actually experience waiting, where the difference between two hours and ten feels larger than the difference between five hundred and five hundred and eight.",
+      "sourceAnchor": null,
+      "wordCount": 201
+    },
+    {
+      "id": "u000336",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Now a feature that is a word: country. A model cannot multiply “Germany” by a weight. The tempting shortcut is to number the countries, Germany 1, France 2, Japan 3. It is wrong in a subtle way: it tells the model that Japan is three times Germany and that France lies halfway between them. The honest encoding is to give every country its own switch, a new input that is 1 for that country and 0 for all others. This is one-hot encoding , and it is exactly what a multiple-choice form does with its row of checkboxes. The cost is width: two hundred countries become two hundred inputs. A country that never appeared in training has no switch of its own, so every switch reads zero and the model treats it as “none of the countries I know”; careful data preparation adds an explicit “other” switch for this case and lumps very rare values into it during training, so the model has learned something sensible to do with it. For a feature with a few thousand possible values, product IDs or user IDs, the row of checkboxes becomes absurd, and that is where learned addresses called embeddings take over: each ID gets a short list of numbers that training adjusts, so that IDs which behave alike end up with similar numbers.",
+      "sourceAnchor": null,
+      "wordCount": 221
+    },
+    {
+      "id": "u000337",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The ticket text is the hard case, and it has a history worth knowing, because the three ways of handling it are three rungs of a ladder the whole field climbed.",
+      "sourceAnchor": null,
+      "wordCount": 31
+    },
+    {
+      "id": "u000338",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The first rung is to treat a document as a bag of words : count how many times each word in the dictionary appears, and that list of counts is the document’s numbers. Order is thrown away, “dog bites man” and “man bites dog” become identical, and the word “the” dominates every count. A small refinement called TF-IDF (term frequency–inverse document frequency) fixes the second problem by weighting each word by how rare it is across all documents, so “the” counts for almost nothing and “kernel panic” counts for a lot. Crude as it is, the bag of words powered search engines and spam filters for decades, and it is still a strong first model for tickets. A ticket containing “charged twice”, “refund” and “lawyer” is very likely to escalate, and no understanding of grammar is needed to see it.",
+      "sourceAnchor": null,
+      "wordCount": 140
+    },
+    {
+      "id": "u000339",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The second rung is to keep the order and cut the text into tokens, pieces of words, so that sequence models can read it in order, piece by piece. The third rung is to turn each token into an embedding, a dense address where similar words are close, which is where modern language models begin. Our engineer, in her first week, should probably start on the first rung. It takes an afternoon, it is easy to explain to her manager, and it tells her whether the text carries any signal at all before she spends a month on the third.",
+      "sourceAnchor": null,
+      "wordCount": 100
+    },
+    {
+      "id": "u000340",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "There is one more kind of feature, the kind you have to invent. The ticket router already showed the simplest case, a raw timestamp turned into hour of day, day of week and public holiday, and the same thinking goes much further. The customer’s plan tier, pulled from another database. The number of tickets this customer filed in the last month. Whether the ticket text mentions a competitor by name. None of these features exist in the folder; she creates them, by thinking about what an experienced support manager would look at. This is feature engineering again, and on a tabular problem like this one a mediocre model with the right features usually beats a brilliant model with the wrong ones.",
+      "sourceAnchor": null,
+      "wordCount": 121
+    },
+    {
+      "id": "u000341",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "That raises a question that divides the field. Does anyone still do this by hand? For images and language, mostly not: deep networks learn their own features, which is the whole point of the convolutional inspectors and of embeddings. Nobody tells a modern vision model to look for edges. For business data, the tables with a few dozen columns that most companies actually have, feature engineering by hand is alive and well, and the engineers who know the domain do it best. The honest summary is that deep learning moved the craft from inventing features to curating examples, without eliminating it.",
+      "sourceAnchor": null,
+      "wordCount": 101
+    },
+    {
+      "id": "u000342",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "There is a last step before the table can meet a model, and it is small and easily forgotten. Features come in wildly different units: hours, counts, a 0-or-1 switch, a log of hours. Remember the salaries in euros next to years of experience: the big numbers drown the small ones. So each feature is scaled to a common range, typically by subtracting its average and dividing by its spread, so that every feature speaks at roughly the same volume. Tree models do not care; almost everything else does.",
+      "sourceAnchor": null,
+      "wordCount": 89
+    },
+    {
+      "id": "u000343",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "And here is the trap that catches even careful people. Where do the averages and spreads for that scaling come from? If she computes them over the whole folder, test set included, then the test set has quietly leaked into training. Every number that preparation learns from the data, the average used for scaling, the typical value used to fill gaps, the dictionary of words, must be learned from the training set alone and then merely applied to the rest. The practical discipline is to put every preparation step into a single pipeline object that is fitted once, on training data, and then applied unchanged everywhere else. Treat it like a build step: deterministic, versioned, and run the same way in the notebook and in production.",
+      "sourceAnchor": null,
+      "wordCount": 126
+    },
+    {
+      "id": "u000344",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Our engineer ends her first week with no model at all. She has a table: one row per ticket, forty-odd columns, every value a number on a sensible scale, a clean label, and a pipeline that can produce the same table from next month’s tickets. Her manager is a little disappointed. He should not be. She has done the part that most projects get wrong, and the model that comes next will be good or bad largely because of it.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000345",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Which leaves the obvious question: what does the model actually do with that table? The answer, surprisingly, is that it never does anything else but tables.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000346",
+      "chapterId": "chapter-0005",
+      "kind": "h2",
+      "text": "4.3 Everything Is a Table",
+      "sourceAnchor": "everything-is-a-table",
+      "wordCount": 6
+    },
+    {
+      "id": "u000347",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "A colleague sends you a file called weld_detector.safetensors . It is four hundred megabytes. There is no code in it, no documentation, no README. “That’s the model,” she says. “Everything it knows is in there.”",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000348",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "It is a strange claim, and worth testing. So open the file. Not with a framework, just with a script that reads it raw, the way you would peek inside any unfamiliar binary.",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000349",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "What you find is almost disappointing. The file is a list of named blocks, and every block is the same kind of thing: a grid of decimal numbers, with a label and a shape. layer1.weight , shape (32, 3, 3, 3), 864 numbers. layer1.bias , shape (32,), 32 numbers. layer2.weight , shape (64, 32, 3, 3), 18,432 numbers. And so on, twenty-odd blocks, down to classifier.weight and classifier.bias . Add up every number in every block and you get about a hundred million. That is the model: a hundred million decimals, sorted into labeled grids. No rules, no code, no cat-shaped anything. The sliders from the start of this chapter, written down.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000350",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The grids have a name, tensor , which sounds far grander than what it is. Build it up from things you already know. A single number is a scalar : today’s temperature. A list of numbers is a vector : one ticket’s forty features from the last section, in a fixed order. A table of numbers is a matrix : the whole spreadsheet, or a black-and-white photo, where every cell holds the brightness of one pixel. Keep adding directions and you have a tensor. A color photo has three: height, width, and the three color channels. A video has four: time, height, width, color. A stack of thirty-two photos handed to the model together also has four: which photo, height, width, color.",
+      "sourceAnchor": null,
+      "wordCount": 118
+    },
+    {
+      "id": "u000351",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The shape is just the list of how long each direction is, and once you can read shapes as sentences, half the mystery of deep learning code evaporates. layer1.weight with shape (32, 3, 3, 3) reads: thirty-two filters, each looking at three color channels, each three pixels by three pixels. It is a box of thirty-two of the convolutional magnifying glasses, and now you know they are three by three. Many of the errors you will hit in this field are shape mismatches, the moment you try to feed a (32, 224, 224, 3) into something that expected (32, 3, 224, 224). It is one of the oldest bugs in programming, arguments in the wrong order, in a world where the compiler cannot catch it for you.",
+      "sourceAnchor": null,
+      "wordCount": 128
+    },
+    {
+      "id": "u000352",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "So far the file is just storage. The interesting question is how a hundred million numbers at rest become a verdict about a weld. To see it, shrink the problem until you can do it by hand.",
+      "sourceAnchor": null,
+      "wordCount": 37
+    },
+    {
+      "id": "u000353",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Go back to the apartment checklist: three inputs, three weights, add them up, compare with a threshold. Write the three answers as a short row, (1, 0, 1), and the three weights as a short column, (10, 4, 1). Multiply each pair and add: 10 plus 0 plus 1 is 11. That little operation, row against column, multiply and sum, is called a dot product , and it is one neuron doing its whole job.",
+      "sourceAnchor": null,
+      "wordCount": 74
+    },
+    {
+      "id": "u000354",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Now suppose four evaluators look at the same apartment, each with their own weights: the beginning of a hidden layer. Stand their four weight columns side by side and you have a grid, three rows by four columns. Multiply the input row by that grid and four numbers come out at once, one per evaluator. That is matrix multiplication , and here is the sentence that this section exists to deliver: a whole layer of a network is exactly one of these, followed by adding the biases and bending every result with the activation function. layer1.weight is a grid of that kind. The forward pass is the input multiplied through one grid after another, layer by layer, until the last grid produces a single number: defective, or not.",
+      "sourceAnchor": null,
+      "wordCount": 128
+    },
+    {
+      "id": "u000355",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The picture pays for itself the moment you have more than one apartment. Say thirty-two of them arrive at once. You do not loop over them. You stack the thirty-two input rows into a table, thirty-two rows by three columns, and multiply it by the very same three-by-four grid. Out comes a thirty-two-by-four table: every apartment, every evaluator, in one operation. This is why deep learning code almost never contains a for loop over examples. The loop is folded into the multiplication, and that fold is where the speed comes from.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000356",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Which finally explains the graphics cards. Why are the chips designed to draw video games the engines of modern AI? Look at the thirty-two-by-four result. Every cell in it is a dot product that can be computed without knowing anything about any other cell. A CPU is a handful of very clever cores, built to run one complicated thing fast. A GPU is thousands of simple cores, built to do the same simple thing to thousands of pixels at once. Matrix multiplication is thousands of identical dot products that do not depend on each other. It was practically designed for the GPU, decades before anyone intended it. When the 2012 ImageNet result arrived, its authors had trained on two consumer graphics cards in a bedroom, and much of the deep learning decade since has been the story of larger grids on more cards. Today a single data-center graphics card holds tens of gigabytes of memory, sometimes well over a hundred, and performs on the order of a thousand trillion simple multiplications per second at low precision; the largest training runs tie together tens of thousands of such cards for months.",
+      "sourceAnchor": null,
+      "wordCount": 190
+    },
+    {
+      "id": "u000357",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "So your colleague was right, and now you can see exactly how. Load the grids into memory. Turn a photo into its tensor of pixels. Multiply it through grid one, bend; grid two, bend; and so on to the end. One number comes out. Nothing else happens. The brain metaphor can go; the model is a spreadsheet that has learned, and running it is arithmetic you could, in principle, do with a pencil, if you had a few years to spare.",
+      "sourceAnchor": null,
+      "wordCount": 81
+    },
+    {
+      "id": "u000358",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "One last look at the file, because its size tells a story too. A hundred million numbers, four hundred megabytes: that is four bytes per number, the usual 32-bit floating-point format. Scale up to a language model with seven billion numbers and the same format needs twenty-eight gigabytes, more memory than most graphics cards have. So engineers store the very same numbers with less precision, sixteen bits, eight, sometimes four. This is quantization , and it is a large part of the reason a model that needed a server last year can run on a laptop this year. Think of it as JPEG for weights. A little fidelity is lost, a great deal of room is gained, and most of the time the picture still looks fine. The weld detector, quantized to eight bits, would be a hundred megabytes and, very likely, just as good. This works because most weights are small numbers clustered near zero and each output adds up thousands of products, so the small rounding errors largely cancel, like the guesses at Galton’s fair. Push too far, to four bits or fewer without care, and quality does drop, especially on hard questions and in smaller models, which is why quantized models are re-tested before they ship.",
+      "sourceAnchor": null,
+      "wordCount": 208
+    },
+    {
+      "id": "u000359",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "You have seen the material. But the file had twenty-odd grids, with different shapes and different names, and somebody decided that there would be exactly these, in exactly this order. The box of pieces they chose from, and the problems that forced each piece into existence, are the subject of the next chapter. First, one more question about the material itself: of everything a model is given, how does it decide what matters?",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000360",
+      "chapterId": "chapter-0005",
+      "kind": "h2",
+      "text": "4.4 What Matters, and Who Decides",
+      "sourceAnchor": "what-matters-and-who-decides",
+      "wordCount": 7
+    },
+    {
+      "id": "u000361",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "A company advertises one engineering job and receives two hundred CVs. Four people help sort them, and each decides what matters in a different way. The junior recruiter works from a scoring sheet handed down by HR: three points per year of experience, five for a relevant degree, two for each programming language on the list, the same sheet for every CV. The second follows a flowchart: has the candidate shipped a production system? If yes, have they worked in a team larger than ten? Each answer sends the CV down one branch or another. The third, a recruiter with twenty years behind her, reads a CV and simply has a feeling about it, built from thousands of small observations she has never named. And the fourth does something the others do not: she lets each CV tell her where to look. On one, a two-year gap catches her eye, and she goes looking for the line that explains it. On another, the gap is irrelevant, because the project list says everything. What she reads closely changes from one CV to the next.",
+      "sourceAnchor": null,
+      "wordCount": 183
+    },
+    {
+      "id": "u000362",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Between them, the four recruiters stand for the main ways a model decides what matters, and they are worth taking apart, because “what matters to the model?” is one of the most frequently asked and least precisely answered questions in the field. The first three stand for models met so far: the ruler, the trees and the deep networks. The fourth stands for a mechanism called attention, at the heart of today’s language models, and she will have to wait her turn until the book reaches language.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000363",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Start with the word itself. A feature has meant two slightly different things in this book so far, and will soon mean a third. At first it was a property of each example that you hand the model, often written down as a column in a table: lines changed, hour of day, country as a row of switches. Then the hidden neurons invented their own features, intermediate judgments like the experienced recruiter’s unnamed hunches. And once the book reaches language, meaning will live in directions on a map, blends of many coordinates, which is usually what researchers mean when they talk about the features inside a large network. A single pixel, by contrast, is only an input: the features of an image, an edge, an ear, a patch of fur, are what the network builds out of many pixels. A word sits in between. It arrives as a mere entry number in a vocabulary and becomes something meaningful only once it has its embedding, its learned address, and has been read together with the words around it.",
+      "sourceAnchor": null,
+      "wordCount": 177
+    },
+    {
+      "id": "u000364",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Now the scoring sheet. A linear model, the ruler from the toolbox, decides what matters once, during training, by settling on one weight per feature, and then applies the same weights to every case. That makes it tempting to read the weights as importance: biggest weight, most important feature. This works only with care. A weight is measured per unit of its input, so a weight per megabyte and a weight per request header cannot be compared until both features have been brought to a common scale. And when two features say nearly the same thing, say lines added and lines changed, the model can split the credit between them almost arbitrarily: a large weight on one and a negative weight on the other can produce much the same predictions as two modest weights. Retrain on slightly different data and the split may change while the predictions barely move. The scoring sheet is readable, but what you are reading is one of many sheets that would have worked about as well.",
+      "sourceAnchor": null,
+      "wordCount": 171
+    },
+    {
+      "id": "u000365",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The flowchart decides what matters by the sock-drawer test: at each step, the feature whose question tidies the drawers most wins. The ranking that adds up each feature’s tidying, the one most libraries print by default, is a useful first look, and a biased one. A feature with thousands of distinct values, a user ID or an exact timestamp, offers thousands of possible cut-offs, and by sheer number of tries some of them will tidy the training drawers by accident. Such features tend to look more important than they are.",
+      "sourceAnchor": null,
+      "wordCount": 90
+    },
+    {
+      "id": "u000366",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "There is a more honest test, and it works for any model at all. Take the validation set and, for one feature only, shuffle its values between examples, so that each ticket now carries some other ticket’s country while everything else stays in place. Then measure the score again. If it drops sharply, the model relied on that feature; if it barely moves, the model can do without it. This is permutation importance , introduced by the statistician Leo Breiman in his work on random forests, and its great merit is that it asks the model rather than the analyst. It has a blind spot too, and it is the same pair of twins. Shuffle “lines added” while “lines changed” is still intact, and the model leans on the twin, the score hardly drops, and both features can look unimportant even though together they carry the prediction.",
+      "sourceAnchor": null,
+      "wordCount": 146
+    },
+    {
+      "id": "u000367",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "One sentence about all of these measures needs saying plainly, because it is the most common misreading in the field. Importance means that the model used the feature. It never, on its own, means that the feature causes the outcome. Fed the right data, a model could rank ice cream sales as an excellent predictor of drownings.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000368",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "The experienced recruiter is the multi-layer network. Nobody tells its hidden neurons what to look for; backpropagation shapes each one into whatever intermediate judgment lowers the loss. That also means there is no single place to point at: its verdict on a case runs through hundreds of hunches, each mixing many inputs. You can still ask from the outside which inputs mattered, by shuffling or with tools built for looking inside networks, which come near the end of the book, but the answer is now a summary of something far more tangled.",
+      "sourceAnchor": null,
+      "wordCount": 92
+    },
+    {
+      "id": "u000369",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Which leaves the practical question every team eventually asks: should I just give the model every feature I can find? More features are not free. Each one is another dimension in which nearest neighbors drift apart, another chance to latch on to an accident, the white plate or the snow behind the wolves, and another possible leak. A remedy called regularization, which charges the model a small price for complexity, softens the cost, and one variant of it pushes the weights of useless features to exactly zero, quietly removing them; plenty of data softens it more. But the sensible default is the one a good recruiter follows: include what you have a reason to believe could matter, check what the model actually relied on, and be suspicious when a feature you thought minor turns out to dominate.",
+      "sourceAnchor": null,
+      "wordCount": 137
+    },
+    {
+      "id": "u000370",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Here the hiring panel stops being a good picture. A recruiter can tell you why she rejected a CV, and her reasons connect to what the job actually requires. A model’s notion of mattering is only a statistical association with its loss, on the data it happened to see. Change the data, hire in a different city or a different decade, and what matters to the model changes with it, without the model noticing and without anyone being told.",
+      "sourceAnchor": null,
+      "wordCount": 79
+    },
+    {
+      "id": "u000371",
+      "chapterId": "chapter-0005",
+      "kind": "p",
+      "text": "Going further. If you wondered why a chatbot answers the same question differently each time, section 7.3 explains the dice and the setting called temperature. How words get their learned addresses, the embeddings, is the subject of section 7.1, and how the fourth recruiter reads, letting each case tell her where to look, is the attention of section 7.2, and section 7.5 comes back to her to show what she can and cannot see.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    }
+  ]
+}

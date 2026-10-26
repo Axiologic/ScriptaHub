@@ -1,0 +1,62 @@
+{
+  "title": "O introducere intuitivă în Machine Learning",
+  "dek": "De la exemple și erori la modele de limbaj: o hartă a mecanismelor, alegerilor și limitelor învățării automate.",
+  "sections": [
+    {
+      "heading": "Învățarea începe cu o întrebare bine pusă",
+      "paragraphs": [
+        "O ingineră reglează cache-ul unui serviciu: alege o valoare, măsoară rezultatul, ajustează și încearcă din nou. Această buclă oferă intuiția de pornire a cărții. Multe modele fac ceva asemănător cu mult mai multe numere, numite parametri sau ponderi. În programarea obișnuită, omul scrie o rețetă; în învățarea automată, exemplele ajută la găsirea unei funcții ale cărei rezultate se potrivesc cu răspunsurile cunoscute. Diferența devine utilă când regulile sunt prea greu de exprimat, prea numeroase sau se schimbă repede. Pentru reguli exacte și stabile, programarea directă rămâne o alegere bună.",
+        "În învățarea supervizată, fiecare exemplu vine cu trăsături și o etichetă. Regresia estimează un număr, clasificarea o categorie. Funcția de pierdere, loss-ul, măsoară greșeala și decide ce erori cântăresc mai greu. Alegerea ei exprimă prioritățile oamenilor. Tot oamenii produc etichetele, uneori în grabă sau prin procese greșite. Un model poate reproduce fidel aceste greșeli. Fără etichete, gruparea și reducerea dimensionalității caută structură în date, dar structura găsită rămâne o ipoteză. Algoritmul poate produce grupuri elegante chiar și din zgomot; sensul lor se verifică deschizând exemplele reale."
+      ]
+    },
+    {
+      "heading": "Un scor bun trebuie câștigat pe exemple noi",
+      "paragraphs": [
+        "Un model care recunoaște datele din care a învățat își poate demonstra memoria, fără să demonstreze priceperea. De aceea cartea separă trei roluri: antrenarea ajustează ponderile, validarea compară abordări și setări, iar testarea oferă examenul păstrat până la final. Dacă schimbi modelul după fiecare rezultat pe test, examenul intră treptat în procesul de învățare. Și pregătirea datelor poate lăsa informații să se scurgă: media pentru scalare, completarea valorilor lipsă și dicționarul trebuie învățate din setul de antrenare, apoi aplicate celorlalte seturi. Un pipeline consecvent leagă disciplina evaluării de comportamentul din producție.",
+        "Trusa clasică arată de ce alegerea algoritmului depinde de problemă. Regresia liniară seamănă cu o riglă trasă de arcuri spre puncte și este sensibilă la valori extreme. Regresia logistică adaugă o transformare a scorului într-o valoare între zero și unu. Vecinii apropiați votează folosind exemple păstrate, cu dificultăți de scară și de dimensionalitate. Arborii aleg întrebări care reduc incertitudinea, dar pot ajunge să memoreze. Pădurile combină arbori suficient de diferiți ca să reducă instabilitatea; boosting-ul adaugă corecturi succesive. Alte metode schimbă presupunerile despre distanță, granițe sau probabilități. Niciuna nu repară automat exemplele greșite comune întregului set."
+      ]
+    },
+    {
+      "heading": "Sub metaforă se află aritmetică",
+      "paragraphs": [
+        "Un neuron artificial cântărește intrările, le adună și aplică o funcție de activare. Straturile combină aceste operații. Fără neliniaritate, oricât de multe straturi liniare ar fi suprapuse, efectul lor rămâne unul liniar. Cu activări și straturi ascunse, rețeaua poate construi judecăți intermediare pe care nimeni nu le-a numit dinainte. Antrenarea caută ponderi care micșorează eroarea. Gradientul indică direcția locală a coborârii; backpropagation folosește regula lanțului ca să calculeze cât influențează fiecare pondere rezultatul. Rata de învățare controlează mărimea pasului, iar loturile mici permit estimarea direcției fără parcurgerea tuturor exemplelor la fiecare pas.",
+        "Rețeaua nu este un creier în miniatură. Ponderile sunt numere organizate în tensori, cu forme care descriu direcțiile datelor. Produsele de matrice calculează multe sume ponderate împreună, iar plăcile grafice exploatează paralelismul lor. Datele trebuie mai întâi curățate și reprezentate numeric: categoriile cer codificare, textul poate deveni numărători sau tokeni, valorile absente cer o decizie explicită. Cuantizarea reduce precizia ponderilor pentru a economisi memorie, cu efecte care trebuie retestate. A spune că o trăsătură este importantă înseamnă că modelul se sprijină pe ea pentru predicție. Corelațiile dintre intrări și felul măsurării complică interpretarea; importanța nu dovedește singură cauza."
+      ]
+    },
+    {
+      "heading": "Arhitectura și memoria schimbă ce poate învăța modelul",
+      "paragraphs": [
+        "Piesele rețelelor exprimă presupuneri despre date. Convoluția aplică aceleași filtre învățate în mai multe locuri ale unei imagini, folosind ideea că tiparele locale rămân relevante când se deplasează. Recurența citește secvențe și duce mai departe o stare comprimată, dar rezumatul fix pierde detalii, iar semnalul de învățare poate slăbi pe distanțe lungi. Porțile de memorie ajută fără să elimine toate aceste limite. Normalizarea și conexiunile reziduale fac rețelele adânci mai ușor de antrenat; dropout-ul împiedică dependența prea puternică de anumite componente. Forma datelor contează și în afara imaginilor: timpul, rețelele de relații și ordinea unei liste cer tratamente proprii.",
+        "Cartea păstrează și un drum alternativ: calculul hiperdimensional. Vectorii lungi pot reprezenta concepte; bundling-ul suprapune informații, iar binding-ul leagă roluri de valori. Faptele pot fi compuse și recuperate prin operații, fără aceeași antrenare lentă a ponderilor. Prețul este că numele aleatorii nu descoperă singure sensuri în date brute. De aici interesul pentru combinații între percepție învățată și memorie structurată. Comparația cu creierul aduce alte posibilități: predicție, acțiune, sisteme de referință și memorii care înregistrează repede și consolidează încet. Teoria Thousand Brains și procesarea predictivă sunt prezentate cu rezervele lor; nu oferă o explicație definitivă a creierului."
+      ]
+    },
+    {
+      "heading": "Cum ajung numerele să lucreze cu limbajul",
+      "paragraphs": [
+        "Embeddings așază elementele într-un spațiu numeric învățat, astfel încât asemănările utile pot deveni apropieri. Căutarea semantică poate găsi o idee chiar când formulările diferă. Attention merge mai departe: fiecare poziție formulează o întrebare, compară chei și amestecă valorile relevante. Transformările sunt învățate la antrenare, dar atenția este recalculată pentru intrarea curentă. Astfel, reprezentarea unui cuvânt depinde de context. Un model de limbaj învață inițial să prezică următorul token, apoi generează repetând predicția și alegerea. Un mecanism simplu ca obiectiv poate susține capacități bogate, pentru că predicția utilă cere regularități despre limbaj și despre lumea descrisă de el.",
+        "Totuși, o continuare plauzibilă nu este o garanție de adevăr. Fine-tuning-ul și feedback-ul pot schimba comportamentul fără să elimine invențiile. Regăsirea documentelor, RAG, aduce în context informație relevantă și actualizabilă, dar poate aduce și pasaje greșite sau învechite. Trebuie verificate separat căutarea și folosirea sursei. Contextul însuși este o suprafață de lucru limitată: când aplicația taie ori rezumă conversația, modelul nu poate vedea ce a dispărut. Memoria între sesiuni vine din informații păstrate și reintroduse de aplicație. Exemplele din context pot orienta răspunsul fără schimbarea ponderilor. Disputele despre înțelegere și modelele lumii rămân deschise, iar testele trebuie să susțină fiecare afirmație concretă."
+      ]
+    },
+    {
+      "heading": "Aceleași mecanisme pot genera, acționa și învăța altfel",
+      "paragraphs": [
+        "Generarea imaginilor arată alte feluri de a învăța o distribuție. Autoencoderele comprimă și reconstruiesc, rețelele generative adversariale folosesc competiția dintre generare și discriminare, iar difuzia învață să înlăture zgomotul și construiește imaginea prin rafinare. Arhitecturile organizează aceste operații după sarcină și cost. Un agent adaugă o buclă de program: modelul propune apeluri, programul le execută și întoarce observații. Instrumentele extind ce poate face sistemul, dar fiecare pas poate introduce eroare. Contractele înguste și verificările devin parte a capacității practice, alături de modelul care produce textul.",
+        "Și profesorul poate avea forme diferite. Învățarea prin recompensă explorează acțiuni și consecințe, cu dificultatea de a atribui rezultatul deciziilor potrivite. Recompensa poate fi exploatată într-un mod care satisface măsura și ratează intenția. Auto-supervizarea construiește sarcini din datele însele. Transferul pornește de la competențe deja învățate, iar adaptarea unui model poate schimba un comportament cu mult mai puține exemple decât antrenarea de la zero. Învățarea activă cere oamenilor etichete pentru cazurile informative; distilarea transmite o parte din comportamentul unui model către altul. Alegerea depinde de semnalul disponibil, de cost și de ce anume trebuie schimbat."
+      ]
+    },
+    {
+      "heading": "Eșecul poate arăta ca succes",
+      "paragraphs": [
+        "Un model prea simplu ratează structura; unul prea flexibil poate memora zgomotul. Diferența dintre eroarea de antrenare și cea de validare ajută la diagnostic. Regularizarea, oprirea timpurie, exemplele suplimentare și alegerea unei reprezentări mai bune răspund unor cauze diferite. Există și eșecuri mai viclene: modelul poate învăța farfuria, zăpada ori o informație scursă din viitor, obținând scoruri excelente fără mecanismul dorit. Testele care rup coincidențele arată mai mult decât încă un set extras din aceleași condiții. Pentru date ordonate în timp, evaluarea trebuie să respecte direcția trecut–viitor.",
+        "Acuratețea singură poate ascunde comportamentul pe evenimente rare. Contează alarmele false, cazurile ratate și costul pragului ales. Contează și dacă probabilitățile corespund frecvențelor observate: încrederea declarată trebuie calibrată. Datele pot reproduce inegalități, iar aceeași regulă de evaluare poate avantaja diferit grupurile. Explicațiile și inspecția mecanismelor oferă indicii despre ce folosește modelul, însă indiciile nu devin automat cauze sau garanții. Pentru a afla efectul unei intervenții, simpla asociere istorică nu ajunge. Experimentele și evaluările bine construite au rolul de a separa rezultatul măsurat de povestea comodă despre el."
+      ]
+    },
+    {
+      "heading": "Modelul continuă să coste și după lansare",
+      "paragraphs": [
+        "Antrenarea schimbă ponderile; inferența le folosește. Prima cere stări intermediare, gradienți și optimizare; a doua renunță la o mare parte din aceste costuri, dar se repetă la fiecare cerere. Pentru modelele de limbaj, generarea token cu token adaugă calcul succesiv. Loturile, memoria cache, modelele mai mici și adaptările eficiente răspund unor probleme economice reale. Curba de învățare arată dacă mai multe date ajută încă sau dacă limita este în altă parte. Legile de scalare descriu regularități empirice și nu garantează apariția unei abilități. Mai multe exemple aproape identice nu înlocuiesc calitatea și acoperirea cazurilor dificile.",
+        "În lume, benchmark-urile, atacatorii, confidențialitatea și proprietatea intră în aceeași problemă inginerească. Datele se schimbă, documentele pot conține instrucțiuni ostile, iar rezultatele trebuie urmărite după lansare. Monitorizarea, actualizarea și posibilitatea revenirii la o versiune anterioară fac parte din sistem. Anexele oferă formulele din spatele intuițiilor, un dicționar între metafore și termeni și direcții de practică. Mesajul care unește traseul este unul de lucru: înțelege mecanismul, privește exemplele, măsoară pe sarcina reală și păstrează diferența dintre ce poate arăta un test și ce ai vrea să demonstreze."
+      ]
+    }
+  ]
+}

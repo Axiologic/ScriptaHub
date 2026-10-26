@@ -1,0 +1,328 @@
+{
+  "batch": "batch-0013.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0009",
+  "chapterTitle": "Capitolul 8 — Imagini generate, sisteme construite",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000546",
+      "chapterId": "chapter-0009",
+      "kind": "h1",
+      "text": "Capitolul 8 — Imagini generate, sisteme construite",
+      "sourceAnchor": "capitolul-8-imagini-generate-sisteme-construite",
+      "wordCount": 6
+    },
+    {
+      "id": "u000547",
+      "chapterId": "chapter-0009",
+      "kind": "h2",
+      "text": "8.1 Învățând să desenezi",
+      "sourceAnchor": "învățând-să-desenezi",
+      "wordCount": 5
+    },
+    {
+      "id": "u000548",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Un copil învață să deseneze o pisică într-un fel anume. Nu studiind regulile anatomiei pisicii și nici trăgând pe contur. Desenează o pată tremurată, se uită la ea, decide că ceva nu e în regulă, repară urechile, se uită din nou, repară coada. Fiecare trecere e o mică corectură spre „mai mult a pisică”. După destule treceri și destule pisici văzute, pata devine o pisică pe care n-a mai văzut-o nimeni, pentru că e a ei.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000549",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Tot ce am văzut până acum în carte a fost despre recunoaștere, predicție și decizie. Subcapitolul acesta e despre cealaltă direcție: a face lucruri. Mai ales imagini, pentru că acolo ideile se văd cel mai ușor, dar aceleași idei produc muzică, molecule, voci și video. Iar lucrul ciudat și satisfăcător e că metoda cea mai reușită dintre toate s-a dovedit a funcționa foarte asemănător cu copilul: nu desenând dintr-o singură trăsătură, ci corectând o mâzgălitură, puțin câte puțin.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    },
+    {
+      "id": "u000550",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Cea mai veche idee e să forțezi o rețea să rezume și apoi să reconstruiască. Imaginează-ți un curier care trebuie să descrie o fotografie la telefon în exact treizeci de cuvinte unui coleg care apoi trebuie să o redeseneze. „O pisică tigrată, așezată, privind spre stânga, pe o pernă roșie, fereastră în spate, lumină de după-amiază.” Treizeci de cuvinte nu pot cuprinde o fotografie. Ca redesenarea să iasă bine, cel care descrie trebuie să învețe ce contează la pisici, perne și lumină, iar cel care desenează trebuie să învețe cum arată acele lucruri. Antrenează-i pe amândoi împreună pe un milion de fotografii, notându-i după cât de aproape e imaginea redesenată de original, și descrierea de treizeci de cuvinte devine un rezumat remarcabil de bogat. Acesta e un autoencoder („autocodificator”: o rețea care învață să se codifice și să se decodifice singură): un encoder („codificator”) care strivește intrarea într-un cod scurt și un decoder („decodificator”) care desface codul la loc. Codul stă într-un spațiu în care, ca pe harta sensurilor cuvintelor, codurile apropiate înseamnă imagini asemănătoare. Problema e că cele mai multe puncte din acel spațiu nu corespund niciunei fotografii reale, așa că nu poți alege pur și simplu un cod la întâmplare și să te aștepți la o pisică bună. O rafinare din 2013, variational autoencoder („autocodificator variațional”), îl învață pe encoder să-și întindă codurile uniform, astfel încât codurile aleatorii să se decodifice în imagini plauzibile, chiar dacă încețoșate. Neclaritatea a fost problema atacată de următoarea idee.",
+      "sourceAnchor": null,
+      "wordCount": 247
+    },
+    {
+      "id": "u000551",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "În 2014, Ian Goodfellow și colegii lui au propus un joc. Două rețele. Una, generator -ul, face imagini din zgomot aleatoriu. Cealaltă, discriminator -ul, primește un amestec de fotografii reale și falsuri ale generatorului și trebuie să spună care e care. Discriminatorul e antrenat să devină tot mai bun la depistarea falsurilor; generatorul e antrenat să-l păcălească. Niciunuia nu i se spune vreodată cum arată o pisică. Generatorul învață doar din verdictele discriminatorului, iar discriminatorul învață doar din faptul că a avut sau nu dreptate. E un falsificator și un expert în artă închiși într-o cameră: pe măsură ce expertul se ascute, falsificatorul trebuie să se îmbunătățească, și invers, până când falsurile sunt atât de bune încât expertul nu mai poate decât să ghicească. Acestea sunt generative adversarial networks („rețele generative adversariale”, adică care se luptă între ele), pe scurt GAN-uri, iar timp de câțiva ani au produs cele mai clare fețe sintetice văzute vreodată, genul care umplea site-uri cu oameni care nu există. Slăbiciunea lor era antrenarea însăși: un joc între doi jucători e instabil în feluri în care un singur loss nu e, cei doi se pot urmări în cerc, iar generatorul învață uneori o singură față foarte convingătoare și o produce iar și iar, un eșec numit mode collapse („prăbușirea modurilor”: modelul se blochează pe o singură variantă). Inginerii care au depanat o buclă de feedback între două servicii vor recunoaște senzația.",
+      "sourceAnchor": null,
+      "wordCount": 235
+    },
+    {
+      "id": "u000552",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Apoi, pe la 2020, domeniul s-a așezat pe o a treia idee, iar ea stă în spatele celor mai multe generatoare de imagini pe care probabil le-ai folosit.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000553",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Ia o fotografie și adaugă-i niște purici, cum face un televizor vechi când semnalul e slab. Mai adaugă puțin. Și mai mult, timp de câteva sute de pași, până când nu mai rămân decât purici. Direcția asta e ușoară; o poate face un script și nu implică nicio învățare. Acum cere-i unei rețele să facă opusul, câte un pas pe rând: iată o imagine puțin zgomotoasă, spune-mi care e zgomotul, ca să-l pot scădea. E o problemă de predicție cu cheie de răspunsuri, pentru că zgomotul l-ai adăugat chiar tu și știi exact care a fost. Antrenează rețeaua pe milioane de fotografii, la fiecare nivel de zgomot. Devine foarte bună la o singură abilitate: să se uite la o imagine zgomotoasă și să spună ce trebuie scos. Abilitatea se poate învăța deși zgomotul e aleatoriu, pentru că imaginea de sub el nu e: ca să deosebească puricii de restul, rețeaua trebuie să știe cum arată fotografiile reale, că blana are textură și cerul e neted, așa că a învăța să cureți zgomotul înseamnă, pe ascuns, a învăța cum arată lumea.",
+      "sourceAnchor": null,
+      "wordCount": 180
+    },
+    {
+      "id": "u000554",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Acum pornește doar de la purici și aplică abilitatea aceasta de câteva sute de ori. Fiecare trecere scoate puțin zgomot și dezvăluie puțină structură, așa cum se developează un Polaroid sau cum pata copilului devine pisică prin mici corecturi. Spre deosebire de copil, rețeaua nu hotărăște niciodată să deseneze o pisică și nici nu face un pas înapoi ca să privească întregul: la fiecare trecere răspunde doar la întrebarea „ce zgomot e aici?”, și de aceea o mână generată poate avea șase degete fără ca ceva din proces să obiecteze. Rezultatul e o fotografie care n-a fost făcută niciodată: ideea rețelei despre ce ar fi putut ascunde puricii. Fiecare rulare pornește de la alți purici, iar purici diferiți ascund fotografii diferite, de aceea același prompt dă de fiecare dată altă imagine; puricii de pornire sunt trași pornind de la un număr numit seed („sămânță”), iar refolosirea aceluiași seed cu același prompt și aceleași setări dă de obicei din nou aceeași imagine. Acesta e un diffusion model („model de difuzie”), iar numele vine din fizica cernelii care se împrăștie în apă, rulată invers. Se antrenează stabil, pentru că fiecare pas e o predicție obișnuită cu răspuns cunoscut, și e mult mai puțin expus riscului de a se bloca pe o singură variantă, pentru că învață să curețe zgomotul spre orice fel de imagine i s-a arătat.",
+      "sourceAnchor": null,
+      "wordCount": 225
+    },
+    {
+      "id": "u000555",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Promptul text sosește printr-o piesă în plus. La fiecare pas de curățare, rețelei i se arată și o descriere, codificată de un model de limbaj în același fel de adresă ca embeddings ale cuvintelor, și e antrenată pe fotografii cu descrieri să scoată zgomotul într-un fel care se potrivește descrierii . „O pisică tigrată pe o pernă roșie” e o mână pe umărul copilului la fiecare corectură, împingând urechile spre tigrat și fundalul spre roșu. Cât de tare împinge mâna e un buton: multe generatoare rulează fiecare pas de curățare de două ori, o dată cu descrierea și o dată fără, și împing rezultatul mai departe în direcția diferenței; dacă dai mai sus acest buton, numit adesea guidance („ghidare”), imaginea urmează cuvintele mai literal, cu prețul varietății și uneori al realismului. Generatoare de imagini precum Stable Diffusion, versiunile mai noi ale DALL-E și Midjourney sunt construite pe această idee. O rafinare de inginerie, popularizată de Stable Diffusion, explică de ce unele dintre ele pot rula pe hardware obișnuit: în loc să curețe zgomotul imaginii la mărime completă, curăță codul scurt al unui autoencoder, descrierea de treizeci de cuvinte, și îl transformă în pixeli abia la final. Lucrul în acel spațiu comprimat e de multe ori mai ieftin.",
+      "sourceAnchor": null,
+      "wordCount": 206
+    },
+    {
+      "id": "u000556",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Pentru cineva care construiește sau cumpără astfel de sisteme, din mecanică decurg trei fapte practice. Întâi, generarea e lentă prin natura ei: zeci sau sute de forward pass-uri per imagine, de aceea atâta cercetare merge în a avea nevoie de mai puține. Apoi, modelul poate curăța zgomotul doar spre ce a văzut, de aceea se chinuie cu mâinile, cu textul din imagini și cu combinațiile neobișnuite și de aceea reproduce cu mare fidelitate prejudecățile colecției lui de fotografii. În al treilea rând, rețeta se transferă: adaugă zgomot la sunet, molecule sau cadre video în loc de pixeli și ai un generator de muzică, un generator de candidați pentru medicamente sau un model video. Saltul de la imagini la orice altceva a fost în mare parte o schimbare de date. De obicei, un generator nici nu copiază imaginile pe care a fost antrenat, pentru că învață să curețe zgomotul spre milioane de imagini deodată și spre niciuna anume; dar o imagine care a apărut de multe ori în colecția de antrenare, un tablou celebru sau o fotografie foarte distribuită, poate ieși aproape identică, un caz de memorare cu urmări juridice.",
+      "sourceAnchor": null,
+      "wordCount": 189
+    },
+    {
+      "id": "u000557",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Merită să tragi o linie între subcapitolul acesta și jocul ghicitului cuvântului următor. Un model de limbaj își construiește ieșirea un token după altul, fiecare condiționat de cele dinainte, ca și cum ai scrie o propoziție de la stânga la dreapta. Un model de difuzie rafinează toată ieșirea deodată, în multe treceri, ca un sculptor. Amândouă sunt mașini de predicție antrenate cu o cheie de răspunsuri pe care datele o oferă gratuit: cuvântul următor, zgomotul adăugat. Familia aceasta de trucuri, învățarea din date care se etichetează singure, are un nume: self-supervised learning („învățare auto-supervizată”).",
+      "sourceAnchor": null,
+      "wordCount": 94
+    },
+    {
+      "id": "u000558",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Am văzut acum cele mai multe dintre mașinile individuale. Următorul subcapitol e despre felul în care sunt combinate: mâna de aranjamente la care inginerii apelează iar și iar și problemele pe care a fost inventat să le rezolve fiecare.",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000559",
+      "chapterId": "chapter-0009",
+      "kind": "h2",
+      "text": "8.2 Planuri de arhitectură",
+      "sourceAnchor": "planuri-de-arhitectură",
+      "wordCount": 5
+    },
+    {
+      "id": "u000560",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Orice inginer software cu experiență poartă în minte un mic set de forme. O coadă între un producător și un consumator. Un cache în fața unei stocări lente. Un load balancer care împarte cererile pe replici. Nu le reinventează la fiecare proiect; recunoaște problema, își ia forma și își cheltuie creativitatea pe părțile noi. Machine learning a ajuns în același stadiu. Sub sutele de nume de modele există poate o duzină de aranjamente care tot revin, fiecare inventat pentru o durere anume. Subcapitolul acesta e o plimbare prin cele pe care le vei întâlni cel mai des, povestite așa cum învață de fapt inginerii tiparele (design patterns): iată problema, iată forma care a rezolvat-o, iată unde se rupe.",
+      "sourceAnchor": null,
+      "wordCount": 118
+    },
+    {
+      "id": "u000561",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Începe cu traducerea, pentru că ea a forțat prima mare formă. O propoziție în franceză trebuie să devină una în engleză, iar cele două au lungimi diferite și ordini diferite ale cuvintelor; adjectivul care vine după substantiv în franceză vine înaintea lui în engleză. Nu poți traduce cuvânt cu cuvânt. Aranjamentul care a funcționat, pe la 2014, a fost să împarți treaba în două. Un encoder („codificator”) citește toată propoziția franceză și o condensează într-o reprezentare, un set de vectori care surprind ce s-a spus. Un decoder („decodificator”) scrie apoi propoziția engleză din acea reprezentare, câte un cuvânt pe rând, consultând-o pe parcurs. Citește tot, apoi scrie. Planul encoder–decoder stă în spatele traducerii, rezumatului, transcrierii vorbirii și descrierii imaginilor, orice în care intrarea e un lucru, iar ieșirea alt lucru de altă formă. Articolul original despre Transformer din 2017 era exact asta: un teanc de encoder și unul de decoder, cu attention între ele. Unde se rupe: dacă intrarea e enormă, strivirea ei într-o reprezentare fixă pierde detalii, și acesta e unul dintre motivele pentru care attention între encoder și decoder a fost o asemenea ușurare; decoderul se putea uita înapoi la fiecare cuvânt de intrare, nu doar la un rezumat.",
+      "sourceAnchor": null,
+      "wordCount": 202
+    },
+    {
+      "id": "u000562",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Apoi s-a produs o despărțire curioasă. Cercetătorii au observat că cele două jumătăți erau utile și separat. Păstrează doar encoderul, antrenează-l să completeze cuvinte ascunse dintr-o propoziție și obții un model excelent la înțelegerea textului, dar care nu-l generează: acesta e BERT (bidirectional encoder representations from transformers, „reprezentări bidirecționale de encoder din Transformer-e”), din 2018, care alimentează încă multă căutare și clasificare. Păstrează doar decoderul, antrenează-l să prezică următorul cuvânt și obții un model care scrie : aceasta e familia GPT și, odată cu ea, tot jocul ghicitului cuvântului următor. Encoder-only pentru citit, decoder-only pentru scris. Când vezi un model descris ca unul sau altul, știi acum ce jumătate din mașina de tradus este.",
+      "sourceAnchor": null,
+      "wordCount": 113
+    },
+    {
+      "id": "u000563",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "A doua formă vine dintr-o problemă de scară de care se lovește orice inginer de căutare. Ai un milion de documente și interogarea unui utilizator și vrei cele mai bune potriviri în milisecunde. Să rulezi un model scump pe fiecare pereche interogare–document e imposibil. Așa că împarte modelul în două towers („turnuri”): unul codifică documentele, celălalt interogările, iar amândouă produc adrese pe aceeași hartă a sensurilor. Turnul documentelor rulează o singură dată, dinainte, peste toată colecția, iar rezultatele intră într-un index de vecini apropiați. La momentul interogării rulează doar turnul interogării, iar căutarea e o simplă consultare. Planul two-tower sau dual-encoder stă în spatele căutării semantice, al jumătății de regăsire din RAG și al celor mai multe sisteme de recomandare, unde cele două turnuri sunt „utilizator” și „produs”. E același schimb pe care îl face o bază de date când construiește un index la scriere ca să facă citirile ieftine. Unde se rupe: pentru că turnurile nu văd niciodată intrarea celuilalt, nu pot prinde interacțiunile subtile dintre o anumită interogare și un anumit document, de aceea sistemele serioase adaugă un cross-encoder („encoder încrucișat”) mai lent, care recitește primii cincizeci de candidați cu amândouă textele alături, aranjamentul bibliotecar-apoi-expert de la examenul cu cartea deschisă.",
+      "sourceAnchor": null,
+      "wordCount": 204
+    },
+    {
+      "id": "u000564",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Ideea celor două turnuri are o soră care a rezolvat o altă problemă: cum înveți adrese bune când nu ai deloc etichete? Răspunsul, numit contrastive learning („învățare prin contrast”), e să înveți un model că două vederi ale aceluiași lucru trebuie să ajungă aproape una de alta, iar vederile unor lucruri diferite departe. Două decupaje din aceeași fotografie, aproape; decupaje din fotografii diferite, departe. O fotografie și descrierea ei, aproape; o fotografie și descrierea altcuiva, departe. Modelul numit CLIP (contrastive language–image pre-training, „pre-antrenare prin contrast între limbaj și imagine”), antrenat așa în 2021 pe sute de milioane de perechi imagine–descriere, e o mare parte din motivul pentru care multe generatoare de imagini pot înțelege un prompt text și motivul pentru care îți poți căuta pozele scriind „plajă la apus”.",
+      "sourceAnchor": null,
+      "wordCount": 131
+    },
+    {
+      "id": "u000565",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "A treia formă e despre bani. Modelele de limbaj deveneau mai bune pe măsură ce creșteau, dar fiecare token trebuia să treacă prin fiecare pondere, așa că un model de zece ori mai mare costa de zece ori mai mult de rulat. Ieșirea a fost o idee veche, readusă la viață. În loc de un singur strat dens enorm, păstrează șaisprezece mai mici, experts („experții”), iar în fața lor un mic router („dispecer”) care se uită la fiecare token și îl trimite la cei doi experți cei mai potriviți pentru el. Paisprezece experți stau degeaba pentru acel token. Modelul, în ansamblu, are capacitatea tuturor celor șaisprezece, dar fiecare token plătește pentru doi. Planul mixture of experts („amestec de experți”) e felul în care mai multe dintre cele mai mari modele de limbaj din ultimii ani își țin costurile de servire sub control și, în esență, e biroul de triaj al unui spital: o privire rapidă, apoi specialistul potrivit, în loc ca fiecare pacient să treacă pe la fiecare doctor. Routerul e el însuși un mic strat învățat, antrenat împreună cu experții: tokenii pe care un expert îi tratează bine sunt trimiși mai des la el, iar expertul devine tot mai bun la ei, așa că specialitățile apar de la sine, deși rareori sunt subiecte ordonate precum „expertul în matematică” și tind să fie tipare mai fine, cum ar fi punctuația sau anumite feluri de cuvinte. Unde se rupe: routerul trebuie antrenat să împrăștie încărcarea, altfel câțiva experți ajung să facă totul, iar setul complet de experți trebuie totuși să încapă în memorie, chiar dacă cei mai mulți stau degeaba în orice moment.",
+      "sourceAnchor": null,
+      "wordCount": 272
+    },
+    {
+      "id": "u000566",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "A patra formă e cea mai nouă și nu e atât o rețea, cât o buclă în jurul uneia. Un model de limbaj, singur, poate doar să emită text. Dar textul poate fi o comandă: „apelează API-ul meteo pentru Roma”, „rulează această interogare SQL”, „deschide acest fișier”. Înfășoară modelul într-o buclă care îi citește ieșirea, execută orice astfel de comandă, îi dă rezultatul înapoi și îl întreabă ce să facă în continuare, și ai un agent . Intră un scop, apoi gândește, acționează, observă, gândește din nou, până când modelul spune că a terminat. Ce face ca un asistent să poată rezerva un zbor, depana un repository sau răspunde la o întrebare pentru care trebuie să caute ceva e, în esență, această buclă. Inginerii o vor recunoaște ca pe un REPL (read-eval-print loop, „bucla citește-evaluează-afișează”) cu un model de limbaj pe scaunul evaluatorului. Modelul află ce unelte există chiar din context: numele, rostul și argumentele fiecărei unelte sunt scrise acolo ca text simplu, iar modelul a trecut prin fine-tuning pe multe exemple în care emite un apel într-un format fix. Nu rulează niciodată nimic el însuși; programul din jur citește apelul, îl rulează și scrie rezultatul înapoi pe tablă. Unde se rupe: fiecare pas e o șansă de a greși, erorile se adună, iar un model care halucinează într-un răspuns poate halucina un plan. Meșteșugul construirii de agenți e în cea mai mare parte meșteșugul de a-i îngrădi: unelte cu contracte înguste, verificări între pași și un om în buclă pentru orice e ireversibil. Cel mai grav fel în care poate greși un agent nu e însă o eroare, ci un atacator.",
+      "sourceAnchor": null,
+      "wordCount": 271
+    },
+    {
+      "id": "u000567",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Mai merită câte o propoziție două forme, pentru că le vei vedea numele. U-Net , din imagistica medicală, din 2015, e un encoder–decoder pentru imagini cu ocoluri care leagă fiecare nivel al encoderului de nivelul corespunzător al decoderului, ca detaliile fine să nu se piardă la strivire; a fost calul de povară din interiorul multor modele de difuzie. Iar Siamese network („rețeaua siameză”), una dintre cele mai vechi, de la începutul anilor ’90, rulează același turn pe două intrări ca să judece dacă se potrivesc, forma din spatele verificării semnăturilor și a deblocării cu fața pe telefon.",
+      "sourceAnchor": null,
+      "wordCount": 97
+    },
+    {
+      "id": "u000568",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Fă un pas înapoi și trei obiceiuri de gândire acoperă aproape tot din subcapitolul acesta. Întâi, desparte modelul acolo unde se despart datele: intrarea de ieșire, interogarea de document, rutarea de muncă. Apoi, mută costul de la momentul cererii la momentul construirii oriunde poți: indexează documentele, pune în cache notițele detectivilor, precalculează turnurile. În al treilea rând, când un singur model nu ajunge, înfășoară-l în loc să-l mărești: un re-ranker după un retriever, un router în fața experților, o buclă în jurul unui model de limbaj. Niciunul nu e specific machine learning-ului. Sunt aceleași instincte care produc sisteme distribuite bune, aplicate unui nou fel de componentă.",
+      "sourceAnchor": null,
+      "wordCount": 106
+    },
+    {
+      "id": "u000569",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Planurile acestea au fost desenate mai ales pentru text, imagini și tabele de rânduri independente. O bună parte din datele cu care lucrează de fapt industria vin în alte forme, o succesiune în timp, o rețea de legături, o listă ordonată, iar despre ele e subcapitolul următor.",
+      "sourceAnchor": null,
+      "wordCount": 47
+    },
+    {
+      "id": "u000570",
+      "chapterId": "chapter-0009",
+      "kind": "h2",
+      "text": "8.3 Date cu o formă proprie",
+      "sourceAnchor": "date-cu-o-formă-proprie",
+      "wordCount": 7
+    },
+    {
+      "id": "u000571",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Pe peretele biroului căpitanului de port atârnă tabelul mareelor pentru tot anul. Nimeni nu l-a tipărit făcând media unui eșantion de zile trecute alese la întâmplare. Cei care l-au făcut știu că marea crește și scade de două ori pe zi, că amplitudinea crește și scade de-a lungul lunii, odată cu Luna, și că mâine urmează din azi. Datele au o formă în timp, iar oricine ignoră forma aceasta va prezice mai prost decât un pescar cu un calendar.",
+      "sourceAnchor": null,
+      "wordCount": 79
+    },
+    {
+      "id": "u000572",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "La începutul cărții spuneam că regresia și clasificarea acoperă cea mai mare parte din ce se face cu învățarea supervizată. E adevărat despre metodele de dedesubt, dar ascunde cât de mult din machine learning-ul industrial e ceva mai specific: prognoza, depistarea a ceea ce nu-și are locul, raționamentul pe rețele și alegerea a ceea ce le arăți oamenilor mai întâi. Fiecare are obiceiurile ei și, mai presus de toate, felul ei de a fi măsurată.",
+      "sourceAnchor": null,
+      "wordCount": 75
+    },
+    {
+      "id": "u000573",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Începe cu timpul. O time series („serie de timp”: măsurători în ordinea în care au apărut) e un șir ordonat de măsurători: vânzările zilnice, traficul pe oră, temperatura unui senzor în fiecare secundă. Cei care fac prognoze o citesc ca pe mai multe povești spuse deodată: un trend („tendință”, deriva lentă în sus sau în jos); seasonality („sezonalitatea”: tipare care se repetă după calendar), dimineața de luni, decembrie, ultima zi a lunii; și un rest care arată ca zgomotul. Metodele clasice, cum ar fi netezirea exponențială, modelează direct aceste povești, dând zilelor recente mai multă greutate decât celor vechi. O abordare modernă populară transformă problema înapoi într-un tabel: pentru fiecare zi adaugi coloane cu valoarea de săptămâna trecută, aceeași zi de anul trecut, media lunii trecute, dacă e sărbătoare. Acestea sunt lag features („trăsături cu întârziere”: valori din trecut puse drept coloane), iar cu ele arborii cu boosting devin prognozatori redutabili; într-o mare competiție publică din 2020, pe datele de vânzări ale Walmart, multe dintre soluțiile din frunte au fost construite așa. Mai recent, modele de prognoză pre-antrenate pe multe mii de serii fără legătură între ele încearcă să prognozeze o serie nouă cu puțină antrenare proprie sau deloc, cam cum un model de limbaj pre-antrenat e adaptat la o sarcină nouă.",
+      "sourceAnchor": null,
+      "wordCount": 212
+    },
+    {
+      "id": "u000574",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Ce se schimbă cel mai mult e examenul. Unul dintre primele avertismente ale cărții era să nu alegi niciodată setul de test la întâmplare pentru ceva ce se desfășoară în timp, iar cei care fac prognoze transformă avertismentul într-o procedură numită backtesting („testare pe trecut”: te prefaci că ești într-o zi din trecut și prezici ce a urmat). Prefă-te că e ianuarie anul trecut: antrenezi pe tot ce a fost înainte, prognozezi februarie și notezi prognoza. Apoi muți data imaginară în februarie și o iei de la capăt, iar și iar, mergând înainte prin istorie. Fiecare prognoză a fost făcută doar din trecut, cum va fi și în producție, iar tu primești o duzină de note cinstite în loc de una. Mai mult, o prognoză serioasă nu e niciodată un singur număr. „Săptămâna viitoare vom vinde 1.200 de bucăți” e o jumătate de răspuns; „între 1.000 și 1.450, cu 90% încredere” lasă depozitul să decidă cât stoc să țină. Un astfel de forecast interval („interval de prognoză”) e unul dintre felurile în care un model spune cât de sigur e. Tabelul mareelor se rupe ca imagine exact aici: mareele ascultă de Lună, care își ține programul, pe când vânzările ascultă de oameni, care nu și-l țin. O reglementare nouă apărută peste noapte sau un clip viral nu apar nicăieri în istoricul datelor, iar niciun backtest nu te va avertiza.",
+      "sourceAnchor": null,
+      "wordCount": 232
+    },
+    {
+      "id": "u000575",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Distanța față de toate grupurile e un fel de a prinde intrusul, iar detectarea anomaliilor are o întreagă trusă dincolo de el. Un isolation forest („pădure de izolare”: cât de repede poți izola un punct cu întrebări la întâmplare) joacă pe dos jocul de douăzeci de întrebări al arborilor de decizie. Pune întrebări la întâmplare despre trăsături alese la întâmplare și numără câte îi trebuie ca să izoleze fiecare punct de restul. Un server normal, adânc într-o mulțime de servere asemănătoare, cere multe întrebări ca să fie izolat; unul ciudat e izolat din două-trei. O a doua abordare împrumută autoencoder-ul: îl antrenezi să redeseneze datele normale, iar tot ce redesenează prost, cu un reconstruction error („eroare de reconstrucție”) mare, nu seamănă cu nimic din ce a învățat. A treia e mai modestă și adesea cea mai utilă: compari fiecare valoare cu aceeași oră din săptămânile trecute, un seasonal baseline („reper sezonier”), ca valul de luni dimineața să nu mai fie o urgență în fiecare luni. Oricare ar fi metoda, partea grea e pragul. Fiecare detector produce un scor, iar cineva trebuie să decidă unde sună pagerul, același compromis ca la serverul care o lua razna de la începutul cărții. Echipele bune reglează pragul pe un jurnal de incidente trecute și îl revizuiesc după fiecare sărbătoare care l-a declanșat.",
+      "sourceAnchor": null,
+      "wordCount": 218
+    },
+    {
+      "id": "u000576",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Unele date nu sunt nici listă, nici tabel, ci o rețea. Plățile leagă conturi, legăturile chimice leagă atomi, microserviciile se apelează unele pe altele. În astfel de date, cel mai grăitor lucru despre un nod e adesea cu cine e legat: un cont care, privit singur, pare nevinovat devine suspect când împarte un număr de telefon și un dispozitiv cu zece conturi deja prinse cu fraude. Imaginează-ți un sat în care veștile circulă prin bârfă. În prima seară, fiecare casă află de la vecinii imediați și își actualizează părerea. În a doua seară, părerile actualizate circulă din nou, așa că fiecare casă poartă acum puțin din ce credeau vecinii vecinilor ei. După câteva seri, părerea fiecărei case amestecă propria părere cu un cerc larg din jur. O graph neural network („rețea neuronală pe grafuri”), pe scurt GNN, face exact asta cu vectori. La fiecare rundă, adică la fiecare strat, fiecare nod adună vectorii vecinilor, îi combină cu al lui prin ponderi învățate și se actualizează. Asta e message passing („transmiterea de mesaje”) și e rudă apropiată cu atenția, cu ședința restrânsă la detectivii cu care chiar ești legat. GNN-urile sunt folosite ca să semnaleze rețele de fraudă și să prezică proprietățile moleculelor, iar DeepMind a raportat în 2020 că au îmbunătățit estimările orei de sosire din Google Maps. Imaginea satului se rupe într-un fel cunoscut: după prea multe seri de bârfă, toată lumea sună la fel, iar nodurile pierd ce le făcea diferite. Acest over-smoothing („netezirea excesivă”) e unul dintre motivele pentru care cele mai multe GNN-uri folosesc doar câteva runde.",
+      "sourceAnchor": null,
+      "wordCount": 261
+    },
+    {
+      "id": "u000577",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Apoi e forma din spatele unei mari părți a webului comercial: o listă ordonată. Când deschizi un serviciu de streaming sau un magazin, sistemul nu clasifică nimic. Trebuie să aleagă, din milioane de articole, cele zece pe care ți le arată, în ordine. Imaginează-ți o vânzătoare bună într-o librărie. Îi descrii ce-ți place, iar ea nu citește în locul tău fiecare carte din magazin. Mai întâi scoate repede de pe rafturi cincizeci de cărți plauzibile, după categorii grosiere pe care le știe bine; apoi se uită atent la cele cincizeci, gândindu-se la tine anume, și îți dă cele mai bune cinci, în ordine. Sistemele de recomandare folosesc aceeași pâlnie: o etapă ieftină de retrieval („regăsire”), care strânge milioanele la sute, și o etapă mai lentă de ranking („ordonare”), care le pune în ordine. La fel lucrează bibliotecarul și expertul care răspund la întrebări pe baza documentelor, și la fel cele două turnuri ale căutării.",
+      "sourceAnchor": null,
+      "wordCount": 154
+    },
+    {
+      "id": "u000578",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Etapa de regăsire se sprijină adesea pe o idee făcută celebră de Netflix Prize, o competiție publică desfășurată între 2006 și 2009 pentru îmbunătățirea recomandărilor de filme ale companiei. Așază notele într-un tabel uriaș, cu utilizatorii pe rânduri și filmele pe coloane, și aproape fiecare celulă e goală. Collaborative filtering („filtrarea colaborativă”: îți ghicești gusturile din ale celor asemănători ție) completează celulele goale din tiparul celor pline, iar forma ei cea mai reușită, matrix factorization („factorizarea matricei”), îi dă fiecărui utilizator și fiecărui film o listă scurtă de numere, un profil de gust învățat, așa încât nota prezisă a unui utilizator pentru un film e cât de bine se aliniază cele două liste. Listele acestea sunt embeddings, învățate din comportament în loc de text. Ca să găsească filmele cele mai apropiate de gustul cuiva dintre milioane, nimeni nu le compară pe toate; sistemele folosesc indexul ca secțiunile unei biblioteci, întâlnit la cei mai apropiați vecini, care caută doar în secțiunea cea mai probabilă și acceptă un mic risc de a rata potrivirea cea mai bună. Un astfel de index se numește approximate nearest-neighbor („cei mai apropiați vecini, aproximativ”), iar o vector database („bază de date vectorială”) e, în esență, unul dintre ele.",
+      "sourceAnchor": null,
+      "wordCount": 202
+    },
+    {
+      "id": "u000579",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "O listă ordonată are nevoie și de propria ei metrică. Acuratețea nu ține cont de ordine, dar utilizatorul da: filmul potrivit pe locul unu valorează mult mai mult decât același film pe locul patruzeci. Metrici de ordonare precum NDCG (normalized discounted cumulative gain, „câștigul cumulat, redus cu poziția și normalizat”) dau fiecărui element bun cu atât mai puțin credit cu cât apare mai jos în listă. Iar două probleme țin în mod special de sistemele de recomandare. Un utilizator nou sau o carte nouă nu au deloc istorie, problema cold start („pornirea la rece”), și trebuie tratați prin conținut, prin popularitate sau pur și simplu întrebând. Iar vânzătoarea învață doar din ce au făcut clienții cu cărțile pe care a ales să le arate. O carte pe care n-o arată niciodată nu e cumpărată niciodată, deci nu pare niciodată bună, deci n-o arată niciodată. Aceasta e o buclă de feedback, propriile alegeri ale modelului dând formă datelor din care va învăța apoi, și ea rulează în interiorul oricărui sistem de recomandare; de aceea astfel de sisteme arată intenționat câte puțin din ceva nou.",
+      "sourceAnchor": null,
+      "wordCount": 183
+    },
+    {
+      "id": "u000580",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Încă o formă merită un nume. Uneori răspunsul însuși are structură: o etichetă pentru fiecare cuvânt dintr-o propoziție, care marchează nume, date și sume; un dreptunghi în jurul fiecărui pieton dintr-un cadru de cameră; o mască peste fiecare pixel care aparține unei tumori. Aceste sarcini, numite sequence labeling („etichetarea secvențelor”), object detection („detectarea obiectelor”) și segmentation („segmentarea”, adică decuparea pixel cu pixel), sunt clasificare repetată în multe locuri deodată, iar U-Net-ul e un plan de arhitectură obișnuit pentru cele la nivel de pixel.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000581",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Toate aceste forme se sprijină tot pe aceeași mașinărie, gradient descent și cutia de Lego. Și mașinăria aceasta a fost simplificată în povestire, iar subcapitolul următor deschide instalația.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000582",
+      "chapterId": "chapter-0009",
+      "kind": "h2",
+      "text": "8.4 Ce ascunde instalația",
+      "sourceAnchor": "ce-ascunde-instalația",
+      "wordCount": 5
+    },
+    {
+      "id": "u000583",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Întoarce-te la drumeața care coboară pe pipăite un munte în ceață. Imaginea aceea spunea adevărul, dar o antrenare mare îi dă mult mai mult echipament, iar câteva piese din cutia de Lego au fost descrise în feluri care te-ar induce în eroare în codul unui model modern. Subcapitolul acesta deschide restul trusei.",
+      "sourceAnchor": null,
+      "wordCount": 52
+    },
+    {
+      "id": "u000584",
+      "chapterId": "chapter-0009",
+      "kind": "p",
+      "text": "Începe cu mersul. O sanie pe o pantă înzăpezită nu se oprește în fiecare adâncitură; alunecă mai departe peste micile denivelări. Momentum -ul („impulsul”: pasul păstrează ceva din direcția pașilor de dinainte) în antrenare e același lucru: fiecare pas amestecă panta de acum cu direcția recentă de mers, așa că tremurul mini-batch-urilor se mediază, iar micile gropi sunt traversate, nu explorate. Adam, pomenit mai devreme, adaugă o a doua memorie: cât de mari au fost pantele recente ale fiecărei ponderi. Ponderile cu pante constant abrupte fac pași mai mici; cele care primesc rar un semnal fac pași mai mari. Aceste două memorii sunt cele două copii suplimentare ale modelului pe care antrenarea trebuie să le țină în memorie.",
+      "sourceAnchor": null,
+      "wordCount": 118
+    }
+  ]
+}

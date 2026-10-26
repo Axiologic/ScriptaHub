@@ -1,0 +1,432 @@
+{
+  "batch": "batch-0005.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0004",
+  "chapterTitle": "Chapter 3 — Deep Learning",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000266",
+      "chapterId": "chapter-0004",
+      "kind": "h1",
+      "text": "Chapter 3 — Deep Learning",
+      "sourceAnchor": "chapter-3-deep-learning",
+      "wordCount": 4
+    },
+    {
+      "id": "u000267",
+      "chapterId": "chapter-0004",
+      "kind": "h2",
+      "text": "3.1 The Neuron That Was Promised Too Much",
+      "sourceAnchor": "the-neuron-that-was-promised-too-much",
+      "wordCount": 9
+    },
+    {
+      "id": "u000268",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "In July 1958, newspapers reported on a demonstration by the United States Navy. A young psychologist named Frank Rosenblatt had built a machine he called the perceptron , and after some practice it had learned to tell cards marked on the left from cards marked on the right. The coverage was breathless. The New York Times reported that the Navy expected such machines one day to walk, talk, see, write and even be aware of their own existence.",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000269",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "It is worth knowing what the machine actually did, because the idea behind it is both humble and the seed of everything in modern deep learning. And you have almost certainly reinvented it yourself.",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000270",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Suppose you are hunting for an apartment and want to decide quickly, yes or no. You check three things: are pets allowed, is it near the metro, does it have a balcony? Each answer is 1 for yes or 0 for no. Not every criterion matters equally. You have a dog, so pets get a weight of 10. The metro gets 4. The balcony, a nice extra, gets 1. And you set a bar: you will rent only if the apartment scores at least 11.",
+      "sourceAnchor": null,
+      "wordCount": 85
+    },
+    {
+      "id": "u000271",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "An apartment near the metro with a balcony scores 4 + 1 = 5. Below the bar: no. One that allows pets and has a balcony scores 10 + 1 = 11. It clears the bar: yes.",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000272",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "That is all a perceptron is: weigh the evidence, add it up, compare with a threshold. If you have ever been on call, you may have written one without knowing its name. Many teams page an engineer with a rule like this: add 5 points if the error rate is above normal, 3 if the slowest requests are slower than usual, 8 if customers have opened tickets in the last ten minutes, and page when the total reaches 10. Rosenblatt’s contribution was not the sum itself. It was a procedure that let the machine find the weights and the threshold on its own, from examples, instead of in a meeting.",
+      "sourceAnchor": null,
+      "wordCount": 110
+    },
+    {
+      "id": "u000273",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "For a decade the excitement held. Then, in 1969, Marvin Minsky and Seymour Papert published a book called Perceptrons that explained, with mathematical precision, what a single perceptron could never do. The most famous example is embarrassingly small.",
+      "sourceAnchor": null,
+      "wordCount": 38
+    },
+    {
+      "id": "u000274",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Imagine a primary database and its replica. You want an alarm when the two disagree : exactly one of them reports a successful write. Both succeeding is fine. Both failing is a different alarm entirely. Try to set up the checklist. Any weights that fire for “primary only” and for “replica only” will also fire for “both”, or else fire for “neither”. There is no setting that works, not because you are not clever enough, but because a single weighted sum with a threshold can only split the world with one straight line, and “exactly one of two” cannot be separated by a single straight line. This is the XOR (exclusive or) problem , and the disappointment that followed the book helped push neural network research into a long winter.",
+      "sourceAnchor": null,
+      "wordCount": 128
+    },
+    {
+      "id": "u000275",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The frustrating thing is that the way out was visible at the time. Use more than one neuron. Let one learn to detect “primary yes, replica no”. Let another detect “primary no, replica yes”. Then let a third fire if either of the first two fires. Three simple checklists, arranged in two layers, solve what one checklist never could. How many neurons and layers a real problem needs is a hyperparameter, chosen by trying a few sizes on the mock exam. In principle one hidden layer with enough neurons can approximate almost any relationship, but in practice several layers do the same job with far fewer neurons, because later layers build judgments out of the judgments of earlier ones. Stack neurons like this, with an input layer, one or more hidden layers and an output layer, and you have a multi-layer perceptron , or MLP.",
+      "sourceAnchor": null,
+      "wordCount": 144
+    },
+    {
+      "id": "u000276",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Two things about such a network are easy to misunderstand, and both matter.",
+      "sourceAnchor": null,
+      "wordCount": 13
+    },
+    {
+      "id": "u000277",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "First, nobody assigns the hidden neurons their jobs. There is no neuron programmed to judge “the neighborhood” or “the paperwork”. The hidden neurons discover their own sub-criteria during training. Think of an experienced recruiter who, after reading ten thousand CVs, has developed gut feelings she has never named: a certain kind of gap, a certain way of describing a project. Hidden neurons are like that. They invent useful intermediate judgments, and often those judgments have no name in any human language. They do not all end up with the same judgment because they start from different random weights: if every hidden neuron started identical, every one would receive identical blame and stay identical forever, and a little randomness at the start is what lets them drift toward different specialties.",
+      "sourceAnchor": null,
+      "wordCount": 129
+    },
+    {
+      "id": "u000278",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Second, there must be a bend between the layers. Each neuron’s sum passes through an activation function before it moves on. Without it, the layers collapse into each other. Think of converting euros to dollars and then dollars to pounds: however many conversions you chain, the result is one fixed exchange rate from euros to pounds. A hundred layers of plain weighted sums are mathematically identical to a single layer. A small bend at every step, such as ReLU (rectified linear unit) , which passes positive values through and turns negative ones into zero, is what lets a stack of simple neurons draw complicated boundaries. It manages this the way a curve can be drawn with many short straight segments: each neuron contributes one bend at its own place, and hundreds of bends, added and stacked, can trace almost any shape. Each neuron also has a bias, the constant met with the ruler, and it turns out to be simply the threshold moved to the other side of the comparison: instead of “score at least 11”, the neuron computes “score minus 11” and asks whether that is positive. A single neuron whose bend is the dimmer switch, the sigmoid, computes exactly what logistic regression computes: it weighs the evidence, adds the bias and passes the sum through the S-curve. The classifier of the last chapter was a one-neuron network all along.",
+      "sourceAnchor": null,
+      "wordCount": 230
+    },
+    {
+      "id": "u000279",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "So why did it take until the 1980s for multi-layer networks to take off? Because knowing that a hidden layer could solve the problem is not the same as knowing how to find its weights. With one neuron, it is easy to see which weight was wrong. With three layers, when the final answer is wrong, which of the hundreds of weights inside is to blame, and by how much?",
+      "sourceAnchor": null,
+      "wordCount": 70
+    },
+    {
+      "id": "u000280",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "That question waited years for a good answer. The answer turned out to involve a mountain, a thick fog and a very careful way of passing the blame backwards.",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000281",
+      "chapterId": "chapter-0004",
+      "kind": "h2",
+      "text": "3.2 Down the Mountain in the Fog",
+      "sourceAnchor": "down-the-mountain-in-the-fog",
+      "wordCount": 8
+    },
+    {
+      "id": "u000282",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "You are standing somewhere on a mountain at night, in fog so thick you cannot see your own boots. You need to get down to the valley. You have no map and no light. What do you do?",
+      "sourceAnchor": null,
+      "wordCount": 38
+    },
+    {
+      "id": "u000283",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "You feel the ground. Through your soles you can sense which way it slopes, and how steeply. So you take one step in the direction that goes downhill most sharply. Then you stop, feel the ground again, and take another step. Step after step, without ever seeing the valley, you descend.",
+      "sourceAnchor": null,
+      "wordCount": 51
+    },
+    {
+      "id": "u000284",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "This is how virtually every modern neural network learns, and once you see it, it is hard to unsee. The mountain is the model’s error. Every position on it corresponds to one particular setting of all the weights, and the height at that position is how wrong the model is with those weights. Training means walking downhill. The walk starts at a random spot: the weights begin as small random numbers. Two runs from different starting points usually end in different valleys of similar depth, which is one reason two training runs of the same network rarely produce identical weights. The slope under your boots, measured in every direction at once, is called the gradient , and the method, feel the slope and step downhill, is gradient descent .",
+      "sourceAnchor": null,
+      "wordCount": 127
+    },
+    {
+      "id": "u000285",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The length of your stride turns out to matter enormously, and it has a name: the learning rate . Take tiny steps and you will still be walking at sunrise. Take huge ones and something odd happens. You leap over the valley floor, land on the opposite slope, feel that it goes downhill back the way you came, leap again, and bounce from side to side without ever settling.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000286",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "If that bouncing looks familiar, you may have run it in production. Picture an autoscaler configured to react hard to every change in load. Traffic rises a little; it adds ten instances. Load per instance drops sharply; it removes ten. Load spikes; it adds them back. The cluster flaps all night, and the person on call learns the hard way what a learning rate that is too high feels like. The fix, in both worlds, is the same: smaller, calmer steps. The stride is chosen partly by trial on a short training run, and in serious training it rarely stays the same from the first step to the last; how it is varied is one of the routines a later chapter opens up.",
+      "sourceAnchor": null,
+      "wordCount": 123
+    },
+    {
+      "id": "u000287",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "That is the walking. Now for the hard part, the question the previous section left hanging. In a network with many layers, how do you know which way the slope goes for each of thousands of weights hidden deep inside?",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000288",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Picture a furniture workshop with three stations in a row: cutting, assembly and painting. A customer returns a crooked wardrobe. The inspector does not blame everyone equally, and he does not start at the beginning. He starts at the end and walks backwards. The painter received a door that was already crooked, so only a small share of the blame is his. The assembler glued it crooked because the panel arrived two millimeters short, so most of the blame travels further back, to the cutter. By the time the inspector reaches the start of the line, every station knows its own share of the defect, and each adjusts its procedure by exactly that much.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000289",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "This is backpropagation . The error is measured at the output and passed backwards through the network, layer by layer, and at each layer the calculus rule for chained effects, the chain rule, divides the blame among the weights according to how much each one influenced the result. In 1986, David Rumelhart, Geoffrey Hinton and Ronald Williams published a short paper in Nature showing how well this worked for multi-layer networks, and the long winter began to thaw.",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000290",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "If you work with microservices, you already have an intuition for it. When a page loads slowly, distributed tracing shows you where the time went: forty milliseconds in the frontend, three hundred in the API, of which two hundred and eighty were spent waiting for one database query. You do not optimize the frontend; you fix the query. Backpropagation is distributed tracing for mistakes instead of milliseconds. It tells every weight, out of millions, how much of the final error passed through it.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000291",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Now watch our apartment checklist learn, with all the pieces in place. Its weights start out random: balcony 10, metro 1. A client is sent to a flat with an enormous balcony, nowhere near a metro station, and comes back furious. That bad review is the error. The checklist does not get torn up in a fit of temper. Backpropagation works out how much each weight contributed: the balcony pushed the score up a lot, so its weight drops a little; the metro barely counted, so its weight rises a little. Each correction is the blame multiplied by the learning rate. After tens of thousands of clients, the checklist settles somewhere like balcony 2, metro 9, and nobody ever had to tell it.",
+      "sourceAnchor": null,
+      "wordCount": 123
+    },
+    {
+      "id": "u000292",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "In practice, the model does not consult every client before taking a step. Computing the exact slope over millions of examples would make each step unbearably slow. Instead it looks at a small random handful, a mini-batch of perhaps a few dozen or a few hundred examples, estimates the slope from those, and steps. It is the logic of an opinion poll: a thousand well-chosen people tell you roughly what millions think. The estimate is noisy, so the descent wobbles, which is why the method is called stochastic gradient descent. One full pass through all the training data is called an epoch . Modern training usually adds one more refinement: optimizers such as Adam remember recent slopes and adapt each weight’s step size, like an experienced hiker who lengthens her stride on steady ground and shortens it on loose rock.",
+      "sourceAnchor": null,
+      "wordCount": 139
+    },
+    {
+      "id": "u000293",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "There is one last surprise on this mountain, and it overturns a fear that worried researchers for years. A real mountain has two horizontal directions. The error landscape of a network has one direction for every weight, millions of them. People feared that the walker would get trapped in some small hollow halfway down, a local minimum , unable to climb out. In such vast spaces, it turns out, hollows that trap the walker far above the valley floor are rare. Most flat spots are saddles: downhill in some direction you have not tried yet, and the jitter of mini-batches tends to find it. The walker who gets lost in practice is usually the one with the wrong stride. Nor does the walker ever know she has reached the lowest point of the whole mountain, and that matters less than it sounds: in practice you stop when the error on the mock exam stops improving, often before the training error stops falling, and stopping early, as a later chapter shows, is a feature rather than a compromise.",
+      "sourceAnchor": null,
+      "wordCount": 176
+    },
+    {
+      "id": "u000294",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "With backpropagation, networks could finally learn. But point one at a photograph and a new problem appears. A modest photo has a million pixels; if every neuron in the first layer needs its own weight for every pixel, the network drowns in weights before it learns anything. The way out came, in part, from an experiment with a cat in the late 1950s.",
+      "sourceAnchor": null,
+      "wordCount": 63
+    },
+    {
+      "id": "u000295",
+      "chapterId": "chapter-0004",
+      "kind": "h2",
+      "text": "3.3 What the Cat’s Brain Revealed",
+      "sourceAnchor": "what-the-cats-brain-revealed",
+      "wordCount": 7
+    },
+    {
+      "id": "u000296",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "In 1958, two young neuroscientists at Johns Hopkins, David Hubel and Torsten Wiesel, were recording the activity of single neurons in the visual cortex of an anesthetized cat. Their plan was to project spots of light onto a screen in front of the cat and see which spots made a neuron fire. For hours, nothing much happened. Then, as one of them slid a glass slide into the projector, its faint edge swept a thin line of shadow across the screen, and the neuron erupted, crackling through the loudspeaker like a machine gun.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000297",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The neuron did not care about spots. It cared about edges , at one particular angle, in one particular patch of the visual field. Over the following years, Hubel and Wiesel mapped a whole hierarchy: simple cells that respond to edges, more complex cells that respond to combinations of edges, and further stages that respond to ever richer patterns. The work earned them a Nobel Prize in 1981, and it planted an idea that computer scientists would eventually turn into one of the most successful ideas in machine learning.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000298",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Here is the idea as a story. A team of inspectors examines a photograph, each holding a small magnifying glass. The first inspector has no idea what a cat is. She only looks for sudden changes in brightness and marks where there are lines. The second inspector never sees the photo at all, only the first one’s notes, and marks places where two lines meet at an angle. The third, reading those notes, notices that two sharp angles side by side look like a pair of ears. The last one puts ears, eyes and whiskers together and says: cat.",
+      "sourceAnchor": null,
+      "wordCount": 99
+    },
+    {
+      "id": "u000299",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Nobody in this chain ever sees the cat whole. It is assembled from local details that grow more abstract at every level, much as you read a word from letters and letters from strokes.",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000300",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The magnifying glass is something you have used yourself. The blur, sharpen and edge-detect filters in any photo editor are small grids of numbers, typically three by three, slid across the image. At every position, the grid is multiplied by the pixels beneath it and the results are summed into a single new pixel. An edge-detection grid produces a large number wherever brightness changes abruptly, and almost nothing on smooth areas. Sliding a small grid like this across an image is a convolution , the grid itself is a kernel or filter , and a convolutional neural network , or CNN, is a stack of layers that do exactly this, with one decisive twist: nobody designs the grids. Their numbers are learned through backpropagation, and the network invents whatever detectors help it reduce its error. Some end up looking remarkably like the edge detectors Hubel and Wiesel found in the cat. Many have no name at all.",
+      "sourceAnchor": null,
+      "wordCount": 154
+    },
+    {
+      "id": "u000301",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "This also dissolves the problem that closed the last section, the million weights per neuron. Think of how a linter works. It does not keep a separate rule for line 1, another for line 2, another for line 3 of your file. It has one rule and applies it to every line. A CNN does the same: one small detector, with its handful of weights, is applied at every position in the image, because an edge is an edge wherever it appears. This is weight sharing , and it cuts the number of weights by orders of magnitude. Shifts therefore come largely for free; rotations and changes of size do not, and the network learns them only by seeing rotated and resized examples, which is why training photos are often deliberately rotated, cropped and zoomed, while the condensing of notes described next adds a little tolerance for small wobbles.",
+      "sourceAnchor": null,
+      "wordCount": 148
+    },
+    {
+      "id": "u000302",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The inspectors higher up see more of the picture because, between layers, the notes get condensed. A common trick keeps only the strongest value in every two-by-two block, which is called pooling . Each layer therefore summarizes a larger patch of the original photo than the one before, until the inspectors at the top are effectively looking at the whole image through their notes.",
+      "sourceAnchor": null,
+      "wordCount": 63
+    },
+    {
+      "id": "u000303",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The idea had a long incubation. In the late 1980s and 1990s, Yann LeCun and his colleagues trained convolutional networks to read handwritten digits, and versions of their system were used to read the amounts on bank checks. Then, in 2012, a much deeper CNN trained on graphics cards, later known as AlexNet, entered the ImageNet image-recognition competition, built on a public collection of over a million labeled photos, and won by a margin that startled the field. Within a few years, CNNs were reading medical scans, inspecting circuit boards on production lines, sorting parcels in warehouses and comparing screenshots in visual regression tests.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000304",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "And then the inspectors began to show a disturbing habit. They latch on to whatever reduces the error, including things nobody intended. In a well-known demonstration, researchers deliberately trained a classifier on photos in which wolves always appeared on snow and huskies never did, then examined what it relied on. It had learned, mostly, to detect snow. Real projects can stumble into the same trap by accident: picture a defect detector that quietly learns the lighting of the one inspection station where most defective parts happened to be photographed. Researchers have also found that CNNs trained on ordinary photo collections lean on texture far more than people do. Show a person a cat-shaped outline filled with elephant skin and they say cat; such a network is often more impressed by the skin. The defense is to break the coincidence in the data: photograph defective parts at every station, find huskies on snow and wolves on grass, and test deliberately on such mismatched cases before trusting the model. The network will usually take the easiest clue that works; your job is to make sure the easy clue is the right one.",
+      "sourceAnchor": null,
+      "wordCount": 190
+    },
+    {
+      "id": "u000305",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The inspectors were built for images, where everything arrives at once in a neat grid. Language is different. Words arrive one after another, sentences have no fixed length, and the meaning of a word at the end can depend on something said at the very beginning. To read a sentence, a network needs some kind of memory. The first attempts at giving it one looked a lot like a children’s party game.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000306",
+      "chapterId": "chapter-0004",
+      "kind": "h2",
+      "text": "3.4 The Telephone Game",
+      "sourceAnchor": "the-telephone-game",
+      "wordCount": 5
+    },
+    {
+      "id": "u000307",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "At a children’s birthday party, twelve kids sit in a row. The first one whispers a sentence to the second, who whispers what she heard to the third, and so on down the line. The last child stands up and announces the message. “Grandma bought a red bicycle” has become “Grandpa caught a dead fish”, and the room collapses in giggles.",
+      "sourceAnchor": null,
+      "wordCount": 61
+    },
+    {
+      "id": "u000308",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The first serious attempts to make neural networks read language worked very much like this game, and they inherited its weakness.",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000309",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "The idea is natural. A sentence arrives one word at a time, so let the network read one word at a time, and let it carry a running summary from each word to the next. At every step it combines the new word with the summary so far and produces an updated summary. That summary is called the hidden state , and a network built this way is a recurrent neural network , or RNN.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000310",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "If you have ever written a reduce or a fold , you already know its shape. You walk through a list in order, and at each step you combine the current item with an accumulator to produce the new accumulator. An RNN is exactly that, with two twists: the accumulator is a fixed-size list of numbers, and the function that combines it with each new word is a small neural network whose weights are learned. However long the sentence, the accumulator never grows. That fixed size is both the beauty of the design and its curse. In practice the accumulator typically holds a few hundred to a couple of thousand numbers, chosen once by the designer: a lot of room for one sentence, and very little for a whole novel. The party game misleads about one thing, the cause of the loss: the children mishear by accident, while the network decides, by learned rules, what to keep and what to drop, and the trouble is only that a summary of fixed size must drop something.",
+      "sourceAnchor": null,
+      "wordCount": 174
+    },
+    {
+      "id": "u000311",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "To feel the curse, imagine reading a detective novel under a strange rule: you may keep only a single index card of notes, and after each page you must update it. By chapter twenty, the card holds a fine summary of the current scene. But the color of the coat the murderer wore, mentioned once in chapter two, was crossed out long ago to make room for something more recent. When the detective finally reveals that the coat was green, you have no idea why it matters.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000312",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "There is a second, deeper reason for the forgetting, and it has to do with how the network learns. Training must send blame backwards, and in an RNN that means backwards through every word of the sentence. At each step back, the blame gets multiplied by a number, and if that number is typically a little below one, the signal shrinks like compound interest running in reverse. Multiply by 0.9 fifty times and about half a percent is left. (Multiply by 1.1 instead and the blame grows more than a hundredfold, the opposite trouble, called an exploding gradient, which turns out to be the easier one to tame.) The early words receive almost no correction, so the network barely learns to connect things that are far apart. This is the vanishing gradient problem.",
+      "sourceAnchor": null,
+      "wordCount": 135
+    },
+    {
+      "id": "u000313",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "In 1997, Sepp Hochreiter and Jürgen Schmidhuber proposed a cleverer accumulator called the LSTM , short for long short-term memory. Instead of one index card that gets overwritten every page, imagine giving each reader a small notebook with explicit operations: a switch that decides what to erase (a refinement added a few years later), a switch that decides what to write, and a switch that decides what to read out right now. These learned switches are called gates . In programming terms, it is the difference between a single variable overwritten in every iteration and a small struct where one field can be deliberately left untouched for a hundred iterations. The coat’s color can survive until chapter twenty. Nobody tells the switches what to erase or keep: each is a tiny neuron with a dimmer that looks at the current word and the notebook and outputs a number between zero and one, how much to erase, write or read, and its weights are learned by backpropagation like everything else, so the network discovers for itself which kinds of details tend to be worth keeping.",
+      "sourceAnchor": null,
+      "wordCount": 182
+    },
+    {
+      "id": "u000314",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "LSTMs were a triumph. For roughly a decade they and their relatives powered speech recognition, phone keyboard predictions and machine translation; when Google moved its translation service to neural networks in 2016, an LSTM-based system was at its core. Recurrent ideas still appear wherever data truly arrives one tick at a time, such as sensor streams and live telemetry, and a newer family called state-space models (Mamba is a well-known example) revisits the running-summary idea with better mathematics.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    },
+    {
+      "id": "u000315",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "But two problems refused to go away. The notebook helped, yet messages still traveled hand to hand, and over very long texts they still faded. And the hand-to-hand structure was slow: word fifty cannot be processed until word forty-nine is done, just as you cannot parallelize a reduce whose every step depends on the previous result. Graphics cards are built to do thousands of things at once, and an RNN makes them wait in a queue.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000316",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "It is worth pausing on what the whispering was for. Each child needed to know the message so far only because they could not hear the first child directly. So in 2017, a group of researchers at Google asked a question that sounds almost naive in hindsight. What if nobody had to whisper? What if every word in a sentence could simply look at every other word, all at once? Their paper had a confident title, Attention Is All You Need , and it changed the field. Before we follow it, though, it is time to stop and look at what we have actually been building these last four sections. We have been calling it a neural network, and a surprising number of people, engineers included, believe that this means we have been building a small brain.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000317",
+      "chapterId": "chapter-0004",
+      "kind": "p",
+      "text": "Going further. If you wondered what it really means for every word to look at every other word, section 7.2 takes the idea apart. Why stopping early helps rather than hurts is explained in section 10.1, and how researchers find out that a network has been looking at the snow instead of the wolf is the subject of section 10.6. The rest of the hiker’s equipment, from momentum and warmup to carefully chosen starting weights and a cap on exploding gradients, is in section 8.4.",
+      "sourceAnchor": null,
+      "wordCount": 89
+    }
+  ]
+}

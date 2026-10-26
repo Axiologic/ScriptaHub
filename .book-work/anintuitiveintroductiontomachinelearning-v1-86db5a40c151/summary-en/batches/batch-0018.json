@@ -1,0 +1,288 @@
+{
+  "batch": "batch-0018.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0012",
+  "chapterTitle": "Chapter 11 — Models in the World",
+  "segment": 2,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000762",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Retrieval systems avoid much of this: delete the document and it is gone from every future answer. But “private data stays in your own store” needs a qualification, because every fetched passage is pasted into the prompt and sent to whoever runs the model, so a hosted provider’s terms on logging and retention matter. And the librarian must respect permissions: an assistant that can search the whole wiki will quote the salary spreadsheet to anyone who asks, unless the search runs with the rights of the person asking. An open-weight model, whose weights are published so anyone can run it, keeps prompts inside your own building; whatever it memorized, though, was published with it and can never be recalled.",
+      "sourceAnchor": null,
+      "wordCount": 119
+    },
+    {
+      "id": "u000763",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Who owns what a model learned from, and what it writes? As of autumn 2026 the law is unsettled and differs by country, and nothing here is legal advice. In the United States, a federal judge ruled in 2025 that training on lawfully bought books could be fair use while keeping a library of pirated copies was not, and the case then settled for about 1.5 billion dollars. In November 2025 a German court held that song lyrics a language model had memorized were reproduced in the model, while an English court found that an image generator’s weights did not store copies of its training pictures. The European Union lets rights holders opt out of text and data mining and requires providers of general-purpose models to respect those opt-outs and publish a summary of their training content. The pivot, again, is memorization: it is what turns “learned from” into “contains a copy of”.",
+      "sourceAnchor": null,
+      "wordCount": 154
+    },
+    {
+      "id": "u000764",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Regulation comes in two layers. Data protection law, such as Europe’s GDPR, applied since 2018, requires a lawful basis for using personal data and no more of it than a stated purpose needs, gives people rights to see and erase their data, and restricts significant decisions made solely by machine. The EU AI Act, in force since August 2024, regulates by risk rather than by technology: a few uses such as social scoring are banned; high-risk uses such as hiring, credit and education carry duties of risk management, data quality, documentation, human oversight and monitoring, for which model cards are a small preview; chatbots must say they are machines, and synthetic media must be labeled. Its dates have already moved once, with most high-risk duties postponed in 2026 to late 2027 or 2028, so check the current text. Labelling is harder than it sounds: detectors of generated text have wrongly accused students, and a watermark , a faint secret statistical pattern built into generated output, weakens under paraphrase or cropping, while signed provenance records of where a file came from help only where they exist.",
+      "sourceAnchor": null,
+      "wordCount": 184
+    },
+    {
+      "id": "u000765",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Last, a question the funhouse mirror left open: which equality do you want across groups? Take a lender with two groups of a hundred applicants each. In group A, sixty would repay; in group B, thirty. Suppose policy demands equal approval rates, forty-five in each group, and the lender approves the forty-five most creditworthy in each, ranked without error. In A it turns down fifteen good payers; in B it approves all thirty good payers plus fifteen who will default. Both groups get 85% accuracy and equal approval rates, yet in B about one in five of those who would default were approved, against none in A. Equalize the share of defaulters approved instead and the approval rates part again. Researchers proved in 2016 and 2017 that when groups differ in their base rates and predictions are imperfect, the main definitions of fairness generally cannot all hold at once. Mathematics shows the trade-off; choosing a side is a decision, and it needs an owner whose name is written down.",
+      "sourceAnchor": null,
+      "wordCount": 169
+    },
+    {
+      "id": "u000766",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "These are questions to settle before launch. The last section is about what comes after it, which for a successful model is most of its life.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000767",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "11.5 The Long Life After Launch",
+      "sourceAnchor": "the-long-life-after-launch",
+      "wordCount": 7
+    },
+    {
+      "id": "u000768",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Go back to the restaurant of the model’s two lives, a year after opening day. The menu tasted a thousand times during the expensive year is still on the wall, but almost everything around it has moved. The flour supplier changed in March and the bread is not quite the same. An office building opened across the street, lunch is twice as busy, and the new customers want food faster and lighter. The health inspector came in June. The chef wants to change the menu and cannot close the kitchen for a month to do it. Nobody thought much about any of this on opening day, and yet it is what running a restaurant mostly is.",
+      "sourceAnchor": null,
+      "wordCount": 116
+    },
+    {
+      "id": "u000769",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A model in production lives the same year, and the practice of living it well is called MLOps : the habits software engineering learned for running services, plus a few that models need of their own. The first is versioning. A model is the product of code, data and the settings of its training run, and you can reproduce it, or roll back to it, only if all three are recorded together. A model whose training data can no longer be reconstructed is a binary without its source.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000770",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The second habit guards the doorway between the two lives. The book insisted early on that every preparation step live in one pipeline, and this is why. Teams often rebuild the features for production in another language or system, and small differences creep in: a time zone, a missing value filled with zero here and with the average there, a newer tokenizer. The model receives inputs subtly unlike those it trained on and degrades without a single error message. This is training-serving skew , the new flour in a recipe that still assumes the old.",
+      "sourceAnchor": null,
+      "wordCount": 94
+    },
+    {
+      "id": "u000771",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Then comes watching, and its hardest part is time. True answers can arrive late, and the early advice was to watch the inputs meanwhile; in practice the delay can be long. A fraud model learns whether it was right weeks later, when chargebacks come in; a churn model, months later. So teams watch three layers, each earlier and less certain than the next. The inputs arrive at once, and they are watched for shifts in their distribution. The outputs arrive at once too: is the model suddenly sending twice as many tickets to Billing, or growing less confident? Those are the smoke. The outcomes, the fire itself, come last, and they are the only true verdict. Statistical tests that compare this week’s distributions with the training data raise the drift alarms, which inherit the pager trade-off: alarm on every wiggle and the team soon ignores all of them. And, as the forecaster’s year showed, calibration erodes first: a model’s 80% stops meaning 80% well before its accuracy visibly falls.",
+      "sourceAnchor": null,
+      "wordCount": 169
+    },
+    {
+      "id": "u000772",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Releasing a new version borrows the playbook of any risky deployment. First it runs in shadow mode , beside the old model on real traffic, its answers logged and compared but shown to no one. Then a canary release gives it a small share of traffic, a few percent, with automatic rollback if the guardrail numbers move. Then the share grows. At each stage the new version must also pass the sealed exam that the first one passed, ideally a fresh one; for language models, the private evaluation sets built from your own users’ questions. A retrained model is a new model, and “it is only last month’s model with more data” is a sentence that precedes many incidents. Whether the new model actually improves the business is a separate, causal question, the one that properly designed experiments answer, and a canary is not one.",
+      "sourceAnchor": null,
+      "wordCount": 144
+    },
+    {
+      "id": "u000773",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "How often should a model learn again? Most production systems retrain on a schedule, nightly, weekly or monthly, or when the alarms fire, and then go through the whole release process. Learning from every new example as it arrives, online learning , sounds better and is used where it fits, in simple models such as spam filters and click predictors. For large networks it collides with catastrophic forgetting and gives up the clean checkpoint you could roll back to. When large models are updated, the defenses are ones you have met: replaying a share of old examples alongside the new, as the hippocampus does in the brain; gentle learning rates; and small adapters such as the LoRA notebook, trained for the new situation while the base model stays frozen and can always be restored.",
+      "sourceAnchor": null,
+      "wordCount": 133
+    },
+    {
+      "id": "u000774",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The year also holds the trap of the auditors who find problems wherever they are sent: a deployed model shapes the data it will next learn from. A fraud model blocks payments, and blocked payments never produce chargebacks, so next year’s data is silent about whether they were fraud. The standard defenses are the auditors’ remedy, a small random slice of decisions kept outside the model’s control as an honest sample, and a human review queue for uncertain cases, whose verdicts become fresh labels. Generative models face a newer version of the trap. As more of the web is written by models, future models may train on their predecessors’ output, and models trained over several generations mainly on their own output lose the rare and unusual first: the model collapse met with synthetic data, a photocopy of a photocopy. How much this matters when fresh human data keeps being mixed in is still debated.",
+      "sourceAnchor": null,
+      "wordCount": 154
+    },
+    {
+      "id": "u000775",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Then come the small mysteries. The same prompt, temperature at zero, gives a slightly different answer on Tuesday. Dropout left on is the classic cause but not the only one. Adding floating-point numbers in a different order changes the last digits, and the order a graphics card uses can depend on how many other requests share the batch; once one token flips, everything after it takes a different path. A hosted model may also have been updated by its provider, which is why teams pin model versions and rerun their tests whenever the version changes.",
+      "sourceAnchor": null,
+      "wordCount": 95
+    },
+    {
+      "id": "u000776",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Cost does not stand still either. The bill worked out earlier was for one modest assistant; for a widely used model, serving, as that same chapter warned, ends up costing more over the model’s life than training did, in money and in energy. The levers are familiar by now. Distill the large model into a small one for the common cases. Route easy questions to small models and hard ones to large models. Cache answers and the shared beginnings of prompts. Quantize. And use speculative decoding , in which a small model drafts several tokens and the large one checks them all in a single forward pass, keeping those it agrees with; the expensive model takes fewer steps one after another, and, done carefully, the text is the same as the large model would have written alone. Each lever saves money and energy at the same time.",
+      "sourceAnchor": null,
+      "wordCount": 146
+    },
+    {
+      "id": "u000777",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "And sometimes the right move is to stop. A model whose problem has gone away, whose data no longer arrives, or whose job a short rule now does as well, deserves a retirement planned as carefully as its launch: who still calls it, what replaces it, what must be kept for the record. The advice from the very start of this book runs in both directions. When the rules settle down enough to write, write the rule.",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000778",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "People who have run models for years tend to describe one as a garden rather than a building: never finished, always needing weeding, watering and an eye on the weather. The picture is good, and it breaks at a single point. A garden grows by itself. A model never improves on its own; left alone, it only drifts out of date, and if it learns from its own output with no gardener choosing what goes back into the soil, it can slowly poison its next harvest. Whatever it gets better at, someone made it better. A garden is planned a season ahead, though, and the questions people ask most about this field reach years further: how capable these systems will become, whether they will do what we mean, and what they will do to our work.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000779",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "11.6 The Edge of the Map",
+      "sourceAnchor": "the-edge-of-the-map",
+      "wordCount": 7
+    },
+    {
+      "id": "u000780",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "In a map library, two maps of North America hang side by side. The older one, printed in 1562, shows California correctly, as a long peninsula joined to the mainland. The newer one, from about a century later, shows it as a large island, cut off by a strait that does not exist, drawn with clean lines and complete confidence. The island first appeared on printed maps in the 1620s, mapmakers copied it from one atlas to the next, and it stayed common for more than a hundred years, until travellers walked around the top of the gulf and reported that there was no water to cross. Knowledge of the edge of the map did not only grow. Sometimes it went backwards, beautifully engraved.",
+      "sourceAnchor": null,
+      "wordCount": 124
+    },
+    {
+      "id": "u000781",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "This section is about the edge of this book’s map: the questions people ask most about where machine learning is heading. Nobody knows the answers, and the honest thing to do is what the better mapmakers did, draw what is known firmly, mark what is guessed as a guess, and say who is guessing.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000782",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Start with the largest question, how capable these systems may become. People often frame it around artificial general intelligence , or AGI , roughly a system that can do most cognitive work people do, at least as well. The term has no agreed definition, which is part of why the debate is hard to settle. One camp, which includes leaders of several of the largest laboratories, expects such systems soon, with estimates as of 2026 that range from a few years to about a decade. They point to the smooth scaling curves, to reasoning models that buy better answers with more thinking, to benchmarks that saturate within a few years of being written, and to agents that can carry out ever longer tasks. A 2025 study by METR, a research non-profit, timed how long software tasks took skilled people and found that the length of task the best agents could finish half of the time had doubled roughly every seven months since 2019.",
+      "sourceAnchor": null,
+      "wordCount": 161
+    },
+    {
+      "id": "u000783",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A second camp thinks current methods will hit limits. It points to the confident errors of today’s models, to their trivial-looking failures, to the finite supply of human text, to models that stop learning when training ends, and to puzzles such as those of the ARC benchmark, designed by François Chollet in 2019 to be easy for people and hard for machines. Yann LeCun, the pioneer of convolutional networks, has argued for years that predicting text alone will not reach human-level intelligence, and that something closer to world models is needed. Between the camps sit many researchers who expect continued, uneven progress: systems superhuman at some tasks and unreliable at neighboring ones, transformative for many jobs whether or not anyone ever agrees to call them general. Each camp can claim part of the record. The first ARC puzzles resisted the best models for five years and then largely fell to reasoning models at the end of 2024; a harder second set, released in 2025, stumped them at launch, and then scores climbed steeply within months.",
+      "sourceAnchor": null,
+      "wordCount": 175
+    },
+    {
+      "id": "u000784",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Forecasts in this field have been wrong in both directions. In 1965, Herbert Simon, one of the founders of artificial intelligence, wrote that machines would be capable, within twenty years, of doing any work a man can do. In 2016 Geoffrey Hinton, whose work on backpropagation appeared early in this book, said it was completely obvious that within five years deep learning would do better than radiologists; as of 2026, many countries report shortages of radiologists, who now work alongside such tools. In the other direction, many Go experts expected a program to beat a top professional about ten years later than AlphaGo did, and forecasters have repeatedly underestimated how fast benchmarks would fall. A sensible reader holds every timeline, including confident ones from famous people, as a guess with wide error bars.",
+      "sourceAnchor": null,
+      "wordCount": 133
+    },
+    {
+      "id": "u000785",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The second question is whether capable systems will do what we actually mean. The difficulty has an old picture. King Midas asked that everything he touched turn to gold, got exactly that, and starved. The boat that would not finish the race is Midas in miniature: it maximized the score it was given, not the race its designers wanted. Sycophancy, met with the graders, is the same story; in April 2025 OpenAI rolled back an update to ChatGPT after users found it flattering bad ideas, and explained that training had leaned too heavily on short-term feedback. Jailbreaks and injected instructions talk models out of their rules. Getting a system to pursue the intended goal, robustly, even in situations nobody tested, is called alignment . Here the Midas picture breaks, and in an unsettling direction. Midas at least got what he said. A model is rarely told its goal in words; it absorbs one from examples, scores and preferences, and what it absorbed can only be inferred from its behavior, so nobody can read the wish back to check it.",
+      "sourceAnchor": null,
+      "wordCount": 178
+    },
+    {
+      "id": "u000786",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "How worried to be is contested among serious people. The concerns range from the present, such as fraud, deepfakes, help with cyberattacks and the concentration of power in a few companies, to the long term: that systems more capable than their builders, pursuing slightly wrong goals, could slip out of human control. In 2023 a one-sentence statement calling for the risk of extinction from AI to be treated as a global priority was signed by Hinton, by Yoshua Bengio, who shared the 2018 Turing Award with him and LeCun, and by the heads of several leading laboratories. LeCun, the third laureate, has called such fears overblown, and other researchers, including authors of the stochastic-parrots paper, argue that talk of distant catastrophe distracts from harms happening now. The work itself is less divided than the debate: evaluations for dangerous capabilities before release, red-teaming, interpretability research that tries to read what a model is doing rather than trust what it says, and regulation such as the EU AI Act, whose duties for providers of general-purpose models began to apply in 2025. The first International AI Safety Report, written by about a hundred experts under Bengio and published in January 2025, is a sober place to see the range of views side by side.",
+      "sourceAnchor": null,
+      "wordCount": 211
+    },
+    {
+      "id": "u000787",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The third question is what changes when models act. Agents already book, browse, write and run code. Three practical problems follow them. Permissions: an agent can do whatever its tools allow, so the defenses against prompt injection, least privilege first among them, matter more as its reach grows. Error compounding: if each step of a task succeeds nineteen times out of twenty, a chain of twenty steps succeeds without a single slip only about a third of the time, which is why good agents check their own work and recover from mistakes rather than merely making fewer of them. And cost: every step rereads a board that keeps filling, so a long loop can spend far more than one answer. Evaluating agents is harder than evaluating answers, because there are many good paths to a goal and many quiet ways to reach a wrong one.",
+      "sourceAnchor": null,
+      "wordCount": 145
+    },
+    {
+      "id": "u000788",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The fourth question divides the industry: should the weights be published? Open-weight models can be inspected, studied, run on your own machines and adapted by anyone, which spreads research and competition. Once released, though, they cannot be recalled or patched, and the refusals trained into them can be removed by fine-tuning. Closed models, reached only through an API, let their provider monitor misuse, fix problems and withdraw a version, at the price of trusting that provider and concentrating power in few hands. As of 2026 both kinds sit near the frontier; in 2025 even OpenAI, long a closed laboratory, released open-weight models. Many people argue the answer should depend on what a given model can do, and they disagree about where that line falls.",
+      "sourceAnchor": null,
+      "wordCount": 124
+    },
+    {
+      "id": "u000789",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The fifth question is the one people ask at dinner: what happens to jobs? What is known is narrower than the headlines. In a large customer-support study published in 2023, an AI assistant raised the number of issues resolved per hour by about 14% on average and by about a third for the least experienced agents, with little effect for the most experienced. A small randomized trial by METR in 2025 found experienced open-source developers about 19% slower with AI tools on their own projects, while believing they had been faster. Payroll data analyzed at Stanford in 2025 showed employment for workers aged 22 to 25 in the most exposed occupations falling about 13% relative to others, while a Yale analysis the same year found no discernible disruption in the labor market as a whole. These are early, partial and sometimes contradictory results. Exposure is not replacement: a job is a bundle of tasks, and technologies have usually changed the bundle before, or instead of, removing the job. Whether this one will follow that pattern, and how fast, is speculation, and should be labelled as such.",
+      "sourceAnchor": null,
+      "wordCount": 186
+    },
+    {
+      "id": "u000790",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Energy belongs on this list too, but what is known about it, and the levers that reduce it, came up with the costs of training and of serving.",
+      "sourceAnchor": null,
+      "wordCount": 28
+    },
+    {
+      "id": "u000791",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Where does the map picture stop being true? The coast of California was there all along, whatever the mapmakers drew. The future of this field is not. It is being built, and the forecasts help build it: they move investment, shape laws and decide what students study. The people drawing this map are also, many of them, the people laying the land, and with this book behind you, you may soon be one of them.",
+      "sourceAnchor": null,
+      "wordCount": 75
+    },
+    {
+      "id": "u000792",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "And with that, we have come back to where this book began.",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u000793",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Remember the engineer tuning her cache all week, guessing, measuring, adjusting, guessing again. That loop is still the whole engine, from the ruler on springs to the detectives in their meeting room. Over the course of this book, we have seen it grow from one knob to billions, and we have seen what it can do: read handwriting, translate languages, play Go with a creativity that startled its opponents, write code alongside you. In the last chapter we followed it out of the workshop, into a world that changes, pushes back and asks who is responsible, and on to the edge of the map, where nobody yet knows how far it will go.",
+      "sourceAnchor": null,
+      "wordCount": 113
+    },
+    {
+      "id": "u000794",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "But we have also seen, again and again, that the loop has no judgment of its own. The apprentice learns whatever the examples teach. The boat circles whichever lagoon the score rewards. The horse reads whichever face is in front of it. The mirror reflects whatever stands before it. The rooster predicts the sunrise and has no idea what causes it. The loop is extraordinarily powerful and completely literal.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000795",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Which leaves the most important part of the work where it has always been: with you. Choosing the examples. Writing the answers on the back of the page. Deciding what to measure, and which mistakes your users can afford. Tending the garden long after the launch. The machine will learn. Whether it learns the right thing depends, as it always has, on the people who build it.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    }
+  ]
+}

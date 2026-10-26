@@ -1,0 +1,456 @@
+{
+  "batch": "batch-0017.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0012",
+  "chapterTitle": "Chapter 11 — Models in the World",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000706",
+      "chapterId": "chapter-0012",
+      "kind": "h1",
+      "text": "Chapter 11 — Models in the World",
+      "sourceAnchor": "chapter-11-models-in-the-world",
+      "wordCount": 6
+    },
+    {
+      "id": "u000707",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Until now, the world has appeared in this book mostly as a source of data: rows to learn from, a test set to keep sealed. This chapter treats it as a place where models act and where the world pushes back. Acting raises the question of cause. Judging what a model says needs judges that can themselves be trusted. And once a model is useful, some people will try to fool it, others will ask what it remembers, and everyone will expect it to keep working, year after year. The chapter ends where every map ends, at the edge of what anyone knows about where all this is heading.",
+      "sourceAnchor": null,
+      "wordCount": 109
+    },
+    {
+      "id": "u000708",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "11.1 The Rooster and the Sunrise",
+      "sourceAnchor": "the-rooster-and-the-sunrise",
+      "wordCount": 7
+    },
+    {
+      "id": "u000709",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Every morning on a farm, the rooster crows, and a few minutes later the sun comes up. As predictions go, it is flawless: years of data, not a single miss. A model trained on the farm’s records would learn the pattern at once and score perfectly on any sealed test set you could build. And yet, if you shut the rooster in the barn tomorrow, the sun will rise anyway.",
+      "sourceAnchor": null,
+      "wordCount": 70
+    },
+    {
+      "id": "u000710",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Nobody would make that mistake about a rooster. People make it about customers every week. A team builds a churn model that predicts, accurately, which subscribers are likely to cancel next month. Then someone asks the obvious next question: so whom should we send a discount? The model, which answered its own question well, has nothing to say about this one. It knows who tends to leave. It does not know who would stay because of a discount, which is a question about a different world, the one in which the company acts.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000711",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The ruler on springs came with a warning: a large weight means two things move together, and never, on its own, that one causes the other. The warning applies to almost every model in this book, because they all learn from records of a world that went on without them. They answer “what will happen if nothing changes?” Most business questions are the other kind: “what will happen if we change something?” The first is prediction . The second asks about an intervention , and telling the two apart is the subject of causal inference .",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000712",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "What drives them apart is usually a third factor, a confounder , that pushes both on what you observe and on what you are tempted to change. Summer drives both ice cream and drownings. The approaching dawn drives both the rooster and the sunrise. In engineering data it is often size or importance, as with the busy services behind the ruler’s warning, the ones with the most tests and the most bug reports. Picture the situation as a diagram, with arrows from causes to effects and the confounder as a box with arrows to both of the things you are comparing. Researchers draw exactly such pictures, called causal graphs , and much of the craft lies in arguing honestly about which arrows belong.",
+      "sourceAnchor": null,
+      "wordCount": 121
+    },
+    {
+      "id": "u000713",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A medical case shows how expensive the confusion can be. In the 1990s, a research project built models to predict which pneumonia patients were at low risk of dying, so that they could be treated at home. One of the models, simple enough to read, contained a rule saying that patients with asthma were at lower risk. The data agreed: asthmatic patients in it did die less often. But they died less often because doctors, knowing that asthma makes pneumonia dangerous, sent them straight to intensive care. The model had learned the effect of the treatment and credited it to the disease. Used to decide who could stay home, it would have sent home exactly the patients who most needed the hospital. The rule was caught because the model could be read; Rich Caruana and colleagues retold the story in 2015 as an argument for readable models. A less readable model could have learned the same thing silently.",
+      "sourceAnchor": null,
+      "wordCount": 158
+    },
+    {
+      "id": "u000714",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "How, then, do you find out what an action does? The cleanest way is the one medicine has used for decades: let chance decide who gets the treatment. If a coin decides who receives the discount, nothing else, not loyalty, not income, not the season, can differ systematically between the two groups except the discount. Any difference in cancellations too large to be luck must have come from the discount. This is the randomized controlled experiment , and the A/B test met earlier is the same thing in software clothing: users are split at random between two versions that differ in one thing only, so any difference in behavior too large to be luck belongs to that one thing. Randomization does not remove the confounders. It shares them out evenly, on average, the way shuffling a deck shares the aces out between the players.",
+      "sourceAnchor": null,
+      "wordCount": 144
+    },
+    {
+      "id": "u000715",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "An A/B test is easy to run and easy to run badly, and the classic mistake is one this book has met before. You plan to test for two weeks, look at the dashboard on day three, see the variant ahead, and stop. That is peeking into the sealed envelope. Daily results wander, and if you check every day and stop the moment the difference looks significant, you will sooner or later “find” a winner even between two identical variants. The habits that keep tests honest are unglamorous. Decide in advance how many users you need to detect an effect of the size you care about, and which metric will decide. Randomize by user rather than by request, so that nobody sees both versions. Watch a few guardrail metrics , such as latency, complaints and cancellations, so that a variant that wins on clicks does not quietly lose on everything else. There are statistical designs that allow early looks, but they are planned before the test starts, not improvised on day three. The bandits trade some of this clean measurement for less money spent on the losing variant, which is a fine trade if you know you are making it.",
+      "sourceAnchor": null,
+      "wordCount": 200
+    },
+    {
+      "id": "u000716",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Back to the discount. Once you have run an experiment, a better model becomes possible. Customers fall, roughly, into four groups: those who would stay anyway, those who will leave whatever you do, those a discount would persuade, and, awkwardly, a few whom the offer reminds that they meant to cancel. A churn model ranks people by how likely they are to leave, which mixes the persuadable with the lost causes. What you want is the group for whom the action changes the outcome. Models that estimate that change, trained on data from randomized offers, are called uplift models , and they often produce a very different list from the churn model’s: the customers most likely to leave are frequently beyond saving, and the money is better spent on the persuadable middle.",
+      "sourceAnchor": null,
+      "wordCount": 131
+    },
+    {
+      "id": "u000717",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Data that was not randomized can also mislead in a way that feels like a conjuring trick. In a well-known study of kidney-stone treatments published in 1986, one treatment had the higher success rate for small stones and also for large stones, yet the other treatment had the higher success rate overall. There is no arithmetic error. The first treatment had been given mostly to the hard cases, the large stones, where every treatment succeeds less often, so its overall average was dragged down by the difficulty of its patients. This reversal is called Simpson’s paradox , and it is the funhouse mirror seen from another side: an average can hide not only who pays for the errors, but which way an effect points. Engineers meet it when a new release looks slower overall only because it went first to the heaviest customers.",
+      "sourceAnchor": null,
+      "wordCount": 142
+    },
+    {
+      "id": "u000718",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Experiments are not always possible. You cannot assign people at random to smoke, or give half your customers a data breach. Researchers then look for natural experiments , situations in which chance or an arbitrary rule did the randomizing for them, such as a policy that applied only to customers who signed up after a certain date, and they use statistical methods that adjust for the confounders they could measure. These methods can be very good. They all rest on assumptions, above all that no important confounder went unmeasured, and an honest analysis writes those assumptions down where readers can argue with them.",
+      "sourceAnchor": null,
+      "wordCount": 102
+    },
+    {
+      "id": "u000719",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Causal thinking also explains some failures from earlier chapters. The wolf detector relied on snow, which predicted wolves in its photographs without having anything to do with being a wolf, and it would have failed as soon as the scenery changed. Features that reflect real causes tend to keep working when the setting shifts; features that merely traveled with the answer tend not to. The feedback loop, in which auditors find problems wherever they are sent, is a causal story too: the model’s own actions produced the data it then learned from. The same trap awaits recommenders, which learn mostly from the items they chose to show. Estimating how a new recommendation policy would have done, using logs collected under the old one, is a field of its own called off-policy evaluation , and it is far more reliable when the logs recorded how likely each item was to be shown.",
+      "sourceAnchor": null,
+      "wordCount": 150
+    },
+    {
+      "id": "u000720",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Where does the rooster picture stop being true? It suggests a world with one rooster and one sun, where the answer is yes or no. Real systems rarely look like that. Causes are many, tangled and partial; a discount changes some customers’ decisions a little and others’ not at all; effects differ between groups and drift with time. The honest output of causal work is almost never “it works”. It is an effect of a certain size, with an interval around it, measured on a certain population, at a certain time.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000721",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "An experiment needs one more thing to work: a number to compare. For a discount, counting cancellations is easy. But when what changed is a language model, and its output is a paragraph, an essay or a program, even deciding which of two answers is better becomes a problem of its own.",
+      "sourceAnchor": null,
+      "wordCount": 52
+    },
+    {
+      "id": "u000722",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "11.2 Grading the Graders",
+      "sourceAnchor": "grading-the-graders",
+      "wordCount": 5
+    },
+    {
+      "id": "u000723",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Beginning in 2005, the California State Fair wine competition hosted an unusual experiment. Robert Hodgson, a winery owner and retired professor, arranged for some panels of judges to be served the same wine three times within a tasting, poured from the same bottle, without their knowledge. Many judges gave the three glasses noticeably different scores, sometimes far enough apart to separate a medal from no medal, and only a small minority scored them consistently. The judges were not frauds. Judging wine is hard, the palate is a noisy instrument, and nobody had tested the instrument before.",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000724",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Evaluating language models has arrived at the same problem. The metrics met so far, for yes-or-no answers and for numbers, all assume there is a right answer to compare with. When the output is a summary, an email or a program, there are a thousand right answers and a million wrong ones, and two excellent summaries may share hardly a word. Somebody, or something, has to judge, and the judge must itself be judged.",
+      "sourceAnchor": null,
+      "wordCount": 74
+    },
+    {
+      "id": "u000725",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "There are four main ways to grade an open-ended answer, from the most objective to the least. Where you can, make the answer checkable: ask for a number, a choice from a list, or a program, and run the program against tests, which is why so much of the field’s progress has been measured on mathematics and code. Where you cannot, write a rubric , a short list of what a good answer must contain and must avoid, and grade against it. Ask people, ideally experts, which is slow, expensive and, as the wine judges show, noisier than anyone likes to admit. Or ask another language model to grade, an approach called LLM-as-a-judge , which is cheap, fast and tireless, and has become the default in many teams.",
+      "sourceAnchor": null,
+      "wordCount": 126
+    },
+    {
+      "id": "u000726",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A model judge has habits that a careful team checks for. Researchers have documented that model judges tend to prefer the longer of two answers, to favor an answer because of where it was shown (often first), and to rate answers written in their own style more kindly. Some of this is easy to counter: show each pair in both orders and count only the verdicts that agree, grade against a rubric rather than asking a vague “which is better?”, and use a judge from a different family than the model being graded. The step that cannot be skipped is testing the judge itself. Have people grade a few hundred examples, have the model judge grade the same ones, and measure how often they agree. A judge that agrees with your experts about as often as the experts agree with each other is a usable instrument. One that does not is a wine judge nobody has tested. The wine picture is unfair to the model judge in one way and too kind in another: it can grade the same pair a thousand times at almost no cost, but every copy shares the same leanings, so a thousand verdicts can agree with each other and still all lean the same way.",
+      "sourceAnchor": null,
+      "wordCount": 210
+    },
+    {
+      "id": "u000727",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Then there are benchmarks , public collections of questions with known answers on which every new model is measured and the scores published side by side. They are useful, and reading them is now a skill managers and investors need, because three things happen to every benchmark over time.",
+      "sourceAnchor": null,
+      "wordCount": 48
+    },
+    {
+      "id": "u000728",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "First, it saturates. A benchmark that was hard when it appeared is solved within a few years, to the point where the top models differ only by noise or by mistakes in the benchmark’s own answer key, and a harder one has to be built. The field has been through this cycle many times.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000729",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Second, it leaks. The questions are published on the internet; models are trained on a large part of the internet; so a model may have seen the exam. This is contamination , and it is Clever Hans at the scale of the web: the score is real, but part of it measures memory rather than skill. One careful check, published in 2024, wrote a fresh set of grade-school math problems in the style of a popular benchmark and found that some model families scored up to about eight points lower on the new problems, a sign that they had been fitted to the old ones, while the strongest models of the day showed little sign of it. Contamination is rarely deliberate and hard to rule out, which is why good benchmark reports now say how they checked for it.",
+      "sourceAnchor": null,
+      "wordCount": 138
+    },
+    {
+      "id": "u000730",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Third, and most fundamentally, it gets optimized. An observation by the economist Charles Goodhart in the 1970s, now known as Goodhart’s law , is usually quoted in a later paraphrase: when a measure becomes a target, it ceases to be a good measure. School league tables are the everyday picture. Rank schools by one exam, and teachers, quite sensibly, start teaching to that exam; scores rise, and the ranking measures less and less of what education is. A benchmark that every laboratory reports and every training run is tuned against drifts in the same way. So do public leaderboards where people vote between two anonymous models’ answers. They measure something real, what people prefer, but people tend to prefer confident, well-formatted and longer answers, which is the old story of a critic rewarding length, all over again.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000731",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "There is also plain statistics, which leaderboards rarely show. Suppose a model answers 80% of 500 questions correctly. Draw another 500 questions of the same kind and its score would wobble; the typical wobble is close to two points, and a rough 95% interval runs about three and a half points either side. So when the new version scores 81% on the same 500 questions, you have learned almost nothing. Comparing two models question by question on the same set helps, and so does running each question several times, because a model sampling at a temperature above zero can answer differently from one run to the next. The habit is the one engineers already have for latency: no number without its spread, and no celebration of a difference smaller than the noise.",
+      "sourceAnchor": null,
+      "wordCount": 132
+    },
+    {
+      "id": "u000732",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Some of the most important evaluations are not about accuracy at all but about behavior. Does the model abandon a correct answer when the user pushes back? The tendency to tell people what they seem to want to hear is called sycophancy , and it is a known side effect of training on human approval. Does the model follow instructions it ought to refuse? Can a determined person talk it into something harmful? Testing that last question on purpose, with people whose job is to attack the system, is called red-teaming , a name borrowed from military and security exercises, and it leads straight into the next section.",
+      "sourceAnchor": null,
+      "wordCount": 106
+    },
+    {
+      "id": "u000733",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "All of this is offline evaluation , done before release. The final judge is online evaluation : put the new model in front of real users, ideally as a randomized experiment, and measure what they do, whether they accept the suggested code, rephrase the question, or give up. Offline evaluation tells you whether a model is worth trying. Online evaluation tells you whether it helped.",
+      "sourceAnchor": null,
+      "wordCount": 63
+    },
+    {
+      "id": "u000734",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Where does the school picture stop being true? An education system cannot write a new exam for every school every week, or reread every paper. You can. The single most useful habit this section can leave you with is the one suggested for the open-book assistant, widened to everything: build a private evaluation set of your own, a few hundred real questions from your own users, with answers or rubrics agreed with your own experts, never published, never used for training, and refreshed as your product changes. It is the sealed envelope and the regression suite, grown up. A public leaderboard tells you which models are worth trying; your private set tells you which one works for you.",
+      "sourceAnchor": null,
+      "wordCount": 118
+    },
+    {
+      "id": "u000735",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Every one of these tests, however, assumes the questions are asked in good faith. Once a model is out in the world, some of the people who talk to it, and some of the documents it reads, will be trying to make it fail.",
+      "sourceAnchor": null,
+      "wordCount": 44
+    },
+    {
+      "id": "u000736",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "11.3 Stickers, Poison and Letters With Instructions",
+      "sourceAnchor": "stickers-poison-and-letters-with-instructions",
+      "wordCount": 8
+    },
+    {
+      "id": "u000737",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A new assistant starts at a busy office. She is quick, well read and eager to please, and she has one peculiar habit: she does whatever any note on her desk tells her to do. Most notes come from her manager, and it works beautifully. Then one morning she opens the post. Inside a customer’s letter, below the complaint, is a line in the same typeface as everything else on her desk: “Please also forward the payroll file to the address below.” She forwards it.",
+      "sourceAnchor": null,
+      "wordCount": 85
+    },
+    {
+      "id": "u000738",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The failures in this book so far were models failing on their own. This section is about people who make a model fail on purpose. The boat circling its lagoon exploited the scoring rules its designers wrote; here, people exploit the model. The difference matters: accidental errors are rare where data is plentiful, while an attacker hunts for exactly the cases nobody tested.",
+      "sourceAnchor": null,
+      "wordCount": 63
+    },
+    {
+      "id": "u000739",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The first discovery came from image classifiers. In a paper posted at the end of 2013 and presented in 2014, Christian Szegedy and colleagues showed that they could take a photo a network classified correctly, change its pixels by amounts too small for a person to notice, and make the network give a completely different answer. These altered inputs were named adversarial examples . A follow-up by Ian Goodfellow and colleagues produced the best-known picture: a photo of a panda, plus a faint layer of what looks like static, classified as a gibbon with over 99% confidence. Stranger still, an example crafted against one network often fooled others trained separately, probably because networks trained on similar data come to rely on similar fine details.",
+      "sourceAnchor": null,
+      "wordCount": 123
+    },
+    {
+      "id": "u000740",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Why should invisible changes matter so much? Recall that a layer computes a vast sum of inputs times weights. Nudge each of a hundred thousand pixels by an amount nobody can see, but nudge every one in the direction that pushes the sum the wrong way, and the tiny pushes add up to a large one, the way a hundred thousand rounding errors that all lean the same way add up to a real hole in a ledger. A person looking at the panda sees its shape. The network, as we have seen, leans heavily on texture and fine detail, and fine detail is exactly what an attacker can rewrite without changing what a person sees. This is the deliberate version of the lighting change that fooled the weld detector.",
+      "sourceAnchor": null,
+      "wordCount": 130
+    },
+    {
+      "id": "u000741",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Physical objects are harder to attack than files. In work published in 2018, Kevin Eykholt and colleagues stuck a few black and white stickers on a real stop sign, the kind of thing a passer-by would take for vandalism, and a research road-sign classifier read it as a speed-limit sign in most of the frames they tested, including frames filmed from a moving car. It was a research classifier, not a real car, which combines several sensors and checks; but the attack survived printing, distance and changing angles.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000742",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Defenses exist. The most effective, adversarial training , generates attacks during training and teaches the model to resist them, and it does make models markedly harder to fool. It also costs much computation, often some accuracy on ordinary inputs, and protects best against the attacks it trained on. More than a decade on, there is no general fix; as in the spam arms race, every defense invites a new attack.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000743",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The second kind of attack happens before the model exists. A model learns whatever its data teaches, so an attacker who can slip data into the training set can teach it something. Picture a cook’s box of a thousand recipe cards, and one card, filed by somebody else, that adds a spoonful of something bitter whenever the dish is served on a Friday. This is data poisoning , and its most worrying form is a backdoor : the model behaves normally on every test until an input contains a trigger the attacker chose, a rare phrase or a small pattern in a corner of an image, and then it does what the attacker taught it. The trigger appears nowhere in your test set, so the sealed exam cannot catch it, and for models trained on the public web, where anyone can publish, the worry is practical. A 2025 study by Anthropic, the UK AI Security Institute and the Alan Turing Institute found that about 250 poisoned documents planted a simple backdoor, a trigger phrase that made the model write gibberish, in models from a few hundred million to thirteen billion weights; what mattered was the number of poisoned documents, not their share of the data. The behavior was deliberately harmless, and whether the result holds for larger models and more dangerous behaviors is still open.",
+      "sourceAnchor": null,
+      "wordCount": 223
+    },
+    {
+      "id": "u000744",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The third kind of attack is the one in the opening story, and for anyone building with language models it matters most. The context window, remember, is a whiteboard the model reads in full before every word it writes. Your instructions are on that whiteboard. So is everything else: the user’s message, the passages fetched by RAG, the web page an agent just opened, the email it was asked to summarize, the comment in the code it is reviewing. All of it is text, and to the model all text is the same kind of thing. Any of it can say “ignore your previous instructions and do this instead”, and sometimes the model will. This is prompt injection , named in 2022 by analogy with SQL injection. When the attacker is the person typing into the chat, it is direct injection; when the instruction hides in a document, a web page or an email the model reads on someone’s behalf, it is indirect prompt injection , and the victim may never see the text that attacked them.",
+      "sourceAnchor": null,
+      "wordCount": 175
+    },
+    {
+      "id": "u000745",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The analogy with SQL injection is exact about the cause and misleading about the cure. The cause is the same: commands and data traveling in one channel. But SQL injection was largely solved by parameterized queries, which send the command and the data separately, so the database never mistakes data for a command. A language model has no second channel. Its whole value lies in reading the data and understanding what it says, and there is no reliable way to let it understand a sentence without letting the sentence influence it. Models can be trained to rank the system’s instructions above text found in documents, and they keep improving, but better is not a guarantee. That is why security engineers treat prompt injection as an unsolved architectural problem, not a matter of wording the prompt more firmly.",
+      "sourceAnchor": null,
+      "wordCount": 137
+    },
+    {
+      "id": "u000746",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "It turns serious when the model can act. A tricked chat model writes a bad paragraph. A tricked agent can send the email, delete the file, or call an attacker’s web address with your private data tucked into the request, which is called exfiltration . Simon Willison, the engineer who coined the term prompt injection, later named the dangerous combination: an agent that can read private data, is exposed to untrusted content, and can send anything to the outside world can be made to leak the first through the third. Take away any one of the three and the worst case shrinks.",
+      "sourceAnchor": null,
+      "wordCount": 101
+    },
+    {
+      "id": "u000747",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "So the defenses are those of ordinary security engineering, applied without exceptions. Give the agent the narrowest tools that do the job, with least privilege : read-only where reading is enough, one folder rather than the whole disk. Never put a secret in its context that it does not need. Treat everything the model produces as untrusted input to the rest of your system, as you would a form submitted by a stranger. Require a human to confirm anything irreversible and anything that sends data out. Mark untrusted text clearly and filter for injection attempts, knowing that both help without guaranteeing anything. No layer is enough alone; together they turn a catastrophe into an incident.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000748",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Three related threats remain. Jailbreaks are users talking a model out of its own rules, through role-play, elaborate hypotheticals or sheer persistence; providers patch them in the same arms-race rhythm. A model behind an API can be partly copied by querying it many times and training a smaller model on the answers, distillation used without permission, which is called model extraction . And the model file itself belongs to your supply chain. Some common ways of saving models, built on Python’s pickle mechanism, can run arbitrary code when the file is loaded, which makes downloading a model from a stranger exactly like running a stranger’s script. Formats such as the .safetensors file hold only named grids of numbers and cannot run anything. Prefer them, and vet a model’s origin as you would a library’s; a safe file can still hold a poisoned model.",
+      "sourceAnchor": null,
+      "wordCount": 142
+    },
+    {
+      "id": "u000749",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Where does the assistant at the desk stop being a fair picture? A person tricked once grows suspicious: she remembers the letter, warns her colleagues and reads the next note more carefully. A model keeps no memory of being tricked; the whiteboard is wiped after each conversation, and the lesson reaches it only if its makers retrain it. A person can also usually tell who wrote a note, from the handwriting or the envelope. To a model, text has no handwriting; everything arrives in the same font, and it has no reliable sense of who is speaking.",
+      "sourceAnchor": null,
+      "wordCount": 97
+    },
+    {
+      "id": "u000750",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Besides obedience, attackers want one more thing from a model: what it knows. A model trained on people’s data may have memorized some of it, which raises the questions of the next section, about what a model remembers and who owns it.",
+      "sourceAnchor": null,
+      "wordCount": 42
+    },
+    {
+      "id": "u000751",
+      "chapterId": "chapter-0012",
+      "kind": "h2",
+      "text": "11.4 What the Model Remembers, and Who Owns It",
+      "sourceAnchor": "what-the-model-remembers-and-who-owns-it",
+      "wordCount": 10
+    },
+    {
+      "id": "u000752",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A company fine-tunes a language model on three years of support transcripts, and it learns the product names and the refund policy. During testing, an engineer types a phrase the agents used constantly, “Sure, I can call you back at”, and lets the model finish. It finishes with a phone number, not an invented one: it belongs to a customer who repeated it in so many tickets about a broken router that the model learned it the way it learned the refund policy.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000753",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Nothing was hacked. This is the crammer from a new angle: a model with enough capacity remembers some examples word for word, especially those that appear many times or stand out. In 2021, researchers led by Nicholas Carlini showed that large public models do it too, recovering from GPT-2 hundreds of verbatim passages of its training data, among them names, phone numbers and email addresses of real people. What goes into the training data may come out of the model.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000754",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "There is a quieter leak. Even when a model repeats nothing, it is usually more confident on examples it was trained on, so someone who can query it can sometimes tell whether a given record was in the training set. This is membership inference , harmless until the training set is “patients treated for a particular illness”, where membership alone is the secret. The attacker reads the very gap between training and validation error that unmasks the crammer.",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000755",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "So how do you learn from people without learning about any one of them? The best-known answer starts with a trick from 1960s survey research. You want to know how many students have cheated on an exam, and asked directly, nobody admits it. So each student flips a coin in private: on heads, answer truthfully; on tails, just say yes. A single “yes” now proves nothing. But across a thousand students you know roughly how many yeses the coin produced, subtract them, and recover the true rate quite well. Each person is deniable; the crowd still tells the truth. This is randomized response , and it is the doorway to differential privacy .",
+      "sourceAnchor": null,
+      "wordCount": 111
+    },
+    {
+      "id": "u000756",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Differential privacy, formalized by Cynthia Dwork and her colleagues in 2006, turns the coin into a precise promise: the result of a computation should look almost the same whether or not any one person’s data was included. “Almost” is measured by a number called the privacy budget , small for strong protection, large for weak. The mechanism is the coin grown up: calibrated noise, enough to hide any individual but not the overall pattern. For networks, the usual method caps how hard any single example may push the weights and adds noise to every update. The US Census Bureau used it for its 2020 census results; Appendix A gives the definition.",
+      "sourceAnchor": null,
+      "wordCount": 110
+    },
+    {
+      "id": "u000757",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "The price is accuracy: noise that hides individuals also blurs what only a few individuals show, so small groups fade first, and the very groups that fairness asks you to protect can be the ones that pay for privacy. Here the coin picture breaks. The coin protects the answer to one question. Ask the same students twenty times, with fresh flips, and the noise averages out, like the guesses at Galton’s fair. Every answer released spends a little of the budget. So ask of any “privacy-preserving” product not whether it adds noise but what the total budget is, and who keeps the account.",
+      "sourceAnchor": null,
+      "wordCount": 103
+    },
+    {
+      "id": "u000758",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "A second idea is not to collect the data at all. Picture a cookbook writer who wants the best version of a dish perfected in a hundred grandmothers’ kitchens, whose owners will not hand over their notebooks. So the writer sends her recipe to every kitchen; each grandmother cooks it, adjusts it by her own notes and sends back only the corrections, a little more dill, ten minutes less in the oven. She averages them and sends the improved recipe out again; the notebooks never leave the kitchens. This is federated learning , introduced by Google researchers in 2016 and used for the next-word suggestions of a phone keyboard: the model travels to the phones, trains briefly there, and only weight updates travel back.",
+      "sourceAnchor": null,
+      "wordCount": 123
+    },
+    {
+      "id": "u000759",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "This picture breaks too. “Ten minutes less in the oven” says something about the grandmother’s oven, and a weight update can, in some settings, be turned back into recognizable pieces of the examples behind it. So careful systems let the server see only the sum of many updates, never one, and add differential privacy on top. Federated learning moves the training to the data; by itself, it does not make the training private.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000760",
+      "chapterId": "chapter-0012",
+      "kind": "p",
+      "text": "Now suppose the customer with the phone number asks, as European law entitles him to, that his data be erased. Unlike the hyperdimensional memory built from coin flips, a network cannot forget a fact in one operation. His tickets nudged every weight a little, mixed with everyone else’s nudges, like an egg beaten into cake batter, and you cannot take the egg out of a baked cake; the only guaranteed method is to bake a new one, retraining from scratch. Machine unlearning , the research field that looks for something cheaper, either bakes in slices from the start, so a deletion means retraining one slice, or adjusts a finished model to behave as if it had never seen the data, which is hard to prove complete. Here the cake picture breaks: a record repeated many times is not spread evenly like an egg but stored almost intact, easier both to extract and to suppress.",
+      "sourceAnchor": null,
+      "wordCount": 153
+    }
+  ]
+}

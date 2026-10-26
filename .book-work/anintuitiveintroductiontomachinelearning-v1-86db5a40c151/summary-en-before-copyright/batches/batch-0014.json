@@ -1,0 +1,248 @@
+{
+  "batch": "batch-0014.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0010",
+  "chapterTitle": "Chapter 9 — Ways of Learning",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000595",
+      "chapterId": "chapter-0010",
+      "kind": "h1",
+      "text": "Chapter 9 — Ways of Learning",
+      "sourceAnchor": "chapter-9-ways-of-learning",
+      "wordCount": 5
+    },
+    {
+      "id": "u000596",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "9.1 A Dog, a Maze and a Boat That Would Not Finish the Race",
+      "sourceAnchor": "a-dog-a-maze-and-a-boat-that-would-not-finish-the-race",
+      "wordCount": 15
+    },
+    {
+      "id": "u000597",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "You cannot explain to a dog what “sit” means. You cannot describe the biomechanics of folding its back legs, or show it a diagram. What you can do is wait. You say “sit”, and the dog does something: it barks, it wanders off, it tilts its head. Nothing happens. You say “sit” again, and by chance its hindquarters drop to the floor. Click, treat. A few dozen repetitions later, the dog has worked out that among all the things it might do when it hears that sound, one of them reliably makes treats appear.",
+      "sourceAnchor": null,
+      "wordCount": 94
+    },
+    {
+      "id": "u000598",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Notice what the dog never received: the right answer. Nobody showed it the correct movement. It only ever learned how good the movement it chose turned out to be. That is the difference between supervised learning and reinforcement learning . A supervised model learns from a teacher holding an answer key. A reinforcement learner learns from a coach holding a scoreboard. The picture does flatter the machine in one way: a dog learns “sit” in a few dozen tries because it arrives with a body, instincts and an appetite for treats, while an agent starting from nothing often needs millions of attempts, which is why so much reinforcement learning happens in simulators.",
+      "sourceAnchor": null,
+      "wordCount": 111
+    },
+    {
+      "id": "u000599",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The vocabulary is small and maps neatly onto the dog. The learner is the agent , a wider sense of the word than the language model in a tool loop among the blueprints. The world it acts in is the environment . At each moment it observes a state , chooses an action and receives a reward , a number that is often zero. Its strategy for choosing actions is its policy , and the whole point of the exercise is to find a policy that collects as much reward as possible over time.",
+      "sourceAnchor": null,
+      "wordCount": 89
+    },
+    {
+      "id": "u000600",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The dog has it easy, though, because the treat arrives a second after the action. Put a mouse in a maze instead, and let it find cheese only after thirty turns. Which of those thirty turns deserves the credit? The last one, obviously, helped. But what about the turn at the very first junction, without which the mouse would have ended up in a dead end? This is the credit assignment problem, and it is the heart of the subject.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000601",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The classic answer, Q-learning , lets value seep backwards through the maze like water. The junction right next to the cheese quickly becomes valuable. Then the junction before it becomes valuable, because it leads to a valuable junction. Over many runs, the value spreads all the way back to the entrance, until the mouse carries a mental map of how much each choice at each junction is worth, the Q in the name standing for “quality”. From then on it simply takes the most valuable turn at each step. Future rewards are counted slightly less than immediate ones, through a discount factor a little below one, for the same reason a euro today is worth more to you than a euro next year, and so that an agent cannot postpone its reward forever.",
+      "sourceAnchor": null,
+      "wordCount": 132
+    },
+    {
+      "id": "u000602",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "But how does the mouse learn which turns are good, if it always takes the turns it already believes are best? This is a dilemma you face every working day at lunch. You have a favorite place. Going there is safe and good. But if you always go there, you will never discover the better place that opened around the corner last month. If you try somewhere new every day, you will eat a lot of disappointing lunches. Reinforcement learning calls this exploration versus exploitation , and every agent must balance it. A common recipe is almost embarrassingly simple: mostly pick the best-known option, and every so often, pick something at random. A typical setting explores one time in ten at the start, when the agent knows nothing, and lowers that gradually to one in a hundred or less as its map of values becomes trustworthy, much like trying new restaurants mostly in your first months in a new city.",
+      "sourceAnchor": null,
+      "wordCount": 159
+    },
+    {
+      "id": "u000603",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "If you have ever run an A/B test, you have met this dilemma in a suit and tie. Sending half your traffic to a variant that is clearly losing, for two full weeks, costs real money. Algorithms called multi-armed bandits shift traffic toward the winning variant while the experiment is still running, exploring less as the evidence accumulates.",
+      "sourceAnchor": null,
+      "wordCount": 59
+    },
+    {
+      "id": "u000604",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "When the states are too many for a table, every possible screen of a video game, say, a neural network can estimate the value of each action straight from the raw pixels. That combination, called a deep Q-network, learned to play dozens of classic Atari games, many of them as well as a skilled human or better, in research from DeepMind published in 2015. The following year, DeepMind’s AlphaGo, which combined reinforcement learning with search, beat Lee Sedol, one of the strongest Go players in the world. In the second game it played a move on the 37th turn that commentators first took for a mistake, and that turned out to be brilliant: a move no human teacher would have suggested, found by a system that, after studying human games, had sharpened its play over millions of games against itself. In the same year, DeepMind reported that a learning system had cut the energy Google used to cool its data centers by up to 40%, using neural networks trained on historical data from thousands of sensors to recommend cooling settings.",
+      "sourceAnchor": null,
+      "wordCount": 180
+    },
+    {
+      "id": "u000605",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "And now, the boat.",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000606",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Researchers at OpenAI once trained an agent on a boat-racing video game. The obvious goal was to win the race, but the game awarded points for hitting targets along the course, so the agent was rewarded with points. It discovered a small lagoon where a few targets kept reappearing. Instead of racing, it drove in tight circles, crashing into walls, catching fire, hitting the same targets again and again, and racked up a score about 20% higher than that of human players who actually finished the course. It never finished the race. By the only measure it had been given, it was winning spectacularly.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000607",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The agent did nothing wrong. It maximized exactly the number it was given, which was not quite the thing its designers wanted. This is called reward hacking , and engineers know it from human systems too. Measure a support team only by tickets closed per day, and some tickets will be closed without being solved. Measure developers by lines of code, and you will get a lot of lines of code. Reward functions deserve the same care as API contracts, because whatever you write, the agent will take literally. Nobody knows how to write a reward that cannot be hacked. In practice designers combine several rewards, add penalties for obvious shortcuts and, above all, watch what the agent actually does rather than only its score, because the hacks are usually obvious to a human watching and invisible on the scoreboard.",
+      "sourceAnchor": null,
+      "wordCount": 139
+    },
+    {
+      "id": "u000608",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The boat circling its lagoon is worth keeping in mind, because the clicker and the scoreboard have lately found a second job: not teaching agents to play games, but teaching language models to be helpful. That is one of several ways a model can be taught, and the next section lays them all side by side.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000609",
+      "chapterId": "chapter-0010",
+      "kind": "h2",
+      "text": "9.2 The Many Ways to Teach",
+      "sourceAnchor": "the-many-ways-to-teach",
+      "wordCount": 7
+    },
+    {
+      "id": "u000610",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Think about how a doctor is made. Six years of medical school, learning anatomy and chemistry that apply to every patient on Earth. Then a residency of several years in one specialty, where the general knowledge is bent toward cardiology or pediatrics. Then, for the rest of her career, feedback: a senior colleague’s correction, a case that went wrong, a patient who came back. And underneath all of it, from childhood, a far larger education that nobody designed, absorbed from simply living in the world. No single teaching method made the doctor. Several did, in layers, each cheaper and more targeted than the last.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000611",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Models are taught in layers too, and this section is a tour of them. It matters for a practical reason: when someone says a model was “trained”, the word hides a dozen very different procedures, with very different costs, and knowing which one is meant is often the difference between a sensible plan and an expensive mistake.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000612",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The childhood education is the one this book has barely named, though it has been everywhere. At the start of the book, learning needed an answer key written by people, and labels were the expensive part. But look at how the language model was trained: on text alone, with the next word as the answer. Nobody wrote that answer; the text contained it. The diffusion model learned from noise it had added itself. The contrastive models learned that two crops of one photo belong together, a fact that needed no human. This is self-supervised learning : manufacturing an answer key out of the raw data’s own structure. Hide part of the input and predict it from the rest. It is why modern models can learn from the entire internet rather than from the small fraction someone has labeled, and it is a large part of why the field changed so fast after 2018. A useful way to hold it: supervised learning needs a teacher; self-supervised learning needs only a world with structure in it, and the world is full of structure.",
+      "sourceAnchor": null,
+      "wordCount": 180
+    },
+    {
+      "id": "u000613",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The medical school is pretraining, the first of the new hire’s three schools: one enormous run, usually self-supervised, usually by a large organization, producing a general-purpose model. The residency that follows has a family of names, and they are worth separating.",
+      "sourceAnchor": null,
+      "wordCount": 41
+    },
+    {
+      "id": "u000614",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The oldest form is transfer learning , and it rests on an observation about image networks: the inspectors in the early layers of an image network learn edges, corners and textures, which are useful for recognizing anything , not just the thousand categories they were trained on. So take a network trained on millions of general photos, keep its early layers exactly as they are, and retrain only the last layer or two on your three thousand photos of circuit boards. It works far better than training from scratch on three thousand photos, because the hard part, learning to see, is already done. A radiologist retraining as a dermatologist does not relearn how eyes work. This is how most practical image models in industry are built, and it is why a small company with a small dataset can have a good model at all.",
+      "sourceAnchor": null,
+      "wordCount": 142
+    },
+    {
+      "id": "u000615",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Fine-tuning is transfer learning’s broader cousin: continue training the whole pretrained model, or most of it, on your narrower data, with a gentle learning rate so the general knowledge is adjusted rather than overwritten. The language model that read the whole internet is fine-tuned on your company’s support transcripts, and it learns your product names, your tone, your refund policy. This is where the doctor picture starts to break: a resident does not forget anatomy while learning cardiology, but a model pushed too hard on narrow data can lose general skills it used to have, which is catastrophic forgetting; besides the gentle learning rate, the usual guard is the brain’s own trick of replay, mixing a share of general examples back into the narrow data. The costs are those of full training, which for a large model are considerable: gradients and optimizer memory for every weight. That is the pain that led to a clever shortcut. Instead of changing billions of weights, freeze them all and add a small set of extra weights alongside, trained to make small corrections to what the frozen layers produce. The best-known version is called LoRA (low-rank adaptation) , and it reduces the number of trainable weights by a factor of hundreds or thousands, so that a model which needed a cluster to fine-tune can often be adapted on a single graphics card. The picture is a translator who, rather than relearning a language for each client, keeps a slim notebook of client-specific terms and consults it as she goes. Many services that offer “your own custom model” are offering a frozen base model plus a notebook of this kind. A slim notebook can steer billions of weights because the change you need is usually simple even when the model is huge, shift the tone, prefer certain terms, follow a format, and a change of that kind can be described as a few adjustments along a few broad directions, which needs far fewer numbers than the grid it corrects; that is what “low rank” means.",
+      "sourceAnchor": null,
+      "wordCount": 339
+    },
+    {
+      "id": "u000616",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Before reaching for either, it is worth asking whether you need to teach the model anything at all, because two cheaper options come first. Prompting , including showing the model a few worked examples inside the prompt, teaches nothing permanently but often gets most of the way there, the way a good briefing gets a skilled consultant productive on day one. And the open-book arrangement, RAG, is the right answer whenever the problem is missing knowledge rather than missing skill : a model does not need to be retrained to know your refund policy if the policy can simply be handed to it. The rule of thumb that experienced teams converge on: prompt first, retrieve second, fine-tune when the model needs a new behavior, a new format or a new tone that examples in the prompt cannot reliably produce.",
+      "sourceAnchor": null,
+      "wordCount": 137
+    },
+    {
+      "id": "u000617",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "The feedback years are where reinforcement learning enters, and the dog with a clicker turns out to be the right picture. A fine-tuned language model knows the shape of a helpful answer, but “helpful” is hard to write an answer key for. So people are shown two answers to the same question and asked which is better. Thousands of these preferences train a separate reward model , a critic that scores any answer the way those people would. Then the language model is trained, by reinforcement learning, to produce answers the critic scores highly, with a leash that stops it drifting too far from what it learned before. This is RLHF, the new hire’s third school, seen from the inside, and it is the stage that turned autocomplete engines into assistants. A newer method, DPO (direct preference optimization) , skips the separate critic and adjusts the model directly from the pairs of preferences; it is simpler to run and now common. Either way, the lesson is the one the boat taught: the model will optimize exactly what the critic rewards, so if the critic learns that longer answers or more confident answers score better, the model becomes long-winded and overconfident. Much of the craft of this stage is in collecting preferences that reward what you actually want.",
+      "sourceAnchor": null,
+      "wordCount": 215
+    },
+    {
+      "id": "u000618",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "How does reinforcement learning work on a language model? The mouse in the maze suggests Q-learning, but that method keeps a value for every action in every state, and for a language model the actions are a hundred thousand tokens and the states every possible text, a table no one could fill. Instead, the language model is itself the policy: its probabilities for the next token are its strategy. Policy-gradient methods let it write a complete answer, score it with the reward model, and nudge up the probability of every token in the answer if it scored better than expected, and down if worse. “Better than expected” needs a baseline: a separate model’s estimate of how answers to this prompt usually score, or, in a newer variant, the average of several answers to the same prompt. PPO (proximal policy optimization), published by OpenAI researchers in 2017 and used in the best-known early RLHF systems, keeps the leash short at every step: no single update may move the model’s probabilities far, because a policy that changes too fast starts writing text the reward model judges unreliably. Published accounts suggest the reasoning models described next are trained with methods of the same family.",
+      "sourceAnchor": null,
+      "wordCount": 201
+    },
+    {
+      "id": "u000619",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "A different kind of feedback loop has become important in the last few years, and it needs no human judges: let the model try a task with a checkable answer, a math problem, a program that must pass its tests, and reward it when the answer is right. The model learns, by trial and error, to reason its way to correct answers, often by writing out intermediate steps before committing. This is reinforcement learning with a verifiable reward, and it is behind the “reasoning” models that think visibly before they answer. It works for the reason the next-word game already showed: every written step is one more pass of computation on the board.",
+      "sourceAnchor": null,
+      "wordCount": 113
+    },
+    {
+      "id": "u000620",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Two more methods complete the tour, because you will meet their names. Distillation is the senior doctor teaching the junior: a large, expensive model answers millions of questions, and a small, cheap model is trained to imitate those answers, not merely the final choice but the whole spread of probabilities the big model assigned. The small model ends up far better than it would have from the raw data alone, because the big model’s answers carry its judgment: an answer of “70% cat, 25% lynx” tells the small model which mistakes are reasonable ones, something a bare label “cat” never could. It is how a model that must run on a phone is made from one that runs in a data center. And active learning, met when we asked how much data is enough, attacks the labeling cost head-on: instead of labeling ten thousand examples at random, let the model point at the hundred it is least sure about, label only those, and retrain, like a tutor who asks “which problems did you find hardest?” and assigns exactly those.",
+      "sourceAnchor": null,
+      "wordCount": 179
+    },
+    {
+      "id": "u000621",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Laid out this way, the methods are not rivals but a sequence of narrowing investments. Self-supervised pretraining, done once, by few. Transfer or fine-tuning, done per domain, by many. Preference tuning, to shape behavior. Prompting and retrieval, done per task, by everyone, at almost no cost. Distillation, to make the result cheap enough to deploy. An investor hearing that a startup “trained their own model” should ask which of these they mean, because the first can cost millions or far more, while the cheapest can cost almost nothing. An engineer planning a project should start at the cheap end and move up only when the cheap end fails.",
+      "sourceAnchor": null,
+      "wordCount": 108
+    },
+    {
+      "id": "u000622",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "And a doctor who has finished every stage of training can still kill a patient. The next chapter is about how a well-taught model fails anyway.",
+      "sourceAnchor": null,
+      "wordCount": 26
+    },
+    {
+      "id": "u000623",
+      "chapterId": "chapter-0010",
+      "kind": "p",
+      "text": "Going further. If you wondered how to run an A/B test whose verdict you can trust, section 11.1 takes that up. And if you want to look back at what the extra thinking of reasoning models really buys, and what it costs, section 7.6 weighs it.",
+      "sourceAnchor": null,
+      "wordCount": 49
+    }
+  ]
+}

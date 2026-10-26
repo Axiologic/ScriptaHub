@@ -1,0 +1,496 @@
+{
+  "batch": "batch-0003.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0003",
+  "chapterTitle": "Capitolul 2 — Trusa de unelte clasică",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000200",
+      "chapterId": "chapter-0003",
+      "kind": "h1",
+      "text": "Capitolul 2 — Trusa de unelte clasică",
+      "sourceAnchor": "capitolul-2-trusa-de-unelte-clasică",
+      "wordCount": 6
+    },
+    {
+      "id": "u000201",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.1 O riglă, câteva arcuri și un variator",
+      "sourceAnchor": "o-riglă-câteva-arcuri-și-un-variator",
+      "wordCount": 9
+    },
+    {
+      "id": "u000202",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Ia o scândură și bate câte un cui pentru fiecare apartament vândut anul trecut în cartierul tău: de la stânga la dreapta e suprafața, de jos în sus e prețul. Acum ai un nor de cuie care urcă, aproximativ, pe măsură ce mergi spre dreapta. Leagă de fiecare cui un arc scurt, îndreptat drept în sus sau în jos, și prinde toate arcurile de o riglă lungă și rigidă. Apoi dă-i drumul.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000203",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Unde se oprește rigla?",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000204",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Se bălăngăne, arcurile trag de sus și de jos, și se așază în singura poziție în care energia totală din arcuri e cât se poate de mică. Poziția aceea e chiar dreapta găsită de linear regression („regresie liniară”: cea mai bună linie dreaptă printr-un nor de puncte), cel mai vechi și încă unul dintre cele mai utile modele din carte. N-a trebuit să calculezi nimic. Au făcut-o arcurile. Un calculator n-are arcuri, iar pentru o linie dreaptă nici nu-i trebuie: o formulă dă poziția de repaus direct, dintr-un singur calcul. Pentru modelele care n-au o astfel de formulă, calculatorul imită pas cu pas rigla care se bălăngăne, și asta e coborârea pe munte din capitolul următor.",
+      "sourceAnchor": null,
+      "wordCount": 116
+    },
+    {
+      "id": "u000205",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "De ce arcuri și nu sfori? Pentru că energia dintr-un arc întins crește cu pătratul întinderii. Trage un arc de două ori mai departe și va înmagazina de patru ori mai multă energie. Exact asta minimizează regresia liniară: suma pătratelor distanțelor verticale dintre puncte și dreaptă. Și explică ceva ce poate ai văzut mergând prost în practică. Adaugă un penthouse vândut de zece ori mai scump decât orice altceva de pe stradă, iar arcul lui e atât de întins încât trage toată rigla spre el. Celelalte predicții se înrăutățesc, în ansamblu, ca să facă loc unui singur punct extrem, un outlier („valoare aberantă”, punctul care stă departe de toate celelalte). Un singur cui poate îndoi linia pentru toată lumea.",
+      "sourceAnchor": null,
+      "wordCount": 119
+    },
+    {
+      "id": "u000206",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Acest mic model fizic apare mereu în inginerie. Pune pe un grafic latența unui endpoint de API (application programming interface, „interfața prin care programele vorbesc între ele”) în funcție de mărimea payload-ului cererii și de obicei obții un nor care urcă. Lasă arcurile să se așeze și rigla îți dă o propoziție pe care o poate folosi un product manager: fiecare megabyte în plus costă cam atâtea milisecunde, peste o întârziere fixă. Panta și înălțimea de pornire sunt singurele două numere învățate de model, iar spre deosebire de aproape orice alt model din carte, le poți citi și te poți certa cu ele. Cu multe intrări, să citești ponderile ca pe un clasament al importanței cere mai multă grijă decât pare, după cum va arăta un capitol ulterior.",
+      "sourceAnchor": null,
+      "wordCount": 128
+    },
+    {
+      "id": "u000207",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Dar unele întrebări nu pot primi răspuns de la o riglă, pentru că răspunsul nu e un număr. Va eșua acest deployment? E plata asta o fraudă? Va renunța clientul acesta? Întreabă o linie dreaptă și îți va prezice voioasă 1,7 sau minus 0,3, care nu înseamnă nimic ca răspunsuri la o întrebare cu da sau nu.",
+      "sourceAnchor": null,
+      "wordCount": 59
+    },
+    {
+      "id": "u000208",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Soluția e fermecătoare. Mai întâi calculezi același fel de scor ponderat, adunând dovezile. Apoi treci scorul printr-un variator de lumină. Când scorul e foarte mic, lumina e stinsă: zero, nu. Când e foarte mare, lumina e aprinsă complet: unu, da. Între ele, lumina crește treptat, iar intensitatea ei o citești ca pe o probabilitate. O valoare de 0,83 înseamnă „destul de probabil da”. Curba în formă de S a variatorului se numește sigmoid („sigmoidă”, de la litera grecească sigma, echivalentul lui S, pentru că curba are forma unui S), iar întregul aranjament, scor plus variator, e logistic regression („regresie logistică”), care, în ciuda numelui, e o metodă de clasificare. O precauție despre imagine: luminozitatea unui variator e pur și simplu poziția butonului, dar 0,83 al modelului e o probabilitate onestă doar dacă antrenarea l-a făcut așa, iar multe modele se dovedesc mai sigure pe ele decât le justifică istoricul; verificarea asta se numește calibrare.",
+      "sourceAnchor": null,
+      "wordCount": 156
+    },
+    {
+      "id": "u000209",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Imaginează-ți-o aplicată pe istoricul deployment-urilor tale. Fiecare deployment trecut vine cu câteva fapte: câte linii s-au schimbat, câte servicii au fost atinse, dacă s-a schimbat schema bazei de date, la ce oră a fost lansat. Fiecare e etichetat după cum a urmat sau nu un rollback („revenirea la versiunea anterioară”). Modelul învață cât de mult ar trebui să împingă scorul fiecare fapt, iar fiecare deployment nou primește un risc între 0 și 1. Ai putea cere un al doilea reviewer peste 0,3 și ai putea refuza deployment-urile de vineri seara peste 0,6. Observă că pragurile nu sunt decizia modelului; sunt ale tale și spun cât risc poate înghiți echipa ta. Tema asta va reveni cu putere.",
+      "sourceAnchor": null,
+      "wordCount": 118
+    },
+    {
+      "id": "u000210",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Sub ambele modele stă aceeași structură: fiecare intrare e înmulțită cu o weight („pondere”) care spune cât contează, rezultatele se adună, iar o constantă numită bias („deplasare”) mută totul în sus sau în jos. Regresia liniară se oprește aici. Cea logistică adaugă variatorul. Iar locul în care variatorul arată exact 0,5, linia dintre da și nu, se numește decision boundary („granița de decizie”). Ține minte ideea, pentru că în capitolul următor vei descoperi că regresia logistică e, discret, un singur neuron artificial.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000211",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Până aici, totul e ordonat. Acum rigla își arată limitele, iar prima limită e chiar în numele ei: e dreaptă.",
+      "sourceAnchor": null,
+      "wordCount": 20
+    },
+    {
+      "id": "u000212",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Orice inginer care a făcut un load test („test de încărcare”) pe un serviciu a văzut o relație care nu e dreaptă. La 20% CPU, latența e bună. La 40%, tot bună. La 60%, bună. La 85%, cererile încep să stea la coadă și latența o ia brusc în sus, ca o crosă de hochei. O riglă dreaptă prin aceste puncte face ceva teribil: subestimează latența exact în zona care te interesează cel mai mult, aproape de saturație. Adesea, remediul nu e un algoritm mai sofisticat, ci intrări mai bune. Dă-i modelului încărcarea la pătrat sau logaritmul unei mărimi, iar o linie dreaptă în noile intrări devine o curbă în cele vechi. Ce intrări suplimentare să-i dai afli mai ales desenând datele și cunoscând domeniul: cozile explodează aproape de saturație, iar mărimile și timpii de așteptare tind să se întindă pe multe ordine de mărime. Apoi încerci candidații pe simulare; capitolul următor e povestea modelelor care învață singure astfel de curbe.",
+      "sourceAnchor": null,
+      "wordCount": 161
+    },
+    {
+      "id": "u000213",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "A doua limită e mai subtilă și nu ține de fapt de riglă. Vânzările de înghețată și înecurile cresc și scad împreună, frumos, pe o linie dreaptă. Înghețata nu provoacă înecuri; vara le provoacă pe amândouă. În datele de inginerie, aceeași iluzie e peste tot. Serviciile cu cele mai multe teste au adesea cele mai multe rapoarte de bug-uri, nu pentru că testele creează bug-uri, ci pentru că acelea sunt serviciile cele mai mari, mai aglomerate și mai critice. O pondere mare înseamnă că două lucruri se mișcă împreună. Nu înseamnă niciodată, singură, că unul îl cauzează pe celălalt: un model potrivit pe date istorice poate doar să raporteze ce a mers împreună, iar ca să deosebești o cauză de un simplu tovarăș de drum îți trebuie un experiment, cum sunt A/B testele care împart traficul la întâmplare, subiect pe care îl reia ultimul capitol.",
+      "sourceAnchor": null,
+      "wordCount": 146
+    },
+    {
+      "id": "u000214",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Rigla face o presupunere puternică despre lume: că e, mai mult sau mai puțin, o linie dreaptă. Dar dacă ai refuza să presupui orice și ai întreba pur și simplu vecinii?",
+      "sourceAnchor": null,
+      "wordCount": 31
+    },
+    {
+      "id": "u000215",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.2 Spune-mi cine îți sunt vecinii",
+      "sourceAnchor": "spune-mi-cine-îți-sunt-vecinii",
+      "wordCount": 7
+    },
+    {
+      "id": "u000216",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Tocmai te-ai mutat într-un oraș nou și ai găsit un apartament care îți place. Prețul cerut pare mare, dar n-ai idee ce e normal aici. Nu construiești un model de prețuri. Cauți cele cinci apartamente cele mai asemănătoare care s-au vândut recent, pe aceeași stradă, cu suprafață și etaj asemănătoare, și faci media prețurilor lor. Dacă prețul cerut e mult peste medie, negociezi.",
+      "sourceAnchor": null,
+      "wordCount": 63
+    },
+    {
+      "id": "u000217",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Fără să-ți dai seama, ai rulat k-nearest neighbors („cei mai apropiați k vecini”), cu k egal cu cinci. E poate cel mai omenesc algoritm din carte, pentru că așa judecăm aproape orice lucru nou. Un restaurant e probabil bun dacă cei trei prieteni cu gusturile cele mai apropiate de ale tale l-au adorat. Un film merită probabil văzut dacă oamenii cărora le-au plăcut aceleași filme ca ție l-au notat bine. Multe casete „clienții ca tine au mai cumpărat” de pe site-urile de cumpărături sunt ideea asta rulată la scară industrială. Sistemele reale de recomandare adaugă destul de multe peste ea.",
+      "sourceAnchor": null,
+      "wordCount": 100
+    },
+    {
+      "id": "u000218",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Lucrează discret și în uneltele de inginerie. Imaginează-ți un bug tracker care primește un raport nou: „Butonul de login nu face nimic pe Safari”. Înainte să-l trieze cineva, unealta îi caută cei mai apropiați vecini printre problemele existente și găsește „Click-ul de sign-in nu răspunde în browserul de pe macOS”, deschis săptămâna trecută, deja alocat, deja pe jumătate rezolvat. Cuvintele aproape că nu se suprapun, așa că unealta nu se poate mulțumi să numere cuvintele comune; ea măsoară cât de apropiate sunt sensurile, printr-un truc pe care îl explică un capitol ulterior, iar duplicatul e prins înainte ca doi ingineri să piardă o după-amiază pe aceeași problemă. Sau imaginează-ți o unealtă de incidente care, în clipa în care sună o alertă, îți arată cele cinci incidente trecute cele mai asemănătoare, cu linkuri spre felul în care a fost rezolvat fiecare. Adesea, soluția stă într-unul dintre acele postmortem-uri.",
+      "sourceAnchor": null,
+      "wordCount": 147
+    },
+    {
+      "id": "u000219",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Ce face k-NN neobișnuit e că nu învață nimic dinainte. Nu există o fază de antrenare în care se potrivesc ponderi. Datele, păstrate așa cum sunt, sunt modelul. Toată munca se face când sosește o întrebare: măsori distanța de la cazul nou la fiecare caz păstrat, iei cele mai apropiate k și le lași să voteze o categorie sau le faci media numerelor. E cel mai leneș algoritm imaginabil, iar lenea asta vine cu un dar. Fiecare predicție poate fi explicată arătând spre exemple reale: credem că apartamentul acesta valorează atât din cauza acestor cinci vânzări. Lenea aceasta are un preț la scară mare: să măsori distanța la o sută de milioane de cazuri păstrate pentru fiecare întrebare e prea lent, așa că sistemele reale construiesc dinainte un index, cam ca secțiunile unei biblioteci, care sare direct în cartierul potrivit și verifică doar câteva mii de candidați. Din când în când întorc al doilea cel mai apropiat vecin în locul celui mai apropiat, un compromis pe care îl acceptă aproape toată lumea; acestea sunt bazele de date vectoriale care reapar mai târziu în carte.",
+      "sourceAnchor": null,
+      "wordCount": 184
+    },
+    {
+      "id": "u000220",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Singura setare pe care trebuie s-o alegi e k, iar ea se poartă ca un buton între nervozitate și ceață. Cu k egal cu unu, un singur vecin ciudat, un tichet etichetat greșit sau o vânzare între rude, decide totul. Cu k egal cu cinci sute, faci media pe jumătate de oraș și toate apartamentele arată la fel. Undeva la mijloc e o valoare rezonabilă, iar o găsești ca de obicei: încercând câteva pe simulare.",
+      "sourceAnchor": null,
+      "wordCount": 75
+    },
+    {
+      "id": "u000221",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Până aici, vecinii au fost înțelepți. Acum se întâmplă ceva ciudat și e unul dintre faptele cu adevărat contraintuitive ale domeniului.",
+      "sourceAnchor": null,
+      "wordCount": 21
+    },
+    {
+      "id": "u000222",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Pe o hartă a străzilor, „aproape” e evident. Două dimensiuni și ochiul tău face treaba. Dar să zicem că descrii fiecare om nu prin două numere, ci prin cinci sute: înălțime, vârstă, venit, câte cărți are, câte ore doarme, culoarea preferată codificată ca număr și tot așa. Ia oricare doi oameni. La unele dintre cele cinci sute de trăsături sunt obligatoriu foarte diferiți. Adună toate aceste diferențe și fiecare ajunge cam la fel de departe de oricare altul. Vecinul tău „cel mai apropiat” e abia mai aproape decât cel mai îndepărtat. Într-un spațiu cu multe dimensiuni, toată lumea e străină.",
+      "sourceAnchor": null,
+      "wordCount": 100
+    },
+    {
+      "id": "u000223",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Asta e curse of dimensionality („blestemul dimensionalității”) și e motivul pentru care k-NN merge cel mai bine cu un număr modest de features cu sens sau după ce ceva a comprimat multe features brute în câteva informative. Și, la fel ca clustering-ul, k-NN cade în capcana scalei: dacă trăsăturile nu sunt rescalate, cea cu numerele cele mai mari domină orice distanță.",
+      "sourceAnchor": null,
+      "wordCount": 61
+    },
+    {
+      "id": "u000224",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Să întrebi vecinii merge minunat când știi ce face două lucruri să fie asemănătoare. Când nu știi, când ai zeci de features și doar câteva contează, ai nevoie de altă strategie. În loc să compari totul deodată, ai vrea să pui întrebările potrivite, în ordinea potrivită. Exact așa se câștigă jocul celor douăzeci de întrebări.",
+      "sourceAnchor": null,
+      "wordCount": 55
+    },
+    {
+      "id": "u000225",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.3 Douăzeci de întrebări",
+      "sourceAnchor": "douăzeci-de-întrebări",
+      "wordCount": 5
+    },
+    {
+      "id": "u000226",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Release-ul pleacă în două ore, iar ceva din ultimele două sute de commit-uri a stricat pagina de checkout. Nimeni nu știe care commit. Să le testezi pe rând ar dura toată noaptea.",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000227",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Apoi cineva tastează git bisect și starea din cameră se schimbă. Bisect scoate commit-ul de la mijloc și pune o singură întrebare: e bug-ul aici? Oricare ar fi răspunsul, jumătate dintre suspecți au dispărut. Încă o întrebare, încă o jumătate. După opt întrebări, două sute de commit-uri s-au redus la unul, iar vinovatul e pe ecran înainte să se răcească cafeaua.",
+      "sourceAnchor": null,
+      "wordCount": 61
+    },
+    {
+      "id": "u000228",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Ce face bisect atât de satisfăcător nu e viteza calculatorului. E calitatea întrebărilor. Fiecare e aleasă ca să elimine cât mai multă incertitudine, oricare ar fi răspunsul.",
+      "sourceAnchor": null,
+      "wordCount": 27
+    },
+    {
+      "id": "u000229",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Joci jocul ăsta din copilărie. La douăzeci de întrebări, un începător deschide cu „E un Chihuahua?” și nu află aproape nimic din inevitabilul „nu”. Un jucător bun deschide cu „Are patru picioare?”, pentru că oricare răspuns taie lumea în două. Apoi „Latră?”, apoi „E mic?”. După trei întrebări, candidații s-au redus la o mână.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000230",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Un decision tree („arbore de decizie”) e acest joc, jucat de o mașină care a studiat mii de runde trecute. Ai văzut de multe ori versiunea desenată de mână: lista de triaj de la urgențe, schema de diagnostic a mecanicului, scriptul „ați încercat să-l reporniți?” de la help desk. Cineva cu experiență a scris acele scheme din ani de cazuri. Un arbore de decizie le scrie automat, din date.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000231",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Ca să facă asta, are nevoie de un mod de a deosebi o întrebare bună de una proastă, iar răspunsul vine dintr-un loc neașteptat: sertarul cu șosete. Un sertar doar cu șosete negre e perfect ordonat; bagi mâna fără să te uiți și știi ce vei scoate. Un sertar cu jumătate șosete negre și jumătate albe e cât se poate de dezordonat; fiecare apucare e cap sau pajură. Entropy („entropia”: măsura amestecăturii) și Gini index („indicele Gini”) sunt două moduri de a pune un număr pe această dezordine. O întrebare bună transformă un sertar dezordonat în două mai ordonate. Cât de multă ordine aduce se numește information gain („câștig de informație”), iar la fiecare pas arborele încearcă pur și simplu fiecare trăsătură și fiecare prag posibil („mai mult de 400 de linii schimbate?”, „suprafața peste 54 de metri pătrați?”) și păstrează întrebarea cu cel mai mare câștig. Apoi repetă procesul în fiecare sertar nou. Adună cât de multă ordine a adus fiecare trăsătură în toate întrebările din arbore și obții un clasament al trăsăturilor: o primă privire utilă asupra celor care au contat, deși nu una imparțială, din motive pe care le explică un capitol ulterior.",
+      "sourceAnchor": null,
+      "wordCount": 196
+    },
+    {
+      "id": "u000232",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Imaginează-ți ce produce asta pe propriul tău istoric. Dă-i unui arbore fiecare pull request („cerere de includere a unei schimbări în cod”) din ultimii doi ani, fiecare etichetat după cum a fost sau nu anulat în decurs de o săptămână. S-ar putea întoarce cu un runbook pe care nu l-a scris nimeni vreodată: atinge migrații de bază de date? Dacă da, e mai mare de câteva sute de linii? Dacă da, a fost revizuit de o singură persoană? Atunci rata de anulare e mare. Fiecare drum de la vârful arborelui la o frunză se citește ca o regulă pe care ar putea-o enunța un inginer senior, și exact de aceea arborii sunt iubiți acolo unde deciziile trebuie explicate, cum ar fi aprobarea creditelor și verificările de conformitate. Au și maniere plăcute: lucrează la fel de bine cu numere și cu categorii și nu le pasă că o trăsătură e în euro și alta în ani. Un arbore întreabă doar dacă o valoare e peste sau sub un prag, iar rescalarea unei trăsături mută pragul odată cu valorile, fără să schimbe care exemple cad de o parte și care de cealaltă, așa că pe el nu-l atinge capcana scalei care i-a prins pe vecini.",
+      "sourceAnchor": null,
+      "wordCount": 203
+    },
+    {
+      "id": "u000233",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Sună ideal. Dar arborele are două defecte de caracter și sunt serioase.",
+      "sourceAnchor": null,
+      "wordCount": 12
+    },
+    {
+      "id": "u000234",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Primul e nerăbdarea. Un jucător priceput gândește câteva întrebări în avans; uneori o primă întrebare puțin mai slabă pregătește o a doua genială. Un arbore nu face niciodată asta. La fiecare pas își ia cea mai bună întrebare disponibilă chiar acum și nu mai revine asupra ei. E greedy („lăcom”: ia mereu câștigul imediat), în sensul tehnic.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000235",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Al doilea defect e mai grav: un arbore nu știe când să se oprească din întrebat. Lăsat în pace, tot împarte până când fiecare sertar e perfect ordonat, ceea ce pe date reale înseamnă adesea doar unul sau câteva exemple per frunză. Ajunge să întrebe lucruri precum „Are 54,3 metri pătrați, e la etajul trei și are ușă verde?”. Întrebarea asta separă un apartament de toate celelalte din datele de antrenare și e inutilă pentru orice apartament pe care arborele nu l-a văzut. Arborele a încetat să învețe tipare și a început să memoreze. Remediul obișnuit e să fixezi limite dinainte: nu mai mult de, să zicem, șase întrebări în adâncime, niciun sertar cu mai puțin de douăzeci de exemple sau nicio întrebare care aduce mai puțină ordine decât un minim. Sunt hiperparametri, aleși urmărind simularea.",
+      "sourceAnchor": null,
+      "wordCount": 137
+    },
+    {
+      "id": "u000236",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Mai rău, memorarea e instabilă. Schimbă câteva rânduri din datele de antrenare și prima întrebare se poate schimba, iar odată cu ea tot ce e dedesubt. Doi analiști care antrenează arbori pe aproape aceleași date pot obține arbori care nu seamănă deloc. Un singur arbore e, cu alte cuvinte, un expert strălucit dar imprevizibil: lizibil, rapid și mult prea impresionat de cazurile anume pe care le-a văzut întâmplător.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000237",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Există un remediu și vine dintr-o observație făcută la un târg de țară acum mai bine de un secol. Dacă, în loc de un singur expert imprevizibil, ai întreba o mulțime întreagă?",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000238",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.4 Înțelepciunea mulțimii și a editorilor",
+      "sourceAnchor": "înțelepciunea-mulțimii-și-a-editorilor",
+      "wordCount": 7
+    },
+    {
+      "id": "u000239",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "În toamna lui 1906, statisticianul Francis Galton, pe atunci trecut de optzeci de ani, se plimba printr-un târg de animale din Plymouth și a dat peste un concurs. Pentru o taxă mică, vizitatorii puteau ghici greutatea unui bou după ce avea să fie tăiat și preparat. Au participat vreo opt sute de oameni: măcelari și fermieri care se pricepeau la vite și destui funcționari și familii care nu se pricepeau. Galton, care avea o părere proastă despre judecata omului obișnuit, a strâns apoi biletele, curios să vadă cât de bine se descurcase mulțimea.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000240",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Estimările individuale erau împrăștiate în toate direcțiile. Dar când a luat valoarea de mijloc a tuturor, ea a ieșit la aproximativ un procent distanță de greutatea reală. Mulțimea, ca mulțime, avusese aproape perfect dreptate. Galton a publicat rezultatul anul următor în revista Nature, sub titlul Vox Populi .",
+      "sourceAnchor": null,
+      "wordCount": 47
+    },
+    {
+      "id": "u000241",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "De ce a mers? Pentru că eroarea fiecăruia arăta într-o altă direcție. Unul a estimat prea mult pentru că boul părea mare de unde stătea el; alta prea puțin pentru că se gândea la o rasă mai mică. Greșelile independente, adunate, se anulează în mare parte. Ce supraviețuiește e partea pe care toată lumea a văzut-o corect.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000242",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Revino acum la arborele de decizie imprevizibil din subcapitolul trecut, expertul strălucit care memorează fiecare ciudățenie a cazurilor văzute. Un random forest („pădure aleatoare”: mulți arbori, fiecare crescut puțin altfel) construiește o mulțime Galton din astfel de experți, iar partea inteligentă e cum îi face independenți. Fiecare arbore primește o copie ușor diferită a datelor de antrenare, extrasă la întâmplare astfel încât unele rânduri apar de mai multe ori, iar altele lipsesc; asta se numește bootstrap sample („eșantion bootstrap”, după expresia englezească a te ridica trăgând de propriile șireturi: din datele pe care le ai, fabrici variații noi). Și la fiecare întrebare pe care o pune, fiecare arbore are voie să ia în calcul doar câteva trăsături alese la întâmplare. Fiecare expert e pe jumătate orb altfel, așa că fiecare face alte greșeli. Când pădurea votează sau face media, ciudățeniile individuale se anulează, exact ca estimările de la târg. Antrenarea mai multor modele pe eșantioane bootstrap și combinarea lor se numește bagging (de la bootstrap aggregating , „agregare de eșantioane bootstrap”); alegerea aleatoare a trăsăturilor e ce o transformă într-o pădure.",
+      "sourceAnchor": null,
+      "wordCount": 180
+    },
+    {
+      "id": "u000243",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Dar târgul are și o versiune mai întunecată, care explică designul. Imaginează-ți că, înainte să scrie cineva vreun bilet, un fermier gălăgios și-a anunțat estimarea în fața tuturor. Jumătate dintre oameni s-ar fi ancorat în ea. Erorile lor n-ar mai fi fost independente; ar fi înclinat toate în aceeași direcție, iar media n-ar mai fi anulat nimic. Mulțimea ar fi devenit un cor care cântă nota greșită a unui singur om.",
+      "sourceAnchor": null,
+      "wordCount": 71
+    },
+    {
+      "id": "u000244",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Arborii se confruntă exact cu acest pericol. Dacă o trăsătură din datele tale e foarte puternică, fiecare arbore va vrea să întrebe mai întâi despre ea și vor face cu toții aceleași greșeli. Ascunderea unui subset aleator de trăsături de fiecare arbore, la fiecare pas, e felul pădurii de a ține fermierul gălăgios afară din cameră.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000245",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Cunoști deja principiul din code review. Un al doilea reviewer cu exact același background, aceleași obiceiuri și aceleași puncte oarbe ca tine prinde puțin din ce n-ai fi prins tu. Un reviewer care se gândește la securitate în timp ce tu te gândești la performanță prinde mult mai mult, tocmai pentru că punctele voastre oarbe diferă. Diversitatea nu e un bonus drăguț. E inima mecanismului.",
+      "sourceAnchor": null,
+      "wordCount": 65
+    },
+    {
+      "id": "u000246",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Mai există un mod de a transforma experți slabi într-unul puternic și seamănă mai puțin cu o mulțime și mai mult cu o editură.",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000247",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Un autor scrie o primă ciornă brută. O editoare o citește și repară doar problemele de structură; nu rescrie cartea. Un redactor repară apoi doar frazele stângace lăsate de editoare. Un corector prinde greșelile de tipar rămase. Nimeni nu reface toată munca. Fiecare se specializează în ce au greșit cei dinainte, iar cartea care iese e mult mai bună decât ar fi putut-o face oricare dintre ei singur.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000248",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Gradient boosting („boosting” înseamnă „amplificare”: fiecare model nou îmbunătățește ce au lăsat în urmă cele dinainte) funcționează așa. Primul arbore mic face o estimare grosieră, să zicem a duratei unei livrări. Al doilea arbore nu e rugat deloc să prezică duratele livrărilor. E rugat să prezică erorile primului arbore: unde a fost prea optimist, unde prea pesimist. Al treilea prezice ce e încă greșit după primii doi și tot așa, timp de sute de runde. Fiecare arbore în parte e grosolan, nu mai adânc de câteva întrebări, însă lanțul de corecturi devine remarcabil de precis.",
+      "sourceAnchor": null,
+      "wordCount": 95
+    },
+    {
+      "id": "u000249",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Dacă firma ta dă scoruri de fraudă plăților, prezice ce clienți vor renunța sau estimează timpi de livrare dintr-un tabel cu câteva zeci de coloane, sunt șanse mari ca un model de boosting să facă treaba, dintr-una dintre bibliotecile cunoscute precum XGBoost, LightGBM sau CatBoost. Pe acest fel de date tabelare, ele sunt de obicei modelele de bătut și bat adesea rețelele neuronale. Motivul e că un tabel vine de obicei cu features deja făcute: câteva zeci, fiecare cu sens de sine stătător, în care semnalul e purtat de praguri nete precum „mai mult de trei autentificări eșuate”. Rețelele își merită costul construind features din pixeli și cuvinte brute; într-un tabel le rămâne puțin de construit, în timp ce arborii se descurcă firesc cu unități amestecate și praguri nete.",
+      "sourceAnchor": null,
+      "wordCount": 129
+    },
+    {
+      "id": "u000250",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Cele două metode repară slăbiciuni opuse, iar domeniul are nume pentru amândouă. Un random forest ia experți detaliați care reacționează exagerat la datele anume pe care le-au văzut și îi calmează prin medie; reduce variance („varianța”: cât de mult sar rezultatele de la un set de date la altul). Boosting-ul ia experți simpli, sistematic prea grosolani, și îi ascute prin corecturi; reduce bias -ul, aici în sensul de eroare sistematică, greșeala care înclină mereu în aceeași direcție (nu constanta adăugată de riglă; un capitol ulterior lămurește multele sensuri ale cuvântului). În practică, o pădure e o alegere implicită robustă care iartă setările neglijente, în timp ce boosting-ul câștigă de obicei la precizie, dar are nevoie de supraveghere, mai ales ca să știi când să te oprești din adăugat arbori înainte ca editorii să înceapă să corecteze zgomotul. La o pădure, mai mulți arbori nu duc la overfitting, memorarea care l-a stricat pe arborele singur: media mulțimii pur și simplu nu se mai schimbă după câteva sute, iar singurul cost e timpul. La boosting, fiecare arbore nou urmărește ce e încă greșit, iar după o vreme asta e mai ales zgomot, așa că te oprești când scorul pe simulare nu se mai îmbunătățește.",
+      "sourceAnchor": null,
+      "wordCount": 202
+    },
+    {
+      "id": "u000251",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Și o limită se aplică amândurora. Dacă datele sunt strâmbe pentru toată lumea, dacă boul a fost cântărit pe un cântar stricat, nicio mulțime și niciun lanț de editori nu le vor îndrepta.",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000252",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Rigla, vecinii, arborii și mulțimile nu sunt însă toată trusa, iar câteva dintre celelalte unelte merită măcar o privire rapidă înainte să mergem mai departe.",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000253",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "2.5 Rafturile pe lângă care am trecut",
+      "sourceAnchor": "rafturile-pe-lângă-care-am-trecut",
+      "wordCount": 8
+    },
+    {
+      "id": "u000254",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Intri într-un magazin mare de bricolaj după o cutie de șuruburi și mergi drept pe singurul culoar de care ai nevoie, pe lângă alte patruzeci, cu rafturi pline de unelte pe care nu le-ai folosit niciodată. Turul trusei clasice de unelte din acest capitol a fost o plimbare de felul acesta. A trecut pe trei culoare, rigla, vecinii și arborii, plus mulțimile construite din arbori, pentru că aceste idei duc greul pe datele din business. Dar deschide documentația oricărei biblioteci de machine learning și lista de metode se întinde pe pagini întregi. Câteva dintre acele nume poartă idei pentru care subcapitolele de până acum n-au avut loc.",
+      "sourceAnchor": null,
+      "wordCount": 107
+    },
+    {
+      "id": "u000255",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Începe cu granița. Granița de decizie a variatorului stătea pur și simplu acolo unde o lăsase antrenarea. Imaginează-ți în schimb două sate de o parte și de alta a unei câmpii largi și o comisie însărcinată să construiască între ele un drum care să nu aparțină niciunuia. Multe drumuri ar despărți casele. Comisia îl alege pe cel care lasă cea mai lată fâșie de pământ gol de ambele părți, cu gândul că un drum lipit de gardurile unui sat va greși la prima casă nouă construită la marginea lui. Aceasta e support vector machine („mașina cu vectori-suport”: alege granița sprijinită pe cazurile cele mai apropiate de ea), pe scurt SVM: dintre toate granițele care despart două clase, o alege pe cea cu cea mai largă margin („marjă”, fâșia goală de o parte și de alta a graniței). Doar casele cele mai apropiate de drum decid pe unde trece; ele sunt vectorii-suport care dau numele metodei, iar orice casă mai din spate s-ar putea muta fără să schimbe nimic. Datele reale se despart rareori curat, așa că versiunea practică lasă câteva case să stea pe partea greșită a drumului, cu prețul unei penalizări.",
+      "sourceAnchor": null,
+      "wordCount": 192
+    },
+    {
+      "id": "u000256",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "A doua idee e cea ingenioasă. Unele sate nu pot fi despărțite de niciun drum drept, pentru că unul e un inel în jurul celuilalt. Răspunsul SVM-ului, kernel trick („trucul nucleului”: judeci asemănarea ca într-un spațiu mai bogat, fără să-l construiești), e să judece terenul într-un spațiu mai bogat, în care un drum drept chiar merge. Adaugă distanța fiecărei case față de centru ca o coordonată în plus, iar satul din interior devine o vale și cel din exterior un deal, ușor de despărțit printr-o tăietură plată. Trucul e că SVM-ul nu construiește niciodată acel spațiu mai bogat. Tot ce-i trebuie e cât de asemănătoare e fiecare pereche de case, iar un kernel („nucleu”, fără legătură cu nucleele rețelelor pentru imagini din capitolul următor) e o formulă care calculează asemănarea pe care perechea ar avea-o în spațiul mai bogat, chiar și într-unul infinit de mare, fără să ajungă vreodată acolo. Pe la sfârșitul anilor ’90 și în anii 2000, SVM-urile au fost printre cei mai puternici clasificatori de uz general și rămân o alegere rezonabilă pentru seturi mici de date cu multe trăsături, de pildă câteva sute de pacienți descriși prin mii de măsurători. Imaginea se rupe în două locuri. Drumul cel mai lat trăiește într-un spațiu inventat de kernel, pe care nimeni nu-l poate desena sau străbate. Iar compararea fiecărei perechi de case devine scumpă când sunt milioane, ceea ce explică în parte de ce arborii cu boosting și rețelele au preluat conducerea pe datele mari.",
+      "sourceAnchor": null,
+      "wordCount": 247
+    },
+    {
+      "id": "u000257",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Al doilea culoar e despre convingeri. O doctoriță vede un pacient care tușește. Înainte de orice analiză, are deja o idee despre cât de răspândită e luna asta fiecare boală: răcelile sunt peste tot, pneumonia e mai rară. Această bănuială de pornire e prior -ul („a priori”: ce credeai înainte de dovezi). Apoi vin dovezile, o febră, un hârâit în plămâni, iar pentru fiecare se întreabă cât de probabil ar fi simptomul sub fiecare boală și își mută bănuiala în consecință. Ce crede la final e posterior -ul („a posteriori”: ce crezi după dovezi). Regula care spune exact cum se face mutarea e Bayes’ rule („regula lui Bayes”), dintr-un eseu al pastorului Thomas Bayes publicat în 1763, după moartea lui, și e felul cinstit de a combina ce credeai cu ce tocmai ai văzut. Cea mai utilă lecție a ei pentru ingineri e tocmai cea pe care oamenii o greșesc cel mai des. Un test exact în 99% din cazuri, pentru o boală pe care o are un om din zece mii, va produce totuși mai ales alarme false, pentru că prior-ul era atât de mic. Aceeași aritmetică revine ori de câte ori un model caută ceva rar și explică de ce acuratețea singură spune atât de puțin despre asemenea modele.",
+      "sourceAnchor": null,
+      "wordCount": 211
+    },
+    {
+      "id": "u000258",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Acum fă-o pe doctoriță leneșă. Să zicem că se preface că fiecare simptom n-are legătură cu celelalte, așa că o febră nu-i spune nimic despre dacă să se aștepte la tuse. Atunci fiecare simptom devine o înmulțire separată a șanselor, iar calculul devine banal. Scurtătura aceasta e naive Bayes („Bayes naiv”: presupune că fiecare indiciu e independent de celelalte), iar „naiv” e cuvântul cinstit, pentru că presupunerea e falsă aproape peste tot: „gratis” și „bani” nu sunt independente într-un e-mail. Totuși, metode de acest fel au alimentat multe dintre filtrele de spam care învățau, cele care au înlocuit regulile scrise de mână de la începutul cărții, iar naive Bayes e încă un prim model surprinzător de bun pentru text. Ordonează bine e-mailurile, deși probabilitățile pe care le calculează sunt mult exagerate, pentru că, numărând de două ori dovezi înrudite, își umflă încrederea fără să schimbe de obicei direcția în care înclină. Aici imaginea se rupe într-o direcție utilă. O doctoriță care ar ignora felul în care simptomele vin împreună ar fi o doctoriță proastă, iar metoda care face exact asta funcționează oricum. O presupunere greșită poate fi inofensivă pentru ordonare și dăunătoare pentru încredere, iar asta e o lecție despre orice simplificare, inclusiv despre cele ale acestei cărți.",
+      "sourceAnchor": null,
+      "wordCount": 208
+    },
+    {
+      "id": "u000259",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "O rudă de pe același culoar merită o propoziție, pentru că o vom reîntâlni mai târziu în carte. Un Gaussian process („proces gaussian”, după curba în formă de clopot a lui Gauss) prezice un număr împreună cu cât de nesigur e. Gândește-te la o sârmă flexibilă prinsă cu câte un cui în fiecare punct cunoscut: întinsă lângă cuie, liberă să se legene în golurile lungi dintre ele, așa că nesiguranța crește oriunde datele sunt rare. Devine lent pe seturi mari de date, dar e excelent pe seturi mici și scumpe, de aceea e folosit la alegerea hiperparametrilor; își are locul și printre uneltele prin care un model spune cât de sigur e. Imaginea sârmei ascunde singura alegere reală: cât de rigidă e sârma, adică până unde ajunge influența unui cui, o stabilește analistul sau se reglează din date, iar o rigiditate prost aleasă produce între cuie aberații spuse cu toată încrederea.",
+      "sourceAnchor": null,
+      "wordCount": 151
+    }
+  ]
+}

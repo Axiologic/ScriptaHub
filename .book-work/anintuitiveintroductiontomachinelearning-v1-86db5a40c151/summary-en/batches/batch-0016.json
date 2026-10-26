@@ -1,0 +1,112 @@
+{
+  "batch": "batch-0016.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0011",
+  "chapterTitle": "Chapter 10 — How to Fail Successfully",
+  "segment": 2,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000695",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "People who try to understand trained models use the same three moves, and this section is a tour of them. It also settles a contradiction a careful reader may have noticed. Early on, the book noted that people call models black boxes; later it said that if you can read the sliders, nothing inside is beyond reach. Both are true. Every number in the model can be printed and every step of the arithmetic traced, so nothing is hidden or magical. What is hard is the translation: from a hundred million numbers to a sentence a person can check, such as “it approves loans mostly because of income” or “it is looking at the snow”. Readable in principle, expensive in practice.",
+      "sourceAnchor": null,
+      "wordCount": 121
+    },
+    {
+      "id": "u000696",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "There are two broad routes to that sentence. The first is to choose a model you can read in the first place: the ruler, whose weights you can argue with, or a small tree, whose paths read like rules. When the stakes are high and the data is a table, this route deserves more thought than it usually gets, because the readable model is often only slightly less accurate. The second route is to explain, after the fact, a model you cannot read. Such explanations come in two sizes. Global ones say what the model relies on in general, and the main tool came up with the hiring panel: shuffle one feature’s values and watch the score fall. Local ones say why it gave this answer to this case, and most of what follows is local.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000697",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Start with a puzzle at a restaurant. Four friends shared starters, mains and a bottle of wine, and the bill is to be split according to what each person’s presence added. Ana’s arrival changed the bill a great deal if she came first and ordered the wine, much less if the wine was already on the table. The fair answer, worked out by the mathematician Lloyd Shapley in the 1950s for games in which players cooperate, is to imagine every possible order in which the friends could have arrived, note what each person added in each order, and average. Applied to a model, the friends are the features and the bill is the prediction: how much did income, age and the number of past loans each push this customer’s score up or down, averaged over every order in which they could have been added? The method built on this idea, SHAP (Shapley additive explanations, 2017), produces a small chart for each prediction, showing which features pushed which way and how hard, and added up over thousands of predictions it gives a global picture too. Its cousin LIME (2016) takes a cheaper road: it nudges one input many times, watches how the answer changes, and fits a simple, readable model that imitates the complex one only in that small neighborhood. The restaurant picture hides one real difficulty. A friend who stayed home simply orders nothing, but a model cannot run with a feature missing; something must stand in for it, usually typical values drawn from the data, and different choices of what counts as typical can give noticeably different explanations, especially when features travel together like the twins at the hiring panel, lines added and lines changed.",
+      "sourceAnchor": null,
+      "wordCount": 286
+    },
+    {
+      "id": "u000698",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The wolves, remember, were exposed by exactly this kind of tool. The deliberately biased wolf-and-snow classifier came from the 2016 paper that introduced LIME, and the explanation it produced, highlighting the parts of each photo that mattered, lit up the snow rather than the animal. For images, the most common relatives are saliency maps : heatmaps over the picture showing which pixels most affect the answer, computed either by following the gradient back to the pixels or by covering patches of the photo one at a time and watching the score change. They are vivid, persuasive and sometimes wrong in a way worth remembering. In 2018, researchers ran a simple sanity check: they scrambled the weights of a trained network, destroying everything it had learned, and recomputed the maps. Some popular methods produced maps that looked almost the same as before, neatly outlining the object. Those maps had been describing the photograph, not the model.",
+      "sourceAnchor": null,
+      "wordCount": 154
+    },
+    {
+      "id": "u000699",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The most useful explanation for the person affected is often a different kind altogether, the counterfactual . A bank clerk who says “your score was 0.41” has told you nothing you can use. A clerk who says “you would have been approved if your income were three hundred euros a month higher, or if you had missed no payments last year” has told you what would have to change. Counterfactual explanations search for the smallest change to the input that flips the answer. They are honest about the model and actionable for people, and they carry their own trap: the cheapest change for the model may be something the person cannot, or should not, change.",
+      "sourceAnchor": null,
+      "wordCount": 115
+    },
+    {
+      "id": "u000700",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Then there is the deepest and newest route, the mechanic opening the engine itself, called mechanistic interpretability . Its first lesson was disappointing in a useful way. Researchers hoped that single neurons would mean single things, and some do, but many respond to several unrelated things at once; one well-studied neuron in an image network fires for cat faces and for the fronts of cars. The leading explanation is superposition : a model needs to represent far more concepts than it has neurons, and roomy high-dimensional spaces let it pack them as overlapping directions rather than in separate slots, which is why the coordinates of an embedding have no names. So researchers now look for directions instead of neurons. One technique trains a second, simpler network, a sparse autoencoder , to rewrite each layer’s numbers as a combination of a few entries from a much larger dictionary of candidate features. In 2024 Anthropic used this approach to extract millions of features from one of its production language models, many of them readable. One fired for mentions and pictures of the Golden Gate Bridge, and when the researchers artificially turned it up, the model began steering every conversation toward the bridge and, asked about its own form, described itself as the bridge. Features like these can then be traced into circuits , small chains of features across layers that carry out one piece of a computation.",
+      "sourceAnchor": null,
+      "wordCount": 231
+    },
+    {
+      "id": "u000701",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The same tools address the question of where a fact lives. Much of a language model’s factual knowledge is believed to sit in the dense part of its blocks. In 2022 a group of researchers traced which parts of a GPT model were needed to recall a fact such as “the Eiffel Tower is in Paris”, found them concentrated in the dense layers of a few middle blocks, and then edited those weights so that the model consistently placed the tower in Rome, across several phrasings. The edits also showed the limits: they could spill over onto neighboring facts or fail to reach related questions, because a fact in a network is not a row in a table. Knowledge is spread over many weights, and each weight takes part in many pieces of knowledge.",
+      "sourceAnchor": null,
+      "wordCount": 134
+    },
+    {
+      "id": "u000702",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "One more kind of explanation needs a warning label, because it is the one people meet most often. Reasoning models write out their steps before answering, and it is tempting to read those steps as a transcript of the computation. They are a useful clue, sometimes a revealing one, but they are not guaranteed to be faithful. In a 2025 study, Anthropic slipped hidden hints toward an answer into the questions it gave reasoning models. The models often used the hints, yet mentioned them in their written reasoning only a minority of the time: about a quarter of the time for one model, under two fifths for another. Written reasoning is text produced by the same next-word game, and it can be a plausible story rather than the true one. Attention maps deserve the same caution.",
+      "sourceAnchor": null,
+      "wordCount": 136
+    },
+    {
+      "id": "u000703",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "For most teams, the usable end of this field is modest and valuable. For a model that scores customers or tickets, compute per-prediction explanations such as SHAP on a sample of cases and actually read them; it is often how leaks and Clever Hans features get caught. Pair them with per-group checks. Offer counterfactuals when people need to know what to do next. And treat every explanation as evidence to be tested, never as the final word.",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000704",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Here the mechanic picture breaks, twice. A car was designed by engineers who gave every part a name and a purpose, so a diagnosis can be checked against the design; a network’s parts were never named by anyone, and the names researchers give them are hypotheses. And a mechanic’s gauges do not invent readings, while an explanation method can: it describes the model, sometimes inaccurately, and never the world. A model that leans on postcodes can be explained perfectly, and the explanation will still not tell you whether postcodes are a fair thing to lean on.",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000705",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Everything so far has been about making a model predict well, and knowing when it does not. The next chapter takes the model out into the world, and it begins with a bird that predicts perfectly and is useless for deciding anything.",
+      "sourceAnchor": null,
+      "wordCount": 42
+    },
+    {
+      "id": "u000706",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Going further. If you wondered why a model that predicts perfectly can still mislead a decision, and why no explanation of its features settles what causes what, section 11.1 takes that up. How to notice when the inputs drift away from the training data, and calibration quietly breaks with them, is part of section 11.5, and what the law now expects of datasheets and model cards is covered in section 11.4.",
+      "sourceAnchor": null,
+      "wordCount": 74
+    }
+  ]
+}

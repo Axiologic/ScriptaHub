@@ -1,0 +1,440 @@
+{
+  "batch": "batch-0002.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0002",
+  "chapterTitle": "Chapter 1 — The Shift in Thinking",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000146",
+      "chapterId": "chapter-0002",
+      "kind": "h1",
+      "text": "Chapter 1 — The Shift in Thinking",
+      "sourceAnchor": "chapter-1-the-shift-in-thinking",
+      "wordCount": 6
+    },
+    {
+      "id": "u000147",
+      "chapterId": "chapter-0002",
+      "kind": "h2",
+      "text": "1.1 The Recipe and the Apprentice",
+      "sourceAnchor": "the-recipe-and-the-apprentice",
+      "wordCount": 7
+    },
+    {
+      "id": "u000148",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Here is a small programming exercise. Write a function that takes a photo and returns true if there is a cat in it.",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000149",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "You start confidently. Cats have pointed ears, so you look for two triangles above a roundish shape. Then you remember cats photographed from behind, cats curled into a ball, cats under a duvet with only a tail sticking out. You add a rule for whiskers, and discover that a hairbrush has whiskers, at least as far as your rules can tell. You add a rule for fur, and a fluffy slipper starts passing as a cat. By the end of the day you have hundreds of lines of conditions and a function that is still wrong far too often.",
+      "sourceAnchor": null,
+      "wordCount": 99
+    },
+    {
+      "id": "u000150",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Meanwhile, any three-year-old can do this perfectly. Ask her how, and she cannot tell you. The knowledge is real; it simply does not exist in the form of rules. And that is the wall that classic programming runs into.",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000151",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Classic programming is the art of writing recipes. Grandma’s card says two hundred grams of flour, three eggs, forty minutes at 180 degrees, and if you follow it, you get the cake. Every program you have ever written is a recipe of this kind: precise steps, decided in advance by someone who understood the problem. It works beautifully as long as the world looks the way the recipe expects. It breaks down most badly in one situation, and a very common one: when you cannot put into words what you want.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000152",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "So imagine a different kind of kitchen. There is no recipe card, only an apprentice. You let the apprentice taste a hundred cakes that turned out well and a hundred that failed, each one labeled. At first the apprentice’s judgments are random. But after every cake you tell them whether they were right, and slowly they build an internal sense of what good proportions feel like. Ask them to write it down and they can’t. Hand them cake number 201, which they have never tasted, and they judge it correctly anyway.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000153",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "That apprentice is machine learning. The arrows have been reversed: instead of giving the computer rules and data and getting answers back, you give it data together with the answers, and it hands you the rules.",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000154",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "The history of the spam filter shows why this reversal mattered so much. The first filters were recipe cards: block emails containing “FREE MONEY”, block senders on a blacklist, block anything with five exclamation marks. Spammers adapted within days. “FR3E M0NEY” sailed through, new domains appeared every morning, and every rule the defenders wrote started another round of an arms race they could not win. In 2002, the programmer Paul Graham published an essay called A Plan for Spam that helped popularize a different idea: stop writing rules, and let the filter learn from the mail each user had already marked as spam or not. The filter would discover for itself which words, links and patterns gave spam away. When spammers changed tactics, nobody rewrote anything; the filter simply learned from the new examples. Small filters of that kind could update their word counts the moment a user clicked “spam”, because their training was little more than counting; larger models are usually retrained on a schedule, with the newest examples added. Either way, people change the data, not the code. The arms race did not end, but the defenders finally had a weapon that kept up.",
+      "sourceAnchor": null,
+      "wordCount": 196
+    },
+    {
+      "id": "u000155",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "You may be sitting on a similar situation right now. Picture a support team that receives hundreds of tickets a day and must route each one to Billing, Infrastructure or Mobile. Someone writes keyword rules, and “invoice” goes to Billing. It handles the obvious cases. Then a customer writes “I was charged twice after the app crashed”, which mentions neither invoices nor phones, and the rules shrug. Yet in the ticketing system lie years of tickets that humans have already routed correctly. Every one of them is a cake with a label. The apprentice is waiting for them.",
+      "sourceAnchor": null,
+      "wordCount": 98
+    },
+    {
+      "id": "u000156",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "What is this apprentice made of? Underneath, a model is still a function, just like the ones you write. The difference is that it has blanks in it: numbers called parameters or weights , whose values nobody types in. Training is the search for the values that make the function agree with the examples. When training ends, the “rule” the apprentice learned is not an if statement you could read in a code review. It is a long list of numbers: a few dozen for a small model, billions for a large one. People call models black boxes. The box is not magic; it is written in a language of numbers rather than a language of conditions, a language people find very hard to read.",
+      "sourceAnchor": null,
+      "wordCount": 124
+    },
+    {
+      "id": "u000157",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "None of this means the recipe is dead. Validating an IBAN, calculating VAT, checking that a date lies in the past: here the rules are known, exact and often written into law. An apprentice would be slower, harder to audit and occasionally, confidently wrong. If you can write the rule in twenty lines and it rarely changes, write the rule. Machine learning earns its considerable cost, in data, in monitoring, in living with uncertainty, only when the rules are too many, too subtle or too quick to change.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000158",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "There is one more thing about the apprentice, and it will haunt the rest of this book. A human apprentice understands why sugar makes a cake sweet. A model like this one has no such understanding; it only notices what goes together. Suppose every good cake in your photos happened to sit on a white plate and every failure on a blue one. The model will learn “white plate means good cake”, score perfectly on your examples, and be completely happy with itself. No score on examples that share the same accident will reveal it. You find out by testing on cakes where plate and quality disagree, a good cake on a blue plate, or by asking the model which inputs it leans on most.",
+      "sourceAnchor": null,
+      "wordCount": 125
+    },
+    {
+      "id": "u000159",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "The apprentice learns exactly what the examples teach, nothing more and nothing less. Which means that the most important question in machine learning is not which algorithm to use. It is where the examples come from, and who wrote the answers on them.",
+      "sourceAnchor": null,
+      "wordCount": 43
+    },
+    {
+      "id": "u000160",
+      "chapterId": "chapter-0002",
+      "kind": "h2",
+      "text": "1.2 The Answers on the Back of the Page",
+      "sourceAnchor": "the-answers-on-the-back-of-the-page",
+      "wordCount": 10
+    },
+    {
+      "id": "u000161",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Somewhere in your company there is a column of data that nobody thinks about, and it may be the most valuable thing you own.",
+      "sourceAnchor": null,
+      "wordCount": 24
+    },
+    {
+      "id": "u000162",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "It is not in a fancy data warehouse. It is the resolved_by_team field on old support tickets. It is the duration_seconds on every CI (continuous integration) build since the project started. It is the little checkbox where an engineer, after investigating a failed test, marked it as “flaky” or “real bug”. Each of these is an answer, written by someone who knew, attached to a question. Collect enough of them and you have what the apprentice needs: cakes with labels.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000163",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Learning from questions paired with their answers is called supervised learning , and its everyday version is something you did at school. You solve a problem in the workbook and flip to the back to check. The answer was B; you said A. Nobody explains why. You only get the verdict, so you adjust your thinking a little and move on. After a few thousand problems, something has settled in your head that you could not fully put into words, yet it gets the next problem right.",
+      "sourceAnchor": null,
+      "wordCount": 86
+    },
+    {
+      "id": "u000164",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Anyone who has learned German with flashcards knows how strange and wonderful this feels. You drill hundreds of nouns with their articles on the back, and one day you notice that you just know a word ending in -ung takes die . No teacher stated the rule. It condensed out of the examples, the way frost forms on a window. That is the entire promise of supervised learning in one small moment: the rule was never given, only the examples and the verdicts.",
+      "sourceAnchor": null,
+      "wordCount": 82
+    },
+    {
+      "id": "u000165",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Now go back to that duration_seconds column. Every build in your CI history comes with its circumstances: how many files changed, which modules they touched, how many tests ran, whether the cache was warm. In the vocabulary of the field, those circumstances are features , the measurable properties of each build that the model gets to look at. The true duration is the label , the answer on the back of the page. Give a model a few thousand past builds and it learns to estimate the next one before it starts, which is genuinely useful when you are scheduling runners or warning a developer that their change will keep CI busy for forty minutes. Other features might be a client’s age, the color of a pixel or whether a word appears in a text. Laying features out as a table, one row per example and one column per feature, is just one convenient arrangement, natural for business records like these builds; for photos, text and sound, whose raw material is pixels, words and samples, the story is different, and a later chapter tells it.",
+      "sourceAnchor": null,
+      "wordCount": 184
+    },
+    {
+      "id": "u000166",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "The flaky-test checkbox works the same way, except that the answer is a category rather than a number. The model sees the test’s history, the error message, the runner and the time of day, and learns to suggest “probably flaky” before anyone looks. Predicting a number is called regression ; predicting a category is called classification . Between them, they cover most of what supervised learning is used for.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000167",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "There is one more ingredient, and it is easy to overlook because it sounds so mundane. After every guess, something has to say how wrong it was, as a single number. That number is the loss , and the way you define it quietly shapes everything the model learns. Say you are predicting delivery times. If you simply add up the minutes of error, being an hour late once counts the same as being six minutes late ten times. Customers do not feel it that way: one delivery an hour late generates an angry call, while several slightly late ones go unnoticed. So the usual choice squares the errors, and a miss of sixty minutes then weighs far more than ten misses of six. The loss is chosen by people, not by the algorithm, and it is a statement of what you care about. Squares are popular for that reason and because they make a smooth valley that is easy to walk down; if every minute of lateness really costs the same, you can add up plain minutes instead, and the model learns to aim at the typical delivery rather than be pulled toward the rare disasters.",
+      "sourceAnchor": null,
+      "wordCount": 196
+    },
+    {
+      "id": "u000168",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "For categories, the usual loss has a personality too. It is gentle with a model that was unsure and wrong, and merciless with one that was confident and wrong. You know this from weather forecasts. A forecaster who said “50% chance of rain” on a rainy day has not embarrassed herself. One who said “99% sun” on that same day has lost your trust for a month. The usual loss looks only at the probability the model gave to what actually happened and takes its logarithm: giving the truth 50% costs a little, giving it 1% costs a lot, and giving it 0% costs infinitely much, which is why a well-trained classifier almost never says “impossible”.",
+      "sourceAnchor": null,
+      "wordCount": 116
+    },
+    {
+      "id": "u000169",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "So far this sounds like a tidy story: collect answers, define a loss, let the model learn. Here is where it turns.",
+      "sourceAnchor": null,
+      "wordCount": 22
+    },
+    {
+      "id": "u000170",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Picture a team under pressure. A test fails on Friday afternoon, the release is blocked, and someone needs to merge before the weekend. The test gets marked “flaky”, the build is rerun, everyone goes home. It happens again the next Friday, and the one after. Months later, someone trains a model on the flaky-test checkbox. It learns, faithfully and correctly, that tests failing on Friday afternoons are flaky. The model has not made a mistake. It has learned precisely what was written on the back of the page.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000171",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "This is the uncomfortable truth at the heart of supervised learning: a model can only be as good as its answers, and real answers are written by tired people, buggy scripts and old processes nobody has questioned. Workbook answers are checked by an editor; yours usually are not. This is why, in real projects, collecting and cleaning labels often costs more than building the model itself, and why the best machine learning engineers spend a surprising amount of their time reading individual examples rather than tuning algorithms. The model cannot notice wrong labels by itself, since the labels are its only notion of truth. There is a useful trick, though: train a model, then look at the examples where it confidently disagrees with its label; many turn out to be the Friday-afternoon checkboxes, and that short list is a far better place for a human to start reading than the whole pile.",
+      "sourceAnchor": null,
+      "wordCount": 152
+    },
+    {
+      "id": "u000172",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Which raises a natural question. What if you have no answers at all? No labels, no checkboxes, just a mountain of data that nobody has ever sorted. Can a machine learn anything from that?",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000173",
+      "chapterId": "chapter-0002",
+      "kind": "h2",
+      "text": "1.3 Sorting the Closet in the Dark",
+      "sourceAnchor": "sorting-the-closet-in-the-dark",
+      "wordCount": 8
+    },
+    {
+      "id": "u000174",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "The power goes out on a winter evening, just as you have dumped a basket of clean laundry on the bed. You have no flashlight and no patience to wait, so you start sorting by touch. Thick, long-sleeved things go in one pile. Thin, short things in another. Stiff things with buttons in a third, small soft things in a fourth. When the lights come back, the piles make perfect sense: sweaters, T-shirts, shirts, socks. Nobody told you those categories existed. You found them because the clothes themselves were different, and similar things ended up together.",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000175",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "That is the answer to the question at the end of the last section. Yes, a machine can learn without answers, in roughly the way you sorted the laundry. Learning without labels is called unsupervised learning , and its most common form, finding groups of similar things, is called clustering .",
+      "sourceAnchor": null,
+      "wordCount": 49
+    },
+    {
+      "id": "u000176",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "It is three in the morning when you will appreciate it most. An alert has fired, and the logging system shows forty thousand stack traces from the last hour. Nobody can read forty thousand stack traces. But most of them are the same few problems repeated, decorated with different timestamps, user IDs and request numbers. Cluster the traces by similarity and the wall of text collapses into a short list: this error, twelve thousand times; that one, nine thousand; a strange new one, seventeen times, starting at 02:41. You read the list, not the wall, and the strange new one is probably your incident. To get there, the noise is stripped out first: timestamps, user IDs and request numbers are replaced by placeholders, so that two traces of the same bug become nearly identical text. Then each trace is turned into numbers, for instance by counting which words and function names it contains, and similar traces are those whose lists of numbers are close.",
+      "sourceAnchor": null,
+      "wordCount": 165
+    },
+    {
+      "id": "u000177",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "How does a computer decide what goes together? The classic method, K-Means , works the way a pizza chain might choose where to put its delivery stations in a new city. You decide you can afford, say, five stations, and drop them on the map at random. Every house is assigned to its nearest station. Then each station moves to the middle of the houses it serves. Now some houses are closer to a different station, so they switch, and the stations move again. Repeat, and after a few rounds nothing changes: the stations sit in the centers of natural neighborhoods. Notice who chose the number five. You did, not the algorithm. To choose it well, you usually try several and watch how much tighter the groups get with each extra station: the first few help a lot, then the gains flatten out, and the bend in that curve is a reasonable choice. The final judgment is still yours, made by opening the groups and asking whether they mean anything; other methods find the number of groups by themselves.",
+      "sourceAnchor": null,
+      "wordCount": 178
+    },
+    {
+      "id": "u000178",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "The same idea turns into an early-warning system. Every server in a fleet reports CPU (central processing unit) load, memory, latency, error rate and traffic. Healthy servers end up in a few tight groups, like houses around their pizza stations. A server that sits far from every group is behaving unlike anything else, even if no single metric has crossed an alert threshold yet. Finding such outliers is anomaly detection , and it is one of the most practical things unsupervised learning does. Where “far” begins is yours to decide, usually just beyond where almost all healthy servers have sat over the past month: draw the line too close and you get pager fatigue, too far and the drifting server is caught late.",
+      "sourceAnchor": null,
+      "wordCount": 122
+    },
+    {
+      "id": "u000179",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Groups are not the only hidden structure worth finding. Hold a coffee mug in front of a flashlight and look at its shadow on the wall. From the side, you see the handle and would recognize it as a mug anywhere. From above, it is a plain circle that could be a glass, a can or a coin. If you were allowed to keep only one shadow, you would rotate the mug until the shadow told you the most.",
+      "sourceAnchor": null,
+      "wordCount": 79
+    },
+    {
+      "id": "u000180",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Spec sheets have the same property. A laptop comes with thirty numbers: cores, clock speed, RAM, graphics memory, price, weight, screen size, battery life and more. But those numbers are not independent. Machines with more cores tend to have more RAM, a better GPU (graphics processing unit, the chip on a graphics card) and a higher price; lighter machines tend to have smaller screens and longer battery life. The thirty numbers are mostly telling two stories, “how powerful” and “how portable”. Principal component analysis , or PCA, finds such summary directions automatically, and lets you describe every laptop with two numbers instead of thirty while losing surprisingly little. It is the mathematical version of choosing the most informative shadow. It looks for the direction along which the laptops differ most, then for the next most varied direction at right angles to the first, so that it does not repeat what the first already says, and so on. Keeping two directions means discarding the smaller differences along all the others, which is fine if they were mostly noise and painful if a rare but important property lived there. Engineers use it to squash a dashboard of two hundred metrics per service into a single two-dimensional plot, where the one service drifting away from its siblings jumps out at a glance.",
+      "sourceAnchor": null,
+      "wordCount": 218
+    },
+    {
+      "id": "u000181",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "All of this is useful. Now for the part that should make you a little suspicious.",
+      "sourceAnchor": null,
+      "wordCount": 16
+    },
+    {
+      "id": "u000182",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "In 1976, NASA’s Viking orbiter photographed a hill on Mars that looked unmistakably like a human face staring up from the desert. For years it fed theories about ancient civilizations. Later, sharper images showed an ordinary eroded mesa. The face had never been there; the human brain is simply built to find faces, in clouds, in electrical sockets, in the front of a car. Clustering algorithms have the same affliction. Give K-Means pure random noise and ask for five clusters, and it will hand you five clusters, each with a neat center, every time. It never answers “there is nothing here”.",
+      "sourceAnchor": null,
+      "wordCount": 101
+    },
+    {
+      "id": "u000183",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "There is a quieter trap too. When you sorted laundry, you chose to sort by thickness. An algorithm sorts by whatever its notion of distance happens to measure. Cluster employees by salary in euros and years of experience, and a difference of 1,000 euros swamps a difference of ten years, purely because the numbers are bigger. The “natural groups” you discover are then just salary bands. This is why data is usually rescaled before clustering, so that every feature speaks at a similar volume.",
+      "sourceAnchor": null,
+      "wordCount": 85
+    },
+    {
+      "id": "u000184",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "So unsupervised learning gives you hypotheses, not conclusions. It says: these things seem to belong together, this one seems odd. Whether that means anything is your call, and the only reliable way to make it is to open each group and look at real examples.",
+      "sourceAnchor": null,
+      "wordCount": 45
+    },
+    {
+      "id": "u000185",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Which brings us to the question that every method in this book must eventually face, supervised or not. How do you know, honestly know, that a model works? Teams have celebrated too early more often than you would think.",
+      "sourceAnchor": null,
+      "wordCount": 39
+    },
+    {
+      "id": "u000186",
+      "chapterId": "chapter-0002",
+      "kind": "h2",
+      "text": "1.4 The Exam You Are Not Allowed to See",
+      "sourceAnchor": "the-exam-you-are-not-allowed-to-see",
+      "wordCount": 10
+    },
+    {
+      "id": "u000187",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Picture a team that has spent two months building a ticket router. The demo goes beautifully: they feed it a thousand tickets and it sends 98% of them to the right team. There is cake. A month after launch, a support lead quietly forwards a spreadsheet. In production, the router is right about seven times out of ten. Nobody can find a bug. The code is clean, the model loads correctly, the inputs look normal.",
+      "sourceAnchor": null,
+      "wordCount": 75
+    },
+    {
+      "id": "u000188",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "What went wrong is almost embarrassingly simple, and it happens all the time. The thousand tickets in the demo were tickets the model had learned from. The team had measured its memory, not its skill. It is like judging a job candidate by asking the exact interview questions they were handed to study the night before.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000189",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Think about how a driving test works, because it solves this problem rather elegantly. You learn from a practice book, which you can read as often as you like, answers included. Along the way you take mock exams, which tell you whether your way of studying works and which topics need another pass. Then comes the real test, once, at the end. If someone leaked you the real questions in advance, your score would be real, and it would say nothing about whether you can drive.",
+      "sourceAnchor": null,
+      "wordCount": 86
+    },
+    {
+      "id": "u000190",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Machine learning copies this structure exactly. The training set is the practice book: the model’s weights are fitted to it. The validation set is the mock exam: you use it to compare approaches and choose settings. The test set is the real exam, and it only means something if it stays sealed until the end.",
+      "sourceAnchor": null,
+      "wordCount": 55
+    },
+    {
+      "id": "u000191",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "The sealed envelope is harder to keep sealed than it sounds. Suppose you evaluate on the test set, notice the score is a bit low, tweak something, evaluate again, tweak again, twenty times, and finally report the best number. Each peek leaked a little information, and after twenty peeks you have tuned the model to that particular exam. Every engineer knows the CI version of this: rerunning a flaky pipeline until it goes green and then declaring the build healthy. The green run did happen. It just tells you much less than it seems.",
+      "sourceAnchor": null,
+      "wordCount": 94
+    },
+    {
+      "id": "u000192",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "It helps to keep two kinds of numbers apart in your head. Parameters, the blanks in the function that training fills in, are what the model learns by itself from the practice book, the knowledge in the student’s head. Hyperparameters are choices about how the learning happens: how big the model is, how fast it learns, how long it trains. In the driving test picture, they are how many hours a day you study and which practice book you buy. The model sets its parameters; you set the hyperparameters, and you set them by watching the mock exams. Watching them leaks information too, in exactly the same way, only it is allowed: after many rounds of tuning, the validation score is a little flattering, which is precisely why the test set exists, the one number nobody was allowed to tune against.",
+      "sourceAnchor": null,
+      "wordCount": 141
+    },
+    {
+      "id": "u000193",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "When data is scarce, holding back a whole mock exam feels wasteful, and there is a neat trick for that. Split the data into five parts and train five times, each time using a different part as the mock exam and the other four as the practice book. Every example gets used for practice four times and for the mock exam once, and the average of the five scores is a steadier verdict than any single one. This is cross-validation .",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000194",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "There is a second lesson hiding in the ticket router story, and it is about what the student is given to study at all. A model sees only the features you hand it. Give it a raw timestamp like 2026-03-14T08:47:12Z and most models can do very little with it; it is just a big, ever-increasing number. Hand it the same moment as “hour of day: 8”, “day of week: Saturday” and “public holiday: no”, and suddenly it can learn that Saturday mornings are quiet and Monday mornings are chaos. Turning raw data into inputs that expose what matters is called feature engineering , and on ordinary business data it often matters more than the choice of algorithm.",
+      "sourceAnchor": null,
+      "wordCount": 118
+    },
+    {
+      "id": "u000195",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Now for the twist that no driving test prepares you for. The road exam is drawn from the same rulebook year after year. Your data is not. Customers change their habits, prices move, a competitor launches, slang shifts, a pandemic rearranges everything in a fortnight. A model that scored brilliantly on last year’s data can quietly lose its edge this year without a single line of code changing. The slow shift in the data behind this decay is called data drift , and it is the reason models in production need monitoring like any other service, with alerts when their inputs or their accuracy start to wander. When the true answers arrive only weeks later, you watch the inputs, which arrive at once: if this week’s tickets are longer, come from new countries or mention words the model rarely saw, the world has moved before any accuracy number can say so. The usual remedy is unglamorous, retraining on recent data on a schedule or whenever the alarms fire.",
+      "sourceAnchor": null,
+      "wordCount": 167
+    },
+    {
+      "id": "u000196",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "It also changes how you should seal the envelope. For anything that unfolds over time, never pick the test set at random. Train on the past and test on the most recent period, the way the model will actually be used. A random shuffle lets the model learn from next Tuesday while being tested on last Monday, and a model that has seen the future will always look like a genius.",
+      "sourceAnchor": null,
+      "wordCount": 71
+    },
+    {
+      "id": "u000197",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "That is enough about how to judge a student. It is time to meet some actual students, beginning with the humblest one of all: a straight ruler, a handful of nails and some springs.",
+      "sourceAnchor": null,
+      "wordCount": 34
+    },
+    {
+      "id": "u000198",
+      "chapterId": "chapter-0002",
+      "kind": "p",
+      "text": "Going further. If you wondered how a model like the one with the white plate gets caught cheating, section 10.2 takes that up, and if you wondered how many labeled examples are enough, section 5.4 does. Whether anyone can read what a trained model has learned from its long list of numbers is the question of section 10.6. And what it takes to keep a model useful once the world drifts away from its data is the story of section 11.5.",
+      "sourceAnchor": null,
+      "wordCount": 85
+    }
+  ]
+}

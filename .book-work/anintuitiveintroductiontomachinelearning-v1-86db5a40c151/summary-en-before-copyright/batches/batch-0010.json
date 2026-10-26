@@ -1,0 +1,528 @@
+{
+  "batch": "batch-0010.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0008",
+  "chapterTitle": "Chapter 7 — Language and Meaning",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000459",
+      "chapterId": "chapter-0008",
+      "kind": "h1",
+      "text": "Chapter 7 — Language and Meaning",
+      "sourceAnchor": "chapter-7-language-and-meaning",
+      "wordCount": 5
+    },
+    {
+      "id": "u000460",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.1 A Map Where Meaning Has an Address",
+      "sourceAnchor": "a-map-where-meaning-has-an-address",
+      "wordCount": 9
+    },
+    {
+      "id": "u000461",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Open any color picker and type #1E90FF . You get a bright, friendly blue. Change it to #1E80EF and you get a blue that is almost the same, a shade deeper. Change it to #FFD700 and you get gold. Without thinking about it, you have been using one of the most powerful ideas in modern machine learning.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000462",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "A color code is an address. Its three coordinates say how much red, green and blue to mix, and the remarkable thing is that the space they define has meaning . Colors with nearby addresses look alike. Directions mean something too: move any color in the “more red” direction and it warms up, whatever color you started from. Nobody has to explain to you that navy and royal blue are related. Their addresses already say so.",
+      "sourceAnchor": null,
+      "wordCount": 75
+    },
+    {
+      "id": "u000463",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Now imagine doing the same thing for words. Give every word in the language an address, not with three coordinates but with hundreds, and arrange the addresses so that words with similar meanings live close together. In a well-mapped city of words, “dog” lives near “cat” and “hamster”, “money” lives on the same street as “credit” and “interest”, and “king” lives next door to “queen”. Such an address is called an embedding : a list of numbers, a few hundred to a few thousand long, that places a word, a sentence, an image or a product on a map of meaning. The length is the designer’s choice, a hyperparameter: more coordinates leave room for finer distinctions but cost more memory and slower search.",
+      "sourceAnchor": null,
+      "wordCount": 122
+    },
+    {
+      "id": "u000464",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The moment this idea caught the public imagination came in 2013, when a team at Google led by Tomas Mikolov released a method called word2vec. People began doing arithmetic with its addresses and discovered something uncanny. Take the address of “king”, subtract “man”, add “woman”, and look at what lives nearest the result, leaving out the words you started with. Very often, it is “queen”. The route from man to woman on the map turned out to be roughly the same as the route from king to queen. Directions in the space of words, like directions in the space of colors, carried meaning.",
+      "sourceAnchor": null,
+      "wordCount": 103
+    },
+    {
+      "id": "u000465",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Who decided these addresses? Nobody. They were learned, and the principle behind the learning is older than computers. In 1957 the linguist J. R. Firth wrote that you shall know a word by the company it keeps. A model reading billions of sentences notices that “king” and “queen” turn up in similar company: “the ___ ruled”, “crowned the ___”, “the ___ and the court”. Every time it sees two words keep similar company, it nudges their addresses closer. After enough reading, the map draws itself. In word2vec, the nudging is a small guessing game: from a word’s address, guess which words appear near it in a sentence. Every wrong guess sends a gradient that moves the addresses a little, and words that keep the same company get pushed in the same directions until they end up neighbors.",
+      "sourceAnchor": null,
+      "wordCount": 134
+    },
+    {
+      "id": "u000466",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "For an engineer, the payoff is immediate, because it turns “find similar” into “find nearby”. Type “function that retries failed HTTP calls” into a semantic code search. Plain text search finds nothing, because the function you want is called with_backoff and its comment talks about “exponential delay on transient errors”. But embed your query and every function in the codebase, and with_backoff sits right next to your query on the map. The words are different; the meaning is close. The same trick is how a bug tracker catches a duplicate whose words barely overlap with the original: it groups “Can’t log in on Safari”, “Sign-in button dead on my Mac” and “Authentication fails in Apple browser” into one cluster of duplicates, and powers the “similar items” shelves of many online shops. Nearest-neighbor search and clustering suddenly work on text. Whole sentences and documents get a single address too: a model reads the text with attention, the mechanism of the next section, condenses the context-aware addresses it has built for every word into one list of numbers, often simply by averaging them, and is trained so that a question and the passage that answers it land close together.",
+      "sourceAnchor": null,
+      "wordCount": 199
+    },
+    {
+      "id": "u000467",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "There is a subtlety in how “close” is measured, and a kitchen explains it best. A pancake recipe for four people and the same recipe scaled up for forty have wildly different quantities, but identical proportions. Measured by raw distance, they are far apart. Measured by direction , by the ratios between ingredients, they are the same recipe. Embeddings are usually compared the second way, with cosine similarity , which looks at the angle between two addresses and ignores their length. That way a long document and a short note about the same topic count as neighbors, as they should.",
+      "sourceAnchor": null,
+      "wordCount": 98
+    },
+    {
+      "id": "u000468",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "It would be easy to get carried away here, so two words of caution. First, the coordinates have no names. There is no “royalty axis” you could point to; meaningful directions are blends of many coordinates at once. Second, the king-and-queen arithmetic is real but temperamental. It works beautifully for selected examples and unevenly for many others. Treat it as a tendency of the map, not a law of nature. And because the map is learned from what people write, it learns their prejudices too: early word maps placed “nurse” closer to “she” and “engineer” closer to “he”, faithfully reproducing the company those words keep in ordinary text; and a faithful map is not the same as a fair one.",
+      "sourceAnchor": null,
+      "wordCount": 120
+    },
+    {
+      "id": "u000469",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "And there is a deeper problem, one you may have spotted already. Read these two sentences: “After fishing from the bank, I walked home.” “I deposited the money at the bank.” In a map like word2vec’s, “bank” has exactly one address. It cannot live by the river and next to the money at the same time, so it ends up somewhere awkwardly in between, a little useless for both.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000470",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "What we really want is an address that moves depending on the words around it. That is exactly what researchers built from 2017 on, and to see how, we need to step into a room full of detectives.",
+      "sourceAnchor": null,
+      "wordCount": 38
+    },
+    {
+      "id": "u000471",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.2 The Detectives’ Meeting",
+      "sourceAnchor": "the-detectives-meeting",
+      "wordCount": 5
+    },
+    {
+      "id": "u000472",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "A message appears in your team’s chat channel: “it’s down again.”",
+      "sourceAnchor": null,
+      "wordCount": 11
+    },
+    {
+      "id": "u000473",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "You know immediately what “it” is. Not because the message says so, but because your eyes have already flicked up the channel, skipped the lunch plans and the link to a conference talk, and landed on the message from twenty minutes ago about the payments service throwing timeouts. Your understanding of “it” was assembled from the other messages, each weighted by how relevant it seemed. The lunch plans got almost no weight. The payments message got nearly all of it.",
+      "sourceAnchor": null,
+      "wordCount": 80
+    },
+    {
+      "id": "u000474",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "That glance, repeated for every word in a text, is the idea at the heart of the Transformer. It is called attention , and to see how a machine does it, picture a room.",
+      "sourceAnchor": null,
+      "wordCount": 33
+    },
+    {
+      "id": "u000475",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Turn the sentence “After fishing from the bank, I deposited the money at the bank” into a room with one detective per word. Each detective has a problem to solve, namely what they themselves mean here, and each carries three things. A note with a question , called the query : “I need someone who can tell me what kind of bank I am.” A name badge , called the key , announcing what they can offer: “I am an outdoor activity near water”, or “I am a financial action”. And a file , called the value , holding the information they will hand over to anyone who listens to them.",
+      "sourceAnchor": null,
+      "wordCount": 105
+    },
+    {
+      "id": "u000476",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The meeting begins. Each detective reads their question, walks around the room and compares it with everyone’s badge. The better the match, the more attention they pay to that detective. Then each detective rewrites their own identity as a blend of the files of the detectives they listened to, mostly from the best matches, a little from the rest. The first “bank” finds a strong match in “fishing” and leaves the meeting as bank, the riverside . The second finds strong matches in “deposited” and “money” and leaves as bank, the institution . Same word, two identities, decided by context, and decided afresh for every sentence.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000477",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "If you are a programmer, here is the moment where it may click into place. You use dictionaries every day. You look up a key; if it matches exactly, you get its value; if not, you get nothing. Attention is the same operation, made soft. Your query is compared with every key in the table, and instead of one exact match, each key receives a match score. The scores are turned into percentages that add up to a hundred, and you get back a blend of all the values, weighted by those percentages: mostly the best match, a bit of the second best, a trace of everything else. Attention is a fuzzy dictionary lookup, performed by every word on every other word, all at the same time. The comparison itself is plain arithmetic: question and badge are both lists of numbers, and the match score is their dot product, the multiply-and-add of the apartment checklist, large when the two lists point in similar directions; softmax then turns the scores into percentages.",
+      "sourceAnchor": null,
+      "wordCount": 171
+    },
+    {
+      "id": "u000478",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "That last part, all at the same time, is what the telephone game could never do. Nobody whispers. Every word can consult every other word directly, however far apart they stand, and because the consultations are independent of each other, a graphics card can run them all in parallel.",
+      "sourceAnchor": null,
+      "wordCount": 49
+    },
+    {
+      "id": "u000479",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Here is the subtle point that is easy to get wrong. What does the model actually learn? Not the match scores between particular words; those are recomputed for every new sentence. Each word starts from its embedding, and three learned transformations turn that embedding into a question, a badge and a file. Training teaches the detectives how to write good questions, good badges and useful files in general. That is why a Transformer copes with sentences it has never seen: the rules for writing notes carry over, even when the room is new.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000480",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "One meeting is not enough, so Transformers hold many in parallel. Think about code review: three reviewers who each focus on something different, security, performance and readability, catch more than one reviewer trying to watch everything. In multi-head attention , several meetings run side by side on the same sentence, each with its own style of questions and badges. One head might learn to track grammar, which noun a verb belongs to; another to track references, what “it” points to; another the topic. A full Transformer block is such a multi-headed meeting followed by a small neural network that each detective uses privately to digest what they heard. Large models stack dozens of these blocks, so identities are refined again and again.",
+      "sourceAnchor": null,
+      "wordCount": 121
+    },
+    {
+      "id": "u000481",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Two details complete the picture. First, the meeting as described has no sense of order. “Dog bites man” and “man bites dog” bring the same three detectives into the room. So each word’s starting embedding is combined with information about its position in the sentence. The original Transformer simply added a fixed pattern of numbers to each embedding, a different pattern for every position, like a house number written on each file; modern models mostly use a cleverer scheme, which comes later in the book. Second, models that generate text, such as the GPT (generative pre-trained transformer) family, add a rule: each detective may only consult the detectives to their left. When you are writing a sentence, you cannot consult words you have not written yet. This is the causal mask , and our example respects it, since “fishing” comes before the first “bank”, and “deposited” and “money” come before the second. When the clue comes later, as in “the bank was steep and muddy”, the detective for “bank” cannot resolve it, but “steep” and “muddy” can look back at “bank” and carry the resolved meaning forward in their own rows, which is where the next word is predicted from; models built only for reading, such as BERT, drop the mask and let every word look both ways.",
+      "sourceAnchor": null,
+      "wordCount": 217
+    },
+    {
+      "id": "u000482",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Step back and compare this with an ordinary multi-layer network. That network applies the same fixed weights to every input. It is the clerk at the counter, applying one regulation to every file that crosses the desk. A Transformer computes fresh attention for each input. It is the manager who reads the whole file and decides, question by question, which documents matter. The manager has a price, though. Because every word consults every other word, doubling the length of a text roughly quadruples the work of attention. That is why every model has a maximum context length, and why making that length longer has been one of the field’s great engineering battles.",
+      "sourceAnchor": null,
+      "wordCount": 112
+    },
+    {
+      "id": "u000483",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "A word of caution before we leave the room. The detectives understand nothing and intend nothing. “Listening” is a weighted average of lists of numbers, and real attention is rarely as tidy as in the drawing: it is usually more spread out, and different heads look at very different things. Attention patterns are a clue to what a model is doing, never a full explanation.",
+      "sourceAnchor": null,
+      "wordCount": 65
+    },
+    {
+      "id": "u000484",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The 2017 paper introduced the Transformer as a better way to translate between languages. Few people guessed what would happen when someone took this architecture, made it enormous, and trained it on the simplest game imaginable: guess the next word.",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000485",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.3 The Game of Guessing the Next Word",
+      "sourceAnchor": "the-game-of-guessing-the-next-word",
+      "wordCount": 9
+    },
+    {
+      "id": "u000486",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Try this on your phone. Open a message, type “I think the”, and then keep tapping the middle suggestion the keyboard offers. Within a few taps you will get something like “I think the best way to get the best of the best”, looping forever. Your keyboard is a tiny language model. It has learned which word tends to follow which, and with no larger sense of where the sentence is going, it wanders in circles.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000487",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Now hold that silly sentence in mind, because here is the most surprising fact in this book. A large language model (LLM), the kind that writes essays, explains legal clauses and completes your code, plays exactly the same game. In its first and largest phase of training, it learns to guess the next piece of text, nothing more. The differences are scale and architecture: it is many thousands of times larger than your keyboard’s model, it is a Transformer whose detectives can consult the entire text so far, and it has read a substantial part of the public internet, a great many books and an enormous amount of code. Somewhere along that scale, the looping nonsense turns into something that looks very much like understanding. Exactly why it works as well as it does is still an active research question.",
+      "sourceAnchor": null,
+      "wordCount": 140
+    },
+    {
+      "id": "u000488",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "First, a detail about what is being guessed. Models do not see words; they see tokens , pieces of words. A common word is usually one token, while a rarer one is cut into pieces, something like “un” + “believ” + “able”. For English text, a token averages roughly three to four characters. Languages that appear less often in the training data tend to be cut into more, smaller pieces, so the same message costs more tokens in Romanian or Greek than in English, which matters because APIs bill and limit by the token. The cutting is decided before the model is ever trained, by a simple statistical program: it starts from single characters and repeatedly glues together the pair that appears most often in a large sample of text, “t” and “h” into “th”, then “th” and “e” into “the”, until the vocabulary reaches its chosen size, so whatever was common in that sample gets cheap, whole-word tokens and everything else is cut into pieces.",
+      "sourceAnchor": null,
+      "wordCount": 163
+    },
+    {
+      "id": "u000489",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Now watch the detectives from the last section learn the game. The boss brings in a sentence with its last word covered: “I went to the bank to withdraw some ___”. On the first day, the detectives are brand new and their notes and badges are random. “Bank” listens mostly to “went”, and the team’s best guess is “pigeons”. The boss uncovers the word: “cash”. The loss measures how little probability the team gave to the right answer, and backpropagation hands every detective its share of the blame. “Bank” adjusts, very slightly, how it writes its questions, so that next time it goes looking for badges like “financial action”. “Withdraw” adjusts its badge so that it is easier to find. Then the next sentence arrives, and the next, billions of them, on every subject people write about. Learning to predict the next word in a recipe requires knowing something about cooking; in a physics textbook, something about physics; in a Python file, something about Python. The game is simple. Winning it requires absorbing a great deal of the world.",
+      "sourceAnchor": null,
+      "wordCount": 178
+    },
+    {
+      "id": "u000490",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The result of this phase, called pretraining , is astonishingly knowledgeable and strangely unhelpful. Picture a new engineer who, in her first month, reads the entire company wiki, every repository and every ticket ever filed. She knows an enormous amount. But ask her a question and she might answer with three more questions, because on the wiki, questions are often followed by more questions. She has learned to continue documents, not to help people.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000491",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "So the new hire goes through two more schools. In the second, fine-tuning, she shadows senior colleagues: thousands of examples of a request followed by a good, helpful answer, until the shape “someone asks, I help” becomes second nature. In the third, she gets something like code review. People are shown two of her answers to the same request and pick the better one, and she gradually learns what reviewers prefer: clearer, more accurate, more careful answers. This last stage is usually called RLHF , reinforcement learning from human feedback. Unlike a real new hire, the model remembers nothing of these schools, and the last one has a catch: reviewers reward answers that look right to them, which is not quite the same thing as answers that are right.",
+      "sourceAnchor": null,
+      "wordCount": 128
+    },
+    {
+      "id": "u000492",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Now we have every piece we need to watch a language model work, in slow motion, from the moment you send your message. Everything we have built so far comes together here, so take it one frame at a time.",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000493",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "You type “The opposite of hot is”. The first thing that happens has nothing to do with intelligence: a tokenizer , a plain lookup program, cuts the text into pieces and replaces each piece with its number in a fixed vocabulary of, typically, tens of thousands to a couple of hundred thousand entries. Your sentence is now a short list of five integers.",
+      "sourceAnchor": null,
+      "wordCount": 62
+    },
+    {
+      "id": "u000494",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The second frame is the embedding layer, the doorman. Each integer is used as a row number into a large table, and the row comes back: a vector of a few thousand numbers. Five tokens, five rows. Stack them and you have a tensor of shape (5, width), a spreadsheet with one row per token. Information about each token’s position is mixed in, so the model knows which came first.",
+      "sourceAnchor": null,
+      "wordCount": 70
+    },
+    {
+      "id": "u000495",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The third frame is the long one. That (5, width) table passes through the Transformer blocks, one after another, dozens of them in a large model. In each block, the detectives’ meeting runs: every row consults the rows before it and rewrites itself as a blend of what it heard. Then each row goes privately through a small dense network, the part of the block where, researchers believe, much of the model’s factual knowledge is stored. Residual links carry the original signal around every step, normalization keeps the numbers in range, and through all of it the shape never changes: five rows in, five rows out, each row a little richer than before. By the last block, the row for “is” no longer means just “is”. It has absorbed “opposite”, “of” and “hot”, and it now encodes something like “a temperature word, the reverse of hot, comes next”.",
+      "sourceAnchor": null,
+      "wordCount": 148
+    },
+    {
+      "id": "u000496",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The fourth frame looks only at that last row. It is multiplied by one more large matrix, with one column per entry in the vocabulary, producing a score for every possible next token, about a hundred thousand scores. Softmax turns them into probabilities. “cold” gets nearly all of it; “cool” and “freezing” get crumbs.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000497",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The fifth frame picks one token according to those probabilities, and the sixth frame is the loop: the chosen token is appended to the input, and the whole forward pass runs again to produce the token after it. One forward pass per token: this is what drives the bill. To avoid redoing the meeting from scratch every time, the model keeps each earlier token’s badges and files in memory, a store called the KV (key–value) cache , and only the newest token’s detective has to walk around the room. That cache is a large part of why long conversations need so much graphics memory. The loop stops when the model picks a special “end” token, which it has learned to predict, from millions of examples that ended with one, when a text is complete; the application also sets a hard limit, in case it never does.",
+      "sourceAnchor": null,
+      "wordCount": 146
+    },
+    {
+      "id": "u000498",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "That is the whole machine. No step in it is mysterious on its own: a lookup, a stack of matrix multiplications with a few bends, a softmax, a dice roll, repeat. What is mysterious, and what researchers are still working to understand, is how so much apparent knowledge and reasoning fits into the numbers those multiplications use.",
+      "sourceAnchor": null,
+      "wordCount": 57
+    },
+    {
+      "id": "u000499",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "One dial sits in the fifth frame, the pick: how adventurous it is depends on a setting called temperature . Near zero, the model almost always takes the most likely token: predictable, repeatable, occasionally dull. That is what you want when extracting fields from invoices into JSON (a standard format for structured data). Turn the temperature up and less likely tokens get their chance: the output becomes more varied and inventive, and also more error-prone. That is what you might want when brainstorming product names. It is the difference between a musician reading sheet music and one improvising. Underneath, the dial is simple: the scores are divided by the temperature before softmax turns them into probabilities, so a small temperature stretches the gaps and the favorite takes nearly everything, while a large one squeezes them and outsiders get a real chance.",
+      "sourceAnchor": null,
+      "wordCount": 140
+    },
+    {
+      "id": "u000500",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "One more thing to understand about how these models live. Everything the model knows about your conversation sits in its context window , and the best picture for it is a whiteboard in a meeting room. The model reads the whole board before every word it writes. But it does not learn from the meeting, and when the meeting ends, the board is wiped. Tomorrow it will not remember today’s conversation unless someone writes it on the board again. Long documents, long chats and large codebases all compete for space on that board.",
+      "sourceAnchor": null,
+      "wordCount": 92
+    },
+    {
+      "id": "u000501",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "And now the uncomfortable part. You are working with an assistant, and it writes a tidy line of code calling client.get_json_safe() . It looks exactly like a method the library would have. You run it. The method does not exist, and never did.",
+      "sourceAnchor": null,
+      "wordCount": 45
+    },
+    {
+      "id": "u000502",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "This is called a hallucination , and the name makes it sound like a malfunction. It isn’t. Remember what the model was trained to do: produce the most plausible continuation of the text. Plausible and true usually coincide, which is why these models are so useful. When they come apart, when the model does not know something, it often does not fall silent. It produces the most plausible-sounding thing, fluently and confidently, because that is, above all, the game it was trained to play.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000503",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "So what do you do with a brilliant colleague who has read everything, writes beautifully and rarely says “I don’t know”? The same thing you would do with a brilliant new hire. You stop asking her to answer from memory, and you hand her the documents.",
+      "sourceAnchor": null,
+      "wordCount": 46
+    },
+    {
+      "id": "u000504",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.4 The Open-Book Exam",
+      "sourceAnchor": "the-open-book-exam",
+      "wordCount": 5
+    },
+    {
+      "id": "u000505",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Picture a company that rolls out an internal assistant, a language model wired into its chat tool. At eleven at night, an engineer on call asks it: “What’s our escalation policy if the payments API goes down outside business hours?”",
+      "sourceAnchor": null,
+      "wordCount": 40
+    },
+    {
+      "id": "u000506",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The answer comes back instantly, well structured and completely confident. Page the secondary on-call after fifteen minutes. Notify the head of engineering after thirty. Open an incident channel named with the date. It reads exactly like a policy. It is also invented. The model has never seen this company’s runbooks; it has seen thousands of other companies’ policies and produced the most plausible blend of them. The real policy says to call the payments vendor first.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000507",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Nothing about the model is broken. It is the brilliant new hire from the last section, asked to answer from memory about a document she has never read. The fix is the one any good manager would choose: let her answer with the book open, and give her a fast librarian who fetches the right pages.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000508",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "That arrangement is called retrieval-augmented generation , or RAG. Before the model answers, a search step finds the passages most relevant to the question and pastes them into the prompt, together with an instruction to answer from those passages and say where each claim came from. The model still does the writing. The search does the remembering. Pasting every document into the prompt and skipping the search works for a handful of documents; for a whole wiki it would not fit on the whiteboard, it would cost money for every token on every question, and models read a crowded board less carefully than a short one.",
+      "sourceAnchor": null,
+      "wordCount": 105
+    },
+    {
+      "id": "u000509",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Run the night-time question again with RAG in place. The search finds the on-call policy page and the payments runbook, and places three relevant passages on the model’s whiteboard. Now the answer says to call the vendor first, quotes the vendor’s support number from the runbook, and links to both pages. The engineer can click and check. The difference is not intelligence; it is access. The model prefers the passages over its memory only because it is told to, and because assistants are fine-tuned on many examples of answering from supplied text; it usually obeys, but when a passage contradicts something the model “knows” strongly, it can slip back to its memory, which is one more reason to check the citations.",
+      "sourceAnchor": null,
+      "wordCount": 121
+    },
+    {
+      "id": "u000510",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "For search to find passages, the documents have to be prepared in advance, and this is where most of the craft lies. Each document is cut into chunks of a few hundred tokens, like cutting a manual into flash cards. Each card gets an embedding, and the cards go into a database that can quickly find the nearest neighbors of any question. The size of the cards turns out to matter a great deal. Cut too small, and a recipe ends up with its ingredients on one card and its steps on another, so no single card answers “how do I make this?”. Cut too large, and every card is about five different things, so none is a sharp match for anything.",
+      "sourceAnchor": null,
+      "wordCount": 122
+    },
+    {
+      "id": "u000511",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Then there are questions that embeddings handle badly, and engineers run into them quickly. Ask “what does error E1047 mean?” and a purely meaning-based search may return a passage about E1074, because to an embedding, two codes that look alike sit very close together. Exact identifiers, function names and ticket numbers are what old-fashioned keyword search is good at. So practical systems use hybrid search , combining keyword and vector results, and often add a second, slower model that re-ranks the candidates: the librarian fetches fifty books, and an expert reads them and keeps the best five.",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000512",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The benefits are concrete, which is why so many companies are building these systems. Knowledge can be updated by updating documents, with no retraining. Answers can cite sources, so people can verify them. Private data stays in your own store, fetched only when a question needs it. Once fetched, though, that data is read by the model like any other text, which raises questions of trust and privacy.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000513",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "There is also a side effect nobody plans for. A RAG system is merciless about documentation. If the runbook is two years out of date, the assistant will now quote it accurately and confidently. Teams that launch one often find that the assistant’s first real achievement is revealing which pages of the wiki nobody has maintained.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000514",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "And the librarian is not perfect. If she brings the wrong page, the writer quotes it with total conviction. She may also bring only part of what is needed: when an answer needs pieces from several documents, a single search often fetches only one, because no single passage is close to the whole question, so systems that handle this let the model search several times, one sub-question after another, a loop with a search tool in its hand. The quality of a RAG system is capped by the quality of its search, so it pays to measure the two halves separately: did it fetch the right passage, and did it use that passage correctly? The most effective teams collect a few dozen real questions from real users, together with the passages that ought to answer them, and run that set every time they change the chunking, the embeddings or the prompt, exactly like a regression test suite.",
+      "sourceAnchor": null,
+      "wordCount": 157
+    },
+    {
+      "id": "u000515",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Two questions remain before we leave language behind: how much of a long conversation a model can actually see, and why a game as simple as guessing the next word goes as far as it does. The first begins with an old acquaintance from the hiring panel.",
+      "sourceAnchor": null,
+      "wordCount": 47
+    },
+    {
+      "id": "u000516",
+      "chapterId": "chapter-0008",
+      "kind": "h2",
+      "text": "7.5 Living on a Whiteboard",
+      "sourceAnchor": "living-on-a-whiteboard",
+      "wordCount": 6
+    },
+    {
+      "id": "u000517",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "Remember the hiring panel, the four recruiters sorting two hundred CVs, each deciding in her own way what matters. The fourth, who lets each CV direct her eyes, had to wait for language, because she is attention: her way of reading is the detectives’ meeting. Here the question “who decides?” has its most interesting answer. Nobody decided in advance that “bank” should listen to “money”; that is worked out afresh in every sentence. What training shapes, as the guessing game showed, is the transformations that write questions and badges in general. Over billions of sentences, those transformations come to encode, in effect, “what kind of word tends to help a word like me”. Relevance is not handed to the model. It is a skill the model acquires because relevance pays off in the next-word game. Different heads acquire different notions of relevance, because each starts from different random numbers and nothing forces them to agree; in practice some heads turn out nearly redundant and can be removed with little loss, while others carry a great deal.",
+      "sourceAnchor": null,
+      "wordCount": 176
+    },
+    {
+      "id": "u000518",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "This is also why attention weights explain less than they seem to. A head can attend strongly to a word and pass on very little from it, while the decisive work happens in another layer. Researchers have argued the point in print, in two 2019 papers memorably titled Attention is not Explanation and Attention is not not Explanation , and the honest summary remains the earlier one: a clue, not a verdict.",
+      "sourceAnchor": null,
+      "wordCount": 71
+    },
+    {
+      "id": "u000519",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The fourth recruiter has one more limit, and it is the most physical of all: she can only direct her eyes to what is on the desk in front of her. For a language model, that desk is the context window, and its size and shape decide a great deal about what the model can do.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000520",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "An engineer spends an afternoon with an assistant planning a database migration. In her first message she sets the ground rules: the orders table must never be locked for more than a second, and nothing heavy may run during the European business day. Three hours, forty messages and several pasted schema dumps later, the assistant cheerfully proposes a step that locks the orders table for twenty minutes at eleven in the morning. It has not become careless in any human sense. Either her first message is no longer on its board at all, or it is still there, buried under a great deal of later writing, and the model gave it too little weight.",
+      "sourceAnchor": null,
+      "wordCount": 114
+    },
+    {
+      "id": "u000521",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "This section looks at that board more closely: how big it is, what sets its size, what happens at its edge, and how people build systems that behave as if the board were bigger than it is.",
+      "sourceAnchor": null,
+      "wordCount": 37
+    },
+    {
+      "id": "u000522",
+      "chapterId": "chapter-0008",
+      "kind": "p",
+      "text": "The board is measured in tokens, and it holds everything, not only your messages: the instructions the application adds, any retrieved documents, the results of tools, and every word of the model’s own replies. Language models of 2020 had boards of about two thousand tokens, a few pages. By the mid-2020s, boards of a hundred thousand to a few hundred thousand tokens were common, and some models accepted a million or more. At three to four characters per token, an English page of about five hundred words comes to very roughly seven hundred tokens, so a board of a hundred thousand tokens holds something like a hundred and forty pages, a short novel.",
+      "sourceAnchor": null,
+      "wordCount": 113
+    }
+  ]
+}

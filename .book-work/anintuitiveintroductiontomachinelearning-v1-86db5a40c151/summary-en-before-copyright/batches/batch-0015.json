@@ -1,0 +1,576 @@
+{
+  "batch": "batch-0015.json",
+  "language": "en",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0011",
+  "chapterTitle": "Chapter 10 — How to Fail Successfully",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000624",
+      "chapterId": "chapter-0011",
+      "kind": "h1",
+      "text": "Chapter 10 — How to Fail Successfully",
+      "sourceAnchor": "chapter-10-how-to-fail-successfully",
+      "wordCount": 6
+    },
+    {
+      "id": "u000625",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.1 The Crammer and the Slacker",
+      "sourceAnchor": "the-crammer-and-the-slacker",
+      "wordCount": 7
+    },
+    {
+      "id": "u000626",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Picture this. The test suite was green. Every single test passed, and the function shipped. Two days later, production started returning wrong totals for a large share of orders.",
+      "sourceAnchor": null,
+      "wordCount": 29
+    },
+    {
+      "id": "u000627",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "When someone finally opened the function, the cause was almost funny. Over many months, whenever a test failed, someone had patched the function to handle that particular case: if the country is this and the discount is that, return this number. Each patch made one more test pass. The function had become a perfect lookup table for the test inputs and knew nothing at all about how totals are actually computed. It had not learned the rule. It had memorized the exam.",
+      "sourceAnchor": null,
+      "wordCount": 82
+    },
+    {
+      "id": "u000628",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Machine learning models do this too, automatically, and the phenomenon has a name: overfitting . Picture the crammer, a student who memorizes last year’s exam answers word for word, typos included. This year one comma changes and the student fails. A model with enough capacity will do the same thing if you let it. Train a spam filter on a dataset where a lot of the spam happened to come from a test account called “qa-test-bob”, and it may learn that “qa-test-bob” means spam. True in the training data, useless forever after.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000629",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The opposite failure is less dramatic but just as real. Picture the slacker, a student who has decided that the answer to every math problem is 42 and stopped learning there. Wrong on last year’s problems, wrong on this year’s. In engineering terms, it is the single global timeout applied to every endpoint, from a health check that should take milliseconds to a report export that takes minutes: too simple to fit reality anywhere. That is underfitting .",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000630",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Between them sits the student we want, who understood the method, still gets the occasional practice problem wrong, and does well on the real exam because the method carries over.",
+      "sourceAnchor": null,
+      "wordCount": 30
+    },
+    {
+      "id": "u000631",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Which student do you have? You cannot tell from the training score alone, because the crammer looks brilliant there. You need two numbers side by side: the error on the training data and the error on the validation data, the examples held back from training. If both are high, you have the slacker; the model is too simple or its inputs too weak. If the training error is tiny and the validation error is high, you have the crammer; the model is memorizing. If both are low and close together, you have the good student. Plotting these two numbers as training proceeds is probably the single most useful habit in practical machine learning.",
+      "sourceAnchor": null,
+      "wordCount": 113
+    },
+    {
+      "id": "u000632",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The remedies for the crammer all make memorizing harder or less rewarding, and each has a surprisingly familiar counterpart in engineering life. The most reliable is simply more data : it is easy to memorize a hundred examples and very hard to memorize a million. Regularization adds a penalty for complexity, like a code reviewer who rejects a clever two-hundred-line solution when a clear twenty-line one would do; the model is pushed toward the simplest explanation that still fits. Dropout, the rehearsal sick days met among the network’s building blocks, keeps any neuron from relying on one particular colleague always being there. Early stopping watches the validation error and halts training when it starts to rise, the way a sensible student stops cramming the night before when the practice scores start falling. It helps rather than hurts because a network picks up the broad patterns first and the accidents of its particular examples later, so stopping at the turn keeps the first and spares it the second; in effect it is regularization by the clock. And data augmentation creates realistic variations of the training examples, rotated or cropped photos, reworded sentences, in the same spirit as fuzz-testing code with variations of its inputs. The remedies for the slacker go the other way: a more expressive model, better features, more training.",
+      "sourceAnchor": null,
+      "wordCount": 219
+    },
+    {
+      "id": "u000633",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Statisticians call this tension the bias–variance trade-off . The slacker suffers from high bias, a systematic error that more data will not cure. The crammer suffers from high variance: its results swing wildly depending on which examples happened to be in its training set. For decades, the textbook picture was a seesaw. Make the model bigger and you trade bias for variance; at some sweet spot in the middle, you stop.",
+      "sourceAnchor": null,
+      "wordCount": 71
+    },
+    {
+      "id": "u000634",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A warning about vocabulary, because it trips up nearly everyone. The word bias now has three different meanings in this book. Inside a neuron it was a number added to the weighted sum, the threshold moved to the other side. Here, as with the crude experts of boosting, it is a systematic error, a model that is wrong in the same direction everywhere. Later in this chapter it will be skewed data that misrepresents some group of people. The field never agreed to use different words, so when you meet “bias” in a paper or a meeting, take a second to work out which of the three is meant.",
+      "sourceAnchor": null,
+      "wordCount": 109
+    },
+    {
+      "id": "u000635",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Then deep learning broke the seesaw. Researchers kept training networks far larger than the textbook said was sensible, big enough to memorize their entire training sets, and found that past a certain point, the validation error started falling again . Enormous models, trained on lots of data with sensible regularization, often generalized better than modest ones. The effect was named double descent , and it is still not fully understood. One partial explanation: when a model is so large that countless weight settings fit the training data perfectly, the walk downhill in the fog tends to land on smooth, simple ones rather than arbitrary ones, so a huge model has room to fit the data in the least contorted way. Nor does this undo the compression argument met with language models, that a model without room to memorize is pushed toward the patterns: a model with room to spare is pushed the same way, by the walk itself rather than by lack of space. It is also the point where the student picture breaks: a person who memorizes more does not thereby understand more, yet a network big enough to memorize every example can end up handling new ones better than a smaller network that could not. What survived the upheaval is the one rule that never depended on the seesaw: believe only the error measured on data the model has never seen.",
+      "sourceAnchor": null,
+      "wordCount": 231
+    },
+    {
+      "id": "u000636",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "But even that rule has a trapdoor. It assumes the unseen data really is unseen, and that the model is not quietly picking up a signal it will not have in real life. Sometimes a model scores brilliantly on a perfectly honest-looking test, and the truth is that it has been cheating all along, without anyone noticing. The most famous cheat in this story was not a computer. It was a horse.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000637",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.2 The Horse Who Could Count",
+      "sourceAnchor": "the-horse-who-could-count",
+      "wordCount": 7
+    },
+    {
+      "id": "u000638",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "In Berlin in the early 1900s, a retired schoolteacher named Wilhelm von Osten exhibited a horse that could do arithmetic. Ask Clever Hans what three plus five was, and he would tap his hoof eight times and stop. He could add, subtract, tell the time and answer questions about the calendar. Crowds came to watch. A commission of experts, including a circus trainer and zoologists, examined him in 1904 and found no trickery; von Osten was sincere and was not signaling anything on purpose.",
+      "sourceAnchor": null,
+      "wordCount": 84
+    },
+    {
+      "id": "u000639",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Then a young psychologist named Oskar Pfungst ran a few more careful experiments. When the questioner did not know the answer, Hans failed. When Hans could not see the questioner, Hans failed. What Pfungst discovered was that every questioner, without realizing it, tensed slightly as the hoof approached the right number and relaxed, ever so slightly, when it got there. Hans had not learned arithmetic. He had learned to read faces, a cue that was present in every test and absent from the actual skill.",
+      "sourceAnchor": null,
+      "wordCount": 85
+    },
+    {
+      "id": "u000640",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Hans is the patron saint of a failure called data leakage : a model picks up information during training that it will not have when it is really used. Its test scores look wonderful, because the cue is present in the test too. Reality does not.",
+      "sourceAnchor": null,
+      "wordCount": 45
+    },
+    {
+      "id": "u000641",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The most common version in practice is a column that gives the answer away. Picture a team predicting which customers will cancel their subscription, with a table that happens to include account_closed_date . The model discovers, with great confidence, that customers who have an account closing date tend to leave. It scores beautifully. In production it is useless, because the whole point is to predict a cancellation before that date exists. Real cases are rarely so blatant. A ticket’s priority is predicted from the assigned_team field, but the team is assigned after a human has already judged the priority. A model predicting hospital readmission uses a medication that is only prescribed once the doctor already suspects trouble. Each time, the model is reading the questioner’s face. The picture is kinder than reality in one respect: Hans had a single face to read and one experiment exposed him, while a model can blend dozens of faint cues at once, none of which looks suspicious on its own.",
+      "sourceAnchor": null,
+      "wordCount": 168
+    },
+    {
+      "id": "u000642",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A quieter leak lives in the plumbing, and it came up when the data was being prepared: averages and spreads for scaling computed over the whole dataset, test set included, before the split. It is the machine learning equivalent of benchmarking with a warm cache left over from the previous run: the measurement is real, but the conditions are not the ones you will face in production.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000643",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Another leak comes from duplicates in disguise. A hospital dataset has several X-rays per patient. If the same patient lands in both training and test sets, the model can score well by recognizing the patient rather than the disease, the shape of a rib cage, a surgical clip, a particular scanner. The cure is to split by patient, not by image, and the general lesson carries over to your data: split by customer, by device, by repository, by whatever the real unit is. And, as the first chapter warned, a random split of anything that unfolds in time hands the model tomorrow’s newspaper while asking it to predict today.",
+      "sourceAnchor": null,
+      "wordCount": 109
+    },
+    {
+      "id": "u000644",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "All of these leaks yield to one question, asked of every feature: would I have this exact value, in this exact form, at the moment I make the prediction in production? If the answer is no, or not yet, the feature leaks. Then make the safe path the default with the single pipeline met during data preparation, fitted on the training data alone and merely applied to everything else.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000645",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "There is one more defense, and it is psychological. Pfungst found Hans out because he was suspicious of a result that seemed too good. Do the same. When a model scores far better than you expected on a problem that is known to be hard, the most likely explanation is not that you are a genius. It is that somewhere, a horse is reading a face. To find a leak you have not thought of, ask the model which features it leans on: when a single feature carries most of the weight, or one you would have called minor turns out to dominate, put the production question above to it. Leaks usually reveal themselves this way, as a horse far too interested in one face.",
+      "sourceAnchor": null,
+      "wordCount": 125
+    },
+    {
+      "id": "u000646",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Honest data and an honest test still leave one way to fool yourself, and it is the most innocent-looking of all: the number you choose to report. Here is a fraud detector that is right 99.9% of the time, written in a single line of code.",
+      "sourceAnchor": null,
+      "wordCount": 47
+    },
+    {
+      "id": "u000647",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.3 The 99.9% Detector and the Smoke Alarm",
+      "sourceAnchor": "the-99.9-detector-and-the-smoke-alarm",
+      "wordCount": 10
+    },
+    {
+      "id": "u000648",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Here it is:",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000649",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "If one payment in a thousand is fraudulent, this function is right 999 times out of 1,000. Its accuracy is 99.9%, a number that would look superb on a slide. It has also never caught a single fraud, and never will. Accuracy rewarded it for one thing only: agreeing with the majority.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000650",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "This is the accuracy paradox, and it appears whenever the thing you are looking for is rare: fraud, outages, failing hard drives, rare diseases, security intrusions. In all of them, a model can look excellent by being useless. Reweighting the loss or resampling the training data, the standard treatments for rare classes met in the second chapter, makes the model pay attention to the rare class, but it does not remove the need to choose a threshold afterwards. To see what is really going on, you need to stop asking “how often is it right?” and start asking “what kind of mistakes does it make?”",
+      "sourceAnchor": null,
+      "wordCount": 105
+    },
+    {
+      "id": "u000651",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The smoke alarm in your kitchen makes the question tangible. A sensitive one shrieks every time you make toast. Annoying, but it will never sleep through a real fire. A relaxed one never bothers you at breakfast, and on the night it matters, it might stay silent. Neither alarm is more “accurate” in any useful sense. They make different mistakes, and choosing between them is a decision about which mistake you can live with.",
+      "sourceAnchor": null,
+      "wordCount": 74
+    },
+    {
+      "id": "u000652",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "If you have ever been on call, you have lived inside this trade-off. Ask two questions about your alerts. First: of all the times the pager went off, how many were real incidents? That is precision . When it is low, you get alert fatigue, and sooner or later someone silences the pager during a real outage. Second: of all the real incidents, how many made the pager go off? That is recall . When it is low, customers discover your outages before you do. Lower the alert threshold and recall goes up while precision usually goes down; raise it and the reverse happens. No single setting of that dial maximizes both.",
+      "sourceAnchor": null,
+      "wordCount": 110
+    },
+    {
+      "id": "u000653",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Every prediction of a yes-or-no model lands in one of four boxes, and drawing them is often the moment the whole picture clicks:",
+      "sourceAnchor": null,
+      "wordCount": 23
+    },
+    {
+      "id": "u000654",
+      "chapterId": "chapter-0011",
+      "kind": "th",
+      "text": "Really fraud",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000655",
+      "chapterId": "chapter-0011",
+      "kind": "th",
+      "text": "Not fraud",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000656",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "Model says “fraud”",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000657",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "True positive: caught",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000658",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "False positive: false alarm",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000659",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "Model says “fine”",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000660",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "False negative: missed",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000661",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "True negative",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000662",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The one-line detector lives entirely in the bottom row. It has no false alarms at all, and it misses everything.",
+      "sourceAnchor": null,
+      "wordCount": 20
+    },
+    {
+      "id": "u000663",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Which box hurts most depends entirely on the business, and that is the real lesson of this section. Block a good customer’s card by mistake, a false positive, and you lose a customer and flood your support team. Miss a fraud, a false negative, and you lose money. A screening test for cancer should lean hard toward recall, because a missed tumor is a tragedy and a follow-up appointment is an inconvenience. A filter that automatically deletes email should lean hard toward precision, because deleting one real message from a customer is worse than letting a little spam through.",
+      "sourceAnchor": null,
+      "wordCount": 99
+    },
+    {
+      "id": "u000664",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A few more measures are worth knowing by their stories rather than their formulas. The F1 score combines precision and recall into one number that is high only when both are; it is a handy summary that quietly assumes both kinds of mistakes cost the same, which they rarely do. ROC-AUC , short for the area under the ROC (receiver operating characteristic) curve, judges a model before you have chosen any threshold. Picture sliding the threshold from very strict to very relaxed and, at every position, plotting how many real frauds you catch against how many false alarms you raise. That plot is the ROC curve; the area under it is a single number where 0.5 means no better than a coin flip and 1 means perfect. And it has a lovely concrete meaning: pick one real fraud and one legitimate payment at random; the AUC (area under the curve) is the probability that the model gave the fraud the higher score. The AUC cares only about order, not about whether a score of 0.9 means a 90% chance. For very rare events, a cousin called PR-AUC , the same idea drawn on a precision-versus-recall curve, is usually more honest, because it is not flattered by the mountain of easy legitimate payments.",
+      "sourceAnchor": null,
+      "wordCount": 212
+    },
+    {
+      "id": "u000665",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Predicting numbers has the same tension in another costume. MAE , the mean absolute error, tells you the typical miss in the units of the problem: “our delivery estimates are off by about six minutes”. RMSE , the root mean squared error, squares the misses before averaging, so the occasional terrible miss dominates it, then takes a square root at the end to return to minutes. If that sounds familiar, it should: these are the squared errors of the delivery-time loss at the start of the book. Choosing between them is like choosing between median latency and p99 latency, the time within which 99% of requests finish: one describes the usual experience, the other the painful tail. Both are true; which one you watch says what you care about.",
+      "sourceAnchor": null,
+      "wordCount": 127
+    },
+    {
+      "id": "u000666",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A smoke alarm has its sensitivity fixed at the factory. A model hands you a dial, and where you set it is a product decision, not a technical one. It can even change with the seasons: a fraud model might deserve a stricter threshold during the holiday shopping peak than in a quiet week in February. The best metric conversations happen with the people who pay for each kind of mistake sitting at the table, with the actual costs written down in front of them. The arithmetic is simple: put a cost on each of the four boxes, a blocked good customer at so many euros and a missed fraud at so many, then slide the threshold across the validation data and pick the position with the lowest total; agreeing on the costs is the real work.",
+      "sourceAnchor": null,
+      "wordCount": 137
+    },
+    {
+      "id": "u000667",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Yet even a model measured by exactly the right number, on honest data, can still fail in a way no single number reveals. An average can be excellent while hiding a group of people for whom the model barely works at all. The next section is about that, and it begins in front of a mirror at a fairground.",
+      "sourceAnchor": null,
+      "wordCount": 59
+    },
+    {
+      "id": "u000668",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.4 The Funhouse Mirror",
+      "sourceAnchor": "the-funhouse-mirror",
+      "wordCount": 5
+    },
+    {
+      "id": "u000669",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "At a fairground there is usually a tent full of warped mirrors. In one you are tall and thin, in the next short and wide, in another your head is enormous and your legs have vanished. Nobody blames the mirrors. They reflect exactly what stands in front of them, faithfully, through a bent piece of glass.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000670",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A machine learning model is a mirror of this kind, and its glass is the training data. Show a model, for years, only photographs of male doctors and female nurses. It does not become sexist in any human sense; it has no opinions at all. It becomes a perfect reflection of a skewed collection of photographs. Ask it to picture a doctor, and it concludes, with impeccable statistics and wrong reasoning, that being a man is part of what being a doctor means.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000671",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Every engineer already knows a small version of this problem by heart. It is called “it works on my machine”. The code was tested thoroughly, on one operating system, one locale, one screen size, and it breaks the moment it meets a configuration nobody tried. A model trained on data from one group of people has exactly the same problem at a much larger scale. A speech recognizer trained mostly on one accent stumbles over others. A crash-prediction model trained on telemetry from users who opted in, who tend to be enthusiasts on new hardware, may be nearly blind to the problems of people on old, cheap phones. The model is not wrong about the data it saw. It is wrong about everyone it did not see.",
+      "sourceAnchor": null,
+      "wordCount": 127
+    },
+    {
+      "id": "u000672",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "In 2018, the researchers Joy Buolamwini and Timnit Gebru published a study called Gender Shades . They tested commercial face-analysis systems from major technology companies and found that the systems classified the gender of lighter-skinned men almost perfectly, while making errors far more often on darker-skinned women. The systems had been reported as highly accurate, and on average they were. The average simply hid who was paying for the errors. What fairness should mean is not the model’s to decide, nor mathematics’ alone: there are several precise definitions, they pull against each other, and the next chapter works through an example.",
+      "sourceAnchor": null,
+      "wordCount": 100
+    },
+    {
+      "id": "u000673",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The same year, Reuters reported that Amazon had abandoned an experimental tool for ranking job applicants. It had been trained on the CVs submitted to the company over the previous decade, most of them from men, and it had learned to penalize CVs containing the word “women’s”, as in “women’s chess club captain”. Nobody programmed that rule. The mirror reflected the history it was shown.",
+      "sourceAnchor": null,
+      "wordCount": 65
+    },
+    {
+      "id": "u000674",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The obvious fix, deleting the sensitive attribute, rarely works, and the reason is instructive. Remove gender or ethnicity from the data, and the model often reconstructs it anyway from things that correlate with it: a postcode, a school, a hobby, a first name. These stand-ins are called proxies , and they mean that a model can discriminate without ever seeing the attribute it discriminates on.",
+      "sourceAnchor": null,
+      "wordCount": 64
+    },
+    {
+      "id": "u000675",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The most unsettling form of bias feeds itself. Picture a model that decides where to send auditors, based on where problems were found before. Auditors go there and, naturally, find problems, because that is where they are looking. Those findings become next year’s training data, which now shows even more problems in the same places, and the next model sends even more auditors there. Round and round, the model grows more confident with every turn, regardless of whether the underlying reality differs between places at all. This is a feedback loop , and it can turn a small initial skew into a self-fulfilling prophecy. The usual way to break it is to keep sending a share of the auditors to places chosen at random, so the data always contains an honest sample of everywhere: the exploration of the lunch dilemma, put to a new use.",
+      "sourceAnchor": null,
+      "wordCount": 144
+    },
+    {
+      "id": "u000676",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Worse, a model can exaggerate what it reflects. A generator that leans toward the most probable option can turn a majority in its training data into near-unanimity in its outputs: if most doctors in the photos are men, it may draw a man almost every time. The old engineering slogan “garbage in, garbage out” turns out to be optimistic. Sometimes it is garbage in, more garbage out.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000677",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The remedies are not exotic. They are the same habits a good engineer applies to latency or reliability. Measure performance separately for every group that matters, the way you check latency per region instead of trusting a global average that can hide one region on fire. Ask who is missing from the data, not just what is in it. Test for proxies: if you can predict the sensitive attribute from the remaining features, so can the model. And write down what your data and your model were built for and, more importantly, what they were not built for, so that whoever uses the model next knows where it must not be trusted. Formats such as datasheets for datasets and model cards exist for exactly this purpose. Once a bias is found, the most effective fix is also the most expensive: collect more and better data for the groups the model serves badly. Cheaper remedies, such as giving those examples more weight in training or setting separate thresholds per group, help but trade one kind of error for another, which is why the measuring has to continue after the fix.",
+      "sourceAnchor": null,
+      "wordCount": 189
+    },
+    {
+      "id": "u000678",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "That completes the story of the loop, from its first guess to the ways it fails. Two questions remain that a careful user asks of any single answer: how far to trust it, and whether anyone can look inside to see why it was given.",
+      "sourceAnchor": null,
+      "wordCount": 45
+    },
+    {
+      "id": "u000679",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.5 How Sure Is It?",
+      "sourceAnchor": "how-sure-is-it",
+      "wordCount": 6
+    },
+    {
+      "id": "u000680",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Remember the two weather forecasters from the start of the book, judged on a single rainy day. Now imagine checking a forecaster properly, over a whole year. Collect every day on which she said 70%. If it rained on about seventy of every hundred such days, her 70% means something. Do the same for her 10% days and her 90% days. A forecaster whose numbers match the frequencies is calibrated , and calibration is the quiet property that turns a score into a probability you can plan with.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000681",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Models can be checked in exactly the same way, and it is worth doing, because the dimmer will happily read 0.83 whether or not 0.83 means anything. Take the validation set, sort the predictions into buckets by score, everything between 0.8 and 0.9 in one bucket and so on, and for each bucket compare the average score with how often the answer really was yes. Draw the result and you have a reliability diagram : a calibrated model lies along the diagonal. Different families of models have different habits. Logistic regression, trained with the loss that punishes confident mistakes, tends to land close to the diagonal. Boosted trees and modern deep networks often do not; a widely cited 2017 study found that deep networks had grown more accurate and, at the same time, systematically more confident than their accuracy justified. The repair is pleasantly cheap. Keep the trained model and fit a small correction on held-out data that stretches or squeezes its scores until the buckets match the frequencies. One popular version, temperature scaling , adjusts a single number, the same temperature dial you met with language models.",
+      "sourceAnchor": null,
+      "wordCount": 190
+    },
+    {
+      "id": "u000682",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Calibration alone is not enough, and the forecaster shows why. A forecaster who says “30% chance of rain” every single day, because it rains on 30% of days in her city, is perfectly calibrated and perfectly useless. A good forecaster is calibrated and sharp: she says 5% on days that turn out dry and 90% on days that turn out wet. For a model, sharpness is roughly what ranking measures such as the AUC reward, and calibration is something they ignore entirely. Halve every score and the order of the cases, and so the AUC, does not change at all, while every probability becomes wrong. That matters the moment you set a threshold. A rule such as “send to a human above 0.3” only means what you think it means if 0.3 really is about three in ten.",
+      "sourceAnchor": null,
+      "wordCount": 140
+    },
+    {
+      "id": "u000683",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Now a harder question: does a model know when it does not know? It helps to separate two kinds of uncertainty that look alike from the outside and behave very differently. The first is the uncertainty of a fair coin. You know everything there is to know and still cannot do better than fifty-fifty, because the world itself is noisy; two tickets with identical text really were sent to different teams. More data does not shrink it. Statisticians call it aleatoric uncertainty , from the Latin for dice. The second is the uncertainty of someone facing a kind of case they have never seen: a weld photographed under new lighting, a payment from a country absent from the training data, a sentence in a dialect the model never read. This is epistemic uncertainty , uncertainty from ignorance, and more data of the right kind does shrink it.",
+      "sourceAnchor": null,
+      "wordCount": 145
+    },
+    {
+      "id": "u000684",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Most models report the first kind reasonably and the second kind badly, and the reason is structural. A classifier ends in a softmax, which must spread one hundred percent across the answers it knows; there is no box marked “none of these”. Show a cat-and-dog classifier a photograph of a toaster and it will still say cat or dog, possibly with 97% confidence, simply because the toaster landed far on one side of the boundary. Calibration measured on the validation set does not save you here, because the validation set looked like the training set. When the inputs drift, calibration quietly breaks with them, and nothing in the score warns you.",
+      "sourceAnchor": null,
+      "wordCount": 111
+    },
+    {
+      "id": "u000685",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Several practical tools try to catch this. The simplest borrows the wisdom of the crowd: train five models from different random starts, or on different bootstrap samples, and ask all of them. On familiar inputs they tend to agree; on unfamiliar ones they tend to disagree, and disagreement is a usable signal of epistemic uncertainty. Leaving dropout switched on at prediction time and running the model several times, the very wobble normally avoided, now used on purpose, is a cheaper imitation of the same crowd. A separate family of methods, out-of-distribution detection , asks directly whether an input looks like the training data at all, for instance by measuring how far its embedding lies from everything seen before, and declines to score inputs that look alien.",
+      "sourceAnchor": null,
+      "wordCount": 125
+    },
+    {
+      "id": "u000686",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "One method deserves a paragraph of its own, because it offers something rare in this field: a guarantee. Conformal prediction does not give one answer; it gives a set of answers, sized to contain the right one a chosen fraction of the time. You keep aside labeled examples the model has never seen, note how wrong the model is on each, and use those observed errors to decide how wide a net to cast. On an easy ticket the set might be just “Billing”; on an ambiguous one, “Billing or Mobile”. Across many tickets, the true team will be in the set about 90% of the time if you asked for 90%, whatever the model is, good or bad; a bad model simply produces bigger sets. The guarantee has one condition, the usual one: new cases must resemble the ones used for calibration.",
+      "sourceAnchor": null,
+      "wordCount": 143
+    },
+    {
+      "id": "u000687",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "All of this leads to the most business-friendly form of uncertainty, abstention : let the model answer only when it is confident enough, and route the rest to a person. A model that handles 80% of tickets at 99% accuracy and hands over the other 20% is often worth far more than one that handles all of them at 90%.",
+      "sourceAnchor": null,
+      "wordCount": 59
+    },
+    {
+      "id": "u000688",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Language models deserve their own paragraph, because their confidence is about something subtler. A pretrained model’s probabilities for the next token are often reasonably calibrated as statements about text. OpenAI reported, for GPT-4, that the pretrained model’s confidence on multiple-choice questions matched its accuracy closely, and that the later tuning stages made that calibration noticeably worse. But even a perfectly calibrated next-token probability is confidence about which word comes next, not about whether the sentence is true; a fluent false claim can be built entirely from very probable words. Preference tuning can push further toward assurance, because reviewers often prefer answers that sound sure. And many benchmarks score only right or wrong, so a model that always guesses beats one that sometimes says “I don’t know”, like a multiple-choice exam with no penalty for wrong answers. A 2025 paper by researchers at OpenAI argued that this incentive is one root of hallucination, and that the fix is to change the scoring so that an honest “I’m not sure” beats a confident error. Current assistants are trained partly in this spirit, which is why they decline or hedge more often than the early chatbots did, though their stated confidence is still only roughly calibrated.",
+      "sourceAnchor": null,
+      "wordCount": 203
+    },
+    {
+      "id": "u000689",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "For users, three habits follow. Ask the same question more than once, or in different words: things the model reliably knows tend to come back the same, while invented details tend to change from one answer to the next, so disagreement is a warning sign. Ask for sources, and better still give it the sources through retrieval, so that claims can be checked rather than trusted. And where the decision matters, prefer systems that are allowed, and rewarded, to say “I don’t know”.",
+      "sourceAnchor": null,
+      "wordCount": 83
+    },
+    {
+      "id": "u000690",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "The forecaster picture breaks at its center. The forecaster knows she is forecasting; she can feel unsure, remember last month’s misses and decide to hedge. The model, as the weld detector already showed, has no reliable model of itself. Its “uncertainty” is a property of its numbers, measurable from outside, not a feeling it can report from inside, and when a language model writes “I’m fairly confident”, that sentence comes from the same next-word game as everything else and must be checked like everything else. And calibration, even when it holds, is a promise about many cases, never about this one, kept not by the model alone but by the system built around it: the held-out data, the rescaling, the threshold and the person who takes the cases it declines.",
+      "sourceAnchor": null,
+      "wordCount": 130
+    },
+    {
+      "id": "u000691",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Knowing how far to trust an answer leads naturally to the next question: not only how sure the model is, but why it answered as it did, and whether anyone can look inside to find out.",
+      "sourceAnchor": null,
+      "wordCount": 36
+    },
+    {
+      "id": "u000692",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.6 Opening the Box",
+      "sourceAnchor": "opening-the-box",
+      "wordCount": 5
+    },
+    {
+      "id": "u000693",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "A mechanic is handed a car she has never seen, from a manufacturer long out of business, with no manual. It runs, mostly, but there is a rattle above ninety and it pulls slightly to the left. She does not despair, and she does not take the engine apart bolt by bolt either. She has three kinds of move. She can look: watch the gauges while someone drives, listen to each cylinder in turn. She can poke: pull one spark plug and hear what changes, swap a part and see whether the pull goes away. And she can probe: clip on an instrument that reads something the dashboard never shows.",
+      "sourceAnchor": null,
+      "wordCount": 110
+    }
+  ]
+}

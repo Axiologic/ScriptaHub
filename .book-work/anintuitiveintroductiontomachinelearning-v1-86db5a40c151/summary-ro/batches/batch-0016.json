@@ -1,0 +1,528 @@
+{
+  "batch": "batch-0016.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0011",
+  "chapterTitle": "Capitolul 10 — Cum să dai greș cu succes",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000625",
+      "chapterId": "chapter-0011",
+      "kind": "h1",
+      "text": "Capitolul 10 — Cum să dai greș cu succes",
+      "sourceAnchor": "capitolul-10-cum-să-dai-greș-cu-succes",
+      "wordCount": 8
+    },
+    {
+      "id": "u000626",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.1 Tocilarul și leneșul",
+      "sourceAnchor": "tocilarul-și-leneșul",
+      "wordCount": 5
+    },
+    {
+      "id": "u000627",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Imaginează-ți asta. Suita de teste era verde. Fiecare test trecea, iar funcția a fost livrată. Două zile mai târziu, producția a început să întoarcă totaluri greșite pentru o mare parte din comenzi.",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000628",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Când cineva a deschis în sfârșit funcția, cauza era aproape amuzantă. De-a lungul multor luni, ori de câte ori pica un test, cineva peticise funcția ca să trateze exact acel caz: dacă țara e asta și reducerea e aceea, întoarce numărul ăsta. Fiecare petic făcea să treacă încă un test. Funcția devenise un tabel de căutare perfect pentru intrările din teste și nu știa absolut nimic despre cum se calculează de fapt totalurile. Nu învățase regula. Învățase examenul pe de rost.",
+      "sourceAnchor": null,
+      "wordCount": 81
+    },
+    {
+      "id": "u000629",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Modelele de machine learning fac și ele asta, automat, iar fenomenul are un nume: overfitting („supra-ajustare”: modelul se mulează prea strâns pe exemplele de antrenare, ca un costum croit pe un singur manechin). Imaginează-ți tocilarul, un elev care învață pe de rost răspunsurile de la examenul de anul trecut, cuvânt cu cuvânt, cu greșeli de tipar cu tot. Anul acesta se schimbă o virgulă și elevul pică. Un model cu destulă capacitate va face același lucru dacă îl lași. Antrenează un filtru de spam pe un set de date în care mult spam a venit întâmplător de la un cont de test numit „qa-test-bob” și s-ar putea să învețe că „qa-test-bob” înseamnă spam. Adevărat în datele de antrenare, inutil pentru totdeauna după aceea.",
+      "sourceAnchor": null,
+      "wordCount": 123
+    },
+    {
+      "id": "u000630",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Eșecul opus e mai puțin dramatic, dar la fel de real. Imaginează-ți leneșul, un elev care a decis că răspunsul la orice problemă de matematică e 42 și s-a oprit din învățat acolo. Greșit la problemele de anul trecut, greșit la cele de anul acesta. În termeni de inginerie, e un singur timeout global aplicat fiecărui endpoint, de la un health check care ar trebui să dureze milisecunde până la un export de raport care durează minute: prea simplu ca să se potrivească realității oriunde. Asta e underfitting („sub-ajustare”: modelul e prea simplu ca să prindă forma datelor).",
+      "sourceAnchor": null,
+      "wordCount": 98
+    },
+    {
+      "id": "u000631",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Între ei stă elevul pe care îl vrem, care a înțeles metoda, mai greșește din când în când la exerciții și se descurcă bine la examenul real pentru că metoda se transferă.",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000632",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Ce elev ai? Nu poți spune doar din scorul de antrenare, pentru că acolo tocilarul arată strălucit. Ai nevoie de două numere alături: eroarea pe datele de antrenare și eroarea pe datele de validare, exemplele ținute deoparte de la antrenare. Dacă amândouă sunt mari, ai leneșul; modelul e prea simplu sau intrările lui prea slabe. Dacă eroarea de antrenare e minusculă, iar cea de validare e mare, ai tocilarul; modelul memorează. Dacă amândouă sunt mici și apropiate, ai elevul bun. Să desenezi aceste două numere pe măsură ce antrenarea avansează e probabil cel mai util obicei din machine learning-ul practic.",
+      "sourceAnchor": null,
+      "wordCount": 100
+    },
+    {
+      "id": "u000633",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Remediile pentru tocilar fac toate memorarea mai grea sau mai puțin răsplătită, iar fiecare are un corespondent surprinzător de cunoscut în viața de inginer. Cel mai sigur e pur și simplu more data („mai multe date”): e ușor să memorezi o sută de exemple și foarte greu să memorezi un milion. Regularization („regularizarea”) adaugă o penalizare pentru complexitate, ca un code reviewer care respinge o soluție istează de două sute de linii când ar ajunge una clară de douăzeci; modelul e împins spre cea mai simplă explicație care se potrivește încă. Dropout-ul, zilele libere de la repetiții întâlnite printre piesele de bază ale rețelelor, nu lasă niciun neuron să se bazeze pe faptul că un anumit coleg e mereu acolo. Early stopping („oprire timpurie”) urmărește eroarea de validare și oprește antrenarea când începe să crească, așa cum un elev cu cap se oprește din tocit în seara dinainte când scorurile la exerciții încep să scadă. Ajută în loc să strice pentru că o rețea prinde întâi tiparele mari și abia apoi întâmplările exemplelor ei anume, așa că oprirea la cotitură le păstrează pe primele și o scutește de celelalte; în fond, e o regularizare cu ceasul. Iar data augmentation („augmentarea datelor”) creează variații realiste ale exemplelor de antrenare, fotografii rotite sau decupate, propoziții reformulate, în același spirit cu fuzz testing-ul (testarea codului cu variații aleatorii ale intrărilor). Remediile pentru leneș merg în sens invers: un model mai expresiv, features mai bune, mai multă antrenare.",
+      "sourceAnchor": null,
+      "wordCount": 244
+    },
+    {
+      "id": "u000634",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Statisticienii numesc această tensiune bias–variance trade-off („compromisul între eroarea sistematică și varianță”). Leneșul suferă de bias mare, o eroare sistematică pe care mai multe date n-o vindecă. Tocilarul suferă de varianță mare: rezultatele lui sar sălbatic în funcție de ce exemple s-au nimerit în setul lui de antrenare. Decenii la rând, imaginea din manuale a fost un balansoar. Mărești modelul și schimbi bias pe varianță; undeva la mijloc, în punctul ideal, te oprești.",
+      "sourceAnchor": null,
+      "wordCount": 74
+    },
+    {
+      "id": "u000635",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Un avertisment despre vocabular, pentru că îi încurcă pe aproape toți. Cuvântul bias are acum trei sensuri diferite în această carte. Într-un neuron era un număr adăugat la suma ponderată, pragul mutat de cealaltă parte. Aici, ca la experții grosolani ai boosting-ului, e o eroare sistematică, un model care greșește peste tot în aceeași direcție. Mai încolo în acest capitol va desemna date strâmbe, care reprezintă greșit un grup de oameni (în română, „prejudecată” sau „părtinire”). Domeniul n-a convenit niciodată să folosească cuvinte diferite, așa că atunci când întâlnești „bias” într-un articol sau într-o ședință, ia-ți o secundă să afli care dintre cele trei e.",
+      "sourceAnchor": null,
+      "wordCount": 105
+    },
+    {
+      "id": "u000636",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Apoi deep learning a rupt balansoarul. Cercetătorii au tot antrenat rețele mult mai mari decât spunea manualul că e rezonabil, destul de mari ca să-și memoreze tot setul de antrenare, și au descoperit că, după un anumit punct, eroarea de validare începea să scadă din nou . Modelele enorme, antrenate pe multe date cu o regularizare rezonabilă, generalizau adesea mai bine decât cele modeste. Efectul a fost numit double descent („dublă coborâre”) și încă nu e pe deplin înțeles. O explicație parțială: când un model e atât de mare încât nenumărate setări ale ponderilor se potrivesc perfect datelor de antrenare, coborârea prin ceață tinde să aterizeze pe unele netede și simple, nu pe unele oarecare, așa că un model uriaș are loc să se potrivească datelor în felul cel mai puțin contorsionat. Asta nu anulează nici argumentul compresiei, întâlnit la modelele de limbaj, că un model fără loc de memorat e împins spre tipare: un model cu loc din belșug e împins în același fel, de coborârea însăși, nu de lipsa de spațiu. Tot aici se rupe și imaginea elevului: un om care memorează mai mult nu înțelege prin asta mai mult, însă o rețea destul de mare ca să memoreze fiecare exemplu poate ajunge să se descurce mai bine cu exemple noi decât una mai mică, ce nu le putea memora. Ce a supraviețuit răsturnării e singura regulă care nu depinsese niciodată de balansoar: crede doar eroarea măsurată pe date pe care modelul nu le-a văzut niciodată.",
+      "sourceAnchor": null,
+      "wordCount": 247
+    },
+    {
+      "id": "u000637",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Dar și regula aceasta are o capcană. Presupune că datele nevăzute chiar sunt nevăzute și că modelul nu prinde pe ascuns un semnal pe care nu-l va avea în viața reală. Uneori un model obține un scor strălucit pe un test care pare perfect cinstit, iar adevărul e că a trișat tot timpul, fără ca nimeni să observe. Cel mai faimos trișor din povestea asta n-a fost un calculator. A fost un cal.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000638",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.2 Calul care știa să numere",
+      "sourceAnchor": "calul-care-știa-să-numere",
+      "wordCount": 7
+    },
+    {
+      "id": "u000639",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "La Berlin, la începutul anilor 1900, un învățător pensionar pe nume Wilhelm von Osten prezenta un cal care știa aritmetică. Îl întrebai pe Clever Hans („Hans cel Deștept”) cât fac trei plus cinci, iar el bătea de opt ori din copită, apoi se oprea. Știa să adune, să scadă, să spună ora și să răspundă la întrebări despre calendar. Veneau mulțimi să-l vadă. O comisie de experți, printre care un dresor de circ și zoologi, l-a examinat în 1904 și n-a găsit nicio șmecherie; von Osten era sincer și nu-i făcea semne intenționat.",
+      "sourceAnchor": null,
+      "wordCount": 93
+    },
+    {
+      "id": "u000640",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Apoi un tânăr psiholog pe nume Oskar Pfungst a făcut câteva experimente mai atente. Când cel care întreba nu știa răspunsul, Hans greșea. Când Hans nu-l putea vedea pe cel care întreba, Hans greșea. Ce a descoperit Pfungst a fost că fiecare persoană care întreba, fără să-și dea seama, se încorda ușor pe măsură ce copita se apropia de numărul corect și se relaxa, foarte puțin, când ajungea acolo. Hans nu învățase aritmetică. Învățase să citească fețe, un indiciu prezent în fiecare test și absent din abilitatea propriu-zisă.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000641",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Hans e sfântul patron al unui eșec numit data leakage („scurgere de date”: informația din răspuns se scurge în intrări): un model prinde în timpul antrenării o informație pe care n-o va avea când e folosit cu adevărat. Scorurile lui la test arată minunat, pentru că indiciul e prezent și în test. Realitatea, nu.",
+      "sourceAnchor": null,
+      "wordCount": 54
+    },
+    {
+      "id": "u000642",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Cea mai des întâlnită versiune în practică e o coloană care dă de gol răspunsul. Imaginează-ți o echipă care prezice ce clienți își vor anula abonamentul, cu un tabel care include, întâmplător, account_closed_date . Modelul descoperă, cu mare încredere, că clienții care au o dată de închidere a contului tind să plece. Obține un scor frumos. În producție e inutil, pentru că tot rostul e să prezici o anulare înainte ca acea dată să existe. Cazurile reale sunt rareori atât de evidente. Prioritatea unui tichet e prezisă din câmpul assigned_team , dar echipa e atribuită după ce un om a judecat deja prioritatea. Un model care prezice reinternarea în spital folosește un medicament prescris doar când medicul bănuiește deja o problemă. De fiecare dată, modelul citește fața celui care întreabă. Imaginea e mai blândă decât realitatea într-o privință: Hans avea de citit o singură față și un singur experiment l-a demascat, pe când un model poate combina zeci de indicii slabe deodată, niciunul suspect luat separat.",
+      "sourceAnchor": null,
+      "wordCount": 167
+    },
+    {
+      "id": "u000643",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "O scurgere mai discretă stă în instalații și a apărut deja la pregătirea datelor: media și împrăștierea pentru scalare, calculate pe tot setul de date, cu setul de test cu tot, înainte de împărțire. E echivalentul, în machine learning, al unui benchmark rulat cu un cache cald rămas de la rularea anterioară: măsurătoarea e reală, dar condițiile nu sunt cele pe care le vei avea în producție.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000644",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "O altă scurgere vine din duplicate deghizate. Un set de date de spital are mai multe radiografii per pacient. Dacă același pacient ajunge și în setul de antrenare, și în cel de test, modelul poate obține un scor bun recunoscând pacientul, nu boala: forma unei cuști toracice, o clemă chirurgicală, un anumit aparat. Remediul e să împarți după pacient, nu după imagine, iar lecția generală se aplică și datelor tale: împarte după client, după dispozitiv, după repository, oricare ar fi unitatea reală. Și, cum avertiza deja primul capitol, o împărțire aleatorie a oricărui lucru care se desfășoară în timp îi dă modelului ziarul de mâine în timp ce îl roagă să prezică ziua de azi.",
+      "sourceAnchor": null,
+      "wordCount": 115
+    },
+    {
+      "id": "u000645",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Toate aceste scurgeri cedează în fața unei singure întrebări, puse fiecărui feature: aș avea exact această valoare, în exact această formă, în momentul în care fac predicția în producție? Dacă răspunsul e nu, sau încă nu, feature-ul respectiv produce o scurgere. Apoi fă din drumul sigur drumul implicit, cu pipeline-ul unic de la pregătirea datelor, ajustat doar pe datele de antrenare și doar aplicat pe rest.",
+      "sourceAnchor": null,
+      "wordCount": 66
+    },
+    {
+      "id": "u000646",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Mai există o apărare, iar ea e psihologică. Pfungst l-a dat de gol pe Hans pentru că a fost bănuitor față de un rezultat care părea prea bun. Fă la fel. Când un model obține un scor mult mai bun decât te așteptai pe o problemă cunoscută ca dificilă, cea mai probabilă explicație nu e că ești un geniu. E că undeva un cal citește o față. Ca să găsești o scurgere la care nu te-ai gândit, întreabă modelul pe ce features se sprijină: când o singură trăsătură poartă cea mai mare parte a greutății sau una pe care ai fi numit-o minoră se dovedește dominantă, pune-i întrebarea despre producție de mai sus. Scurgerile se dau de obicei de gol așa, ca un cal mult prea interesat de o singură față.",
+      "sourceAnchor": null,
+      "wordCount": 131
+    },
+    {
+      "id": "u000647",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Datele cinstite și un test cinstit mai lasă totuși un mod de a te păcăli singur, iar el e cel mai nevinovat dintre toate: numărul pe care alegi să-l raportezi. Iată un detector de fraude care are dreptate în 99,9% din cazuri, scris într-o singură linie de cod.",
+      "sourceAnchor": null,
+      "wordCount": 49
+    },
+    {
+      "id": "u000648",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.3 Detectorul de 99,9% și alarma de fum",
+      "sourceAnchor": "detectorul-de-999-și-alarma-de-fum",
+      "wordCount": 10
+    },
+    {
+      "id": "u000649",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Iată-l:",
+      "sourceAnchor": null,
+      "wordCount": 1
+    },
+    {
+      "id": "u000650",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Dacă o plată din o mie e frauduloasă, această funcție are dreptate de 999 de ori din 1.000. Accuracy -ul ei („acuratețea”: procentul de răspunsuri corecte) e 99,9%, un număr care ar arăta superb pe un slide. N-a prins însă nicio fraudă și nici nu va prinde vreodată. Acuratețea a răsplătit-o pentru un singur lucru: să fie de acord cu majoritatea.",
+      "sourceAnchor": null,
+      "wordCount": 63
+    },
+    {
+      "id": "u000651",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Acesta e paradoxul acurateții și apare oricând lucrul pe care îl cauți e rar: fraude, pene, hard diskuri care cedează, boli rare, intruziuni de securitate. În toate, un model poate părea excelent fiind inutil. Reponderarea loss-ului sau reeșantionarea datelor de antrenare, tratamentele obișnuite pentru clasele rare din capitolul al doilea, îl fac pe model atent la clasa rară, dar nu elimină nevoia de a alege apoi un prag. Ca să vezi ce se întâmplă cu adevărat, trebuie să nu mai întrebi „cât de des are dreptate?” și să începi să întrebi „ce fel de greșeli face?”",
+      "sourceAnchor": null,
+      "wordCount": 96
+    },
+    {
+      "id": "u000652",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Alarma de fum din bucătăria ta face întrebarea palpabilă. Una sensibilă țipă de fiecare dată când faci pâine prăjită. Enervant, dar n-o să doarmă niciodată în timpul unui incendiu real. Una relaxată nu te deranjează niciodată la micul dejun, iar în noaptea în care contează s-ar putea să tacă. Niciuna nu e mai „acurată” într-un sens util. Fac greșeli diferite, iar alegerea între ele e o decizie despre greșeala cu care poți trăi.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000653",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Dacă ai fost vreodată de gardă, ai trăit înăuntrul acestui compromis. Pune două întrebări despre alertele tale. Prima: din toate cazurile în care a sunat pagerul, câte au fost incidente reale? Asta e precision („precizia”). Când e mică, apare oboseala de alerte, iar mai devreme sau mai târziu cineva oprește pagerul în timpul unei pene reale. A doua: din toate incidentele reale, câte au făcut pagerul să sune? Asta e recall („sensibilitatea” sau „rata de detecție”: cât din ce există reușești să prinzi). Când e mică, clienții îți descoperă penele înaintea ta. Coboară pragul de alertă și recall-ul crește, iar precizia de obicei scade; ridică-l și se întâmplă invers. Nicio poziție a acestui buton nu le maximizează pe amândouă.",
+      "sourceAnchor": null,
+      "wordCount": 119
+    },
+    {
+      "id": "u000654",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Fiecare predicție a unui model cu da sau nu ajunge într-una dintre patru căsuțe, iar desenarea lor e adesea momentul în care totul se leagă:",
+      "sourceAnchor": null,
+      "wordCount": 25
+    },
+    {
+      "id": "u000655",
+      "chapterId": "chapter-0011",
+      "kind": "th",
+      "text": "Chiar e fraudă",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000656",
+      "chapterId": "chapter-0011",
+      "kind": "th",
+      "text": "Nu e fraudă",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000657",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "Modelul spune „fraudă”",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000658",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "True positive: prinsă",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000659",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "False positive: alarmă falsă",
+      "sourceAnchor": null,
+      "wordCount": 4
+    },
+    {
+      "id": "u000660",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "Modelul spune „e în regulă”",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000661",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "False negative: ratată",
+      "sourceAnchor": null,
+      "wordCount": 3
+    },
+    {
+      "id": "u000662",
+      "chapterId": "chapter-0011",
+      "kind": "td",
+      "text": "True negative",
+      "sourceAnchor": null,
+      "wordCount": 2
+    },
+    {
+      "id": "u000663",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Detectorul dintr-o linie trăiește în întregime pe rândul de jos. Nu are nicio alarmă falsă și ratează tot.",
+      "sourceAnchor": null,
+      "wordCount": 18
+    },
+    {
+      "id": "u000664",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Ce căsuță doare mai tare depinde în întregime de business, și aceasta e adevărata lecție a subcapitolului. Blochezi din greșeală cardul unui client bun, un false positive, și pierzi un client și îți îneci echipa de suport. Ratezi o fraudă, un false negative, și pierzi bani. Un test de depistare a cancerului ar trebui să încline puternic spre recall, pentru că o tumoare ratată e o tragedie, iar o programare suplimentară e doar un inconvenient. Un filtru care șterge automat e-mailuri ar trebui să încline puternic spre precizie, pentru că ștergerea unui singur mesaj real de la un client e mai gravă decât să lași să treacă puțin spam.",
+      "sourceAnchor": null,
+      "wordCount": 109
+    },
+    {
+      "id": "u000665",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Câteva măsuri în plus merită cunoscute prin poveștile lor, nu prin formule. F1 score -ul combină precizia și recall-ul într-un singur număr care e mare doar când sunt mari amândouă; e un rezumat comod, care presupune în tăcere că ambele feluri de greșeli costă la fel, ceea ce se întâmplă rar. ROC-AUC , prescurtarea de la aria de sub curba ROC (receiver operating characteristic, „caracteristica de funcționare a receptorului”, un nume rămas de la radarele din al Doilea Război Mondial), judecă un model înainte să fi ales vreun prag. Imaginează-ți că muți pragul de la foarte strict la foarte relaxat și, în fiecare poziție, notezi pe un grafic câte fraude reale prinzi față de câte alarme false dai. Graficul acela e curba ROC; aria de sub ea e un singur număr pentru care 0,5 înseamnă nu mai bun decât o monedă aruncată, iar 1 înseamnă perfect. Și are un sens concret minunat: alege la întâmplare o fraudă reală și o plată legitimă; AUC (area under the curve, „aria de sub curbă”) e probabilitatea ca modelul să-i fi dat fraudei scorul mai mare. AUC ține cont doar de ordine, nu și de faptul că un scor de 0,9 înseamnă sau nu o șansă de 90%. Pentru evenimente foarte rare, o rudă numită PR-AUC , aceeași idee pe o curbă de precizie versus recall, e de obicei mai cinstită, pentru că nu e măgulită de muntele de plăți legitime ușor de recunoscut.",
+      "sourceAnchor": null,
+      "wordCount": 240
+    },
+    {
+      "id": "u000666",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Prezicerea numerelor are aceeași tensiune într-un alt costum. MAE (mean absolute error, „eroarea absolută medie”) îți spune greșeala tipică în unitățile problemei: „estimările noastre de livrare greșesc cu vreo șase minute”. RMSE (root mean squared error, „rădăcina erorii pătratice medii”) ridică greșelile la pătrat înainte să facă media, așa că o greșeală teribilă ocazională o domină, apoi ia rădăcina pătrată la final ca să revină la minute. Dacă ți se pare cunoscut, așa e: sunt erorile ridicate la pătrat din loss-ul pentru durata livrărilor, de la începutul cărții. Alegerea între ele seamănă cu alegerea între latența mediană și latența p99, timpul în care se termină 99% dintre cereri: una descrie experiența obișnuită, cealaltă coada dureroasă. Amândouă sunt adevărate; pe care o urmărești spune ce te interesează.",
+      "sourceAnchor": null,
+      "wordCount": 126
+    },
+    {
+      "id": "u000667",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "O alarmă de fum are sensibilitatea fixată din fabrică. Un model îți dă un buton, iar unde îl pui e o decizie de produs, nu una tehnică. Se poate schimba chiar și cu anotimpurile: un model de fraudă ar putea merita un prag mai strict în vârful cumpărăturilor de sărbători decât într-o săptămână liniștită din februarie. Cele mai bune discuții despre metrici au loc cu oamenii care plătesc pentru fiecare fel de greșeală așezați la aceeași masă, cu costurile reale scrise în fața lor. Aritmetica e simplă: pui un cost pe fiecare dintre cele patru căsuțe, atâția euro pentru un client bun blocat și atâția pentru o fraudă ratată, apoi muți pragul de-a lungul datelor de validare și alegi poziția cu cel mai mic total; adevărata muncă e să cădeți de acord asupra costurilor.",
+      "sourceAnchor": null,
+      "wordCount": 134
+    },
+    {
+      "id": "u000668",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Totuși, chiar și un model măsurat exact cu numărul potrivit, pe date cinstite, poate da greș într-un fel pe care niciun număr singur nu-l dezvăluie. O medie poate fi excelentă și să ascundă un grup de oameni pentru care modelul abia funcționează. Subcapitolul următor e despre asta și începe în fața unei oglinzi, la un bâlci.",
+      "sourceAnchor": null,
+      "wordCount": 56
+    },
+    {
+      "id": "u000669",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.4 Oglinda strâmbă",
+      "sourceAnchor": "oglinda-strâmbă",
+      "wordCount": 4
+    },
+    {
+      "id": "u000670",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "La bâlci există de obicei un cort plin de oglinzi strâmbe. Într-una ești înalt și subțire, în următoarea scund și lat, într-alta capul îți e enorm și picioarele au dispărut. Nimeni nu dă vina pe oglinzi. Ele reflectă exact ce stă în fața lor, cu fidelitate, printr-o bucată de sticlă îndoită.",
+      "sourceAnchor": null,
+      "wordCount": 51
+    },
+    {
+      "id": "u000671",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Un model de machine learning e o oglindă de felul acesta, iar sticla lui sunt datele de antrenare. Arată-i unui model, ani de zile, doar fotografii cu medici bărbați și asistente femei. Nu devine sexist în vreun sens omenesc; nu are nicio părere. Devine o reflexie perfectă a unei colecții strâmbe de fotografii. Cere-i să-și imagineze un medic, iar el va trage concluzia, cu statistică impecabilă și raționament greșit, că a fi bărbat face parte din ce înseamnă a fi medic.",
+      "sourceAnchor": null,
+      "wordCount": 81
+    },
+    {
+      "id": "u000672",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Orice inginer cunoaște pe de rost o versiune mică a acestei probleme. Se numește „pe mașina mea merge”. Codul a fost testat temeinic, pe un singur sistem de operare, cu o singură setare regională, pe o singură dimensiune de ecran, și se strică în clipa în care întâlnește o configurație pe care n-a încercat-o nimeni. Un model antrenat pe date de la un singur grup de oameni are exact aceeași problemă, la o scară mult mai mare. Un sistem de recunoaștere vocală antrenat mai ales pe un singur accent se poticnește la altele. Un model de prezicere a crash-urilor antrenat pe telemetria utilizatorilor care au acceptat să o trimită, de obicei pasionați cu hardware nou, poate fi aproape orb la problemele oamenilor cu telefoane vechi și ieftine. Modelul nu se înșală în privința datelor pe care le-a văzut. Se înșală în privința tuturor celor pe care nu i-a văzut.",
+      "sourceAnchor": null,
+      "wordCount": 149
+    },
+    {
+      "id": "u000673",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "În 2018, cercetătoarele Joy Buolamwini și Timnit Gebru au publicat un studiu numit Gender Shades . Au testat sisteme comerciale de analiză facială de la mari companii de tehnologie și au descoperit că sistemele clasificau aproape perfect genul bărbaților cu pielea deschisă la culoare, dar greșeau mult mai des la femeile cu pielea închisă la culoare. Sistemele fuseseră prezentate ca foarte precise și, în medie, chiar erau. Media ascundea doar cine plătea pentru erori. Ce ar trebui să însemne echitatea nu decide modelul și nici matematica singură: există mai multe definiții precise, care trag în direcții diferite, iar capitolul următor ia pe îndelete un exemplu.",
+      "sourceAnchor": null,
+      "wordCount": 104
+    },
+    {
+      "id": "u000674",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "În același an, Reuters a relatat că Amazon renunțase la o unealtă experimentală de ierarhizare a candidaților la angajare. Fusese antrenată pe CV-urile trimise companiei în deceniul anterior, cele mai multe de la bărbați, și învățase să penalizeze CV-urile care conțineau cuvântul „women’s” („al femeilor”), ca în „căpitan al clubului de șah al femeilor”. Nimeni n-a programat regula aceasta. Oglinda a reflectat istoria care i s-a arătat.",
+      "sourceAnchor": null,
+      "wordCount": 67
+    },
+    {
+      "id": "u000675",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Soluția evidentă, ștergerea atributului sensibil, merge rareori, iar motivul e instructiv. Scoate genul sau etnia din date și modelul le reconstruiește adesea oricum din lucruri care se corelează cu ele: un cod poștal, o școală, un hobby, un prenume. Acești înlocuitori se numesc proxies („intermediari” sau „surogate”: variabile care spun indirect același lucru) și înseamnă că un model poate discrimina fără să vadă vreodată atributul după care discriminează.",
+      "sourceAnchor": null,
+      "wordCount": 68
+    },
+    {
+      "id": "u000676",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Cea mai tulburătoare formă de bias se hrănește singură. Imaginează-ți un model care decide unde să trimită auditori, pe baza locurilor în care s-au găsit probleme înainte. Auditorii merg acolo și, firesc, găsesc probleme, pentru că acolo se uită. Acele constatări devin datele de antrenare de anul viitor, care arată acum și mai multe probleme în aceleași locuri, iar modelul următor trimite și mai mulți auditori acolo. Roata se învârte, iar modelul devine tot mai sigur pe el la fiecare tur, indiferent dacă realitatea de dedesubt diferă sau nu de la un loc la altul. Aceasta e o feedback loop („buclă de feedback”) și poate transforma o mică strâmbătate inițială într-o profeție care se împlinește singură. Calea obișnuită de a o rupe e să trimiți mereu o parte dintre auditori în locuri alese la întâmplare, ca datele să conțină întotdeauna un eșantion onest din toate locurile: explorarea din dilema prânzului, pusă în slujba unui nou scop.",
+      "sourceAnchor": null,
+      "wordCount": 156
+    },
+    {
+      "id": "u000677",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Mai rău, un model poate exagera ce reflectă. Un generator care înclină spre opțiunea cea mai probabilă poate transforma o majoritate din datele de antrenare într-o aproape unanimitate în rezultatele lui: dacă cei mai mulți medici din fotografii sunt bărbați, poate desena un bărbat aproape de fiecare dată. Vechiul slogan de inginerie „garbage in, garbage out” („gunoi intră, gunoi iese”) se dovedește optimist. Uneori intră gunoi și iese și mai mult gunoi.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000678",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Remediile nu sunt exotice. Sunt aceleași obiceiuri pe care un inginer bun le aplică latenței sau fiabilității. Măsoară performanța separat pentru fiecare grup care contează, așa cum verifici latența pe fiecare regiune în loc să te încrezi într-o medie globală care poate ascunde o regiune în flăcări. Întreabă cine lipsește din date, nu doar ce e în ele. Testează proxies: dacă poți prezice atributul sensibil din trăsăturile rămase, poate și modelul. Și scrie pentru ce au fost construite datele și modelul tău și, mai important, pentru ce n-au fost construite, ca cine folosește modelul după tine să știe unde nu trebuie să aibă încredere în el. Formate precum datasheets for datasets („fișe tehnice pentru seturi de date”) și model cards („carduri de model”) există exact pentru asta. Odată găsit un bias, remediul cel mai eficient e și cel mai scump: strângi mai multe date, și mai bune, pentru grupurile pe care modelul le servește prost. Remediile mai ieftine, precum o pondere mai mare pentru acele exemple la antrenare sau praguri separate pentru fiecare grup, ajută, dar schimbă un fel de eroare pe altul, de aceea măsurătorile trebuie să continue și după remediere.",
+      "sourceAnchor": null,
+      "wordCount": 192
+    },
+    {
+      "id": "u000679",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Cu asta, povestea buclei e spusă, de la prima ei ghicire până la felurile în care dă greș. Rămân două întrebări pe care un utilizator atent le pune oricărui răspuns: cât să se încreadă în el și dacă se poate uita cineva înăuntru ca să vadă de ce a fost dat.",
+      "sourceAnchor": null,
+      "wordCount": 51
+    },
+    {
+      "id": "u000680",
+      "chapterId": "chapter-0011",
+      "kind": "h2",
+      "text": "10.5 Cât de sigur e?",
+      "sourceAnchor": "cât-de-sigur-e",
+      "wordCount": 6
+    },
+    {
+      "id": "u000681",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Să ne amintim cele două meteorologe de la începutul cărții, judecate după o singură zi ploioasă. Acum imaginează-ți că verifici o meteorologă cum se cuvine, pe un an întreg. Aduni toate zilele în care a spus 70%. Dacă a plouat în cam șaptezeci din fiecare sută de astfel de zile, 70%-ul ei înseamnă ceva. Faci la fel pentru zilele ei de 10% și pentru cele de 90%. O meteorologă ale cărei numere se potrivesc cu frecvențele e calibrated („calibrată”: încrederea declarată se potrivește cu rata reală de reușită), iar calibrarea e proprietatea discretă care transformă un scor într-o probabilitate pe baza căreia poți face planuri.",
+      "sourceAnchor": null,
+      "wordCount": 106
+    },
+    {
+      "id": "u000682",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Modelele pot fi verificate exact la fel, și merită, pentru că variatorul va arăta voios 0,83 fie că 0,83 înseamnă ceva, fie că nu. Iei setul de validare, sortezi predicțiile în găleți după scor (tot ce e între 0,8 și 0,9 într-o găleată și așa mai departe) și compari, pentru fiecare găleată, scorul mediu cu cât de des răspunsul a fost cu adevărat da. Desenezi rezultatul și ai o reliability diagram („diagramă de fiabilitate”: scorul promis față de frecvența reală, găleată cu găleată): un model calibrat stă de-a lungul diagonalei. Familii diferite de modele au obiceiuri diferite. Regresia logistică, antrenată cu loss-ul care pedepsește greșelile făcute cu încredere, tinde să ajungă aproape de diagonală. Arborii cu boosting și rețelele profunde moderne adesea nu; un studiu din 2017, citat pe larg, a constatat că rețelele profunde deveniseră mai precise și, în același timp, sistematic mai sigure pe ele decât le justifica acuratețea. Reparația e plăcut de ieftină. Păstrezi modelul antrenat și potrivești pe date ținute deoparte o mică corecție care îi întinde sau îi strânge scorurile până când gălețile se potrivesc cu frecvențele. O versiune populară, temperature scaling („scalarea cu temperatură”), ajustează un singur număr, același buton de temperatură pe care l-ai întâlnit la modelele de limbaj.",
+      "sourceAnchor": null,
+      "wordCount": 210
+    },
+    {
+      "id": "u000683",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Calibrarea singură nu ajunge, iar meteorologa arată de ce. O meteorologă care spune „30% șanse de ploaie” în fiecare zi, pentru că în orașul ei plouă în 30% din zile, e perfect calibrată și perfect inutilă. O meteorologă bună e calibrată și tranșantă: spune 5% în zilele care se dovedesc uscate și 90% în cele care se dovedesc ploioase. La un model, această fermitate e cam ce răsplătesc măsurile de ordonare, cum ar fi AUC-ul, iar calibrarea e ceva ce ele ignoră cu totul. Înjumătățește fiecare scor și ordinea cazurilor, deci și AUC-ul, nu se schimbă deloc, în timp ce fiecare probabilitate devine greșită. Asta contează din clipa în care stabilești un prag. O regulă de genul „trimite la un om peste 0,3” înseamnă ce crezi tu că înseamnă doar dacă 0,3 e într-adevăr cam trei din zece.",
+      "sourceAnchor": null,
+      "wordCount": 140
+    },
+    {
+      "id": "u000684",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Acum o întrebare mai grea: știe un model când nu știe? Ajută să desparți două feluri de incertitudine care arată la fel din afară și se poartă foarte diferit. Primul e incertitudinea unei monede corecte. Știi tot ce se poate ști și tot nu poți face mai bine de cincizeci la sută, pentru că lumea însăși e zgomotoasă; două tichete cu text identic chiar au fost trimise la echipe diferite. Mai multe date nu o micșorează. Statisticienii o numesc aleatoric uncertainty („incertitudine aleatorie”, de la cuvântul latinesc pentru zar: zgomotul lumii, pe care nicio cantitate de date nu-l elimină). Al doilea e incertitudinea cuiva pus în fața unui fel de caz pe care nu l-a văzut niciodată: o sudură fotografiată într-o lumină nouă, o plată dintr-o țară absentă din datele de antrenare, o propoziție într-un dialect pe care modelul nu l-a citit niciodată. Aceasta e epistemic uncertainty („incertitudine epistemică”: nesiguranța din necunoaștere), iar mai multe date de felul potrivit chiar o micșorează.",
+      "sourceAnchor": null,
+      "wordCount": 162
+    },
+    {
+      "id": "u000685",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Cele mai multe modele exprimă rezonabil de bine primul fel și prost pe al doilea, iar motivul e structural. Un clasificator se termină cu un softmax, care trebuie să împartă o sută la sută între răspunsurile pe care le cunoaște; nu există nicio căsuță „niciuna dintre acestea”. Arată-i unui clasificator de pisici și câini fotografia unui prăjitor de pâine și tot va spune pisică sau câine, poate cu 97% încredere, doar pentru că prăjitorul a căzut departe de o parte a graniței. Calibrarea măsurată pe setul de validare nu te salvează aici, pentru că setul de validare semăna cu cel de antrenare. Când intrările derivează, calibrarea se strică discret odată cu ele, iar nimic din scor nu te avertizează.",
+      "sourceAnchor": null,
+      "wordCount": 119
+    },
+    {
+      "id": "u000686",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Mai multe unelte practice încearcă să prindă asta. Cea mai simplă împrumută înțelepciunea mulțimii: antrenezi cinci modele pornind din puncte aleatoare diferite, sau pe eșantioane bootstrap diferite, și le întrebi pe toate. Pe intrări familiare tind să fie de acord; pe cele nefamiliare tind să nu fie, iar dezacordul e un semnal utilizabil de incertitudine epistemică. Să lași dropout-ul pornit la predicție și să rulezi modelul de mai multe ori, exact instabilitatea evitată de obicei, folosită acum intenționat, e o imitație mai ieftină a aceleiași mulțimi. O familie separată de metode, out-of-distribution detection („detectarea intrărilor din afara distribuției”: recunoașterea cazurilor care nu seamănă cu nimic din antrenare), întreabă direct dacă o intrare seamănă măcar cu datele de antrenare, de exemplu măsurând cât de departe stă embedding-ul ei de tot ce s-a văzut înainte, și refuză să dea scor intrărilor care par străine.",
+      "sourceAnchor": null,
+      "wordCount": 142
+    },
+    {
+      "id": "u000687",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "O metodă merită un paragraf numai al ei, pentru că oferă ceva rar în domeniul acesta: o garanție. Conformal prediction („predicție conformă”: o plasă de răspunsuri, cu garanție) nu dă un singur răspuns; dă o mulțime de răspunsuri, dimensionată astfel încât să-l conțină pe cel corect într-o proporție aleasă dintre cazuri. Ții deoparte exemple etichetate pe care modelul nu le-a văzut niciodată, notezi cât de mult greșește modelul pe fiecare și folosești acele greșeli observate ca să decizi cât de larg să arunci plasa. Pentru un tichet ușor, mulțimea ar putea fi doar „Billing”; pentru unul ambiguu, „Billing sau Mobile”. Pe un număr mare de tichete, echipa corectă va fi în mulțime în cam 90% din cazuri dacă ai cerut 90%, oricare ar fi modelul, bun sau prost; un model prost produce pur și simplu mulțimi mai mari. Garanția are o singură condiție, cea obișnuită: cazurile noi trebuie să semene cu cele folosite la calibrare.",
+      "sourceAnchor": null,
+      "wordCount": 155
+    },
+    {
+      "id": "u000688",
+      "chapterId": "chapter-0011",
+      "kind": "p",
+      "text": "Toate acestea duc la forma de incertitudine cea mai prietenoasă cu business-ul, abstention („abținerea”: modelul răspunde doar când e destul de sigur, iar restul merge la un om). Un model care tratează 80% dintre tichete cu 99% acuratețe și le predă pe celelalte 20% unui om valorează adesea mult mai mult decât unul care le tratează pe toate cu 90%.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    }
+  ]
+}
