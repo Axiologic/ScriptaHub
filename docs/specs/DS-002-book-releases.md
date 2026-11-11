@@ -202,3 +202,12 @@ missing English reader) is requested for an already installed current edition,
 finished readers into the published book, never overwrites, updates the manifest
 reader records and lifts an English-only release policy once both EN and RO
 readers exist. Then refresh the catalogue and run both checks.
+
+### Cover-only PDF maintenance
+
+A missing approved cover may be repaired by prepending one cover page while
+preserving all existing content streams, links and outline destinations. Use
+`tools/prepend_pdf_cover.py` with the book’s approved language cover; check the
+new first page and rendered body samples. Retain native Chromium MathML output
+for books that use it. Archive the complete previous edition before replacing
+a current download, and record the cover repair as a maintenance edition.

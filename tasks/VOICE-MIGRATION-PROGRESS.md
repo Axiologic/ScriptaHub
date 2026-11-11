@@ -1,12 +1,12 @@
 # Progres migrare voci pentru animații
 
-Actualizat: 2026-10-22T20:40:23.790Z
+Actualizat: 2026-11-11T17:34:31.502Z
 
 Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.
 
 ## Situație
 
-- Voci Qwen finalizate: **33**
+- Voci Qwen finalizate: **35**
 - În conversie: **0**
 - Încă pe Piper: **98**
 - Pregătite pentru conversie: **0**
@@ -24,6 +24,7 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - AI Agents — Aiden (64 s)
 - All the Ways to Rule a World — Ryan (76 s)
 - An Autopsy of a Digital Mind — Ryan (74 s)
+- An Intuitive Introduction to Machine Learning — Aiden (86 s)
 - Anatomy of an Echo — Ryan (82 s)
 - Anti-Idiocracy — Aiden (71 s)
 - Anti-Trivialization Machines of the Future — Aiden (68 s)
@@ -44,6 +45,7 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - Enthusiasm: The Missing Energy of a Successful Civilization — Aiden (80 s)
 - Incomplete Tribes — Aiden (87 s)
 - Is There Light at the End of the Tunnel? — Ryan (104 s)
+- Symbolic World Models — Ryan (118 s)
 - The Messiah Factory — Ryan (91 s)
 - The New Social Contract in the Age of Artificial Intelligence — Ryan (107 s)
 - The Unfinished World — Aiden (83 s)

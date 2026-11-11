@@ -67,7 +67,31 @@ async function hasRenderLock(project){
 }
 async function record(manifestFile){
   const manifest=await readJson(manifestFile), bookDirectory=path.dirname(manifestFile);
-  if(!manifest.animation?.shf) return null;
+  if(!manifest.animation?.shf) {
+    const project=await projectFor(bookDirectory);
+    if(!project||!await exists(path.join(project,'work/scenes.json')))return null;
+    const [production,scenes,state]=await Promise.all([
+      readJson(path.join(project,'work/production.json')),readJson(path.join(project,'work/scenes.json')),
+      readJson(path.join(project,'work/migration-state.json')).catch(error=>{if(error.code==='ENOENT')return {stages:{}};throw error;})
+    ]);
+    const editorial=await marketingReview(project,scenes);
+    const visualPlan=await readJson(path.join(project,'work/presentation-plan.json')).catch(error=>{if(error.code==='ENOENT')return null;throw error;});
+    const stages={text:{status:editorial.approved?'reviewed':'review pending'},animation:{status:'planned'},voice:{status:'planned'}};
+    for(const [name,stage] of Object.entries(state.stages||{})){
+      if(stage.scriptSha256!==editorial.scriptSha256)continue;
+      stages[name]=stage;
+      if(stage.status==='running'&&stage.pid){try{process.kill(stage.pid,0);}catch{stages[name]={...stage,status:'interrupted'};}}
+    }
+    const active=Object.values(stages).some(stage=>['running','reviewing','rewriting'].includes(stage.status));
+    return {title:manifest.title.en,bookId:manifest.id,published:false,status:active?'rendering':'needs-render',stages,active,
+      durationMs:0,voiceGenerated:stages.voice.status==='generated',animationCompleted:false,publishedVoice:null,publishedVoiceId:null,
+      plannedVoice:production.voiceProvider,plannedVoiceId:production.voiceId,voice:production.voiceProvider,voiceId:production.voiceId,
+      bookDirectory:rel(bookDirectory),project:rel(project),bookPage:`${webRel(path.join(bookDirectory,'en/book.html'))}?lang=en`,animationPage:null,
+      script:scenes.map(scene=>({id:scene.id,title:scene.title,lines:scene.lines,emotions:scene.emotionalPlan?.states||[],intensities:scene.emotionalPlan?.intensities||[],voiceDirections:scene.emotionalPlan?.voiceDirections||[],pausesMs:scene.pauseAfterMs||[]})),
+      visualPlan:visualPlan?.scriptSha256===editorial.scriptSha256?visualPlan:null,scriptWords:scenes.flatMap(scene=>scene.lines).join(' ').trim().split(/\s+/).length,
+      targetDurationMs:120000,editorialStatus:editorial.approved?'reviewed':editorial.current?'independent-review-pending':'rewrite-pending',editorialReview:editorial.review||null,
+      presentationPlan:{scenes:scenes.length,beats:scenes.reduce((n,s)=>n+s.lines.length,0),method:'A new introduction remains unpublished until measured voice, packaged media and rendered visual review pass.'},updatedAt:new Date().toISOString()};
+  }
   const publicShf=path.resolve(bookDirectory,manifest.animation.shf);
   if(!await exists(publicShf)) return null;
  const loaded=await loadFilmWithRetry(publicShf);

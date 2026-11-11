@@ -330,7 +330,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 
 - Source: `income/An Intuitive Introduction to Machine Learning.docx`
 - SHA-256: `86db5a40c1515217c9e509bfc273fc0f7ee038046ba47bf6b36486e76d0a2073`
-- Book ID: `bk-97983c60498d4a09`; edition: `edition-1`
+- Book ID: `bk-97983c60498d4a09`; edition: `edition-2`
 - Workspace: `.book-work/anintuitiveintroductiontomachinelearning-v1-86db5a40c151`
 - [x] Visible book page: `docs/books/an/intuitive/introduction/to/machine/learning/bk-97983c60498d4a09/en/book.html`
 - [x] EN full_content.html
@@ -1541,7 +1541,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 
 - Source: `tasks/Masini_de_intelegere_prin_circuite_SOP_Lang.docx`
 - SHA-256: `ca94583e03a99eb2c2712839d023152f143a16839e63ad4667fd491fda0165f1`
-- Book ID: `bk-629bc39de504437d`; edition: `edition-1`
+- Book ID: `bk-629bc39de504437d`; edition: `edition-2`
 - Workspace: `.book-work/masinideintelegereprincircuitesoplang-v1-ca94583e03a9`
 - [x] Visible book page: `docs/books/machines/of/understanding/through/circuits/bk-629bc39de504437d/en/book.html`
 - [x] EN full_content.html
@@ -1700,7 +1700,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 
 - Source: `tasks/Meta_Rational_Pragmatics_Carte_RO.docx`
 - SHA-256: `d64a357386d4a70caf904ae69e745b58417bdefcecfbdaad9630c5ef27dfb19d`
-- Book ID: `bk-440dfae7c4994cdc`; edition: `edition-1`
+- Book ID: `bk-440dfae7c4994cdc`; edition: `edition-2`
 - Workspace: `.book-work/metarationalpragmaticscartero-v1-d64a357386d4`
 - [x] Visible book page: `docs/books/meta/rational/pragmatics/bk-440dfae7c4994cdc/en/book.html`
 - [x] EN full_content.html

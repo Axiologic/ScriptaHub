@@ -1,0 +1,194 @@
+[
+  {
+    "id": "u001",
+    "kind": "h1",
+    "anchor": "",
+    "text": "An Intuitive Introduction to Machine Learning"
+  },
+  {
+    "id": "u002",
+    "kind": "p",
+    "anchor": "",
+    "text": "How examples become predictions, why powerful models fail, and where responsibility stays with the people who build and use them."
+  },
+  {
+    "id": "u003",
+    "kind": "h2",
+    "anchor": "",
+    "text": "The examples decide what learning means"
+  },
+  {
+    "id": "u004",
+    "kind": "p",
+    "anchor": "",
+    "text": "An engineer adjusts a cache, measures the result, and adjusts again. The book begins here because the same pattern runs through much of machine learning: make a prediction, measure error, change the parameters, and repeat. Learning replaces a recipe someone can state explicitly with a function fitted to examples. Its value appears where rules become too subtle, numerous, or changeable to maintain. Where an exact, stable rule already works, the added uncertainty and maintenance of a model may buy nothing."
+  },
+  {
+    "id": "u005",
+    "kind": "p",
+    "anchor": "",
+    "text": "Supervised learning receives features describing a case and labels giving the desired answer. Regression predicts a number; classification predicts a category. A loss function turns mistakes into the quantity training tries to reduce. Choosing that loss expresses a human priority: squared error makes large misses particularly costly. Labels carry human priorities and mistakes too. If hurried engineers mark inconvenient failures as flaky, a model can faithfully learn their Friday habits instead of the property the team meant to predict."
+  },
+  {
+    "id": "u006",
+    "kind": "p",
+    "anchor": "",
+    "text": "Unsupervised learning finds structure without an answer key. Clustering groups similar cases; dimensionality reduction compresses many measurements into informative directions. Neither establishes that the discovered structure matters. Distance depends on representation and scaling, and a clustering method can find groups in noise. Evaluation needs the same skepticism. Training sets fit parameters, validation sets select hyperparameters, and test sets estimate performance only while kept separate from those choices. Repeatedly tuning against the test turns the supposedly final exam into more practice."
+  },
+  {
+    "id": "u007",
+    "kind": "h2",
+    "anchor": "",
+    "text": "Inside the arithmetic"
+  },
+  {
+    "id": "u008",
+    "kind": "p",
+    "anchor": "",
+    "text": "Different model families make different bets. Linear regression fits a weighted sum; logistic regression passes a score through a sigmoid to obtain a probability-like output. Nearest neighbors keep examples and compare new cases with similar old ones, making the choice of distance crucial. Decision trees ask questions that reduce uncertainty. Random forests combine deliberately varied trees to calm unstable predictions, while gradient boosting adds successive corrections. On ordinary tables, these methods remain strong competitors to neural networks rather than obsolete steps on the way to them."
+  },
+  {
+    "id": "u009",
+    "kind": "p",
+    "anchor": "",
+    "text": "A neural network builds intermediate representations through layers. Each artificial neuron combines inputs with weights and a bias, then applies an activation function. Without these nonlinear bends, stacked weighted sums collapse into another weighted sum. Hidden units acquire useful intermediate features during training; nobody assigns every unit a human concept. Gradient descent uses the slope of the loss to choose adjustments. Backpropagation applies the chain rule backwards through the computation, efficiently finding how each weight contributed. Learning rate controls the size of the steps."
+  },
+  {
+    "id": "u010",
+    "kind": "p",
+    "anchor": "",
+    "text": "Architecture supplies assumptions that reduce what must be learned from scratch. Convolution shares small detectors across positions in an image. Recurrent networks carry information through a running hidden state, but a fixed-size state loses detail and gradients can fade across long sequences. These are numerical mechanisms, not miniature biological brains. A saved network contains tensors: named arrays of numbers. A forward pass transforms input arrays through matrix multiplication and activation functions. Batching lets the same arithmetic process several examples together, and graphics hardware performs many component operations in parallel. Quantization reduces the precision of stored weights to save memory, with quality checked afterwards."
+  },
+  {
+    "id": "u011",
+    "kind": "p",
+    "anchor": "",
+    "text": "Before any of this works, the world must become usable inputs. Missing values, duplicate records, inconsistent categories and misleading encodings can defeat an elegant model. One-hot encoding avoids giving categories an invented numerical order; bag-of-words and TF-IDF expose text signals without demanding a large network. Feature engineering makes relevant information accessible. Scaling, imputation and other learned preparation steps must be fitted on training data alone, then applied unchanged elsewhere. The pipeline is part of the model's behavior, and must survive the journey into production."
+  },
+  {
+    "id": "u012",
+    "kind": "h2",
+    "anchor": "",
+    "text": "The cost of learning and remembering"
+  },
+  {
+    "id": "u013",
+    "kind": "p",
+    "anchor": "",
+    "text": "Training and inference are different lives. Training retains intermediate activations, computes gradients and updates weights with an optimizer. Inference normally keeps weights fixed and runs the forward computation. A system therefore does not ordinarily learn from each customer it serves. Yet serving repeated requests can outweigh the original training expense. Normalization and residual connections make deeper networks trainable; dropout discourages dependence on particular units. These choices affect reliability, memory, latency and the cost of a useful result."
+  },
+  {
+    "id": "u014",
+    "kind": "p",
+    "anchor": "",
+    "text": "The practical answer to how much data or capacity is enough comes from a learning curve. Compare training and validation error as the available examples increase. A persistent gap suggests memorization; two high errors suggest inadequate features or capacity. A plateau asks for a different intervention, not automatically a larger budget. Duplicate examples add little coverage, and poor labels reinforce poor lessons. Scaling laws describe useful empirical patterns across model size, data and computation, but they do not guarantee particular capabilities or endless improvement."
+  },
+  {
+    "id": "u015",
+    "kind": "p",
+    "anchor": "",
+    "text": "The book also explores alternatives. Hyperdimensional computing uses long vectors, binding and bundling to compose and query structured memories with little training. Its assigned names do not discover useful similarity automatically, suggesting a complementary role beside learned representations. Brain theories offer another contrast: the Thousand Brains proposal emphasizes reference frames and consensus, while predictive processing emphasizes surprise and prediction error. Fast recording followed by replay suggests ways to retain earlier learning. These are qualified research directions; the book preserves their critics and incomplete evidence."
+  },
+  {
+    "id": "u016",
+    "kind": "h2",
+    "anchor": "",
+    "text": "Words, context and the open book"
+  },
+  {
+    "id": "u017",
+    "kind": "p",
+    "anchor": "",
+    "text": "An embedding places a word, document or other object at an address in a numerical space, where useful similarities become proximity. Cosine similarity compares directions rather than magnitudes. Attention makes representations depend on context: a query is matched against keys, and the resulting weights blend values. Multiple attention heads can capture different relationships. The learned transformations are reusable, but the attention scores are computed afresh for each input. This lets the same word carry different information in different sentences; it does not make an attention map a complete explanation."
+  },
+  {
+    "id": "u018",
+    "kind": "p",
+    "anchor": "",
+    "text": "Language models apply these mechanisms to tokens, which can be pieces of words. Pretraining learns to predict what comes next. Tokens become embeddings, pass through Transformer blocks, and produce vocabulary scores converted into a distribution by softmax. Sampling selects the next token, which becomes part of the input for the next pass. Temperature changes how sharply the distribution favors its leading candidates. Instruction examples teach helpful answer patterns, and preference feedback further shapes responses. Neither procedure makes plausible continuation identical to truth, which is why fluent hallucinations can persist."
+  },
+  {
+    "id": "u019",
+    "kind": "p",
+    "anchor": "",
+    "text": "The context window is a working board containing instructions, conversation, retrieved material and tool results. It is not permanent learning. Applications may drop or summarize old material when space runs out, and important details can be lost even inside a long context. Persistent product memory usually consists of stored notes inserted into a later context, leaving weights unchanged. In-context learning likewise uses examples on the board rather than updating the model. Extra intermediate steps can buy more computation, but written reasoning is not automatically a faithful account of the mechanism."
+  },
+  {
+    "id": "u020",
+    "kind": "p",
+    "anchor": "",
+    "text": "Retrieval-augmented generation supplies evidence before asking for an answer. Documents become searchable chunks; relevant passages are fetched and placed in the context. Hybrid search combines semantic similarity with exact identifiers, and reranking can improve the shortlist. Updating documents is easier than retraining weights, but a convincing answer can still rest on an outdated or incorrectly retrieved page. Measure retrieval and answer quality separately, and check citations. Prediction encourages useful regularities and sometimes reasoning, while the stronger claim that text prediction constitutes understanding remains an open disagreement."
+  },
+  {
+    "id": "u021",
+    "kind": "h2",
+    "anchor": "",
+    "text": "Making things and teaching behavior"
+  },
+  {
+    "id": "u022",
+    "kind": "p",
+    "anchor": "",
+    "text": "Self-supervised learning obtains its targets from the data's own structure. A language model predicts missing future text; a diffusion model predicts noise added to an image. Reversing that corruption step by step produces a new image, often guided by an encoded caption and calculated in a compressed space. Autoencoders learn compact representations by reconstructing inputs; generative adversarial networks instead train a generator against a discriminator. Their mechanisms differ, but convincing output is still not a guarantee of correct anatomy, factual content or freedom from memorized examples."
+  },
+  {
+    "id": "u023",
+    "kind": "p",
+    "anchor": "",
+    "text": "Reuse usually costs less than beginning again. Transfer learning adapts useful earlier representations; fine-tuning continues training on a narrower task. LoRA freezes the main weights and learns a smaller correction. Prompting may already produce the desired format, while retrieval often solves missing knowledge more directly than retraining. Distillation trains a smaller model from a larger model's outputs, and active learning directs labeling toward informative cases. The choice depends on whether the missing ingredient is evidence, behavior, coverage or affordable serving."
+  },
+  {
+    "id": "u024",
+    "kind": "p",
+    "anchor": "",
+    "text": "Reinforcement learning learns a policy from rewards rather than correct answers, balancing exploration with exploiting known actions. Rewards can be delayed, and assigning credit across a sequence is difficult. More fundamentally, the reward may describe the wrong success: the book's racing boat earns points by circling targets and never finishes. Preference tuning can similarly reward confidence or length. Verifiable rewards offer firmer feedback where results can be checked. Agents add a surrounding program that executes tool calls and returns observations, making the consequences of these incentives concrete."
+  },
+  {
+    "id": "u025",
+    "kind": "h2",
+    "anchor": "",
+    "text": "Knowing when a model fails"
+  },
+  {
+    "id": "u026",
+    "kind": "p",
+    "anchor": "",
+    "text": "Overfitting memorizes the training cases; underfitting fails to capture their useful structure. Compare training and validation performance before choosing a remedy. Regularization, early stopping and realistic data augmentation can limit memorization. Yet an excellent held-out score is still suspect if the split leaks information. A feature that exists only after the outcome cannot support a prediction made beforehand. Related examples from the same person or device may also leak across a random split. Ask what information would actually exist at the moment the system must decide."
+  },
+  {
+    "id": "u027",
+    "kind": "p",
+    "anchor": "",
+    "text": "Accuracy can hide the mistakes that matter. A detector that always predicts the common class can score brilliantly while missing every rare event. Precision asks how many flagged cases are real; recall asks how many real cases were caught. The threshold trades false positives against false negatives, and should follow their consequences for users. Calibration asks whether predicted probabilities match observed frequencies. Uncertainty from noisy outcomes differs from uncertainty caused by unfamiliar cases. Abstention and human review can be more valuable than forcing an answer on everything."
+  },
+  {
+    "id": "u028",
+    "kind": "p",
+    "anchor": "",
+    "text": "Averages also hide whose cases fail. Missing groups, proxy features and feedback loops can reproduce or amplify skewed data. Measure performance by relevant groups, inspect coverage and ask how the model's own actions change the examples it later receives. Explanations help investigate reliance: permutation importance tests a feature globally, SHAP and LIME offer local accounts, and counterfactuals describe changes that would alter a decision. Mechanistic interpretability searches for internal features and circuits. Every explanation remains evidence to test, not proof of fairness, causation or truth."
+  },
+  {
+    "id": "u029",
+    "kind": "h2",
+    "anchor": "",
+    "text": "The work that remains with people"
+  },
+  {
+    "id": "u030",
+    "kind": "p",
+    "anchor": "",
+    "text": "Prediction answers a different question from intervention. Knowing who will cancel does not establish whom a discount will persuade. Randomized experiments can estimate effects; observational causal methods depend on stated assumptions. Evaluating generated answers also requires care: use executable checks where possible, explicit rubrics elsewhere, and test model judges against expert judgments. Public benchmarks can leak, saturate and become targets. A fresh private evaluation set drawn from real user problems connects technical progress with the actual task."
+  },
+  {
+    "id": "u031",
+    "kind": "p",
+    "anchor": "",
+    "text": "Deployment adds deliberate attackers and continuing obligations. Prompt injection can turn retrieved text into apparent instructions, so agent permissions should be narrow and consequential actions checked. Memorized personal information can escape a model; retrieval must respect the user's access rights, and privacy methods have trade-offs and budgets. MLOps records code, data and settings, preserves training-serving consistency, monitors drift and delayed outcomes, and stages replacements with rollback. A new training run is a new model requiring review. A deployed model needs tending throughout its useful life."
+  },
+  {
+    "id": "u032",
+    "kind": "p",
+    "anchor": "",
+    "text": "The book ends by returning to the learning loop. It can recognize patterns and generate useful work, but it pursues the examples, scores and rewards supplied to it. Forecasts about its future remain uncertain. The next useful step is practical: compare simple models on real data, keep a sealed test, inspect mistakes, then add networks or retrieval when the evidence calls for them. The appendices connect metaphors with formulas and suggest that progression. Whether the machine learns something worth relying on remains a question of human choices and continued measurement."
+  }
+]

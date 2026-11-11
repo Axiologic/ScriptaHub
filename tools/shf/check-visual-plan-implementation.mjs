@@ -14,13 +14,14 @@ export async function checkVisualPlan(project){
     if(!expected){issues.push(`${scene.id}: missing approved scene plan`);continue;}
     const objects=scene.visual?.objects||[];
     const ids=new Set(objects.map(object=>object.id));
+    const actors=new Set([...ids,...(scene.visual?.connections||[]).map(connection=>connection.id)]);
     const actions=scene.visual?.actions||[];
     if(!objects.length)issues.push(`${scene.id}: no artwork`);
     for(const id of expected.remove||[])if(ids.has(id))issues.push(`${scene.id}: actor ${id} was planned for removal but remains`);
     for(const id of expected.keep||[])if(!ids.has(id))issues.push(`${scene.id}: planned retained actor ${id} is missing`);
     for(const action of actions){
       if(!Number.isInteger(action.beat)||action.beat<1||action.beat>scene.lines.length)issues.push(`${scene.id}: invalid action beat ${action.beat}`);
-      if(action.actor&&!ids.has(action.actor))issues.push(`${scene.id}: action targets absent actor ${action.actor}`);
+      if(action.actor&&!actors.has(action.actor))issues.push(`${scene.id}: action targets absent actor ${action.actor}`);
     }
     for(let line=1;line<=scene.lines.length;line++){
       if(!expected.cues?.some(cue=>cue.line===line&&cue.visualAction))issues.push(`${scene.id}: missing sentence ${line} visual cue`);

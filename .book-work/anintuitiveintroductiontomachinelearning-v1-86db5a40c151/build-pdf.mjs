@@ -2,7 +2,7 @@ import {connect} from '../../tests/browser-session.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
-import {spawn} from 'node:child_process';
+import {spawn,execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const work=path.dirname(new URL(import.meta.url).pathname);
 if(process.argv.includes('--qa')) { await import('./browser-qa.mjs'); process.exit(0); }
@@ -24,9 +24,14 @@ try {
   await c.evaluate(`{const s=document.createElement('style');s.textContent=${JSON.stringify(css)};document.head.append(s)}`);
   const figures=await c.evaluate('({images:document.images.length,math:document.querySelectorAll("math").length,tables:document.querySelectorAll("table").length})');
   const pdf=await c.send('Page.printToPDF',{printBackground:true,preferCSSPageSize:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="font:8px Arial;width:100%;text-align:center;color:#777"><span class="pageNumber"></span></div>',generateDocumentOutline:true,generateTaggedPDF:true});
-  const bytes=Buffer.from(pdf.data,'base64');await fs.writeFile(path.join(work,'book',lang,'book.pdf'),bytes);
+  const bodyBytes=Buffer.from(pdf.data,'base64');
   await fs.mkdir(path.join(work,'publication',lang),{recursive:true});
-  await fs.writeFile(path.join(work,'publication',lang,'pdf-build.json'),JSON.stringify({language:lang,engine:'Chromium native MathML print',sourceHtmlSha256:hash(await fs.readFile(source)),pdfSha256:hash(bytes),bytes:bytes.length,...figures},null,2)+'\n');
+  const body=path.join(work,'publication',lang,'body.pdf'),output=path.join(work,'book',lang,'book.pdf'),cover=path.join(work,'book',lang,'cover.png');
+  await fs.writeFile(body,bodyBytes);
+  execFileSync('python3',['tools/prepend_pdf_cover.py',body,cover,output],{stdio:'inherit'});
+  const bytes=await fs.readFile(output);
+  await fs.mkdir(path.join(work,'publication',lang),{recursive:true});
+  await fs.writeFile(path.join(work,'publication',lang,'pdf-build.json'),JSON.stringify({language:lang,engine:'Chromium native MathML print with preserved body pages and approved cover',coverSha256:hash(await fs.readFile(cover)),sourceHtmlSha256:hash(await fs.readFile(source)),pdfSha256:hash(bytes),bytes:bytes.length,...figures},null,2)+'\n');
   console.log(lang,bytes.length,figures);
  }
 }finally{if(c)await c.close();browser.kill('SIGTERM');}

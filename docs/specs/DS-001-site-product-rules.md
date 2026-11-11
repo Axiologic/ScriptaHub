@@ -201,6 +201,18 @@ A deliberate change to one of these decisions updates this specification, its im
 
 ## 15. Narrated SHF book presentations
 
+Technical book introductions alternate a simple source-grounded example with
+the abstraction it makes useful, then return to what the reader can understand
+or judge. Distinguish neural prediction, explicit relationships, evidence and
+verified action; an illustrative graph must not imply that semantic links are
+automatically execution instructions. Keep the book's reading invitation visible
+through this movement between concrete and conceptual views.
+
+The work dashboard includes planned presentation projects before a public film
+exists, with the exact script and separate Text, Animation and Voice stages.
+These entries stay explicitly unpublished and do not create a ready Animation
+link or contribute to completed-film totals until publication has been verified.
+
 A book may offer a source-grounded SHF animation on a dedicated page under
 `docs/books/<book-route>/Animation/index.html`, beside its language folders. Its book-page action list shows
 `Animation` when an animation is registered in the source manifest. The optional

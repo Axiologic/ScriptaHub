@@ -44,7 +44,8 @@ try{
     const clip=await c.evaluate('(()=>{const r=p.$("stage").getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,scale:1}})()');
     // Headless Chromium can retain stale raster tiles after a theme/seek change.
     // Keep the player paused and let the compositor settle before capturing.
-    await c.evaluate('document.fonts.ready.then(()=>new Promise(resolve=>setTimeout(resolve,600)))');
+    await c.evaluate('document.fonts.ready');
+    await c.evaluate('p.sceneIndex=-1;p.render(p.currentTimeMs);new Promise(resolve=>setTimeout(resolve,600))');
     const shot=await c.send('Page.captureScreenshot',{format:'png',clip});await fs.writeFile(path.join(shots,`${theme}-${String(i).padStart(2,'0')}-${label}.png`),Buffer.from(shot.data,'base64'));
    }start+=durations[i];
   }

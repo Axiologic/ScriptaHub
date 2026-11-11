@@ -36,7 +36,7 @@
         <p class="status-stages">Text: ${escape(entry.stages?.text?.status||entry.editorialStatus)} · Animație: ${escape(entry.stages?.animation?.status||'pending')} · Voce: ${escape(entry.stages?.voice?.status||'pending')}</p>
         ${Object.entries(stages).filter(([,stage])=>['failed','interrupted','review-required'].includes(stage.status)&&stage.note).map(([name,stage])=>`<p class="status-note"><strong>${escape(name)}:</strong> ${escape(stage.note)}</p>`).join('')}
         <p>${escape(reviews[entry.editorialStatus]||'Revizuire în așteptare')} · ${entry.scriptWords||0} cuvinte · țintă 1–2 min, maximum 2 min</p>
-        <p>Vocea din filmul publicat: ${escape(entry.publishedVoice||entry.voice||'Voce necunoscută')} · ${duration(entry.durationMs||0)}.</p>
+        <p>${entry.published===false?'Film în pregătire; încă nepublicat.':`Vocea din filmul publicat: ${escape(entry.publishedVoice||entry.voice||'Voce necunoscută')} · ${duration(entry.durationMs||0)}.`}</p>
         <p>Voce planificată: ${escape(entry.plannedVoice||'Qwen local; alegerea vocii în așteptare')}.</p>
       </div>
       <div class="status-actions">${link(entry.bookPage,'Cartea')}${entry.animationPage?link(entry.animationPage,'Animația publicată'):''}</div>
