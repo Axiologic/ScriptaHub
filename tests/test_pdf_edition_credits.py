@@ -10,6 +10,20 @@ spec.loader.exec_module(renderer)
 
 
 class EditionCredits(unittest.TestCase):
+    def test_cover_is_inserted_before_content_and_missing_art_is_rejected(self):
+        with tempfile.TemporaryDirectory() as folder:
+            cover = Path(folder) / 'cover.png'
+            cover.write_bytes(b'cover artwork')
+            doc = renderer.html.fromstring('<html><body><article><p>Complete text</p></article></body></html>')
+            receipt = renderer.add_cover(doc, cover)
+            first = doc.find('body')[0]
+            self.assertEqual(first.get('class'), 'pdf-cover')
+            self.assertEqual(first.find('img').get('src'), cover.as_uri())
+            self.assertEqual(receipt['sha256'], renderer.sha256(cover.read_bytes()).hexdigest())
+            self.assertIn('Complete text', doc.text_content())
+            with self.assertRaisesRegex(ValueError, 'Missing PDF cover'):
+                renderer.add_cover(doc, Path(folder) / 'missing.png')
+
     def test_print_contents_keeps_links_and_omits_source_page_numbers(self):
         doc = renderer.html.fromstring('<html><body><article><p><b>Example</b></p><h1>Contents</h1><p><a href="#one">Chapter 1</a> 42</p><h1 id="one">Chapter 1</h1><p>The value is 42.</p></article></body></html>')
         self.assertEqual(renderer.prepare_print_front_matter(doc, 'Example'), 1)

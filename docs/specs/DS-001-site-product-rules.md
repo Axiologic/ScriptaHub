@@ -127,6 +127,11 @@ The homepage librarian and its choices render before the catalogue is available.
 
 ## 11. Reader editions
 
+PDF downloads open with a complete, marginless, unnumbered cover page, using
+reviewed language-specific print artwork when available. Reviewed localized
+diagrams are shared by that language's canonical complete reader and its PDF;
+preserve the original source artwork and previous downloadable editions.
+
 Reader editions are canonical HTML. Repairs and translations use the chunk workflow in the `book-reader-translations` skill. Every edition has an English PDF. A book delivered in Romanian also has a Romanian PDF of its original text, with a copyright page; translations never become PDFs. Downloads prefer the interface-language PDF and fall back to English. On desktop, the reader stage is centred and bounded by the same 1240px measure as the bottom progress control, with side gutters; on phones it uses the available width. The reader keeps language selection usable and uses the same single-state light/dark toggle as the main site. Compact mobile reader headers and footers must not overlap content or wrap into chaotic control rows.
 
 The language selected in the header is the preferred reading language. Book pages have no additional reading-language selector. Full and ten-minute actions open that language's exact format when available, otherwise the same format in English, preserving `lang` in navigation. The reader header uses the same language preference and English fallback. Never substitute a short edition for a complete book or a complete book for a short edition. If neither the selected nor English format exists, its reading action is unavailable rather than linking to a nonexistent file.

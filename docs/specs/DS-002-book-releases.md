@@ -138,6 +138,15 @@ Recomposed PDFs retain clickable contents entries and omit their source-document
 page numbers, which no longer describe the new pagination. Canonical reader text
 stays unchanged; the print receipt records the omitted page-label count.
 
+PDF rendering includes the complete cover artwork on a separate, marginless,
+unnumbered first page. The renderer uses the staged manifest's `pdfCover` language
+map when provided, otherwise its source cover; `--cover` explicitly overrides it.
+The print receipt records the cover path and hash. Reviewed localized diagram
+variants belong to the corresponding canonical reader, rather than PDF-only
+substitutions. Stable translation jobs may retain a `localizedAssets` map with
+original and localized resource paths and SHA-256 values, so reassembly preserves
+the reviewed variant and rejects changed artwork without losing completed prose.
+
 ```sh
 python3 tools/book_tasks.py check .book-work/WORKSPACE
 python3 tools/book_tasks.py install .book-work/WORKSPACE

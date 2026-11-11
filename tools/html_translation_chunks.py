@@ -111,6 +111,7 @@ def validate(work: Path) -> tuple[dict, str, dict[str, str]]:
             translations[identifier] = translation
     if set(translations) != set(manifest["sources"]): errors.append("Segment set differs from source")
     if errors: raise ValueError('\n'.join(errors))
+    localize_assets(template, manifest)
     return manifest, template, translations
 
 
@@ -129,9 +130,33 @@ def assemble(work: Path, force: bool = False) -> None:
         lambda attr: attr[1] + attr[2] + manifest["language"] + attr[2],
         match[0], flags=re.I,
     ) if TAG.match(match[0]) else match[0], template)
+    template = localize_assets(template, manifest)
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(template, encoding="utf-8")
     print(f"Assembled {destination}")
+
+
+def localize_assets(markup: str, manifest: dict) -> str:
+    """Apply explicitly reviewed local diagram variants without changing prose slots."""
+    for asset in manifest.get('localizedAssets', []):
+        original = Path(manifest['source']).parent / asset['source']
+        localized = Path(manifest['destination']).parent / asset['localized']
+        for path, key in ((original, 'sourceSha256'), (localized, 'localizedSha256')):
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != asset[key]:
+                raise ValueError(f'Changed or missing reviewed diagram: {path}')
+        rebased = Path(os.path.relpath(original, Path(manifest['destination']).parent)).as_posix()
+        count = 0
+        def replace(match):
+            nonlocal count
+            prefix, quote, value = match.groups()
+            if unescape(value) != rebased:
+                return match[0]
+            count += 1
+            return prefix + quote + escape(asset['localized'], quote=True) + quote
+        markup = re.sub(r'(\bsrc\s*=\s*)(["\x27])(.*?)\2', replace, markup)
+        if count != 1:
+            raise ValueError(f'Expected one source diagram reference for {rebased}, found {count}')
+    return markup
 
 
 def refresh(work: Path) -> None:
@@ -153,6 +178,10 @@ def refresh(work: Path) -> None:
         for path in (work / "chunks").glob("*.json"):
             (backup / "chunks" / path.name).write_bytes(path.read_bytes())
     prepare(Path(manifest["source"]), Path(manifest["destination"]), manifest["language"], work, force=True)
+    if manifest.get('localizedAssets'):
+        updated = json.loads((work / 'manifest.json').read_text())
+        updated['localizedAssets'] = manifest['localizedAssets']
+        (work / 'manifest.json').write_text(json.dumps(updated, ensure_ascii=False, indent=2) + '\n')
     reused = total = 0
     for path in sorted((work / "chunks").glob("*.json")):
         payload = json.loads(path.read_text())

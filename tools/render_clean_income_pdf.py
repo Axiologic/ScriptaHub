@@ -66,6 +66,15 @@ def prepare_print_front_matter(doc,title:str='') -> int:
     return removed
 
 
+def add_cover(doc, cover:Path) -> dict:
+    """Place complete artwork on its own unnumbered, marginless first page."""
+    if not cover.is_file():raise ValueError(f'Missing PDF cover: {cover}')
+    section=etree.Element('section',{'class':'pdf-cover','aria-label':'Cover'})
+    etree.SubElement(section,'img',{'src':cover.resolve().as_uri(),'alt':'','loading':'eager'})
+    doc.find('body').insert(0,section)
+    return {'path':str(cover.resolve()),'sha256':sha256(cover.read_bytes()).hexdigest()}
+
+
 def main() -> None:
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('workdir',type=Path,nargs='?',help='Release workspace; renders book/<language>/full_content.html')
@@ -73,6 +82,7 @@ def main() -> None:
     parser.add_argument('--source',type=Path,help='Reader HTML (overrides the workspace path)')
     parser.add_argument('--destination',type=Path,help='PDF path (overrides the workspace path)')
     parser.add_argument('--copyright-book',type=Path,help='Published book directory whose current edition credits form a copyright page')
+    parser.add_argument('--cover',type=Path,help='Full-page cover; defaults to the staged manifest pdfCover or cover.png')
     parser.add_argument('--keep-rights-notice',action='store_true',help="Keep an authored book's own English rights notice")
     args=parser.parse_args()
     if not args.workdir and not (args.source and args.destination):parser.error('Give a workspace or --source and --destination')
@@ -85,12 +95,24 @@ def main() -> None:
     if 'outfinitygift' in markup.lower() or ('all rights reserved' in markup.lower() and not args.keep_rights_notice):raise SystemExit('Retired rights text remains')
     doc=html.fromstring(markup.encode())
     book_manifest=json.loads((args.copyright_book/'manifest.json').read_text()) if args.copyright_book else {}
+    staged_manifest=json.loads((work/'book/manifest.json').read_text()) if work and (work/'book/manifest.json').is_file() else {}
+    cover=args.cover
+    cover_manifest=staged_manifest or book_manifest
+    cover_root=work/'book' if staged_manifest else args.copyright_book
+    if cover is None and cover_root:
+        cover_path=cover_manifest.get('pdfCover',{}).get(args.language)
+        if not cover_path:cover_path=cover_manifest.get('editions',{}).get(args.language,{}).get('sourceCover')
+        if cover_path:cover=cover_root/cover_path
+        elif (source.parent/'cover.png').is_file():cover=source.parent/'cover.png'
     removed_page_labels=prepare_print_front_matter(doc,book_manifest.get('title',{}).get(args.language,''))
     style=etree.SubElement(doc.find('head'),'style')
     style.text='''
 @page { size: 6in 9in; margin: .72in .72in .75in;
   @bottom-center { content: counter(page); font: 8pt "Noto Serif"; color: #667070; } }
 @page:first { @bottom-center { content: none; } }
+@page book-cover { size: 6in 9in; margin: 0; counter-reset: page 0; @bottom-center { content: none; } }
+section.pdf-cover { page: book-cover; break-after: page; width: 6in; height: 9in; margin: 0; padding: 0; line-height: 0; }
+section.pdf-cover img { display: block; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; object-fit: contain; }
 body { color: #202a2a; font: 10.2pt/1.45 "Noto Serif", serif; }
 article { max-width: none; padding: 0; }
 h1,h2,h3 { font-family: "Red Hat Display", sans-serif; color: #244e52; break-after: avoid; }
@@ -121,13 +143,16 @@ section.copyright-page p { text-align: left; font-size: 8.6pt; }
         if target is None and len(headings)>=2:target=headings[1]
         if target is not None:target.addprevious(page)
         else:body.insert(0,page)
+    cover_receipt=add_cover(doc,cover) if cover else None
     # Print intermediates stay in the workspace, never beside published files.
     output=(work/f'publication/{args.language}') if work else ROOT/'.book-work/reports/pdf-builds'/sha256(str(destination).encode()).hexdigest()[:16]
     output.mkdir(parents=True,exist_ok=True)
     print_html=output/'clean-publication.html'
-    print_html.write_bytes(etree.tostring(doc,method='html',encoding='utf-8',doctype='<!doctype html>'))
+    print_markup=etree.tostring(doc,method='html',encoding='unicode',doctype='<!doctype html>')
+    print_markup=re.sub(r'(</(?:p|h[1-6]|table|tr|td|th|section|article|div|body|html|head)>)[ \t]+(?=\n)',r'\1',print_markup)
+    print_html.write_text(print_markup,encoding='utf-8')
     HTML(string=print_html.read_text(encoding='utf-8'),base_url=str(source.parent)).write_pdf(str(destination),pdf_tags=True)
-    receipt={'sourceHtml':str(source),'sourceHtmlSha256':sha256(source.read_bytes()).hexdigest(),'pdf':str(destination),'pdfSha256':sha256(destination.read_bytes()).hexdigest(),'engine':'WeasyPrint','pageSize':'6 x 9 inches','language':args.language,'input':f'Complete canonical {args.language} HTML reader','omittedSourceContentsPageLabels':removed_page_labels}
+    receipt={'sourceHtml':str(source),'sourceHtmlSha256':sha256(source.read_bytes()).hexdigest(),'pdf':str(destination),'pdfSha256':sha256(destination.read_bytes()).hexdigest(),'engine':'WeasyPrint','pageSize':'6 x 9 inches','language':args.language,'input':f'Complete canonical {args.language} HTML reader','omittedSourceContentsPageLabels':removed_page_labels,'cover':cover_receipt}
     (output/'pdf-build.json').write_text(json.dumps(receipt,indent=2)+'\n')
     print(destination)
 

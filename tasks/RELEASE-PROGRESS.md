@@ -2409,7 +2409,7 @@ Policy: show new books and pending edition entries immediately as **In preparati
 
 - Source: `income/swm.docx`
 - SHA-256: `7e813050a033fabc09e941e4d4628af338bb51ea2e72c712b944931e2e3ce184`
-- Book ID: `bk-049d00ef0ab54f38`; edition: `edition-1`
+- Book ID: `bk-049d00ef0ab54f38`; edition: `edition-2`
 - Workspace: `.book-work/swm-v1-7e813050a033`
 - [x] Visible book page: `docs/books/symbolic/world/models/bk-049d00ef0ab54f38/en/book.html`
 - [x] EN full_content.html
