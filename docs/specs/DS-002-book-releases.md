@@ -211,3 +211,15 @@ preserving all existing content streams, links and outline destinations. Use
 new first page and rendered body samples. Retain native Chromium MathML output
 for books that use it. Archive the complete previous edition before replacing
 a current download, and record the cover repair as a maintenance edition.
+
+### Completing legacy English-only editions
+
+A legacy edition without delivered-document provenance may receive missing
+Romanian readers through a `canonical-reader-completion` workspace. Bind the
+request to the existing edition identifier and SHA-256 of both canonical English
+readers; retain every completed translation chunk. `complete-readers` verifies
+these sources and the finished chunk jobs, rebases staged links into the public
+book, and records the added readers on the same edition without replacing any
+existing reader or download. It never invents a delivered-manuscript hash.
+Nested completion workspaces appear in the internal dashboard with their actual
+translation progress, separately from incoming-document conversions.

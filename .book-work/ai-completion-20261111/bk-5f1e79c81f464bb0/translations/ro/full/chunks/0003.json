@@ -1,0 +1,751 @@
+{
+  "language": "ro",
+  "chunk": 3,
+  "segments": [
+    {
+      "id": "t000241",
+      "source": "There is a deeper reason natural language remains important. Professional practices are already expressed in language. Domain experts know how to explain what counts as relevant evidence, a good review, an unacceptable omission, or a proper escalation.",
+      "translation": ""
+    },
+    {
+      "id": "t000242",
+      "source": "Forcing every such distinction into low-level code can hide the semantic policy from the people responsible for it. MRP-VM therefore treats code and natural-language instruction as complementary. Code is appropriate where semantics are complete, stable, and testable. Model-mediated instruction is appropriate where interpretation, transformation, synthesis, or judgement remains necessary. The challenge is not to choose one medium universally. It is to give each procedure a visible place, version, test path, and boundary. Executable natural language becomes institutionally meaningful when a reviewer can ask,",
+      "translation": ""
+    },
+    {
+      "id": "t000243",
+      "source": "“what instruction changed?”,",
+      "translation": ""
+    },
+    {
+      "id": "t000244",
+      "source": "“which sources were visible?”,",
+      "translation": ""
+    },
+    {
+      "id": "t000245",
+      "source": "“what exact tool executed?”,",
+      "translation": ""
+    },
+    {
+      "id": "t000246",
+      "source": "“what result was provisional?”, and “what rule allowed it to propagate?”",
+      "translation": ""
+    },
+    {
+      "id": "t000247",
+      "source": "The programme is then not merely text that a model happens to follow. It is a public artefact of work. Executable natural language creates a useful middle ground between opaque prompting and fully formal software. It keeps the flexibility needed for interpretation while exposing the responsibilities and dependencies that reviewers, evaluators, and regulated organisations need to inspect.",
+      "translation": ""
+    },
+    {
+      "id": "t000248",
+      "source": "CHAPTER 7",
+      "translation": ""
+    },
+    {
+      "id": "t000249",
+      "source": "Agentic Knowledge Units: Consolidating How Work Is Done",
+      "translation": ""
+    },
+    {
+      "id": "t000250",
+      "source": "Where reusable behaviour should live",
+      "translation": ""
+    },
+    {
+      "id": "t000251",
+      "source": "Long-lived AI systems need a place for reusable, evolving behaviour. Several tempting locations are inadequate. A server route can hide domain policy inside infrastructure. A shared prompt can mix unrelated responsibilities. A model-provider configuration can change semantics without a meaningful diff. A retrieval corpus can contain knowledge without stating how it should be used. A tool plugin can expose an action without defining selection, qualification, tests, or lifecycle. The Agentic Knowledge Unit—or AKU—is MRP-VM’s answer. An AKU is a portable, versioned home for a coherent capability. It can contain natural-language instructions, source-governed knowledge, executable entry points, helper code, configuration, metadata, tests, and an optional interpreter binding. It declares how it matches a local responsibility, what resources it needs, what artefact it produces, and how its behaviour can be evaluated. The position paper offers a compact abstraction: an AKU consists of a body, execution metadata, and an optional interpreter. The body may carry knowledge or procedure. Metadata makes the unit addressable by command, scope, status, priority, source, version, and override relationships. The interpreter may be a language model, deterministic programme, parser, retrieval procedure, symbolic reasoner, simulator, coding agent, or composite service (MRP-VM Project, 2026). The exact folder structure is implementation-specific. The durable idea is that a practice has an address.",
+      "translation": ""
+    },
+    {
+      "id": "t000252",
+      "source": "Figure from PDF page 42",
+      "translation": ""
+    },
+    {
+      "id": "t000253",
+      "source": "Figure 6. An AKU packages a named responsibility, semantic policy, knowledge, declared resources, an optional interpreter, tests, provenance, and lifecycle ownership.",
+      "translation": ""
+    },
+    {
+      "id": "t000254",
+      "source": "More than a plugin",
+      "translation": ""
+    },
+    {
+      "id": "t000255",
+      "source": "A plugin convention usually answers how code is loaded and called. An AKU must answer a broader set of questions: Responsibility and selection. An AKU must state the responsibility it owns and the evidence under which it should be selected.",
+      "translation": ""
+    },
+    {
+      "id": "t000256",
+      "source": "Policy, authority, and interfaces. It must identify the knowledge and instructions that define its semantic policy; the models, tools, connectors, time, memory, and side effects it may request; and the input and output artefacts it accepts and produces. Failure and qualification. It must explain how it can fail or decline, what qualification applies to its result, and which positive and negative cases protect its scope.",
+      "translation": ""
+    },
+    {
+      "id": "t000257",
+      "source": "Lifecycle. It must name the owner of its lifecycle and the active generation in which it is deployed. These questions make the unit suitable for learning. A coding agent can revise one AKU without guessing where behaviour is hidden. An evaluator can compare two versions. An operator can identify which harnesses depend on it. A domain expert can inspect the instructions and sources. A governance reviewer can see why it was admitted.",
+      "translation": ""
+    },
+    {
+      "id": "t000258",
+      "source": "An AKU is also more than a “skill” in the casual sense. Skills are often presented as convenience wrappers around tools. An AKU may invoke no external tool. Its primary value may be an interpretive rubric, a planning strategy, a context filter, a composition policy, or a validation discipline. Conversely, an AKU that binds to exact code is still semantic because the binding expresses a claim: this procedure, under these assumptions, is an adequate realization of the responsibility.",
+      "translation": ""
+    },
+    {
+      "id": "t000259",
+      "source": "Code and instruction as complementary procedure",
+      "translation": ""
+    },
+    {
+      "id": "t000260",
+      "source": "A reliable harness should not force every task through a language model. It should also not imitate understanding with brittle phrase lists. The choice of medium depends on the uncertainty present. Deterministic code is appropriate when semantics are stable enough to specify completely: parsing a formal language, enforcing a graph invariant, calculating a checksum, applying a schema, executing a solver, or normalizing a known data format. Natural-language instruction and managed model invocation are appropriate when the task requires interpretation, synthesis, comparison, explanation, or qualification under incomplete semantics. Many capabilities combine the two. A literature capability may use code to query an approved database and deduplicate records, then use a model to classify relevance under a visible rubric. A policy capability may use a model to translate a request into a formal representation, a solver to check constraints, and another capability to verify that the translation preserves the user’s meaning. The AKU makes the composition explicit. The instruction resources deserve first-class version identity. If the meaningful policy lives inside incidental strings scattered through code, a reviewer cannot determine what semantic change a patch introduced. Named resources allow a concrete diff: the evidence rubric changed, the escalation rule changed, the definition of admissible source changed, or the composition guidance changed.",
+      "translation": ""
+    },
+    {
+      "id": "t000261",
+      "source": "Operational roles in one representation",
+      "translation": ""
+    },
+    {
+      "id": "t000262",
+      "source": "AKUs can serve several primary operational roles: Within this common representation, an AKU may contribute knowledge, filter context, create or revise a plan, produce a task-specific value, validate or demonstrate that value, compose accepted artefacts while preserving disagreement and status, or govern retention, maintenance, and knowledge promotion. These roles are not a hierarchy. A domain rule and a system planner share the same lifecycle discipline. A plan can be validated. A poor composition can reopen local processing. A validation result can request a different context filter. A proposed maintenance change can be evaluated before promotion. Uniform representation makes control procedures themselves open to inspection and revision.",
+      "translation": ""
+    },
+    {
+      "id": "t000263",
+      "source": "Table 3. Primary operational roles of Agentic Knowledge Units.",
+      "translation": ""
+    },
+    {
+      "id": "t000264",
+      "source": "Role",
+      "translation": ""
+    },
+    {
+      "id": "t000265",
+      "source": "Effect and typical use",
+      "translation": ""
+    },
+    {
+      "id": "t000266",
+      "source": "Knowledge",
+      "translation": ""
+    },
+    {
+      "id": "t000267",
+      "source": "Effect at the runtime boundary. Adds reusable knowledge or instruction to a local invocation. Typical use. Definitions, rules, examples, conventions.",
+      "translation": ""
+    },
+    {
+      "id": "t000268",
+      "source": "Context filtering",
+      "translation": ""
+    },
+    {
+      "id": "t000269",
+      "source": "Effect at the runtime boundary. Selects relevant capabilities, sources, variants, and material. Typical use. Semantic, rule-based, source-constrained filtering.",
+      "translation": ""
+    },
+    {
+      "id": "t000270",
+      "source": "Planning",
+      "translation": ""
+    },
+    {
+      "id": "t000271",
+      "source": "Effect at the runtime boundary. Creates or revises the visible dependency structure. Typical use. Initial decomposition, checks, local refinement.",
+      "translation": ""
+    },
+    {
+      "id": "t000272",
+      "source": "Processing",
+      "translation": ""
+    },
+    {
+      "id": "t000273",
+      "source": "Effect at the runtime boundary. Produces a task-specific provisional value. Typical use. Extraction, diagnosis, comparison, transformation.",
+      "translation": ""
+    },
+    {
+      "id": "t000274",
+      "source": "Qualification",
+      "translation": ""
+    },
+    {
+      "id": "t000275",
+      "source": "Effect at the runtime boundary. Determines whether a value is fit to propagate. Typical use. Schemas, tests, evidence, proof, review.",
+      "translation": ""
+    },
+    {
+      "id": "t000276",
+      "source": "Composition",
+      "translation": ""
+    },
+    {
+      "id": "t000277",
+      "source": "Effect at the runtime boundary. Combines accepted values while preserving status and disagreement. Typical use. Reports, recommendations, synthesis.",
+      "translation": ""
+    },
+    {
+      "id": "t000278",
+      "source": "Retention / maintenance",
+      "translation": ""
+    },
+    {
+      "id": "t000279",
+      "source": "Effect at the runtime boundary. Changes reusable capability content, metadata, priorities, or interpreters. Typical use. Promotion, deprecation, benchmarked revision.",
+      "translation": ""
+    },
+    {
+      "id": "t000280",
+      "source": "Generated output is not reusable knowledge",
+      "translation": ""
+    },
+    {
+      "id": "t000281",
+      "source": "The AKU model supports an important separation between reusable knowledge and task-local output. The position paper describes layered knowledge: baseline units, deployment-specific persistent units, and session-scoped units. The exact layers may evolve, but the principle is durable. A provisional model output should not be retrieved later as though it were an established fact. Even a result accepted for the current answer may be unsuitable for future use.",
+      "translation": ""
+    },
+    {
+      "id": "t000282",
+      "source": "Promotion therefore requires a retention policy. A source-linked extraction may be retained while the narrative built from it remains transient. A domain expert’s correction may become evidence for a revised rubric without copying the person’s wording into the capability. A generated hypothesis may remain in a research session but never enter an approved knowledge collection. This is memory governance in a strong sense. It treats memory not as maximal accumulation, but as governed status transition. The system should be able to answer: where did this knowledge come from, who considered the source authoritative, what transformation was applied, for which harness is it valid, and why may it influence future work?",
+      "translation": ""
+    },
+    {
+      "id": "t000283",
+      "source": "The lifecycle of a capability",
+      "translation": ""
+    },
+    {
+      "id": "t000284",
+      "source": "A mature AKU has a comprehensible lifecycle. It begins with a capability gap, not with a difficult conversation alone. A candidate is implemented in isolation. Its structure and declared resources are validated. It is tested locally, including negative-transfer cases. It is evaluated as part of a complete candidate generation against a baseline. It may be approved, rejected, revised, merged with another unit, retired, or archived. The history should preserve why the capability exists, not only its latest files. This lifecycle turns an AKU library into a maintained set of reusable procedures rather than an archive of incident-specific fragments. Without discipline, agent systems accumulate prompts, memories, tools, and special cases until selection becomes unreliable and no one knows why a unit exists. Proliferation is not an improvement. Improvement requires consolidation: a reusable responsibility that explains variation with fewer, stronger procedures. A useful rule is that a new AKU should be created only when it expresses a distinct responsibility that cannot be more coherently represented by improving an existing unit. The tests should include cases where the new behaviour must not activate. This makes scope a property that can fail, not merely a descriptive label.",
+      "translation": ""
+    },
+    {
+      "id": "t000285",
+      "source": "Current implementation snapshot — the AKU contract",
+      "translation": ""
+    },
+    {
+      "id": "t000286",
+      "source": "The current documentation describes AKUs as independent versioned folders with content-addressed identity, bounded matching and execution operations, declared instruction resources, optional code, local knowledge, tests, and a narrow host SDK.",
+      "translation": ""
+    },
+    {
+      "id": "t000287",
+      "source": "Predefined capabilities and learned overlays remain distinct; learned revisions do not silently overwrite baseline units. The reserved filter and planner identities keep selection and decomposition learnable while the runtime retains graph and authority integrity.",
+      "translation": ""
+    },
+    {
+      "id": "t000288",
+      "source": "A capability library as an engineering asset",
+      "translation": ""
+    },
+    {
+      "id": "t000289",
+      "source": "The deeper opportunity is that a capability library can become a language for maintaining intelligent practice. A procedure can be named, selected, composed into a plan, observed in a trace, discussed with a human expert, revised by a coding agent, compared against a baseline, and promoted as a versioned unit. This changes software development. Teams do not only implement features. They cultivate executable practices. They ask whether a responsibility has the right boundary, whether its knowledge is authoritative, whether its rubric reflects expert judgement, whether its interpreter is appropriate, whether its tests capture negative transfer, and whether its use has earned broader reuse. In this sense, AKUs are neither static knowledge objects nor autonomous agents. They are maintained units of institutional competence.",
+      "translation": ""
+    },
+    {
+      "id": "t000290",
+      "source": "AKUs are where repeated success becomes maintained “how to do this.” They let an organisation consolidate domain procedure without hard-coding every semantic decision, and they make model replacement, source revision, testing, ownership, and rollback part of the same capability lifecycle.",
+      "translation": ""
+    },
+    {
+      "id": "t000291",
+      "source": "CHAPTER 8",
+      "translation": ""
+    },
+    {
+      "id": "t000292",
+      "source": "Planning, Selection, and Local Control",
+      "translation": ""
+    },
+    {
+      "id": "t000293",
+      "source": "A plan is visible work, not hidden thought",
+      "translation": ""
+    },
+    {
+      "id": "t000294",
+      "source": "Language-model discussions often treat planning as private reasoning: a chain of thoughts the model produces before answering. MRP-VM uses the word differently. A plan is a public operational artefact. It names responsibilities, dependencies, expected outputs, and the structure by which work can be scheduled, inspected, and revised.",
+      "translation": ""
+    },
+    {
+      "id": "t000295",
+      "source": "The distinction matters for both privacy and epistemology. Hidden neural computation cannot be made transparent by asking a model to narrate its thoughts. Such narration may be useful as a heuristic, but it is not guaranteed to be causally faithful. An executable plan makes a smaller, more defensible claim: these are the units of work the runtime actually scheduled; these inputs were provided; these artefacts were produced; these checks controlled propagation.",
+      "translation": ""
+    },
+    {
+      "id": "t000296",
+      "source": "The plan is therefore an executable explanation. It explains how the harness intends to work, not everything that occurs inside each interpreter.",
+      "translation": ""
+    },
+    {
+      "id": "t000297",
+      "source": "Meaningful granularity",
+      "translation": ""
+    },
+    {
+      "id": "t000298",
+      "source": "Planning begins with a choice of granularity. Too coarse, and the plan becomes decorative. Too fine, and it becomes an unreadable simulation of cognition. A step deserves its own named value when one or more of the following are true: A step deserves its own named value when it must be inspected independently, reused by more than one downstream step, or qualified under a distinct regime. The same is true when a different interpreter may compute it or when it must be compared with an alternative. A named boundary is also justified when the step may fail or be challenged without invalidating unrelated work, when it may be retained under a different policy, or when it exposes a meaningful boundary of authority. Entity extraction inside a stable parser may remain internal. Source selection for a high-stakes conclusion may deserve an explicit node. Formatting a final paragraph may remain inside composition. A formal translation that determines what a solver proves should be visible and independently checked.",
+      "translation": ""
+    },
+    {
+      "id": "t000299",
+      "source": "This granularity aligns the graph with responsibility. It is not a claim about the smallest mental steps. It is a claim about what the institution needs to see.",
+      "translation": ""
+    },
+    {
+      "id": "t000300",
+      "source": "Plans expose omissions",
+      "translation": ""
+    },
+    {
+      "id": "t000301",
+      "source": "A visible graph reveals missing work. If an interpretation depends on evidence but no evidence-collection responsibility exists, the omission becomes structural. If a user-facing recommendation has no qualification dependency, the risk is visible. If two independent",
+      "translation": ""
+    },
+    {
+      "id": "t000302",
+      "source": "sources can be gathered in parallel, the graph shows the opportunity. If a final",
+      "translation": ""
+    },
+    {
+      "id": "t000303",
+      "source": "composition has no path from an unresolved branch, the plan cannot truthfully claim completion.",
+      "translation": ""
+    },
+    {
+      "id": "t000304",
+      "source": "This is one reason plans matter even when a powerful model could produce the answer in one call. The plan makes the system’s claim inspectable before the final prose conceals the route. It creates a place to attach tests, sources, tools, and human gates. Planning also improves communication among people. A domain expert can challenge the decomposition without reading implementation code. An operator can see which region is stalled. An evaluator can inject a fault into one node and measure whether the system localises recovery. A capability author can observe that a supposedly reusable step is never selected or always bypassed.",
+      "translation": ""
+    },
+    {
+      "id": "t000305",
+      "source": "Local adaptation through planner frontiers",
+      "translation": ""
+    },
+    {
+      "id": "t000306",
+      "source": "Some tasks cannot be fully decomposed at the start. The structure becomes clear only after a document is parsed, an external fact is retrieved, or a local method fails. A rigid workflow handles this poorly; a free agent loop handles it invisibly. MRP-VM proposes a middle path: explicit planner frontiers. A planner frontier is a visible point in the graph where further decomposition is required. The planner may propose a replacement fragment. The runtime validates the fragment as a connected graph, checks dependencies and budgets, preserves successful sibling work, and atomically substitutes the accepted region. A rejected proposal leaves the prior checkpoint intact and records diagnostics.",
+      "translation": ""
+    },
+    {
+      "id": "t000307",
+      "source": "Figure from PDF page 49",
+      "translation": ""
+    },
+    {
+      "id": "t000308",
+      "source": "Figure 7. Local replanning replaces only the visible frontier, preserves accepted sibling work, and recomputes the dependent slice. This structure turns iteration into an inspectable event. A retry loop often repeats the entire context with a slightly different prompt. A planner frontier says what changed in the representation of the problem. It distinguishes “the same method failed again” from “the system reframed the local task.”",
+      "translation": ""
+    },
+    {
+      "id": "t000309",
+      "source": "Selective recomputation",
+      "translation": ""
+    },
+    {
+      "id": "t000310",
+      "source": "Strong dependencies support selective recomputation. Suppose a research synthesis contains accepted source extractions, a comparison, and a conclusion. A reviewer discovers that one source was misclassified. The system need not discard the entire session. It invalidates the affected extraction and the values that strongly depend on it. Independent work remains committed. Selective recomputation has practical and epistemic value. Practically, it saves cost and time. Epistemically, it preserves a history of what remains justified. A global restart treats all prior work as equally suspect and can produce a different answer for unrelated stochastic reasons. Local invalidation relates revision to a specific changed premise. The idea resembles incremental build systems and spreadsheets: change one input, rebuild the dependent artefacts. But natural-language work adds complexity because dependencies can be semantic and sometimes weak. The trace must record when a supposedly weak influence became materially important, and the qualification regime may decide that a broader slice requires reconsideration.",
+      "translation": ""
+    },
+    {
+      "id": "t000311",
+      "source": "Replanning as controlled revision",
+      "translation": ""
+    },
+    {
+      "id": "t000312",
+      "source": "At a deeper level, replanning is the architectural form of theory revision. A plan embodies a local theory of how the task should be solved. When reality resists—through failed validation, contradiction, missing evidence, or repeated state—the system can revise not only the answer but the decomposition itself. This is the “meta” in operational form. A non-meta system adjusts a candidate within the current representation. A meta-rational system can also ask whether the representation is wrong. It may split a broad diagnosis into competing hypotheses, replace semantic review with formal checking, add a translation-verification step, or recognise that the request requires human clarification. Replanning should remain bounded. Depth, time, resource, and repetition limits prevent indefinite reflection. The runtime should detect recurring states and stop with an explicit unresolved outcome when no meaningful progress is available. The ability to stop is as important as the ability to revise.",
+      "translation": ""
+    },
+    {
+      "id": "t000313",
+      "source": "Current implementation snapshot — epochs and graph replacement",
+      "translation": ""
+    },
+    {
+      "id": "t000314",
+      "source": "Current documentation describes iterative planning through validated replacement fragments and execution epochs. The planner owns semantic decomposition; the kernel owns structural validation, atomic replacement, budgets, and trace. A failed fragment does not corrupt the accepted graph, and partial failure preserves completed sibling work. The terms may change, but the invariant is local, accountable revision.",
+      "translation": ""
+    },
+    {
+      "id": "t000315",
+      "source": "Planning and bounded autonomy",
+      "translation": ""
+    },
+    {
+      "id": "t000316",
+      "source": "Planning is sometimes equated with autonomy. MRP-VM offers a more precise view. A system can plan flexibly while remaining bounded by purpose, authority, resources, and qualification. Conversely, a system can follow a fixed workflow while exercising dangerous authority through one opaque step. Planning is trustworthy when each choice is represented, constrained, testable, and reviewable. Failures can then be localised to one responsibility, preserving accepted work while context or method changes without restarting an opaque transcript.",
+      "translation": ""
+    },
+    {
+      "id": "t000317",
+      "source": "CHAPTER 9",
+      "translation": ""
+    },
+    {
+      "id": "t000318",
+      "source": "Qualification, Evidence, and Human Oversight",
+      "translation": ""
+    },
+    {
+      "id": "t000319",
+      "source": "Output is provisional until qualified",
+      "translation": ""
+    },
+    {
+      "id": "t000320",
+      "source": "Language models are optimized to continue. Institutions need systems that know when a continuation is fit to influence later work. MRP-VM therefore treats the immediate result of a capability as provisional. The runtime records it, but dependent nodes should not consume it until an applicable qualification process accepts it for the present purpose. This distinction separates generation from commitment. A rejected candidate can remain inspectable without contaminating the state. Several candidates can be compared. A technically successful tool call can still fail semantic qualification. A fluent explanation can be rejected for missing evidence. A correct calculation can be withheld because the input was not authorised.",
+      "translation": ""
+    },
+    {
+      "id": "t000321",
+      "source": "Qualification is not a universal truth oracle. It is a judgement about fitness to propagate under a task contract.",
+      "translation": ""
+    },
+    {
+      "id": "t000322",
+      "source": "Validation and demonstration",
+      "translation": ""
+    },
+    {
+      "id": "t000323",
+      "source": "The word validation often suggests a binary test. Many tasks permit exact checks: schema conformance, type checking, unit tests, policy constraints, proof verification, numerical invariants, or deterministic replay. Where such checks exist, they should be used. Other results require broader demonstration. A claim may be supported by source-linked evidence, a derivation, a proof object, an unsatisfied constraint, a counterexample search, agreement with a specialist, a replay against observed data, or a domain expert’s review. The outcome may be qualified rather than timelessly true. The position paper deliberately uses",
+      "translation": ""
+    },
+    {
+      "id": "t000324",
+      "source": "“demonstration” to widen the field.",
+      "translation": ""
+    },
+    {
+      "id": "t000325",
+      "source": "In natural-language tasks, the right question is often not “is this output true in the",
+      "translation": ""
+    },
+    {
+      "id": "t000326",
+      "source": "abstract?” but “has the system shown enough, under the relevant standard, for this result",
+      "translation": ""
+    },
+    {
+      "id": "t000327",
+      "source": "to be used in this context?” (MRP-VM Project, 2026).",
+      "translation": ""
+    },
+    {
+      "id": "t000328",
+      "source": "Table 4. Qualification is plural because different claims require different demonstrations.",
+      "translation": ""
+    },
+    {
+      "id": "t000329",
+      "source": "What it establishes and its typical Form",
+      "translation": ""
+    },
+    {
+      "id": "t000330",
+      "source": "limitation",
+      "translation": ""
+    },
+    {
+      "id": "t000331",
+      "source": "Schema or deterministic test",
+      "translation": ""
+    },
+    {
+      "id": "t000332",
+      "source": "What it can establish. Structural conformity and executable invariants. Typical limitation. May miss semantic or contextual errors.",
+      "translation": ""
+    },
+    {
+      "id": "t000333",
+      "source": "Source coverage",
+      "translation": ""
+    },
+    {
+      "id": "t000334",
+      "source": "What it can establish. Whether material claims are supported by admissible evidence. Typical limitation. Coverage does not guarantee interpretation quality.",
+      "translation": ""
+    },
+    {
+      "id": "t000335",
+      "source": "Derivation or proof object",
+      "translation": ""
+    },
+    {
+      "id": "t000336",
+      "source": "What it can establish. That a conclusion follows within a formalised regime. Typical limitation. The formalisation may not match the original request.",
+      "translation": ""
+    },
+    {
+      "id": "t000337",
+      "source": "Counterexample search",
+      "translation": ""
+    },
+    {
+      "id": "t000338",
+      "source": "What it can establish. Whether an apparent rule fails on known or generated cases. Typical limitation. Failure to find a counterexample is not proof.",
+      "translation": ""
+    },
+    {
+      "id": "t000339",
+      "source": "Replay against observations",
+      "translation": ""
+    },
+    {
+      "id": "t000340",
+      "source": "What it can establish. Whether the result reproduces or explains recorded behaviour. Typical limitation. Past observations may be incomplete or shifted.",
+      "translation": ""
+    },
+    {
+      "id": "t000341",
+      "source": "Specialist comparison",
+      "translation": ""
+    },
+    {
+      "id": "t000342",
+      "source": "What it can establish. Agreement or disagreement with a stronger method or expert. Typical limitation. Shared assumptions can create correlated blind spots.",
+      "translation": ""
+    },
+    {
+      "id": "t000343",
+      "source": "Human gate",
+      "translation": ""
+    },
+    {
+      "id": "t000344",
+      "source": "What it can establish. Authorisation under institutional responsibility. Typical limitation. Human review can be inconsistent or overloaded.",
+      "translation": ""
+    },
+    {
+      "id": "t000345",
+      "source": "Acceptance, rejection, and unresolved status",
+      "translation": ""
+    },
+    {
+      "id": "t000346",
+      "source": "At minimum, qualification should distinguish three states. Acceptance permits commitment for the present purpose. It does not necessarily authorise retention, publication, or action outside the node’s contract. Rejection prevents propagation and should record the likely reason: missing context, unsuitable method, interpreter failure, contradiction, incomplete plan, or a criterion the result does not satisfy.",
+      "translation": ""
+    },
+    {
+      "id": "t000347",
+      "source": "Unresolved says that the available procedure cannot justify acceptance or definitive rejection. This is not a weak form of acceptance. It is a meaningful terminal or intermediate state.",
+      "translation": ""
+    },
+    {
+      "id": "t000348",
+      "source": "The capacity to remain explicitly unresolved is philosophically and operationally important. Many systems are pressured to produce closure because interfaces expect a final answer. This pressure encourages fabricated confidence. MRP-VM instead treats uncertainty as structured information. An unresolved result can identify the missing source, contested assumption, unavailable tool, incompatible frames, exhausted alternatives, or required human decision. In scientific work, unresolved may preserve competing hypotheses. In policy review, it may identify an ambiguity that only an authority can settle. In operations, it may trigger escalation. In education, it may expose a conceptual disagreement rather than flatten it into one answer. Honest non-resolution is a capability.",
+      "translation": ""
+    },
+    {
+      "id": "t000349",
+      "source": "Closure is a policy",
+      "translation": ""
+    },
+    {
+      "id": "t000350",
+      "source": "A system should not stop merely because a model emitted final-sounding text. It should stop when the required artefacts have reached an allowed terminal status under the taskʼs closure condition: accepted, explicitly refused, or bounded and unresolved.",
+      "translation": ""
+    },
+    {
+      "id": "t000351",
+      "source": "Plural validators and correlated failure",
+      "translation": ""
+    },
+    {
+      "id": "t000352",
+      "source": "One model criticizing another model is not an oracle. The two may share training biases, source gaps, or stylistic preferences. A validation prompt can reward plausible form rather than substantive adequacy. More validators do not automatically solve the problem if they are correlated. Qualification should therefore seek diversity of regime, not merely multiplicity of samples. Structural checks, source-coverage checks, formal solvers, test runners, alternative retrieval policies, domain rubrics, counterexample searches, and human review test different properties. The appropriate mix depends on risk and cost. A low-risk transformation may need only schema validation. A consequential formal decision may require translation checking plus a proof object. A scientific synthesis may require source provenance, evidence coverage, and explicit preservation of disagreement. A recommendation that triggers side effects may require human authorisation even when the reasoning is otherwise accepted. The runtime normally uses a preferred qualification regime. It opens additional checks when the plan requires them, the risk profile demands them, or the first qualification is doubtful. This preserves efficiency while making escalation principled.",
+      "translation": ""
+    },
+    {
+      "id": "t000353",
+      "source": "Qualification can challenge the frame",
+      "translation": ""
+    },
+    {
+      "id": "t000354",
+      "source": "A validator should do more than mark an output wrong. It should help locate the failure. If the decisive source was omitted, rerunning the processor with the same context is unlikely to help. If the method was inappropriate, a stronger model may repeat the conceptual mistake. If the plan lacks a required translation check, another candidate answer is beside the point.",
+      "translation": ""
+    },
+    {
+      "id": "t000355",
+      "source": "Qualification can therefore reopen several choice points: Qualification may therefore reopen context selection, the capability or method, the interpreter binding, the validation regime, the plan structure, the framing of the task, or the authority boundary that requires user clarification. This diagnostic role links qualification to meta-rational control. Failure is information about the regime, not merely the candidate.",
+      "translation": ""
+    },
+    {
+      "id": "t000356",
+      "source": "Human oversight as an executable control",
+      "translation": ""
+    },
+    {
+      "id": "t000357",
+      "source": "Human oversight is often added as a generic instruction: “ask a human when needed.” MRP-VM can represent human review as an explicit capability or gate with an input artefact, a decision contract, a trace event, and authority. The plan can state where human judgement is required and what information should be presented. This improves both safety and usability. The person does not receive the entire internal transcript. They receive the bounded question: approve this side effect, resolve this source conflict, select between interpretations, or determine whether the residual uncertainty is acceptable. Their decision becomes part of the operational record. Oversight also has limits. A person can be overburdened, misled by polished explanations, or asked to approve matters outside their expertise. Good design treats human review as a capability with scope and evaluation, not as a magical source of correctness.",
+      "translation": ""
+    },
+    {
+      "id": "t000358",
+      "source": "Qualification and trustworthy AI",
+      "translation": ""
+    },
+    {
+      "id": "t000359",
+      "source": "Trustworthiness is a system property, not a synonym for model accuracy. The NIST AI Risk Management Framework treats validity and reliability, explainability, transparency, accountability, safety, privacy, security, and fairness as contextual characteristics that must be governed across the lifecycle (NIST, 2023). The European AI Act likewise places emphasis on risk management, data governance, technical documentation, record-keeping, transparency, human oversight, accuracy, robustness, and cybersecurity for high-risk systems (European Union, 2024).",
+      "translation": ""
+    },
+    {
+      "id": "t000360",
+      "source": "MRP-VM does not satisfy these requirements automatically. It supplies potential control points: explicit responsibilities, traceable source and tool use, qualified artefacts, human gates, versioned capabilities, replay, and promotion evidence. A complete trace can still document a wrong execution. A validator can still fail. The contribution is architectural evidence, not regulatory absolution.",
+      "translation": ""
+    },
+    {
+      "id": "t000361",
+      "source": "Why bounded non-resolution is necessary",
+      "translation": ""
+    },
+    {
+      "id": "t000362",
+      "source": "The most mature system is not the one that always answers. It is the one that distinguishes when it knows enough to act, when another regime may resolve the doubt, and when the remaining ambiguity should be reported.",
+      "translation": ""
+    },
+    {
+      "id": "t000363",
+      "source": "Stopping unresolved protects against two symmetrical errors: endless reflection and fabricated closure. A bounded harness can terminate because alternatives are exhausted, the same state recurs, an external fact is unavailable, the required authority is absent, or the disagreement itself is the result. The stop reason is then part of the answer. Qualification gives LLM output a governed path to consequence. It permits semantic judgment where necessary, exact checking where possible, human approval where responsibility requires it, and explicit non-resolution where evidence does not justify commitment.",
+      "translation": ""
+    },
+    {
+      "id": "t000364",
+      "source": "CHAPTER 10",
+      "translation": ""
+    },
+    {
+      "id": "t000365",
+      "source": "Operational Trace, Replay, and Auditability",
+      "translation": ""
+    },
+    {
+      "id": "t000366",
+      "source": "Trace is not transcript",
+      "translation": ""
+    },
+    {
+      "id": "t000367",
+      "source": "A transcript records what was said. A trace records what the system did. The difference is decisive. A useful trace includes the request identity, session, pinned capability generation and settings, selected capabilities, plan and graph history, dependencies, model and tool invocations, authorised effects, provisional and committed artefacts, qualification events, retries, invalidations, planner replacements, budgets, stop reasons, retention decisions, and publication provenance. It may include references to prompts or model responses under protected access, but it does not need to expose private chain-of-thought. The trace is generated during execution rather than reconstructed afterward. This makes it accurate with respect to the orchestrated process, though not necessarily with respect to truth. It can tell us that a particular source was selected and a validator accepted the result. It cannot by itself prove that the source was sufficient or the validator correct. This modest distinction protects against “explanation theatre”: a fluent post-hoc story that resembles the process but cannot be tested against it.",
+      "translation": ""
+    },
+    {
+      "id": "t000368",
+      "source": "The operational record",
+      "translation": ""
+    },
+    {
+      "id": "t000369",
+      "source": "The MRP-VM philosophy describes traceability as operational record. The phrase is apt because a long-lived harness needs to remember not only content but transitions: what was attempted, under which version, what changed, what failed, what was preserved, and why a candidate was promoted or rejected. Operational record serves several temporal functions. During a request, it supports status, cancellation, local recovery, and explanation. After a request, it supports review, feedback, and replay. Across requests, it reveals recurrent capability gaps, expensive paths, selection errors, and validator disputes. During learning, it provides bounded evidence. During governance, it supports accountability for publication and rollback. A trace also records absence. A selected capability that was never used, a plan fragment that was rejected, a check that could not run, or a candidate that failed a promotion gate can explain behaviour as much as an executed step. Absence is often where overconfidence hides.",
+      "translation": ""
+    },
+    {
+      "id": "t000370",
+      "source": "Figure from PDF page 57",
+      "translation": ""
+    },
+    {
+      "id": "t000371",
+      "source": "Figure 8. One operational trace supports different projections for users, operators, engineers, evaluators, and governance reviewers.",
+      "translation": ""
+    },
+    {
+      "id": "t000372",
+      "source": "Explanations for different roles",
+      "translation": ""
+    },
+    {
+      "id": "t000373",
+      "source": "Different readers need different views of the same record. The user layer should provide a concise, truthful account of what was attempted, which",
+      "translation": ""
+    },
+    {
+      "id": "t000374",
+      "source": "sources or tools materially supported the result, and why the outcome is qualified or",
+      "translation": ""
+    },
+    {
+      "id": "t000375",
+      "source": "limited. The operational layer should show selected capabilities, plan shape, current state, budgets, health, effects, typed errors, and recovery actions. The engineering layer should expose capability and instruction versions, interpreter bindings, dependency values, graph history, replay inputs, and performance information. The evaluation layer should compare baseline and candidate behaviour across cases and metrics without unnecessarily revealing private request content. The governance layer should record authority, consent, retention, review, evaluation evidence, publication, and rollback. These are not separate telemetry systems. They are access-controlled projections of one provenance model. This matters because reconciling independent logs after an incident produces uncertainty about which record is authoritative.",
+      "translation": ""
+    },
+    {
+      "id": "t000376",
+      "source": "Table 5. One provenance model can support different trace projections.",
+      "translation": ""
+    },
+    {
+      "id": "t000377",
+      "source": "Primary questions and appropriate Reader",
+      "translation": ""
+    },
+    {
+      "id": "t000378",
+      "source": "projection",
+      "translation": ""
+    },
+    {
+      "id": "t000379",
+      "source": "User",
+      "translation": ""
+    },
+    {
+      "id": "t000380",
+      "source": "Primary questions. What happened, what supports the result, and what remains uncertain? Appropriate projection. Compact explanation, sources, status, next action.",
+      "translation": ""
+    },
+    {
+      "id": "t000381",
+      "source": "Operator",
+      "translation": ""
+    },
+    {
+      "id": "t000382",
+      "source": "Primary questions. What is running, waiting, failing, or consuming resources? Appropriate projection. Node state, effects, retries, budgets, stop reason.",
+      "translation": ""
+    },
+    {
+      "id": "t000383",
+      "source": "Engineer",
+      "translation": ""
+    },
+    {
+      "id": "t000384",
+      "source": "Primary questions. Which versions, contexts, interpreters, and dependencies produced the outcome? Appropriate projection. Detailed events, artifacts, timings, graph changes.",
+      "translation": ""
+    },
+    {
+      "id": "t000385",
+      "source": "Evaluator",
+      "translation": ""
+    },
+    {
+      "id": "t000386",
+      "source": "Primary questions. How did candidate and baseline differ, and which cases regressed? Appropriate projection. Replay, metrics, holdouts, ablations, failure slices.",
+      "translation": ""
+    },
+    {
+      "id": "t000387",
+      "source": "Governance reviewer",
+      "translation": ""
+    },
+    {
+      "id": "t000388",
+      "source": "Primary questions. Who authorised sources, actions, retention, and publication? Appropriate projection. Provenance, approvals, policy versions, audit trail.",
+      "translation": ""
+    },
+    {
+      "id": "t000389",
+      "source": "Replay makes traceability testable",
+      "translation": ""
+    }
+  ]
+}

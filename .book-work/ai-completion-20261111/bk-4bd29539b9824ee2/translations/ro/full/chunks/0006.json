@@ -1,0 +1,806 @@
+{
+  "language": "ro",
+  "chunk": 6,
+  "segments": [
+    {
+      "id": "t000684",
+      "source": "Meta-commands can inspect alternative variables through ~var and decide whether more computation is justified. Suppose a fast native circuit returns a low-confidence answer and a formal backend remains unexecuted. The evaluator can compare the remaining budget with the expected cost of the formal branch. This creates an anytime architecture: the system can return the strongest answer justified within the available budget, while preserving the fact that stronger checks were not performed.",
+      "translation": "Metacomenzile pot inspecta variabile alternative prin ~var și decide dacă este justificat mai mult calcul. Să presupunem că un circuit nativ rapid returnează un răspuns cu încredere scăzută, iar un backend formal rămâne neexecutat. Evaluatorul poate compara bugetul rămas cu costul așteptat al ramurii formale. Aceasta creează o arhitectură anytime: sistemul poate returna cel mai puternic răspuns justificat în bugetul disponibil, păstrând faptul că verificări mai puternice nu au fost efectuate."
+    },
+    {
+      "id": "t000685",
+      "source": "The budget should be a first-class runtime parameter. It can be wall-clock time, CPU time, number of node executions, memory allocation, external-call quota, or a composite policy. For an interactive symbolic language model, wall-clock deadline is likely the primary parameter, but internal quotas prevent one slow command from monopolizing the request. Commands should publish cost estimates and support cancellation or smaller modes where feasible.",
+      "translation": "Bugetul ar trebui să fie un parametru runtime de prim rang. Poate fi timp real, timp CPU, număr de execuții de noduri, alocare de memorie, cotă de apeluri externe sau politică compozită. Pentru un model lingvistic simbolic interactiv, termenul-limită de timp real este probabil parametrul principal, dar cotele interne împiedică o comandă lentă să monopolizeze cererea. Comenzile ar trebui să publice estimări de cost și să susțină anularea sau moduri mai mici unde este fezabil."
+    },
+    {
+      "id": "t000686",
+      "source": "A useful construction policy can be described without introducing a new SOP grammar. The planner itself may be implemented as ordinary commands operating on ~ references to goals, variables, and candidate template descriptors. The conceptual agenda is nevertheless easier to state in algorithmic terms. The runtime normalizes the goal, retrieves compatible descriptors, orders them deterministically, instantiates only a small prefix, executes ready nodes, indexes the new variables, and repeats until a terminal condition is reached.",
+      "translation": "O politică utilă de construcție poate fi descrisă fără introducerea unei gramatici SOP noi. Planificatorul însuși poate fi implementat ca și comenzi obișnuite care operează asupra referințelor ~ la scopuri, variabile și descriptori de șabloane candidate. Agenda conceptuală este totuși mai ușor de enunțat algoritmic. Runtime-ul normalizează scopul, recuperează descriptori compatibili, îi ordonează determinist, instanțiază doar un mic prefix, execută nodurile pregătite, indexează variabilele noi și repetă până la atingerea unei condiții terminale."
+    },
+    {
+      "id": "t000687",
+      "source": "Construction phase",
+      "translation": "Fază de construcție"
+    },
+    {
+      "id": "t000688",
+      "source": "Deterministic research rule",
+      "translation": "Regulă deterministă de cercetare"
+    },
+    {
+      "id": "t000689",
+      "source": "Goal analysis",
+      "translation": "Analiza scopului"
+    },
+    {
+      "id": "t000690",
+      "source": "Normalize requested outputs and acceptance guarantees into goal signatures.",
+      "translation": "Normalizează ieșirile cerute și garanțiile de acceptare în semnături de scop."
+    },
+    {
+      "id": "t000691",
+      "source": "Descriptor lookup",
+      "translation": "Căutarea descriptorilor"
+    },
+    {
+      "id": "t000692",
+      "source": "Use indexes to retrieve only commands and templates capable of contributing to the active goals.",
+      "translation": "Folosește indecși pentru a recupera doar comenzi și șabloane capabile să contribuie la scopurile active."
+    },
+    {
+      "id": "t000693",
+      "source": "Compatibility filtering",
+      "translation": "Filtrarea compatibilității"
+    },
+    {
+      "id": "t000694",
+      "source": "Reject candidates whose required inputs, effects, security policy, ontology, or backend capabilities cannot be satisfied.",
+      "translation": "Respinge candidații ale căror intrări necesare, efecte, politică de securitate, ontologie sau capacități backend nu pot fi satisfăcute."
+    },
+    {
+      "id": "t000695",
+      "source": "Priority ordering",
+      "translation": "Ordonare după prioritate"
+    },
+    {
+      "id": "t000696",
+      "source": "Use a stable lexicographic cost-and-relevance tuple with deterministic tie-breaking.",
+      "translation": "Folosește un tuplu lexicografic stabil de cost și relevanță cu departajare deterministă."
+    },
+    {
+      "id": "t000697",
+      "source": "Template instantiation",
+      "translation": "Instanțierea șabloanelor"
+    },
+    {
+      "id": "t000698",
+      "source": "Load and instantiate only selected template bodies, creating fresh variables for the current circuit epoch.",
+      "translation": "Încarcă și instanțiază doar corpurile șabloanelor selectate, creând variabile noi pentru epoca curentă a circuitului."
+    },
+    {
+      "id": "t000699",
+      "source": "Ready-node execution",
+      "translation": "Execuția nodurilor pregătite"
+    },
+    {
+      "id": "t000700",
+      "source": "Execute declarations whose $ dependencies are available; expose ~ references according to permission and metadata policy.",
+      "translation": "Execută declarațiile ale căror dependențe $ sunt disponibile; expune referințele ~ conform politicii de permisiuni și metadate."
+    },
+    {
+      "id": "t000701",
+      "source": "Delta activation",
+      "translation": "Activare prin delte"
+    },
+    {
+      "id": "t000702",
+      "source": "Index newly produced variables and trigger only matching templates and pending subgoals.",
+      "translation": "Indexează variabilele nou produse și declanșează doar șabloanele potrivite și subscopurile în așteptare."
+    },
+    {
+      "id": "t000703",
+      "source": "Alternative management",
+      "translation": "Administrarea alternativelor"
+    },
+    {
+      "id": "t000704",
+      "source": "Preserve branch status and cost under explicit alternative variables; do not collapse branches invisibly.",
+      "translation": "Păstrează statutul și costul ramurilor sub variabile alternative explicite; nu reduce ramurile invizibil."
+    },
+    {
+      "id": "t000705",
+      "source": "Validation",
+      "translation": "Validare"
+    },
+    {
+      "id": "t000706",
+      "source": "Test the current candidate against the requested provenance, security, consistency, and guarantee policy.",
+      "translation": "Testează candidatul curent față de politica cerută de proveniență, securitate, consistență și garanții."
+    },
+    {
+      "id": "t000707",
+      "source": "Termination",
+      "translation": "Terminare"
+    },
+    {
+      "id": "t000708",
+      "source": "Stop on acceptance, budget exhaustion, fixed point, or explicit unresolved ambiguity and return the corresponding status.",
+      "translation": "Oprește la acceptare, epuizarea bugetului, punct fix sau ambiguitate explicită nerezolvată și returnează statutul corespunzător."
+    },
+    {
+      "id": "t000709",
+      "source": "The constructor can stop for several reasons. It may produce an output that satisfies the acceptance policy. It may exhaust the budget. It may reach a fixed point in which no new eligible template or command can advance the goals. It may detect a contradiction that requires user clarification. These terminal states should be explicit SOP values or result statuses, not exceptions hidden in infrastructure.",
+      "translation": "Constructorul se poate opri din mai multe motive. Poate produce o ieșire care satisface politica de acceptare. Poate epuiza bugetul. Poate atinge un punct fix în care niciun șablon sau comandă eligibilă nouă nu poate avansa scopurile. Poate detecta o contradicție care necesită clarificarea utilizatorului. Aceste stări terminale ar trebui să fie valori SOP sau statute de rezultat explicite, nu excepții ascunse în infrastructură."
+    },
+    {
+      "id": "t000710",
+      "source": "A deterministic constructor can still be adaptive. Historical measurements can update command cost estimates, template success rates, and cache policies. The update procedure can itself be deterministic given the historical dataset. The important distinction is between using learned estimates to rank explicit candidates and letting an opaque model directly generate an unconstrained execution graph whose legality and cost are known only after the fact.",
+      "translation": "Un constructor determinist poate fi totuși adaptativ. Măsurătorile istorice pot actualiza estimările costului comenzilor, ratele succesului șabloanelor și politicile de cache. Procedura de actualizare poate fi ea însăși deterministă pentru setul istoric de date dat. Distincția importantă este între folosirea estimărilor învățate pentru a ordona candidați expliciți și a lăsa un model opac să genereze direct un graf de execuție neconstrâns, a cărui legalitate și cost sunt cunoscute doar ulterior."
+    },
+    {
+      "id": "t000711",
+      "source": "Construction can also proceed in epochs. An initial circuit may contain only language interpretation and a direct reasoning attempt. Its execution trace can show that an input is missing or a branch is ambiguous. The planner then creates a second circuit version that adds retrieval or validation. The first graph remains available. This allows the runtime to separate construction decisions from execution effects and to test whether a rewrite actually improved the result.",
+      "translation": "Construcția poate avansa și în epoci. Un circuit inițial poate conține doar interpretarea limbajului și o încercare directă de raționament. Urma execuției sale poate arăta că lipsește o intrare sau că o ramură este ambiguă. Planificatorul creează apoi o a doua versiune a circuitului care adaugă recuperare sau validare. Primul graf rămâne disponibil. Aceasta permite runtime-ului să separe deciziile de construcție de efectele execuției și să testeze dacă o rescriere a îmbunătățit efectiv rezultatul."
+    },
+    {
+      "id": "t000712",
+      "source": "The token when in this example belongs to the retrieve command’s grammar or to a constrained profile for that command. The SOP kernel still only sees an argument atom followed by a ~quality reference. This illustrates an important architectural principle: control hints can be implemented as command semantics without forcing every control construct into the language core.",
+      "translation": "Tokenul when din acest exemplu aparține gramaticii comenzii retrieve sau unui profil constrâns pentru acea comandă. Nucleul SOP vede tot doar un atom-argument urmat de o referință ~quality. Aceasta ilustrează un principiu arhitectural important: indiciile de control pot fi implementate ca semantică a comenzilor fără a forța fiecare construct de control în nucleul limbajului."
+    },
+    {
+      "id": "t000713",
+      "source": "This construction model reframes reasoning as controlled graph growth. The system is not searching through arbitrary text continuations. It is searching through executable symbolic structures whose interfaces are partially known before execution. Types, capabilities, and dependency signatures prune the space much more aggressively than token-level generation, but the space can still explode. The next section therefore focuses on the mechanisms needed to keep growth bounded.",
+      "translation": "Acest model de construcție reformulează raționamentul ca o creștere controlată a grafului. Sistemul nu caută prin continuări textuale arbitrare. Caută prin structuri simbolice executabile ale căror interfețe sunt parțial cunoscute înaintea execuției. Tipurile, capacitățile și semnăturile de dependență taie spațiul mult mai agresiv decât generarea la nivel de token, dar spațiul tot poate exploda. Secțiunea următoare se concentrează astfel pe mecanismele necesare menținerii creșterii în limite."
+    },
+    {
+      "id": "t000714",
+      "source": "The construction problem can be formulated more sharply as search over an implicit AND/OR hypergraph. An active goal such as VerifiedAnswer is an OR node because several commands or templates may be capable of producing it. A selected template introduces an AND requirement because all of its required inputs or subgoals must become available before the relevant command can run. Template circuits may themselves create additional goals, and alternative command declarations expose local OR structure directly in SOP syntax. The full graph is never materialized because its size can be enormous; the runtime expands only a budgeted frontier.",
+      "translation": "Problema construcției poate fi formulată mai precis ca o căutare într-un hipergraf implicit AND/OR. Un scop activ precum VerifiedAnswer este un nod OR deoarece mai multe comenzi sau șabloane pot fi capabile să îl producă. Un șablon selectat introduce o cerință AND deoarece toate intrările sau subscopurile sale necesare trebuie să devină disponibile înainte ca respectiva comandă să poată rula. Circuitele-șablon pot crea ele însele scopuri suplimentare, iar declarațiile de comenzi alternative expun structura locală OR direct în sintaxa SOP. Graful complet nu este niciodată materializat deoarece dimensiunea sa poate fi enormă; runtime-ul extinde doar o frontieră bugetată."
+    },
+    {
+      "id": "t000715",
+      "source": "This formulation connects SOP construction to classical planning and heuristic search without requiring a new planning language. A descriptor for a command or template can declare producible value kinds, required input kinds, domain tags, effects, lower-bound cost, and guarantee class. Starting from the desired output, a backward search retrieves descriptors that could produce it and creates subgoals for missing prerequisites. At the same time, forward delta activation reacts to concrete @ values that have already been produced and discovers templates whose prerequisites are newly satisfiable. The runtime is therefore naturally bidirectional: backward reasoning establishes relevance, while forward activation exploits available evidence.",
+      "translation": "Această formulare conectează construcția SOP cu planificarea clasică și căutarea euristică fără a necesita un limbaj nou de planificare. Un descriptor de comandă sau șablon poate declara tipuri de valori producibile, tipuri necesare de intrări, etichete de domeniu, efecte, cost minim și clasă de garanție. Pornind de la ieșirea dorită, o căutare înapoi recuperează descriptori care ar putea să o producă și creează subscopuri pentru condițiile prealabile lipsă. În același timp, activarea înainte prin delte reacționează la valori @ concrete deja produse și descoperă șabloane ale căror condiții prealabile sunt nou satisfiabile. Runtime-ul este astfel firesc bidirecțional: raționamentul înapoi stabilește relevanța, iar activarea înainte exploatează dovezile disponibile."
+    },
+    {
+      "id": "t000716",
+      "source": "Several deterministic search families are plausible. A best-first agenda can order partial circuit states by a stable tuple consisting of unmet goals, guarantee deficit, estimated remaining cost, already incurred cost, and a deterministic tie-breaker. An A*-like variant can use lower-bound cost estimates where those estimates are meaningful. An AO*-like interpretation is natural for AND/OR dependencies. A bounded beam can cap memory but risks discarding the only successful plan. The programme should not choose one algorithm by analogy alone; the constructor itself is a benchmark target, and different task families may justify different deterministic policies under a common budget interface.",
+      "translation": "Mai multe familii deterministe de căutare sunt plauzibile. O agendă de tip best-first poate ordona stările parțiale de circuit printr-un tuplu stabil format din scopuri neîndeplinite, deficit de garanție, cost rămas estimat, cost deja suportat și o departajare deterministă. O variantă de tip A* poate folosi estimări de cost minim unde au sens. O interpretare de tip AO* este firească pentru dependențe AND/OR. Un fascicul limitat poate plafona memoria, dar riscă să elimine singurul plan reușit. Programul nu ar trebui să aleagă un algoritm doar prin analogie; constructorul însuși este o țintă de evaluare, iar familii diferite de sarcini pot justifica politici deterministe diferite sub o interfață comună de buget."
+    },
+    {
+      "id": "t000717",
+      "source": "The main source of tractability should be indexing rather than heuristic cleverness. At build time, every command and template can be compiled into descriptors. Output capabilities can map to posting lists of producers. Required input kinds can map to compatibility indexes. Domain and ontology identifiers can eliminate semantically irrelevant candidates. Structural hashes can identify duplicates. Cost summaries can exclude candidates that cannot possibly fit the remaining deadline. This is the equivalent of compiling a rule matcher or query planner before requests arrive.",
+      "translation": "Sursa principală de tractabilitate ar trebui să fie indexarea, nu ingeniozitatea euristică. La construire, fiecare comandă și șablon pot fi compilate în descriptori. Capacitățile de ieșire pot corespunde listelor de producători. Tipurile cerute de intrări pot corespunde indecșilor de compatibilitate. Identificatorii domeniilor și ontologiilor pot elimina candidații semantic nerelevanți. Hashurile structurale pot identifica duplicate. Rezumatele de cost pot exclude candidații care nu încap nicicum în termenul rămas. Aceasta echivalează cu compilarea unui mecanism de potrivire a regulilor sau planificator de interogări înaintea sosirii cererilor."
+    },
+    {
+      "id": "t000718",
+      "source": "At runtime, the state should be delta-driven. When a new variable appears, the constructor updates only indexes associated with its type, capabilities, ontology, or explicit metadata. Templates with no relationship to the delta are untouched. This follows the same principle as semi-naive Datalog and RETE-style matching but applies it to programme construction. The prototype challenge is to define a compact descriptor rich enough to avoid false activations without requiring the runtime to parse every template body.",
+      "translation": "În runtime, starea ar trebui ghidată de delte. Când apare o variabilă nouă, constructorul actualizează doar indecșii asociați tipului, capacităților, ontologiei sau metadatelor sale explicite. Șabloanele fără legătură cu delta rămân neatinse. Aceasta urmează același principiu ca Datalog seminaiv și potrivirea de tip RETE, dar îl aplică construcției programului. Provocarea prototipului este definirea unui descriptor compact suficient de bogat pentru a evita activări false fără a cere runtime-ului parsarea fiecărui corp de șablon."
+    },
+    {
+      "id": "t000719",
+      "source": "Execution and construction should interleave lazily. It is wasteful to synthesize a complete deep circuit before any command runs because early results may resolve ambiguity, satisfy goals, or reveal that a branch is impossible. Conversely, immediately executing every applicable command can create uncontrolled forward chaining. A reasonable discipline is to expand only the highest-priority frontier needed for the current goals, execute newly ready nodes, incorporate the resulting variables, and reconsider the frontier. This creates an anytime planning loop whose state remains explicit.",
+      "translation": "Execuția și construcția ar trebui intercalate leneș. Este risipitor să sintetizăm un circuit adânc complet înaintea rulării vreunei comenzi, deoarece rezultatele timpurii pot rezolva ambiguitatea, satisface scopuri sau dezvălui că o ramură este imposibilă. Invers, executarea imediată a fiecărei comenzi aplicabile poate crea înlănțuire înainte necontrolată. O disciplină rezonabilă este extinderea doar a frontierei cu cea mai mare prioritate necesare scopurilor curente, executarea nodurilor nou pregătite, încorporarea variabilelor rezultate și reconsiderarea frontierei. Aceasta creează o buclă de planificare anytime a cărei stare rămâne explicită."
+    },
+    {
+      "id": "t000720",
+      "source": "The example is deliberately schematic. The tokens budget and remaining_budget belong to command grammars or a constrained runtime profile, not necessarily to universal SOP syntax. The important idea is that the candidate variable is a first-class object. A meta-command can inspect which alternatives finished, which guarantees they provide, and whether the remaining budget justifies another template expansion. If a stronger branch was never run because of the deadline, the final answer can state that fact instead of treating absence as failure.",
+      "translation": "Exemplul este deliberat schematic. Tokenurile budget și remaining_budget aparțin gramaticilor comenzilor sau unui profil runtime constrâns, nu neapărat sintaxei SOP universale. Ideea importantă este că variabila candidat este un obiect de prim rang. O metacomandă poate inspecta ce alternative s-au încheiat, ce garanții oferă și dacă bugetul rămas justifică o altă extindere de șablon. Dacă o ramură mai puternică nu a rulat niciodată din cauza termenului-limită, răspunsul final poate preciza acest fapt în loc să trateze absența ca eșec."
+    },
+    {
+      "id": "t000721",
+      "source": "Constructor concept",
+      "translation": "Concept al constructorului"
+    },
+    {
+      "id": "t000722",
+      "source": "Operational interpretation",
+      "translation": "Interpretare operațională"
+    },
+    {
+      "id": "t000723",
+      "source": "Goal",
+      "translation": "Scop"
+    },
+    {
+      "id": "t000724",
+      "source": "A required output value, property, or guarantee that is not yet satisfied by current variables.",
+      "translation": "O valoare de ieșire, proprietate sau garanție cerută care nu este încă satisfăcută de variabilele curente."
+    },
+    {
+      "id": "t000725",
+      "source": "Producer descriptor",
+      "translation": "Descriptor de producător"
+    },
+    {
+      "id": "t000726",
+      "source": "Compact indexable summary of a command or template that can contribute to a goal without loading its full body.",
+      "translation": "Rezumat compact indexabil al unei comenzi sau unui șablon care poate contribui la un scop fără încărcarea întregului său corp."
+    },
+    {
+      "id": "t000727",
+      "source": "AND dependency",
+      "translation": "Dependență AND"
+    },
+    {
+      "id": "t000728",
+      "source": "A template or command requires several inputs/subgoals before it can produce the desired value.",
+      "translation": "Un șablon sau o comandă necesită mai multe intrări/subscopuri înainte de a putea produce valoarea dorită."
+    },
+    {
+      "id": "t000729",
+      "source": "OR dependency",
+      "translation": "Dependență OR"
+    },
+    {
+      "id": "t000730",
+      "source": "Several commands, templates, or alternative branches can satisfy the same goal.",
+      "translation": "Mai multe comenzi, șabloane sau ramuri alternative pot satisface același scop."
+    },
+    {
+      "id": "t000731",
+      "source": "Backward narrowing",
+      "translation": "Restrângere înapoi"
+    },
+    {
+      "id": "t000732",
+      "source": "Search from desired outputs to producers and prerequisites so irrelevant forward rules are never considered.",
+      "translation": "Caută de la ieșirile dorite către producători și condiții prealabile, astfel încât regulile înainte nerelevante să nu fie niciodată luate în calcul."
+    },
+    {
+      "id": "t000733",
+      "source": "Forward delta activation",
+      "translation": "Activare înainte prin delte"
+    },
+    {
+      "id": "t000734",
+      "source": "React only to newly available variables and newly satisfied conditions.",
+      "translation": "Reacționează doar la variabile nou disponibile și condiții nou satisfăcute."
+    },
+    {
+      "id": "t000735",
+      "source": "Agenda",
+      "translation": "Agendă"
+    },
+    {
+      "id": "t000736",
+      "source": "Deterministically ordered set of candidate expansions and executable declarations.",
+      "translation": "Mulțime ordonată determinist de extinderi candidate și declarații executabile."
+    },
+    {
+      "id": "t000737",
+      "source": "Constructor concept",
+      "translation": "Concept al constructorului"
+    },
+    {
+      "id": "t000738",
+      "source": "Operational interpretation",
+      "translation": "Interpretare operațională"
+    },
+    {
+      "id": "t000739",
+      "source": "Budget",
+      "translation": "Buget"
+    },
+    {
+      "id": "t000740",
+      "source": "Explicit deadline or composite resource policy that limits both construction and execution.",
+      "translation": "Termen-limită explicit sau politică compozită de resurse care limitează atât construcția, cât și execuția."
+    },
+    {
+      "id": "t000741",
+      "source": "Terminal status",
+      "translation": "Statut terminal"
+    },
+    {
+      "id": "t000742",
+      "source": "Accepted result, justified partial result, ambiguity requiring clarification, fixed point without solution, or budget exhaustion.",
+      "translation": "Rezultat acceptat, rezultat parțial justificat, ambiguitate care necesită clarificare, punct fix fără soluție sau epuizarea bugetului."
+    },
+    {
+      "id": "t000743",
+      "source": "The constructor should be deterministic for a fixed model snapshot and budget even if some commands are stochastic. This means that descriptor lookup, candidate ordering, pruning, and tie-breaking are stable. A stochastic command can record its seed or run identity, and an alternative object can preserve variability. Deterministic construction is scientifically valuable because it allows a regression to be attributed to a model change rather than to hidden planner randomness.",
+      "translation": "Constructorul ar trebui să fie determinist pentru un instantaneu fix al modelului și buget, chiar dacă unele comenzi sunt stochastice. Aceasta înseamnă că găsirea descriptorilor, ordonarea candidaților, eliminarea și departajarea sunt stabile. O comandă stochastică își poate înregistra sămânța sau identitatea rulării, iar un obiect alternativ poate păstra variabilitatea. Construcția deterministă este valoroasă științific deoarece permite atribuirea unei regresii unei schimbări de model, nu aleatoriului ascuns al planificatorului."
+    },
+    {
+      "id": "t000744",
+      "source": "What remains unknown is whether descriptors and local indexes can prune the search enough for open-ended language. The risk is that semantic applicability cannot be summarized cheaply, so the planner must inspect many templates or invoke an LLM just to decide which symbolic operation to run. One of the central falsification criteria should therefore be the fraction of the template library examined per request as the library grows. If that fraction approaches a constant large percentage instead of shrinking through sparse activation, the architecture will not scale as intended.",
+      "translation": "Rămâne necunoscut dacă descriptorii și indecșii locali pot restrânge căutarea suficient pentru limbajul deschis. Riscul este că aplicabilitatea semantică nu poate fi rezumată ieftin, astfel încât planificatorul trebuie să inspecteze multe șabloane sau să invoce un LLM doar pentru a decide ce operație simbolică să ruleze. Unul dintre criteriile centrale de falsificare ar trebui astfel să fie fracțiunea bibliotecii de șabloane examinată per cerere pe măsură ce biblioteca crește. Dacă acea fracțiune se apropie de un procent mare constant, în loc să scadă prin activare rară, arhitectura nu va scala cum se intenționează."
+    },
+    {
+      "id": "t000745",
+      "source": "The constructor is best understood as a bounded planner over capabilities rather than as a free-form programme generator. The goal and current values define an initial frontier. Indexes retrieve a small set of candidate producers. Exact applicability checks eliminate candidates that violate types, policies, or missing prerequisites. Execution produces a delta of new values, and only that delta is used to activate the next round.",
+      "translation": "Constructorul este cel mai bine înțeles ca planificator limitat asupra capacităților, nu ca generator liber de programe. Scopul și valorile curente definesc o frontieră inițială. Indecșii recuperează un set mic de producători candidați. Verificările exacte de aplicabilitate elimină candidații care încalcă tipuri, politici sau condiții prealabile lipsă. Execuția produce o deltă de valori noi, iar numai acea deltă este folosită pentru activarea rundei următoare."
+    },
+    {
+      "id": "t000746",
+      "source": "Determinism does not require one fixed thread schedule. It requires a canonical allocation policy, stable branch identities, explicit budgets, and a canonical receipt. Independent operations can run concurrently as long as scheduler accidents do not change which outcomes are admissible or how exhaustion is reported.",
+      "translation": "Determinismul nu cere o singură planificare fixă a firelor. Cere o politică canonică de alocare, identități stabile de ramuri, bugete explicite și o înregistrare justificativă canonică. Operațiile independente pot rula concurent atât timp cât accidentele planificatorului nu schimbă rezultatele admisibile sau modul de raportare a epuizării."
+    },
+    {
+      "id": "t000747",
+      "source": "A constructor may use historical statistics to order candidates, including a learned ranker, without delegating semantic authority to that ranker. Ranking changes the order in which the finite budget is spent. Validation remains the responsibility of the invoked method and authority gates. Coverage tests must reveal when ranking systematically hides a valid route.",
+      "translation": "Un constructor poate folosi statistici istorice pentru a ordona candidații, inclusiv un ordonator învățat, fără a delega acelui ordonator autoritatea semantică. Ordonarea schimbă ordinea cheltuirii bugetului finit. Validarea rămâne responsabilitatea metodei invocate și a porților de autoritate. Testele de acoperire trebuie să dezvăluie când ordonarea ascunde sistematic o cale validă."
+    },
+    {
+      "id": "t000748",
+      "source": "7.2 Scaling persistent symbolic models without combinatorial explosion",
+      "translation": "7.2 Scalarea modelelor simbolice persistente fără explozie combinatorie"
+    },
+    {
+      "id": "t000749",
+      "source": "Combinatorial explosion can enter the system through several channels: too many knowledge facts, too many applicable templates, too many alternative circuits, repeated recursive reasoning, and semantic ambiguity that persists across many steps. These problems require different controls. A single global beam width is insufficient because it may suppress useful reasoning while leaving the expensive source of explosion untouched.",
+      "translation": "Explozia combinatorie poate intra în sistem prin mai multe canale: prea multe fapte de cunoaștere, prea multe șabloane aplicabile, prea multe circuite alternative, raționament recursiv repetat și ambiguitate semantică persistentă de-a lungul multor pași. Aceste probleme cer controale diferite. O singură lățime globală de fascicul este insuficientă deoarece poate suprima raționament util, lăsând neatinsă sursa costisitoare a exploziei."
+    },
+    {
+      "id": "t000750",
+      "source": "Knowledge scale should be handled primarily by indexing and physical organization, not by planner heuristics. Facts should live in shards that can be addressed by compact indexes built during KB compilation. A request about one concept should not require scanning thousands of files. Index roots can map domain tokens, variable identifiers, relation keys, source ranges, and type summaries to shard offsets. The runtime opens only the required fragments and releases them when no active circuit references them. Memory-mapped index structures and immutable segment files are attractive because they allow many KBs to coexist without loading their contents.",
+      "translation": "Scara cunoașterii ar trebui gestionată în principal prin indexare și organizare fizică, nu prin euristicile planificatorului. Faptele ar trebui să locuiască în fragmente adresabile prin indecși compacți construiți în timpul compilării KB. O cerere despre un concept nu ar trebui să necesite scanarea miilor de fișiere. Rădăcinile indecșilor pot mapa tokenuri de domeniu, identificatori de variabile, chei de relații, intervale de surse și rezumate de tipuri la poziții în fragmente. Runtime-ul deschide doar fragmentele necesare și le eliberează când niciun circuit activ nu le mai referă. Structurile de index mapate în memorie și fișierele-segment imuabile sunt atractive deoarece permit coexistența multor KB-uri fără încărcarea conținutului lor."
+    },
+    {
+      "id": "t000751",
+      "source": "The textual representation can still consist of many small SOP files for modularity, audit, and version control, but the runtime should never discover them by directory traversal at request time. A manifest generated during KB build can map logical identifiers to files or packed segments. A second-level cache can retain hot parsed blocks or compact binary forms. The source remains auditable; the cache provides operational scale.",
+      "translation": "Reprezentarea textuală poate consta în continuare din multe fișiere SOP mici pentru modularitate, audit și controlul versiunilor, dar runtime-ul nu ar trebui niciodată să le descopere prin parcurgerea directoarelor la momentul cererii. Un manifest generat în timpul construirii KB poate mapa identificatorii logici la fișiere sau segmente împachetate. Un cache de nivel secund poate păstra blocurile parsate frecvent folosite sau forme binare compacte. Sursa rămâne auditabilă; cache-ul furnizează scara operațională."
+    },
+    {
+      "id": "t000752",
+      "source": "The persistent index should be considered a compilation product rather than primary knowledge. If it is deleted, it can be rebuilt from canonical SOP sources. This allows aggressive representation choices without sacrificing inspectability. The index can use integer symbol IDs, compressed posting lists, relation-specific layouts, bloom filters, or other structures that would be unpleasant as authoring formats.",
+      "translation": "Indexul persistent ar trebui considerat produs al compilării, nu cunoaștere primară. Dacă este șters, poate fi reconstruit din surse SOP canonice. Aceasta permite alegeri agresive de reprezentare fără sacrificarea inspectabilității. Indexul poate folosi ID-uri întregi de simboluri, liste comprimate de apariții, aranjamente specifice relațiilor, filtre bloom sau alte structuri neplăcute ca formate de redactare."
+    },
+    {
+      "id": "t000753",
+      "source": "Template scale requires signature indexing. Every template should publish a summary that is much smaller than its body. The summary can include output capability, required input categories, domain, minimum guarantees, estimated cost, and a canonical structural hash. Indexing these descriptors makes it possible to retrieve a small candidate set for a given goal. If descriptors are not expressive enough to prune the library, the template model itself needs to evolve rather than relying on brute force.",
+      "translation": "Scara șabloanelor cere indexarea semnăturilor. Fiecare șablon ar trebui să publice un rezumat mult mai mic decât corpul său. Rezumatul poate include capacitatea de ieșire, categoriile intrărilor necesare, domeniul, garanțiile minime, costul estimat și un hash structural canonic. Indexarea acestor descriptori permite recuperarea unui set mic de candidați pentru un scop dat. Dacă descriptorii nu sunt suficient de expresivi pentru a restrânge biblioteca, modelul șabloanelor însuși trebuie să evolueze, nu să se bazeze pe forță brută."
+    },
+    {
+      "id": "t000754",
+      "source": "Subsumption can reduce duplicate templates. If one template is a strict specialization of another but does not provide better cost or guarantees for any indexed context, it can be removed or demoted. Structural canonicalization can identify templates that differ only in variable names. A validation corpus can detect behaviourally similar templates even when syntactic comparison is insufficient, though such equivalence remains empirical unless formally proven.",
+      "translation": "Subsumarea poate reduce șabloanele duplicate. Dacă un șablon este o specializare strictă a altuia, dar nu oferă cost sau garanții mai bune pentru niciun context indexat, poate fi eliminat sau retrogradat. Canonizarea structurală poate identifica șabloane care diferă doar prin numele variabilelor. Un corpus de validare poate detecta șabloane comportamental asemănătoare chiar când comparația sintactică este insuficientă, deși o asemenea echivalență rămâne empirică dacă nu este demonstrată formal."
+    },
+    {
+      "id": "t000755",
+      "source": "Alternative-circuit scale requires dominance pruning. Suppose two branches produce the same output kind from the same inputs, but one is slower, uses weaker sources, and provides no stronger guarantee. The dominated branch should not be scheduled. A branch can also be pruned when its lower-bound cost exceeds the remaining budget or when its unresolved inputs cannot be satisfied by any indexed template.",
+      "translation": "Scara circuitelor alternative cere eliminare prin dominanță. Să presupunem că două ramuri produc același tip de ieșire din aceleași intrări, dar una este mai lentă, folosește surse mai slabe și nu oferă nicio garanție mai puternică. Ramura dominată nu ar trebui planificată. O ramură poate fi eliminată și când costul său minim depășește bugetul rămas sau când intrările sale nerezolvate nu pot fi satisfăcute de niciun șablon indexat."
+    },
+    {
+      "id": "t000756",
+      "source": "Memoization is essential. SWI-Prolog tabling shows the general benefit of remembering previously solved calls in recursive reasoning. [R4] SOP Lang can memoize command invocations by a key derived from command version, argument values or variable identities, relevant context versions, and declared effects. Template instantiations can also be memoized if the same bindings recur. Cache correctness depends on precise effect declarations; a hidden dependency on current time or external state invalidates naive reuse.",
+      "translation": "Memoizarea este esențială. Tabelarea SWI-Prolog arată beneficiul general al memorării apelurilor rezolvate anterior în raționamentul recursiv. [R4] SOP Lang poate memoiza invocările comenzilor printr-o cheie derivată din versiunea comenzii, valorile argumentelor sau identitățile variabilelor, versiunile relevante ale contextului și efectele declarate. Instanțierile șabloanelor pot fi și ele memoizate dacă reapar aceleași legări. Corectitudinea cache-ului depinde de declarații precise ale efectelor; o dependență ascunsă de timpul curent sau starea externă invalidează reutilizarea naivă."
+    },
+    {
+      "id": "t000757",
+      "source": "Fixpoint detection prevents repeated expansion. If an epoch executes and produces no new variable signatures, no stronger guarantees, and no new eligible templates for unresolved goals, further deterministic construction under the same state is pointless. The runtime should stop rather than cycle. If a command produces monotonically improving lattice values, a convergence criterion can replace exact equality.",
+      "translation": "Detectarea punctului fix previne extinderea repetată. Dacă o epocă se execută și nu produce semnături noi de variabile, garanții mai puternice sau șabloane eligibile noi pentru scopurile nerezolvate, continuarea construcției deterministe în aceeași stare este inutilă. Runtime-ul ar trebui să se oprească, nu să intre în ciclu. Dacă o comandă produce valori de latice care se îmbunătățesc monoton, un criteriu de convergență poate înlocui egalitatea exactă."
+    },
+    {
+      "id": "t000758",
+      "source": "E-graph-inspired compaction can help when many circuit expressions are known to be equivalent. [R16][R17] Instead of storing every rewritable form, the runtime can store one equivalence class and defer extraction until cost information is available. This should be limited to formal fragments with trusted rewrite rules. For competing semantic interpretations, the correct structure is an alternative set, not an equivalence class.",
+      "translation": "Compactarea inspirată de e-grafuri poate ajuta când multe expresii de circuit sunt cunoscute ca echivalente. [R16][R17] În loc să stocheze fiecare formă rescriptibilă, runtime-ul poate stoca o clasă de echivalență și amâna extragerea până când informațiile de cost sunt disponibile. Aceasta ar trebui limitată la fragmente formale cu reguli de rescriere de încredere. Pentru interpretări semantice concurente, structura corectă este o mulțime de alternative, nu o clasă de echivalență."
+    },
+    {
+      "id": "t000759",
+      "source": "Time budgeting should influence search before expensive work begins. A candidate template can expose a lower-bound cost. If its minimum cost exceeds the remaining deadline, it should not be instantiated. External backends can offer modes with different costs, such as a fast heuristic parser and a slower formal check. The planner can treat these as separate command alternatives with known guarantee levels.",
+      "translation": "Bugetarea timpului ar trebui să influențeze căutarea înaintea începerii muncii costisitoare. Un șablon candidat poate expune un cost minim. Dacă acel cost depășește termenul rămas, nu ar trebui instanțiat. Backendurile externe pot oferi moduri cu costuri diferite, precum un parser euristic rapid și o verificare formală mai lentă. Planificatorul le poate trata ca alternative separate de comandă cu niveluri cunoscute de garanție."
+    },
+    {
+      "id": "t000760",
+      "source": "The runtime should also distinguish construction cost from execution cost. A sophisticated planner that spends hundreds of milliseconds finding a ten-millisecond circuit may be inferior to a simpler direct circuit under an interactive budget. The benchmark must therefore measure end-to-end latency, including index lookup, template matching, circuit loading, execution, and validation.",
+      "translation": "Runtime-ul ar trebui să distingă și costul construcției de costul execuției. Un planificator sofisticat care petrece sute de milisecunde găsind un circuit de zece milisecunde poate fi inferior unui circuit direct mai simplu sub un buget interactiv. Reperul trebuie astfel să măsoare latența integrală, incluzând căutarea în index, potrivirea șabloanelor, încărcarea circuitului, execuția și validarea."
+    },
+    {
+      "id": "t000761",
+      "source": "The billion-fact target creates a deeper architectural issue: most knowledge should remain inactive. A symbolic language model cannot behave like a neural model in which every parameter participates indirectly in every forward pass. Its advantage is precisely sparse activation. The research metric should therefore include the number of KB shards loaded, facts materialized, templates examined, and variables created per request. These quantities expose whether the architecture is genuinely sparse or merely hiding exhaustive work behind a database call.",
+      "translation": "Ținta de un miliard de fapte creează o problemă arhitecturală mai profundă: majoritatea cunoașterii ar trebui să rămână inactivă. Un model lingvistic simbolic nu se poate comporta ca un model neural în care fiecare parametru participă indirect la fiecare trecere înainte. Avantajul său este tocmai activarea rară. Metrica cercetării ar trebui astfel să includă numărul fragmentelor KB încărcate, faptelor materializate, șabloanelor examinate și variabilelor create per cerere. Aceste cantități expun dacă arhitectura este autentic rară sau doar ascunde muncă exhaustivă în spatele unui apel de bază de date."
+    },
+    {
+      "id": "t000762",
+      "source": "Multiple KBs should be treated as first-class namespaces with separate trust and policy domains. A circuit may query a public scientific KB, a private organizational KB, and a task-local scratch KB. The planner should not merge them into one global store. Their descriptors, indexes, and security labels can be consulted independently, and ~var references can preserve origin.",
+      "translation": "Mai multe KB-uri ar trebui tratate ca spații de nume de prim rang cu domenii separate de încredere și politici. Un circuit poate interoga un KB științific public, un KB organizațional privat și un KB temporar local sarcinii. Planificatorul nu ar trebui să le unească într-un depozit global. Descriptorii, indecșii și etichetele lor de securitate pot fi consultați independent, iar referințele ~var pot păstra originea."
+    },
+    {
+      "id": "t000763",
+      "source": "At extreme scale, command implementations should be able to operate on iterators or handles rather than materializing full value sets. $facts may represent a lazy relation view whose command contract allows streaming. This is another reason not to equate a SOP variable with an in-memory object. A variable is a semantic value identity; the physical representation may be a compact handle to data on disk or in a remote store.",
+      "translation": "La scară extremă, implementările comenzilor ar trebui să poată opera asupra iteratorilor sau handle-urilor, nu să materializeze mulțimi complete de valori. $facts poate reprezenta o vedere relațională leneșă al cărei contract de comandă permite procesarea în flux. Acesta este un alt motiv de a nu echivala o variabilă SOP cu un obiect în memorie. O variabilă este o identitate de valoare semantică; reprezentarea fizică poate fi un handle compact către date pe disc sau într-un depozit la distanță."
+    },
+    {
+      "id": "t000764",
+      "source": "The active circuit itself should also be bounded. Variables no longer reachable from unresolved goals, output obligations, validation obligations, or retained trace roots can be released from hot memory. Their identities and serialized values can remain in a trace store if audit requires them. This makes the graph dynamically loadable without changing the semantic history.",
+      "translation": "Circuitul activ însuși ar trebui și el limitat. Variabilele care nu mai sunt accesibile din scopurile nerezolvate, obligațiile de ieșire, obligațiile de validare sau rădăcinile de urmă păstrate pot fi eliberate din memoria activă. Identitățile și valorile lor serializate pot rămâne într-un depozit de urme dacă auditul le cere. Aceasta face graful încărcabil dinamic fără a schimba istoria semantică."
+    },
+    {
+      "id": "t000765",
+      "source": "Explosion source",
+      "translation": "Sursa exploziei"
+    },
+    {
+      "id": "t000766",
+      "source": "Primary control mechanism",
+      "translation": "Mecanism principal de control"
+    },
+    {
+      "id": "t000767",
+      "source": "Billions of facts",
+      "translation": "Miliarde de fapte"
+    },
+    {
+      "id": "t000768",
+      "source": "Prebuilt indexes, immutable shards, lazy loading, compact handles, and eviction of inactive data.",
+      "translation": "Indecși preconstruiți, fragmente imuabile, încărcare leneșă, handle-uri compacte și evacuarea datelor inactive."
+    },
+    {
+      "id": "t000769",
+      "source": "Thousands or millions of templates",
+      "translation": "Mii sau milioane de șabloane"
+    },
+    {
+      "id": "t000770",
+      "source": "Descriptor indexes, goal-directed lookup, type/capability filtering, subsumption, and lazy body loading.",
+      "translation": "Indecși de descriptori, căutare orientată spre scop, filtrare după tip/capacitate, subsumare și încărcare leneșă a corpurilor."
+    },
+    {
+      "id": "t000771",
+      "source": "Repeated recursive reasoning",
+      "translation": "Raționament recursiv repetat"
+    },
+    {
+      "id": "t000772",
+      "source": "Memoization, tabling-inspired caches, and explicit fixpoint detection.",
+      "translation": "Memoizare, cache-uri inspirate de tabelare și detectare explicită a punctului fix."
+    },
+    {
+      "id": "t000773",
+      "source": "Many competing plans",
+      "translation": "Multe planuri concurente"
+    },
+    {
+      "id": "t000774",
+      "source": "Deterministic cost ordering, bounded alternative sets, dominance pruning, and lower-bound budget checks.",
+      "translation": "Ordonare deterministă după cost, mulțimi limitate de alternative, eliminare prin dominanță și verificări de buget cu cost minim."
+    },
+    {
+      "id": "t000775",
+      "source": "Equivalent circuit rewrites",
+      "translation": "Rescrieri echivalente de circuit"
+    },
+    {
+      "id": "t000776",
+      "source": "Canonicalization and e-graph-style compaction only where equivalence is trusted.",
+      "translation": "Canonizare și compactare de tip e-graf numai unde echivalența este de încredere."
+    },
+    {
+      "id": "t000777",
+      "source": "Ambiguous language interpretations",
+      "translation": "Interpretări lingvistice ambigue"
+    },
+    {
+      "id": "t000778",
+      "source": "First-class alternatives that remain distinct until evidence or policy justifies selection.",
+      "translation": "Alternative de prim rang care rămân distincte până când dovezile sau politica justifică selecția."
+    },
+    {
+      "id": "t000779",
+      "source": "Expensive external backends",
+      "translation": "Backenduri externe costisitoare"
+    },
+    {
+      "id": "t000780",
+      "source": "Cost-profiled command alternatives, cancellation, and budget-aware scheduling.",
+      "translation": "Alternative de comandă cu profiluri de cost, anulare și planificare conștientă de buget."
+    },
+    {
+      "id": "t000781",
+      "source": "Large active state",
+      "translation": "Stare activă mare"
+    },
+    {
+      "id": "t000782",
+      "source": "Reachability-based eviction of variables and KB shards no longer required by active goals, outputs, or audit policy.",
+      "translation": "Evacuare bazată pe accesibilitate a variabilelor și fragmentelor KB care nu mai sunt necesare scopurilor active, ieșirilor sau politicii de audit."
+    },
+    {
+      "id": "t000783",
+      "source": "The scalability programme therefore depends on cooperation between language semantics, storage layout, indexing, and planning. No single clever search algorithm can compensate for a KB that must be scanned or a template library with no descriptors. The most important engineering objective is to make irrelevant knowledge and circuits cheap to ignore.",
+      "translation": "Programul de scalabilitate depinde astfel de cooperarea dintre semantica limbajului, aranjamentul stocării, indexare și planificare. Niciun algoritm ingenios de căutare nu poate compensa un KB care trebuie scanat sau o bibliotecă de șabloane fără descriptori. Cel mai important obiectiv ingineresc este să facă ieftină ignorarea cunoașterii și circuitelor nerelevante."
+    },
+    {
+      "id": "t000784",
+      "source": "Scalability has at least four independent dimensions that should be measured separately: the number of persistent knowledge items, the number of reusable commands and templates, the number of active variables in one request, and the number of alternative partial circuits considered by the constructor. Optimizing one dimension does not automatically solve the others. A Datalog backend may handle billions of tuples while the SOP planner still collapses under ten thousand templates; conversely, an excellent planner may be useless if every KB lookup requires loading gigabytes of source.",
+      "translation": "Scalabilitatea are cel puțin patru dimensiuni independente care ar trebui măsurate separat: numărul elementelor persistente de cunoaștere, numărul comenzilor și șabloanelor reutilizabile, numărul variabilelor active într-o cerere și numărul circuitelor parțiale alternative luate în calcul de constructor. Optimizarea unei dimensiuni nu le rezolvă automat pe celelalte. Un backend Datalog poate gestiona miliarde de tupluri, în timp ce planificatorul SOP tot se prăbușește sub zece mii de șabloane; invers, un planificator excelent poate fi inutil dacă fiecare căutare KB necesită încărcarea gigabyților de sursă."
+    },
+    {
+      "id": "t000785",
+      "source": "Persistent knowledge scale is primarily a database and storage-layout problem. Canonical SOP source can remain split into many reviewable packages and files, but runtime discovery must rely on compiled manifests and indexes. File-system traversal is not a viable query algorithm. Logical identifiers should map directly to shards or packed segments. Symbol names can be interned into compact numeric IDs. Relation-specific postings can allow retrieval by subject, relation, object, type, source, or domain. Bloom filters or summaries can prevent unnecessary shard loads. These representations are caches or build products; the authoritative semantic source can remain SOP text.",
+      "translation": "Scara cunoașterii persistente este în principal o problemă de baze de date și aranjare a stocării. Sursa SOP canonică poate rămâne împărțită în multe pachete și fișiere verificabile, dar descoperirea în runtime trebuie să se bazeze pe manifeste și indecși compilați. Parcurgerea sistemului de fișiere nu este un algoritm viabil de interogare. Identificatorii logici ar trebui mapați direct la fragmente sau segmente împachetate. Numele de simboluri pot fi internate în ID-uri numerice compacte. Listele specifice relațiilor pot permite recuperarea după subiect, relație, obiect, tip, sursă sau domeniu. Filtrele bloom sau rezumatele pot preveni încărcările inutile de fragmente. Aceste reprezentări sunt cache-uri sau produse de construire; sursa semantică autoritativă poate rămâne text SOP."
+    },
+    {
+      "id": "t000786",
+      "source": "Template-library scale is closer to compiler and planning infrastructure. Template bodies should be cold until their descriptors survive goal and compatibility filtering. Descriptors can be stored in compact tables that fit in memory even when the bodies do not. A descriptor may expose only information needed for planning, such as produced capabilities, prerequisite classes, domain, effects, estimated cost, and structural fingerprint. If a template requires a sophisticated semantic model merely to determine applicability, that model can be represented as a second-stage matcher invoked only after coarse indexes have reduced the candidate set.",
+      "translation": "Scara bibliotecii de șabloane este mai apropiată de infrastructura compilatoarelor și planificării. Corpurile șabloanelor ar trebui să rămână inactive până când descriptorii lor trec de filtrarea după scop și compatibilitate. Descriptorii pot fi stocați în tabele compacte care încap în memorie chiar când corpurile nu încap. Un descriptor poate expune doar informația necesară planificării, precum capacități produse, clase de condiții prealabile, domeniu, efecte, cost estimat și amprentă structurală. Dacă un șablon necesită un model semantic sofisticat doar pentru determinarea aplicabilității, acel model poate fi reprezentat ca mecanism de potrivire de etapa a doua, invocat doar după ce indecșii grosieri au redus setul de candidați."
+    },
+    {
+      "id": "t000787",
+      "source": "Active-circuit scale is controlled by hierarchical abstraction and garbage collection. A subcircuit that has produced a stable result can often be collapsed to an interface-level object while retaining its trace on disk. Large retrieved objects can be referenced by handles. Variables whose consumers have completed and whose traces are persisted need not keep their full payloads in RAM. This is analogous to spilling compiler values or evicting database pages, except that provenance must remain recoverable. A memory-sensitive runtime therefore needs separate policies for semantic value retention, trace retention, and persistent cache retention.",
+      "translation": "Scara circuitului activ este controlată prin abstracție ierarhică și colectarea memoriei nefolosite. Un subcircuit care a produs un rezultat stabil poate fi adesea redus la un obiect la nivel de interfață, păstrând urma sa pe disc. Obiectele mari recuperate pot fi referite prin handle-uri. Variabilele ai căror consumatori au încheiat și ale căror urme sunt păstrate nu trebuie să își mențină întregul conținut în RAM. Aceasta este analogă mutării valorilor compilatorului în memorie secundară sau evacuării paginilor bazei de date, cu diferența că proveniența trebuie să rămână recuperabilă. Un runtime sensibil la memorie are astfel nevoie de politici separate pentru păstrarea valorilor semantice, urmelor și cache-ului persistent."
+    },
+    {
+      "id": "t000788",
+      "source": "Alternative-search scale requires dominance and subsumption. Suppose two partial circuits can produce the same required guarantee from the same available inputs, but one has strictly greater lower-bound cost and no stronger provenance, security, or epistemic property. The more expensive partial circuit is dominated and can be pruned. If one template is a specialization of another with no measurable advantage in its specialization domain, the library can demote or merge it. These decisions must be conservative; an apparently redundant circuit may embody an exception that is not visible in a coarse descriptor.",
+      "translation": "Scara căutării alternativelor cere dominanță și subsumare. Să presupunem că două circuite parțiale pot produce aceeași garanție cerută din aceleași intrări disponibile, dar unul are un cost minim strict mai mare și nicio proprietate mai puternică de proveniență, securitate sau epistemică. Circuitul parțial mai scump este dominat și poate fi eliminat. Dacă un șablon este o specializare a altuia fără avantaj măsurabil în domeniul specializării sale, biblioteca îl poate retrograda sau uni. Aceste decizii trebuie să fie conservatoare; un circuit aparent redundant poate întruchipa o excepție invizibilă într-un descriptor grosier."
+    },
+    {
+      "id": "t000789",
+      "source": "Memoization and tabling address repeated subproblems. A cache key cannot simply hash the textual arguments. It must include command version, dereferenced values or stable variable identities, relevant ontology and KB versions, declared environmental dependencies, and effect policy. For pure deterministic commands, this can yield aggressive reuse. For commands whose meaning depends on current time, external services, or mutable state, the key must include those dependencies or caching must be disabled. Hidden effects are therefore not merely a software-engineering smell; they directly undermine symbolic scalability.",
+      "translation": "Memoizarea și tabelarea abordează subproblemele repetate. O cheie cache nu poate calcula pur și simplu hashul argumentelor textuale. Trebuie să includă versiunea comenzii, valorile dereferențiate sau identitățile stabile ale variabilelor, versiunile relevante ale ontologiei și KB, dependențele declarate de mediu și politica efectelor. Pentru comenzi pure deterministe, aceasta poate permite reutilizare agresivă. Pentru comenzi al căror sens depinde de timpul curent, servicii externe sau stare modificabilă, cheia trebuie să includă acele dependențe sau cachingul trebuie dezactivat. Efectele ascunse nu sunt astfel doar un semn problematic de inginerie software; subminează direct scalabilitatea simbolică."
+    },
+    {
+      "id": "t000790",
+      "source": "Recursion and repeated template activation require fixpoint semantics. The runtime should distinguish syntactic novelty from semantic progress. A new variable that is equivalent to an existing value may not justify further expansion. Lattice-based domains can define “stronger than” so that only genuinely improved knowledge propagates. Datalog provides a mature model for monotone closure; non-monotone reasoning requires explicit revision epochs so that withdrawn conclusions do not masquerade as monotonic additions.",
+      "translation": "Recursivitatea și activarea repetată a șabloanelor cer semantică de punct fix. Runtime-ul ar trebui să distingă noutatea sintactică de progresul semantic. O variabilă nouă echivalentă unei valori existente poate să nu justifice extinderea suplimentară. Domeniile bazate pe latice pot defini „mai puternic decât”, astfel încât numai cunoașterea autentic îmbunătățită să se propage. Datalog furnizează un model matur pentru închidere monotonă; raționamentul nemonoton cere epoci explicite de revizuire, astfel încât concluziile retrase să nu treacă drept adăugiri monotone."
+    },
+    {
+      "id": "t000791",
+      "source": "Explosion dimension",
+      "translation": "Dimensiunea exploziei"
+    },
+    {
+      "id": "t000792",
+      "source": "What must be demonstrated experimentally",
+      "translation": "Ce trebuie demonstrat experimental"
+    },
+    {
+      "id": "t000793",
+      "source": "Knowledge volume",
+      "translation": "Volumul cunoașterii"
+    },
+    {
+      "id": "t000794",
+      "source": "Query latency and memory should depend mainly on the retrieved shard set, not on total canonical KB size.",
+      "translation": "Latența interogării și memoria ar trebui să depindă în principal de setul de fragmente recuperate, nu de dimensiunea totală a KB canonic."
+    },
+    {
+      "id": "t000795",
+      "source": "Template count",
+      "translation": "Numărul de șabloane"
+    },
+    {
+      "id": "t000796",
+      "source": "Descriptor lookup should examine a sparse candidate set whose relative size does not grow linearly with the whole library.",
+      "translation": "Căutarea descriptorilor ar trebui să examineze un set rar de candidați a cărui dimensiune relativă nu crește liniar cu întreaga bibliotecă."
+    },
+    {
+      "id": "t000797",
+      "source": "Active variables",
+      "translation": "Variabile active"
+    },
+    {
+      "id": "t000798",
+      "source": "Peak memory should be bounded by active reasoning state and handles, with old payloads evictable without losing provenance.",
+      "translation": "Memoria de vârf ar trebui limitată de starea activă a raționamentului și handle-uri, conținuturile vechi putând fi evacuate fără pierderea provenienței."
+    },
+    {
+      "id": "t000799",
+      "source": "Alternative circuits",
+      "translation": "Circuite alternative"
+    },
+    {
+      "id": "t000800",
+      "source": "Dominance, lower-bound cost, and explicit branch budgets should prevent exponential frontier growth on benchmark families.",
+      "translation": "Dominanța, costul minim și bugetele explicite ale ramurilor ar trebui să prevină creșterea exponențială a frontierei pe familiile reperului."
+    },
+    {
+      "id": "t000801",
+      "source": "Recursive activation",
+      "translation": "Activare recursivă"
+    },
+    {
+      "id": "t000802",
+      "source": "Memoization and fixpoint detection should terminate repeated reasoning whenever the semantic state stops improving.",
+      "translation": "Memoizarea și detectarea punctului fix ar trebui să încheie raționamentul repetat ori de câte ori starea semantică nu se mai îmbunătățește."
+    },
+    {
+      "id": "t000803",
+      "source": "Equivalent plans",
+      "translation": "Planuri echivalente"
+    },
+    {
+      "id": "t000804",
+      "source": "Canonicalization or trusted e-graph techniques should reduce duplicate work without merging unresolved semantic alternatives.",
+      "translation": "Canonizarea sau tehnicile e-graf de încredere ar trebui să reducă munca duplicată fără a uni alternative semantice nerezolvate."
+    },
+    {
+      "id": "t000805",
+      "source": "External calls",
+      "translation": "Apeluri externe"
+    },
+    {
+      "id": "t000806",
+      "source": "Command cost profiles, cancellation, and cache policy should prevent a few expensive tools from consuming the full request budget.",
+      "translation": "Profilurile de cost ale comenzilor, anularea și politica cache-ului ar trebui să prevină consumarea întregului buget al cererii de către câteva instrumente costisitoare."
+    },
+    {
+      "id": "t000807",
+      "source": "Updates",
+      "translation": "Actualizări"
+    },
+    {
+      "id": "t000808",
+      "source": "Changing one KB shard, command, or template should invalidate only dependent indexes and cached results rather than rebuilding the model globally.",
+      "translation": "Schimbarea unui fragment KB, unei comenzi sau unui șablon ar trebui să invalideze doar indecșii și rezultatele cache dependente, nu să reconstruiască global modelul."
+    },
+    {
+      "id": "t000809",
+      "source": "The time budget should be treated as a semantic input to construction, not only as an operating-system timeout. A twenty-millisecond request and a ten-second request may legitimately produce different circuits and different guarantee levels. The short budget might select a cached or heuristic circuit and return a qualified answer. The longer budget can activate retrieval, run several alternatives, invoke a formal solver, and validate provenance. The trace should make these differences explicit so that “unknown under this budget” is distinguishable from “false” or “no proof exists.”",
+      "translation": "Bugetul de timp ar trebui tratat ca intrare semantică în construcție, nu doar ca limită de timp a sistemului de operare. O cerere de douăzeci de milisecunde și una de zece secunde pot produce legitim circuite diferite și niveluri diferite de garanție. Bugetul scurt ar putea selecta un circuit cache sau euristic și returna un răspuns calificat. Bugetul mai lung poate activa recuperarea, rula mai multe alternative, invoca un rezolvitor formal și valida proveniența. Urma ar trebui să facă explicite aceste diferențe, astfel încât „necunoscut sub acest buget” să poată fi distins de „fals” sau „nu există demonstrație”."
+    },
+    {
+      "id": "t000810",
+      "source": "This also suggests an evaluation surface analogous to scaling laws, but for symbolic activation. Instead of measuring only accuracy against parameter count, the programme can measure accuracy and guarantee quality against time budget, active KB fraction, active template fraction, number of instantiated declarations, and number of neural calls. A promising symbolic model should improve as the persistent library grows while keeping the active fraction sparse. If adding knowledge or skills causes proportional increases in per-request search, the model is accumulating information without learning how to access it.",
+      "translation": "Aceasta sugerează și o suprafață de evaluare analogă legilor de scalare, dar pentru activarea simbolică. În loc să măsoare doar acuratețea față de numărul de parametri, programul poate măsura acuratețea și calitatea garanției față de bugetul de timp, fracțiunea activă KB, fracțiunea activă de șabloane, numărul declarațiilor instanțiate și numărul apelurilor neurale. Un model simbolic promițător ar trebui să se îmbunătățească pe măsură ce biblioteca persistentă crește, păstrând fracțiunea activă rară. Dacă adăugarea cunoștințelor sau abilităților cauzează creșteri proporționale ale căutării per cerere, modelul acumulează informație fără a învăța cum să o acceseze."
+    },
+    {
+      "id": "t000811",
+      "source": "No single mechanism is likely to solve combinatorial growth. The research hypothesis is architectural cooperation: compile compact descriptors; index persistent knowledge; perform backward goal narrowing; react to deltas; instantiate templates lazily; preserve alternatives only while they remain non-dominated; memoize repeated subproblems; stop at fixed points; and let an explicit budget decide how far stronger validation can proceed. Each mechanism is familiar in another field. What is unknown is whether their combination remains coherent when the objects being selected are open-ended SOP circuits generated around natural-language tasks.",
+      "translation": "Niciun mecanism unic nu va rezolva probabil creșterea combinatorie. Ipoteza cercetării este cooperarea arhitecturală: compilează descriptori compacți; indexează cunoașterea persistentă; realizează restrângere înapoi după scop; reacționează la delte; instanțiază leneș șabloane; păstrează alternativele doar cât rămân nedominate; memoizează subproblemele repetate; oprește la puncte fixe; și lasă un buget explicit să decidă cât de departe poate merge validarea mai puternică. Fiecare mecanism este familiar în alt domeniu. Necunoscut este dacă îmbinarea lor rămâne coerentă când obiectele selectate sunt circuite SOP deschise generate în jurul sarcinilor de limbaj natural."
+    },
+    {
+      "id": "t000812",
+      "source": "The decisive scaling metric is activation efficiency. Increasing the persistent model by an order of magnitude should not increase startup work or candidate examination by the same factor. The catalogue must provide route-level summaries, type and relation indexes, dependency metadata, source locations, and materialization hints. Cache eviction should affect performance rather than logical identity.",
+      "translation": "Metrica decisivă de scalare este eficiența activării. Creșterea modelului persistent cu un ordin de mărime nu ar trebui să crească munca de pornire sau examinarea candidaților cu același factor. Catalogul trebuie să furnizeze rezumate la nivel de rută, indecși de tipuri și relații, metadate de dependență, locații ale surselor și indicii de materializare. Evacuarea cache-ului ar trebui să afecteze performanța, nu identitatea logică."
+    },
+    {
+      "id": "t000813",
+      "source": "Negative answers require special care. A constructive positive witness can terminate early. A claim that no solution exists may require complete exploration of a finite, well-defined frontier. If the frontier is truncated by time, the correct result is not false but incomplete or unknown. Count and universal queries have similar completeness obligations.",
+      "translation": "Răspunsurile negative cer atenție specială. Un martor pozitiv constructiv poate încheia devreme. O afirmație că nu există soluție poate necesita explorarea completă a unei frontiere finite bine definite. Dacă frontiera este trunchiată de timp, rezultatul corect nu este fals, ci incomplet sau necunoscut. Interogările de numărare și universale au obligații similare de completitudine."
+    },
+    {
+      "id": "t000814",
+      "source": "The constructor must also distinguish semantic expansion from language recovery. A failed parse may require a different interpretation strategy. A successfully parsed but unsupported goal may require new knowledge or a new capability. A solver timeout may require a weaker method. Mixing these failures into one generic retry loop is a source of combinatorial waste and poor explanations.",
+      "translation": "Constructorul trebuie să distingă și extinderea semantică de recuperarea limbajului. O parsare eșuată poate cere o strategie diferită de interpretare. Un scop parsat cu succes, dar nesusținut, poate cere cunoștințe noi sau o capacitate nouă. Expirarea timpului unui rezolvitor poate cere o metodă mai slabă. Amestecarea acestor eșecuri într-o buclă generică de reîncercare este o sursă de risipă combinatorie și explicații slabe."
+    },
+    {
+      "id": "t000815",
+      "source": "At scale, the research programme should compare several families of constructors under a common SOP contract: RETE-like discrimination networks, Datalog-style semi-naive activation, tabled goal-directed search, cost-based query planning, hierarchical capability routing, and learned ranking constrained by deterministic admissibility checks. The objective is not to declare one classical method universally superior but to determine which combination maintains coverage, bounded latency, and small active circuits across realistic workloads.",
+      "translation": "La scară, programul de cercetare ar trebui să compare mai multe familii de constructori sub un contract SOP comun: rețele de discriminare de tip RETE, activare seminaivă de tip Datalog, căutare orientată spre scop cu tabelare, planificare a interogărilor după cost, rutare ierarhică a capacităților și ordonare învățată constrânsă de verificări deterministe de admisibilitate. Obiectivul nu este declararea unei metode clasice drept universal superioare, ci determinarea combinației care menține acoperirea, latența limitată și circuite active mici în sarcini realiste."
+    },
+    {
+      "id": "t000816",
+      "source": "Chapter 8 - Provenance, Research Objects, and Trust",
+      "translation": "Capitolul 8 - Proveniență, obiecte de cercetare și încredere"
+    },
+    {
+      "id": "t000817",
+      "source": "8.1 From rerunnable computation to semantically inspectable research",
+      "translation": "8.1 De la calcul rerulabil la cercetare inspectabilă semantic"
+    },
+    {
+      "id": "t000818",
+      "source": "Executable science should be positioned as an extension of reproducible computation, not as a replacement for it. CWL, REANA, notebooks, containers, and executable research objects already address the practical problem of rerunning data analyses. Whole Tale explicitly defines an executable research object that combines data, code, environment, and narrative. RO-Crate provides a standards-based package and metadata layer. W3C PROV supplies an interoperable vocabulary for derivation. [R32][R33][R34][R49][R50][R51] The proposed contribution is a semantic execution layer above and between these artefacts. A scientific claim can be linked to the workflow outputs, source data, statistical method, assumptions, and validation gates that support it. A question activates the relevant claim slice rather than rerunning every artefact in the research object. A correction invalidates only dependent slices.",
+      "translation": "Știința executabilă ar trebui poziționată ca extensie a calculului reproductibil, nu ca înlocuitor. CWL, REANA, notebookurile, containerele și obiectele executabile de cercetare abordează deja problema practică a rerulării analizelor de date. Whole Tale definește explicit un obiect executabil de cercetare care combină date, cod, mediu și narațiune. RO-Crate furnizează un strat de pachete și metadate bazat pe standarde. W3C PROV furnizează un vocabular interoperabil pentru derivare. [R32][R33][R34][R49][R50][R51] Contribuția propusă este un strat semantic de execuție deasupra și între aceste artefacte. O afirmație științifică poate fi legată de ieșirile fluxurilor de lucru, datele-sursă, metoda statistică, ipotezele și porțile de validare care o susțin. O întrebare activează porțiunea relevantă de afirmații, nu rerulează fiecare artefact din obiectul de cercetare. O corecție invalidează doar porțiunile dependente."
+    },
+    {
+      "id": "t000819",
+      "source": "The Open Research Knowledge Graph and nanopublications demonstrate complementary ways to decompose scholarly communication into machine-actionable contributions or small provenance-bearing assertions. SOP circuits can consume and produce such objects, but should not duplicate their publication and identifier functions. The circuit supplies executable dependency and validation structure; the scholarly infrastructure supplies stable public objects. [R52][R53] This architecture permits counterfactual analysis. A reviewer can substitute a baseline, alter an exclusion criterion, remove a source, or instantiate an alternative theory and ask which claims change. Re-execution is therefore not limited to repeating the authors' path. It can explore the sensitivity of the argument while preserving the distinction between observed data and hypothetical intervention.",
+      "translation": "Open Research Knowledge Graph și nanopublicațiile demonstrează moduri complementare de descompunere a comunicării științifice în contribuții prelucrabile de mașini sau mici aserțiuni cu proveniență. Circuitele SOP pot consuma și produce asemenea obiecte, dar nu ar trebui să le dubleze funcțiile de publicare și identificare. Circuitul furnizează structura executabilă a dependențelor și validării; infrastructura științifică furnizează obiecte publice stabile. [R52][R53] Această arhitectură permite analiza contrafactuală. Un evaluator poate substitui o referință de bază, modifica un criteriu de excludere, elimina o sursă sau instanția o teorie alternativă și întreba ce afirmații se schimbă. Reexecuția nu se limitează astfel la repetarea căii autorilor. Poate explora sensibilitatea argumentului păstrând distincția dintre date observate și intervenție ipotetică."
+    },
+    {
+      "id": "t000820",
+      "source": "The boundary between formal and empirical evidence remains explicit. A theorem, a simulation, an observational dataset, a laboratory measurement, and an interpretive judgment have different validity conditions. A common circuit language should preserve their types and legitimate consumers rather than force them into one proof relation.",
+      "translation": "Granița dintre dovezile formale și empirice rămâne explicită. O teoremă, o simulare, un set de date observațional, o măsurătoare de laborator și o judecată interpretativă au condiții de validitate diferite. Un limbaj comun al circuitelor ar trebui să păstreze tipurile lor și consumatorii legitimi, nu să le forțeze într-o singură relație de demonstrație."
+    },
+    {
+      "id": "t000821",
+      "source": "A scientific article in this model acquires an executable companion. The prose remains the medium for explanation, context, and concepts that cannot yet be formalized. The companion represents the formalizable portion and records where execution depends on an informal mapping. This boundary is",
+      "translation": "Un articol științific în acest model dobândește un însoțitor executabil. Proza rămâne mediul explicației, contextului și conceptelor încă neformalizabile. Însoțitorul reprezintă porțiunea formalizabilă și înregistrează unde execuția depinde de o corespondență informală. Această limită este"
+    },
+    {
+      "id": "t000822",
+      "source": "part of the result.",
+      "translation": "parte a rezultatului."
+    },
+    {
+      "id": "t000823",
+      "source": "Infrastructure layer",
+      "translation": "Strat de infrastructură"
+    },
+    {
+      "id": "t000824",
+      "source": "Role in an executable scientific object",
+      "translation": "Rol într-un obiect științific executabil"
+    },
+    {
+      "id": "t000825",
+      "source": "Notebook or workflow",
+      "translation": "Notebook sau flux de lucru"
+    },
+    {
+      "id": "t000826",
+      "source": "Executes computational methods and records data transformations.",
+      "translation": "Execută metode computaționale și înregistrează transformările datelor."
+    },
+    {
+      "id": "t000827",
+      "source": "Container or environment description",
+      "translation": "Container sau descriere de mediu"
+    },
+    {
+      "id": "t000828",
+      "source": "Preserves software dependencies and runtime context.",
+      "translation": "Păstrează dependențele software și contextul runtime."
+    },
+    {
+      "id": "t000829",
+      "source": "RO-Crate or Whole Tale",
+      "translation": "RO-Crate sau Whole Tale"
+    },
+    {
+      "id": "t000830",
+      "source": "Packages artefacts, metadata, people, code, data, environment, and narrative.",
+      "translation": "Împachetează artefacte, metadate, persoane, cod, date, mediu și narațiune."
+    },
+    {
+      "id": "t000831",
+      "source": "W3C PROV",
+      "translation": "W3C PROV"
+    },
+    {
+      "id": "t000832",
+      "source": "Exchanges provenance about entities, activities, and agents.",
+      "translation": "Schimbă informații de proveniență despre entități, activități și agenți."
+    },
+    {
+      "id": "t000833",
+      "source": "Infrastructure layer",
+      "translation": "Strat de infrastructură"
+    },
+    {
+      "id": "t000834",
+      "source": "Role in an executable scientific object",
+      "translation": "Rol într-un obiect științific executabil"
+    },
+    {
+      "id": "t000835",
+      "source": "ORKG or nanopublication",
+      "translation": "ORKG sau nanopublicație"
+    },
+    {
+      "id": "t000836",
+      "source": "Publishes machine-actionable scholarly contributions or small provenance-bearing assertions.",
+      "translation": "Publică contribuții științifice prelucrabile de mașini sau mici aserțiuni cu proveniență."
+    },
+    {
+      "id": "t000837",
+      "source": "SOP circuit companion",
+      "translation": "Însoțitor circuit SOP"
+    },
+    {
+      "id": "t000838",
+      "source": "Connects questions and claims to the bounded semantic procedures, evidence, assumptions, and validation gates required to evaluate them.",
+      "translation": "Conectează întrebările și afirmațiile cu procedurile semantice limitate, dovezile, ipotezele și porțile de validare necesare evaluării lor."
+    },
+    {
+      "id": "t000839",
+      "source": "8.2 Authority, uncertainty, abstention, and governance",
+      "translation": "8.2 Autoritate, incertitudine, abținere și guvernanță"
+    },
+    {
+      "id": "t000840",
+      "source": "Traceability is necessary and insufficient. A system can faithfully record the path from a false source to a false conclusion. Provenance answers where a value came from. Credibility, validity, and authority require additional policies and evidence. The circuit should therefore treat epistemic status as structured information rather than as one confidence number.",
+      "translation": "Trasabilitatea este necesară și insuficientă. Un sistem poate înregistra fidel calea de la o sursă falsă la o concluzie falsă. Proveniența răspunde de unde a venit o valoare. Credibilitatea, validitatea și autoritatea necesită politici și dovezi suplimentare. Circuitul ar trebui astfel să trateze statutul epistemic ca informație structurată, nu ca un singur număr de încredere."
+    },
+    {
+      "id": "t000841",
+      "source": "A result may be directly quoted, deductively derived, statistically estimated, heuristically classified, proposed by a language model, verified by a solver, contradicted, or left unresolved. These statuses are not a single linear scale. Formal verification of a theorem is different from empirical replication, and two independent sources are different from a mathematical proof.",
+      "translation": "Un rezultat poate fi citat direct, derivat deductiv, estimat statistic, clasificat euristic, propus de un model lingvistic, verificat de un rezolvitor, contrazis sau lăsat nerezolvat. Aceste statute nu sunt o singură scală liniară. Verificarea formală a unei teoreme diferă de replicarea empirică, iar două surse independente diferă de o demonstrație matematică."
+    },
+    {
+      "id": "t000842",
+      "source": "Abstention is a core capability. A runtime should be able to report that the input is outside its language profile, that required knowledge is missing, that alternatives remain unresolved, that a search frontier was truncated, or that a validator rejected the candidate. A fluent fallback may provide contextual material, but it must not be presented as proof.",
+      "translation": "Abținerea este o capacitate de bază. Un runtime ar trebui să poată raporta că intrarea este în afara profilului său lingvistic, că lipsesc cunoștințe necesare, că alternativele rămân nerezolvate, că o frontieră de căutare a fost trunchiată sau că un validator a respins candidatul. Un răspuns fluent de rezervă poate furniza material contextual, dar nu trebuie prezentat ca demonstrație."
+    },
+    {
+      "id": "t000843",
+      "source": "Governance requires separation of duties. A model or coding agent may propose a command, template, mapping, or claim. A compiler may check syntax and interfaces. Tests may validate behaviour within a scope. An independent verifier may examine evidence. A maintainer or institution may promote the artefact. These roles should be representable and enforceable rather than merely described in policy documents.",
+      "translation": "Guvernanța cere separarea responsabilităților. Un model sau agent de programare poate propune o comandă, un șablon, o corespondență sau o afirmație. Un compilator poate verifica sintaxa și interfețele. Testele pot valida comportamentul într-un domeniu. Un verificator independent poate examina dovezile. Un responsabil de întreținere sau o instituție poate promova artefactul. Aceste roluri ar trebui să poată fi reprezentate și impuse, nu doar descrise în documente de politici."
+    }
+  ]
+}

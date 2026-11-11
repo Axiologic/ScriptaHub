@@ -1,0 +1,946 @@
+{
+  "language": "ro",
+  "chunk": 11,
+  "segments": [
+    {
+      "id": "t001480",
+      "source": "Zero-knowledge proof systems often arithmetize a computation into constraints. Circom and Halo2 exemplify this circuit-oriented discipline. A witness contains secret and intermediate values satisfying the constraints. The verifier checks the proof without necessarily observing the complete computation. A SOP execution trace can be thought of as an epistemic witness in a loose architectural sense: it records the intermediate values that justify a conclusion. This analogy must not be confused with cryptographic zero knowledge. Only suitably deterministic and arithmetized subcircuits could eventually be compiled into actual proof circuits.",
+      "translation": "Sistemele de demonstrație cu divulgare nulă aritmetizează adesea un calcul în constrângeri. Circom și Halo2 exemplifică această disciplină orientată pe circuite. Un martor conține valori secrete și intermediare care satisfac constrângerile. Verificatorul verifică demonstrația fără a observa neapărat întregul calcul. O urmă de execuție SOP poate fi privită ca martor epistemic într-un sens arhitectural larg: înregistrează valorile intermediare care justifică o concluzie. Această analogie nu trebuie confundată cu divulgarea nulă criptografică. Doar subcircuitele adecvat deterministe și aritmetizate ar putea fi compilate în cele din urmă în circuite reale de demonstrație."
+    },
+    {
+      "id": "t001481",
+      "source": "Cryptographic engineering also illustrates the danger of under-constrained designs. A circuit can be internally valid yet fail to constrain the property the designer intended. The semantic analogue is a validator that merely checks that a citation exists without checking that the cited material entails the claim. Explicit structure does not automatically produce meaningful guarantees; the invariants themselves must capture the intended property.",
+      "translation": "Ingineria criptografică ilustrează și pericolul proiectărilor insuficient constrânse. Un circuit poate fi intern valid și totuși să nu constrângă proprietatea intenționată de proiectant. Analogul semantic este un validator care doar verifică dacă există o citare fără a verifica dacă materialul citat implică afirmația. Structura explicită nu produce automat garanții semnificative; invariantele însele trebuie să surprindă proprietatea intenționată."
+    },
+    {
+      "id": "t001482",
+      "source": "Concept",
+      "translation": "Concept"
+    },
+    {
+      "id": "t001483",
+      "source": "Practical meaning for SOP Lang research",
+      "translation": "Sens practic pentru cercetarea SOP Lang"
+    },
+    {
+      "id": "t001484",
+      "source": "Combinatorial explosion",
+      "translation": "Explozie combinatorie"
+    },
+    {
+      "id": "t001485",
+      "source": "Rapid growth of possible circuit compositions, template instances, knowledge activations, and alternative branches.",
+      "translation": "Creștere rapidă a compozițiilor posibile de circuite, instanțelor de șabloane, activărilor cunoașterii și ramurilor alternative."
+    },
+    {
+      "id": "t001486",
+      "source": "Heuristic",
+      "translation": "Euristică"
+    },
+    {
+      "id": "t001487",
+      "source": "Stable estimate used to prioritize candidates before complete evaluation.",
+      "translation": "Estimare stabilă folosită pentru prioritizarea candidaților înaintea evaluării complete."
+    },
+    {
+      "id": "t001488",
+      "source": "Beam bound",
+      "translation": "Limită de fascicul"
+    },
+    {
+      "id": "t001489",
+      "source": "Hard limit on the number of competing candidates retained at a stage.",
+      "translation": "Limită strictă a numărului candidaților concurenți păstrați într-o etapă."
+    },
+    {
+      "id": "t001490",
+      "source": "Memoization",
+      "translation": "Memoizare"
+    },
+    {
+      "id": "t001491",
+      "source": "Reuse of a command result when all semantically relevant inputs and versions match.",
+      "translation": "Reutilizarea unui rezultat de comandă când toate intrările și versiunile relevante semantic coincid."
+    },
+    {
+      "id": "t001492",
+      "source": "Anytime algorithm",
+      "translation": "Algoritm anytime"
+    },
+    {
+      "id": "t001493",
+      "source": "Procedure that can return a valid current result within a budget and improve it when more budget is available.",
+      "translation": "Procedură care poate returna un rezultat curent valid într-un buget și îl poate îmbunătăți când este disponibil mai mult buget."
+    },
+    {
+      "id": "t001494",
+      "source": "Circuit witness",
+      "translation": "Martor de circuit"
+    },
+    {
+      "id": "t001495",
+      "source": "In cryptography, values satisfying circuit constraints; metaphorically useful for the explicit SOP trace supporting a result.",
+      "translation": "În criptografie, valori care satisfac constrângerile circuitului; util metaforic pentru urma SOP explicită care susține un rezultat."
+    },
+    {
+      "id": "t001496",
+      "source": "MPC",
+      "translation": "MPC"
+    },
+    {
+      "id": "t001497",
+      "source": "Secure computation over private inputs held by multiple parties.",
+      "translation": "Calcul securizat asupra intrărilor private deținute de mai multe părți."
+    },
+    {
+      "id": "t001498",
+      "source": "Zero knowledge",
+      "translation": "Divulgare nulă"
+    },
+    {
+      "id": "t001499",
+      "source": "Cryptographic proof property that hides the witness beyond what the verified statement reveals.",
+      "translation": "Proprietate a demonstrației criptografice care ascunde martorul dincolo de ceea ce dezvăluie enunțul verificat."
+    },
+    {
+      "id": "t001500",
+      "source": "Arithmetization",
+      "translation": "Aritmetizare"
+    },
+    {
+      "id": "t001501",
+      "source": "Translation of computation into algebraic constraints suitable for proof systems.",
+      "translation": "Traducerea calculului în constrângeri algebrice potrivite sistemelor de demonstrație."
+    },
+    {
+      "id": "t001502",
+      "source": "Under-constrained design",
+      "translation": "Proiectare insuficient constrânsă"
+    },
+    {
+      "id": "t001503",
+      "source": "Specification that technically validates executions not intended by the designer; a warning equally relevant to semantic validation.",
+      "translation": "Specificație care validează tehnic execuții neintenționate de proiectant; un avertisment la fel de relevant pentru validarea semantică."
+    },
+    {
+      "id": "t001504",
+      "source": "B.5 Research objects, reproducibility, provenance, and trustworthy AI",
+      "translation": "B.5 Obiecte de cercetare, reproductibilitate, proveniență și IA demnă de încredere"
+    },
+    {
+      "id": "t001505",
+      "source": "A research object is a package or conceptual unit that groups the artefacts required to understand or reproduce a piece of research. It may contain data, software, workflows, notebooks, documentation, identifiers, and metadata. RO-Crate is a current community specification that packages such material using JSON-LD and linked-data principles. The value for SOP Lang is interoperability: an ingest command can receive a crate as a structured source rather than reverse-engineering an ad hoc project directory. [R33] Reproducibility terminology varies between communities, but the general distinction is between reusing the original artefacts to obtain a corresponding result and independently recreating the result with different artefacts or implementation. ACM artifact review and badging is an example of a mature practice that evaluates availability and functionality of research artefacts and recognizes reproducibility-related properties. A SOP peer-review circuit should preserve the definitions used by the target venue rather than inventing its own universal badge semantics. [R35] Provenance is information about entities, activities, and agents involved in producing a thing. W3C PROV defines an interoperable model for this information. A SOP receipt can be more execution-specific, but many of its relationships map naturally to PROV: an @ value is an entity, a command execution is an activity, a coding agent or human reviewer can be an agent, and derivation connects outputs to inputs. This mapping is valuable because provenance can then cross tool boundaries. [R32]",
+      "translation": "Un obiect de cercetare este un pachet sau o unitate conceptuală care grupează artefactele necesare înțelegerii ori reproducerii unei cercetări. Poate conține date, software, fluxuri de lucru, notebookuri, documentație, identificatori și metadate. RO-Crate este o specificație comunitară actuală care împachetează asemenea material folosind JSON-LD și principiile datelor legate. Valoarea pentru SOP Lang este interoperabilitatea: o comandă ingest poate primi un crate ca sursă structurată în loc să reconstruiască prin inginerie inversă un director de proiect ad hoc. [R33] Terminologia reproductibilității variază între comunități, dar distincția generală este între reutilizarea artefactelor originale pentru a obține un rezultat corespunzător și recrearea independentă a rezultatului cu artefacte sau implementare diferite. Evaluarea și acordarea de insigne artefactelor de către ACM sunt un exemplu de practică matură care evaluează disponibilitatea și funcționalitatea artefactelor de cercetare și recunoaște proprietăți legate de reproductibilitate. Un circuit SOP de evaluare colegială ar trebui să păstreze definițiile folosite de publicația țintă, nu să inventeze propria semantică universală a insignelor. [R35] Proveniența este informație despre entitățile, activitățile și agenții implicați în producerea unui lucru. W3C PROV definește un model interoperabil pentru această informație. O înregistrare justificativă SOP poate fi mai specifică execuției, dar multe dintre relațiile sale se mapează firesc în PROV: o valoare @ este o entitate, o execuție de comandă este o activitate, un agent de programare sau evaluator uman poate fi un agent, iar derivarea conectează ieșirile cu intrările. Această corespondență este valoroasă deoarece proveniența poate traversa apoi limitele instrumentelor. [R32]"
+    },
+    {
+      "id": "t001506",
+      "source": "Concept",
+      "translation": "Concept"
+    },
+    {
+      "id": "t001507",
+      "source": "Why it matters to SOP Lang",
+      "translation": "De ce contează pentru SOP Lang"
+    },
+    {
+      "id": "t001508",
+      "source": "Research object",
+      "translation": "Obiect de cercetare"
+    },
+    {
+      "id": "t001509",
+      "source": "Provides the larger package within which SOP files, data, code, source documents, and execution receipts can be distributed together.",
+      "translation": "Furnizează pachetul mai larg în care fișiere SOP, date, cod, documente-sursă și înregistrări justificative ale execuției pot fi distribuite împreună."
+    },
+    {
+      "id": "t001510",
+      "source": "Computational notebook",
+      "translation": "Notebook computațional"
+    },
+    {
+      "id": "t001511",
+      "source": "Provides executable code plus narrative and results; SOP can point to or invoke notebook computations while making claim dependencies explicit.",
+      "translation": "Furnizează cod executabil plus narațiune și rezultate; SOP poate indica sau invoca calcule de notebook făcând explicite dependențele afirmațiilor."
+    },
+    {
+      "id": "t001512",
+      "source": "Concept",
+      "translation": "Concept"
+    },
+    {
+      "id": "t001513",
+      "source": "Why it matters to SOP Lang",
+      "translation": "De ce contează pentru SOP Lang"
+    },
+    {
+      "id": "t001514",
+      "source": "Provenance",
+      "translation": "Proveniență"
+    },
+    {
+      "id": "t001515",
+      "source": "Makes origin and derivation exchangeable across systems; SOP adds command-level def-use and branch details that can be exported to a provenance model.",
+      "translation": "Face originea și derivarea schimbabile între sisteme; SOP adaugă detalii definiție-utilizare și de ramificare la nivel de comandă, exportabile într-un model de proveniență."
+    },
+    {
+      "id": "t001516",
+      "source": "Artifact evaluation",
+      "translation": "Evaluarea artefactelor"
+    },
+    {
+      "id": "t001517",
+      "source": "Provides an existing institutional model for checking whether research artefacts are available, functional, reusable, or reproducible.",
+      "translation": "Furnizează un model instituțional existent pentru verificarea disponibilității, funcționalității, reutilizabilității sau reproductibilității artefactelor de cercetare."
+    },
+    {
+      "id": "t001518",
+      "source": "Trustworthy AI",
+      "translation": "IA demnă de încredere"
+    },
+    {
+      "id": "t001519",
+      "source": "Treats trust as a family of measurable socio-technical properties rather than one scalar confidence score. SOP contributes technical mechanisms to only a subset of those properties.",
+      "translation": "Tratează încrederea ca familie de proprietăți sociotehnice măsurabile, nu ca un scor scalar de încredere. SOP contribuie cu mecanisme tehnice doar la o submulțime a acelor proprietăți."
+    },
+    {
+      "id": "t001520",
+      "source": "Authority boundary",
+      "translation": "Limită de autoritate"
+    },
+    {
+      "id": "t001521",
+      "source": "Defines who or what can change the status of a claim, artefact, or action. It is a governance concept expressed operationally through gates and promotion receipts.",
+      "translation": "Definește cine sau ce poate schimba statutul unei afirmații, unui artefact sau unei acțiuni. Este un concept de guvernanță exprimat operațional prin porți și înregistrări justificative ale promovării."
+    },
+    {
+      "id": "t001522",
+      "source": "Trustworthy AI is broader than symbolic explainability. NIST emphasizes validity and reliability, safety, security and resilience, accountability and transparency, explainability and interpretability, privacy enhancement, and fairness. A symbolic circuit can make dependencies visible yet still be unsafe, biased, insecure, or built on invalid assumptions. The purpose of explicit SOP circuits is to create better handles for measurement and governance, not to collapse trust into a property of syntax. [R30]",
+      "translation": "IA demnă de încredere este mai largă decât explicabilitatea simbolică. NIST accentuează validitatea și fiabilitatea, siguranța, securitatea și reziliența, răspunderea și transparența, explicabilitatea și interpretabilitatea, sporirea confidențialității și echitatea. Un circuit simbolic poate face dependențele vizibile și totuși să fie nesigur, părtinitor, vulnerabil sau construit pe ipoteze invalide. Scopul circuitelor SOP explicite este crearea unor puncte mai bune de control pentru măsurare și guvernanță, nu reducerea încrederii la o proprietate a sintaxei. [R30]"
+    },
+    {
+      "id": "t001523",
+      "source": "Appendix C - Acronyms and Abbreviations",
+      "translation": "Anexa C - Acronime și abrevieri"
+    },
+    {
+      "id": "t001524",
+      "source": "Acronym",
+      "translation": "Acronim"
+    },
+    {
+      "id": "t001525",
+      "source": "Meaning",
+      "translation": "Semnificație"
+    },
+    {
+      "id": "t001526",
+      "source": "ACE",
+      "translation": "ACE"
+    },
+    {
+      "id": "t001527",
+      "source": "Attempto Controlled English",
+      "translation": "Attempto Controlled English"
+    },
+    {
+      "id": "t001528",
+      "source": "AGI",
+      "translation": "AGI"
+    },
+    {
+      "id": "t001529",
+      "source": "Artificial General Intelligence",
+      "translation": "Inteligență artificială generală"
+    },
+    {
+      "id": "t001530",
+      "source": "AI",
+      "translation": "AI"
+    },
+    {
+      "id": "t001531",
+      "source": "Artificial Intelligence",
+      "translation": "Inteligență artificială"
+    },
+    {
+      "id": "t001532",
+      "source": "API",
+      "translation": "API"
+    },
+    {
+      "id": "t001533",
+      "source": "Application Programming Interface",
+      "translation": "Interfață de programare a aplicațiilor"
+    },
+    {
+      "id": "t001534",
+      "source": "CFG",
+      "translation": "CFG"
+    },
+    {
+      "id": "t001535",
+      "source": "Control-Flow Graph",
+      "translation": "Graf de flux de control"
+    },
+    {
+      "id": "t001536",
+      "source": "CNL",
+      "translation": "CNL"
+    },
+    {
+      "id": "t001537",
+      "source": "Controlled Natural Language",
+      "translation": "Limbaj natural controlat"
+    },
+    {
+      "id": "t001538",
+      "source": "DAG",
+      "translation": "DAG"
+    },
+    {
+      "id": "t001539",
+      "source": "Directed Acyclic Graph",
+      "translation": "Graf orientat aciclic"
+    },
+    {
+      "id": "t001540",
+      "source": "DRS",
+      "translation": "DRS"
+    },
+    {
+      "id": "t001541",
+      "source": "Discourse Representation Structure",
+      "translation": "Structură de reprezentare a discursului"
+    },
+    {
+      "id": "t001542",
+      "source": "DSL",
+      "translation": "DSL"
+    },
+    {
+      "id": "t001543",
+      "source": "Domain-Specific Language",
+      "translation": "Limbaj specific domeniului"
+    },
+    {
+      "id": "t001544",
+      "source": "EqSat",
+      "translation": "EqSat"
+    },
+    {
+      "id": "t001545",
+      "source": "Equality Saturation",
+      "translation": "Saturarea egalităților"
+    },
+    {
+      "id": "t001546",
+      "source": "FOL",
+      "translation": "FOL"
+    },
+    {
+      "id": "t001547",
+      "source": "First-Order Logic",
+      "translation": "Logică de ordinul întâi"
+    },
+    {
+      "id": "t001548",
+      "source": "IR",
+      "translation": "IR"
+    },
+    {
+      "id": "t001549",
+      "source": "Intermediate Representation",
+      "translation": "Reprezentare intermediară"
+    },
+    {
+      "id": "t001550",
+      "source": "KB",
+      "translation": "KB"
+    },
+    {
+      "id": "t001551",
+      "source": "Knowledge Base",
+      "translation": "Bază de cunoștințe"
+    },
+    {
+      "id": "t001552",
+      "source": "LLM",
+      "translation": "LLM"
+    },
+    {
+      "id": "t001553",
+      "source": "Large Language Model",
+      "translation": "Model lingvistic mare"
+    },
+    {
+      "id": "t001554",
+      "source": "LTN",
+      "translation": "LTN"
+    },
+    {
+      "id": "t001555",
+      "source": "Logic Tensor Network",
+      "translation": "Logic Tensor Network"
+    },
+    {
+      "id": "t001556",
+      "source": "MLIR",
+      "translation": "MLIR"
+    },
+    {
+      "id": "t001557",
+      "source": "Multi-Level Intermediate Representation",
+      "translation": "Reprezentare intermediară pe mai multe niveluri"
+    },
+    {
+      "id": "t001558",
+      "source": "MPC",
+      "translation": "MPC"
+    },
+    {
+      "id": "t001559",
+      "source": "Secure Multiparty Computation",
+      "translation": "Calcul multipartit securizat"
+    },
+    {
+      "id": "t001560",
+      "source": "NARS",
+      "translation": "NARS"
+    },
+    {
+      "id": "t001561",
+      "source": "Non-Axiomatic Reasoning System",
+      "translation": "Sistem de raționament neaxiomatic"
+    },
+    {
+      "id": "t001562",
+      "source": "NLP",
+      "translation": "NLP"
+    },
+    {
+      "id": "t001563",
+      "source": "Natural Language Processing",
+      "translation": "Procesarea limbajului natural"
+    },
+    {
+      "id": "t001564",
+      "source": "ONNX",
+      "translation": "ONNX"
+    },
+    {
+      "id": "t001565",
+      "source": "Open Neural Network Exchange",
+      "translation": "Open Neural Network Exchange"
+    },
+    {
+      "id": "t001566",
+      "source": "PLP",
+      "translation": "PLP"
+    },
+    {
+      "id": "t001567",
+      "source": "Probabilistic Logic Programming",
+      "translation": "Programare logică probabilistă"
+    },
+    {
+      "id": "t001568",
+      "source": "RAG",
+      "translation": "RAG"
+    },
+    {
+      "id": "t001569",
+      "source": "Retrieval-Augmented Generation",
+      "translation": "Generare augmentată prin recuperare"
+    },
+    {
+      "id": "t001570",
+      "source": "SAT",
+      "translation": "SAT"
+    },
+    {
+      "id": "t001571",
+      "source": "Boolean Satisfiability Problem",
+      "translation": "Problema satisfiabilității booleene"
+    },
+    {
+      "id": "t001572",
+      "source": "SMT",
+      "translation": "SMT"
+    },
+    {
+      "id": "t001573",
+      "source": "Satisfiability Modulo Theories",
+      "translation": "Satisfiabilitate modulo teorii"
+    },
+    {
+      "id": "t001574",
+      "source": "SOP Lang",
+      "translation": "SOP Lang"
+    },
+    {
+      "id": "t001575",
+      "source": "The command-and-variable language used in this research programme to represent executable dynamic circuits",
+      "translation": "Limbajul de comenzi și variabile folosit în acest program de cercetare pentru reprezentarea circuitelor dinamice executabile"
+    },
+    {
+      "id": "t001576",
+      "source": "SSA",
+      "translation": "SSA"
+    },
+    {
+      "id": "t001577",
+      "source": "Static Single Assignment",
+      "translation": "Atribuire statică unică"
+    },
+    {
+      "id": "t001578",
+      "source": "ZK AI RMF PROV RO-Crate AOT JIT ABI TEEs",
+      "translation": "ZK AI RMF PROV RO-Crate AOT JIT ABI TEEs"
+    },
+    {
+      "id": "t001579",
+      "source": "Zero Knowledge Artificial Intelligence Risk Management Framework. W3C family of specifications for interoperable provenance. Research Object Crate, a machine-readable package for research data and related artefacts. Ahead-of-time compilation. Just-in-time compilation. Application Binary Interface; used here by analogy for stable command/runtime contracts. Trusted Execution Environments.",
+      "translation": "Divulgare nulă Cadrul de management al riscului inteligenței artificiale. Familia W3C de specificații pentru proveniență interoperabilă. Research Object Crate, un pachet lizibil de mașini pentru date de cercetare și artefacte înrudite. Compilare anticipată. Compilare just-in-time. Interfață binară de aplicație; folosită aici prin analogie pentru contracte stabile comandă/runtime. Medii de execuție de încredere."
+    },
+    {
+      "id": "t001580",
+      "source": "References",
+      "translation": "Referințe"
+    },
+    {
+      "id": "t001581",
+      "source": "[R1] LLVM Project. LLVM Language Reference Manual. Official LLVM documentation, current edition.",
+      "translation": "[R1] LLVM Project. LLVM Language Reference Manual. Official LLVM documentation, current edition."
+    },
+    {
+      "id": "t001582",
+      "source": "[R2] LLVM Project. MLIR Overview and MLIR Language Reference. Official MLIR documentation.",
+      "translation": "[R2] LLVM Project. MLIR Overview and MLIR Language Reference. Official MLIR documentation."
+    },
+    {
+      "id": "t001583",
+      "source": "[R3] Soufflé Project. Soufflé Documentation and Tutorial. Official project documentation.",
+      "translation": "[R3] Soufflé Project. Soufflé Documentation and Tutorial. Official project documentation."
+    },
+    {
+      "id": "t001584",
+      "source": "[R4] SWI-Prolog. Tabling and SLG Resolution. Official SWI-Prolog documentation.",
+      "translation": "[R4] SWI-Prolog. Tabling and SLG Resolution. Official SWI-Prolog documentation."
+    },
+    {
+      "id": "t001585",
+      "source": "[R5] Clavel, M., Durán, F., Eker, S., Lincoln, P., Martí-Oliet, N., Meseguer, J., and Talcott, C. All About Maude. Springer; together with current Maude documentation and strategy-language literature.",
+      "translation": "[R5] Clavel, M., Durán, F., Eker, S., Lincoln, P., Martí-Oliet, N., Meseguer, J., and Talcott, C. All About Maude. Springer; together with current Maude documentation and strategy-language literature."
+    },
+    {
+      "id": "t001586",
+      "source": "[R6] Goertzel, B. et al. Reflective Metagraph Rewriting as a Foundation for an AGI Language. 2021; and OpenCog Hyperon/MeTTa official documentation.",
+      "translation": "[R6] Goertzel, B. et al. Reflective Metagraph Rewriting as a Foundation for an AGI Language. 2021; and OpenCog Hyperon/MeTTa official documentation."
+    },
+    {
+      "id": "t001587",
+      "source": "[R7] De Raedt, L., Kimmig, A., and Toivonen, H. ProbLog literature; and official ProbLog documentation.",
+      "translation": "[R7] De Raedt, L., Kimmig, A., and Toivonen, H. ProbLog literature; and official ProbLog documentation."
+    },
+    {
+      "id": "t001588",
+      "source": "[R8] Aditya, D. et al. PyReason: Software for Open World Temporal Logic. 2023.",
+      "translation": "[R8] Aditya, D. et al. PyReason: Software for Open World Temporal Logic. 2023."
+    },
+    {
+      "id": "t001589",
+      "source": "[R9] Wang, P. NARS: A Non-Axiomatic Reasoning System and official introductory material on reasoning under insufficient knowledge and resources.",
+      "translation": "[R9] Wang, P. NARS: A Non-Axiomatic Reasoning System and official introductory material on reasoning under insufficient knowledge and resources."
+    },
+    {
+      "id": "t001590",
+      "source": "[R10] Fuchs, N. E., Kaljurand, K., and Kuhn, T. Literature on Attempto Controlled English; and official Attempto project material.",
+      "translation": "[R10] Fuchs, N. E., Kaljurand, K., and Kuhn, T. Literature on Attempto Controlled English; and official Attempto project material."
+    },
+    {
+      "id": "t001591",
+      "source": "[R11] de Moura, L., and Bjørner, N. Z3: An Efficient SMT Solver; and the Microsoft Z3 Guide.",
+      "translation": "[R11] de Moura, L., and Bjørner, N. Z3: An Efficient SMT Solver; and the Microsoft Z3 Guide."
+    },
+    {
+      "id": "t001592",
+      "source": "[R12] Lean Project. Theorem Proving in Lean 4. Official documentation on dependent type theory and proof construction.",
+      "translation": "[R12] Lean Project. Theorem Proving in Lean 4. Official documentation on dependent type theory and proof construction."
+    },
+    {
+      "id": "t001593",
+      "source": "[R13] Manhaeve, R., Dumancic, S., Kimmig, A., Demeester, T., and De Raedt, L. DeepProbLog: Neural Probabilistic Logic Programming. 2018.",
+      "translation": "[R13] Manhaeve, R., Dumancic, S., Kimmig, A., Demeester, T., and De Raedt, L. DeepProbLog: Neural Probabilistic Logic Programming. 2018."
+    },
+    {
+      "id": "t001594",
+      "source": "[R14] Li, Z., Huang, J., and Naik, M. Scallop: A Language for Neurosymbolic Programming. 2023.",
+      "translation": "[R14] Li, Z., Huang, J., and Naik, M. Scallop: A Language for Neurosymbolic Programming. 2023."
+    },
+    {
+      "id": "t001595",
+      "source": "[R15] Badreddine, S. et al. Logic Tensor Networks. Foundational literature on Real Logic and differentiable first-order reasoning.",
+      "translation": "[R15] Badreddine, S. et al. Logic Tensor Networks. Foundational literature on Real Logic and differentiable first-order reasoning."
+    },
+    {
+      "id": "t001596",
+      "source": "[R16] Willsey, M. et al. egg: Fast and Extensible Equality Saturation. POPL 2021.",
+      "translation": "[R16] Willsey, M. et al. egg: Fast and Extensible Equality Saturation. POPL 2021."
+    },
+    {
+      "id": "t001597",
+      "source": "[R17] Zhang, Y. et al. Better Together: Unifying Datalog and Equality Saturation. Work introducing egglog.",
+      "translation": "[R17] Zhang, Y. et al. Better Together: Unifying Datalog and Equality Saturation. Work introducing egglog."
+    },
+    {
+      "id": "t001598",
+      "source": "[R18] ONNX Project. ONNX Intermediate Representation Specification. Official documentation.",
+      "translation": "[R18] ONNX Project. ONNX Intermediate Representation Specification. Official documentation."
+    },
+    {
+      "id": "t001599",
+      "source": "[R19] Demmler, D., Schneider, T., and Zohner, M. ABY - A Framework for Efficient Mixed-Protocol Secure Two-Party Computation. NDSS 2015.",
+      "translation": "[R19] Demmler, D., Schneider, T., and Zohner, M. ABY - A Framework for Efficient Mixed-Protocol Secure Two-Party Computation. NDSS 2015."
+    },
+    {
+      "id": "t001600",
+      "source": "[R20] Circom Project. Circom Language and Constraint Generation Documentation. Official documentation.",
+      "translation": "[R20] Circom Project. Circom Language and Constraint Generation Documentation. Official documentation."
+    },
+    {
+      "id": "t001601",
+      "source": "[R21] Halo2 Project. The Halo2 Book: PLONKish Arithmetization. Official documentation.",
+      "translation": "[R21] Halo2 Project. The Halo2 Book: PLONKish Arithmetization. Official documentation."
+    },
+    {
+      "id": "t001602",
+      "source": "[R22] Yin, Y. et al. EggMind: LLM-Guided Strategy Synthesis for Equality Saturation. 2026 preprint.",
+      "translation": "[R22] Yin, Y. et al. EggMind: LLM-Guided Strategy Synthesis for Equality Saturation. 2026 preprint."
+    },
+    {
+      "id": "t001603",
+      "source": "[R23] Cytron, R., Ferrante, J., Rosen, B. K., Wegman, M. N., and Zadeck, F. K. Efficiently Computing Static Single Assignment Form and the Control Dependence Graph. ACM TOPLAS, 1991.",
+      "translation": "[R23] Cytron, R., Ferrante, J., Rosen, B. K., Wegman, M. N., and Zadeck, F. K. Efficiently Computing Static Single Assignment Form and the Control Dependence Graph. ACM TOPLAS, 1991."
+    },
+    {
+      "id": "t001604",
+      "source": "[R24] Forgy, C. L. Rete: A Fast Algorithm for the Many Pattern/Many Object Pattern Match Problem. Artificial Intelligence, 1982.",
+      "translation": "[R24] Forgy, C. L. Rete: A Fast Algorithm for the Many Pattern/Many Object Pattern Match Problem. Artificial Intelligence, 1982."
+    },
+    {
+      "id": "t001605",
+      "source": "[R25] Cohen, W. W. TensorLog: A Differentiable Deductive Database. 2016.",
+      "translation": "[R25] Cohen, W. W. TensorLog: A Differentiable Deductive Database. 2016."
+    },
+    {
+      "id": "t001606",
+      "source": "[R26] Rocktaschel, T., and Riedel, S. End-to-End Differentiable Proving. 2017.",
+      "translation": "[R26] Rocktaschel, T., and Riedel, S. End-to-End Differentiable Proving. 2017."
+    },
+    {
+      "id": "t001607",
+      "source": "[R27] AssistOS-AI. SOPLangCircuits. Public GitHub repository and maintained documentation, state consulted 18 August 2026.",
+      "translation": "[R27] AssistOS-AI. SOPLangCircuits. Public GitHub repository and maintained documentation, state consulted 18 August 2026."
+    },
+    {
+      "id": "t001608",
+      "source": "https://github.com/AssistOS-AI/SOPLangCircuits",
+      "translation": "https://github.com/AssistOS-AI/SOPLangCircuits"
+    },
+    {
+      "id": "t001609",
+      "source": "[R28] AssistOS-AI. dynamicCircuits. Public GitHub repository and maintained documentation, state consulted 18 August 2026.",
+      "translation": "[R28] AssistOS-AI. dynamicCircuits. Public GitHub repository and maintained documentation, state consulted 18 August 2026."
+    },
+    {
+      "id": "t001610",
+      "source": "https://github.com/AssistOS-AI/dynamicCircuits",
+      "translation": "https://github.com/AssistOS-AI/dynamicCircuits"
+    },
+    {
+      "id": "t001611",
+      "source": "[R29] AssistOS-AI. eslm: Executable Symbolic Language Model. Public GitHub repository and maintained documentation, state consulted 18 August 2026.",
+      "translation": "[R29] AssistOS-AI. eslm: Executable Symbolic Language Model. Public GitHub repository and maintained documentation, state consulted 18 August 2026."
+    },
+    {
+      "id": "t001612",
+      "source": "https://github.com/AssistOS-AI/eslm",
+      "translation": "https://github.com/AssistOS-AI/eslm"
+    },
+    {
+      "id": "t001613",
+      "source": "[R30] National Institute of Standards and Technology. Artificial Intelligence Risk Management Framework and AI RMF Playbook. 2023-current.",
+      "translation": "[R30] National Institute of Standards and Technology. Artificial Intelligence Risk Management Framework and AI RMF Playbook. 2023-current."
+    },
+    {
+      "id": "t001614",
+      "source": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "translation": "https://www.nist.gov/itl/ai-risk-management-framework"
+    },
+    {
+      "id": "t001615",
+      "source": "[R31] European Commission. AI Act implementation and transparency guidance. State consulted 18 August 2026.",
+      "translation": "[R31] European Commission. AI Act implementation and transparency guidance. State consulted 18 August 2026."
+    },
+    {
+      "id": "t001616",
+      "source": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+      "translation": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+    },
+    {
+      "id": "t001617",
+      "source": "[R32] World Wide Web Consortium. PROV family of provenance recommendations.",
+      "translation": "[R32] World Wide Web Consortium. PROV family of provenance recommendations."
+    },
+    {
+      "id": "t001618",
+      "source": "https://www.w3.org/TR/prov-overview/",
+      "translation": "https://www.w3.org/TR/prov-overview/"
+    },
+    {
+      "id": "t001619",
+      "source": "[R33] RO-Crate Community. RO-Crate Metadata Specification 1.3 and official use-case material. 2026.",
+      "translation": "[R33] RO-Crate Community. RO-Crate Metadata Specification 1.3 and official use-case material. 2026."
+    },
+    {
+      "id": "t001620",
+      "source": "https://www.researchobject.org/ro-crate/",
+      "translation": "https://www.researchobject.org/ro-crate/"
+    },
+    {
+      "id": "t001621",
+      "source": "[R34] Project Jupyter. Jupyter documentation and Notebook format/use-case documentation.",
+      "translation": "[R34] Project Jupyter. Jupyter documentation and Notebook format/use-case documentation."
+    },
+    {
+      "id": "t001622",
+      "source": "https://jupyter.org/",
+      "translation": "https://jupyter.org/"
+    },
+    {
+      "id": "t001623",
+      "source": "[R35] Association for Computing Machinery. Artifact Review and Badging policy and reproducibility guidance.",
+      "translation": "[R35] Association for Computing Machinery. Artifact Review and Badging policy and reproducibility guidance."
+    },
+    {
+      "id": "t001624",
+      "source": "[R36] Yamada, Y. et al. The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search. arXiv:2504.08066, 2025.",
+      "translation": "[R36] Yamada, Y. et al. The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search. arXiv:2504.08066, 2025."
+    },
+    {
+      "id": "t001625",
+      "source": "[R37] FutureHouse. Research mission and platform material on scientific research agents.",
+      "translation": "[R37] FutureHouse. Research mission and platform material on scientific research agents."
+    },
+    {
+      "id": "t001626",
+      "source": "https://www.futurehouse.org/",
+      "translation": "https://www.futurehouse.org/"
+    },
+    {
+      "id": "t001627",
+      "source": "[R38] Mitchener, L. et al. Kosmos: An AI Scientist for Autonomous Discovery. arXiv:2511.02824, 2025.",
+      "translation": "[R38] Mitchener, L. et al. Kosmos: An AI Scientist for Autonomous Discovery. arXiv:2511.02824, 2025."
+    },
+    {
+      "id": "t001628",
+      "source": "[R39] Nusrat, H. and Nusrat, O. When AI Does Science: Evaluating the Autonomous AI Scientist KOSMOS in Radiation Biology. arXiv:2511.13825, 2025.",
+      "translation": "[R39] Nusrat, H. and Nusrat, O. When AI Does Science: Evaluating the Autonomous AI Scientist KOSMOS in Radiation Biology. arXiv:2511.13825, 2025."
+    },
+    {
+      "id": "t001629",
+      "source": "[R40] Kuhn, T. A Survey and Classification of Controlled Natural Languages. Computational Linguistics 40(1), 2014.",
+      "translation": "[R40] Kuhn, T. A Survey and Classification of Controlled Natural Languages. Computational Linguistics 40(1), 2014."
+    },
+    {
+      "id": "t001630",
+      "source": "[R41] Schwitter, R., and Fuchs, N. E. Attempto: From Specifications in Controlled Natural Language towards Executable Specifications. arXiv:cmp-lg/9603004.",
+      "translation": "[R41] Schwitter, R., and Fuchs, N. E. Attempto: From Specifications in Controlled Natural Language towards Executable Specifications. arXiv:cmp-lg/9603004."
+    },
+    {
+      "id": "t001631",
+      "source": "[R42] Sowa, J. F. Common Logic Controlled English and related Common Logic material.",
+      "translation": "[R42] Sowa, J. F. Common Logic Controlled English and related Common Logic material."
+    },
+    {
+      "id": "t001632",
+      "source": "[R43] Object Management Group. Semantics of Business Vocabulary and Business Rules, Version 1.5.",
+      "translation": "[R43] Object Management Group. Semantics of Business Vocabulary and Business Rules, Version 1.5."
+    },
+    {
+      "id": "t001633",
+      "source": "https://www.omg.org/spec/SBVR/1.5/About-SBVR",
+      "translation": "https://www.omg.org/spec/SBVR/1.5/About-SBVR"
+    },
+    {
+      "id": "t001634",
+      "source": "[R44] Ranta, A. Grammatical Framework and official GF documentation.",
+      "translation": "[R44] Ranta, A. Grammatical Framework and official GF documentation."
+    },
+    {
+      "id": "t001635",
+      "source": "https://www.grammaticalframework.org/",
+      "translation": "https://www.grammaticalframework.org/"
+    },
+    {
+      "id": "t001636",
+      "source": "[R45] Caruso, S., Dodaro, C., Maratea, M., Mochi, M., and Riccio, F. CNL2ASP: Converting Controlled Natural Language Sentences into ASP. TPLP 24(2), 2024.",
+      "translation": "[R45] Caruso, S., Dodaro, C., Maratea, M., Mochi, M., and Riccio, F. CNL2ASP: Converting Controlled Natural Language Sentences into ASP. TPLP 24(2), 2024."
+    },
+    {
+      "id": "t001637",
+      "source": "[R46] Borroto, M., Kareem, I., and Ricca, F. Towards Automatic Composition of ASP Programs from Natural Language Specifications. IJCAI 2024.",
+      "translation": "[R46] Borroto, M., Kareem, I., and Ricca, F. Towards Automatic Composition of ASP Programs from Natural Language Specifications. IJCAI 2024."
+    },
+    {
+      "id": "t001638",
+      "source": "[R47] Nelson, G. Inform 7: a natural-language-based programming language for interactive fiction. Official project site.",
+      "translation": "[R47] Nelson, G. Inform 7: a natural-language-based programming language for interactive fiction. Official project site."
+    },
+    {
+      "id": "t001639",
+      "source": "https://ganelson.github.io/inform-website/",
+      "translation": "https://ganelson.github.io/inform-website/"
+    },
+    {
+      "id": "t001640",
+      "source": "[R48] Cucumber Project. Gherkin Reference and Cucumber documentation on executable specifications.",
+      "translation": "[R48] Cucumber Project. Gherkin Reference and Cucumber documentation on executable specifications."
+    },
+    {
+      "id": "t001641",
+      "source": "https://cucumber.io/docs/gherkin/",
+      "translation": "https://cucumber.io/docs/gherkin/"
+    },
+    {
+      "id": "t001642",
+      "source": "[R49] Whole Tale Project. Open-source platform and executable research-object model.",
+      "translation": "[R49] Whole Tale Project. Open-source platform and executable research-object model."
+    },
+    {
+      "id": "t001643",
+      "source": "https://wholetale.org/",
+      "translation": "https://wholetale.org/"
+    },
+    {
+      "id": "t001644",
+      "source": "[R50] Common Workflow Language Project. Official standard and documentation.",
+      "translation": "[R50] Common Workflow Language Project. Official standard and documentation."
+    },
+    {
+      "id": "t001645",
+      "source": "https://www.commonwl.org/",
+      "translation": "https://www.commonwl.org/"
+    },
+    {
+      "id": "t001646",
+      "source": "[R51] REANA Project. Reusable Analyses platform.",
+      "translation": "[R51] REANA Project. Reusable Analyses platform."
+    },
+    {
+      "id": "t001647",
+      "source": "https://www.reana.io/",
+      "translation": "https://www.reana.io/"
+    },
+    {
+      "id": "t001648",
+      "source": "[R52] Jaradeh, M. Y. et al. Open Research Knowledge Graph: Next Generation Infrastructure for Semantic Scholarly Knowledge. K-CAP 2019; and ORKG system documentation.",
+      "translation": "[R52] Jaradeh, M. Y. et al. Open Research Knowledge Graph: Next Generation Infrastructure for Semantic Scholarly Knowledge. K-CAP 2019; and ORKG system documentation."
+    },
+    {
+      "id": "t001649",
+      "source": "[R53] Kuhn, T. et al. Nanopublication literature and current nanopublication documentation.",
+      "translation": "[R53] Kuhn, T. et al. Nanopublication literature and current nanopublication documentation."
+    },
+    {
+      "id": "t001650",
+      "source": "[R54] Lu, C. et al. Towards end-to-end automation of AI research. Nature, 2026.",
+      "translation": "[R54] Lu, C. et al. Towards end-to-end automation of AI research. Nature, 2026."
+    },
+    {
+      "id": "t001651",
+      "source": "https://www.nature.com/articles/s41586-026-10265-5",
+      "translation": "https://www.nature.com/articles/s41586-026-10265-5"
+    },
+    {
+      "id": "t001652",
+      "source": "[R55] Gottweis, J. et al. Accelerating scientific discovery with Co-Scientist. Nature, 2026.",
+      "translation": "[R55] Gottweis, J. et al. Accelerating scientific discovery with Co-Scientist. Nature, 2026."
+    },
+    {
+      "id": "t001653",
+      "source": "https://www.nature.com/articles/s41586-026-10644-y",
+      "translation": "https://www.nature.com/articles/s41586-026-10644-y"
+    },
+    {
+      "id": "t001654",
+      "source": "[R56] Ghareeb, A. E. et al. A multi-agent system for automating scientific discovery. Nature, 2026; together with Bisht, H. et al. Agentic AI Scientists Are Not Built For Autonomous Scientific Discovery, 2026 position paper.",
+      "translation": "[R56] Ghareeb, A. E. et al. A multi-agent system for automating scientific discovery. Nature, 2026; together with Bisht, H. et al. Agentic AI Scientists Are Not Built For Autonomous Scientific Discovery, 2026 position paper."
+    },
+    {
+      "id": "t001655",
+      "source": "[R57] AAAI-26 AI Review Pilot. AI-Assisted Peer Review at Scale: The AAAI-26 AI Review Pilot Program. arXiv:2604.13940, 2026.",
+      "translation": "[R57] AAAI-26 AI Review Pilot. AI-Assisted Peer Review at Scale: The AAAI-26 AI Review Pilot Program. arXiv:2604.13940, 2026."
+    },
+    {
+      "id": "t001656",
+      "source": "[R58] NeurIPS 2026. AI-Assisted Reviewing Experiment. Official conference documentation.",
+      "translation": "[R58] NeurIPS 2026. AI-Assisted Reviewing Experiment. Official conference documentation."
+    },
+    {
+      "id": "t001657",
+      "source": "https://neurips.cc/Conferences/2026/ai-reviewing-experiment",
+      "translation": "https://neurips.cc/Conferences/2026/ai-reviewing-experiment"
+    },
+    {
+      "id": "t001658",
+      "source": "[R59] Nguyen, T. H., and Ahmadi, Z. LLM-Based Scientific Peer Review: Methods, Benchmarks, and Reliability Challenges. arXiv:2606.25057, 2026; and Can AI Be a Good Peer Reviewer? A Survey of Emerging Trends and Challenges. arXiv:2604.27924, 2026.",
+      "translation": "[R59] Nguyen, T. H., and Ahmadi, Z. LLM-Based Scientific Peer Review: Methods, Benchmarks, and Reliability Challenges. arXiv:2606.25057, 2026; and Can AI Be a Good Peer Reviewer? A Survey of Emerging Trends and Challenges. arXiv:2604.27924, 2026."
+    },
+    {
+      "id": "t001659",
+      "source": "[R60] Edelman, B., and Skolnick, J. Valsci: An Open-Source, Self-Hostable Literature Review Utility for Automated Large-Batch Scientific Claim Verification Using Large Language Models. BMC Bioinformatics 26, 140, 2025. DOI: 10.1186/s12859-025-06159-4.",
+      "translation": "[R60] Edelman, B., and Skolnick, J. Valsci: An Open-Source, Self-Hostable Literature Review Utility for Automated Large-Batch Scientific Claim Verification Using Large Language Models. BMC Bioinformatics 26, 140, 2025. DOI: 10.1186/s12859-025-06159-4."
+    },
+    {
+      "id": "t001660",
+      "source": "[R61] Liu, H., et al. Retrieval Augmented Scientific Claim Verification. JAMIA Open 7(1), ooae021, 2024; and Sadeghi, S., et al. DeepSciVerify: Verifying Scientific Claim-Citation Alignment via LLM-Driven Evidence Escalation. arXiv:2605.27710, 2026.",
+      "translation": "[R61] Liu, H., et al. Retrieval Augmented Scientific Claim Verification. JAMIA Open 7(1), ooae021, 2024; and Sadeghi, S., et al. DeepSciVerify: Verifying Scientific Claim-Citation Alignment via LLM-Driven Evidence Escalation. arXiv:2605.27710, 2026."
+    },
+    {
+      "id": "t001661",
+      "source": "[R62] ISO/IEC 42001:2023. Information technology - Artificial intelligence - Management system.",
+      "translation": "[R62] ISO/IEC 42001:2023. Information technology - Artificial intelligence - Management system."
+    },
+    {
+      "id": "t001662",
+      "source": "https://www.iso.org/standard/42001",
+      "translation": "https://www.iso.org/standard/42001"
+    },
+    {
+      "id": "t001663",
+      "source": "[R63] ISO/IEC 42006:2025. Requirements for bodies providing audit and certification of artificial intelligence management systems.",
+      "translation": "[R63] ISO/IEC 42006:2025. Requirements for bodies providing audit and certification of artificial intelligence management systems."
+    },
+    {
+      "id": "t001664",
+      "source": "https://www.iso.org/standard/42006",
+      "translation": "https://www.iso.org/standard/42006"
+    },
+    {
+      "id": "t001665",
+      "source": "[R64] OECD. Recommendation of the Council on Artificial Intelligence and OECD AI Principles, updated framework consulted August 2026.",
+      "translation": "[R64] OECD. Recommendation of the Council on Artificial Intelligence and OECD AI Principles, updated framework consulted August 2026."
+    },
+    {
+      "id": "t001666",
+      "source": "https://oecd.ai/en/ai-principles",
+      "translation": "https://oecd.ai/en/ai-principles"
+    },
+    {
+      "id": "t001667",
+      "source": "[R65] Cerna, D. M. et al. Integration of Controlled Natural Language in Formal Mathematics. EuroProofNet white paper, 2025.",
+      "translation": "[R65] Cerna, D. M. et al. Integration of Controlled Natural Language in Formal Mathematics. EuroProofNet white paper, 2025."
+    }
+  ]
+}

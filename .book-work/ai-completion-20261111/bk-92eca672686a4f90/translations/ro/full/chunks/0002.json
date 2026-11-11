@@ -1,0 +1,756 @@
+{
+  "language": "ro",
+  "chunk": 2,
+  "segments": [
+    {
+      "id": "t000148",
+      "source": "Meridian's context builder eventually produces a decision packet for each agent turn. It contains the current objective, the limited policy clauses relevant to that objective, a compact task-state object, the most relevant evidence with provenance and timestamps, the list of permitted tools, and a short record of previous decisions. Everything else remains addressable but out of context. This design feels conservative, yet it makes the model more capable: attention is reserved for information that can change the next action.",
+      "translation": "Constructorul de context al Meridian produce în cele din urmă un pachet decizional pentru fiecare rundă a agentului. Acesta conține obiectivul curent, clauzele limitate de politică relevante pentru acel obiectiv, un obiect compact de stare a sarcinii, cele mai relevante dovezi cu proveniență și marcaje temporale, lista instrumentelor permise și o scurtă înregistrare a deciziilor anterioare. Tot restul rămâne adresabil, dar în afara contextului. Proiectarea pare conservatoare, dar face modelul mai capabil: atenția este rezervată informațiilor care pot schimba acțiunea următoare."
+    },
+    {
+      "id": "t000149",
+      "source": "Context selection is also a security decision. If an agent can retrieve an entire corporate file system, the retrieval layer has effectively become a privilege-escalation surface. Access control must be applied before ranking, not after the model has already seen the content. Similarly, a search result may be relevant but not appropriate for the current purpose. A customer-support agent might be authorized to read a troubleshooting note but not an internal merger document that happens to mention the same product code. Retrieval systems for agents therefore need both semantic relevance and policy-aware filtering.",
+      "translation": "Selectarea contextului este și o decizie de securitate. Dacă un agent poate recupera un întreg sistem corporativ de fișiere, stratul de recuperare a devenit efectiv o suprafață de escaladare a privilegiilor. Controlul accesului trebuie aplicat înaintea clasării, nu după ce modelul a văzut deja conținutul. Similar, un rezultat de căutare poate fi relevant, dar nepotrivit scopului curent. Un agent de asistență pentru clienți poate fi autorizat să citească o notă de depanare, dar nu un document intern de fuziune care menționează întâmplător același cod de produs. Sistemele de recuperare pentru agenți au, prin urmare, nevoie atât de relevanță semantică, cât și de filtrare conștientă de politici."
+    },
+    {
+      "id": "t000150",
+      "source": "A useful operational metric is context yield: how much of the material placed into the model actually contributes to a correct decision. Low yield suggests over-retrieval, poor chunking, weak metadata, or insufficient task decomposition. Teams can inspect traces to learn which retrieved items the agent cites or uses, then tune retrieval policies. This makes context engineering empirical rather than aesthetic. The objective is not the largest context window; it is the most decision-relevant context per unit of attention and risk.",
+      "translation": "O metrică operațională utilă este randamentul contextului: cât din materialul introdus în model contribuie efectiv la o decizie corectă. Randamentul redus sugerează recuperare excesivă, fragmentare slabă, metadate slabe sau descompunere insuficientă a sarcinii. Echipele pot inspecta urme pentru a afla ce elemente recuperate citează sau folosește agentul, apoi pot ajusta politicile de recuperare. Aceasta face ingineria contextului empirică, nu estetică. Obiectivul nu este cea mai mare fereastră de context; este cel mai relevant context decizional per unitate de atenție și risc."
+    },
+    {
+      "id": "t000151",
+      "source": "Context component",
+      "translation": "Componentă de context"
+    },
+    {
+      "id": "t000152",
+      "source": "What it should contain",
+      "translation": "Ce ar trebui să conțină"
+    },
+    {
+      "id": "t000153",
+      "source": "Working context",
+      "translation": "Context de lucru"
+    },
+    {
+      "id": "t000154",
+      "source": "Only the information needed for the next decision or short local plan.",
+      "translation": "Doar informația necesară deciziei următoare sau unui plan local scurt."
+    },
+    {
+      "id": "t000155",
+      "source": "Authoritative policy",
+      "translation": "Politică autoritativă"
+    },
+    {
+      "id": "t000156",
+      "source": "Versioned instructions that can constrain action; kept distinct from ordinary retrieved content.",
+      "translation": "Instrucțiuni cu versiuni care pot constrânge acțiunea; păstrate distinct de conținutul recuperat obișnuit."
+    },
+    {
+      "id": "t000157",
+      "source": "Evidence",
+      "translation": "Dovezi"
+    },
+    {
+      "id": "t000158",
+      "source": "Facts or documents with source, time, and ideally confidence or validation metadata.",
+      "translation": "Fapte sau documente cu sursă, timp și, ideal, metadate de încredere sau validare."
+    },
+    {
+      "id": "t000159",
+      "source": "Context component",
+      "translation": "Componentă de context"
+    },
+    {
+      "id": "t000160",
+      "source": "What it should contain",
+      "translation": "Ce ar trebui să conțină"
+    },
+    {
+      "id": "t000161",
+      "source": "History summary",
+      "translation": "Rezumatul istoricului"
+    },
+    {
+      "id": "t000162",
+      "source": "Compressed prior interaction used for continuity, never treated as a substitute for original evidence.",
+      "translation": "Interacțiune anterioară comprimată, folosită pentru continuitate, niciodată tratată ca înlocuitor al dovezilor originale."
+    },
+    {
+      "id": "t000163",
+      "source": "Tool surface",
+      "translation": "Suprafața instrumentelor"
+    },
+    {
+      "id": "t000164",
+      "source": "Only capabilities currently permitted and relevant to the task phase.",
+      "translation": "Numai capacitățile permise în prezent și relevante fazei sarcinii."
+    },
+    {
+      "id": "t000165",
+      "source": "3.2 Memory as controlled state: persistence, provenance, and forgetting",
+      "translation": "3.2 Memoria ca stare controlată: persistență, proveniență și uitare"
+    },
+    {
+      "id": "t000166",
+      "source": "Memory is one of the most overloaded words in agent design. It can mean keeping a chat transcript, storing user preferences, saving prior tool results, building a vector database, maintaining a task checkpoint, learning reusable skills, or updating a knowledge base. These are different mechanisms with different risks. The first engineering improvement is simply to name them. A production agent should know what kind of memory a piece of information belongs to, how long it should live, who may read it, and what evidence supports it.",
+      "translation": "Memoria este unul dintre cele mai supraîncărcate cuvinte în proiectarea agenților. Poate însemna păstrarea unei transcrieri de chat, stocarea preferințelor utilizatorului, salvarea rezultatelor anterioare ale instrumentelor, construirea unei baze de date vectoriale, menținerea unui punct de control al sarcinii, învățarea unor competențe reutilizabile sau actualizarea unei baze de cunoaștere. Acestea sunt mecanisme diferite, cu riscuri diferite. Prima îmbunătățire inginerească este pur și simplu să le numim. Un agent de producție ar trebui să știe cărui tip de memorie îi aparține o informație, cât ar trebui să trăiască, cine o poate citi și ce dovezi o susțin."
+    },
+    {
+      "id": "t000167",
+      "source": "Working memory is task-scoped state. It contains what the agent is currently doing and is usually the most operationally important. If a process crashes, working memory should allow execution to resume without reconstructing the world from a transcript. LangGraph's checkpoint model is a concrete example: state snapshots persist across steps and support interruption, replay, fault recovery, and human intervention [S11]. Equivalent ideas appear in workflow engines and durable agent runtimes even when the API differs.",
+      "translation": "Memoria de lucru este stare delimitată la sarcină. Conține ce face agentul în prezent și este de obicei cea mai importantă operațional. Dacă un proces se blochează, memoria de lucru ar trebui să permită reluarea execuției fără reconstruirea lumii dintr-o transcriere. Modelul punctelor de control LangGraph este un exemplu concret: instantaneele stării persistă între pași și susțin întreruperea, reluarea, recuperarea după defecțiuni și intervenția umană [S11]. Idei echivalente apar în motoare de flux de lucru și medii de execuție agentice durabile, chiar dacă API-ul diferă."
+    },
+    {
+      "id": "t000168",
+      "source": "Episodic memory stores prior experiences: what happened in earlier runs, which attempts failed, what a user corrected, which exceptional condition appeared. Reflexion is a research example of using textual feedback from prior trials to improve later decisions [S23]. In production, episodic memory can make an agent adapt to recurring edge cases, but it creates a write-policy problem. If every run writes its own conclusions into long-term memory, hallucinations become self-reinforcing. Experience should be promoted only when the system has a trustworthy outcome signal, repeated evidence, or human confirmation.",
+      "translation": "Memoria episodică stochează experiențe anterioare: ce s-a întâmplat în rulări precedente, ce încercări au eșuat, ce a corectat un utilizator, ce condiție excepțională a apărut. Reflexion este un exemplu de cercetare privind folosirea feedbackului textual din încercări anterioare pentru îmbunătățirea deciziilor ulterioare [S23]. În producție, memoria episodică poate face agentul să se adapteze cazurilor-limită recurente, dar creează o problemă de politică a scrierii. Dacă fiecare rulare își scrie propriile concluzii în memoria pe termen lung, halucinațiile se consolidează singure. Experiența ar trebui promovată numai când sistemul are un semnal de rezultat de încredere, dovezi repetate sau confirmare umană."
+    },
+    {
+      "id": "t000169",
+      "source": "Semantic memory stores relatively stable facts and policies. This is closer to a curated knowledge base than to a diary. It may include product documentation, organizational rules, entity profiles, domain ontologies, and verified summaries. The central challenge is update semantics. Facts expire, policies are versioned, and contradictions occur. A semantic memory system therefore needs provenance, effective dates, supersession rules, and deletion. 'The model remembered it' is not an acceptable explanation when the information influences a regulated action.",
+      "translation": "Memoria semantică stochează fapte și politici relativ stabile. Aceasta este mai apropiată de o bază de cunoaștere atent administrată decât de un jurnal. Poate include documentația produselor, reguli organizaționale, profiluri de entități, ontologii de domeniu și rezumate verificate. Provocarea centrală este semantica actualizării. Faptele expiră, politicile au versiuni și apar contradicții. Un sistem de memorie semantică are, așadar, nevoie de proveniență, date de intrare în vigoare, reguli de înlocuire și ștergere. „Modelul și-a amintit” nu este o explicație acceptabilă când informația influențează o acțiune reglementată."
+    },
+    {
+      "id": "t000170",
+      "source": "Artifact memory deserves separate treatment. Agents create files, code patches, spreadsheets, reports, images, plans, and intermediate datasets that are too large or too structured to live in the prompt. An artifact store allows the model to refer to stable objects rather than repeatedly re-describing them. A good artifact reference includes identity, version, ownership, access control, and the trace that produced it. This becomes essential in coding and research agents, where the durable product of the run is often an artifact rather than a sentence.",
+      "translation": "Memoria artefactelor merită tratament separat. Agenții creează fișiere, modificări de cod, foi de calcul, rapoarte, imagini, planuri și seturi intermediare de date prea mari sau prea structurate pentru prompt. Un depozit de artefacte permite modelului să se refere la obiecte stabile în loc să le redescrie repetat. O referință bună la un artefact include identitate, versiune, responsabilitate, control al accesului și urma care l-a produs. Aceasta devine esențială în agenții de programare și cercetare, unde produsul durabil al rulării este adesea un artefact, nu o propoziție."
+    },
+    {
+      "id": "t000171",
+      "source": "Forgetting is a capability, not a defect. Privacy requirements may mandate deletion. A corrected customer record should supersede an older value. A temporary secret must not enter long-term memory. A failed hypothesis should not remain semantically equivalent to a verified fact. Memory systems need garbage collection, retention policies, conflict handling, and correction paths. The right mental model is a database with multiple storage classes, not an infinitely nostalgic assistant. LangGraph's distinction between thread-scoped short-term memory and cross-session long-term stores reflects this architectural separation [S10].",
+      "translation": "Uitarea este o capacitate, nu un defect. Cerințele de viață privată pot impune ștergerea. O înregistrare corectată a clientului ar trebui să înlocuiască o valoare mai veche. Un secret temporar nu trebuie să intre în memoria pe termen lung. O ipoteză eșuată nu ar trebui să rămână echivalentă semantic cu un fapt verificat. Sistemele de memorie au nevoie de colectarea datelor inutile, politici de retenție, tratarea conflictelor și căi de corectare. Modelul mental corect este o bază de date cu mai multe clase de stocare, nu un asistent infinit de nostalgic. Distincția LangGraph dintre memoria pe termen scurt delimitată la firul de execuție și depozitele pe termen lung între sesiuni reflectă această separare arhitecturală [S10]."
+    },
+    {
+      "id": "t000172",
+      "source": "Meridian uses four memory layers. The current incident state is checkpointed after every meaningful phase. Prior incident outcomes are stored as episodes only after the ticket reaches a verified resolution. Product knowledge enters semantic memory through the documentation pipeline, not through agent self-assertion. Files and diagnostic bundles live in an artifact store. This layered design also makes privacy review possible: each class has its own retention period and access rules. The agent becomes more useful not because it remembers everything, but because the organization can explain why it remembers anything.",
+      "translation": "Meridian folosește patru straturi de memorie. Starea incidentului curent este salvată în puncte de control după fiecare fază semnificativă. Rezultatele incidentelor anterioare sunt stocate ca episoade numai după ce tichetul ajunge la o rezolvare verificată. Cunoașterea produsului intră în memoria semantică prin fluxul de documentație, nu prin afirmațiile agentului despre sine. Fișierele și pachetele de diagnostic trăiesc într-un depozit de artefacte. Proiectarea stratificată permite și revizuirea vieții private: fiecare clasă are propria perioadă de retenție și reguli de acces. Agentul devine mai util nu fiindcă își amintește tot, ci fiindcă organizația poate explica de ce își amintește orice."
+    },
+    {
+      "id": "t000173",
+      "source": "Memory quality can be evaluated like any other subsystem. Retrieval precision measures whether useful memories are surfaced. Write precision measures whether stored memories deserve to persist. Freshness measures whether retrieved facts remain valid. Conflict tests check whether corrections supersede older entries. Privacy tests verify deletion and scope boundaries. These metrics are often more actionable than asking whether an agent 'feels consistent' across conversations. They turn memory into an engineered service with observable failure modes.",
+      "translation": "Calitatea memoriei poate fi evaluată ca orice subsistem. Precizia recuperării măsoară dacă sunt aduse în atenție amintiri utile. Precizia scrierii măsoară dacă amintirile stocate merită să persiste. Actualitatea măsoară dacă faptele recuperate rămân valide. Testele de conflict verifică dacă corecțiile înlocuiesc înregistrările mai vechi. Testele de viață privată verifică ștergerea și granițele domeniului. Aceste metrici sunt adesea mai utile pentru intervenție decât întrebarea dacă un agent „pare consecvent” între conversații. Transformă memoria într-un serviciu proiectat, cu moduri observabile de eșec."
+    },
+    {
+      "id": "t000174",
+      "source": "There is also a strategic distinction between remembering facts and learning procedures. Facts answer questions about the world; procedures capture how to perform a recurring task. Procedure memory may take the form of code, a workflow graph, a validated prompt fragment, or a skill specification. Voyager's executable skill library is an early research illustration of this idea [S26]. In enterprise systems, promoting a successful procedure into a reusable skill can reduce future planning cost, but only after the procedure has been validated across cases.",
+      "translation": "Există și o distincție strategică între reținerea faptelor și învățarea procedurilor. Faptele răspund la întrebări despre lume; procedurile surprind cum se efectuează o sarcină recurentă. Memoria procedurală poate lua forma codului, a unui graf de flux de lucru, a unui fragment de prompt validat sau a unei specificații de competență procedurală. Biblioteca de competențe executabile Voyager este o ilustrare timpurie de cercetare a acestei idei [S26]. În sistemele organizaționale, promovarea unei proceduri reușite într-o competență reutilizabilă poate reduce costul planificării viitoare, dar numai după validarea procedurii în mai multe cazuri."
+    },
+    {
+      "id": "t000175",
+      "source": "Figure from PDF page 19",
+      "translation": "Figură de la pagina 19 a PDF-ului"
+    },
+    {
+      "id": "t000176",
+      "source": "Figure 3. Memory is safer and more useful when separated into storage classes with different write policies, retention rules, and retrieval semantics.",
+      "translation": "Figura 3. Memoria este mai sigură și mai utilă când este separată în clase de stocare cu politici de scriere, reguli de retenție și semantici de recuperare diferite."
+    },
+    {
+      "id": "t000177",
+      "source": "Memory control",
+      "translation": "Control al memoriei"
+    },
+    {
+      "id": "t000178",
+      "source": "Required design decision",
+      "translation": "Decizie de proiectare necesară"
+    },
+    {
+      "id": "t000179",
+      "source": "Write authority",
+      "translation": "Autoritate de scriere"
+    },
+    {
+      "id": "t000180",
+      "source": "Who or what is allowed to persist a new memory?",
+      "translation": "Cine sau ce are voie să păstreze o amintire nouă?"
+    },
+    {
+      "id": "t000181",
+      "source": "Evidence threshold",
+      "translation": "Prag de dovezi"
+    },
+    {
+      "id": "t000182",
+      "source": "What outcome, source, or human confirmation is required before promotion?",
+      "translation": "Ce rezultat, sursă sau confirmare umană este necesară înaintea promovării?"
+    },
+    {
+      "id": "t000183",
+      "source": "Scope",
+      "translation": "Domeniu"
+    },
+    {
+      "id": "t000184",
+      "source": "Is the memory task-specific, user-specific, organization-wide, or global?",
+      "translation": "Memoria este specifică sarcinii, utilizatorului, întregii organizații sau globală?"
+    },
+    {
+      "id": "t000185",
+      "source": "Lifetime",
+      "translation": "Durată de viață"
+    },
+    {
+      "id": "t000186",
+      "source": "When does the memory expire, get revalidated, or get deleted?",
+      "translation": "Când expiră memoria, când este revalidată sau ștearsă?"
+    },
+    {
+      "id": "t000187",
+      "source": "Correction path",
+      "translation": "Cale de corectare"
+    },
+    {
+      "id": "t000188",
+      "source": "How can a wrong memory be superseded without leaving ambiguous copies?",
+      "translation": "Cum poate fi înlocuită o amintire greșită fără a lăsa copii ambigue?"
+    },
+    {
+      "id": "t000189",
+      "source": "Access boundary",
+      "translation": "Graniță de acces"
+    },
+    {
+      "id": "t000190",
+      "source": "Which agents, users, or tools may retrieve it?",
+      "translation": "Ce agenți, utilizatori sau instrumente o pot recupera?"
+    },
+    {
+      "id": "t000191",
+      "source": "Chapter 4 — Tools, Protocols, and Environments",
+      "translation": "Capitolul 4 — Instrumente, protocoale și medii"
+    },
+    {
+      "id": "t000192",
+      "source": "An agent only becomes operationally useful when it can interact with systems outside the model. Tools are therefore not accessories. They are the agent's hands, sensors, and transaction interfaces. Poor tool design creates brittle reasoning; overpowered tools create security incidents. This chapter develops the agent-computer interface from typed function calls to browsers, code sandboxes, MCP, and A2A.",
+      "translation": "Un agent devine util operațional numai când poate interacționa cu sisteme din afara modelului. Instrumentele nu sunt, așadar, accesorii. Sunt mâinile, senzorii și interfețele tranzacționale ale agentului. Proiectarea slabă a instrumentelor creează raționament fragil; instrumentele prea puternice creează incidente de securitate. Capitolul dezvoltă interfața agent-calculator de la apeluri de funcții cu tipuri definite la browsere, medii izolate de cod, MCP și A2A."
+    },
+    {
+      "id": "t000193",
+      "source": "4.1 Tool contracts, side effects, and computer use",
+      "translation": "4.1 Contractele instrumentelor, efecte secundare și utilizarea calculatorului"
+    },
+    {
+      "id": "t000194",
+      "source": "The quickest way to make an agent unreliable is to give it a vague, powerful tool. Consider a function named `manage_customer` that accepts a free-form instruction string. The model must infer what operations are possible, how to phrase them, which fields are required, and which actions are reversible. Errors are inevitable. A better interface exposes narrow capabilities such as `get_customer_profile`, `list_recent_device_events`, `create_draft_response`, and `request_remote_restart`. The model then chooses among explicit actions whose parameters and consequences are legible to both software and human reviewers.",
+      "translation": "Cea mai rapidă cale de a face un agent nesigur este să-i oferi un instrument vag și puternic. Luați o funcție numită `manage_customer`, care acceptă un șir de instrucțiuni în formă liberă. Modelul trebuie să deducă ce operații sunt posibile, cum să le formuleze, ce câmpuri sunt necesare și ce acțiuni sunt reversibile. Erorile sunt inevitabile. O interfață mai bună expune capacități restrânse precum `get_customer_profile`, `list_recent_device_events`, `create_draft_response` și `request_remote_restart`. Modelul alege apoi între acțiuni explicite ai căror parametri și consecințe sunt lizibile atât software-ului, cât și evaluatorilor umani."
+    },
+    {
+      "id": "t000195",
+      "source": "Tool schemas are therefore part of the reasoning environment. Good names reduce selection errors. Descriptions should explain preconditions and effects, not merely restate the function name. Parameter types should exclude invalid states where possible. Enumerations should represent meaningful choices. Error responses should distinguish authentication failure, missing data, temporary unavailability, policy rejection, and semantic invalidity. When a tool returns a giant blob of text, the model spends tokens reconstructing structure that the API already knew. Structured responses preserve information and make deterministic validation possible.",
+      "translation": "Schemele instrumentelor fac, așadar, parte din mediul de raționament. Numele bune reduc erorile de selecție. Descrierile ar trebui să explice precondițiile și efectele, nu doar să repete numele funcției. Tipurile parametrilor ar trebui să excludă stările nevalide acolo unde este posibil. Enumerările ar trebui să reprezinte alegeri semnificative. Răspunsurile de eroare ar trebui să distingă autentificarea eșuată, datele lipsă, indisponibilitatea temporară, respingerea prin politici și nevaliditatea semantică. Când un instrument returnează un bloc uriaș de text, modelul cheltuiește tokeni reconstruind structura pe care API-ul o cunoștea deja. Răspunsurile structurate păstrează informația și fac posibilă validarea deterministă."
+    },
+    {
+      "id": "t000196",
+      "source": "Side effects divide tools into risk classes. Read-only retrieval is generally easier to automate than mutation. Reversible mutations are easier than irreversible ones. Financial transfer, deletion, publication, sending messages, changing access control, and executing code deserve explicit treatment. A production tool wrapper should know whether an operation is idempotent, whether it can be retried, whether it needs a unique transaction key, and whether it requires approval. These concepts come from distributed systems because agents do not repeal distributed-systems failure modes; they add uncertain decision-making on top of them.",
+      "translation": "Efectele secundare împart instrumentele în clase de risc. Recuperarea doar în citire este în general mai ușor de automatizat decât modificarea. Modificările reversibile sunt mai ușoare decât cele ireversibile. Transferul financiar, ștergerea, publicarea, trimiterea mesajelor, schimbarea controlului accesului și execuția de cod merită tratament explicit. O componentă de producție care încadrează un instrument ar trebui să știe dacă o operație este idempotentă, dacă poate fi reîncercată, dacă are nevoie de o cheie tranzacțională unică și dacă necesită aprobare. Aceste concepte provin din sistemele distribuite deoarece agenții nu abrogă modurile de eșec ale sistemelor distribuite; adaugă decizii incerte deasupra lor."
+    },
+    {
+      "id": "t000197",
+      "source": "Computer use expands the action space dramatically. Instead of a curated API, the agent sees pixels, accessibility trees, application state, or browser DOMs and must infer how to navigate. This is attractive because organizations possess many workflows with no clean API. It is also difficult. GUI environments contain hidden state, timing, dynamic content, inconsistent affordances, and ambiguous confirmation. WebArena showed years ago that realistic web tasks were far harder than toy environments [S19]. OSWorld 2.0 now pushes this further with professional workflows requiring hundreds of interactions, where even frontier systems remain far below reliable human completion rates [S18].",
+      "translation": "Utilizarea calculatorului extinde drastic spațiul de acțiune. În locul unui API atent selectat, agentul vede pixeli, arbori de accesibilitate, starea aplicației sau DOM-uri de browser și trebuie să deducă navigarea. Este atractiv deoarece organizațiile au multe fluxuri de lucru fără un API curat. Este și dificil. Mediile GUI conțin stare ascunsă, temporizare, conținut dinamic, posibilități de acțiune inconsecvente și confirmare ambiguă. WebArena a arătat cu ani în urmă că sarcinile web realiste erau mult mai dificile decât mediile demonstrative [S19]. OSWorld 2.0 împinge acum mai departe, cu fluxuri profesionale ce necesită sute de interacțiuni, în care chiar sistemele de frontieră rămân mult sub ratele fiabile de finalizare umană [S18]."
+    },
+    {
+      "id": "t000198",
+      "source": "Computer-use agents need stronger observation discipline. A human may glance at a screen and notice a modal dialog or changed status. An agent can continue acting on an outdated internal assumption. Robust systems therefore verify after meaningful actions. Did the file really save? Did the form submit? Did the ticket status change? Was the intended account selected? Verification is not an optional final step; it is part of the action semantics. A useful tool abstraction often packages action and observation together so the runtime can confirm what changed.",
+      "translation": "Agenții care utilizează calculatorul au nevoie de disciplină observațională mai puternică. Un om poate privi rapid un ecran și observa un dialog modal sau o stare schimbată. Un agent poate continua să acționeze pe baza unei presupuneri interne învechite. Sistemele robuste verifică, așadar, după acțiuni semnificative. Fișierul chiar s-a salvat? Formularul a fost trimis? Starea tichetului s-a schimbat? A fost selectat contul dorit? Verificarea nu este un pas final opțional; face parte din semantica acțiunii. O abstracție utilă de instrument grupează adesea acțiunea și observația pentru ca mediul de execuție să poată confirma ce s-a schimbat."
+    },
+    {
+      "id": "t000199",
+      "source": "Code execution is an extreme tool because generated code can compose many operations. Its benefit is enormous for data analysis, repository work, scientific computing, and transformation of large artifacts. Its risk comes from access. A sandbox should explicitly define filesystem scope, network access, environment variables, available credentials, process limits, package installation policy, CPU and memory quotas, and lifetime. Google's current ADK documentation describes persistent sandbox state precisely because multi-step code agents benefit from continuity while still requiring isolation [S9]. Similar patterns are appearing across coding-agent products and runtimes.",
+      "translation": "Execuția de cod este un instrument extrem deoarece codul generat poate compune multe operații. Beneficiul este enorm pentru analiza datelor, lucrul în depozite, calculul științific și transformarea artefactelor mari. Riscul vine din acces. Un mediu izolat ar trebui să definească explicit domeniul sistemului de fișiere, accesul la rețea, variabilele de mediu, acreditările disponibile, limitele de procese, politica instalării pachetelor, cotele CPU și memorie și durata de viață. Documentația ADK actuală a Google descrie starea persistentă a mediului izolat tocmai fiindcă agenții de cod cu mai mulți pași beneficiază de continuitate, necesitând în continuare izolare [S9]. Tipare similare apar în produsele și mediile de execuție ale agenților de programare."
+    },
+    {
+      "id": "t000200",
+      "source": "Meridian's diagnostic agent begins with read-only typed tools. When the team later introduces remote remediation, the action is not exposed as a generic device API. It becomes a narrowly scoped tool with a device identifier, a permitted remediation enum, a reason field, a dry-run mode, an approval token, and a result object containing the before and after state. That extra software may appear to slow development, but it moves ambiguity out of the model and into a contract that can be tested. Tool design is one of the highest-leverage forms of agent alignment available to ordinary engineering teams.",
+      "translation": "Agentul diagnostic Meridian începe cu instrumente tipizate doar în citire. Când echipa introduce ulterior remediere la distanță, acțiunea nu este expusă ca API generic al dispozitivului. Devine un instrument cu domeniu restrâns, cu identificator de dispozitiv, o enumerare a remedierilor permise, un câmp de motiv, un mod de simulare fără efecte, un token de aprobare și un obiect rezultat care conține starea de dinainte și de după. Acest software suplimentar poate părea că încetinește dezvoltarea, dar mută ambiguitatea din model într-un contract testabil. Proiectarea instrumentelor este una dintre formele cu cel mai mare efect de aliniere a agenților disponibile echipelor inginerești obișnuite."
+    },
+    {
+      "id": "t000201",
+      "source": "Tool design should include negative affordances: not only what a tool can do, but what it deliberately cannot do. A refund tool may cap the amount, require a reason code, and refuse transactions for accounts outside the authenticated user scope. A shell tool may expose a workspace but no home directory, credentials, or network. These constraints make the model's action space safer by construction. They are usually more dependable than a sentence in the prompt saying 'be careful,' because the forbidden state cannot be reached through that interface.",
+      "translation": "Proiectarea instrumentelor ar trebui să includă posibilități negative de acțiune: nu doar ce poate face un instrument, ci și ce nu poate face deliberat. Un instrument de rambursare poate plafona suma, cere un cod de motiv și refuza tranzacții pentru conturi din afara domeniului utilizatorului autentificat. Un instrument shell poate expune un spațiu de lucru, dar nu directorul personal, acreditări sau rețea. Aceste constrângeri fac spațiul de acțiune al modelului mai sigur prin construcție. Sunt de obicei mai fiabile decât o propoziție din prompt care spune „ai grijă”, deoarece starea interzisă nu poate fi atinsă prin acea interfață."
+    },
+    {
+      "id": "t000202",
+      "source": "Tool evolution also needs versioning. A schema change can silently alter model behavior even when application code still runs. New enum values, changed defaults, or expanded permissions affect the decision environment. Production platforms should therefore version tool manifests, include them in traces, and run regression evaluations when tools change. In agent systems, an API contract is part of the model's behavioral context, so interface changes deserve the same caution as model changes.",
+      "translation": "Evoluția instrumentelor are nevoie și de versiuni. O schimbare de schemă poate modifica pe nesimțite comportamentul modelului chiar dacă codul aplicației încă rulează. Valorile noi de enumerare, valorile implicite schimbate sau permisiunile extinse afectează mediul decizional. Platformele de producție ar trebui, așadar, să versioneze manifestele instrumentelor, să le includă în urme și să ruleze evaluări de regresie când instrumentele se schimbă. În sistemele agentice, un contract API face parte din contextul comportamental al modelului, deci schimbările interfeței merită aceeași prudență ca schimbările modelului."
+    },
+    {
+      "id": "t000203",
+      "source": "Tool class",
+      "translation": "Clasă de instrumente"
+    },
+    {
+      "id": "t000204",
+      "source": "Production expectation",
+      "translation": "Așteptare de producție"
+    },
+    {
+      "id": "t000205",
+      "source": "Read-only query",
+      "translation": "Interogare doar în citire"
+    },
+    {
+      "id": "t000206",
+      "source": "Lowest operational risk; still validate authorization, privacy, and source freshness.",
+      "translation": "Cel mai mic risc operațional; validați totuși autorizarea, viața privată și actualitatea sursei."
+    },
+    {
+      "id": "t000207",
+      "source": "Tool class",
+      "translation": "Clasă de instrumente"
+    },
+    {
+      "id": "t000208",
+      "source": "Production expectation",
+      "translation": "Așteptare de producție"
+    },
+    {
+      "id": "t000209",
+      "source": "Reversible mutation",
+      "translation": "Modificare reversibilă"
+    },
+    {
+      "id": "t000210",
+      "source": "Allow only with clear before/after state and reliable rollback semantics.",
+      "translation": "Permiteți numai cu stare clară înainte/după și semantică fiabilă de revenire."
+    },
+    {
+      "id": "t000211",
+      "source": "Irreversible action",
+      "translation": "Acțiune ireversibilă"
+    },
+    {
+      "id": "t000212",
+      "source": "Require stronger policy gates, confirmation, transaction identity, and audit evidence.",
+      "translation": "Solicitați filtre de politică mai puternice, confirmare, identitate tranzacțională și dovezi de audit."
+    },
+    {
+      "id": "t000213",
+      "source": "Browser /GUI action",
+      "translation": "Acțiune browser / GUI"
+    },
+    {
+      "id": "t000214",
+      "source": "Expect partial observability, timing issues, and post-action verification.",
+      "translation": "Așteptați-vă la observabilitate parțială, probleme de temporizare și verificare după acțiune."
+    },
+    {
+      "id": "t000215",
+      "source": "Code execution",
+      "translation": "Execuție de cod"
+    },
+    {
+      "id": "t000216",
+      "source": "Treat the sandbox boundary as a security product, not as a convenience wrapper.",
+      "translation": "Tratați granița mediului izolat ca pe un produs de securitate, nu ca pe un înveliș de comoditate."
+    },
+    {
+      "id": "t000217",
+      "source": "4.2 MCP, A2A, and the emerging interoperability stack",
+      "translation": "4.2 MCP, A2A și stiva emergentă de interoperabilitate"
+    },
+    {
+      "id": "t000218",
+      "source": "As agent systems multiplied, integration became the bottleneck. Every framework could call functions, yet organizations were repeatedly writing custom adapters for tools, resources, prompts, remote agents, authentication, and discovery. Two standards now occupy complementary positions. The Model Context Protocol standardizes how models or agents connect to tools, resources, and related context. The Agent2Agent protocol standardizes how independent agents discover capabilities and collaborate as peers. The A2A 1.0 specification explicitly describes this complementarity: MCP is oriented toward agent-to-tool connectivity, while A2A addresses agent-to-agent interaction [S13].",
+      "translation": "Pe măsură ce sistemele agentice s-au multiplicat, integrarea a devenit blocajul. Fiecare cadru putea apela funcții, dar organizațiile scriau repetat adaptoare personalizate pentru instrumente, resurse, prompturi, agenți la distanță, autentificare și descoperire. Două standarde ocupă acum poziții complementare. Model Context Protocol standardizează felul în care modelele sau agenții se conectează la instrumente, resurse și context asociat. Protocolul Agent2Agent standardizează felul în care agenții independenți descoperă capacități și colaborează ca parteneri. Specificația A2A 1.0 descrie explicit complementaritatea: MCP este orientat spre conectivitate agent-instrument, iar A2A abordează interacțiunea agent-agent [S13]."
+    },
+    {
+      "id": "t000219",
+      "source": "MCP is important because it turns tool integration into a protocol surface rather than a framework-specific plugin. A server can expose tools and resources with schemas that many clients understand. This can reduce duplicated integration code and make capabilities portable across desktop assistants, coding agents, enterprise platforms, and custom runtimes. Yet standardization does not eliminate security. It makes security more urgent because a reusable connector can suddenly be invoked by many agents. The July 2026 MCP specification continued to evolve authorization semantics, issuer validation, caching metadata, and transport details, evidence that protocol security is an active engineering concern rather than a solved checkbox [S12].",
+      "translation": "MCP este important deoarece transformă integrarea instrumentelor într-o suprafață de protocol, nu într-un plugin specific cadrului. Un server poate expune instrumente și resurse cu scheme pe care mulți clienți le înțeleg. Aceasta poate reduce codul duplicat de integrare și face capacitățile portabile între asistenți desktop, agenți de programare, platforme organizaționale și medii personalizate de execuție. Totuși, standardizarea nu elimină securitatea. O face mai urgentă deoarece un conector reutilizabil poate fi invocat brusc de mulți agenți. Specificația MCP din iulie 2026 continua să dezvolte semantica autorizării, validarea emitentului, metadatele pentru cache și detaliile transportului, dovadă că securitatea protocolului este o preocupare inginerească activă, nu o căsuță rezolvată [S12]."
+    },
+    {
+      "id": "t000220",
+      "source": "The cleanest way to think about MCP is vertical integration. An agent uses it to reach downward into capabilities: databases, SaaS APIs, file stores, search engines, development environments, or internal services. The server should not receive more identity or authority than necessary. A tool list is not a permission grant. The client still needs policy about which tools are appropriate for a user, task, and state. Enterprises will increasingly need MCP gateways that inventory servers, inspect schemas, mediate authentication, enforce allowlists, log calls, rate-limit usage, and quarantine suspicious integrations.",
+      "translation": "Cel mai clar mod de a gândi MCP este integrarea verticală. Un agent îl folosește pentru a ajunge în jos la capacități: baze de date, API-uri SaaS, depozite de fișiere, motoare de căutare, medii de dezvoltare sau servicii interne. Serverul nu ar trebui să primească mai multă identitate sau autoritate decât este necesar. O listă de instrumente nu este o acordare de permisiune. Clientul are în continuare nevoie de politici privind instrumentele potrivite pentru un utilizator, o sarcină și o stare. Întreprinderile vor avea tot mai mult nevoie de porți MCP care inventariază servere, inspectează scheme, mediază autentificarea, impun liste de permisiuni, înregistrează apeluri, limitează rata utilizării și pun în carantină integrări suspecte."
+    },
+    {
+      "id": "t000221",
+      "source": "A2A is horizontal. One agent can discover another through an agent card or equivalent capability description, create or manage tasks, exchange messages and artifacts, and collaborate without being given the peer's internal memory or tools. The current specification is deliberately framework-agnostic and supports multiple protocol bindings [S13]. By April 2026, the Linux Foundation reported more than 150 supporting organizations and production use across several sectors [S30]. In August 2026, A2A was accepted as a Growth Stage project in the Agentic AI Foundation, a sign that agent interoperability is becoming infrastructure rather than a single-vendor feature [S31].",
+      "translation": "A2A este orizontal. Un agent poate descoperi altul printr-un card de agent sau o descriere echivalentă a capacităților, crea ori gestiona sarcini, schimba mesaje și artefacte și colabora fără a primi memoria sau instrumentele interne ale partenerului. Specificația actuală este deliberat independentă de cadrul de dezvoltare și susține mai multe asocieri de protocol [S13]. Până în aprilie 2026, Linux Foundation raporta peste 150 de organizații susținătoare și utilizare în producție în mai multe sectoare [S30]. În august 2026, A2A a fost acceptat ca proiect în etapa de creștere în Agentic AI Foundation, semn că interoperabilitatea agenților devine infrastructură, nu funcția unui singur furnizor [S31]."
+    },
+    {
+      "id": "t000222",
+      "source": "Interoperability introduces a new architectural distinction between delegation and capability use. If Meridian's incident agent calls an internal telemetry function, that is a tool invocation. If it asks a separate security-analysis agent maintained by another team to investigate suspicious device activity, that is delegation. The remote agent may use its own models, tools, policies, and data. The calling system needs a contract about task identity, expected artifacts, authentication, deadlines, error semantics, provenance, and responsibility. A2A provides protocol primitives, but organizational trust still has to be engineered.",
+      "translation": "Interoperabilitatea introduce o nouă distincție arhitecturală între delegare și utilizarea capacităților. Dacă agentul de incidente Meridian apelează o funcție internă de telemetrie, aceasta este o invocare de instrument. Dacă îi cere unui agent separat de analiză de securitate, întreținut de altă echipă, să investigheze activitate suspectă a dispozitivului, aceasta este delegare. Agentul la distanță își poate folosi propriile modele, instrumente, politici și date. Sistemul apelant are nevoie de un contract privind identitatea sarcinii, artefactele așteptate, autentificarea, termenele, semantica erorilor, proveniența și responsabilitatea. A2A furnizează primitive de protocol, dar încrederea organizațională trebuie în continuare proiectată."
+    },
+    {
+      "id": "t000223",
+      "source": "Protocol proliferation is likely. Google's 2026 developer guidance already discusses MCP, A2A, user-interface protocols, commerce and transaction protocols, and agent front-end communication as distinct layers [S32]. This is not necessarily fragmentation. Traditional software systems use many protocols because different boundaries have different semantics. The danger is conceptual overloading: using one protocol as if it solved identity, policy, observability, payment, discovery, and workflow orchestration simultaneously. A mature stack will separate these concerns even if developer tooling hides much of the plumbing.",
+      "translation": "Proliferarea protocoalelor este probabilă. Îndrumarea Google pentru dezvoltatori din 2026 discută deja MCP, A2A, protocoale de interfață cu utilizatorul, protocoale de comerț și tranzacții și comunicarea cu interfața agenților ca straturi distincte [S32]. Aceasta nu înseamnă neapărat fragmentare. Sistemele software tradiționale folosesc multe protocoale deoarece granițe diferite au semantici diferite. Pericolul este supraîncărcarea conceptuală: utilizarea unui singur protocol ca și cum ar rezolva simultan identitatea, politicile, observabilitatea, plata, descoperirea și orchestrarea fluxului de lucru. O stivă matură va separa aceste preocupări chiar dacă instrumentele dezvoltatorilor ascund mare parte din infrastructura de conexiune."
+    },
+    {
+      "id": "t000224",
+      "source": "Meridian adopts a simple rule. Internal capabilities are exposed through typed APIs or MCP servers behind an enterprise gateway. Cross-team specialist agents use A2A only when they are truly autonomous services with independent ownership. Human interfaces remain separate. This keeps the architecture legible. Standards matter most when they preserve boundaries: tools are not agents, agents are not users, discovery is not authorization, and transport interoperability is not trust.",
+      "translation": "Meridian adoptă o regulă simplă. Capacitățile interne sunt expuse prin API-uri tipizate sau servere MCP în spatele unei porți organizaționale. Agenții specialiști dintre echipe folosesc A2A numai când sunt servicii cu adevărat autonome, cu responsabilitate independentă. Interfețele umane rămân separate. Aceasta păstrează arhitectura lizibilă. Standardele contează cel mai mult când păstrează granițele: instrumentele nu sunt agenți, agenții nu sunt utilizatori, descoperirea nu este autorizare, iar interoperabilitatea transportului nu este încredere."
+    },
+    {
+      "id": "t000225",
+      "source": "Standard protocols may eventually create an ecosystem resembling the web, but with a key difference: the clients are decision-making systems. Discovery therefore has to be paired with trust. An agent that discovers a useful server cannot safely infer that the server is legitimate, that its tool descriptions are honest, or that the user authorizes its use. Enterprises will need directories with attestation, ownership, version history, risk classification, and policy metadata. Interoperability increases optionality; governance determines which options may become actions.",
+      "translation": "Protocoalele standard pot crea în cele din urmă un ecosistem asemănător webului, dar cu o diferență-cheie: clienții sunt sisteme decizionale. Descoperirea trebuie, prin urmare, asociată încrederii. Un agent care descoperă un server util nu poate deduce în siguranță că serverul este legitim, că descrierile instrumentelor sunt oneste sau că utilizatorul autorizează folosirea lui. Întreprinderile vor avea nevoie de directoare cu atestare, responsabilitate, istoric al versiunilor, clasificarea riscului și metadate de politici. Interoperabilitatea mărește opțiunile; guvernanța determină ce opțiuni pot deveni acțiuni."
+    },
+    {
+      "id": "t000226",
+      "source": "Protocols also affect vendor architecture. If tool connections and agent delegation are standardized, customers can replace parts of the stack more easily. This may reduce lock-in at the orchestration layer while increasing competition around reliability, security, observability, and domain-specific capability. For developers, the practical benefit is modularity: a good tool service or specialist agent can be reused across several front ends and models without rewriting its contract for every framework.",
+      "translation": "Protocoalele afectează și arhitectura furnizorilor. Dacă legăturile instrumentelor și delegarea agenților sunt standardizate, clienții pot înlocui mai ușor părți ale stivei. Aceasta poate reduce captivitatea în stratul de orchestrare, crescând concurența în jurul fiabilității, securității, observabilității și capacităților specifice domeniului. Pentru dezvoltatori, beneficiul practic este modularitatea: un serviciu bun de instrumente sau un agent specialist poate fi reutilizat prin mai multe interfețe și modele fără rescrierea contractului pentru fiecare cadru."
+    },
+    {
+      "id": "t000227",
+      "source": "Layer",
+      "translation": "Strat"
+    },
+    {
+      "id": "t000228",
+      "source": "Primary responsibility",
+      "translation": "Responsabilitate principală"
+    },
+    {
+      "id": "t000229",
+      "source": "MCP",
+      "translation": "MCP"
+    },
+    {
+      "id": "t000230",
+      "source": "Connect an agent to tools, resources, and data-oriented capabilities. Think vertical integration.",
+      "translation": "Conectează un agent la instrumente, resurse și capacități orientate spre date. Gândiți în termeni de integrare verticală."
+    },
+    {
+      "id": "t000231",
+      "source": "A2A",
+      "translation": "A2A"
+    },
+    {
+      "id": "t000232",
+      "source": "Connect independently operated agents that can accept tasks and collaborate. Think horizontal delegation.",
+      "translation": "Conectează agenți operați independent, care pot accepta sarcini și colabora. Gândiți în termeni de delegare orizontală."
+    },
+    {
+      "id": "t000233",
+      "source": "Layer",
+      "translation": "Strat"
+    },
+    {
+      "id": "t000234",
+      "source": "Primary responsibility",
+      "translation": "Responsabilitate principală"
+    },
+    {
+      "id": "t000235",
+      "source": "Identity layer",
+      "translation": "Stratul de identitate"
+    },
+    {
+      "id": "t000236",
+      "source": "Authenticates users, services, and delegated actors; should not be inferred from protocol discovery.",
+      "translation": "Autentifică utilizatori, servicii și actori delegați; nu ar trebui dedus din descoperirea prin protocol."
+    },
+    {
+      "id": "t000237",
+      "source": "Policy layer",
+      "translation": "Stratul de politici"
+    },
+    {
+      "id": "t000238",
+      "source": "Decides whether a capability may be used in the current context, regardless of whether it is discoverable.",
+      "translation": "Decide dacă o capacitate poate fi folosită în contextul curent, indiferent dacă poate fi descoperită."
+    },
+    {
+      "id": "t000239",
+      "source": "Observability layer",
+      "translation": "Stratul de observabilitate"
+    },
+    {
+      "id": "t000240",
+      "source": "Records calls, tasks, artifacts, errors, and provenance across protocol boundaries.",
+      "translation": "Înregistrează apeluri, sarcini, artefacte, erori și proveniență peste granițele protocoalelor."
+    },
+    {
+      "id": "t000241",
+      "source": "Chapter 5 — Multi-Agent Systems",
+      "translation": "Capitolul 5 — Sisteme multiagent"
+    },
+    {
+      "id": "t000242",
+      "source": "Multiple agents are seductive because they resemble a team. Sometimes specialization and parallelism genuinely help. Sometimes the architecture merely multiplies prompts, latency, and failure modes. The core question is not how many agents can be orchestrated, but where organizational decomposition creates real computational advantage.",
+      "translation": "Agenții multipli sunt seducători deoarece seamănă cu o echipă. Uneori specializarea și paralelismul ajută cu adevărat. Alteori arhitectura multiplică doar prompturile, latența și modurile de eșec. Întrebarea centrală nu este câți agenți pot fi orchestrați, ci unde descompunerea organizațională creează avantaj computațional real."
+    },
+    {
+      "id": "t000243",
+      "source": "5.1 When multiple agents help: supervisors, handoffs, workers, and reviewers",
+      "translation": "5.1 Când ajută agenții multipli: supraveghetori, transferuri de control, executanți și evaluatori"
+    },
+    {
+      "id": "t000244",
+      "source": "A single agent should be the default benchmark. This rule is important because multi-agent architectures can improve a demo while quietly degrading a system. Every additional agent creates another prompt, context boundary, model call, failure mode, trace, and coordination decision. If a single well-tooled agent can solve the task reliably, multiplying roles usually adds cost without adding capability. Multi-agent design becomes rational when the task benefits from specialization, isolation of context, parallel search, independent review, or organizational boundaries that already exist outside the AI system.",
+      "translation": "Un singur agent ar trebui să fie referința implicită. Regula este importantă deoarece arhitecturile multiagent pot îmbunătăți o demonstrație degradând pe ascuns un sistem. Fiecare agent suplimentar creează încă un prompt, o graniță de context, un apel de model, un mod de eșec, o urmă și o decizie de coordonare. Dacă un singur agent bine echipat poate rezolva fiabil sarcina, multiplicarea rolurilor adaugă de obicei cost fără capacitate. Proiectarea multiagent devine rațională când sarcina beneficiază de specializare, izolarea contextului, căutare paralelă, revizuire independentă sau granițe organizaționale care există deja în afara sistemului IA."
+    },
+    {
+      "id": "t000245",
+      "source": "The supervisor-worker pattern is the most common. A supervisor interprets the global goal, decomposes it, assigns subproblems, and integrates results. Workers receive narrower contexts and tool sets. This can reduce cognitive load on each model and allow parallel execution. It is effective for research tasks where several sources can be investigated independently, for software tasks that touch separable components, and for document production where extraction, verification, and synthesis can be separated. The supervisor, however, becomes a bottleneck and a single point of coordination failure.",
+      "translation": "Tiparul supraveghetor-executant este cel mai comun. Un supraveghetor interpretează obiectivul global, îl descompune, atribuie subprobleme și integrează rezultate. Executanții primesc contexte și seturi de instrumente mai restrânse. Aceasta poate reduce încărcarea cognitivă a fiecărui model și permite execuție paralelă. Este eficace pentru sarcini de cercetare în care mai multe surse pot fi investigate independent, pentru sarcini software care ating componente separabile și pentru producția de documente unde extragerea, verificarea și sinteza pot fi separate. Supraveghetorul devine însă un blocaj și un punct unic de eșec al coordonării."
+    },
+    {
+      "id": "t000246",
+      "source": "Handoffs are different. Instead of a manager retaining control, one agent transfers the interaction to a specialist. OpenAI's Agents SDK exposes both manager-style composition and handoffs as distinct orchestration patterns [S5]. Handoffs work well when a conversation enters a domain with different rules, tools, or identity requirements, such as moving from general support to refunds or from product guidance to regulated advice. They work poorly when the user must repeatedly bounce between specialists and context is lost at each boundary.",
+      "translation": "Transferurile de control sunt diferite. În loc ca un manager să păstreze controlul, un agent transferă interacțiunea unui specialist. SDK-ul Agents al OpenAI expune atât compoziția de tip manager, cât și transferurile de control ca tipare distincte de orchestrare [S5]. Transferurile funcționează bine când o conversație intră într-un domeniu cu reguli, instrumente sau cerințe de identitate diferite, precum trecerea de la asistență generală la rambursări sau de la îndrumare despre produs la sfaturi reglementate. Funcționează slab când utilizatorul trebuie să sară repetat între specialiști și contextul se pierde la fiecare graniță."
+    },
+    {
+      "id": "t000247",
+      "source": "Agents-as-tools provide another form of composition. A specialist is exposed to a manager as if it were a higher-level capability. The manager remains responsible for the final interaction while delegating bounded work. This is useful when the specialist produces an artifact rather than owning the conversation: a research agent returns evidence, a code agent returns a patch, a policy agent returns a compliance assessment. The abstraction can also hide complexity, so the returned artifact should include provenance and confidence rather than a bare natural-language assertion.",
+      "translation": "Agenții ca instrumente oferă altă formă de compoziție. Un specialist este expus managerului ca și cum ar fi o capacitate de nivel superior. Managerul rămâne responsabil pentru interacțiunea finală, delegând muncă limitată. Este util când specialistul produce un artefact, nu deține conversația: un agent de cercetare returnează dovezi, un agent de cod returnează o modificare, un agent de politici returnează o evaluare de conformitate. Abstracția poate ascunde și complexitate, deci artefactul returnat ar trebui să includă proveniență și încredere, nu o simplă afirmație în limbaj natural."
+    },
+    {
+      "id": "t000248",
+      "source": "Reviewer or debate patterns seek diversity of judgment. One agent drafts and another critiques. Several agents independently propose answers, then a judge selects or synthesizes. These patterns can improve robustness when errors are weakly correlated. They fail when all agents share the same blind spot or when the judge rewards persuasive language rather than correctness. For high-stakes work, independent evidence sources matter more than theatrical disagreement. A second model that checks the same unsupported claim is not independent verification.",
+      "translation": "Tiparele de evaluare sau dezbatere caută diversitate a judecății. Un agent redactează și altul critică. Mai mulți agenți propun independent răspunsuri, apoi un judecător selectează sau sintetizează. Aceste tipare pot îmbunătăți robustețea când erorile sunt slab corelate. Eșuează când toți agenții au același punct orb sau judecătorul recompensează limbajul persuasiv în locul corectitudinii. Pentru munca cu miză ridicată, sursele independente de dovezi contează mai mult decât dezacordul teatral. Un al doilea model care verifică aceeași afirmație nesusținută nu este verificare independentă."
+    },
+    {
+      "id": "t000249",
+      "source": "Anthropic's August 2026 research on emerging multi-agent systems broadens the issue beyond orchestration frameworks. As agents increasingly interact in shared codebases, markets, and institutions, the volume of agent-agent interaction may grow faster than human oversight mechanisms can adapt [S4]. This suggests that production multi-agent design should not only ask whether agents can coordinate, but whether incentives, identities, authority, and failure containment remain understandable when interaction scales.",
+      "translation": "Cercetarea Anthropic din august 2026 despre sistemele multiagent emergente lărgește problema dincolo de cadrele de orchestrare. Pe măsură ce agenții interacționează tot mai mult în baze de cod, piețe și instituții comune, volumul interacțiunii agent-agent poate crește mai repede decât se pot adapta mecanismele de supraveghere umană [S4]. Aceasta sugerează că proiectarea multiagent de producție nu ar trebui să întrebe doar dacă agenții se pot coordona, ci și dacă stimulentele, identitățile, autoritatea și limitarea eșecurilor rămân inteligibile când interacțiunea crește la scară."
+    },
+    {
+      "id": "t000250",
+      "source": "Meridian eventually creates a small agent team, but only after the single-agent baseline is mature. A triage agent owns the user interaction. It can invoke a diagnostic specialist as a tool and hand off to a security specialist when indicators cross a threshold. A customer-language reviewer checks the proposed communication but cannot act on the system. Each role exists because it has different context, tools, or authority. There is no 'creative agent', 'planner agent', and 'critic agent' merely to make the diagram look advanced.",
+      "translation": "Meridian creează în cele din urmă o echipă mică de agenți, dar numai după maturizarea referinței cu un singur agent. Un agent de triere deține interacțiunea cu utilizatorul. Poate invoca un specialist diagnostic ca instrument și transfera controlul unui specialist de securitate când indicatorii depășesc un prag. Un evaluator al limbajului pentru clienți verifică mesajul propus, dar nu poate acționa asupra sistemului. Fiecare rol există deoarece are context, instrumente sau autoritate diferite. Nu există „agent creativ”, „agent planificator” și „agent critic” doar pentru a face diagrama să pară avansată."
+    },
+    {
+      "id": "t000251",
+      "source": "Specialization can arise from more than prompts. Different agents may use different models, context sizes, tools, temperatures, latency budgets, or deployment locations. A lightweight router can use a fast model while a difficult code repair invokes a stronger model in a sandbox. A compliance reviewer may run in a region where sensitive data is allowed to reside. A remote research specialist may have access to licensed databases that the primary agent does not. Multi-agent architecture is most defensible when specialization is backed by real capability boundaries of this kind.",
+      "translation": "Specializarea poate apărea din mai mult decât prompturi. Agenți diferiți pot folosi modele, dimensiuni de context, instrumente, temperaturi, bugete de latență sau locații de implementare diferite. Un router ușor poate folosi un model rapid, în timp ce o reparație dificilă de cod invocă un model mai puternic într-un mediu izolat. Un evaluator de conformitate poate rula într-o regiune în care datele sensibile au voie să rămână. Un specialist de cercetare la distanță poate avea acces la baze de date licențiate pe care agentul principal nu îl are. Arhitectura multiagent este cel mai justificabilă când specializarea este susținută de granițe reale de capacitate de acest fel."
+    },
+    {
+      "id": "t000252",
+      "source": "The same principle applies to failure containment. A worker given only read access can fail without causing the same harm as a supervisor with broad permissions. A reviewer can operate on artifacts without seeing secrets used during execution. Role separation can therefore be a security mechanism, not merely a cognitive metaphor. The price is coordination complexity, which should be included in evaluation and cost models.",
+      "translation": "Același principiu se aplică limitării eșecurilor. Un executant care primește doar acces de citire poate eșua fără a produce același prejudiciu ca un supraveghetor cu permisiuni largi. Un evaluator poate opera pe artefacte fără a vedea secretele folosite în execuție. Separarea rolurilor poate fi, așadar, un mecanism de securitate, nu doar o metaforă cognitivă. Prețul este complexitatea coordonării, care ar trebui inclusă în modelele de evaluare și cost."
+    },
+    {
+      "id": "t000253",
+      "source": "A practical test for a proposed specialist is to ask what information or authority can be removed from the other components after the split. If the answer is 'none', the new agent is probably just an extra model call. If the split lets the diagnostic worker see raw telemetry while the customer-facing agent sees only an approved summary, or lets a reviewer inspect a patch without holding deployment credentials, the boundary is doing real architectural work. Specialization should reduce coupling, privilege, or evaluation complexity rather than simply rename prompts.",
+      "translation": "Un test practic pentru un specialist propus este să întrebi ce informație sau autoritate poate fi eliminată din celelalte componente după separare. Dacă răspunsul este „niciuna”, noul agent este probabil doar un apel suplimentar de model. Dacă separarea îi permite executantului diagnostic să vadă telemetria brută în timp ce agentul adresat clientului vede doar un rezumat aprobat sau îi permite unui evaluator să inspecteze o modificare fără acreditări de implementare, granița face muncă arhitecturală reală. Specializarea ar trebui să reducă cuplarea, privilegiile sau complexitatea evaluării, nu doar să redenumească prompturi."
+    },
+    {
+      "id": "t000254",
+      "source": "The supervisor also deserves its own evaluation. It can fail even when every worker is competent: it may delegate too late, choose the wrong specialist, omit a constraint, accept an incomplete artifact, or create circular delegation. Teams should therefore record routing decisions and compare them with an oracle or expert policy on representative tasks. Multi-agent quality is not the average quality of the agents; it is the quality of the coordination policy that turns their partial capabilities into one outcome.",
+      "translation": "Supraveghetorul merită și el propria evaluare. Poate eșua chiar când fiecare executant este competent: poate delega prea târziu, alege specialistul greșit, omite o constrângere, accepta un artefact incomplet sau crea delegare circulară. Echipele ar trebui, așadar, să înregistreze deciziile de rutare și să le compare cu un oracol sau o politică expertă pe sarcini reprezentative. Calitatea multiagent nu este calitatea medie a agenților; este calitatea politicii de coordonare care le transformă capacitățile parțiale într-un singur rezultat."
+    },
+    {
+      "id": "t000255",
+      "source": "Pattern",
+      "translation": "Tipar"
+    },
+    {
+      "id": "t000256",
+      "source": "Best justification",
+      "translation": "Cea mai bună justificare"
+    },
+    {
+      "id": "t000257",
+      "source": "Supervisor-worker",
+      "translation": "Supraveghetor-executant"
+    },
+    {
+      "id": "t000258",
+      "source": "Use when decomposition is natural and the manager can integrate bounded results.",
+      "translation": "Folosiți când descompunerea este naturală și managerul poate integra rezultate limitate."
+    },
+    {
+      "id": "t000259",
+      "source": "Handoff",
+      "translation": "Transfer de control"
+    },
+    {
+      "id": "t000260",
+      "source": "Use when responsibility, tools, or policy genuinely move to a specialist.",
+      "translation": "Folosiți când responsabilitatea, instrumentele sau politicile trec cu adevărat la un specialist."
+    },
+    {
+      "id": "t000261",
+      "source": "Agent-as-tool",
+      "translation": "Agent ca instrument"
+    },
+    {
+      "id": "t000262",
+      "source": "Use when a specialist produces a bounded artifact while the caller retains responsibility.",
+      "translation": "Folosiți când specialistul produce un artefact limitat, iar apelantul păstrează responsabilitatea."
+    },
+    {
+      "id": "t000263",
+      "source": "Independent reviewers",
+      "translation": "Evaluatori independenți"
+    },
+    {
+      "id": "t000264",
+      "source": "Use when multiple perspectives have genuinely different evidence or error profiles.",
+      "translation": "Folosiți când perspectivele multiple au dovezi sau profiluri de eroare cu adevărat diferite."
+    },
+    {
+      "id": "t000265",
+      "source": "Parallel researchers",
+      "translation": "Cercetători paraleli"
+    },
+    {
+      "id": "t000266",
+      "source": "Use when information gathering is separable and latency matters enough to justify duplicate context cost.",
+      "translation": "Folosiți când colectarea informației este separabilă și latența contează suficient pentru a justifica duplicarea costului contextului."
+    },
+    {
+      "id": "t000267",
+      "source": "5.2 Coordination failure, shared state, and the economics of agent societies",
+      "translation": "5.2 Eșecul coordonării, starea comună și economia societăților de agenți"
+    },
+    {
+      "id": "t000268",
+      "source": "Multi-agent systems fail in ways that single agents do not. The most obvious is duplicated work. Two agents search the same source because neither knows what the other has done. Another is context drift: a supervisor's summary omits a constraint that a worker needs. A third is authority confusion: a worker assumes the supervisor approved an action when it only requested analysis. These are coordination failures familiar from human organizations, but machine speed can make them happen far more frequently and invisibly.",
+      "translation": "Sistemele multiagent eșuează în moduri în care agenții singulari nu o fac. Cel mai evident este munca duplicată. Doi agenți caută aceeași sursă deoarece niciunul nu știe ce a făcut celălalt. Altul este deriva contextului: rezumatul unui supraveghetor omite o constrângere necesară unui executant. Un al treilea este confuzia autorității: un executant presupune că supraveghetorul a aprobat o acțiune când acesta solicitase doar analiză. Sunt eșecuri de coordonare familiare din organizațiile umane, dar viteza mașinii le poate face mult mai frecvente și invizibile."
+    },
+    {
+      "id": "t000269",
+      "source": "Shared state must therefore be designed explicitly. A message transcript is rarely enough. Multi-agent work benefits from a task graph, artifact registry, ownership fields, dependency status, provenance, and immutable event history. Agents should be able to discover what has already been attempted and which result is authoritative. Where possible, shared state should use typed structures rather than summaries produced by another model. Natural-language messages remain useful for nuance, but critical coordination facts deserve machine-checkable representation.",
+      "translation": "Starea comună trebuie, prin urmare, proiectată explicit. O transcriere de mesaje este rareori suficientă. Munca multiagent beneficiază de un graf de sarcini, un registru de artefacte, câmpuri de responsabilitate, starea dependențelor, proveniență și istoric imuabil al evenimentelor. Agenții ar trebui să poată descoperi ce s-a încercat deja și ce rezultat este autoritativ. Acolo unde este posibil, starea comună ar trebui să folosească structuri tipizate, nu rezumate produse de alt model. Mesajele în limbaj natural rămân utile pentru nuanță, dar faptele critice ale coordonării merită reprezentare verificabilă automat."
+    },
+    {
+      "id": "t000270",
+      "source": "The next problem is consistency. Suppose one worker updates a customer record while another plans based on the old value. Distributed systems use locks, transactions, optimistic concurrency, version numbers, or event sourcing because shared state changes. Agent runtimes need the same tools. Model reasoning does not replace concurrency control. In fact, long-lived agents make stale-state errors more likely because more can happen between observation and action. A versioned tool can reject an update if the underlying record changed after the agent read it.",
+      "translation": "Următoarea problemă este consecvența. Să presupunem că un executant actualizează înregistrarea unui client în timp ce altul planifică pe baza valorii vechi. Sistemele distribuite folosesc blocări, tranzacții, concurență optimistă, numere de versiune sau reconstituirea stării din evenimente deoarece starea comună se schimbă. Mediile de execuție agentice au nevoie de aceleași instrumente. Raționamentul modelului nu înlocuiește controlul concurenței. De fapt, agenții de lungă durată fac erorile de stare învechită mai probabile deoarece se pot întâmpla mai multe între observație și acțiune. Un instrument cu versiuni poate respinge o actualizare dacă înregistrarea de bază s-a schimbat după citirea ei de către agent."
+    },
+    {
+      "id": "t000271",
+      "source": "Communication itself has a cost. A human organization does not ask every expert to read every email; neither should an agent society broadcast entire contexts. Agents need routing and information boundaries. Too little communication causes duplicated work and inconsistent assumptions. Too much communication creates token cost, leakage of sensitive information, and attention dilution. This makes organizational design computational. Team topology, message schemas, and artifact interfaces become performance parameters.",
+      "translation": "Comunicarea însăși are un cost. O organizație umană nu îi cere fiecărui expert să citească fiecare e-mail; nici o societate de agenți nu ar trebui să difuzeze contexte întregi. Agenții au nevoie de rutare și granițe informaționale. Prea puțină comunicare provoacă muncă duplicată și presupuneri inconsecvente. Prea multă creează cost în tokeni, scurgere de informații sensibile și diluarea atenției. Aceasta face proiectarea organizațională computațională. Topologia echipei, schemele mesajelor și interfețele artefactelor devin parametri de performanță."
+    },
+    {
+      "id": "t000272",
+      "source": "Incentive problems also emerge when agents optimize different local objectives. A sales agent may maximize conversion while a compliance agent minimizes risk. A scheduling agent may minimize cost while a service agent maximizes responsiveness. If coordination is reduced to one model deciding whose text sounds better, the system has no stable policy. Multi-objective systems need explicit prioritization, constraints, escalation, or negotiated utility. This is a promising area for formal methods and economic design, especially as agents from different organizations begin to transact through protocols such as A2A.",
+      "translation": "Apar și probleme de stimulente când agenții optimizează obiective locale diferite. Un agent de vânzări poate maximiza conversia, iar unul de conformitate poate minimiza riscul. Un agent de planificare poate minimiza costul, iar unul de servicii poate maximiza promptitudinea. Dacă coordonarea este redusă la un model care decide al cui text sună mai bine, sistemul nu are o politică stabilă. Sistemele cu obiective multiple au nevoie de prioritizare explicită, constrângeri, escaladare sau utilitate negociată. Este o zonă promițătoare pentru metode formale și proiectare economică, mai ales când agenți din organizații diferite încep să tranzacționeze prin protocoale precum A2A."
+    },
+    {
+      "id": "t000273",
+      "source": "Failure can cascade. One agent writes a false memory, another retrieves it, a supervisor treats the second agent as independent confirmation, and a final actor executes on the compounded error. The system appears to have consensus when it has only provenance collapse. Multi-agent reliability therefore depends on lineage: who asserted a fact, which source supported it, which transformations occurred, and whether downstream agents actually have independent evidence. The OWASP agentic risk taxonomy explicitly includes cascading failure and supply-chain concerns because agent composition creates amplification channels [S14].",
+      "translation": "Eșecul se poate propaga în cascadă. Un agent scrie o amintire falsă, altul o recuperează, un supraveghetor tratează al doilea agent ca pe o confirmare independentă, iar un actor final execută pe baza erorii cumulate. Sistemul pare să aibă consens, când are doar colaps al provenienței. Fiabilitatea multiagent depinde, așadar, de filiație: cine a afirmat un fapt, ce sursă l-a susținut, ce transformări au avut loc și dacă agenții din aval au efectiv dovezi independente. Taxonomia riscurilor agentice OWASP include explicit eșecul în cascadă și preocupările lanțului de aprovizionare deoarece compoziția agenților creează canale de amplificare [S14]."
+    },
+    {
+      "id": "t000274",
+      "source": "The long-term research question is not merely how to orchestrate a team of assistants. It is how to govern populations of machine actors that can communicate, specialize, compete, delegate, form markets, and act at speeds beyond human coordination. Anthropic's 2026 multi-agent research frames this as an institutional problem as much as a model problem [S4]. For engineers today, the practical takeaway is simpler: every new agent is a new actor. Give it a reason to exist, a bounded identity, explicit state, and a failure domain.",
+      "translation": "Întrebarea de cercetare pe termen lung nu este doar cum se orchestrează o echipă de asistenți. Este cum se guvernează populații de actori mașini care pot comunica, se pot specializa, concura, delega, forma piețe și acționa la viteze dincolo de coordonarea umană. Cercetarea multiagent Anthropic din 2026 formulează aceasta ca problemă instituțională în aceeași măsură ca problemă de model [S4]. Pentru inginerii de astăzi, lecția practică este mai simplă: fiecare agent nou este un actor nou. Dați-i un motiv să existe, o identitate limitată, stare explicită și un domeniu de eșec."
+    },
+    {
+      "id": "t000275",
+      "source": "As interaction grows, scheduling and admission control become part of coordination. A supervisor that can spawn arbitrary workers can consume an unbounded budget or overwhelm external services. Systems need quotas, priorities, maximum delegation depth, and sometimes economic signals that make expensive actions explicit. This is a small-scale version of a larger problem in agent economies: scarce compute, API capacity, human review, and physical resources still require allocation even if cognitive labor becomes cheap.",
+      "translation": "Pe măsură ce interacțiunea crește, planificarea execuției și controlul admiterii devin parte a coordonării. Un supraveghetor care poate crea executanți arbitrar poate consuma un buget nelimitat sau copleși servicii externe. Sistemele au nevoie de cote, priorități, adâncime maximă a delegării și uneori semnale economice care fac explicite acțiunile costisitoare. Aceasta este o versiune la scară mică a unei probleme mai mari din economiile agentice: calculul rar, capacitatea API, revizuirea umană și resursele fizice necesită în continuare alocare chiar dacă munca cognitivă devine ieftină."
+    },
+    {
+      "id": "t000276",
+      "source": "Reputation will also become a systems primitive when agents from different owners collaborate. A peer agent's self-description is not enough. Callers will care about historical success, evaluation evidence, security posture, service availability, and the provenance of returned artifacts. This resembles service discovery and supply-chain assurance today, but agent outputs are more semantically open-ended. Reliable inter-agent markets will likely need stronger evidence than ordinary API uptime metrics.",
+      "translation": "Reputația va deveni și ea o primitivă sistemică atunci când colaborează agenți de la proprietari diferiți. Autodescrierea unui agent partener nu este suficientă. Apelanții vor fi interesați de succesul istoric, dovezile evaluării, postura de securitate, disponibilitatea serviciului și proveniența artefactelor returnate. Aceasta seamănă cu descoperirea serviciilor și asigurarea lanțului de aprovizionare de astăzi, dar rezultatele agenților sunt mai deschise semantic. Piețele fiabile între agenți vor avea probabil nevoie de dovezi mai puternice decât metricile obișnuite de disponibilitate API."
+    },
+    {
+      "id": "t000277",
+      "source": "The economics of coordination puts a natural limit on agent proliferation. Every additional actor creates inference cost, latency, messages, state synchronization, and another place where a claim can lose provenance. Parallelism is attractive when subtasks are genuinely independent or when multiple hypotheses deserve exploration, but it is wasteful when workers require the same context and converge on the same evidence. Production traces should therefore measure marginal value per delegated task: did the extra worker change the decision, improve correctness, shorten latency, or merely add persuasive redundancy?",
+      "translation": "Economia coordonării pune o limită naturală proliferării agenților. Fiecare actor suplimentar creează cost de inferență, latență, mesaje, sincronizare a stării și încă un loc în care o afirmație își poate pierde proveniența. Paralelismul este atractiv când subsarcinile sunt cu adevărat independente sau când mai multe ipoteze merită explorate, dar este risipitor când executanții necesită același context și converg asupra acelorași dovezi. Urmele de producție ar trebui, așadar, să măsoare valoarea marginală per sarcină delegată: a schimbat executantul suplimentar decizia, a îmbunătățit corectitudinea, a scurtat latența sau doar a adăugat redundanță persuasivă?"
+    },
+    {
+      "id": "t000278",
+      "source": "This question becomes more important as organizations compose agents owned by different teams or vendors. A remote agent is not merely a function with a larger output schema. It has its own update cycle, model choices, data access, and failure modes. Contracts will need to describe not only request and response fields but also capability claims, provenance, freshness, service-level expectations, data-processing rules, and the conditions under which a result may be used without human verification. That is why agent interoperability eventually becomes an institutional-design problem.",
+      "translation": "Întrebarea devine mai importantă pe măsură ce organizațiile compun agenți deținuți de echipe sau furnizori diferiți. Un agent la distanță nu este doar o funcție cu o schemă de ieșire mai mare. Are propriul ciclu de actualizare, propriile alegeri de modele, acces la date și moduri de eșec. Contractele vor trebui să descrie nu doar câmpuri de cerere și răspuns, ci și afirmații despre capacități, proveniență, actualitate, așteptări de nivel al serviciului, reguli de prelucrare a datelor și condițiile în care un rezultat poate fi folosit fără verificare umană. De aceea, interoperabilitatea agenților devine în cele din urmă o problemă de proiectare instituțională."
+    },
+    {
+      "id": "t000279",
+      "source": "Coordination failure",
+      "translation": "Eșec de coordonare"
+    },
+    {
+      "id": "t000280",
+      "source": "Engineering response",
+      "translation": "Răspuns ingineresc"
+    },
+    {
+      "id": "t000281",
+      "source": "Duplicate effort",
+      "translation": "Efort duplicat"
+    },
+    {
+      "id": "t000282",
+      "source": "Use shared task state and explicit ownership of subtasks.",
+      "translation": "Folosiți stare comună a sarcinilor și responsabilitate explicită pentru subsarcini."
+    },
+    {
+      "id": "t000283",
+      "source": "Stale assumptions",
+      "translation": "Presupuneri învechite"
+    },
+    {
+      "id": "t000284",
+      "source": "Version observations and reject writes based on outdated state.",
+      "translation": "Versionați observațiile și respingeți scrierile bazate pe stare învechită."
+    },
+    {
+      "id": "t000285",
+      "source": "Authority confusion",
+      "translation": "Confuzia autorității"
+    },
+    {
+      "id": "t000286",
+      "source": "Carry identity and delegated permissions with every task, not merely in prose.",
+      "translation": "Purtați identitatea și permisiunile delegate cu fiecare sarcină, nu doar în proză."
+    },
+    {
+      "id": "t000287",
+      "source": "False consensus",
+      "translation": "Consens fals"
+    },
+    {
+      "id": "t000288",
+      "source": "Preserve source lineage so repeated claims are not mistaken for independent evidence.",
+      "translation": "Păstrați filiația surselor pentru ca afirmațiile repetate să nu fie confundate cu dovezi independente."
+    },
+    {
+      "id": "t000289",
+      "source": "Communication overload",
+      "translation": "Supraîncărcarea comunicării"
+    },
+    {
+      "id": "t000290",
+      "source": "Route artifacts and summaries to the agents that need them rather than broadcasting context.",
+      "translation": "Rutați artefactele și rezumatele la agenții care au nevoie de ele, nu difuzați contextul."
+    },
+    {
+      "id": "t000291",
+      "source": "Cascading failure",
+      "translation": "Eșec în cascadă"
+    },
+    {
+      "id": "t000292",
+      "source": "Bound privileges, limit fan-out, and add circuit breakers between autonomous actors.",
+      "translation": "Limitați privilegiile, limitați ramificarea și adăugați mecanisme de întrerupere între actori autonomi."
+    },
+    {
+      "id": "t000293",
+      "source": "Chapter 6 — Production Runtimes and AgentOps",
+      "translation": "Capitolul 6 — Medii de execuție de producție și AgentOps"
+    },
+    {
+      "id": "t000294",
+      "source": "Prototype agents live inside a request. Production agents live inside time. They wait for users, APIs, approvals, webhooks, locks, and other agents. They fail halfway through tasks and must resume. They consume budgets and create side effects. At this point the central engineering problem is no longer prompting; it is durable execution.",
+      "translation": "Agenții prototip trăiesc în interiorul unei cereri. Agenții de producție trăiesc în timp. Așteaptă utilizatori, API-uri, aprobări, notificări webhook, blocări și alți agenți. Eșuează la jumătatea sarcinilor și trebuie să reia. Consumă bugete și creează efecte secundare. În acest punct, problema inginerească centrală nu mai este promptarea; este execuția durabilă."
+    },
+    {
+      "id": "t000295",
+      "source": "6.1 Durable execution, checkpoints, queues, and human approval",
+      "translation": "6.1 Execuție durabilă, puncte de control, cozi și aprobare umană"
+    },
+    {
+      "id": "t000296",
+      "source": "A long-running agent cannot be implemented as a fragile loop in one process and still be trusted with important work. Processes crash, networks fail, APIs throttle, credentials expire, users reply hours later, and human approvals may take a day. Durable execution means that the task's meaningful state survives these interruptions. Instead of hoping the agent completes in one uninterrupted session, the runtime assumes interruption is normal and makes resumption a first-class behavior.",
+      "translation": "Un agent de lungă durată nu poate fi implementat ca buclă fragilă într-un singur proces și totuși considerat de încredere pentru muncă importantă. Procesele se blochează, rețelele eșuează, API-urile limitează rata, acreditările expiră, utilizatorii răspund după ore, iar aprobările umane pot dura o zi. Execuția durabilă înseamnă că starea semnificativă a sarcinii supraviețuiește acestor întreruperi. În loc să spere că agentul termină într-o singură sesiune neîntreruptă, mediul de execuție presupune că întreruperea este normală și face din reluare un comportament de prim rang."
+    },
+    {
+      "id": "t000297",
+      "source": "Checkpointing is the core mechanism. After a meaningful step, the runtime persists the task state, pending work, artifacts, and enough trace information to continue. LangGraph's persistence model stores graph state at execution boundaries and supports replay, forking, human interrupts, and fault recovery [S11]. Traditional workflow systems such as Temporal embody similar principles at a more general level. The important idea is independent of framework: the logical task should outlive the process that happened to execute its latest step.",
+      "translation": "Salvarea în puncte de control este mecanismul central. După un pas semnificativ, mediul de execuție păstrează starea sarcinii, munca în așteptare, artefactele și suficiente informații de trasare pentru a continua. Modelul de persistență LangGraph stochează starea grafului la granițele execuției și susține reluarea, derivarea, întreruperile umane și recuperarea după defecțiuni [S11]. Sistemele tradiționale de flux de lucru precum Temporal întruchipează principii similare la un nivel mai general. Ideea importantă este independentă de cadru: sarcina logică ar trebui să trăiască mai mult decât procesul care i-a executat întâmplător ultimul pas."
+    }
+  ]
+}

@@ -1,0 +1,611 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000433",
+      "source": "This point also identifies a likely long-term outcome. A symbolic language model may be domain-specific even if the SOP runtime is general. A biomedical profile may use a fine-tuned neural parser, biomedical ontologies, probabilistic evidence commands, and specialized temporal templates. A software-verification profile may use parsers, Datalog, SMT, and proof checking with little probabilistic reasoning. The common model is not a universal ontology; it is the circuit discipline, variable semantics, template mechanism, and budgeted constructor that allow each profile to expose its reasoning structure in the same executable language.",
+      "translation": "Acest punct identifică și un rezultat probabil pe termen lung. Un model lingvistic simbolic poate fi specific domeniului chiar dacă runtime-ul SOP este general. Un profil biomedical poate folosi un parser neural ajustat fin, ontologii biomedicale, comenzi de dovezi probabiliste și șabloane temporale specializate. Un profil de verificare software poate folosi parsere, Datalog, SMT și verificarea demonstrațiilor cu puțin raționament probabilist. Modelul comun nu este o ontologie universală; este disciplina circuitelor, semantica variabilelor, mecanismul șabloanelor și constructorul cu buget care permit fiecărui profil să își expună structura raționamentului în același limbaj executabil."
+    },
+    {
+      "id": "t000434",
+      "source": "Neuro-symbolic systems demonstrate that perception and representation learning can be connected to explicit inference. They also show the danger of treating all forms of uncertainty as interchangeable. A probability produced by a probabilistic programme, a fuzzy truth value, a neural confidence score, and a search priority are different objects. A circuit intermediate representation should preserve these distinctions so that downstream commands cannot accidentally present a heuristic rank as a calibrated probability or a formal proof.",
+      "translation": "Sistemele neurosimbolice demonstrează că percepția și învățarea reprezentărilor pot fi conectate la inferență explicită. Arată și pericolul tratării tuturor formelor de incertitudine ca interschimbabile. O probabilitate produsă de un program probabilist, o valoare fuzzy de adevăr, un scor neural de încredere și o prioritate de căutare sunt obiecte diferite. O reprezentare intermediară a circuitelor ar trebui să păstreze aceste distincții, astfel încât comenzile ulterioare să nu poată prezenta accidental un rang euristic drept probabilitate calibrată sau demonstrație formală."
+    },
+    {
+      "id": "t000435",
+      "source": "Formal solvers establish another boundary. Z3 can determine satisfiability relative to a formalization, and Lean can check a proof term relative to a theorem statement and trusted kernel. Their strength makes the correctness of translation more rather than less important. A symbolic language system must keep the original language, the formal statement, the assumptions, and the solver result connected so that a proof of the wrong theorem cannot masquerade as an answer to the original question.",
+      "translation": "Rezolvitoarele formale stabilesc o altă limită. Z3 poate determina satisfiabilitatea în raport cu o formalizare, iar Lean poate verifica un termen-demonstrație în raport cu enunțul unei teoreme și un nucleu de încredere. Puterea lor face corectitudinea traducerii mai importantă, nu mai puțin importantă. Un sistem lingvistic simbolic trebuie să păstreze conectate limbajul original, enunțul formal, ipotezele și rezultatul rezolvitorului, astfel încât o demonstrație a teoremei greșite să nu poată trece drept răspuns la întrebarea originală."
+    },
+    {
+      "id": "t000436",
+      "source": "Graph-based optimisation also contributes partial mechanisms. E-graphs can compactly retain equivalent expressions and postpone extraction. This is attractive for circuit variants, but semantic equivalence in language is context-dependent. A rewrite valid for an algebraic expression may be universally sound, while a paraphrase equivalence may depend on jurisdiction, theory, or discourse context. The equivalence relation itself must therefore be typed and scoped.",
+      "translation": "Optimizarea bazată pe grafuri contribuie și ea cu mecanisme parțiale. E-grafurile pot păstra compact expresii echivalente și amâna extragerea. Aceasta este atractiv pentru variantele de circuit, dar echivalența semantică în limbaj depinde de context. O rescriere validă pentru o expresie algebrică poate fi universal corectă, în timp ce echivalența unei parafraze poate depinde de jurisdicție, teorie sau context discursiv. Relația de echivalență însăși trebuie astfel să aibă tip și domeniu de aplicare."
+    },
+    {
+      "id": "t000437",
+      "source": "Chapter 6 - SOP Lang as a Circuit Intermediate Representation",
+      "translation": "Capitolul 6 - SOP Lang ca reprezentare intermediară a circuitelor"
+    },
+    {
+      "id": "t000438",
+      "source": "6.1 The minimal declaration model and command-owned grammars",
+      "translation": "6.1 Modelul minimal de declarație și gramaticile deținute de comenzi"
+    },
+    {
+      "id": "t000439",
+      "source": "SOP Lang begins from one declaration shape. A declaration opens with a produced variable and a command expression. The rest of the declaration is an argument region that may continue across any number of physical lines until the next declaration begins. The core parser identifies declaration boundaries, atomic tokens, quoted literals, and explicit references. It does not impose one global function-call grammar on every command.",
+      "translation": "SOP Lang începe cu o singură formă de declarație. O declarație se deschide cu o variabilă produsă și o expresie de comandă. Restul declarației este o regiune de argumente care poate continua pe oricâte linii fizice până la începutul următoarei declarații. Parserul de bază identifică limitele declarațiilor, tokenurile atomice, literalii între ghilimele și referințele explicite. Nu impune tuturor comenzilor o singură gramatică globală de apel de funcție."
+    },
+    {
+      "id": "t000440",
+      "source": "This decision is central to extensibility. A retrieval command may use words such as from, about, and limit. A temporal command may use during and until. A scientific-review command may use a vocabulary for methods, evidence policies, and reporting status. A definition command may interpret formal parameters followed by a code body. These terms belong to the command grammar unless repeated experiments justify promoting a concept into the shared kernel.",
+      "translation": "Această decizie este centrală extensibilității. O comandă de recuperare poate folosi cuvinte precum from, about și limit. O comandă temporală poate folosi during și until. O comandă de evaluare științifică poate folosi un vocabular pentru metode, politici de dovezi și statut de raportare. O comandă de definire poate interpreta parametri formali urmați de un corp de cod. Acești termeni aparțin gramaticii comenzii, cu excepția cazului în care experimente repetate justifică promovarea unui concept în nucleul comun."
+    },
+    {
+      "id": "t000441",
+      "source": "The command-owned grammar is not an invitation to ambiguity. Each command implementation or implementation profile must define how it parses its argument stream, what values it accepts, what it produces, what effects it may perform, and how failures are represented. The common runtime preserves the token sequence and resolves references; the command supplies domain semantics.",
+      "translation": "Gramatica deținută de comandă nu este o invitație la ambiguitate. Fiecare implementare sau profil de implementare a comenzii trebuie să definească modul de parsare a fluxului de argumente, valorile acceptate, ce produce, ce efecte poate efectua și cum sunt reprezentate eșecurile. Runtime-ul comun păstrează succesiunea tokenurilor și rezolvă referințele; comanda furnizează semantica domeniului."
+    },
+    {
+      "id": "t000442",
+      "source": "A minimal declaration can be written as follows.",
+      "translation": "O declarație minimală poate fi scrisă astfel."
+    },
+    {
+      "id": "t000443",
+      "source": "@events extract_events $document preserve-spans @timeline order_events $events method \"partial-order\" The first declaration creates a value named events. The command receives the value of document and an atomic token that its own parser interprets as an annotation. The second declaration consumes events and supplies a quoted literal to the order_events grammar. The indentation improves readability but does not determine dependency; the explicit references do.",
+      "translation": "@events extract_events $document preserve-spans @timeline order_events $events method \"partial-order\" Prima declarație creează o valoare numită events. Comanda primește valoarea document și un token atomic pe care propriul parser îl interpretează ca adnotare. A doua declarație consumă events și furnizează un literal între ghilimele gramaticii order_events. Indentarea îmbunătățește lizibilitatea, dar nu determină dependența; referințele explicite o determină."
+    },
+    {
+      "id": "t000444",
+      "source": "This syntax is deliberately smaller than the semantic system built around it. Types, provenance policies, security labels, cost models, and authority status can initially be represented through command contracts, package metadata, or domain commands. Independent runtimes can therefore share a minimal parser while experimenting with stronger profiles.",
+      "translation": "Această sintaxă este deliberat mai mică decât sistemul semantic construit în jurul ei. Tipurile, politicile de proveniență, etichetele de securitate, modelele de cost și statutul autorității pot fi reprezentate inițial prin contracte ale comenzilor, metadate de pachet sau comenzi de domeniu. Runtime-uri independente pot astfel împărtăși un parser minimal, experimentând totodată cu profiluri mai puternice."
+    },
+    {
+      "id": "t000445",
+      "source": "A language intended to become an intermediate representation faces a tension between minimality and analyzability. If the global grammar is too rich, every new domain feature forces changes to the parser, tooling, and runtime. If the grammar is too permissive, static analysis becomes impossible because each command is effectively arbitrary text. SOP Lang deliberately places the extension point at the command boundary. The kernel recognizes enough structure to build the dependency graph, while command implementations are free to impose stricter schemas on their own arguments.",
+      "translation": "Un limbaj destinat să devină reprezentare intermediară se confruntă cu o tensiune între minimalitate și analizabilitate. Dacă gramatica globală este prea bogată, fiecare caracteristică nouă de domeniu forțează schimbări în parser, instrumente și runtime. Dacă gramatica este prea permisivă, analiza statică devine imposibilă deoarece fiecare comandă este efectiv text arbitrar. SOP Lang plasează deliberat punctul de extensie la limita comenzii. Nucleul recunoaște suficientă structură pentru a construi graful de dependențe, iar implementările comenzilor sunt libere să impună scheme mai stricte propriilor argumente."
+    },
+    {
+      "id": "t000446",
+      "source": "The declaration boundary is the first invariant. A declaration starts when the parser encounters a variable declaration token in declaration position, followed by a command expression. The declaration continues through subsequent physical lines until the next declaration starts. Quoted literals protect content that would otherwise be tokenized. $name and ~name are recognized regardless of the command grammar because the runtime must resolve them before or during command invocation. Every other token can remain an atom until the command parser interprets it.",
+      "translation": "Limita declarației este prima invariantă. O declarație începe când parserul întâlnește un token de declarare a variabilei în poziție de declarație, urmat de o expresie de comandă. Declarația continuă prin liniile fizice ulterioare până la începutul următoarei declarații. Literalii între ghilimele protejează conținutul care altfel ar fi tokenizat. $name și ~name sunt recunoscute indiferent de gramatica comenzii deoarece runtime-ul trebuie să le rezolve înaintea sau în timpul invocării comenzii. Orice alt token poate rămâne un atom până când parserul comenzii îl interpretează."
+    },
+    {
+      "id": "t000447",
+      "source": "This representation is intentionally closer to an extensible assembly language than to a high-level programming language. The kernel does not need a universal notion of named arguments, object literals, list syntax, or annotations. A command that needs a structured sublanguage can define one.",
+      "translation": "Această reprezentare este intenționat mai apropiată de un limbaj de asamblare extensibil decât de un limbaj de programare de nivel înalt. Nucleul nu are nevoie de o noțiune universală de argumente numite, literali obiect, sintaxă de liste sau adnotări. O comandă care are nevoie de un sublimbaj structurat poate defini unul."
+    },
+    {
+      "id": "t000448",
+      "source": "The advantage is evolutionary: new command families can be introduced by coding agents without destabilizing the core syntax. The disadvantage is that malformed command-specific arguments cannot always be diagnosed by the global parser. The command registry must therefore expose schemas or validators when static diagnostics are important.",
+      "translation": "Avantajul este evolutiv: familii noi de comenzi pot fi introduse de agenți de programare fără a destabiliza sintaxa de bază. Dezavantajul este că argumentele specifice comenzilor formate greșit nu pot fi întotdeauna diagnosticate de parserul global. Registrul de comenzi trebuie astfel să expună scheme sau validatori când diagnosticele statice sunt importante."
+    },
+    {
+      "id": "t000449",
+      "source": "The same architecture appears in mature compiler infrastructures in a more formalized form. MLIR operations belong to dialects that define operations, types, and attributes, while the common IR provides generic structure and transformation infrastructure. [R2] SOP Lang’s command-owned grammar is less formal than MLIR dialect definitions, but the research analogy is useful. A future implementation can allow commands to publish a machine-readable schema describing expected positional references, accepted keywords, result type, determinism, effects, and estimated cost. The global language remains unchanged while the runtime gains enough metadata for planning and validation.",
+      "translation": "Aceeași arhitectură apare într-o formă mai formalizată în infrastructuri mature de compilatoare. Operațiile MLIR aparțin dialectelor care definesc operații, tipuri și atribute, în timp ce IR-ul comun furnizează structură generică și infrastructură de transformare. [R2] Gramatica deținută de comenzi a SOP Lang este mai puțin formală decât definițiile dialectelor MLIR, dar analogia de cercetare este utilă. O implementare viitoare poate permite comenzilor să publice o schemă lizibilă de mașini care descrie referințele poziționale așteptate, cuvintele-cheie acceptate, tipul rezultatului, determinismul, efectele și costul estimat. Limbajul global rămâne neschimbat, în timp ce runtime-ul dobândește suficiente metadate pentru planificare și validare."
+    },
+    {
+      "id": "t000450",
+      "source": "A command invocation should be conceptually separated into two stages. The SOP kernel first constructs the ordered argument stream, resolving or preserving references according to the $ and ~ markers. The command then parses that stream according to its own rules. This division makes it possible for the runtime to understand dependencies without understanding domain semantics. It can know that a declaration depends on variables claims and entities even if it does not know what the tokens where, source, or confidence mean to the command.",
+      "translation": "O invocare de comandă ar trebui separată conceptual în două etape. Nucleul SOP construiește mai întâi fluxul ordonat de argumente, rezolvând sau păstrând referințele potrivit marcajelor $ și ~. Comanda parsează apoi acel flux după propriile reguli. Această diviziune face posibil ca runtime-ul să înțeleagă dependențele fără a înțelege semantica domeniului. Poate ști că o declarație depinde de variabilele claims și entities chiar dacă nu știe ce înseamnă tokenurile where, source sau confidence pentru comandă."
+    },
+    {
+      "id": "t000451",
+      "source": "The distinction between literals and references also clarifies knowledge flow. A quoted literal such as \"key\" is embedded directly in the circuit version. A $key reference points to a value whose origin can be elsewhere in the circuit or in a loaded knowledge shard. If the literal changes, the circuit source changes. If the referenced value changes through a new version or a different input binding, the same circuit structure can operate on the new value. This is the basis for template instantiation.",
+      "translation": "Distincția dintre literali și referințe clarifică și fluxul cunoștințelor. Un literal între ghilimele precum \"key\" este încorporat direct în versiunea circuitului. O referință $key indică o valoare a cărei origine poate fi în altă parte a circuitului sau într-un fragment de cunoștințe încărcat. Dacă literalul se schimbă, sursa circuitului se schimbă. Dacă valoarea referită se schimbă printr-o versiune nouă sau o legare diferită de intrare, aceeași structură de circuit poate opera asupra valorii noi. Aceasta este baza instanțierii șabloanelor."
+    },
+    {
+      "id": "t000452",
+      "source": "~var should be reserved for cases where variable identity matters. A validation command may need to know whether an answer was produced by a verified solver or by a neural model. A cache command may inspect the dependency hash. A selection command may compare multiple alternatives stored under one variable. A provenance command may traverse source spans and transformations. Passing all of this metadata inside ordinary semantic values would pollute domain logic and make reuse harder. The meta-reference provides a separate channel.",
+      "translation": "~var ar trebui rezervat cazurilor în care contează identitatea variabilei. O comandă de validare poate trebui să știe dacă un răspuns a fost produs de un rezolvitor verificat sau de un model neural. O comandă de cache poate inspecta hashul dependențelor. O comandă de selecție poate compara mai multe alternative stocate sub o variabilă. O comandă de proveniență poate parcurge fragmente-sursă și transformări. Transmiterea tuturor acestor metadate în valorile semantice obișnuite ar polua logica domeniului și ar îngreuna reutilizarea. Metareferința furnizează un canal separat."
+    },
+    {
+      "id": "t000453",
+      "source": "This separate channel also introduces security and capability questions. A variable reference can expose more information than its value. A command authorized to consume $patientSummary may not be authorized to inspect source identifiers or hidden alternative branches through ~patientSummary. A serious SOP runtime therefore needs permissions at the command and reference level. The minimal syntax does not solve authorization, but it makes the distinction visible enough for a policy layer to enforce it.",
+      "translation": "Acest canal separat introduce și întrebări de securitate și capacități. O referință la variabilă poate expune mai multă informație decât valoarea ei. O comandă autorizată să consume $patientSummary poate să nu fie autorizată să inspecteze identificatori de surse sau ramuri alternative ascunse prin ~patientSummary. Un runtime SOP serios are astfel nevoie de permisiuni la nivel de comandă și referință. Sintaxa minimală nu rezolvă autorizarea, dar face distincția suficient de vizibilă pentru aplicarea ei de către un strat de politici."
+    },
+    {
+      "id": "t000454",
+      "source": "The research profile should treat command parsing as deterministic for a fixed implementation version. If the command invokes a stochastic model internally, that nondeterminism belongs to the command’s declared behaviour and must be represented in its trace. This is important for the overall objective of deterministic circuit construction. The planner can deterministically choose the same command and argument stream for the same state and budget even if a deliberately stochastic backend produces variable outputs.",
+      "translation": "Profilul de cercetare ar trebui să trateze parsarea comenzilor ca deterministă pentru o versiune fixă a implementării. Dacă comanda invocă intern un model stochastic, acel nedeterminism aparține comportamentului declarat al comenzii și trebuie reprezentat în urma sa. Aceasta este important pentru obiectivul general al construcției deterministe a circuitelor. Planificatorul poate alege determinist aceeași comandă și același flux de argumente pentru aceeași stare și același buget, chiar dacă un backend deliberat stochastic produce rezultate variabile."
+    },
+    {
+      "id": "t000455",
+      "source": "The same principle applies to effects. A command that only transforms its inputs can be cached aggressively. A command that reads an external database must bind the database version or query timestamp into its dependency identity. A command that changes an external system cannot be treated as a pure node. The runtime can still represent the effect, but the contract must declare it so that replay and speculative parallelism remain safe.",
+      "translation": "Același principiu se aplică efectelor. O comandă care doar își transformă intrările poate fi memorată agresiv în cache. O comandă care citește o bază de date externă trebuie să lege versiunea bazei de date sau marcajul temporal al interogării de identitatea dependenței sale. O comandă care schimbă un sistem extern nu poate fi tratată ca nod pur. Runtime-ul poate reprezenta în continuare efectul, dar contractul trebuie să îl declare, astfel încât reluarea și paralelismul speculativ să rămână sigure."
+    },
+    {
+      "id": "t000456",
+      "source": "This is where the simplicity of the syntax must not be mistaken for semantic informality. The global grammar can remain small while command contracts become rigorous. The research programme should explicitly separate the language kernel from the command contract system. The former enables extensibility; the latter determines whether large-scale planning, caching, and validation are feasible.",
+      "translation": "Aici simplitatea sintaxei nu trebuie confundată cu informalitatea semantică. Gramatica globală poate rămâne mică, în timp ce contractele comenzilor devin riguroase. Programul de cercetare ar trebui să separe explicit nucleul limbajului de sistemul contractual al comenzilor. Primul permite extensibilitatea; al doilea determină dacă sunt fezabile planificarea la scară mare, cachingul și validarea."
+    },
+    {
+      "id": "t000457",
+      "source": "The tokens from, about, domain, limit, granularity, open_world, and theory are not global SOP Lang keywords in this example. They belong to the parsers of retrieve, temporal_reason, and smt_check. Another implementation can choose stricter positional forms or publish schemas that allow editors to validate these keywords. The point is to avoid turning every domain convention into a language feature.",
+      "translation": "Tokenurile from, about, domain, limit, granularity, open_world și theory nu sunt cuvinte-cheie globale SOP Lang în acest exemplu. Aparțin parserelor retrieve, temporal_reason și smt_check. O altă implementare poate alege forme poziționale mai stricte sau publica scheme care permit editorilor să valideze aceste cuvinte-cheie. Scopul este evitarea transformării fiecărei convenții de domeniu într-o caracteristică a limbajului."
+    },
+    {
+      "id": "t000458",
+      "source": "A command definition follows the same principle. The syntax @newCommand define ... does not require the core parser to understand JavaScript. The define command receives its argument block and interprets the first atoms as formal parameter names and the remaining lines as source code according to the selected implementation profile.",
+      "translation": "O definiție de comandă urmează același principiu. Sintaxa @newCommand define ... nu cere parserului de bază să înțeleagă JavaScript. Comanda define primește blocul de argumente și interpretează primii atomi ca nume de parametri formali, iar liniile rămase ca cod-sursă potrivit profilului de implementare selectat."
+    },
+    {
+      "id": "t000459",
+      "source": "The names after define are formal parameters, not circuit references; they are interpreted by the define command. The subsequent JavaScript lines are also part of the same declaration because no new @variable command declaration has begun. A restricted implementation can reject unsafe syntax, require pure functions, or compile the code into a sandbox. A non-JavaScript implementation can provide a different define command or omit code-defined commands entirely. The general SOP model does not depend on JavaScript; it depends on the ability to add command implementations through a command-owned definition mechanism.",
+      "translation": "Numele de după define sunt parametri formali, nu referințe de circuit; sunt interpretate de comanda define. Liniile JavaScript ulterioare fac și ele parte din aceeași declarație, deoarece nu a început nicio declarație nouă @variable command. O implementare restrânsă poate respinge sintaxa nesigură, cere funcții pure sau compila codul într-un mediu izolat. O implementare non-JavaScript poate furniza o altă comandă define sau omite complet comenzile definite prin cod. Modelul SOP general nu depinde de JavaScript; depinde de posibilitatea adăugării implementărilor de comenzi printr-un mecanism de definire deținut de comandă."
+    },
+    {
+      "id": "t000460",
+      "source": "This design is particularly important for coding agents. An agent that discovers a missing primitive can generate a command definition and tests without modifying the parser. An agent that discovers a higher-level pattern can generate a template circuit using existing commands. The separation between primitive acquisition and circuit acquisition becomes explicit and measurable.",
+      "translation": "Această proiectare este deosebit de importantă pentru agenții de programare. Un agent care descoperă o primitivă lipsă poate genera o definiție de comandă și teste fără modificarea parserului. Un agent care descoperă un tipar de nivel superior poate genera un circuit-șablon folosind comenzi existente. Separarea dintre achiziția primitivelor și achiziția circuitelor devine explicită și măsurabilă."
+    },
+    {
+      "id": "t000461",
+      "source": "Kernel responsibility",
+      "translation": "Responsabilitatea nucleului"
+    },
+    {
+      "id": "t000462",
+      "source": "What remains outside the universal SOP Lang grammar",
+      "translation": "Ce rămâne în afara gramaticii SOP Lang universale"
+    },
+    {
+      "id": "t000463",
+      "source": "Detect declaration boundaries",
+      "translation": "Detectează limitele declarațiilor"
+    },
+    {
+      "id": "t000464",
+      "source": "The semantic meaning of a specific command and the validity of its domain-specific keywords.",
+      "translation": "Sensul semantic al unei comenzi specifice și validitatea cuvintelor-cheie specifice domeniului său."
+    },
+    {
+      "id": "t000465",
+      "source": "Tokenize bare atoms and quoted literals",
+      "translation": "Tokenizează atomii simpli și literalii între ghilimele"
+    },
+    {
+      "id": "t000466",
+      "source": "Whether a bare atom is a keyword, operator, type name, field name, or ordinary symbol.",
+      "translation": "Dacă un atom simplu este cuvânt-cheie, operator, nume de tip, nume de câmp sau simbol obișnuit."
+    },
+    {
+      "id": "t000467",
+      "source": "Recognize $var and ~var",
+      "translation": "Recunoaște $var și ~var"
+    },
+    {
+      "id": "t000468",
+      "source": "The internal structure of the referenced value and the metadata exposed by the variable reference.",
+      "translation": "Structura internă a valorii referite și metadatele expuse de referința la variabilă."
+    },
+    {
+      "id": "t000469",
+      "source": "Preserve argument order and Any nested command-specific mini-language, source-code grammar, query",
+      "translation": "Păstrează ordinea argumentelor și Orice minilimbaj imbricat specific comenzii, gramatică de cod-sursă, gramatică de"
+    },
+    {
+      "id": "t000470",
+      "source": "physical-line content",
+      "translation": "conținutul liniilor fizice"
+    },
+    {
+      "id": "t000471",
+      "source": "grammar, or annotation scheme.",
+      "translation": "interogare sau schemă de adnotare."
+    },
+    {
+      "id": "t000472",
+      "source": "Dispatch to a command",
+      "translation": "Distribuie către o implementare"
+    },
+    {
+      "id": "t000473",
+      "source": "The command’s algorithms, external engines, security policy, determinism, and",
+      "translation": "Algoritmii comenzii, motoarele externe, politica de securitate, determinismul și"
+    },
+    {
+      "id": "t000474",
+      "source": "implementation",
+      "translation": "de comandă"
+    },
+    {
+      "id": "t000475",
+      "source": "effect semantics.",
+      "translation": "semantica efectelor."
+    },
+    {
+      "id": "t000476",
+      "source": "Build the dependency graph",
+      "translation": "Construiește graful de dependențe"
+    },
+    {
+      "id": "t000477",
+      "source": "Domain interpretation and reasoning strategy, except insofar as commands publish contracts that the planner can inspect.",
+      "translation": "Interpretarea domeniului și strategia de raționament, cu excepția măsurii în care comenzile publică contracte inspectabile de planificator."
+    },
+    {
+      "id": "t000478",
+      "source": "The intentionally small syntax deserves a more formal reading. A declaration begins with @ followed by the name of the produced variable and a command expression. The argument region continues across as many physical lines as necessary until the next declaration begins. At the generic language level the argument region can be represented as an ordered stream composed of atomic tokens, quoted literals, $ references, and ~ references. The command owns the interpretation of that stream. This means that SOP Lang can remain syntactically small while commands introduce domain-specific vocabulary without forcing every word such as from, where, theory, policy, source, confidence, or timeout to become a globally reserved keyword.",
+      "translation": "Sintaxa intenționat mică merită o lectură mai formală. O declarație începe cu @ urmat de numele variabilei produse și o expresie de comandă. Regiunea de argumente continuă pe oricâte linii fizice sunt necesare până la începutul declarației următoare. La nivelul generic al limbajului, regiunea de argumente poate fi reprezentată ca flux ordonat compus din tokenuri atomice, literali între ghilimele, referințe $ și referințe ~. Comanda deține interpretarea acelui flux. Aceasta înseamnă că SOP Lang poate rămâne mic sintactic, în timp ce comenzile introduc vocabular specific domeniului fără a forța fiecare cuvânt precum from, where, theory, policy, source, confidence sau timeout să devină un cuvânt-cheie rezervat global."
+    },
+    {
+      "id": "t000479",
+      "source": "The command should normally receive both a normalized token view and enough raw-source information to implement its grammar reproducibly. A database command may parse relational operators. A Datalog command may interpret a block as rules. A document command may interpret keywords such as section and span. A define command may hand the remainder of the declaration to a JavaScript parser. These are command grammars, not additional layers of SOP Lang syntax. Implementations are free to constrain the accepted command grammar for safety or analyzability, but those constraints belong to a command profile or runtime profile rather than to the universal declaration mechanism.",
+      "translation": "Comanda ar trebui în mod normal să primească atât o vedere normalizată a tokenurilor, cât și suficiente informații din sursa brută pentru a-și implementa gramatica reproductibil. O comandă de bază de date poate parsa operatori relaționali. O comandă Datalog poate interpreta un bloc drept reguli. O comandă de document poate interpreta cuvinte-cheie precum section și span. O comandă define poate transmite restul declarației unui parser JavaScript. Acestea sunt gramatici de comenzi, nu straturi suplimentare ale sintaxei SOP Lang. Implementările sunt libere să constrângă gramatica acceptată a comenzilor pentru siguranță sau analizabilitate, dar acele constrângeri aparțin unui profil de comandă sau runtime, nu mecanismului universal de declarare."
+    },
+    {
+      "id": "t000480",
+      "source": "In this example from, about, domain, limit, and theory have no universal meaning to the SOP parser. The retrieve and z3 commands assign meaning to them. The kernel only needs to preserve ordering, literal boundaries, and reference identity. This division is similar to an extensible IR whose operation families own their attributes, but it is even looser: a command may choose to parse a compact domain language from the argument stream. The benefit is evolvability; the cost is that tooling cannot infer all semantics from syntax alone. That trade-off is a central research question rather than an accidental implementation detail.",
+      "translation": "În acest exemplu, from, about, domain, limit și theory nu au niciun sens universal pentru parserul SOP. Comenzile retrieve și z3 le atribuie sens. Nucleul trebuie doar să păstreze ordinea, limitele literalilor și identitatea referințelor. Această diviziune seamănă cu un IR extensibil ale cărui familii de operații își dețin atributele, dar este chiar mai relaxată: o comandă poate alege să parseze un limbaj compact de domeniu din fluxul de argumente. Beneficiul este evolvabilitatea; costul este că instrumentele nu pot deduce toată semantica doar din sintaxă. Acest compromis este o întrebare centrală de cercetare, nu un detaliu accidental al implementării."
+    },
+    {
+      "id": "t000481",
+      "source": "$var and ~var should be interpreted as different operations, not merely alternative notation. $var dereferences the current semantic value of a variable and therefore induces an ordinary data dependency. ~var passes a handle to the variable as a runtime object. The receiving command can inspect metadata that is not itself the semantic value: producer identity, command version, provenance graph, branch evaluations, cache status, timing, or validation records. A runtime can expose only a restricted immutable view through ~var so that meta-reasoning does not become uncontrolled mutation.",
+      "translation": "$var și ~var ar trebui interpretate ca operații diferite, nu doar notații alternative. $var dereferențiază valoarea semantică curentă a unei variabile și induce astfel o dependență obișnuită de date. ~var transmite un handle către variabilă ca obiect runtime. Comanda receptoare poate inspecta metadate care nu sunt ele însele valoarea semantică: identitatea producătorului, versiunea comenzii, graful de proveniență, evaluările ramurilor, statutul cache-ului, timpii sau înregistrările validării. Un runtime poate expune prin ~var doar o vedere imuabilă restrânsă, astfel încât metaraționamentul să nu devină modificare necontrolată."
+    },
+    {
+      "id": "t000482",
+      "source": "This distinction becomes especially important when alternatives are evaluated. If @answer is produced by direct_reason | prolog_reason | temporal_reason, $answer may denote the policy-selected value or another value-level representation defined by the implementation. ~answer can expose the complete alternative object, including branch-specific results and unexecuted branches. A later evaluator can therefore reason about computation itself without requiring the semantic result to contain all execution metadata.",
+      "translation": "Această distincție devine deosebit de importantă când sunt evaluate alternative. Dacă @answer este produs de direct_reason | prolog_reason | temporal_reason, $answer poate desemna valoarea selectată prin politică sau o altă reprezentare la nivel de valoare definită de implementare. ~answer poate expune obiectul complet de alternative, incluzând rezultate specifice ramurilor și ramuri neexecutate. Un evaluator ulterior poate astfel raționa despre calculul însuși fără a cere ca rezultatul semantic să conțină toate metadatele execuției."
+    },
+    {
+      "id": "t000483",
+      "source": "Command definition through @newCommand define extends the same mechanism to implementation growth. The formal parameters belong to the define command grammar and should not be written as $ references, because they are names bound by the new command implementation rather than wires from the surrounding circuit. The remainder can be source code in JavaScript or another implementation language supported by the profile. Once successfully compiled, versioned, tested, and registered, the new command becomes indistinguishable at the SOP level from an older native command.",
+      "translation": "Definirea comenzilor prin @newCommand define extinde același mecanism la creșterea implementării. Parametrii formali aparțin gramaticii comenzii define și nu ar trebui scriși ca referințe $, deoarece sunt nume legate de implementarea noii comenzi, nu fire din circuitul înconjurător. Restul poate fi cod-sursă în JavaScript sau alt limbaj de implementare susținut de profil. Odată compilată cu succes, versionată, testată și înregistrată, noua comandă devine indistinctă la nivel SOP de o comandă nativă mai veche."
+    },
+    {
+      "id": "t000484",
+      "source": "This bootstrap mechanism is powerful enough to become dangerous. If define grants unrestricted filesystem, network, reflection, or process access, the symbolic IR loses most of its analyzability and security. Production profiles should therefore treat command definitions as capability-bearing artefacts. A coding agent may author JavaScript, but promotion can require static checks, sandbox execution, tests, effect declarations, deterministic-mode tests, and an explicit version identifier. The language remains open to new primitives without making every request an opportunity to execute arbitrary untrusted code.",
+      "translation": "Acest mecanism de pornire este suficient de puternic pentru a deveni periculos. Dacă define acordă acces nerestricționat la sistemul de fișiere, rețea, reflecție sau procese, IR-ul simbolic își pierde cea mai mare parte a analizabilității și securității. Profilurile de producție ar trebui astfel să trateze definițiile comenzilor ca artefacte purtătoare de capacități. Un agent de programare poate scrie JavaScript, dar promovarea poate cere verificări statice, execuție izolată, teste, declarații de efecte, teste în mod determinist și un identificator explicit de versiune. Limbajul rămâne deschis primitivelor noi fără a face din fiecare cerere o ocazie de execuție a codului arbitrar nefiabil."
+    },
+    {
+      "id": "t000485",
+      "source": "Kernel fact",
+      "translation": "Fapt al nucleului"
+    },
+    {
+      "id": "t000486",
+      "source": "What the research runtime still has to define",
+      "translation": "Ce trebuie încă să definească runtime-ul de cercetare"
+    },
+    {
+      "id": "t000487",
+      "source": "A declaration has one @ variable name",
+      "translation": "O declarație are un singur nume de variabilă @"
+    },
+    {
+      "id": "t000488",
+      "source": "Whether names are globally unique, scoped by file/package, or versioned by epoch; the prototype convention can evolve as long as def-use identity remains unambiguous.",
+      "translation": "Dacă numele sunt global unice, delimitate pe fișier/pachet sau versionate pe epocă; convenția prototipului poate evolua atât timp cât identitatea definiție-utilizare rămâne neambiguă."
+    },
+    {
+      "id": "t000489",
+      "source": "Kernel fact",
+      "translation": "Fapt al nucleului"
+    },
+    {
+      "id": "t000490",
+      "source": "What the research runtime still has to define",
+      "translation": "Ce trebuie încă să definească runtime-ul de cercetare"
+    },
+    {
+      "id": "t000491",
+      "source": "A command receives an argument stream",
+      "translation": "O comandă primește un flux de argumente"
+    },
+    {
+      "id": "t000492",
+      "source": "The command-specific grammar, typing rules, effect policy, diagnostics, and static descriptor used by planners.",
+      "translation": "Gramatica specifică comenzii, regulile de tipizare, politica efectelor, diagnosticele și descriptorul static folosit de planificatori."
+    },
+    {
+      "id": "t000493",
+      "source": "$var yields a value dependency",
+      "translation": "$var produce o dependență de valoare"
+    },
+    {
+      "id": "t000494",
+      "source": "The exact value model, serialization, lazy loading, type compatibility, and cache identity.",
+      "translation": "Modelul exact al valorii, serializarea, încărcarea leneșă, compatibilitatea tipurilor și identitatea cache-ului."
+    },
+    {
+      "id": "t000495",
+      "source": "~var yields a variable reference",
+      "translation": "~var produce o referință la variabilă"
+    },
+    {
+      "id": "t000496",
+      "source": "Which metadata is visible, which actions are permitted, and how reference inspection interacts with security and privacy.",
+      "translation": "Ce metadate sunt vizibile, ce acțiuni sunt permise și cum interacționează inspectarea referinței cu securitatea și confidențialitatea."
+    },
+    {
+      "id": "t000497",
+      "source": "define can create commands",
+      "translation": "define poate crea comenzi"
+    },
+    {
+      "id": "t000498",
+      "source": "Sandboxing, implementation languages, compilation, versioning, regression tests, and promotion policy.",
+      "translation": "Izolare, limbaje de implementare, compilare, versionare, teste de regresie și politica promovării."
+    },
+    {
+      "id": "t000499",
+      "source": "The next @ declaration ends the previous Profiles may add stricter lexical constraints, but argument block they should avoid creating a second global language layered over SOP Lang.",
+      "translation": "Următoarea declarație @ o încheie pe cea precedentă Profilurile pot adăuga constrângeri lexicale mai stricte, dar blocul de argumente ar trebui să evite crearea unui al doilea limbaj global deasupra SOP Lang."
+    },
+    {
+      "id": "t000500",
+      "source": "The scientific value of this minimality must be evaluated empirically. If command-owned parsing causes every tool to become an incompatible mini-language, composition will be harder and static analysis weaker. If, conversely, the kernel absorbs every annotation discovered by prototypes, SOP Lang may become a large syntax whose evolution is slow and whose domains are coupled. A credible standardization path is therefore incremental: preserve the minimal token and reference model, observe recurring command contracts across prototypes, and promote only those concepts whose cross-domain utility can be demonstrated.",
+      "translation": "Valoarea științifică a acestei minimalități trebuie evaluată empiric. Dacă parsarea deținută de comenzi face fiecare instrument un minilimbaj incompatibil, compunerea va fi mai grea și analiza statică mai slabă. Dacă, invers, nucleul absoarbe fiecare adnotare descoperită de prototipuri, SOP Lang poate deveni o sintaxă mare a cărei evoluție este lentă și ale cărei domenii sunt cuplate. O cale credibilă de standardizare este astfel incrementală: păstrează modelul minimal de tokenuri și referințe, observă contractele recurente ale comenzilor între prototipuri și promovează doar conceptele a căror utilitate între domenii poate fi demonstrată."
+    },
+    {
+      "id": "t000501",
+      "source": "6.2 Values, references, alternatives, subcircuits, templates, and definitions",
+      "translation": "6.2 Valori, referințe, alternative, subcircuite, șabloane și definiții"
+    },
+    {
+      "id": "t000502",
+      "source": "The produced name is an SSA-like value identity. A later declaration that consumes the value creates a def-use dependency on its producer. Revising a state should create a new value rather than silently mutate the old one. This discipline preserves history and supports incremental recomputation.",
+      "translation": "Numele produs este o identitate de valoare de tip SSA. O declarație ulterioară care consumă valoarea creează o dependență definiție-utilizare față de producătorul ei. Revizuirea unei stări ar trebui să creeze o valoare nouă, nu să o modifice tacit pe cea veche. Această disciplină păstrează istoricul și susține recalcularea incrementală."
+    },
+    {
+      "id": "t000503",
+      "source": "SOP Lang distinguishes receiving a value from receiving a reference to the runtime variable or artefact. The ordinary value reference is written with a dollar sign. A tilde reference asks the command to receive the variable identity or handle so that it can inspect producer information, alternatives, provenance, cache status, validation state, or other metadata defined by the profile. The distinction belongs here, in the technical model, because it matters only after values and runtime identities have been introduced.",
+      "translation": "SOP Lang distinge primirea unei valori de primirea unei referințe la variabila sau artefactul runtime. Referința obișnuită la valoare este scrisă cu semnul dolar. O referință cu tildă cere comenzii să primească identitatea sau handle-ul variabilei, ca să poată inspecta informația despre producător, alternativele, proveniența, statutul cache-ului, starea validării sau alte metadate definite de profil. Distincția aparține aici, în modelul tehnic, deoarece contează abia după introducerea valorilor și identităților runtime."
+    },
+    {
+      "id": "t000504",
+      "source": "@candidate infer_claim $evidence @assessment inspect_candidate ~candidate policy \"source-and-method\" The second command is not merely given the claim payload. It is given a handle through which the implementation can inspect how the candidate was produced. Receiving a handle should not imply authority to mutate the value. A revision produces a new declaration and a new identity.",
+      "translation": "@candidate infer_claim $evidence @assessment inspect_candidate ~candidate policy \"source-and-method\" A doua comandă nu primește doar conținutul afirmației. Primește un handle prin care implementarea poate inspecta cum a fost produs candidatul. Primirea unui handle nu ar trebui să implice autoritatea de a modifica valoarea. O revizuire produce o declarație nouă și o identitate nouă."
+    },
+    {
+      "id": "t000505",
+      "source": "An implementation may allow several command alternatives in one command expression, separated by a vertical bar. Alternatives can be executed in parallel, ranked and tried sequentially, or treated as named strategies behind one responsibility. The shared semantic requirement should be that alternative outcomes remain distinguishable and auditable. A majority vote does not convert an uncertain candidate into truth.",
+      "translation": "O implementare poate permite mai multe alternative de comandă într-o expresie de comandă, separate de o bară verticală. Alternativele pot fi executate în paralel, ordonate și încercate secvențial sau tratate ca strategii numite în spatele unei responsabilități. Cerința semantică comună ar trebui să fie ca rezultatele alternativelor să rămână distincte și auditabile. Un vot majoritar nu transformă un candidat incert în adevăr."
+    },
+    {
+      "id": "t000506",
+      "source": "Subcircuits provide hierarchical composition. A package can expose an input-output contract and be invoked as a higher-level operation. Its internal declarations remain inspectable for audit and optimization, while callers depend on a stable interface. This is the mechanism by which a large model avoids exposing every primitive to the top-level constructor.",
+      "translation": "Subcircuitele furnizează compunere ierarhică. Un pachet poate expune un contract intrare-ieșire și poate fi invocat ca operație de nivel superior. Declarațiile sale interne rămân inspectabile pentru audit și optimizare, în timp ce apelanții depind de o interfață stabilă. Acesta este mecanismul prin care un model mare evită expunerea fiecărei primitive constructorului de nivel superior."
+    },
+    {
+      "id": "t000507",
+      "source": "Template circuits are stored circuits that can be instantiated over a current state. They have applicability descriptors that the constructor can index cheaply. When required value types, relations, policies, or goals are present, the template contributes new declarations and therefore new variables. The descriptor should be simpler than the circuit body; otherwise the runtime would need to execute every template to decide whether it is relevant.",
+      "translation": "Circuitele-șablon sunt circuite stocate care pot fi instanțiate asupra unei stări curente. Au descriptori de aplicabilitate pe care constructorul îi poate indexa ieftin. Când sunt prezente tipurile de valori, relațiile, politicile sau scopurile cerute, șablonul contribuie cu declarații noi și astfel cu variabile noi. Descriptorul ar trebui să fie mai simplu decât corpul circuitului; altfel runtime-ul ar trebui să execute fiecare șablon pentru a decide dacă este relevant."
+    },
+    {
+      "id": "t000508",
+      "source": "Command definition allows the system to represent newly learned computational primitives. A typical profile can treat a declaration whose command is define as a proposal containing formal parameters and code. Representation is not installation. The code remains an untrusted artefact until it has been statically checked, tested, sandboxed, assigned a content identity, and promoted into a reviewed command registry.",
+      "translation": "Definirea comenzilor permite sistemului să reprezinte primitive computaționale nou învățate. Un profil tipic poate trata o declarație a cărei comandă este define ca propunere ce conține parametri formali și cod. Reprezentarea nu este instalare. Codul rămâne un artefact nefiabil până când a fost verificat static, testat, izolat, i s-a atribuit o identitate de conținut și a fost promovat într-un registru revizuit de comenzi."
+    },
+    {
+      "id": "t000509",
+      "source": "@candidateAnswer direct_reason | temporal_reason | prolog_reason $question $context @newTemporalCommand define state event",
+      "translation": "@candidateAnswer direct_reason | temporal_reason | prolog_reason $question $context @newTemporalCommand define state event"
+    },
+    {
+      "id": "t000510",
+      "source": "\"\"\" // JavaScript body in an implementation profile return applyEvent(state, event);",
+      "translation": "\"\"\" // JavaScript body in an implementation profile return applyEvent(state, event);"
+    },
+    {
+      "id": "t000511",
+      "source": "\"\"\" The relationship between SOP Lang variables and Static Single Assignment should be stated carefully. SSA is a compiler representation in which each SSA value has one defining instruction. LLVM IR is explicitly SSA-based, and MLIR also uses SSA values as a central organizing principle. [R1][R2] SOP Lang can adopt the same invariant at the level of circuit values: within a circuit version or epoch, each @name should have one producer. A new state, belief, or interpretation is represented by a new variable rather than by silently replacing the value of an existing variable.",
+      "translation": "\"\"\" Relația dintre variabilele SOP Lang și Static Single Assignment ar trebui enunțată atent. SSA este o reprezentare de compilator în care fiecare valoare SSA are o singură instrucțiune definitoare. LLVM IR este explicit bazat pe SSA, iar MLIR folosește de asemenea valorile SSA ca principiu organizator central. [R1][R2] SOP Lang poate adopta aceeași invariantă la nivelul valorilor circuitului: într-o versiune de circuit sau epocă, fiecare @name ar trebui să aibă un producător. O stare, convingere sau interpretare nouă este reprezentată de o variabilă nouă, nu prin înlocuirea tacită a valorii unei variabile existente."
+    },
+    {
+      "id": "t000512",
+      "source": "The benefit is not merely aesthetic. Suppose a text describes the transfer of an object from Ana to Mihai and later from Mihai to Elena. An imperative representation might update one mutable holder field. The final result would be easy to obtain but the intermediate epistemic history would be hidden inside mutation. A SOP circuit can instead construct @state0, @state1, and @state2. The path from the final state to the event that produced it becomes part of the graph, and the runtime can recompute only the descendants of a changed event.",
+      "translation": "Beneficiul nu este doar estetic. Să presupunem că un text descrie transferul unui obiect de la Ana la Mihai și ulterior de la Mihai la Elena. O reprezentare imperativă ar putea actualiza un câmp modificabil holder. Rezultatul final ar fi ușor de obținut, dar istoricul epistemic intermediar ar fi ascuns în modificare. Un circuit SOP poate construi în schimb @state0, @state1 și @state2. Calea de la starea finală la evenimentul care a produs-o devine parte a grafului, iar runtime-ul poate recalcula doar descendenții unui eveniment schimbat."
+    },
+    {
+      "id": "t000513",
+      "source": "The analogy to SSA is not exact because SOP Lang variables can represent rich semantic objects and because a runtime may maintain external mutable resources. The research invariant should therefore be framed as value-version immutability, not as a claim that all memory everywhere is in SSA form. A command that reads or writes external state must declare the relevant effect and version. Within the circuit graph, however, the value produced under a variable identity should remain stable for the lifetime of that circuit version.",
+      "translation": "Analogia cu SSA nu este exactă deoarece variabilele SOP Lang pot reprezenta obiecte semantice bogate și deoarece un runtime poate menține resurse externe modificabile. Invarianta cercetării ar trebui astfel formulată ca imuabilitate a versiunii valorii, nu ca afirmație că toată memoria de pretutindeni este în formă SSA. O comandă care citește sau scrie stare externă trebuie să declare efectul și versiunea relevante. În graful circuitului însă, valoarea produsă sub identitatea unei variabile ar trebui să rămână stabilă pe durata acelei versiuni de circuit."
+    },
+    {
+      "id": "t000514",
+      "source": "This invariant interacts productively with ~var. Meta-reasoning can examine the variable object without mutating its semantic payload. If a validation command determines that @candidate is weak, it produces @assessment. If a revision command improves the candidate, it produces @revised. The original candidate remains available for comparison and audit. The circuit therefore records epistemic revision rather than erasing it.",
+      "translation": "Această invariantă interacționează productiv cu ~var. Metaraționamentul poate examina obiectul variabilei fără a-i modifica conținutul semantic. Dacă o comandă de validare determină că @candidate este slab, produce @assessment. Dacă o comandă de revizuire îmbunătățește candidatul, produce @revised. Candidatul original rămâne disponibil pentru comparație și audit. Circuitul înregistrează astfel revizuirea epistemică, nu o șterge."
+    },
+    {
+      "id": "t000515",
+      "source": "Alternative commands extend this model from a single producer implementation to a controlled family of producers associated with one declared variable. A profile may interpret command1 | command2 | command3 as an OR-node whose branches share the same input dependencies. To preserve auditability, the runtime should record each branch as a sub-result with its own command identity, cost, status, provenance, and value. The output variable can then hold an AlternativeSet or equivalent structured value. An explicit selection command converts that set into a selected result when the policy demands one.",
+      "translation": "Comenzile alternative extind acest model de la o implementare cu producător unic la o familie controlată de producători asociată unei variabile declarate. Un profil poate interpreta command1 | command2 | command3 ca nod OR ale cărui ramuri împărtășesc aceleași dependențe de intrare. Pentru a păstra auditabilitatea, runtime-ul ar trebui să înregistreze fiecare ramură ca subrezultat cu propria identitate de comandă, cost, statut, proveniență și valoare. Variabila de ieșire poate deține apoi un AlternativeSet sau o valoare structurată echivalentă. O comandă explicită de selecție convertește acea mulțime într-un rezultat selectat când politica o cere."
+    },
+    {
+      "id": "t000516",
+      "source": "This is a useful place for ~var. $candidate can expose the semantic contents of the alternative set, while ~candidate can expose the branch-level execution metadata. A meta-rational evaluator may prefer a slightly slower branch because its conclusion is formally verified or because its sources are stronger. Another policy may choose the first result that meets a latency threshold. The selection policy becomes a circuit operation rather than hidden scheduler behaviour.",
+      "translation": "Acesta este un loc util pentru ~var. $candidate poate expune conținutul semantic al mulțimii de alternative, în timp ce ~candidate poate expune metadatele execuției la nivel de ramură. Un evaluator metarațional poate prefera o ramură ceva mai lentă deoarece concluzia sa este verificată formal sau sursele sale sunt mai puternice. O altă politică poate alege primul rezultat care atinge un prag de latență. Politica de selecție devine o operație a circuitului, nu comportament ascuns al planificatorului."
+    },
+    {
+      "id": "t000517",
+      "source": "The ability to preserve alternatives is related to, but distinct from, e-graphs. An e-graph compactly represents many equivalent expressions and delays the choice of a concrete representative until extraction. The egg library and later egglog work show the practical power of maintaining equivalence classes and performing rewrite-driven optimization. [R16][R17] SOP alternative variables are more general and less structured: branches may be different methods rather than provably equivalent expressions. Nevertheless, e-graph techniques suggest ways to merge equivalent branches, canonicalize subcircuits, and avoid repeatedly exploring semantically redundant alternatives.",
+      "translation": "Capacitatea de a păstra alternative este înrudită cu e-grafurile, dar distinctă de ele. Un e-graf reprezintă compact multe expresii echivalente și amână alegerea unui reprezentant concret până la extragere. Biblioteca egg și lucrările egglog ulterioare arată puterea practică a menținerii claselor de echivalență și efectuării optimizării prin rescriere. [R16][R17] Variabilele alternative SOP sunt mai generale și mai puțin structurate: ramurile pot fi metode diferite, nu expresii demonstrabil echivalente. Totuși, tehnicile e-grafurilor sugerează moduri de a uni ramuri echivalente, canoniza subcircuite și evita explorarea repetată a alternativelor semantic redundante."
+    },
+    {
+      "id": "t000518",
+      "source": "Subcircuits provide hierarchical abstraction. A SOP fragment that accepts semantic events and produces a temporal state can be packaged behind a command contract. To an outer circuit it appears as one command. Internally it remains a graph whose trace can be opened when needed. This mirrors how compiler IR regions, functions, and dialect operations hide internal detail while preserving analyzable interfaces. It also makes the planner tractable because it can select a coarse capability before expanding its implementation.",
+      "translation": "Subcircuitele furnizează abstracție ierarhică. Un fragment SOP care acceptă evenimente semantice și produce o stare temporală poate fi împachetat în spatele unui contract de comandă. Pentru un circuit exterior apare ca o comandă. Intern rămâne un graf a cărui urmă poate fi deschisă când este nevoie. Aceasta reflectă modul în care regiunile IR ale compilatoarelor, funcțiile și operațiile de dialect ascund detaliile interne păstrând interfețe analizabile. Face și planificatorul tractabil, deoarece poate selecta o capacitate grosieră înainte de extinderea implementării ei."
+    },
+    {
+      "id": "t000519",
+      "source": "Template circuits are the central mechanism for dynamic growth. A template is not merely a textual substitution. It is a circuit fragment with matching conditions over the current state, available variable kinds, goals, command capabilities, or knowledge tags. When the matching conditions become satisfied, the runtime can instantiate a fresh copy whose formal inputs are bound to concrete variables. The instantiated declarations receive fresh variable identities, preserving the SSA-like invariant.",
+      "translation": "Circuitele-șablon sunt mecanismul central al creșterii dinamice. Un șablon nu este doar o substituție textuală. Este un fragment de circuit cu condiții de potrivire asupra stării curente, tipurilor disponibile de variabile, scopurilor, capacităților comenzilor sau etichetelor cunoștințelor. Când condițiile de potrivire sunt satisfăcute, runtime-ul poate instanția o copie nouă ale cărei intrări formale sunt legate de variabile concrete. Declarațiile instanțiate primesc identități noi de variabile, păstrând invarianta de tip SSA."
+    },
+    {
+      "id": "t000520",
+      "source": "A transfer template illustrates the idea. The exact syntax for declaring a template need not become universal SOP grammar; a template command, package metadata, or repository convention can own that representation. What matters is the semantic model. The template can state that if a current world state, a transfer event, and a relevant object are available, then a new state can be produced by a particular subcircuit. When a new transfer event enters the state, the template index can activate the matching template without rescanning unrelated templates.",
+      "translation": "Un șablon de transfer ilustrează ideea. Sintaxa exactă de declarare a unui șablon nu trebuie să devină gramatică SOP universală; o comandă template, metadatele pachetului sau o convenție a depozitului pot deține acea reprezentare. Ceea ce contează este modelul semantic. Șablonul poate enunța că, dacă sunt disponibile o stare curentă a lumii, un eveniment de transfer și un obiect relevant, atunci o stare nouă poate fi produsă de un anumit subcircuit. Când un eveniment nou de transfer intră în stare, indexul șabloanelor poate activa șablonul potrivit fără a reparcurge șabloane fără legătură."
+    },
+    {
+      "id": "t000521",
+      "source": "This behaviour resembles production-system matching and semi-naive Datalog evaluation. In a production system, new facts activate rules whose conditions match. In Datalog, semi-naive evaluation propagates only the delta of newly derived facts to avoid rederiving the entire fixed point. Souffle demonstrates how typed Datalog and compilation can make large recursive analyses practical. [R3] The SOP research programme can borrow the same principle: template matching should be delta-driven, indexed, and incremental.",
+      "translation": "Acest comportament seamănă cu potrivirea din sistemele de producție și evaluarea seminaivă Datalog. Într-un sistem de producție, faptele noi activează reguli ale căror condiții se potrivesc. În Datalog, evaluarea seminaivă propagă doar delta faptelor nou derivate pentru a evita rederivarea întregului punct fix. Souffle demonstrează cum Datalog cu tipuri și compilarea pot face practice analize recursive mari. [R3] Programul de cercetare SOP poate împrumuta același principiu: potrivirea șabloanelor ar trebui să fie bazată pe delte, indexată și incrementală."
+    },
+    {
+      "id": "t000522",
+      "source": "The key difference is that a SOP template can instantiate arbitrary heterogeneous command graphs rather than one uniform logical rule language. This generality increases expressive power but also increases search risk. A production rule has a relatively predictable shape. A template circuit can introduce many variables, invoke external engines, and spawn alternatives. The runtime therefore needs explicit cost estimates, expansion limits, and dominance checks before instantiation.",
+      "translation": "Diferența-cheie este că un șablon SOP poate instanția grafuri arbitrare de comenzi eterogene, nu un singur limbaj uniform de reguli logice. Această generalitate crește puterea expresivă, dar și riscul căutării. O regulă de producție are o formă relativ previzibilă. Un circuit-șablon poate introduce multe variabile, invoca motoare externe și genera alternative. Runtime-ul are astfel nevoie de estimări explicite de cost, limite de extindere și verificări de dominanță înaintea instanțierii."
+    },
+    {
+      "id": "t000523",
+      "source": "Template instantiation also provides a concrete definition of dynamic learning. A newly learned reasoning pattern can be stored as a template rather than immediately fused into a global rule engine. It remains versioned, testable, and selectively activated. If the pattern later causes regressions, the system can disable or revise that template without retraining the entire model.",
+      "translation": "Instanțierea șabloanelor oferă și o definiție concretă a învățării dinamice. Un tipar de raționament nou învățat poate fi stocat ca șablon, nu fuzionat imediat într-un motor global de reguli. Rămâne versionat, testabil și activat selectiv. Dacă tiparul provoacă ulterior regresii, sistemul poate dezactiva sau revizui acel șablon fără a reantrena întregul model."
+    },
+    {
+      "id": "t000524",
+      "source": "This suggests a layered notion of competence. Primitive commands define atomic capabilities. Stable subcircuits package local skills. Templates define when those skills should be introduced into a task. Meta-circuits evaluate alternatives and traces. The circuit-construction runtime decides which templates deserve activation under the current budget. A symbolic language model is therefore the persistent ecosystem of these layers plus the selection machinery that assembles a small task-specific programme from them.",
+      "translation": "Aceasta sugerează o noțiune stratificată a competenței. Comenzile primitive definesc capacități atomice. Subcircuitele stabile împachetează abilități locale. Șabloanele definesc când ar trebui introduse acele abilități într-o sarcină. Metacircuitele evaluează alternative și urme. Runtime-ul de construcție a circuitelor decide ce șabloane merită activate sub bugetul curent. Un model lingvistic simbolic este astfel ecosistemul persistent al acestor straturi, plus mecanismul de selecție care asamblează din ele un mic program specific sarcinii."
+    },
+    {
+      "id": "t000525",
+      "source": "Mechanism",
+      "translation": "Mecanism"
+    },
+    {
+      "id": "t000526",
+      "source": "Research interpretation in SOP Lang",
+      "translation": "Interpretare de cercetare în SOP Lang"
+    },
+    {
+      "id": "t000527",
+      "source": "SSA-like binding",
+      "translation": "Legare de tip SSA"
+    },
+    {
+      "id": "t000528",
+      "source": "Each variable in a circuit version has one semantic producer; revisions create fresh variables rather than overwriting prior results.",
+      "translation": "Fiecare variabilă dintr-o versiune de circuit are un producător semantic; revizuirile creează variabile noi, nu suprascriu rezultate anterioare."
+    },
+    {
+      "id": "t000529",
+      "source": "Alternative declaration",
+      "translation": "Declarație alternativă"
+    },
+    {
+      "id": "t000530",
+      "source": "One declaration may launch several command implementations while preserving branch-specific results and traces under a common variable.",
+      "translation": "O declarație poate lansa mai multe implementări de comenzi, păstrând rezultatele și urmele specifice ramurilor sub o variabilă comună."
+    },
+    {
+      "id": "t000531",
+      "source": "Explicit selection",
+      "translation": "Selecție explicită"
+    },
+    {
+      "id": "t000532",
+      "source": "A later command evaluates or selects alternatives rather than allowing the runtime to discard them implicitly.",
+      "translation": "O comandă ulterioară evaluează sau selectează alternative în loc să permită runtime-ului să le elimine implicit."
+    },
+    {
+      "id": "t000533",
+      "source": "Subcircuit",
+      "translation": "Subcircuit"
+    },
+    {
+      "id": "t000534",
+      "source": "A SOP graph with a stable contract that can be exposed as one command to outer circuits.",
+      "translation": "Un graf SOP cu un contract stabil care poate fi expus circuitelor exterioare ca o comandă."
+    },
+    {
+      "id": "t000535",
+      "source": "Template circuit",
+      "translation": "Circuit-șablon"
+    },
+    {
+      "id": "t000536",
+      "source": "A reusable graph fragment whose requirements are matched against runtime state and whose instantiation creates fresh concrete variables.",
+      "translation": "Un fragment reutilizabil de graf ale cărui cerințe sunt potrivite cu starea runtime-ului și a cărui instanțiere creează variabile concrete noi."
+    },
+    {
+      "id": "t000537",
+      "source": "Epoch",
+      "translation": "Epocă"
+    },
+    {
+      "id": "t000538",
+      "source": "A stable circuit version that can be executed and traced before a planner constructs a revised or expanded version.",
+      "translation": "O versiune stabilă a circuitului care poate fi executată și urmărită înainte ca un planificator să construiască o versiune revizuită sau extinsă."
+    },
+    {
+      "id": "t000539",
+      "source": "Delta activation",
+      "translation": "Activare prin delte"
+    },
+    {
+      "id": "t000540",
+      "source": "Only new or changed state elements trigger matching work, avoiding full rescans of the template and knowledge space.",
+      "translation": "Doar elementele de stare noi sau schimbate declanșează munca de potrivire, evitând reparcurgeri complete ale spațiului șabloanelor și cunoștințelor."
+    },
+    {
+      "id": "t000541",
+      "source": "The relationship to Static Single Assignment is useful only if its limits are stated precisely. Classical SSA is normally defined over a control-flow graph. Each SSA name has one static definition, and phi functions reconcile values that reach a control-flow merge. SOP Lang does not need to reproduce the entire classical construction. Its valuable invariant is narrower: within a concrete circuit version, an @ variable has one declaration that is treated as its semantic producer. A change of state should therefore create a new variable instead of mutating the old one invisibly. This is enough to obtain direct def-use chains, versioned state, selective invalidation, and provenance.",
+      "translation": "Relația cu Static Single Assignment este utilă numai dacă limitele sale sunt enunțate precis. SSA clasic este în mod normal definit asupra unui graf de flux de control. Fiecare nume SSA are o definiție statică, iar funcțiile phi reconciliază valorile care ajung la o reunire de flux de control. SOP Lang nu trebuie să reproducă întreaga construcție clasică. Invarianta sa valoroasă este mai îngustă: într-o versiune concretă a circuitului, o variabilă @ are o declarație tratată drept producătorul său semantic. O schimbare de stare ar trebui astfel să creeze o variabilă nouă, nu să o modifice invizibil pe cea veche. Aceasta este suficient pentru lanțuri directe definiție-utilizare, stare versionată, invalidare selectivă și proveniență."
+    },
+    {
+      "id": "t000542",
+      "source": "An alternative command declaration does not have to violate this invariant. The declaration itself can remain the single producer of a runtime variable whose internal result contains several branch evaluations. In other words, direct_reason | prolog_reason | temporal_reason is not three unrelated assignments to the same variable. It is one explicitly alternative computation whose branches retain identity. A later command can inspect ~candidate and select, compare, aggregate, or trigger additional work. This is closer to an AND/OR computation object than to an imperative variable that is repeatedly overwritten.",
+      "translation": "O declarație de comandă alternativă nu trebuie să încalce această invariantă. Declarația însăși poate rămâne producătorul unic al unei variabile runtime al cărei rezultat intern conține mai multe evaluări de ramuri. Cu alte cuvinte, direct_reason | prolog_reason | temporal_reason nu reprezintă trei atribuiri fără legătură aceleiași variabile. Este un calcul explicit alternativ ale cărui ramuri păstrează identitate. O comandă ulterioară poate inspecta ~candidate și selecta, compara, agrega sau declanșa muncă suplimentară. Aceasta este mai apropiată de un obiect de calcul AND/OR decât de o variabilă imperativă suprascrisă repetat."
+    },
+    {
+      "id": "t000543",
+      "source": "The analogy with a classical phi node should therefore be used cautiously. A phi node selects the value corresponding to the control-flow predecessor that actually executed. An SOP meta-selection command may compare several branches that all executed, distinguish failed from unknown from timed out, keep multiple surviving values, or request a new epoch. It is a semantic reconciliation operation, not merely an SSA merge. Treating it as ordinary phi would hide precisely the information that the symbolic runtime needs to preserve.",
+      "translation": "Analogia cu un nod phi clasic ar trebui astfel folosită prudent. Un nod phi selectează valoarea corespunzătoare predecesorului de flux de control care s-a executat efectiv. O comandă SOP de metaselecție poate compara mai multe ramuri care s-au executat toate, distinge eșuat de necunoscut de timp expirat, păstra mai multe valori supraviețuitoare sau cere o epocă nouă. Este o operație de reconciliere semantică, nu doar o reunire SSA. Tratarea ei ca phi obișnuit ar ascunde tocmai informația pe care runtime-ul simbolic trebuie să o păstreze."
+    },
+    {
+      "id": "t000544",
+      "source": "Subcircuits add hierarchical abstraction. A set of declarations can expose a stable input-output contract and be treated by an outer circuit as one command. Internally it remains inspectable and traceable. This is analogous to a function call, a compiler region, or a hierarchical hardware module, but the intended guarantee is stronger than ordinary software encapsulation: the outer runtime should still be able to recover the provenance and guarantee class of the result when policy requires it. Encapsulation reduces planning complexity without requiring epistemic opacity.",
+      "translation": "Subcircuitele adaugă abstracție ierarhică. Un set de declarații poate expune un contract stabil intrare-ieșire și poate fi tratat de un circuit exterior ca o comandă. Intern rămâne inspectabil și trasabil. Aceasta este analogă unui apel de funcție, unei regiuni de compilator sau unui modul hardware ierarhic, dar garanția intenționată este mai puternică decât încapsularea software obișnuită: runtime-ul exterior ar trebui să poată recupera în continuare proveniența și clasa de garanție a rezultatului când politica o cere. Încapsularea reduce complexitatea planificării fără a necesita opacitate epistemică."
+    },
+    {
+      "id": "t000545",
+      "source": "Template circuits introduce a qualitatively different capability. A template is not merely a function awaiting explicit invocation. It is a reusable graph pattern associated with requirements over the current runtime state or active goals. When those requirements match, the template can be instantiated with fresh variable names and appended to the current circuit. The source template remains persistent; the instantiated declarations belong to a concrete epoch. This resembles a production rule, graph-rewriting rule, macro expansion, and partial program synthesis at the same time, but none of those analogies is exact.",
+      "translation": "Circuitele-șablon introduc o capacitate calitativ diferită. Un șablon nu este doar o funcție care așteaptă invocare explicită. Este un tipar reutilizabil de graf asociat cu cerințe asupra stării runtime curente sau scopurilor active. Când acele cerințe se potrivesc, șablonul poate fi instanțiat cu nume noi de variabile și adăugat circuitului curent. Șablonul-sursă rămâne persistent; declarațiile instanțiate aparțin unei epoci concrete. Aceasta seamănă simultan cu o regulă de producție, o regulă de rescriere a grafurilor, o expansiune de macro și sinteză parțială de programe, dar niciuna dintre analogii nu este exactă."
+    },
+    {
+      "id": "t000546",
+      "source": "The production-rule analogy is useful because a template can be activated by state. The graph-rewriting analogy is useful because activation changes the executable graph itself. The macro analogy is useful because a parameterized fragment becomes concrete source. The synthesis analogy is useful because the runtime is constructing a programme that did not exist in full before the request. The key difference from a generic rule engine is that the instantiated fragment creates explicit @ variables and $ or ~ dependencies that become part of a traceable dataflow circuit.",
+      "translation": "Analogia regulii de producție este utilă deoarece un șablon poate fi activat de stare. Analogia rescrierii grafurilor este utilă deoarece activarea schimbă însuși graful executabil. Analogia macro este utilă deoarece un fragment parametrizat devine sursă concretă. Analogia sintezei este utilă deoarece runtime-ul construiește un program care nu exista integral înaintea cererii. Diferența-cheie față de un motor generic de reguli este că fragmentul instanțiat creează variabile @ explicite și dependențe $ sau ~ care devin parte a unui circuit trasabil de flux de date."
+    },
+    {
+      "id": "t000547",
+      "source": "Classical construction",
+      "translation": "Construcție clasică"
+    },
+    {
+      "id": "t000548",
+      "source": "Closest SOP Lang interpretation and important difference",
+      "translation": "Cea mai apropiată interpretare SOP Lang și diferența importantă"
+    },
+    {
+      "id": "t000549",
+      "source": "SSA definition",
+      "translation": "Definiție SSA"
+    },
+    {
+      "id": "t000550",
+      "source": "One @ variable declaration is the semantic producer of that variable within a circuit epoch. SOP retains only the part of SSA that is useful for explicit value identity and def-use reasoning.",
+      "translation": "O declarație de variabilă @ este producătorul semantic al acelei variabile într-o epocă a circuitului. SOP păstrează doar partea SSA utilă pentru identitatea explicită a valorii și raționamentul definiție-utilizare."
+    },
+    {
+      "id": "t000551",
+      "source": "Phi node",
+      "translation": "Nod phi"
+    },
+    {
+      "id": "t000552",
+      "source": "A possible analogy for reconciliation, but SOP alternatives may preserve many branch outcomes and meta-information instead of selecting only the executed predecessor.",
+      "translation": "O posibilă analogie pentru reconciliere, dar alternativele SOP pot păstra multe rezultate de ramură și metainformații, nu doar selecta predecesorul executat."
+    },
+    {
+      "id": "t000553",
+      "source": "Function/module",
+      "translation": "Funcție/modul"
+    }
+  ]
+}

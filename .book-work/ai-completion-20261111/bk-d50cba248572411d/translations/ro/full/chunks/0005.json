@@ -1,0 +1,291 @@
+{
+  "language": "ro",
+  "chunk": 5,
+  "segments": [
+    {
+      "id": "t000266",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000267",
+      "source": "5.3 Testing Explanations and Avoiding Explanation Theater",
+      "translation": ""
+    },
+    {
+      "id": "t000268",
+      "source": "The first useful move is to make explanation validation concrete. An explanation is itself an output that can fail. Plausible narratives are especially dangerous because humans reward coherence, so explanation quality must be evaluated independently from persuasiveness. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000269",
+      "source": "Consider a language model that gives the same answer for two different reasons but produces a polished rationale in both cases, or a feature-attribution map that changes substantially under semantically irrelevant perturbations while the prediction remains stable. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000270",
+      "source": "InterpBench illustrates an important methodological direction: use semi-synthetic transformers whose internal circuits are known, then test whether an interpretability method actually recovers those circuits. Known-ground-truth model organisms do not solve the challenge of interpreting frontier systems, but they create a falsifiable research environment. This matters because interpretability methods can otherwise be rewarded for producing convincing narratives without evidence that the narrative corresponds to the model's mechanism.",
+      "translation": ""
+    },
+    {
+      "id": "t000271",
+      "source": "Explanations can leak training information, reveal sensitive features, expose security-relevant internal behavior, or help adversaries optimize inputs. They can also create automation bias by making a wrong prediction sound reasonable. A trustworthy explanation layer therefore needs its own threat model. The right level of disclosure may differ for developers, auditors, affected users, and potential attackers. Transparency should mean appropriate observability, not indiscriminate publication of every internal detail.",
+      "translation": ""
+    },
+    {
+      "id": "t000272",
+      "source": "This also changes how evidence is designed. Run sanity checks, perturbation tests, counterfactual consistency tests and causal interventions appropriate to the method. Separate “the model said why” from “we have evidence this factor caused the behavior.” In high-stakes review, retain raw traces and source evidence beside the interpretation. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000273",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000274",
+      "source": "The boundary of the claim must remain visible. Some explanations cannot be fully validated because the underlying system is too complex or because human-understandable summaries inevitably omit detail. The correct response is scoped confidence, not decorative certainty. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again. There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics. For Meridian, audit reports stop including generic model-generated rationales as proof. Meridian’s evidence package instead contains reproducible retrieval traces, control outcomes and tests that another reviewer can rerun. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000275",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000276",
+      "source": "A second way to reason about testing explanations and avoiding explanation theater is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000277",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000278",
+      "source": "The final perspective on testing explanations and avoiding explanation theater is temporal. A system that is acceptable today may become unacceptable without a dramatic failure: users adapt, adversaries learn, policies change, data sources age, and a provider silently improves or replaces a dependency. Trustworthy engineering therefore asks how quickly evidence can become stale and how that staleness will be detected. Some claims can be protected by deterministic regression tests, others require statistical monitoring, and others can only be revisited through periodic expert review. The frequency should follow the rate at which the relevant assumptions can change, not an arbitrary annual governance calendar.",
+      "translation": ""
+    },
+    {
+      "id": "t000279",
+      "source": "This temporal view also clarifies why incidents and near misses are valuable evidence. They reveal combinations of conditions that designers did not encode in pre-deployment tests. A mature process preserves them as regression scenarios, updates threat and hazard models, and records whether the incident changes the system's operating envelope. The goal is not a constantly expanding checklist; it is a smaller, better connected set of claims whose supporting evidence evolves with the system.",
+      "translation": ""
+    },
+    {
+      "id": "t000280",
+      "source": "Explanation helps us interrogate a system, but trustworthy AI must also ask who bears its errors. The next chapter moves from model behavior to distributional impact, showing why fairness problems begin with measurement choices and social context long before a fairness metric is computed.",
+      "translation": ""
+    },
+    {
+      "id": "t000281",
+      "source": "6. Fairness, Human Impact, and Distributional Harm",
+      "translation": "6. Echitate, impact uman și distribuția prejudiciilor"
+    },
+    {
+      "id": "t000282",
+      "source": "Engineering question: How can engineers detect and reduce harms that are unevenly distributed across people and groups?",
+      "translation": ""
+    },
+    {
+      "id": "t000283",
+      "source": "Fairness is one of the clearest examples of why trustworthy AI cannot be reduced to an optimisation target. Engineers must choose labels, populations, time horizons, protected attributes, comparison groups and error costs before any fairness metric becomes meaningful. These are partly technical decisions and partly institutional judgments. The chapter uses real deployment failures, including the FTC’s case concerning Rite Aid’s facial-recognition program, to show how poor data, weak testing, operational procedures and human responses can combine into harms that aggregate accuracy never captures.",
+      "translation": ""
+    },
+    {
+      "id": "t000284",
+      "source": "6.1 The Measurement Problem: Targets, Labels, and Historical Data",
+      "translation": ""
+    },
+    {
+      "id": "t000285",
+      "source": "A course on fairness measurement should begin with the failure it is meant to prevent, not with the metric that happens to be fashionable. Bias can enter before model training through problem formulation, target choice, sampling, labels, missingness and proxies. A model can faithfully reproduce a dataset and still reproduce a harmful or obsolete institutional process. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000286",
+      "source": "Consider a hiring model trained on historical promotion outcomes when those outcomes reflect unequal opportunity, or a risk model using arrest records as if they were a neutral measure of underlying behavior. Optimising prediction of the label may amplify the label’s social history. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000287",
+      "source": "Demographic parity asks whether positive decisions occur at similar rates across groups. Equal opportunity focuses on true-positive rates among those who genuinely qualify. Equalized odds considers both true-positive and false-positive rates. Calibration asks whether a risk score has the same empirical meaning across groups. Individual fairness asks whether similar individuals receive similar treatment. Counterfactual fairness uses a causal model to ask whether a decision would change under a counterfactual sensitive attribute. Each captures a different concern.",
+      "translation": ""
+    },
+    {
+      "id": "t000288",
+      "source": "Kleinberg, Mullainathan, and Raghavan formalized an influential impossibility result: when base rates differ, several intuitively desirable fairness properties cannot generally be satisfied simultaneously. This is not a technical nuisance that better optimization will eliminate. It means that the system owner must decide which harms matter and justify the trade-off.",
+      "translation": ""
+    },
+    {
+      "id": "t000289",
+      "source": "This also changes how evidence is designed. Document how labels are produced, who is missing from the dataset, which variables are proxies, how error costs differ, and what outcome the organisation actually wants to improve. Conduct subgroup data-quality audits before comparing model metrics. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000290",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000291",
+      "source": "The boundary of the claim must remain visible. Better measurement cannot settle normative questions about which outcomes are fair. Some relevant attributes are unavailable or legally constrained, and small subgroups make estimates statistically unstable. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000292",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": "Există și o dimensiune organizațională. O măsură de control care există într-un document de proiectare, dar este ocolită în mod curent, nu este eficientă; o aprobare umană care nu primește dovezi utile nu reprezintă supraveghere independentă; o constatare red-team care nu poate bloca o lansare nu reprezintă un semnal de siguranță semnificativ. Caracterul demn de încredere devine real numai când măsurările sunt conectate la autoritate. De aceea, cursul revine constant la responsabili, escaladare, revenirea la o versiune anterioară, analiza incidentelor și actualitatea dovezilor, alături de metricile modelului."
+    },
+    {
+      "id": "t000293",
+      "source": "For Meridian, its team reviews whether document-authority scores disadvantage smaller regional offices whose policies are written differently and stored less consistently. The problem is partly retrieval data quality, not a mysterious “bias neuron” in the model. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000294",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000295",
+      "source": "A second way to reason about the measurement problem: targets, labels, and historical data is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000296",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000297",
+      "source": "The final perspective on the measurement problem: targets, labels, and historical data is temporal. A system that is acceptable today may become unacceptable without a dramatic failure: users adapt, adversaries learn, policies change, data sources age, and a provider silently improves or replaces a dependency. Trustworthy engineering therefore asks how quickly evidence can become stale and how that staleness will be detected. Some claims can be protected by deterministic regression tests, others require statistical monitoring, and others can only be revisited through periodic expert review. The frequency should follow the rate at which the relevant assumptions can change, not an arbitrary annual governance calendar.",
+      "translation": ""
+    },
+    {
+      "id": "t000298",
+      "source": "This temporal view also clarifies why incidents and near misses are valuable evidence. They reveal combinations of conditions that designers did not encode in pre-deployment tests. A mature process preserves them as regression scenarios, updates threat and hazard models, and records whether the incident changes the system's operating envelope. The goal is not a constantly expanding checklist; it is a smaller, better connected set of claims whose supporting evidence evolves with the system.",
+      "translation": ""
+    },
+    {
+      "id": "t000299",
+      "source": "6.2 Conflicting Fairness Criteria, Causality, and Long-Term Effects",
+      "translation": ""
+    },
+    {
+      "id": "t000300",
+      "source": "A course on fairness criteria should begin with the failure it is meant to prevent, not with the metric that happens to be fashionable. Common fairness definitions can be mathematically incompatible when base rates differ. This is not a defect in the metrics; it reveals that fairness criteria encode different ideas about which errors and comparisons matter. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000301",
+      "source": "Consider a screening system where equal false-positive rates, equal predictive value and calibrated scores cannot all be achieved simultaneously across groups with different prevalences. Choosing a metric therefore implies choosing which relation the system should preserve. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000302",
+      "source": "Static evaluation can miss the fact that decisions alter the future data-generating process. Lending changes debt and wealth. Hiring changes experience. Policing changes where offenses are observed. Recommendation changes what users consume. Research on delayed impact and long-term fairness therefore models feedback: a policy that improves a parity metric today may worsen group outcomes over time, while an apparently unequal intervention may sometimes improve long-run opportunity. These questions cannot be answered from a confusion matrix alone.",
+      "translation": ""
+    },
+    {
+      "id": "t000303",
+      "source": "Large language models complicate fairness because they do not implement one fixed decision. They generate open-ended text conditioned on prompt, conversation history, language, culture, retrieval sources, and system policy. Benchmarks such as BBQ measure specific stereotypes under constructed conditions and are valuable for regression testing, but they do not establish universal fairness. A deployment should evaluate the behaviors relevant to its own users, languages, tasks, and harm model.",
+      "translation": ""
+    },
+    {
+      "id": "t000304",
+      "source": "This also changes how evidence is designed. Connect the metric to a causal story and policy objective. Evaluate interventions, not only predictions: changing thresholds, gathering better data, redesigning the process or allocating additional resources may be more effective than forcing one model-level parity criterion. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000305",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000306",
+      "source": "The boundary of the claim must remain visible. Causal models depend on assumptions that may be contested or unidentifiable from observational data. Long-term feedback can reverse short-term improvements, especially when model outputs change behavior and future data. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000307",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": "Există și o dimensiune organizațională. O măsură de control care există într-un document de proiectare, dar este ocolită în mod curent, nu este eficientă; o aprobare umană care nu primește dovezi utile nu reprezintă supraveghere independentă; o constatare red-team care nu poate bloca o lansare nu reprezintă un semnal de siguranță semnificativ. Caracterul demn de încredere devine real numai când măsurările sunt conectate la autoritate. De aceea, cursul revine constant la responsabili, escaladare, revenirea la o versiune anterioară, analiza incidentelor și actualitatea dovezilor, alături de metricile modelului."
+    },
+    {
+      "id": "t000308",
+      "source": "For Meridian, it evaluates whether a confidence threshold sends disproportionately many queries from one office to manual review. The team asks whether this is harmful, whether the office has poorer source documents, and whether improving the document pipeline is a better intervention than changing the model threshold. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000309",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000310",
+      "source": "A second way to reason about conflicting fairness criteria, causality, and long-term effects is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000311",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000312",
+      "source": "For a design review, conflicting fairness criteria, causality, and long-term effects can be turned into a short evidence exercise. Start with one concrete claim the team expects to make at release, then list three plausible observations that would make the claim false or materially weaker. Next, ask which of those observations can be generated before deployment, which require production monitoring, and which depend on information the organisation does not currently collect. The exercise is intentionally asymmetric: it is easier to accumulate confirmatory examples than to search for conditions that would change a decision. Designing the search for disconfirmation makes testing more realistic and creates explicit triggers for escalation or rollback.",
+      "translation": ""
+    },
+    {
+      "id": "t000313",
+      "source": "For students and practitioners, this suggests a useful habit: write the decision rule beside the metric. If a score deteriorates by five percent, what happens? If a novel input is detected, who sees it? If two evaluators disagree, is the output blocked, sampled for review, or accepted? If the answer is 'nothing', the measurement is primarily descriptive. Trustworthy engineering begins when evidence participates in control flow and when the organisation can explain why a particular amount of residual uncertainty was acceptable for the authority that was granted.",
+      "translation": "Pentru studenți și practicieni, aceasta sugerează un obicei util: scrieți regula de decizie lângă metrică. Dacă un scor se deteriorează cu cinci la sută, ce se întâmplă? Dacă este detectată o intrare nouă, cine o vede? Dacă doi evaluatori nu sunt de acord, rezultatul este blocat, eșantionat pentru verificare sau acceptat? Dacă răspunsul este „nimic”, măsurarea este în principal descriptivă. Ingineria demnă de încredere începe când dovezile participă la fluxul de control și când organizația poate explica de ce un anumit nivel de incertitudine reziduală era acceptabil pentru autoritatea acordată."
+    },
+    {
+      "id": "t000314",
+      "source": "6.3 Intersectionality, Shift, and Socio-Technical Validation",
+      "translation": ""
+    },
+    {
+      "id": "t000315",
+      "source": "A course on socio-technical fairness validation should begin with the failure it is meant to prevent, not with the metric that happens to be fashionable. Harm often appears at intersections that disappear in broad demographic averages. Deployment also changes populations and incentives, so fairness must be monitored as a dynamic system property rather than certified once on a benchmark. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000316",
+      "source": "Consider the Rite Aid facial-recognition case described by the U.S. FTC, which alleged poor safeguards and thousands of false-positive matches, with concerns about disproportionate effects on people of color and women. The episode demonstrates how store procedures, alerts and employee action shape impact beyond classifier statistics. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000317",
+      "source": "A defensible fairness process begins with the harm and population, not the metric. It records who is affected, what errors matter, which groups require analysis, why a fairness definition was selected, what trade-offs result, and how performance is monitored after deployment. The output should be a vector of evidence rather than a single fairness score. If the system cannot explain the policy choice embodied by its fairness metric, the measurement is incomplete.",
+      "translation": ""
+    },
+    {
+      "id": "t000318",
+      "source": "Aggregate group metrics can hide failures at intersections. A model can appear acceptable for gender and acceptable for age while performing poorly for older women, or acceptable across national averages while failing a small language community. The number of possible intersections grows rapidly, making naive subgroup enumeration statistically fragile. Practical strategies include domain-informed subgroup definitions, worst-group optimization, hierarchical analysis, uncertainty intervals, and targeted data collection where risk is high. The absence of a statistically significant disparity in a small group should not be interpreted as evidence of equality when the test simply lacks power.",
+      "translation": ""
+    },
+    {
+      "id": "t000319",
+      "source": "Fairness evidence can decay faster than average performance. A deployment population may change differently across groups; labels may become less reliable in one community; a policy change may affect one subgroup first. Fairness-constrained learning has also been shown to be vulnerable to small amounts of maliciously corrupted data in some settings. This makes fairness monitoring a security and robustness problem as well as a social one. Subgroup performance, calibration, exposure, and downstream outcomes should be monitored over time rather than frozen at launch.",
+      "translation": ""
+    },
+    {
+      "id": "t000320",
+      "source": "This also changes how evidence is designed. Slice data along meaningful intersections while protecting privacy, use qualitative incident review alongside quantitative monitoring, test the human response to alerts, and establish appeal and correction mechanisms. Revisit fairness after workflow, population or model changes. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000321",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000322",
+      "source": "The boundary of the claim must remain visible. Small intersectional groups create high uncertainty, and quantitative parity cannot capture dignity, chilling effects, accessibility or procedural injustice.",
+      "translation": ""
+    }
+  ]
+}

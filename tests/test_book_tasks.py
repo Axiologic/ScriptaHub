@@ -12,7 +12,9 @@ import build_books
 
 class TaskTests(unittest.TestCase):
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory()
+        scratch = Path(__file__).resolve().parents[1] / ".tmp"
+        scratch.mkdir(exist_ok=True)
+        self.temp = tempfile.TemporaryDirectory(dir=scratch)
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         (self.root / "tasks").mkdir()
@@ -25,6 +27,73 @@ class TaskTests(unittest.TestCase):
         path = self.root / "tasks" / name
         path.write_bytes(content)
         return path
+
+    def reader_completion(self):
+        from html_translation_chunks import prepare, assemble
+        work = self.root / ".book-work/ai-completion-test/bk-test"
+        canonical = {}
+        for kind, name in [("full", "full_content.html"), ("short", "short_content.html")]:
+            source = self.book / "en" / name
+            source.parent.mkdir(exist_ok=True)
+            source.write_text('<html lang="en"><body><p>Source text.</p><img src="assets/test.svg"><a href="full_content.html#section">Chapter</a></body></html>')
+            canonical["en/" + name] = tasks.sha256(source)
+            job = work / "translations/ro" / kind
+            prepare(source, work / "book/ro" / name, "ro", job)
+            chunk = job / "chunks/0001.json"
+            data = tasks.read(chunk)
+            for segment in data["segments"]:
+                segment["translation"] = {"Source text.": "Text sursă.", "Chapter": "Capitol"}[segment["source"]]
+            tasks.write(chunk, data)
+            assemble(job)
+        assets = self.book / "en/assets"
+        assets.mkdir()
+        (assets / "test.svg").write_text('<svg/>')
+        tasks.write(work / "release.json", {"status": "installed", "directory": "books/assistos/bk-test", "sha256": canonical["en/full_content.html"], "readerCompletion": {"edition": "edition-1", "canonicalSources": canonical, "requestedLanguages": ["ro"], "status": "translating"}})
+        return work
+
+    def test_legacy_reader_completion_rebases_resources_and_preserves_edition(self):
+        work = self.reader_completion()
+        english = (self.book / "en/full_content.html").read_bytes()
+        tasks.complete_readers(work, self.root)
+        from lxml import html
+        page = self.book / "ro/full_content.html"
+        document = html.fromstring(page.read_bytes())
+        self.assertEqual((page.parent / document.xpath('//img')[0].get('src')).resolve(), (self.book / "en/assets/test.svg").resolve())
+        self.assertEqual(document.xpath('//a')[0].get('href'), 'full_content.html#section')
+        history = tasks.read(self.book / "editions.json")
+        self.assertEqual(len(history['editions']), 1)
+        self.assertEqual(history['editions'][0]['readers']['ro']['fullContent'], 'ro/full_content.html')
+        self.assertEqual((self.book / "en/full_content.html").read_bytes(), english)
+        tasks.complete_readers(work, self.root)
+        self.assertEqual(len(tasks.read(self.book / "editions.json")['editions'][0]['readerCompletions']), 1)
+
+    def test_legacy_completion_recovers_public_depth_shared_urls(self):
+        work = self.reader_completion()
+        for relative in ("reader/standalone.css", "reader/standalone.js", "assets/analytics.js"):
+            shared = self.root / "docs" / relative
+            shared.parent.mkdir(parents=True, exist_ok=True)
+            shared.write_text("shared asset")
+        for source in (work / "book/ro").glob("*.html"):
+            markup = source.read_text().replace("</body>", '<link href="../../../../reader/standalone.css?v=1"><script src="../../../../reader/standalone.js?v=2"></script><script src="../../../../assets/analytics.js?v=3"></script></body>')
+            source.write_text(markup)
+        tasks.complete_readers(work, self.root)
+        from lxml import html
+        from urllib.parse import urlsplit
+        for page in (self.book / "ro").glob("*.html"):
+            document = html.fromstring(page.read_bytes())
+            values = document.xpath('//link/@href | //script/@src')
+            self.assertEqual(len(values), 3)
+            for value in values:
+                parsed = urlsplit(value)
+                self.assertTrue((page.parent / parsed.path).is_file(), value)
+                self.assertTrue(parsed.query.startswith("v="))
+
+    def test_legacy_completion_rejects_changed_source_before_publication(self):
+        work = self.reader_completion()
+        (self.book / "en/full_content.html").write_text('changed')
+        with self.assertRaisesRegex(ValueError, 'Canonical reader changed'):
+            tasks.complete_readers(work, self.root)
+        self.assertFalse((self.book / "ro/full_content.html").exists())
 
     def test_pending_cover_snapshot_breaks_existing_hard_link(self):
         source = self.book / "en/cover.webp"

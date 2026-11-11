@@ -1,0 +1,811 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000466",
+      "source": "Concurrency makes the separation particularly valuable. Several agents can work in parallel on different branches. Each reads a state version and returns candidate changes. If two candidates conflict, the project can preserve both, request reconciliation, or apply a domain-specific rule. The first agent to finish does not win by accident. This is the scientific analogue of optimistic concurrency control, with the important difference that some conflicts are legitimate intellectual disagreements rather than technical errors.",
+      "translation": "Concurența face separarea deosebit de valoroasă. Mai mulți agenți pot lucra în paralel pe ramuri diferite. Fiecare citește o versiune a stării și returnează schimbări candidate. Dacă doi candidați intră în conflict, proiectul îi poate păstra pe amândoi, solicita reconciliere sau aplica o regulă specifică domeniului. Primul agent care termină nu câștigă accidental. Acesta este analogul științific al controlului optimist al concurenței, cu diferența importantă că unele conflicte sunt dezacorduri intelectuale legitime, nu erori tehnice."
+    },
+    {
+      "id": "t000467",
+      "source": "The orchestrator should use evaluation feedback without allowing evaluation to become self-confirmation. A branch with repeated reproduction failures can be deprioritised. A contradictory result may receive additional replication budget. A novelty search may redirect work away from a known method. But the planner that generated the branch should not be the sole judge of whether its own evidence is sufficient. Heterogeneous evaluation protects against a single model turning its preferences into project policy.",
+      "translation": "Orchestratorul ar trebui să folosească feedback-ul evaluării fără a permite evaluării să devină autoconfirmare. O ramură cu eșecuri repetate de reproducere poate fi deprioritizată. Un rezultat contradictoriu poate primi buget suplimentar de replicare. O căutare de noutate poate redirecționa munca de la o metodă cunoscută. Dar planificatorul care a generat ramura nu ar trebui să fie singurul judecător al suficienței propriilor dovezi. Evaluarea eterogenă protejează împotriva transformării preferințelor unui singur model în politică a proiectului."
+    },
+    {
+      "id": "t000468",
+      "source": "Research orchestration is therefore an empirical field in its own right. Does dynamic planning improve scientific yield compared with simple workflows and human scheduling? Does value-of-information estimation reduce expensive experiments, or does it introduce brittle assumptions? Do specialised agents outperform a capable general model once coordination overhead is counted? The infrastructure should make these strategies swappable so that architectural choices become testable hypotheses rather than permanent commitments.",
+      "translation": "Orchestrarea cercetării este, așadar, un domeniu empiric în sine. Îmbunătățește planificarea dinamică randamentul științific față de fluxuri simple și programare umană? Reduce estimarea valorii informației experimentele scumpe sau introduce presupuneri fragile? Depășesc agenții specializați un model general capabil după contabilizarea costului coordonării? Infrastructura ar trebui să facă aceste strategii interschimbabile, astfel încât alegerile arhitecturale să devină ipoteze testabile, nu angajamente permanente."
+    },
+    {
+      "id": "t000469",
+      "source": "The objective is not to create the appearance of an autonomous organisation. It is to make machine labour legible enough that humans can use much more of it without losing control over purpose, evidence, and consequence. A strong orchestrator is quiet when the work is routine, explicit when branches diverge, and willing to stop when additional automation would generate more activity than knowledge.",
+      "translation": "Obiectivul nu este crearea aparenței unei organizații autonome. Este să facă munca mașinilor suficient de lizibilă pentru ca oamenii să poată folosi mult mai multă fără a pierde controlul asupra scopului, dovezilor și consecinței. Un orchestrator puternic este discret când munca este obișnuită, explicit când ramurile diverg și dispus să se oprească atunci când automatizarea suplimentară ar genera mai multă activitate decât cunoaștere."
+    },
+    {
+      "id": "t000470",
+      "source": "Chapter 5 — Agents as Bounded Scientific Contributors",
+      "translation": "Capitolul 5 — Agenții ca participanți științifici cu contribuții limitate"
+    },
+    {
+      "id": "t000471",
+      "source": "Machine participation becomes governable only when the word agent stops functioning as a synonym for an artificial colleague. The more stable unit is a scientific role with declared inputs, project view, tools, evidence requirements, failure behaviour, and authority. This chapter develops that division of labour. It explains why capability and authority must be separate, how different implementations can occupy the same role, and how recurrent improvisation can become a qualified reusable capability without turning a successful prompt into an institutional rule. The aim is not to maximise the number of agents. It is to create a research organisation in which machine labour can expand while responsibility, replacement, and failure localisation remain intelligible.",
+      "translation": "Participarea mașinilor devine guvernabilă numai când cuvântul agent încetează să funcționeze ca sinonim pentru un coleg artificial. Unitatea mai stabilă este un rol științific cu intrări, vedere a proiectului, instrumente, cerințe de dovezi, comportament la eșec și autoritate declarate. Acest capitol dezvoltă acea diviziune a muncii. Explică de ce capacitatea și autoritatea trebuie separate, cum pot implementări diferite ocupa același rol și cum poate improvizația recurentă deveni o capacitate reutilizabilă calificată fără a transforma un prompt reușit în regulă instituțională. Scopul nu este maximizarea numărului agenților. Este crearea unei organizații de cercetare în care munca mașinilor se poate extinde, în timp ce responsabilitatea, înlocuirea și localizarea eșecului rămân inteligibile."
+    },
+    {
+      "id": "t000472",
+      "source": "5.1 Roles rather than personalities",
+      "translation": "5.1 Roluri, nu personalități"
+    },
+    {
+      "id": "t000473",
+      "source": "The useful unit of design is a scientific role, not the fictional image of an artificial colleague. Agents can search, transform, test, critique, coordinate, monitor, or explain, but each role should have a bounded responsibility and should remain subordinate to explicit project authority.",
+      "translation": "Unitatea utilă de proiectare este un rol științific, nu imaginea fictivă a unui coleg artificial. Agenții pot căuta, transforma, testa, critica, coordona, monitoriza sau explica, dar fiecare rol ar trebui să aibă o responsabilitate limitată și să rămână subordonat autorității explicite a proiectului."
+    },
+    {
+      "id": "t000474",
+      "source": "The word agent is attractive because it makes software feel social. A model is given a name, a job description, and a persona, then invited to behave like a digital colleague. This can improve interaction, but it is a weak basis for infrastructure. A personality does not tell the platform which data the agent may read, which tools it may invoke, which objects it can change, how its output should be checked, or what should happen when it encounters a case outside its competence.",
+      "translation": "Cuvântul agent este atractiv deoarece face software-ul să pară social. Un model primește un nume, o descriere a postului și o persona, apoi este invitat să se comporte ca un coleg digital. Aceasta poate îmbunătăți interacțiunea, dar este o bază slabă pentru infrastructură. O personalitate nu spune platformei ce date poate citi agentul, ce instrumente poate invoca, ce obiecte poate schimba, cum ar trebui verificat rezultatul sau ce ar trebui să se întâmple când întâlnește un caz în afara competenței sale."
+    },
+    {
+      "id": "t000475",
+      "source": "Research environments need a less anthropomorphic definition. A literature role searches declared sources and returns candidate evidence with search scope and provenance. A reproduction role rebuilds a computational environment and reports what could and could not be reproduced. A statistical role checks a declared class of analyses. A planning role proposes next actions under a budget. A compliance role evaluates an intended action against configured normative sources. A laboratory role translates an approved protocol into instrument operations within a safety envelope. Project Consciousness observes authorised history without acquiring scientific authority.",
+      "translation": "Mediile de cercetare necesită o definiție mai puțin antropomorfă. Un rol de literatură caută surse declarate și returnează dovezi candidate cu domeniul căutării și proveniență. Un rol de reproducere reconstruiește un mediu computațional și raportează ce a putut și ce nu a putut fi reprodus. Un rol statistic verifică o clasă declarată de analize. Un rol de planificare propune acțiuni următoare sub un buget. Un rol de conformitate evaluează o acțiune intenționată față de surse normative configurate. Un rol de laborator traduce un protocol aprobat în operații de instrumente într-un domeniu de siguranță. Conștiința proiectului observă istoricul autorizat fără a dobândi autoritate științifică."
+    },
+    {
+      "id": "t000476",
+      "source": "The distinction matters because the role is more stable than the implementation. The literature role can be performed today by a language model with retrieval tools, tomorrow by a stronger model, and later by a specialised combination of search, symbolic query expansion, and deterministic filters. The user should continue to receive the same kind of evidence object and the project should continue to enforce the same authority boundary. A research organisation can then improve machinery without redefining its scientific constitution every time a vendor releases a new model.",
+      "translation": "Distincția contează deoarece rolul este mai stabil decât implementarea. Rolul de literatură poate fi îndeplinit astăzi de un model lingvistic cu instrumente de regăsire, mâine de un model mai puternic și ulterior de o combinație specializată de căutare, extindere simbolică a interogărilor și filtre deterministe. Utilizatorul ar trebui să primească în continuare același tip de obiect de dovezi, iar proiectul ar trebui să impună în continuare aceeași graniță a autorității. O organizație de cercetare poate atunci îmbunătăți mecanismele fără a-și redefini constituția științifică de fiecare dată când un furnizor lansează un model nou."
+    },
+    {
+      "id": "t000477",
+      "source": "Role-based design also localises failure. Saying that the agent was wrong is not enough. Did retrieval fail to cover the relevant corpus? Did planning introduce an unsupported assumption? Did the execution layer use the wrong file version? Did a statistical evaluator apply a test outside its domain? Did a human approve a result despite unresolved evidence? The ability to name the failed responsibility is a prerequisite for improving the system.",
+      "translation": "Proiectarea bazată pe roluri localizează și eșecul. A spune că agentul a greșit nu este suficient. A ratat regăsirea acoperirea corpusului relevant? A introdus planificarea o presupunere nesusținută? A folosit stratul execuției versiunea greșită a fișierului? A aplicat un evaluator statistic un test în afara domeniului său? A aprobat un om un rezultat în pofida dovezilor nerezolvate? Capacitatea de a numi responsabilitatea eșuată este o condiție prealabilă îmbunătățirii sistemului."
+    },
+    {
+      "id": "t000478",
+      "source": "Tao's insistence on human authorship and responsibility is relevant here. Scientific authorship is not only a record of who generated text. It is a commitment to understand, defend, correct, and accept consequences for the work. Current AI systems cannot bear that institutional responsibility. A model should therefore not become the moral owner of a result merely because it produced a large fraction of the code or analysis.",
+      "translation": "Insistența lui Tao asupra calității umane de autor și responsabilității este relevantă aici. Calitatea de autor științific nu este doar o înregistrare a celui care a generat textul. Este un angajament de a înțelege, apăra, corecta și accepta consecințele muncii. Sistemele IA actuale nu pot purta acea responsabilitate instituțională. Un model nu ar trebui, așadar, să devină proprietarul moral al unui rezultat doar pentru că a produs o mare parte a codului sau analizei."
+    },
+    {
+      "id": "t000479",
+      "source": "This does not mean machine contribution should be hidden. A generic disclosure that AI was used becomes almost meaningless when machine participation is pervasive. The infrastructure can record that one model proposed a hypothesis, another generated code, a solver checked a formal property, a robotic system executed a protocol, and human researchers interpreted and accepted the result. Authorship remains a human and institutional convention while contribution becomes operationally precise.",
+      "translation": "Aceasta nu înseamnă că contribuția mașinilor ar trebui ascunsă. O declarație generică potrivit căreia a fost folosită IA devine aproape lipsită de sens când participarea mașinilor este generalizată. Infrastructura poate înregistra că un model a propus o ipoteză, altul a generat cod, un solver a verificat o proprietate formală, un sistem robotic a executat un protocol, iar cercetătorii umani au interpretat și acceptat rezultatul. Calitatea de autor rămâne o convenție umană și instituțională, în timp ce contribuția devine precisă operațional."
+    },
+    {
+      "id": "t000480",
+      "source": "This distinction demonstrates why specialisation is about responsibility rather than theatrical multiplicity. A project does not need twenty agents merely to create a sense of sophistication. It needs roles that have different evidence requirements or authority boundaries. Some roles may use the same model under different harnesses. Others may be deterministic tools that barely resemble agents. The platform should care about what the role promises and what the project can verify.",
+      "translation": "Această distincție demonstrează de ce specializarea privește responsabilitatea, nu multiplicitatea teatrală. Un proiect nu necesită douăzeci de agenți doar pentru a crea o impresie de sofisticare. Necesită roluri care au cerințe diferite de dovezi sau granițe ale autorității. Unele roluri pot folosi același model sub infrastructuri diferite de control. Altele pot fi instrumente deterministe care abia seamănă cu agenți. Platformei ar trebui să-i pese de ce promite rolul și ce poate verifica proiectul."
+    },
+    {
+      "id": "t000481",
+      "source": "A RoboTeam, in this sense, is a configurable organisation of bounded contributors. During one research meeting, the team may include a literature role, a modelling role, a critic, and a documentation role. During a reproduction task, a different set becomes active. Roles can remain dormant until the state makes them relevant. This avoids the overhead of a permanent society of models talking to one another simply because the architecture is labelled multi-agent.",
+      "translation": "Un RoboTeam, în acest sens, este o organizație configurabilă de contributori limitați. Într-o ședință de cercetare, echipa poate include un rol de literatură, unul de modelare, un critic și un rol de documentare. Într-o sarcină de reproducere, devine activă altă mulțime. Rolurile pot rămâne latente până când starea le face relevante. Aceasta evită costul unei societăți permanente de modele care vorbesc între ele doar pentru că arhitectura este etichetată multiagent."
+    },
+    {
+      "id": "t000482",
+      "source": "The shared project state replaces the fiction that agents must share one mind. Each role receives an authorised project view: the subset of questions, claims, artefacts, versions, and permissions needed for its task. A compliance role may need metadata about a protected dataset without access to its contents. A literature role may need the scientific question but not confidential partner data. A critic may need the proposed claim and evidence while remaining intentionally isolated from the planner's rationale to reduce correlated bias.",
+      "translation": "Starea comună a proiectului înlocuiește ficțiunea că agenții trebuie să împărtășească o singură minte. Fiecare rol primește o vedere autorizată a proiectului: subsetul de întrebări, afirmații, artefacte, versiuni și permisiuni necesar sarcinii. Un rol de conformitate poate necesita metadate despre un set protejat de date fără acces la conținutul său. Un rol de literatură poate necesita întrebarea științifică, dar nu date confidențiale ale partenerilor. Un critic poate necesita afirmația propusă și dovezile, rămânând intenționat izolat de justificarea planificatorului pentru a reduce părtinirea corelată."
+    },
+    {
+      "id": "t000483",
+      "source": "This view-based design improves both privacy and scientific interpretation. When two agents disagree, the environment can ask whether the difference came from model behaviour, evidence access, or assumptions. An output can be judged relative to what the role actually saw. Narrower context can also improve model performance by reducing irrelevant material and decreasing opportunities for accidental leakage.",
+      "translation": "Această proiectare bazată pe vederi îmbunătățește atât confidențialitatea, cât și interpretarea științifică. Când doi agenți sunt în dezacord, mediul poate întreba dacă diferența provine din comportamentul modelului, accesul la dovezi sau presupuneri. O ieșire poate fi judecată față de ceea ce a văzut efectiv rolul. Contextul mai îngust poate îmbunătăți și performanța modelului reducând materialul irelevant și oportunitățile de divulgare accidentală."
+    },
+    {
+      "id": "t000484",
+      "source": "The user interface can still present coherent collaboration. Researchers may prefer to talk to one general copilot that delegates behind the scenes. The important requirement is that the project record distinguishes the responsibilities that were invoked. A conversational surface should not collapse retrieval, computation, verification, and authority into one voice simply because one chat window is convenient.",
+      "translation": "Interfața utilizatorului poate prezenta în continuare colaborare coerentă. Cercetătorii pot prefera să vorbească cu un singur copilot general care deleagă în culise. Cerința importantă este ca înregistrarea proiectului să distingă responsabilitățile invocate. O suprafață conversațională nu ar trebui să contopească regăsirea, calculul, verificarea și autoritatea într-o singură voce doar pentru că o fereastră de chat este comodă."
+    },
+    {
+      "id": "t000485",
+      "source": "Role-based agents therefore support a division of scientific labour without pretending that the system has created artificial persons. The design question becomes practical: what responsibility is being delegated, what evidence accompanies the delegation, and what consequence is the role allowed to create? This is a much stronger foundation for scientific trust than a name, a persona, or a long prompt describing how careful an agent should be.",
+      "translation": "Agenții bazați pe roluri susțin, așadar, o diviziune a muncii științifice fără a pretinde că sistemul a creat persoane artificiale. Întrebarea proiectării devine practică: ce responsabilitate este delegată, ce dovezi însoțesc delegarea și ce consecință are voie rolul să creeze? Acesta este un fundament mult mai puternic pentru încrederea științifică decât un nume, o persona sau un prompt lung care descrie cât de atent ar trebui să fie un agent."
+    },
+    {
+      "id": "t000486",
+      "source": "5.2 Capability, project view, authority, and evidence",
+      "translation": "5.2 Capacitate, vedere a proiectului, autoritate și dovezi"
+    },
+    {
+      "id": "t000487",
+      "source": "Every agent role can be described through four operational dimensions: capability, project view, authority, and evidence.",
+      "translation": "Fiecare rol agentic poate fi descris prin patru dimensiuni operaționale: capacitate, vedere a proiectului, autoritate și dovezi."
+    },
+    {
+      "id": "t000488",
+      "source": "Qualification adds a fifth dimension by establishing whether a particular implementation deserves to occupy the role within a declared domain and risk envelope.",
+      "translation": "Calificarea adaugă o a cincea dimensiune stabilind dacă o anumită implementare merită să ocupe rolul într-un domeniu declarat de activitate și risc."
+    },
+    {
+      "id": "t000489",
+      "source": "Capability answers what the role can do. A useful capability is narrow enough to test but broad enough to reuse. It declares the input object types it accepts, the output it produces, the tools it may use, the situations in which it should abstain, and the resources it may require. The declaration does not need to capture every internal step. It provides a stable contract between the project and a changing implementation.",
+      "translation": "Capacitatea răspunde la întrebarea ce poate face rolul. O capacitate utilă este suficient de îngustă pentru a fi testată, dar suficient de amplă pentru a fi reutilizată. Declară tipurile de obiecte de intrare acceptate, ieșirea produsă, instrumentele pe care le poate folosi, situațiile în care ar trebui să se abțină și resursele necesare. Declarația nu trebuie să capteze fiecare pas intern. Oferă un contract stabil între proiect și o implementare schimbătoare."
+    },
+    {
+      "id": "t000490",
+      "source": "Project view answers what the role is allowed to see. Context should be assembled from project state rather than inherited wholesale from a user's account. The view identifies relevant claims, artefacts, versions, data classifications, and permissions. It can also intentionally exclude information. An independent evaluator may be more useful if it does not see the generator's preferred conclusion. A historical benchmark agent may be prohibited from accessing literature published after the target date.",
+      "translation": "Vederea proiectului răspunde la întrebarea ce are voie rolul să vadă. Contextul ar trebui asamblat din starea proiectului, nu moștenit integral din contul unui utilizator. Vederea identifică afirmații, artefacte, versiuni, clasificări ale datelor și permisiuni relevante. Poate și exclude intenționat informații. Un evaluator independent poate fi mai util dacă nu vede concluzia preferată a generatorului. Unui agent de etalon istoric i se poate interzice accesul la literatura publicată după data-țintă."
+    },
+    {
+      "id": "t000491",
+      "source": "Authority answers what the role may change or cause. This dimension must be independent of capability. A model may be technically capable of submitting a paper, transferring data, or controlling equipment through available tools, yet the project should not grant that authority simply because the action is possible. Authority can be scoped by object type, action, cost, reversibility, location, and required approvals.",
+      "translation": "Autoritatea răspunde la întrebarea ce poate schimba sau provoca rolul. Această dimensiune trebuie să fie independentă de capacitate. Un model poate fi tehnic capabil să trimită un articol, să transfere date sau să controleze echipament prin instrumentele disponibile, dar proiectul nu ar trebui să acorde acea autoritate doar pentru că acțiunea este posibilă. Autoritatea poate fi delimitată după tipul obiectului, acțiune, cost, reversibilitate, locație și aprobări necesare."
+    },
+    {
+      "id": "t000492",
+      "source": "Evidence answers what the role must reveal about its work. A retrieval result should identify sources and search scope. A computation should identify code, data, environment, and parameters. A recommendation should expose the assumptions and alternatives it considered at the level necessary for review. An external action should leave a receipt. Evidence turns a transient answer into an inspectable project event.",
+      "translation": "Dovezile răspund la întrebarea ce trebuie să dezvăluie rolul despre munca sa. Un rezultat de regăsire ar trebui să identifice sursele și domeniul căutării. Un calcul ar trebui să identifice codul, datele, mediul și parametrii. O recomandare ar trebui să expună presupunerile și alternativele considerate la nivelul necesar evaluării. O acțiune externă ar trebui să lase o dovadă de execuție. Dovezile transformă un răspuns tranzitoriu într-un eveniment inspectabil al proiectului."
+    },
+    {
+      "id": "t000493",
+      "source": "Figure from PDF page 68",
+      "translation": "Figură din pagina 68 a PDF-ului"
+    },
+    {
+      "id": "t000494",
+      "source": "Figure 5. A scientific agent is a governed capability, not a personality.",
+      "translation": "Figura 5. Un agent științific este o capacitate guvernată, nu o personalitate."
+    },
+    {
+      "id": "t000495",
+      "source": "The diagram places these dimensions in a simple stack because they constrain one another. A role can have a strong capability and still receive a narrow view. It can see broad context and still have almost no authority. It can be allowed to produce a candidate while being required to attach strong evidence before the candidate reaches review. This separation makes it possible to exploit model capability without giving the model an equivalent level of trust.",
+      "translation": "Diagrama plasează aceste dimensiuni într-o stivă simplă deoarece se constrâng reciproc. Un rol poate avea o capacitate puternică și totuși primi o vedere îngustă. Poate vedea context amplu și totuși avea aproape nicio autoritate. I se poate permite să producă un candidat, cerându-i-se totodată să atașeze dovezi puternice înainte ca acel candidat să ajungă la evaluare. Această separare face posibilă exploatarea capacității modelului fără a-i da un nivel echivalent de încredere."
+    },
+    {
+      "id": "t000496",
+      "source": "Table 10. The operational contract of a scientific agent role.",
+      "translation": "Tabelul 10. Contractul operațional al unui rol agentic științific."
+    },
+    {
+      "id": "t000497",
+      "source": "Dimension",
+      "translation": "Dimensiune"
+    },
+    {
+      "id": "t000498",
+      "source": "Meaning in the research environment",
+      "translation": "Semnificație în mediul de cercetare"
+    },
+    {
+      "id": "t000499",
+      "source": "Capability",
+      "translation": "Capacitate"
+    },
+    {
+      "id": "t000500",
+      "source": "The bounded responsibility, accepted inputs, produced outputs, tools, abstention conditions, and resource expectations.",
+      "translation": "Responsabilitatea limitată, intrările acceptate, ieșirile produse, instrumentele, condițiile abținerii și așteptările de resurse."
+    },
+    {
+      "id": "t000501",
+      "source": "The authorised subset of state, data,",
+      "translation": "Subsetul autorizat de stare, date,"
+    },
+    {
+      "id": "t000502",
+      "source": "Project view",
+      "translation": "Vedere a proiectului"
+    },
+    {
+      "id": "t000503",
+      "source": "versions, and context supplied to the role.",
+      "translation": "versiuni și context furnizat rolului."
+    },
+    {
+      "id": "t000504",
+      "source": "The changes or external consequences",
+      "translation": "Schimbările sau consecințele externe"
+    },
+    {
+      "id": "t000505",
+      "source": "Authority",
+      "translation": "Autoritate"
+    },
+    {
+      "id": "t000506",
+      "source": "the role is permitted to create; granted separately from technical capability.",
+      "translation": "pe care rolului i se permite să le creeze; acordată separat de capacitatea tehnică."
+    },
+    {
+      "id": "t000507",
+      "source": "Dimension",
+      "translation": "Dimensiune"
+    },
+    {
+      "id": "t000508",
+      "source": "Meaning in the research environment",
+      "translation": "Semnificație în mediul de cercetare"
+    },
+    {
+      "id": "t000509",
+      "source": "The sources, execution receipts,",
+      "translation": "Sursele, dovezile de execuție,"
+    },
+    {
+      "id": "t000510",
+      "source": "Evidence",
+      "translation": "Dovezi"
+    },
+    {
+      "id": "t000511",
+      "source": "assumptions, checks, and provenance that must accompany the role output.",
+      "translation": "presupunerile, verificările și proveniența care trebuie să însoțească ieșirea rolului."
+    },
+    {
+      "id": "t000512",
+      "source": "Evidence that one implementation",
+      "translation": "Dovezi că o implementare"
+    },
+    {
+      "id": "t000513",
+      "source": "Qualification",
+      "translation": "Calificare"
+    },
+    {
+      "id": "t000514",
+      "source": "performs the role reliably inside a declared domain and risk envelope.",
+      "translation": "îndeplinește fiabil rolul într-un domeniu declarat de activitate și risc."
+    },
+    {
+      "id": "t000515",
+      "source": "The table makes the contract implementable. An agent manifest can declare accepted input types, output types, required tools, data sensitivity limits, expected cost class, and required evaluators. A tool adapter can declare its parameters and side effects. A policy can state that a role may create draft objects but not accepted claims. These contracts can remain simple in early prototypes and become richer only where operational evidence demands it.",
+      "translation": "Tabelul face contractul implementabil. Un manifest al agentului poate declara tipurile acceptate de intrări, tipurile ieșirilor, instrumentele necesare, limitele sensibilității datelor, clasa așteptată de cost și evaluatorii necesari. Un adaptor de instrument poate declara parametrii și efectele sale secundare. O politică poate preciza că un rol poate crea obiecte-ciornă, dar nu afirmații acceptate. Aceste contracte pot rămâne simple în prototipurile timpurii și pot deveni mai bogate numai unde dovezile operaționale o cer."
+    },
+    {
+      "id": "t000516",
+      "source": "Abstention is an important part of the contract. An agent that cannot access key prior art should not declare novelty. A reproduction role that cannot rebuild the environment should distinguish infrastructure failure from scientific non-reproduction. A compliance role that cannot determine data classification should escalate rather than guess. Reliable abstention is often more valuable than a small increase in average answer rate in high-consequence research.",
+      "translation": "Abținerea este o parte importantă a contractului. Un agent care nu poate accesa stadiul anterior al tehnicii esențial nu ar trebui să declare noutate. Un rol de reproducere care nu poate reconstrui mediul ar trebui să distingă eșecul infrastructurii de nereproducerea științifică. Un rol de conformitate care nu poate determina clasificarea datelor ar trebui să escaladeze, nu să ghicească. Abținerea fiabilă este adesea mai valoroasă decât o mică creștere a ratei medii a răspunsurilor în cercetarea cu consecințe importante."
+    },
+    {
+      "id": "t000517",
+      "source": "The authority model also supports graduated autonomy. A new capability can begin in suggestion mode, where it only creates candidate objects. After successful qualification, it may gain authority to run reversible sandboxed work automatically. Later, a mature role may commit low-risk state changes under policy while consequential decisions still require human approval. If regressions appear, authority can be reduced without deleting the capability. Autonomy becomes an evidence-based operating policy rather than a philosophical label applied to the whole system.",
+      "translation": "Modelul autorității susține și autonomie graduală. O capacitate nouă poate începe în mod de sugestie, unde creează numai obiecte candidate. După calificare reușită, poate câștiga autoritate să ruleze automat muncă reversibilă în mediu izolat. Ulterior, un rol matur poate aplica definitiv schimbări de stare cu risc scăzut sub politică, în timp ce deciziile cu consecințe importante necesită în continuare aprobare umană. Dacă apar regresii, autoritatea poate fi redusă fără ștergerea capacității. Autonomia devine o politică operațională bazată pe dovezi, nu o etichetă filosofică aplicată întregului sistem."
+    },
+    {
+      "id": "t000518",
+      "source": "Human roles should be represented with similar clarity. A principal investigator, statistician, data steward, laboratory manager, external reviewer, and editor do not have interchangeable authority. The infrastructure can make these differences explicit without forcing users to think in access-control jargon. A familiar interface can show that an experiment plan awaits scientific approval, a data transfer awaits a steward, and a publication decision belongs to an editor. The underlying system enforces the boundaries consistently for humans and machines.",
+      "translation": "Rolurile umane ar trebui reprezentate cu claritate similară. Un investigator principal, un statistician, un responsabil de date, un manager de laborator, un evaluator extern și un editor nu au autoritate interschimbabilă. Infrastructura poate face aceste diferențe explicite fără a forța utilizatorii să gândească în jargon de control al accesului. O interfață familiară poate arăta că un plan de experiment așteaptă aprobare științifică, un transfer de date așteaptă un responsabil, iar decizia publicării aparține unui editor. Sistemul de bază impune consecvent granițele pentru oameni și mașini."
+    },
+    {
+      "id": "t000519",
+      "source": "Evidence requirements can also vary by consequence. A quick brainstorming role may return prose with lightweight provenance. A result intended to become part of accepted project knowledge may require source links, execution receipts, and independent checks. A physical action may require an approved protocol, safety preconditions, and a lower-level interlock. The project does not need maximum traceability for every thought; it needs proportional traceability where consequences justify it.",
+      "translation": "Cerințele de dovezi pot varia și după consecință. Un rol rapid de generare de idei poate returna proză cu proveniență ușoară. Un rezultat destinat să devină parte a cunoașterii acceptate a proiectului poate necesita legături către surse, dovezi de execuție și verificări independente. O acțiune fizică poate necesita un protocol aprobat, precondiții de siguranță și un interblocaj de nivel inferior. Proiectul nu necesită trasabilitate maximă pentru fiecare gând; necesită trasabilitate proporțională acolo unde consecințele o justifică."
+    },
+    {
+      "id": "t000520",
+      "source": "This contract model is one of the most practical ways to turn AI from a conversational feature into research infrastructure. It enables model replacement, controlled federation, independent testing, and clearer incident response. If a role fails, the organisation can inspect whether the problem lies in the implementation, the project view, the authority boundary, or the evidence requirement. Improvement becomes a systems engineering task rather than an exercise in rewriting personalities.",
+      "translation": "Acest model al contractelor este una dintre cele mai practice modalități de a transforma IA dintr-o funcție conversațională în infrastructură de cercetare. Permite înlocuirea modelului, federație controlată, testare independentă și răspuns mai clar la incidente. Dacă un rol eșuează, organizația poate inspecta dacă problema se află în implementare, vederea proiectului, granița autorității sau cerința de dovezi. Îmbunătățirea devine o sarcină de inginerie a sistemelor, nu un exercițiu de rescriere a personalităților."
+    },
+    {
+      "id": "t000521",
+      "source": "5.3 Qualification, progressive stabilisation, and model replacement",
+      "translation": "5.3 Calificare, stabilizare progresivă și înlocuirea modelului"
+    },
+    {
+      "id": "t000522",
+      "source": "Successful AI improvisation should not silently become institutional procedure. Recurrent work should be qualified through transfer tests, negative cases, evidence requirements, and versioned promotion. Over",
+      "translation": "Improvizația IA reușită nu ar trebui să devină tacit procedură instituțională. Munca recurentă ar trebui calificată prin teste de transfer, cazuri negative, cerințe de dovezi și promovare versionată. În"
+    },
+    {
+      "id": "t000523",
+      "source": "time, stable parts of the work can become more deterministic while open-ended interpretation remains generative.",
+      "translation": "timp, părțile stabile ale muncii pot deveni mai deterministe, în timp ce interpretarea deschisă rămâne generativă."
+    },
+    {
+      "id": "t000524",
+      "source": "AI agents are valuable because they can improvise. They can read an unfamiliar repository, interpret an unusual document, combine tools, or propose a procedure that was not predefined. Research needs this flexibility because novel problems are not fully specifiable in advance. The danger begins when one successful improvisation is copied into long-term automation without establishing where it works and where it fails.",
+      "translation": "Agenții IA sunt valoroși deoarece pot improviza. Pot citi un depozit nefamiliar, interpreta un document neobișnuit, combina instrumente sau propune o procedură care nu era predefinită. Cercetarea are nevoie de această flexibilitate deoarece problemele noi nu sunt complet specificabile în avans. Pericolul începe când o improvizație reușită este copiată în automatizare pe termen lung fără a stabili unde funcționează și unde eșuează."
+    },
+    {
+      "id": "t000525",
+      "source": "A response belongs to one context. A qualified capability makes a stronger institutional claim. The path from one to the other should be explicit. The team first identifies the reusable responsibility rather than saving the whole transcript. It defines the expected inputs and outputs, the tools and permissions required, the situations in which the capability should abstain, and the evidence that must accompany the result. It then tests the implementation across varied cases, including cases designed to expose over-generalisation.",
+      "translation": "Un răspuns aparține unui context. O capacitate calificată formulează o afirmație instituțională mai puternică. Calea de la unul la cealaltă ar trebui să fie explicită. Echipa identifică mai întâi responsabilitatea reutilizabilă, nu salvează întreaga transcriere. Definește intrările și ieșirile așteptate, instrumentele și permisiunile necesare, situațiile în care capacitatea ar trebui să se abțină și dovezile care trebuie să însoțească rezultatul. Apoi testează implementarea în cazuri variate, inclusiv cazuri concepute să expună suprageneralizarea."
+    },
+    {
+      "id": "t000526",
+      "source": "Negative tests are especially important for generative systems. A literature agent that finds relevant prior art in familiar terminology may fail when the field uses different vocabulary. A statistical critic may learn to produce standard warnings that sound rigorous but do not apply to the specific design. A planning agent may produce safe protocols for one instrument family and dangerous ones for another. Qualification should probe these boundaries rather than reward only successful demonstrations.",
+      "translation": "Testele negative sunt deosebit de importante pentru sistemele generative. Un agent de literatură care găsește stadiu anterior al tehnicii relevant în terminologie familiară poate eșua când domeniul folosește vocabular diferit. Un critic statistic poate învăța să producă avertismente standard care sună riguros, dar nu se aplică proiectării specifice. Un agent de planificare poate produce protocoale sigure pentru o familie de instrumente și periculoase pentru alta. Calificarea ar trebui să exploreze aceste granițe, nu să recompenseze numai demonstrații reușite."
+    },
+    {
+      "id": "t000527",
+      "source": "The qualification record should be versioned. A model update, prompt change, tool upgrade, retrieval corpus, or runtime modification can affect behaviour. The active implementation should be compared with a candidate on representative tasks and important failure cases. Cost and latency also matter because a capability that is slightly more accurate but ten times more expensive may not improve the complete research process.",
+      "translation": "Înregistrarea calificării ar trebui versionată. O actualizare de model, schimbare de prompt, modernizare de instrument, corpus de regăsire sau modificare a mediului de execuție poate afecta comportamentul. Implementarea activă ar trebui comparată cu una candidată pe sarcini reprezentative și cazuri importante de eșec. Costul și latența contează și ele, deoarece o capacitate puțin mai precisă, dar de zece ori mai scumpă, poate să nu îmbunătățească procesul complet de cercetare."
+    },
+    {
+      "id": "t000528",
+      "source": "This leads to progressive stabilisation. Some tasks begin as open-ended model work and become more structured as the organisation learns. A document transformation that required interpretation may eventually become a conventional program. A policy check may split into deterministic rules for clear cases and a generative service for ambiguous interpretation. An experiment preparation procedure may become a tested workflow with only one remaining step that requires model judgment.",
+      "translation": "Aceasta conduce la stabilizare progresivă. Unele sarcini încep ca muncă deschisă de model și devin mai structurate pe măsură ce organizația învață. O transformare de document care necesita interpretare poate deveni în cele din urmă un program convențional. O verificare de politică se poate împărți în reguli deterministe pentru cazuri clare și un serviciu generativ pentru interpretare ambiguă. O procedură de pregătire a experimentului poate deveni un flux testat cu un singur pas rămas care necesită judecata modelului."
+    },
+    {
+      "id": "t000529",
+      "source": "Progressive stabilisation is not a march toward symbolism for its own sake. Some scientific tasks will remain interpretive because the concepts are contested or the evidence changes. The objective is to give stronger guarantees to recurrent, high-consequence fragments when the cost of doing so is justified. A model remains useful at the frontier; stable infrastructure accumulates behind it.",
+      "translation": "Stabilizarea progresivă nu este un marș spre simbolism de dragul său. Unele sarcini științifice vor rămâne interpretative deoarece conceptele sunt contestate sau dovezile se schimbă. Obiectivul este acordarea de garanții mai puternice fragmentelor recurente cu consecințe importante când costul este justificat. Un model rămâne util la frontieră; infrastructura stabilă se acumulează în urma sa."
+    },
+    {
+      "id": "t000530",
+      "source": "Qualification should measure the complete role rather than a single benchmark score. Reliability includes failure behaviour, provenance quality, abstention, human correction effort, cost, privacy, and transfer. A role that produces fewer answers but reliably identifies when it lacks evidence may be more valuable than one that maximises completion rate while hiding uncertainty.",
+      "translation": "Calificarea ar trebui să măsoare rolul complet, nu un singur scor de etalon. Fiabilitatea include comportamentul la eșec, calitatea provenienței, abținerea, efortul corectării umane, costul, confidențialitatea și transferul. Un rol care produce mai puține răspunsuri, dar identifică fiabil când îi lipsesc dovezi, poate fi mai valoros decât unul care maximizează rata finalizării ascunzând incertitudinea."
+    },
+    {
+      "id": "t000531",
+      "source": "Model replacement then becomes an ordinary lifecycle event. The project role remains stable, and a new implementation enters with limited authority. It can be evaluated on current and historical cases, perhaps running in shadow mode beside the incumbent. If it performs better within the risk envelope, the organisation can promote it. If a later regression appears, an earlier version can be restored. The project history remains intact because scientific state is not stored inside the model.",
+      "translation": "Înlocuirea modelului devine atunci un eveniment obișnuit al ciclului de viață. Rolul proiectului rămâne stabil, iar o implementare nouă intră cu autoritate limitată. Poate fi evaluată pe cazuri actuale și istorice, poate rulând în mod de observare alături de implementarea existentă. Dacă performează mai bine în domeniul riscului, organizația o poate promova. Dacă apare ulterior o regresie, poate fi restaurată o versiune anterioară. Istoricul proiectului rămâne intact deoarece starea științifică nu este stocată în model."
+    },
+    {
+      "id": "t000532",
+      "source": "This lifecycle also helps institutions avoid hidden procedural memory. Many agent systems accumulate tricks in prompts, examples, and private context until the behaviour is difficult to reproduce. A qualified capability should expose the parts of that memory that materially affect its role. Reusable methods, scripts, prompts, and model configurations become versioned assets with declared scope. They can be retired when evidence changes.",
+      "translation": "Acest ciclu de viață ajută și instituțiile să evite memoria procedurală ascunsă. Multe sisteme agentice acumulează trucuri în prompturi, exemple și context privat până când comportamentul devine dificil de reprodus. O capacitate calificată ar trebui să expună părțile acelei memorii care afectează substanțial rolul său. Metodele, scripturile, prompturile și configurațiile reutilizabile ale modelelor devin active versionate cu domeniu declarat. Pot fi retrase când se schimbă dovezile."
+    },
+    {
+      "id": "t000533",
+      "source": "The research value of MRP-VM, SOP circuits, agent libraries, and controlled deployment can be judged through this lens. Do they help convert useful improvisation into inspectable competence? Can the same role be implemented by a different model without rewriting the project? Can failures be localised? Can stable procedures be replayed without asking a model to rediscover them each time? These questions are stronger than whether an agent appears intelligent in a demonstration.",
+      "translation": "Valoarea de cercetare a MRP-VM, circuitelor SOP, bibliotecilor de agenți și implementării controlate poate fi judecată prin această perspectivă. Ajută ele la convertirea improvizației utile în competență inspectabilă? Poate fi implementat același rol de un model diferit fără rescrierea proiectului? Pot fi localizate eșecurile? Pot fi reluate procedurile stabile fără a cere unui model să le redescopere de fiecare dată? Aceste întrebări sunt mai puternice decât întrebarea dacă un agent pare inteligent într-o demonstrație."
+    },
+    {
+      "id": "t000534",
+      "source": "A further benefit of qualification is comparative procurement. Research organisations should not have to choose a model brand and then discover later which scientific roles it can safely perform. They can instead define the role first and invite several implementations to compete against the same evidence and failure cases. This changes the purchasing question from which model is smartest to which implementation is most reliable, economical, private, and correctable for this responsibility. It also reduces strategic dependence on one provider because replacement is planned into the contract rather than treated as an emergency migration.",
+      "translation": "Un alt beneficiu al calificării este achiziția comparativă. Organizațiile de cercetare nu ar trebui să trebuiască să aleagă o marcă de model și apoi să descopere ce roluri științifice poate îndeplini în siguranță. Pot defini rolul mai întâi și invita mai multe implementări să concureze față de aceleași dovezi și cazuri de eșec. Aceasta schimbă întrebarea achiziției de la care model este cel mai inteligent la care implementare este cea mai fiabilă, economică, privată și corectabilă pentru această responsabilitate. Reduce și dependența strategică de un singur furnizor, deoarece înlocuirea este planificată în contract, nu tratată ca migrare de urgență."
+    },
+    {
+      "id": "t000535",
+      "source": "Qualification also creates a natural boundary for sharing capabilities between institutions. A partner can expose a role with declared inputs, outputs, cost, privacy conditions, and evidence without revealing the proprietary mechanism behind it. The receiving project can decide whether the qualification evidence is sufficient for its own risk level and can require local reevaluation when necessary. This is more realistic than expecting every consortium partner to use the same agent framework or model stack.",
+      "translation": "Calificarea creează și o graniță naturală pentru partajarea capacităților între instituții. Un partener poate expune un rol cu intrări, ieșiri, cost, condiții de confidențialitate și dovezi declarate fără a dezvălui mecanismul proprietar din spate. Proiectul primitor poate decide dacă dovezile calificării sunt suficiente pentru propriul nivel de risc și poate cere reevaluare locală când este necesar. Aceasta este mai realistă decât așteptarea ca fiecare partener de consorțiu să folosească același cadru agentic sau aceeași stivă de modele."
+    },
+    {
+      "id": "t000536",
+      "source": "The ultimate measure is organisational learning. A research environment should become easier to trust after sustained use because it has accumulated qualified capabilities, known failure modes, tested evaluators, and explicit authority policies. If the system simply accumulates longer chat histories and more opaque prompts, it has gained memory without gaining infrastructure. Progressive stabilisation turns experience into durable scientific capacity.",
+      "translation": "Măsura ultimă este învățarea organizațională. Un mediu de cercetare ar trebui să devină mai ușor de crezut după folosire susținută deoarece a acumulat capacități calificate, moduri cunoscute de eșec, evaluatori testați și politici explicite de autoritate. Dacă sistemul acumulează doar istorice de chat mai lungi și prompturi mai opace, a câștigat memorie fără infrastructură. Stabilizarea progresivă transformă experiența în capacitate științifică durabilă."
+    },
+    {
+      "id": "t000537",
+      "source": "Chapter 6 — Evaluation, Review, and Scientific Digestion",
+      "translation": "Capitolul 6 — Evaluare, recenzare și asimilare științifică"
+    },
+    {
+      "id": "t000538",
+      "source": "The architecture matters most after generation. A result can be fluent, executable, reproducible, or formally checked and still fail to deserve scientific authority. This chapter therefore moves from production to evaluation and digestion. It treats evaluation as a portfolio of bounded guarantees rather than a single confidence score, and it treats review as an allocation of scarce expert attention rather than an automated verdict. The same distinction extends beyond publication: explanation, replication, disagreement, use, and canonicalisation are separate stages through which candidate output becomes shared knowledge. The infrastructure should make those stages visible, help experts challenge consequential claims earlier, and preserve uncertainty when no evaluator has earned the right to collapse it.",
+      "translation": "Arhitectura contează cel mai mult după generare. Un rezultat poate fi fluent, executabil, reproductibil sau verificat formal și totuși să nu merite autoritate științifică. Acest capitol trece, așadar, de la producție la evaluare și asimilare. Tratează evaluarea ca portofoliu de garanții limitate, nu ca un singur scor de încredere, și recenzarea ca alocare a atenției rare a experților, nu ca verdict automat. Aceeași distincție se extinde dincolo de publicare: explicația, replicarea, dezacordul, utilizarea și canonizarea sunt etape separate prin care ieșirea candidată devine cunoaștere comună. Infrastructura ar trebui să facă aceste etape vizibile, să ajute experții să conteste mai devreme afirmații cu consecințe importante și să păstreze incertitudinea când niciun evaluator nu a câștigat dreptul de a o elimina."
+    },
+    {
+      "id": "t000539",
+      "source": "6.1 Evaluation as a portfolio of independent checks",
+      "translation": "6.1 Evaluarea ca portofoliu de verificări independente"
+    },
+    {
+      "id": "t000540",
+      "source": "Verification is not one operation and should not produce one universal green badge. Scientific evaluation is a portfolio of checks with different scopes and failure modes: source support, reproducibility, statistical or methodological validity, formal properties, contradiction, novelty, explanation, and human review. Their results should coexist without being collapsed into a single model score.",
+      "translation": "Verificarea nu este o singură operație și nu ar trebui să producă o singură insignă verde universală. Evaluarea științifică este un portofoliu de verificări cu domenii și moduri de eșec diferite: susținere prin surse, reproductibilitate, validitate statistică sau metodologică, proprietăți formale, contradicție, noutate, explicație și evaluare umană. Rezultatele lor ar trebui să coexiste fără a fi contopite într-un singur scor de model."
+    },
+    {
+      "id": "t000541",
+      "source": "A future research environment will generate more candidate results than experts can inspect manually. The obvious response is to automate evaluation, but that phrase hides an important danger. If the same system generates a claim, evaluates the claim, and then summarises the evaluation as confidence, the project has created self-confirmation rather than independent evidence. The infrastructure should therefore treat evaluation as a separate class of scientific work.",
+      "translation": "Un mediu viitor de cercetare va genera mai multe rezultate candidate decât pot experții inspecta manual. Răspunsul evident este automatizarea evaluării, dar expresia ascunde un pericol important. Dacă același sistem generează o afirmație, evaluează afirmația și apoi rezumă evaluarea ca încredere, proiectul a creat autoconfirmare, nu dovezi independente. Infrastructura ar trebui, așadar, să trateze evaluarea ca o clasă separată de muncă științifică."
+    },
+    {
+      "id": "t000542",
+      "source": "The first kind of evaluation concerns source support. A citation can be checked for existence, accessibility, and whether the cited passage actually supports the attributed claim. This is a bounded task in which retrieval and language models can help substantially. The output should distinguish direct support, partial support, contextual relevance, contradiction, and inability to verify. A polished citation string without source-level evidence should not count as successful checking.",
+      "translation": "Primul tip de evaluare privește susținerea prin surse. O citare poate fi verificată pentru existență, accesibilitate și dacă pasajul citat susține efectiv afirmația atribuită. Aceasta este o sarcină limitată în care regăsirea și modelele lingvistice pot ajuta substanțial. Rezultatul ar trebui să distingă susținerea directă, susținerea parțială, relevanța contextuală, contradicția și imposibilitatea verificării. Un șir îngrijit de citare fără dovezi la nivel de sursă nu ar trebui numărat ca verificare reușită."
+    },
+    {
+      "id": "t000543",
+      "source": "Reproducibility is a different question. A computational result may require code revision, data identifiers, dependency versions, parameters, random seeds, hardware-relevant metadata, and execution logs. A reproduction role attempts to rebuild the environment and rerun the procedure. Failure can mean that the package is incomplete, that the environment no longer exists, that the numerical result differs, or that the scientific conclusion changes. These outcomes must not be compressed into one reproduced or not reproduced label.",
+      "translation": "Reproductibilitatea este o întrebare diferită. Un rezultat computațional poate necesita revizia codului, identificatori de date, versiuni ale dependențelor, parametri, semințe aleatoare, metadate relevante hardware-ului și jurnale de execuție. Un rol de reproducere încearcă să reconstruiască mediul și să reruleze procedura. Eșecul poate însemna că pachetul este incomplet, că mediul nu mai există, că rezultatul numeric diferă sau că se schimbă concluzia științifică. Aceste rezultate nu trebuie comprimate într-o singură etichetă reprodus sau nereprodus."
+    },
+    {
+      "id": "t000544",
+      "source": "Methodological evaluation asks whether a reproducible procedure was scientifically appropriate. Statistical checks can inspect train-test leakage, missing controls, unstable estimates, inappropriate causal language, or deviations from a declared protocol. Formal tools can verify properties in domains where formalisation is faithful. Domain-specific validators can detect impossible physical or logical states. A language model can help interpret these checks but should not inherit the guarantee of the deterministic tool it invokes.",
+      "translation": "Evaluarea metodologică întreabă dacă o procedură reproductibilă era potrivită științific. Verificările statistice pot inspecta scurgerea între antrenare și testare, controale lipsă, estimări instabile, limbaj cauzal inadecvat sau abateri de la un protocol declarat. Instrumentele formale pot verifica proprietăți în domenii unde formalizarea este fidelă. Validatorii specifici domeniului pot detecta stări fizice sau logice imposibile. Un model lingvistic poate ajuta la interpretarea acestor verificări, dar nu ar trebui să moștenească garanția instrumentului determinist invocat."
+    },
+    {
+      "id": "t000545",
+      "source": "Contradiction is another independent signal. Evidence can fail to support a claim without actively supporting the opposite. A contradiction search looks for incompatible results in the project or external literature. The correct response to contradiction is often a new question rather than immediate rejection: different populations, definitions, environments, or assumptions may explain the disagreement. The state should therefore support competing claims instead of forcing truth values prematurely.",
+      "translation": "Contradicția este un alt semnal independent. Dovezile pot să nu susțină o afirmație fără a susține activ opusul. O căutare de contradicții caută rezultate incompatibile în proiect sau în literatura externă. Răspunsul corect la contradicție este adesea o întrebare nouă, nu respingerea imediată: populații, definiții, medii sau presupuneri diferite pot explica dezacordul. Starea ar trebui, așadar, să susțină afirmații concurente, nu să forțeze prematur valori de adevăr."
+    },
+    {
+      "id": "t000546",
+      "source": "Novelty deserves particular caution because it is partly a property of search coverage. A system can find no prior art and still be wrong because it searched the wrong vocabulary or corpus. A useful novelty service decomposes the contribution, constructs several retrieval strategies, identifies the strongest antecedents, and reports which aspects appear known or different. It should say potentially novel within documented coverage rather than convert absence of retrieval into certainty.",
+      "translation": "Noutatea merită prudență deosebită deoarece este parțial o proprietate a acoperirii căutării. Un sistem poate să nu găsească stadiu anterior al tehnicii și totuși să greșească deoarece a căutat vocabularul sau corpusul greșit. Un serviciu util de noutate descompune contribuția, construiește mai multe strategii de regăsire, identifică antecedentele cele mai puternice și raportează ce aspecte par cunoscute sau diferite. Ar trebui să spună potențial nou în acoperirea documentată, nu să transforme absența regăsirii în certitudine."
+    },
+    {
+      "id": "t000547",
+      "source": "Table 11. Evaluation is a portfolio of bounded guarantees rather than one score.",
+      "translation": "Tabelul 11. Evaluarea este un portofoliu de garanții limitate, nu un singur scor."
+    },
+    {
+      "id": "t000548",
+      "source": "What it does not",
+      "translation": "Ce nu"
+    },
+    {
+      "id": "t000549",
+      "source": "Evaluation",
+      "translation": "Evaluare"
+    },
+    {
+      "id": "t000550",
+      "source": "What it can establish",
+      "translation": "Ce poate stabili"
+    },
+    {
+      "id": "t000551",
+      "source": "establish by itself",
+      "translation": "stabilește prin sine"
+    },
+    {
+      "id": "t000552",
+      "source": "Whether",
+      "translation": "Dacă"
+    },
+    {
+      "id": "t000553",
+      "source": "identified",
+      "translation": "materialul-sursă"
+    },
+    {
+      "id": "t000554",
+      "source": "source material supports, That the source is true or Source support qualifies, or contradicts a the claim is important.",
+      "translation": "identificat susține, Că sursa este adevărată sau Susținere prin surse califică ori contrazice o afirmația importantă."
+    },
+    {
+      "id": "t000555",
+      "source": "claim.",
+      "translation": "afirmație."
+    },
+    {
+      "id": "t000556",
+      "source": "Whether a declared That the method was procedure can be rebuilt",
+      "translation": "Dacă o procedură declarată Că metoda a fost poate fi reconstruită"
+    },
+    {
+      "id": "t000557",
+      "source": "Reproduction",
+      "translation": "Reproducere"
+    },
+    {
+      "id": "t000558",
+      "source": "well designed or the",
+      "translation": "bine proiectată sau"
+    },
+    {
+      "id": "t000559",
+      "source": "rerun comparable output.",
+      "translation": "rerulată rezultat comparabil."
+    },
+    {
+      "id": "t000560",
+      "source": "with interpretation is valid.",
+      "translation": "cu interpretarea validă."
+    },
+    {
+      "id": "t000561",
+      "source": "Whether methodological",
+      "translation": "Dacă presupunerile metodologice"
+    },
+    {
+      "id": "t000562",
+      "source": "declared That the scientific",
+      "translation": "și verificările declarate Că întrebarea științifică"
+    },
+    {
+      "id": "t000563",
+      "source": "Method / statistics",
+      "translation": "Metodă / statistică"
+    },
+    {
+      "id": "t000564",
+      "source": "assumptions and checks are satisfied.",
+      "translation": "sunt satisfăcute."
+    },
+    {
+      "id": "t000565",
+      "source": "question is valuable or fully answered.",
+      "translation": "este valoroasă sau primește răspuns complet."
+    },
+    {
+      "id": "t000566",
+      "source": "A property of an explicit formal object under",
+      "translation": "O proprietate a unui obiect formal explicit sub"
+    },
+    {
+      "id": "t000567",
+      "source": "That the formal object faithfully captures the",
+      "translation": "Că obiectul formal surprinde fidel"
+    },
+    {
+      "id": "t000568",
+      "source": "Formal verification",
+      "translation": "Verificare formală"
+    },
+    {
+      "id": "t000569",
+      "source": "empirical",
+      "translation": "întrebarea empirică"
+    },
+    {
+      "id": "t000570",
+      "source": "or",
+      "translation": "sau"
+    },
+    {
+      "id": "t000571",
+      "source": "stated assumptions.",
+      "translation": "presupunerile enunțate."
+    },
+    {
+      "id": "t000572",
+      "source": "and natural-language question.",
+      "translation": "și în limbaj natural."
+    },
+    {
+      "id": "t000573",
+      "source": "What appears known or",
+      "translation": "Ce pare cunoscut sau"
+    },
+    {
+      "id": "t000574",
+      "source": "Novelty / prior art",
+      "translation": "Noutate / stadiu anterior al tehnicii"
+    },
+    {
+      "id": "t000575",
+      "source": "different",
+      "translation": "diferit"
+    },
+    {
+      "id": "t000576",
+      "source": "within Universal novelty or",
+      "translation": "în Noutate universală sau"
+    },
+    {
+      "id": "t000577",
+      "source": "documented coverage.",
+      "translation": "acoperirea documentată"
+    },
+    {
+      "id": "t000578",
+      "source": "search scientific significance.",
+      "translation": "a căutării semnificație științifică."
+    },
+    {
+      "id": "t000579",
+      "source": "What it does not",
+      "translation": "Ce nu"
+    },
+    {
+      "id": "t000580",
+      "source": "Evaluation",
+      "translation": "Evaluare"
+    },
+    {
+      "id": "t000581",
+      "source": "What it can establish",
+      "translation": "Ce poate stabili"
+    },
+    {
+      "id": "t000582",
+      "source": "establish by itself",
+      "translation": "stabilește prin sine"
+    },
+    {
+      "id": "t000583",
+      "source": "Whether qualified people",
+      "translation": "Dacă persoane calificate"
+    },
+    {
+      "id": "t000584",
+      "source": "Human / domain review",
+      "translation": "Evaluare umană / de domeniu"
+    },
+    {
+      "id": "t000585",
+      "source": "judge explanation, and scope permanent consensus. adequate for a decision.",
+      "translation": "consideră explicația și domeniul consens permanent. adecvate unei decizii."
+    },
+    {
+      "id": "t000586",
+      "source": "evidence, Infallible truth or",
+      "translation": "dovezile, Adevăr infailibil sau"
+    },
+    {
+      "id": "t000587",
+      "source": "The table is deliberately explicit about what each evaluator does not establish. This prevents a verified property from spreading its authority across the whole scientific chain. A proof assistant verifies a formal statement, not the correspondence between that statement and a natural-language research question. A successful reproduction confirms that a procedure can be rerun, not that the interpretation is important. A novelty search can support a claim about prior art coverage, not decide scientific value.",
+      "translation": "Tabelul este deliberat explicit despre ceea ce nu stabilește fiecare evaluator. Aceasta împiedică o proprietate verificată să-și extindă autoritatea peste întregul lanț științific. Un asistent de demonstrație verifică un enunț formal, nu corespondența dintre acel enunț și o întrebare de cercetare în limbaj natural. O reproducere reușită confirmă că o procedură poate fi rerulată, nu că interpretarea este importantă. O căutare de noutate poate susține o afirmație despre acoperirea stadiului anterior al tehnicii, nu decide valoarea științifică."
+    },
+    {
+      "id": "t000588",
+      "source": "Evaluation diversity matters more than evaluator count. Three LLM critics with similar prompts may create an appearance of consensus while sharing the same blind spots. Greater independence can come from different modalities: execution, formal verification, statistical tests, retrieval, domain knowledge, and human review. The project should know when evaluators depend on the same source, model family, or generated intermediate artefact so that correlated confirmation is not mistaken for independent evidence.",
+      "translation": "Diversitatea evaluării contează mai mult decât numărul evaluatorilor. Trei critici LLM cu prompturi similare pot crea aparența consensului împărtășind aceleași unghiuri moarte. Independență mai mare poate proveni din modalități diferite: execuție, verificare formală, teste statistice, regăsire, cunoștințe de domeniu și evaluare umană. Proiectul ar trebui să știe când evaluatorii depind de aceeași sursă, familie de modele sau același artefact intermediar generat, astfel încât confirmarea corelată să nu fie confundată cu dovezi independente."
+    },
+    {
+      "id": "t000589",
+      "source": "Evaluators themselves need qualification. A citation checker should be tested on supported and unsupported claim-source pairs. A reproduction role should be tested on reproducible and intentionally broken packages. A statistical reviewer can be evaluated on injected methodological faults. A novelty system can use historical cut-offs to test whether it retrieves prior art that existed at the time. Evaluator version and calibration become part of the evaluation object.",
+      "translation": "Evaluatorii înșiși necesită calificare. Un verificator de citări ar trebui testat pe perechi afirmație-sursă susținute și nesusținute. Un rol de reproducere ar trebui testat pe pachete reproductibile și intenționat defecte. Un evaluator statistic poate fi evaluat pe defecte metodologice injectate. Un sistem de noutate poate folosi date-limită istorice pentru a testa dacă regăsește stadiul anterior al tehnicii care exista atunci. Versiunea și calibrarea evaluatorului devin parte a obiectului evaluării."
+    },
+    {
+      "id": "t000590",
+      "source": "The objective is not to automate scientific acceptance. It is to create a structured review case that makes expert judgment cheaper and better informed. Machines should remove routine work, expose evidence, and identify uncertainty. Humans should spend attention on questions where interpretation, significance, values, and responsibility matter. Evaluation becomes infrastructure for judgment rather than an artificial substitute for the community that owns the judgment.",
+      "translation": "Obiectivul nu este automatizarea acceptării științifice. Este crearea unui dosar structurat de evaluare care face judecata expertului mai ieftină și mai bine informată. Mașinile ar trebui să elimine munca de rutină, să expună dovezi și să identifice incertitudine. Oamenii ar trebui să-și petreacă atenția pe întrebări unde contează interpretarea, semnificația, valorile și responsabilitatea. Evaluarea devine infrastructură pentru judecată, nu un substitut artificial al comunității care deține judecata."
+    },
+    {
+      "id": "t000591",
+      "source": "6.2 From candidate result to community knowledge",
+      "translation": "6.2 De la rezultat candidat la cunoașterea comunității"
+    },
+    {
+      "id": "t000592",
+      "source": "A candidate result becomes scientific knowledge through several distinct stages: evidence and verification, explanation and human understanding, review and replication, community acceptance, and eventual canonicalisation. AI can support every stage, but the authority of one stage should not be borrowed by another.",
+      "translation": "Un rezultat candidat devine cunoaștere științifică prin mai multe etape distincte: dovezi și verificare, explicație și înțelegere umană, evaluare și replicare, acceptare comunitară și, în cele din urmă, canonizare. IA poate sprijini fiecare etapă, dar autoritatea unei etape nu ar trebui împrumutată de alta."
+    },
+    {
+      "id": "t000593",
+      "source": "The simplest picture of research is a question followed by an answer. That picture is useful for demonstrations and dangerous for infrastructure. Between a plausible result and a result that a field can rely on lies a chain of work that is often more expensive than generating the candidate itself. Tao reconstructs this chain for mathematics, and the same structure appears throughout science under different names.",
+      "translation": "Cea mai simplă imagine a cercetării este o întrebare urmată de un răspuns. Această imagine este utilă pentru demonstrații și periculoasă pentru infrastructură. Între un rezultat plauzibil și unul pe care un domeniu se poate baza se află un lanț de muncă adesea mai scump decât generarea candidatului însuși. Tao reconstruiește acest lanț pentru matematică, iar aceeași structură apare în întreaga știință sub nume diferite."
+    },
+    {
+      "id": "t000594",
+      "source": "A candidate is first connected to evidence. In mathematics this may be a proof object or expert verification. In empirical science it may be observations, calibration, statistical analysis, replication, or triangulation. In software it may be executable code and tests. In qualitative research it may involve source grounding, methodological transparency, and serious engagement with alternative interpretations. The infrastructure cannot impose one universal verifier, but it can make the type and scope of verification explicit.",
+      "translation": "Un candidat este mai întâi conectat la dovezi. În matematică, acestea pot fi un obiect de demonstrație sau verificare de expert. În știința empirică, pot fi observații, calibrare, analiză statistică, replicare sau triangulare. În software, pot fi cod executabil și teste. În cercetarea calitativă, pot implica fundamentare pe surse, transparență metodologică și implicare serioasă în interpretări alternative. Infrastructura nu poate impune un verificator universal, dar poate face explicit tipul și domeniul verificării."
+    },
+    {
+      "id": "t000595",
+      "source": "Explanation is a separate stage. A result can be correct and still poorly understood. Tao notes that machine-generated exposition can smooth away the natural friction that tells an expert where the hard part lies. A good research environment should preserve the difficult step, failed routes, unresolved opacity, and the places where expert disagreement remained. Explanation should reveal the structure of understanding rather than merely produce elegant prose.",
+      "translation": "Explicația este o etapă separată. Un rezultat poate fi corect și totuși slab înțeles. Tao observă că expunerea generată de mașină poate netezi fricțiunea naturală care îi spune expertului unde se află partea dificilă. Un mediu bun de cercetare ar trebui să păstreze pasul dificil, rutele eșuate, opacitatea nerezolvată și locurile unde a rămas dezacordul experților. Explicația ar trebui să dezvăluie structura înțelegerii, nu doar să producă proză elegantă."
+    },
+    {
+      "id": "t000596",
+      "source": "Review and replication then expose the result to independent challenge. Other researchers ask whether the evidence is adequate, whether the method transfers, whether the interpretation overreaches, and whether the result matters. The process can change the project itself. A reviewer may discover a missing control. A replication failure may reveal a boundary condition. A seminar question may expose that the team cannot explain a dependency it previously treated as routine.",
+      "translation": "Evaluarea și replicarea expun apoi rezultatul contestării independente. Alți cercetători întreabă dacă dovezile sunt adecvate, dacă metoda se transferă, dacă interpretarea depășește ce permit dovezile și dacă rezultatul contează. Procesul poate schimba proiectul însuși. Un evaluator poate descoperi un control lipsă. Un eșec de replicare poate dezvălui o condiție-limită. O întrebare de seminar poate expune faptul că echipa nu poate explica o dependență tratată anterior ca rutină."
+    },
+    {
+      "id": "t000597",
+      "source": "Acceptance is a social act. A machine cannot grant itself scientific standing through fluency or self-evaluation. Journals, institutions, teams, standards bodies, and communities make decisions about what they are willing to rely on under particular conditions. These decisions can be wrong and can later be revised. Their importance lies in assigning scoped authority and responsibility.",
+      "translation": "Acceptarea este un act social. O mașină nu își poate acorda singură statut științific prin fluență sau autoevaluare. Revistele, instituțiile, echipele, organismele de standardizare și comunitățile iau decizii despre lucrurile pe care sunt dispuse să se bazeze în anumite condiții. Aceste decizii pot fi greșite și pot fi revizuite ulterior. Importanța lor constă în atribuirea de autoritate și responsabilitate delimitate."
+    },
+    {
+      "id": "t000598",
+      "source": "Canonicalisation is slower still. A result becomes part of the field's normal knowledge when it is connected to neighbouring ideas, restated in useful generality, taught, reused, incorporated into standards or reference implementations, and perhaps replaced by a clearer formulation. AI may assist comparison, dependency mapping, and explanation, but no model can make itself canonical by declaring consensus.",
+      "translation": "Canonizarea este și mai lentă. Un rezultat devine parte a cunoașterii normale a domeniului când este conectat la idei învecinate, reformulat la generalitate utilă, predat, reutilizat, încorporat în standarde sau implementări de referință și poate înlocuit de o formulare mai clară. IA poate ajuta comparația, cartografierea dependențelor și explicația, dar niciun model nu se poate face canonic declarând consens."
+    },
+    {
+      "id": "t000599",
+      "source": "Figure from PDF page 81",
+      "translation": "Figură din pagina 81 a PDF-ului"
+    },
+    {
+      "id": "t000600",
+      "source": "Figure 6. Evaluation prepares a review case; it does not manufacture scientific authority.",
+      "translation": "Figura 6. Evaluarea pregătește un dosar de recenzare; nu fabrică autoritate științifică."
+    },
+    {
+      "id": "t000601",
+      "source": "The diagram shows why evaluation should produce a review case rather than a verdict. Mechanical checks and human explanation meet before community or institutional judgment. This architecture conserves expert attention without turning automation into authority. It also permits a formally or computationally strong result to remain provisional if the human team cannot yet explain what it means.",
+      "translation": "Diagrama arată de ce evaluarea ar trebui să producă un dosar de recenzare, nu un verdict. Verificările mecanice și explicația umană se întâlnesc înaintea judecății comunitare sau instituționale. Această arhitectură conservă atenția experților fără a transforma automatizarea în autoritate. Permite și unui rezultat puternic formal sau computațional să rămână provizoriu dacă echipa umană nu poate încă explica ce înseamnă."
+    },
+    {
+      "id": "t000602",
+      "source": "Table 12. Candidate output becomes shared knowledge through distinct stages.",
+      "translation": "Tabelul 12. Ieșirea candidată devine cunoaștere comună prin etape distincte."
+    },
+    {
+      "id": "t000603",
+      "source": "Stage",
+      "translation": "Etapă"
+    },
+    {
+      "id": "t000604",
+      "source": "What must be preserved",
+      "translation": "Ce trebuie păstrat"
+    },
+    {
+      "id": "t000605",
+      "source": "Question, assumptions, tool use, source",
+      "translation": "Întrebare, presupuneri, folosirea instrumentelor, versiunile"
+    },
+    {
+      "id": "t000606",
+      "source": "Candidate",
+      "translation": "Candidat"
+    },
+    {
+      "id": "t000607",
+      "source": "versions, cost, and explicit provisional status.",
+      "translation": "surselor, cost și statut provizoriu explicit."
+    },
+    {
+      "id": "t000608",
+      "source": "What was checked, by which method,",
+      "translation": "Ce a fost verificat, prin ce metodă,"
+    },
+    {
+      "id": "t000609",
+      "source": "Verification and evidence",
+      "translation": "Verificare și dovezi"
+    },
+    {
+      "id": "t000610",
+      "source": "against which data or formalisation, and what remains outside the check.",
+      "translation": "față de ce date sau formalizare și ce rămâne în afara verificării."
+    },
+    {
+      "id": "t000611",
+      "source": "Key ideas, difficult steps, unresolved",
+      "translation": "Idei-cheie, pași dificili, opacitate"
+    },
+    {
+      "id": "t000612",
+      "source": "Explanation and understanding",
+      "translation": "Explicație și înțelegere"
+    },
+    {
+      "id": "t000613",
+      "source": "opacity, and the human chain able to explain critical dependencies.",
+      "translation": "nerezolvată și lanțul uman capabil să explice dependențele critice."
+    },
+    {
+      "id": "t000614",
+      "source": "Independent criticism, disagreement,",
+      "translation": "Critică independentă, dezacord,"
+    },
+    {
+      "id": "t000615",
+      "source": "Review and replication",
+      "translation": "Evaluare și replicare"
+    },
+    {
+      "id": "t000616",
+      "source": "reproductions, robustness tests, and responses.",
+      "translation": "reproduceri, teste de robustețe și răspunsuri."
+    },
+    {
+      "id": "t000617",
+      "source": "The scoped human or institutional",
+      "translation": "Autoritatea umană sau instituțională"
+    },
+    {
+      "id": "t000618",
+      "source": "Acceptance",
+      "translation": "Acceptare"
+    },
+    {
+      "id": "t000619",
+      "source": "authority that decided the result could be relied upon.",
+      "translation": "delimitată care a decis că rezultatul putea fi folosit ca bază."
+    },
+    {
+      "id": "t000620",
+      "source": "Stage",
+      "translation": "Etapă"
+    },
+    {
+      "id": "t000621",
+      "source": "What must be preserved",
+      "translation": "Ce trebuie păstrat"
+    },
+    {
+      "id": "t000622",
+      "source": "Integration into theory, practice,",
+      "translation": "Integrare în teorie, practică,"
+    },
+    {
+      "id": "t000623",
+      "source": "Canonicalisation",
+      "translation": "Canonizare"
+    },
+    {
+      "id": "t000624",
+      "source": "reference forms, teaching, standards, and later revisions.",
+      "translation": "forme de referință, predare, standarde și revizuiri ulterioare."
+    },
+    {
+      "id": "t000625",
+      "source": "The table allows the project to represent intermediate statuses that current publication systems often handle poorly. A result can be independently reproduced but still disputed in interpretation. A formally checked proof can be preserved while remaining not yet understood. A method can be accepted for one operational context without becoming a general scientific claim. This granularity prevents mature authority from attaching prematurely to early-stage objects.",
+      "translation": "Tabelul permite proiectului să reprezinte statute intermediare pe care sistemele actuale de publicare le gestionează adesea slab. Un rezultat poate fi reprodus independent, dar încă disputat ca interpretare. O demonstrație verificată formal poate fi păstrată rămânând încă neînțeleasă. O metodă poate fi acceptată pentru un context operațional fără a deveni o afirmație științifică generală. Această granularitate împiedică atașarea prematură a autorității mature obiectelor din etape timpurii."
+    },
+    {
+      "id": "t000626",
+      "source": "A provisional layer is especially valuable in an age of machine abundance. Some verified or suggestive results may be too important to discard and too opaque to publish as mature knowledge. The infrastructure can preserve them with explicit limitations, provenance, and a queue for explanation or further testing. The distinction is between preservation and authority, not between keeping and deleting.",
+      "translation": "Un strat provizoriu este deosebit de valoros într-o epocă a abundenței mașinilor. Unele rezultate verificate sau sugestive pot fi prea importante pentru a fi eliminate și prea opace pentru a fi publicate drept cunoaștere matură. Infrastructura le poate păstra cu limitări explicite, proveniență și o coadă pentru explicație sau testare suplimentară. Distincția este între păstrare și autoritate, nu între păstrare și ștergere."
+    }
+  ]
+}

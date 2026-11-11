@@ -142,6 +142,385 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
+## The Illness Machine — source v1
+
+- Source: `docs/books/the/illness/machine/bk-0c9a80d5872c40f5/en/full_content.html`
+- SHA-256: `39cd9d9e89f8014a1684bd7b6a5665957d25e2bfbcc822247e86aebfb176c997`
+- Book ID: `bk-0c9a80d5872c40f5`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-0c9a80d5872c40f5`
+- [x] Visible book page: `docs/books/the/illness/machine/bk-0c9a80d5872c40f5/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [ ] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-0c9a80d5872c40f5/translations/ro/full`: **0/8 chunks**, 0/564 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/ai-completion-20261111/bk-0c9a80d5872c40f5/translations/ro/short`: **1/1 chunks**, 20/20 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## Anti-Trivialization Machines of the Future — source v1
+
+- Source: `docs/books/anti/trivialization/machines/of/the/future/bk-41f22d81e81142ed/en/full_content.html`
+- SHA-256: `e375e4462dd124cc4fb4ad10aaa0fe021c10a7ea0a76810b0f9da6441c4d43bf`
+- Book ID: `bk-41f22d81e81142ed`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-41f22d81e81142ed`
+- [x] Visible book page: `docs/books/anti/trivialization/machines/of/the/future/bk-41f22d81e81142ed/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [ ] RO full_content.html
+- [ ] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-41f22d81e81142ed/translations/ro/full`: **1/5 chunks**, 101/573 segments complete.
+  Resume at `0002.json`; preserve already filled segments.
+- Translation `.book-work/ai-completion-20261111/bk-41f22d81e81142ed/translations/ro/short`: **0/1 chunks**, 0/27 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [x] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## Executable Scientific Intelligence — source v1
+
+- Source: `docs/books/executable/scientific/intelligence/bk-4bd29539b9824ee2/en/full_content.html`
+- SHA-256: `d3ac2fe80304aadb6a9307e1fe183fd036dd51eb16b9e6c3a35582b3f4f9b122`
+- Book ID: `bk-4bd29539b9824ee2`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-4bd29539b9824ee2`
+- [x] Visible book page: `docs/books/executable/scientific/intelligence/bk-4bd29539b9824ee2/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-4bd29539b9824ee2/translations/ro/full`: **11/11 chunks**, 1667/1667 segments complete.
+- Translation `.book-work/ai-completion-20261111/bk-4bd29539b9824ee2/translations/ro/short`: **1/1 chunks**, 22/22 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## Explainable AI — source v1
+
+- Source: `docs/books/explainable/ai/bk-4fdfb9b9174f4146/en/full_content.html`
+- SHA-256: `63a2279d1803cb47430f3c460d78fffdcf6dd2b301b6384547029d5a8230408e`
+- Book ID: `bk-4fdfb9b9174f4146`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-4fdfb9b9174f4146`
+- [x] Visible book page: `docs/books/explainable/ai/bk-4fdfb9b9174f4146/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-4fdfb9b9174f4146/translations/ro/full`: **7/7 chunks**, 831/831 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## Coherence Pressure — source v1
+
+- Source: `docs/books/coherence/pressure/bk-5e790be3de5d4533/en/full_content.html`
+- SHA-256: `2b77bf214d4a025209809ed8eec7f9556ad91d46085f6d86934f48e5983040b3`
+- Book ID: `bk-5e790be3de5d4533`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-5e790be3de5d4533`
+- [x] Visible book page: `docs/books/coherence/pressure/bk-5e790be3de5d4533/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-5e790be3de5d4533/translations/ro/full`: **5/5 chunks**, 1122/1122 segments complete.
+- Translation `.book-work/ai-completion-20261111/bk-5e790be3de5d4533/translations/ro/short`: **1/1 chunks**, 27/27 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## MRP-VM — source v1
+
+- Source: `docs/books/mrp/vm/bk-5f1e79c81f464bb0/en/full_content.html`
+- SHA-256: `688f7afa370cf42503ee998a100d43c5c9287936379f4e69679d34f542cb15a7`
+- Book ID: `bk-5f1e79c81f464bb0`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-5f1e79c81f464bb0`
+- [x] Visible book page: `docs/books/mrp/vm/bk-5f1e79c81f464bb0/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [ ] RO full_content.html
+- [ ] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-5f1e79c81f464bb0/translations/ro/full`: **0/7 chunks**, 0/1042 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/ai-completion-20261111/bk-5f1e79c81f464bb0/translations/ro/short`: **0/1 chunks**, 0/27 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## Agentic AI 2026 — source v1
+
+- Source: `docs/books/agentic/ai/2026/bk-6bb778c5204946b7/en/full_content.html`
+- SHA-256: `8a7f902bd4b15d5898cc1e6d1333d32f30f47ca6412f971e603c3cafafa7f346`
+- Book ID: `bk-6bb778c5204946b7`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-6bb778c5204946b7`
+- [x] Visible book page: `docs/books/agentic/ai/2026/bk-6bb778c5204946b7/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-6bb778c5204946b7/translations/ro/full`: **5/5 chunks**, 615/615 segments complete.
+- Translation `.book-work/ai-completion-20261111/bk-6bb778c5204946b7/translations/ro/short`: **1/1 chunks**, 27/27 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [x] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## AI Adoption Beyond the Slop — source v1
+
+- Source: `docs/books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/en/full_content.html`
+- SHA-256: `3ed957a950edc570363c84cff2d507ca9fe854ce0b7fa45e6e163aece7f45ff3`
+- Book ID: `bk-756d50ae3fc14da1`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-756d50ae3fc14da1`
+- [x] Visible book page: `docs/books/ai/adoption/beyond/the/slop/bk-756d50ae3fc14da1/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-756d50ae3fc14da1/translations/ro/full`: **5/5 chunks**, 630/630 segments complete.
+- Translation `.book-work/ai-completion-20261111/bk-756d50ae3fc14da1/translations/ro/short`: **1/1 chunks**, 27/27 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [x] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## The Future of Research Infrastructure — source v1
+
+- Source: `docs/books/the/future/of/research/infrastructure/bk-8b99cea752394379/en/full_content.html`
+- SHA-256: `7ca3167f99a5bed9a19a43db21dded2912f766626d4700d5fcea29b4cdbb300e`
+- Book ID: `bk-8b99cea752394379`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-8b99cea752394379`
+- [x] Visible book page: `docs/books/the/future/of/research/infrastructure/bk-8b99cea752394379/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-8b99cea752394379/translations/ro/full`: **8/8 chunks**, 1137/1137 segments complete.
+- Translation `.book-work/ai-completion-20261111/bk-8b99cea752394379/translations/ro/short`: **1/1 chunks**, 92/92 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## AI Agents — source v1
+
+- Source: `docs/books/ai/agents/bk-92eca672686a4f90/en/full_content.html`
+- SHA-256: `3aacb16ddec5d6ad277dd266a36b16e913885db31ab9851c7665e27603ed98af`
+- Book ID: `bk-92eca672686a4f90`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-92eca672686a4f90`
+- [x] Visible book page: `docs/books/ai/agents/bk-92eca672686a4f90/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-92eca672686a4f90/translations/ro/full`: **5/5 chunks**, 854/854 segments complete.
+- Translation `.book-work/ai-completion-20261111/bk-92eca672686a4f90/translations/ro/short`: **1/1 chunks**, 28/28 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [x] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## S*LM — source v1
+
+- Source: `docs/books/s/lm/bk-a89c2347f3404908/en/full_content.html`
+- SHA-256: `8d283a9fdb7502222154c3a5bc082c7a921ead3a9c297c0062523f35b199511d`
+- Book ID: `bk-a89c2347f3404908`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-a89c2347f3404908`
+- [x] Visible book page: `docs/books/s/lm/bk-a89c2347f3404908/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-a89c2347f3404908/translations/ro/full`: **5/5 chunks**, 842/842 segments complete.
+- Translation `.book-work/ai-completion-20261111/bk-a89c2347f3404908/translations/ro/short`: **1/1 chunks**, 22/22 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## Limits of Machine Intelligence — source v1
+
+- Source: `docs/books/limits/of/machine/intelligence/bk-adbbc1dd07be455c/en/full_content.html`
+- SHA-256: `7bc338e9b30030afb6b2845e173634499689d89ab96bf74cb5eda66c6b46bd28`
+- Book ID: `bk-adbbc1dd07be455c`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-adbbc1dd07be455c`
+- [x] Visible book page: `docs/books/limits/of/machine/intelligence/bk-adbbc1dd07be455c/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [ ] RO full_content.html
+- [ ] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-adbbc1dd07be455c/translations/ro/full`: **0/7 chunks**, 0/593 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/ai-completion-20261111/bk-adbbc1dd07be455c/translations/ro/short`: **0/1 chunks**, 0/27 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## RAG and EPR — source v1
+
+- Source: `docs/books/rag/and/epr/bk-b5f873f3cb414ffc/en/full_content.html`
+- SHA-256: `1e775ef79b170aef21ffbcf2f837b6f056d34fd970ef8d73850e589bf54512e3`
+- Book ID: `bk-b5f873f3cb414ffc`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-b5f873f3cb414ffc`
+- [x] Visible book page: `docs/books/rag/and/epr/bk-b5f873f3cb414ffc/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-b5f873f3cb414ffc/translations/ro/full`: **6/6 chunks**, 598/598 segments complete.
+- Translation `.book-work/ai-completion-20261111/bk-b5f873f3cb414ffc/translations/ro/short`: **1/1 chunks**, 24/24 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## Bias in AI — source v1
+
+- Source: `docs/books/bias/in/ai/bk-c0e43df73f514937/en/full_content.html`
+- SHA-256: `1dffd56fab0150ca61797e9350895a5cafd94d8e45469b71ff7b42da9a0400c0`
+- Book ID: `bk-c0e43df73f514937`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-c0e43df73f514937`
+- [x] Visible book page: `docs/books/bias/in/ai/bk-c0e43df73f514937/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [ ] RO full_content.html
+- [ ] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-c0e43df73f514937/translations/ro/full`: **0/7 chunks**, 0/829 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/ai-completion-20261111/bk-c0e43df73f514937/translations/ro/short`: **0/1 chunks**, 0/29 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [x] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## Trustworthy AI — source v1
+
+- Source: `docs/books/trustworthy/ai/bk-d50cba248572411d/en/full_content.html`
+- SHA-256: `cb632f826a5fc305739e5358dc1b9f3dd84258fb6529de81c1a5bf16c11654d6`
+- Book ID: `bk-d50cba248572411d`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-d50cba248572411d`
+- [x] Visible book page: `docs/books/trustworthy/ai/bk-d50cba248572411d/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [ ] RO full_content.html
+- [ ] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-d50cba248572411d/translations/ro/full`: **1/11 chunks**, 223/695 segments complete.
+  Resume at `0002.json`; preserve already filled segments.
+- Translation `.book-work/ai-completion-20261111/bk-d50cba248572411d/translations/ro/short`: **0/1 chunks**, 0/23 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
+## The Living Research Book — source v1
+
+- Source: `docs/books/the/living/research/book/bk-dcd5a7623f6b438d/en/full_content.html`
+- SHA-256: `283057a0e779eaaa7fe5d138763667c11b05e9e16ebbb49b2f3085b8be07183d`
+- Book ID: `bk-dcd5a7623f6b438d`; edition: `edition-1`
+- Workspace: `.book-work/ai-completion-20261111/bk-dcd5a7623f6b438d`
+- [x] Visible book page: `docs/books/the/living/research/book/bk-dcd5a7623f6b438d/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [ ] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/ai-completion-20261111/bk-dcd5a7623f6b438d/translations/ro/full`: **0/7 chunks**, 0/922 segments complete.
+  Resume at `0001.json`; preserve already filled segments.
+- Translation `.book-work/ai-completion-20261111/bk-dcd5a7623f6b438d/translations/ro/short`: **1/1 chunks**, 27/27 segments complete.
+- [ ] Refresh 100 keywords per interface language from this release's English short reader (staged count: 0)
+- [ ] English PDF staged
+- [ ] Inspect representative PDF pages, including figures and tables.
+- [ ] Verify reader structure, local images and translation completeness against the source.
+- [ ] Refresh descriptions, About Book and release notes in all interface languages.
+- [ ] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [ ] Refresh catalogue and pass catalogue and internal-link checks.
+- Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
+
 ## AI and The End of Scarcity — source v1
 
 - Source: `income/AI_and_The_End_of_Scarcity/content.pdf`

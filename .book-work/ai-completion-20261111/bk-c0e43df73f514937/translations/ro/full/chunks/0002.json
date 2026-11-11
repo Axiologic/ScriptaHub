@@ -1,0 +1,491 @@
+{
+  "language": "ro",
+  "chunk": 2,
+  "segments": [
+    {
+      "id": "t000135",
+      "source": "The same logic applies to generative objectives that do not look like classifiers. A helpfulness reward can favor long, confident answers and thereby punish cautious behavior that is appropriate on underrepresented cases. An engagement objective can amplify provocative content because provocation generates interaction. A retrieval objective can maximize average relevance while reducing source diversity. These are fairness-relevant choices even when no protected attribute appears in the loss. The objective establishes which failures are cheap enough for the optimizer to ignore, and deployment determines who experiences those failures repeatedly.",
+      "translation": ""
+    },
+    {
+      "id": "t000136",
+      "source": "A useful deployment audit reconstructs the optimization problem from observable behavior. Which outcomes are rewarded in dashboards? Which costs are invisible because they fall on users rather than the operator? Which failures lead to manual work and therefore become expensive, and which failures quietly push a user away and never appear in logs? Economic incentives often act as an implicit objective function around the explicit machine-learning loss. If fairness controls are costly while disparities are not measured, the surrounding organization can undo a technically careful model through ordinary product optimization.",
+      "translation": ""
+    },
+    {
+      "id": "t000137",
+      "source": "By the end of this chapter, bias should no longer look like a stain to remove from data. It is a possible distortion introduced at each transformation between the world, the record, the objective, the model, the workflow, and the outcome. Fairness begins by making those transformations explicit.",
+      "translation": ""
+    },
+    {
+      "id": "t000138",
+      "source": "The chapter has moved the unit of analysis from the model to the chain of transformations around it. That shift is the foundation for everything that follows: fairness metrics are meaningful only after the system has declared which transformation and which harm they are intended to constrain.",
+      "translation": ""
+    },
+    {
+      "id": "t000139",
+      "source": "2. FAIRNESS BEFORE FOUNDATION MODELS: DEFINITIONS, VALIDITY, AND HARD LESSONS",
+      "translation": ""
+    },
+    {
+      "id": "t000140",
+      "source": "Classical machine learning produced the field’s most durable warning signs before foundation models existed. Gender Shades showed that aggregate computer-vision accuracy could conceal large intersectional error gaps. Speech-recognition audits found markedly different error rates across racialized language varieties. Fairness research then demonstrated something even less comfortable: several intuitively attractive criteria cannot all be satisfied at once except under special conditions. The practical lesson is not that fairness is impossible. It is that engineers must say which harm, which population, which construct, and which trade-off they are trying to control.",
+      "translation": ""
+    },
+    {
+      "id": "t000141",
+      "source": "The chapter moves from fairness criteria and their incompatibilities to construct validity and subgroup performance, then to ranking and dynamic allocation where repeated decisions reshape the environment.",
+      "translation": ""
+    },
+    {
+      "id": "t000142",
+      "source": "2.1 Fairness criteria protect different things",
+      "translation": ""
+    },
+    {
+      "id": "t000143",
+      "source": "Fairness metrics become much easier to understand when they are read as protections for different failure modes rather than as rival mathematical definitions of one moral ideal. One criterion protects parity of selection, another parity of error rates, another calibration, another similarity of treatment, and another the legitimacy of causal pathways. Their conflicts are often substantive rather than technical accidents.",
+      "translation": ""
+    },
+    {
+      "id": "t000144",
+      "source": "Demographic parity asks whether groups receive a favorable outcome at similar rates. Equal opportunity focuses on true-positive rates among those who genuinely qualify. Equalized odds asks for both true-positive and false-positive rates to be comparable. Predictive parity asks whether a positive prediction means the same thing across groups. Calibration asks whether a given score corresponds to the same empirical risk. Individual fairness asks that similar individuals be treated similarly, which immediately raises the question of what counts as similar. Counterfactual fairness asks whether a decision would change under an intervention on a protected attribute, subject to a causal model. Each definition protects a different relationship between people, predictions, and outcomes.",
+      "translation": ""
+    },
+    {
+      "id": "t000145",
+      "source": "The impossibility results associated with Kleinberg, Mullainathan and Raghavan and with Chouldechova made an important point precise: when base rates differ and prediction is imperfect, commonly desired criteria such as calibration and equalized error rates cannot generally be achieved simultaneously. This is not a loophole that excuses discrimination. It tells us that fairness design contains policy choices even when everyone agrees on the data. A product cannot optimize all notions of parity at once, so the rationale for choosing a metric must be connected to the harm model.",
+      "translation": ""
+    },
+    {
+      "id": "t000146",
+      "source": "None of these definitions is universally correct. Demographic parity can be inappropriate when legitimate target prevalence differs. Calibration can coexist with unequal error rates. Equalized odds can require changing decisions for individuals with the same risk score. Counterfactual fairness depends on a causal model that may itself be contestable. Individual fairness requires a similarity metric, and defining who is",
+      "translation": ""
+    },
+    {
+      "id": "t000147",
+      "source": "\"similar\" often reintroduces the normative problem under another name.",
+      "translation": ""
+    },
+    {
+      "id": "t000148",
+      "source": "The correct engineering question is therefore not",
+      "translation": ""
+    },
+    {
+      "id": "t000149",
+      "source": "\"which fairness metric is standard?\" but \"what harm are we trying to prevent, and which observable property is a defensible proxy for that harm?\"",
+      "translation": ""
+    },
+    {
+      "id": "t000150",
+      "source": "This matters because public debates often assume that a system is either fair or unfair as if fairness were a binary label. In reality, two stakeholders can ask for incompatible forms of fairness while each has a coherent reason. A lender may want equal predictive meaning of risk scores. Applicants may care about equal error burdens. A regulator may care about disparate impact. An engineer cannot satisfy the contradiction by discovering a better neural architecture.",
+      "translation": ""
+    },
+    {
+      "id": "t000151",
+      "source": "Impossibility results should not be used cynically to declare fairness impossible. They should force explicit policy choices. If criteria conflict, the organization must decide which trade-off reflects the purpose of the system and the distribution of harms. The decision should be documented and contestable rather than hidden inside a threshold selected by an optimization script.",
+      "translation": ""
+    },
+    {
+      "id": "t000152",
+      "source": "The criteria below are easier to compare when read as answers to different questions. They do not form a ladder from weak to strong fairness, and satisfying more rows does not automatically make a system more legitimate.",
+      "translation": ""
+    },
+    {
+      "id": "t000153",
+      "source": "Table 2. Common fairness criteria as protections against different failures",
+      "translation": ""
+    },
+    {
+      "id": "t000154",
+      "source": "Concept",
+      "translation": ""
+    },
+    {
+      "id": "t000155",
+      "source": "Meaning in practice",
+      "translation": ""
+    },
+    {
+      "id": "t000156",
+      "source": "Demographic parity",
+      "translation": ""
+    },
+    {
+      "id": "t000157",
+      "source": "Protects parity of positive decision rates, but can conflict with differences in base rates and says little about individual evidence.",
+      "translation": ""
+    },
+    {
+      "id": "t000158",
+      "source": "Equalized odds",
+      "translation": ""
+    },
+    {
+      "id": "t000159",
+      "source": "Protects parity of error behavior conditional on the true outcome, usually trading against calibration when base rates differ.",
+      "translation": ""
+    },
+    {
+      "id": "t000160",
+      "source": "Calibration",
+      "translation": ""
+    },
+    {
+      "id": "t000161",
+      "source": "Makes a risk score carry a similar empirical meaning across groups, but does not equalize error rates at a common threshold.",
+      "translation": ""
+    },
+    {
+      "id": "t000162",
+      "source": "Individual fairness",
+      "translation": ""
+    },
+    {
+      "id": "t000163",
+      "source": "Asks that relevantly similar individuals receive similar treatment; the difficult part is defining a legitimate similarity relation.",
+      "translation": ""
+    },
+    {
+      "id": "t000164",
+      "source": "Counterfactual fairness",
+      "translation": ""
+    },
+    {
+      "id": "t000165",
+      "source": "Uses a causal model to ask whether an outcome would change under a counterfactual change of a protected attribute along specified pathways.",
+      "translation": ""
+    },
+    {
+      "id": "t000166",
+      "source": "Procedural fairness",
+      "translation": ""
+    },
+    {
+      "id": "t000167",
+      "source": "Focuses on evidence, explanation, appeal, consistency, and the legitimacy of the process rather than only output parity.",
+      "translation": ""
+    },
+    {
+      "id": "t000168",
+      "source": "The comparison clarifies why impossibility results are design constraints rather than excuses. If calibration and error-rate parity conflict, the institution must connect the choice to the harm, decision semantics, and population instead of hiding the trade-off inside a default metric.",
+      "translation": ""
+    },
+    {
+      "id": "t000169",
+      "source": "A frequent mistake is to equate fairness with identical treatment. Sometimes fairness requires equal treatment. Sometimes it requires treating different situations differently. Accessibility is a simple example: providing the same interface to every user may disadvantage users with disabilities; equitable access can require differentiated support.",
+      "translation": ""
+    },
+    {
+      "id": "t000170",
+      "source": "LLM debiasing creates a subtler version. A model that is instructed to ignore all cultural or demographic information may become less stereotypical on some tests but less competent on culturally situated questions. The SOBACO work on Japanese social bias and cultural commonsense reports that tested debiasing methods could substantially degrade cultural commonsense performance. The result is a warning against \"fairness by erasure\". Social categories can carry both harmful stereotypes and legitimate contextual information.",
+      "translation": ""
+    },
+    {
+      "id": "t000171",
+      "source": "A useful distinction is between sensitive information and illegitimate dependence. The goal is rarely to make the model incapable of representing gender, culture, religion, disability, or geography. The goal is to prevent those variables from influencing decisions through pathways that are not justified by the task.",
+      "translation": ""
+    },
+    {
+      "id": "t000172",
+      "source": "A medical screening example makes the distinction concrete. If missing a disease is much more harmful than an unnecessary follow-up, equal opportunity may be more relevant than equal positive predictive value. In lending, calibration and expected loss may matter because scores influence price and capital, while access concerns may motivate constraints on approval rates or error disparities. In content moderation, false positives can silence legitimate speech while false negatives expose users to harm; different communities may experience those costs differently. The metric should follow the decision semantics rather than being chosen because it is familiar or easy to compute.",
+      "translation": ""
+    },
+    {
+      "id": "t000173",
+      "source": "Equality and equity are also distinct. Equality usually refers to treating cases by the same rule. Equity may require accounting for unequal starting conditions or unequal consequences. A system that gives every student identical tutoring time can be equal by one definition but fail an equity objective if some students require accessibility accommodations or have experienced systematic educational disadvantage. Machine learning does not decide between these values. It can make the consequences of each policy more visible, but the policy choice remains normative.",
+      "translation": ""
+    },
+    {
+      "id": "t000174",
+      "source": "For this reason, a fairness report should name its protected object in plain language before presenting a metric. \"We aim to reduce unjustified differences in false rejection for qualified applicants\" is more informative than \"we optimize fairness.\" The plain-language statement can then be mapped to a metric, a population, a decision threshold, and an acceptable tolerance. This makes disagreement productive: stakeholders can contest the objective itself rather than arguing over a number whose meaning has never been specified.",
+      "translation": ""
+    },
+    {
+      "id": "t000175",
+      "source": "There is also a procedural dimension that group metrics only partially capture. Two systems can have identical error rates while differing in whether users receive explanations, notice, appeal, or a path to correction. In public administration or employment, a small statistical disparity may be less damaging when decisions are reversible and contestable than a numerically smaller disparity embedded in an opaque irreversible process. This does not make outcome metrics irrelevant; it reminds us that fairness also concerns the rules by which decisions are made and challenged. Procedural safeguards belong in the system specification alongside statistical criteria.",
+      "translation": ""
+    },
+    {
+      "id": "t000176",
+      "source": "Impossibility results should therefore be read as design constraints. They force institutions to expose value choices that would otherwise be hidden inside a metric. The next question is whether the quantities being equalized are valid measurements in the first place.",
+      "translation": ""
+    },
+    {
+      "id": "t000177",
+      "source": "2.2 Construct validity and subgroup performance",
+      "translation": ""
+    },
+    {
+      "id": "t000178",
+      "source": "Before asking whether two groups receive equal scores, an engineer should ask whether the score measures the intended construct for either group. This sounds elementary, but proxy failure is one of the most important mechanisms in real systems. Healthcare cost is not identical to health need; historical promotion is not identical to capability; clicks are not identical to preference. A precise model of the wrong proxy can institutionalize an error more efficiently than a noisy one.",
+      "translation": ""
+    },
+    {
+      "id": "t000179",
+      "source": "Fairness metrics operate on variables, but social concerns rarely arrive as clean variables. Concepts such as merit, need, toxicity, competence, risk, quality, relevance, and harm are constructs. They are represented through measurements that can be incomplete or institution-specific. Jacobs and Wallach frame this as a measurement problem: before asking whether a system treats groups fairly with respect to a variable, we should ask whether the variable validly represents the concept we care about. A model can satisfy a fairness constraint relative to a measurement that has already excluded the important part of the problem.",
+      "translation": ""
+    },
+    {
+      "id": "t000180",
+      "source": "This is also the lesson of the abstraction critique in socio-technical fairness. Technical work often strips away institutional context to make a problem mathematically manageable. Abstraction is necessary for engineering, but it becomes dangerous when the abstraction silently changes the problem. A recidivism score is not the same thing as public safety; a click is not the same thing as satisfaction; a performance review is not the same thing as worker contribution; a language-model refusal is not the same thing as fairness. The abstraction should therefore be documented as a hypothesis about the world, not treated as the world itself.",
+      "translation": ""
+    },
+    {
+      "id": "t000181",
+      "source": "Measurement and Fairness by Jacobs and Wallach makes a point that is easy to underestimate in engineering practice: before selecting a fairness metric, one should ask whether the measured variables validly represent the constructs in the fairness claim. A toxicity benchmark might use a classifier whose own errors vary by dialect. A political bias benchmark might rely on a survey instrument that was never designed to classify AI systems. A hiring benchmark may use historical recruiter decisions as if they were an unbiased standard of merit.",
+      "translation": ""
+    },
+    {
+      "id": "t000182",
+      "source": "Construct validity includes several questions. Does the operationalization cover the concept? Does it inadvertently measure something else? Does it behave consistently across groups? Does it preserve meaning across languages and cultures? Does it predict the downstream harm that motivates the evaluation? A metric can be reproducible and statistically precise while failing these tests.",
+      "translation": ""
+    },
+    {
+      "id": "t000183",
+      "source": "This is one reason contemporary LLM fairness research is increasingly skeptical of single-number leaderboards. In 2026, Asgari and colleagues examined multiple LLMs, metrics, and corpora and found substantial disagreement among bias metrics and model rankings. Metrics that ostensibly belong to the same category can behave independently. A claim such as \"Model A is less biased than Model B\" therefore needs a suffix: under which benchmark, metric, prompt distribution, and harm model?",
+      "translation": ""
+    },
+    {
+      "id": "t000184",
+      "source": "Computer science succeeds by abstraction. We define interfaces, hide implementation details, and reason about components. Fairness often resists this move because social meaning crosses component boundaries. Selbst and colleagues describe several abstraction traps in sociotechnical fairness work. A technically correct model can be embedded in an institution that changes its meaning. A metric can ignore the temporal process that generated the data. A decision can be locally consistent while interacting with broader structures that create unequal opportunity.",
+      "translation": ""
+    },
+    {
+      "id": "t000185",
+      "source": "The remedy is not to abandon abstraction but to choose system boundaries deliberately. An engineer can still build modular tests, but the top-level evaluation should correspond to the user's experienced outcome. If a resume pipeline retrieves candidates, summarizes them, scores them, and selects a shortlist, fairness should be measured at each component and at the final shortlist. Component diagnostics tell us where to intervene; end-to-end outcomes tell us whether the intervention worked.",
+      "translation": ""
+    },
+    {
+      "id": "t000186",
+      "source": "A useful fairness specification can be written in ordinary engineering language. It should name the decision, the affected population, the socially salient attributes, the legitimate task-relevant factors, the harms of false positive and false negative outcomes, the acceptable form of group disparity, the desired counterfactual behavior, and the conditions under which the specification is expected to hold. It should also state known conflicts among objectives.",
+      "translation": ""
+    },
+    {
+      "id": "t000187",
+      "source": "For example, a hiring assistant might be specified as follows in prose. The system may use job-relevant experience and skills, must not systematically change candidate ranking when only a name or gendered pronoun changes, must preserve uncertainty when evidence is insufficient, must not use educational prestige as an unexamined proxy for competence, and must be evaluated separately for multiple intersectional groups. The final selection process must be monitored because fair summaries do not imply fair rankings.",
+      "translation": ""
+    },
+    {
+      "id": "t000188",
+      "source": "That specification is more useful than a declaration that the system \"uses equalized odds\" unless the entire problem has already been reduced to a well-defined binary prediction task.",
+      "translation": ""
+    },
+    {
+      "id": "t000189",
+      "source": "A useful fairness specification has four layers. First comes the harm statement: what adverse effect are we trying to prevent, and for whom? Second comes the construct statement: which underlying concept is relevant to that harm? Third comes the measurement model: which observed variables and tests approximate the construct? Fourth comes the decision rule: what evidence would trigger intervention, acceptance, escalation, or continued monitoring? Written this way, a fairness specification resembles a safety case more than a leaderboard entry.",
+      "translation": ""
+    },
+    {
+      "id": "t000190",
+      "source": "Causal reasoning can strengthen the specification when the question is about mechanism. A protected attribute may influence an outcome through both legitimate and illegitimate paths. Age can matter medically through physiology, while age can also act as a proxy for assumptions about productivity. Language can legitimately affect a translation task but should not automatically lower a competence rating. Counterfactual fairness and path-specific approaches try to distinguish these pathways. The difficulty is that causal models require assumptions that data alone do not identify. Their value lies partly in forcing those assumptions into the open.",
+      "translation": ""
+    },
+    {
+      "id": "t000191",
+      "source": "The measurement chain makes explicit that a fairness score is several inferential steps away from the social concern that motivated it. Every transition can introduce assumptions that deserve validation.",
+      "translation": ""
+    },
+    {
+      "id": "t000192",
+      "source": "Figure from PDF page 19",
+      "translation": ""
+    },
+    {
+      "id": "t000193",
+      "source": "Figure 3. Every fairness score is the end of a measurement argument, not a direct observation of justice.",
+      "translation": ""
+    },
+    {
+      "id": "t000194",
+      "source": "This is why benchmark disagreement is informative rather than merely inconvenient. Two tests may start from the same concern yet operationalize different constructs, prompts, behaviors, and decision rules. Audits should preserve those intermediate choices so that a numerical disagreement can be explained instead of averaged away.",
+      "translation": ""
+    },
+    {
+      "id": "t000195",
+      "source": "The engineering discipline that follows is to validate the measurement system itself. If a bias score changes drastically under paraphrase, if two reasonable metrics reverse model rankings, or if an automated judge disagrees systematically with affected users, the measurement instrument is unstable. Improving the model against that score may overfit the test rather than reduce the real harm. Construct validity therefore precedes optimization: first establish why a metric should track the concern, then use it as one source of evidence rather than as a substitute for judgment.",
+      "translation": ""
+    },
+    {
+      "id": "t000196",
+      "source": "A practical way to expose construct failure is to ask domain experts and affected users to examine cases near the decision boundary. Aggregate metrics summarize behavior, but boundary cases reveal what the system believes the construct to be. If a \"professionalism\" score repeatedly penalizes dialect, dress, disability-related communication, or culturally specific styles that are unrelated to job performance, the metric is not merely noisy; it has operationalized the wrong concept. Qualitative case analysis and quantitative evaluation should therefore be treated as complementary instruments rather than competing research traditions.",
+      "translation": ""
+    },
+    {
+      "id": "t000197",
+      "source": "The history of algorithmic fairness becomes easier to understand if we follow concrete failures rather than definitions. In computer vision, the Gender Shades study examined commercial gender-classification systems and found that aggregate accuracy concealed large intersectional disparities. The important methodological move was disaggregation: instead of asking whether the system worked overall, the study asked how performance varied across combinations of skin tone and gender. The worst-performing subgroup could be hidden inside a respectable average. This pattern is now so familiar that it sounds obvious, yet modern benchmark reports still frequently emphasize a single mean score before subgroup behavior.",
+      "translation": ""
+    },
+    {
+      "id": "t000198",
+      "source": "Speech recognition provided a parallel lesson. Koenecke and colleagues reported substantially higher word error rates for Black speakers than for white speakers across major commercial systems. The problem was not a formal allocation decision, yet the consequences could still be material. Transcription quality affects access to voice interfaces, meeting records, customer service, accessibility tools, and downstream NLP. Quality-of-service disparities therefore belong in a fairness analysis even when everybody receives nominally the same product. The case also demonstrates why language and dialect cannot be treated as superficial style variables: they can interact with demographic identity, geography, culture, and the acoustic conditions in which technology is used.",
+      "translation": ""
+    },
+    {
+      "id": "t000199",
+      "source": "Later datasets such as FACET extended fairness evaluation for human-centric vision systems with richer demographic annotations. The underlying lesson remains current for multimodal foundation models. A vision-language model may answer general visual questions well while retaining group-conditioned errors in face-related or person-related tasks. Modern capability does not erase demographic coverage problems; it can make them harder to see because average performance becomes so strong.",
+      "translation": ""
+    },
+    {
+      "id": "t000200",
+      "source": "The same idea reappears in LLMs through dialect prejudice. A system does not need an explicit race field to treat racialized language differently. Linguistic variety can carry social meaning, and models can learn both the linguistic pattern and the stereotypes attached to it.",
+      "translation": ""
+    },
+    {
+      "id": "t000201",
+      "source": "The Obermeyer healthcare study is a canonical example of measurement bias because the system's apparent objective was reasonable. Healthcare cost is observable and correlated with health need. But unequal access and spending meant that the relationship between cost and illness differed by race. A model optimized to predict cost therefore underestimated illness for Black patients at the same predicted risk.",
+      "translation": ""
+    },
+    {
+      "id": "t000202",
+      "source": "This example should permanently change how an engineer thinks about labels. Labels are not just noisy measurements of truth. They can be equilibrium outcomes of institutions. In high-stakes domains, data provenance should include the social process that generated the target variable.",
+      "translation": ""
+    },
+    {
+      "id": "t000203",
+      "source": "These examples are valuable because they defeat three recurring intuitions. First, more data do not automatically solve fairness; a large dataset can faithfully reflect an unequal process. Second, removing explicit protected attributes is insufficient because identity information and institutional effects survive in proxies. Third, global model quality is not evidence of equitable quality. A system can improve in aggregate while a small subgroup gets worse, especially when the optimization objective weights users by frequency.",
+      "translation": ""
+    },
+    {
+      "id": "t000204",
+      "source": "Foundation-model engineers should preserve the empirical habits these cases established. Report subgroup distributions, not only means. Look for intersections, not only single protected axes. Separate representation, measurement, and quality-of-service problems. Ask whether the target variable is a defensible proxy. And when a disparity is discovered, reproduce it under realistic deployment conditions rather than assuming the public benchmark is the whole phenomenon. The models have changed, but these diagnostic principles have not.",
+      "translation": ""
+    },
+    {
+      "id": "t000205",
+      "source": "These historical cases also established the importance of denominator choice. An error rate can look different depending on whether it is computed over all users, all attempted interactions, or only cases that passed a prior detection stage. A face system that fails to detect some faces may appear accurate if evaluation conditions on successful detection. A speech system can hide users who abandon the interaction before a transcript is produced. Modern LLM products have analogous censoring through refusal, routing, and tool failure. Before comparing subgroup metrics, auditors should ask which users disappeared from the denominator and why.",
+      "translation": ""
+    },
+    {
+      "id": "t000206",
+      "source": "Another legacy is the distinction between performance disparity and representational stereotype. The same system can have equal error rates while still producing degrading or stereotyped descriptions, or it can avoid stereotypes while offering worse recognition quality to one subgroup. Audits should not collapse these dimensions. Vision and speech systems taught the field that equal dignity, equal service quality, and equal allocation are related but distinct targets. Foundation models inherit all three because they can both perceive and describe people and then use those descriptions in downstream decisions.",
+      "translation": ""
+    },
+    {
+      "id": "t000207",
+      "source": "A fairness metric can only be as meaningful as the construct underneath it. The classical case studies matter because they show that subgroup auditing, proxy analysis, and domain knowledge are not optional extras; they are part of the measurement argument.",
+      "translation": ""
+    },
+    {
+      "id": "t000208",
+      "source": "2.3 Ranking, proxies, risk scores, and dynamic allocation",
+      "translation": ""
+    },
+    {
+      "id": "t000209",
+      "source": "Classification is only one form of allocation. Search, recommendation, credit, admissions, hiring, fraud detection, moderation, and triage are ranking systems that decide who receives attention first. Small score differences can matter greatly near thresholds, and repeated exposure decisions can reshape the population itself. Fairness in such systems is therefore partly about time, strategic behavior, and feedback.",
+      "translation": ""
+    },
+    {
+      "id": "t000210",
+      "source": "Classification attracts attention because its errors are easy to count, but many real systems allocate through ranking. Search, recommendation, hiring pipelines, feeds, marketplaces, and scientific discovery systems decide who or what receives attention before any explicit yes-or-no decision is made. Exposure is scarce: a creator placed on page ten is functionally invisible to most users, and a candidate omitted from a shortlist is effectively rejected. Fairness in ranking therefore asks how attention, relevance, and opportunity are distributed across positions, not merely whether items are classified correctly.",
+      "translation": ""
+    },
+    {
+      "id": "t000211",
+      "source": "Recommendation systems make the temporal dimension unavoidable. Ranking influences clicks; clicks become training data; training data influence future ranking. A small initial disparity in exposure can become self-reinforcing. Conversely, a system that deliberately explores underexposed items may temporarily reduce short-term click-through while improving information and opportunity over time. This creates a tension between immediate utility and long-term fairness that cannot be captured by a static confusion matrix. The survey literature on recommender fairness now distinguishes consumer-side fairness, provider-side fairness, exposure, popularity bias, multi-stakeholder objectives, and long-term effects because one side of the market can benefit while another is disadvantaged.",
+      "translation": ""
+    },
+    {
+      "id": "t000212",
+      "source": "Ranking systems introduce a distinct fairness problem: exposure. A recommender does not simply classify an item as relevant or irrelevant. It decides what is visible and in what order. Small ranking differences can compound because early exposure generates clicks, reviews, purchases, and new training data. Fairness can therefore concern consumers, item providers, creators, advertisers, or multiple stakeholders simultaneously.",
+      "translation": ""
+    },
+    {
+      "id": "t000213",
+      "source": "The recommender-system literature shows why a universal fairness metric is especially difficult. Equal exposure may conflict with relevance. Producer fairness can conflict with short-term user utility. Correcting popularity bias may improve discovery for niche providers while reducing immediate click-through. Temporal dynamics matter because exposure today changes evidence tomorrow.",
+      "translation": ""
+    },
+    {
+      "id": "t000214",
+      "source": "This is directly relevant to LLM-era systems. Retrieval-augmented generation contains a recommender-like stage: documents compete for limited context-window exposure. If retrieval systematically favors dominant sources, languages, publishers, or viewpoints, the generator is conditioned on an already skewed evidence set. Fairness in RAG therefore inherits ideas from ranking fairness as much as from language-model fairness.",
+      "translation": ""
+    },
+    {
+      "id": "t000215",
+      "source": "Risk assessment in criminal justice became a public case study because different parties used different definitions of fairness. One side emphasized calibration: people assigned the same risk score should reoffend at similar rates. Another emphasized error-rate balance: false positive and false negative rates should be comparable across groups. When base rates differ, these criteria can conflict for imperfect predictors.",
+      "translation": ""
+    },
+    {
+      "id": "t000216",
+      "source": "The important lesson is not specific to criminal justice. It is that a fairness dispute may be a disagreement about which error is morally or legally salient, not a dispute that can be settled by a more accurate model. Engineers need to identify when a technical meeting has become a policy meeting.",
+      "translation": ""
+    },
+    {
+      "id": "t000217",
+      "source": "Foundation-model practitioners sometimes treat bias as a new problem created by generative AI. It is not. The older literature already established six durable lessons. Data reflect institutions. Proxies can be the main source of harm. Aggregate metrics hide intersectional failure. Different fairness definitions can be incompatible. Deployment can change the data-generating process. Documentation and system-boundary choices matter.",
+      "translation": ""
+    },
+    {
+      "id": "t000218",
+      "source": "What LLMs add is scale, generality, stochasticity, context sensitivity, and composition. A single model now participates in many tasks for which the original developers did not define one decision objective. The classical lessons therefore become more, not less, important.",
+      "translation": ""
+    },
+    {
+      "id": "t000219",
+      "source": "Risk scoring produced another foundational lesson: a mathematically coherent score does not settle the policy question. The public debate around criminal-justice risk instruments made calibration, false-positive disparities, base rates, and threshold choices visible outside the research community. The technical literature showed that some desirable fairness properties cannot all hold together when base rates differ. The social controversy showed something equally important: people often use the word \"fair\" as if it denoted one obvious condition, then interpret a metric disagreement as evidence of bad faith. Engineers should resist that framing. The correct question is which errors the policy chooses to tolerate and why.",
+      "translation": ""
+    },
+    {
+      "id": "t000220",
+      "source": "There is also a deeper issue of selective labels. In lending, hiring, bail, or medical triage, outcomes are often observed only for people who received a particular decision. We know loan repayment for approved borrowers, not for everyone rejected. We observe job performance for hired candidates, not all applicants. The decision policy therefore shapes which labels exist. Training on those labels can entrench earlier policies and make counterfactual evaluation difficult. This is another form of feedback: the system does not merely predict outcomes; it controls which outcomes become observable.",
+      "translation": ""
+    },
+    {
+      "id": "t000221",
+      "source": "The bridge to LLM systems is direct. A language model used as a recommender, evaluator, or agent often produces ranked options, confidence-based escalations, or tool selections. Its fairness cannot be inferred from whether generated prose sounds neutral. We need to measure exposure, path selection, selective observation, and long-term effects. Classical ML already taught us that the decision architecture around a score is often more consequential than the score itself.",
+      "translation": ""
+    },
+    {
+      "id": "t000222",
+      "source": "Fairness in ranking also forces an explicit treatment of scarcity. Only a few items can occupy the top positions, so equal exposure for every provider is usually incompatible with relevance and user utility. The defensible objective is not mechanically equal visibility but a justified allocation of attention under known constraints. That may include minimum exposure, calibrated exploration, opportunity proportional to relevance, or separate protections for new entrants. These design choices foreshadow agentic AI, where scarce resources include tool calls, human review time, context-window space, and the amount of evidence gathered before an action.",
+      "translation": ""
+    },
+    {
+      "id": "t000223",
+      "source": "These systems also reveal why fairness and relevance sometimes pull in different directions. A search engine should rank evidence by usefulness, but historical popularity can be part of the relevance signal and simultaneously a mechanism that preserves incumbency. A labor platform should match skills, but past hiring outcomes may encode unequal opportunity. The engineering task is not to choose fairness over relevance in the abstract; it is to identify which parts of the relevance signal are legitimate evidence and which merely recycle earlier allocation. That distinction will become central again in RAG.",
+      "translation": ""
+    },
+    {
+      "id": "t000224",
+      "source": "The classical era leaves a durable engineering lesson: fairness is local to a task and a workflow, but harms accumulate across time. Foundation models inherit this problem and add a much larger space of possible behaviors.",
+      "translation": ""
+    },
+    {
+      "id": "t000225",
+      "source": "Classical ML provides the vocabulary of fairness and also the warning against universal solutions. Its strongest lesson is epistemic humility: aggregate performance, a convenient proxy, or one parity criterion can each conceal a different failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000226",
+      "source": "3. LARGE LANGUAGE MODELS: HOW BIAS IS LEARNED, HIDDEN, AND REVEALED",
+      "translation": ""
+    },
+    {
+      "id": "t000227",
+      "source": "Large language models make the problem harder because the object being evaluated is no longer a fixed classifier. The same model can advise, rank, translate, persuade, refuse, retrieve, or act as an evaluator. Post-training can teach a model to reject an explicitly stereotyped request while leaving a related preference visible in indirect decisions. Research on covert dialect-based discrimination and on “silenced” biases makes this distinction concrete. The central question is no longer only what a model has learned, but under which contexts, prompts, languages, and system policies that knowledge becomes behavior.",
+      "translation": ""
+    },
+    {
+      "id": "t000228",
+      "source": "The chapter distinguishes what pretraining represents from what post-training expresses, then treats evaluation itself as a scientific measurement problem rather than a leaderboard exercise.",
+      "translation": ""
+    },
+    {
+      "id": "t000229",
+      "source": "3.1 Pretraining creates a conditional model of culture",
+      "translation": ""
+    },
+    {
+      "id": "t000230",
+      "source": "Pretraining does not teach a model a neutral language and then add stereotypes as a separate layer. It teaches a statistical model of how language, facts, identities, institutions, and values co-occur in the corpus. That representation contains useful social knowledge, historical prejudice, contemporary norms, minority perspectives, propaganda, corrections, and contradictions. The engineering problem is not to erase culture from the model but to control when particular associations are allowed to influence a task.",
+      "translation": ""
+    },
+    {
+      "id": "t000231",
+      "source": "A pretrained language model is often described as predicting the next token. That description is technically correct and conceptually incomplete. By learning to predict text across many domains, the model develops distributed representations of social categories, occupations, places, styles, norms, histories, and correlations between them. Some correlations describe genuine features of the world, some reflect historical inequality, some reflect stereotypes, and some are artifacts of what was available online. Pretraining does not label these categories as legitimate or illegitimate; it compresses regularities useful for prediction.",
+      "translation": ""
+    }
+  ]
+}

@@ -1,0 +1,836 @@
+{
+  "language": "ro",
+  "chunk": 7,
+  "segments": [
+    {
+      "id": "t000954",
+      "source": "This separation also gives the laboratory a clean failure model. If a high-level planning service disappears, the current experiment can finish safely or stop according to the local controller. If an adapter misreports an instrument capability, the execution layer can reject the request before a physical command is issued. If a sensor becomes inconsistent with another sensor, the run can be marked as requiring review rather than allowing a model to smooth the discrepancy into a plausible explanation. The system should be designed around abnormal conditions because real laboratories are defined as much by failures, delays, contamination, and maintenance as by successful nominal runs.",
+      "translation": "Această separare oferă laboratorului și un model clar al eșecului. Dacă un serviciu de planificare de nivel înalt dispare, experimentul curent se poate termina în siguranță sau opri conform controlerului local. Dacă un adaptor raportează greșit o capacitate a instrumentului, stratul execuției poate respinge cererea înaintea emiterii unei comenzi fizice. Dacă un senzor devine inconsistent cu alt senzor, rularea poate fi marcată ca necesitând evaluare, nu să permită unui model să netezească discrepanța într-o explicație plauzibilă. Sistemul ar trebui proiectat în jurul condițiilor anormale deoarece laboratoarele reale sunt definite la fel de mult de eșecuri, întârzieri, contaminare și întreținere ca de rulări nominale reușite."
+    },
+    {
+      "id": "t000955",
+      "source": "The same discipline makes qualification transferable. A laboratory capability can specify the instrument family, calibration assumptions, permitted parameter range, safety envelope, and evidence required after execution. A new site can then decide whether to accept the qualification, repeat local tests, or narrow the authority. This provides a path toward interoperable automated science without pretending that heterogeneous laboratories are identical.",
+      "translation": "Aceeași disciplină face calificarea transferabilă. O capacitate de laborator poate specifica familia instrumentului, presupunerile calibrării, intervalul permis al parametrilor, domeniul siguranței și dovezile necesare după execuție. Un amplasament nou poate apoi decide dacă acceptă calificarea, repetă teste locale sau restrânge autoritatea. Aceasta oferă o cale spre știință automatizată interoperabilă fără a pretinde că laboratoarele eterogene sunt identice."
+    },
+    {
+      "id": "t000956",
+      "source": "A general research environment should not replace native laboratory systems. Instruments and robots have long lifetimes, vendor-specific APIs, real-time requirements, and hard safety mechanisms. The Research IDE should operate as a supervisory scientific layer above them, using adapters and capability contracts. The physical control system remains responsible for safe real-time behaviour; the research layer preserves scientific intent, evidence, and authority.",
+      "translation": "Un mediu general de cercetare nu ar trebui să înlocuiască sistemele native de laborator. Instrumentele și roboții au vieți lungi, API-uri specifice furnizorilor, cerințe de timp real și mecanisme stricte de siguranță. IDE-ul de cercetare ar trebui să opereze ca strat științific de supraveghere deasupra lor, folosind adaptoare și contracte de capacitate. Sistemul fizic de control rămâne responsabil de comportamentul sigur în timp real; stratul cercetării păstrează intenția științifică, dovezile și autoritatea."
+    },
+    {
+      "id": "t000957",
+      "source": "10.2 Layered laboratory control and evidence capture",
+      "translation": "10.2 Control stratificat al laboratorului și captarea dovezilor"
+    },
+    {
+      "id": "t000958",
+      "source": "A trustworthy automated laboratory resembles a layered control system rather than one autonomous scientist. Scientific planning, operational scheduling, safety, instrument execution, evidence capture, and interpretation should remain separable so that autonomy can grow without allowing open-ended models to override hard constraints.",
+      "translation": "Un laborator automatizat demn de încredere seamănă cu un sistem stratificat de control, nu cu un singur cercetător autonom. Planificarea științifică, programarea operațională, siguranța, execuția instrumentelor, captarea dovezilor și interpretarea ar trebui să rămână separabile astfel încât autonomia să poată crește fără a permite modelelor cu comportament deschis să anuleze constrângerile stricte."
+    },
+    {
+      "id": "t000959",
+      "source": "Figure from PDF page 125",
+      "translation": "Figură din pagina 125 a PDF-ului"
+    },
+    {
+      "id": "t000960",
+      "source": "Figure 8. Automated laboratories require layered control rather than unrestricted agent action.",
+      "translation": "Figura 8. Laboratoarele automatizate necesită control stratificat, nu acțiune agentică nerestricționată."
+    },
+    {
+      "id": "t000961",
+      "source": "The diagram presents the laboratory path as a sequence with a lower control lane. Research intent becomes an approved experiment plan. An operational control plane schedules resources and binds instrument capabilities. Instruments execute within their native controllers. Observations become raw evidence. Scientific evaluation interprets the evidence relative to the project. Safety, compliance, and authority constrain the entire path and sit below the discretion of open-ended agents where hard guarantees are possible.",
+      "translation": "Diagrama prezintă traseul laboratorului ca succesiune cu o bandă inferioară de control. Intenția cercetării devine un plan aprobat de experiment. Un plan operațional de control programează resurse și leagă capacitățile instrumentelor. Instrumentele execută în controlerele lor native. Observațiile devin dovezi brute. Evaluarea științifică interpretează dovezile față de proiect. Siguranța, conformitatea și autoritatea constrâng întregul traseu și stau sub discreția agenților cu comportament deschis acolo unde sunt posibile garanții stricte."
+    },
+    {
+      "id": "t000962",
+      "source": "This layered design resembles good systems engineering independently of current model limitations. Safety-critical operations should not depend on a remote language model remaining available. A laboratory should be able to enter a safe state if network connectivity disappears. Hard interlocks should not be overrideable by persuasive text. Real-time control should remain local where timing matters. High-level agents can propose and adapt plans within an approved envelope.",
+      "translation": "Această proiectare stratificată seamănă cu ingineria bună a sistemelor independent de limitările actuale ale modelelor. Operațiile critice pentru siguranță nu ar trebui să depindă de rămânerea disponibilă a unui model lingvistic la distanță. Un laborator ar trebui să poată intra într-o stare sigură dacă dispare conectivitatea rețelei. Interblocajele stricte nu ar trebui să poată fi anulate de text persuasiv. Controlul în timp real ar trebui să rămână local unde temporizarea contează. Agenții de nivel înalt pot propune și adapta planuri într-un domeniu aprobat."
+    },
+    {
+      "id": "t000963",
+      "source": "Operational scheduling is another distinct responsibility. Instruments have availability, maintenance states, consumables, and dependencies. A scheduler can manage retries and resource conflicts without deciding the scientific value of the experiment. Direction intelligence can influence priority, but the scheduling mechanism should record why one experiment received scarce capacity and which policy governed the choice.",
+      "translation": "Programarea operațională este o altă responsabilitate distinctă. Instrumentele au disponibilitate, stări de întreținere, consumabile și dependențe. Un planificator de program poate gestiona reîncercări și conflicte de resurse fără a decide valoarea științifică a experimentului. Inteligența direcției poate influența prioritatea, dar mecanismul programării ar trebui să înregistreze de ce un experiment a primit capacitate rară și ce politică a guvernat alegerea."
+    },
+    {
+      "id": "t000964",
+      "source": "Evidence capture can be richer than a traditional notebook precisely because automation already knows the machine state. Every measurement can link to sample identity, instrument, calibration, protocol version, software, environmental metadata, and project state. This creates stronger traceability if the information is organised semantically. Raw logs alone are insufficient because millions of machine events do not tell a future scientist which ones changed the interpretation.",
+      "translation": "Captarea dovezilor poate fi mai bogată decât un caiet tradițional de laborator tocmai deoarece automatizarea cunoaște deja starea mașinii. Fiecare măsurătoare se poate lega de identitatea probei, instrument, calibrare, versiunea protocolului, software, metadatele mediului și starea proiectului. Aceasta creează trasabilitate mai puternică dacă informația este organizată semantic. Jurnalele brute singure sunt insuficiente deoarece milioane de evenimente de mașină nu îi spun unui cercetător viitor care dintre ele au schimbat interpretarea."
+    },
+    {
+      "id": "t000965",
+      "source": "The project should therefore compress operational traces into scientific events while preserving drill-down access. A sample was created. Calibration passed. The experiment deviated from protocol. A measurement failed quality control. A replicate confirmed the result. A safety gate blocked a proposed action. These events can participate in project state and Project Consciousness without making the scientific layer a real-time control system.",
+      "translation": "Proiectul ar trebui, așadar, să comprime urmele operaționale în evenimente științifice păstrând accesul pentru aprofundare. A fost creată o probă. Calibrarea a trecut. Experimentul a deviat de la protocol. O măsurătoare a eșuat la controlul calității. O replică a confirmat rezultatul. O poartă de siguranță a blocat o acțiune propusă. Aceste evenimente pot participa la starea proiectului și Conștiința proiectului fără a face stratul științific un sistem de control în timp real."
+    },
+    {
+      "id": "t000966",
+      "source": "Digital twins fit into the same architecture as models with explicit validity envelopes. A twin can help an agent test a protocol, predict resource conflicts, or explore failure modes before physical execution. Its predictions are not observations.",
+      "translation": "Gemenii digitali se încadrează în aceeași arhitectură ca modele cu domenii explicite de validitate. Un geamăn poate ajuta un agent să testeze un protocol, să prezică conflicte de resurse sau să exploreze moduri de eșec înaintea execuției fizice. Predicțiile sale nu sunt observații."
+    },
+    {
+      "id": "t000967",
+      "source": "The project should record which decisions relied on simulation, what calibration evidence supports the twin, and where reality diverged. A high-fidelity twin can reduce risk; an unqualified twin can convert simulated confidence into physical error.",
+      "translation": "Proiectul ar trebui să înregistreze ce decizii s-au bazat pe simulare, ce dovezi de calibrare susțin geamănul și unde a divergat realitatea. Un geamăn de mare fidelitate poate reduce riscul; unul necalificat poate transforma încrederea simulată în eroare fizică."
+    },
+    {
+      "id": "t000968",
+      "source": "Table 20. Automated laboratories require several control planes that should not be collapsed.",
+      "translation": "Tabelul 20. Laboratoarele automatizate necesită mai multe planuri de control care nu ar trebui contopite."
+    },
+    {
+      "id": "t000969",
+      "source": "Control plane",
+      "translation": "Plan de control"
+    },
+    {
+      "id": "t000970",
+      "source": "Responsibility",
+      "translation": "Responsabilitate"
+    },
+    {
+      "id": "t000971",
+      "source": "Choose questions, hypotheses, controls,",
+      "translation": "Alege întrebări, ipoteze, controale"
+    },
+    {
+      "id": "t000972",
+      "source": "Scientific control",
+      "translation": "Control științific"
+    },
+    {
+      "id": "t000973",
+      "source": "and the information value expected from the next experiment.",
+      "translation": "și valoarea informațională așteptată a următorului experiment."
+    },
+    {
+      "id": "t000974",
+      "source": "Schedule resources, bind instrument",
+      "translation": "Programează resurse, leagă capacități"
+    },
+    {
+      "id": "t000975",
+      "source": "Operational control",
+      "translation": "Control operațional"
+    },
+    {
+      "id": "t000976",
+      "source": "capabilities, manage dependencies, retries, and recovery.",
+      "translation": "ale instrumentelor, gestionează dependențe, reîncercări și recuperare."
+    },
+    {
+      "id": "t000977",
+      "source": "Enforce hard physical and procedural",
+      "translation": "Impune constrângeri fizice și procedurale"
+    },
+    {
+      "id": "t000978",
+      "source": "Safety control",
+      "translation": "Control de siguranță"
+    },
+    {
+      "id": "t000979",
+      "source": "constraints below the authority of open-ended agents.",
+      "translation": "stricte sub autoritatea agenților cu comportament deschis."
+    },
+    {
+      "id": "t000980",
+      "source": "Evidence capture",
+      "translation": "Captarea dovezilor"
+    },
+    {
+      "id": "t000981",
+      "source": "Link measurements to sample, instrument, calibration, protocol, software, environment, and project state.",
+      "translation": "Leagă măsurătorile de probă, instrument, calibrare, protocol, software, mediu și starea proiectului."
+    },
+    {
+      "id": "t000982",
+      "source": "Transform validated observations into",
+      "translation": "Transformă observații validate într-o"
+    },
+    {
+      "id": "t000983",
+      "source": "Closed-loop update",
+      "translation": "Actualizare în buclă închisă"
+    },
+    {
+      "id": "t000984",
+      "source": "a new scientific state that can justify, redirect, pause, or block further work.",
+      "translation": "stare științifică nouă care poate justifica, redirecționa, suspenda sau bloca munca ulterioară."
+    },
+    {
+      "id": "t000985",
+      "source": "The table shows why laboratory autonomy should be local to capabilities. A validated pipetting routine may run automatically inside strict bounds. A new synthesis procedure may require direct human review. A routine instrument calibration can be delegated more broadly than a novel experiment involving hazardous materials. The laboratory is not autonomous or non-autonomous as a whole; individual capabilities have authority envelopes earned through evidence.",
+      "translation": "Tabelul arată de ce autonomia laboratorului ar trebui să fie locală capacităților. O rutină validată de pipetare poate rula automat în limite stricte. O procedură nouă de sinteză poate necesita evaluare umană directă. O calibrare obișnuită a instrumentului poate fi delegată mai amplu decât un experiment nou care implică materiale periculoase. Laboratorul nu este autonom sau neautonom ca întreg; capacitățile individuale au domenii de autoritate câștigate prin dovezi."
+    },
+    {
+      "id": "t000986",
+      "source": "Multi-site research adds another layer of versioning. Two laboratories may execute nominally identical protocols with different instruments, calibration procedures, and local policies.",
+      "translation": "Cercetarea în mai multe amplasamente adaugă un alt strat de versionare. Două laboratoare pot executa protocoale nominal identice cu instrumente, proceduri de calibrare și politici locale diferite."
+    },
+    {
+      "id": "t000987",
+      "source": "The shared project should preserve one protocol identity while making site-specific adaptations explicit. Cross-site reproducibility then becomes a structured comparison rather than a binary claim. If a result transfers only under one instrument family, that dependency becomes scientific knowledge.",
+      "translation": "Proiectul comun ar trebui să păstreze o identitate a protocolului făcând adaptările specifice amplasamentului explicite. Reproductibilitatea între amplasamente devine atunci o comparație structurată, nu o afirmație binară. Dacă un rezultat se transferă numai sub o familie de instrumente, acea dependență devine cunoaștere științifică."
+    },
+    {
+      "id": "t000988",
+      "source": "Laboratory integration also creates a strong falsification environment for the entire Research IDE thesis. Physical outcomes are less forgiving than fluent prose. Weak project state becomes visible when runs cannot be compared. Bad provenance appears when results cannot be reconstructed. Poor direction intelligence wastes expensive experiments. Overly strict compliance produces false positives that researchers try to bypass. Brittle orchestration encounters equipment failures and asynchronous delays. These pressures make the laboratory a valuable test of whether the architecture creates real control.",
+      "translation": "Integrarea laboratorului creează și un mediu puternic de falsificare pentru întreaga teză a IDE-ului de cercetare. Rezultatele fizice sunt mai puțin îngăduitoare decât proza fluentă. Starea slabă a proiectului devine vizibilă când rulările nu pot fi comparate. Proveniența proastă apare când rezultatele nu pot fi reconstruite. Inteligența slabă a direcției irosește experimente scumpe. Conformitatea excesiv de strictă produce falsuri pozitive pe care cercetătorii încearcă să le ocolească. Orchestrarea fragilă întâlnește eșecuri ale echipamentelor și întârzieri asincrone. Aceste presiuni fac laboratorul un test valoros al faptului dacă arhitectura creează control real."
+    },
+    {
+      "id": "t000989",
+      "source": "The near-term objective should therefore be modest but serious: integrate a supervisory layer with one or two existing automated facilities, preserve their native safety systems, and demonstrate measurable improvement in traceability, recovery, or scientific decision quality. A universal autonomous laboratory is not required to validate the control-plane architecture. A small system that remains understandable under abnormal conditions would be a more meaningful achievement.",
+      "translation": "Obiectivul pe termen scurt ar trebui, așadar, să fie modest, dar serios: integrarea unui strat de supraveghere cu una sau două facilități automatizate existente, păstrarea sistemelor lor native de siguranță și demonstrarea unei îmbunătățiri măsurabile a trasabilității, recuperării sau calității deciziei științifice. Un laborator autonom universal nu este necesar pentru validarea arhitecturii planului de control. Un sistem mic care rămâne inteligibil în condiții anormale ar fi o realizare mai semnificativă."
+    },
+    {
+      "id": "t000990",
+      "source": "10.3 Closed-loop research without a single autonomous scientist",
+      "translation": "10.3 Cercetare în buclă închisă fără un singur cercetător autonom"
+    },
+    {
+      "id": "t000991",
+      "source": "Closed-loop discovery can use machine planning and sequential experiment selection without granting one agent ownership of the scientific loop. Results should update project state through evaluation, and the next experiment should be chosen under explicit values, budgets, controls, and human authority appropriate to the domain.",
+      "translation": "Descoperirea în buclă închisă poate folosi planificare de mașină și selecție secvențială a experimentelor fără a acorda unui singur agent proprietatea buclei științifice. Rezultatele ar trebui să actualizeze starea proiectului prin evaluare, iar următorul experiment ar trebui ales sub valori, bugete, controale și autoritate umană explicite potrivite domeniului."
+    },
+    {
+      "id": "t000992",
+      "source": "Closed-loop research is attractive because one experiment can inform the next automatically. Active learning, Bayesian optimisation, and other sequential design methods already choose experiments based on expected information or objective improvement. AI agents can extend the loop by interpreting literature, proposing mechanisms, adapting protocols, and explaining results. The infrastructure should support these capabilities while preserving the distinction between optimisation and scientific judgment.",
+      "translation": "Cercetarea în buclă închisă este atractivă deoarece un experiment îl poate informa automat pe următorul. Învățarea activă, optimizarea bayesiană și alte metode de proiectare secvențială aleg deja experimente pe baza informației așteptate sau îmbunătățirii obiectivului. Agenții IA pot extinde bucla interpretând literatura, propunând mecanisme, adaptând protocoale și explicând rezultate. Infrastructura ar trebui să susțină aceste capacități păstrând distincția dintre optimizare și judecată științifică."
+    },
+    {
+      "id": "t000993",
+      "source": "A numerical optimiser can select the next experiment that maximises a defined objective. The difficult question is whether the objective captures what the project needs. A system can efficiently optimise the wrong proxy. It can also become self-confirming if it repeatedly samples regions where its current model predicts success and treats surprising failures as noise. The living specification should therefore constrain what may be optimised and reserve capacity for controls, replication, and discriminating experiments where scientific value requires them.",
+      "translation": "Un optimizator numeric poate selecta următorul experiment care maximizează un obiectiv definit. Întrebarea dificilă este dacă obiectivul surprinde nevoile proiectului. Un sistem poate optimiza eficient indicatorul greșit. Poate deveni și autoconfirmator dacă eșantionează repetat regiuni unde modelul său curent prezice succes și tratează eșecurile surprinzătoare ca zgomot. Specificația vie ar trebui, așadar, să constrângă ce poate fi optimizat și să rezerve capacitate pentru controale, replicare și experimente discriminatorii unde valoarea științifică le cere."
+    },
+    {
+      "id": "t000994",
+      "source": "Direction intelligence can contribute by asking which uncertainty matters. One experiment may improve a performance metric; another may distinguish two mechanisms; a third may test whether a result is reproducible across conditions. The best next action depends on the project's values and stage. A closed loop should therefore consume the current scientific state rather than only a numerical model of the search space.",
+      "translation": "Inteligența direcției poate contribui întrebând ce incertitudine contează. Un experiment poate îmbunătăți o metrică de performanță; altul poate distinge două mecanisme; un al treilea poate testa dacă un rezultat este reproductibil între condiții. Cea mai bună acțiune următoare depinde de valorile și etapa proiectului. O buclă închisă ar trebui, așadar, să consume starea științifică curentă, nu doar un model numeric al spațiului căutării."
+    },
+    {
+      "id": "t000995",
+      "source": "Evaluation must remain outside the generation loop. The planning system should not gain authority merely by reporting that its own experiment succeeded. Measurements require quality checks. Interpretations require methodological challenge. Novelty requires independent prior-art search. Consequential conclusions may require human review. The loop closes only when validated evidence changes the project state, not when the planner produces another narrative.",
+      "translation": "Evaluarea trebuie să rămână în afara buclei generării. Sistemul de planificare nu ar trebui să câștige autoritate doar raportând că propriul experiment a reușit. Măsurătorile necesită verificări de calitate. Interpretările necesită contestare metodologică. Noutatea necesită căutare independentă a stadiului anterior al tehnicii. Concluziile cu consecințe importante pot necesita evaluare umană. Bucla se închide numai când dovezi validate schimbă starea proiectului, nu când planificatorul produce încă o narațiune."
+    },
+    {
+      "id": "t000996",
+      "source": "This architecture allows autonomy to grow gradually. In a mature repetitive domain, many cycles can run automatically because the protocol, safety envelope, evaluators, and stopping conditions are well qualified. Humans can supervise policies, anomalies, and changes of regime. In novel or high-risk research, each cycle may require more direct approval. The core project model remains the same while authority changes with evidence.",
+      "translation": "Această arhitectură permite autonomiei să crească treptat. Într-un domeniu repetitiv matur, multe cicluri pot rula automat deoarece protocolul, domeniul siguranței, evaluatorii și condițiile opririi sunt bine calificate. Oamenii pot supraveghea politici, anomalii și schimbări de regim. În cercetarea nouă sau cu risc ridicat, fiecare ciclu poate necesita aprobare mai directă. Modelul central al proiectului rămâne același, în timp ce autoritatea se schimbă cu dovezile."
+    },
+    {
+      "id": "t000997",
+      "source": "Several failure modes are hidden by the single autonomous-scientist metaphor. A loop can be operationally successful and scientifically unproductive. It can optimise a biased measure, consume resources on redundant experiments, or create a self-reinforcing interpretation. The state-centred architecture makes these failures inspectable because the objective, evidence, evaluators, and authority are separate objects.",
+      "translation": "Mai multe moduri de eșec sunt ascunse de metafora cercetătorului autonom unic. O buclă poate avea succes operațional și poate fi neproductivă științific. Poate optimiza o măsură părtinitoare, consuma resurse pe experimente redundante sau crea o interpretare care se întărește singură. Arhitectura centrată pe stare face aceste eșecuri inspectabile deoarece obiectivul, dovezile, evaluatorii și autoritatea sunt obiecte separate."
+    },
+    {
+      "id": "t000998",
+      "source": "Closed-loop systems should also record why an experiment was chosen from the candidate set. This rationale may later matter more than the raw prediction score. If a branch was selected because it could discriminate between two hypotheses, Project Consciousness can preserve that intent and interpret an unexpected result accordingly. Without the rationale, a high-throughput laboratory can become a producer of measurements whose scientific purpose is difficult to reconstruct.",
+      "translation": "Sistemele în buclă închisă ar trebui să înregistreze și de ce a fost ales un experiment din mulțimea candidaților. Această justificare poate conta ulterior mai mult decât scorul brut al predicției. Dacă o ramură a fost selectată deoarece putea discrimina două ipoteze, Conștiința proiectului poate păstra acea intenție și interpreta potrivit un rezultat neașteptat. Fără justificare, un laborator cu debit mare poate deveni producător de măsurători al căror scop științific este dificil de reconstruit."
+    },
+    {
+      "id": "t000999",
+      "source": "The laboratory also shows why negative and inconclusive results should update memory. A failed protocol may reveal an operational limit. A null result may eliminate an attractive mechanism. A contradictory replicate may justify more review. The loop should not retry every failure until it obtains a positive outcome. It should classify the failure and let the project decide whether the new state changes direction.",
+      "translation": "Laboratorul arată și de ce rezultatele negative și neconcludente ar trebui să actualizeze memoria. Un protocol eșuat poate dezvălui o limită operațională. Un rezultat nul poate elimina un mecanism atractiv. O replică contradictorie poate justifica evaluare suplimentară. Bucla nu ar trebui să reîncerce fiecare eșec până când obține un rezultat pozitiv. Ar trebui să clasifice eșecul și să lase proiectul să decidă dacă starea nouă schimbă direcția."
+    },
+    {
+      "id": "t001000",
+      "source": "A closed loop also needs explicit pause conditions. Scientific campaigns often enter regimes that were not represented in the original model: an instrument begins drifting, an unexpected phenotype appears, a new paper changes the prior-art picture, or the optimisation starts exploiting a measurement artefact. The correct response may be to stop the loop and reopen the specification rather than continue searching more efficiently. A control plane that can pause, preserve the current state, and ask for reinterpretation is scientifically stronger than one rewarded only for uninterrupted throughput.",
+      "translation": "O buclă închisă necesită și condiții explicite de pauză. Campaniile științifice intră adesea în regimuri nereprezentate în modelul original: un instrument începe să derive, apare un fenotip neașteptat, un articol nou schimbă imaginea stadiului anterior al tehnicii sau optimizarea începe să exploateze un artefact de măsurare. Răspunsul corect poate fi oprirea buclei și redeschiderea specificației, nu continuarea mai eficientă a căutării. Un plan de control care poate suspenda, păstra starea curentă și cere reinterpretare este mai puternic științific decât unul recompensat numai pentru debit neîntrerupt."
+    },
+    {
+      "id": "t001001",
+      "source": "Another requirement is diversity of challenge. A closed-loop system that uses one model family for planning, interpretation, and review can converge rapidly around a shared mistake. Periodic independent reproduction, alternative models, formal checks, or deliberately adversarial human review create friction that protects the loop from self-confirmation. The frequency of such challenge can depend on risk and maturity, but the architecture should make it possible by design.",
+      "translation": "O altă cerință este diversitatea contestării. Un sistem în buclă închisă care folosește o singură familie de modele pentru planificare, interpretare și evaluare poate converge rapid în jurul unei greșeli comune. Reproducerea independentă periodică, modelele alternative, verificările formale sau evaluarea umană deliberat adversarială creează fricțiune care protejează bucla de autoconfirmare. Frecvența acestei contestări poate depinde de risc și maturitate, dar arhitectura ar trebui s-o facă posibilă prin proiectare."
+    },
+    {
+      "id": "t001002",
+      "source": "The long-term vision is therefore not a robot scientist that replaces the institution around science. It is an increasingly automated institution in miniature: memory, roles, permissions, review, safety, versioned protocols, evidence boundaries, and mechanisms for learning from correction. Human contribution may become less operational in some domains, but purpose and accountability remain explicit. The system becomes more autonomous by earning authority in bounded capabilities, not by acquiring a fictional global agency.",
+      "translation": "Viziunea pe termen lung nu este, așadar, un cercetător robotic care înlocuiește instituția din jurul științei. Este o instituție în miniatură tot mai automatizată: memorie, roluri, permisiuni, evaluare, siguranță, protocoale versionate, granițe ale dovezilor și mecanisme de învățare din corectare. Contribuția umană poate deveni mai puțin operațională în unele domenii, dar scopul și responsabilitatea rămân explicite. Sistemul devine mai autonom câștigând autoritate în capacități limitate, nu dobândind o agenție globală fictivă."
+    },
+    {
+      "id": "t001003",
+      "source": "Chapter 11 — A Build and Research Programme",
+      "translation": "Capitolul 11 — Un program de construcție și cercetare"
+    },
+    {
+      "id": "t001004",
+      "source": "A vision of infrastructure is useful only if it can be built, compared with simpler alternatives, and abandoned where evidence does not support it. The final chapter therefore converts the preceding architecture into a research and engineering programme. It identifies a minimum credible substrate, defines acceptance tests for the components, and proposes longitudinal and adversarial evaluations that measure correction locality, provenance, understanding, safe delegation, model replacement, and scientific yield rather than theatrical autonomy. The roadmap is intentionally conditional. Scientific state, evaluators, Project Consciousness, collaborative control surfaces, federation, and laboratory integration should each earn additional complexity and authority through demonstrated value. The programme succeeds by discovering the smallest architecture that preserves scientific control under growing machine contribution.",
+      "translation": "O viziune a infrastructurii este utilă numai dacă poate fi construită, comparată cu alternative mai simple și abandonată unde dovezile nu o susțin. Ultimul capitol convertește, așadar, arhitectura precedentă într-un program de cercetare și inginerie. Identifică un substrat minim credibil, definește teste de acceptare pentru componente și propune evaluări longitudinale și adversariale care măsoară localitatea corectării, proveniența, înțelegerea, delegarea sigură, înlocuirea modelului și randamentul științific, nu autonomia teatrală. Foaia de parcurs este intenționat condiționată. Starea științifică, evaluatorii, Conștiința proiectului, suprafețele colaborative de control, federația și integrarea laboratorului ar trebui să câștige fiecare complexitate și autoritate suplimentare prin valoare demonstrată. Programul reușește descoperind cea mai mică arhitectură care păstrează controlul științific sub contribuția crescândă a mașinilor."
+    },
+    {
+      "id": "t001005",
+      "source": "11.1 A minimum viable research infrastructure",
+      "translation": "11.1 O infrastructură minimă viabilă de cercetare"
+    },
+    {
+      "id": "t001006",
+      "source": "The first credible system should implement a narrow but complete scientific episode: persistent project state, provenance, controlled transactions, bounded execution, evaluation hooks, and a usable workspace. More speculative components should be added only after this substrate demonstrates measurable value on real projects.",
+      "translation": "Primul sistem credibil ar trebui să implementeze un episod științific îngust, dar complet: stare persistentă a proiectului, proveniență, tranzacții controlate, execuție limitată, puncte de integrare pentru evaluare și un spațiu utilizabil de lucru. Componentele mai speculative ar trebui adăugate numai după ce acest substrat demonstrează valoare măsurabilă pe proiecte reale."
+    },
+    {
+      "id": "t001007",
+      "source": "The architecture described in this book can easily expand into an unmanageable programme. The defence is to build vertically rather than horizontally. A minimum viable research infrastructure should support one or two real domains end to end instead of implementing superficial versions of every future component. The system should prove that a project-centred control plane can preserve scientific meaning through actual research work.",
+      "translation": "Arhitectura descrisă în această carte se poate extinde ușor într-un program imposibil de gestionat. Apărarea este construcția verticală, nu orizontală. O infrastructură minimă viabilă de cercetare ar trebui să susțină unul sau două domenii reale de la un capăt la altul, nu să implementeze versiuni superficiale ale fiecărei componente viitoare. Sistemul ar trebui să demonstreze că un plan de control centrat pe proiect poate păstra sensul științific prin muncă reală de cercetare."
+    },
+    {
+      "id": "t001008",
+      "source": "The foundation begins with Scientific Project State. The first schema can be intentionally small: questions, claims, evidence, experiments, evaluations, decisions, constraints, and artefacts. Stable identifiers, versions, provenance, access metadata, and relations are sufficient. Domain-specific types can be added through extensions. The primary engineering goal is not semantic completeness but reliable state transition and query.",
+      "translation": "Fundamentul începe cu starea proiectului științific. Prima schemă poate fi intenționat mică: întrebări, afirmații, dovezi, experimente, evaluări, decizii, constrângeri și artefacte. Identificatorii stabili, versiunile, proveniența, metadatele accesului și relațiile sunt suficiente. Tipuri specifice domeniului pot fi adăugate prin extensii. Scopul ingineresc principal nu este completitudinea semantică, ci tranziția și interogarea fiabile ale stării."
+    },
+    {
+      "id": "t001009",
+      "source": "The second foundation is an event and transaction mechanism. Every persistent change should know which state it started from, who or what proposed it, what execution occurred, what evidence resulted, which evaluations were performed, and which authority committed or rejected the change. This creates a common lifecycle around literature review, computational experiments, document claims, and project decisions.",
+      "translation": "Al doilea fundament este un mecanism de evenimente și tranzacții. Fiecare schimbare persistentă ar trebui să știe din ce stare a pornit, cine sau ce a propus-o, ce execuție a avut loc, ce dovezi au rezultat, ce evaluări au fost efectuate și ce autoritate a aplicat definitiv sau respins schimbarea. Aceasta creează un ciclu de viață comun în jurul analizei literaturii, experimentelor computaționale, afirmațiilor documentelor și deciziilor proiectului."
+    },
+    {
+      "id": "t001010",
+      "source": "The third foundation is a controlled runtime. Model calls and tools are executed through capability-scoped interfaces with explicit data access, sandboxes, network controls, resource budgets, and receipts. The runtime should support multiple model providers and local models from the beginning so that replaceability is an architectural property rather than a later migration project.",
+      "translation": "Al treilea fundament este un mediu controlat de execuție. Apelurile modelelor și instrumentele sunt executate prin interfețe cu capacități delimitate, cu acces explicit la date, medii izolate, controale de rețea, bugete de resurse și dovezi de execuție. Mediul ar trebui să susțină mai mulți furnizori de modele și modele locale de la început, astfel încât înlocuibilitatea să fie proprietate arhitecturală, nu proiect ulterior de migrare."
+    },
+    {
+      "id": "t001011",
+      "source": "The fourth foundation is the evaluation envelope. The platform does not need perfect automatic reviewers. It needs a standard way to attach source checks, reproductions, statistical assessments, formal results, novelty comparisons, and human reviews to target objects with declared scope. Even modest evaluators become more useful when their outputs are not confused with final truth.",
+      "translation": "Al patrulea fundament este anvelopa evaluării. Platforma nu necesită evaluatori automați perfecți. Necesită un mod standard de a atașa verificări de surse, reproduceri, aprecieri statistice, rezultate formale, comparații de noutate și evaluări umane obiectelor-țintă cu domeniu declarat. Chiar și evaluatorii modești devin mai utili când ieșirile lor nu sunt confundate cu adevărul final."
+    },
+    {
+      "id": "t001012",
+      "source": "The fifth foundation is a human-facing workspace. The first users can remain researchers already involved in the development.",
+      "translation": "Al cincilea fundament este un spațiu de lucru destinat oamenilor. Primii utilizatori pot rămâne cercetători deja implicați în dezvoltare."
+    },
+    {
+      "id": "t001013",
+      "source": "They should be able to work through familiar documents, code, meetings, and conversations while the state layer captures meaningful transitions. The interface should expose why a claim is believed, what changed, what is waiting for review, and which branches remain active without demanding constant interaction with graphs.",
+      "translation": "Ar trebui să poată lucra prin documente, cod, ședințe și conversații familiare, în timp ce stratul stării captează tranziții semnificative. Interfața ar trebui să expună de ce este crezută o afirmație, ce s-a schimbat, ce așteaptă evaluare și ce ramuri rămân active fără a cere interacțiune constantă cu grafuri."
+    },
+    {
+      "id": "t001014",
+      "source": "Table 21. A minimum viable research infrastructure can be assigned concrete engineering acceptance tests.",
+      "translation": "Tabelul 21. Unei infrastructuri minime viabile de cercetare i se pot atribui teste concrete de acceptare inginerească."
+    },
+    {
+      "id": "t001015",
+      "source": "Component",
+      "translation": "Componentă"
+    },
+    {
+      "id": "t001016",
+      "source": "Minimum credible acceptance test",
+      "translation": "Test minim credibil de acceptare"
+    },
+    {
+      "id": "t001017",
+      "source": "A real project can version questions,",
+      "translation": "Un proiect real poate versiona întrebări,"
+    },
+    {
+      "id": "t001018",
+      "source": "Scientific state",
+      "translation": "Stare științifică"
+    },
+    {
+      "id": "t001019",
+      "source": "claims, evaluations, and decisions without losing native artefacts.",
+      "translation": "afirmații, evaluări și decizii fără a pierde artefactele native."
+    },
+    {
+      "id": "t001020",
+      "source": "evidence,",
+      "translation": "dovezi,"
+    },
+    {
+      "id": "t001021",
+      "source": "experiments,",
+      "translation": "experimente,"
+    },
+    {
+      "id": "t001022",
+      "source": "Transaction engine",
+      "translation": "Motor de tranzacții"
+    },
+    {
+      "id": "t001023",
+      "source": "A complete research episode can distinguish proposal, execution, evidence, review, rejection, and commit.",
+      "translation": "Un episod complet de cercetare poate distinge propunere, execuție, dovezi, evaluare, respingere și aplicare definitivă."
+    },
+    {
+      "id": "t001024",
+      "source": "Models and code run with enforceable",
+      "translation": "Modelele și codul rulează cu domenii aplicabile de"
+    },
+    {
+      "id": "t001025",
+      "source": "Controlled runtime",
+      "translation": "Mediu controlat de execuție"
+    },
+    {
+      "id": "t001026",
+      "source": "data, network, secret, and resource scopes and leave usable receipts.",
+      "translation": "date, rețea, secrete și resurse și lasă dovezi de execuție utilizabile."
+    },
+    {
+      "id": "t001027",
+      "source": "Several independent checks can attach",
+      "translation": "Mai multe verificări independente se pot atașa"
+    },
+    {
+      "id": "t001028",
+      "source": "Evaluation envelope",
+      "translation": "Anvelopă de evaluare"
+    },
+    {
+      "id": "t001029",
+      "source": "to one object with explicit method, version, uncertainty, and scope.",
+      "translation": "unui obiect cu metodă, versiune, incertitudine și domeniu explicite."
+    },
+    {
+      "id": "t001030",
+      "source": "At least several roles can be swapped",
+      "translation": "Cel puțin câteva roluri pot fi schimbate"
+    },
+    {
+      "id": "t001031",
+      "source": "Capability registry",
+      "translation": "Registru de capacități"
+    },
+    {
+      "id": "t001032",
+      "source": "between implementations without changing the scientific contract.",
+      "translation": "între implementări fără schimbarea contractului științific."
+    },
+    {
+      "id": "t001033",
+      "source": "Research workspace",
+      "translation": "Spațiu de lucru pentru cercetare"
+    },
+    {
+      "id": "t001034",
+      "source": "Researchers can work through familiar documents, code, meetings, and queries while state transitions remain intelligible.",
+      "translation": "Cercetătorii pot lucra prin documente, cod, ședințe și interogări familiare, în timp ce tranzițiile de stare rămân inteligibile."
+    },
+    {
+      "id": "t001035",
+      "source": "The table is a build contract rather than a list of aspirations. A team should be able to assign engineering ownership and define acceptance tests for each component. If the state layer cannot support correction propagation, if the runtime cannot enforce capability scopes, or if the workspace cannot present the state intelligibly, the project has identified a concrete failure rather than merely lacking an impressive demo.",
+      "translation": "Tabelul este un contract de construcție, nu o listă de aspirații. O echipă ar trebui să poată atribui responsabilitate inginerească și defini teste de acceptare pentru fiecare componentă. Dacă stratul stării nu poate susține propagarea corecțiilor, dacă mediul de execuție nu poate impune domenii ale capacităților sau dacă spațiul de lucru nu poate prezenta starea inteligibil, proiectul a identificat un eșec concret, nu doar lipsa unei demonstrații impresionante."
+    },
+    {
+      "id": "t001036",
+      "source": "The first end-to-end use case should be computational because it allows rapid falsification. A research question can lead to literature retrieval, a generated or edited analysis, sandbox execution, independent reproduction, claim creation, review, and human acceptance. The entire path can be measured. A second use case can involve multi-institution provenance or a controlled laboratory adapter once the digital substrate is stable.",
+      "translation": "Primul caz de utilizare complet ar trebui să fie computațional deoarece permite falsificare rapidă. O întrebare de cercetare poate conduce la regăsirea literaturii, o analiză generată sau editată, execuție izolată, reproducere independentă, crearea afirmației, evaluare și acceptare umană. Întregul traseu poate fi măsurat. Un al doilea caz poate implica proveniență între instituții sau un adaptor controlat de laborator după stabilizarea substratului digital."
+    },
+    {
+      "id": "t001037",
+      "source": "The architecture should reuse mature infrastructure wherever possible. Git should remain Git. Container runtimes should remain conventional. Object storage should not be reinvented. Existing provenance standards can be adopted selectively. The novel work belongs in the semantic and governance layer that connects scientific objects, agent capabilities, evaluation, and authority. Reinventing every technical substrate would make the research question impossible to isolate.",
+      "translation": "Arhitectura ar trebui să reutilizeze infrastructura matură oriunde este posibil. Git ar trebui să rămână Git. Mediile de execuție ale containerelor ar trebui să rămână convenționale. Stocarea de obiecte nu ar trebui reinventată. Standardele existente de proveniență pot fi adoptate selectiv. Munca nouă aparține stratului semantic și de guvernanță care conectează obiecte științifice, capacități agentice, evaluare și autoritate. Reinventarea fiecărui substrat tehnic ar face imposibilă izolarea întrebării de cercetare."
+    },
+    {
+      "id": "t001038",
+      "source": "ScriptaHub's current lines provide useful starting points without fixing the final design. AssistOS and the ScriptaHub IDE can supply the project-centred workspace. WebMeet can test collaborative control. Agent libraries and Ploinky can support bounded capabilities and deployment. MRP-VM and SOP Lang can be evaluated as explicit execution mechanisms where they add value. OpenDSU can contribute to controlled sharing and provenance. Each component should remain replaceable if the experiment shows a better approach.",
+      "translation": "Direcțiile actuale ale ScriptaHub oferă puncte utile de pornire fără a fixa proiectarea finală. AssistOS și IDE-ul ScriptaHub pot furniza spațiul centrat pe proiect. WebMeet poate testa controlul colaborativ. Bibliotecile de agenți și Ploinky pot susține capacități limitate și implementare. MRP-VM și SOP Lang pot fi evaluate ca mecanisme explicite de execuție unde adaugă valoare. OpenDSU poate contribui la partajare controlată și proveniență. Fiecare componentă ar trebui să rămână înlocuibilă dacă experimentul arată o abordare mai bună."
+    },
+    {
+      "id": "t001039",
+      "source": "The minimum system succeeds when researchers can use it for months, not minutes. The project should survive model replacement, participant changes, revisions, failed experiments, and corrections. A new member should reconstruct the current state faster than from ordinary artefacts. A reviewer should trace a claim to evidence. A change in a dependency should identify affected conclusions. These are the mundane but decisive properties that separate infrastructure from a prototype assistant.",
+      "translation": "Sistemul minim reușește când cercetătorii îl pot folosi luni, nu minute. Proiectul ar trebui să supraviețuiască înlocuirii modelului, schimbărilor participanților, revizuirilor, experimentelor eșuate și corecțiilor. Un membru nou ar trebui să reconstruiască starea curentă mai repede decât din artefacte obișnuite. Un evaluator ar trebui să urmărească o afirmație până la dovezi. O schimbare a unei dependențe ar trebui să identifice concluziile afectate. Acestea sunt proprietățile banale, dar decisive, care separă infrastructura de un asistent prototip."
+    },
+    {
+      "id": "t001040",
+      "source": "11.2 How to test whether the architecture is actually better",
+      "translation": "11.2 Cum să testăm dacă arhitectura este într-adevăr mai bună"
+    },
+    {
+      "id": "t001041",
+      "source": "The research programme should compare complete research episodes rather than isolated model outputs. The relevant metrics concern correction locality, provenance, understanding, review effort, recovery of alternatives, safe delegation, model replacement, and scientific yield per unit of scarce human or physical attention.",
+      "translation": "Programul de cercetare ar trebui să compare episoade complete de cercetare, nu ieșiri izolate ale modelelor. Metricile relevante privesc localitatea corectării, proveniența, înțelegerea, efortul evaluării, recuperarea alternativelor, delegarea sigură, înlocuirea modelului și randamentul științific pe unitatea de atenție umană sau fizică rară."
+    },
+    {
+      "id": "t001042",
+      "source": "A system this ambitious must be falsifiable at the architectural level. It is not enough to show that individual components can be implemented. The central claim is that explicit project state and governed agent participation improve sustained research compared with simpler alternatives such as shared repositories plus retrieval-augmented assistants. That claim needs direct comparison.",
+      "translation": "Un sistem atât de ambițios trebuie să fie falsificabil la nivel arhitectural. Nu este suficient să arate că pot fi implementate componentele individuale. Afirmația centrală este că starea explicită a proiectului și participarea agentică guvernată îmbunătățesc cercetarea susținută față de alternative mai simple, precum depozite comune plus asistenți augmentați prin regăsire. Acea afirmație necesită comparație directă."
+    },
+    {
+      "id": "t001043",
+      "source": "One experimental design is longitudinal. Two teams work on comparable research tasks. One uses ordinary contemporary tools: documents, repositories, notebooks, chat assistants, and conventional project management. The other uses the structured research environment. Evaluators measure final scientific quality, but also the cost of correction after injected or naturally occurring errors, the ability of new members to reconstruct decisions, the completeness of provenance, and the effort required to replace models or tools.",
+      "translation": "O proiectare experimentală este longitudinală. Două echipe lucrează pe sarcini comparabile de cercetare. Una folosește instrumente contemporane obișnuite: documente, depozite, caiete de lucru, asistenți de chat și gestionare convențională a proiectelor. Cealaltă folosește mediul structurat de cercetare. Evaluatorii măsoară calitatea științifică finală, dar și costul corectării după erori injectate sau naturale, capacitatea membrilor noi de a reconstrui decizii, completitudinea provenienței și efortul necesar înlocuirii modelelor sau instrumentelor."
+    },
+    {
+      "id": "t001044",
+      "source": "Correction locality is a particularly strong metric. If one dataset is found to be wrong, how quickly can the team identify affected claims and artefacts? Does the structured environment invalidate only what should be reconsidered, or does its semantic model create excessive false dependencies? If a policy changes, can the system locate actions that depended on the old interpretation?",
+      "translation": "Localitatea corectării este o metrică deosebit de puternică. Dacă se constată că un set de date este greșit, cât de repede poate echipa identifica afirmațiile și artefactele afectate? Invalidează mediul structurat numai ce ar trebui reconsiderat sau modelul său semantic creează dependențe false excesive? Dacă o politică se schimbă, poate sistemul localiza acțiunile care depindeau de interpretarea veche?"
+    },
+    {
+      "id": "t001045",
+      "source": "These episodes test whether explicit state creates practical resilience.",
+      "translation": "Aceste episoade testează dacă starea explicită creează reziliență practică."
+    },
+    {
+      "id": "t001046",
+      "source": "Agent governance can be tested adversarially. Retrieved documents can contain prompt injection. Repositories can contain malicious code. Tools can return corrupted metadata. Agents can be asked to access data outside their role. The evaluation should measure whether typed interfaces, sandboxes, and capability scopes prevent the failure from becoming a project-level incident. It should also measure the usability cost of the controls because security that researchers constantly bypass is not a successful system.",
+      "translation": "Guvernanța agenților poate fi testată adversarial. Documentele regăsite pot conține injectare de prompturi. Depozitele pot conține cod malițios. Instrumentele pot returna metadate corupte. Agenților li se poate cere să acceseze date din afara rolului lor. Evaluarea ar trebui să măsoare dacă interfețele tipizate, mediile izolate și domeniile capacităților împiedică transformarea eșecului într-un incident la nivel de proiect. Ar trebui să măsoare și costul controalelor asupra utilizabilității deoarece securitatea pe care cercetătorii o ocolesc constant nu este un sistem reușit."
+    },
+    {
+      "id": "t001047",
+      "source": "Project Consciousness requires different tests. Historical project records with known turning points can be used to compare its reconstruction with participant interviews and source evidence. Known ambiguities can test whether the service invents coherence. Abandoned ideas can be reintroduced under changed conditions to see whether the system recognises genuine renewed relevance. Privacy experiments can measure whether useful memory can be maintained without retaining excessive conversation.",
+      "translation": "Conștiința proiectului necesită teste diferite. Înregistrările istorice ale proiectelor cu puncte cunoscute de cotitură pot fi folosite pentru a-i compara reconstrucția cu interviurile participanților și dovezile-sursă. Ambiguitățile cunoscute pot testa dacă serviciul inventează coerență. Ideile abandonate pot fi reintroduse în condiții schimbate pentru a vedea dacă sistemul recunoaște relevanța reînnoită autentică. Experimentele de confidențialitate pot măsura dacă poate fi menținută memorie utilă fără păstrarea excesivă a conversațiilor."
+    },
+    {
+      "id": "t001048",
+      "source": "Evaluation infrastructure should be benchmarked on injected faults and real review outcomes. Citation mismatches, missing baselines, inconsistent sample counts, broken computational packages, statistical errors, misleading causal language, and hidden definition changes can be introduced. Detection, explanation, and final judgment should be scored separately. The central metric is whether experts find consequential issues faster with less routine effort.",
+      "translation": "Infrastructura evaluării ar trebui măsurată pe defecte injectate și rezultate reale ale recenzării. Pot fi introduse nepotriviri de citări, metode de referință lipsă, numere inconsistente de probe, pachete computaționale defecte, erori statistice, limbaj cauzal înșelător și schimbări ascunse de definiție. Detectarea, explicația și judecata finală ar trebui evaluate separat. Metrica centrală este dacă experții găsesc probleme cu consecințe importante mai rapid, cu mai puțin efort de rutină."
+    },
+    {
+      "id": "t001049",
+      "source": "Table 22. The architecture should be tested at several scales.",
+      "translation": "Tabelul 22. Arhitectura ar trebui testată la mai multe scări."
+    },
+    {
+      "id": "t001050",
+      "source": "Experimental scale",
+      "translation": "Scară experimentală"
+    },
+    {
+      "id": "t001051",
+      "source": "Evidence sought",
+      "translation": "Dovezi căutate"
+    },
+    {
+      "id": "t001052",
+      "source": "Parsing, identity, provenance, policy,",
+      "translation": "Parsare, identitate, proveniență, politică,"
+    },
+    {
+      "id": "t001053",
+      "source": "Component tests",
+      "translation": "Teste de componente"
+    },
+    {
+      "id": "t001054",
+      "source": "sandboxing, evaluator fault detection, and deterministic correctness.",
+      "translation": "izolare, detectarea defectelor de către evaluatori și corectitudine deterministă."
+    },
+    {
+      "id": "t001055",
+      "source": "Experimental scale",
+      "translation": "Scară experimentală"
+    },
+    {
+      "id": "t001056",
+      "source": "Evidence sought",
+      "translation": "Dovezi căutate"
+    },
+    {
+      "id": "t001057",
+      "source": "Whether components cooperate",
+      "translation": "Dacă componentele cooperează"
+    },
+    {
+      "id": "t001058",
+      "source": "End-to-end research tasks",
+      "translation": "Sarcini complete de cercetare"
+    },
+    {
+      "id": "t001059",
+      "source": "without losing intent, evidence, status, or authority.",
+      "translation": "fără a pierde intenție, dovezi, statut sau autoritate."
+    },
+    {
+      "id": "t001060",
+      "source": "How locally and accurately the system",
+      "translation": "Cât de local și precis propagă sistemul"
+    },
+    {
+      "id": "t001061",
+      "source": "Correction episodes",
+      "translation": "Episoade de corectare"
+    },
+    {
+      "id": "t001062",
+      "source": "propagates dataset, source, model, policy, or protocol changes.",
+      "translation": "schimbările seturilor de date, surselor, modelelor, politicilor sau protocoalelor."
+    },
+    {
+      "id": "t001063",
+      "source": "Whether explicit memory, qualification,",
+      "translation": "Dacă memoria explicită, calificarea"
+    },
+    {
+      "id": "t001064",
+      "source": "Longitudinal projects",
+      "translation": "Proiecte longitudinale"
+    },
+    {
+      "id": "t001065",
+      "source": "and model replacement create compounding value over months.",
+      "translation": "și înlocuirea modelului creează valoare cumulativă de-a lungul lunilor."
+    },
+    {
+      "id": "t001066",
+      "source": "Prompt injection, malicious code,",
+      "translation": "Injectare de prompturi, cod malițios,"
+    },
+    {
+      "id": "t001067",
+      "source": "Adversarial cases",
+      "translation": "Cazuri adversariale"
+    },
+    {
+      "id": "t001068",
+      "source": "contaminated exfiltration attempts, and misleading scientific artefacts.",
+      "translation": "regăsire contaminată tentative de exfiltrare și artefacte științifice înșelătoare."
+    },
+    {
+      "id": "t001069",
+      "source": "retrieval,",
+      "translation": "regăsire,"
+    },
+    {
+      "id": "t001070",
+      "source": "data",
+      "translation": "de date"
+    },
+    {
+      "id": "t001071",
+      "source": "Human studies",
+      "translation": "Studii umane"
+    },
+    {
+      "id": "t001072",
+      "source": "Expert review effort, onboarding, shared understanding, ability to explain results, and effects on scientific judgment.",
+      "translation": "Efortul evaluării experte, integrarea noilor participanți, înțelegerea comună, capacitatea de a explica rezultate și efectele asupra judecății științifice."
+    },
+    {
+      "id": "t001073",
+      "source": "Laboratory trials",
+      "translation": "Teste de laborator"
+    },
+    {
+      "id": "t001074",
+      "source": "Protocol fidelity, safety, evidence capture, abnormal-condition behaviour, and information gained per expensive run.",
+      "translation": "Fidelitatea protocolului, siguranță, captarea dovezilor, comportament în condiții anormale și informație câștigată pe rulare scumpă."
+    },
+    {
+      "id": "t001075",
+      "source": "The table makes the programme intentionally plural. No single benchmark can establish the value of a research infrastructure because the claim concerns sustained scientific control. Local component tests, end-to-end tasks, longitudinal projects, adversarial cases, and human studies reveal different failure modes. A component can be excellent in isolation and harmful when it creates coordination overhead.",
+      "translation": "Tabelul face programul intenționat plural. Niciun etalon nu poate stabili singur valoarea unei infrastructuri de cercetare deoarece afirmația privește controlul științific susținut. Testele locale de componente, sarcinile complete, proiectele longitudinale, cazurile adversariale și studiile umane dezvăluie moduri diferite de eșec. O componentă poate fi excelentă izolat și dăunătoare când creează cost suplimentar de coordonare."
+    },
+    {
+      "id": "t001076",
+      "source": "The programme should include negative outcomes as legitimate results. Explicit state may create more authoring overhead than correction savings in some domains. Project Consciousness may produce persuasive rationalisations. Symbolic representations may be too costly outside narrow tasks. Multi-agent orchestration may consume more resources than one strong model. Automated review may shift rather than reduce expert labour. A research programme should narrow or remove components when evidence supports those conclusions.",
+      "translation": "Programul ar trebui să includă rezultate negative ca rezultate legitime. Starea explicită poate crea mai mult efort de redactare decât economii la corectare în unele domenii. Conștiința proiectului poate produce raționalizări persuasive. Reprezentările simbolice pot fi prea scumpe în afara sarcinilor înguste. Orchestrarea multiagent poate consuma mai multe resurse decât un model puternic. Evaluarea automată poate muta, nu reduce munca experților. Un program de cercetare ar trebui să restrângă sau să elimine componente când dovezile susțin acele concluzii."
+    },
+    {
+      "id": "t001077",
+      "source": "Human capability should be measured as well. Can researchers explain the result? Do junior scientists learn the critical steps or become dependent on generated prose? Can collaborators identify unresolved disagreements? Does the system preserve the freedom to explore informally? These questions matter because a tool that produces more output while eroding scientific judgment can look productive in short benchmarks and be harmful institutionally.",
+      "translation": "Capacitatea umană ar trebui măsurată și ea. Pot cercetătorii explica rezultatul? Învață cercetătorii juniori pașii critici sau devin dependenți de proză generată? Pot colaboratorii identifica dezacorduri nerezolvate? Păstrează sistemul libertatea explorării informale? Aceste întrebări contează deoarece un instrument care produce mai multe rezultate erodând judecata științifică poate părea productiv în etaloane scurte și poate fi dăunător instituțional."
+    },
+    {
+      "id": "t001078",
+      "source": "Physical laboratories provide an especially strong later-stage test. Real instruments expose bad abstractions, weak provenance, and brittle plans. A supervisory prototype can measure protocol fidelity, safety behaviour under abnormal conditions, traceability, resource use, and whether automated experiment selection actually improves information gained per expensive run. Success in this environment would provide strong evidence that the control-plane concept generalises beyond software.",
+      "translation": "Laboratoarele fizice oferă un test de etapă ulterioară deosebit de puternic. Instrumentele reale expun abstracții proaste, proveniență slabă și planuri fragile. Un prototip de supraveghere poate măsura fidelitatea protocolului, comportamentul siguranței în condiții anormale, trasabilitatea, utilizarea resurselor și dacă selecția automată a experimentelor îmbunătățește efectiv informația câștigată pe rulare scumpă. Succesul în acest mediu ar oferi dovezi puternice că noțiunea de plan de control se generalizează dincolo de software."
+    },
+    {
+      "id": "t001079",
+      "source": "The objective of evaluation is not to prove that the proposed architecture is inevitable. It is to determine which responsibilities genuinely become necessary as machine contribution increases. The final system may be simpler than the vision. That would be progress if the simplification is supported by evidence rather than by neglecting hard problems.",
+      "translation": "Obiectivul evaluării nu este să dovedească inevitabilitatea arhitecturii propuse. Este să determine ce responsabilități devin cu adevărat necesare pe măsură ce crește contribuția mașinilor. Sistemul final poate fi mai simplu decât viziunea. Acesta ar fi progres dacă simplificarea este susținută de dovezi, nu de neglijarea problemelor dificile."
+    },
+    {
+      "id": "t001080",
+      "source": "11.3 The path from prototypes to research infrastructure",
+      "translation": "11.3 Calea de la prototipuri la infrastructură de cercetare"
+    },
+    {
+      "id": "t001081",
+      "source": "The build path should move from state and controlled execution toward qualified evaluators, project memory, collaborative control, federation, and laboratory integration. Each layer should receive more authority only after the previous layer demonstrates value and the new layer demonstrates acceptable failure behaviour.",
+      "translation": "Calea construcției ar trebui să treacă de la stare și execuție controlată către evaluatori calificați, memorie a proiectului, control colaborativ, federație și integrarea laboratorului. Fiecare strat ar trebui să primească mai multă autoritate numai după ce stratul precedent demonstrează valoare, iar cel nou comportament acceptabil la eșec."
+    },
+    {
+      "id": "t001082",
+      "source": "Figure from PDF page 140",
+      "translation": "Figură din pagina 140 a PDF-ului"
+    },
+    {
+      "id": "t001083",
+      "source": "Figure 9. A build path in which each layer must demonstrate value before receiving more complexity or authority.",
+      "translation": "Figura 9. O cale de construcție în care fiecare strat trebuie să demonstreze valoare înainte de a primi mai multă complexitate sau autoritate."
+    },
+    {
+      "id": "t001084",
+      "source": "The roadmap is not a fixed calendar. It is a dependency structure. Phase 1 establishes the substrate: scientific state, provenance, research transactions, sandboxed agents, and a usable workspace. Without this substrate, later concepts such as Project Consciousness have nothing trustworthy to observe and automated laboratories have no stable scientific state to update.",
+      "translation": "Foaia de parcurs nu este un calendar fix. Este o structură de dependențe. Faza 1 stabilește substratul: stare științifică, proveniență, tranzacții de cercetare, agenți izolați și spațiu de lucru utilizabil. Fără acest substrat, conceptele ulterioare precum Conștiința proiectului nu au nimic demn de încredere de observat, iar laboratoarele automatizate nu au o stare științifică stabilă de actualizat."
+    },
+    {
+      "id": "t001085",
+      "source": "Phase 2 strengthens evaluation and qualification. The platform adds independent evaluators, a capability lifecycle, continuous review hooks, and explicit abstention. This phase tests whether machine-generated work can be challenged systematically without overwhelming researchers. The organisation should begin to accumulate qualified roles and known failure modes rather than only successful demonstrations.",
+      "translation": "Faza 2 întărește evaluarea și calificarea. Platforma adaugă evaluatori independenți, un ciclu de viață al capacităților, puncte de integrare pentru evaluare continuă și abținere explicită. Această fază testează dacă munca generată de mașini poate fi contestată sistematic fără a copleși cercetătorii. Organizația ar trebui să înceapă să acumuleze roluri calificate și moduri cunoscute de eșec, nu doar demonstrații reușite."
+    },
+    {
+      "id": "t001086",
+      "source": "Phase 3 develops richer institutional intelligence. Project Consciousness can reconstruct history. WebMeet-like control surfaces can coordinate human-agent work. Direction support can compare research branches against public literature and internal memory. These components are valuable only if they remain challengeable and improve real decisions. Their authority should therefore remain advisory while evidence accumulates.",
+      "translation": "Faza 3 dezvoltă inteligență instituțională mai bogată. Conștiința proiectului poate reconstrui istoricul. Suprafețele de control de tip WebMeet pot coordona munca om-agent. Sprijinul direcției poate compara ramurile cercetării cu literatura publică și memoria internă. Aceste componente sunt valoroase numai dacă rămân contestabile și îmbunătățesc decizii reale. Autoritatea lor ar trebui, așadar, să rămână consultativă în timp ce se acumulează dovezi."
+    },
+    {
+      "id": "t001087",
+      "source": "Phase 4 extends the architecture across institutional and physical boundaries. Federated research objects, rights-aware provenance, remote capabilities, and automated laboratory adapters test whether the same scientific state can survive heterogeneous organisations and instruments. Hard safety remains local. Shared semantics remain minimal. The objective is interoperability without centralised omniscience.",
+      "translation": "Faza 4 extinde arhitectura peste granițe instituționale și fizice. Obiectele federate de cercetare, proveniența conștientă de drepturi, capacitățile la distanță și adaptoarele automatizate de laborator testează dacă aceeași stare științifică poate supraviețui organizațiilor și instrumentelor eterogene. Siguranța strictă rămâne locală. Semantica comună rămâne minimă. Obiectivul este interoperabilitatea fără omnisciență centralizată."
+    },
+    {
+      "id": "t001088",
+      "source": "Table 23. Each layer should earn greater complexity and authority through evidence.",
+      "translation": "Tabelul 23. Fiecare strat ar trebui să câștige complexitate și autoritate mai mari prin dovezi."
+    },
+    {
+      "id": "t001089",
+      "source": "Research direction",
+      "translation": "Direcție de cercetare"
+    },
+    {
+      "id": "t001090",
+      "source": "Evidence that would justify expansion",
+      "translation": "Dovezi care ar justifica extinderea"
+    },
+    {
+      "id": "t001091",
+      "source": "Local correction propagation, stable",
+      "translation": "Propagare locală a corecțiilor, recuperare"
+    },
+    {
+      "id": "t001092",
+      "source": "Scientific state and transactions",
+      "translation": "Stare științifică și tranzacții"
+    },
+    {
+      "id": "t001093",
+      "source": "recovery, useful branching, and lower reconstruction cost than simpler tools.",
+      "translation": "stabilă, ramificare utilă și cost mai mic de reconstrucție decât instrumentele mai simple."
+    },
+    {
+      "id": "t001094",
+      "source": "Governed agents",
+      "translation": "Agenți guvernați"
+    },
+    {
+      "id": "t001095",
+      "source": "Role-level qualification, bounded authority, reliable abstention, safe replacement, and lower human correction effort.",
+      "translation": "Calificare la nivel de rol, autoritate limitată, abținere fiabilă, înlocuire sigură și efort mai mic de corectare umană."
+    },
+    {
+      "id": "t001096",
+      "source": "Evaluation and digestion",
+      "translation": "Evaluare și asimilare"
+    },
+    {
+      "id": "t001097",
+      "source": "Better error detection, more efficient expert attention, understandable review cases, and clearer provisional status.",
+      "translation": "Detectare mai bună a erorilor, atenție mai eficientă a experților, dosare de evaluare inteligibile și statut provizoriu mai clar."
+    },
+    {
+      "id": "t001098",
+      "source": "Accurate, challengeable historical",
+      "translation": "Reconstrucție istorică precisă și"
+    },
+    {
+      "id": "t001099",
+      "source": "Project memory / consciousness",
+      "translation": "Memorie / conștiință a proiectului"
+    },
+    {
+      "id": "t001100",
+      "source": "reconstruction and useful recovery of context without excessive surveillance.",
+      "translation": "contestabilă și recuperare utilă a contextului fără supraveghere excesivă."
+    },
+    {
+      "id": "t001101",
+      "source": "Better shared understanding and",
+      "translation": "Înțelegere comună și artefacte"
+    },
+    {
+      "id": "t001102",
+      "source": "Collaborative control surfaces",
+      "translation": "Suprafețe colaborative de control"
+    },
+    {
+      "id": "t001103",
+      "source": "scientific artefacts without overload or hidden AI steering.",
+      "translation": "științifice mai bune fără supraîncărcare sau dirijare IA ascunsă."
+    },
+    {
+      "id": "t001104",
+      "source": "Federation and laboratories",
+      "translation": "Federație și laboratoare"
+    },
+    {
+      "id": "t001105",
+      "source": "Rights-aware exchange, safe layered autonomy, faithful execution, robust abnormal-condition behaviour, and complete evidence capture.",
+      "translation": "Schimb conștient de drepturi, autonomie stratificată sigură, execuție fidelă, comportament robust în condiții anormale și captare completă a dovezilor."
+    },
+    {
+      "id": "t001106",
+      "source": "The table emphasises progression by evidence. A component should not gain more authority simply because the underlying model becomes more capable. Capability, qualification, and authority remain separate. A stronger model can enter a role in shadow mode. A reliable evaluator can gain broader automatic use. A laboratory capability can receive a wider operational envelope only after abnormal-condition testing. Regressions should reduce authority again.",
+      "translation": "Tabelul accentuează progresia prin dovezi. O componentă nu ar trebui să câștige mai multă autoritate doar pentru că modelul de bază devine mai capabil. Capacitatea, calificarea și autoritatea rămân separate. Un model mai puternic poate intra într-un rol în mod de observare. Un evaluator fiabil poate câștiga utilizare automată mai amplă. O capacitate de laborator poate primi un domeniu operațional mai larg numai după testarea condițiilor anormale. Regresiile ar trebui să reducă din nou autoritatea."
+    },
+    {
+      "id": "t001107",
+      "source": "Standards should emerge carefully. Premature standardisation can freeze weak abstractions. The programme should first identify stable contracts through real projects: identities, provenance, evaluation envelopes, capability manifests, and research object lifecycles. Where existing standards such as W3C PROV or RO-Crate are sufficient, the system should reuse them. New standards should be proposed only when repeated implementation experience reveals a genuine gap.",
+      "translation": "Standardele ar trebui să apară atent. Standardizarea prematură poate îngheța abstracții slabe. Programul ar trebui mai întâi să identifice contracte stabile prin proiecte reale: identități, proveniență, anvelope de evaluare, manifeste de capacități și cicluri de viață ale obiectelor de cercetare. Unde standardele existente precum W3C PROV sau RO-Crate sunt suficiente, sistemul ar trebui să le reutilizeze. Standardele noi ar trebui propuse numai când experiența repetată a implementării dezvăluie o lacună reală."
+    },
+    {
+      "id": "t001108",
+      "source": "The institutional path matters as much as the technical one. Researchers need incentives to record review, replication, and negative results. Organisations need policies for machine contribution and disclosure. Scientific communities need ways to accept provisional objects without confusing them with mature knowledge. The Research IDE can make these practices technically possible, but it cannot unilaterally decide the norms under which they become authoritative.",
+      "translation": "Calea instituțională contează la fel de mult ca cea tehnică. Cercetătorii necesită stimulente pentru înregistrarea evaluării, replicării și rezultatelor negative. Organizațiile necesită politici pentru contribuția mașinilor și declarare. Comunitățile științifice necesită moduri de acceptare a obiectelor provizorii fără a le confunda cu cunoașterea matură. IDE-ul de cercetare poate face aceste practici posibile tehnic, dar nu poate decide unilateral normele sub care devin autoritare."
+    },
+    {
+      "id": "t001109",
+      "source": "The long-term product may therefore be a family of research infrastructures rather than one universal platform. A mathematics group may use strong formal verification and expert exposition. A clinical consortium may emphasise privacy, provenance, and regulated authority. A materials laboratory may focus on sample lineage and instrument control. A software research company may prioritise reproducible execution and large-scale agent orchestration. The common layer is the grammar of state, evidence, capability, and authority.",
+      "translation": "Produsul pe termen lung poate fi, așadar, o familie de infrastructuri de cercetare, nu o singură platformă universală. Un grup de matematică poate folosi verificare formală puternică și expunere de expert. Un consorțiu clinic poate accentua confidențialitatea, proveniența și autoritatea reglementată. Un laborator de materiale se poate concentra pe filiația probelor și controlul instrumentelor. O companie de cercetare software poate prioritiza execuția reproductibilă și orchestrarea agentică la scară mare. Stratul comun este gramatica stării, dovezilor, capacității și autorității."
+    },
+    {
+      "id": "t001110",
+      "source": "The strongest possible outcome is a new class of research institution in which humans and machines share an explicit evolving model of the work. A more modest outcome would still be important: project-centred environments that make AI-assisted research easier to inspect, reproduce, govern, and continue across time. The programme does not fail if some speculative components remain human or narrow. It fails if complexity is preserved after evidence shows that it does not improve science.",
+      "translation": "Cel mai puternic rezultat posibil este o clasă nouă de instituție de cercetare în care oamenii și mașinile împărtășesc un model explicit în evoluție al muncii. Un rezultat mai modest ar fi totuși important: medii centrate pe proiect care fac cercetarea asistată de IA mai ușor de inspectat, reprodus, guvernat și continuat în timp. Programul nu eșuează dacă unele componente speculative rămân umane sau înguste. Eșuează dacă complexitatea este păstrată după ce dovezile arată că nu îmbunătățește știința."
+    },
+    {
+      "id": "t001111",
+      "source": "The path forward should therefore be ambitious in purpose and conservative in authority. Build enough structure to make research episodes measurable. Let machine capability expand where it creates value. Preserve scientific freedom by keeping provisional work cheap. Concentrate controls where actions become authoritative, expensive, irreversible, or external. The architecture then evolves through the same principle it seeks to impose on research: propose, test, evaluate, and commit only what earns stronger status.",
+      "translation": "Calea înainte ar trebui, așadar, să fie ambițioasă ca scop și prudentă ca autoritate. Construiți suficientă structură pentru a face episoadele cercetării măsurabile. Lăsați capacitatea mașinilor să se extindă unde creează valoare. Păstrați libertatea științifică menținând munca provizorie ieftină. Concentrați controalele unde acțiunile devin autoritare, scumpe, ireversibile sau externe. Arhitectura evoluează atunci prin același principiu pe care urmărește să-l impună cercetării: propune, testează, evaluează și aplică definitiv numai ceea ce câștigă statut mai puternic."
+    },
+    {
+      "id": "t001112",
+      "source": "Conclusion - The Instrument We Do Not Yet Have",
+      "translation": "Concluzie - Instrumentul pe care nu îl avem încă"
+    },
+    {
+      "id": "t001113",
+      "source": "The arrival of powerful research AI does not abolish the old difficulties of science. It changes their relative scarcity. Candidate results, arguments, code, analyses, diagrams, manuscripts, and experimental plans can become abundant. Evidence, expert attention, shared understanding, physical experimentation, responsible judgment, and the ability to integrate results into a living field remain scarce. The bottleneck moves downstream.",
+      "translation": "Apariția IA puternice de cercetare nu abolește vechile dificultăți ale științei. Le schimbă raritatea relativă. Rezultatele candidate, argumentele, codul, analizele, diagramele, manuscrisele și planurile experimentale pot deveni abundente. Dovezile, atenția experților, înțelegerea comună, experimentarea fizică, judecata responsabilă și capacitatea de a integra rezultate într-un domeniu viu rămân rare. Blocajul se mută în aval."
+    },
+    {
+      "id": "t001114",
+      "source": "This change makes research infrastructure a scientific question. A model can generate an answer. A durable research environment must preserve what the project is trying to discover, which version of the evidence it used, what was executed, what failed, which interpretations remain disputed, who or what evaluated them, and which authority accepted the next consequential step. It must remain coherent when models are replaced, people leave, datasets change, and institutions disagree.",
+      "translation": "Această schimbare face infrastructura cercetării o întrebare științifică. Un model poate genera un răspuns. Un mediu durabil de cercetare trebuie să păstreze ce încearcă proiectul să descopere, ce versiune a dovezilor a folosit, ce a fost executat, ce a eșuat, ce interpretări rămân contestate, cine sau ce le-a evaluat și ce autoritate a acceptat următorul pas cu consecințe importante. Trebuie să rămână coerent când modelele sunt înlocuite, oamenii pleacă, seturile de date se schimbă și instituțiile sunt în dezacord."
+    },
+    {
+      "id": "t001115",
+      "source": "The central architectural proposal is therefore simple enough to state without jargon. Put a persistent Scientific Project State at the centre. Let documents, notebooks, meetings, agents, tools, and laboratories act as interfaces and capabilities around that state. Make meaningful work pass through research transactions that distinguish proposal, execution, evidence, evaluation, and commitment. Give agents bounded project views and separate technical capability from authority. Preserve provenance and versions. Keep evaluation independent and scoped. Let humans and institutions remain responsible for scientific meaning, social acceptance, and high-consequence action.",
+      "translation": "Propunerea arhitecturală centrală este, așadar, suficient de simplă pentru a fi enunțată fără jargon. Puneți în centru o stare persistentă a proiectului științific. Lăsați documentele, caietele de lucru, ședințele, agenții, instrumentele și laboratoarele să acționeze ca interfețe și capacități în jurul acelei stări. Faceți munca semnificativă să treacă prin tranzacții de cercetare care disting propunerea, execuția, dovezile, evaluarea și angajamentul. Dați agenților vederi limitate ale proiectului și separați capacitatea tehnică de autoritate. Păstrați proveniența și versiunile. Păstrați evaluarea independentă și delimitată. Lăsați oamenii și instituțiile responsabile de sensul științific, acceptarea socială și acțiunea cu consecințe importante."
+    },
+    {
+      "id": "t001116",
+      "source": "Once this foundation exists, richer functions become intelligible. Project Consciousness is a challengeable interpretation layer over versioned history, not a synthetic principal investigator. Direction intelligence compares possibilities and forgotten context, not an oracle that decides what science should value. Compliance compiles concrete action context and gates clear constraints, not an automated source of moral certainty. Neuro-symbolic methods provide inspectable structure where it creates leverage, not a universal replacement for language or human judgment. Automated laboratories extend the same control plane into the physical world under stronger safety boundaries.",
+      "translation": "Odată ce există acest fundament, funcții mai bogate devin inteligibile. Conștiința proiectului este un strat contestabil de interpretare peste istoricul versionat, nu un investigator principal sintetic. Inteligența direcției compară posibilități și context uitat, nu este un oracol care decide ce ar trebui să valorizeze știința. Conformitatea compilează contextul concret al acțiunii și controlează constrângeri clare, nu este o sursă automată de certitudine morală. Metodele neurosimbolice oferă structură inspectabilă acolo unde creează avantaj, nu un înlocuitor universal al limbajului sau judecății umane. Laboratoarele automatizate extind același plan de control în lumea fizică sub granițe mai puternice de siguranță."
+    },
+    {
+      "id": "t001117",
+      "source": "Tao's analysis helps explain why such infrastructure is needed. If proof generation becomes cheap, the scientific work does not disappear; verification, exposition, review, digestion, and canonicalisation become more visible as scarce functions. The same principle generalises. A generated hypothesis is not evidence. Executed code is not methodological validity. Reproduced output is not significance. Formal verification is not faithful formalisation. Publication is not canonical knowledge. Scientific institutions advance by converting some candidates through these stages while preserving the ability to correct themselves.",
+      "translation": "Analiza lui Tao ajută la explicarea necesității unei asemenea infrastructuri. Dacă generarea demonstrațiilor devine ieftină, munca științifică nu dispare; verificarea, expunerea, evaluarea, asimilarea și canonizarea devin mai vizibile ca funcții rare. Același principiu se generalizează. O ipoteză generată nu este dovadă. Codul executat nu este validitate metodologică. Ieșirea reprodusă nu este semnificație. Verificarea formală nu este formalizare fidelă. Publicarea nu este cunoaștere canonică. Instituțiile științifice avansează convertind unii candidați prin aceste etape, păstrând capacitatea de autocorectare."
+    },
+    {
+      "id": "t001118",
+      "source": "The future Research IDE should therefore be judged less by how autonomous its agents appear and more by whether the project remains scientifically governable as machine contribution grows. Can a new researcher understand why the team changed direction? Can a reviewer trace a claim to evidence? Can a model be replaced without losing project identity? Can a data correction propagate to the right conclusions? Can the system preserve serious alternatives rather than smooth them into consensus? Can it block an unauthorised action without blocking legitimate exploration? Can the team explain what it has accepted and what remains opaque?",
+      "translation": "Viitorul IDE de cercetare ar trebui, așadar, judecat mai puțin după cât de autonomi par agenții săi și mai mult după faptul dacă proiectul rămâne guvernabil științific pe măsură ce crește contribuția mașinilor. Poate un cercetător nou înțelege de ce a schimbat echipa direcția? Poate un evaluator urmări o afirmație până la dovezi? Poate fi înlocuit un model fără pierderea identității proiectului? Se poate propaga o corecție a datelor către concluziile potrivite? Poate sistemul păstra alternative serioase în loc să le netezească în consens? Poate bloca o acțiune neautorizată fără a bloca explorarea legitimă? Poate echipa explica ce a acceptat și ce rămâne opac?"
+    },
+    {
+      "id": "t001119",
+      "source": "These questions also protect the programme from architectural vanity. Explicit state may be too expensive in some domains.",
+      "translation": "Aceste întrebări protejează și programul de vanitatea arhitecturală. Starea explicită poate fi prea scumpă în unele domenii."
+    }
+  ]
+}

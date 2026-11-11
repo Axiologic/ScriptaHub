@@ -1,0 +1,531 @@
+{
+  "language": "ro",
+  "chunk": 3,
+  "segments": [
+    {
+      "id": "t000208",
+      "source": "In practice, a useful data-centric explanation often combines levels. It shows representative influential examples, the metadata or provenance associated with them, the common pattern inferred from the group, and an intervention test in which removing or reweighting the suspected data changes the behavior. This creates a stronger narrative than simply returning the nearest training item. It also points toward a future in which explanation systems connect model behavior to lineage graphs covering data, transformations, training runs, and evaluation evidence.",
+      "translation": "În practică, o explicație utilă centrată pe date combină adesea niveluri. Arată exemple influente reprezentative, metadatele sau proveniența asociate lor, tiparul comun inferat din grup și un test de intervenție în care eliminarea sau reponderarea datelor suspectate schimbă comportamentul. Aceasta creează o narațiune mai puternică decât simpla returnare a celui mai apropiat element de antrenare. Indică și un viitor în care sistemele de explicație conectează comportamentul modelului cu grafuri de filiație care acoperă date, transformări, antrenări și dovezi de evaluare."
+    },
+    {
+      "id": "t000209",
+      "source": "Data attribution becomes particularly important in generative systems because failures often look like isolated output mistakes while their causes are historical. A model that repeatedly reproduces an obsolete legal phrase, a biased association, or a distinctive memorized passage may have learned the behavior from a narrow set of examples. Identifying those examples can support remediation: deduplication, relabeling, reweighting, targeted fine-tuning, or retrieval controls.",
+      "translation": "Atribuirea datelor devine deosebit de importantă în sistemele generative deoarece eșecurile arată adesea ca greșeli izolate ale ieșirii, în timp ce cauzele lor sunt istorice. Un model care reproduce repetat o expresie juridică învechită, o asociere părtinitoare sau un pasaj distinctiv memorat poate să fi învățat comportamentul dintr-un set îngust de exemple. Identificarea lor poate susține remedierea: deduplicare, reetichetare, reponderare, ajustare fină țintită sau controale ale recuperării."
+    },
+    {
+      "id": "t000210",
+      "source": "The difficult part is scale. In modern training pipelines there may be no single influential example. Thousands of related items can collectively shape a representation. A useful engineering abstraction is therefore hierarchical provenance: individual examples at the bottom, clusters or",
+      "translation": "Partea dificilă este scara. În fluxurile moderne de antrenare poate să nu existe un singur exemplu influent. Mii de elemente înrudite pot modela colectiv o reprezentare. O abstracție inginerească utilă este astfel proveniența ierarhică: exemple individuale la bază, clustere sau"
+    },
+    {
+      "id": "t000211",
+      "source": "sources in the middle, and semantic patterns at the top. Investigations",
+      "translation": "surse la mijloc și tipare semantice sus. Investigațiile"
+    },
+    {
+      "id": "t000212",
+      "source": "can begin with a model behavior and move backward until they reach a level at which an actionable data change can be made.",
+      "translation": "pot începe cu un comportament al modelului și merge înapoi până ajung la un nivel unde se poate face o schimbare aplicabilă a datelor."
+    },
+    {
+      "id": "t000213",
+      "source": "This is also where privacy and explanation collide. The more directly an explanation exposes training examples, the more carefully access must be governed. Internal debugging may justify exact records under controlled access, while external explanations may need aggregation. Explainability does not override data-protection obligations; it creates another reason to design provenance systems deliberately.",
+      "translation": "Aici intră în conflict și confidențialitatea cu explicația. Cu cât o explicație expune mai direct exemple de antrenare, cu atât accesul trebuie guvernat mai atent. Depanarea internă poate justifica înregistrări exacte sub acces controlat, în timp ce explicațiile externe pot necesita agregare. Explicabilitatea nu anulează obligațiile de protecție a datelor; creează încă un motiv de proiectare deliberată a sistemelor de proveniență."
+    },
+    {
+      "id": "t000214",
+      "source": "Feature attribution asks which parts of the current input matter. Training-data attribution asks which training examples shaped the prediction or behavior. Influence functions approximate how upweighting or removing a training example would change parameters, loss, or a target prediction. This can help identify mislabeled examples, duplicated data, poisoned records, or influential cases.",
+      "translation": "Atribuirea caracteristicilor întreabă ce părți ale intrării curente contează. Atribuirea datelor de antrenare întreabă ce exemple de antrenare au modelat predicția sau comportamentul. Funcțiile de influență aproximează cum reponderarea sau eliminarea unui exemplu de antrenare ar schimba parametrii, pierderea sau o predicție țintă. Aceasta poate ajuta la identificarea exemplelor etichetate greșit, datelor duplicate, înregistrărilor otrăvite sau cazurilor influente."
+    },
+    {
+      "id": "t000215",
+      "source": "The classic influence-function approach assumes approximations that become difficult for large non-convex networks. Modern data-attribution research therefore includes representer points, gradient-similarity methods, tracing through training checkpoints, and scalable approximations. For foundation models, the problem becomes formidable because the training corpus is enormous, training is multi-stage, and behavior can arise from distributed statistical regularities rather than one memorized example.",
+      "translation": "Abordarea clasică prin funcții de influență presupune aproximări care devin dificile pentru rețele neconvexe mari. Cercetarea modernă a atribuirii datelor include astfel puncte representer, metode de similaritate a gradienților, urmărirea prin puncte de control ale antrenării și aproximări scalabile. Pentru modelele fundamentale, problema devine formidabilă deoarece corpusul de antrenare este enorm, antrenarea are mai multe etape, iar comportamentul poate proveni din regularități statistice distribuite, nu dintr-un exemplu memorat."
+    },
+    {
+      "id": "t000216",
+      "source": "Nevertheless, data provenance is increasingly important. If a model produces a copyrighted passage, unsafe behavior, or a scientific claim, engineers and auditors may want evidence connecting the behavior to training or retrieval sources. Training-data attribution and retrieval provenance are distinct; both need explicit support in future assurance systems.",
+      "translation": "Totuși, proveniența datelor este tot mai importantă. Dacă un model produce un pasaj protejat de drepturi de autor, comportament nesigur sau o afirmație științifică, inginerii și auditorii pot dori dovezi care conectează comportamentul cu surse de antrenare sau recuperare. Atribuirea datelor de antrenare și proveniența recuperării sunt distincte; ambele necesită sprijin explicit în sistemele viitoare de asigurare."
+    },
+    {
+      "id": "t000217",
+      "source": "The deeper challenge behind all these methods is semantic abstraction. Neural networks operate in distributed high-dimensional representations, while humans reason with concepts that are discrete, hierarchical, contextual, and culturally shaped. A single neuron may be polysemantic; a concept may be represented across many components; the same representation direction may acquire different meanings in different contexts.",
+      "translation": "Provocarea mai profundă din spatele tuturor acestor metode este abstracția semantică. Rețelele neurale operează în reprezentări distribuite multidimensionale, în timp ce oamenii raționează cu concepte discrete, ierarhice, contextuale și modelate cultural. Un neuron poate fi polisemantic; un concept poate fi reprezentat în multe componente; aceeași direcție de reprezentare poate dobândi sensuri diferite în contexte diferite."
+    },
+    {
+      "id": "t000218",
+      "source": "Recent mechanistic work using sparse autoencoders, semantic embedding spaces, and natural-language activation descriptions can be seen as attempts to build a more scalable bridge between machine representations and human concepts. These approaches are promising precisely because they shift explanation from raw units toward semantic objects, but the bridge itself is learned and must be validated.",
+      "translation": "Lucrările mecaniciste recente care folosesc autoencodere rare, spații de embedding semantic și descrieri ale activărilor în limbaj natural pot fi văzute ca încercări de construire a unei punți mai scalabile între reprezentările mașinii și conceptele umane. Aceste abordări sunt promițătoare tocmai fiindcă mută explicația de la unități brute spre obiecte semantice, dar puntea însăși este învățată și trebuie validată."
+    },
+    {
+      "id": "t000219",
+      "source": "These semantic forms of explanation can be more natural to experts, but they are not exempt from validation. A concept name, prototype, or influential training case remains a hypothesis about what the model uses.",
+      "translation": "Aceste forme semantice de explicație pot fi mai naturale pentru experți, dar nu sunt scutite de validare. Un nume de concept, prototip sau caz influent de antrenare rămâne o ipoteză despre ceea ce folosește modelul."
+    },
+    {
+      "id": "t000220",
+      "source": "Chapter 3 develops the tests needed before any of these artifacts should",
+      "translation": "Capitolul 3 dezvoltă testele necesare înainte ca vreunul dintre aceste artefacte să"
+    },
+    {
+      "id": "t000221",
+      "source": "guide people or policy.",
+      "translation": "ghideze oameni sau politici."
+    },
+    {
+      "id": "t000222",
+      "source": "Chapter 3. Testing Explanations in the Real World",
+      "translation": "Capitolul 3. Testarea explicațiilor în lumea reală"
+    },
+    {
+      "id": "t000223",
+      "source": "An explanation method that looks sensible on one example is not yet an engineering capability. It must survive controlled tests, user interaction, model updates, adversarial pressure, privacy constraints, and the institutional context in which people will act on it. This chapter changes the unit of analysis from the explanation artifact to the explanation system. It begins with faithfulness and falsification, then turns to the human interface and finally to production assurance. The narrative is deliberate: a human-centered explanation that has not been shown to track the model can merely make an error more persuasive, while a faithful explanation that cannot be reproduced after deployment is not an auditable artifact.",
+      "translation": "O metodă de explicație care pare rezonabilă pe un exemplu nu este încă o capacitate inginerească. Trebuie să reziste testelor controlate, interacțiunii cu utilizatorii, actualizărilor modelului, presiunii adversariale, constrângerilor de confidențialitate și contextului instituțional în care oamenii vor acționa pe baza ei. Acest capitol schimbă unitatea analizei de la artefactul explicației la sistemul explicației. Începe cu fidelitatea și falsificarea, apoi trece la interfața umană și în final la asigurarea în producție. Narațiunea este deliberată: o explicație centrată pe om despre care nu s-a arătat că urmărește modelul poate doar face o eroare mai convingătoare, iar o explicație fidelă care nu poate fi reprodusă după instalare nu este un artefact auditabil."
+    },
+    {
+      "id": "t000224",
+      "source": "QUESTION TO CARRY THROUGH THE CHAPTER — What test would make us reject this explanation, and can the organization reproduce that test after deployment?",
+      "translation": "ÎNTREBARE DE PĂSTRAT PE PARCURSUL CAPITOLULUI — Ce test ne-ar face să respingem această explicație și poate organizația reproduce acel test după instalare?"
+    },
+    {
+      "id": "t000225",
+      "source": "3.1 Faithfulness, falsification, and controlled evaluation",
+      "translation": "3.1 Fidelitate, falsificare și evaluare controlată"
+    },
+    {
+      "id": "t000226",
+      "source": "XAI becomes scientifically interesting at the moment an explanation is allowed to fail.",
+      "translation": "XAI devine interesantă științific în momentul în care unei explicații i se permite să eșueze."
+    },
+    {
+      "id": "t000227",
+      "source": "The seductive failure mode in XAI is the explanation that looks right. A heat map highlights the object, a rationale uses familiar domain language, a prototype resembles the input, and the reader feels that the system has revealed itself. But visual plausibility is compatible with weak dependence on the trained model. Adebayo et al.'s saliency sanity checks became influential because they demonstrated this point dramatically: some explanation maps changed surprisingly little when model parameters or labels were randomized.",
+      "translation": "Modul seducător de eșec în XAI este explicația care arată corect. O hartă termică evidențiază obiectul, o justificare folosește limbaj familiar domeniului, un prototip seamănă cu intrarea, iar cititorul simte că sistemul s-a dezvăluit. Dar plauzibilitatea vizuală este compatibilă cu dependența slabă de modelul antrenat. Verificările de saliență ale lui Adebayo et al. au devenit influente deoarece au demonstrat dramatic acest punct: unele hărți explicative se schimbau surprinzător de puțin când parametrii modelului sau etichetele erau randomizate."
+    },
+    {
+      "id": "t000228",
+      "source": "Evaluation therefore begins with a falsification mindset. Ask what should happen if the explanation is genuinely sensitive to the property it claims to measure. If the model is randomized, should the explanation change? If important features are removed, should confidence fall? If a concept is causally relevant, does intervening on its representation change the output? If a local surrogate is faithful, how rapidly does its accuracy deteriorate as we move away from the explained point? A good metric is not merely a score; it is a test implied by the semantics of the explanation.",
+      "translation": "Evaluarea începe astfel cu o mentalitate de falsificare. Întrebați ce ar trebui să se întâmple dacă explicația este autentic sensibilă la proprietatea pe care pretinde că o măsoară. Dacă modelul este randomizat, ar trebui să se schimbe explicația? Dacă sunt eliminate caracteristici importante, ar trebui să scadă încrederea? Dacă un concept este relevant cauzal, intervenția asupra reprezentării lui schimbă ieșirea? Dacă un surogat local este fidel, cât de rapid se deteriorează acuratețea lui pe măsură ce ne îndepărtăm de punctul explicat? O metrică bună nu este doar un scor; este un test implicat de semantica explicației."
+    },
+    {
+      "id": "t000229",
+      "source": "Controlled benchmarks help because they can provide ground truth that real-world data rarely supplies. Synthetic or semi-synthetic datasets can specify which features, object parts, rationales, or generative factors are truly relevant. Benchmarks such as CLEVR-XAI, FunnyBirds, ERASER, and OpenXAI expose different aspects of explanation quality. Tools such as Quantus organize a broad collection of faithfulness, robustness, localization, complexity, randomization, and axiomatic metrics. None of these eliminates judgment, because metrics themselves contain perturbation choices and assumptions, but they make evaluation repeatable.",
+      "translation": "Reperele controlate ajută deoarece pot furniza adevărul de referință pe care datele reale îl oferă rar. Seturile sintetice sau semisintetice pot specifica ce caracteristici, părți de obiect, justificări sau factori generativi sunt cu adevărat relevanți. Repere precum CLEVR-XAI, FunnyBirds, ERASER și OpenXAI expun aspecte diferite ale calității explicației. Instrumente precum Quantus organizează o colecție largă de metrici de fidelitate, robustețe, localizare, complexitate, randomizare și axiomatice. Niciuna nu elimină judecata, deoarece metricile însele conțin alegeri și ipoteze de perturbare, dar fac evaluarea repetabilă."
+    },
+    {
+      "id": "t000230",
+      "source": "A mature test plan should include negative controls. Explanations should fail when the underlying explanatory relationship has been destroyed. They should also be challenged with distribution shift, correlated features, adversarial inputs, and alternative baselines. The best sign of progress in XAI is not that explanations become prettier; it is that teams can state in advance what evidence would cause them to reject an explanation method for a particular use.",
+      "translation": "Un plan matur de testare ar trebui să includă controale negative. Explicațiile ar trebui să eșueze când relația explicativă subiacentă a fost distrusă. Ar trebui și provocate cu schimbări de distribuție, caracteristici corelate, intrări adversariale și referințe alternative. Cel mai bun semn de progres în XAI nu este că explicațiile devin mai frumoase; este că echipele pot preciza anticipat ce dovezi le-ar face să respingă o metodă de explicație pentru o anumită utilizare."
+    },
+    {
+      "id": "t000231",
+      "source": "The figure places the explanation artifact in the middle of an experiment. The claim comes first; an intervention then tests whether the model behaves as the claim predicts. The result either strengthens the claim, narrows its scope, or forces its rejection.",
+      "translation": "Figura plasează artefactul explicației în mijlocul unui experiment. Afirmația vine prima; o intervenție testează apoi dacă modelul se comportă cum prezice afirmația. Rezultatul fie întărește afirmația, fie îi restrânge domeniul, fie obligă respingerea ei."
+    },
+    {
+      "id": "t000232",
+      "source": "Figure from PDF page 36",
+      "translation": "Figură de pe pagina 36 a PDF-ului"
+    },
+    {
+      "id": "t000233",
+      "source": "Figure 3.1 — A useful explanation participates in a falsification loop rather than ending the analysis.",
+      "translation": "Figura 3.1 — O explicație utilă participă la o buclă de falsificare, nu încheie analiza."
+    },
+    {
+      "id": "t000234",
+      "source": "This loop is intentionally repeatable. A new model checkpoint, dataset shift, or deployment context can trigger the same tests again. In that sense explanation validation should resemble continuous integration more than a one-time visual inspection.",
+      "translation": "Această buclă este intenționat repetabilă. Un punct de control nou al modelului, o schimbare a datelor sau un context de instalare poate declanșa din nou aceleași teste. În acest sens, validarea explicației ar trebui să semene mai mult cu integrarea continuă decât cu o inspectare vizuală unică."
+    },
+    {
+      "id": "t000235",
+      "source": "Figure 6.1. Treat an explanation as an experimental hypothesis, not a finished picture.",
+      "translation": "Figura 6.1. Tratați o explicație ca ipoteză experimentală, nu ca imagine încheiată."
+    },
+    {
+      "id": "t000236",
+      "source": "For standard supervised learning, labels often provide an external target. For XAI, there is usually no observable ground-truth explanation of a complex trained model. Human rationales are not automatically ground truth because humans and models may solve the task using different cues. A model can be correct for the wrong reason, or wrong for a reason a human would never consider.",
+      "translation": "Pentru învățarea supervizată standard, etichetele furnizează adesea o țintă externă. Pentru XAI, nu există de obicei o explicație observabilă de referință a unui model complex antrenat. Justificările umane nu sunt automat adevăr de referință deoarece oamenii și modelele pot rezolva sarcina folosind indicii diferite. Un model poate avea dreptate din motivul greșit sau poate greși dintr-un motiv pe care un om nu l-ar lua niciodată în considerare."
+    },
+    {
+      "id": "t000237",
+      "source": "This creates an epistemic loop. A method can produce an appealing explanation, but appeal does not establish correspondence with the model. Evaluation therefore relies on controlled interventions, synthetic tasks, randomization, removal experiments, model comparisons, and human studies designed around specific use cases.",
+      "translation": "Aceasta creează o buclă epistemică. O metodă poate produce o explicație atrăgătoare, dar atracția nu stabilește corespondența cu modelul. Evaluarea se bazează astfel pe intervenții controlate, sarcini sintetice, randomizare, experimente de eliminare, comparații de modele și studii umane proiectate pentru cazuri specifice de utilizare."
+    },
+    {
+      "id": "t000238",
+      "source": "The table is best read as an assurance checklist rather than a scorecard. No single metric covers these dimensions, and the relevant subset depends on the explanation contract. Table 3.1 — Explanation evaluation is multi-dimensional because different tests attack different failure modes.",
+      "translation": "Tabelul este cel mai bine citit ca listă de verificare a asigurării, nu ca tabel de scoruri. Nicio metrică singulară nu acoperă aceste dimensiuni, iar submulțimea relevantă depinde de contractul explicației. Tabelul 3.1 — Evaluarea explicației este multidimensională deoarece teste diferite atacă moduri diferite de eșec."
+    },
+    {
+      "id": "t000239",
+      "source": "Concept / object",
+      "translation": "Concept / obiect"
+    },
+    {
+      "id": "t000240",
+      "source": "Engineering meaning",
+      "translation": "Sens ingineresc"
+    },
+    {
+      "id": "t000241",
+      "source": "Faithfulness",
+      "translation": "Fidelitate"
+    },
+    {
+      "id": "t000242",
+      "source": "Does the artifact track the model property it claims to represent?",
+      "translation": "Artefactul urmărește proprietatea modelului pe care pretinde că o reprezintă?"
+    },
+    {
+      "id": "t000243",
+      "source": "Robustness",
+      "translation": "Robustețe"
+    },
+    {
+      "id": "t000244",
+      "source": "Does the result remain coherent under changes that should be irrelevant to the claim?",
+      "translation": "Rezultatul rămâne coerent sub schimbări care ar trebui să fie nerelevante afirmației?"
+    },
+    {
+      "id": "t000245",
+      "source": "Human utility",
+      "translation": "Utilitate umană"
+    },
+    {
+      "id": "t000246",
+      "source": "Does the explanation improve the intended task and calibrate reliance rather than simply increase trust?",
+      "translation": "Explicația îmbunătățește sarcina intenționată și calibrează folosirea sistemului, nu doar crește încrederea?"
+    },
+    {
+      "id": "t000247",
+      "source": "Security and privacy",
+      "translation": "Securitate și confidențialitate"
+    },
+    {
+      "id": "t000248",
+      "source": "Does the explanation channel leak sensitive information, expose attack surfaces, or enable gaming?",
+      "translation": "Canalul explicației scurge informații sensibile, expune suprafețe de atac sau permite manipulare?"
+    },
+    {
+      "id": "t000249",
+      "source": "Governance",
+      "translation": "Guvernanță"
+    },
+    {
+      "id": "t000250",
+      "source": "Can the result be reproduced, versioned, retained, and connected to the model and data that produced it?",
+      "translation": "Rezultatul poate fi reprodus, versionat, păstrat și conectat cu modelul și datele care l-au produs?"
+    },
+    {
+      "id": "t000251",
+      "source": "For high-stakes uses, a strong result in one column cannot compensate for failure in another. A faithful explanation that leaks training data is not acceptable; a stable explanation that persuades users to over-trust the system is not successful human-centered XAI.",
+      "translation": "Pentru utilizări cu miză mare, un rezultat puternic într-o coloană nu poate compensa eșecul în alta. O explicație fidelă care scurge date de antrenare nu este acceptabilă; o explicație stabilă care îi convinge pe utilizatori să aibă încredere excesivă în sistem nu este XAI centrată pe om reușită."
+    },
+    {
+      "id": "t000252",
+      "source": "Faithfulness asks whether an explanation reflects the model behavior or mechanism it claims to represent. Plausibility asks whether a human finds the explanation sensible. These dimensions can correlate, but they can also diverge sharply. An unfaithful explanation can be more persuasive because it tells the story a user expects.",
+      "translation": "Fidelitatea întreabă dacă o explicație reflectă comportamentul sau mecanismul modelului pe care pretinde că îl reprezintă. Plauzibilitatea întreabă dacă un om găsește explicația rezonabilă. Aceste dimensiuni se pot corela, dar pot și diverge puternic. O explicație nefidelă poate fi mai convingătoare deoarece spune povestea așteptată de utilizator."
+    },
+    {
+      "id": "t000253",
+      "source": "This distinction becomes critical with language models because fluent rationales can be generated on demand. A model can produce a convincing chain of reasoning after the decision has effectively been determined by another cue. Human agreement with the rationale measures communicative plausibility, not necessarily causal faithfulness.",
+      "translation": "Această distincție devine critică pentru modelele lingvistice deoarece justificările fluente pot fi generate la cerere. Un model poate produce un lanț convingător de raționament după ce decizia a fost efectiv determinată de alt indiciu. Acordul uman cu justificarea măsoară plauzibilitatea comunicativă, nu neapărat fidelitatea cauzală."
+    },
+    {
+      "id": "t000254",
+      "source": "Adebayo and colleagues introduced an elegantly simple question: does the saliency method depend on the learned model and data? They progressively randomized network parameters and labels and examined whether explanations changed. Some visually compelling methods were surprisingly insensitive. The test does not establish that a method is faithful when it passes, but failing it is a strong warning.",
+      "translation": "Adebayo și colaboratorii au introdus o întrebare elegant de simplă: metoda de saliență depinde de modelul și datele învățate? Au randomizat progresiv parametrii rețelei și etichetele și au examinat dacă explicațiile se schimbau. Unele metode vizual convingătoare erau surprinzător de insensibile. Testul nu stabilește că o metodă este fidelă când îl trece, dar eșecul lui este un avertisment puternic."
+    },
+    {
+      "id": "t000255",
+      "source": "Sanity checks should be generalized beyond saliency. If a concept explainer claims to describe model internals, randomizing or swapping the relevant components should matter. If a training-data attribution method claims a point is influential, retraining without that point should move the output in the predicted direction. If a mechanistic circuit claims a path is necessary, ablating or patching the path should alter behavior.",
+      "translation": "Verificările de plauzibilitate ar trebui generalizate dincolo de saliență. Dacă un explicator conceptual pretinde că descrie interiorul modelului, randomizarea sau schimbarea componentelor relevante ar trebui să conteze. Dacă o metodă de atribuire a datelor de antrenare pretinde că un punct este influent, reantrenarea fără acel punct ar trebui să mute ieșirea în direcția prezisă. Dacă un circuit mecanicist pretinde că o cale este necesară, ablația sau modificarea căii ar trebui să altereze comportamentul."
+    },
+    {
+      "id": "t000256",
+      "source": "A common faithfulness test removes features in order of attributed importance and measures the change in output or accuracy. If the top-ranked features really matter, removing them should hurt more than removing low-ranked or random features. The problem is that deletion itself can create unnatural inputs.",
+      "translation": "Un test comun al fidelității elimină caracteristici în ordinea importanței atribuite și măsoară schimbarea ieșirii sau acurateței. Dacă caracteristicile de sus chiar contează, eliminarea lor ar trebui să dăuneze mai mult decât eliminarea caracteristicilor slab clasate sau aleatoare. Problema este că ștergerea însăși poate crea intrări nenaturale."
+    },
+    {
+      "id": "t000257",
+      "source": "ROAR, or Remove And Retrain, addresses part of this confound by removing features from the training data and retraining the model. Hooker and colleagues showed that comparative conclusions about attribution methods can change under this stronger protocol. The broader lesson is that explanation metrics can rank methods according to artifacts of the evaluation procedure.",
+      "translation": "ROAR, sau Remove And Retrain, abordează o parte a acestui factor de confuzie eliminând caracteristici din datele de antrenare și reantrenând modelul. Hooker și colaboratorii au arătat că concluziile comparative despre metodele de atribuire se pot schimba sub acest protocol mai puternic. Lecția mai largă este că metricile explicațiilor pot ordona metodele după artefacte ale procedurii de evaluare."
+    },
+    {
+      "id": "t000258",
+      "source": "Yeh and colleagues formalized infidelity as disagreement between an explanation and the model-output changes induced by perturbations, and sensitivity as how much an explanation changes around nearby inputs. These ideas are useful because they turn intuitive desiderata into measurable tests. Yet no single metric is sufficient.",
+      "translation": "Yeh și colaboratorii au formalizat infidelitatea ca dezacord între o explicație și schimbările ieșirii modelului induse de perturbări, iar sensibilitatea ca amploare a schimbării explicației în jurul intrărilor apropiate. Aceste idei sunt utile deoarece transformă dezideratele intuitive în teste măsurabile. Totuși, nicio metrică singulară nu este suficientă."
+    },
+    {
+      "id": "t000259",
+      "source": "An explanation can be perfectly stable because it is constant and uninformative. It can be highly sensitive because the actual decision boundary is sharp. Robustness can conflict with fidelity when the model itself is brittle. Sparsity can improve readability while omitting interacting features. Every metric creates incentives, and explanations optimized for one score can game the score.",
+      "translation": "O explicație poate fi perfect stabilă deoarece este constantă și neinformativă. Poate fi foarte sensibilă deoarece frontiera reală de decizie este abruptă. Robustețea poate intra în conflict cu fidelitatea când modelul însuși este fragil. Raritatea poate îmbunătăți lizibilitatea omițând caracteristici care interacționează. Fiecare metrică creează stimulente, iar explicațiile optimizate pentru un scor îl pot manipula."
+    },
+    {
+      "id": "t000260",
+      "source": "Controlled benchmarks help because they construct tasks where some aspects of the relevant mechanism are known. CLEVR-XAI uses synthetic visual scenes and question answering to provide spatial ground truth. FunnyBirds creates part-based synthetic images that permit semantic interventions on object parts. ERASER provides human rationales for NLP tasks while separating rationale agreement from faithfulness-oriented criteria. OpenXAI and Quantus organize multiple explainers and metrics into reproducible evaluation frameworks.",
+      "translation": "Reperele controlate ajută deoarece construiesc sarcini unde unele aspecte ale mecanismului relevant sunt cunoscute. CLEVR-XAI folosește scene vizuale sintetice și răspunsuri la întrebări pentru a furniza adevăr spațial de referință. FunnyBirds creează imagini sintetice bazate pe părți care permit intervenții semantice asupra părților obiectelor. ERASER furnizează justificări umane pentru sarcini NLP, separând acordul cu justificarea de criteriile orientate spre fidelitate. OpenXAI și Quantus organizează mai mulți explicatori și metrici în cadre reproductibile de evaluare."
+    },
+    {
+      "id": "t000261",
+      "source": "The most important intellectual move in XAI evaluation is to stop asking whether an explanation is convincing and start asking what observation would count against it. This is the difference between illustration and experiment. If a heat map is claimed to identify pixels that the classifier relies on, removing or replacing those pixels should change behavior in a predictable way, subject to the distributional caveats of the perturbation. If a concept score is claimed to identify a representation that causally supports a decision, intervening on that representation should alter the relevant behavior more than matched controls. If no plausible result can make the claim weaker, the artifact is functioning rhetorically rather than scientifically.",
+      "translation": "Cea mai importantă mutare intelectuală în evaluarea XAI este să încetăm să întrebăm dacă o explicație este convingătoare și să începem să întrebăm ce observație ar conta împotriva ei. Aceasta este diferența dintre ilustrație și experiment. Dacă o hartă termică pretinde că identifică pixeli pe care se bazează clasificatorul, eliminarea sau înlocuirea lor ar trebui să schimbe comportamentul previzibil, sub precizările distribuționale ale perturbării. Dacă un scor conceptual pretinde că identifică o reprezentare care susține cauzal o decizie, intervenția asupra reprezentării ar trebui să altereze comportamentul relevant mai mult decât controale comparabile. Dacă niciun rezultat plauzibil nu poate slăbi afirmația, artefactul funcționează retoric, nu științific."
+    },
+    {
+      "id": "t000262",
+      "source": "This falsification mindset also clarifies why explanation metrics disagree. Deletion scores, insertion scores, infidelity, stability, localization, human preference, and model-randomization checks are not noisy estimators of one hidden scalar called 'explanation quality.' They test different failure modes. Treating them as interchangeable encourages benchmark optimization rather than understanding. A sensible evaluation suite begins with the claim, maps each important assumption to one or more tests, and accepts that some claims require evidence from several methods rather than a single score.",
+      "translation": "Această mentalitate de falsificare clarifică și de ce metricile explicației sunt în dezacord. Scorurile de ștergere, de inserare, infidelitatea, stabilitatea, localizarea, preferința umană și verificările de randomizare a modelului nu sunt estimatori zgomotoși ai unui scalar ascuns numit „calitatea explicației”. Testează moduri diferite de eșec. Tratarea lor ca interschimbabile încurajează optimizarea reperului, nu înțelegerea. O suită rezonabilă de evaluare începe cu afirmația, mapează fiecare ipoteză importantă la unul sau mai multe teste și acceptă că unele afirmații necesită dovezi din mai multe metode, nu un singur scor."
+    },
+    {
+      "id": "t000263",
+      "source": "Synthetic ground truth is not a perfect substitute for real applications. A method can excel on toy semantics and fail in a complex domain. But synthetic benchmarks are invaluable for falsification: if a method cannot recover a mechanism in a controlled setting where the answer is known, its interpretation in an uncontrolled setting should be treated cautiously.",
+      "translation": "Adevărul sintetic de referință nu înlocuiește perfect aplicațiile reale. O metodă poate excela pe semantică-jucărie și eșua într-un domeniu complex. Dar reperele sintetice sunt neprețuite pentru falsificare: dacă o metodă nu poate recupera un mecanism într-un context controlat unde răspunsul este cunoscut, interpretarea sa într-un context necontrolat ar trebui tratată prudent."
+    },
+    {
+      "id": "t000264",
+      "source": "No single number can summarize explanation quality because explanations serve different purposes. Faithfulness asks whether the artifact reflects the model. Robustness asks whether it changes reasonably under small, irrelevant perturbations. Localization asks whether it focuses on known relevant regions. Complexity asks whether a human can process it. Stability asks whether similar cases receive compatible explanations. Human usefulness asks whether the explanation improves a downstream task. Privacy and security ask whether the explanation leaks information or creates a new attack surface. These objectives can conflict.",
+      "translation": "Niciun număr nu poate rezuma calitatea explicației deoarece explicațiile servesc scopuri diferite. Fidelitatea întreabă dacă artefactul reflectă modelul. Robustețea întreabă dacă se schimbă rezonabil sub perturbări mici nerelevante. Localizarea întreabă dacă se concentrează pe regiuni cunoscute ca relevante. Complexitatea întreabă dacă un om îl poate procesa. Stabilitatea întreabă dacă cazuri asemănătoare primesc explicații compatibile. Utilitatea umană întreabă dacă explicația îmbunătățește o sarcină ulterioară. Confidențialitatea și securitatea întreabă dacă explicația scurge informații sau creează o suprafață nouă de atac. Aceste obiective pot intra în conflict."
+    },
+    {
+      "id": "t000265",
+      "source": "The correct engineering response is to treat explanation evaluation as a test suite rather than a leaderboard. For a debugging explainer, faithfulness and sensitivity to model changes may dominate. For a user-facing recourse system, feasibility, calibration, and comprehension matter more. For a regulatory audit, reproducibility, subgroup consistency, provenance, and retention of evidence may be central. The scorecard should be derived from the explanation contract rather than copied from the latest benchmark paper.",
+      "translation": "Răspunsul ingineresc corect este tratarea evaluării explicației ca suită de teste, nu clasament. Pentru un explicator de depanare, pot domina fidelitatea și sensibilitatea la schimbările modelului. Pentru un sistem de remediere destinat utilizatorilor, contează mai mult fezabilitatea, calibrarea și înțelegerea. Pentru un audit de reglementare pot fi centrale reproductibilitatea, consistența între subgrupuri, proveniența și păstrarea dovezilor. Tabelul de scoruri ar trebui derivat din contractul explicației, nu copiat din cel mai recent articol de reper."
+    },
+    {
+      "id": "t000266",
+      "source": "Human evaluation needs similar discipline. Asking participants whether they “like” an explanation is weak evidence. Better studies test whether users make more accurate decisions, detect model errors, calibrate reliance, identify uncertainty, or complete a task faster without sacrificing correctness. Explanations can increase trust even when trust should decrease. A persuasive but unfaithful rationale may therefore score well on satisfaction while damaging oversight.",
+      "translation": "Evaluarea umană are nevoie de disciplină similară. A întreba participanții dacă „le place” o explicație este dovadă slabă. Studii mai bune testează dacă utilizatorii iau decizii mai exacte, detectează erorile modelului, calibrează folosirea lui, identifică incertitudinea sau încheie o sarcină mai rapid fără a sacrifica corectitudinea. Explicațiile pot crește încrederea chiar când aceasta ar trebui să scadă. O justificare convingătoare, dar nefidelă poate astfel obține scor bun la satisfacție, deteriorând supravegherea."
+    },
+    {
+      "id": "t000267",
+      "source": "The 2026 literature increasingly reflects this broader view. Haufe et al. argue for formal explanatory problem definitions and correctness criteria. Reviews of empirical XAI studies emphasize the heterogeneity of evaluation designs. The practical convergence is toward triangulation: combine model-grounded tests, controlled datasets, user studies, and domain-specific criteria. The objective is not to prove that an explainer is “good.” It is to show that it is adequate for a specified role, under specified conditions, with known failure modes.",
+      "translation": "Literatura din 2026 reflectă tot mai mult această perspectivă largă. Haufe et al. susțin definiții formale ale problemelor explicative și criterii de corectitudine. Sintezele studiilor XAI empirice accentuează eterogenitatea proiectărilor de evaluare. Convergența practică este către triangulare: combinați teste fundamentate în model, seturi controlate de date, studii cu utilizatori și criterii specifice domeniului. Obiectivul nu este să demonstrăm că un explicator este „bun”. Este să arătăm că este adecvat unui rol specificat, în condiții specificate, cu moduri cunoscute de eșec."
+    },
+    {
+      "id": "t000268",
+      "source": "A useful way to operationalize multi-objective evaluation is to build an explanation test matrix. Rows represent the claims the organization intends to make: local feature dependence, recourse feasibility, concept use, source reliance, mechanistic relevance. Columns represent evidence dimensions: model sensitivity, robustness, subgroup consistency, human utility, privacy, security, and reproducibility. Empty cells are visible technical debt. The matrix also prevents one strong metric from hiding a weak property that matters more for the actual use.",
+      "translation": "O modalitate utilă de operaționalizare a evaluării cu obiective multiple este construirea unei matrice de teste ale explicației. Rândurile reprezintă afirmațiile pe care organizația intenționează să le facă: dependență locală de caracteristici, fezabilitatea remedierii, folosirea conceptelor, dependența de surse, relevanță mecanicistă. Coloanele reprezintă dimensiuni ale dovezilor: sensibilitatea modelului, robustețe, consistență între subgrupuri, utilitate umană, confidențialitate, securitate și reproductibilitate. Celulele goale sunt datorie tehnică vizibilă. Matricea împiedică și o metrică puternică să ascundă o proprietate slabă care contează mai mult pentru utilizarea reală."
+    },
+    {
+      "id": "t000269",
+      "source": "Suppose two attribution methods achieve similar faithfulness scores. One is highly stable but coarse; the other is detailed but changes sharply under harmless input perturbations. For debugging, the detailed method may be preferable because it reveals localized failure modes. For a user-facing explanation, instability may be unacceptable because neighboring people receive incompatible narratives. Evaluation has no context-free winner because the objective includes the downstream role.",
+      "translation": "Să presupunem că două metode de atribuire ating scoruri similare de fidelitate. Una este foarte stabilă, dar grosieră; cealaltă este detaliată, dar se schimbă puternic sub perturbări inofensive ale intrării. Pentru depanare, metoda detaliată poate fi preferabilă deoarece dezvăluie moduri localizate de eșec. Pentru o explicație destinată utilizatorului, instabilitatea poate fi inacceptabilă deoarece persoane vecine primesc narațiuni incompatibile. Evaluarea nu are câștigător lipsit de context, deoarece obiectivul include rolul ulterior."
+    },
+    {
+      "id": "t000270",
+      "source": "Organizations should also distinguish acceptance tests from research metrics. A paper may compare methods statistically across a benchmark. A production acceptance test should be phrased in terms of tolerances and failure actions. For example, a chosen explanation may be required to pass parameter-randomization checks, remain within a stability band across three approved backgrounds, and reproduce within a specified numerical tolerance under the same model version. If the test fails after retraining, the explainer is not simply “a little worse”; the deployed explanation contract is broken.",
+      "translation": "Organizațiile ar trebui și să distingă testele de acceptare de metricile de cercetare. Un articol poate compara statistic metodele pe un reper. Un test de acceptare în producție ar trebui formulat în termeni de toleranțe și acțiuni la eșec. De exemplu, unei explicații alese i se poate cere să treacă verificările de randomizare a parametrilor, să rămână într-o bandă de stabilitate pe trei fundaluri aprobate și să se reproducă într-o toleranță numerică specificată sub aceeași versiune a modelului. Dacă testul eșuează după reantrenare, explicatorul nu este doar „puțin mai slab”; contractul explicației instalate este încălcat."
+    },
+    {
+      "id": "t000271",
+      "source": "The last component is review cadence. Explanations are not validated once. Data drift, model updates, library changes, and new user populations can alter their meaning. Periodic regression tests make explanation quality part of continuous assurance in the same way that accuracy, latency, and security are monitored over time.",
+      "translation": "Ultima componentă este cadența revizuirii. Explicațiile nu sunt validate o singură dată. Deriva datelor, actualizările modelului, schimbările bibliotecilor și populațiile noi de utilizatori le pot altera sensul. Testele periodice de regresie fac din calitatea explicației parte a asigurării continue, la fel cum sunt monitorizate în timp acuratețea, latența și securitatea."
+    },
+    {
+      "id": "t000272",
+      "source": "There is no scalar XAI accuracy. Different metrics often disagree because they reward different properties and embed different assumptions. A mature evaluation therefore looks like a software test suite rather than a leaderboard: model-randomization tests, perturbation tests, reference sensitivity, subgroup analysis, adversarial stress, semantic ground truth where available, and user studies where human decisions matter.",
+      "translation": "Nu există o acuratețe XAI scalară. Metrici diferite sunt adesea în dezacord deoarece recompensează proprietăți diferite și încorporează ipoteze diferite. O evaluare matură arată astfel ca o suită software de teste, nu ca un clasament: teste de randomizare a modelului, teste de perturbare, sensibilitate la referință, analiză de subgrup, stres adversarial, adevăr semantic de referință unde este disponibil și studii cu utilizatori unde contează deciziile umane."
+    },
+    {
+      "id": "t000273",
+      "source": "Evaluation therefore becomes a portfolio of tests tied to an explanation contract, not a race for one metric. The next question is whether the validated artifact helps a person exercise better judgment rather than merely making the system sound more intelligible.",
+      "translation": "Evaluarea devine astfel un portofoliu de teste legate de un contract al explicației, nu o cursă pentru o metrică. Întrebarea următoare este dacă artefactul validat ajută o persoană să judece mai bine, nu doar face sistemul să pară mai inteligibil."
+    },
+    {
+      "id": "t000274",
+      "source": "3.2 Human-centered explanation, oversight, and regulation",
+      "translation": "3.2 Explicație centrată pe om, supraveghere și reglementare"
+    },
+    {
+      "id": "t000275",
+      "source": "When explanations reach users, the problem changes from model analysis to interface design. A technically faithful artifact can still be incomprehensible, misleading, or mistimed. A clinician under time pressure does not need a twenty-feature importance ranking if the key question is whether one unstable variable drove an alert. A fraud investigator may need a global pattern first and the local details second. A citizen receiving an adverse decision may need a contrastive explanation and a route to contest it rather than an internal model diagnostic.",
+      "translation": "Când explicațiile ajung la utilizatori, problema trece de la analiza modelului la proiectarea interfeței. Un artefact tehnic fidel poate fi totuși neinteligibil, înșelător sau inoportun. Un clinician sub presiunea timpului nu are nevoie de o ordonare a importanței a douăzeci de caracteristici dacă întrebarea-cheie este dacă o variabilă instabilă a condus o alertă. Un investigator de fraudă poate avea nevoie mai întâi de un tipar global și apoi de detalii locale. Un cetățean care primește o decizie nefavorabilă poate avea nevoie de o explicație contrastivă și o cale de contestare, nu de un diagnostic intern al modelului."
+    },
+    {
+      "id": "t000276",
+      "source": "Progressive disclosure is therefore a powerful pattern. The first layer answers the operational question in plain language. A second layer exposes evidence, uncertainty, and alternative explanations. A third layer supports expert inspection with plots, provenance, and method details. This avoids the false choice between oversimplification and overwhelming transparency. It also makes it possible to give different audiences different views without pretending that every view is equivalent.",
+      "translation": "Dezvăluirea progresivă este astfel un tipar puternic. Primul strat răspunde întrebării operaționale în limbaj simplu. Un al doilea expune dovezi, incertitudine și explicații alternative. Un al treilea susține inspectarea expertă cu grafice, proveniență și detalii ale metodei. Aceasta evită falsa alegere dintre suprasimplificare și transparență copleșitoare. Face posibilă și oferirea de vederi diferite unor publicuri diferite fără a pretinde că fiecare vedere este echivalentă."
+    },
+    {
+      "id": "t000277",
+      "source": "Explanations should be designed to calibrate reliance rather than maximize trust. Showing uncertainty, instability, or disagreement among methods can be more valuable than producing a single confident story. In some situations, the best explanation is a warning that the model is outside its validated regime or that the evidence is underdetermined. Human-centered XAI is successful when it helps people know when to use the system, when to challenge it, and when to seek additional evidence.",
+      "translation": "Explicațiile ar trebui proiectate pentru a calibra folosirea sistemului, nu pentru a maximiza încrederea. A arăta incertitudine, instabilitate sau dezacord între metode poate fi mai valoros decât producerea unei povești unice încrezătoare. În unele situații, cea mai bună explicație este un avertisment că modelul este în afara regimului său validat sau că dovezile sunt subdeterminate. XAI centrată pe om reușește când îi ajută pe oameni să știe când să folosească sistemul, când să îl conteste și când să caute dovezi suplimentare."
+    },
+    {
+      "id": "t000278",
+      "source": "Fairness also applies to the explanation interface itself. If explanation quality is systematically worse for minority groups, rare conditions, or atypical inputs, a nominally transparent system can reproduce inequity at the level of contestability. Evaluating subgroup explanation quality therefore belongs alongside subgroup predictive performance, especially when explanations affect access to appeals or human review.",
+      "translation": "Echitatea se aplică și interfeței explicației înseși. Dacă calitatea explicației este sistematic mai slabă pentru grupuri minoritare, condiții rare sau intrări atipice, un sistem nominal transparent poate reproduce inechitatea la nivelul contestabilității. Evaluarea calității explicației pe subgrupuri aparține astfel alături de performanța predictivă pe subgrupuri, mai ales când explicațiile afectează accesul la contestații sau evaluare umană."
+    },
+    {
+      "id": "t000279",
+      "source": "A clinician, ML engineer, regulator, affected citizen, operations analyst, and autonomous software agent do not need the same explanation. Expertise changes vocabulary, acceptable complexity, and the kinds of evidence that support action. A radiologist may prefer concept-level evidence linked to image regions and comparable cases. An ML engineer may need gradients, ablations, training traces, and representation probes. A regulator may need documented constraints, model-level testing, and a reproducible audit trail.",
+      "translation": "Un clinician, inginer ML, regulator, cetățean afectat, analist operațional și agent software autonom nu au nevoie de aceeași explicație. Expertiza schimbă vocabularul, complexitatea acceptabilă și tipurile de dovezi care susțin acțiunea. Un radiolog poate prefera dovezi la nivel de concept legate de regiuni de imagine și cazuri comparabile. Un inginer ML poate avea nevoie de gradienți, ablații, urme de antrenare și sonde de reprezentări. Un regulator poate avea nevoie de constrângeri documentate, testare la nivel de model și o urmă reproductibilă de audit."
+    },
+    {
+      "id": "t000280",
+      "source": "Doshi-Velez and Kim proposed a useful hierarchy: application-grounded evaluation with real users and tasks, human-grounded evaluation with simplified human experiments, and functionally grounded evaluation using formal proxies. The hierarchy remains relevant because many XAI systems are evaluated only with proxy metrics even when their intended purpose is to change human decisions.",
+      "translation": "Doshi-Velez și Kim au propus o ierarhie utilă: evaluare fundamentată în aplicație cu utilizatori și sarcini reale, evaluare fundamentată uman cu experimente umane simplificate și evaluare fundamentată funcțional folosind substituenți formali. Ierarhia rămâne relevantă deoarece multe sisteme XAI sunt evaluate doar prin metrici substitutive chiar când scopul lor intenționat este schimbarea deciziilor umane."
+    },
+    {
+      "id": "t000281",
+      "source": "The purpose of an explanation is often said to be trust. This is poorly specified. The goal should not be maximum trust but calibrated reliance: users should know when the system is likely to be useful, when it is uncertain, when it may fail, and when human judgment should override it. An explanation that makes a weak model appear trustworthy is harmful even if users like it.",
+      "translation": "Se spune adesea că scopul unei explicații este încrederea. Aceasta este slab specificat. Scopul nu ar trebui să fie încrederea maximă, ci folosirea calibrată: utilizatorii ar trebui să știe când sistemul este probabil util, când este incert, când poate eșua și când judecata umană ar trebui să îl anuleze. O explicație care face un model slab să pară demn de încredere este dăunătoare chiar dacă utilizatorilor le place."
+    },
+    {
+      "id": "t000282",
+      "source": "Good explanation interfaces help users build a mental model of system behavior. This can be measured by simulation tasks: after seeing explanations, can the user predict how the model will behave on new cases? Can the user identify a known failure mode? Can the user detect when a prediction relies on a shortcut? These are stronger tests than asking whether the interface feels understandable.",
+      "translation": "Interfețele bune de explicație îi ajută pe utilizatori să construiască un model mental al comportamentului sistemului. Aceasta poate fi măsurată prin sarcini de simulare: după ce văd explicațiile, pot utilizatorii prezice cum se va comporta modelul pe cazuri noi? Pot identifica un mod cunoscut de eșec? Pot detecta când o predicție se bazează pe o scurtătură? Acestea sunt teste mai puternice decât întrebarea dacă interfața pare inteligibilă."
+    },
+    {
+      "id": "t000283",
+      "source": "Natural-language explanations create a new design problem because fluency is itself persuasive. A generated rationale can fill causal gaps, suppress uncertainty, and present a coherent story even when the underlying computation is distributed, heuristic, or inconsistent. The interface may therefore improve subjective understanding while reducing epistemic caution.",
+      "translation": "Explicațiile în limbaj natural creează o nouă problemă de proiectare deoarece fluența este ea însăși convingătoare. O justificare generată poate umple goluri cauzale, suprima incertitudinea și prezenta o poveste coerentă chiar când calculul subiacent este distribuit, euristic sau inconsistent. Interfața poate astfel îmbunătăți înțelegerea subiectivă reducând prudența epistemică."
+    },
+    {
+      "id": "t000284",
+      "source": "One practical defense is to separate evidence from narration. The system can present a natural-language summary, but the summary should be linked to structured evidence such as input attributions, retrieved",
+      "translation": "O apărare practică este separarea dovezilor de narațiune. Sistemul poate prezenta un rezumat în limbaj natural, dar rezumatul ar trebui legat de dovezi structurate precum atribuiri ale intrărilor, surse"
+    },
+    {
+      "id": "t000285",
+      "source": "sources, counterfactual tests, uncertainty estimates, or mechanistic",
+      "translation": "recuperate, teste contrafactuale, estimări ale incertitudinii sau sonde"
+    },
+    {
+      "id": "t000286",
+      "source": "probes. The prose should be treated as a view over evidence rather than as the evidence itself.",
+      "translation": "mecaniciste. Proza ar trebui tratată ca vedere asupra dovezilor, nu ca dovezile însele."
+    },
+    {
+      "id": "t000287",
+      "source": "More detail is not always better. A full decision tree with thousands of nodes is transparent but not usable. A token-level attribution over a long document can overwhelm rather than clarify. Explanation systems need progressive disclosure: a compact summary, then drill-down into features, examples, counterfactuals, model behavior, and provenance as needed.",
+      "translation": "Mai mult detaliu nu este întotdeauna mai bine. Un arbore complet de decizie cu mii de noduri este transparent, dar inutilizabil. O atribuire la nivel de token pe un document lung poate copleși, nu clarifica. Sistemele de explicație au nevoie de dezvăluire progresivă: un rezumat compact, apoi aprofundare în caracteristici, exemple, contrafactuale, comportamentul modelului și proveniență după nevoie."
+    },
+    {
+      "id": "t000288",
+      "source": "This suggests a layered interface architecture. The first layer answers the user's immediate question. The second provides supporting evidence. The third exposes uncertainty and alternative explanations. The fourth exposes technical diagnostics and reproducibility metadata. The deeper layers should remain accessible without forcing every user to read them.",
+      "translation": "Aceasta sugerează o arhitectură stratificată de interfață. Primul strat răspunde întrebării imediate a utilizatorului. Al doilea furnizează dovezi de susținere. Al treilea expune incertitudine și explicații alternative. Al patrulea expune diagnostice tehnice și metadate ale reproductibilității. Straturile profunde ar trebui să rămână accesibile fără a obliga fiecare utilizator să le citească."
+    },
+    {
+      "id": "t000289",
+      "source": "Explanation systems can be uneven across groups even when the prediction model has similar aggregate performance. Local neighborhoods can be denser for majority populations, counterfactuals can be cheaper for some groups than others, and explanation vocabularies can align better with cultures represented in training data. Fairness therefore applies not only to predictions but to access to meaningful explanation and recourse.",
+      "translation": "Sistemele de explicație pot fi inegale între grupuri chiar când modelul predictiv are performanță agregată similară. Vecinătățile locale pot fi mai dense pentru populațiile majoritare, contrafactualele pot fi mai ieftine pentru unele grupuri decât pentru altele, iar vocabularele explicative se pot alinia mai bine culturilor reprezentate în datele de antrenare. Echitatea se aplică astfel nu doar predicțiilor, ci accesului la explicație și remediere semnificative."
+    },
+    {
+      "id": "t000290",
+      "source": "A production evaluation should compare explanation stability, recourse cost, error discovery, and user comprehension across relevant subgroups. The goal is not to force identical explanations but to detect systematic differences that alter practical rights or decision quality.",
+      "translation": "O evaluare în producție ar trebui să compare stabilitatea explicațiilor, costul remedierii, descoperirea erorilor și înțelegerea utilizatorilor între subgrupuri relevante. Scopul nu este forțarea explicațiilor identice, ci detectarea diferențelor sistematice care alterează drepturile practice sau calitatea deciziei."
+    },
+    {
+      "id": "t000291",
+      "source": "High-stakes XAI lives inside governance rather than outside it. The EU AI Act illustrates the shift. Article 13 requires high-risk AI systems to be sufficiently transparent to enable deployers to interpret outputs and use them appropriately, while Article 14 requires effective human oversight supported by appropriate human-machine interface tools. These obligations do not mandate one universal XAI technique. They make the deployer's ability to understand and oversee the system part of the engineering problem.",
+      "translation": "XAI cu miză mare există în guvernanță, nu în afara ei. EU AI Act ilustrează schimbarea. Articolul 13 cere ca sistemele IA cu risc ridicat să fie suficient de transparente pentru a permite implementatorilor să interpreteze ieșirile și să le folosească adecvat, iar articolul 14 cere supraveghere umană eficientă susținută de instrumente adecvate de interfață om-mașină. Aceste obligații nu impun o tehnică universală XAI. Fac din capacitatea implementatorului de a înțelege și supraveghea sistemul parte a problemei inginerești."
+    },
+    {
+      "id": "t000292",
+      "source": "That distinction matters. A heat map may be technically interesting yet irrelevant to oversight. An operator may need warnings about conditions of use, known limitations, confidence, data quality, drift, and the situations in which human intervention is required. A governance process may need logs and model-version lineage more than feature attributions. Explainability therefore sits inside a larger transparency package that includes instructions, performance boundaries, monitoring, and accountability.",
+      "translation": "Acea distincție contează. O hartă termică poate fi tehnic interesantă, dar nerelevantă supravegherii. Un operator poate avea nevoie de avertismente despre condițiile utilizării, limitări cunoscute, încredere, calitatea datelor, derivă și situațiile care cer intervenție umană. Un proces de guvernanță poate avea nevoie de jurnale și filiația versiunii modelului mai mult decât de atribuiri ale caracteristicilor. Explicabilitatea se află astfel într-un pachet mai larg de transparență care include instrucțiuni, limite ale performanței, monitorizare și răspundere."
+    },
+    {
+      "id": "t000293",
+      "source": "High-stakes explanations are also attractive attack surfaces. If a system reveals detailed feature dependence, an adversary may use that information to game the model. If explanations expose training examples, they can leak sensitive data. If a post-hoc explainer can be manipulated independently of the predictor, an organization may receive reassuring explanations while the underlying model behaves differently. Security analysis should therefore consider both the predictive channel and the explanatory channel.",
+      "translation": "Explicațiile cu miză mare sunt și suprafețe atractive de atac. Dacă un sistem dezvăluie dependența detaliată de caracteristici, un adversar poate folosi informația pentru a manipula modelul. Dacă explicațiile expun exemple de antrenare, pot scurge date sensibile. Dacă un explicator post-hoc poate fi manipulat independent de predictor, o organizație poate primi explicații liniștitoare în timp ce modelul subiacent se comportă diferit. Analiza securității ar trebui astfel să considere atât canalul predictiv, cât și canalul explicativ."
+    },
+    {
+      "id": "t000294",
+      "source": "The practical standard is proportionality. A low-risk recommender does not need the same evidential burden as clinical decision support. But whenever a person is expected to exercise meaningful oversight, the interface must give them information they can actually use. Human oversight that exists only in policy documents is not a technical control. Explainability becomes valuable when it changes the operator's ability to detect, question, and correct system behavior.",
+      "translation": "Standardul practic este proporționalitatea. Un sistem de recomandare cu risc scăzut nu are nevoie de aceeași povară probatorie ca sprijinul decizional clinic. Dar ori de câte ori se așteaptă ca o persoană să exercite supraveghere semnificativă, interfața trebuie să îi ofere informații utilizabile efectiv. Supravegherea umană care există doar în documente de politici nu este un control tehnic. Explicabilitatea devine valoroasă când schimbă capacitatea operatorului de a detecta, chestiona și corecta comportamentul sistemului."
+    },
+    {
+      "id": "t000295",
+      "source": "A realistic oversight workflow is layered. The operator first sees the decision, confidence, and a concise reason. They can then inspect the evidence, compare alternatives, and escalate to a specialist. The system records whether the operator accepted or overrode the output and why. This creates a feedback loop in which explanation quality can be evaluated from actual oversight behavior rather than assumed from interface design.",
+      "translation": "Un flux realist de supraveghere este stratificat. Operatorul vede mai întâi decizia, încrederea și un motiv concis. Poate apoi inspecta dovezile, compara alternative și escalada către un specialist. Sistemul înregistrează dacă operatorul a acceptat sau anulat ieșirea și de ce. Aceasta creează o buclă de feedback în care calitatea explicației poate fi evaluată din comportamentul efectiv de supraveghere, nu presupusă din proiectarea interfeței."
+    },
+    {
+      "id": "t000296",
+      "source": "Regulatory transparency should therefore be connected to operational controls. Documentation that says a model is explainable is weak if the deployer cannot reconstruct a particular output or recognize when the system is outside its intended use. Conversely, a system can support strong oversight without revealing every parameter if it exposes validated decision evidence, limitations, uncertainty, and logs. The relevant question is functional: can the responsible human understand enough to exercise the responsibility assigned to them?",
+      "translation": "Transparența de reglementare ar trebui astfel conectată la controale operaționale. Documentația care spune că un model este explicabil este slabă dacă implementatorul nu poate reconstrui o ieșire particulară sau recunoaște când sistemul este în afara utilizării intenționate. Invers, un sistem poate susține supraveghere puternică fără a dezvălui fiecare parametru dacă expune dovezi validate ale deciziei, limitări, incertitudine și jurnale. Întrebarea relevantă este funcțională: poate omul responsabil înțelege suficient pentru a exercita responsabilitatea atribuită?"
+    },
+    {
+      "id": "t000297",
+      "source": "This functional view also avoids “compliance by explanation widget.” Adding a SHAP chart to a high-risk system does not by itself satisfy meaningful transparency, just as adding a log file does not automatically create human oversight. The interface, training, procedures, and technical evidence have to work together.",
+      "translation": "Această perspectivă funcțională evită și „conformitatea prin widget de explicație”. Adăugarea unui grafic SHAP la un sistem cu risc ridicat nu satisface singură transparența semnificativă, la fel cum adăugarea unui fișier jurnal nu creează automat supraveghere umană. Interfața, instruirea, procedurile și dovezile tehnice trebuie să funcționeze împreună."
+    },
+    {
+      "id": "t000298",
+      "source": "The EU AI Act makes transparency and human oversight operational requirements for high-risk systems. The regulation requires systems to be sufficiently transparent for deployers to interpret outputs and use them appropriately, and it emphasizes understanding capabilities and limitations, guarding against automation bias, correctly interpreting outputs, and retaining the ability to override or stop the system. XAI can support these goals, but a feature-importance chart alone does not satisfy them.",
+      "translation": "EU AI Act face din transparență și supraveghere umană cerințe operaționale pentru sistemele cu risc ridicat. Regulamentul cere sisteme suficient de transparente pentru ca implementatorii să interpreteze ieșirile și să le folosească adecvat și accentuează înțelegerea capacităților și limitărilor, protecția împotriva biasului automatizării, interpretarea corectă a ieșirilor și păstrarea capacității de a anula sau opri sistemul. XAI poate susține aceste scopuri, dar un grafic al importanței caracteristicilor singur nu le satisface."
+    },
+    {
+      "id": "t000299",
+      "source": "The engineering implication is that explainability belongs inside an oversight design. Interfaces must expose enough information for the human to recognize failure modes, not merely enough to justify the model after the fact. Logging, uncertainty, contestability, role-specific training, and operational controls are part of explainability when the real objective is safe human oversight.",
+      "translation": "Implicația inginerească este că explicabilitatea aparține unei proiectări a supravegherii. Interfețele trebuie să expună suficiente informații pentru ca omul să recunoască modurile de eșec, nu doar suficiente pentru a justifica ulterior modelul. Jurnalizarea, incertitudinea, contestabilitatea, instruirea specifică rolului și controalele operaționale sunt parte a explicabilității când obiectivul real este supravegherea umană sigură."
+    },
+    {
+      "id": "t000300",
+      "source": "Explanations leak information. Repeated feature-attribution queries can reveal decision boundaries, sensitive training relationships, or internal model behavior. Counterfactuals can expose how to evade fraud or security controls. Example-based explanations can reveal private records. Mechanistic interfaces can expose safety circuits or exploitable weaknesses. Explainability therefore creates a genuine transparency-security trade-off.",
+      "translation": "Explicațiile scurg informații. Interogările repetate de atribuire a caracteristicilor pot dezvălui frontiere de decizie, relații sensibile de antrenare sau comportament intern al modelului. Contrafactualele pot expune cum se evită controalele de fraudă sau securitate. Explicațiile bazate pe exemple pot dezvălui înregistrări private. Interfețele mecaniciste pot expune circuite de siguranță sau slăbiciuni exploatabile. Explicabilitatea creează astfel un compromis autentic transparență-securitate."
+    },
+    {
+      "id": "t000301",
+      "source": "Access controls should depend on the audience. Internal debugging tools can expose richer model information than public explanation APIs. Rate limits, query budgets, coarsened explanations, delayed disclosure, privacy-preserving aggregation, and differential privacy may be appropriate in sensitive settings. There is no principle that every explanation should reveal every available detail.",
+      "translation": "Controalele accesului ar trebui să depindă de public. Instrumentele interne de depanare pot expune informații mai bogate despre model decât API-urile publice de explicație. Limitele de rată, bugetele de interogare, explicațiile mai grosiere, divulgarea întârziată, agregarea care păstrează confidențialitatea și confidențialitatea diferențială pot fi adecvate în contexte sensibile. Nu există un principiu că fiecare explicație ar trebui să dezvăluie fiecare detaliu disponibil."
+    },
+    {
+      "id": "t000302",
+      "source": "An explanation service should be tested as a system in its own right. Does it provide similar fidelity across demographic or operational groups? Are counterfactual costs systematically higher for some groups? Does a background dataset make minority cases look anomalous? Can explanations leak membership in the training set? These questions are separate from whether the predictor itself satisfies a fairness criterion.",
+      "translation": "Un serviciu de explicație ar trebui testat ca sistem de sine stătător. Furnizează fidelitate similară între grupuri demografice sau operaționale? Costurile contrafactuale sunt sistematic mai mari pentru unele grupuri? Un set de date de fundal face cazurile minoritare să pară anomale? Pot explicațiile scurge apartenența la setul de antrenare? Aceste întrebări sunt separate de întrebarea dacă predictorul însuși satisface un criteriu de echitate."
+    },
+    {
+      "id": "t000303",
+      "source": "The explainability pipeline can also become a fairness tool. Group-level attribution analysis, concept audits, and counterfactual comparisons can expose proxies and shortcuts. But explanation does not automatically remove bias; it only creates additional observability. Corrective action still requires changes to data, objective, policy, or model.",
+      "translation": "Fluxul explicabilității poate deveni și instrument al echității. Analiza atribuirii la nivel de grup, auditurile conceptelor și comparațiile contrafactuale pot expune substituenți și scurtături. Dar explicația nu elimină automat biasul; doar creează observabilitate suplimentară. Acțiunea corectivă cere în continuare schimbări ale datelor, obiectivului, politicii sau modelului."
+    },
+    {
+      "id": "t000304",
+      "source": "Human-centered design and regulation converge on a practical requirement: an explanation must support appropriate action and oversight. To satisfy that requirement after deployment, the entire explanation pipeline must be versioned, monitored, and defended as production infrastructure.",
+      "translation": "Proiectarea centrată pe om și reglementarea converg către o cerință practică: o explicație trebuie să susțină acțiune și supraveghere adecvate. Pentru a satisface cerința după instalare, întregul flux al explicației trebuie versionat, monitorizat și apărat ca infrastructură de producție."
+    },
+    {
+      "id": "t000305",
+      "source": "3.3 Production assurance: drift, security, privacy, and governance",
+      "translation": "3.3 Asigurare în producție: derivă, securitate, confidențialitate și guvernanță"
+    },
+    {
+      "id": "t000306",
+      "source": "The difference between research XAI and production XAI is reproducibility. In a notebook, an engineer can rerun an explainer interactively, adjust a baseline, and inspect the result. In production, an explanation may be reviewed months later by someone who was not present when the prediction was made. The model may have been retrained, the feature pipeline changed, the retrieval corpus updated, and the explainer library upgraded. Without lineage, the original explanation becomes impossible to reconstruct.",
+      "translation": "Diferența dintre XAI de cercetare și XAI de producție este reproductibilitatea. Într-un notebook, un inginer poate rerula un explicator interactiv, ajusta o referință și inspecta rezultatul. În producție, o explicație poate fi revizuită luni mai târziu de cineva care nu era prezent când a fost făcută predicția. Modelul poate fi reantrenat, fluxul caracteristicilor schimbat, corpusul de recuperare actualizat și biblioteca explicatorului modernizată. Fără filiație, explicația originală devine imposibil de reconstruit."
+    },
+    {
+      "id": "t000307",
+      "source": "An explanation contract should therefore be materialized as data. Record the model identifier, input schema, preprocessing version, explainer and configuration, baseline or background set, target output, software version, timestamp, and relevant uncertainty measures. Where possible, retain references to the exact data or immutable hashes rather than only a rendered image. The visual artifact is a view; the explanation record is the evidence.",
+      "translation": "Un contract al explicației ar trebui astfel materializat ca date. Înregistrați identificatorul modelului, schema intrării, versiunea preprocesării, explicatorul și configurația, referința sau setul de fundal, ieșirea țintă, versiunea software, marcajul temporal și măsurile relevante ale incertitudinii. Unde este posibil, păstrați referințe la datele exacte sau hashuri imuabile, nu doar o imagine redată. Artefactul vizual este o vedere; înregistrarea explicației este dovada."
+    },
+    {
+      "id": "t000308",
+      "source": "Explanation drift adds a monitoring dimension. Prediction distributions can remain stable while the model's internal reliance changes. A retrained fraud model might preserve aggregate performance but shift from transaction behavior toward device metadata. A medical model might maintain AUROC while becoming more sensitive to a site-specific acquisition artifact. Monitoring attribution distributions, concept activation, counterfactual costs, or other explanatory summaries can reveal such shifts. These signals should not be interpreted naively, because explainers themselves are unstable, but they can trigger deeper review.",
+      "translation": "Deriva explicației adaugă o dimensiune a monitorizării. Distribuțiile predicțiilor pot rămâne stabile în timp ce dependența internă a modelului se schimbă. Un model de fraudă reantrenat poate păstra performanța agregată, dar trece de la comportamentul tranzacțiilor către metadatele dispozitivului. Un model medical poate menține AUROC devenind mai sensibil la un artefact de achiziție specific centrului. Monitorizarea distribuțiilor atribuirilor, activării conceptelor, costurilor contrafactuale sau altor rezumate explicative poate dezvălui asemenea schimbări. Aceste semnale nu ar trebui interpretate naiv, deoarece explicatorii înșiși sunt instabili, dar pot declanșa o revizuire mai profundă."
+    },
+    {
+      "id": "t000309",
+      "source": "The production pipeline therefore resembles an observability system. It samples explanations, stores evidence, compares cohorts and versions, runs regression tests, and routes anomalies to humans. The goal is not to generate explanations for every event at maximum detail. It is to make the system auditable at the right granularity and to preserve enough evidence to investigate when something important goes wrong.",
+      "translation": "Fluxul de producție seamănă astfel cu un sistem de observabilitate. Eșantionează explicații, stochează dovezi, compară cohorte și versiuni, rulează teste de regresie și direcționează anomaliile către oameni. Scopul nu este generarea de explicații pentru fiecare eveniment la detaliu maxim. Este să facă sistemul auditabil la granularitatea potrivită și să păstreze suficiente dovezi pentru investigație când ceva important merge prost."
+    },
+    {
+      "id": "t000310",
+      "source": "A production explanation record should be immutable enough to survive organizational change. It should identify not only the model binary or checkpoint but also the feature schema, preprocessing graph, retrieval snapshot where relevant, explainer configuration, and the exact output target that was explained. This is especially important for multi-output systems and language models, where explaining one token, one sequence score, or one downstream decision are different tasks.",
+      "translation": "O înregistrare de explicație în producție ar trebui să fie suficient de imuabilă pentru a supraviețui schimbării organizaționale. Ar trebui să identifice nu doar binarul sau punctul de control al modelului, ci și schema caracteristicilor, graful preprocesării, instantaneul recuperării unde este relevant, configurația explicatorului și ieșirea exactă țintă explicată. Aceasta este deosebit de important pentru sisteme cu ieșiri multiple și modele lingvistice, unde explicarea unui token, unui scor de secvență sau unei decizii ulterioare reprezintă sarcini diferite."
+    },
+    {
+      "id": "t000311",
+      "source": "Regression testing can be built around a curated corpus of explanation cases. Include ordinary examples, known edge cases, previous incidents, subgroup-sensitive cases, and intentionally adversarial inputs. When the model or explainer changes, compare not only predictions but also explanatory artifacts and the results of their validation tests. Large unexplained shifts should trigger review even if aggregate performance is stable.",
+      "translation": "Testarea regresiei poate fi construită în jurul unui corpus selectat de cazuri explicative. Includeți exemple obișnuite, cazuri-limită cunoscute, incidente anterioare, cazuri sensibile la subgrupuri și intrări intenționat adversariale. Când modelul sau explicatorul se schimbă, comparați nu doar predicțiile, ci și artefactele explicative și rezultatele testelor lor de validare. Schimbările mari neexplicate ar trebui să declanșeze revizuire chiar dacă performanța agregată este stabilă."
+    },
+    {
+      "id": "t000312",
+      "source": "In production, an explanation is generated inside a changing system: models are retrained, features are transformed, services are deployed in multiple regions, data distributions drift, and users see different interface layers. Reproducibility therefore requires more than saving a PNG. The explanation must be associated with the exact model artifact, preprocessing pipeline, output target, explainer configuration, background dataset, relevant data version, and software versions.",
+      "translation": "În producție, o explicație este generată într-un sistem în schimbare: modelele sunt reantrenate, caracteristicile transformate, serviciile instalate în regiuni multiple, distribuțiile datelor derivă, iar utilizatorii văd straturi diferite ale interfeței. Reproductibilitatea cere astfel mai mult decât salvarea unui PNG. Explicația trebuie asociată cu artefactul exact al modelului, fluxul preprocesării, ieșirea țintă, configurația explicatorului, setul de date de fundal, versiunea relevantă a datelor și versiunile software."
+    }
+  ]
+}

@@ -1,0 +1,506 @@
+{
+  "language": "ro",
+  "chunk": 3,
+  "segments": [
+    {
+      "id": "t000232",
+      "source": "This is why early work on word embeddings was so revealing. Association tests showed that distributional representations could reproduce human-like associations between demographic categories and concepts. Debiasing a single geometric direction sometimes reduced a measured association while leaving other recoverable information intact. The broader lesson survives in LLMs: social information is not stored in one neuron or one list of phrases. It is distributed through a network that must retain enough structure to answer legitimate questions about history, culture, medicine, law, and language. Removing all demographic information would destroy useful competence and still would not define fairness.",
+      "translation": ""
+    },
+    {
+      "id": "t000233",
+      "source": "A conventional classifier maps an input to a small output space. A large language model maps a context to a probability distribution over future token sequences. That difference changes fairness evaluation fundamentally. There is no single decision boundary to inspect because behavior depends on prompt wording, dialogue history, system instructions, sampling parameters, retrieved context, and sometimes tools. The same model can act as a summarizer, tutor, evaluator, recruiter, translator, recommender, or agent without changing its weights.",
+      "translation": ""
+    },
+    {
+      "id": "t000234",
+      "source": "This means that bias in an LLM is not one stable quantity. It is better understood as a family of conditional behavioral tendencies. Some tendencies are visible as stereotypical associations. Others appear as differences in refusal rates, confidence, verbosity, helpfulness, politeness, recommendations, or willingness to infer sensitive properties. Still others are latent and become visible only under indirect cues, adversarial prompts, role-play, multilingual interaction, or downstream decision tasks.",
+      "translation": ""
+    },
+    {
+      "id": "t000235",
+      "source": "The next-token objective is central but not sufficient to explain these behaviors. Pretraining teaches a model statistical structure from enormous text collections. Post-training teaches it how to act as an assistant. Retrieval and tools alter the information available at inference. Product policies shape refusal and style. The result is a layered system whose visible bias can differ sharply from the associations encoded during pretraining.",
+      "translation": ""
+    },
+    {
+      "id": "t000236",
+      "source": "Web-scale corpora contain literature, scientific writing, news, advertising, forums, propaganda, insults, historical documents, fan fiction, legal text, code, and casual conversation. They also contain duplicates, machine-generated material, demographic skews, language imbalances, and uneven editorial standards. Pretraining on this material does not simply memorize stereotypes, but it does create internal representations that reflect statistical associations among identities, occupations, attributes, locations, and styles.",
+      "translation": ""
+    },
+    {
+      "id": "t000237",
+      "source": "The old phrase \"models mirror society\" is too simple. Models can attenuate, preserve, or amplify patterns depending on tokenization, frequency, representation geometry, data filtering, optimization, and later post-training. Rare groups can be represented through a small and stereotyped slice of available text. High-resource languages can dominate shared representations. Safety filtering can remove explicit slurs while leaving subtler association patterns intact. Scale can improve general language competence while making the model more capable of reconstructing latent social regularities.",
+      "translation": ""
+    },
+    {
+      "id": "t000238",
+      "source": "The result is not a database of prejudices but a distributed statistical representation. This is why deleting a list of bad phrases does not reliably remove bias. The model can infer the same association from indirect cues.",
+      "translation": ""
+    },
+    {
+      "id": "t000239",
+      "source": "Tokenization is often treated as a low-level efficiency detail, but it can affect quality across languages and dialects. Languages represented poorly by the tokenizer may require more tokens for the same semantic content, increasing cost and reducing effective context length. Morphologically rich languages may fragment differently from English. Dialectal spellings can be treated as rarer patterns. These asymmetries interact with data availability: a low-resource language can be both underrepresented in pretraining and less efficiently encoded.",
+      "translation": ""
+    },
+    {
+      "id": "t000240",
+      "source": "Multilingual fairness therefore cannot be reduced to translating an English benchmark. Social categories have different meanings across cultures, and the technical substrate differs too. A caste category in India, a regional identity in the Balkans, Indigenous status in one country, or language variety in another may not map cleanly onto U.S.-centric race categories. Benchmarks such as Multilingual HolisticBias, MBBQ, BharatBBQ, KoBBQ, CBBQ, and more recent culturally grounded resources represent progress because they move evaluation toward local social ontologies rather than simple translation.",
+      "translation": ""
+    },
+    {
+      "id": "t000241",
+      "source": "Tokenization adds a low-level but consequential form of inequality. Languages and writing systems that are poorly represented by a tokenizer may require more tokens for the same semantic content. That can increase latency and cost, reduce effective context length, fragment meaningful units, and make long-form reasoning less efficient. Tokenization alone does not determine multilingual quality, but it interacts with data volume, model capacity, and deployment economics. A system that charges or limits by token can therefore transform a representational choice into a service disparity.",
+      "translation": ""
+    },
+    {
+      "id": "t000242",
+      "source": "Multilingual pretraining also raises the problem of cultural coverage. Translating an English fairness benchmark into another language does not automatically translate the social ontology behind the benchmark. Relevant identity categories, stereotypes, politeness norms, political cleavages, and harmful associations differ across societies. Some categories do not map cleanly; others are missing entirely. A model can be highly capable in a language while still representing its culture through a thin or externally imposed lens. Native benchmark construction and local expert involvement are therefore part of fairness measurement, not optional localization work.",
+      "translation": ""
+    },
+    {
+      "id": "t000243",
+      "source": "The engineering implication is to think of pretraining as a broad prior over possible behavior. It determines what the model can represent and makes some continuations easier than others, but it does not uniquely determine the behavior of an assistant. Post-training, system prompts, tools, retrieval, and decoding can strongly reshape what is expressed. The fairness problem must distinguish representation from policy: what information exists inside the model, what associations influence predictions, and under which conditions those associations become visible or decision-relevant.",
+      "translation": ""
+    },
+    {
+      "id": "t000244",
+      "source": "Pretraining bias is also inseparable from temporal coverage. Web corpora mix historical and current norms, and frequency can make yesterday's stereotypes statistically dominant even when contemporary institutions have changed. A model may therefore know that a stereotype is socially disfavored while still assigning it high predictive probability in unconstrained contexts. Retrieval of current evidence and post-training policy can compensate for some temporal mismatch, but neither rewrites the entire pretrained distribution. Evaluations should distinguish historical knowledge, descriptive prevalence, and normative recommendation rather than assuming that any reproduced association represents the model's endorsed view.",
+      "translation": ""
+    },
+    {
+      "id": "t000245",
+      "source": "Pretraining explains why stereotypes, dialect associations, and cultural asymmetries can remain available even when a model is instructed not to express them. Post-training therefore changes the surface on which bias appears rather than simply erasing the underlying representation.",
+      "translation": ""
+    },
+    {
+      "id": "t000246",
+      "source": "3.2 Post-training changes what bias looks like",
+      "translation": ""
+    },
+    {
+      "id": "t000247",
+      "source": "Instruction tuning and preference optimization do not simply make a pretrained model “less biased.” They change the policy that maps context to visible behavior. A model can learn that certain answers are unacceptable, become more likely to refuse, become more deferential to user framing, or move undesirable dependence into less obvious decisions. The distinction between expressed bias and latent dependence is essential for reading modern evaluations.",
+      "translation": ""
+    },
+    {
+      "id": "t000248",
+      "source": "Instruction tuning changes a language model from a generic continuation engine into a system that interprets requests. Preference optimization changes it again by rewarding outputs that human or AI evaluators prefer. Safety tuning teaches refusal and redirection policies. Constitutional approaches make some principles explicit. These interventions can greatly reduce openly stereotyped or hateful responses, but they also make fairness harder to infer from surface behavior. A model can learn that certain questions should not be answered without removing the underlying statistical preference that would influence a less explicit task.",
+      "translation": ""
+    },
+    {
+      "id": "t000249",
+      "source": "The distinction became especially visible in research on dialect and implicit bias. Hofmann and colleagues showed that language models could make covertly racist decisions about speakers of African American English even when explicit racial cues produced more socially acceptable behavior. Work in 2025 on explicit versus implicit social bias similarly reported that alignment and scale can reduce explicit expression while leaving or even sharpening some implicit patterns. In 2026, the Silenced Biases work directly targeted the possibility that refusal behavior can hide latent unfair preferences. These studies should not be read as proving that every refusal masks prejudice. They establish a methodological warning: visible politeness is not a sufficient fairness test.",
+      "translation": ""
+    },
+    {
+      "id": "t000250",
+      "source": "A pretrained model predicts plausible continuations. An instruction-tuned model is trained to interpret requests and produce useful answers. This changes the expression of bias because the model learns conventions of helpfulness, safety, politeness, and task completion. Supervised fine-tuning can teach explicit anti-stereotyping behavior. It can also introduce the preferences and blind spots of the curated instruction dataset.",
+      "translation": ""
+    },
+    {
+      "id": "t000251",
+      "source": "Instruction tuning changes the evaluation problem. A model may know a stereotype and choose not to state it. That can be desirable. But it creates a distinction between represented association and policy-compliant output. If the model is later asked to rank candidates, infer competence, or evaluate another response, the association may influence behavior without being verbalized explicitly.",
+      "translation": ""
+    },
+    {
+      "id": "t000252",
+      "source": "The distinction between knowledge and policy becomes especially important for high-stakes use. A model that refuses to answer \"Which group is more intelligent?\" has passed a simple safety test. It has not demonstrated that group identity will not influence a hiring recommendation.",
+      "translation": ""
+    },
+    {
+      "id": "t000253",
+      "source": "Preference optimization is powerful because it trains the model toward behavior humans or AI evaluators prefer. But the reward signal is not a neutral measure of truth or fairness. It reflects instructions, rater population, presentation format, preference-model architecture, and the examples included in training.",
+      "translation": ""
+    },
+    {
+      "id": "t000254",
+      "source": "Research on sycophancy illustrates the problem. Sharma and colleagues found that state-of-the-art assistants can agree with a user's beliefs at the expense of correctness and that human preference data sometimes reward such agreement. Earlier model-written evaluations from Anthropic also found that larger or more heavily preference-trained models could exhibit stronger sycophantic tendencies in some settings. These findings should not be interpreted as proof that RLHF is generally harmful; they show that optimizing human preference can import predictable human preferences into the model.",
+      "translation": ""
+    },
+    {
+      "id": "t000255",
+      "source": "RLAIF and constitutional approaches move part of the supervision burden from human raters to model-based critique and explicit principles. This can improve scalability and make normative rules more transparent. Anthropic's Collective Constitutional AI experiment showed that a publicly sourced constitution could alter measured social bias without obvious degradation on tested language and math tasks. Yet the core issue remains: who chooses the constitution, how conflicting principles are resolved, and how well benchmark improvements transfer to real deployments?",
+      "translation": ""
+    },
+    {
+      "id": "t000256",
+      "source": "One of the most important developments in recent LLM fairness research is the recognition that visible politeness is not equivalent to absence of harmful dependence. Hofmann and colleagues showed that several language models exhibited strong dialect prejudice against African American English even while their overt responses about African Americans were comparatively positive. The study found downstream effects in hypothetical employment and criminal-justice decisions. The contrast between overt and covert behavior was particularly important in models trained with human feedback.",
+      "translation": ""
+    },
+    {
+      "id": "t000257",
+      "source": "Zhao and colleagues later studied explicit and implicit bias more systematically and reported a similar divergence: explicit bias tended to decline with scale and alignment while implicit bias remained stronger and, in some settings, increased. The 2026 Silenced Bias Benchmark pushes the argument further by using activation steering to reduce refusal behavior and expose preferences that ordinary prompting may conceal.",
+      "translation": ""
+    },
+    {
+      "id": "t000258",
+      "source": "These results do not imply that safety alignment is useless. Reducing harmful explicit output is valuable. They imply that refusal and surface neutrality must not be treated as sufficient evidence of fairness. An aligned system should be tested with indirect cues, forced-choice settings where appropriate, downstream decisions, counterfactual pairs, and adversarial reformulations.",
+      "translation": ""
+    },
+    {
+      "id": "t000259",
+      "source": "An LLM is a conditional system. Prompt wording can therefore change measured bias substantially. A request framed as objective analysis may produce one pattern; the same request framed as role-play, emotional persuasion, or a persona may produce another. Persona prompts can cause the model to reproduce demographic stereotypes associated with the persona. System prompts can also shift political or cultural framing.",
+      "translation": ""
+    },
+    {
+      "id": "t000260",
+      "source": "This creates a methodological problem. A benchmark prompt is not merely a container for the task. It is",
+      "translation": ""
+    },
+    {
+      "id": "t000261",
+      "source": "part of the intervention. If a fairness score changes when two semantically equivalent prompts are",
+      "translation": ""
+    },
+    {
+      "id": "t000262",
+      "source": "rephrased, the model has a robustness problem and the benchmark has an estimation problem. Research on prompt-based fairness metrics and later agreement studies confirms that different prompt formulations and scoring methods can produce incompatible conclusions.",
+      "translation": ""
+    },
+    {
+      "id": "t000263",
+      "source": "The practical consequence is that fairness evaluation should sample prompt distributions, not rely on a canonical sentence. Prompt templates should be varied deliberately, including neutral, realistic, ambiguous, adversarial, and user-like forms. The variance across prompts is itself a safety-relevant result.",
+      "translation": ""
+    },
+    {
+      "id": "t000264",
+      "source": "Political bias is particularly difficult because the target is contested. \"Neutral\" can mean balanced representation of mainstream positions, evidence-weighted truthfulness, non-endorsement, ideological symmetry, or fidelity to a user's request. Those goals can conflict. A model should not create false equivalence between evidence-supported and unsupported claims merely to appear balanced, but it should also avoid injecting a partisan preference when the user asks for analysis.",
+      "translation": ""
+    },
+    {
+      "id": "t000265",
+      "source": "Academic studies increasingly criticize simplistic political-compass evaluations. Bang and colleagues proposed measuring both what is said and how it is said. Faulborn and colleagues argued that commonly used Political Compass tests are not scientifically valid instruments for measuring model ideology and found strong prompt sensitivity in alternative evaluations, although instruction-tuned models in their study tended to lean left on their measure. Other controlled studies report partisan asymmetries in reasoning tasks. OpenAI's 2025 evaluation similarly treats political bias as a multidimensional behavioral phenomenon and reports that emotionally charged prompts are more likely to elicit deviations from its objectivity target.",
+      "translation": ""
+    },
+    {
+      "id": "t000266",
+      "source": "The defensible conclusion is not that all LLMs have one stable political ideology. It is that political behavior is measurable, prompt-sensitive, model-dependent, and partly shaped by post-training. Strong claims require theory-grounded instruments, balanced prompt construction, multiple languages and contexts, and explicit definitions of the behavior being called bias.",
+      "translation": ""
+    },
+    {
+      "id": "t000267",
+      "source": "Preference data introduce another normative layer. RLHF optimizes against judgments made by particular raters under particular instructions. RLAIF replaces or supplements those raters with models that were themselves trained under value choices. Reward models can favor confidence, verbosity, deference, or agreement in ways that interact with social identity. Research on sycophancy demonstrates a general phenomenon: an assistant may optimize for what the user appears to want rather than for truth. If preferences differ across user groups or if a model infers identity from language, a preference-seeking policy can produce group-dependent behavior even without an explicit fairness objective.",
+      "translation": ""
+    },
+    {
+      "id": "t000268",
+      "source": "Prompt sensitivity makes the system even less static. Persona instructions, role framing, conversation history, language choice, system policy, or a request to \"be objective\" can change the model's response. Political-bias research illustrates why this matters. Simple political-compass prompts often produce unstable or instrument-dependent conclusions. Theory-grounded work in 2025 found that political measurements vary with prompting and that constrained survey instruments can exaggerate apparent bias; instruction-tuned models often showed a modest leftward tendency in that study, but the more important result was instability across measurement choices.",
+      "translation": ""
+    },
+    {
+      "id": "t000269",
+      "source": "For deployment, this means that \"the bias of Model X\" is usually underspecified. A production claim should name the model version, post-training regime, system prompt, decoding settings, language, conversation context, retrieval state, and task. The object being evaluated is a conditional behavior policy. Once that is accepted, contradictory benchmark results become less surprising: different evaluations may be sampling different regions of the same policy.",
+      "translation": ""
+    },
+    {
+      "id": "t000270",
+      "source": "The operational conclusion is that refusal rates, indirect decisions, sycophancy, persona sensitivity, and multilingual behavior must be audited together. A model that looks safe on explicit prompts can still rely on problematic cues in tasks that resemble allocation.",
+      "translation": ""
+    },
+    {
+      "id": "t000271",
+      "source": "3.3 Measuring LLM bias without mistaking the instrument for the phenomenon",
+      "translation": ""
+    },
+    {
+      "id": "t000272",
+      "source": "The state of LLM fairness research in 2026 is defined by measurement disagreement as much as by new benchmarks. Studies show that prompt formulations can change results, metrics that supposedly measure similar constructs can rank models differently, and LLM judges can prefer an answer because of position or style. A benchmark is therefore an instrument with a scope, failure modes, and calibration problem. It is not a verdict about a model in the abstract.",
+      "translation": ""
+    },
+    {
+      "id": "t000273",
+      "source": "Bias benchmarks made the field possible by converting broad concerns into repeatable experiments. CrowS-Pairs asks whether a model prefers stereotypical over anti-stereotypical sentence pairs. StereoSet tests stereotype associations while also trying to preserve language-modeling competence. BBQ uses ambiguous and disambiguated question-answering contexts to study reliance on social stereotypes. BOLD and HONEST focus on open-ended generation and hurtful completions. HolisticBias expands descriptor-based coverage across many demographic axes, while multilingual extensions and culturally grounded datasets address some of the Anglocentric limits of earlier work. Each benchmark reveals a different slice of behavior.",
+      "translation": ""
+    },
+    {
+      "id": "t000274",
+      "source": "The problem begins when the slice is mistaken for the whole construct. A token-probability measure can detect an association without showing that the model will make an unfair decision. A generation benchmark can show stereotypical text without measuring allocation. A forced-choice question can reveal a preference that a production assistant would refuse to express. A toxicity classifier used as a metric can import its own dialect or identity bias. A translated benchmark can preserve lexical form while losing cultural validity. The benchmark is therefore part of a measurement chain, and every link introduces assumptions.",
+      "translation": ""
+    },
+    {
+      "id": "t000275",
+      "source": "LLM bias evaluation can target at least four distinct layers. Intrinsic evaluations examine token probabilities, embeddings, or internal representations. Behavioral evaluations observe what the model says under controlled prompts. Decision evaluations measure choices, ranks, or allocations in a task such as hiring or recommendation. System evaluations measure end-to-end outcomes after retrieval, tools, guardrails, and user interaction are included.",
+      "translation": ""
+    },
+    {
+      "id": "t000276",
+      "source": "These layers should not be collapsed. An association in an embedding does not prove downstream discrimination. A polite generation does not prove neutral allocation. A fair model component does not prove a fair system. The strongest evaluation programs connect the layers experimentally: identify an association, test whether it changes behavior, test whether behavior changes a material decision, and determine whether the effect persists under realistic deployment conditions.",
+      "translation": ""
+    },
+    {
+      "id": "t000277",
+      "source": "These benchmarks remain valuable because they are reproducible and expose recognizable failure modes. They also reflect the era in which they were designed. Many target English and U.S.-centric categories. Several use templates that can create unnatural phrasing. Some depend on external toxicity or sentiment classifiers, making the measurement model itself a source of error. Forced-choice tasks can overstate behavior that would not appear in natural conversation, while open-ended generation can hide low-probability but important tendencies unless many samples are drawn.",
+      "translation": ""
+    },
+    {
+      "id": "t000278",
+      "source": "A mature use of these benchmarks treats them as probes, not certification exams.",
+      "translation": ""
+    },
+    {
+      "id": "t000279",
+      "source": "The field has moved toward multilingual and culturally specific evaluation. Multilingual HolisticBias extends descriptor-based testing across many languages. MBBQ adapts BBQ-style evaluation to Dutch, Spanish, and Turkish. BharatBBQ covers multiple Indian languages and culturally relevant social categories. KoBBQ and CBBQ address Korean and Chinese contexts, while newer resources explore Basque, African, and other linguistic settings.",
+      "translation": ""
+    },
+    {
+      "id": "t000280",
+      "source": "The key methodological improvement is not simply more languages. It is recognition that translation preserves words more easily than social meaning. A category that is salient in one society may be secondary in another. Stereotypes can reverse by context. Grammatical gender can create effects absent from English. A translated benchmark can therefore produce false comparability.",
+      "translation": ""
+    },
+    {
+      "id": "t000281",
+      "source": "For serious multilingual work, native construction should be preferred where possible. Local experts should define relevant groups and harms. Translation can then serve as one controlled comparison rather than the conceptual foundation of the benchmark.",
+      "translation": ""
+    },
+    {
+      "id": "t000282",
+      "source": "In 2024, Zayed and colleagues reported poor correlation among prompt-based fairness metrics. The 2026 work by Asgari and colleagues expands the point by quantifying agreement across eight LLMs, seven bias metrics, and nine corpora. They found substantial disagreement both among metrics and among model families. Even metrics that appear to measure related forms of bias can behave independently.",
+      "translation": ""
+    },
+    {
+      "id": "t000283",
+      "source": "There are several reasons. Benchmarks operationalize different constructs. One measures stereotype preference, another toxicity, another hurtful generation, another decision disparity. Prompt formats differ. Some scores depend on token likelihoods, others on generated text and external classifiers. Models differ in refusal behavior. Closed models may change versions. Sampling temperatures alter distributions. Benchmark examples may appear in training data.",
+      "translation": ""
+    },
+    {
+      "id": "t000284",
+      "source": "The correct response is not to average everything into a universal bias score. It is to report a profile and analyze stability. If Model A beats Model B on BBQ but loses on HONEST and a domain-specific counterfactual audit, that disagreement is information. It tells us that fairness is not one latent scalar being noisily estimated.",
+      "translation": ""
+    },
+    {
+      "id": "t000285",
+      "source": "Construct validity asks whether those assumptions are defensible. Does the test item represent a plausible situation? Does the protected category mean the same thing across cultures? Is the metric sensitive to fluency or refusal rather than bias? Was the benchmark present in training data? Does a model improve because its behavior genuinely changed or because it learned the test format? These questions sound like ordinary experimental design because that is exactly what they are. Fairness evaluation is not exempt from the principles used in other empirical sciences.",
+      "translation": ""
+    },
+    {
+      "id": "t000286",
+      "source": "A strong evaluation therefore produces a bias profile rather than a universal score. The profile identifies which harms are tested, which groups and intersections are covered, how behavior changes across prompts and languages, and where metrics disagree. A benchmark becomes evidence in a case, not the judge of the case. This posture is scientifically less dramatic than announcing that one model is \"fairer\" than another, but it is much more useful for engineering decisions.",
+      "translation": ""
+    },
+    {
+      "id": "t000287",
+      "source": "Benchmark design should also anticipate saturation. Once a benchmark becomes famous, model developers can optimize against it directly or indirectly, and the benchmark can enter training corpora. High scores then become harder to interpret as evidence of generalization. Rotating test sets, hidden evaluations, procedurally generated counterfactuals, and product-specific audits reduce this problem. The broader lesson is familiar from software security: a published test suite is valuable, but passing known tests is not equivalent to absence of the underlying vulnerability class.",
+      "translation": ""
+    },
+    {
+      "id": "t000288",
+      "source": "Generative systems require a portfolio because no single test observes the whole behavior distribution. The table separates instruments that probe association, controlled decisions, open generation, refusal, robustness, and the evaluator itself.",
+      "translation": ""
+    },
+    {
+      "id": "t000289",
+      "source": "Table 3. A measurement portfolio for generative systems",
+      "translation": ""
+    },
+    {
+      "id": "t000290",
+      "source": "Concept",
+      "translation": ""
+    },
+    {
+      "id": "t000291",
+      "source": "Meaning in practice",
+      "translation": ""
+    },
+    {
+      "id": "t000292",
+      "source": "Association tests",
+      "translation": ""
+    },
+    {
+      "id": "t000293",
+      "source": "Probe stereotypical likelihood or representation, but may not predict allocational behavior.",
+      "translation": ""
+    },
+    {
+      "id": "t000294",
+      "source": "Counterfactual tasks",
+      "translation": ""
+    },
+    {
+      "id": "t000295",
+      "source": "Hold task evidence constant while changing a demographic cue; validity depends on whether the counterfactual preserves meaning.",
+      "translation": ""
+    },
+    {
+      "id": "t000296",
+      "source": "Open generation",
+      "translation": ""
+    },
+    {
+      "id": "t000297",
+      "source": "Examines descriptors, tone, hurtfulness, omission, or framing over sampled outputs rather than a forced label.",
+      "translation": ""
+    },
+    {
+      "id": "t000298",
+      "source": "Refusal analysis",
+      "translation": ""
+    },
+    {
+      "id": "t000299",
+      "source": "Treats abstention and safety refusal as outcomes because unequal refusal can become unequal access to service.",
+      "translation": ""
+    },
+    {
+      "id": "t000300",
+      "source": "Stress testing",
+      "translation": ""
+    },
+    {
+      "id": "t000301",
+      "source": "Varies prompts, personas, conversation history, language, and adversarial context to measure behavioral robustness.",
+      "translation": ""
+    },
+    {
+      "id": "t000302",
+      "source": "Judge validation",
+      "translation": ""
+    },
+    {
+      "id": "t000303",
+      "source": "Audits position, style, self-preference, rubric sensitivity, and human agreement when another LLM performs evaluation.",
+      "translation": ""
+    },
+    {
+      "id": "t000304",
+      "source": "A credible evaluation therefore reports the pattern across instruments and explains disagreement. If an association test improves while counterfactual decisions or refusal disparities worsen, the result is not contradictory; the tests are observing different behavioral layers.",
+      "translation": ""
+    },
+    {
+      "id": "t000305",
+      "source": "Generative systems produce distributions, not single answers. Evaluating one deterministic completion can hide a model that occasionally emits severe stereotypes or that changes behavior under modest decoding variation. A more informative protocol samples multiple outputs under documented settings and measures the distribution of decisions, ranks, refusals, toxicity, sentiment, uncertainty, or other task-specific outcomes. For black-box APIs, the model identifier, date, region, system prompt, temperature, tools, and retrieval configuration should be logged because vendor-side updates can make an experiment irreproducible even when the client code does not change.",
+      "translation": ""
+    },
+    {
+      "id": "t000306",
+      "source": "Counterfactual testing is among the most useful black-box methods for decision-oriented LLMs. Construct pairs of inputs that differ only in a socially salient attribute while preserving legitimate qualifications. A resume can be duplicated with different names or pronouns. A recommendation request can vary geographic location while keeping preferences fixed. A clinical vignette can alter demographic details when those details are not medically relevant.",
+      "translation": ""
+    },
+    {
+      "id": "t000307",
+      "source": "The strength of the method is causal intuition: if the protected attribute is the only intended change, a systematic output change is evidence that the attribute affects behavior. The weakness is that naive substitutions can create invalid counterfactuals. Names carry socioeconomic and cultural information. Some health risks genuinely depend on sex-linked biology. Dialect is not simply a detachable race marker. Counterfactual design therefore requires a domain model of what should remain invariant.",
+      "translation": ""
+    },
+    {
+      "id": "t000308",
+      "source": "Recent causality-guided work on LLM fairness tries to formalize this distinction by separating legitimate and illegitimate causal pathways rather than demanding total independence from sensitive attributes.",
+      "translation": ""
+    },
+    {
+      "id": "t000309",
+      "source": "A robust evaluation should therefore define the sampling regime, replicate outputs, and measure distributions. Useful variables include decision rate, rank, sentiment, toxicity, refusal, uncertainty language, verbosity, confidence, politeness, stereotype content, factuality, and semantic themes. The evaluator should report effect sizes and uncertainty rather than only significance tests, because API-scale experiments can make tiny differences statistically significant.",
+      "translation": ""
+    },
+    {
+      "id": "t000310",
+      "source": "For black-box APIs, model version, date, temperature, system prompt, tools, and region should be logged. Without these details, longitudinal comparisons can become meaningless.",
+      "translation": ""
+    },
+    {
+      "id": "t000311",
+      "source": "Modern assistants often refuse socially sensitive prompts. Evaluation pipelines sometimes treat refusal as neutral. That can create a false improvement: a model may stop expressing stereotypes because it refuses more often for certain groups. If refusal itself is group-conditioned, users receive unequal service.",
+      "translation": ""
+    },
+    {
+      "id": "t000312",
+      "source": "A useful evaluation separates at least successful helpful response, harmful or stereotyped response, refusal or abstention, and other failure. For decision tasks, forced-choice or constrained settings can sometimes reveal whether the underlying preference changed, but such tests should be interpreted carefully because they remove the model's normal ability to abstain.",
+      "translation": ""
+    },
+    {
+      "id": "t000313",
+      "source": "The explicit-implicit literature and the 2026 work on silenced bias make this decomposition increasingly important. A model that appears fair because it has learned which questions are socially dangerous is behaviorally different from a model whose relevant decision process is actually less dependent on the sensitive cue.",
+      "translation": ""
+    },
+    {
+      "id": "t000314",
+      "source": "DecodingTrust and later benchmarks such as FLEX demonstrate that fairness conclusions can change under adversarial prompting. The model may behave acceptably under canonical benchmark instructions and fail when the user supplies bias-inducing context, role-play, emotional framing, or competing instructions.",
+      "translation": ""
+    },
+    {
+      "id": "t000315",
+      "source": "A production evaluation should therefore include stress tests. The goal is not to create unrealistic jailbreak theater but to explore plausible ways a real system may be pushed away from its default policy. For an enterprise assistant, this can include retrieved documents containing biased assumptions. For a hiring system, it can include manager notes that express stereotypes. For a tutor, it can include a student who asks the model to confirm a prejudiced belief.",
+      "translation": ""
+    },
+    {
+      "id": "t000316",
+      "source": "Robust fairness means that a system's desired behavior survives reasonable contextual perturbations.",
+      "translation": ""
+    },
+    {
+      "id": "t000317",
+      "source": "Using one LLM to judge another is attractive because human evaluation is expensive. It is also dangerous because the judge becomes part of the measurement system. LLM judges can exhibit position bias, preferring an answer because it appears first or second; verbosity bias, favoring longer polished responses; self-preference, favoring outputs similar to their own style; and task-specific preferences unrelated to the target criterion.",
+      "translation": ""
+    },
+    {
+      "id": "t000318",
+      "source": "Wang and colleagues showed that simply changing response order could strongly alter pairwise judgments. Later work systematically confirmed position bias across multiple judge models and tasks. Other studies show that superficial quality can distract judges from instruction following.",
+      "translation": ""
+    },
+    {
+      "id": "t000319",
+      "source": "LLM judges are still useful. They should be calibrated. Pairwise order should be swapped. Multiple judges can be ensembled. Human validation should be stratified by demographic dimension and task type. The judge prompt and rubric should be versioned. Disagreement between judges should be treated as uncertainty rather than silently resolved by majority vote.",
+      "translation": ""
+    },
+    {
+      "id": "t000320",
+      "source": "The 2026 ACL study by Asgari and colleagues is especially important because it formalizes a problem practitioners had already encountered informally: different bias metrics and different models often disagree in their rankings. Even metrics placed in the same broad family can behave largely independently. The correct interpretation is not that measurement is futile, but that each metric operationalizes a narrower behavioral construct than the phrase “bias score” suggests.",
+      "translation": ""
+    },
+    {
+      "id": "t000321",
+      "source": "LLM-as-a-judge adds another layer of measurement uncertainty. Shi and colleagues evaluated position bias across fifteen judge models and more than 150,000 evaluation instances, finding that position effects were systematic and task-dependent rather than random noise. An evaluation pipeline that uses an LLM judge should therefore randomize candidate order, repeat comparisons, inspect disagreement, and preserve the judge version as part of the experimental configuration.",
+      "translation": ""
+    },
+    {
+      "id": "t000322",
+      "source": "The goal is not to abandon benchmarks but to build a measurement portfolio: multiple task formulations, distributions rather than single samples, subgroup and intersectional analysis, refusal as an outcome, and independent validation of automated judges. Measurement disagreement is information, not an inconvenience to average away.",
+      "translation": ""
+    },
+    {
+      "id": "t000323",
+      "source": "For LLMs, the distinction between represented knowledge, expressed behavior, and evaluated behavior is indispensable. Pretraining, post-training, context, and measurement form separate layers, and a trustworthy claim must state which layer it actually tested.",
+      "translation": ""
+    },
+    {
+      "id": "t000324",
+      "source": "4. FROM DEBIASING TO FAIRNESS ENGINEERING: MITIGATION, RAG, TOOLS, AND AGENTS",
+      "translation": ""
+    },
+    {
+      "id": "t000325",
+      "source": "A modern AI product is often a chain of models and policies rather than one model. A retriever decides which sources are visible; a reranker controls exposure; a generator interprets the evidence; an agent chooses tools; memory changes future context; an LLM judge may decide which answer or candidate wins. Recent RAG studies show that fairness alignment can be weakened by retrieved context, while work on LLM judges documents position and presentation biases. Mitigation therefore has to move from the metaphor of “cleaning bias out of weights” to the engineering of controlled information flows and bounded decisions.",
+      "translation": ""
+    },
+    {
+      "id": "t000326",
+      "source": "The chapter begins with interventions at data, training, and inference, then widens the boundary to retrieval and finally to tool-using agents whose trajectories allocate evidence and action.",
+      "translation": ""
+    },
+    {
+      "id": "t000327",
+      "source": "4.1 Change the data, objective, training signal, or inference policy",
+      "translation": ""
+    },
+    {
+      "id": "t000328",
+      "source": "Mitigation fails when it begins with a technique rather than a mechanism. Reweighting is useful when optimization under-serves a subgroup represented in the data. Counterfactual augmentation is useful when a protected cue should not change the task answer. Preference optimization can change visible behavior but may also create refusals or evaluator-dependent artifacts. The correct question is which dependency or failure path the intervention is intended to change.",
+      "translation": ""
+    },
+    {
+      "id": "t000329",
+      "source": "Data-centric mitigation is attractive because it intervenes before a model has learned the unwanted pattern. It can mean removing corrupted or dehumanizing content, increasing representation of underserved languages and groups, improving metadata, balancing labels, collecting counterexamples, or changing how examples are weighted. Yet \"balancing\" is not a universal recipe. Making every group equally frequent can distort the intended deployment distribution; removing every offensive sentence can also remove the evidence a model needs to recognize or discuss abuse. The design question is which data property caused the harmful behavior and which transformation changes that mechanism without erasing useful context.",
+      "translation": ""
+    },
+    {
+      "id": "t000330",
+      "source": "Counterfactual data augmentation creates paired examples in which a social attribute is changed while the desired label or behavior remains stable. In a coreference task, pronouns and occupations can be varied; in resume screening, names or demographic cues can be changed while qualifications remain constant. The method is powerful when the counterfactual is semantically valid. It becomes misleading when identity is embedded in cultural or historical context that cannot be swapped without changing meaning. The safest use is therefore targeted: counterfactuals should encode a specific invariance hypothesis rather than a general idea that demographic categories are interchangeable.",
+      "translation": ""
+    },
+    {
+      "id": "t000331",
+      "source": "The word debiasing suggests that a model contains a contaminant that can be removed. In practice, social information is distributed through representations and entangled with useful knowledge. A system must often reason about culture, demographics, and identity to answer correctly. The objective is therefore not to delete social information but to reduce harmful dependence while preserving legitimate context.",
+      "translation": ""
+    }
+  ]
+}

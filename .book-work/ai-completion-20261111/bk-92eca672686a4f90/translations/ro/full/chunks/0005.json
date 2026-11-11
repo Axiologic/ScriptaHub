@@ -1,0 +1,1336 @@
+{
+  "language": "ro",
+  "chunk": 5,
+  "segments": [
+    {
+      "id": "t000589",
+      "source": "We can now rebuild Meridian's agent without using any framework vocabulary. The user or upstream system submits a task under an authenticated identity. An intake layer resolves the operational objective, validates required fields, and attaches applicable policy. The task receives a durable identifier. Nothing agentic has happened yet. This first stage exists to make the request a well-defined piece of work rather than a transient chat message.",
+      "translation": "Putem reconstrui acum agentul Meridian fără niciun vocabular de cadru de dezvoltare. Utilizatorul sau sistemul din amonte trimite o sarcină sub o identitate autentificată. Un strat de preluare clarifică obiectivul operațional, validează câmpurile necesare și atașează politica aplicabilă. Sarcina primește un identificator durabil. Nu s-a întâmplat încă nimic agentic. Prima etapă există pentru a face din cerere o unitate bine definită de muncă, nu un mesaj tranzitoriu de chat."
+    },
+    {
+      "id": "t000590",
+      "source": "The context builder then constructs the initial decision state. It loads the minimal customer and device metadata needed for triage, retrieves applicable knowledge and policy, records provenance, and exposes only the tools permitted at this stage. The agent model receives instructions plus this state and chooses the next action. A typed tool wrapper validates parameters and executes under a scoped service identity. The result is written to the trace and task state before the next model decision.",
+      "translation": "Constructorul de context construiește apoi starea decizională inițială. Încarcă metadatele minime despre client și dispozitiv necesare trierii, recuperează cunoașterea și politica aplicabile, înregistrează proveniența și expune numai instrumentele permise în această etapă. Modelul agentic primește instrucțiuni plus această stare și alege acțiunea următoare. O componentă tipizată care încadrează instrumentul validează parametrii și execută sub o identitate de serviciu delimitată. Rezultatul este scris în urmă și în starea sarcinii înaintea următoarei decizii a modelului."
+    },
+    {
+      "id": "t000591",
+      "source": "The control plane sits around this loop. It chooses the model class, token and time budgets, allowable tool set, retry policy, and escalation thresholds. It can route a task to a specialist, but delegation is explicit and inherits only the required context and permissions. The control plane also owns guardrails that must survive model error. If an action exceeds the current authority, execution pauses and emits an approval object rather than merely asking the model whether it feels confident.",
+      "translation": "Planul de control se află în jurul acestei bucle. Alege clasa modelului, bugetele de tokeni și timp, setul permis de instrumente, politica reîncercării și pragurile escaladării. Poate ruta o sarcină către un specialist, dar delegarea este explicită și moștenește numai contextul și permisiunile necesare. Planul de control deține și protecțiile care trebuie să supraviețuiască erorii modelului. Dacă o acțiune depășește autoritatea curentă, execuția se oprește temporar și emite un obiect de aprobare, nu doar întreabă modelul dacă se simte încrezător."
+    },
+    {
+      "id": "t000592",
+      "source": "The durable runtime manages checkpoints, queues, concurrency, and resumption. Tool actions with side effects carry transaction identities. Browser and code environments are isolated. Artifacts are stored outside the prompt and referenced by stable identifiers. If a human approves an action four hours later, the runtime reloads current state, revalidates preconditions, and then continues. This is important: approval of an old plan does not imply that the world has remained unchanged.",
+      "translation": "Mediul durabil de execuție gestionează punctele de control, cozile, concurența și reluarea. Acțiunile instrumentelor cu efecte secundare poartă identități tranzacționale. Mediile de browser și cod sunt izolate. Artefactele sunt stocate în afara promptului și referite prin identificatori stabili. Dacă un om aprobă o acțiune după patru ore, mediul de execuție reîncarcă starea curentă, revalidează precondițiile și apoi continuă. Este important: aprobarea unui plan vechi nu implică faptul că lumea a rămas neschimbată."
+    },
+    {
+      "id": "t000593",
+      "source": "Evaluation is integrated rather than attached afterward. Every release runs against golden scenarios and historical failure cases. Production traces feed online metrics. Some trajectories are sampled for expert review. Security tests inject malicious content into retrieval sources and tool outputs. Cost and latency are measured per successful outcome.",
+      "translation": "Evaluarea este integrată, nu atașată ulterior. Fiecare lansare rulează față de scenarii de referință și cazuri istorice de eșec. Urmele de producție alimentează metricile online. Unele traiectorii sunt eșantionate pentru revizuire expertă. Testele de securitate injectează conținut malițios în sursele de recuperare și rezultatele instrumentelor. Costul și latența sunt măsurate per rezultat reușit."
+    },
+    {
+      "id": "t000594",
+      "source": "When a regression appears, the team can replay the task with a previous model, prompt, tool version, or retrieval policy to identify the cause.",
+      "translation": "Când apare o regresie, echipa poate relua sarcina cu un model, prompt, versiune de instrument sau politică de recuperare anterioară pentru a identifica sursa."
+    },
+    {
+      "id": "t000595",
+      "source": "The architecture is intentionally modular because the fast-changing pieces are not the same as the stable pieces. Models may change monthly. Protocols may evolve. Frameworks may be replaced. But the organization's definition of a valid incident, a privileged action, an approval rule, a verified resolution, and an acceptable audit trail should be much more stable. The reference architecture therefore locates domain invariants outside the model and connects them to the model through explicit contracts.",
+      "translation": "Arhitectura este intenționat modulară deoarece piesele care se schimbă rapid nu sunt aceleași cu piesele stabile. Modelele se pot schimba lunar. Protocoalele pot evolua. Cadrele pot fi înlocuite. Dar definiția organizației pentru un incident valid, o acțiune privilegiată, o regulă de aprobare, o rezolvare verificată și o pistă acceptabilă de audit ar trebui să fie mult mai stabilă. Arhitectura de referință localizează, așadar, invariantele domeniului în afara modelului și le conectează la model prin contracte explicite."
+    },
+    {
+      "id": "t000596",
+      "source": "This is the central engineering story of the book. We began with a model generating text and ended with a distributed system in which a model selects some transitions. The system has identity, policy, state, tools, memory, protocols, durability, evaluation, security, human control, and economics. None of these components makes the agent intelligent alone. Together they make intelligence operationally useful. A framework can package many of them, but architecture is the reasoning that tells us why they are there.",
+      "translation": "Aceasta este povestea inginerească centrală a cărții. Am început cu un model care generează text și am terminat cu un sistem distribuit în care un model selectează unele tranziții. Sistemul are identitate, politici, stare, instrumente, memorie, protocoale, durabilitate, evaluare, securitate, control uman și economie. Niciuna dintre componente nu face singură agentul inteligent. Împreună fac inteligența utilă operațional. Un cadru poate grupa multe dintre ele, dar arhitectura este raționamentul care ne spune de ce sunt acolo."
+    },
+    {
+      "id": "t000597",
+      "source": "The architecture becomes easier to implement if constructed in risk order. Start with authenticated intake and read-only tools. Add structured task state and an explicit success condition. Instrument every model and tool transition. Build the evaluation harness from traces. Only then add durable continuation, memory writes, privileged actions, multi-agent delegation, and external protocol discovery. Each new capability should arrive with a corresponding control and test. This sequence avoids the common pattern of building a spectacular autonomous prototype and then discovering that no one knows how to make it safe enough to deploy.",
+      "translation": "Arhitectura devine mai ușor de implementat dacă este construită în ordinea riscului. Începeți cu preluare autentificată și instrumente doar în citire. Adăugați stare structurată a sarcinii și o condiție explicită de succes. Instrumentați fiecare tranziție de model și instrument. Construiți infrastructura de evaluare din urme. Abia apoi adăugați continuare durabilă, scrieri în memorie, acțiuni privilegiate, delegare multiagent și descoperire externă de protocoale. Fiecare capacitate nouă ar trebui să sosească împreună cu un control și un test corespunzător. Secvența evită tiparul frecvent al construirii unui prototip autonom spectaculos, urmat de descoperirea că nimeni nu știe cum să-l facă suficient de sigur pentru implementare."
+    },
+    {
+      "id": "t000598",
+      "source": "A small team can implement the same principles without a giant platform. A relational database can hold task and event state; a queue can schedule work; a model SDK can produce structured tool calls; a policy service can authorize actions; object storage can hold artifacts; OpenTelemetry-compatible traces can connect components; and a simple evaluation runner can replay scenarios. Frameworks are valuable because they package these ideas, not because agency requires a special substrate. Understanding the primitives makes framework choice reversible.",
+      "translation": "O echipă mică poate implementa aceleași principii fără o platformă gigantică. O bază de date relațională poate păstra starea sarcinilor și evenimentelor; o coadă poate programa munca; un SDK de model poate produce apeluri structurate de instrumente; un serviciu de politici poate autoriza acțiuni; stocarea de obiecte poate păstra artefacte; urmele compatibile cu OpenTelemetry pot conecta componente; iar un executant simplu de evaluări poate relua scenarii. Cadrele sunt valoroase fiindcă grupează aceste idei, nu fiindcă acțiunea agentică necesită un substrat special. Înțelegerea primitivelor face alegerea cadrului reversibilă."
+    },
+    {
+      "id": "t000599",
+      "source": "The final architecture should have an explicit evidence path. For every consequential action, an operator should be able to answer: which goal was active, which identity requested it, which evidence the agent saw, which policy permitted it, which model and tool versions were used, what the external system returned, whether a human approved it, and how success was verified. If the platform cannot reconstruct that story, it is not yet a mature agent platform.",
+      "translation": "Arhitectura finală ar trebui să aibă un traseu explicit al dovezilor. Pentru fiecare acțiune cu consecințe, un operator ar trebui să poată răspunde: ce obiectiv era activ, ce identitate l-a cerut, ce dovezi a văzut agentul, ce politică l-a permis, ce versiuni de model și instrument s-au folosit, ce a returnat sistemul extern, dacă un om l-a aprobat și cum a fost verificat succesul. Dacă platforma nu poate reconstrui povestea, nu este încă o platformă agentică matură."
+    },
+    {
+      "id": "t000600",
+      "source": "Figure from PDF page 59",
+      "translation": "Figură de la pagina 59 a PDF-ului"
+    },
+    {
+      "id": "t000601",
+      "source": "Figure 8. The reference architecture. Model intelligence operates inside a control plane, durable runtime, scoped tool plane, and continuous evaluation system.",
+      "translation": "Figura 8. Arhitectura de referință. Inteligența modelului operează într-un plan de control, mediu durabil de execuție, plan delimitat de instrumente și sistem continuu de evaluare."
+    },
+    {
+      "id": "t000602",
+      "source": "Component",
+      "translation": "Componentă"
+    },
+    {
+      "id": "t000603",
+      "source": "Responsibility",
+      "translation": "Responsabilitate"
+    },
+    {
+      "id": "t000604",
+      "source": "Intake",
+      "translation": "Preluare"
+    },
+    {
+      "id": "t000605",
+      "source": "Turn a user request into a durable task with identity, objective, and applicable policy.",
+      "translation": "Transformă cererea utilizatorului într-o sarcină durabilă cu identitate, obiectiv și politică aplicabilă."
+    },
+    {
+      "id": "t000606",
+      "source": "Context builder",
+      "translation": "Constructor de context"
+    },
+    {
+      "id": "t000607",
+      "source": "Assemble minimal sufficient state with provenance and an explicitly limited tool surface.",
+      "translation": "Asamblează stare minimă suficientă, cu proveniență și suprafață explicit limitată de instrumente."
+    },
+    {
+      "id": "t000608",
+      "source": "Decision layer",
+      "translation": "Strat decizional"
+    },
+    {
+      "id": "t000609",
+      "source": "Use the model to choose among allowed actions or produce bounded artifacts.",
+      "translation": "Folosește modelul pentru a alege între acțiuni permise sau a produce artefacte limitate."
+    },
+    {
+      "id": "t000610",
+      "source": "Control plane",
+      "translation": "Plan de control"
+    },
+    {
+      "id": "t000611",
+      "source": "Enforce model routing, permissions, budgets, guardrails, escalation, and policy.",
+      "translation": "Impune rutarea modelelor, permisiuni, bugete, protecții, escaladare și politici."
+    },
+    {
+      "id": "t000612",
+      "source": "Durable runtime",
+      "translation": "Mediu durabil de execuție"
+    },
+    {
+      "id": "t000613",
+      "source": "Persist state, manage queues and retries, pause for humans, and resume safely.",
+      "translation": "Păstrează starea, gestionează cozi și reîncercări, întrerupe pentru oameni și reia sigur."
+    },
+    {
+      "id": "t000614",
+      "source": "Tool plane",
+      "translation": "Plan de instrumente"
+    },
+    {
+      "id": "t000615",
+      "source": "Execute typed actions with scoped identities, transaction semantics, and isolation.",
+      "translation": "Execută acțiuni tipizate cu identități delimitate, semantică tranzacțională și izolare."
+    },
+    {
+      "id": "t000616",
+      "source": "Evaluation plane",
+      "translation": "Plan de evaluare"
+    },
+    {
+      "id": "t000617",
+      "source": "Continuously test task outcomes, trajectories, safety, cost, and production drift.",
+      "translation": "Testează continuu rezultatele sarcinilor, traiectoriile, siguranța, costul și deriva de producție."
+    },
+    {
+      "id": "t000618",
+      "source": "Chapter 12 — Research Frontiers Beyond Today’s Agents",
+      "translation": "Capitolul 12 — Frontiere de cercetare dincolo de agenții de astăzi"
+    },
+    {
+      "id": "t000619",
+      "source": "The most important open questions are not about adding more agent roles or longer prompts. They concern reliable long-horizon control, learning from experience without corrupting memory, representations of changing environments, verifiable reasoning, and coordination among populations of agents. These questions connect contemporary agent engineering to older fields such as planning, control theory, formal methods, distributed systems, reinforcement learning, economics, and scientific methodology.",
+      "translation": "Cele mai importante întrebări deschise nu privesc adăugarea unor roluri agentice sau prompturi mai lungi. Privesc controlul fiabil pe orizont lung, învățarea din experiență fără coruperea memoriei, reprezentarea mediilor schimbătoare, raționamentul verificabil și coordonarea populațiilor de agenți. Aceste întrebări conectează ingineria agentică contemporană la domenii mai vechi precum planificarea, teoria controlului, metodele formale, sistemele distribuite, învățarea prin întărire, economia și metodologia științifică."
+    },
+    {
+      "id": "t000620",
+      "source": "12.1 Long-horizon reasoning, learned experience, world models, and verification",
+      "translation": "12.1 Raționament pe orizont lung, experiență învățată, modele ale lumii și verificare"
+    },
+    {
+      "id": "t000621",
+      "source": "Long-horizon tasks expose a compounding-error problem. Even if each local decision is usually correct, a task requiring hundreds of decisions can fail because one unnoticed error changes the state for every later step. OSWorld 2.0 makes this concrete: professional computer-use tasks remain difficult not simply because models cannot click buttons, but because they lose constraints, miss dynamic information, and fail to verify state over long trajectories [S18]. Progress therefore requires better control loops, memory, verification, and representations of the environment rather than only stronger next-token prediction.",
+      "translation": "Sarcinile pe orizont lung expun o problemă de acumulare a erorilor. Chiar dacă fiecare decizie locală este de obicei corectă, o sarcină care cere sute de decizii poate eșua deoarece o eroare neobservată schimbă starea pentru fiecare pas ulterior. OSWorld 2.0 concretizează aceasta: sarcinile profesionale de utilizare a calculatorului rămân dificile nu doar fiindcă modelele nu pot apăsa butoane, ci pentru că pierd constrângeri, ratează informații dinamice și nu verifică starea pe traiectorii lungi [S18]. Progresul necesită, așadar, bucle de control, memorie, verificare și reprezentări ale mediului mai bune, nu doar predicție mai puternică a următorului token."
+    },
+    {
+      "id": "t000622",
+      "source": "One research direction is hierarchical control. Instead of one flat loop deciding every action, a system can maintain goals at several timescales: mission, phase, subtask, and immediate action. Each layer can have its own success conditions and replanning frequency. This resembles hierarchical reinforcement learning and classical planning, but language models offer flexible decomposition. The challenge is grounding the hierarchy so that higher-level plans do not drift into persuasive fiction. External state and verifiable subgoals are likely to remain essential.",
+      "translation": "O direcție de cercetare este controlul ierarhic. În loc ca o singură buclă plată să decidă fiecare acțiune, un sistem poate menține obiective la mai multe scări temporale: misiune, fază, subsarcină și acțiune imediată. Fiecare strat poate avea propriile condiții de succes și frecvență de replanificare. Seamănă cu învățarea ierarhică prin întărire și planificarea clasică, dar modelele lingvistice oferă descompunere flexibilă. Provocarea este ancorarea ierarhiei, astfel încât planurile de nivel superior să nu derive în ficțiune persuasivă. Starea externă și subobiectivele verificabile vor rămâne probabil esențiale."
+    },
+    {
+      "id": "t000623",
+      "source": "Learning from experience is another frontier. Reflexion showed that textual feedback can improve subsequent attempts without weight updates [S23], while Voyager demonstrated an embodied agent that accumulates reusable executable skills in a library [S26]. Production systems increasingly store successful procedures, failure summaries, and user-specific patterns. Yet unrestricted self-learning is dangerous. An agent can learn from corrupted outcomes, overfit to recent cases, or accumulate contradictory habits. We need promotion rules, confidence estimates, provenance, forgetting, and perhaps separate learning agents that propose updates which are evaluated before entering trusted memory.",
+      "translation": "Învățarea din experiență este o altă frontieră. Reflexion a arătat că feedbackul textual poate îmbunătăți încercările ulterioare fără actualizarea ponderilor [S23], iar Voyager a demonstrat un agent întrupat care acumulează competențe executabile reutilizabile într-o bibliotecă [S26]. Sistemele de producție stochează tot mai mult proceduri reușite, rezumate de eșecuri și tipare specifice utilizatorului. Totuși, autoînvățarea nerestricționată este periculoasă. Un agent poate învăța din rezultate corupte, se poate supraadapta cazurilor recente sau acumula obiceiuri contradictorii. Avem nevoie de reguli de promovare, estimări de încredere, proveniență, uitare și poate agenți separați de învățare care propun actualizări evaluate înainte de intrarea în memoria de încredere."
+    },
+    {
+      "id": "t000624",
+      "source": "World models may help agents reason about consequences before acting. In the simplest form, the system maintains structured representations of entities, resources, constraints, and causal relationships rather than reconstructing the environment from text on every turn. For software agents, the 'world model' can include repository state, dependency graphs, tests, and deployment topology. For enterprise agents, it can include process state, permissions, outstanding obligations, and temporal rules. Structured representations can make hidden assumptions visible and enable deterministic checks around model reasoning.",
+      "translation": "Modelele lumii îi pot ajuta pe agenți să raționeze despre consecințe înainte de acțiune. În forma cea mai simplă, sistemul menține reprezentări structurate ale entităților, resurselor, constrângerilor și relațiilor cauzale, nu reconstruiește mediul din text la fiecare rundă. Pentru agenții software, „modelul lumii” poate include starea depozitului, grafuri de dependențe, teste și topologia implementării. Pentru agenții organizaționali poate include starea procesului, permisiuni, obligații restante și reguli temporale. Reprezentările structurate pot face vizibile presupunerile ascunse și pot permite verificări deterministe în jurul raționamentului modelului."
+    },
+    {
+      "id": "t000625",
+      "source": "Formal and neuro-symbolic methods are especially promising where part of the task admits hard constraints. A model can generate a plan while a solver checks resource conflicts. A legal or policy agent can propose an interpretation while a rule engine enforces non-negotiable eligibility criteria. A code agent can reason semantically while type systems, tests, static analysis, and model checking reject invalid transformations. The objective is not to replace language models with symbolic systems, but to reserve probabilistic reasoning for ambiguity and deterministic machinery for invariants.",
+      "translation": "Metodele formale și neurosimbolice sunt deosebit de promițătoare unde o parte a sarcinii admite constrângeri stricte. Un model poate genera un plan, în timp ce un rezolvitor verifică conflictele de resurse. Un agent juridic sau de politici poate propune o interpretare, în timp ce un motor de reguli impune criterii nenegociabile de eligibilitate. Un agent de cod poate raționa semantic, în timp ce sistemele de tipuri, testele, analiza statică și verificarea de modele resping transformări nevalide. Obiectivul nu este înlocuirea modelelor lingvistice cu sisteme simbolice, ci rezervarea raționamentului probabilist pentru ambiguitate și a mecanismelor deterministe pentru invariante."
+    },
+    {
+      "id": "t000626",
+      "source": "Verification may also become more active. Instead of a critic merely reading the final output, an agent can gather evidence specifically to falsify its current hypothesis. It can run counterexamples, inspect alternative sources, ask whether a plan still works under changed assumptions, or simulate a proposed action in a sandbox. This resembles scientific method more than chain-of-thought. A reliable agent should not only be capable of finding reasons to proceed; it should be capable of discovering reasons it is wrong.",
+      "translation": "Verificarea poate deveni și mai activă. În loc ca un critic doar să citească rezultatul final, un agent poate colecta dovezi anume pentru a-și falsifica ipoteza curentă. Poate rula contraexemple, inspecta surse alternative, întreba dacă un plan încă funcționează sub presupuneri schimbate sau simula o acțiune propusă într-un mediu izolat. Aceasta seamănă mai mult cu metoda științifică decât cu un lanț de raționament. Un agent fiabil nu ar trebui doar să poată găsi motive de a continua; ar trebui să poată descoperi motive pentru care greșește."
+    },
+    {
+      "id": "t000627",
+      "source": "The likely future architecture is therefore not a single ever-more-autonomous model. It is a hierarchy of learned and engineered components: models propose and interpret; state systems remember; structured representations constrain; tools expose reality; verifiers challenge; runtimes recover; humans govern high-consequence uncertainty. As model capability grows, more decisions can move into the learned layer. But the surrounding structure may become more important, not less, because more capable agents can reach more consequential states.",
+      "translation": "Arhitectura viitoare probabilă nu este, așadar, un singur model tot mai autonom. Este o ierarhie de componente învățate și proiectate: modelele propun și interpretează; sistemele de stare rețin; reprezentările structurate constrâng; instrumentele expun realitatea; verificatorii contestă; mediile de execuție recuperează; oamenii guvernează incertitudinea cu consecințe majore. Pe măsură ce capacitatea modelelor crește, mai multe decizii pot trece în stratul învățat. Dar structura din jur poate deveni mai importantă, nu mai puțin importantă, deoarece agenții mai capabili pot atinge stări cu consecințe mai mari."
+    },
+    {
+      "id": "t000628",
+      "source": "Process supervision is likely to become as important as final-answer supervision for long tasks. Instead of rewarding only completion, systems can learn from intermediate state transitions that experts judge useful: identifying the right uncertainty, choosing an informative experiment, preserving a constraint, or rolling back after contradictory evidence. This may reduce the brittleness of agents trained only on successful trajectories, where many locally bad decisions can be hidden by a fortunate final result. The research challenge is to define intermediate signals without constraining agents to one human style of reasoning.",
+      "translation": "Supravegherea procesului va deveni probabil la fel de importantă ca supravegherea răspunsului final în sarcini lungi. În loc să recompenseze doar finalizarea, sistemele pot învăța din tranziții intermediare de stare pe care experții le consideră utile: identificarea incertitudinii corecte, alegerea unui experiment informativ, păstrarea unei constrângeri sau revenirea după dovezi contradictorii. Aceasta poate reduce fragilitatea agenților antrenați doar pe traiectorii reușite, unde multe decizii locale proaste pot fi ascunse de un rezultat final norocos. Provocarea cercetării este definirea semnalelor intermediare fără constrângerea agenților la un singur stil uman de raționament."
+    },
+    {
+      "id": "t000629",
+      "source": "Verifier-driven architectures offer another path. A planner can be relatively creative if proposed steps must pass specialized checks before they become actions. Verifiers might test code, query a database constraint, evaluate a proof obligation, compare claims with cited evidence, simulate a configuration, or check a policy rule. The key is asymmetry: generating a candidate can remain open-ended while acceptance is grounded in mechanisms harder to persuade with language. This pattern scales beyond safety into capability because good verifiers let systems explore more aggressively without accepting every proposal.",
+      "translation": "Arhitecturile conduse de verificatori oferă alt traseu. Un planificator poate fi relativ creativ dacă pașii propuși trebuie să treacă verificări specializate înainte să devină acțiuni. Verificatorii pot testa cod, interoga o constrângere a bazei de date, evalua o obligație de demonstrație, compara afirmații cu dovezi citate, simula o configurație sau verifica o regulă de politică. Cheia este asimetria: generarea unui candidat poate rămâne deschisă, în timp ce acceptarea este ancorată în mecanisme mai greu de convins prin limbaj. Tiparul se extinde dincolo de siguranță în capacitate, deoarece verificatorii buni permit sistemelor să exploreze mai îndrăzneț fără acceptarea fiecărei propuneri."
+    },
+    {
+      "id": "t000630",
+      "source": "Learned world models may eventually improve prediction of tool and environment consequences, but they should not be confused with reality. A model that predicts an API will accept a request is not evidence that the request succeeded. Strong agents will likely use world models to choose informative actions, then reconcile predictions with observations. The epistemic loop remains observation, hypothesis, intervention, and verification. Agency becomes reliable when prediction increases efficiency without replacing contact with the external state that matters.",
+      "translation": "Modelele învățate ale lumii pot îmbunătăți în cele din urmă predicția consecințelor instrumentelor și mediului, dar nu ar trebui confundate cu realitatea. Un model care prezice că un API va accepta o cerere nu este dovada că cererea a reușit. Agenții puternici vor folosi probabil modele ale lumii pentru a alege acțiuni informative, apoi vor reconcilia predicțiile cu observațiile. Bucla epistemică rămâne observație, ipoteză, intervenție și verificare. Capacitatea de acțiune devine fiabilă când predicția crește eficiența fără a înlocui contactul cu starea externă care contează."
+    },
+    {
+      "id": "t000631",
+      "source": "Research direction",
+      "translation": "Direcție de cercetare"
+    },
+    {
+      "id": "t000632",
+      "source": "Why it matters",
+      "translation": "De ce contează"
+    },
+    {
+      "id": "t000633",
+      "source": "Hierarchical control",
+      "translation": "Control ierarhic"
+    },
+    {
+      "id": "t000634",
+      "source": "Represent goals and checks at multiple timescales to reduce drift in very long tasks.",
+      "translation": "Reprezintă obiective și verificări la scări temporale multiple pentru a reduce deriva în sarcini foarte lungi."
+    },
+    {
+      "id": "t000635",
+      "source": "Experience learning",
+      "translation": "Învățare din experiență"
+    },
+    {
+      "id": "t000636",
+      "source": "Promote reusable lessons only through validated outcome signals and controlled memory updates.",
+      "translation": "Promovează lecții reutilizabile numai prin semnale validate ale rezultatului și actualizări controlate ale memoriei."
+    },
+    {
+      "id": "t000637",
+      "source": "World models",
+      "translation": "Modele ale lumii"
+    },
+    {
+      "id": "t000638",
+      "source": "Maintain structured state that captures entities, constraints, temporal relationships, and expected effects.",
+      "translation": "Menține stare structurată care surprinde entități, constrângeri, relații temporale și efecte așteptate."
+    },
+    {
+      "id": "t000639",
+      "source": "Neuro-symbolic harness",
+      "translation": "Infrastructură de control neurosimbolică"
+    },
+    {
+      "id": "t000640",
+      "source": "Combine model interpretation with deterministic solvers, rules, types, tests, or formal checks.",
+      "translation": "Combină interpretarea modelului cu rezolvitoare deterministe, reguli, tipuri, teste sau verificări formale."
+    },
+    {
+      "id": "t000641",
+      "source": "Active falsification",
+      "translation": "Falsificare activă"
+    },
+    {
+      "id": "t000642",
+      "source": "Ask the agent to search for disconfirming evidence rather than only supporting its current plan.",
+      "translation": "Cere agentului să caute dovezi infirmatoare, nu doar să-și susțină planul curent."
+    },
+    {
+      "id": "t000643",
+      "source": "12.2 Agent societies, automated science, and what may come after 2026",
+      "translation": "12.2 Societăți de agenți, știință automată și ce poate urma după 2026"
+    },
+    {
+      "id": "t000644",
+      "source": "The most consequential future agent systems may not look like assistants at all. They may be persistent participants in scientific, economic, and organizational processes. Agents could monitor literatures, propose experiments, maintain software, negotiate service contracts, operate simulations, review evidence, and coordinate with other agents continuously. At that point the relevant abstraction moves from an application that calls an LLM to an institution containing machine actors.",
+      "translation": "Sistemele agentice viitoare cu cele mai mari consecințe s-ar putea să nu semene deloc cu asistenți. Pot fi participanți persistenți în procese științifice, economice și organizaționale. Agenții ar putea monitoriza literatura, propune experimente, întreține software, negocia contracte de servicii, opera simulări, revizui dovezi și se pot coordona continuu cu alți agenți. Atunci abstracția relevantă trece de la o aplicație care apelează un LLM la o instituție care conține actori mașini."
+    },
+    {
+      "id": "t000645",
+      "source": "Generative Agents demonstrated an early form of emergent social behavior in a simulated town by combining memory, reflection, and planning [S25]. That work was about believable behavior rather than enterprise reliability, but it revealed an important property: when agents remember and interact, system-level behavior can emerge that is not specified turn by turn. In real organizations, such emergence will intersect with incentives, access rights, resource competition, reputation, and legal responsibility. Multi-agent engineering will therefore need ideas from mechanism design and institutional economics as much as from orchestration libraries.",
+      "translation": "Generative Agents a demonstrat o formă timpurie de comportament social emergent într-un oraș simulat, combinând memorie, reflecție și planificare [S25]. Lucrarea privea comportament credibil, nu fiabilitate organizațională, dar a dezvăluit o proprietate importantă: când agenții rețin și interacționează, poate emerge comportament de sistem nespecificat rundă cu rundă. În organizațiile reale, această emergență se va intersecta cu stimulente, drepturi de acces, competiție pentru resurse, reputație și responsabilitate juridică. Ingineria multiagent va avea, așadar, nevoie de idei din proiectarea mecanismelor și economia instituțională la fel de mult ca din bibliotecile de orchestrare."
+    },
+    {
+      "id": "t000646",
+      "source": "Automated science is a particularly rich frontier because research already has an agent-like structure. Scientists formulate questions, search literature, design experiments, build instruments or code, gather observations, update hypotheses, critique claims, and publish artifacts. AI agents can participate in each stage. The hard part is not generating more hypotheses; models can already generate enormous volumes of plausible text. The bottleneck becomes epistemic control: selecting relevant questions, connecting claims to evidence, designing discriminating tests, tracking provenance, and allocating scarce experimental resources.",
+      "translation": "Știința automată este o frontieră deosebit de bogată deoarece cercetarea are deja o structură asemănătoare agentului. Cercetătorii formulează întrebări, caută literatură, proiectează experimente, construiesc instrumente sau cod, colectează observații, actualizează ipoteze, critică afirmații și publică artefacte. Agenții IA pot participa la fiecare etapă. Partea dificilă nu este generarea mai multor ipoteze; modelele pot genera deja volume enorme de text plauzibil. Blocajul devine controlul epistemic: selectarea întrebărilor relevante, conectarea afirmațiilor la dovezi, proiectarea testelor discriminatorii, urmărirea provenienței și alocarea resurselor experimentale rare."
+    },
+    {
+      "id": "t000647",
+      "source": "This suggests a distinction between generative abundance and scientific relevance. If AI can generate thousands of candidate papers, experiments, software designs, or theories, novelty alone becomes cheap. Valuable agent systems will need mechanisms for judging what is worth testing, what evidence would change belief, and what contribution matters relative to existing knowledge. Research agents may therefore converge toward a combination of literature models, planning, simulation, formal checking, laboratory interfaces, peer critique, and long-term knowledge graphs rather than a single 'scientist agent.'",
+      "translation": "Aceasta sugerează o distincție între abundența generativă și relevanța științifică. Dacă IA poate genera mii de lucrări candidate, experimente, proiectări software sau teorii, noutatea singură devine ieftină. Sistemele agentice valoroase vor avea nevoie de mecanisme care judecă ce merită testat, ce dovezi ar schimba convingerile și ce contribuție contează în raport cu cunoașterea existentă. Agenții de cercetare pot converge, așadar, spre o combinație de modele ale literaturii, planificare, simulare, verificare formală, interfețe de laborator, critică între colegi și grafuri de cunoaștere pe termen lung, nu spre un singur „agent cercetător”."
+    },
+    {
+      "id": "t000648",
+      "source": "Agent markets are another plausible development. Organizations may expose specialized agents as services that accept tasks under explicit identity, payment, and policy. A2A provides part of the communication substrate, while other standards may handle commerce, authorization, user interfaces, and provenance [S13][S32]. In such a market, reputation cannot rely only on a human-readable description. Agents may need machine-verifiable capability records, evaluation evidence, service-level commitments, liability arrangements, and cryptographic or institutional identity.",
+      "translation": "Piețele de agenți sunt o altă dezvoltare plauzibilă. Organizațiile pot expune agenți specializați ca servicii care acceptă sarcini sub identitate, plată și politici explicite. A2A oferă o parte a substratului comunicării, iar alte standarde pot gestiona comerțul, autorizarea, interfețele utilizatorilor și proveniența [S13][S32]. Într-o asemenea piață, reputația nu se poate baza doar pe o descriere lizibilă uman. Agenții pot avea nevoie de înregistrări ale capacităților verificabile automat, dovezi de evaluare, angajamente de nivel al serviciului, aranjamente de răspundere și identitate criptografică sau instituțională."
+    },
+    {
+      "id": "t000649",
+      "source": "The governance challenge scales with machine speed. Human institutions assume that actors communicate and act slowly enough for contracts, audits, and oversight to keep pace. Anthropic's 2026 multi-agent research explicitly raises the possibility that agent-agent interaction volumes could outgrow human-human interaction before society understands the conditions for safe coordination [S4]. This is not a prediction that autonomous economies are imminent. It is a warning that protocols and incentives can scale faster than governance practice.",
+      "translation": "Provocarea guvernanței crește odată cu viteza mașinii. Instituțiile umane presupun că actorii comunică și acționează suficient de lent încât contractele, auditurile și supravegherea să țină pasul. Cercetarea multiagent Anthropic din 2026 ridică explicit posibilitatea ca volumele interacțiunii agent-agent să depășească interacțiunea om-om înainte ca societatea să înțeleagă condițiile coordonării sigure [S4]. Nu este o predicție că economiile autonome sunt iminente. Este un avertisment că protocoalele și stimulentele pot crește la scară mai repede decât practica guvernanței."
+    },
+    {
+      "id": "t000650",
+      "source": "For students and engineers, the lasting lesson is not to memorize today's frameworks. It is to recognize the architecture of agency. A system receives goals, observes partial state, chooses actions, changes an environment, remembers, coordinates, and is evaluated against some notion of success. Every increase in autonomy increases both capability and the space of possible failure. The field will change rapidly after this draft edition, but the central questions will remain: what does the agent know, what may it do, how does it learn that it is wrong, who bears the consequences, and what evidence justifies trusting it with the next degree of freedom?",
+      "translation": "Pentru studenți și ingineri, lecția durabilă nu este memorarea cadrelor de astăzi. Este recunoașterea arhitecturii capacității de acțiune. Un sistem primește obiective, observă stare parțială, alege acțiuni, schimbă un mediu, reține, coordonează și este evaluat după o anumită noțiune de succes. Fiecare creștere a autonomiei mărește atât capacitatea, cât și spațiul eșecului posibil. Domeniul se va schimba rapid după această ediție preliminară, dar întrebările centrale vor rămâne: ce știe agentul, ce are voie să facă, cum află că greșește, cine suportă consecințele și ce dovezi justifică încredințarea următorului grad de libertate?"
+    },
+    {
+      "id": "t000651",
+      "source": "Automated science also clarifies why agent evaluation needs richer concepts than task completion. A scientific agent can complete a workflow and still produce little knowledge if it chooses an irrelevant question or a non-discriminating experiment. Future systems may need evaluators for relevance, novelty relative to a living literature, expected information gain, reproducibility, and the cost of evidence. This turns research automation into a resource-allocation problem: among millions of generable ideas, which few deserve experiments, human attention, or expensive simulation?",
+      "translation": "Știința automată clarifică și de ce evaluarea agentică are nevoie de concepte mai bogate decât finalizarea sarcinii. Un agent științific poate finaliza un flux și totuși produce puțină cunoaștere dacă alege o întrebare irelevantă sau un experiment nediscriminatoriu. Sistemele viitoare pot avea nevoie de evaluatori pentru relevanță, noutate în raport cu literatura vie, câștig informațional așteptat, reproductibilitate și costul dovezilor. Aceasta transformă automatizarea cercetării într-o problemă de alocare a resurselor: dintre milioane de idei generabile, care puține merită experimente, atenție umană sau simulare costisitoare?"
+    },
+    {
+      "id": "t000652",
+      "source": "As machine actors become persistent, organizations may need to assign them durable roles and responsibilities without pretending that they are legal persons. A useful design could bind an agent identity to an owning organization, a declared capability set, a policy envelope, a budget, a service history, and accountable humans. Such identity is different from anthropomorphic persona. It is closer to a service principal enriched with operational provenance. This distinction may help institutions obtain the benefits of delegation without obscuring responsibility.",
+      "translation": "Pe măsură ce actorii mașini devin persistenți, organizațiile pot avea nevoie să le atribuie roluri și responsabilități durabile fără a pretinde că sunt persoane juridice. O proiectare utilă ar putea lega identitatea unui agent de o organizație responsabilă, un set declarat de capacități, un perimetru de politici, un buget, un istoric de serviciu și oameni răspunzători. O asemenea identitate este diferită de o personalitate antropomorfă. Este mai apropiată de o identitate tehnică de serviciu îmbogățită cu proveniență operațională. Distincția poate ajuta instituțiile să obțină beneficiile delegării fără a ascunde responsabilitatea."
+    },
+    {
+      "id": "t000653",
+      "source": "The human role is also likely to move rather than disappear. When generation and routine execution become abundant, scarce human work shifts toward defining worthwhile objectives, adjudicating unresolved values, designing institutions, validating evidence, and accepting responsibility for consequences. The most interesting agent systems may therefore amplify the need for judgment at higher levels even as they automate lower-level cognitive labor. The engineering of agents is inseparable from the engineering of the organizations that decide what agents are for.",
+      "translation": "Și rolul uman se va deplasa probabil, nu va dispărea. Când generarea și execuția de rutină devin abundente, munca umană rară se mută către definirea obiectivelor valoroase, arbitrarea valorilor nerezolvate, proiectarea instituțiilor, validarea dovezilor și acceptarea responsabilității pentru consecințe. Cele mai interesante sisteme agentice pot amplifica, așadar, nevoia de judecată la niveluri superioare, chiar automatizând munca cognitivă de nivel inferior. Ingineria agenților este inseparabilă de ingineria organizațiilor care decid pentru ce sunt agenții."
+    },
+    {
+      "id": "t000654",
+      "source": "Emerging direction",
+      "translation": "Direcție emergentă"
+    },
+    {
+      "id": "t000655",
+      "source": "Core institutional question",
+      "translation": "Întrebare instituțională centrală"
+    },
+    {
+      "id": "t000656",
+      "source": "Persistent organizational",
+      "translation": "Agenți organizaționali"
+    },
+    {
+      "id": "t000657",
+      "source": "Long-lived actors that maintain state and responsibilities across projects and",
+      "translation": "Actori de lungă durată care mențin stare și responsabilități între proiecte și"
+    },
+    {
+      "id": "t000658",
+      "source": "agents",
+      "translation": "persistenți"
+    },
+    {
+      "id": "t000659",
+      "source": "teams.",
+      "translation": "echipe."
+    },
+    {
+      "id": "t000660",
+      "source": "Scientific agents",
+      "translation": "Agenți științifici"
+    },
+    {
+      "id": "t000661",
+      "source": "Systems that connect literature, hypotheses, experiments, evidence, and critique rather than only generating papers.",
+      "translation": "Sisteme care conectează literatura, ipotezele, experimentele, dovezile și critica, nu doar generează lucrări."
+    },
+    {
+      "id": "t000662",
+      "source": "Agent service markets",
+      "translation": "Piețe de servicii agentice"
+    },
+    {
+      "id": "t000663",
+      "source": "Specialists discoverable through protocols, with identity, payment, reputation, and service guarantees.",
+      "translation": "Specialiști descoperibili prin protocoale, cu identitate, plată, reputație și garanții de serviciu."
+    },
+    {
+      "id": "t000664",
+      "source": "Machine-speed institutions",
+      "translation": "Instituții la viteza mașinii"
+    },
+    {
+      "id": "t000665",
+      "source": "Governance mechanisms designed for interactions that may occur far faster and at larger scale than human oversight.",
+      "translation": "Mecanisme de guvernanță proiectate pentru interacțiuni care pot apărea mult mai repede și la scară mai mare decât supravegherea umană."
+    },
+    {
+      "id": "t000666",
+      "source": "Executable epistemology",
+      "translation": "Epistemologie executabilă"
+    },
+    {
+      "id": "t000667",
+      "source": "Research processes in which claims, evidence, provenance, tests, and revision become partly machine-operable objects.",
+      "translation": "Procese de cercetare în care afirmațiile, dovezile, proveniența, testele și revizuirea devin obiecte parțial operabile de mașină."
+    },
+    {
+      "id": "t000668",
+      "source": "Appendix A — Design Review Checklist",
+      "translation": "Anexa A — Listă de verificare pentru revizuirea proiectării"
+    },
+    {
+      "id": "t000669",
+      "source": "A useful agent design review is not a debate about whether the model seems intelligent. It is a structured attempt to identify the outcome, authority, evidence, failure boundaries, and operational responsibilities of the system before permissions expand.",
+      "translation": "O revizuire utilă a proiectării agentice nu este o dezbatere despre cât de inteligent pare modelul. Este o încercare structurată de a identifica rezultatul, autoritatea, dovezile, granițele eșecului și responsabilitățile operaționale ale sistemului înaintea extinderii permisiunilor."
+    },
+    {
+      "id": "t000670",
+      "source": "The table below condenses the architecture developed across the book. A team should be able to answer each question with concrete artifacts: schemas, policies, traces, test cases, identity configuration, dashboards, contracts, or incident procedures. If an answer exists only as a sentence in a system prompt, the control is probably weaker than it appears.",
+      "translation": "Tabelul de mai jos condensează arhitectura dezvoltată în carte. O echipă ar trebui să poată răspunde fiecărei întrebări prin artefacte concrete: scheme, politici, urme, teste, configurarea identității, tablouri de bord, contracte sau proceduri de incidente. Dacă un răspuns există doar ca propoziție într-un prompt de sistem, controlul este probabil mai slab decât pare."
+    },
+    {
+      "id": "t000671",
+      "source": "Review area Question the design must answer Outcome Is the business or research outcome observable independently of the model’s own explanation?",
+      "translation": "Domeniu de revizuire Întrebarea la care proiectarea trebuie să răspundă Rezultat Este rezultatul de afaceri sau cercetare observabil independent de explicația modelului însuși?"
+    },
+    {
+      "id": "t000672",
+      "source": "Scope Which task classes are in scope, and which must be rejected or escalated?",
+      "translation": "Domeniu Ce clase de sarcini intră în domeniu și care trebuie respinse sau escaladate?"
+    },
+    {
+      "id": "t000673",
+      "source": "Authority Which actions can change external state, under which identity, and with which maximum privilege?",
+      "translation": "Autoritate Ce acțiuni pot schimba starea externă, sub ce identitate și cu ce privilegiu maxim?"
+    },
+    {
+      "id": "t000674",
+      "source": "Tool design Are tool schemas narrow, typed, versioned, and explicit about side effects and errors?",
+      "translation": "Proiectarea instrumentelor Sunt schemele instrumentelor restrânse, tipizate, cu versiuni și explicite despre efecte secundare și erori?"
+    },
+    {
+      "id": "t000675",
+      "source": "Context Does the model see only task-relevant information that the current identity is authorized to access?",
+      "translation": "Context Vede modelul doar informații relevante sarcinii pe care identitatea curentă este autorizată să le acceseze?"
+    },
+    {
+      "id": "t000676",
+      "source": "State Can the task resume after failure without reconstructing critical facts from a chat transcript?",
+      "translation": "Stare Poate sarcina relua după eșec fără reconstruirea faptelor critice dintr-o transcriere de chat?"
+    },
+    {
+      "id": "t000677",
+      "source": "Memory Who is allowed to write long-term memory, how is provenance stored, and how are corrections and deletion handled?",
+      "translation": "Memorie Cine are voie să scrie în memoria pe termen lung, cum este stocată proveniența și cum sunt tratate corecțiile și ștergerea?"
+    },
+    {
+      "id": "t000678",
+      "source": "Evaluation Does the evaluation suite include realistic outcomes, repeated trials, trajectories, adversarial cases, and cost?",
+      "translation": "Evaluare Include suita rezultate realiste, încercări repetate, traiectorii, cazuri adversariale și cost?"
+    },
+    {
+      "id": "t000679",
+      "source": "Security Can untrusted content influence reasoning without acquiring authority, credentials, memory-write access, or network reach?",
+      "translation": "Securitate Poate conținutul nefiabil influența raționamentul fără a dobândi autoritate, acreditări, acces la scrierea memoriei sau acces la rețea?"
+    },
+    {
+      "id": "t000680",
+      "source": "Human control Are approvals placed before consequential transitions rather than indiscriminately around every model call?",
+      "translation": "Control uman Sunt aprobările plasate înaintea tranzițiilor cu consecințe, nu nediferențiat în jurul fiecărui apel de model?"
+    },
+    {
+      "id": "t000681",
+      "source": "Observability Can an incident be reconstructed from identity, context, model version, tool calls, state, policy decisions, and external effects?",
+      "translation": "Observabilitate Poate un incident fi reconstruit din identitate, context, versiunea modelului, apeluri de instrumente, stare, decizii de politică și efecte externe?"
+    },
+    {
+      "id": "t000682",
+      "source": "Economics Is cost measured per verified outcome, including retries, tools, infrastructure, and human intervention?",
+      "translation": "Economie Este costul măsurat per rezultat verificat, incluzând reîncercări, instrumente, infrastructură și intervenție umană?"
+    },
+    {
+      "id": "t000683",
+      "source": "Change management Do model, prompt, retrieval, tool, policy, and memory changes trigger relevant regression evaluations?",
+      "translation": "Managementul schimbării Declanșează schimbările de model, prompt, recuperare, instrumente, politici și memorie evaluări relevante de regresie?"
+    },
+    {
+      "id": "t000684",
+      "source": "Fallback When the agent cannot complete safely, does it fail legibly into a useful human or deterministic process?",
+      "translation": "Soluție de rezervă Când agentul nu poate finaliza sigur, eșuează el lizibil într-un proces uman sau determinist util?"
+    },
+    {
+      "id": "t000685",
+      "source": "Appendix B — Compact Glossary",
+      "translation": "Anexa B — Glosar compact"
+    },
+    {
+      "id": "t000686",
+      "source": "Agent terminology is unstable and vendors often use the same word for different abstractions. These definitions are deliberately operational: each term is defined by the role it plays in a system rather than by brand-specific vocabulary.",
+      "translation": "Terminologia agenților este instabilă, iar furnizorii folosesc adesea același cuvânt pentru abstracții diferite. Aceste definiții sunt deliberat operaționale: fiecare termen este definit prin rolul său într-un sistem, nu prin vocabular specific unei mărci."
+    },
+    {
+      "id": "t000687",
+      "source": "Term",
+      "translation": "Termen"
+    },
+    {
+      "id": "t000688",
+      "source": "Working definition",
+      "translation": "Definiție de lucru"
+    },
+    {
+      "id": "t000689",
+      "source": "Agent",
+      "translation": "Agent"
+    },
+    {
+      "id": "t000690",
+      "source": "A system in which a model can influence the sequence of actions used to pursue a goal in an environment.",
+      "translation": "Un sistem în care un model poate influența secvența acțiunilor folosite pentru urmărirea unui obiectiv într-un mediu."
+    },
+    {
+      "id": "t000691",
+      "source": "Agent loop",
+      "translation": "Bucla agentului"
+    },
+    {
+      "id": "t000692",
+      "source": "The repeated cycle of observing state, deciding, acting, receiving an observation, updating state, and checking whether to stop.",
+      "translation": "Ciclul repetat de observare a stării, decizie, acțiune, primire a unei observații, actualizare a stării și verificare dacă trebuie să se oprească."
+    },
+    {
+      "id": "t000693",
+      "source": "Workflow",
+      "translation": "Flux de lucru"
+    },
+    {
+      "id": "t000694",
+      "source": "A process whose transitions are substantially predetermined by software even when LLMs perform some steps.",
+      "translation": "Un proces ale cărui tranziții sunt în mare parte predeterminate de software chiar când LLM-urile efectuează unii pași."
+    },
+    {
+      "id": "t000695",
+      "source": "Tool",
+      "translation": "Instrument"
+    },
+    {
+      "id": "t000696",
+      "source": "A bounded callable capability through which an agent reads or changes an external system.",
+      "translation": "O capacitate apelabilă limitată prin care un agent citește sau schimbă un sistem extern."
+    },
+    {
+      "id": "t000697",
+      "source": "Tool contract",
+      "translation": "Contract de instrument"
+    },
+    {
+      "id": "t000698",
+      "source": "The schema, semantics, permissions, failure modes, and side-effect rules of a tool.",
+      "translation": "Schema, semantica, permisiunile, modurile de eșec și regulile efectelor secundare ale unui instrument."
+    },
+    {
+      "id": "t000699",
+      "source": "Context engineering",
+      "translation": "Ingineria contextului"
+    },
+    {
+      "id": "t000700",
+      "source": "The construction of the task-relevant information presented to a model at a particular decision point.",
+      "translation": "Construirea informației relevante sarcinii prezentate unui model la un anumit punct decizional."
+    },
+    {
+      "id": "t000701",
+      "source": "RAG",
+      "translation": "RAG"
+    },
+    {
+      "id": "t000702",
+      "source": "Retrieval-augmented generation: selecting external information and including it in the model context for grounding.",
+      "translation": "Generare augmentată prin recuperarea informațiilor: selectarea informației externe și includerea ei în contextul modelului pentru ancorare."
+    },
+    {
+      "id": "t000703",
+      "source": "Working state",
+      "translation": "Stare de lucru"
+    },
+    {
+      "id": "t000704",
+      "source": "Structured information needed to continue the current task, distinct from the transient model prompt.",
+      "translation": "Informație structurată necesară continuării sarcinii curente, distinctă de promptul tranzitoriu al modelului."
+    },
+    {
+      "id": "t000705",
+      "source": "Episodic memory",
+      "translation": "Memorie episodică"
+    },
+    {
+      "id": "t000706",
+      "source": "Stored information about prior interactions, runs, outcomes, or experiences.",
+      "translation": "Informație stocată despre interacțiuni, rulări, rezultate sau experiențe anterioare."
+    },
+    {
+      "id": "t000707",
+      "source": "Semantic memory",
+      "translation": "Memorie semantică"
+    },
+    {
+      "id": "t000708",
+      "source": "Relatively stable facts, policies, and domain knowledge maintained outside the current task.",
+      "translation": "Fapte, politici și cunoaștere de domeniu relativ stabile, menținute în afara sarcinii curente."
+    },
+    {
+      "id": "t000709",
+      "source": "Checkpoint",
+      "translation": "Punct de control"
+    },
+    {
+      "id": "t000710",
+      "source": "A persisted execution state from which a long-running task can safely resume.",
+      "translation": "O stare de execuție păstrată din care o sarcină de lungă durată poate relua în siguranță."
+    },
+    {
+      "id": "t000711",
+      "source": "Idempotency",
+      "translation": "Idempotență"
+    },
+    {
+      "id": "t000712",
+      "source": "The property that repeating an operation does not create duplicate side effects.",
+      "translation": "Proprietatea prin care repetarea unei operații nu creează efecte secundare duplicate."
+    },
+    {
+      "id": "t000713",
+      "source": "Handoff",
+      "translation": "Transfer de control"
+    },
+    {
+      "id": "t000714",
+      "source": "Delegation in which another agent becomes responsible for part or all of a task or conversation.",
+      "translation": "Delegare în care un alt agent devine responsabil pentru o parte sau întreaga sarcină ori conversație."
+    },
+    {
+      "id": "t000715",
+      "source": "Supervisor",
+      "translation": "Supraveghetor"
+    },
+    {
+      "id": "t000716",
+      "source": "An agent or deterministic controller responsible for routing, delegation, and integrating specialist work.",
+      "translation": "Un agent sau controler determinist responsabil pentru rutare, delegare și integrarea muncii specialiștilor."
+    },
+    {
+      "id": "t000717",
+      "source": "Trajectory",
+      "translation": "Traiectorie"
+    },
+    {
+      "id": "t000718",
+      "source": "The ordered sequence of decisions, observations, tool calls, state changes, approvals, and outputs in an agent run.",
+      "translation": "Secvența ordonată de decizii, observații, apeluri de instrumente, schimbări de stare, aprobări și rezultate într-o rulare agentică."
+    },
+    {
+      "id": "t000719",
+      "source": "Reliability envelope",
+      "translation": "Perimetru de fiabilitate"
+    },
+    {
+      "id": "t000720",
+      "source": "The empirically supported set of task classes and conditions under which a system meets defined reliability requirements.",
+      "translation": "Setul susținut empiric de clase de sarcini și condiții în care un sistem îndeplinește cerințe definite de fiabilitate."
+    },
+    {
+      "id": "t000721",
+      "source": "Guardrail",
+      "translation": "Mecanism de protecție"
+    },
+    {
+      "id": "t000722",
+      "source": "A validation or control around inputs, outputs, or tool actions; strong guardrails are backed by enforceable runtime policy.",
+      "translation": "O validare sau un control în jurul intrărilor, ieșirilor sau acțiunilor instrumentelor; protecțiile puternice sunt susținute de politici de execuție aplicabile."
+    },
+    {
+      "id": "t000723",
+      "source": "Prompt injection",
+      "translation": "Injecție de prompt"
+    },
+    {
+      "id": "t000724",
+      "source": "Instructions embedded in untrusted content that attempt to redirect model behavior or exploit the authority of the surrounding system.",
+      "translation": "Instrucțiuni încorporate în conținut nefiabil care încearcă să redirecționeze comportamentul modelului sau să exploateze autoritatea sistemului din jur."
+    },
+    {
+      "id": "t000725",
+      "source": "Term",
+      "translation": "Termen"
+    },
+    {
+      "id": "t000726",
+      "source": "Working definition",
+      "translation": "Definiție de lucru"
+    },
+    {
+      "id": "t000727",
+      "source": "MCP",
+      "translation": "MCP"
+    },
+    {
+      "id": "t000728",
+      "source": "Model Context Protocol, a standard for exposing tools, resources, and related capabilities to AI applications.",
+      "translation": "Model Context Protocol, un standard pentru expunerea instrumentelor, resurselor și capacităților asociate către aplicații IA."
+    },
+    {
+      "id": "t000729",
+      "source": "A2A",
+      "translation": "A2A"
+    },
+    {
+      "id": "t000730",
+      "source": "Agent2Agent Protocol, a standard for discovery and task-oriented interaction between independent agent systems.",
+      "translation": "Agent2Agent Protocol, un standard pentru descoperire și interacțiune orientată pe sarcini între sisteme agentice independente."
+    },
+    {
+      "id": "t000731",
+      "source": "AgentOps",
+      "translation": "AgentOps"
+    },
+    {
+      "id": "t000732",
+      "source": "Operational practices for observing, evaluating, controlling, and improving deployed agent systems.",
+      "translation": "Practici operaționale pentru observarea, evaluarea, controlarea și îmbunătățirea sistemelor agentice implementate."
+    },
+    {
+      "id": "t000733",
+      "source": "Human approval gate A resumable control point where a consequential proposed action is reviewed before execution.",
+      "translation": "Filtru de aprobare umană Un punct de control reluabil unde o acțiune propusă cu consecințe este revizuită înainte de execuție."
+    },
+    {
+      "id": "t000734",
+      "source": "Model judge",
+      "translation": "Judecător de tip model"
+    },
+    {
+      "id": "t000735",
+      "source": "A model used as an evaluator for semantic criteria; it should be calibrated and not substituted for deterministic checks when those exist.",
+      "translation": "Un model folosit ca evaluator pentru criterii semantice; ar trebui calibrat și să nu înlocuiască verificări deterministe când acestea există."
+    },
+    {
+      "id": "t000736",
+      "source": "World model",
+      "translation": "Model al lumii"
+    },
+    {
+      "id": "t000737",
+      "source": "An internal or external representation used to reason about entities, state, constraints, and possible consequences.",
+      "translation": "O reprezentare internă sau externă folosită pentru raționament despre entități, stare, constrângeri și consecințe posibile."
+    },
+    {
+      "id": "t000738",
+      "source": "Neuro-symbolic",
+      "translation": "Infrastructură de control"
+    },
+    {
+      "id": "t000739",
+      "source": "A system that combines learned model reasoning with deterministic rules, solvers,",
+      "translation": "Un sistem care combină raționament de model învățat cu reguli deterministe, rezolvitoare,"
+    },
+    {
+      "id": "t000740",
+      "source": "harness",
+      "translation": "neurosimbolică"
+    },
+    {
+      "id": "t000741",
+      "source": "tests, types, or other formal constraints.",
+      "translation": "teste, tipuri sau alte constrângeri formale."
+    },
+    {
+      "id": "t000742",
+      "source": "References and Source Notes",
+      "translation": "Referințe și note despre surse"
+    },
+    {
+      "id": "t000743",
+      "source": "The book uses compact source markers such as [S18] in the text. Sources below were selected primarily from original research papers, official protocol and framework documentation, standards bodies, regulators, and vendor pricing pages. The snapshot date is 31 August 2026.",
+      "translation": "Cartea folosește în text marcaje compacte de sursă precum [S18]. Sursele de mai jos au fost selectate în principal din lucrări originale de cercetare, documentația oficială a protocoalelor și cadrelor de dezvoltare, organisme de standardizare, autorități de reglementare și pagini de prețuri ale furnizorilor. Data de referință este 31 august 2026."
+    },
+    {
+      "id": "t000744",
+      "source": "Source Reference S1 Anthropic.",
+      "translation": "Source Reference S1 Anthropic."
+    },
+    {
+      "id": "t000745",
+      "source": "“Building effective agents.”",
+      "translation": "“Building effective agents.”"
+    },
+    {
+      "id": "t000746",
+      "source": "Engineering, 19 Dec 2024.",
+      "translation": "Engineering, 19 Dec 2024."
+    },
+    {
+      "id": "t000747",
+      "source": "https://www.anthropic.com/engineering/building-effective-agents",
+      "translation": "https://www.anthropic.com/engineering/building-effective-agents"
+    },
+    {
+      "id": "t000748",
+      "source": "S2 Anthropic.",
+      "translation": "S2 Anthropic."
+    },
+    {
+      "id": "t000749",
+      "source": "“Demystifying evals for AI agents.”",
+      "translation": "“Demystifying evals for AI agents.”"
+    },
+    {
+      "id": "t000750",
+      "source": "Engineering, 9 Jan 2026.",
+      "translation": "Engineering, 9 Jan 2026."
+    },
+    {
+      "id": "t000751",
+      "source": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+      "translation": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+    },
+    {
+      "id": "t000752",
+      "source": "S3 Anthropic.",
+      "translation": "S3 Anthropic."
+    },
+    {
+      "id": "t000753",
+      "source": "“Trustworthy agents in practice.”",
+      "translation": "“Trustworthy agents in practice.”"
+    },
+    {
+      "id": "t000754",
+      "source": "Research, 9 Apr 2026.",
+      "translation": "Research, 9 Apr 2026."
+    },
+    {
+      "id": "t000755",
+      "source": "https://www.anthropic.com/research/trustworthy-agents",
+      "translation": "https://www.anthropic.com/research/trustworthy-agents"
+    },
+    {
+      "id": "t000756",
+      "source": "S4 Anthropic.",
+      "translation": "S4 Anthropic."
+    },
+    {
+      "id": "t000757",
+      "source": "“Patterns and problems in emerging multiagent systems.”",
+      "translation": "“Patterns and problems in emerging multiagent systems.”"
+    },
+    {
+      "id": "t000758",
+      "source": "Research, 13 Aug 2026.",
+      "translation": "Research, 13 Aug 2026."
+    },
+    {
+      "id": "t000759",
+      "source": "https://www.anthropic.com/research/multiagent-systems",
+      "translation": "https://www.anthropic.com/research/multiagent-systems"
+    },
+    {
+      "id": "t000760",
+      "source": "S5 OpenAI. OpenAI Agents SDK: Agents and orchestration documentation. Accessed 31 Aug 2026.",
+      "translation": "S5 OpenAI. OpenAI Agents SDK: Agents and orchestration documentation. Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000761",
+      "source": "https://openai.github.io/openai-agents-python/agents/",
+      "translation": "https://openai.github.io/openai-agents-python/agents/"
+    },
+    {
+      "id": "t000762",
+      "source": "and",
+      "translation": "and"
+    },
+    {
+      "id": "t000763",
+      "source": "https://openai.github.io/openai-agents-python/multi_agent/",
+      "translation": "https://openai.github.io/openai-agents-python/multi_agent/"
+    },
+    {
+      "id": "t000764",
+      "source": "S6 OpenAI. OpenAI Agents SDK: Guardrails. Accessed 31 Aug 2026.",
+      "translation": "S6 OpenAI. OpenAI Agents SDK: Guardrails. Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000765",
+      "source": "https://openai.github.io/openai-agents-python/guardrails/",
+      "translation": "https://openai.github.io/openai-agents-python/guardrails/"
+    },
+    {
+      "id": "t000766",
+      "source": "S7 OpenAI. OpenAI Agents SDK: Tracing. Accessed 31 Aug 2026.",
+      "translation": "S7 OpenAI. OpenAI Agents SDK: Tracing. Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000767",
+      "source": "https://openai.github.io/openai-agents-python/tracing/",
+      "translation": "https://openai.github.io/openai-agents-python/tracing/"
+    },
+    {
+      "id": "t000768",
+      "source": "S8 Microsoft.",
+      "translation": "S8 Microsoft."
+    },
+    {
+      "id": "t000769",
+      "source": "“Microsoft Agent Framework Version 1.0.”",
+      "translation": "“Microsoft Agent Framework Version 1.0.”"
+    },
+    {
+      "id": "t000770",
+      "source": "3 Apr 2026.",
+      "translation": "3 Apr 2026."
+    },
+    {
+      "id": "t000771",
+      "source": "https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/",
+      "translation": "https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-version-1-0/"
+    },
+    {
+      "id": "t000772",
+      "source": "S9 Google. Agent Development Kit documentation and 2026 community release notes, including Agents CLI GA and evaluation tooling. Accessed 31 Aug 2026.",
+      "translation": "S9 Google. Agent Development Kit documentation and 2026 community release notes, including Agents CLI GA and evaluation tooling. Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000773",
+      "source": "https://google.github.io/adk-docs/",
+      "translation": "https://google.github.io/adk-docs/"
+    },
+    {
+      "id": "t000774",
+      "source": "S10 LangChain.",
+      "translation": "S10 LangChain."
+    },
+    {
+      "id": "t000775",
+      "source": "“LangGraph overview.”",
+      "translation": "“LangGraph overview.”"
+    },
+    {
+      "id": "t000776",
+      "source": "Accessed 31 Aug 2026.",
+      "translation": "Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000777",
+      "source": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "translation": "https://docs.langchain.com/oss/python/langgraph/overview"
+    },
+    {
+      "id": "t000778",
+      "source": "S11 LangChain. LangGraph persistence and human-in-the-loop documentation. Accessed 31 Aug 2026.",
+      "translation": "S11 LangChain. LangGraph persistence and human-in-the-loop documentation. Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000779",
+      "source": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "translation": "https://docs.langchain.com/oss/python/langgraph/persistence"
+    },
+    {
+      "id": "t000780",
+      "source": "and",
+      "translation": "and"
+    },
+    {
+      "id": "t000781",
+      "source": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+      "translation": "https://docs.langchain.com/oss/python/langgraph/interrupts"
+    },
+    {
+      "id": "t000782",
+      "source": "S12 Model Context Protocol.",
+      "translation": "S12 Model Context Protocol."
+    },
+    {
+      "id": "t000783",
+      "source": "“The 2026-07-28 Specification.”",
+      "translation": "“The 2026-07-28 Specification.”"
+    },
+    {
+      "id": "t000784",
+      "source": "28 Jul 2026.",
+      "translation": "28 Jul 2026."
+    },
+    {
+      "id": "t000785",
+      "source": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+      "translation": "https://blog.modelcontextprotocol.io/posts/2026-07-28/"
+    },
+    {
+      "id": "t000786",
+      "source": "S13 Agent2Agent Protocol. Specification v1.0.0. Accessed 31 Aug 2026.",
+      "translation": "S13 Agent2Agent Protocol. Specification v1.0.0. Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000787",
+      "source": "https://a2a-protocol.org/dev/specification/",
+      "translation": "https://a2a-protocol.org/dev/specification/"
+    },
+    {
+      "id": "t000788",
+      "source": "S14 OWASP GenAI Security Project.",
+      "translation": "S14 OWASP GenAI Security Project."
+    },
+    {
+      "id": "t000789",
+      "source": "“OWASP Top 10 for Agentic Applications for 2026.”",
+      "translation": "“OWASP Top 10 for Agentic Applications for 2026.”"
+    },
+    {
+      "id": "t000790",
+      "source": "9 Dec 2025.",
+      "translation": "9 Dec 2025."
+    },
+    {
+      "id": "t000791",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "translation": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/"
+    },
+    {
+      "id": "t000792",
+      "source": "S15 NIST. Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile, NIST AI 600-1. 2024; page updated 8 Apr 2026.",
+      "translation": "S15 NIST. Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile, NIST AI 600-1. 2024; page updated 8 Apr 2026."
+    },
+    {
+      "id": "t000793",
+      "source": "https://doi.org/10.6028/NIST.AI.600-1",
+      "translation": "https://doi.org/10.6028/NIST.AI.600-1"
+    },
+    {
+      "id": "t000794",
+      "source": "Source Reference S16 European Commission.",
+      "translation": "Source Reference S16 European Commission."
+    },
+    {
+      "id": "t000795",
+      "source": "“AI Act” and enforcement timeline, current at 31 Aug 2026.",
+      "translation": "“AI Act” and enforcement timeline, current at 31 Aug 2026."
+    },
+    {
+      "id": "t000796",
+      "source": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+      "translation": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+    },
+    {
+      "id": "t000797",
+      "source": "and",
+      "translation": "and"
+    },
+    {
+      "id": "t000798",
+      "source": "https://digital-strategy.ec.europa.eu/en/policies/enforcement-ai-act",
+      "translation": "https://digital-strategy.ec.europa.eu/en/policies/enforcement-ai-act"
+    },
+    {
+      "id": "t000799",
+      "source": "S17 European Commission. “Guidelines on transparency obligations for providers and deployers of AI systems.” 20 Jul 2026.",
+      "translation": "S17 European Commission. “Guidelines on transparency obligations for providers and deployers of AI systems.” 20 Jul 2026."
+    },
+    {
+      "id": "t000800",
+      "source": "https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-depl",
+      "translation": "https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-depl"
+    },
+    {
+      "id": "t000801",
+      "source": "oyers-ai-systems S18 Yuan, M. et al. “OSWorld2.0: Benchmarking Computer Use Agents on Long-Horizon Real-World Tasks.” arXiv:2606.29537, 28 Jun 2026.",
+      "translation": "oyers-ai-systems S18 Yuan, M. et al. “OSWorld2.0: Benchmarking Computer Use Agents on Long-Horizon Real-World Tasks.” arXiv:2606.29537, 28 Jun 2026."
+    },
+    {
+      "id": "t000802",
+      "source": "https://arxiv.org/abs/2606.29537",
+      "translation": "https://arxiv.org/abs/2606.29537"
+    },
+    {
+      "id": "t000803",
+      "source": "S19 Zhou, S. et al.",
+      "translation": "S19 Zhou, S. et al."
+    },
+    {
+      "id": "t000804",
+      "source": "“WebArena: A Realistic Web Environment for Building Autonomous Agents.”",
+      "translation": "“WebArena: A Realistic Web Environment for Building Autonomous Agents.”"
+    },
+    {
+      "id": "t000805",
+      "source": "arXiv:2307.13854, 2023.",
+      "translation": "arXiv:2307.13854, 2023."
+    },
+    {
+      "id": "t000806",
+      "source": "https://arxiv.org/abs/2307.13854",
+      "translation": "https://arxiv.org/abs/2307.13854"
+    },
+    {
+      "id": "t000807",
+      "source": "S20 OpenAI and SWE-bench authors.",
+      "translation": "S20 OpenAI and SWE-bench authors."
+    },
+    {
+      "id": "t000808",
+      "source": "“Introducing SWE-bench Verified.”",
+      "translation": "“Introducing SWE-bench Verified.”"
+    },
+    {
+      "id": "t000809",
+      "source": "https://openai.com/index/introducing-swe-bench-verified/",
+      "translation": "https://openai.com/index/introducing-swe-bench-verified/"
+    },
+    {
+      "id": "t000810",
+      "source": "S21 Yao, S. et al.",
+      "translation": "S21 Yao, S. et al."
+    },
+    {
+      "id": "t000811",
+      "source": "“τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains.”",
+      "translation": "“τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains.”"
+    },
+    {
+      "id": "t000812",
+      "source": "arXiv:2406.12045, 2024.",
+      "translation": "arXiv:2406.12045, 2024."
+    },
+    {
+      "id": "t000813",
+      "source": "https://arxiv.org/abs/2406.12045",
+      "translation": "https://arxiv.org/abs/2406.12045"
+    },
+    {
+      "id": "t000814",
+      "source": "S22 Yao, S. et al.",
+      "translation": "S22 Yao, S. et al."
+    },
+    {
+      "id": "t000815",
+      "source": "“ReAct: Synergizing Reasoning and Acting in Language Models.” arXiv:2210.03629, 2022/2023.",
+      "translation": "“ReAct: Synergizing Reasoning and Acting in Language Models.” arXiv:2210.03629, 2022/2023."
+    },
+    {
+      "id": "t000816",
+      "source": "https://arxiv.org/abs/2210.03629",
+      "translation": "https://arxiv.org/abs/2210.03629"
+    },
+    {
+      "id": "t000817",
+      "source": "S23 Shinn, N. et al.",
+      "translation": "S23 Shinn, N. et al."
+    },
+    {
+      "id": "t000818",
+      "source": "“Reflexion: Language Agents with Verbal Reinforcement Learning.” arXiv:2303.11366, 2023.",
+      "translation": "“Reflexion: Language Agents with Verbal Reinforcement Learning.” arXiv:2303.11366, 2023."
+    },
+    {
+      "id": "t000819",
+      "source": "https://arxiv.org/abs/2303.11366",
+      "translation": "https://arxiv.org/abs/2303.11366"
+    },
+    {
+      "id": "t000820",
+      "source": "S24 Yao, S. et al.",
+      "translation": "S24 Yao, S. et al."
+    },
+    {
+      "id": "t000821",
+      "source": "“Tree of Thoughts: Deliberate Problem Solving with Large Language Models.”",
+      "translation": "“Tree of Thoughts: Deliberate Problem Solving with Large Language Models.”"
+    },
+    {
+      "id": "t000822",
+      "source": "arXiv:2305.10601, 2023.",
+      "translation": "arXiv:2305.10601, 2023."
+    },
+    {
+      "id": "t000823",
+      "source": "https://arxiv.org/abs/2305.10601",
+      "translation": "https://arxiv.org/abs/2305.10601"
+    },
+    {
+      "id": "t000824",
+      "source": "S25 Park, J. S. et al.",
+      "translation": "S25 Park, J. S. et al."
+    },
+    {
+      "id": "t000825",
+      "source": "“Generative Agents: Interactive Simulacra of Human Behavior.”",
+      "translation": "“Generative Agents: Interactive Simulacra of Human Behavior.”"
+    },
+    {
+      "id": "t000826",
+      "source": "UIST 2023.",
+      "translation": "UIST 2023."
+    },
+    {
+      "id": "t000827",
+      "source": "https://doi.org/10.1145/3586183.3606763",
+      "translation": "https://doi.org/10.1145/3586183.3606763"
+    },
+    {
+      "id": "t000828",
+      "source": "S26 Wang, G. et al.",
+      "translation": "S26 Wang, G. et al."
+    },
+    {
+      "id": "t000829",
+      "source": "“Voyager: An Open-Ended Embodied Agent with Large Language Models.”",
+      "translation": "“Voyager: An Open-Ended Embodied Agent with Large Language Models.”"
+    },
+    {
+      "id": "t000830",
+      "source": "arXiv:2305.16291, 2023.",
+      "translation": "arXiv:2305.16291, 2023."
+    },
+    {
+      "id": "t000831",
+      "source": "https://arxiv.org/abs/2305.16291",
+      "translation": "https://arxiv.org/abs/2305.16291"
+    },
+    {
+      "id": "t000832",
+      "source": "S27 Intercom.",
+      "translation": "S27 Intercom."
+    },
+    {
+      "id": "t000833",
+      "source": "“Fin AI Agent outcomes.”",
+      "translation": "“Fin AI Agent outcomes.”"
+    },
+    {
+      "id": "t000834",
+      "source": "Updated 30 Jul 2026.",
+      "translation": "Updated 30 Jul 2026."
+    },
+    {
+      "id": "t000835",
+      "source": "https://www.intercom.com/help/en/articles/8205718-fin-ai-agent-outcomes",
+      "translation": "https://www.intercom.com/help/en/articles/8205718-fin-ai-agent-outcomes"
+    },
+    {
+      "id": "t000836",
+      "source": "S28 Salesforce.",
+      "translation": "S28 Salesforce."
+    },
+    {
+      "id": "t000837",
+      "source": "“Agentforce Pricing.”",
+      "translation": "“Agentforce Pricing.”"
+    },
+    {
+      "id": "t000838",
+      "source": "Accessed 31 Aug 2026.",
+      "translation": "Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000839",
+      "source": "https://www.salesforce.com/agentforce/pricing/",
+      "translation": "https://www.salesforce.com/agentforce/pricing/"
+    },
+    {
+      "id": "t000840",
+      "source": "S29 Microsoft. Copilot Studio licensing and Copilot Credits billing documentation. Accessed 31 Aug 2026.",
+      "translation": "S29 Microsoft. Copilot Studio licensing and Copilot Credits billing documentation. Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000841",
+      "source": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-messages-management",
+      "translation": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-messages-management"
+    },
+    {
+      "id": "t000842",
+      "source": "S30 Linux Foundation. “A2A Protocol Surpasses 150 Organizations, Lands in Major Cloud Platforms, and Sees Enterprise Production Use in First Year.” 9 Apr 2026.",
+      "translation": "S30 Linux Foundation. “A2A Protocol Surpasses 150 Organizations, Lands in Major Cloud Platforms, and Sees Enterprise Production Use in First Year.” 9 Apr 2026."
+    },
+    {
+      "id": "t000843",
+      "source": "https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud",
+      "translation": "https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud"
+    },
+    {
+      "id": "t000844",
+      "source": "-platforms-and-sees-enterprise-production-use-in-first-year S31 A2A Protocol.",
+      "translation": "-platforms-and-sees-enterprise-production-use-in-first-year S31 A2A Protocol."
+    },
+    {
+      "id": "t000845",
+      "source": "“A New Chapter for A2A: Joining the Agentic AI Foundation.”",
+      "translation": "“A New Chapter for A2A: Joining the Agentic AI Foundation.”"
+    },
+    {
+      "id": "t000846",
+      "source": "27 Aug 2026.",
+      "translation": "27 Aug 2026."
+    },
+    {
+      "id": "t000847",
+      "source": "https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundatio",
+      "translation": "https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundatio"
+    },
+    {
+      "id": "t000848",
+      "source": "n/ S32 Google Developers. A developer’s guide to the emerging AI agent protocol stack, including MCP and A2A. 2026.",
+      "translation": "n/ S32 Google Developers. A developer’s guide to the emerging AI agent protocol stack, including MCP and A2A. 2026."
+    },
+    {
+      "id": "t000849",
+      "source": "https://developers.googleblog.com/en/developers-guide-to-ai-agent-protocols/",
+      "translation": "https://developers.googleblog.com/en/developers-guide-to-ai-agent-protocols/"
+    },
+    {
+      "id": "t000850",
+      "source": "S33 Liu, X. et al.",
+      "translation": "S33 Liu, X. et al."
+    },
+    {
+      "id": "t000851",
+      "source": "“AgentBench: Evaluating LLMs as Agents.” arXiv:2308.03688, 2023.",
+      "translation": "“AgentBench: Evaluating LLMs as Agents.” arXiv:2308.03688, 2023."
+    },
+    {
+      "id": "t000852",
+      "source": "https://arxiv.org/abs/2308.03688",
+      "translation": "https://arxiv.org/abs/2308.03688"
+    },
+    {
+      "id": "t000853",
+      "source": "Source Reference S34 CrewAI. Documentation for agents, crews, and flows. Accessed 31 Aug 2026.",
+      "translation": "Source Reference S34 CrewAI. Documentation for agents, crews, and flows. Accessed 31 Aug 2026."
+    },
+    {
+      "id": "t000854",
+      "source": "https://docs.crewai.com/",
+      "translation": "https://docs.crewai.com/"
+    }
+  ]
+}

@@ -1,0 +1,596 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000313",
+      "source": "This suggests treating explanations as structured artifacts. A local explanation can be stored as an object containing the prediction, explanatory method, semantics, parameters, evidence, uncertainty, and links to validation results. Such an object can be rendered differently for an engineer, regulator, or end user without losing provenance.",
+      "translation": "Aceasta sugerează tratarea explicațiilor ca artefacte structurate. O explicație locală poate fi stocată ca obiect conținând predicția, metoda explicativă, semantica, parametrii, dovezile, incertitudinea și legăturile către rezultatele validării. Un asemenea obiect poate fi redat diferit pentru un inginer, regulator sau utilizator final fără pierderea provenienței."
+    },
+    {
+      "id": "t000314",
+      "source": "A useful engineering abstraction is an explanation contract. The contract states the question being answered, the domain in which the explanation is valid, the model and data dependencies, the assumptions of the method, the stability expectations, the privacy policy, and the validation tests that the artifact must pass. The contract turns vague requests such as 'make the model explainable' into testable system requirements.",
+      "translation": "O abstracție inginerească utilă este un contract al explicației. Contractul precizează întrebarea la care se răspunde, domeniul validității explicației, dependențele de model și date, ipotezele metodei, așteptările de stabilitate, politica de confidențialitate și testele de validare pe care artefactul trebuie să le treacă. Contractul transformă cereri vagi precum „fă modelul explicabil” în cerințe testabile ale sistemului."
+    },
+    {
+      "id": "t000315",
+      "source": "ExplanationContract: question =",
+      "translation": "ExplanationContract: question ="
+    },
+    {
+      "id": "t000316",
+      "source": "\"Which inputs locally control this decision?\"",
+      "translation": "\"Which inputs locally control this decision?\""
+    },
+    {
+      "id": "t000317",
+      "source": "target =",
+      "translation": "target ="
+    },
+    {
+      "id": "t000318",
+      "source": "\"approved_probability\" method_family =",
+      "translation": "\"approved_probability\" method_family ="
+    },
+    {
+      "id": "t000319",
+      "source": "\"feature_attribution\" reference_policy =",
+      "translation": "\"feature_attribution\" reference_policy ="
+    },
+    {
+      "id": "t000320",
+      "source": "\"validated_background_v4\" valid_model_versions = [",
+      "translation": "\"validated_background_v4\" valid_model_versions = ["
+    },
+    {
+      "id": "t000321",
+      "source": "\"credit-v18\" ] required_tests = [",
+      "translation": "\"credit-v18\" ] required_tests = ["
+    },
+    {
+      "id": "t000322",
+      "source": "\"model_randomization\",",
+      "translation": "\"model_randomization\","
+    },
+    {
+      "id": "t000323",
+      "source": "\"baseline_sensitivity\",",
+      "translation": "\"baseline_sensitivity\","
+    },
+    {
+      "id": "t000324",
+      "source": "\"local_ablation\" ] max_explanation_drift =",
+      "translation": "\"local_ablation\" ] max_explanation_drift ="
+    },
+    {
+      "id": "t000325",
+      "source": "\"defined by cohort-specific tolerance\" privacy_class =",
+      "translation": "\"defined by cohort-specific tolerance\" privacy_class ="
+    },
+    {
+      "id": "t000326",
+      "source": "\"internal-sensitive\" human_view =",
+      "translation": "\"internal-sensitive\" human_view ="
+    },
+    {
+      "id": "t000327",
+      "source": "\"top concepts + counterfactual context\" The syntax above is deliberately simple. The important idea is that explanation semantics and tests become machine-readable. A CI pipeline can reject a deployment when an explainer no longer satisfies its contract, just as it rejects a failing unit test.",
+      "translation": "\"top concepts + counterfactual context\" Sintaxa de mai sus este deliberat simplă. Ideea importantă este că semantica explicației și testele devin lizibile de mașini. Un flux CI poate respinge o instalare când un explicator nu își mai satisface contractul, la fel cum respinge un test unitar eșuat."
+    },
+    {
+      "id": "t000328",
+      "source": "Traditional model monitoring tracks input drift, output drift, accuracy, calibration, latency, and sometimes fairness. Explanation monitoring adds another signal: changes in the model's reliance on features, concepts, examples, or internal mechanisms. A classifier can preserve top-line accuracy while shifting from a robust signal to a spurious proxy. Attribution drift can reveal that change before conventional metrics do.",
+      "translation": "Monitorizarea tradițională a modelelor urmărește deriva intrării, deriva ieșirii, acuratețea, calibrarea, latența și uneori echitatea. Monitorizarea explicației adaugă alt semnal: schimbări ale dependenței modelului de caracteristici, concepte, exemple sau mecanisme interne. Un clasificator poate păstra acuratețea generală trecând de la un semnal robust la un substitut fals. Deriva atribuirii poate dezvălui acea schimbare înaintea metricilor convenționale."
+    },
+    {
+      "id": "t000329",
+      "source": "Explanation drift must be interpreted carefully because explainer variance can look like model drift. The monitoring baseline should therefore be established on fixed reference sets, with repeated explanations where stochasticity matters. The system should distinguish changes caused by data, model parameters, preprocessing, and explainer configuration.",
+      "translation": "Deriva explicației trebuie interpretată atent deoarece variația explicatorului poate arăta ca deriva modelului. Referința monitorizării ar trebui astfel stabilită pe seturi fixe de referință, cu explicații repetate unde contează stochasticitatea. Sistemul ar trebui să distingă schimbările cauzate de date, parametrii modelului, preprocesare și configurația explicatorului."
+    },
+    {
+      "id": "t000330",
+      "source": "A robust production workflow begins with behavioral model tests, then generates explanations, runs sanity and randomization checks, evaluates fidelity and stability, compares relevant subgroups, tests adversarial manipulation, validates causal claims where recourse is provided, and finally performs application-grounded human evaluation when explanations influence people. This ordering matters: it is wasteful to study whether humans like an explanation before establishing that the artifact contains meaningful information about the model.",
+      "translation": "Un flux robust de producție începe cu teste comportamentale ale modelului, apoi generează explicații, rulează verificări de plauzibilitate și randomizare, evaluează fidelitatea și stabilitatea, compară subgrupuri relevante, testează manipularea adversarială, validează afirmații cauzale unde este oferită remediere și în final efectuează evaluare umană fundamentată în aplicație când explicațiile influențează oamenii. Această ordine contează: este risipitor să studiem dacă oamenilor le place o explicație înainte de a stabili că artefactul conține informații semnificative despre model."
+    },
+    {
+      "id": "t000331",
+      "source": "Deploying explanations creates new risks. Detailed local explanations can help attackers discover decision boundaries. Training-data attribution can expose sensitive records. Counterfactuals can reveal how to game a fraud or eligibility system. Generated rationales can create a false sense of transparency. Even explanation stability can become a target if an attacker learns which perturbations leave the displayed story unchanged.",
+      "translation": "Instalarea explicațiilor creează riscuri noi. Explicațiile locale detaliate îi pot ajuta pe atacatori să descopere frontierele de decizie. Atribuirea datelor de antrenare poate expune înregistrări sensibile. Contrafactualele pot dezvălui cum se manipulează un sistem de fraudă sau eligibilitate. Justificările generate pot crea un fals sentiment de transparență. Chiar și stabilitatea explicației poate deveni țintă dacă un atacator învață ce perturbări lasă neschimbată povestea afișată."
+    },
+    {
+      "id": "t000332",
+      "source": "This means security and privacy should influence explainer selection. Public-facing explanations may need coarser granularity than internal debugging tools. Sensitive training examples may need aggregation or access control. Explanations used for incident response may be retained under stricter governance than ordinary telemetry. Where explanations are generated by another model, the generated text should be linked to machine-checkable evidence rather than treated as authoritative by itself.",
+      "translation": "Aceasta înseamnă că securitatea și confidențialitatea ar trebui să influențeze selecția explicatorului. Explicațiile publice pot necesita granularitate mai grosieră decât instrumentele interne de depanare. Exemplele sensibile de antrenare pot necesita agregare sau control al accesului. Explicațiile folosite pentru răspuns la incidente pot fi păstrate sub guvernanță mai strictă decât telemetria obișnuită. Când explicațiile sunt generate de alt model, textul generat ar trebui legat de dovezi verificabile de mașini, nu tratat drept autoritativ în sine."
+    },
+    {
+      "id": "t000333",
+      "source": "The tooling ecosystem is mature enough to support serious workflows but not mature enough to eliminate methodological decisions. SHAP remains widely used for Shapley-style attribution. Captum provides PyTorch-native attribution and layer-analysis methods. InterpretML includes Explainable Boosting Machines and post-hoc explainers. Quantus offers a growing metric suite for evaluation. OpenXAI provides benchmark-oriented comparison. The right tool is the one whose semantics and failure modes fit the contract; a popular library name is not a validation argument.",
+      "translation": "Ecosistemul instrumentelor este suficient de matur pentru a susține fluxuri serioase, dar insuficient de matur pentru a elimina deciziile metodologice. SHAP rămâne folosit larg pentru atribuirea de tip Shapley. Captum furnizează metode de atribuire și analiză a straturilor native PyTorch. InterpretML include Explainable Boosting Machines și explicatori post-hoc. Quantus oferă o suită tot mai mare de metrici pentru evaluare. OpenXAI furnizează comparație orientată pe repere. Instrumentul corect este cel a cărui semantică și ale cărui moduri de eșec se potrivesc contractului; un nume popular de bibliotecă nu este un argument de validare."
+    },
+    {
+      "id": "t000334",
+      "source": "For organizations, the most important tooling decision may be architectural rather than algorithmic: build a common evidence interface across models. If every team logs explanations differently, cross-model governance becomes impossible. A shared schema for model identity, inputs, explanation semantics, uncertainty, provenance, and test results makes explainability comparable and reviewable even as individual methods evolve.",
+      "translation": "Pentru organizații, cea mai importantă decizie privind instrumentele poate fi arhitecturală, nu algoritmică: construiți o interfață comună de dovezi între modele. Dacă fiecare echipă jurnalizează diferit explicațiile, guvernanța între modele devine imposibilă. O schemă comună pentru identitatea modelului, intrări, semantica explicației, incertitudine, proveniență și rezultate ale testelor face explicabilitatea comparabilă și verificabilă chiar pe măsură ce metodele individuale evoluează."
+    },
+    {
+      "id": "t000335",
+      "source": "Tooling should be versioned as carefully as models. Explanation libraries change default behaviors, supported maskers, numerical approximations, and evaluation metrics. A result produced by “SHAP” or “Captum” is not reproducible unless the relevant explainer class, background data, framework versions, and options are captured. In regulated or high-stakes settings, software-bill-of-materials practices should extend to the explanation stack.",
+      "translation": "Instrumentele ar trebui versionate la fel de atent ca modelele. Bibliotecile de explicație schimbă comportamente implicite, mecanisme de mascare susținute, aproximări numerice și metrici de evaluare. Un rezultat produs de „SHAP” sau „Captum” nu este reproductibil dacă nu sunt capturate clasa relevantă a explicatorului, datele de fundal, versiunile cadrului și opțiunile. În contexte reglementate sau cu miză mare, practicile de inventariere a componentelor software ar trebui extinse la ansamblul explicației."
+    },
+    {
+      "id": "t000336",
+      "source": "There is also a build-versus-buy decision. Cloud platforms increasingly expose generic explanation features, which can reduce integration effort. They do not remove the need to validate semantics against the application. A managed service may calculate feature importance correctly while the chosen background or data encoding makes the explanation unsuitable for the domain. Convenience should not be mistaken for epistemic validation.",
+      "translation": "Există și decizia construire versus cumpărare. Platformele cloud expun tot mai mult funcții generice de explicație, care pot reduce efortul integrării. Nu elimină nevoia de validare a semanticii față de aplicație. Un serviciu gestionat poate calcula corect importanța caracteristicilor, în timp ce fundalul sau codificarea datelor alese fac explicația nepotrivită domeniului. Comoditatea nu ar trebui confundată cu validarea epistemică."
+    },
+    {
+      "id": "t000337",
+      "source": "A small centralized XAI/assurance layer can therefore be more valuable than many disconnected team-specific notebooks. It can provide approved configurations, common logging, evaluation templates, and access controls while still allowing specialized methods where justified. The objective is consistency of evidence, not uniformity of algorithms.",
+      "translation": "Un mic strat centralizat XAI/asigurare poate fi astfel mai valoros decât multe notebookuri de echipă deconectate. Poate furniza configurații aprobate, jurnalizare comună, șabloane de evaluare și controale ale accesului, permițând metode specializate unde sunt justificate. Obiectivul este consistența dovezilor, nu uniformitatea algoritmilor."
+    },
+    {
+      "id": "t000338",
+      "source": "Explanations leak information. Repeated feature-attribution queries can reveal decision boundaries, sensitive training relationships, or internal model behavior. Counterfactuals can expose how to evade fraud or security controls. Example-based explanations can reveal private records. Mechanistic interfaces can expose safety circuits or exploitable weaknesses. Explainability therefore creates a genuine transparency-security trade-off.",
+      "translation": "Explicațiile scurg informații. Interogările repetate de atribuire a caracteristicilor pot dezvălui frontiere de decizie, relații sensibile de antrenare sau comportament intern al modelului. Contrafactualele pot expune cum se evită controalele de fraudă sau securitate. Explicațiile bazate pe exemple pot dezvălui înregistrări private. Interfețele mecaniciste pot expune circuite de siguranță sau slăbiciuni exploatabile. Explicabilitatea creează astfel un compromis autentic transparență-securitate."
+    },
+    {
+      "id": "t000339",
+      "source": "Access controls should depend on the audience. Internal debugging tools can expose richer model information than public explanation APIs. Rate limits, query budgets, coarsened explanations, delayed disclosure, privacy-preserving aggregation, and differential privacy may be appropriate in sensitive settings. There is no principle that every explanation should reveal every available detail.",
+      "translation": "Controalele accesului ar trebui să depindă de public. Instrumentele interne de depanare pot expune informații mai bogate despre model decât API-urile publice de explicație. Limitele de rată, bugetele de interogare, explicațiile mai grosiere, divulgarea întârziată, agregarea care păstrează confidențialitatea și confidențialitatea diferențială pot fi adecvate în contexte sensibile. Nu există un principiu că fiecare explicație ar trebui să dezvăluie fiecare detaliu disponibil."
+    },
+    {
+      "id": "t000340",
+      "source": "An explanation service should be tested as a system in its own right. Does it provide similar fidelity across demographic or operational groups? Are counterfactual costs systematically higher for some groups? Does a background dataset make minority cases look anomalous? Can explanations leak membership in the training set? These questions are separate from whether the predictor itself satisfies a fairness criterion.",
+      "translation": "Un serviciu de explicație ar trebui testat ca sistem de sine stătător. Furnizează fidelitate similară între grupuri demografice sau operaționale? Costurile contrafactuale sunt sistematic mai mari pentru unele grupuri? Un set de date de fundal face cazurile minoritare să pară anomale? Pot explicațiile scurge apartenența la setul de antrenare? Aceste întrebări sunt separate de întrebarea dacă predictorul însuși satisface un criteriu de echitate."
+    },
+    {
+      "id": "t000341",
+      "source": "The explainability pipeline can also become a fairness tool. Group-level attribution analysis, concept audits, and counterfactual comparisons can expose proxies and shortcuts. But explanation does not automatically remove bias; it only creates additional observability. Corrective action still requires changes to data, objective, policy, or model.",
+      "translation": "Fluxul explicabilității poate deveni și instrument al echității. Analiza atribuirii la nivel de grup, auditurile conceptelor și comparațiile contrafactuale pot expune substituenți și scurtături. Dar explicația nu elimină automat biasul; doar creează observabilitate suplimentară. Acțiunea corectivă cere în continuare schimbări ale datelor, obiectivului, politicii sau modelului."
+    },
+    {
+      "id": "t000342",
+      "source": "The open-source ecosystem now covers most classical explanation families. SHAP remains the dominant general feature-attribution framework, especially for tree and tabular models. Captum provides PyTorch-native attribution and layer analysis, including transformer and LLM workflows. InterpretML supports glass-box models such as Explainable Boosting Machines as well as black-box explainers. Quantus collects many evaluation metrics, while OpenXAI provides standardized benchmarking and leaderboards.",
+      "translation": "Ecosistemul cu sursă deschisă acoperă acum majoritatea familiilor clasice de explicație. SHAP rămâne cadrul general dominant de atribuire a caracteristicilor, mai ales pentru modele cu arbori și tabulare. Captum furnizează atribuire și analiză a straturilor native PyTorch, inclusiv fluxuri transformer și LLM. InterpretML susține modele transparente precum Explainable Boosting Machines, precum și explicatori pentru cutii negre. Quantus colectează multe metrici de evaluare, iar OpenXAI furnizează evaluare standardizată și clasamente."
+    },
+    {
+      "id": "t000343",
+      "source": "Managed platforms from major cloud vendors integrate feature attribution, error analysis, fairness, counterfactuals, and governance to varying degrees. These interfaces reduce operational friction but do not validate the semantics of the underlying method. A polished cloud dashboard inherits the same baseline, dependence, and causal assumptions as the algorithm it wraps.",
+      "translation": "Platformele gestionate ale marilor furnizori cloud integrează în grade variate atribuirea caracteristicilor, analiza erorilor, echitatea, contrafactualele și guvernanța. Aceste interfețe reduc fricțiunea operațională, dar nu validează semantica metodei subiacente. Un tablou de bord cloud șlefuit moștenește aceleași ipoteze de referință, dependență și cauzalitate ca algoritmul pe care îl încapsulează."
+    },
+    {
+      "id": "t000344",
+      "source": "Once explanation becomes a production service, provenance and continuous testing are unavoidable. This infrastructure also prepares us for foundation models, where the most persuasive explanatory artifact—the model’s own language—can be the easiest one to overinterpret.",
+      "translation": "Odată ce explicația devine serviciu de producție, proveniența și testarea continuă sunt inevitabile. Această infrastructură ne pregătește și pentru modelele fundamentale, unde cel mai convingător artefact explicativ — propriul limbaj al modelului — poate fi cel mai ușor de suprainterpretat."
+    },
+    {
+      "id": "t000345",
+      "source": "Chapter 4. Explaining Foundation Models",
+      "translation": "Capitolul 4. Explicarea modelelor fundamentale"
+    },
+    {
+      "id": "t000346",
+      "source": "Foundation models force XAI to confront an uncomfortable fact: fluent language makes weak evidence look strong. A model can produce a coherent account of why it answered as it did without that account being a faithful record of the computation that produced the answer. At the same time, modern models expose internal representations rich enough to support probes, interventions, sparse feature dictionaries, causal tracing, and increasingly sophisticated mechanistic hypotheses. This chapter builds an evidence hierarchy for those claims. It distinguishes generated rationale from behavioral evidence, representation-level evidence from causal intervention, and useful mechanistic models from literal descriptions of every computational detail. The goal is not to make large models simple. It is to make claims about them proportionate to the evidence we actually possess.",
+      "translation": "Modelele fundamentale obligă XAI să înfrunte un fapt incomod: limbajul fluent face dovezile slabe să pară puternice. Un model poate produce o relatare coerentă a motivului răspunsului său fără ca relatarea să fie o înregistrare fidelă a calculului care a produs răspunsul. În același timp, modelele moderne expun reprezentări interne suficient de bogate pentru a susține sonde, intervenții, dicționare rare de caracteristici, urmărire cauzală și ipoteze mecaniciste tot mai sofisticate. Acest capitol construiește o ierarhie a dovezilor pentru acele afirmații. Distinge justificarea generată de dovezile comportamentale, dovezile la nivel de reprezentare de intervenția cauzală și modelele mecaniciste utile de descrierile literale ale fiecărui detaliu computațional. Scopul nu este simplificarea modelelor mari. Este proporționarea afirmațiilor despre ele la dovezile pe care le avem efectiv."
+    },
+    {
+      "id": "t000347",
+      "source": "QUESTION TO CARRY THROUGH THE CHAPTER — Which parts of the explanation are observable outputs, which are behavioral evidence, and which are causal claims about internal computation?",
+      "translation": "ÎNTREBARE DE PĂSTRAT PE PARCURSUL CAPITOLULUI — Ce părți ale explicației sunt ieșiri observabile, care sunt dovezi comportamentale și care sunt afirmații cauzale despre calculul intern?"
+    },
+    {
+      "id": "t000348",
+      "source": "4.1 Generated rationales are not privileged",
+      "translation": "4.1 Justificările generate nu sunt acces privilegiat"
+    },
+    {
+      "id": "t000349",
+      "source": "access to reasoning Language models can describe their own reasoning with extraordinary fluency. That ability is useful, but it tempts users to assume that the generated narrative is a transparent readout of the internal computation. Research on chain-of-thought faithfulness repeatedly warns against that assumption. Models can omit influential hints, rationalize answers after the fact, or produce reasoning text that changes under prompting while the answer remains stable. Recent work probing reasoning models continues to find discrepancies between reported and behaviorally inferred influences.",
+      "translation": "la raționament Modelele lingvistice își pot descrie raționamentul cu fluență extraordinară. Acea capacitate este utilă, dar îi tentează pe utilizatori să presupună că narațiunea generată este o citire transparentă a calculului intern. Cercetarea fidelității lanțului de gândire avertizează repetat împotriva acestei presupuneri. Modelele pot omite indicii influente, raționaliza răspunsurile ulterior sau produce text de raționament care se schimbă sub promptare în timp ce răspunsul rămâne stabil. Lucrările recente care sondează modele de raționament continuă să găsească discrepanțe între influențele raportate și cele inferate comportamental."
+    },
+    {
+      "id": "t000350",
+      "source": "The correct interpretation is modest: chain-of-thought is an output behavior that may contain useful intermediate structure. It can improve task performance, expose obvious errors, and support process supervision. It can sometimes provide evidence about how a model is solving a problem. It is not privileged introspection. Treating it as such collapses the distinction between a model producing a plausible explanation and an investigator establishing a causal account.",
+      "translation": "Interpretarea corectă este modestă: lanțul de gândire este un comportament de ieșire care poate conține structură intermediară utilă. Poate îmbunătăți performanța sarcinii, expune erori evidente și susține supervizarea procesului. Poate uneori furniza dovezi despre cum rezolvă un model o problemă. Nu este introspecție privilegiată. Tratarea lui astfel confundă distincția dintre un model care produce o explicație plauzibilă și un investigator care stabilește o relatare cauzală."
+    },
+    {
+      "id": "t000351",
+      "source": "For engineers, this suggests simple tests. Change an apparently irrelevant hint and see whether the answer changes without the rationale acknowledging it. Remove a cited source and test whether the conclusion persists. Paraphrase the prompt, alter the order of evidence, or insert distractors. Compare hidden-state or activation interventions with the claims in the generated rationale. If the textual reasoning says one thing while controlled behavior says another, the behavior deserves more evidential weight.",
+      "translation": "Pentru ingineri, aceasta sugerează teste simple. Schimbați un indiciu aparent nerelevant și vedeți dacă răspunsul se schimbă fără ca justificarea să o recunoască. Eliminați o sursă citată și testați dacă concluzia persistă. Parafrazați promptul, alterați ordinea dovezilor sau inserați distractori. Comparați intervenții asupra stărilor ascunse sau activărilor cu afirmațiile justificării generate. Dacă raționamentul textual spune una, iar comportamentul controlat alta, comportamentul merită mai multă pondere probatorie."
+    },
+    {
+      "id": "t000352",
+      "source": "LLM explainability therefore begins outside the model. We can measure prompt sensitivity, token influence, source dependence, retrieval effects, and response consistency before attempting to infer internal mechanisms. These tests are comparatively cheap, scalable, and directly tied to system behavior. They form the lower rungs of an evidence ladder that can later be extended with probes and mechanistic experiments.",
+      "translation": "Explicabilitatea LLM începe astfel în afara modelului. Putem măsura sensibilitatea la prompt, influența tokenurilor, dependența de surse, efectele recuperării și consistența răspunsurilor înainte de a încerca inferarea mecanismelor interne. Aceste teste sunt relativ ieftine, scalabile și legate direct de comportamentul sistemului. Formează treptele inferioare ale unei scări de dovezi care poate fi extinsă ulterior cu sonde și experimente mecaniciste."
+    },
+    {
+      "id": "t000353",
+      "source": "The distinction becomes even more important for models trained specifically to emit long reasoning traces. A model can learn that certain styles of reasoning are rewarded, just as it learns any other output convention. The trace may correlate strongly with useful internal computation without being a literal transcript of it. The stronger the training pressure on the visible rationale, the more carefully faithfulness should be tested rather than assumed.",
+      "translation": "Distincția devine și mai importantă pentru modelele antrenate special să emită urme lungi de raționament. Un model poate învăța că anumite stiluri de raționament sunt recompensate, la fel cum învață orice altă convenție a ieșirii. Urma se poate corela puternic cu calculul intern util fără a fi o transcriere literală a lui. Cu cât presiunea antrenării asupra justificării vizibile este mai puternică, cu atât fidelitatea ar trebui testată mai atent, nu presupusă."
+    },
+    {
+      "id": "t000354",
+      "source": "One practical audit is",
+      "translation": "Un audit practic este"
+    },
+    {
+      "id": "t000355",
+      "source": "“reasoning perturbation without answer perturbation.”",
+      "translation": "„perturbarea raționamentului fără perturbarea răspunsului”."
+    },
+    {
+      "id": "t000356",
+      "source": "If the visible chain can be radically changed by stylistic prompts while the answer and internal behavioral sensitivities remain stable, the trace is partly presentation. Another is",
+      "translation": "Dacă lanțul vizibil poate fi schimbat radical prin prompturi stilistice în timp ce răspunsul și sensibilitățile comportamentale interne rămân stabile, urma este parțial prezentare. Altul este"
+    },
+    {
+      "id": "t000357",
+      "source": "“hidden influence.”",
+      "translation": "„influența ascunsă”."
+    },
+    {
+      "id": "t000358",
+      "source": "Insert information that changes the answer and test whether the rationale acknowledges it. The combination of such tests gives a more grounded picture than judging the plausibility of the prose.",
+      "translation": "Inserați informații care schimbă răspunsul și testați dacă justificarea le recunoaște. Combinația unor asemenea teste oferă o imagine mai fundamentată decât judecarea plauzibilității prozei."
+    },
+    {
+      "id": "t000359",
+      "source": "For many applications, the safest interface is to ask the model for concise justifications linked to external evidence rather than unrestricted claims about internal reasoning. The explanation then focuses on what can be checked: source support, assumptions, intermediate calculations, tool outputs, and uncertainty.",
+      "translation": "Pentru multe aplicații, cea mai sigură interfață este să cerem modelului justificări concise legate de dovezi externe, nu afirmații nerestricționate despre raționamentul intern. Explicația se concentrează apoi pe ce poate fi verificat: susținerea surselor, ipoteze, calcule intermediare, ieșiri ale instrumentelor și incertitudine."
+    },
+    {
+      "id": "t000360",
+      "source": "Classical XAI often assumes a fixed prediction for a fixed-dimensional input. An LLM is an autoregressive conditional generator with distributed representations, long contexts, tool calls, retrieval, system prompts, sampling, and potentially hidden state in an agent harness. Its behavior can depend on tokenization, context order, decoding parameters, external tools, and prior interactions. The explanatory target may be a token, a sentence, a plan, a refusal, a factual claim, or a multi-step action.",
+      "translation": "XAI clasică presupune adesea o predicție fixă pentru o intrare de dimensiune fixă. Un LLM este un generator condițional autoregresiv cu reprezentări distribuite, contexte lungi, apeluri de instrumente, recuperare, prompturi de sistem, eșantionare și potențial stare ascunsă într-un cadru de agent. Comportamentul său poate depinde de tokenizare, ordinea contextului, parametrii decodării, instrumente externe și interacțiuni anterioare. Ținta explicativă poate fi un token, o propoziție, un plan, un refuz, o afirmație factuală sau o acțiune în mai mulți pași."
+    },
+    {
+      "id": "t000361",
+      "source": "Chain-of-thought deserves special care because the output is linguistically similar to the kind of explanation a person would give. That similarity is cognitively powerful but epistemically weak. A generated rationale can be conditioned by prompting conventions, can omit features that affected the answer, can incorporate features that did not, and can be post-hoc in the ordinary sense that the model produces a plausible narrative after the relevant decision has effectively been determined. Intervention studies showing unfaithful rationales do not imply that chain-of-thought is useless. They imply that it should be interpreted as behavior that can itself be studied, not as a privileged trace of hidden computation.",
+      "translation": "Lanțul de gândire merită atenție specială deoarece ieșirea este lingvistic asemănătoare tipului de explicație oferit de o persoană. Acea asemănare este cognitiv puternică, dar epistemic slabă. O justificare generată poate fi condiționată de convențiile promptării, poate omite caracteristici care au afectat răspunsul, poate încorpora unele care nu l-au afectat și poate fi post-hoc în sensul obișnuit că modelul produce o narațiune plauzibilă după ce decizia relevantă a fost efectiv determinată. Studiile de intervenție care arată justificări nefidele nu implică inutilitatea lanțului de gândire. Implică faptul că ar trebui interpretat ca comportament care poate fi el însuși studiat, nu ca urmă privilegiată a calculului ascuns."
+    },
+    {
+      "id": "t000362",
+      "source": "This distinction matters operationally. A rationale can still improve usability, expose assumptions, help a user notice an obvious inconsistency, or provide a compact interface to retrieved evidence. Those are legitimate roles. The error is to merge them with the mechanistic claim that the displayed sequence is the causal path used by the model. An engineering system should therefore label generated reasoning as reported reasoning or generated rationale unless independent tests support a stronger statement.",
+      "translation": "Această distincție contează operațional. O justificare poate totuși îmbunătăți utilizabilitatea, expune ipoteze, ajuta utilizatorul să observe o inconsistență evidentă sau furniza o interfață compactă către dovezi recuperate. Acestea sunt roluri legitime. Eroarea este unirea lor cu afirmația mecanicistă că succesiunea afișată este calea cauzală folosită de model. Un sistem ingineresc ar trebui astfel să eticheteze raționamentul generat ca raționament raportat sau justificare generată, dacă teste independente nu susțin un enunț mai puternic."
+    },
+    {
+      "id": "t000363",
+      "source": "A second complication is that a foundation model's behavior depends on more than its weights. Prompt construction, system instructions, retrieval results, tool schemas, conversation state, sampling parameters, and surrounding code all shape the output. Consequently, an LLM explanation that ignores the runtime context can be accurate about the neural model and still wrong about the deployed system. This is one reason provenance becomes central as soon as models are embedded in applications.",
+      "translation": "O a doua complicație este că comportamentul unui model fundamental depinde de mai mult decât ponderile sale. Construirea promptului, instrucțiunile sistemului, rezultatele recuperării, schemele instrumentelor, starea conversației, parametrii eșantionării și codul înconjurător modelează toate ieșirea. În consecință, o explicație LLM care ignoră contextul runtime poate fi exactă despre modelul neural și totuși greșită despre sistemul instalat. Acesta este un motiv pentru care proveniența devine centrală imediat ce modelele sunt integrate în aplicații."
+    },
+    {
+      "id": "t000364",
+      "source": "At the same time, the model can produce a compelling natural-language account of why it answered as it did. This tempts users to treat verbalized reasoning as direct introspection. Research has shown that this inference is unsafe.",
+      "translation": "În același timp, modelul poate produce o relatare convingătoare în limbaj natural a motivului pentru care a răspuns astfel. Aceasta îi tentează pe utilizatori să trateze raționamentul verbalizat ca introspecție directă. Cercetarea a arătat că această inferență este nesigură."
+    },
+    {
+      "id": "t000365",
+      "source": "Turpin and colleagues demonstrated that chain-of-thought explanations can systematically misrepresent factors that influenced a model's answer. Later intervention studies on reasoning models found that hints or biasing cues could affect answers without being reliably acknowledged in the generated reasoning. The appropriate conclusion is not that chain-of-thought has no value. It can improve task performance, support debugging, and communicate a useful decomposition. But it should be treated as generated behavioral evidence rather than a transparent dump of hidden computation.",
+      "translation": "Turpin și colaboratorii au demonstrat că explicațiile de tip lanț de gândire pot reprezenta sistematic greșit factori care au influențat răspunsul unui model. Studii ulterioare de intervenție pe modele de raționament au găsit că indicii sau semnale părtinitoare pot afecta răspunsurile fără a fi recunoscute fiabil în raționamentul generat. Concluzia adecvată nu este că lanțul de gândire nu are valoare. Poate îmbunătăți performanța sarcinii, susține depanarea și comunica o descompunere utilă. Dar ar trebui tratat ca dovadă comportamentală generată, nu ca descărcare transparentă a calculului ascuns."
+    },
+    {
+      "id": "t000366",
+      "source": "This distinction becomes even more important when models are optimized for helpfulness or evaluated on the quality of their rationales. A model can learn to produce explanations that satisfy users or evaluators independently of the mechanism that caused the answer. Plausibility can become a trained capability.",
+      "translation": "Această distincție devine și mai importantă când modelele sunt optimizate pentru utilitate sau evaluate după calitatea justificărilor lor. Un model poate învăța să producă explicații care satisfac utilizatori sau evaluatori independent de mecanismul care a cauzat răspunsul. Plauzibilitatea poate deveni o capacitate antrenată."
+    },
+    {
+      "id": "t000367",
+      "source": "Classical attribution can be adapted to LLMs. Engineers can measure how prompt tokens influence the probability of a target continuation, use Integrated Gradients over embeddings, mask context spans, or compare completions after counterfactual edits. Captum and other libraries provide practical implementations. These methods can answer useful questions such as which context passages influence a generated answer or which prompt sections trigger a refusal.",
+      "translation": "Atribuirea clasică poate fi adaptată la LLM-uri. Inginerii pot măsura cum influențează tokenurile promptului probabilitatea unei continuări țintă, folosi Integrated Gradients peste embeddinguri, masca fragmente ale contextului sau compara completări după editări contrafactuale. Captum și alte biblioteci furnizează implementări practice. Aceste metode pot răspunde la întrebări utile precum ce pasaje din context influențează un răspuns generat sau ce secțiuni ale promptului declanșează un refuz."
+    },
+    {
+      "id": "t000368",
+      "source": "The challenges are substantial. Language is discrete, tokenization fragments semantic units, context features interact strongly, and removing a token often creates an unnatural prompt. Autoregressive generation compounds effects across time: a small influence on an early token can redirect the entire continuation. Attribution to one final sequence therefore depends on the decoding path and target definition.",
+      "translation": "Provocările sunt substanțiale. Limbajul este discret, tokenizarea fragmentează unitățile semantice, caracteristicile contextului interacționează puternic, iar eliminarea unui token creează adesea un prompt nenatural. Generarea autoregresivă amplifică efectele în timp: o influență mică asupra unui token timpuriu poate redirecționa întreaga continuare. Atribuirea unei secvențe finale depinde astfel de calea decodării și definiția țintei."
+    },
+    {
+      "id": "t000369",
+      "source": "Generated rationales are therefore one evidence layer among several. A stronger account of foundation-model behavior combines behavioral counterfactuals, source interventions, representation analysis, and, where feasible, causal tests of internal computation.",
+      "translation": "Justificările generate sunt astfel un strat de dovezi între mai multe. O relatare mai puternică a comportamentului modelului fundamental combină contrafactuale comportamentale, intervenții asupra surselor, analiza reprezentărilor și, unde este fezabil, teste cauzale ale calculului intern."
+    },
+    {
+      "id": "t000370",
+      "source": "4.2 A layered evidence model for prompts,",
+      "translation": "4.2 Un model stratificat de dovezi pentru prompturi,"
+    },
+    {
+      "id": "t000371",
+      "source": "sources, representations, and mechanisms",
+      "translation": "surse, reprezentări și mecanisme"
+    },
+    {
+      "id": "t000372",
+      "source": "A useful response to the unreliability of generated rationales is not to abandon explanation, but to separate evidence into layers with different semantics.",
+      "translation": "Un răspuns util la lipsa de fiabilitate a justificărilor generate nu este abandonarea explicației, ci separarea dovezilor în straturi cu semantici diferite."
+    },
+    {
+      "id": "t000373",
+      "source": "Foundation-model explanation works best as a layered investigation rather than a single method. At the first layer are output artifacts: rationales, citations, self-reported confidence, and structured intermediate products. They are easy to obtain and useful for interaction, but weak as evidence of mechanism. The next layer is behavioral: prompt perturbations, context ablations, source removal, counterfactual instructions, and repeated sampling. These tests ask what the system actually depends on.",
+      "translation": "Explicarea modelelor fundamentale funcționează cel mai bine ca investigație stratificată, nu metodă singulară. La primul strat sunt artefactele ieșirii: justificări, citări, încredere autodeclarată și produse intermediare structurate. Sunt ușor de obținut și utile interacțiunii, dar slabe ca dovezi de mecanism. Stratul următor este comportamental: perturbări ale promptului, ablații ale contextului, eliminarea surselor, instrucțiuni contrafactuale și eșantionare repetată. Aceste teste întreabă de ce depinde efectiv sistemul."
+    },
+    {
+      "id": "t000374",
+      "source": "Representation probes form another layer. A linear probe may reveal that information about syntax, entities, truthfulness, or some domain concept is decodable from internal states. Decodability is not the same as use. Causal interventions such as activation patching, representation editing, or ablation ask whether manipulating an internal state changes behavior. Mechanistic work goes further by proposing circuits or feature interactions that can be tested across examples. Formal verification, where applicable, provides an even stronger but much narrower form of evidence.",
+      "translation": "Sondele reprezentărilor formează alt strat. O sondă liniară poate dezvălui că informații despre sintaxă, entități, veridicitate sau un concept de domeniu sunt decodabile din stări interne. Decodabilitatea nu este același lucru cu folosirea. Intervențiile cauzale precum modificarea activărilor, editarea reprezentărilor sau ablația întreabă dacă manipularea unei stări interne schimbă comportamentul. Munca mecanicistă merge mai departe propunând circuite sau interacțiuni de caracteristici testabile între exemple. Verificarea formală, unde se aplică, furnizează o formă și mai puternică, dar mult mai îngustă de dovezi."
+    },
+    {
+      "id": "t000375",
+      "source": "Retrieval-augmented systems add provenance. A citation can show which document supports an answer, but source attribution is not reasoning attribution. A model may cite a document it did not materially use, use a retrieved source without citing it, or synthesize an answer through information distributed across several documents. A robust audit therefore records retrieval candidates, selected context, prompt construction, output, citations, and ablation results. The question becomes: which sources were present, which were necessary, and which claims are actually entailed by them?",
+      "translation": "Sistemele augmentate prin recuperare adaugă proveniență. O citare poate arăta ce document susține un răspuns, dar atribuirea sursei nu este atribuirea raționamentului. Un model poate cita un document pe care nu l-a folosit substanțial, folosi o sursă recuperată fără a o cita sau sintetiza un răspuns prin informație distribuită între mai multe documente. Un audit robust înregistrează astfel candidații recuperării, contextul selectat, construirea promptului, ieșirea, citările și rezultatele ablației. Întrebarea devine: ce surse erau prezente, care erau necesare și ce afirmații sunt efectiv implicate de ele?"
+    },
+    {
+      "id": "t000376",
+      "source": "This layered view prevents two opposite errors. One is dismissing all model-generated reasoning as useless because it is not guaranteed faithful. The other is treating fluent rationales as complete explanations. Output reasoning is valuable when it is explicitly positioned as one piece of evidence and connected to stronger tests when the stakes justify them.",
+      "translation": "Această perspectivă stratificată previne două erori opuse. Una este respingerea tuturor raționamentelor generate de model ca inutile fiindcă nu sunt garantat fidele. Cealaltă este tratarea justificărilor fluente ca explicații complete. Raționamentul de ieșire este valoros când este poziționat explicit ca o dovadă și conectat la teste mai puternice când miza le justifică."
+    },
+    {
+      "id": "t000377",
+      "source": "A layered evidence model also helps teams allocate cost. Behavioral ablations can be run routinely on a sample of production cases. Probes and activation interventions may be reserved for incident analysis or model research. Full mechanistic studies may target a narrow capability or known failure mode. Formal analysis may apply only to a small safety-critical component. There is no requirement that every prediction climb to the top of the ladder.",
+      "translation": "Un model stratificat al dovezilor ajută și echipele să aloce costuri. Ablațiile comportamentale pot fi rulate de rutină pe un eșantion de cazuri de producție. Sondele și intervențiile asupra activărilor pot fi rezervate analizei incidentelor sau cercetării modelelor. Studiile mecaniciste complete pot ținti o capacitate îngustă sau un mod cunoscut de eșec. Analiza formală se poate aplica doar unei componente mici critice pentru siguranță. Nu se cere ca fiecare predicție să urce până în vârful scării."
+    },
+    {
+      "id": "t000378",
+      "source": "This table prevents a common escalation in language: moving from “the model said” to “the model represented” to “the model used” without adding evidence. Each row requires a stronger experimental basis. Table 4.1 — Evidence about an LLM should be labeled by the strength of the claim it can support.",
+      "translation": "Acest tabel previne o escaladare comună în limbaj: trecerea de la „modelul a spus” la „modelul a reprezentat” și la „modelul a folosit” fără adăugare de dovezi. Fiecare rând cere o bază experimentală mai puternică. Tabelul 4.1 — Dovezile despre un LLM ar trebui etichetate după forța afirmației pe care o pot susține."
+    },
+    {
+      "id": "t000379",
+      "source": "Concept / object",
+      "translation": "Concept / obiect"
+    },
+    {
+      "id": "t000380",
+      "source": "Engineering meaning",
+      "translation": "Sens ingineresc"
+    },
+    {
+      "id": "t000381",
+      "source": "Generated rationale",
+      "translation": "Justificare generată"
+    },
+    {
+      "id": "t000382",
+      "source": "Observable model output that may be useful to users but is not privileged access to hidden computation.",
+      "translation": "Ieșire observabilă a modelului care poate fi utilă utilizatorilor, dar nu este acces privilegiat la calculul ascuns."
+    },
+    {
+      "id": "t000383",
+      "source": "Behavioral test",
+      "translation": "Test comportamental"
+    },
+    {
+      "id": "t000384",
+      "source": "A prompt, source, or context intervention showing that a behavior changes when a relevant external condition changes.",
+      "translation": "O intervenție asupra promptului, sursei sau contextului care arată că un comportament se schimbă când se schimbă o condiție externă relevantă."
+    },
+    {
+      "id": "t000385",
+      "source": "Representation probe",
+      "translation": "Sondă de reprezentare"
+    },
+    {
+      "id": "t000386",
+      "source": "Evidence that internal states contain information correlated with a concept or property.",
+      "translation": "Dovadă că stările interne conțin informație corelată cu un concept sau o proprietate."
+    },
+    {
+      "id": "t000387",
+      "source": "Causal intervention",
+      "translation": "Intervenție cauzală"
+    },
+    {
+      "id": "t000388",
+      "source": "Evidence that changing an internal representation changes the behavior of interest under controlled conditions.",
+      "translation": "Dovadă că schimbarea unei reprezentări interne schimbă comportamentul de interes în condiții controlate."
+    },
+    {
+      "id": "t000389",
+      "source": "Mechanistic or verified claim",
+      "translation": "Afirmație mecanicistă sau verificată"
+    },
+    {
+      "id": "t000390",
+      "source": "A structured hypothesis or bounded property supported by interventions, replication, or formal verification.",
+      "translation": "O ipoteză structurată sau proprietate limitată susținută de intervenții, replicare sau verificare formală."
+    },
+    {
+      "id": "t000391",
+      "source": "The hierarchy is not a ranking of usefulness. A source ablation can be more operationally valuable than a mechanistic circuit for many applications. The point is to keep the vocabulary aligned with what the experiment actually established.",
+      "translation": "Ierarhia nu este un clasament al utilității. O ablație a sursei poate fi mai valoroasă operațional decât un circuit mecanicist pentru multe aplicații. Ideea este să păstrăm vocabularul aliniat cu ceea ce a stabilit efectiv experimentul."
+    },
+    {
+      "id": "t000392",
+      "source": "The architecture should preserve links between layers. A generated statement such as “the answer depends mainly on document A” can be accompanied by retrieval metadata and a source-ablation score. A mechanistic claim can point to the prompts on which the circuit was tested. This creates a trace from readable explanation to stronger evidence without forcing every user to inspect the lower-level artifacts.",
+      "translation": "Arhitectura ar trebui să păstreze legăturile dintre straturi. Un enunț generat precum „răspunsul depinde în principal de documentul A” poate fi însoțit de metadate ale recuperării și un scor de ablație a sursei. O afirmație mecanicistă poate indica prompturile pe care a fost testat circuitul. Aceasta creează o urmă de la explicația lizibilă la dovezi mai puternice fără a obliga fiecare utilizator să inspecteze artefactele de nivel inferior."
+    },
+    {
+      "id": "t000393",
+      "source": "Figure 9.1. An evidence ladder for foundation-model explanation. Higher layers are stronger but narrower and more expensive.",
+      "translation": "Figura 9.1. O scară a dovezilor pentru explicarea modelelor fundamentale. Straturile superioare sunt mai puternice, dar mai înguste și mai costisitoare."
+    },
+    {
+      "id": "t000394",
+      "source": "A probe trains or defines a simple readout from hidden activations to a property of interest. Probes can reveal whether information about syntax, entities, sentiment, truthfulness, location, or another concept is linearly accessible at a layer. This is useful for mapping where information becomes available during processing.",
+      "translation": "O sondă antrenează sau definește o citire simplă din activările ascunse către o proprietate de interes. Sondele pot dezvălui dacă informația despre sintaxă, entități, sentiment, veridicitate, locație sau alt concept este liniar accesibilă într-un strat. Aceasta este utilă pentru cartografierea locului unde informația devine disponibilă în procesare."
+    },
+    {
+      "id": "t000395",
+      "source": "The lower levels are cheap and often useful, but they support weaker claims. Moving upward requires stronger intervention and more careful replication. The ladder is therefore a vocabulary discipline as much as a methodological one.",
+      "translation": "Nivelurile inferioare sunt ieftine și adesea utile, dar susțin afirmații mai slabe. Urcarea cere intervenție mai puternică și replicare mai atentă. Scara este astfel o disciplină a vocabularului la fel de mult ca una metodologică."
+    },
+    {
+      "id": "t000396",
+      "source": "Figure from PDF page 57",
+      "translation": "Figură de pe pagina 57 a PDF-ului"
+    },
+    {
+      "id": "t000397",
+      "source": "Figure 4.1 — The evidence ladder keeps foundation-model explanations from claiming more than their experiments establish.",
+      "translation": "Figura 4.1 — Scara dovezilor împiedică explicațiile modelelor fundamentale să pretindă mai mult decât stabilesc experimentele lor."
+    },
+    {
+      "id": "t000398",
+      "source": "The purpose is not to insist that every application reach the top. Many production questions are answered adequately by behavioral tests and provenance. Mechanistic and verified claims are appropriate when the consequence, research objective, or safety requirement justifies the additional cost.",
+      "translation": "Scopul nu este insistența ca fiecare aplicație să ajungă în vârf. Multe întrebări de producție sunt adecvat rezolvate prin teste comportamentale și proveniență. Afirmațiile mecaniciste și verificate sunt adecvate când consecința, obiectivul cercetării sau cerința siguranței justifică costul suplimentar."
+    },
+    {
+      "id": "t000399",
+      "source": "Availability is not use. A representation can contain information that the output mechanism ignores. A sufficiently expressive probe can also recover weak information that is not functionally meaningful. Probe complexity, control tasks, layer comparisons, and causal interventions are therefore needed to move from 'the information is decodable' toward 'the information participates in computation.'",
+      "translation": "Disponibilitatea nu este folosire. O reprezentare poate conține informație ignorată de mecanismul ieșirii. O sondă suficient de expresivă poate și recupera informație slabă care nu are sens funcțional. Complexitatea sondei, sarcinile de control, comparațiile între straturi și intervențiile cauzale sunt astfel necesare pentru a trece de la „informația este decodabilă” către „informația participă la calcul”."
+    },
+    {
+      "id": "t000400",
+      "source": "Behavioral counterfactuals are often the most practical LLM explanation tool because they require no weight access. Change an instruction, remove a retrieved passage, swap entity names, alter ordering, paraphrase the query, or inject a controlled distractor, then observe whether the answer changes. Carefully designed perturbation suites can reveal instruction hierarchy, reliance on retrieved evidence, positional bias, sycophancy, shortcut use, and brittleness.",
+      "translation": "Contrafactualele comportamentale sunt adesea cel mai practic instrument de explicație LLM deoarece nu necesită acces la ponderi. Schimbați o instrucțiune, eliminați un pasaj recuperat, înlocuiți nume de entități, alterați ordinea, parafrazați interogarea sau injectați un distractor controlat, apoi observați dacă răspunsul se schimbă. Suitele atent proiectate de perturbări pot dezvălui ierarhia instrucțiunilor, dependența de dovezi recuperate, biasul pozițional, complezența, folosirea scurtăturilor și fragilitatea."
+    },
+    {
+      "id": "t000401",
+      "source": "The principle is experimental: change one factor while preserving the rest of the relevant semantics. This is difficult in natural language because every rewrite can introduce new cues. Multiple paraphrases and generative controls reduce the risk of attributing an effect to wording rather than meaning.",
+      "translation": "Principiul este experimental: schimbați un factor păstrând restul semanticii relevante. Aceasta este dificil în limbaj natural deoarece fiecare rescriere poate introduce indicii noi. Parafrazele multiple și controalele generative reduc riscul atribuirii unui efect formulării, nu sensului."
+    },
+    {
+      "id": "t000402",
+      "source": "Retrieval-augmented generation introduces a distinct and often more tractable provenance problem. A system can record which documents were retrieved, which passages were supplied to the model, and which claims are supported by those sources. This improves traceability even when the internal language-model computation remains opaque.",
+      "translation": "Generarea augmentată prin recuperare introduce o problemă distinctă și adesea mai tractabilă de proveniență. Un sistem poate înregistra ce documente au fost recuperate, ce pasaje au fost furnizate modelului și ce afirmații sunt susținute de acele surse. Aceasta îmbunătățește trasabilitatea chiar când calculul intern al modelului lingvistic rămâne opac."
+    },
+    {
+      "id": "t000403",
+      "source": "However, citing a source does not prove that the source caused the answer, nor that the model interpreted it correctly. A robust system can test source necessity by removing the passage, source sufficiency by retaining only selected evidence, and claim entailment by independent verification. Retrieval provenance and mechanistic explanation should be kept conceptually separate.",
+      "translation": "Totuși, citarea unei surse nu demonstrează că sursa a cauzat răspunsul, nici că modelul a interpretat-o corect. Un sistem robust poate testa necesitatea sursei eliminând pasajul, suficiența sursei păstrând doar dovezi selectate și implicația afirmațiilor prin verificare independentă. Proveniența recuperării și explicația mecanicistă ar trebui păstrate conceptual separat."
+    },
+    {
+      "id": "t000404",
+      "source": "The evidence ladder in Figure 10.1 is not a total ranking of usefulness. Output rationales can be the best interface for a user even though they are weak causal evidence. Behavioral attribution is stronger for questions about input dependence. Representation probes expose internal information. Activation patching and ablation provide causal evidence about internal computation. Circuit hypotheses connect multiple components into a mechanism. Formal verification can establish a narrow property with the strongest guarantee, but usually for much smaller scope.",
+      "translation": "Scara dovezilor din figura 10.1 nu este un clasament total al utilității. Justificările ieșirii pot fi cea mai bună interfață pentru un utilizator chiar dacă sunt dovezi cauzale slabe. Atribuirea comportamentală este mai puternică pentru întrebări despre dependența de intrare. Sondele reprezentărilor expun informație internă. Modificarea activărilor și ablația furnizează dovezi cauzale despre calculul intern. Ipotezele de circuit conectează mai multe componente într-un mecanism. Verificarea formală poate stabili o proprietate îngustă cu cea mai puternică garanție, dar de obicei pentru un domeniu mult mai mic."
+    },
+    {
+      "id": "t000405",
+      "source": "A mature LLM assurance system combines layers. It may expose a human-readable rationale, link claims to sources, run behavioral counterfactuals, inspect selected internal features, and require verified policy constraints for high-risk actions. No single technique has to carry the entire burden of explanation.",
+      "translation": "Un sistem matur de asigurare LLM combină straturi. Poate expune o justificare lizibilă pentru oameni, lega afirmațiile de surse, rula contrafactuale comportamentale, inspecta caracteristici interne selectate și cere constrângeri verificate de politică pentru acțiuni cu risc mare. Nicio tehnică nu trebuie să poarte întreaga povară a explicației."
+    },
+    {
+      "id": "t000406",
+      "source": "The evidence ladder does not guarantee a unique mechanism, but it prevents a weak observation from being described with the vocabulary of a stronger one. Mechanistic interpretability occupies the upper middle of that ladder: it proposes internal computational structures and asks whether interventions support them.",
+      "translation": "Scara dovezilor nu garantează un mecanism unic, dar împiedică descrierea unei observații slabe cu vocabularul uneia mai puternice. Interpretabilitatea mecanicistă ocupă partea superioară a mijlocului acelei scări: propune structuri computaționale interne și întreabă dacă intervențiile le susțin."
+    },
+    {
+      "id": "t000407",
+      "source": "4.3 Mechanistic interpretability: circuits, interventions, and sparse features",
+      "translation": "4.3 Interpretabilitate mecanicistă: circuite, intervenții și caracteristici rare"
+    },
+    {
+      "id": "t000408",
+      "source": "Mechanistic interpretability becomes intuitive if we imagine debugging a compiled program without source code. We can inspect memory, trace execution, patch variables, and infer modules from behavior. Neural networks are more difficult because their internal variables are distributed, learned, and often polysemantic. Still, the experimental logic is similar: observe internal states, hypothesize a computation, intervene, and test whether the predicted behavior changes.",
+      "translation": "Interpretabilitatea mecanicistă devine intuitivă dacă ne imaginăm depanarea unui program compilat fără cod-sursă. Putem inspecta memoria, urmări execuția, modifica variabile și infera module din comportament. Rețelele neurale sunt mai dificile deoarece variabilele lor interne sunt distribuite, învățate și adesea polisemantice. Totuși, logica experimentală este similară: observați stări interne, formulați ipoteza unui calcul, interveniți și testați dacă se schimbă comportamentul prezis."
+    },
+    {
+      "id": "t000409",
+      "source": "Activation patching is a particularly useful example. Run the model on a clean input and a corrupted input. Replace an activation from one run with the corresponding activation from the other. If the correct behavior is restored, the patched component carries causally relevant information under that intervention. Causal tracing generalizes this style of reasoning. Patchscopes provide a broader framework for inspecting hidden representations by transforming and reusing them through the model. These techniques move mechanistic analysis beyond correlation, but they remain local experiments rather than complete proofs of a circuit.",
+      "translation": "Modificarea activărilor este un exemplu deosebit de util. Rulați modelul pe o intrare curată și una coruptă. Înlocuiți o activare dintr-o rulare cu activarea corespunzătoare din cealaltă. Dacă este restabilit comportamentul corect, componenta modificată poartă informație relevantă cauzal sub acea intervenție. Urmărirea cauzală generalizează acest stil de raționament. Patchscopes oferă un cadru mai larg pentru inspectarea reprezentărilor ascunse prin transformarea și reutilizarea lor prin model. Aceste tehnici mută analiza mecanicistă dincolo de corelație, dar rămân experimente locale, nu demonstrații complete ale unui circuit."
+    },
+    {
+      "id": "t000410",
+      "source": "Superposition complicates interpretation because a network may encode more features than there are available dimensions by allowing features to share representational space. Individual neurons are therefore often poor semantic units. Sparse autoencoders attempt to recover a larger dictionary of features whose activations are sparse and more interpretable. The 2025 survey literature reflects how quickly this area has expanded, including questions about training objectives, feature quality, cross-layer structure, steering, and evaluation.",
+      "translation": "Suprapunerea complică interpretarea deoarece o rețea poate codifica mai multe caracteristici decât dimensiunile disponibile, permițând caracteristicilor să împărtășească spațiul reprezentării. Neuronii individuali sunt astfel adesea unități semantice slabe. Autoencoderele rare încearcă să recupereze un dicționar mai mare de caracteristici ale căror activări sunt rare și mai interpretabile. Literatura de sinteză din 2025 reflectă cât de rapid s-a extins această arie, incluzând întrebări despre obiectivele antrenării, calitatea caracteristicilor, structura între straturi, dirijare și evaluare."
+    },
+    {
+      "id": "t000411",
+      "source": "The central caution is that an SAE feature is itself the output of another learned model. A feature that appears monosemantic on sampled activations may behave differently elsewhere. Labels generated by language models can be convenient but circular if they are accepted without intervention. Mechanistic interpretability becomes scientifically strong when semantic labels, causal effects, generalization across contexts, and failure cases are evaluated together.",
+      "translation": "Precauția centrală este că o caracteristică SAE este ea însăși ieșirea altui model învățat. O caracteristică aparent monosemantică pe activările eșantionate se poate comporta diferit în alte locuri. Etichetele generate de modele lingvistice pot fi comode, dar circulare dacă sunt acceptate fără intervenție. Interpretabilitatea mecanicistă devine puternică științific atunci când sunt evaluate împreună etichetele semantice, efectele cauzale, generalizarea între contexte și cazurile de eșec."
+    },
+    {
+      "id": "t000412",
+      "source": "Early interpretability work visualized neurons, attention heads, activation patterns, and feature maps. Mechanistic interpretability adds a stronger ambition: identify functional components, infer how they interact, and test the proposed mechanism through interventions. The analogy is reverse engineering a compiled program whose source code was produced by optimization rather than written by a human.",
+      "translation": "Lucrările timpurii de interpretabilitate vizualizau neuroni, capete de atenție, tipare de activare și hărți de caracteristici. Interpretabilitatea mecanicistă adaugă o ambiție mai puternică: identificarea componentelor funcționale, inferarea interacțiunii lor și testarea mecanismului propus prin intervenții. Analogia este ingineria inversă a unui program compilat al cărui cod-sursă a fost produs de optimizare, nu scris de un om."
+    },
+    {
+      "id": "t000413",
+      "source": "This framing is especially important for foundation models because broad behavioral tests cannot enumerate every possible context. If a safety-relevant mechanism can be localized and understood, engineers may be able to test it across distributions, monitor it, or modify it more directly. The challenge is scale: a frontier model contains billions of parameters and vast numbers of possible activation patterns.",
+      "translation": "Această încadrare este deosebit de importantă pentru modelele fundamentale deoarece testele comportamentale largi nu pot enumera fiecare context posibil. Dacă un mecanism relevant siguranței poate fi localizat și înțeles, inginerii îl pot testa între distribuții, monitoriza sau modifica mai direct. Provocarea este scara: un model de frontieră conține miliarde de parametri și un număr enorm de tipare posibile de activare."
+    },
+    {
+      "id": "t000414",
+      "source": "Circuit analysis seeks small computational subgraphs that implement recognizable behavior. A classic line of work identified transformer attention patterns such as induction heads. Causal tracing and model-editing work such as ROME introduced intervention techniques for locating where factual associations appear to be mediated. The core idea is to corrupt or alter representations, restore selected internal states, and observe whether the target behavior returns.",
+      "translation": "Analiza circuitelor caută subgrafuri computaționale mici care implementează comportament recognoscibil. O linie clasică de lucru a identificat tipare de atenție transformer precum capetele de inducție. Urmărirea cauzală și lucrările de editare a modelelor precum ROME au introdus tehnici de intervenție pentru localizarea locurilor unde par să fie mediate asocierile factuale. Ideea de bază este coruperea sau alterarea reprezentărilor, restaurarea unor stări interne selectate și observarea revenirii comportamentului țintă."
+    },
+    {
+      "id": "t000415",
+      "source": "Causal intervention is stronger evidence than correlation. If restoring a hidden state restores a fact, that component is implicated in the computation. Yet localization remains subtle. Later studies found that locations identified by causal tracing do not always correspond cleanly to where an edit is most effective. Mechanisms can be distributed, redundant, or context-dependent.",
+      "translation": "Intervenția cauzală este dovadă mai puternică decât corelația. Dacă restaurarea unei stări ascunse restabilește un fapt, acea componentă este implicată în calcul. Totuși, localizarea rămâne subtilă. Studii ulterioare au găsit că locațiile identificate prin urmărire cauzală nu corespund întotdeauna clar locului unde o editare este cea mai eficientă. Mecanismele pot fi distribuite, redundante sau dependente de context."
+    },
+    {
+      "id": "t000416",
+      "source": "Activation patching replaces hidden activations from one run with activations from another and measures the effect. By constructing clean and corrupted prompts, researchers can test which layers, positions, heads, or features carry information required for a behavior. Patchscopes generalizes the idea by transplanting hidden representations into carefully designed target contexts that make their information legible through the language model itself.",
+      "translation": "Modificarea activărilor înlocuiește activări ascunse dintr-o rulare cu activări din alta și măsoară efectul. Construind prompturi curate și corupte, cercetătorii pot testa ce straturi, poziții, capete sau caracteristici poartă informație necesară unui comportament. Patchscopes generalizează ideea transplantând reprezentări ascunse în contexte-țintă atent proiectate care le fac informația lizibilă prin modelul lingvistic însuși."
+    },
+    {
+      "id": "t000417",
+      "source": "Mechanistic interpretability should be understood as model building about a model. Researchers observe activations, learn dictionaries, identify circuits, propose semantic labels, and test whether interventions behave as the hypothesis predicts. The resulting mechanism is not automatically the one true decomposition of the network. Different abstractions can be simultaneously useful at different scales, just as a program can be described at the level of machine instructions, functions, modules, or algorithms. The engineering question is whether the chosen abstraction supports reliable predictions and interventions over the scope for which it is claimed.",
+      "translation": "Interpretabilitatea mecanicistă ar trebui înțeleasă ca modelare despre un model. Cercetătorii observă activări, învață dicționare, identifică circuite, propun etichete semantice și testează dacă intervențiile se comportă cum prezice ipoteza. Mecanismul rezultat nu este automat unica descompunere adevărată a rețelei. Abstracții diferite pot fi simultan utile la scări diferite, la fel cum un program poate fi descris la nivel de instrucțiuni de mașină, funcții, module sau algoritmi. Întrebarea inginerească este dacă abstracția aleasă susține predicții și intervenții fiabile în domeniul pentru care este revendicată."
+    },
+    {
+      "id": "t000418",
+      "source": "Sparse autoencoders make this issue vivid. They can replace dense activation patterns with a larger set of sparse features that often admit clearer semantic descriptions. This is a genuine advance because it changes the search space for hypotheses. Yet feature sparsity does not prove semantic purity, and a human-readable label can hide polysemy, context dependence, or distributed interactions. The proper validation loop is therefore semantic discovery followed by controlled activation tests, counterexamples, cross-context checks, and comparison with alternative decompositions.",
+      "translation": "Autoencoderele rare fac vie această problemă. Pot înlocui tipare dense de activare cu un set mai mare de caracteristici rare care admit adesea descrieri semantice mai clare. Acesta este un progres autentic deoarece schimbă spațiul căutării pentru ipoteze. Totuși, raritatea caracteristicii nu demonstrează puritatea semantică, iar o etichetă lizibilă poate ascunde polisemie, dependență de context sau interacțiuni distribuite. Bucla adecvată de validare este astfel descoperirea semantică urmată de teste controlate de activare, contraexemple, verificări între contexte și comparație cu descompuneri alternative."
+    },
+    {
+      "id": "t000419",
+      "source": "SemanticLens and related approaches add another layer: they map components into semantic spaces derived from foundation models so that large networks can be searched and compared at scale. The gain is operational. Instead of manually inspecting thousands of neurons or channels, a team can ask where a concept appears, whether a suspicious concept recurs across checkpoints, or which components differ between model versions. The risk is also operational: semantic search can create a feeling of understanding before causality has been established. Search discovers candidate mechanisms; intervention remains the stronger test.",
+      "translation": "SemanticLens și abordările înrudite adaugă alt strat: mapează componentele în spații semantice derivate din modele fundamentale, astfel încât rețelele mari să poată fi căutate și comparate la scară. Câștigul este operațional. În loc să inspecteze manual mii de neuroni sau canale, o echipă poate întreba unde apare un concept, dacă un concept suspect reapare între puncte de control sau ce componente diferă între versiuni de model. Riscul este și el operațional: căutarea semantică poate crea un sentiment de înțelegere înaintea stabilirii cauzalității. Căutarea descoperă mecanisme candidate; intervenția rămâne testul mai puternic."
+    },
+    {
+      "id": "t000420",
+      "source": "Circuit tracing and attribution graphs attempt to recover interacting internal features that contribute to a behavior. Their promise is that an explanation can move beyond single features toward a structured computation. Their limitation is that the graph is itself produced by approximations and thresholds. A graph that looks algorithmic should not be read as source code extracted from the network. Its value lies in whether it predicts the effect of targeted interventions, generalizes across relevant cases, and helps discover failure modes that simpler analyses miss.",
+      "translation": "Urmărirea circuitelor și grafurile de atribuire încearcă să recupereze caracteristici interne care interacționează și contribuie la un comportament. Promisiunea lor este că o explicație poate trece dincolo de caracteristici individuale spre un calcul structurat. Limitarea este că graful însuși este produs prin aproximări și praguri. Un graf care arată algoritmic nu ar trebui citit ca un cod-sursă extras din rețea. Valoarea sa constă în capacitatea de a prezice efectul intervențiilor țintite, de a generaliza între cazuri relevante și de a ajuta la descoperirea modurilor de eșec ratate de analize mai simple."
+    },
+    {
+      "id": "t000421",
+      "source": "These methods create an experimental laboratory inside the network. They are powerful because the intervention occurs on the actual computation. They are expensive because the search space is enormous and because every experimental design encodes assumptions about what is being isolated.",
+      "translation": "Aceste metode creează un laborator experimental în interiorul rețelei. Sunt puternice deoarece intervenția are loc asupra calculului efectiv. Sunt costisitoare deoarece spațiul căutării este enorm și deoarece fiecare proiect experimental codifică ipoteze despre ceea ce este izolat."
+    },
+    {
+      "id": "t000422",
+      "source": "A major obstacle is polysemanticity: one neuron can respond to multiple unrelated patterns, and one semantic feature can be distributed across many neurons. This is often described through superposition, where a representation space stores more features than there are directly interpretable dimensions by using overlapping directions.",
+      "translation": "Un obstacol major este polisemanticitatea: un neuron poate răspunde la mai multe tipare fără legătură, iar o caracteristică semantică poate fi distribuită între mulți neuroni. Aceasta este adesea descrisă prin suprapunere, unde un spațiu de reprezentare stochează mai multe caracteristici decât dimensiunile direct interpretabile folosind direcții suprapuse."
+    },
+    {
+      "id": "t000423",
+      "source": "Sparse autoencoders attempt to decompose dense activations into a larger set of sparse latent features. Instead of treating neurons as the atomic units of meaning, the model learns a dictionary of directions that reconstruct activation patterns while activating sparsely. Work from Anthropic and independent researchers has found many features with recognizable semantic behavior, making sparse dictionary learning one of the most active approaches in LLM interpretability.",
+      "translation": "Autoencoderele rare încearcă să descompună activările dense într-un set mai mare de caracteristici latente rare. În loc să trateze neuronii ca unități atomice de sens, modelul învață un dicționar de direcții care reconstruiesc tiparele activării, activând rar. Lucrări de la Anthropic și cercetători independenți au găsit multe caracteristici cu comportament semantic recognoscibil, făcând învățarea dicționarelor rare una dintre cele mai active abordări ale interpretabilității LLM."
+    },
+    {
+      "id": "t000424",
+      "source": "The attraction of sparse autoencoders can obscure an important fact: the sparse feature dictionary is itself a learned model. It introduces reconstruction error, depends on training data and sparsity choices, and may produce different decompositions for different runs. A feature that looks monosemantic under inspected examples may have unobserved activations or split into multiple refinements under a larger dictionary.",
+      "translation": "Atracția autoencoderelor rare poate ascunde un fapt important: dicționarul de caracteristici rare este el însuși un model învățat. Introduce eroare de reconstrucție, depinde de datele de antrenare și alegerile rarității și poate produce descompuneri diferite în rulări diferite. O caracteristică aparent monosemantică în exemplele inspectate poate avea activări neobservate sau se poate împărți în rafinări multiple într-un dicționar mai mare."
+    },
+    {
+      "id": "t000425",
+      "source": "Mechanistic claims built on sparse features therefore need validation at two levels. First, the learned feature must faithfully represent an aspect of the original activation space. Second, interventions on the feature must cause the predicted changes in model behavior. Feature visualization alone is insufficient.",
+      "translation": "Afirmațiile mecaniciste construite pe caracteristici rare au astfel nevoie de validare la două niveluri. În primul rând, caracteristica învățată trebuie să reprezinte fidel un aspect al spațiului original al activărilor. În al doilea rând, intervențiile asupra caracteristicii trebuie să cauzeze schimbările prezise ale comportamentului modelului. Vizualizarea caracteristicilor singură este insuficientă."
+    },
+    {
+      "id": "t000426",
+      "source": "Mechanistic explanations become valuable when they predict the effect of internal change. Scaling that process requires semantic search, automated hypothesis generation, and careful record keeping—but scale must not be confused with certainty.",
+      "translation": "Explicațiile mecaniciste devin valoroase când prezic efectul schimbării interne. Scalarea acestui proces cere căutare semantică, generare automată a ipotezelor și evidență atentă — dar scara nu trebuie confundată cu certitudinea."
+    },
+    {
+      "id": "t000427",
+      "source": "4.4 Scaling mechanistic understanding without pretending the map is the territory",
+      "translation": "4.4 Scalarea înțelegerii mecaniciste fără a pretinde că harta este teritoriul"
+    },
+    {
+      "id": "t000428",
+      "source": "The central scaling challenge is not merely to extract more internal features. It is to preserve the distinction between semantic search, causal evidence, and a complete account of computation.",
+      "translation": "Provocarea centrală a scalării nu este doar extragerea mai multor caracteristici interne. Este păstrarea distincției dintre căutarea semantică, dovezile cauzale și o relatare completă a calculului."
+    },
+    {
+      "id": "t000429",
+      "source": "Scaling mechanistic analysis requires more automation than a researcher manually naming neurons. SemanticLens is an example of this direction: it maps network components into a semantic foundation-model space so that components can be searched, compared, and labeled at scale. The goal is not only explanation in the conversational sense but validation: detecting spurious concepts, comparing representations across models, and making component-level analysis tractable for large systems.",
+      "translation": "Scalarea analizei mecaniciste cere mai multă automatizare decât numirea manuală a neuronilor de către un cercetător. SemanticLens este un exemplu al acestei direcții: mapează componentele rețelei într-un spațiu semantic de model fundamental, astfel încât componentele să poată fi căutate, comparate și etichetate la scară. Scopul nu este doar explicația în sens conversațional, ci validarea: detectarea conceptelor false, compararea reprezentărilor între modele și realizarea unei analize tractabile la nivel de componentă pentru sisteme mari."
+    },
+    {
+      "id": "t000430",
+      "source": "Attribution graphs and circuit-tracing tools take another route. They attempt to reconstruct paths of influence through learned features for a particular output. Anthropic's 2025 open-source circuit-tracing work made this style of analysis more accessible for open-weight models and helped popularize the idea of an attribution graph as a partial internal causal story. The word partial matters. Large models can contain redundant pathways, distributed computations, and context-dependent mechanisms. A graph can be highly informative without being a complete execution trace.",
+      "translation": "Grafurile de atribuire și instrumentele de urmărire a circuitelor urmează altă cale. Încearcă să reconstruiască trasee de influență prin caracteristici învățate pentru o anumită ieșire. Activitatea de urmărire a circuitelor cu sursă deschisă a Anthropic din 2025 a făcut acest stil de analiză mai accesibil pentru modele cu ponderi deschise și a ajutat la popularizarea ideii unui graf de atribuire ca poveste cauzală internă parțială. Cuvântul parțial contează. Modelele mari pot conține căi redundante, calcule distribuite și mecanisme dependente de context. Un graf poate fi foarte informativ fără a fi o urmă completă a execuției."
+    }
+  ]
+}

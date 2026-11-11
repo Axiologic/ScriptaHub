@@ -1,0 +1,316 @@
+{
+  "language": "ro",
+  "chunk": 6,
+  "segments": [
+    {
+      "id": "t000323",
+      "source": "Human-impact assessment remains necessary. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000324",
+      "source": "Consider a credit model with identical overall default prediction accuracy across two groups. One group has a higher base rate of default because of historical economic conditions. If the lender enforces equal false-positive rates, calibration may diverge. If it enforces calibration, approval rates may diverge. A defensible system cannot escape this by selecting the metric that produces the most attractive chart. It must state the lending objective, the relevant harm, the legal and normative constraints, and the expected long-term effect of credit availability. Fairness is a design decision made explicit by statistics, not a statistic that makes the decision disappear.",
+      "translation": ""
+    },
+    {
+      "id": "t000325",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": "Există și o dimensiune organizațională. O măsură de control care există într-un document de proiectare, dar este ocolită în mod curent, nu este eficientă; o aprobare umană care nu primește dovezi utile nu reprezintă supraveghere independentă; o constatare red-team care nu poate bloca o lansare nu reprezintă un semnal de siguranță semnificativ. Caracterul demn de încredere devine real numai când măsurările sunt conectate la autoritate. De aceea, cursul revine constant la responsabili, escaladare, revenirea la o versiune anterioară, analiza incidentelor și actualitatea dovezilor, alături de metricile modelului."
+    },
+    {
+      "id": "t000326",
+      "source": "For Meridian, fairness review is moved into release and monitoring workflows. Meridian logs which groups of users receive abstentions, delays and escalations, while governance teams interview affected departments to learn whether measured disparities correspond to material obstacles. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000327",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000328",
+      "source": "A second way to reason about intersectionality, shift, and socio-technical validation is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000329",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000330",
+      "source": "Fairness demonstrates that the environment can turn a model weakness into a human harm. Security and privacy add an adversary: someone may intentionally manipulate inputs, extract information or exploit the authority surrounding the model. The system boundary established earlier now becomes a set of trust boundaries.",
+      "translation": ""
+    },
+    {
+      "id": "t000331",
+      "source": "7. Privacy and Security as System Properties",
+      "translation": "7. Confidențialitatea și securitatea ca proprietăți ale sistemului"
+    },
+    {
+      "id": "t000332",
+      "source": "Engineering question: How do we prevent a probabilistic component from becoming a path across trust boundaries?",
+      "translation": ""
+    },
+    {
+      "id": "t000333",
+      "source": "Security changes the epistemic posture of engineering. Reliability asks what happens when the world differs from our assumptions; security asks what happens when another actor deliberately searches for the assumptions we forgot. Privacy introduces a related constraint: information should not become available merely because a model can infer or reproduce it. Meridian is now connected to confidential repositories and external content. This makes the distinction between untrusted data, model reasoning and privileged action central to the architecture.",
+      "translation": ""
+    },
+    {
+      "id": "t000334",
+      "source": "7.1 From Training Data to Inference-Time Leakage",
+      "translation": ""
+    },
+    {
+      "id": "t000335",
+      "source": "A course on privacy across the AI lifecycle should begin with the failure it is meant to prevent, not with the metric that happens to be fashionable. Privacy risk arises during collection, training, fine-tuning, retrieval, logging, prompting and output. Membership inference and training-data extraction show that models can reveal information about their data, while RAG systems introduce direct inference-time paths to sensitive documents. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000336",
+      "source": "Consider a language assistant that respects document permissions in the source application but indexes text into a shared retrieval store without equivalent access controls. The privacy defect is architectural even if the model itself was never trained on the confidential material. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000337",
+      "source": "Encryption and access control protect data from unauthorized access, but they do not by themselves constrain what a trained model reveals about individuals whose data influenced training. Differential privacy addresses a different question: how much can the presence or absence of one person's record change the distribution of outputs? DP-SGD made it practical to train deep models with explicit privacy accounting by clipping per-example gradients and adding noise. The price is a trade-off among privacy, utility, model size, and computation.",
+      "translation": ""
+    },
+    {
+      "id": "t000338",
+      "source": "Differential privacy is valuable precisely because its guarantee is formal and composable, but the guarantee applies to a specified mechanism and privacy budget. It does not automatically protect data copied into prompts, logs, retrieval stores, or tool outputs. Privacy engineering still needs conventional controls around the model.",
+      "translation": ""
+    },
+    {
+      "id": "t000339",
+      "source": "Carlini and colleagues demonstrated that language models can emit verbatim training examples, including rare sequences, under carefully constructed extraction attacks. Subsequent work has extended membership and reconstruction attacks to pretrained and fine-tuned models. This matters because memorization risk can change across training stages. Fine-tuning, synthetic data, and downstream adaptation can alter which examples are exposed. Privacy evaluation should therefore occur after the actual deployment configuration is built, not only on the base model.",
+      "translation": ""
+    },
+    {
+      "id": "t000340",
+      "source": "This also changes how evidence is designed. Minimise data, separate purposes, propagate access control into retrieval, redact or tokenize sensitive fields where appropriate, restrict logs and retention, and test extraction scenarios. Use differential privacy when its formal privacy guarantee matches the threat model and utility budget. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000341",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000342",
+      "source": "The boundary of the claim must remain visible. Privacy-enhancing technologies do not repair an unjustified data collection purpose, and differential privacy protects specific statistical disclosures rather than every downstream privacy concern. Retrieval permissions and generated inferences remain separate problems. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000343",
+      "source": "Differential privacy protects against inference about individual participation. Secure multiparty computation allows several parties to compute a function without revealing their private inputs to one another. Homomorphic encryption allows computation over encrypted data with substantial performance costs depending on the scheme and workload. Trusted execution environments protect computation inside hardware-isolated enclaves but rely on hardware, firmware, and attestation assumptions. Federated learning reduces the need to centralize raw data but is not itself a privacy guarantee because gradients, updates, and the final model can leak information.",
+      "translation": ""
+    },
+    {
+      "id": "t000344",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": "Există și o dimensiune organizațională. O măsură de control care există într-un document de proiectare, dar este ocolită în mod curent, nu este eficientă; o aprobare umană care nu primește dovezi utile nu reprezintă supraveghere independentă; o constatare red-team care nu poate bloca o lansare nu reprezintă un semnal de siguranță semnificativ. Caracterul demn de încredere devine real numai când măsurările sunt conectate la autoritate. De aceea, cursul revine constant la responsabili, escaladare, revenirea la o versiune anterioară, analiza incidentelor și actualitatea dovezilor, alături de metricile modelului."
+    },
+    {
+      "id": "t000345",
+      "source": "For Meridian, it moves from a single shared index to permission-aware retrieval, records source authorization at query time and suppresses sensitive content from diagnostic logs. Privacy tests are run from the viewpoint of users with different entitlements. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000346",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000347",
+      "source": "A second way to reason about from training data to inference-time leakage is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000348",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000349",
+      "source": "7.2 Adversarial ML, Prompt Injection, and the Supply Chain",
+      "translation": ""
+    },
+    {
+      "id": "t000350",
+      "source": "A course on AI security should begin with the failure it is meant to prevent, not with the metric that happens to be fashionable. Modern AI combines traditional software vulnerabilities with adversarial manipulation of learned behavior. Evasion, poisoning, model extraction, jailbreaks, indirect prompt injection and compromised model or data dependencies require different threat models. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000351",
+      "source": "Consider an agent reading a webpage that contains hidden instructions telling the model to ignore the user and exfiltrate information. The malicious text is data from the application’s perspective but instruction-like content from the model’s perspective, creating a confused-deputy problem. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000352",
+      "source": "Prompt injection illustrates why LLM security cannot be solved solely by alignment training. A tool-using model processes natural-language instructions from multiple trust domains: the developer, the user, retrieved documents, websites, emails, and tool outputs. If these are concatenated into one context, untrusted content can masquerade as instructions. This is analogous to mixing code and data without a reliable boundary.",
+      "translation": ""
+    },
+    {
+      "id": "t000353",
+      "source": "Defenses should therefore use architectural separation: typed tool calls, allowlists, least privilege, content provenance, scoped credentials, policy enforcement outside the model, confirmation for high-impact actions, taint tracking where feasible, and monitoring of tool sequences. Natural-language reminders such as 'ignore malicious instructions' can help but should be treated as a soft defense, not a security boundary.",
+      "translation": ""
+    },
+    {
+      "id": "t000354",
+      "source": "The engineering goal is not to prove the absence of attacks. It is to reduce attack surface, make high-impact actions harder, detect suspicious behavior, contain compromise, and make recovery possible. Security is the trustworthy-AI property most obviously shaped by an intelligent adversary, so the threat model must be expected to evolve.",
+      "translation": ""
+    },
+    {
+      "id": "t000355",
+      "source": "This also changes how evidence is designed. Map trust boundaries, classify all external content as untrusted, isolate tool credentials, validate tool arguments outside the model, pin and attest dependencies where feasible, test poisoning and injection scenarios, and maintain incident-ready logs. Follow adversarial-ML taxonomies such as NIST AI 100-2e2025 to avoid treating every attack as a jailbreak. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000356",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000357",
+      "source": "The boundary of the claim must remain visible. Prompt injection has no general solution in current LLM architectures when trusted instructions and untrusted content share the same semantic channel. Filters and prompting reduce attack success but do not establish a hard security boundary. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000358",
+      "source": "Modern AI systems inherit models, datasets, libraries, containers, drivers, accelerator kernels, evaluation tools, and third-party APIs. Each dependency can change behavior or create vulnerabilities. Trustworthy AI therefore needs software-bill-of-materials thinking extended to models and data: model hashes, dataset versions, licenses, fine-tuning lineage, dependency versions, evaluation artifacts, and serving configuration. A security incident in a library or a silent model update can invalidate previous assurance even when application code did not change.",
+      "translation": ""
+    },
+    {
+      "id": "t000359",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics. For Meridian, retrieved documents are never allowed to grant themselves authority. Meridian can propose an action based on content, but a separate policy component decides whether the action is permitted and what data may be passed to the tool. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000360",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000361",
+      "source": "A second way to reason about adversarial ml, prompt injection, and the supply chain is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000362",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000363",
+      "source": "Figure from PDF page 55",
+      "translation": ""
+    },
+    {
+      "id": "t000364",
+      "source": "Figure 7. Untrusted content must not cross directly into privileged action.",
+      "translation": ""
+    },
+    {
+      "id": "t000365",
+      "source": "7.3 Least Privilege, Provenance, and Defense in Depth",
+      "translation": ""
+    },
+    {
+      "id": "t000366",
+      "source": "A course on defense-in-depth for AI systems should begin with the failure it is meant to prevent, not with the metric that happens to be fashionable. The most robust security improvement is often to reduce the consequences of model error. Least privilege limits credentials, tool scope, data visibility, transaction size and temporal authority so that a compromised or confused model cannot directly exercise the full authority of its user or service account. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000367",
+      "source": "Consider a research assistant that needs to search email but not send it, or an expense agent that may prepare a payment but not release funds above a threshold. Capability separation converts some semantic failures into harmless denied operations. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000368",
+      "source": "This also changes how evidence is designed. Issue scoped credentials per tool and task, enforce allowlists and typed schemas, use deterministic policy checks for high-consequence actions, preserve provenance from source to decision, require step-up approval for irreversible operations, and make rollback part of the threat model. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000369",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000370",
+      "source": "The boundary of the claim must remain visible. Defense in depth lowers the probability and blast radius of known classes of failure but adds complexity and can create new integration errors. Security controls themselves need tests and monitoring. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000371",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": "Există și o dimensiune organizațională. O măsură de control care există într-un document de proiectare, dar este ocolită în mod curent, nu este eficientă; o aprobare umană care nu primește dovezi utile nu reprezintă supraveghere independentă; o constatare red-team care nu poate bloca o lansare nu reprezintă un semnal de siguranță semnificativ. Caracterul demn de încredere devine real numai când măsurările sunt conectate la autoritate. De aceea, cursul revine constant la responsabili, escaladare, revenirea la o versiune anterioară, analiza incidentelor și actualitatea dovezilor, alături de metricile modelului."
+    },
+    {
+      "id": "t000372",
+      "source": "For Meridian, its production deployment grants read-only research tools by default. Outbound communication, document modification and procurement actions are distinct capabilities that require explicit policies and approvals, all of which are recorded in the assurance trace. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000373",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000374",
+      "source": "A second way to reason about least privilege, provenance, and defense in depth is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000375",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000376",
+      "source": "A useful stress question for least privilege, provenance, and defense in depth is whether the same assurance story survives a change of stakeholder. The developer wants a reproducible defect; the operator wants a stable service; the affected user wants a way to understand and challenge an outcome; the security team wants bounded authority; management wants a defensible release decision. These views are not interchangeable, but they can be connected through shared evidence and provenance. Designing that connection early reduces the common situation in which each team maintains a separate account of the system and inconsistencies are discovered only during an incident or audit.",
+      "translation": ""
+    },
+    {
+      "id": "t000377",
+      "source": "The course therefore treats documentation as part of architecture. A requirement should point to a control; the control to a test; the test to an artifact and version; the artifact to an owner; and the owner to a review or response process. Not every link can be automated, but making the links explicit gives the organisation a map of what it actually knows. This map becomes especially valuable when systems incorporate third-party models and services whose internal development process is only partially visible.",
+      "translation": "Cursul tratează, așadar, documentația ca parte a arhitecturii. O cerință trebuie să trimită la o măsură de control; măsura la un test; testul la un artefact și o versiune; artefactul la un responsabil; iar responsabilul la un proces de verificare sau răspuns. Nu orice legătură poate fi automatizată, dar explicitarea lor oferă organizației o hartă a ceea ce știe cu adevărat. Această hartă devine deosebit de valoroasă când sistemele încorporează modele și servicii de la terți, ale căror procese interne de dezvoltare sunt vizibile doar parțial."
+    },
+    {
+      "id": "t000378",
+      "source": "The security architecture gives us controls, but controls are only hypotheses until evaluated. The next chapter develops evaluation as an engineering science: testing at multiple layers, selective use of formal methods, and evidence designs that resist contamination, benchmark gaming and evaluator bias.",
+      "translation": ""
+    },
+    {
+      "id": "t000379",
+      "source": "8. Verification, Testing, and Evaluation Science",
+      "translation": "8. Știința verificării, testării și evaluării"
+    },
+    {
+      "id": "t000380",
+      "source": "Engineering question: What evidence would genuinely distinguish a dependable AI system from one that merely performs well on familiar tests?",
+      "translation": ""
+    },
+    {
+      "id": "t000381",
+      "source": "AI evaluation is entering a difficult phase. Benchmarks remain useful, but frontier systems increasingly train on public data, adapt to prompts, use tools and behave differently in realistic environments. The International AI Safety Report 2026 describes an emerging evaluation gap between pre-deployment tests and real-world performance. NIST’s August 2026 draft TEVV-Athlon framework likewise treats test, evaluation, verification and validation as a structured assessment of outcomes across statistical ML, LLMs, multimodal and agentic systems. Meridian’s engineers therefore replace the idea of a single acceptance benchmark with an evidence portfolio.",
+      "translation": ""
+    },
+    {
+      "id": "t000382",
+      "source": "8.1 A Testing Pyramid for AI Systems",
+      "translation": ""
+    },
+    {
+      "id": "t000383",
+      "source": "The first useful move is to make AI testing strategy concrete. Tests should exist at the smallest layer where a property can be isolated and at the integrated layer where interactions create new behavior. Dataset checks, component tests, behavioral evaluations, end-to-end scenarios, red teaming and production monitoring answer different questions. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000384",
+      "source": "Consider a citation validator that can be tested deterministically on known spans, while the full answer-generation pipeline requires scenario tests to discover whether retrieval, generation and formatting interact to create unsupported claims. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    }
+  ]
+}

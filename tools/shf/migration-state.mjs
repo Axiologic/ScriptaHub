@@ -17,6 +17,9 @@ export async function setMigrationStage(project,stage,status,detail={}){
 }
 
 export async function refreshMigrationStatus(){
+  // A coordinated batch still records every stage locally; its coordinator
+  // performs one complete dashboard refresh after the publication group.
+  if(process.env.SCRIPTA_DEFER_STATUS==='1'){console.log('Dashboard refresh deferred to the batch coordinator.');return;}
   await new Promise((resolve,reject)=>{
     const child=spawn(process.execPath,['tools/shf/update-voice-migration-status.mjs'],{stdio:'inherit'});
     child.on('exit',code=>code===0?resolve():reject(new Error(`Status refresh exited ${code}`)));

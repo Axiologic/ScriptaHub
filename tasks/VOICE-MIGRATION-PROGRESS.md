@@ -1,15 +1,15 @@
 # Progres migrare voci pentru animații
 
-Actualizat: 2026-11-11T17:34:31.502Z
+Actualizat: 2026-11-11T20:10:57.408Z
 
 Acest registru este sursa de reluare: o intrare este „finalizată” numai când toate fișierele audio Qwen și SHF-ul public curent sunt verificate.
 
 ## Situație
 
-- Voci Qwen finalizate: **35**
+- Voci Qwen finalizate: **46**
 - În conversie: **0**
 - Încă pe Piper: **98**
-- Pregătite pentru conversie: **0**
+- Pregătite pentru conversie: **3**
 - De refăcut după schimbarea textului: **1**
 - Publicare SHF invalidă: **0**
 - Fără proiect asociat: **0**
@@ -22,7 +22,10 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - Agentic AI 2026 — Ryan (69 s)
 - AI Adoption Beyond the Slop — Aiden (66 s)
 - AI Agents — Aiden (64 s)
+- AI and The End of Scarcity — Ryan (98 s)
+- AI and the New Educational Frontier — Aiden (87 s)
 - All the Ways to Rule a World — Ryan (76 s)
+- An AI’s Perspective on Kabbalah and Taoism — Ryan (106 s)
 - An Autopsy of a Digital Mind — Ryan (74 s)
 - An Intuitive Introduction to Machine Learning — Aiden (86 s)
 - Anatomy of an Echo — Ryan (82 s)
@@ -37,16 +40,24 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - Between Faith and Evidence — Ryan (75 s)
 - Beyond the Last Stone — Ryan (74 s)
 - Bias in AI — Aiden (67 s)
+- Blockchain and AI: Strategies for Winning Enterprise Customers — Aiden (93 s)
 - Borrowed Credibility — Ryan (67 s)
 - Can’t See the Forest for the Trees — Ryan (80 s)
 - Coherence Pressure — Ryan (64 s)
 - Concordia Series — Ryan (80 s)
 - Cones of Meaning — Ryan (77 s)
+- Digital Delusions: When AI Peers into Human Psyche — Ryan (99 s)
 - Enthusiasm: The Missing Energy of a Successful Civilization — Aiden (80 s)
+- Exploring Formal Logic: An AI Assisted Educational Journey — Aiden (88 s)
 - Incomplete Tribes — Aiden (87 s)
+- Introduction to Artificial Intelligence — Ryan (97 s)
 - Is There Light at the End of the Tunnel? — Ryan (104 s)
+- Mastering Human-Like Writing with AI — Aiden (87 s)
+- Meaning as a Path — Ryan (101 s)
+- Sleeper Agents: The Risks of Deceptive AIs — Aiden (90 s)
 - Symbolic World Models — Ryan (118 s)
 - The Messiah Factory — Ryan (91 s)
+- The Mirage of Stability in Financial Crisis — Aiden (86 s)
 - The New Social Contract in the Age of Artificial Intelligence — Ryan (107 s)
 - The Unfinished World — Aiden (83 s)
 - Two Ways to Build a World — Aiden (89 s)
@@ -152,6 +163,12 @@ Acest registru este sursa de reluare: o intrare este „finalizată” numai câ
 - What We Still Have to Solve — en_US-ljspeech-medium (164 s)
 - Who Will Inherit the World? — en_US-ljspeech-medium (77 s)
 - Why the World Won’t End — en_US-ljspeech-medium (165 s)
+
+## Pregătite pentru conversie
+
+- Planetary Sky: Understanding the Colors Above Us — Ryan
+- Top 10 Ways to Improve Emotional Intelligence (EQ) — Ryan
+- World as a System: 1000 Reasoning Problems for Grades 1–4 — Aiden
 
 ## De refăcut după schimbarea textului
 

@@ -1,0 +1,286 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000210",
+      "source": "Abstention converts uncertainty from a number into a control decision. Instead of forcing a prediction on every input, the system routes uncertain cases to a human, a slower model, a retrieval process, a formal checker, or a safe default. Selective prediction should therefore be evaluated with a risk-coverage curve: as the system handles fewer cases autonomously, does the error rate fall in the cases it keeps? This metric directly connects confidence with operational design.",
+      "translation": ""
+    },
+    {
+      "id": "t000211",
+      "source": "Deep ensembles remain a strong practical baseline because independently trained models expose some epistemic variation and often improve both predictive performance and uncertainty estimates. They are expensive, but the engineering idea is simple: disagreement among plausible models contains useful information. Bayesian approximations aim at a similar goal with different computational trade-offs.",
+      "translation": ""
+    },
+    {
+      "id": "t000212",
+      "source": "Conformal prediction is attractive because it can give finite-sample coverage guarantees under assumptions that are weaker than a fully specified probabilistic model. Instead of outputting one label or interval, a conformal method can produce a set designed to contain the correct answer at a chosen frequency. The guarantee is not magic. Exchangeability or related assumptions matter, and distribution shift can break coverage. Recent work extends conformal approaches to heterogeneous and federated settings, but engineers must state the assumptions with the guarantee.",
+      "translation": ""
+    },
+    {
+      "id": "t000213",
+      "source": "This also changes how evidence is designed. Define an abstention policy before tuning thresholds, quantify both coverage and residual error, and include the cost and capacity of the fallback path. Where conformal prediction is applicable, report the guarantee, calibration set and exchangeability assumptions in plain engineering language. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000214",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000215",
+      "source": "The boundary of the claim must remain visible. Abstention can fail socially if users interpret it as incompetence or bypass it under workload pressure. Conformal guarantees can also break under distribution shift or poorly matched nonconformity scores. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again. There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics. For Meridian, it learns to respond “the available documents do not support a reliable answer” for some procurement questions and automatically opens a review task. The system’s product metric becomes successful resolution rather than percentage of questions answered by the model alone. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000216",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000217",
+      "source": "A second way to reason about abstention, selective prediction, and conformal guarantees is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000218",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000219",
+      "source": "4.3 Uncertainty in Language Models, Tool Use, and Decisions",
+      "translation": ""
+    },
+    {
+      "id": "t000220",
+      "source": "The first useful move is to make uncertainty in generative systems concrete. Generative models do not expose a single well-behaved uncertainty variable for statements, plans or tool calls. Engineers therefore combine imperfect signals: self-consistency, retrieval support, verifier results, model disagreement, novelty, tool feedback and task-specific constraints. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000221",
+      "source": "Consider a generated answer whose individual tokens are high probability but whose central factual claim is unsupported, or a low-probability coding suggestion that is nevertheless correct after compilation and tests. Surface likelihood and semantic correctness are different objects. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000222",
+      "source": "For open-ended generation, a token probability is not the probability that an answer is true. A language model can assign high likelihood to a fluent continuation that contains a false claim, and different phrasings can express the same semantic answer. Useful uncertainty signals therefore include self-consistency across sampled answers, semantic clustering, retrieval support, verifier agreement, model ensembles, conformalized answer sets for constrained tasks, and calibrated abstention policies. None should be presented as a universal probability of truth.",
+      "translation": ""
+    },
+    {
+      "id": "t000223",
+      "source": "The strongest design pattern for factual systems is to separate answer generation from evidence assessment. An answer that cannot be grounded in an authoritative source can be marked uncertain, withheld, or routed for review. This is more defensible than asking a generative model to introspectively report how sure it feels.",
+      "translation": ""
+    },
+    {
+      "id": "t000224",
+      "source": "This also changes how evidence is designed. Move uncertainty estimation to the level where the decision is made. For factual answers, score claims and evidence; for code, execute tests; for tool calls, validate arguments and expected effects; for plans, check constraints and require confirmation before irreversible actions. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000225",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000226",
+      "source": "The boundary of the claim must remain visible. No current uncertainty method turns an LLM into a calibrated oracle about its own correctness. Signals are correlated with quality in some settings and can be gamed or fail under novel conditions. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000227",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics. For Meridian, uncertainty becomes an orchestration variable. Meridian may retrieve more evidence, call a second verifier, ask the user a clarifying question, abstain, or request approval depending on the kind of uncertainty rather than on a single confidence threshold. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000228",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000229",
+      "source": "A second way to reason about uncertainty in language models, tool use, and decisions is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000230",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000231",
+      "source": "The final perspective on uncertainty in language models, tool use, and decisions is temporal. A system that is acceptable today may become unacceptable without a dramatic failure: users adapt, adversaries learn, policies change, data sources age, and a provider silently improves or replaces a dependency. Trustworthy engineering therefore asks how quickly evidence can become stale and how that staleness will be detected. Some claims can be protected by deterministic regression tests, others require statistical monitoring, and others can only be revisited through periodic expert review. The frequency should follow the rate at which the relevant assumptions can change, not an arbitrary annual governance calendar.",
+      "translation": ""
+    },
+    {
+      "id": "t000232",
+      "source": "This temporal view also clarifies why incidents and near misses are valuable evidence. They reveal combinations of conditions that designers did not encode in pre-deployment tests. A mature process preserves them as regression scenarios, updates threat and hazard models, and records whether the incident changes the system's operating envelope. The goal is not a constantly expanding checklist; it is a smaller, better connected set of claims whose supporting evidence evolves with the system.",
+      "translation": ""
+    },
+    {
+      "id": "t000233",
+      "source": "Once uncertainty influences action, explanations acquire a clearer purpose. The question is no longer whether a model can produce an attractive rationale, but whether an explanation helps a particular actor test, contest, debug or constrain the system.",
+      "translation": ""
+    },
+    {
+      "id": "t000234",
+      "source": "5. Explainability, Interpretability, and Causal Understanding",
+      "translation": "5. Explicabilitate, interpretabilitate și înțelegere cauzală"
+    },
+    {
+      "id": "t000235",
+      "source": "Engineering question: What kind of explanation can legitimately support debugging, oversight or assurance?",
+      "translation": ""
+    },
+    {
+      "id": "t000236",
+      "source": "Explainability is often discussed as if every stakeholder needs the same thing: a picture of feature importance or a paragraph explaining the model’s answer. In practice, users, developers, auditors and researchers ask different causal and procedural questions. Meridian makes the distinction visible. A procurement specialist may need to know which policy passages support an answer; an engineer may need to know why retrieval failed; an auditor may need reproducible evidence that a control operates as claimed. This chapter treats explanation as an instrument whose validity depends on its use.",
+      "translation": ""
+    },
+    {
+      "id": "t000237",
+      "source": "5.1 Explanation for Whom, and for What Decision?",
+      "translation": ""
+    },
+    {
+      "id": "t000238",
+      "source": "The first useful move is to make explanation objectives concrete. Explanations serve distinct purposes: justification to a user, diagnosis for an engineer, contestability for an affected person, evidence for an auditor, or scientific understanding of an internal mechanism. A method suitable for one purpose can be misleading for another. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000239",
+      "source": "Consider a feature attribution that helps a developer notice that a model relies on postcode, yet cannot by itself justify an individual credit decision or prove that removing the feature would remove discriminatory effects. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000240",
+      "source": "LIME, SHAP, integrated gradients, saliency maps, counterfactual explanations, prototypes, and concept-based methods all attempt to translate a complex decision into a simpler representation. They can be extremely useful for debugging and communication. Their danger is semantic overreach. A feature attribution can say that changing a feature would be associated with a change in output under the explanation method. It does not automatically show that the feature is a causal mechanism inside the model, nor that the explanation will remain stable for a nearby input.",
+      "translation": ""
+    },
+    {
+      "id": "t000241",
+      "source": "The SHAP framework unified a large family of additive feature-attribution techniques around Shapley values, giving a principled way to distribute credit among features. Later work has shown that Shapley-based explanations still have important information-theoretic and practical limitations. The relevant question is therefore not whether a method is mathematically elegant but whether it is faithful enough for the decision being made from it.",
+      "translation": ""
+    },
+    {
+      "id": "t000242",
+      "source": "Post-hoc explainability attracts attention because it can be applied after a complex model has already been trained. For some high-stakes structured tasks, however, the first question should be whether the black box is necessary. Generalized additive models, monotonic models, sparse rule systems, decision sets, prototypes, and concept-bottleneck architectures can make important relationships visible by construction. Their advantage is not moral purity; it is that the explanation is more tightly coupled to the computation. Their disadvantage is that they may not reach the same performance or flexibility on highly complex data.",
+      "translation": ""
+    },
+    {
+      "id": "t000243",
+      "source": "This also changes how evidence is designed. Start from the decision the explanation must support and define acceptance criteria such as fidelity, stability, completeness, comprehensibility and actionability. Prefer explanations tied to observable evidence, counterfactual tests or documented system traces over fluent post-hoc stories. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000244",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000245",
+      "source": "The boundary of the claim must remain visible. Interpretability always compresses. Even a faithful local explanation may omit interactions outside the local region, while an understandable global account may simplify a model beyond operational usefulness. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000246",
+      "source": "The engineering decision should compare the marginal value of a more complex model with the assurance cost it creates. If a transparent model loses a fraction of a percentage point in predictive performance but enables stable audit, better debugging, and safer recourse, the system-level trade may be favorable. Conversely, using an interpretable model merely to satisfy a documentation requirement while it materially underperforms can also create harm. Interpretability is part of system optimization, not an absolute rule.",
+      "translation": ""
+    },
+    {
+      "id": "t000247",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": "Există și o dimensiune organizațională. O măsură de control care există într-un document de proiectare, dar este ocolită în mod curent, nu este eficientă; o aprobare umană care nu primește dovezi utile nu reprezintă supraveghere independentă; o constatare red-team care nu poate bloca o lansare nu reprezintă un semnal de siguranță semnificativ. Caracterul demn de încredere devine real numai când măsurările sunt conectate la autoritate. De aceea, cursul revine constant la responsabili, escaladare, revenirea la o versiune anterioară, analiza incidentelor și actualitatea dovezilor, alături de metricile modelului."
+    },
+    {
+      "id": "t000248",
+      "source": "For Meridian, user-facing explanations cite source passages and disclose uncertainty; developer diagnostics expose retrieval ranks, policy decisions and tool traces. Meridian deliberately presents different evidence to different actors rather than pretending one explanation satisfies all of them. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000249",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000250",
+      "source": "A second way to reason about explanation for whom, and for what decision? is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000251",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000252",
+      "source": "Figure from PDF page 37",
+      "translation": ""
+    },
+    {
+      "id": "t000253",
+      "source": "Figure 6. Explanation becomes stronger as claims are tested by behavior and intervention.",
+      "translation": ""
+    },
+    {
+      "id": "t000254",
+      "source": "5.2 From Behavioral Explanation to Mechanistic Interpretability",
+      "translation": ""
+    },
+    {
+      "id": "t000255",
+      "source": "The first useful move is to make mechanistic interpretability concrete. Behavioral interpretability asks what inputs change outputs; mechanistic interpretability asks what internal computations produce behavior. The latter can discover circuits, representations or causal pathways, but the field is still developing and findings often depend on model, method and intervention design. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000256",
+      "source": "Consider using activation interventions to test whether an identified representation causally affects a model behavior rather than merely correlates with it. Recent work on sparse autoencoders illustrates both promise and uncertainty: features can appear interpretable, yet reproducibility and causal sufficiency remain active research questions. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000257",
+      "source": "Mechanistic interpretability attempts a more ambitious form of explanation: reverse-engineering internal algorithms, features, and circuits. Transformer-circuit work studies how attention heads, residual streams, multilayer perceptrons, and learned features compose into behaviors. Sparse autoencoders have become a prominent tool for decomposing superposed activations into candidate features. This is scientifically exciting because it moves from describing input-output behavior toward interventions on internal computation.",
+      "translation": ""
+    },
+    {
+      "id": "t000258",
+      "source": "The frontier remains far from complete. The 2025 review Open Problems in Mechanistic Interpretability emphasizes unresolved questions about feature identification, causal completeness, scalability, evaluation, and the relationship between local mechanisms and global behavior. In 2026, work on sparse-autoencoder consistency highlighted an additional issue: if a method discovers different features across training runs, reproducibility itself becomes an interpretability criterion. A useful interpretability pipeline should therefore measure not only reconstruction and sparsity but also whether discovered features are stable enough to support scientific claims.",
+      "translation": ""
+    },
+    {
+      "id": "t000259",
+      "source": "The most useful frontier is intervention. If an inferred feature or circuit is claimed to cause a behavior, editing or suppressing that mechanism should change the behavior in predictable ways while preserving unrelated capabilities. Causal tracing, activation patching, steering vectors, circuit ablation, and feature editing are steps in this direction. For assurance, the goal is not merely to understand a model beautifully. It is to identify internal structure that helps predict or constrain behavior under conditions that matter.",
+      "translation": ""
+    },
+    {
+      "id": "t000260",
+      "source": "This also changes how evidence is designed. Use internal-analysis methods as hypothesis-generating and evidence-producing tools, then validate claims with interventions, ablations, held-out behaviors and independent replications. State explicitly whether the result explains one prompt family, one model checkpoint or a broader mechanism. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000261",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000262",
+      "source": "The boundary of the claim must remain visible. Finding interpretable internal structure does not imply complete understanding, and absence of a discovered feature does not prove absence of a capability. Mechanistic methods are not yet a substitute for system-level testing. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again. There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": ""
+    },
+    {
+      "id": "t000263",
+      "source": "For Meridian, its team uses behavioral probes to understand when citations are ignored and treats internal model inspection as supplementary research rather than a production safety certificate. Controls remain at the architecture layer where they can be tested directly. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000264",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000265",
+      "source": "A second way to reason about from behavioral explanation to mechanistic interpretability is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    }
+  ]
+}

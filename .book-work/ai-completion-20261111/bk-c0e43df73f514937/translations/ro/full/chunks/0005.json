@@ -1,0 +1,606 @@
+{
+  "language": "ro",
+  "chunk": 5,
+  "segments": [
+    {
+      "id": "t000444",
+      "source": "The correct audit follows the chain: audio recognition quality, semantic interpretation, tool invocation, final answer quality, and recovery behavior when the input is uncertain. A system that recognizes its own uncertainty and asks for clarification can be fairer than one that confidently guesses.",
+      "translation": ""
+    },
+    {
+      "id": "t000445",
+      "source": "Large vision-language models can also be used as judges of people and scenes. The 2025 study by Wu and colleagues evaluated mainstream LVLMs across demographic attributes and prompts and reported continuing disparities involving gender, skin tone, age, and race. The prompt mattered, reinforcing the broader lesson that multimodal fairness is conditional rather than a fixed property of the visual encoder. When such systems support surveillance, moderation, hiring, or accessibility, a small classification asymmetry can become a material decision.",
+      "translation": ""
+    },
+    {
+      "id": "t000446",
+      "source": "Multimodal fairness requires cross-modal counterfactuals. The same text can be paired with different images; the same image can receive different demographic descriptions; the same semantic utterance can be spoken with different accents. These tests expose whether modality-specific cues change decisions that should be invariant. They also reveal a practical difficulty: many demographic attributes are not visually or acoustically well-defined, and attempts to infer them can themselves be harmful. Evaluation should focus on observed system behavior under controlled stimuli, not on pretending that complex identities can be read objectively from appearance.",
+      "translation": ""
+    },
+    {
+      "id": "t000447",
+      "source": "Recent multimodal benchmarks reinforce the importance of prompt and task design. GRAS, presented at EACL 2026, shows that demographic-bias conclusions in vision-language models can change when semantically similar questions are formulated differently. This is the visual analogue of prompt sensitivity in LLM evaluation: the instrument can become part of the measured phenomenon.",
+      "translation": ""
+    },
+    {
+      "id": "t000448",
+      "source": "The right comparison is therefore two-dimensional: how well does the system work, and how unevenly is that performance distributed? A uniformly bad system is not made acceptable by a small disparity score, and a highly accurate system can still impose concentrated harm on a subgroup.",
+      "translation": ""
+    },
+    {
+      "id": "t000449",
+      "source": "5.2 Synthetic data can repair coverage or silently compress diversity",
+      "translation": ""
+    },
+    {
+      "id": "t000450",
+      "source": "Synthetic data are often proposed as a solution to missing or imbalanced examples. They can be valuable, but they also create a new source of distributional power: the generator decides what counts as a plausible example. ACL 2026 work on self-consuming performative loops and new studies of bias inheritance show that recursive or model-generated data can change group preferences and downstream disparities. Emerging 2026 evidence on “fairness collapse” suggests that social bias may deteriorate before ordinary language-model metrics show severe model collapse.",
+      "translation": ""
+    },
+    {
+      "id": "t000451",
+      "source": "Synthetic data appears to solve several fairness problems at once. It can create examples for rare cases, balance categories without collecting sensitive records, generate counterfactual pairs, and reduce dependence on copyrighted or private material. In simulation-heavy domains it can expose a system to edge cases that are expensive or dangerous to observe in the real world. These are genuine advantages. The mistake is to assume that generated data are independent of the biases of the generator.",
+      "translation": ""
+    },
+    {
+      "id": "t000452",
+      "source": "A synthetic example inherits a distribution from the model and prompt that created it. If the generator has a narrow image of a profession, location, disability, or cultural practice, synthetic balancing may merely replicate that narrowness many times. A dataset can become numerically balanced while semantically homogenized. Diversity of labels is not the same thing as diversity of lived situations. For low-resource cultures, the model may generate examples that look plausible to outsiders but encode stereotypes or generic globalized norms.",
+      "translation": ""
+    },
+    {
+      "id": "t000453",
+      "source": "The same mechanism can amplify bias. The generator's own stereotypes shape the synthetic distribution. If synthetic data are filtered by another LLM with similar preferences, those preferences can be reinforced. If the synthetic corpus is then used to train the next model generation, the process becomes recursive.",
+      "translation": ""
+    },
+    {
+      "id": "t000454",
+      "source": "Model-collapse research provides a broader warning. Shumailov and colleagues showed that recursively training generative models on model-generated data can cause distributions to lose information about the original data, especially the tails. The fairness connection is important even though model collapse is not itself a fairness theorem. Minority linguistic forms, rare cultural references, and atypical examples often live in distribution tails. Recursive synthetic training can therefore erase precisely the variation that fairness engineering tries to preserve.",
+      "translation": ""
+    },
+    {
+      "id": "t000455",
+      "source": "Generative AI does not only learn from culture; it increasingly produces culture. Generated text enters websites, forums, marketing copy, documentation, educational resources, and future training corpora. Generated images populate search engines and stock libraries. Model outputs can therefore change the distribution from which later models learn.",
+      "translation": ""
+    },
+    {
+      "id": "t000456",
+      "source": "This creates a cultural feedback loop. If current models overrepresent some identities or styles, large-scale generated content can make those patterns more common in future data. The loop is not guaranteed to amplify bias, because filtering and human editing intervene, but the possibility changes the governance problem. Training data provenance now needs to distinguish human-originated from model-originated content when feasible.",
+      "translation": ""
+    },
+    {
+      "id": "t000457",
+      "source": "A long-term fairness strategy should treat diversity preservation as an information problem. The objective is not only to reduce harmful correlations today but to avoid collapsing cultural and linguistic variety tomorrow.",
+      "translation": ""
+    },
+    {
+      "id": "t000458",
+      "source": "The effect is not inevitable. Synthetic data can be used carefully as a controlled intervention. A strong pipeline starts with a coverage gap identified in real evaluation, generates candidates under diverse prompts or multiple models, validates them with domain experts or affected communities, preserves provenance, and keeps synthetic and human-origin data distinguishable. The objective is not to replace reality with a model's imagination but to augment missing regions while retaining a reference to real distributions.",
+      "translation": ""
+    },
+    {
+      "id": "t000459",
+      "source": "Generative culture creates a longer feedback loop. Recommendation systems promote generated content; creators imitate styles that receive exposure; generated images and text become training data; future models then reproduce the compressed aesthetic. Fairness in this setting is partly about cultural option value: whether less common languages, styles, narratives, and viewpoints remain available to be learned and generated. This is difficult to reduce to a protected-attribute metric, but it belongs to the same family of concerns about who and what remains visible in an increasingly machine-mediated information environment.",
+      "translation": ""
+    },
+    {
+      "id": "t000460",
+      "source": "Evaluation of synthetic augmentation should therefore compare more than label frequencies. Measure lexical, semantic, visual, and behavioral diversity; test whether rare real examples remain nearest neighbors of anything in the augmented set; and check whether downstream models improve on held-out human-origin cases rather than only on synthetic-style tests. Provenance is essential because later investigators need to know whether an apparent population pattern came from people or from a generator. Once synthetic and human-origin data are irreversibly mixed, diagnosing homogenization becomes much harder.",
+      "translation": ""
+    },
+    {
+      "id": "t000461",
+      "source": "There is also an economic feedback loop. If synthetic content is cheaper to create and easier to optimize for platform algorithms, it can crowd out expensive human-produced material from search and recommendation. The resulting training corpus is then shaped not just by model bias but by production economics. This is a fairness concern when communities with fewer resources to optimize for machine-mediated visibility become progressively less represented. Cultural diversity can decline without any explicit discriminatory rule, simply because the cheapest content dominates the channels from which future models learn.",
+      "translation": ""
+    },
+    {
+      "id": "t000462",
+      "source": "Synthetic balancing is most credible when it is used to create tests before it is used to create training data. Generated counterfactuals and edge cases can cheaply expand the evaluation surface and reveal where real collection is needed. If a synthetic case exposes a disparity, the next step can be targeted human-origin data collection or expert validation. This sequencing reduces the risk of training a model to satisfy the synthetic generator's worldview while still capturing the economic advantage of automatic test generation.",
+      "translation": ""
+    },
+    {
+      "id": "t000463",
+      "source": "Wang and colleagues introduced the Self-Consuming Performative Loop at ACL 2026 to study a realistic dynamic in which deployed models influence the data on which future models are trained. Their controlled experiments show that different forms of bias can move in different directions inside the same loop, which is another reason not to rely on a single headline metric. Work on bias inheritance in LLM-based data augmentation likewise shows that model-generated training data can propagate and amplify bias into downstream tasks.",
+      "translation": ""
+    },
+    {
+      "id": "t000464",
+      "source": "A particularly concerning 2026 preprint describes a “fairness collapse” regime in which demographic bias degrades across recursively synthetic training generations before standard language-modeling metrics show severe performance collapse. Because this result is newer and not yet as settled as the Nature model-collapse literature, it should be treated as an emerging warning rather than a universal law. Its engineering implication is nevertheless plausible: monitor subgroup and diversity indicators directly rather than expecting average perplexity or accuracy to reveal social degradation.",
+      "translation": ""
+    },
+    {
+      "id": "t000465",
+      "source": "Synthetic data should be treated as an intervention with provenance, diversity diagnostics, and longitudinal monitoring. The central risk is not only generic model collapse but selective disappearance: minority forms of language or behavior can be compressed before headline quality reveals the problem.",
+      "translation": ""
+    },
+    {
+      "id": "t000466",
+      "source": "5.3 High-stakes workflows turn model behavior into material consequences",
+      "translation": ""
+    },
+    {
+      "id": "t000467",
+      "source": "A high-stakes system cannot be evaluated by transferring a generic fairness score from the base model. The same output can have very different meaning depending on whether it is advice, a recommendation, a preliminary screen, or a binding decision. Engineers must map the full workflow: what the AI proposes, what the human sees, what can be appealed, which errors are reversible, and who bears the cost of uncertainty.",
+      "translation": ""
+    },
+    {
+      "id": "t000468",
+      "source": "Employment systems illustrate how quickly a general-purpose language model can become an allocational system. An LLM may parse resumes, generate candidate summaries, infer skills, rank applicants, draft interview questions, or advise a hiring manager. Each function has a different fairness surface. A summary can omit achievements, a ranking can change exposure, and an interview assistant can ask different follow-up questions. Studies in 2025 on resume matching and allocational fairness reported demographic disparities under realistic matching settings, reinforcing the need to evaluate the complete hiring workflow rather than only stereotypical prompts.",
+      "translation": ""
+    },
+    {
+      "id": "t000469",
+      "source": "The strongest design principle in hiring is evidentiary grounding. The system should score job-relevant evidence, not demographic proxies or unsupported personality inferences. Counterfactual resume tests can reveal sensitivity to names, gender markers, educational prestige, or geography. But the audit should also examine which candidates receive detailed analysis, which are escalated, and how model uncertainty reaches the human reviewer. Human oversight is meaningful only if the reviewer sees enough evidence to detect an error rather than merely confirming a confident machine recommendation.",
+      "translation": ""
+    },
+    {
+      "id": "t000470",
+      "source": "Recent studies of LLM-based job-resume matching find a mixed picture. Newer models can show reduced explicit gender or race effects on some controlled tests, yet educational background and other proxies can remain influential. Work on allocational fairness in hiring pipelines reports that retrieval stages can introduce significant disparities even when the generator appears comparatively neutral. Other human-versus-LLM comparisons find that LLM group differences are not always larger than human differences in the tested setting.",
+      "translation": ""
+    },
+    {
+      "id": "t000471",
+      "source": "The correct conclusion is not that LLM hiring is fair or unfair in general. It is that the comparison baseline matters. Human parity is not proof of justice, but it is relevant when evaluating replacement decisions. A deployment should be tested end to end, with counterfactual resumes, intersectional groups, realistic job families, retrieval behavior, rank stability, and final selection rates.",
+      "translation": ""
+    },
+    {
+      "id": "t000472",
+      "source": "Educational AI can recommend courses, grade writing, provide tutoring, identify students at risk, and generate feedback. Bias can appear through language proficiency, cultural references, disability accommodations, school prestige, socioeconomic proxies, or expectations about ability.",
+      "translation": ""
+    },
+    {
+      "id": "t000473",
+      "source": "Generative tutors create an additional quality-of-service dimension. Two students can receive equally non-discriminatory content but different depth, patience, encouragement, or intellectual challenge. If the model simplifies more aggressively for one dialect or inferred demographic group, the harm may not appear in a toxicity benchmark. Fairness therefore includes pedagogical ambition.",
+      "translation": ""
+    },
+    {
+      "id": "t000474",
+      "source": "Grading systems require special caution with LLM-as-a-judge. Position and verbosity bias are obvious risks, but cultural and stylistic norms matter too. A polished style should not dominate the score when the rubric targets reasoning. Independent rubrics, blinded evaluation where possible, calibration against human graders, and appeals are essential.",
+      "translation": ""
+    },
+    {
+      "id": "t000475",
+      "source": "Healthcare combines unequal data availability, high stakes, causal complexity, and legitimate demographic differences. A fairness rule that blindly removes demographic information can be medically harmful. At the same time, proxies such as cost, access, and documentation intensity can reproduce structural inequalities.",
+      "translation": ""
+    },
+    {
+      "id": "t000476",
+      "source": "Foundation models add free-form language and multimodal data. A medical LLM may summarize records, answer patient questions, draft notes, retrieve guidelines, or interpret images. Bias can arise if the record itself is incomplete for some patients, if retrieval favors guidelines from one population, if the model's uncertainty differs by dialect, or if multimodal performance varies by skin tone or sex.",
+      "translation": ""
+    },
+    {
+      "id": "t000477",
+      "source": "The engineering target should be clinically relevant performance stratified by subgroup, plus calibration, uncertainty, and error severity. When a demographic variable is medically relevant, its use should be explicit and evidence-based rather than learned implicitly through unreliable proxies. Causal reasoning is especially valuable here because it forces the team to ask why an attribute should affect the outcome.",
+      "translation": ""
+    },
+    {
+      "id": "t000478",
+      "source": "Financial systems already have mature fairness concerns around credit, pricing, fraud, and insurance. LLMs enter these workflows through document analysis, customer support, underwriting assistance, and explanation. They can also become informal decision aids that influence a human officer even when the final legal decision is nominally human.",
+      "translation": ""
+    },
+    {
+      "id": "t000479",
+      "source": "A conversational interface can hide the exact variables influencing a recommendation. The model may summarize a file in a way that emphasizes neighborhood, education, occupation, or language style.",
+      "translation": ""
+    },
+    {
+      "id": "t000480",
+      "source": "Traditional fairness controls applied to the final score may therefore miss bias introduced in upstream narrative compression.",
+      "translation": ""
+    },
+    {
+      "id": "t000481",
+      "source": "For these systems, traceability matters. The organization should know which source facts were used, which were omitted, and how the LLM's intermediate output affected the final decision. A prose explanation is not enough if it cannot be connected to evidence.",
+      "translation": ""
+    },
+    {
+      "id": "t000482",
+      "source": "The same numerical disparity can have very different significance across domains because the decision, reversibility, evidence standard, and severity of error differ. The table frames high stakes as a workflow property rather than a label attached to an industry.",
+      "translation": ""
+    },
+    {
+      "id": "t000483",
+      "source": "Table 5. What “high stakes” changes in the evaluation question",
+      "translation": ""
+    },
+    {
+      "id": "t000484",
+      "source": "Concept",
+      "translation": ""
+    },
+    {
+      "id": "t000485",
+      "source": "Meaning in practice",
+      "translation": ""
+    },
+    {
+      "id": "t000486",
+      "source": "Employment",
+      "translation": ""
+    },
+    {
+      "id": "t000487",
+      "source": "The system may rank, summarize evidence, generate interview questions, or influence human attention; opportunity can be allocated at multiple stages.",
+      "translation": ""
+    },
+    {
+      "id": "t000488",
+      "source": "Education",
+      "translation": ""
+    },
+    {
+      "id": "t000489",
+      "source": "Quality includes grading, tutoring usefulness, accessibility, language support, and the ability to contest an automated judgment.",
+      "translation": ""
+    },
+    {
+      "id": "t000490",
+      "source": "Healthcare",
+      "translation": ""
+    },
+    {
+      "id": "t000491",
+      "source": "Clinical relevance of demographic factors, proxy validity, uncertainty, access patterns, escalation, and severity of missed cases dominate generic parity.",
+      "translation": ""
+    },
+    {
+      "id": "t000492",
+      "source": "Finance and insurance",
+      "translation": ""
+    },
+    {
+      "id": "t000493",
+      "source": "Calibration, pricing, proxy variables, documentation, strategic behavior, and legal constraints interact with allocational fairness.",
+      "translation": ""
+    },
+    {
+      "id": "t000494",
+      "source": "Public systems",
+      "translation": ""
+    },
+    {
+      "id": "t000495",
+      "source": "Procedural rights, explanation, appeal, record correction, and asymmetric consequences can matter as much as predictive accuracy.",
+      "translation": ""
+    },
+    {
+      "id": "t000496",
+      "source": "Information access",
+      "translation": ""
+    },
+    {
+      "id": "t000497",
+      "source": "Ranking and moderation determine visibility, exposure, and who has practical access to knowledge or an audience.",
+      "translation": ""
+    },
+    {
+      "id": "t000498",
+      "source": "What should be measured follows from that workflow. In healthcare, missed escalation may dominate; in employment, ranking and attention allocation may matter before any formal decision; in public administration, explanation and appeal can be part of fairness itself. Domain context is therefore part of the technical specification.",
+      "translation": ""
+    },
+    {
+      "id": "t000499",
+      "source": "Finance and insurance add calibration, regulation, and strategic behavior. Credit decisions often use structured predictive models, but LLMs increasingly participate in document analysis, customer interaction, explanation, fraud investigation, and underwriting workflows. A seemingly harmless language step can alter the evidence presented to a downstream risk engine. Fairness analysis must therefore trace both model decisions and information transformations. The common principle across these domains is that a general-purpose model becomes high-stakes through workflow integration. Risk classification belongs to the use, not to the vocabulary of the model.",
+      "translation": ""
+    },
+    {
+      "id": "t000500",
+      "source": "Across these domains, the strongest common control is to limit unsupported inference. General-purpose models are good at filling gaps, which is useful in writing and dangerous in adjudication. A hiring system should not infer motivation from a name; a clinical system should not infer symptoms from ethnicity; a credit workflow should not invent stability from writing style. Structured evidence schemas, source citation, and explicit \"unknown\" states make it harder for fluent completion to masquerade as observed fact. The more consequential the decision, the more the system should distinguish supplied evidence from model-generated interpretation.",
+      "translation": ""
+    },
+    {
+      "id": "t000501",
+      "source": "Legal and public-sector uses expose the difference between advisory language and institutional authority. An LLM that summarizes case law is not equivalent to a system that recommends bail, prioritizes inspections, assesses benefit eligibility, or drafts an official decision. The latter uses can affect rights and should be evaluated for due process, explainability, access to correction, and differential error. Hallucination is itself a fairness issue when some users have less ability to challenge an incorrect citation or when language barriers make verification harder.",
+      "translation": ""
+    },
+    {
+      "id": "t000502",
+      "source": "Public administration also creates asymmetry through access. A conversational interface can make bureaucracy easier to navigate, but only if it works across the languages, literacy levels, disabilities, and edge cases of the population it serves. A system that responds fluently to standard formulations while failing on nonstandard language can create a new digital gate. The fair design response may involve multilingual retrieval, human escalation, accessible interfaces, and explicit uncertainty rather than attempting to solve the problem entirely in model weights.",
+      "translation": ""
+    },
+    {
+      "id": "t000503",
+      "source": "Moderation systems classify harmful content, enforce policies, and rank visibility. They are vulnerable to dialect bias, context loss, reclaimed slurs, satire, political disagreement, and unequal rates of false positive removal. Generative moderation agents can explain decisions, but explanation does not guarantee consistent policy application.",
+      "translation": ""
+    },
+    {
+      "id": "t000504",
+      "source": "LLM moderation also creates a recursive problem: an LLM may judge whether another LLM's output is harmful. If the judge is more likely to flag language associated with particular communities, safety infrastructure itself becomes a source of bias.",
+      "translation": ""
+    },
+    {
+      "id": "t000505",
+      "source": "A competent moderation evaluation therefore requires group-conditioned false positive and false negative analysis, contextual examples, multilingual data, appeals, and continuous monitoring of policy changes. The cost of over-enforcement should be measured alongside the cost of under-enforcement.",
+      "translation": ""
+    },
+    {
+      "id": "t000506",
+      "source": "Recommendation systems shape attention, and attention is a scarce resource. LLMs increasingly mediate search, news summaries, shopping, travel, education, and professional discovery. When the model answers directly instead of presenting a list, the allocation of attention becomes less visible.",
+      "translation": ""
+    },
+    {
+      "id": "t000507",
+      "source": "Source selection is therefore a fairness issue. Which publishers are cited? Which businesses are recommended? Which countries are represented as examples? Which scientific communities are treated as authoritative? A conversational answer can appear comprehensive while systematically omitting lower-resource sources.",
+      "translation": ""
+    },
+    {
+      "id": "t000508",
+      "source": "This is one reason RAG fairness and epistemic diversity deserve more attention. The problem is not merely whether the final sentence contains a stereotype. It is whether the system allocates visibility and credibility equitably enough for its purpose.",
+      "translation": ""
+    },
+    {
+      "id": "t000509",
+      "source": "High-stakes deployments often claim safety because a human remains \"in the loop\". Human oversight can help, but it can also create automation bias. People may over-trust a confident model, use it as an anchor, or review only exceptional cases. If human reviewers are under time pressure, the AI's recommendation can become the de facto decision.",
+      "translation": ""
+    },
+    {
+      "id": "t000510",
+      "source": "The right question is not whether a human signs the final form. It is whether the human has time, information, authority, and incentives to disagree. Oversight should be designed as a functional control, not a legal label.",
+      "translation": ""
+    },
+    {
+      "id": "t000511",
+      "source": "The concept of disparate burden is useful here. Even when final outcomes are statistically similar, one group may need more retries, longer explanations, additional documents, more appeals, or more human review to obtain the same service. These frictions are often absent from fairness dashboards because they occur before the final decision. Logging interaction cost, latency, number of clarifications, escalation frequency, and successful completion can reveal exclusion that outcome parity misses. For conversational public services, burden metrics may be as important as classical error rates.",
+      "translation": ""
+    },
+    {
+      "id": "t000512",
+      "source": "Reversibility and remedy change the acceptable error budget. A mistaken recommendation in a news feed may be corrected by the next interaction; an erroneous denial of a benefit or an automatically generated legal filing can have consequences that persist long after the model output. High-stakes fairness therefore depends not only on probability of error but on the cost and reversibility of error. Systems with irreversible effects need stronger evidence, more conservative automation, and clearer routes to remedy than systems where users can easily recover.",
+      "translation": ""
+    },
+    {
+      "id": "t000513",
+      "source": "In consequential applications, fairness engineering must remain close to the workflow and to the people affected by it. The objective is not a model that passes an abstract benchmark, but a process in which errors are bounded, uncertainty is handled deliberately, and decisions remain reviewable and contestable.",
+      "translation": ""
+    },
+    {
+      "id": "t000514",
+      "source": "Multimodal and high-stakes systems show why fairness cannot be divorced from absolute utility, workflow, and long-term data generation. A socially acceptable system must work well enough, distribute that quality responsibly, and remain correctable when it fails.",
+      "translation": ""
+    },
+    {
+      "id": "t000515",
+      "source": "6. CONTINUOUS FAIRNESS ASSURANCE AND WHAT COMES NEXT",
+      "translation": ""
+    },
+    {
+      "id": "t000516",
+      "source": "A fairness audit is a photograph of a moving system. Models change, retrieval corpora change, prompts change, vendors update APIs, user populations shift, and the outputs of yesterday’s systems become tomorrow’s training data. The engineering problem therefore resembles reliability and security more than one-time certification. The system needs specifications, test harnesses, change control, monitoring, incident response, and explicit policy ownership. From that operational foundation, the chapter turns to the research frontier: causal mechanisms, distribution shift, pluralistic alignment, executable constraints, and AI-assisted auditing.",
+      "translation": ""
+    },
+    {
+      "id": "t000517",
+      "source": "The chapter first turns fairness into continuous assurance, then develops causal and distribution-aware perspectives, and closes with pluralistic policy, executable controls, and AI-assisted auditing.",
+      "translation": ""
+    },
+    {
+      "id": "t000518",
+      "source": "6.1 Fairness evidence must survive system change",
+      "translation": ""
+    },
+    {
+      "id": "t000519",
+      "source": "The purpose of continuous assurance is not bureaucratic repetition. It is to keep the evidential claim synchronized with the deployed system. If the model version, retrieval corpus, prompt policy, threshold, user population, or legal context changes, the old fairness evidence may no longer support the new product. This is why NIST’s generative-AI profile emphasizes documented measurement and why production teams increasingly treat evaluation suites as regression tests rather than one-off reports.",
+      "translation": ""
+    },
+    {
+      "id": "t000520",
+      "source": "A production fairness program needs the equivalent of a regression suite. The suite should begin with a versioned harm specification rather than a pile of benchmark scripts. For each important harm, it should record the affected population, expected behavior, unacceptable failure, test distribution, and evidence threshold. Tests can then combine public benchmarks with product-specific cases, counterfactual pairs, naturalistic samples, multilingual prompts, long conversations, adversarial contexts, and subgroup analysis. The objective is coverage of failure mechanisms rather than a large number of disconnected scores.",
+      "translation": ""
+    },
+    {
+      "id": "t000521",
+      "source": "The harness should evaluate the full system configuration. A run records the base model and version, system prompt, retrieval corpus and embedding model, reranker, tool permissions, safety filters, memory policy, decoding parameters, and judge models. This level of detail may appear excessive until a vendor silently updates a model or a product team changes a retrieval cutoff and a previously stable disparity reappears. Without configuration provenance, fairness regressions become anecdotes. With provenance, they become debuggable software behavior.",
+      "translation": ""
+    },
+    {
+      "id": "t000522",
+      "source": "A fairness audit performed before release is necessary and insufficient. Models change. Retrieval corpora change. user populations change. Safety policies change. Prompt templates are edited. External APIs update. A system that passed an evaluation in January can behave differently in June without any deliberate fairness regression.",
+      "translation": ""
+    },
+    {
+      "id": "t000523",
+      "source": "Continuous assurance treats fairness like reliability and security. The organization defines properties, instruments the system, monitors drift, investigates incidents, and re-tests after changes. The relevant question is not",
+      "translation": ""
+    },
+    {
+      "id": "t000524",
+      "source": "\"did we certify the model?\" but \"do we have evidence that the deployed system remains within acceptable bounds?\"",
+      "translation": ""
+    },
+    {
+      "id": "t000525",
+      "source": "This operational framing aligns with NIST's AI Risk Management Framework and its Generative AI Profile, which emphasize mapping risks, measuring them, managing them, and documenting outcomes over the lifecycle. The EU AI Act similarly requires, for covered high-risk systems, data-governance practices that examine possible bias and measures to detect, prevent, and mitigate it, while also addressing biased feedback loops in continuously learning systems.",
+      "translation": ""
+    },
+    {
+      "id": "t000526",
+      "source": "The harness should combine naturalistic production-like examples with controlled counterfactual pairs. It should include ambiguous cases, adversarial variants, multilingual examples where relevant, and intersectional groups. For generative systems, it should sample multiple responses. For RAG and agents, it should log intermediate components. For LLM judges, it should randomize answer order and calibrate against humans.",
+      "translation": ""
+    },
+    {
+      "id": "t000527",
+      "source": "The output should be a profile, not a pass-fail badge. A mature dashboard tracks utility, subgroup quality, refusal disparity, counterfactual sensitivity, representational harm, robustness, calibration, uncertainty, and drift. Which dimensions matter most depends on the product.",
+      "translation": ""
+    },
+    {
+      "id": "t000528",
+      "source": "Datasheets, data statements, and model cards are valuable because teams forget why data and models were created. A system may be reused years later by people who did not participate in its development. Documentation preserves intended use, exclusions, subgroup results, known limitations, and provenance.",
+      "translation": ""
+    },
+    {
+      "id": "t000529",
+      "source": "For LLM systems, the documentation unit should be larger than the base model. A system card should describe the model version, system prompts, retrieval sources, embedding models, rerankers, safety filters, memory policy, tool permissions, evaluation suites, and known failure modes. Otherwise the most important fairness choices remain undocumented because they sit outside the model weights.",
+      "translation": ""
+    },
+    {
+      "id": "t000530",
+      "source": "Documentation should also record disagreement. If two fairness metrics produce opposite model rankings, that fact belongs in the report. Hiding it behind an average score removes exactly the uncertainty decision makers need to see.",
+      "translation": ""
+    },
+    {
+      "id": "t000531",
+      "source": "A team that builds a system is poorly positioned to discover every assumption in it. Independent red teams, external researchers, domain experts, and affected communities provide different failure hypotheses. This is especially important for culturally specific harms that the development team may not recognize.",
+      "translation": ""
+    },
+    {
+      "id": "t000532",
+      "source": "Independence is also technical. If the same model family generates test cases, evaluates outputs, and filters the dataset, shared blind spots can become invisible. Cross-model evaluation, human review, and external data sources increase error diversity.",
+      "translation": ""
+    },
+    {
+      "id": "t000533",
+      "source": "The goal is not to eliminate automation from auditing. The frontier is likely the opposite: AI-assisted auditors can generate large numbers of counterfactual and adversarial tests. But automated auditing should be designed to create independent evidence, not self-consistency.",
+      "translation": ""
+    },
+    {
+      "id": "t000534",
+      "source": "Sampling from real traffic is the other half of the harness. Laboratory prompts can only cover known concerns. Production monitoring can reveal emerging language, new user populations, interaction patterns, and cases that were not represented during development. Privacy-preserving sampling and careful human review can estimate quality-of-service disparities, refusal patterns, escalation rates, and complaint themes. The purpose is not to infer sensitive attributes recklessly. Where group information is unavailable or legally constrained, audits can use opt-in studies, synthetic counterfactuals, targeted panels, or other defensible measurement designs.",
+      "translation": ""
+    },
+    {
+      "id": "t000535",
+      "source": "The harness should also distinguish blocking tests from diagnostic tests. A blocking test encodes a failure that is understood well enough to prevent release when it regresses. A diagnostic test explores an uncertain phenomenon and should trigger investigation rather than automatic rejection. Mixing the two makes organizations either overly conservative or too willing to ignore alarms. Versioned test intent is therefore part of the evidence: the team should know which findings are contractual requirements, which are research probes, and which remain unresolved hypotheses.",
+      "translation": ""
+    },
+    {
+      "id": "t000536",
+      "source": "Production assurance requires more than storing a benchmark score. The table lists the evidence needed to reconstruct what was tested, under which configuration, against which harm specification, and who owned the policy choice.",
+      "translation": ""
+    },
+    {
+      "id": "t000537",
+      "source": "Table 6. Evidence a production fairness program should preserve",
+      "translation": ""
+    },
+    {
+      "id": "t000538",
+      "source": "Concept",
+      "translation": ""
+    },
+    {
+      "id": "t000539",
+      "source": "Meaning in practice",
+      "translation": ""
+    },
+    {
+      "id": "t000540",
+      "source": "Specification",
+      "translation": ""
+    },
+    {
+      "id": "t000541",
+      "source": "The harm, population, construct, metric, tolerance, and intended intervention are versioned together.",
+      "translation": ""
+    },
+    {
+      "id": "t000542",
+      "source": "Configuration",
+      "translation": ""
+    },
+    {
+      "id": "t000543",
+      "source": "Model, prompts, retrieval stack, tools, thresholds, filters, memory, and judge versions are reproducible.",
+      "translation": ""
+    },
+    {
+      "id": "t000544",
+      "source": "Tests",
+      "translation": ""
+    },
+    {
+      "id": "t000545",
+      "source": "Public benchmarks are combined with product-specific counterfactual, naturalistic, multilingual, stress, and subgroup evaluations.",
+      "translation": ""
+    },
+    {
+      "id": "t000546",
+      "source": "Production signals",
+      "translation": ""
+    },
+    {
+      "id": "t000547",
+      "source": "Refusals, escalation, quality, exposure, incidents, appeals, and sampled outcomes are monitored where lawful and appropriate.",
+      "translation": ""
+    },
+    {
+      "id": "t000548",
+      "source": "Change history",
+      "translation": ""
+    },
+    {
+      "id": "t000549",
+      "source": "Material model or product changes are linked to the evidence that was re-run, superseded, or invalidated.",
+      "translation": ""
+    },
+    {
+      "id": "t000550",
+      "source": "Decision ownership",
+      "translation": ""
+    },
+    {
+      "id": "t000551",
+      "source": "Normative thresholds and policy choices are attributed to responsible institutions rather than presented as facts discovered by a model.",
+      "translation": ""
+    },
+    {
+      "id": "t000552",
+      "source": "The point is reproducibility over time. When a model, retriever, prompt, threshold, or user population changes, the organization must be able to identify which prior claims remain supported and which must be re-tested. Without that chain, “fair at launch” becomes an uncheckable historical statement.",
+      "translation": ""
+    },
+    {
+      "id": "t000553",
+      "source": "The assurance loop represents fairness as a maintained engineering claim. Specification determines what to observe, diagnosis links evidence to plausible mechanisms, intervention changes the system, and re-testing checks both the target harm and regressions.",
+      "translation": ""
+    },
+    {
+      "id": "t000554",
+      "source": "Figure from PDF page 55",
+      "translation": ""
+    },
+    {
+      "id": "t000555",
+      "source": "Figure 5. Continuous assurance treats fairness evidence as something that must be renewed after change.",
+      "translation": ""
+    },
+    {
+      "id": "t000556",
+      "source": "Monitoring closes the loop because deployment generates new conditions that the original evaluation may not cover. A fairness program is mature when it can state not only that a test once passed, but why the evidence is still applicable after the system and its environment have changed.",
+      "translation": ""
+    },
+    {
+      "id": "t000557",
+      "source": "Coverage should be reviewed periodically as a first-class metric. A suite can remain green while the product grows into new languages, regions, or workflows that the suite never tests. The harness should therefore report not only failures but untested surface area. In mature programs, \"we do not yet have evidence for this population\" is a valid and useful result, because it prevents a narrow evaluation from being silently generalized into an unsupported product-wide claim.",
+      "translation": ""
+    },
+    {
+      "id": "t000558",
+      "source": "Governance is often presented as a layer above engineering, but in mature AI systems it changes the architecture. The EU AI Act, NIST AI RMF, sectoral regulation, procurement requirements, and organizational policies all create expectations about risk management, data governance, testing, logging, human oversight, and post-deployment monitoring. For high-risk systems, the EU framework explicitly requires attention to representativeness, data gaps, and biases likely to affect health, safety, fundamental rights, or discrimination, together with measures to detect, prevent, and mitigate those biases. The 2026 consolidated text also includes conditions under which special-category personal data may exceptionally be processed for bias detection and correction, illustrating the tension between privacy and fairness measurement.",
+      "translation": ""
+    },
+    {
+      "id": "t000559",
+      "source": "NIST's Generative AI Profile is valuable for engineers because it frames harmful bias and homogenization as risks to be measured across system outputs and downstream processes. It recommends use-case-appropriate benchmarks, subgroup and intersectional evaluation, documentation of benchmark assumptions, field testing, counterfactual prompts, and attention to latent bias in text, images, audio, and embeddings. The important point is not compliance with a particular checklist. It is that governance is converging on the same system-level view that the research literature has reached.",
+      "translation": ""
+    },
+    {
+      "id": "t000560",
+      "source": "The EU AI Act is not a fairness textbook, but it reinforces lifecycle engineering. The consolidated text as of 27 July 2026 requires data-governance practices for covered high-risk systems that include examining possible biases likely to affect health, safety, fundamental rights, or unlawful discrimination, along with appropriate mitigation. It also requires data to be relevant and sufficiently representative for intended purpose and addresses the risk of biased outputs entering future inputs through feedback loops.",
+      "translation": ""
+    },
+    {
+      "id": "t000561",
+      "source": "The most important engineering consequence is that claims about fairness must be connected to intended use. A generic model benchmark cannot replace application-specific evaluation. Documentation, monitoring, risk management, and data governance become part of the technical architecture rather than paperwork added after the model is built.",
+      "translation": ""
+    },
+    {
+      "id": "t000562",
+      "source": "The Council of Europe's Framework Convention on AI adds a broader human-rights lifecycle perspective. The European Union ratified the Convention in May 2026. For engineers, the practical signal is convergence: leading governance frameworks increasingly treat trustworthy AI as a process of risk identification, evidence, mitigation, and accountability rather than a one-time property of a model.",
+      "translation": ""
+    },
+    {
+      "id": "t000563",
+      "source": "Bias incidents should be handled like security and reliability incidents. The organization needs a way for users and employees to report failures, preserve the prompt and system state, reproduce the behavior, estimate scope, identify the responsible component, deploy a mitigation, and monitor for regressions.",
+      "translation": ""
+    }
+  ]
+}

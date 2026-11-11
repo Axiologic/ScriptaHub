@@ -1,0 +1,21 @@
+import fs from 'node:fs/promises';import assert from 'node:assert/strict';import {connect} from '../../tests/browser-session.mjs';
+const batch='.book-work/ai-completion-20261111',specs=JSON.parse(await fs.readFile(batch+'/film-specs.json')),catalogue=JSON.parse(await fs.readFile('docs/collection.json')),reports=[],pending=[],failures=[];
+for(const spec of specs){
+ const production=JSON.parse(await fs.readFile('presentations/'+spec.slug+'/work/production.json')),book=catalogue.books.find(b=>b.id===spec.bookId),manifest=JSON.parse(await fs.readFile(production.bookDirectory+'/manifest.json'));
+ if(!manifest.animation||!book?.animation?.page){pending.push({id:spec.bookId,slug:spec.slug,reason:'Current manifest animation or refreshed catalogue entry pending'});continue;}
+ const base='http://127.0.0.1:8128/',c=await connect('about:blank');
+ try{
+  await c.size(1200,960);
+  await c.send('Page.addScriptToEvaluateOnNewDocument',{source:`const define=customElements.define.bind(customElements);customElements.define=(name,C,...args)=>{if(name==='shf-player'){const connected=C.prototype.connectedCallback;C.prototype.connectedCallback=function(){this.setMuted(true);return connected.call(this)}}return define(name,C,...args)};`});
+  await c.send('Page.navigate',{url:base+book.editions.ro.book+'?lang=ro'});await c.wait('!!document.querySelector("[data-animation-link]")');
+  const link=await c.evaluate('document.querySelector("[data-animation-link]").href');assert.equal(new URL(link).searchParams.get('lang'),'ro');assert.ok(link.includes('/Animation/index.html'));
+  await c.send('Page.navigate',{url:base+book.animation.page+'?lang=ro'});await c.wait('!!document.querySelector("shf-player")?.film');
+  const result=await c.evaluate(`(()=>{const p=document.querySelector('shf-player');return {language:p.film.language,edition:p.film.editorial.sourceEdition,durationMs:p.durationMs,muted:p.muted,playing:p.playing,themeChoices:[...p.shadowRoot.querySelectorAll('[data-player-theme]')].map(x=>x.dataset.playerTheme),feedback:!!document.querySelector('.animation-feedback form'),overflow:document.documentElement.scrollWidth>innerWidth,back:new URL(document.querySelector('[data-animation-back]').href).searchParams.get('lang')}})()`);
+  assert.equal(result.language,'en');assert.equal(result.edition,production.edition);assert.equal(result.muted,true);assert.equal(result.playing,false);assert.deepEqual(result.themeChoices,['color','paper','night']);assert.equal(result.feedback,true);assert.equal(result.back,'ro');assert.equal(result.overflow,false);assert.ok(result.durationMs<=120000);assert.equal(result.durationMs,manifest.animation.durationMs);assert.equal(result.durationMs,book.animation.durationMs);
+  const testedThemes=[];for(const theme of ['color','paper','night']){const correct=await c.evaluate(`(()=>{const p=document.querySelector('shf-player');p.shadowRoot.querySelector('[data-player-theme=${theme}]').click();return p.getAttribute('data-theme')===${JSON.stringify(theme)}&&p.shadowRoot.querySelector('[data-player-theme=${theme}]').getAttribute('aria-pressed')==='true'&&p.muted&&!p.playing})()`);assert.equal(correct,true);testedThemes.push(theme);}
+  result.testedThemes=testedThemes;
+  const widths=[];for(const width of [1200,393,320]){await c.size(width,960);const overflow=await c.evaluate('document.documentElement.scrollWidth>innerWidth');assert.equal(overflow,false);widths.push(width);}
+  assert.equal(c.errors.length,0);reports.push({id:spec.bookId,slug:spec.slug,expectedEdition:production.edition,...result,widthsWithoutOverflow:widths});console.log('PASS '+spec.slug);
+ }catch(e){failures.push({id:spec.bookId,slug:spec.slug,error:String(e)});console.log('FAIL '+spec.slug+' '+e);}finally{await c.close();}
+}
+const result={valid:failures.length===0,complete:reports.length===specs.length,checkedAt:new Date().toISOString(),scope:'Public catalogue/book-page/film integration, current configured editions, muted paused desktop Chromium emulation; no audible playback or physical-device claim.',books:reports,pending,failures,audiblePlayback:false};await fs.writeFile(batch+'/public-integration.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({passed:reports.length,pending:pending.length,failures}));if(failures.length)process.exitCode=1;

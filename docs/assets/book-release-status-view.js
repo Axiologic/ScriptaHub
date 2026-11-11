@@ -8,6 +8,11 @@
     entry.readers?.ro?.['full_content.html'], entry.readers?.ro?.['short_content.html'],
     entry.englishPdfReady, entry.coverReady, entry.keywordsRefreshed].filter(Boolean).length;
   const progress = entry => {
+    if(entry.readerCompletion){
+      if(!entry.readers?.ro?.['full_content.html'])return `Traducere integrală RO: ${entry.roFullSegmentsComplete||0}/${entry.roFullSegmentCount||0} segmente`;
+      if(!entry.readers?.ro?.['short_content.html'])return `Traducere scurtă RO: ${entry.roShortSegmentsComplete||0}/${entry.roShortSegmentCount||0} segmente`;
+      return 'Verificarea și integrarea cititoarelor românești în ediția existentă';
+    }
     if (!entry.readers?.en?.['full_content.html']) return entry.enFullSegmentCount
       ? entry.enFullSegmentsComplete >= entry.enFullSegmentCount
         ? `Traducere integrală EN: ${entry.enFullSegmentCount}/${entry.enFullSegmentCount}; urmează asamblarea și verificarea`
@@ -43,6 +48,7 @@
     const openGroups = new Set([...root.querySelectorAll('details[data-release-group][open]')].map(node => node.dataset.releaseGroup));
     const rows = data.releases || [];
     const incoming = rows.filter(row => row.source?.startsWith('income/'));
+    const readerCompletions = rows.filter(row => row.readerCompletion);
     const excluded = data.excludedSources || [];
     const alreadyInstalled = excluded.filter(row => row.status === 'already-installed');
     const historicalReview = excluded.filter(row => row.status === 'historical-precursor-review');
@@ -61,7 +67,8 @@
     const plan = data.workPlan;
     const planList = (title, items) => items?.length ? `<h3>${escape(title)}</h3><ul>${items.map(text => `<li>${escape(text)}</li>`).join('')}</ul>` : '';
     const planBlock = plan ? `<section class="status-group work-plan"><h2>Plan de lucru <small>${escape(plan.updatedAt ? new Date(plan.updatedAt).toLocaleString('ro-RO') : '')}</small></h2>${planList('Acum', plan.doing)}${planList('Urmează', plan.next)}${planList('Făcut', plan.done)}</section>` : '';
-    root.innerHTML = planBlock + `<p class="status-updated">Date actualizate: ${escape(new Date(data.updatedAt).toLocaleString('ro-RO'))} · pagina verifică progresul la fiecare minut</p>
+    const readerBlock = readerCompletions.length ? `<section class="status-group"><h2>Completări ale edițiilor românești <small>${readerCompletions.length}</small></h2><ul class="release-list">${readerCompletions.map(entry=>`<li data-release-title="${escape(entry.title.toLocaleLowerCase('ro-RO'))}"><a href="${escape(entry.bookPage)}?lang=ro">${escape(entry.title)}</a><span class="release-state">${entry.readerCompletion.status==='complete'?'Completată':'În lucru · traducere RO'}</span><small>${entry.readerCompletion.status==='complete'?'Cititoarele românești au fost adăugate ediției existente.':progress(entry)}</small></li>`).join('')}</ul></section>` : '';
+    root.innerHTML = readerBlock + planBlock + `<p class="status-updated">Date actualizate: ${escape(new Date(data.updatedAt).toLocaleString('ro-RO'))} · pagina verifică progresul la fiecare minut</p>
       <div class="status-counts"><div><strong>${installed.length}</strong><span>Publicate din income</span></div><div><strong>${preparing.length}</strong><span>Rămase de publicat</span></div><div><strong>${active.length}</strong><span>În lucru acum</span></div><div><strong>${startedOther.length}</strong><span>Alte conversii începute</span></div><div><strong>${waiting.length}</strong><span>Conversie neîncepută</span></div><div><strong>${incoming.length}</strong><span>Total titluri</span></div></div>
       <div class="release-overall"><strong>${completion}% din lot publicat</strong><span>${installed.length} din ${incoming.length} titluri</span><div class="release-progress" role="meter" aria-label="Cărți publicate din income" aria-valuemin="0" aria-valuemax="${incoming.length}" aria-valuenow="${installed.length}"><span style="width:${completion}%"></span></div></div>
       <p class="status-note">Lotul de ${incoming.length} titluri exclude ${alreadyInstalled.length} surse deja instalate și ${historicalReview.length} surse aflate în verificare ca posibile ediții istorice; acestea nu sunt procesate automat. „În lucru acum” urmărește cărțile la care se lucrează în această sesiune. Etapa următoare apare sub fiecare titlu. Cititoarele se pregătesc numai în EN și RO. Sursele din income se curăță după verificarea tuturor cărților.</p>

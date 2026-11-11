@@ -1,0 +1,566 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000332",
+      "source": "This leads to a layered risk-control view. Data curation can reduce upstream distortions. Training objectives can penalize disparities. Fine-tuning can teach desired behavior. Inference-time prompts can encourage reflection. Constrained decoding and filters can block harmful outputs. System-level auditing can catch failures introduced by retrieval or tools. Human review can handle ambiguous high-stakes cases. No single layer should be expected to provide a universal guarantee.",
+      "translation": ""
+    },
+    {
+      "id": "t000333",
+      "source": "But curation is normative. Removing identity-related language too aggressively can erase marginalized communities or dialects. Balancing counts does not guarantee balanced semantic coverage. Adding more examples from a group can reproduce the same stereotypes if the examples are narrow. Copyright and privacy constraints can also make targeted data collection difficult.",
+      "translation": ""
+    },
+    {
+      "id": "t000334",
+      "source": "The best data practice therefore focuses on coverage and provenance rather than a simplistic notion of purity. Datasheets for datasets and data statements in NLP were early attempts to institutionalize this discipline.",
+      "translation": ""
+    },
+    {
+      "id": "t000335",
+      "source": "Counterfactual training should also be evaluated beyond the augmented templates. Otherwise the model may learn a narrow pattern such as ignoring explicit gender words while remaining sensitive to indirect cues.",
+      "translation": ""
+    },
+    {
+      "id": "t000336",
+      "source": "Supervised fine-tuning on carefully designed examples can substantially improve behavior. Parameter-efficient methods make it possible to experiment with specialized fairness adapters without retraining a foundation model. Preference optimization can target fairness directly by preferring responses that avoid harmful stereotypes or unjustified demographic dependence.",
+      "translation": ""
+    },
+    {
+      "id": "t000337",
+      "source": "The risk is benchmark overfitting and policy masking. A model can learn to produce the expected neutral response on familiar prompts. The explicit-implicit findings show why post-training should be evaluated on indirect and downstream tasks, not only on the examples used to train it.",
+      "translation": ""
+    },
+    {
+      "id": "t000338",
+      "source": "Preference optimization also inherits evaluator bias. If human or model raters prefer longer, more agreeable, more cautious, or ideologically familiar responses, those preferences can become part of the assistant's behavior. Fairness training therefore requires audits of the reward model and the preference dataset, not only the final assistant.",
+      "translation": ""
+    },
+    {
+      "id": "t000339",
+      "source": "Constitutional AI makes high-level normative principles explicit and uses models to critique and revise responses according to those principles. This has two attractive properties for fairness. The rules are inspectable, and multiple stakeholders can potentially contribute to them. Collective Constitutional AI demonstrates one route for incorporating public input into model behavior.",
+      "translation": ""
+    },
+    {
+      "id": "t000340",
+      "source": "The hard problem is conflict.",
+      "translation": ""
+    },
+    {
+      "id": "t000341",
+      "source": "\"Be objective\",",
+      "translation": ""
+    },
+    {
+      "id": "t000342",
+      "source": "\"respect cultural differences\",",
+      "translation": ""
+    },
+    {
+      "id": "t000343",
+      "source": "\"avoid stereotypes\",",
+      "translation": ""
+    },
+    {
+      "id": "t000344",
+      "source": "\"do not discriminate\", and \"tell the truth\" can point in different directions in edge cases.",
+      "translation": ""
+    },
+    {
+      "id": "t000345",
+      "source": "A constitution is therefore not a substitute for evaluation. It is a policy layer whose interpretation must itself be tested.",
+      "translation": ""
+    },
+    {
+      "id": "t000346",
+      "source": "A promising direction is to make principle application more structured: identify which principle is active, expose conflicts, require evidence for exceptions, and escalate ambiguous cases rather than relying on a single opaque reward score.",
+      "translation": ""
+    },
+    {
+      "id": "t000347",
+      "source": "Training objectives can make subgroup risk visible to optimization. Reweighting gives more influence to underrepresented or poorly performing groups. Group-distributionally robust optimization focuses on worst-group performance. Adversarial objectives can reduce the recoverability of protected attributes from representations. Constraint-based approaches can penalize disparities. These methods move fairness into the loss function, but they still require the engineer to choose the groups, metric, and tolerance. If the harm model is wrong, the optimization can become an efficient way to optimize the wrong fairness criterion.",
+      "translation": ""
+    },
+    {
+      "id": "t000348",
+      "source": "Fine-tuning and preference optimization provide a higher-level intervention for foundation models. Curated examples can teach a model to avoid stereotypes, request missing information, use person-specific evidence rather than demographic generalizations, or express uncertainty in high-stakes decisions. Preference data can reward responses that are both useful and fair. Constitutional or principle-based methods can make some of the desired behavior explicit rather than relying entirely on opaque rater preferences. Their main advantage is controllability: the organization can state the policy it is trying to induce. Their main weakness is that the principle still needs interpretation, and the evaluator that applies it can introduce its own blind spots.",
+      "translation": ""
+    },
+    {
+      "id": "t000349",
+      "source": "The state of the art therefore favors layered evidence over one training intervention. After data curation, re-run behavioral tests. After fine-tuning, check whether calibration, factuality, safety, multilingual performance, or subgroup utility changed. Compare explicit and implicit tasks. Test refusals separately. If a model appears improved only on the training-aligned benchmark, assume overfitting until broader evaluation shows otherwise. Training-time mitigation is valuable, but it does not eliminate the need for deployment controls.",
+      "translation": ""
+    },
+    {
+      "id": "t000350",
+      "source": "Mitigation becomes more intelligible when each intervention is attached to the mechanism it can actually change. The table moves from what the model sees to what the product does, making clear that later controls can sometimes address harms that retraining alone cannot reach.",
+      "translation": ""
+    },
+    {
+      "id": "t000351",
+      "source": "Table 4. Mitigation layers and the mechanism each layer can change",
+      "translation": ""
+    },
+    {
+      "id": "t000352",
+      "source": "Concept",
+      "translation": ""
+    },
+    {
+      "id": "t000353",
+      "source": "Meaning in practice",
+      "translation": ""
+    },
+    {
+      "id": "t000354",
+      "source": "Data and coverage",
+      "translation": ""
+    },
+    {
+      "id": "t000355",
+      "source": "Change what the system observes; useful for missing representation but insufficient when labels or objectives encode the wrong construct.",
+      "translation": ""
+    },
+    {
+      "id": "t000356",
+      "source": "Objective and weighting",
+      "translation": ""
+    },
+    {
+      "id": "t000357",
+      "source": "Change which errors optimization treats as costly; can improve worst-group performance while affecting calibration or average utility.",
+      "translation": ""
+    },
+    {
+      "id": "t000358",
+      "source": "Fine-tuning and preference Change the conditional policy learned from instructions, demonstrations, or preferences; can also alter refusal and style.",
+      "translation": ""
+    },
+    {
+      "id": "t000359",
+      "source": "Inference control",
+      "translation": ""
+    },
+    {
+      "id": "t000360",
+      "source": "Change prompts, decoding, self-checks, abstention, or post-processing without retraining; effects can be fragile under context shift.",
+      "translation": ""
+    },
+    {
+      "id": "t000361",
+      "source": "Retrieval and workflow",
+      "translation": ""
+    },
+    {
+      "id": "t000362",
+      "source": "Change evidence exposure, routing, thresholds, tools, review, and escalation; often the most direct place to control product-level harm.",
+      "translation": ""
+    },
+    {
+      "id": "t000363",
+      "source": "Monitoring",
+      "translation": ""
+    },
+    {
+      "id": "t000364",
+      "source": "Detects regression, drift, and unintended trade-offs after the intervention enters a changing environment.",
+      "translation": ""
+    },
+    {
+      "id": "t000365",
+      "source": "This layered view also exposes trade-offs. A data intervention can improve coverage while leaving a bad proxy untouched; an inference rule can stabilize deployment while remaining fragile under a new context; monitoring can detect regression but cannot repair it. Effective mitigation usually combines layers rather than declaring one technique universally “debiasing.”",
+      "translation": ""
+    },
+    {
+      "id": "t000366",
+      "source": "Inference-time mitigation is increasingly important because many organizations do not control the base model and because fairness requirements can change faster than retraining cycles. Prompting can instruct a model to focus on task-relevant evidence, ignore protected characteristics where appropriate, generate a structured rationale, or perform a consistency check across counterfactual variants. Self-critique and deliberation can reduce some stereotypical behavior, but prompt-only methods are fragile. A user can alter the context, a long conversation can dilute the instruction, and a stronger system prompt can create over-refusal. Prompting is best treated as one control layer whose effectiveness must be tested under realistic context variation.",
+      "translation": ""
+    },
+    {
+      "id": "t000367",
+      "source": "Representation editing, activation steering, pruning, and related mechanistic interventions try to change behavior inside the network. These techniques are scientifically valuable because they probe whether particular directions, features, heads, or neuron subsets participate in biased behavior. They are also risky as general-purpose remedies. Distributed representations rarely map cleanly to one social concept; suppressing a feature can harm legitimate knowledge or move the behavior to another pathway. The 2026 work on adaptive, reversible pruning illustrates a promising direction: interventions that can be conditioned on context rather than permanently deleting capacity. The more local the intervention, the more important it becomes to test transfer beyond the benchmark that identified the feature.",
+      "translation": ""
+    },
+    {
+      "id": "t000368",
+      "source": "Prompting the model to consider fairness, take another perspective, or critique its first answer is inexpensive and works with closed APIs. Self-debiasing and perspective-taking methods have reported meaningful improvements on selected benchmarks. Large models often have enough meta-knowledge to identify an obvious stereotype when explicitly asked.",
+      "translation": ""
+    },
+    {
+      "id": "t000369",
+      "source": "The limitation is robustness. Prompt-based mitigation can disappear under rephrasing, competing instructions, long contexts, or adversarial inputs. It can also create generic, overcautious responses that score well because they avoid committing to anything. A prompt that says \"be unbiased\" is therefore a useful layer, not a safety case.",
+      "translation": ""
+    },
+    {
+      "id": "t000370",
+      "source": "These methods are scientifically valuable because they probe mechanism. They also face a deep conceptual problem: social concepts are distributed and context-dependent. A direction associated with gender may be needed for translation, medicine, or coreference. Removing it globally can damage useful capabilities while the model reconstructs the same information elsewhere.",
+      "translation": ""
+    },
+    {
+      "id": "t000371",
+      "source": "The right standard is therefore behavioral transfer. An internal intervention is successful only if it reduces the relevant downstream harm across diverse tasks without unacceptable collateral damage.",
+      "translation": ""
+    },
+    {
+      "id": "t000372",
+      "source": "Inference-time methods include calibrated prompting, reranking, constrained decoding, rejection sampling, generation-and-filter pipelines, and test-time adaptation. Their practical advantage is deployability: they can be applied without modifying model weights and can be tailored to the current domain.",
+      "translation": ""
+    },
+    {
+      "id": "t000373",
+      "source": "The 2026 literature increasingly studies fairness at inference time because model weights may be inaccessible or frozen. These methods are particularly promising for systems that can detect a sensitive decision context and invoke stronger controls dynamically. The danger is brittleness and latency. A filter can create false positives for dialectal language. A regeneration loop can silently refuse more often for one group. A reranker can inherit the same bias as the generator.",
+      "translation": ""
+    },
+    {
+      "id": "t000374",
+      "source": "Inference control should be evaluated as part of the system, including refusal disparity and quality-of-service effects.",
+      "translation": ""
+    },
+    {
+      "id": "t000375",
+      "source": "Fairness interventions can interact with accuracy, calibration, robustness, privacy, safety, cultural competence, and cost. The trade-off is not always inevitable; some interventions improve both fairness and utility by removing spurious shortcuts. But trade-offs do occur, and they should be measured rather than asserted.",
+      "translation": ""
+    },
+    {
+      "id": "t000376",
+      "source": "The SOBACO results are a useful caution: interventions that reduce measured social bias can damage culturally grounded commonsense. Privacy creates another tension because subgroup auditing often requires sensitive attributes that organizations may prefer not to collect. Safety filtering can conflict with fairness if identity terms are overblocked. Robustness can conflict with aggressive specialization to one benchmark.",
+      "translation": ""
+    },
+    {
+      "id": "t000377",
+      "source": "A mitigation claim should therefore be multidimensional. The meaningful statement is not \"we reduced bias by 30 percent\" but \"we reduced a defined disparity under these distributions while preserving task utility, calibration, refusal parity, and robustness within reported uncertainty.\" That is less marketable and more scientific.",
+      "translation": ""
+    },
+    {
+      "id": "t000378",
+      "source": "System-level controls are often more interpretable. A hiring application can prevent the model from seeing protected fields, but also audit proxies and require evidence-based scoring. A clinical assistant can prohibit autonomous treatment decisions, expose uncertainty, and route borderline cases to specialists. A RAG system can diversify retrieval or require claims to cite evidence. An LLM judge can randomize answer order and separate dimensions. A recommender can constrain exposure. These controls do not make the model intrinsically fair, but they can bound the pathways through which model bias becomes material harm.",
+      "translation": ""
+    },
+    {
+      "id": "t000379",
+      "source": "This is why \"debiasing\" is a misleading endpoint. A safety-critical organization does not claim that a system has been made failure-free; it builds barriers, monitors failure modes, and updates controls as evidence changes. Fairness engineering should adopt the same posture. We should prefer reversible interventions, explicit policies, monitoring, and defense in depth when the underlying construct is contested or the deployment environment evolves. The goal is not to erase every social correlation from a general-purpose model. It is to prevent unjustified correlations from controlling decisions and representations in the contexts where they matter.",
+      "translation": ""
+    },
+    {
+      "id": "t000380",
+      "source": "Reversibility is an underrated property of mitigation. When evidence about a fairness problem is uncertain, a product-level rule or inference-time intervention can often be rolled back, scoped to one domain, or activated only when a detector fires. Permanent weight editing is harder to localize and harder to explain after the fact. This suggests a risk-based hierarchy: prefer the least invasive control that reliably blocks the harmful pathway, escalate toward retraining or model surgery when the behavior is pervasive, and keep regression tests that show why the stronger intervention remains necessary.",
+      "translation": ""
+    },
+    {
+      "id": "t000381",
+      "source": "The strongest practical systems combine these controls with abstention. When a fairness-sensitive decision lacks sufficient task-relevant evidence, the correct behavior may be to ask for information, defer, or escalate rather than to fill the gap with demographic priors. Abstention is not free, because it can create unequal burden, but it gives the system an explicit alternative to confident guessing. Fairness evaluation should therefore measure who is asked for more information and who is routed away from automation.",
+      "translation": ""
+    },
+    {
+      "id": "t000382",
+      "source": "Mitigation should end with a new evidence profile, not a congratulatory claim that the model has been debiased. The intervention must be re-tested for task utility, calibration, robustness, safety, privacy, and the groups that were not the original target of the change.",
+      "translation": ""
+    },
+    {
+      "id": "t000383",
+      "source": "4.2 Retrieval changes whose evidence enters the answer",
+      "translation": ""
+    },
+    {
+      "id": "t000384",
+      "source": "Retrieval-augmented generation changes the fairness boundary because it decides what evidence the model is allowed to see. A retriever may under-represent a language variety, over-rank authoritative but historically narrow sources, or expose skewed context that defeats alignment learned during post-training. Recent work has moved from demonstrating the problem to end-to-end interventions that jointly reason about retrieval exposure and generation disparity.",
+      "translation": ""
+    },
+    {
+      "id": "t000385",
+      "source": "Retrieval-augmented generation is often introduced as a factuality technique: retrieve relevant documents, place them in context, and let the model answer from evidence. From a fairness perspective, this architecture creates a prior allocation step. Before the language model reasons about the question, the retriever decides which sources are visible. If one community, geographic region, language, school of thought, or type of institution is underrepresented in the index or systematically ranked lower, the generator never receives the missing evidence. The final answer can look balanced in tone while being epistemically narrow.",
+      "translation": ""
+    },
+    {
+      "id": "t000386",
+      "source": "The retriever itself can inherit representation and semantic biases from embeddings, query formulation, corpus composition, filtering, and ranking objectives. Relevance is not neutral when a query is ambiguous. A system optimized for click-like similarity may prefer popular or highly linked sources. An enterprise index may privilege documents produced by central teams because they are better formatted. A scientific assistant may overretrieve high-status journals and underretrieve negative results or regional venues. These are not always demographic harms, but they can become fairness problems when source visibility correlates with social groups or when the system is used to allocate credibility.",
+      "translation": ""
+    },
+    {
+      "id": "t000387",
+      "source": "Modern AI applications rarely expose a raw LLM. They use retrieval, memory, tools, databases, policies, classifiers, and evaluators. Each component is optimized for a different objective. The retriever optimizes relevance. The generator optimizes helpfulness. A safety model optimizes policy compliance. A ranking layer optimizes engagement or business value. Fairness can be lost in the composition even when every component looks acceptable in isolation.",
+      "translation": ""
+    },
+    {
+      "id": "t000388",
+      "source": "The correct unit of analysis is the user-to-outcome path. For a RAG assistant, that path includes query rewriting, embedding, vector retrieval, reranking, context construction, generation, citation selection, and filtering. For an agent, it includes planning, tool selection, memory updates, repeated decisions, and termination. Bias can enter through any transition.",
+      "translation": ""
+    },
+    {
+      "id": "t000389",
+      "source": "RAG is usually motivated by factuality and domain knowledge. It also creates an evidence-allocation system. Only a small subset of available documents enters the context window, so retrieval determines which sources the model can use. If embeddings or ranking favor dominant linguistic styles, popular",
+      "translation": ""
+    },
+    {
+      "id": "t000390",
+      "source": "sources, or majority viewpoints, the generator receives a skewed evidence set.",
+      "translation": ""
+    },
+    {
+      "id": "t000391",
+      "source": "Recent empirical work confirms that fairness issues can arise at both retrieval and generation stages. Wu and colleagues proposed a fairness evaluation framework for RAG and found disparities across demographic attributes. Hu and colleagues reported that RAG can undermine fairness alignment even when users attempt to censor biased external data; in their experiments, supposedly cleaned retrieval corpora did not guarantee unbiased outputs.",
+      "translation": ""
+    },
+    {
+      "id": "t000392",
+      "source": "The engineering implication is direct. A fairness audit of the base LLM is not transferable to a RAG application. The retrieval corpus, embedding model, chunking strategy, reranker, and citation policy all require evaluation.",
+      "translation": ""
+    },
+    {
+      "id": "t000393",
+      "source": "RAG systems must reconcile multiple sources: the user's statement, retrieved documents, system instructions, and model priors. Research in 2025 identified an \"authority bias\" in which LLMs can over-trust user-provided claims relative to retrieved factual evidence in conflict settings. The name is domain-specific, but the broader phenomenon is important: source provenance affects how the model weights evidence.",
+      "translation": ""
+    },
+    {
+      "id": "t000394",
+      "source": "A system can therefore be biased not only about demographic groups but about epistemic authority. It may privilege information because of how it is framed, where it appears in the context, or whether it is attributed to a user, database, expert, or institution. In high-stakes domains, source-weighting behavior should be evaluated explicitly.",
+      "translation": ""
+    },
+    {
+      "id": "t000395",
+      "source": "Fairness evaluation for RAG should be decomposed. Measure corpus coverage and source representation. Measure retrieval exposure by group or source category. Test queries that are semantically equivalent across dialects and languages. Examine whether demographic cues alter retrieved evidence. Then hold retrieval fixed and test the generator, and conversely vary retrieval while holding the question fixed. Only after component tests should the end-to-end system be evaluated. This decomposition turns a vague claim that \"RAG is biased\" into a diagnosable set of mechanisms.",
+      "translation": ""
+    },
+    {
+      "id": "t000396",
+      "source": "Source diversity should not be confused with forced viewpoint symmetry. A medical RAG system should not balance high-quality clinical guidance with unsupported claims merely to equalize perspectives. The relevant fairness question is whether comparable evidence receives comparable opportunity to be retrieved and whether source-quality criteria themselves systematically exclude valid knowledge from particular regions, languages, or institutions. Retrieval fairness must therefore be conditioned on epistemic quality. Otherwise a well-intended diversity constraint can reduce factual reliability and ultimately harm the users it was meant to protect.",
+      "translation": ""
+    },
+    {
+      "id": "t000397",
+      "source": "Query rewriting deserves separate attention. Many RAG systems let an LLM transform the user's request into search queries. If the rewriter normalizes dialect, removes identity-relevant context, adds assumptions, or translates into a dominant language, it can change retrieval before the retriever sees the request. Query generation should therefore be logged and evaluated as its own model step. In multilingual systems, comparing both original-language retrieval and translated-query retrieval can reveal whether apparent generator bias is actually an information-access disparity introduced upstream.",
+      "translation": ""
+    },
+    {
+      "id": "t000398",
+      "source": "The 2026 Fair RAG work marks a further step from diagnosis toward system-level intervention by jointly reasoning about retriever-side skew and generator-side disparity. That direction matters because it treats fairness as a property of the retrieval-generation pipeline rather than as a behavior that can be guaranteed by post-training the generator alone.",
+      "translation": ""
+    },
+    {
+      "id": "t000399",
+      "source": "RAG fairness therefore belongs partly to information retrieval and partly to generation. The system must measure who is represented in the corpus, what the retriever exposes, how the generator uses authority, and whether citations make disagreement and missing evidence visible.",
+      "translation": ""
+    },
+    {
+      "id": "t000400",
+      "source": "4.3 Agent trajectories create new forms of allocation",
+      "translation": ""
+    },
+    {
+      "id": "t000401",
+      "source": "An agent is not only a language model that speaks more often. It is a policy that chooses actions, tools, sources, and stopping conditions across time. Fairness can fail because two matched users are sent down different paths even when their final text looks similar. Tool invocation, escalation, memory, and judge decisions become allocational events that need their own tests.",
+      "translation": ""
+    },
+    {
+      "id": "t000402",
+      "source": "Tool-using systems introduce decisions that ordinary chatbot benchmarks do not observe. An agent may choose whether to search the web, query an internal database, ask a human, call a medical calculator, run code, open a ticket, or take no action. Tool selection is itself an allocation of computational attention and institutional resources. If the choice is systematically different for equivalent users or language varieties, downstream quality can diverge even when the final language model is unchanged.",
+      "translation": ""
+    },
+    {
+      "id": "t000403",
+      "source": "Memory and personalization deepen the problem. Personalization can improve fairness by adapting to accessibility needs, language preference, or user expertise. It can also create persistent asymmetry if early interactions are misinterpreted. A mistaken inference about competence, risk tolerance, political preference, or communication style can become part of the context for future decisions. Because memory changes the input distribution, the system can create individualized feedback loops. Fairness testing must therefore include cold-start and long-history cases and provide mechanisms for users to inspect, correct, or reset consequential memory.",
+      "translation": ""
+    },
+    {
+      "id": "t000404",
+      "source": "An agent that can call tools decides which external systems to consult. Tool selection can create unequal outcomes. A travel agent may use one search provider more often for certain regions. A medical assistant may retrieve guidelines from high-resource countries and underuse local protocols. A coding agent may choose libraries whose documentation is abundant rather than appropriate. A financial agent may prefer data vendors with incomplete coverage of small markets.",
+      "translation": ""
+    },
+    {
+      "id": "t000405",
+      "source": "These are not necessarily demographic biases, but they can become demographic through correlation. Geography, language, income, and institutional prestige often determine which tools have high-quality data. The agent's policy therefore inherits infrastructure inequality.",
+      "translation": ""
+    },
+    {
+      "id": "t000406",
+      "source": "Evaluation should log not only final answers but tool-call trajectories. If two counterfactual users receive different tool choices, different search depth, or different willingness to verify information, the disparity may be invisible in the final text but consequential over time.",
+      "translation": ""
+    },
+    {
+      "id": "t000407",
+      "source": "Persistent memory can improve user experience, but personalization is a new channel for differential treatment. A model may adapt to a user's name, writing style, profession, location, or prior preferences. Some adaptation is desirable. Harm arises when the system infers unsupported traits or uses remembered identity cues to change quality, opportunity, or safety treatment.",
+      "translation": ""
+    },
+    {
+      "id": "t000408",
+      "source": "OpenAI's first-person fairness work is relevant here because it measures how user-name cues affect responses rather than only how AI systems make third-person decisions about subjects. The study reports low rates of harmful name-associated stereotypes in its tested setting, while also emphasizing limitations of the demographic categories and English-language scope. The methodological contribution is broader: personalized assistants need fairness tests where the user is the affected person.",
+      "translation": ""
+    },
+    {
+      "id": "t000409",
+      "source": "Memory audits should therefore test whether equivalent requests receive equivalent quality when only identity-associated context changes, and whether personalization can be disabled or corrected when it becomes inappropriate.",
+      "translation": ""
+    },
+    {
+      "id": "t000410",
+      "source": "A one-turn disparity may be small. An agent can act for dozens or hundreds of steps. Small preferences can compound through path dependence. If the agent is slightly less likely to verify a claim from one source, that claim can shape subsequent searches. If it ranks one candidate slightly lower, that candidate may never enter later deliberation. If it explores one region less thoroughly, later choices are made with less evidence.",
+      "translation": ""
+    },
+    {
+      "id": "t000411",
+      "source": "The agent diagram follows a single request through retrieval, planning, tool selection, action, evaluation, and memory. The linear drawing is intentionally simple; in real systems some stages repeat, but the sequence is enough to expose where equivalent requests can diverge.",
+      "translation": ""
+    },
+    {
+      "id": "t000412",
+      "source": "Figure from PDF page 41",
+      "translation": ""
+    },
+    {
+      "id": "t000413",
+      "source": "Figure 4. Agentic fairness concerns the path through the system, not only the final message.",
+      "translation": ""
+    },
+    {
+      "id": "t000414",
+      "source": "Fairness evidence should therefore include trajectory traces, not only final messages. Two users may receive similar prose while one request was given poorer evidence, a weaker tool, more restrictive escalation, or a memory update that changes future treatment. Those differences are part of the product behavior.",
+      "translation": ""
+    },
+    {
+      "id": "t000415",
+      "source": "This is analogous to feedback loops in recommender systems but occurs inside a single task trajectory. Agent fairness therefore needs sequential metrics. Researchers should measure path divergence, tool-use disparity, evidence coverage, error recovery, and final outcomes, not only individual decisions.",
+      "translation": ""
+    },
+    {
+      "id": "t000416",
+      "source": "The frontier here is still immature. Most agent benchmarks measure task success and safety rather than demographic or cultural fairness over trajectories. This is an obvious area for new research.",
+      "translation": ""
+    },
+    {
+      "id": "t000417",
+      "source": "LLMs are increasingly used to grade answers, filter synthetic data, rank model outputs, evaluate code, score applications, moderate content, and even supervise other agents. This converts a language model from a generator into a decision institution.",
+      "translation": ""
+    },
+    {
+      "id": "t000418",
+      "source": "The literature shows that LLM judges have systematic biases. Position bias can change pairwise rankings when response order is swapped. Verbosity and style can influence scores. Some judges prefer responses from the same model family or style. These effects matter because evaluation results can feed directly into model training. A biased judge can create a feedback loop in which the system learns to optimize judge preferences rather than the intended quality criterion.",
+      "translation": ""
+    },
+    {
+      "id": "t000419",
+      "source": "A reliable judge harness should randomize order, use explicit rubrics, request evidence, separate dimensions, calibrate against humans, track disagreement, and avoid using the same judge as both optimizer and sole evaluator. For sensitive tasks, multiple independent judges and human escalation are preferable to a single authoritative score.",
+      "translation": ""
+    },
+    {
+      "id": "t000420",
+      "source": "A modern AI lab may use LLMs to generate benchmark items, another LLM to filter them, the target model to answer, and a judge LLM to score the answer. This pipeline is scalable, but it can become epistemically self-referential. Shared model families can reproduce the same assumptions across item generation and scoring. Synthetic examples may reflect the generator's worldview. Judge preferences may reward the style used by the generator.",
+      "translation": ""
+    },
+    {
+      "id": "t000421",
+      "source": "This does not invalidate automated evaluation. It means that diversity of measurement is essential. Human-created data, real usage samples, domain experts, external datasets, independent model families, and mechanistic probes should be combined when stakes are high. The more automated the evaluation loop becomes, the more important it is to preserve independent sources of error detection.",
+      "translation": ""
+    },
+    {
+      "id": "t000422",
+      "source": "Multi-step agents can compound small differences. Imagine two semantically equivalent requests phrased in different dialects. One formulation leads to a low-confidence interpretation, which triggers a weaker search query, retrieves less useful evidence, selects a conservative tool path, and produces a lower-quality final recommendation. No individual step contains a dramatic disparity, but the trajectory amplifies the initial asymmetry. Evaluating only the final answer makes localization difficult. Trace-level logging is therefore essential: what was retrieved, which tool was selected, what uncertainty was recorded, what branch was taken, and which intermediate judgment caused the next action?",
+      "translation": ""
+    },
+    {
+      "id": "t000423",
+      "source": "The right conceptual model is a path through a decision graph. Fairness concerns include path probability, information access, tool allocation, delays, refusals, escalation, and final outcomes. An audit can compare matched trajectories under counterfactual demographic cues, measure where paths diverge, and test whether divergences are justified by task-relevant information. Agentic fairness is therefore closer to process auditing than to static model benchmarking. As agents become more autonomous, provenance and traceability become prerequisites for understanding bias rather than mere observability conveniences.",
+      "translation": ""
+    },
+    {
+      "id": "t000424",
+      "source": "Once a system can act, the unit of audit becomes the trajectory. Matched users should be compared not only on the final answer but on retrieved evidence, tools called, costs incurred, escalation decisions, judge outcomes, and what is stored in memory for the next interaction.",
+      "translation": ""
+    },
+    {
+      "id": "t000425",
+      "source": "Once retrieval, tools, judges, and memory enter the architecture, fairness becomes a property of information flow and action trajectories. The base model remains important, but it is no longer a sufficient boundary for assurance.",
+      "translation": ""
+    },
+    {
+      "id": "t000426",
+      "source": "5. BIAS IN THE WORLD: MULTIMODAL, SYNTHETIC, AND HIGH-STAKES SYSTEMS",
+      "translation": ""
+    },
+    {
+      "id": "t000427",
+      "source": "When AI moves beyond text, the fairness problem does not merely repeat itself in another modality. Visual systems entangle demographic cues with backgrounds, clothing, lighting, and task framing. Speech systems interact with accent, disability, noise, and microphone quality. Synthetic data can improve coverage yet also create feedback loops in which rare linguistic or demographic patterns disappear before average performance visibly collapses. In high-stakes domains, these technical asymmetries become differences in opportunity, cost, treatment, visibility, or the ability to contest a decision.",
+      "translation": ""
+    },
+    {
+      "id": "t000428",
+      "source": "The chapter follows fairness across modalities, examines the new risks created by synthetic-data loops, and then anchors the discussion in high-stakes workflows where model behavior becomes a material decision.",
+      "translation": ""
+    },
+    {
+      "id": "t000429",
+      "source": "5.1 Fairness across vision, language, speech, and multimodal models",
+      "translation": ""
+    },
+    {
+      "id": "t000430",
+      "source": "Multimodal systems introduce a methodological trap: demographic attributes are visually and acoustically entangled with other features. A fairness result can be driven by lighting, clothing, recording quality, task wording, or a model’s general inability to solve the task. Recent face-verification work on multimodal LLMs illustrates the point sharply: a model with uniformly poor performance can look “fair” under a disparity measure because everyone is served badly. Fairness metrics must therefore be interpreted together with absolute utility.",
+      "translation": ""
+    },
+    {
+      "id": "t000431",
+      "source": "Multimodal models combine representations that were historically audited separately. A vision-language model may identify people in an image, infer context, answer natural-language questions, and generate an evaluative description in one step. Bias can enter through the visual encoder, the language model, cross-modal alignment, the prompt, or the benchmark label. A model that performs well at object recognition can still associate demographic features with occupations or social roles. Conversely, language safety tuning may suppress a problematic verbal answer without changing how the visual representation contributes to an internal decision.",
+      "translation": ""
+    },
+    {
+      "id": "t000432",
+      "source": "The shift from classification to generation changes representational harm. A classifier makes a bounded mistake; a generator can fill an entire scene with demographic assumptions. Text-to-image systems can underrepresent groups in high-status occupations, sexualize some identities, flatten cultural variation, or reproduce a narrow visual canon. These outputs matter because generated media increasingly enters advertising, education, design, entertainment, and future training data. Representation is not only about offense. It affects who is imagined as normal, expert, powerful, vulnerable, or absent.",
+      "translation": ""
+    },
+    {
+      "id": "t000433",
+      "source": "Foundation models increasingly combine text, images, audio, video, code, and action. Multimodality changes the expression of bias because one modality can reveal attributes that another modality leaves implicit. A text-only system may not know a user's skin tone; a vision-language model may infer it immediately. An audio-language model may infer accent, age, or emotion from speech. A video model may combine appearance, voice, location, and behavior into a dense representation of identity.",
+      "translation": ""
+    },
+    {
+      "id": "t000434",
+      "source": "This increases capability and privacy risk at the same time. It also complicates fairness because the model can condition on socially salient cues even when the user never states them. Evaluating only the textual transcript of a multimodal interaction can therefore miss the variable that actually caused the decision.",
+      "translation": ""
+    },
+    {
+      "id": "t000435",
+      "source": "The same system may exhibit different fairness properties by modality. A user could receive a neutral response when describing themselves in text and a different recommendation when uploading a photograph. A medical vision-language model can be strong on average yet show demographic performance gaps. Recent work evaluating large vision-language models across gender, skin tone, age, and race continues to find disparities despite strong general visual capabilities.",
+      "translation": ""
+    },
+    {
+      "id": "t000436",
+      "source": "Text-to-image and image-to-image models create a representational problem at scale. When a user asks for \"a successful entrepreneur\", the model must instantiate visual attributes that were not specified. Which genders, ages, skin tones, clothing styles, body types, and cultural contexts appear? The model's distribution becomes a proposal for what the category looks like.",
+      "translation": ""
+    },
+    {
+      "id": "t000437",
+      "source": "This is not identical to classification fairness. There may be no ground-truth demographic distribution for an abstract prompt. Evaluation therefore needs a reference policy. One approach compares generated distributions with real-world prevalence. Another uses parity as a normative baseline. A third asks whether prompts that should be identity-neutral nevertheless produce highly concentrated stereotypes. Each choice encodes a different notion of fairness.",
+      "translation": ""
+    },
+    {
+      "id": "t000438",
+      "source": "Generative systems also create a tension between realism and correction. If historical professions are demographically skewed, a historically faithful image may reproduce that skew. If the model enforces contemporary parity, it may distort historical context. The appropriate behavior depends on the prompt and the user's intent, which suggests that context-sensitive fairness is more defensible than a global demographic quota.",
+      "translation": ""
+    },
+    {
+      "id": "t000439",
+      "source": "Large vision-language models can classify, describe, compare, and rank people from images. This makes them tempting components in retail, hiring, security, healthcare, accessibility, and content moderation. It also recreates the old computer-vision risks in a more general interface.",
+      "translation": ""
+    },
+    {
+      "id": "t000440",
+      "source": "The danger is semantic overreach. A model that can recognize visible objects may also confidently infer personality, profession, socioeconomic status, emotion, or intent from weak visual cues. Some of these inferences are scientifically dubious even before fairness is considered. Bias then enters not only through unequal error rates but through unjustified constructs.",
+      "translation": ""
+    },
+    {
+      "id": "t000441",
+      "source": "A responsible evaluation should distinguish observable attributes from inferred traits. It should test subgroup accuracy, uncertainty, refusal behavior for unsupported inferences, and sensitivity to irrelevant visual details. The system should be rewarded for saying that an attribute cannot be inferred reliably from an image when that is the scientifically correct answer.",
+      "translation": ""
+    },
+    {
+      "id": "t000442",
+      "source": "Audio models add another layer of socially meaningful variation. Accent and dialect encode geography, community, education, migration history, and sometimes race or class. Speech emotion recognition can be culturally variable. Voice-based age or gender inference can be inaccurate or inappropriate. Background noise and microphone quality correlate with socioeconomic conditions.",
+      "translation": ""
+    },
+    {
+      "id": "t000443",
+      "source": "The earlier speech-recognition disparity literature therefore remains directly relevant to multimodal assistants. A voice interface that transcribes one population less accurately gives that population a noisier prompt to the language model. The language model may then respond less helpfully, making the end-to-end disparity larger than the original word-error gap.",
+      "translation": ""
+    }
+  ]
+}

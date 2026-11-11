@@ -1,0 +1,571 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000219",
+      "source": "Research judgement. Trust should be allocated as carefully as computation. A model may be trusted to recognize a familiar intent but not to authorize payment. A solver may be trusted to satisfy encoded constraints but not to define the constraints. A retriever may be trusted to locate documents but not to assess their scientific credibility. A human may be trusted to approve an action but still need calibrated evidence. The architecture should represent these differentiated trusts rather than assign one confidence score to the whole agent.",
+      "translation": "Judecată de cercetare. Încrederea ar trebui alocată la fel de atent ca și calculul. Un model poate fi considerat demn de încredere pentru a recunoaște o intenție familiară, dar nu pentru a autoriza plata. Un solver poate fi considerat demn de încredere pentru a satisface constrângeri codificate, dar nu pentru a defini constrângerile. Un modul de regăsire poate fi considerat demn de încredere pentru a localiza documente, dar nu pentru a le evalua credibilitatea științifică. Un om poate fi considerat demn de încredere pentru a aproba o acțiune, având totuși nevoie de dovezi calibrate. Arhitectura ar trebui să reprezinte aceste încrederi diferențiate, nu să atribuie un singur scor de încredere întregului agent."
+    },
+    {
+      "id": "t000220",
+      "source": "Research hypothesis. S*LM systems can improve trustworthy AI when decomposition narrows authority, exposes provenance and enables independent checks. The same decomposition can worsen trust when it multiplies unvalidated transformations, hides correlated models behind agent roles or treats formal syntax as semantic proof. The programme should compare both outcomes empirically through threat models, failure injection and human-calibration studies.",
+      "translation": "Ipoteză de cercetare. Sistemele S*LM pot îmbunătăți IA de încredere când descompunerea restrânge autoritatea, expune proveniența și permite verificări independente. Aceeași descompunere poate înrăutăți încrederea când multiplică transformări nevalidate, ascunde modele corelate în spatele rolurilor de agenți sau tratează sintaxa formală ca demonstrație semantică. Programul ar trebui să compare empiric ambele rezultate prin modele de amenințare, injectarea eșecurilor și studii de calibrare umană."
+    },
+    {
+      "id": "t000221",
+      "source": "Conditional outcome. If the hypothesis is supported, trustworthy agent design will move away from asking whether a model is aligned in the",
+      "translation": "Rezultat condiționat. Dacă ipoteza este susținută, proiectarea agenților de încredere va renunța la întrebarea dacă un model este aliniat în"
+    },
+    {
+      "id": "t000222",
+      "source": "abstract. It will ask whether each component is competent for its role,",
+      "translation": "abstract. Va întreba dacă fiecare componentă este competentă pentru rolul său,"
+    },
+    {
+      "id": "t000223",
+      "source": "whether data and authority are scoped, whether formal guarantees match their representations, whether failures are contained and whether humans can understand what remains uncertain. S*LM would then be valuable not because smaller or symbolic systems are morally superior, but because a well-designed division of labour makes trust claims more precise and falsifiable.",
+      "translation": "dacă datele și autoritatea sunt delimitate, dacă garanțiile formale corespund reprezentărilor lor, dacă eșecurile sunt limitate și dacă oamenii pot înțelege ce rămâne incert. S*LM ar fi atunci valoros nu pentru că sistemele mai mici sau simbolice sunt moral superioare, ci pentru că o diviziune a muncii bine proiectată face afirmațiile de încredere mai precise și falsificabile."
+    },
+    {
+      "id": "t000224",
+      "source": "CHAPTER 11",
+      "translation": "CAPITOLUL 11"
+    },
+    {
+      "id": "t000225",
+      "source": "Training, Deployment, and the Economics of Successful Work",
+      "translation": "Antrenare, implementare și economia muncii reușite"
+    },
+    {
+      "id": "t000226",
+      "source": "The economic case for small models is usually expressed in tokens, parameters or accelerator hours. Those measures are useful but incomplete. An agent creates value only when it completes a task correctly, within policy, at acceptable latency, without costly recovery or human rework. A cheap model that requires repeated retries, misroutes sensitive data or generates invalid actions may be more expensive than a stronger model used once. The proper unit is the cost of successful, governed work.",
+      "translation": "Argumentul economic pentru modelele mici este exprimat de regulă în tokenuri, parametri sau ore de accelerator. Aceste măsuri sunt utile, dar incomplete. Un agent creează valoare numai când finalizează corect o sarcină, conform politicii, la latență acceptabilă, fără recuperare costisitoare sau refacere umană. Un model ieftin care necesită reîncercări repetate, rutează greșit date sensibile sau generează acțiuni invalide poate fi mai scump decât un model mai puternic folosit o singură dată. Unitatea potrivită este costul muncii reușite și guvernate."
+    },
+    {
+      "id": "t000227",
+      "source": "Training cost has several layers. Pretraining from scratch builds a general foundation and demands large data and compute. Continued pretraining adapts vocabulary and knowledge to a domain. Supervised fine-tuning teaches an instruction or output distribution. Preference and reinforcement methods shape behavior. Distillation transfers outputs, intermediate representations or policies from stronger teachers. Parameter-efficient adaptation changes a small fraction of weights. Quantization and pruning reduce deployment requirements. For an S*LM programme, most organizations should begin with adaptation and data engineering rather than aspire to pretrain a foundation model.",
+      "translation": "Costul antrenării are mai multe straturi. Preantrenarea de la zero construiește un fundament general și cere date și calcul ample. Preantrenarea continuată adaptează vocabularul și cunoștințele la un domeniu. Ajustarea fină supervizată predă o distribuție de instrucțiuni sau ieșiri. Metodele de preferințe și întărire modelează comportamentul. Distilarea transferă ieșiri, reprezentări intermediare sau politici de la profesori mai puternici. Adaptarea eficientă în parametri schimbă o mică parte a ponderilor. Cuantizarea și eliminarea ponderilor reduc cerințele implementării. Pentru un program S*LM, majoritatea organizațiilor ar trebui să înceapă cu adaptare și ingineria datelor, nu să aspire la preantrenarea unui model fundamental."
+    },
+    {
+      "id": "t000228",
+      "source": "LoRA and QLoRA made adaptation accessible by training low-rank updates and, in QLoRA’s case, backpropagating through a quantized base model. These methods lower hardware requirements and permit multiple role-specific adapters over one foundation. They do not remove the need for representative data, evaluation or lifecycle management. Adapter libraries can become operationally complex: versions interact with base-model updates, domain adapters can conflict with safety behavior, and a small weight file may encode consequential policy. [63, 62] Distillation is especially relevant to agent roles. Traditional distillation transfers logits or representations. Step-by-step distillation uses rationales or intermediate supervision. DeepSeek-R1 demonstrates that reasoning behavior can be transferred into smaller derivative models, while tool-use families show that action policies can be trained from generated trajectories. The S*LM opportunity is to distill decisions rather than prose: tool retrieval, function choice, argument construction, plan expansion, verifier repair and escalation. [67, 23, 29, 30] Teacher data must be treated as evidence, not truth. A frontier model can produce diverse examples quickly, but it also propagates errors, stylistic habits and blind spots. Executable tasks offer an advantage because outputs can be run, type-checked or validated. APIGen’s verifiable data pipeline is important for this reason. In less formal domains, synthetic examples should be mixed with human cases, real failures, adversarial mutations and negative examples. The data-generation process should preserve why an example was accepted.",
+      "translation": "LoRA și QLoRA au făcut adaptarea accesibilă antrenând actualizări de rang mic și, în cazul QLoRA, propagând înapoi printr-un model de bază cuantizat. Aceste metode reduc cerințele hardware și permit adaptoare multiple specifice rolului peste un singur fundament. Nu elimină nevoia de date reprezentative, evaluare sau gestionarea ciclului de viață. Bibliotecile de adaptoare pot deveni complexe operațional: versiunile interacționează cu actualizările modelului de bază, adaptoarele de domeniu pot intra în conflict cu comportamentul de siguranță, iar un fișier mic de ponderi poate codifica o politică cu consecințe importante. [63, 62] Distilarea este deosebit de relevantă pentru rolurile agentice. Distilarea tradițională transferă logituri sau reprezentări. Distilarea pas cu pas folosește justificări sau supervizare intermediară. DeepSeek-R1 demonstrează că comportamentul de raționament poate fi transferat în modele derivate mai mici, în timp ce familiile de utilizare a instrumentelor arată că politicile acțiunii pot fi antrenate din traiectorii generate. Oportunitatea S*LM este distilarea deciziilor, nu a prozei: regăsirea instrumentelor, alegerea funcțiilor, construirea argumentelor, extinderea planului, repararea cu verificator și escaladarea. [67, 23, 29, 30] Datele profesorului trebuie tratate ca dovezi, nu ca adevăr. Un model de frontieră poate produce rapid exemple diverse, dar propagă și erori, obiceiuri stilistice și unghiuri moarte. Sarcinile executabile oferă un avantaj deoarece ieșirile pot fi rulate, verificate ca tip sau validate. Fluxul de date verificabile APIGen este important din acest motiv. În domenii mai puțin formale, exemplele sintetice ar trebui amestecate cu cazuri umane, eșecuri reale, mutații adversariale și exemple negative. Procesul generării datelor ar trebui să păstreze motivul acceptării unui exemplu."
+    },
+    {
+      "id": "t000229",
+      "source": "Curriculum matters more for small models because capacity is limited. A compact action model should first learn a stable output grammar, then common tools, then confusing pairs, irrelevant requests, multi-turn state and recovery. A formalizer should learn vocabulary and types before complex compositional mappings. A domain model should see canonical cases, boundary cases and explicit unknowns. The curriculum is not merely an optimization trick; it expresses the decomposition of competence.",
+      "translation": "Curriculumul contează mai mult pentru modelele mici deoarece capacitatea este limitată. Un model compact de acțiune ar trebui să învețe mai întâi o gramatică stabilă a ieșirii, apoi instrumente comune, apoi perechi confuzabile, cereri irelevante, stare pe mai multe rânduri și recuperare. Un formalizator ar trebui să învețe vocabularul și tipurile înaintea mapărilor compoziționale complexe. Un model de domeniu ar trebui să vadă cazuri canonice, cazuri-limită și necunoscute explicite. Curriculumul nu este doar un truc de optimizare; exprimă descompunerea competenței."
+    },
+    {
+      "id": "t000230",
+      "source": "Quantization changes the deployment regime. GPTQ, AWQ and SmoothQuant represent influential approaches to lower-precision inference. Quantization can make models practical on laptops, phones and edge devices, but its effect is not fully captured by average accuracy. Rare-token behavior, calibration, bias, structured output and tool selection may shift. The final deployed artifact, not the full-precision source model, must be evaluated on the actual role and hardware. [66, 64, 65, 68] Pruning and sparse activation create another trade-off. Removing weights or activating only part of a model can reduce compute, while architectural changes may affect memory and serving complexity. MobileLLM explores designs optimized for sub-billion use. Granite and Nemotron families experiment with dense, hybrid and sparse variants.",
+      "translation": "Cuantizarea schimbă regimul implementării. GPTQ, AWQ și SmoothQuant reprezintă abordări influente ale inferenței la precizie mai mică. Cuantizarea poate face modelele practice pe laptopuri, telefoane și dispozitive de margine, dar efectul său nu este surprins complet de acuratețea medie. Comportamentul tokenurilor rare, calibrarea, părtinirea, ieșirea structurată și selecția instrumentelor se pot schimba. Artefactul final implementat, nu modelul-sursă la precizie completă, trebuie evaluat pe rolul și hardware-ul reale. [66, 64, 65, 68] Eliminarea ponderilor și activarea rară creează un alt compromis. Eliminarea ponderilor sau activarea numai a unei părți a modelului poate reduce calculul, în timp ce schimbările arhitecturale pot afecta memoria și complexitatea deservirii. MobileLLM explorează proiectări optimizate pentru utilizare sub un miliard de parametri. Familiile Granite și Nemotron experimentează variante dense, hibride și rare."
+    },
+    {
+      "id": "t000231",
+      "source": "Apple’s 2026 architecture combines specialization and hardware-aware optimization across on-device and cloud models. These examples are industrial signals rather than proof of one optimal architecture. They show that “parameter count” is increasingly an insufficient description of operational size. [3, 20, 21, 18] Deployment cost depends on weights, context, prefill, decoding, batching, tool latency, network delay and retries. Long context can dominate memory through the key–value cache. A small model repeatedly fed an entire agent history may be slower and less reliable than a larger model receiving a compact, relevant state. External memory and context construction are therefore economic mechanisms as well as semantic ones.",
+      "translation": "Arhitectura Apple din 2026 combină specializarea și optimizarea conștientă de hardware între modele pe dispozitiv și în cloud. Aceste exemple sunt semnale industriale, nu dovada unei singure arhitecturi optime. Arată că „numărul parametrilor” este tot mai mult o descriere insuficientă a dimensiunii operaționale. [3, 20, 21, 18] Costul implementării depinde de ponderi, context, precompletare, decodare, lotizare, latența instrumentelor, întârzierea rețelei și reîncercări. Contextul lung poate domina memoria prin cache-ul cheie–valoare. Un model mic alimentat repetat cu întregul istoric al agentului poate fi mai lent și mai puțin fiabil decât un model mai mare care primește o stare compactă, relevantă. Memoria externă și construirea contextului sunt, așadar, mecanisme economice, precum și semantice."
+    },
+    {
+      "id": "t000232",
+      "source": "Local deployment has four strategic benefits. It can reduce marginal inference cost at sufficient utilization. It can lower latency by avoiding network round trips. It can preserve operation when connectivity or cloud services are unavailable. It can keep sensitive data within a device or controlled infrastructure. These benefits must be balanced against engineering cost, hardware heterogeneity, update distribution, observability and the risk that underutilized local accelerators are more expensive than shared cloud capacity.",
+      "translation": "Implementarea locală are patru beneficii strategice. Poate reduce costul marginal al inferenței la utilizare suficientă. Poate reduce latența evitând drumurile dus-întors prin rețea. Poate păstra operarea când conectivitatea sau serviciile cloud sunt indisponibile. Poate păstra datele sensibile într-un dispozitiv sau într-o infrastructură controlată. Aceste beneficii trebuie echilibrate cu costul ingineriei, eterogenitatea hardware, distribuirea actualizărilor, observabilitatea și riscul ca acceleratoarele locale subutilizate să fie mai scumpe decât capacitatea cloud comună."
+    },
+    {
+      "id": "t000233",
+      "source": "Runtimes such as llama.cpp, ONNX Runtime, ExecuTorch, LiteRT and MLX make local execution increasingly practical. vLLM focuses on efficient serving at larger shared scale. The runtime choice influences supported quantization, structured decoding, batching, device placement and monitoring. A model that is theoretically small but poorly supported on the target hardware may be an inferior choice to a slightly larger model with optimized kernels. [76, 77, 78, 79, 80, 75] The economics of specialization include fixed costs. Teams must define the role, collect data, train or adapt the model, build validators, integrate it, monitor drift and maintain compatibility. The variable-cost savings matter only after enough volume. Specialization is attractive when a task is frequent, stable, measurable and expensive to serve with a general model. It is unattractive when the task changes faster than the specialized component can be maintained or when failures are too difficult to detect.",
+      "translation": "Mediile de execuție precum llama.cpp, ONNX Runtime, ExecuTorch, LiteRT și MLX fac execuția locală tot mai practică. vLLM se concentrează pe deservire eficientă la scară comună mai mare. Alegerea mediului de execuție influențează cuantizarea susținută, decodarea structurată, lotizarea, plasarea pe dispozitive și monitorizarea. Un model teoretic mic, dar slab susținut pe hardware-ul țintă, poate fi o alegere inferioară unui model puțin mai mare cu nuclee optimizate. [76, 77, 78, 79, 80, 75] Economia specializării include costuri fixe. Echipele trebuie să definească rolul, să colecteze date, să antreneze sau adapteze modelul, să construiască validatori, să-l integreze, să monitorizeze deriva și să mențină compatibilitatea. Economiile de cost variabil contează numai după suficient volum. Specializarea este atractivă când o sarcină este frecventă, stabilă, măsurabilă și costisitor de deservit cu un model general. Este neatractivă când sarcina se schimbă mai repede decât poate fi întreținută componenta specializată sau când eșecurile sunt prea greu de detectat."
+    },
+    {
+      "id": "t000234",
+      "source": "A useful break-even analysis therefore starts with workflow frequency and error cost, not model size. Suppose a document classifier runs millions of times and routes expensive downstream analysis. A compact specialist can justify substantial engineering because a small improvement in cost or routing quality compounds. Suppose a research agent encounters a rare theoretical problem once. Training a specialist is irrational; a general model and human review are appropriate. Repetition justifies specialization. Novelty justifies flexible escalation.",
+      "translation": "O analiză utilă a pragului de rentabilitate începe, așadar, cu frecvența fluxului și costul erorii, nu cu dimensiunea modelului. Să presupunem că un clasificator de documente rulează de milioane de ori și rutează analize ulterioare costisitoare. Un specialist compact poate justifica inginerie substanțială, deoarece o mică îmbunătățire a costului sau calității rutării se cumulează. Să presupunem că un agent de cercetare întâlnește o singură dată o problemă teoretică rară. Antrenarea unui specialist este irațională; un model general și evaluarea umană sunt potrivite. Repetiția justifică specializarea. Noutatea justifică escaladarea flexibilă."
+    },
+    {
+      "id": "t000235",
+      "source": "Routing introduces its own fixed and variable costs. Maintaining multiple models increases deployment complexity. The router can make mistakes. The model pool changes. Caching and batching become harder. LLMRouterBench’s finding that careful model curation can matter more than ever-larger ensembles is economically important. A small, well-chosen portfolio may outperform a crowded catalogue whose router cannot distinguish marginal differences. [48] The two-timescale model offers a way to account for these costs. Slow acquisition invests in examples, adapters, procedures and tests. Fast execution uses the promoted capability repeatedly. The programme should report amortization: how many successful tasks are required before specialization repays its development and maintenance cost? It should also report the cost of failures and human review. A low inference bill can conceal an expensive operational process.",
+      "translation": "Rutarea introduce propriile costuri fixe și variabile. Întreținerea mai multor modele crește complexitatea implementării. Modulul de rutare poate greși. Mulțimea modelelor se schimbă. Memorarea în cache și lotizarea devin mai dificile. Constatarea LLMRouterBench că selectarea atentă a modelelor poate conta mai mult decât ansamblurile tot mai mari este importantă economic. Un portofoliu mic, bine ales, poate depăși un catalog aglomerat al cărui modul de rutare nu poate distinge diferențele marginale. [48] Modelul cu două scări temporale oferă un mod de contabilizare a acestor costuri. Achiziția lentă investește în exemple, adaptoare, proceduri și teste. Execuția rapidă folosește repetat capacitatea promovată. Programul ar trebui să raporteze amortizarea: câte sarcini reușite sunt necesare înainte ca specializarea să-și recupereze costul dezvoltării și întreținerii? Ar trebui să raporteze și costul eșecurilor și evaluării umane. O factură mică de inferență poate ascunde un proces operațional scump."
+    },
+    {
+      "id": "t000236",
+      "source": "Industry signal. IBM explicitly argues that non-reasoning compact models can be preferable for enterprise instruction following and tool use because latency and stable token use matter. Google positions tiny models for task-specific customization. Mistral provides compact local variants under a permissive license. Apple invests in on-device and private-cloud specialization. NVIDIA argues strongly for small models as components in agentic systems and investigates small orchestrators. These claims align with vendor incentives, but the convergence is meaningful: efficient role allocation is becoming a product strategy. [20, 12, 13, 19, 18, 22, 34] Academic signal. Research supports many enabling techniques but offers less certainty about system-level economics. Quantization, parameter-efficient fine-tuning, distillation and routing each show gains under controlled conditions. Agent evaluation work warns that cost comparisons are misleading when baselines, retries and reproducibility differ. A serious S*LM study must therefore measure complete workflows on named hardware and include maintenance assumptions. [62, 64, 46, 49] Research judgement. The objective is not the smallest model or the lowest token price. It is the lowest total cost for a task that succeeds, complies with policy, produces an auditable result and fails safely.",
+      "translation": "Semnal industrial. IBM susține explicit că modelele compacte fără raționament pot fi preferabile pentru urmarea instrucțiunilor și utilizarea instrumentelor în întreprinderi, deoarece latența și utilizarea stabilă a tokenurilor contează. Google poziționează modelele minuscul de mici pentru personalizare specifică sarcinii. Mistral oferă variante locale compacte sub o licență permisivă. Apple investește în specializare pe dispozitiv și în cloud privat. NVIDIA pledează puternic pentru modelele mici ca componente ale sistemelor agentice și investighează orchestratori mici. Aceste afirmații se aliniază cu stimulentele furnizorilor, dar convergența este semnificativă: alocarea eficientă a rolurilor devine o strategie de produs. [20, 12, 13, 19, 18, 22, 34] Semnal academic. Cercetarea susține multe tehnici facilitatoare, dar oferă mai puțină certitudine despre economia la nivel de sistem. Cuantizarea, ajustarea fină eficientă în parametri, distilarea și rutarea arată fiecare câștiguri în condiții controlate. Lucrările de evaluare a agenților avertizează că comparațiile de cost sunt înșelătoare când reperele, reîncercările și reproductibilitatea diferă. Un studiu S*LM serios trebuie, așadar, să măsoare fluxuri complete pe hardware numit și să includă presupuneri despre întreținere. [62, 64, 46, 49] Judecată de cercetare. Obiectivul nu este cel mai mic model sau cel mai mic preț al tokenurilor. Este cel mai mic cost total pentru o sarcină care reușește, respectă politica, produce un rezultat auditabil și eșuează în siguranță."
+    },
+    {
+      "id": "t000237",
+      "source": "Sometimes this will favor a local 270-million-parameter specialist.",
+      "translation": "Uneori aceasta va favoriza un specialist local cu 270 de milioane de parametri."
+    },
+    {
+      "id": "t000238",
+      "source": "Sometimes it will favor a hosted frontier model. Frequently it will favor a cascade in which inexpensive components handle routine states and expensive components handle uncertainty.",
+      "translation": "Uneori va favoriza un model de frontieră găzduit. Frecvent va favoriza o cascadă în care componentele ieftine gestionează stările de rutină, iar componentele costisitoare gestionează incertitudinea."
+    },
+    {
+      "id": "t000239",
+      "source": "Research hypothesis. A contract-based portfolio of compact specialists, symbolic tools and selective general-model escalation can lower total cost substantially in repetitive domains without reducing governed task success. The hypothesis should include all engineering and review costs.",
+      "translation": "Ipoteză de cercetare. Un portofoliu bazat pe contracte de specialiști compacți, instrumente simbolice și escaladare selectivă către modele generale poate reduce substanțial costul total în domenii repetitive fără reducerea succesului guvernat al sarcinii. Ipoteza ar trebui să includă toate costurile de inginerie și evaluare."
+    },
+    {
+      "id": "t000240",
+      "source": "It fails if routing, maintenance and semantic errors erase the inference savings.",
+      "translation": "Ea eșuează dacă rutarea, întreținerea și erorile semantice anulează economiile inferenței."
+    },
+    {
+      "id": "t000241",
+      "source": "Conditional outcome. If supported, the economic advantage of S*LM will come from architectural learning. Organizations will gradually convert recurring expensive inference into reusable capabilities. They will reserve general models for the states where generality creates value. The resulting cost curve will resemble software automation: high initial formalization cost followed by low, predictable execution cost within a known envelope.",
+      "translation": "Rezultat condiționat. Dacă este susținut, avantajul economic S*LM va proveni din învățare arhitecturală. Organizațiile vor converti treptat inferența costisitoare recurentă în capacități reutilizabile. Vor rezerva modelele generale stărilor în care generalitatea creează valoare. Curba de cost rezultată va semăna cu automatizarea software: cost inițial mare de formalizare urmat de cost scăzut și previzibil de execuție într-un domeniu cunoscut."
+    },
+    {
+      "id": "t000242",
+      "source": "PART IV",
+      "translation": "PARTEA IV"
+    },
+    {
+      "id": "t000243",
+      "source": "Survey Synthesis and Research Programme",
+      "translation": "Sinteza analizei și programul de cercetare"
+    },
+    {
+      "id": "t000244",
+      "source": "The final part separates current industrial practice, academic evidence and the experiments required to turn S*LM from a useful pattern into a defensible research programme.",
+      "translation": "Ultima parte separă practica industrială actuală, dovezile academice și experimentele necesare pentru a transforma S*LM dintr-un tipar util într-un program de cercetare justificabil."
+    },
+    {
+      "id": "t000245",
+      "source": "CHAPTER 12",
+      "translation": "CAPITOLUL 12"
+    },
+    {
+      "id": "t000246",
+      "source": "What Academia and Industry Are Actually Signalling",
+      "translation": "Ce semnalează de fapt mediul academic și industria"
+    },
+    {
+      "id": "t000247",
+      "source": "A survey becomes useful only when it distinguishes a durable signal from a crowded release calendar. The S*LM landscape contains hundreds of compact checkpoints, adapters, domain models, agent frameworks and neuro-symbolic proposals. Most are not independently important. The deeper pattern is a reorganization of where intelligence is placed in a system.",
+      "translation": "O analiză de sinteză devine utilă numai când distinge un semnal durabil de un calendar aglomerat de lansări. Peisajul S*LM conține sute de puncte de control compacte, adaptoare, modele de domeniu, cadre agentice și propuneri neurosimbolice. Cele mai multe nu sunt importante independent. Tiparul mai profund este o reorganizare a locului unde este plasată inteligența într-un sistem."
+    },
+    {
+      "id": "t000248",
+      "source": "Industry’s clearest signal is the rise of model families. Google’s Gemma releases span general text models, efficient on-device variants, function calling, embeddings, safety, translation, medicine and interpretability. IBM’s Granite family spans language, speech, vision, embeddings and guardians, with enterprise tool use and modular adapters as explicit themes. Mistral releases compact models in several sizes and modes for edge and local use. Apple trains distinct on-device and private-cloud models integrated with operating-system features. NVIDIA develops efficient model families and argues for compact orchestrators and workers. [15, 20, 19, 18, 21, 22] This is not simply model proliferation. It is evidence that product builders no longer expect one checkpoint to be optimal for every stage. Embedding, moderation, translation, retrieval, function calling and open-ended synthesis have different latency, privacy, data and output requirements. The industry is rebuilding specialization inside the generative-model era rather than returning to a purely monolithic assistant.",
+      "translation": "Cel mai clar semnal al industriei este ascensiunea familiilor de modele. Lansările Gemma de la Google acoperă modele generale de text, variante eficiente pe dispozitiv, apelarea funcțiilor, reprezentări vectoriale, siguranță, traducere, medicină și interpretabilitate. Familia Granite de la IBM acoperă limbaj, vorbire, viziune, reprezentări vectoriale și protecție, cu utilizarea instrumentelor în întreprinderi și adaptoare modulare ca teme explicite. Mistral publică modele compacte de mai multe dimensiuni și moduri pentru utilizare locală și la margine. Apple antrenează modele distincte pe dispozitiv și în cloud privat, integrate cu funcțiile sistemului de operare. NVIDIA dezvoltă familii eficiente de modele și pledează pentru orchestratori și lucrători compacți. [15, 20, 19, 18, 21, 22] Aceasta nu este doar proliferare de modele. Este dovada că dezvoltatorii de produse nu mai așteaptă ca un singur punct de control să fie optim pentru fiecare etapă. Reprezentarea vectorială, moderarea, traducerea, regăsirea, apelarea funcțiilor și sinteza deschisă au cerințe diferite de latență, confidențialitate, date și ieșire. Industria reconstruiește specializarea în era modelelor generative, nu revine la un asistent pur monolitic."
+    },
+    {
+      "id": "t000249",
+      "source": "A second industrial signal is on-device execution. Phones, laptops, vehicles and robots require low latency, offline availability and local data handling. MobileLLM, Phi, Llama 3.2, Gemma 3n, FunctionGemma, Ministral and Apple’s foundation models occupy different points in this space. Hardware-aware architecture, quantization and runtime integration are becoming model features rather than deployment afterthoughts. [3, 7, 11, 16, 14, 19, 17, 18] A third industrial signal is the separation of action from conversation. FunctionGemma is explicitly an application component. Granite emphasizes tool calling. Apple’s framework exposes constrained tool use. Commercial agent SDKs treat model calls, tools, state and human approval as separate primitives. The strongest production architectures are becoming less like chatbots with plugins and more like software runtimes with language interfaces.",
+      "translation": "Un al doilea semnal industrial este execuția pe dispozitiv. Telefoanele, laptopurile, vehiculele și roboții necesită latență mică, disponibilitate offline și gestionare locală a datelor. MobileLLM, Phi, Llama 3.2, Gemma 3n, FunctionGemma, Ministral și modelele fundamentale Apple ocupă puncte diferite în acest spațiu. Arhitectura conștientă de hardware, cuantizarea și integrarea mediului de execuție devin caracteristici ale modelului, nu considerații ulterioare de implementare. [3, 7, 11, 16, 14, 19, 17, 18] Un al treilea semnal industrial este separarea acțiunii de conversație. FunctionGemma este explicit o componentă de aplicație. Granite accentuează apelarea instrumentelor. Cadrul Apple expune utilizare constrânsă a instrumentelor. SDK-urile agentice comerciale tratează apelurile modelelor, instrumentele, starea și aprobarea umană ca primitive separate. Cele mai puternice arhitecturi de producție devin mai puțin asemănătoare chatboturilor cu pluginuri și mai mult mediilor software de execuție cu interfețe lingvistice."
+    },
+    {
+      "id": "t000250",
+      "source": "Industry is also signalling caution, though less loudly than capability. Anthropic’s guidance recommends workflows before agents and the simplest architecture that works. Its multi-agent research system is presented as expensive and appropriate for parallelizable research, not as a universal replacement. NIST and OWASP guidance emphasizes governance and security controls around models. These positions suggest that deployment experience is pushing against early assumptions that additional autonomy is always beneficial. [50, 51, 57, 58] Academic research sends a complementary signal. The compact-model literature demonstrates that architecture, data quality, distillation and specialization can produce strong capabilities at modest scale. Yet papers also show uneven robustness and sensitivity to task design. The appropriate conclusion is not that scaling has stopped mattering. It is that parameter count is only one variable and often not the decisive one for a bounded role. [1, 2, 7, 6, 23] Tool-use research shows that action competence can be trained. APIGen, xLAM, Hammer and ToolACE focus on executable data, irrelevant functions, multi-turn behavior and model-aware refinement. The deeper insight is that a tool caller learns a policy over an interface, not general intelligence. A narrow policy can be compact if the interface and training distribution are well defined. [29, 30, 31, 32, 33] Neural-symbolic research shows that external computation can improve exactness where formalization is possible. Logic-LM, LINC and SatLM delegate deduction to solvers. LLM+P delegates search to a planner.",
+      "translation": "Industria semnalează și prudență, deși mai puțin zgomotos decât capacitate. Îndrumarea Anthropic recomandă fluxuri înaintea agenților și cea mai simplă arhitectură care funcționează. Sistemul său multiagent de cercetare este prezentat drept costisitor și potrivit cercetării paralelizabile, nu ca înlocuitor universal. Îndrumările NIST și OWASP accentuează guvernanța și controalele de securitate în jurul modelelor. Aceste poziții sugerează că experiența implementării contrazice presupunerile timpurii că autonomia suplimentară este întotdeauna benefică. [50, 51, 57, 58] Cercetarea academică transmite un semnal complementar. Literatura modelelor compacte demonstrează că arhitectura, calitatea datelor, distilarea și specializarea pot produce capacități puternice la scară modestă. Totuși, articolele arată și robustețe inegală și sensibilitate la proiectarea sarcinii. Concluzia potrivită nu este că scalarea a încetat să conteze. Este că numărul parametrilor reprezintă doar o variabilă și adesea nu cea decisivă pentru un rol limitat. [1, 2, 7, 6, 23] Cercetarea utilizării instrumentelor arată că poate fi antrenată competența acțiunii. APIGen, xLAM, Hammer și ToolACE se concentrează pe date executabile, funcții irelevante, comportament pe mai multe rânduri și rafinare conștientă de model. Ideea mai profundă este că un apelator de instrumente învață o politică peste o interfață, nu inteligență generală. O politică îngustă poate fi compactă dacă interfața și distribuția antrenării sunt bine definite. [29, 30, 31, 32, 33] Cercetarea neuronal-simbolică arată că calculul extern poate îmbunătăți exactitatea unde formalizarea este posibilă. Logic-LM, LINC și SatLM deleagă deducția solverelor. LLM+P deleagă căutarea unui planificator."
+    },
+    {
+      "id": "t000251",
+      "source": "LLM-Modulo places external critics around generation. The durable insight is not that symbolic AI has defeated neural models. It is that semantic interpretation and exact computation have different strengths and should be separated when the boundary can be validated. [35, 36, 37, 38, 39] Routing research sends a more skeptical signal. FrugalGPT and RouteLLM show that cascades can reduce cost and exploit complementarity. RouterBench and LLMRouterBench reveal that routing remains difficult, sophisticated methods often cluster near simple baselines and oracle performance remains distant. This means that",
+      "translation": "LLM-Modulo plasează critici externi în jurul generării. Ideea durabilă nu este că IA simbolică a învins modelele neuronale. Este că interpretarea semantică și calculul exact au puncte forte diferite și ar trebui separate când granița poate fi validată. [35, 36, 37, 38, 39] Cercetarea rutării transmite un semnal mai sceptic. FrugalGPT și RouteLLM arată că cascadele pot reduce costul și exploata complementaritatea. RouterBench și LLMRouterBench dezvăluie că rutarea rămâne dificilă, metodele sofisticate se grupează adesea aproape de repere simple, iar performanța oracolului rămâne îndepărtată. Aceasta înseamnă că"
+    },
+    {
+      "id": "t000252",
+      "source": "“use a small model first and escalate” is an architecture, not yet a solved policy.",
+      "translation": "„folosește mai întâi un model mic și escaladează” este o arhitectură, încă nu o politică rezolvată."
+    },
+    {
+      "id": "t000253",
+      "source": "[45, 46, 47, 48] Multi-agent research is similarly mixed. Parallel and specialized systems can help when subtasks are separable and tools differ. MAST shows that coordination itself creates recurrent failure modes. Cost-controlled evaluation warns that complexity can appear as capability when baselines are weak. The field is gradually replacing the question",
+      "translation": "[45, 46, 47, 48] Cercetarea multiagent este similar mixtă. Sistemele paralele și specializate pot ajuta când subsarcinile sunt separabile și instrumentele diferă. MAST arată că coordonarea însăși creează moduri recurente de eșec. Evaluarea cu cost controlat avertizează că complexitatea poate părea capacitate când reperele sunt slabe. Domeniul înlocuiește treptat întrebarea"
+    },
+    {
+      "id": "t000254",
+      "source": "“How many agents?” with “What independent capability or evidence does each agent contribute?”",
+      "translation": "„Câți agenți?” cu „Ce capacitate sau dovadă independentă contribuie fiecare agent?”"
+    },
+    {
+      "id": "t000255",
+      "source": "[52, 49, 51] Memory research is moving from conversational metaphor to systems design. Surveys distinguish forms, functions and dynamics. Data-management studies examine representation, extraction, retrieval, routing and maintenance. This shift matters because long-horizon agents fail as much from stale, conflicting or mis-scoped state as from weak generation. [53, 54] Reliability and security research offer the strongest corrective to capability enthusiasm. Average task success does not describe consistency, robustness or failure severity. Indirect prompt injection exploits the connection between untrusted language and tool authority. Privilege control and agentic security taxonomies move protection into the runtime. The convergence is clear: consequential autonomy requires controls that do not depend on the model recognizing every attack or its own uncertainty. [61, 59, 60, 58] The survey also reveals what is not yet established. There is no generally reliable method for deciding when a compact model is sufficient.",
+      "translation": "[52, 49, 51] Cercetarea memoriei trece de la metafora conversațională la proiectarea sistemelor. Analizele disting forme, funcții și dinamică. Studiile de gestionare a datelor examinează reprezentarea, extragerea, regăsirea, rutarea și întreținerea. Această schimbare contează deoarece agenții pe orizont lung eșuează la fel de mult din cauza stării învechite, conflictuale sau delimitate greșit ca din cauza generării slabe. [53, 54] Cercetarea fiabilității și securității oferă cel mai puternic corectiv entuziasmului pentru capacitate. Succesul mediu al sarcinii nu descrie consistența, robustețea sau severitatea eșecului. Injectarea indirectă de prompturi exploatează legătura dintre limbajul nefiabil și autoritatea instrumentelor. Controlul privilegiilor și taxonomiile securității agentice mută protecția în mediul de execuție. Convergența este clară: autonomia cu consecințe importante necesită controale care nu depind de recunoașterea de către model a fiecărui atac sau a propriei incertitudini. [61, 59, 60, 58] Analiza dezvăluie și ceea ce nu este încă stabilit. Nu există o metodă general fiabilă pentru a decide când un model compact este suficient."
+    },
+    {
+      "id": "t000256",
+      "source": "There is no standard validation envelope that makes results comparable across model size, quantization, tool schemas and hardware. There is no broadly demonstrated method for faithful natural-language formalization outside restricted domains. There is no evidence that adding symbolic notation alone makes an agent trustworthy. There is no universal agent-memory architecture. There is no general proof that multi-agent systems are better than well-designed workflows.",
+      "translation": "Nu există un domeniu standard de validare care să facă rezultatele comparabile între dimensiunea modelelor, cuantizare, scheme de instrumente și hardware. Nu există o metodă demonstrată larg pentru formalizarea fidelă a limbajului natural în afara domeniilor restrânse. Nu există dovezi că simpla adăugare a notației simbolice face un agent demn de încredere. Nu există o arhitectură universală de memorie agentică. Nu există o demonstrație generală că sistemele multiagent sunt mai bune decât fluxurile bine proiectate."
+    },
+    {
+      "id": "t000257",
+      "source": "These absences define the research opportunity. The field has many capable components and weak principles for composition. Models are evaluated separately from the runtimes that control them. Tool callers are evaluated separately from permissions. Formalizers are evaluated on syntax more often than semantic fidelity. Routers are evaluated on answer quality more often than governed task success. Memory is evaluated through downstream scores more often than update integrity. The S*LM programme should connect these evaluation layers.",
+      "translation": "Aceste absențe definesc oportunitatea cercetării. Domeniul are multe componente capabile și principii slabe de compoziție. Modelele sunt evaluate separat de mediile de execuție care le controlează. Apelatorii de instrumente sunt evaluați separat de permisiuni. Formalizatorii sunt evaluați pe sintaxă mai des decât pe fidelitate semantică. Modulele de rutare sunt evaluate pe calitatea răspunsului mai des decât pe succesul guvernat al sarcinii. Memoria este evaluată prin scoruri ulterioare mai des decât prin integritatea actualizării. Programul S*LM ar trebui să conecteze aceste straturi ale evaluării."
+    },
+    {
+      "id": "t000258",
+      "source": "Research judgement. Industry and academia are converging on modularity for different reasons. Industry is driven by product cost, hardware, latency, privacy and maintainability. Academia is driven by the limits of monolithic reasoning, the availability of formal tools and the need for interpretable experiments. Neither convergence proves that heterogeneous systems are always superior. It does justify treating the allocation of cognitive labour as a central research object.",
+      "translation": "Judecată de cercetare. Industria și mediul academic converg spre modularitate din motive diferite. Industria este condusă de costul produsului, hardware, latență, confidențialitate și mentenabilitate. Mediul academic este condus de limitele raționamentului monolitic, disponibilitatea instrumentelor formale și nevoia experimentelor interpretabile. Niciuna dintre convergențe nu dovedește că sistemele eterogene sunt întotdeauna superioare. Justifică însă tratarea alocării muncii cognitive ca obiect central de cercetare."
+    },
+    {
+      "id": "t000259",
+      "source": "The durable conclusion is narrower than “small is the future.” General models remain best for novel, underspecified work. Small models fit defined recurrent roles; specialized models fit roles that can be converted into data and tests; symbolic systems fit semantics that can be made explicit and checked. The runtime must allocate among them, preserve state and restrict authority.",
+      "translation": "Concluzia durabilă este mai restrânsă decât „viitorul este mic”. Modelele generale rămân cele mai bune pentru munca nouă, insuficient specificată. Modelele mici se potrivesc rolurilor recurente definite; modelele specializate se potrivesc rolurilor care pot fi convertite în date și teste; sistemele simbolice se potrivesc semanticii care poate fi făcută explicită și verificată. Mediul de execuție trebuie să aloce între ele, să păstreze starea și să restrângă autoritatea."
+    },
+    {
+      "id": "t000260",
+      "source": "Conditional outcome. Reliable allocation principles would make model ecosystems resemble computing ecosystems: general processors alongside specialized accelerators, compilers, databases and operating systems. Intelligence would reside in governed movement from ambiguous intent to justified action, not in one component.",
+      "translation": "Rezultat condiționat. Principiile fiabile de alocare ar face ecosistemele modelelor să semene cu ecosistemele de calcul: procesoare generale alături de acceleratoare specializate, compilatoare, baze de date și sisteme de operare. Inteligența ar rezida în deplasarea guvernată de la intenție ambiguă la acțiune justificată, nu într-o singură componentă."
+    },
+    {
+      "id": "t000261",
+      "source": "CHAPTER 13",
+      "translation": "CAPITOLUL 13"
+    },
+    {
+      "id": "t000262",
+      "source": "The S*LM Research Programme",
+      "translation": "Programul de cercetare S*LM"
+    },
+    {
+      "id": "t000263",
+      "source": "The S*LM programme is not a proposal to build a smaller universal assistant. Its object is the heterogeneous agent runtime and the principles by which work is assigned to compact neural models, domain specialists, symbolic systems, deterministic software, larger models and humans. The programme succeeds only if it produces falsifiable knowledge about that allocation, not merely an impressive prototype.",
+      "translation": "Programul S*LM nu este o propunere de a construi un asistent universal mai mic. Obiectul său este mediul eterogen de execuție agentică și principiile prin care munca este atribuită modelelor neuronale compacte, specialiștilor de domeniu, sistemelor simbolice, software-ului determinist, modelelor mai mari și oamenilor. Programul reușește numai dacă produce cunoaștere falsificabilă despre acea alocare, nu doar un prototip impresionant."
+    },
+    {
+      "id": "t000264",
+      "source": "The central research question is: What is the least general component that can perform a given language-mediated role reliably within a declared validation and authority envelope? This question connects model design, semantic parsing, tool use, planning, memory, security, human factors and economics. It also prevents the programme from assuming its conclusion. Some roles may resist specialization and continue to require broad models or human judgement.",
+      "translation": "Întrebarea centrală de cercetare este: care este componenta cel mai puțin generală care poate efectua fiabil un anumit rol mediat lingvistic într-un domeniu declarat de validare și autoritate? Această întrebare conectează proiectarea modelelor, parsarea semantică, folosirea instrumentelor, planificarea, memoria, securitatea, factorii umani și economia. Împiedică și programul să-și presupună concluzia. Unele roluri pot rezista specializării și pot necesita în continuare modele ample sau judecată umană."
+    },
+    {
+      "id": "t000265",
+      "source": "The first research stream should construct a role taxonomy grounded in real workflows. Candidate roles include language identification, intent detection, entity and constraint extraction, ambiguity detection, translation, terminology normalization, summarization, claim extraction, sensitive-data detection, formalization, tool retrieval, function calling, planning, verification, memory writing, retrieval, explanation and escalation. The taxonomy should characterize semantic breadth, output entropy, consequence, verification strength, repetition, privacy and latency. The goal is to predict which substrate is appropriate, not to enumerate tasks indefinitely.",
+      "translation": "Prima direcție de cercetare ar trebui să construiască o taxonomie a rolurilor fundamentată în fluxuri reale. Rolurile candidate includ identificarea limbii, detectarea intenției, extragerea entităților și constrângerilor, detectarea ambiguității, traducere, normalizarea terminologiei, rezumare, extragerea afirmațiilor, detectarea datelor sensibile, formalizare, regăsirea instrumentelor, apelarea funcțiilor, planificare, verificare, scriere în memorie, regăsire, explicație și escaladare. Taxonomia ar trebui să caracterizeze amploarea semantică, entropia ieșirii, consecința, forța verificării, repetiția, confidențialitatea și latența. Scopul este prezicerea substratului potrivit, nu enumerarea nesfârșită a sarcinilor."
+    },
+    {
+      "id": "t000266",
+      "source": "A useful experimental design begins with three domains that differ structurally. An enterprise operations domain provides recurrent intents, policies and databases. A scientific-review domain provides long documents, evidence, uncertainty and open-ended judgement. A software-engineering domain provides executable artifacts, tests and evolving repositories. The same role taxonomy can then be tested against different semantics and verification possibilities.",
+      "translation": "O proiectare experimentală utilă începe cu trei domenii care diferă structural. Un domeniu de operații ale întreprinderii oferă intenții, politici și baze de date recurente. Un domeniu de evaluare științifică oferă documente lungi, dovezi, incertitudine și judecată deschisă. Un domeniu de inginerie software oferă artefacte executabile, teste și depozite în evoluție. Aceeași taxonomie a rolurilor poate fi apoi testată față de semantici și posibilități diferite de verificare."
+    },
+    {
+      "id": "t000267",
+      "source": "The second stream should build semantic intake contracts. Experiments should compare a general-model baseline with layered systems using deterministic preprocessing, compact classification, structured extraction and explicit ambiguity states. Evaluation should follow the request through the entire workflow. The decisive metric is not intent classification in isolation, but whether goals, prohibitions, entities and conditions survive into the final action or report.",
+      "translation": "A doua direcție ar trebui să construiască contracte semantice de primire. Experimentele ar trebui să compare un reper cu model general cu sisteme stratificate care folosesc preprocesare deterministă, clasificare compactă, extragere structurată și stări explicite de ambiguitate. Evaluarea ar trebui să urmărească cererea prin întregul flux. Metrica decisivă nu este clasificarea izolată a intenției, ci dacă obiectivele, interdicțiile, entitățile și condițiile supraviețuiesc până la acțiunea sau raportul final."
+    },
+    {
+      "id": "t000268",
+      "source": "The third stream should study invariant-preserving transformations. Translation, summarization, redaction and normalization should be defined by domain-specific invariants. Test suites should mutate negation, quantity, modality, temporal order, entity identity, exceptions and uncertainty. Small models, adapters and general models should be compared under the same transformation profile. A result that reads better but changes a governing condition should be counted as a serious failure.",
+      "translation": "A treia direcție ar trebui să studieze transformări care păstrează invariantele. Traducerea, rezumarea, redactarea pentru ascunderea informațiilor și normalizarea ar trebui definite prin invariante specifice domeniului. Suitele de teste ar trebui să modifice negația, cantitatea, modalitatea, ordinea temporală, identitatea entității, excepțiile și incertitudinea. Modelele mici, adaptoarele și modelele generale ar trebui comparate sub același profil de transformare. Un rezultat care se citește mai bine, dar schimbă o condiție guvernantă, ar trebui numărat ca eșec grav."
+    },
+    {
+      "id": "t000269",
+      "source": "The fourth stream should investigate verifier-aware formalization. Compact models should translate language into schemas, controlled language, queries, logic, plans or code while receiving compiler and solver diagnostics. Evaluation must distinguish syntactic acceptance, execution success and semantic fidelity to the source. Ambiguous examples should permit multiple candidates or abstention. The programme should measure whether verifier-aware training improves repair without encouraging the model to optimize for superficial acceptance.",
+      "translation": "A patra direcție ar trebui să investigheze formalizarea conștientă de verificator. Modelele compacte ar trebui să traducă limbajul în scheme, limbaj controlat, interogări, logică, planuri sau cod, primind diagnostice de compilator și solver. Evaluarea trebuie să distingă acceptarea sintactică, succesul execuției și fidelitatea semantică față de sursă. Exemplele ambigue ar trebui să permită candidați multipli sau abținere. Programul ar trebui să măsoare dacă antrenarea conștientă de verificator îmbunătățește repararea fără a încuraja modelul să optimizeze acceptarea superficială."
+    },
+    {
+      "id": "t000270",
+      "source": "The fifth stream should develop action models and typed tool ecosystems. Real tool contracts should be transformed into training and adversarial data. The system should test tool retrieval, selection, argument construction, irrelevance, multi-turn state, recovery and policy compliance. FunctionGemma, xLAM, Hammer and ToolACE provide starting points, but the research target is not their reproduction. It is a general method for compiling an organization’s tool surface into a validated compact action policy. [13, 29, 30, 31, 32] The sixth stream should address routing and escalation. Current routing research shows complementarity and a persistent oracle gap. The programme should combine task features with contract-derived signals: missing fields, novelty, verifier disagreement, failed repairs, sensitivity and consequence. It should compare learned routers with simple rules and calibrated cascades. The router should be evaluated on total governed task cost, including false escalation, silent failure and human review. [48, 61] The seventh stream should build agent-native memory with data-system semantics. Memory objects should carry provenance, type, authority, sensitivity, version and expiry. Writes should be governed. Conflicts should remain visible. Retrieval should combine semantic relevance with authority and task dependency. Experiments should inject stale facts, poisoned summaries, contradictory preferences and lawful deletion. The research question is whether structured memory improves long-horizon reliability enough to justify its complexity. [53, 54] The eighth stream should compare workflow, single-agent and heterogeneous multi-agent architectures under equal budgets and capabilities. Multi-agent designs should be admitted only when they introduce real parallelism, tool separation, privacy boundaries or independent verification. Communication should use typed artifacts where possible. Failure analysis should identify specification, coordination, memory and verification errors rather than report one aggregate score. [49, 52] The ninth stream should establish trust and authority envelopes. Every component should declare what it can access and what actions its output may authorize. Threat models should cover prompt injection, malicious tool output, privilege escalation, data exfiltration, poisoned memory, invalid generated code and evaluator self-confirmation. Policy enforcement should remain outside the model. Human studies should measure calibration: whether users rely more appropriately on the system, not merely whether they prefer it. [57, 59, 60, 58] The tenth stream should measure economics and deployment. Experiments should run on named cloud and local hardware, with actual quantized artifacts, context sizes and runtimes. Reports should include adaptation effort, serving utilization, tool latency, retry rate, maintenance and human review. A specialized model should be promoted only when its total cost and reliability justify ownership. The project should explicitly document cases where a general hosted model remains the better engineering choice.",
+      "translation": "A cincea direcție ar trebui să dezvolte modele de acțiune și ecosisteme tipizate de instrumente. Contractele reale ale instrumentelor ar trebui transformate în date de antrenare și adversariale. Sistemul ar trebui să testeze regăsirea instrumentelor, selecția, construirea argumentelor, irelevanța, starea pe mai multe rânduri, recuperarea și respectarea politicii. FunctionGemma, xLAM, Hammer și ToolACE oferă puncte de pornire, dar ținta cercetării nu este reproducerea lor. Este o metodă generală de compilare a suprafeței instrumentelor unei organizații într-o politică compactă validată de acțiune. [13, 29, 30, 31, 32] A șasea direcție ar trebui să abordeze rutarea și escaladarea. Cercetarea actuală a rutării arată complementaritate și o diferență persistentă față de oracol. Programul ar trebui să combine caracteristicile sarcinii cu semnale derivate din contract: câmpuri lipsă, noutate, dezacord al verificatorilor, reparații eșuate, sensibilitate și consecință. Ar trebui să compare modulele de rutare învățate cu reguli simple și cascade calibrate. Modulul de rutare ar trebui evaluat pe costul total guvernat al sarcinii, incluzând escaladarea falsă, eșecul tacit și evaluarea umană. [48, 61] A șaptea direcție ar trebui să construiască memorie nativă agentică cu semantică de sistem de date. Obiectele memoriei ar trebui să poarte proveniență, tip, autoritate, sensibilitate, versiune și expirare. Scrierile ar trebui guvernate. Conflictele ar trebui să rămână vizibile. Regăsirea ar trebui să combine relevanța semantică cu autoritatea și dependența sarcinii. Experimentele ar trebui să injecteze fapte învechite, rezumate otrăvite, preferințe contradictorii și ștergere legală. Întrebarea de cercetare este dacă memoria structurată îmbunătățește fiabilitatea pe orizont lung suficient pentru a-și justifica complexitatea. [53, 54] A opta direcție ar trebui să compare arhitecturi de flux, cu un singur agent și multiagent eterogene sub bugete și capacități egale. Proiectările multiagent ar trebui admise numai când introduc paralelism real, separarea instrumentelor, granițe de confidențialitate sau verificare independentă. Comunicarea ar trebui să folosească artefacte tipizate unde este posibil. Analiza eșecului ar trebui să identifice erori de specificare, coordonare, memorie și verificare, nu să raporteze un singur scor agregat. [49, 52] A noua direcție ar trebui să stabilească domenii de încredere și autoritate. Fiecare componentă ar trebui să declare la ce poate avea acces și ce acțiuni poate autoriza ieșirea sa. Modelele de amenințare ar trebui să acopere injectarea de prompturi, ieșiri malițioase ale instrumentelor, escaladarea privilegiilor, exfiltrarea datelor, memoria otrăvită, codul generat invalid și autoconfirmarea evaluatorului. Aplicarea politicii ar trebui să rămână în afara modelului. Studiile umane ar trebui să măsoare calibrarea: dacă utilizatorii se bazează mai adecvat pe sistem, nu doar dacă îl preferă. [57, 59, 60, 58] A zecea direcție ar trebui să măsoare economia și implementarea. Experimentele ar trebui să ruleze pe hardware cloud și local numit, cu artefacte cuantizate, dimensiuni de context și medii de execuție reale. Rapoartele ar trebui să includă efortul adaptării, utilizarea deservirii, latența instrumentelor, rata reîncercării, întreținerea și evaluarea umană. Un model specializat ar trebui promovat numai când costul total și fiabilitatea justifică deținerea sa. Proiectul ar trebui să documenteze explicit cazurile în care un model general găzduit rămâne alegerea inginerească mai bună."
+    },
+    {
+      "id": "t000271",
+      "source": "The research infrastructure should preserve two timescales. During acquisition, general models and coding agents may generate data, schemas, adapters, procedures and tests. Candidate capabilities enter a staging registry. Independent evaluation and domain review determine promotion. During execution, the runtime uses only named, versioned capabilities under policy. New behavior cannot silently become authoritative because a model improvised it once.",
+      "translation": "Infrastructura cercetării ar trebui să păstreze două scări temporale. În timpul achiziției, modelele generale și agenții de programare pot genera date, scheme, adaptoare, proceduri și teste. Capacitățile candidate intră într-un registru de pregătire. Evaluarea independentă și revizuirea de domeniu determină promovarea. În timpul execuției, mediul folosește numai capacități numite, versionate și supuse politicii. Comportamentul nou nu poate deveni tacit autoritar pentru că un model l-a improvizat o dată."
+    },
+    {
+      "id": "t000272",
+      "source": "The core artifact should be a capability package. It contains the component identity, role contract, supported input distribution, output schema, training or source lineage, validation cases, known failures, resource profile, authority scope, escalation rules and version. For symbolic procedures it also contains assumptions and guarantee type. For model-based components it records the exact base model, adapter, quantization and decoding constraints. This package is more useful than a model card alone because it describes the model inside an operational role.",
+      "translation": "Artefactul central ar trebui să fie un pachet de capacitate. Conține identitatea componentei, contractul rolului, distribuția susținută a intrărilor, schema ieșirii, filiația antrenării sau sursei, cazurile de validare, eșecurile cunoscute, profilul de resurse, domeniul autorității, regulile escaladării și versiunea. Pentru proceduri simbolice, conține și presupunerile și tipul garanției. Pentru componente bazate pe modele, înregistrează exact modelul de bază, adaptorul, cuantizarea și constrângerile decodării. Acest pachet este mai util decât o fișă de model singură, deoarece descrie modelul într-un rol operațional."
+    },
+    {
+      "id": "t000273",
+      "source": "The programme requires a claim discipline. A result can be classified as demonstrated under a named workload, convergent across studies, plausible but unverified, or conditional on future evidence. A successful prototype in one company should not become a claim about enterprise AI generally. A benchmark improvement should not become a claim about trustworthy autonomy. A solver-backed result should state whether the uncertain step was formalization, data acquisition or both.",
+      "translation": "Programul necesită o disciplină a afirmațiilor. Un rezultat poate fi clasificat ca demonstrat sub un volum numit de muncă, convergent între studii, plauzibil dar neverificat sau condiționat de dovezi viitoare. Un prototip reușit într-o companie nu ar trebui să devină o afirmație despre IA de întreprindere în general. O îmbunătățire pe etalon nu ar trebui să devină o afirmație despre autonomie de încredere. Un rezultat susținut de solver ar trebui să precizeze dacă pasul incert a fost formalizarea, achiziția datelor sau ambele."
+    },
+    {
+      "id": "t000274",
+      "source": "The main hypothesis is that recurrent language-mediated work contains enough stable structure to support progressive specialization without losing semantic fidelity. This hypothesis can fail in several ways. Task distributions may drift too quickly. The cost of data and validation may exceed inference savings. Small models may fail to recognize out-of-distribution cases. Formalization may introduce silent semantic loss. Routers may misallocate difficult states. Multiple components may create more cumulative error than a strong general model. These are not secondary risks; they are the falsification conditions.",
+      "translation": "Ipoteza principală este că munca recurentă mediată lingvistic conține suficientă structură stabilă pentru a susține specializare progresivă fără pierderea fidelității semantice. Această ipoteză poate eșua în mai multe moduri. Distribuțiile sarcinilor pot deriva prea repede. Costul datelor și validării poate depăși economiile inferenței. Modelele mici pot să nu recunoască cazurile din afara distribuției. Formalizarea poate introduce pierdere semantică tacită. Modulele de rutare pot aloca greșit stări dificile. Componentele multiple pot crea mai multă eroare cumulativă decât un model general puternic. Acestea nu sunt riscuri secundare; sunt condițiile falsificării."
+    },
+    {
+      "id": "t000275",
+      "source": "A second hypothesis is that symbolic and deterministic components can substitute for some neural capacity by owning exact computation, search, state and policy. This also has clear limits. The symbolic representation may be incomplete. Real-world uncertainty may resist crisp predicates. Maintaining formal domain models may be expensive. Solver guarantees may apply to the wrong abstraction. The research contribution would be to identify where the substitution is advantageous, not to claim that symbolic methods absorb language understanding.",
+      "translation": "O a doua ipoteză este că componentele simbolice și deterministe pot substitui o parte din capacitatea neuronală deținând calculul exact, căutarea, starea și politica. Și aceasta are limite clare. Reprezentarea simbolică poate fi incompletă. Incertitudinea lumii reale poate rezista predicatelor precise. Întreținerea modelelor formale de domeniu poate fi scumpă. Garanțiile solverului se pot aplica abstracției greșite. Contribuția cercetării ar fi identificarea locurilor unde substituția este avantajoasă, nu afirmația că metodele simbolice absorb înțelegerea limbajului."
+    },
+    {
+      "id": "t000276",
+      "source": "A third hypothesis is that specialization can improve trust by narrowing authority and making validation deeper. It fails when narrow models are deployed outside scope, when formal checks are mistaken for semantic truth, or when many opaque components create untraceable pipelines. Trust evaluation must therefore examine the complete trajectory and the human organization around it.",
+      "translation": "O a treia ipoteză este că specializarea poate îmbunătăți încrederea restrângând autoritatea și făcând validarea mai profundă. Ea eșuează când modelele înguste sunt implementate în afara domeniului, când verificările formale sunt confundate cu adevărul semantic sau când multe componente opace creează fluxuri netrasabile. Evaluarea încrederii trebuie, așadar, să examineze traiectoria completă și organizația umană din jurul ei."
+    },
+    {
+      "id": "t000277",
+      "source": "What success would mean. A successful programme would produce predictive design rules, reusable capability packages, reference runtimes, datasets derived from real contracts, failure taxonomies and evidence that system-level allocation improves cost, reliability or governance. It would demonstrate not one universal architecture but a method for choosing among architectures.",
+      "translation": "Ce ar însemna succesul. Un program reușit ar produce reguli predictive de proiectare, pachete reutilizabile de capacități, medii de referință de execuție, seturi de date derivate din contracte reale, taxonomii ale eșecului și dovezi că alocarea la nivel de sistem îmbunătățește costul, fiabilitatea sau guvernanța. Ar demonstra nu o arhitectură universală, ci o metodă de alegere între arhitecturi."
+    },
+    {
+      "id": "t000278",
+      "source": "What success would not mean. It would not prove that large models are obsolete, that all language can be formalized, that symbolic systems are unbiased, or that a collection of small models constitutes general intelligence. Those claims are unnecessary. A substantial result would be showing that important classes of agent work can be made cheaper, more private, more inspectable and more reliable through disciplined division of labour.",
+      "translation": "Ce nu ar însemna succesul. Nu ar demonstra că modelele mari sunt depășite, că tot limbajul poate fi formalizat, că sistemele simbolice sunt nepărtinitoare sau că o colecție de modele mici constituie inteligență generală. Aceste afirmații sunt inutile. Un rezultat substanțial ar fi să arate că importante clase de muncă agentică pot fi făcute mai ieftine, mai private, mai inspectabile și mai fiabile prin diviziune disciplinată a muncii."
+    },
+    {
+      "id": "t000279",
+      "source": "The most promising startup opportunities lie where repetition, consequence and existing software meet. Enterprise workflows with defined tools and policies can support compact action models and governed execution. Scientific and legal document systems can support invariant-preserving extraction and source-linked formalization. Edge devices can support private local interpretation and action. Compliance and security can support explicit policy gates and provenance. The defensible asset is not access to a generic foundation model. It is the accumulated contract data, validators, capability packages and integration knowledge for a domain.",
+      "translation": "Cele mai promițătoare oportunități pentru întreprinderi noi se află acolo unde se întâlnesc repetiția, consecința și software-ul existent. Fluxurile întreprinderilor cu instrumente și politici definite pot susține modele compacte de acțiune și execuție guvernată. Sistemele de documente științifice și juridice pot susține extragere care păstrează invariantele și formalizare legată de surse. Dispozitivele de margine pot susține interpretare și acțiune locale private. Conformitatea și securitatea pot susține porți explicite de politici și proveniență. Activul defensabil nu este accesul la un model fundamental generic. Este acumularea de date de contracte, validatori, pachete de capacități și cunoștințe de integrare pentru un domeniu."
+    },
+    {
+      "id": "t000280",
+      "source": "The programme should remain open to a counterintuitive conclusion: sometimes the best S*LM component is ordinary software. A regular expression, database constraint, compiler, planner or reviewed function can outperform any language model for a stable operation. The star in S*LM should therefore be read as an invitation to composition, not as a demand that every component learn from text.",
+      "translation": "Programul ar trebui să rămână deschis unei concluzii contraintuitive: uneori cea mai bună componentă S*LM este software-ul obișnuit. O expresie regulată, o constrângere de bază de date, un compilator, un planificator sau o funcție revizuită poate depăși orice model lingvistic pentru o operație stabilă. Asteriscul din S*LM ar trebui, așadar, citit ca invitație la compoziție, nu ca cerință ca fiecare componentă să învețe din text."
+    },
+    {
+      "id": "t000281",
+      "source": "Closing position. The next important advance in agentic AI may not be a single model that internalizes every tool, policy and domain. It may be a science of deciding what should remain linguistic, what should be specialized, what should be formalized, what should be executed deterministically, what should be remembered and what should remain under human authority. S*LM names that science. Its ambition is not smaller intelligence. It is better-allocated intelligence.",
+      "translation": "Poziție finală. Următorul progres important în IA agentică poate să nu fie un singur model care internalizează fiecare instrument, politică și domeniu. Poate fi o știință a deciziei despre ce ar trebui să rămână lingvistic, ce ar trebui specializat, ce ar trebui formalizat, ce ar trebui executat determinist, ce ar trebui amintit și ce ar trebui să rămână sub autoritate umană. S*LM numește acea știință. Ambiția sa nu este o inteligență mai mică. Este o inteligență mai bine alocată."
+    },
+    {
+      "id": "t000282",
+      "source": "APPENDIX A",
+      "translation": "ANEXA A"
+    },
+    {
+      "id": "t000283",
+      "source": "A Role Taxonomy for S*LM Components",
+      "translation": "O taxonomie a rolurilor pentru componentele S*LM"
+    },
+    {
+      "id": "t000284",
+      "source": "This appendix turns the architectural argument into a practical classification. The role is the unit of evaluation. A single model may occupy several roles, but each role should retain its own contract, evidence and authority.",
+      "translation": "Această anexă transformă argumentul arhitectural într-o clasificare practică. Rolul este unitatea evaluării. Un singur model poate ocupa mai multe roluri, dar fiecare rol ar trebui să-și păstreze propriul contract, propriile dovezi și propria autoritate."
+    },
+    {
+      "id": "t000285",
+      "source": "Role",
+      "translation": "Rol"
+    },
+    {
+      "id": "t000286",
+      "source": "Operational meaning and preferred validation",
+      "translation": "Semnificație operațională și validare preferată"
+    },
+    {
+      "id": "t000287",
+      "source": "Language and modality",
+      "translation": "Identificarea limbii și"
+    },
+    {
+      "id": "t000288",
+      "source": "Detect the language, script, speech channel or visual input type",
+      "translation": "Detectează limba, scrierea, canalul vocal sau tipul intrării vizuale"
+    },
+    {
+      "id": "t000289",
+      "source": "identification",
+      "translation": "modalității"
+    },
+    {
+      "id": "t000290",
+      "source": "before interpretation. Validate by language, code-switching pattern, noise condition and device environment.",
+      "translation": "înaintea interpretării. Validează după limbă, tiparul alternării limbilor, condiția de zgomot și mediul dispozitivului."
+    },
+    {
+      "id": "t000291",
+      "source": "Speech transcription",
+      "translation": "Transcrierea vorbirii"
+    },
+    {
+      "id": "t000292",
+      "source": "Convert audio into text while preserving speaker, timing, names, numbers and uncertainty. Evaluate on the actual",
+      "translation": "Convertește audio în text păstrând vorbitorul, temporizarea, numele, numerele și incertitudinea. Evaluează pe condițiile"
+    },
+    {
+      "id": "t000293",
+      "source": "acoustic and domain conditions rather than generic word-error rate alone.",
+      "translation": "acustice și de domeniu reale, nu doar prin rata generică a erorilor de cuvinte."
+    },
+    {
+      "id": "t000294",
+      "source": "Interface grounding Map a linguistic reference to an element in a screen, image or document. Grounding accuracy must be separated from the success of the later action.",
+      "translation": "Ancorarea în interfață Mapează o referință lingvistică la un element dintr-un ecran, o imagine sau un document. Acuratețea ancorării trebuie separată de succesul acțiunii ulterioare."
+    },
+    {
+      "id": "t000295",
+      "source": "Coarse domain routing Select the organizational or knowledge domain that owns a request. Hard data-governance rules should filter permissible destinations before learned routing.",
+      "translation": "Rutare grosieră pe domeniu Selectează domeniul organizațional sau de cunoștințe care deține o cerere. Regulile stricte de guvernanță a datelor ar trebui să filtreze destinațiile permise înaintea rutării învățate."
+    },
+    {
+      "id": "t000296",
+      "source": "Intent detection",
+      "translation": "Detectarea intenției"
+    },
+    {
+      "id": "t000297",
+      "source": "Map a request to a supported operation or explicit unknown state. Test paraphrases, compound intents, prohibitions, conditions and out-of-scope cases.",
+      "translation": "Mapează o cerere la o operație susținută sau la o stare explicit necunoscută. Testează parafraze, intenții compuse, interdicții, condiții și cazuri din afara domeniului."
+    },
+    {
+      "id": "t000298",
+      "source": "Entity resolution",
+      "translation": "Rezoluția entităților"
+    },
+    {
+      "id": "t000299",
+      "source": "Connect names and descriptions to versioned internal objects. The result should preserve candidates and evidence when identity is ambiguous.",
+      "translation": "Conectează nume și descrieri la obiecte interne versionate. Rezultatul ar trebui să păstreze candidații și dovezile când identitatea este ambiguă."
+    },
+    {
+      "id": "t000300",
+      "source": "Constraint extraction",
+      "translation": "Extragerea constrângerilor"
+    },
+    {
+      "id": "t000301",
+      "source": "Identify temporal, quantitative, policy and exclusion constraints. Validate by source span and by mutation of negation, units and scope.",
+      "translation": "Identifică constrângeri temporale, cantitative, de politică și excludere. Validează prin pasaj-sursă și prin mutația negației, unităților și domeniului."
+    },
+    {
+      "id": "t000302",
+      "source": "Ambiguity detection",
+      "translation": "Detectarea ambiguității"
+    },
+    {
+      "id": "t000303",
+      "source": "Recognize when several interpretations remain plausible. The",
+      "translation": "Recunoaște când mai multe interpretări rămân plauzibile."
+    },
+    {
+      "id": "t000304",
+      "source": "preferred output is a typed clarification need, not a confident guess.",
+      "translation": "Ieșirea preferată este o nevoie tipizată de clarificare, nu o presupunere sigură."
+    },
+    {
+      "id": "t000305",
+      "source": "Translation Change language while preserving meaning, terminology, modality, names, quantities and structure. Domain-specific invariants are more important than general fluency.",
+      "translation": "Traducere Schimbă limba păstrând sensul, terminologia, modalitatea, numele, cantitățile și structura. Invariantele specifice domeniului sunt mai importante decât fluența generală."
+    },
+    {
+      "id": "t000306",
+      "source": "Role Operational meaning and preferred validation",
+      "translation": "Rol Semnificație operațională și validare preferată"
+    },
+    {
+      "id": "t000307",
+      "source": "Terminology normalization Map variants to a controlled vocabulary without erasing legitimate distinctions. Every normalization should be reversible or linked to the source form.",
+      "translation": "Normalizarea terminologiei Mapează variantele la un vocabular controlat fără a șterge distincții legitime. Fiecare normalizare ar trebui să fie reversibilă sau legată de forma-sursă."
+    },
+    {
+      "id": "t000308",
+      "source": "Document segmentation",
+      "translation": "Segmentarea documentului"
+    },
+    {
+      "id": "t000309",
+      "source": "Identify sections, clauses, claims, tables, code and references. Deterministic layout and parser evidence can complement compact models.",
+      "translation": "Identifică secțiuni, clauze, afirmații, tabele, cod și referințe. Dovezile deterministe ale aspectului și parserului pot completa modelele compacte."
+    },
+    {
+      "id": "t000310",
+      "source": "Structured extraction",
+      "translation": "Extragere structurată"
+    },
+    {
+      "id": "t000311",
+      "source": "Populate a typed schema from text or images. Evaluate field correctness, omissions, source alignment and abstention.",
+      "translation": "Completează o schemă tipizată din text sau imagini. Evaluează corectitudinea câmpurilor, omisiunile, alinierea cu sursa și abținerea."
+    },
+    {
+      "id": "t000312",
+      "source": "Claim extraction",
+      "translation": "Extragerea afirmațiilor"
+    },
+    {
+      "id": "t000313",
+      "source": "Represent claims, qualifiers, evidence and uncertainty rather than merely selecting salient sentences. Scientific and legal claims require domain profiles.",
+      "translation": "Reprezintă afirmații, calificări, dovezi și incertitudine, nu doar selectează propoziții proeminente. Afirmațiile științifice și juridice necesită profiluri de domeniu."
+    },
+    {
+      "id": "t000314",
+      "source": "Summarization",
+      "translation": "Rezumare"
+    },
+    {
+      "id": "t000315",
+      "source": "Select and realize a shorter representation under explicit coverage and contradiction-preservation rules. Store source-linked structure as the authoritative artifact where possible.",
+      "translation": "Selectează și realizează o reprezentare mai scurtă sub reguli explicite de acoperire și păstrare a contradicției. Stochează structura legată de sursă ca artefact autoritar unde este posibil."
+    },
+    {
+      "id": "t000316",
+      "source": "Redaction and",
+      "translation": "Redactare pentru ascunderea informațiilor și"
+    },
+    {
+      "id": "t000317",
+      "source": "Remove or transform sensitive information under a named",
+      "translation": "Elimină sau transformă informații sensibile sub un obiectiv"
+    },
+    {
+      "id": "t000318",
+      "source": "de-identification",
+      "translation": "dezidentificare"
+    },
+    {
+      "id": "t000319",
+      "source": "privacy objective. Local execution helps, but re-identification and retention require separate controls.",
+      "translation": "de confidențialitate numit. Execuția locală ajută, dar reidentificarea și păstrarea necesită controale separate."
+    },
+    {
+      "id": "t000320",
+      "source": "Style and audience",
+      "translation": "Transformare de stil și"
+    },
+    {
+      "id": "t000321",
+      "source": "Change register, tone or reading level without strengthening",
+      "translation": "Schimbă registrul, tonul sau nivelul de lectură fără a întări"
+    },
+    {
+      "id": "t000322",
+      "source": "transformation",
+      "translation": "public"
+    },
+    {
+      "id": "t000323",
+      "source": "claims. Compare the transformed text against protected semantic invariants.",
+      "translation": "afirmațiile. Compară textul transformat cu invariante semantice protejate."
+    },
+    {
+      "id": "t000324",
+      "source": "Tool retrieval",
+      "translation": "Regăsirea instrumentelor"
+    },
+    {
+      "id": "t000325",
+      "source": "Reduce a large catalogue to a policy-permitted candidate set. Measure recall of the correct tool, confusion among similar tools and behavior on irrelevant requests.",
+      "translation": "Reduce un catalog mare la o mulțime de candidați permisă de politică. Măsoară rata de regăsire a instrumentului corect, confuzia între instrumente similare și comportamentul la cereri irelevante."
+    },
+    {
+      "id": "t000326",
+      "source": "Function selection",
+      "translation": "Selecția funcțiilor"
+    },
+    {
+      "id": "t000327",
+      "source": "Choose one or more tools for the current state. Validate at the level of completed policy-compliant state transitions, not isolated syntax.",
+      "translation": "Alege unul sau mai multe instrumente pentru starea curentă. Validează la nivelul tranzițiilor de stare finalizate și conforme cu politica, nu al sintaxei izolate."
+    },
+    {
+      "id": "t000328",
+      "source": "Argument construction",
+      "translation": "Construirea argumentelor"
+    },
+    {
+      "id": "t000329",
+      "source": "Map entities and constraints into a tool schema. Type checking",
+      "translation": "Mapează entități și constrângeri într-o schemă de instrument. Verificarea tipurilor"
+    },
+    {
+      "id": "t000330",
+      "source": "is necessary but semantic identity and units must be verified separately.",
+      "translation": "este necesară, dar identitatea semantică și unitățile trebuie verificate separat."
+    },
+    {
+      "id": "t000331",
+      "source": "Plan proposal Generate a coarse decomposition and identify dependencies or unknowns. Stable subplans should be delegated to workflows or symbolic planners.",
+      "translation": "Propunerea planului Generează o descompunere grosieră și identifică dependențe sau necunoscute. Subplanurile stabile ar trebui delegate fluxurilor sau planificatoarelor simbolice."
+    }
+  ]
+}

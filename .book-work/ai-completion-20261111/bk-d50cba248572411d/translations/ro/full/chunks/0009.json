@@ -1,0 +1,291 @@
+{
+  "language": "ro",
+  "chunk": 9,
+  "segments": [
+    {
+      "id": "t000517",
+      "source": "As agents operate longer and gain access to hardware, the assurance problem approaches classical autonomy and control. Persistent state means errors can survive across time. Physical actuation means safety must consider timing, dynamics, sensing, and real-world irreversibility. The 2026 International AI Safety Report highlights autonomous operation as a rapidly improving capability while emphasizing the continued jaggedness of performance. The correct response is not to assume autonomy is inherently unsafe, but to demand stronger evidence as the action space and consequence grow.",
+      "translation": ""
+    },
+    {
+      "id": "t000518",
+      "source": "Multiple agents can improve division of labor and provide adversarial checking, but they also create new failure channels. Agents can amplify one another's errors, create false consensus, overwhelm a shared resource, or implicitly treat another model's output as authoritative evidence. Multi-agent reliability therefore requires identity, role separation, provenance, conflict resolution, and independent verification where diversity is supposed to provide safety. Three agents running the same model with similar prompts are not three independent witnesses.",
+      "translation": ""
+    },
+    {
+      "id": "t000519",
+      "source": "This also changes how evidence is designed. Evaluate agents in realistic environments with adversarial artifacts, hidden goals, delayed consequences and tool failures. Track task success together with policy violations, unnecessary actions, irreversible mistakes and recovery. In multi-agent systems, test correlated failure and provenance across handoffs. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000520",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000521",
+      "source": "The boundary of the claim must remain visible. Agent evaluation remains immature and lacks standardisation. Long tasks are expensive to test, adaptive attacks change as defenses become known, and sandbox success may not predict operation with live organisational data. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again. There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": ""
+    },
+    {
+      "id": "t000522",
+      "source": "For Meridian, its red team plants instructions in documents and web pages, interrupts tool APIs and introduces conflicting agent messages. Meridian must preserve source trust labels across every handoff rather than allowing a summarising agent to launder untrusted content into trusted instructions. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000523",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000524",
+      "source": "A second way to reason about agent hijacking, long horizons, and multi-agent failure is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000525",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000526",
+      "source": "The final perspective on agent hijacking, long horizons, and multi-agent failure is temporal. A system that is acceptable today may become unacceptable without a dramatic failure: users adapt, adversaries learn, policies change, data sources age, and a provider silently improves or replaces a dependency. Trustworthy engineering therefore asks how quickly evidence can become stale and how that staleness will be detected. Some claims can be protected by deterministic regression tests, others require statistical monitoring, and others can only be revisited through periodic expert review. The frequency should follow the rate at which the relevant assumptions can change, not an arbitrary annual governance calendar.",
+      "translation": ""
+    },
+    {
+      "id": "t000527",
+      "source": "This temporal view also clarifies why incidents and near misses are valuable evidence. They reveal combinations of conditions that designers did not encode in pre-deployment tests. A mature process preserves them as regression scenarios, updates threat and hazard models, and records whether the incident changes the system's operating envelope. The goal is not a constantly expanding checklist; it is a smaller, better connected set of claims whose supporting evidence evolves with the system.",
+      "translation": ""
+    },
+    {
+      "id": "t000528",
+      "source": "10.3 Evaluating and Constraining Agents in Practice",
+      "translation": ""
+    },
+    {
+      "id": "t000529",
+      "source": "Engineers often encounter practical agent assurance first as a vocabulary term and only later as a design problem. Agent evaluation must measure trajectories, not only final answers. A task can end successfully after unsafe intermediate behavior, excessive access, unnecessary disclosure or a near miss that a benchmark records as success. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000530",
+      "source": "Consider an agent completing a travel-booking task but first emailing passport details to an unnecessary service, or a coding agent fixing a bug by disabling a security check. Outcome-only grading rewards the wrong path. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000531",
+      "source": "For agents, the most robust controls are often outside the model. Least-privilege credentials limit damage. Typed tool interfaces reduce ambiguity. Transaction caps bound exposure. Sandboxes isolate code execution. High-impact actions can require a second channel of confirmation. Policy engines can inspect proposed actions before execution. Immutable logs provide accountability. Resource budgets constrain runaway loops. These controls do not make the model correct; they make incorrect model behavior less able to become a catastrophic system event.",
+      "translation": ""
+    },
+    {
+      "id": "t000532",
+      "source": "This also changes how evidence is designed. Log structured trajectories, define forbidden and costly intermediate states, inspect tool arguments, replay incidents, measure recovery and require policy invariants at runtime. Use staged deployment: simulation, sandbox, shadow mode, limited authority, then broader release only when field evidence supports it. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000533",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000534",
+      "source": "The boundary of the claim must remain visible. Trajectory monitoring can expose sensitive information and creates large volumes of data. A sophisticated agent may also behave differently when it infers that it is being evaluated, an emerging concern for evaluation-resistant evaluation. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000535",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": "Există și o dimensiune organizațională. O măsură de control care există într-un document de proiectare, dar este ocolită în mod curent, nu este eficientă; o aprobare umană care nu primește dovezi utile nu reprezintă supraveghere independentă; o constatare red-team care nu poate bloca o lansare nu reprezintă un semnal de siguranță semnificativ. Caracterul demn de încredere devine real numai când măsurările sunt conectate la autoritate. De aceea, cursul revine constant la responsabili, escaladare, revenirea la o versiune anterioară, analiza incidentelor și actualitatea dovezilor, alături de metricile modelului."
+    },
+    {
+      "id": "t000536",
+      "source": "For Meridian, promotion to greater authority is tied to trajectory evidence, not a demo. Meridian earns new tools only after the assurance case shows bounded behavior, reliable escalation and incident observability under the corresponding threat model. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000537",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000538",
+      "source": "A second way to reason about evaluating and constraining agents in practice is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000539",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000540",
+      "source": "For a design review, evaluating and constraining agents in practice can be turned into a short evidence exercise. Start with one concrete claim the team expects to make at release, then list three plausible observations that would make the claim false or materially weaker. Next, ask which of those observations can be generated before deployment, which require production monitoring, and which depend on information the organisation does not currently collect. The exercise is intentionally asymmetric: it is easier to accumulate confirmatory examples than to search for conditions that would change a decision. Designing the search for disconfirmation makes testing more realistic and creates explicit triggers for escalation or rollback.",
+      "translation": ""
+    },
+    {
+      "id": "t000541",
+      "source": "For students and practitioners, this suggests a useful habit: write the decision rule beside the metric. If a score deteriorates by five percent, what happens? If a novel input is detected, who sees it? If two evaluators disagree, is the output blocked, sampled for review, or accepted? If the answer is 'nothing', the measurement is primarily descriptive. Trustworthy engineering begins when evidence participates in control flow and when the organisation can explain why a particular amount of residual uncertainty was acceptable for the authority that was granted.",
+      "translation": "Pentru studenți și practicieni, aceasta sugerează un obicei util: scrieți regula de decizie lângă metrică. Dacă un scor se deteriorează cu cinci la sută, ce se întâmplă? Dacă este detectată o intrare nouă, cine o vede? Dacă doi evaluatori nu sunt de acord, rezultatul este blocat, eșantionat pentru verificare sau acceptat? Dacă răspunsul este „nimic”, măsurarea este în principal descriptivă. Ingineria demnă de încredere începe când dovezile participă la fluxul de control și când organizația poate explica de ce un anumit nivel de incertitudine reziduală era acceptabil pentru autoritatea acordată."
+    },
+    {
+      "id": "t000542",
+      "source": "Agents make one fact unavoidable: human oversight is itself a component that can fail. Governance must therefore be engineered with the same seriousness as model evaluation, connecting responsibility, standards and law to concrete controls rather than to review committees that operate outside the technical loop.",
+      "translation": ""
+    },
+    {
+      "id": "t000543",
+      "source": "11. Humans, Governance, Standards, and Regulation",
+      "translation": "11. Oameni, guvernanță, standarde și reglementare"
+    },
+    {
+      "id": "t000544",
+      "source": "Engineering question: How do organisations turn principles, standards and law into controls that change system behavior?",
+      "translation": ""
+    },
+    {
+      "id": "t000545",
+      "source": "Trustworthy AI ultimately asks an organisation to make decisions under uncertainty: who may deploy, who can stop the system, what evidence is enough, what residual risk is accepted and how affected people can challenge outcomes. Standards help structure those decisions, but they do not replace them. As of August 2026, NIST is revising AI RMF 1.0 and has introduced the draft TEVV-Athlon evaluation framework; ISO/IEC 42001 provides an AI management-system structure, while ISO/IEC 23894 addresses AI risk management. The EU AI Act is now partly applicable, turning some governance concerns into explicit obligations. Meridian’s engineering and governance artifacts therefore converge.",
+      "translation": ""
+    },
+    {
+      "id": "t000546",
+      "source": "11.1 Calibrated Reliance, Automation Bias, and the Human-AI Team",
+      "translation": ""
+    },
+    {
+      "id": "t000547",
+      "source": "A course on human oversight should begin with the failure it is meant to prevent, not with the metric that happens to be fashionable. Putting a human in the loop is not a safety property unless the human has information, time, authority and incentives to detect the relevant failure. Automation bias, deskilling, alert fatigue and responsibility diffusion can turn review into ceremonial approval. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000548",
+      "source": "Consider a reviewer receiving hundreds of polished AI recommendations each day with no visibility into evidence quality. Even if formally responsible, the reviewer cannot realistically reconstruct every answer and will learn to trust the interface. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000549",
+      "source": "The desired human-AI relationship is not maximum trust. It is appropriate reliance. Users should accept AI output more often when the system is likely correct and challenge it more often when the system is uncertain or outside scope. Buçinca and colleagues showed that cognitive-forcing interventions can reduce overreliance by making users engage before seeing or accepting AI advice. Later work has explored when explanations improve or worsen reliance. The interface is therefore part of the safety mechanism.",
+      "translation": ""
+    },
+    {
+      "id": "t000550",
+      "source": "A human cannot supervise what they cannot see. Oversight requires enough context to detect failure: source evidence, confidence or abstention signals, provenance, relevant alternatives, policy constraints, and the ability to inspect or reproduce the AI's work where feasible. Dumping a long chain of hidden reasoning is not necessary and may be misleading. What matters is decision-relevant observability.",
+      "translation": ""
+    },
+    {
+      "id": "t000551",
+      "source": "Long-term use changes human competence. If AI performs the routine cases, humans are left with rare and difficult exceptions while receiving less practice on the basics. This can create skill atrophy precisely where escalation depends on expertise. Trustworthy deployment should therefore monitor not only model performance but the evolving performance of the human-AI team. Training, rotation, simulation, and periodic manual practice can become safety controls.",
+      "translation": ""
+    },
+    {
+      "id": "t000552",
+      "source": "This also changes how evidence is designed. Design oversight around exception handling, evidence visibility and workload. Measure override rates and correctness, give reviewers meaningful uncertainty and provenance, create escalation paths, and periodically test whether people can detect seeded errors. Preserve independent expertise for high-consequence domains. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000553",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000554",
+      "source": "The boundary of the claim must remain visible. Human review introduces human error and can inherit the model’s framing. Requiring a click does not create independent judgment, and excessive friction can cause users to bypass official channels. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000555",
+      "source": "For systems that affect people, trustworthy oversight is incomplete without a path to challenge an outcome. Contestability requires more than a generic contact form. The organization needs enough traceability to reconstruct the relevant decision, identify the evidence and policy in force at the time, correct erroneous data, and route the case to an actor with authority to change the result. Explanations that cannot support correction are often transparency without recourse.",
+      "translation": ""
+    },
+    {
+      "id": "t000556",
+      "source": "A useful evaluation compares at least three conditions: human alone, AI alone, and the actual human-AI workflow. The team may underperform both components if the interface creates confusion or overreliance. It may outperform both if tasks are allocated well. Measures should include decision quality, time, workload, override behavior, escalation quality, learning effects, and performance on cases where the AI is wrong. The system is trustworthy only if the combined workflow is acceptable, not because each component looks acceptable separately.",
+      "translation": ""
+    },
+    {
+      "id": "t000557",
+      "source": "There is also an organisational dimension. A control that exists in a design document but is routinely bypassed is not an effective control; a human approval that receives no useful evidence is not independent oversight; a red-team finding that cannot block a release is not a meaningful safety signal. Trustworthiness becomes real only when measurements are connected to authority. This is why the course repeatedly returns to owners, escalation, rollback, incident review and evidence freshness alongside model metrics.",
+      "translation": "Există și o dimensiune organizațională. O măsură de control care există într-un document de proiectare, dar este ocolită în mod curent, nu este eficientă; o aprobare umană care nu primește dovezi utile nu reprezintă supraveghere independentă; o constatare red-team care nu poate bloca o lansare nu reprezintă un semnal de siguranță semnificativ. Caracterul demn de încredere devine real numai când măsurările sunt conectate la autoritate. De aceea, cursul revine constant la responsabili, escaladare, revenirea la o versiune anterioară, analiza incidentelor și actualitatea dovezilor, alături de metricile modelului."
+    },
+    {
+      "id": "t000558",
+      "source": "For Meridian, its interface highlights unsupported claims and unusual tool requests rather than asking reviewers to reread every sentence. Oversight is concentrated where the system’s own evidence says reliance is weakest or consequences are highest. The running system is deliberately ordinary rather than futuristic. Its importance lies in how small product decisions accumulate: adding a repository changes privacy assumptions; adding a tool changes the threat model; adding memory changes persistence; adding autonomy changes the cost of an error. The same pattern occurs in production AI systems across domains. Architecture and governance determine whether a model weakness remains a recoverable inconvenience or becomes a consequential failure.",
+      "translation": ""
+    },
+    {
+      "id": "t000559",
+      "source": "The engineering takeaway is therefore deliberately conservative. Do not ask a method to establish more than it can. Combine heterogeneous evidence when failure mechanisms differ, preserve counter-evidence instead of averaging it away, and make safe fallback part of the normal design rather than an emergency afterthought. Trust is a human attitude; trustworthy engineering is the work of making reliance inspectable, bounded and revisable.",
+      "translation": "Concluzia inginerească este, așadar, intenționat prudentă. Nu cereți unei metode să stabilească mai mult decât poate. Combinați dovezi eterogene când mecanismele de eșec diferă, păstrați dovezile contrare în loc să le estompați prin mediere și includeți alternativa sigură de rezervă în proiectarea normală, nu ca pe o soluție de urgență adăugată ulterior. Încrederea este o atitudine umană; ingineria demnă de încredere presupune munca de a face utilizarea unui sistem inspectabilă, limitată și revizuibilă."
+    },
+    {
+      "id": "t000560",
+      "source": "A second way to reason about calibrated reliance, automation bias, and the human-AI team is through counterfactual deployment review. Imagine that the system fails tomorrow in a way that is costly but entirely plausible. Which log would explain the event? Which test should have anticipated it? Which component could have contained it? Which person had authority to reduce exposure before the incident? Working backwards from those questions exposes assurance gaps that are invisible in a model-centric review. It also turns abstract principles into engineering requirements: observability, provenance, reversibility and clear ownership are not administrative extras; they are mechanisms for learning from uncertainty without allowing every failure to become a crisis.",
+      "translation": ""
+    },
+    {
+      "id": "t000561",
+      "source": "The strongest teams also distinguish absence of evidence from evidence of absence. If a red team did not discover a failure, that is evidence about the search that was performed, not a proof that the failure is impossible. If a subgroup has too few examples to estimate performance, reporting the aggregate score does not resolve the uncertainty. If a formal verifier proves one invariant, it does not certify properties outside the formal model. This epistemic discipline may look modest, but it is one of the most important differences between trustworthy engineering and assurance theater.",
+      "translation": "Cele mai solide echipe disting și absența dovezilor de dovada absenței. Dacă o echipă red-team nu a descoperit un eșec, aceasta oferă dovezi despre căutarea efectuată, nu o dovadă că eșecul este imposibil. Dacă un subgrup are prea puține exemple pentru estimarea performanței, raportarea scorului agregat nu rezolvă incertitudinea. Dacă un verificator formal demonstrează un invariant, el nu certifică proprietăți aflate în afara modelului formal. Această disciplină epistemică poate părea modestă, dar este una dintre cele mai importante diferențe dintre ingineria demnă de încredere și simulacrul de asigurare."
+    },
+    {
+      "id": "t000562",
+      "source": "11.2 Governance and Standards as Engineering Infrastructure",
+      "translation": ""
+    },
+    {
+      "id": "t000563",
+      "source": "The first useful move is to make operational AI governance concrete. Governance becomes useful when it creates technical interfaces between requirements, owners, controls, evidence and decisions. Frameworks such as NIST AI RMF organise activities around governance and risk management; ISO/IEC 42001 makes AI management a repeatable organisational system; ISO/IEC 23894 provides risk-management guidance. This distinction matters because the same numerical result can support very different conclusions depending on the deployment context. The relevant question is always conditional: what exactly has been observed, under which assumptions, and which future decision is that evidence supposed to justify? Keeping those three parts together prevents a familiar failure of AI projects, in which a technically correct measurement is gradually retold as a much stronger claim than the experiment ever established.",
+      "translation": ""
+    },
+    {
+      "id": "t000564",
+      "source": "Consider a policy requiring “robustness testing” without identifying threat models, test owners, evidence thresholds or release consequences. The policy exists, yet an engineer cannot tell what command to run or what failure would stop deployment. What makes the example useful is the separation between mechanism and symptom. The visible symptom may be an incorrect answer, an unfair alert, an unsafe action or a privacy leak, but the mechanism can sit in the data pipeline, model, retrieval layer, policy engine, user interface or organisational process. A trustworthy-AI investigation therefore resists the urge to repair the first component that looks suspicious. It reconstructs the path that produced the outcome and asks which intervention would actually break that path.",
+      "translation": ""
+    },
+    {
+      "id": "t000565",
+      "source": "Modern AI supply chains fragment responsibility among foundation-model developers, fine-tuners, API providers, cloud platforms, data providers, application developers, integrators, and deployers. Research on algorithmic supply chains shows how accountability becomes diffuse. The engineering response is traceability: contracts, version records, logs, responsibility matrices, incident channels, and evidence that allows a failure to be localized. The governance response is that responsibility must not disappear merely because technical components are outsourced.",
+      "translation": ""
+    },
+    {
+      "id": "t000566",
+      "source": "The FTC's action against Rite Aid described thousands of false-positive facial-recognition matches and disproportionate effects on some demographic groups. The failure was not one algorithmic number. It involved data quality, false matches, deployment practices, operator response, notice, and organizational controls. Trustworthy AI failed as a system. This is a recurring pattern in real incidents: technical and institutional weaknesses reinforce each other.",
+      "translation": ""
+    },
+    {
+      "id": "t000567",
+      "source": "NIST AI RMF 1.0 organizes risk management around four functions: Govern, Map, Measure, and Manage. It is voluntary and deliberately technology-neutral. Its trustworthiness characteristics include validity and reliability, safety, security and resilience, accountability and transparency, explainability and interpretability, privacy enhancement, and fairness with harmful bias managed. In 2024, NIST added a Generative AI Profile. As of August 2026, AI RMF 1.0 is being revised, and NIST has introduced TEVV-Athlon as a draft framework for evaluating real-world AI system outcomes across conventional ML, LLMs, multimodal systems, and agents.",
+      "translation": ""
+    },
+    {
+      "id": "t000568",
+      "source": "This also changes how evidence is designed. Create a control catalogue linked to system components and assurance claims, assign accountable owners, automate evidence collection where possible, and run governance as part of the development lifecycle. Crosswalk standards only after local requirements are precise enough to map meaningfully. Evidence should be collected at the level at which a claim can be falsified. Averages are helpful for orientation, but engineers need slices, counterexamples, traces, thresholds and failure cases when those are what determine whether authority should be granted. The most valuable evaluation is often not the one with the most samples; it is the one that can cause the team to change a release decision because it directly exercises an assumption on which the system depends.",
+      "translation": ""
+    },
+    {
+      "id": "t000569",
+      "source": "A useful discipline is to separate capability evidence from assurance evidence. Capability evidence asks whether the system can perform a task under some conditions. Assurance evidence asks whether it can be relied upon for a specified purpose, which also requires information about failure behavior, detection, containment, human response and change over time. The distinction becomes increasingly important for general-purpose models because impressive competence on difficult benchmarks can coexist with surprisingly simple failures. A trustworthy system needs an account of both sides of that jagged performance profile.",
+      "translation": "O disciplină utilă este separarea dovezilor de capabilitate de dovezile de asigurare. Dovezile de capabilitate întreabă dacă sistemul poate îndeplini o sarcină în anumite condiții. Dovezile de asigurare întreabă dacă ne putem baza pe el pentru un scop specificat, ceea ce necesită și informații despre comportamentul în caz de eșec, detectare, limitarea efectelor, reacția umană și schimbarea în timp. Distincția devine tot mai importantă pentru modelele cu scop general, deoarece competența impresionantă în teste de referință dificile poate coexista cu eșecuri surprinzător de simple. Un sistem demn de încredere are nevoie de o descriere a ambelor laturi ale acestui profil de performanță inegal."
+    },
+    {
+      "id": "t000570",
+      "source": "The boundary of the claim must remain visible. Conformance to a management process does not prove a particular AI system is safe or fair. Standards necessarily generalise across contexts and can lag rapidly changing technical risks. This is not pedantry. Learned systems are deployed in open environments, and evidence can expire when data, users, models, prompts, tools or incentives change. Good engineering documentation therefore says not only what passed, but what was not tested, what assumptions make the result meaningful, what observations would contradict it and what change would force the evidence to be collected again.",
+      "translation": ""
+    },
+    {
+      "id": "t000571",
+      "source": "ISO/IEC 42001:2023 specifies an AI management system that organizations can implement and certify. ISO/IEC 23894:2023 provides AI risk-management guidance. ISO/IEC 42005:2025 addresses AI system impact assessment, while the wider SC 42 portfolio covers data quality, bias, robustness, and related topics. A useful distinction is that management-system certification demonstrates that an organization operates defined processes; it does not prove that a particular model is correct or safe in every use. Technical assurance evidence remains necessary.",
+      "translation": ""
+    },
+    {
+      "id": "t000572",
+      "source": "NIST, ISO, the EU AI Act, OECD principles, sector regulation, and internal governance often use overlapping language with different legal and operational meanings. Organizations benefit from a control library that maps one engineering control to several external requirements while preserving the distinctions. For example, a documented post-deployment monitoring process can support NIST Manage outcomes, ISO management-system controls, and AI Act post-market obligations, but the evidence and legal thresholds are not automatically identical. Crosswalking reduces duplicate work; it should not erase context.",
+      "translation": ""
+    },
+    {
+      "id": "t000573",
+      "source": "Compliance teams cannot determine whether robustness testing is meaningful without engineering input, and engineers cannot determine legal sufficiency from model metrics alone. The productive interface is bidirectional. Legal and policy teams define obligations and unacceptable outcomes. Engineers translate them into system properties, tests, and telemetry. Reviewers then assess whether the implementation and evidence actually satisfy the requirement. This collaboration is a core capability of trustworthy-AI organizations, not an administrative afterthought.",
+      "translation": ""
+    }
+  ]
+}

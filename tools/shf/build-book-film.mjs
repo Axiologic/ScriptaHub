@@ -5,7 +5,7 @@ import {publishNarratedFilm} from './publish-film.mjs';
 import {trackMigrationStage} from './migration-state.mjs';
 import {checkVisualPlan} from './check-visual-plan-implementation.mjs';
 export async function buildBookFilm(root){
- root=path.resolve(root);const read=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));const write=(file,value)=>fs.writeFileSync(path.join(root,file),JSON.stringify(value,null,2)+'\n');
+ root=path.resolve(root);const read=file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8'));const write=(file,value)=>{const target=path.join(root,file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,JSON.stringify(value,null,2)+'\n');};
  const skill=path.resolve('.agents/skills/shf-presentation-creator');
  const {voiceTasks}=await import(path.join(skill,'scripts/lib/voice.mjs'));const {checkEditorial}=await import(path.join(skill,'scripts/check-editorial.mjs'));
  await import(path.join(skill,'runtime/shf-core.js'));const C=globalThis.SHFCore;

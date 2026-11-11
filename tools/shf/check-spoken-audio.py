@@ -31,15 +31,20 @@ for project_name in args.projects:
     input_sha=sha(json.dumps(inputs,sort_keys=True).encode());output=project/'qa/spoken-audio-review.json'
     if output.exists():
         prior=json.loads(output.read_text())
-        if prior.get('inputSha256')==input_sha and prior.get('modelSha256')==model_sha:
+        if prior.get('algorithmVersion')==2 and prior.get('inputSha256')==input_sha and prior.get('modelSha256')==model_sha:
             print(json.dumps({'project':project_name,'cached':True,'status':prior['status']}),flush=True);continue
     started=time.monotonic();results=[]
     for item in inputs:
         segments,info=model.transcribe(item['file'],language='en',beam_size=5,temperature=0,condition_on_previous_text=False,vad_filter=False)
-        segments=list(segments);recognized=' '.join(s.text.strip() for s in segments).strip();a,b=words(item['text']),words(recognized)
+        raw_segments=list(segments)
+        # Whisper pads short inputs and can hallucinate speech beyond the file.
+        # Keep those predictions as evidence, never attribute them to the audio.
+        segments=[s for s in raw_segments if s.start<info.duration and s.end<=info.duration+.35]
+        outside=[{'text':s.text,'start':s.start,'end':s.end,'reason':'ASR timestamp exceeds measured audio duration'} for s in raw_segments if s not in segments]
+        recognized=' '.join(s.text.strip() for s in segments).strip();a,b=words(item['text']),words(recognized)
         edits=distance(a,b);differences=[{'kind':tag,'expected':' '.join(a[i:j]),'heard':' '.join(b[k:l])} for tag,i,j,k,l in SequenceMatcher(None,a,b).get_opcodes() if tag!='equal']
-        results.append({**item,'recognized':recognized,'wordEdits':edits,'wordErrorRate':edits/max(1,len(a)),'differences':differences,'durationSeconds':info.duration,'wordsPerMinute':60*len(a)/max(.1,info.duration),'segments':[{'text':s.text,'start':s.start,'end':s.end,'avgLogprob':s.avg_logprob,'noSpeechProbability':s.no_speech_prob} for s in segments]})
+        results.append({**item,'recognized':recognized,'outOfMediaPredictions':outside,'wordEdits':edits,'wordErrorRate':edits/max(1,len(a)),'differences':differences,'durationSeconds':info.duration,'wordsPerMinute':60*len(a)/max(.1,info.duration),'segments':[{'text':s.text,'start':s.start,'end':s.end,'avgLogprob':s.avg_logprob,'noSpeechProbability':s.no_speech_prob} for s in segments]})
         print(json.dumps({'project':project_name,'clip':item['id'],'wordEdits':edits}),flush=True)
-    report={'version':1,'provider':'local faster-whisper base.en int8','modelSha256':model_sha,'inputSha256':input_sha,'status':'matched' if all(not r['wordEdits'] for r in results) else 'review-required','scope':'Independent local speech recognition; differences need semantic review and ASR can misrecognize names. Does not establish emotional quality or replace listening.','elapsedSeconds':round(time.monotonic()-started,3),'clips':results}
+    report={'version':1,'algorithmVersion':2,'timestampToleranceSeconds':.35,'provider':'local faster-whisper base.en int8','modelSha256':model_sha,'inputSha256':input_sha,'status':'matched' if all(not r['wordEdits'] for r in results) else 'review-required','scope':'Independent local speech recognition; differences need semantic review and ASR can misrecognize names. Does not establish emotional quality or replace listening.','elapsedSeconds':round(time.monotonic()-started,3),'clips':results}
     temporary=output.with_suffix('.json.tmp');temporary.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');temporary.replace(output)
     print(json.dumps({'project':project_name,'status':report['status'],'elapsedSeconds':report['elapsedSeconds']}),flush=True)

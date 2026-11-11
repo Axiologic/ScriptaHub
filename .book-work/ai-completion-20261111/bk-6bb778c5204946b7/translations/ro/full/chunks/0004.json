@@ -1,0 +1,736 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000411",
+      "source": "CSkills, or Code Skills, package stable executable behaviour. They are appropriate when repeated use has revealed a procedure that can be implemented, tested, versioned, and executed more reliably than a fresh language-model interpretation. A CSkill may still receive parameters extracted by a model, but its core operation is conventional code. This improves reproducibility and cost predictability, and it permits familiar software assurance: unit tests, static analysis, typed interfaces, dependency review, permissions, and deterministic error handling.",
+      "translation": "CSkills, sau Code Skills, grupează comportament executabil stabil. Sunt potrivite când utilizarea repetată a dezvăluit o procedură care poate fi implementată, testată, versionată și executată mai fiabil decât o interpretare nouă a modelului lingvistic. O CSkill poate primi în continuare parametri extrași de un model, dar operația sa centrală este cod convențional. Aceasta îmbunătățește reproductibilitatea și predictibilitatea costului și permite asigurarea software familiară: teste unitare, analiză statică, interfețe cu tipuri definite, revizuirea dependențelor, permisiuni și tratarea deterministă a erorilor."
+    },
+    {
+      "id": "t000412",
+      "source": "CGSkills, or Code Generation Skills, are used when the operation requires code that cannot be fully fixed in advance. The model generates or adapts a program for the current task, and the harness treats that program as an untrusted artefact. It must run inside a constrained environment with explicit inputs, resource limits, dependency policy, tests, and result capture. CGSkills occupy an important middle ground. They preserve more local generality than CSkills while avoiding the token cost and copying errors that arise when large structured transformations are performed entirely through conversational tool calls.",
+      "translation": "CGSkills, sau Code Generation Skills, sunt folosite când operația necesită cod care nu poate fi fixat complet în prealabil. Modelul generează sau adaptează un program pentru sarcina curentă, iar infrastructura de control tratează acel program ca pe un artefact nefiabil. El trebuie să ruleze într-un mediu constrâns, cu intrări explicite, limite de resurse, politică a dependențelor, teste și captarea rezultatelor. CGSkills ocupă o zonă intermediară importantă. Ele păstrează mai multă generalitate locală decât CSkills, evitând în același timp costul în tokeni și erorile de copiere care apar când transformările structurate mari sunt efectuate în întregime prin apeluri conversaționale de instrumente."
+    },
+    {
+      "id": "t000413",
+      "source": "DBTable Skills specialise the runtime for relational and tabular data. They begin from an abstraction of the database schema: tables, fields, types, keys, relationships, permitted operations, and domain annotations. From this representation, the system can create the capability to formulate queries, connect related tables, aggregate data, produce reports, and explain how a result follows from the schema and selected records. The abstraction is intended to reduce repeated schema discovery and to constrain generated operations. A database engine performs the exact relational work; the model interprets the user's intent and the meaning of the results.",
+      "translation": "DBTable Skills specializează mediul de execuție pentru date relaționale și tabelare. Ele pornesc de la o abstracție a schemei bazei de date: tabele, câmpuri, tipuri, chei, relații, operații permise și adnotări de domeniu. Din această reprezentare, sistemul poate crea capacitatea de a formula interogări, conecta tabele înrudite, agrega date, produce rapoarte și explica felul în care un rezultat decurge din schemă și înregistrările selectate. Abstracția urmărește să reducă descoperirea repetată a schemei și să constrângă operațiile generate. Un motor de baze de date efectuează munca relațională exactă; modelul interpretează intenția utilizatorului și semnificația rezultatelor."
+    },
+    {
+      "id": "t000414",
+      "source": "The three families are intentionally distinct because they make different promises. CSkills promise stable implementation. CGSkills promise adaptive implementation under isolation and verification. DBTable Skills promise schema-aware access to structured data under explicit permissions and query semantics. An orchestration skill can combine them, for example using a DBTable Skill to retrieve evidence, a CSkill to compute a regulated metric, and a CGSkill to generate a one-off visualisation. The harness can then apply family-specific logging, context reduction, review, and security rather than one undifferentiated tool policy.",
+      "translation": "Cele trei familii sunt intenționat distincte deoarece fac promisiuni diferite. CSkills promit implementare stabilă. CGSkills promit implementare adaptivă sub izolare și verificare. DBTable Skills promit acces la date structurate conștient de schemă, cu permisiuni și semantică a interogărilor explicite. O competență de orchestrare le poate combina, de exemplu folosind o DBTable Skill pentru recuperarea dovezilor, o CSkill pentru calcularea unei metrici reglementate și o CGSkill pentru generarea unei vizualizări unice. Infrastructura de control poate aplica apoi jurnalizare, reducere a contextului, revizuire și securitate specifice familiei, în locul unei singure politici nediferențiate pentru instrumente."
+    },
+    {
+      "id": "t000415",
+      "source": "8.4 Context, sessions, and the classical Agent Skills comparison",
+      "translation": "8.4 Context, sesiuni și comparația cu Agent Skills clasice"
+    },
+    {
+      "id": "t000416",
+      "source": "Context is the recurring research problem in ScriptaHubAgentLib. The architecture attempts to give an orchestration skill the local information it needs instead of replaying a global conversation and every available capability. This can reduce cost, improve tool selection, and protect unrelated data. It can also remove the nuance that explains why a request is exceptional. The important design is therefore not aggressive compression alone, but a layered context policy: a small default frame, named references to durable artefacts, provenance for retrieved knowledge, and an explicit path for requesting broader context when local confidence is insufficient.",
+      "translation": "Contextul este problema recurentă de cercetare în ScriptaHubAgentLib. Arhitectura încearcă să ofere unei competențe de orchestrare informațiile locale de care are nevoie, în loc să reia o conversație globală și fiecare capacitate disponibilă. Aceasta poate reduce costul, îmbunătăți selectarea instrumentelor și proteja datele fără legătură. Poate elimina însă și nuanța care explică de ce o cerere este excepțională. Proiectarea importantă nu constă, așadar, doar în comprimare agresivă, ci într-o politică stratificată de context: un cadru implicit mic, referințe denumite la artefacte durabile, proveniență pentru cunoașterea recuperată și o cale explicită pentru solicitarea unui context mai larg când încrederea locală este insuficientă."
+    },
+    {
+      "id": "t000417",
+      "source": "Sessions provide the operational container for this policy. A session can hold request history, selected context, intermediate artefacts, skill decisions, model usage, errors, approvals, and review outcomes. It should not be treated as unlimited conversational memory. Different elements require different retention, access, and validity rules. A database result may become stale; a user preference may require consent; generated code may need quarantine; a review decision may need long-term audit. The session is valuable when it makes these distinctions visible and prevents state from leaking between unrelated agents or users.",
+      "translation": "Sesiunile oferă containerul operațional pentru această politică. O sesiune poate păstra istoricul cererilor, contextul selectat, artefactele intermediare, deciziile competențelor procedurale, utilizarea modelelor, erorile, aprobările și rezultatele revizuirii. Nu ar trebui tratată ca memorie conversațională nelimitată. Elemente diferite necesită reguli diferite de retenție, acces și validitate. Un rezultat de bază de date se poate învechi; o preferință a utilizatorului poate necesita consimțământ; codul generat poate necesita carantină; o decizie de revizuire poate necesita audit pe termen lung. Sesiunea este valoroasă când face aceste distincții vizibile și împiedică scurgerea stării între agenți sau utilizatori fără legătură."
+    },
+    {
+      "id": "t000418",
+      "source": "External Anthropic-style Agent Skills are referred to here as classical Agent Skills. Their current form packages instructions, scripts, and resources that a broad agent can discover and load progressively. Project experiments indicate that this form currently fits most naturally inside a ReAct-style agent: the general loop retains the global task context while the skill supplies local procedural guidance. ScriptaHubAgentLib is intentionally learning a different style in which orchestration skills carry more explicit coordination and delegate to executable families. The two approaches should not be presented as direct substitutes because they allocate context and execution meaning differently.",
+      "translation": "Competențele externe Agent Skills de tip Anthropic sunt numite aici Agent Skills clasice. Forma lor actuală grupează instrucțiuni, scripturi și resurse pe care un agent generalist le poate descoperi și încărca progresiv. Experimentele proiectului indică faptul că această formă se potrivește în prezent cel mai firesc într-un agent de tip ReAct: bucla generală păstrează contextul global al sarcinii, în timp ce competența procedurală furnizează îndrumare procedurală locală. ScriptaHubAgentLib învață intenționat un stil diferit, în care competențele de orchestrare poartă o coordonare mai explicită și deleagă familiilor executabile. Cele două abordări nu ar trebui prezentate drept înlocuitori direcți, deoarece repartizează diferit contextul și sensul execuției."
+    },
+    {
+      "id": "t000419",
+      "source": "The ScriptaHub approach can outperform a general ReAct loop on particular repeated tasks because it reduces tool exposure, repeated deliberation, and context traffic. Its risk is equally clear: by localising the context, it may lose global constraints, subtle user intent, or cross-task dependencies. This is not an implementation detail to be hidden. It is the central customisation and research problem. Every orchestration skill should be evaluated not only for speed and correctness, but for what information it excludes, how that exclusion is detected, and when it escalates back to a broader reasoning context.",
+      "translation": "Abordarea ScriptaHub poate depăși o buclă ReAct generală în anumite sarcini repetate deoarece reduce expunerea instrumentelor, deliberarea repetată și traficul de context. Riscul său este la fel de clar: localizând contextul, poate pierde constrângeri globale, intenția subtilă a utilizatorului sau dependențe între sarcini. Acesta nu este un detaliu de implementare care să fie ascuns. Este problema centrală de personalizare și cercetare. Fiecare competență de orchestrare ar trebui evaluată nu doar pentru viteză și corectitudine, ci și pentru ce informații exclude, cum este detectată excluderea și când escaladează înapoi către un context de raționament mai larg."
+    },
+    {
+      "id": "t000420",
+      "source": "8.5 Soul Proxy, Agent Ploinky, and controlled model access",
+      "translation": "8.5 Soul Proxy, Agent Ploinky și acces controlat la modele"
+    },
+    {
+      "id": "t000421",
+      "source": "Soul Proxy, also described as Soul Gateway, is conceived as an Agent Ploinky placed between agent runtimes and model providers. Its role is to turn model access into a governed service rather than a collection of direct API calls. It can monitor requests and responses, enforce model and data policies, apply guardrails, route among providers or local models, constrain budgets, support caching, record usage, and mediate what information may leave a trust domain. Centralising this boundary also makes it possible to change model infrastructure without rewriting every orchestration skill.",
+      "translation": "Soul Proxy, descris și ca Soul Gateway, este conceput ca un Agent Ploinky plasat între mediile de execuție agentice și furnizorii de modele. Rolul său este să transforme accesul la modele într-un serviciu guvernat, nu într-o colecție de apeluri API directe. Poate monitoriza cereri și răspunsuri, impune politici pentru modele și date, aplica mecanisme de protecție, ruta între furnizori sau modele locale, constrânge bugete, susține memorarea în cache, înregistra utilizarea și media ce informații pot părăsi un domeniu de încredere. Centralizarea acestei granițe permite și schimbarea infrastructurii modelelor fără rescrierea fiecărei competențe de orchestrare."
+    },
+    {
+      "id": "t000422",
+      "source": "An Agent Ploinky exposes two complementary integration surfaces. An MCP-facing interface allows compatible agents to discover and invoke approved capabilities through standard tool semantics. An OpenAI-compatible API interface allows existing applications and agent frameworks to treat the governed service as a familiar model or agent endpoint. Compatibility is not the same as unrestricted equivalence: identity, tenant, policy, quotas, trace correlation, and data-handling rules must remain explicit at both surfaces.",
+      "translation": "Un Agent Ploinky expune două suprafețe complementare de integrare. O interfață orientată spre MCP permite agenților compatibili să descopere și să invoce capacități aprobate prin semantica standard a instrumentelor. O interfață API compatibilă cu OpenAI permite aplicațiilor existente și cadrelor de dezvoltare agentice să trateze serviciul guvernat ca pe un punct terminal familiar de model sau agent. Compatibilitatea nu este același lucru cu echivalența nerestricționată: identitatea, entitatea utilizatoare, politica, cotele, corelarea urmelor și regulile de tratare a datelor trebuie să rămână explicite pe ambele suprafețe."
+    },
+    {
+      "id": "t000423",
+      "source": "The gateway is also a natural point for context protection and observability. It can redact or tokenise sensitive fields, apply compression policies, reject requests that exceed an authority boundary, attach provenance, and connect model calls to session-level traces. It cannot determine the full meaning of every request and should not become a single opaque policy oracle. Local skills still need domain checks, and high-consequence actions still require appropriate validation or human authority. The value of Soul Proxy is consistent mediation, not magical safety.",
+      "translation": "Poarta de acces este și un punct firesc pentru protejarea contextului și observabilitate. Poate masca sau tokeniza câmpuri sensibile, aplica politici de comprimare, respinge cereri care depășesc o graniță de autoritate, atașa proveniență și conecta apelurile de modele la urme de sesiune. Nu poate determina sensul complet al fiecărei cereri și nu ar trebui să devină un singur oracol opac de politici. Competențele locale au în continuare nevoie de verificări de domeniu, iar acțiunile cu consecințe majore necesită în continuare validare adecvată sau autoritate umană. Valoarea Soul Proxy este medierea consecventă, nu siguranța magică."
+    },
+    {
+      "id": "t000424",
+      "source": "8.6 How ScriptaHubAgentLib should be evaluated and evolved",
+      "translation": "8.6 Cum ar trebui evaluat și dezvoltat ScriptaHubAgentLib"
+    },
+    {
+      "id": "t000425",
+      "source": "ScriptaHubAgentLib should be evaluated through task-specific benchmark packages derived from the applications it intends to support. Each package should include representative requests, difficult edge cases, hidden perturbations, unacceptable outcomes, expected evidence, cost and latency budgets, and a ReAct-style baseline using comparable models and tools. The objective is not to prove that the architecture produces a generally superior agent. It is to determine whether a particular orchestration and skill configuration earns its additional structure.",
+      "translation": "ScriptaHubAgentLib ar trebui evaluat prin pachete de teste de referință specifice sarcinilor, derivate din aplicațiile pe care intenționează să le susțină. Fiecare pachet ar trebui să includă cereri reprezentative, cazuri-limită dificile, perturbări ascunse, rezultate inacceptabile, dovezi așteptate, bugete de cost și latență și un sistem de referință de tip ReAct care folosește modele și instrumente comparabile. Obiectivul nu este să dovedească faptul că arhitectura produce un agent superior în general. Este să stabilească dacă o anumită configurație de orchestrare și competențe procedurale își justifică structura suplimentară."
+    },
+    {
+      "id": "t000426",
+      "source": "The most informative experiments are ablations. Compare global context with local context plus escalation. Compare a broad tool catalogue with skill-scoped exposure. Replace a CSkill with model-mediated execution to measure the value of stabilisation. Compare a CGSkill with repeated tool calls to examine token traffic and copying error. Compare a DBTable Skill with open SQL generation to measure schema errors, policy violations, reporting quality, and explanation. These experiments can reveal whether improvements come from the model, the context policy, the executable family, or the reviewer.",
+      "translation": "Cele mai informative experimente sunt ablațiile. Comparați contextul global cu contextul local plus escaladare. Comparați un catalog larg de instrumente cu expunerea delimitată de competența procedurală. Înlocuiți o CSkill cu execuție mediată de model pentru a măsura valoarea stabilizării. Comparați o CGSkill cu apeluri repetate de instrumente pentru a examina traficul de tokeni și eroarea de copiere. Comparați o DBTable Skill cu generarea SQL deschisă pentru a măsura erorile de schemă, încălcările politicilor, calitatea raportării și explicația. Aceste experimente pot arăta dacă îmbunătățirile provin din model, politica de context, familia executabilă sau evaluator."
+    },
+    {
+      "id": "t000427",
+      "source": "The expected development path is progressive. A new task may begin as an instrumented ReAct prototype. Repeated traces reveal the stable coordination pattern and common failures. That pattern becomes an orchestration skill. Stable operations become CSkills; variable transformations may temporarily become CGSkills; structured-data work becomes a DBTable Skill. The change is promoted only when local evaluation shows a useful improvement and when the context boundary does not erase critical nuance. In this sense the harness grows by converting experience into explicit structure.",
+      "translation": "Calea de dezvoltare așteptată este progresivă. O sarcină nouă poate începe ca prototip ReAct instrumentat. Urmele repetate dezvăluie tiparul stabil de coordonare și eșecurile frecvente. Acel tipar devine o competență de orchestrare. Operațiile stabile devin CSkills; transformările variabile pot deveni temporar CGSkills; munca cu date structurate devine o DBTable Skill. Schimbarea este promovată numai când evaluarea locală arată o îmbunătățire utilă și când granița contextului nu șterge nuanța critică. În acest sens, infrastructura de control crește convertind experiența în structură explicită."
+    },
+    {
+      "id": "t000428",
+      "source": "ScriptaHubAgentLib therefore represents a disciplined engineering thesis: use language models where interpretation is genuinely valuable, but do not require them to rediscover every recurring procedure. Preserve ReAct as an open path rather than as the universal control law. Build narrow competence where evidence justifies it. Make context selection, execution semantics, model access, and review visible enough to improve. MRP-VM extends this thesis by asking whether the executable knowledge itself can become the main substrate of a multi-agent environment and can be refactored through controlled periods of self-research.",
+      "translation": "ScriptaHubAgentLib reprezintă, prin urmare, o teză inginerească disciplinată: folosiți modele lingvistice acolo unde interpretarea este cu adevărat valoroasă, dar nu le cereți să redescopere fiecare procedură recurentă. Păstrați ReAct ca pe o cale deschisă, nu ca pe legea universală de control. Construiți competență restrânsă acolo unde dovezile o justifică. Faceți selectarea contextului, semantica execuției, accesul la modele și revizuirea suficient de vizibile pentru a putea fi îmbunătățite. MRP-VM extinde această teză întrebând dacă însăși cunoașterea executabilă poate deveni substratul principal al unui mediu multiagent și poate fi refactorizată prin perioade controlate de autocercetare."
+    },
+    {
+      "id": "t000429",
+      "source": "CHAPTER 9",
+      "translation": "CAPITOLUL 9"
+    },
+    {
+      "id": "t000430",
+      "source": "MRPVM AKUs, Self-Research, and Evolvable Harnesses",
+      "translation": "MRP-VM: AKU-uri, autocercetare și infrastructuri de control evolutive"
+    },
+    {
+      "id": "t000431",
+      "source": "A harness should not merely remember conversations. It",
+      "translation": "O infrastructură de control nu ar trebui doar să-și amintească conversații. Ea"
+    },
+    {
+      "id": "t000432",
+      "source": "should be able to convert experience into inspectable",
+      "translation": "ar trebui să poată converti experiența în cunoaștere inspectabilă"
+    },
+    {
+      "id": "t000433",
+      "source": "knowledge and better execution under controlled change.",
+      "translation": "și execuție mai bună, prin schimbare controlată."
+    },
+    {
+      "id": "t000434",
+      "source": "9.1 Why another runtime model",
+      "translation": "9.1 De ce un alt model de mediu de execuție"
+    },
+    {
+      "id": "t000435",
+      "source": "MRP-VM begins from a direct confrontation with the limits of standard ReAct patterns and contemporary tool use. Long transcripts accumulate schemas, observations, corrections, and duplicated prose; API costs rise as the same history is repeatedly processed. Agents repeat actions, hallucinate state, lose logical consistency in long-form generation, simplify complex specifications, and miss constraints buried in the middle. Tools extend capability, but the loop still asks natural language to copy, remember, and coordinate too much of the program.",
+      "translation": "MRP-VM pornește de la o confruntare directă cu limitele tiparelor ReAct standard și ale utilizării contemporane a instrumentelor. Transcrierile lungi acumulează scheme, observații, corecții și proză duplicată; costurile API cresc pe măsură ce același istoric este procesat repetat. Agenții repetă acțiuni, halucinează stare, pierd consecvența logică în generarea lungă, simplifică specificații complexe și ratează constrângeri îngropate la mijloc. Instrumentele extind capacitatea, dar bucla îi cere în continuare limbajului natural să copieze, să rețină și să coordoneze prea mult din program."
+    },
+    {
+      "id": "t000436",
+      "source": "The transcript is therefore an inadequate universal representation of memory, program state, and explanation. It orders events without exposing dependencies, mixes instructions with hypotheses and outputs, and does not identify which claims remain valid after change. Summaries reduce size by creating another lossy bottleneck. MRP-VM instead represents long-running work through named executable knowledge objects and explicit intermediate values, while conversation remains one interface rather than the whole machine.",
+      "translation": "Transcrierea este, prin urmare, o reprezentare universală inadecvată a memoriei, stării programului și explicației. Ea ordonează evenimentele fără a expune dependențele, amestecă instrucțiuni cu ipoteze și rezultate și nu identifică afirmațiile care rămân valide după schimbare. Rezumatele reduc dimensiunea creând un alt blocaj cu pierderi. MRP-VM reprezintă în schimb munca de lungă durată prin obiecte de cunoaștere executabilă denumite și valori intermediare explicite, în timp ce conversația rămâne o interfață, nu întreaga mașină."
+    },
+    {
+      "id": "t000437",
+      "source": "The philosophical premise is that natural language is an interpretation medium, not an automatically authorised instruction set. A statement may be ambiguous, provisional, contested, or perspective-dependent. Execution therefore requires an interpreter that declares how language becomes an operation, what evidence it consumes, what result it produces, and how that result is qualified. Explanation concerns this visible mapping from request to interpretation, evidence, operation, and result—not an unverifiable claim to reveal private model reasoning.",
+      "translation": "Premisa filosofică este că limbajul natural reprezintă un mediu de interpretare, nu un set de instrucțiuni autorizat automat. O afirmație poate fi ambiguă, provizorie, contestată sau dependentă de perspectivă. Execuția necesită, așadar, un interpret care declară cum devine limbajul o operație, ce dovezi consumă, ce rezultat produce și cum este calificat acel rezultat. Explicația privește această corespondență vizibilă dintre cerere, interpretare, dovezi, operație și rezultat, nu o pretenție neverificabilă de a dezvălui raționamentul privat al modelului."
+    },
+    {
+      "id": "t000438",
+      "source": "MRP-VM rejects the assumption that one agent can be good at everything. Useful systems instead combine bounded agents with a harness that can grow under evidence. Research, database, and software agents may share a runtime and default knowledge while retaining separate working knowledge, authority, models, budgets, and public identities. Generality comes from a governed portfolio and forkable knowledge, not unrestricted competence granted to one model.",
+      "translation": "MRP-VM respinge presupunerea că un singur agent poate fi bun la toate. Sistemele utile combină în schimb agenți limitați cu o infrastructură de control care poate crește pe baza dovezilor. Agenții de cercetare, baze de date și software pot împărți un mediu de execuție și cunoaștere implicită, păstrând cunoaștere de lucru, autoritate, modele, bugete și identități publice separate. Generalitatea provine dintr-un portofoliu guvernat și cunoaștere care poate fi derivată, nu din competență nerestricționată acordată unui singur model."
+    },
+    {
+      "id": "t000439",
+      "source": "Figure from PDF page 75",
+      "translation": "Figură de la pagina 75 a PDF-ului"
+    },
+    {
+      "id": "t000440",
+      "source": "Figure 9.1. MRPVM hosts several API-compatible agents over a small SDK, layered AKU knowledge bases, and a governed sleep loop.",
+      "translation": "Figura 9.1. MRP-VM găzduiește mai mulți agenți compatibili API peste un SDK mic, baze stratificate de cunoaștere AKU și o buclă de repaus guvernată."
+    },
+    {
+      "id": "t000441",
+      "source": "9.2 AKUs and executable natural-language programs",
+      "translation": "9.2 AKU-uri și programe executabile în limbaj natural"
+    },
+    {
+      "id": "t000442",
+      "source": "The core abstraction is the Agentic Knowledge Unit, or AKU. An AKU contains more than a prompt. It can contain the natural-language specification, the interpretation or execution semantics, interfaces to language models, other agents, code, tools, and external systems, and metadata such as version, provenance, authority, context requirements, tests, evaluator expectations, and prior performance. The exact representation can evolve, but the conceptual boundary is essential: knowledge and the method by which that knowledge becomes operational are kept together.",
+      "translation": "Abstracția centrală este Unitatea de Cunoaștere Agentică, sau AKU. Un AKU conține mai mult decât un prompt. Poate conține specificația în limbaj natural, semantica de interpretare sau execuție, interfețe către modele lingvistice, alți agenți, cod, instrumente și sisteme externe și metadate precum versiunea, proveniența, autoritatea, cerințele de context, testele, așteptările evaluatorului și performanța anterioară. Reprezentarea exactă poate evolua, dar granița conceptuală este esențială: cunoașterea și metoda prin care acea cunoaștere devine operațională sunt păstrate împreună."
+    },
+    {
+      "id": "t000443",
+      "source": "Replacing the generic skill with an AKU changes what the runtime can inspect. An AKU can declare its interpreter, the named values it reads and writes, the evidence that qualifies them, and the meaning of failure. It can be cloned, forked, combined, compared, or retired as a versioned object. Natural language remains central for intent and domain meaning, but it is bound to an operational contract.",
+      "translation": "Înlocuirea competenței procedurale generice cu un AKU schimbă ceea ce mediul de execuție poate inspecta. Un AKU își poate declara interpretul, valorile denumite pe care le citește și le scrie, dovezile care le califică și sensul eșecului. Poate fi clonat, derivat, combinat, comparat sau retras ca obiect cu versiuni. Limbajul natural rămâne central pentru intenție și sensul de domeniu, dar este legat de un contract operațional."
+    },
+    {
+      "id": "t000444",
+      "source": "Interpreter bindings are heterogeneous by design. An AKU may use a language model, stable code, a database, a symbolic solver, a remote OpenAI-compatible agent, or several interpreters. The runtime preserves these distinctions because reliability, cost, and explanation differ. It records which interpreter produced each value and under which configuration, separating model errors from code, tool, data, and orchestration errors.",
+      "translation": "Asocierile cu interpreți sunt eterogene prin proiectare. Un AKU poate folosi un model lingvistic, cod stabil, o bază de date, un rezolvitor simbolic, un agent la distanță compatibil cu OpenAI sau mai mulți interpreți. Mediul de execuție păstrează aceste distincții deoarece fiabilitatea, costul și explicația diferă. Înregistrează ce interpret a produs fiecare valoare și cu ce configurație, separând erorile modelului de cele de cod, instrumente, date și orchestrare."
+    },
+    {
+      "id": "t000445",
+      "source": "Executable natural-language programs can use SOP-like structures with named commands, values, dependencies, and acceptance conditions. A value may represent documents, a schema mapping, an interpreted requirement, an artefact, or a verified result. Strong context references keep a current value available; weak references may use a summary or identifier. Explicit dependencies permit selective recomputation and different context policies across the program.",
+      "translation": "Programele executabile în limbaj natural pot folosi structuri de tip procedură operațională standard, cu comenzi, valori, dependențe și condiții de acceptare denumite. O valoare poate reprezenta documente, o corespondență de schemă, o cerință interpretată, un artefact sau un rezultat verificat. Referințele puternice de context păstrează disponibilă o valoare curentă; referințele slabe pot folosi un rezumat sau un identificator. Dependențele explicite permit recalculare selectivă și politici de context diferite în cadrul programului."
+    },
+    {
+      "id": "t000446",
+      "source": "Qualification belongs to the value itself. Results may be observed, inferred, generated, tested, reviewed, disputed, stale, or rejected, with links to evidence and evaluators. This supports process explainability: users and auditors can see what ran, what knowledge it used, where model interpretation entered, and where uncertainty remains, without exposing hidden chain-of-thought.",
+      "translation": "Calificarea aparține valorii înseși. Rezultatele pot fi observate, deduse, generate, testate, revizuite, contestate, învechite sau respinse, cu legături către dovezi și evaluatori. Aceasta susține explicabilitatea procesului: utilizatorii și auditorii pot vedea ce a rulat, ce cunoaștere a folosit, unde a intervenit interpretarea modelului și unde rămâne incertitudine, fără expunerea lanțului ascuns de raționament."
+    },
+    {
+      "id": "t000447",
+      "source": "9.3 A small SDK over an executable knowledge base",
+      "translation": "9.3 Un SDK mic peste o bază de cunoaștere executabilă"
+    },
+    {
+      "id": "t000448",
+      "source": "MRP-VM aims to keep the fixed runtime small. The SDK provides the primitives needed to interact with knowledge bases, invoke language models or other agents, communicate with external systems, execute approved code, manage sessions and values, and record traces. It should not contain every useful business procedure. The more domain behaviour is hardwired into the runtime, the harder it becomes to inspect, fork, improve, and specialise. The VM supplies execution discipline; the knowledge base supplies most useful behaviour.",
+      "translation": "MRP-VM urmărește să păstreze mic mediul de execuție fix. SDK-ul furnizează primitivele necesare interacțiunii cu bazele de cunoaștere, invocării modelelor lingvistice sau altor agenți, comunicării cu sisteme externe, execuției codului aprobat, gestionării sesiunilor și valorilor și înregistrării urmelor. Nu ar trebui să conțină fiecare procedură utilă de afaceri. Cu cât mai mult comportament de domeniu este încorporat rigid în mediul de execuție, cu atât devine mai greu de inspectat, derivat, îmbunătățit și specializat. Mașina virtuală furnizează disciplina execuției; baza de cunoaștere furnizează cea mai mare parte a comportamentului util."
+    },
+    {
+      "id": "t000449",
+      "source": "Useful code therefore lives in the knowledge base as part of AKUs. A code-bearing AKU can package source, dependencies, tests, constraints, and a natural-language account of its capability. Model-facing AKUs can package prompts, examples, context selectors, schemas, and evaluators. Composite AKUs connect them, allowing code, instructions, documentation, and benchmarks to evolve as one operational unit.",
+      "translation": "Codul util există, așadar, în baza de cunoaștere ca parte a AKU-urilor. Un AKU purtător de cod poate grupa sursa, dependențele, testele, constrângerile și o descriere în limbaj natural a capacității sale. AKU-urile orientate spre modele pot grupa prompturi, exemple, selectoare de context, scheme și evaluatori. AKU-urile compozite le conectează, permițând codului, instrucțiunilor, documentației și testelor de referință să evolueze ca o singură unitate operațională."
+    },
+    {
+      "id": "t000450",
+      "source": "A Default Knowledge Base provides versioned baseline AKUs distributed with the environment or approved by an organisation. A Working Knowledge Base contains the units active for one agent or application. Default AKUs can be cloned or forked locally without altering the shared baseline. Their known origin and local divergence remain visible, so later versions can be compared, selectively merged, or rejected.",
+      "translation": "O Bază de Cunoaștere Implicită oferă AKU-uri de referință cu versiuni, distribuite cu mediul sau aprobate de o organizație. O Bază de Cunoaștere de Lucru conține unitățile active pentru un agent sau o aplicație. AKU-urile implicite pot fi clonate sau derivate local fără a modifica baza comună de referință. Originea lor cunoscută și divergența locală rămân vizibile, astfel încât versiunile ulterioare pot fi comparate, integrate selectiv sau respinse."
+    },
+    {
+      "id": "t000451",
+      "source": "This layering supports controlled promotion and rollback. Candidate AKUs are tested in an experimental branch and promoted only when local benchmarks improve without violating safety or context constraints. A successful local unit may later be proposed upstream but must not propagate silently. Provenance, signatures, dependency pinning, and migration rules matter because executable knowledge is also a software supply chain.",
+      "translation": "Această stratificare susține promovarea și revenirea controlate. AKU-urile candidate sunt testate într-o ramură experimentală și promovate numai când testele locale de referință se îmbunătățesc fără încălcarea constrângerilor de siguranță sau context. O unitate locală reușită poate fi propusă ulterior în amonte, dar nu trebuie să se propage pe nesimțite. Proveniența, semnăturile, fixarea versiunilor dependențelor și regulile de migrare contează deoarece cunoașterea executabilă constituie și un lanț de aprovizionare software."
+    },
+    {
+      "id": "t000452",
+      "source": "The knowledge base must not collapse into a vector store of decontextualised prose. Retrieval may discover candidates; the runtime decides whether and how they execute. Each AKU retains identity, contract, evidence, authority, and compatibility constraints. Relevance is not permission, and similarity is not validity.",
+      "translation": "Baza de cunoaștere nu trebuie să se reducă la un depozit vectorial de proză decontextualizată. Recuperarea poate descoperi candidați; mediul de execuție decide dacă și cum se execută. Fiecare AKU își păstrează identitatea, contractul, dovezile, autoritatea și constrângerile de compatibilitate. Relevanța nu înseamnă permisiune, iar similaritatea nu înseamnă validitate."
+    },
+    {
+      "id": "t000453",
+      "source": "Table 9.1. MRPVM treats executable knowledge, working state, agent identity, and improvement evidence as versioned runtime objects.",
+      "translation": "Tabelul 9.1. MRP-VM tratează cunoașterea executabilă, starea de lucru, identitatea agentului și dovezile de îmbunătățire ca obiecte de execuție cu versiuni."
+    },
+    {
+      "id": "t000454",
+      "source": "MRP-VM object",
+      "translation": "Obiect MRP-VM"
+    },
+    {
+      "id": "t000455",
+      "source": "Execution meaning",
+      "translation": "Sens de execuție"
+    },
+    {
+      "id": "t000456",
+      "source": "Agentic Knowledge Unit (AKU)",
+      "translation": "Unitate de Cunoaștere Agentică (AKU)"
+    },
+    {
+      "id": "t000457",
+      "source": "Versioned instructions, interpreter bindings, interfaces, tests, provenance, and policy",
+      "translation": "Instrucțiuni cu versiuni, asocieri cu interpreți, interfețe, teste, proveniență și politici"
+    },
+    {
+      "id": "t000458",
+      "source": "SOP command or named value",
+      "translation": "Comandă SOP sau valoare denumită"
+    },
+    {
+      "id": "t000459",
+      "source": "Operation, dependency, intermediate result, or qualified state",
+      "translation": "Operație, dependență, rezultat intermediar sau stare calificată"
+    },
+    {
+      "id": "t000460",
+      "source": "Default Knowledge Base",
+      "translation": "Bază de Cunoaștere Implicită"
+    },
+    {
+      "id": "t000461",
+      "source": "Shared versioned baseline AKUs",
+      "translation": "AKU-uri de referință comune, cu versiuni"
+    },
+    {
+      "id": "t000462",
+      "source": "Working Knowledge Base",
+      "translation": "Bază de Cunoaștere de Lucru"
+    },
+    {
+      "id": "t000463",
+      "source": "Cloned or forked AKUs local to one agent or application",
+      "translation": "AKU-uri clonate sau derivate, locale unui agent sau unei aplicații"
+    },
+    {
+      "id": "t000464",
+      "source": "Small runtime SDK",
+      "translation": "SDK mic al mediului de execuție"
+    },
+    {
+      "id": "t000465",
+      "source": "KB, model and agent adapters, external access, state, and tracing",
+      "translation": "Adaptoare pentru baza de cunoaștere, modele și agenți, acces extern, stare și trasare"
+    },
+    {
+      "id": "t000466",
+      "source": "Agent instance",
+      "translation": "Instanță de agent"
+    },
+    {
+      "id": "t000467",
+      "source": "Isolated identity, policy, budget, working KB, and API endpoint",
+      "translation": "Identitate, politică, buget, bază de cunoaștere de lucru și punct terminal API izolate"
+    },
+    {
+      "id": "t000468",
+      "source": "Interaction corpus",
+      "translation": "Corpus de interacțiuni"
+    },
+    {
+      "id": "t000469",
+      "source": "Curated cases, corrections, feedback, and execution evidence",
+      "translation": "Cazuri selectate, corecții, feedback și dovezi de execuție"
+    },
+    {
+      "id": "t000470",
+      "source": "Sleep phase",
+      "translation": "Fază de repaus"
+    },
+    {
+      "id": "t000471",
+      "source": "Offline refactoring, replay, benchmarking, and governed promotion",
+      "translation": "Refactorizare offline, reluare, testare de referință și promovare guvernată"
+    },
+    {
+      "id": "t000472",
+      "source": "9.4 Many agents in one environment",
+      "translation": "9.4 Mai mulți agenți într-un mediu"
+    },
+    {
+      "id": "t000473",
+      "source": "One MRP-VM installation is intended to manage several agents in parallel. Each has an identity, policy, Working Knowledge Base, model portfolio, budget, and external capabilities. Agents are scheduled independently while sharing infrastructure and selected Default AKUs, enabling consistent tracing, governance, comparison, and composition across domains.",
+      "translation": "O instalare MRP-VM este destinată gestionării mai multor agenți în paralel. Fiecare are o identitate, o politică, o Bază de Cunoaștere de Lucru, un portofoliu de modele, un buget și capacități externe. Agenții sunt planificați independent, împărțind infrastructura și AKU-uri implicite selectate, ceea ce permite trasare, guvernanță, comparație și compoziție consecvente între domenii."
+    },
+    {
+      "id": "t000474",
+      "source": "Agents are exposed through OpenAI-compatible APIs so existing applications can call them through familiar semantics. The endpoint represents an agent service, not a raw model: a request may execute AKUs, query knowledge, call peers, and return artefacts or evidence. Responses should therefore carry agent identity, session correlation, policy metadata, and trace links where appropriate.",
+      "translation": "Agenții sunt expuși prin API-uri compatibile cu OpenAI, astfel încât aplicațiile existente să îi poată apela prin semantică familiară. Punctul terminal reprezintă un serviciu agentic, nu un model brut: o cerere poate executa AKU-uri, interoga cunoaștere, apela colegi și returna artefacte sau dovezi. Prin urmare, răspunsurile ar trebui să poarte identitatea agentului, corelarea sesiunii, metadate de politică și legături către urme acolo unde este cazul."
+    },
+    {
+      "id": "t000475",
+      "source": "Isolation remains necessary. Working Knowledge Bases must not leak private state; credentials and resources must be scoped; shared AKUs require version pinning; and cross-agent calls must be explicit, authenticated, and traceable through OpenAI-compatible APIs, MCP, or another protocol.",
+      "translation": "Izolarea rămâne necesară. Bazele de Cunoaștere de Lucru nu trebuie să divulge stare privată; acreditările și resursele trebuie delimitate; AKU-urile comune necesită fixarea versiunii; iar apelurile între agenți trebuie să fie explicite, autentificate și trasabile prin API-uri compatibile cu OpenAI, MCP sau un alt protocol."
+    },
+    {
+      "id": "t000476",
+      "source": "The architecture supports deliberate specialisation. Low-cost agents can execute high-volume narrow work with compact contexts and stable AKUs. More capable models can handle ambiguity or propose sleep-phase changes. Policy agents monitor access; coding agents refactor executable units. These are services with distinct authority, economics, and evaluators, not theatrical personas.",
+      "translation": "Arhitectura susține specializarea deliberată. Agenții cu cost redus pot executa muncă restrânsă de volum mare cu contexte compacte și AKU-uri stabile. Modelele mai capabile pot gestiona ambiguitatea sau propune schimbări pentru faza de repaus. Agenții de politici monitorizează accesul; agenții de programare refactorizează unitățile executabile. Acestea sunt servicii cu autoritate, economie și evaluatori distincți, nu personaje teatrale."
+    },
+    {
+      "id": "t000477",
+      "source": "Generality therefore emerges from the environment. New agents are instantiated by selecting and forking AKUs, defining policy, and exposing endpoints. Trusted foundations can be shared while local behaviour evolves. When no configured unit is adequate, the system escalates to broader interpretation or human work instead of pretending universal competence.",
+      "translation": "Generalitatea emerge, prin urmare, din mediu. Agenții noi sunt instanțiați selectând și derivând AKU-uri, definind politici și expunând puncte terminale. Fundamentele de încredere pot fi împărțite în timp ce comportamentul local evoluează. Când nicio unitate configurată nu este adecvată, sistemul escaladează spre interpretare mai largă sau muncă umană, în loc să pretindă competență universală."
+    },
+    {
+      "id": "t000478",
+      "source": "9.5 Context minimisation, qualification, and explainability",
+      "translation": "9.5 Minimizarea contextului, calificare și explicabilitate"
+    },
+    {
+      "id": "t000479",
+      "source": "Context is MRP-VM's central optimisation variable. Every AKU should declare what it needs instead of inheriting the whole conversation. The runtime assembles a local frame from the active instruction, named values, selected artefacts, policy, and minimal interfaces, while recording deliberate omissions. Token use becomes attributable to a capability rather than to session length.",
+      "translation": "Contextul este variabila centrală de optimizare a MRP-VM. Fiecare AKU ar trebui să declare ce îi trebuie, în loc să moștenească întreaga conversație. Mediul de execuție asamblează un cadru local din instrucțiunea activă, valori denumite, artefacte selectate, politici și interfețe minime, înregistrând omisiunile deliberate. Utilizarea tokenilor devine atribuibilă unei capacități, nu lungimii sesiunii."
+    },
+    {
+      "id": "t000480",
+      "source": "Minimisation remains conditional. Compression can erase tone, exceptions, cross-cutting constraints, or the reason for a decision. AKUs therefore need context escalation: retrieve the source behind a summary, inspect a parent objective or named value, or ask another agent or human to resolve ambiguity. The core research problem is minimising context without losing nuance that changes the interpretation.",
+      "translation": "Minimizarea rămâne condiționată. Comprimarea poate șterge tonul, excepțiile, constrângerile transversale sau motivul unei decizii. AKU-urile au, prin urmare, nevoie de escaladarea contextului: recuperarea sursei din spatele unui rezumat, inspectarea unui obiectiv părinte sau a unei valori denumite ori solicitarea unui alt agent sau om să rezolve ambiguitatea. Problema centrală de cercetare este minimizarea contextului fără pierderea nuanței care schimbă interpretarea."
+    },
+    {
+      "id": "t000481",
+      "source": "Named state counters lost-in-the-middle effects because critical values no longer depend on transcript position. Programs refer directly to current schemas, requirements, evidence, or contradictions. Summaries become views over preserved artefacts rather than replacements. Explicit dependencies trigger selective recomputation, while references avoid copying large artefacts through every model turn.",
+      "translation": "Starea denumită contracarează efectele pierderii la mijloc deoarece valorile critice nu mai depind de poziția în transcriere. Programele se referă direct la scheme, cerințe, dovezi sau contradicții curente. Rezumatele devin perspective asupra artefactelor păstrate, nu înlocuitori ai acestora. Dependențele explicite declanșează recalculare selectivă, în timp ce referințele evită copierea artefactelor mari prin fiecare rundă a modelului."
+    },
+    {
+      "id": "t000482",
+      "source": "Explainability follows execution. The system can report selected AKUs, assembled context, interpreters, produced values, checks, omissions, and human or agent decisions. This process account supports debugging, contestability, and compliance without claiming that generated reasoning text faithfully exposes neural computation.",
+      "translation": "Explicabilitatea urmează execuția. Sistemul poate raporta AKU-urile selectate, contextul asamblat, interpreții, valorile produse, verificările, omisiunile și deciziile umane sau agentice. Această relatare a procesului susține depanarea, posibilitatea de contestare și conformitatea fără a pretinde că textul de raționament generat expune fidel calculul neuronal."
+    },
+    {
+      "id": "t000483",
+      "source": "9.6 Self-discovery and harness self-research",
+      "translation": "9.6 Autodescoperire și autocercetarea infrastructurii de control"
+    },
+    {
+      "id": "t000484",
+      "source": "MRP-VM treats interaction as research evidence. Requests, corrections, rejected answers, feedback, latency outliers, tool failures, and review decisions form a curated corpus of bounded cases. Privacy, consent, minimisation, and retention apply before use. The objective is not indefinite transcript storage but evidence of missing or inadequate AKUs, context policies, interpreters, and agent boundaries.",
+      "translation": "MRP-VM tratează interacțiunea ca dovadă de cercetare. Cererile, corecțiile, răspunsurile respinse, feedbackul, valorile atipice de latență, eșecurile instrumentelor și deciziile de revizuire formează un corpus selectat de cazuri limitate. Viața privată, consimțământul, minimizarea și retenția se aplică înainte de utilizare. Obiectivul nu este stocarea pe termen nedefinit a transcrierilor, ci dovezi despre AKU-uri, politici de context, interpreți și granițe ale agenților lipsă sau inadecvate."
+    },
+    {
+      "id": "t000485",
+      "source": "The harness analyses this corpus into a failure taxonomy. Specification loss may require a named objective; database mistakes, a DB-aware AKU; costly tool copying, code execution; repeated escalation, a wider context frame; and contradictory long-form answers, decomposition or independent checking. Self-research investigates the harness as a system rather than letting the serving agent rewrite itself online.",
+      "translation": "Infrastructura de control analizează acest corpus într-o taxonomie de eșecuri. Pierderea specificației poate necesita un obiectiv denumit; greșelile de baze de date, un AKU conștient de acestea; copierea costisitoare prin instrumente, execuție de cod; escaladarea repetată, un cadru de context mai larg; iar răspunsurile lungi contradictorii, descompunere sau verificare independentă. Autocercetarea investighează infrastructura de control ca sistem, în loc să lase agentul de serviciu să se rescrie online."
+    },
+    {
+      "id": "t000486",
+      "source": "Evidence can motivate a new AKU, a split or merge, a revised prompt, interpreter binding, context selector, test, router rule, model policy, or specialised agent. Each proposal states its evidence and expected trade-off. Fewer tokens are not progress if nuance disappears, and better benchmark scores may not improve the operational frontier when cost rises excessively.",
+      "translation": "Dovezile pot motiva un AKU nou, o separare sau integrare, un prompt revizuit, o asociere cu un interpret, un selector de context, un test, o regulă de rutare, o politică de model sau un agent specializat. Fiecare propunere își declară dovezile și compromisul așteptat. Mai puțini tokeni nu înseamnă progres dacă nuanța dispare, iar scorurile de referință mai bune pot să nu îmbunătățească frontiera operațională când costul crește excesiv."
+    },
+    {
+      "id": "t000487",
+      "source": "Candidates never mutate the serving knowledge base directly. They enter an experimental branch for replay against historical cases, hidden tests, adversarial variants, and production samples. Risk-based human or policy review prevents feedback from becoming an unbounded self-modification channel and limits poisoning, overfitting, and metric gaming.",
+      "translation": "Candidații nu modifică niciodată direct baza de cunoaștere aflată în serviciu. Ei intră într-o ramură experimentală pentru reluare pe cazuri istorice, teste ascunse, variante adversariale și eșantioane de producție. Revizuirea umană sau de politici bazată pe risc împiedică feedbackul să devină un canal nelimitat de automodificare și limitează otrăvirea, supraînvățarea și manipularea metricilor."
+    },
+    {
+      "id": "t000488",
+      "source": "The harness thus becomes a laboratory for its own operation. It can ask why a task was expensive, why a specification or context selection failed, and whether another AKU would have changed the result. This is more ambitious than prompt tuning but more constrained than autonomous recursive self-improvement: the unit of change is an inspectable runtime artefact under evaluation.",
+      "translation": "Infrastructura de control devine astfel un laborator al propriei operări. Poate întreba de ce o sarcină a fost costisitoare, de ce o specificație sau o selecție de context a eșuat și dacă un alt AKU ar fi schimbat rezultatul. Aceasta este mai ambițioasă decât ajustarea prompturilor, dar mai constrânsă decât autoîmbunătățirea recursivă autonomă: unitatea schimbării este un artefact de execuție inspectabil, supus evaluării."
+    },
+    {
+      "id": "t000489",
+      "source": "9.7 The sleep phase",
+      "translation": "9.7 Faza de repaus"
+    },
+    {
+      "id": "t000490",
+      "source": "The sleep phase is an offline period in which capable but expensive coding or specialist agents analyse recent interactions and propose consolidation. Online serving should remain stable and conservative; sleep can spend more computation comparing traces, versions, duplicated logic, and candidate improvements without exposing users to experimental behaviour.",
+      "translation": "Faza de repaus este o perioadă offline în care agenți de programare sau specialiști capabili, dar costisitori, analizează interacțiunile recente și propun consolidare. Serviciul online ar trebui să rămână stabil și conservator; repausul poate cheltui mai mult calcul comparând urme, versiuni, logică duplicată și îmbunătățiri candidate, fără a expune utilizatorii la comportament experimental."
+    },
+    {
+      "id": "t000491",
+      "source": "A sleep cycle may refactor code, prompts, instructions, context selectors, tests, knowledge, and interfaces inside AKUs. It may merge units that travel together, split an overloaded unit, stabilise a repeatedly generated program as code, update a schema abstraction, or add an evaluator. Coding agents address executable structure; domain experts and specialised agents remain necessary for semantic and organisational validity.",
+      "translation": "Un ciclu de repaus poate refactoriza cod, prompturi, instrucțiuni, selectoare de context, teste, cunoaștere și interfețe din AKU-uri. Poate integra unități care apar împreună, separa o unitate supraîncărcată, stabiliza ca cod un program generat repetat, actualiza o abstracție de schemă sau adăuga un evaluator. Agenții de programare abordează structura executabilă; experții de domeniu și agenții specializați rămân necesari pentru validitatea semantică și organizațională."
+    },
+    {
+      "id": "t000492",
+      "source": "Every consolidation is replayed and benchmarked against quality, consistency, specification adherence, hallucination, context size, latency, cost, and review burden. Regression cases and unseen variants matter more than the motivating conversations alone. Promotion follows an explicit reversible rule; sleep cycles continue only while the declared frontier improves and the research budget permits.",
+      "translation": "Fiecare consolidare este reluată și testată după calitate, consecvență, respectarea specificației, halucinații, dimensiunea contextului, latență, cost și povara revizuirii. Cazurile de regresie și variantele nevăzute contează mai mult decât numai conversațiile motivatoare. Promovarea urmează o regulă reversibilă explicită; ciclurile de repaus continuă doar cât timp frontiera declarată se îmbunătățește și bugetul de cercetare permite."
+    },
+    {
+      "id": "t000493",
+      "source": "9.8 Evaluation, governance, and limits",
+      "translation": "9.8 Evaluare, guvernanță și limite"
+    },
+    {
+      "id": "t000494",
+      "source": "MRP-VM should be evaluated on concrete task families, including online performance and offline improvement cost. Comparisons should include a fixed baseline, an equivalent-tool ReAct agent, an AKU agent before sleep, and the candidate after sleep. Trace-level analysis should attribute gains to context selection, interpreter choice, code, reuse, verification, or stronger models rather than making universal claims.",
+      "translation": "MRP-VM ar trebui evaluat pe familii concrete de sarcini, incluzând performanța online și costul îmbunătățirii offline. Comparațiile ar trebui să includă un sistem de referință fix, un agent ReAct cu instrumente echivalente, un agent AKU înainte de repaus și candidatul de după repaus. Analiza la nivel de urmă ar trebui să atribuie câștigurile selecției contextului, alegerii interpretului, codului, reutilizării, verificării sau modelelor mai puternice, în loc să facă afirmații universale."
+    },
+    {
+      "id": "t000495",
+      "source": "Ablation is essential. Remove named values, restore full history, prevent forking, replace sleep with manual edits, or remove expensive coding agents. Such experiments reveal whether explicit state, local context, adaptation, and offline consolidation provide causal value rather than architectural decoration.",
+      "translation": "Ablația este esențială. Eliminați valorile denumite, restabiliți istoricul complet, împiedicați derivarea, înlocuiți repausul cu editări manuale sau eliminați agenții de programare costisitori. Asemenea experimente dezvăluie dacă starea explicită, contextul local, adaptarea și consolidarea offline oferă valoare cauzală, nu ornament arhitectural."
+    },
+    {
+      "id": "t000496",
+      "source": "The design has serious limits. AKUs can encode wrong interpretations; sleep can overfit, absorb malicious feedback, or optimise weak evaluators; coding agents can introduce vulnerabilities; compact contexts can omit decisive nuance; and shared installations create isolation and scheduling risks. Governance therefore requires provenance, access control, evaluator diversity, red-team cases, staged promotion, audit, and rollback.",
+      "translation": "Proiectarea are limite serioase. AKU-urile pot codifica interpretări greșite; repausul poate supraînvăța, absorbi feedback malițios sau optimiza evaluatori slabi; agenții de programare pot introduce vulnerabilități; contextele compacte pot omite nuanța decisivă; iar instalările comune creează riscuri de izolare și planificare a execuției. Guvernanța necesită, prin urmare, proveniență, control al accesului, diversitatea evaluatorilor, cazuri de testare adversarială, promovare etapizată, audit și revenire."
+    },
+    {
+      "id": "t000497",
+      "source": "MRP-VM is a proposal for cultivable agent infrastructure. Several bounded agents share, fork, execute, and improve explicit knowledge; context becomes a managed resource, explanation a property of visible execution, and learning governed refactoring rather than online mutation. Its testable hypothesis is that a harness which consolidates recurring failures can become more trustworthy and efficient precisely because it does not claim competence at everything.",
+      "translation": "MRP-VM este o propunere de infrastructură agentică ce poate fi cultivată. Mai mulți agenți limitați împart, derivă, execută și îmbunătățesc cunoaștere explicită; contextul devine o resursă gestionată, explicația o proprietate a execuției vizibile, iar învățarea o refactorizare guvernată, nu o mutație online. Ipoteza sa testabilă este că o infrastructură de control care consolidează eșecurile recurente poate deveni mai demnă de încredere și mai eficientă tocmai fiindcă nu pretinde competență la toate."
+    },
+    {
+      "id": "t000498",
+      "source": "CHAPTER 10",
+      "translation": "CAPITOLUL 10"
+    },
+    {
+      "id": "t000499",
+      "source": "Beyond 2026 Growing Evidence-Bearing Agentic Systems",
+      "translation": "Dincolo de 2026: dezvoltarea sistemelor agentice purtătoare de dovezi"
+    },
+    {
+      "id": "t000500",
+      "source": "The frontier is not autonomy without structure. It is the",
+      "translation": "Frontiera nu este autonomia fără structură. Este"
+    },
+    {
+      "id": "t000501",
+      "source": "controlled growth of systems that can act, explain, and",
+      "translation": "creșterea controlată a sistemelor care pot acționa, explica și"
+    },
+    {
+      "id": "t000502",
+      "source": "improve within declared boundaries.",
+      "translation": "se pot îmbunătăți în granițe declarate."
+    },
+    {
+      "id": "t000503",
+      "source": "10.1 The convergence ahead",
+      "translation": "10.1 Convergența care urmează"
+    },
+    {
+      "id": "t000504",
+      "source": "The most important convergence of 2026 is among models, harnesses, protocols, execution environments, and evidence. Foundation models continue to improve, but industrial systems increasingly separate the model from a durable control layer and from sandboxed compute. Protocols such as MCP and A2A standardise connections. Tracing conventions make episodes portable. Evaluation moves closer to production. Research now names context policy, intervention recording, verification, and failure attribution as first-class harness responsibilities. The agent is no longer a prompt loop; it is a distributed software system whose semantic core remains probabilistic.",
+      "translation": "Cea mai importantă convergență din 2026 este între modele, infrastructuri de control, protocoale, medii de execuție și dovezi. Modelele fundamentale continuă să se îmbunătățească, dar sistemele industriale separă tot mai mult modelul de un strat durabil de control și de calculul izolat. Protocoale precum MCP și A2A standardizează conexiunile. Convențiile de trasare fac episoadele portabile. Evaluarea se apropie de producție. Cercetarea numește acum politica de context, înregistrarea intervențiilor, verificarea și atribuirea eșecurilor drept responsabilități de prim rang ale infrastructurii de control. Agentul nu mai este o buclă de prompturi; este un sistem software distribuit al cărui nucleu semantic rămâne probabilist."
+    },
+    {
+      "id": "t000505",
+      "source": "This convergence will not produce one canonical architecture. Tasks differ in observability, reversibility, regulation, data structure, and economic value. A coding agent benefits from executable tests and branch isolation. A research agent needs source provenance and contradiction management. A database agent needs schema and permission semantics. A public-facing assistant needs identity, disclosure, and redress. The durable architecture will therefore be a family of runtimes able to compose broad interpretation with narrow, specialised interpreters.",
+      "translation": "Această convergență nu va produce o singură arhitectură canonică. Sarcinile diferă prin observabilitate, reversibilitate, reglementare, structură a datelor și valoare economică. Un agent de programare beneficiază de teste executabile și izolarea ramurilor. Un agent de cercetare are nevoie de proveniența surselor și gestionarea contradicțiilor. Un agent de baze de date are nevoie de semantică a schemei și permisiunilor. Un asistent adresat publicului are nevoie de identitate, informare și remedierea prejudiciilor. Arhitectura durabilă va fi, prin urmare, o familie de medii de execuție capabile să compună interpretarea amplă cu interpreți restrânși, specializați."
+    },
+    {
+      "id": "t000506",
+      "source": "The likely replacement for the universal-agent narrative is a portfolio of bounded competence. Organisations will operate several agents, each with a known purpose, authority, evidence regime, and cost envelope. Generality will emerge through routing, shared protocols, reusable knowledge, and controlled escalation. The open-ended agent remains useful as an exploratory layer and as a way to discover new procedures. Stable value migrates into explicit workflows, skills, AKUs, code, databases, and validators.",
+      "translation": "Înlocuitorul probabil al narațiunii agentului universal este un portofoliu de competență limitată. Organizațiile vor opera mai mulți agenți, fiecare cu un scop, autoritate, regim de dovezi și perimetru de cost cunoscute. Generalitatea va emerge prin rutare, protocoale comune, cunoaștere reutilizabilă și escaladare controlată. Agentul deschis rămâne util ca strat exploratoriu și ca modalitate de descoperire a unor proceduri noi. Valoarea stabilă migrează în fluxuri de lucru explicite, competențe procedurale, AKU-uri, cod, baze de date și validatoare."
+    },
+    {
+      "id": "t000507",
+      "source": "Context will be the main operating substrate of this portfolio. The critical question will not be how many tokens a model can technically accept, but which information deserves attention at a particular decision. Context policies will select, compress, reference, and protect evidence according to task state and budget. Research such as ReSum, ContextBudget, Less Context Better Agents, and evolving-context systems shows that this policy can change both reliability and cost. The remaining challenge is semantic: compression must preserve the nuance that alters action and expose what was omitted (Lodha et al., 2026; Wu et al., 2025, 2026).",
+      "translation": "Contextul va fi substratul operațional principal al acestui portofoliu. Întrebarea critică nu va fi câți tokeni poate accepta tehnic un model, ci ce informații merită atenție la o anumită decizie. Politicile de context vor selecta, comprima, referenția și proteja dovezile potrivit stării sarcinii și bugetului. Cercetări precum ReSum, ContextBudget, Less Context Better Agents și sistemele cu context evolutiv arată că această politică poate schimba atât fiabilitatea, cât și costul. Provocarea rămasă este semantică: comprimarea trebuie să păstreze nuanța care modifică acțiunea și să expună ceea ce a fost omis (Lodha et al., 2026; Wu et al., 2025, 2026)."
+    },
+    {
+      "id": "t000508",
+      "source": "Figure from PDF page 84",
+      "translation": "Figură de la pagina 84 a PDF-ului"
+    },
+    {
+      "id": "t000509",
+      "source": "Figure 10.1. Evidence-bearing agent systems improve through offline hypotheses, evaluation, governed promotion, and monitored use.",
+      "translation": "Figura 10.1. Sistemele agentice purtătoare de dovezi se îmbunătățesc prin ipoteze offline, evaluare, promovare guvernată și utilizare monitorizată."
+    },
+    {
+      "id": "t000510",
+      "source": "10.2 From static harnesses to controlled learning",
+      "translation": "10.2 De la infrastructuri de control fixe la învățare controlată"
+    },
+    {
+      "id": "t000511",
+      "source": "Most deployed harnesses are configured manually and remain largely static between releases. A growing research line treats traces as material for optimisation. Agent-training systems optimise behaviour from trajectories; MemoHarness retrieves prior diagnoses and adapts several harness dimensions to new cases; industrial platforms optimise prompts and evaluators; coding-agent teams use structured artefacts and independent QA to sustain longer work. These developments suggest that the harness itself will become a learned and versioned artefact, not merely the infrastructure around learning (Huang et al., 2026).",
+      "translation": "Majoritatea infrastructurilor de control implementate sunt configurate manual și rămân în mare parte fixe între lansări. O direcție de cercetare în creștere tratează urmele ca material de optimizare. Sistemele de antrenare a agenților optimizează comportamentul din traiectorii; MemoHarness recuperează diagnostice anterioare și adaptează mai multe dimensiuni ale infrastructurii la cazuri noi; platformele industriale optimizează prompturi și evaluatori; echipele de agenți de programare folosesc artefacte structurate și asigurare independentă a calității pentru a susține muncă mai îndelungată. Aceste evoluții sugerează că însăși infrastructura de control va deveni un artefact învățat și cu versiuni, nu doar infrastructura din jurul învățării (Huang et al., 2026)."
+    },
+    {
+      "id": "t000512",
+      "source": "Controlled learning must remain distinct from uncontrolled self-modification. Production interactions contain sensitive data, adversarial content, organisational exceptions, and evaluator errors. A successful outcome can include hidden failures, and a dissatisfied user can be wrong. Improvement therefore requires curation, provenance, privacy, counterexamples, held-out evaluation, and accountable promotion. MRP-VM's sleep phase is one proposed mechanism: use expensive specialist agents offline to refactor executable knowledge, then promote only changes that improve a declared evidence package.",
+      "translation": "Învățarea controlată trebuie să rămână distinctă de automodificarea necontrolată. Interacțiunile de producție conțin date sensibile, conținut adversarial, excepții organizaționale și erori ale evaluatorilor. Un rezultat reușit poate include eșecuri ascunse, iar un utilizator nemulțumit poate greși. Îmbunătățirea necesită, prin urmare, selecție, proveniență, protecția vieții private, contraexemple, evaluare rezervată și promovare responsabilă. Faza de repaus a MRP-VM este un mecanism propus: folosirea offline a agenților specialiști costisitori pentru refactorizarea cunoașterii executabile, apoi promovarea numai a schimbărilor care îmbunătățesc un pachet declarat de dovezi."
+    },
+    {
+      "id": "t000513",
+      "source": "The strongest systems will learn at several timescales. A single execution can adapt through local replanning. A session can preserve user-approved state. A team can update a Working Knowledge Base after review. An organisation can publish a new Default Knowledge Base after broader evaluation. A model provider can train new weights from aggregated experience. These levels should not collapse into one automatic feedback loop because their authority, privacy, and blast radius differ.",
+      "translation": "Cele mai puternice sisteme vor învăța la mai multe scări temporale. O singură execuție se poate adapta prin replanificare locală. O sesiune poate păstra stare aprobată de utilizator. O echipă poate actualiza o Bază de Cunoaștere de Lucru după revizuire. O organizație poate publica o Bază de Cunoaștere Implicită nouă după evaluare mai amplă. Un furnizor de modele poate antrena ponderi noi din experiență agregată. Aceste niveluri nu ar trebui contopite într-o singură buclă automată de feedback deoarece autoritatea, viața privată și raza impactului diferă."
+    },
+    {
+      "id": "t000514",
+      "source": "10.3 Verification, explainability, and evidence-bearing action",
+      "translation": "10.3 Verificare, explicabilitate și acțiune purtătoare de dovezi"
+    },
+    {
+      "id": "t000515",
+      "source": "The field will move from answer confidence toward evidence-bearing execution. A result may carry source provenance, test outcomes, type checks, database queries, policy decisions, model and prompt versions, human approval, or a formal certificate. These evidence types have different scope. A test covers declared cases; a proof covers a formal model; a human approval assigns responsibility; a source supports a claim but may itself be wrong. A trustworthy runtime preserves these distinctions instead of compressing them into one confidence score.",
+      "translation": "Domeniul se va deplasa de la încrederea în răspuns spre execuția purtătoare de dovezi. Un rezultat poate purta proveniența surselor, rezultate ale testelor, verificări de tipuri, interogări ale bazelor de date, decizii de politică, versiuni ale modelelor și prompturilor, aprobare umană sau un certificat formal. Aceste tipuri de dovezi au domenii diferite. Un test acoperă cazuri declarate; o demonstrație acoperă un model formal; o aprobare umană atribuie responsabilitate; o sursă susține o afirmație, dar poate fi ea însăși greșită. Un mediu de execuție de încredere păstrează aceste distincții în loc să le comprime într-un singur scor de încredere."
+    },
+    {
+      "id": "t000516",
+      "source": "Process explainability will matter more than raw reasoning disclosure. Users and auditors need to know what task the system understood, which data and policies were used, what operations occurred, which parts were generated or inferred, what checks ran, what was omitted from context, and where uncertainty remained. They do not need an unfiltered chain-of-thought, which may be unfaithful and may expose sensitive information. Named state, AKU or skill identities, interpreter bindings, and trace-linked artefacts provide a stronger account of operational causality.",
+      "translation": "Explicabilitatea procesului va conta mai mult decât divulgarea brută a raționamentului. Utilizatorii și auditorii trebuie să știe ce sarcină a înțeles sistemul, ce date și politici au fost folosite, ce operații au avut loc, ce părți au fost generate sau deduse, ce verificări au rulat, ce a fost omis din context și unde a rămas incertitudine. Nu au nevoie de un lanț de raționament nefiltrat, care poate fi nefidel și poate expune informații sensibile. Starea denumită, identitățile AKU-urilor sau competențelor procedurale, asocierile cu interpreți și artefactele legate de urme oferă o relatare mai puternică a cauzalității operaționale."
+    },
+    {
+      "id": "t000517",
+      "source": "Selective recomputation strengthens contestability. When dependencies are explicit, a reviewer can replace a disputed source, policy assumption, interpreter, or model and observe which results change. This is valuable for science, regulation, and ordinary debugging because disagreement becomes localisable. It also prevents one correction from forcing the system to regenerate an entire long narrative, where unrelated claims may change accidentally. MRP-VM's named values and qualification states make this principle concrete; graph runtimes and workflow engines express related ideas through durable state.",
+      "translation": "Recalcularea selectivă întărește posibilitatea de contestare. Când dependențele sunt explicite, un evaluator poate înlocui o sursă contestată, o presupunere de politică, un interpret sau un model și observa ce rezultate se schimbă. Aceasta este valoroasă pentru știință, reglementare și depanare obișnuită deoarece dezacordul devine localizabil. Împiedică și o singură corecție să forțeze sistemul să regenereze o întreagă narațiune lungă, în care afirmații fără legătură s-ar putea schimba accidental. Valorile denumite și stările de calificare ale MRP-VM concretizează acest principiu; mediile de execuție pe grafuri și motoarele de flux de lucru exprimă idei înrudite prin stare durabilă."
+    },
+    {
+      "id": "t000518",
+      "source": "Verification will remain incomplete. No evaluator can anticipate every future environment or eliminate correlated error among models. Safety claims must therefore be configuration-specific, time-bounded, and linked to monitoring. A system that passed an evaluation suite can degrade when models, tools, data, prices, policies, or adversaries change. Trustworthiness is a maintained relation between evidence and reliance, not a permanent property awarded at release.",
+      "translation": "Verificarea va rămâne incompletă. Niciun evaluator nu poate anticipa fiecare mediu viitor sau elimina eroarea corelată între modele. Afirmațiile de siguranță trebuie, prin urmare, să fie specifice configurației, limitate în timp și legate de monitorizare. Un sistem care a trecut o suită de evaluare se poate degrada când modelele, instrumentele, datele, prețurile, politicile sau adversarii se schimbă. Caracterul demn de încredere este o relație întreținută între dovezi și sprijinire, nu o proprietate permanentă acordată la lansare."
+    },
+    {
+      "id": "t000519",
+      "source": "10.4 A research and industrial agenda",
+      "translation": "10.4 O agendă pentru cercetare și industrie"
+    },
+    {
+      "id": "t000520",
+      "source": "The first priority is valid long-horizon evaluation. Benchmarks should measure repeated reliability, recovery, context behaviour, cost, latency, and policy compliance under changing state. They should publish complete system configurations and episode packages, audit their scorers, and preserve hidden cases. Local application benchmarks deserve the same methodological discipline as broad leaderboards. AI Agents That Matter and recent harness-engineering work make clear that a score without cost, reproducibility, and system description is weak evidence (Kapoor et al., 2024; Zhong and Zhu, 2026).",
+      "translation": "Prima prioritate este evaluarea validă pe orizont lung. Testele de referință ar trebui să măsoare fiabilitatea repetată, recuperarea, comportamentul contextului, costul, latența și conformitatea cu politicile în stare schimbătoare. Ar trebui să publice configurații complete ale sistemelor și pachete de episoade, să-și auditeze evaluatorii și să păstreze cazuri ascunse. Testele locale de referință pentru aplicații merită aceeași disciplină metodologică precum clasamentele ample. AI Agents That Matter și lucrările recente de inginerie a infrastructurii de control arată clar că un scor fără cost, reproductibilitate și descrierea sistemului reprezintă o dovadă slabă (Kapoor et al., 2024; Zhong and Zhu, 2026)."
+    },
+    {
+      "id": "t000521",
+      "source": "The second priority is secure, explainable context. Research must combine provenance, trust domains, typed instructions, relevance, privacy, memory promotion, revocation, and resistance to indirect prompt injection. Context reduction should be evaluated for both omission and distraction. Tool and protocol ecosystems should support progressive discovery so thousands of capabilities do not become thousands of unreviewed instructions. The long-term goal is a context architecture in which untrusted content cannot silently acquire authority and omitted nuance can be recovered.",
+      "translation": "A doua prioritate este contextul sigur și explicabil. Cercetarea trebuie să combine proveniența, domeniile de încredere, instrucțiunile tipizate, relevanța, viața privată, promovarea memoriei, revocarea și rezistența la injecția indirectă de prompt. Reducerea contextului ar trebui evaluată atât pentru omisiune, cât și pentru distragere. Ecosistemele de instrumente și protocoale ar trebui să susțină descoperirea progresivă, astfel încât mii de capacități să nu devină mii de instrucțiuni nerevizuite. Scopul pe termen lung este o arhitectură de context în care conținutul nefiabil nu poate dobândi pe nesimțite autoritate, iar nuanța omisă poate fi recuperată."
+    },
+    {
+      "id": "t000522",
+      "source": "The third priority is cost-aware orchestration. Schedulers should optimise accepted quality, elapsed time, monetary cost, energy, context, and risk together. They should learn when to plan, react, parallelise, use code, call another agent, compress history, escalate to a stronger model, or stop. This is a compiler problem over heterogeneous interpreters and a governance problem over delegated authority. The success criterion is not maximum tool use, but useful work at the best justified point on the local Pareto frontier.",
+      "translation": "A treia prioritate este orchestrarea conștientă de costuri. Planificatoarele de execuție ar trebui să optimizeze împreună calitatea acceptată, timpul scurs, costul monetar, energia, contextul și riscul. Ar trebui să învețe când să planifice, să reacționeze, să paralelizeze, să folosească cod, să apeleze alt agent, să comprime istoricul, să escaladeze la un model mai puternic sau să se oprească. Aceasta este o problemă de compilator peste interpreți eterogeni și o problemă de guvernanță asupra autorității delegate. Criteriul succesului nu este utilizarea maximă a instrumentelor, ci munca utilă în cel mai bine justificat punct al frontierei Pareto locale."
+    },
+    {
+      "id": "t000523",
+      "source": "The fourth priority is agent identity and transaction semantics. Agents need authenticated identities, scoped capabilities, expiry, quotas, and trace correlation. Side-effecting actions need idempotency, atomicity where possible, compensating actions, and approvals at meaningful boundaries. Multi-agent calls need cancellation, confidentiality, responsibility, and clear ownership of the final artefact. MCP and A2A can transport capabilities and messages; they do not by themselves define who is accountable for a composed action.",
+      "translation": "A patra prioritate este identitatea agentului și semantica tranzacțiilor. Agenții au nevoie de identități autentificate, capacități delimitate, expirare, cote și corelarea urmelor. Acțiunile cu efecte secundare au nevoie de idempotență, atomicitate acolo unde este posibil, acțiuni compensatorii și aprobări la granițe semnificative. Apelurile multiagent au nevoie de anulare, confidențialitate, responsabilitate și asumare clară a artefactului final. MCP și A2A pot transporta capacități și mesaje; ele nu definesc singure cine răspunde pentru o acțiune compusă."
+    },
+    {
+      "id": "t000524",
+      "source": "The fifth priority is progressive formalisation. Recurring successful behaviour should become reusable orchestration, tests, code, schema abstractions, validators, or AKUs. The process should preserve a route back to broader interpretation when exceptions appear. ScriptaHubAgentLib expresses this through orchestration skills and three executable families. MRP-VM expresses it through executable knowledge, forkable working bases, named state, and sleep-phase consolidation. Their value will be determined by empirical local improvements, not by conceptual richness alone.",
+      "translation": "A cincea prioritate este formalizarea progresivă. Comportamentul recurent reușit ar trebui să devină orchestrare reutilizabilă, teste, cod, abstracții de scheme, validatoare sau AKU-uri. Procesul ar trebui să păstreze o cale înapoi către interpretarea mai largă atunci când apar excepții. ScriptaHubAgentLib exprimă aceasta prin competențe de orchestrare și trei familii executabile. MRP-VM o exprimă prin cunoaștere executabilă, baze de lucru ce pot fi derivate, stare denumită și consolidare în faza de repaus. Valoarea lor va fi determinată de îmbunătățiri locale empirice, nu doar de bogăția conceptuală."
+    },
+    {
+      "id": "t000525",
+      "source": "The sixth priority is institutional design. Human roles will shift from manually producing every artefact toward defining objectives, constructing evaluators, reviewing exceptions, authorising consequences, and maintaining knowledge. Human oversight must be substantive rather than a ceremonial click after an opaque process. European trustworthy-AI policy reinforces this direction by treating human agency, transparency, robustness, fairness, accountability, and redress as properties of the complete sociotechnical system.",
+      "translation": "A șasea prioritate este proiectarea instituțională. Rolurile umane se vor deplasa de la producerea manuală a fiecărui artefact către definirea obiectivelor, construirea evaluatorilor, revizuirea excepțiilor, autorizarea consecințelor și întreținerea cunoașterii. Supravegherea umană trebuie să fie substanțială, nu un clic ceremonial după un proces opac. Politica europeană privind IA de încredere întărește această direcție tratând capacitatea umană de acțiune, transparența, robustețea, echitatea, răspunderea și remedierea prejudiciilor ca proprietăți ale întregului sistem sociotehnic."
+    },
+    {
+      "id": "t000526",
+      "source": "Table 10.1. The frontier combines bounded competence, explicit evidence, controlled learning, and human-centred governance.",
+      "translation": "Tabelul 10.1. Frontiera combină competența limitată, dovezile explicite, învățarea controlată și guvernanța centrată pe om."
+    },
+    {
+      "id": "t000527",
+      "source": "Research and engineering Frontier direction question",
+      "translation": "Direcția frontierei Întrebare de cercetare și inginerie"
+    },
+    {
+      "id": "t000528",
+      "source": "Bounded",
+      "translation": "Competență"
+    },
+    {
+      "id": "t000529",
+      "source": "Which task families justify stronger",
+      "translation": "Ce familii de sarcini justifică presupuneri"
+    },
+    {
+      "id": "t000530",
+      "source": "competence",
+      "translation": "limitată"
+    },
+    {
+      "id": "t000531",
+      "source": "assumptions and specialised execution?",
+      "translation": "mai puternice și execuție specializată?"
+    },
+    {
+      "id": "t000532",
+      "source": "Context operating",
+      "translation": "Sistem de operare al"
+    },
+    {
+      "id": "t000533",
+      "source": "How can context be minimised",
+      "translation": "Cum poate fi minimizat contextul"
+    },
+    {
+      "id": "t000534",
+      "source": "system",
+      "translation": "contextului"
+    },
+    {
+      "id": "t000535",
+      "source": "without losing decisive nuance?",
+      "translation": "fără pierderea nuanței decisive?"
+    },
+    {
+      "id": "t000536",
+      "source": "Evidence-bearing",
+      "translation": "Acțiune purtătoare"
+    },
+    {
+      "id": "t000537",
+      "source": "Which evidence supports each",
+      "translation": "Ce dovezi susțin fiecare"
+    },
+    {
+      "id": "t000538",
+      "source": "action",
+      "translation": "de dovezi"
+    },
+    {
+      "id": "t000539",
+      "source": "claim, operation and authority transition?",
+      "translation": "afirmație, operație și tranziție de autoritate?"
+    },
+    {
+      "id": "t000540",
+      "source": "Controlled harness",
+      "translation": "Învățare controlată a"
+    },
+    {
+      "id": "t000541",
+      "source": "How can traces improve prompts,",
+      "translation": "Cum pot urmele îmbunătăți prompturile,"
+    },
+    {
+      "id": "t000542",
+      "source": "learning",
+      "translation": "infrastructurii de control"
+    },
+    {
+      "id": "t000543",
+      "source": "code, AKUs and policy without unsafe mutation?",
+      "translation": "codul, AKU-urile și politicile fără mutație nesigură?"
+    },
+    {
+      "id": "t000544",
+      "source": "Research and engineering Frontier direction question",
+      "translation": "Direcția frontierei Întrebare de cercetare și inginerie"
+    },
+    {
+      "id": "t000545",
+      "source": "Interoperable agent",
+      "translation": "Servicii agentice"
+    },
+    {
+      "id": "t000546",
+      "source": "How should MCP, A2A and",
+      "translation": "Cum ar trebui MCP, A2A și"
+    },
+    {
+      "id": "t000547",
+      "source": "services",
+      "translation": "interoperabile"
+    },
+    {
+      "id": "t000548",
+      "source": "OpenAI-compatible APIs carry identity and responsibility?",
+      "translation": "API-urile compatibile cu OpenAI să poarte identitate și responsabilitate?"
+    },
+    {
+      "id": "t000549",
+      "source": "Human-centred",
+      "translation": "Guvernanță centrată"
+    },
+    {
+      "id": "t000550",
+      "source": "Where must people specify, approve,",
+      "translation": "Unde trebuie oamenii să specifice, să aprobe,"
+    },
+    {
+      "id": "t000551",
+      "source": "governance",
+      "translation": "pe om"
+    },
+    {
+      "id": "t000552",
+      "source": "contest, and remain accountable?",
+      "translation": "să conteste și să rămână răspunzători?"
+    },
+    {
+      "id": "t000553",
+      "source": "10.5 The essence of Agentic AI 2026",
+      "translation": "10.5 Esența IA agentice în 2026"
+    },
+    {
+      "id": "t000554",
+      "source": "The central fact of 2026 is that agents are becoming software systems rather than clever prompts. ReAct remains the alphabet of model-environment interaction, but production grammar now includes state graphs, context policies, sandboxes, typed tools, skills, memory, schedulers, gateways, traces, evaluation, and human authority. The model remains powerful and uncertain. The harness determines how that uncertainty enters the world.",
+      "translation": "Faptul central al anului 2026 este că agenții devin sisteme software, nu prompturi istețe. ReAct rămâne alfabetul interacțiunii model-mediu, dar gramatica producției include acum grafuri de stare, politici de context, medii izolate, instrumente cu tipuri definite, competențe procedurale, memorie, planificatoare de execuție, porți de acces, urme, evaluare și autoritate umană. Modelul rămâne puternic și incert. Infrastructura de control determină cum intră acea incertitudine în lume."
+    },
+    {
+      "id": "t000555",
+      "source": "The central limitation is that placing a language model in a loop does not make it a reliable planner, faithful witness, or consistent long-form program executor. Long trajectories amplify error and cost. More context can reduce relevance. More agents can increase coordination failure. Tool use can ground computation while expanding attack surfaces and context. The response is not to eliminate model interpretation, but to stop treating natural-language continuation as the only representation of state and control.",
+      "translation": "Limita centrală este că plasarea unui model lingvistic într-o buclă nu îl transformă într-un planificator fiabil, martor fidel sau executant consecvent de programe lungi. Traiectoriile lungi amplifică eroarea și costul. Mai mult context poate reduce relevanța. Mai mulți agenți pot crește eșecurile de coordonare. Utilizarea instrumentelor poate ancora calculul, extinzând în același timp suprafețele de atac și contextul. Răspunsul nu este eliminarea interpretării modelului, ci încetarea tratării continuării în limbaj natural drept singura reprezentare a stării și controlului."
+    },
+    {
+      "id": "t000556",
+      "source": "The central design problem is the relationship among trustworthiness, efficiency, and generality. Fixed workflows are stored knowledge about stable tasks, not the enemy of intelligence. Open planning is valuable at genuine novelty, not the enemy of trust. Good systems combine both and admit where each fails. They use broad models at semantic boundaries, narrow interpreters for exact operations, explicit evidence for claims, and human authority for decisions whose significance cannot be legitimately delegated.",
+      "translation": "Problema centrală de proiectare este relația dintre încrederea justificată, eficiență și generalitate. Fluxurile de lucru fixe sunt cunoaștere stocată despre sarcini stabile, nu inamicul inteligenței. Planificarea deschisă este valoroasă în fața noutății autentice, nu inamicul încrederii. Sistemele bune le combină pe amândouă și recunosc unde eșuează fiecare. Folosesc modele ample la granițe semantice, interpreți restrânși pentru operații exacte, dovezi explicite pentru afirmații și autoritate umană pentru decizii a căror semnificație nu poate fi delegată legitim."
+    }
+  ]
+}

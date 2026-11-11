@@ -1,0 +1,501 @@
+{
+  "language": "ro",
+  "chunk": 2,
+  "segments": [
+    {
+      "id": "t000109",
+      "source": "“nothing”; it is a particular pixel array that may be far outside the training distribution. When a token is removed from a sentence, the masked sequence may be ungrammatical. When a financial variable is set to zero, the method may have transformed",
+      "translation": "„nimic”; este o anumită matrice de pixeli care poate fi mult în afara distribuției antrenării. Când un token este eliminat dintr-o propoziție, secvența mascată poate fi negramaticală. Când o variabilă financiară este setată la zero, metoda poate să fi transformat"
+    },
+    {
+      "id": "t000110",
+      "source": "“unknown” into “literally zero.”",
+      "translation": "„necunoscut” în „literalmente zero”."
+    },
+    {
+      "id": "t000111",
+      "source": "A baseline is a counterfactual world. Engineers should choose it deliberately and test whether reasonable alternative baselines tell materially different stories.",
+      "translation": "O referință este o lume contrafactuală. Inginerii ar trebui să o aleagă deliberat și să testeze dacă referințe alternative rezonabile spun povești substanțial diferite."
+    },
+    {
+      "id": "t000112",
+      "source": "For images and long sequences, attribution also creates a resolution problem. A heat map can be faithful at the pixel or token level and still be unusable to a person who thinks in objects, findings, clauses, or events. This is one reason the field is moving toward concepts and semantic representations. Low-level attribution remains valuable, especially for debugging and controlled tests, but a mature explanation stack often needs a mapping from computational units to domain units rather than assuming they are the same.",
+      "translation": "Pentru imagini și secvențe lungi, atribuirea creează și o problemă de rezoluție. O hartă termică poate fi fidelă la nivel de pixel sau token și totuși inutilizabilă pentru o persoană care gândește în obiecte, constatări, clauze sau evenimente. Acesta este un motiv pentru care domeniul se îndreaptă către concepte și reprezentări semantice. Atribuirea de nivel inferior rămâne valoroasă, mai ales pentru depanare și teste controlate, dar un ansamblu matur al explicației are adesea nevoie de o corespondență între unități computaționale și unități de domeniu, nu de presupunerea că sunt aceleași."
+    },
+    {
+      "id": "t000113",
+      "source": "Figure 3.1. Attribution families answer related but different operational questions.",
+      "translation": "Figura 3.1. Familiile de atribuire răspund la întrebări operaționale înrudite, dar diferite."
+    },
+    {
+      "id": "t000114",
+      "source": "An attribution method produces a score for each input feature, token, pixel, region, or embedding dimension. The score is often visualized as importance, but 'importance' is not a primitive of nature. It must be defined through a reference, a perturbation, a derivative, a coalition game, or another operational rule. Two methods can disagree because they estimate different quantities rather than because one implementation is broken.",
+      "translation": "O metodă de atribuire produce un scor pentru fiecare caracteristică de intrare, token, pixel, regiune sau dimensiune a embeddingului. Scorul este adesea vizualizat ca importanță, dar „importanța” nu este o primitivă a naturii. Trebuie definită printr-o referință, perturbare, derivată, joc de coaliție sau altă regulă operațională. Două metode pot fi în dezacord deoarece estimează cantități diferite, nu fiindcă o implementare este defectă."
+    },
+    {
+      "id": "t000115",
+      "source": "This is clearest in the presence of correlated or redundant variables. If two features encode almost the same information, removing one may barely change the prediction because the other substitutes for it. A gradient can be small because the model is locally saturated even when the feature was essential to reaching the current state. An attribution can change when the background distribution changes because 'missing' features are being replaced by a different counterfactual world.",
+      "translation": "Aceasta este cel mai clar în prezența variabilelor corelate sau redundante. Dacă două caracteristici codifică aproape aceeași informație, eliminarea uneia poate schimba foarte puțin predicția deoarece cealaltă o înlocuiește. Un gradient poate fi mic fiindcă modelul este saturat local, chiar când caracteristica a fost esențială pentru atingerea stării curente. O atribuire se poate schimba când se schimbă distribuția de fundal, deoarece caracteristicile „lipsă” sunt înlocuite de o lume contrafactuală diferită."
+    },
+    {
+      "id": "t000116",
+      "source": "The simplest differentiable attribution asks how the output changes under an infinitesimal change to the input. Gradients are cheap and directly connected to the local geometry of a neural network. In images, the absolute gradient can be displayed as a saliency map; in text, gradients can be aggregated over token embeddings; in structured neural models, gradients can expose local sensitivity.",
+      "translation": "Cea mai simplă atribuire diferențiabilă întreabă cum se schimbă ieșirea sub o schimbare infinitezimală a intrării. Gradienții sunt ieftini și conectați direct cu geometria locală a unei rețele neurale. În imagini, gradientul absolut poate fi afișat ca hartă de saliență; în text, gradienții pot fi agregați peste embeddingurile tokenurilor; în modele neurale structurate, gradienții pot expune sensibilitatea locală."
+    },
+    {
+      "id": "t000117",
+      "source": "The limitation is semantic. A gradient measures local sensitivity, not historical contribution, necessity, or causal effect. Saturated nonlinearities can suppress gradients. High-frequency changes can create noisy maps. The choice of output logit, probability, loss, or other target changes the result. For discrete features such as tokens, the derivative lives in embedding space rather than directly in the space of valid words.",
+      "translation": "Limitarea este semantică. Un gradient măsoară sensibilitatea locală, nu contribuția istorică, necesitatea sau efectul cauzal. Neliniaritățile saturate pot suprima gradienții. Schimbările de frecvență înaltă pot crea hărți zgomotoase. Alegerea logitului ieșirii, probabilității, pierderii sau altei ținte schimbă rezultatul. Pentru caracteristici discrete precum tokenurile, derivata există în spațiul embeddingurilor, nu direct în spațiul cuvintelor valide."
+    },
+    {
+      "id": "t000118",
+      "source": "The landmark sanity-check work of Adebayo and colleagues demonstrated why a visually plausible saliency map is weak evidence. Some methods produced similar-looking maps even after model parameters or labels were randomized. The conclusion is not that saliency is useless. It is that an explainer claiming to describe a trained model should usually respond when the trained model is destroyed.",
+      "translation": "Lucrarea de referință a lui Adebayo și colaboratorilor privind verificările de plauzibilitate a demonstrat de ce o hartă de saliență vizual plauzibilă este o dovadă slabă. Unele metode produceau hărți asemănătoare chiar după randomizarea parametrilor modelului sau etichetelor. Concluzia nu este că saliența este inutilă. Este că un explicator care pretinde că descrie un model antrenat ar trebui de obicei să reacționeze când modelul antrenat este distrus."
+    },
+    {
+      "id": "t000119",
+      "source": "Integrated Gradients was designed around explicit axioms, especially sensitivity and implementation invariance. Instead of using only the derivative at the observed input, it accumulates gradients along a path from a reference baseline to the input. The resulting attribution answers a more specific question: how did the model output change as the input moved from the chosen reference state to the observed state along this path?",
+      "translation": "Integrated Gradients a fost proiectată în jurul unor axiome explicite, în special sensibilitate și invarianță la implementare. În loc să folosească doar derivata la intrarea observată, acumulează gradienți de-a lungul unei căi de la o referință la intrare. Atribuirea rezultată răspunde la o întrebare mai specifică: cum s-a schimbat ieșirea modelului pe măsură ce intrarea s-a deplasat de la starea de referință aleasă la starea observată de-a lungul acestei căi?"
+    },
+    {
+      "id": "t000120",
+      "source": "The baseline is therefore part of the explanation. A black image, a blurred image, a zero vector, a padding token, an average embedding, or a domain-specific reference can produce materially different semantics. There is no universally neutral baseline. In medical imaging, zero intensity may or may not represent absence of signal. In language, a zero embedding is not necessarily a valid sentence. In finance, zero income describes a particular person, not missing income.",
+      "translation": "Referința este astfel parte a explicației. O imagine neagră, o imagine estompată, un vector zero, un token de umplere, un embedding mediu sau o referință specifică domeniului pot produce semantici substanțial diferite. Nu există o referință universal neutră. În imagistica medicală, intensitatea zero poate reprezenta sau nu absența semnalului. În limbaj, un embedding zero nu este neapărat o propoziție validă. În finanțe, venitul zero descrie o anumită persoană, nu venit lipsă."
+    },
+    {
+      "id": "t000121",
+      "source": "For engineering use, baseline sensitivity should be measured rather than hidden. If reasonable baselines produce contradictory narratives, the explanation should be considered underdetermined. Captum exposes Integrated Gradients and related attribution methods in PyTorch, including workflows for transformer and LLM inputs, but the library cannot decide what baseline is scientifically meaningful for the application.",
+      "translation": "Pentru utilizare inginerească, sensibilitatea la referință ar trebui măsurată, nu ascunsă. Dacă referințe rezonabile produc narațiuni contradictorii, explicația ar trebui considerată subdeterminată. Captum expune Integrated Gradients și metode de atribuire înrudite în PyTorch, inclusiv fluxuri pentru intrări transformer și LLM, dar biblioteca nu poate decide ce referință are sens științific pentru aplicație."
+    },
+    {
+      "id": "t000122",
+      "source": "Methods such as Grad-CAM explain convolutional or vision systems by combining activation maps with gradient information to produce spatial localization. They are effective communication tools because a coarse heat map over an image maps naturally onto how humans inspect scenes. The same intuitive power creates risk: smooth colorful regions look like evidence even when the method is only a rough localization heuristic.",
+      "translation": "Metode precum Grad-CAM explică sisteme convoluționale sau vizuale combinând hărți de activare cu informații de gradient pentru a produce localizare spațială. Sunt instrumente eficiente de comunicare deoarece o hartă termică grosieră peste o imagine corespunde firesc modului în care oamenii inspectează scene. Aceeași putere intuitivă creează risc: regiunile netede colorate arată ca dovezi chiar când metoda este doar o euristică aproximativă de localizare."
+    },
+    {
+      "id": "t000123",
+      "source": "For modern vision transformers and multimodal models, attribution can target patches, attention heads, latent tokens, cross-modal links, or internal features. The number of plausible explanatory units increases dramatically. Engineers should therefore distinguish the unit being scored from the semantic object a user sees. A patch attribution is not automatically an object attribution; an attention-head attribution is not automatically a concept attribution.",
+      "translation": "Pentru transformerele vizuale și modelele multimodale moderne, atribuirea poate ținti fragmente de imagine, capete de atenție, tokenuri latente, legături între modalități sau caracteristici interne. Numărul unităților explicative plauzibile crește dramatic. Inginerii ar trebui astfel să distingă unitatea punctată de obiectul semantic văzut de utilizator. O atribuire de fragment nu este automat o atribuire de obiect; o atribuire de cap de atenție nu este automat o atribuire de concept."
+    },
+    {
+      "id": "t000124",
+      "source": "Perturbation methods estimate importance by changing or removing features and observing output changes. This gives them a direct behavioral interpretation, but only relative to the perturbation procedure. Replacing a pixel with zero, masking a word, shuffling a column, or sampling a value from a background distribution may create inputs the model never encountered during training.",
+      "translation": "Metodele de perturbare estimează importanța schimbând sau eliminând caracteristici și observând schimbările ieșirii. Aceasta le dă o interpretare comportamentală directă, dar numai în raport cu procedura perturbării. Înlocuirea unui pixel cu zero, mascarea unui cuvânt, amestecarea unei coloane sau eșantionarea unei valori dintr-o distribuție de fundal pot crea intrări pe care modelul nu le-a întâlnit la antrenare."
+    },
+    {
+      "id": "t000125",
+      "source": "Off-distribution perturbations are one of the central confounds in XAI evaluation. A dramatic output change may reflect the model's reaction to an unrealistic input rather than the importance of the removed feature. Conditional perturbations and generative in-painting can produce more realistic alternatives, but then the explainer inherits assumptions and errors from the conditional or generative model.",
+      "translation": "Perturbările în afara distribuției sunt unul dintre factorii de confuzie centrali ai evaluării XAI. O schimbare dramatică a ieșirii poate reflecta reacția modelului la o intrare nerealistă, nu importanța caracteristicii eliminate. Perturbările condiționale și completarea generativă a imaginilor pot produce alternative mai realiste, dar atunci explicatorul moștenește ipotezele și erorile modelului condițional sau generativ."
+    },
+    {
+      "id": "t000126",
+      "source": "Attribution therefore gives us measurements, not final causes. The next family of methods goes one step further by constructing local approximations and allocation schemes, which are useful only if we keep their neighborhoods and background assumptions visible.",
+      "translation": "Atribuirea ne dă astfel măsurători, nu cauze finale. Familia următoare de metode merge cu un pas mai departe construind aproximări locale și scheme de alocare, utile numai dacă păstrăm vizibile vecinătățile și ipotezele lor de fundal."
+    },
+    {
+      "id": "t000127",
+      "source": "2.2 Local surrogates and Shapley explanations under assumptions",
+      "translation": "2.2 Surogate locale și explicații Shapley sub ipoteze"
+    },
+    {
+      "id": "t000128",
+      "source": "LIME and SHAP became popular because they transformed the",
+      "translation": "LIME și SHAP au devenit populare deoarece au transformat"
+    },
+    {
+      "id": "t000129",
+      "source": "abstract problem of black-box explanation into something operational.",
+      "translation": "problema abstractă a explicării cutiei negre în ceva operațional."
+    },
+    {
+      "id": "t000130",
+      "source": "LIME fits a simple model around one instance. SHAP frames attribution as a cooperative allocation problem with a strong axiomatic foundation. Both can be extremely useful. Neither exempts the engineer from specifying the neighborhood, reference distribution, masking semantics, or feature dependence assumptions that make the result meaningful.",
+      "translation": "LIME ajustează un model simplu în jurul unei instanțe. SHAP încadrează atribuirea ca problemă de alocare cooperativă cu un fundament axiomatic puternic. Ambele pot fi extrem de utile. Niciuna nu scutește inginerul de specificarea vecinătății, distribuției de referință, semanticii mascării sau ipotezelor de dependență a caracteristicilor care dau sens rezultatului."
+    },
+    {
+      "id": "t000131",
+      "source": "Consider a fraud model in which merchant category, transaction amount, time of day, device identity, and recent account activity are strongly dependent. If a model-agnostic explainer perturbs each feature independently, it may generate synthetic examples that resemble no legitimate transaction. The local surrogate can then be accurate on the artificial neighborhood while poorly representing the model on the real data manifold. A SHAP implementation that treats features as independent can likewise distribute credit differently from one using a conditional background. The resulting bar chart does not display a context-free truth; it displays the answer under the chosen game.",
+      "translation": "Să considerăm un model de fraudă în care categoria comerciantului, suma tranzacției, ora, identitatea dispozitivului și activitatea recentă a contului sunt puternic dependente. Dacă un explicator independent de model perturbă fiecare caracteristică independent, poate genera exemple sintetice care nu seamănă cu nicio tranzacție legitimă. Surogatul local poate fi atunci exact pe vecinătatea artificială, reprezentând slab modelul pe varietatea reală a datelor. O implementare SHAP care tratează caracteristicile ca independente poate distribui similar contribuția altfel decât una care folosește un fundal condițional. Graficul cu bare rezultat nu afișează un adevăr lipsit de context; afișează răspunsul sub jocul ales."
+    },
+    {
+      "id": "t000132",
+      "source": "Validation should therefore be built into the workflow. Recompute explanations under multiple sensible backgrounds. Randomize model parameters or labels when the method claims sensitivity to learned structure. Perturb the features ranked as important and test whether predictions respond as expected, while checking that the perturbations remain meaningful. Compare methods that operationalize different notions of importance. Inspect subgroups and boundary cases rather than only median examples. If a method can be adversarially gamed, treat the explanation channel as an attack surface rather than as a trusted telemetry feed.",
+      "translation": "Validarea ar trebui astfel încorporată în fluxul de lucru. Recalculați explicațiile sub mai multe fundaluri rezonabile. Randomizați parametrii modelului sau etichetele când metoda revendică sensibilitate la structura învățată. Perturbați caracteristicile ordonate ca importante și testați dacă predicțiile răspund așteptat, verificând totodată dacă perturbările rămân semnificative. Comparați metode care operaționalizează noțiuni diferite de importanță. Inspectați subgrupuri și cazuri-limită, nu doar exemple mediane. Dacă o metodă poate fi păcălită adversarial, tratați canalul explicației ca suprafață de atac, nu ca flux de telemetrie de încredere."
+    },
+    {
+      "id": "t000133",
+      "source": "The practical goal is not to find a single “best explainer.” It is to establish a chain of evidence around a particular claim. If a feature is said to be important, the team should be able to state what important means, show that the result depends on the trained model, show that it is not an artifact of one arbitrary baseline, and describe the circumstances under which the conclusion becomes unstable. That discipline turns attribution from a visual accessory into an instrument.",
+      "translation": "Scopul practic nu este găsirea unui singur „cel mai bun explicator”. Este stabilirea unui lanț de dovezi în jurul unei afirmații particulare. Dacă se spune că o caracteristică este importantă, echipa ar trebui să poată preciza ce înseamnă important, să arate că rezultatul depinde de modelul antrenat, să arate că nu este artefactul unei referințe arbitrare și să descrie împrejurările în care concluzia devine instabilă. Această disciplină transformă atribuirea din accesoriu vizual în instrument."
+    },
+    {
+      "id": "t000134",
+      "source": "Before accepting an attribution, test whether it changes when the model changes, whether it is stable under irrelevant transformations, whether different reasonable references change the conclusion, and whether removing allegedly important information alters behavior in the predicted direction. Compare against simple baselines, including random rankings. If the explanation will be used for science or policy, introduce controlled synthetic cases where the relevant mechanism is known.",
+      "translation": "Înaintea acceptării unei atribuiri, testați dacă se schimbă când se schimbă modelul, dacă este stabilă sub transformări nerelevante, dacă referințe rezonabile diferite schimbă concluzia și dacă eliminarea informației pretins importante alterează comportamentul în direcția prezisă. Comparați cu referințe simple, inclusiv ordonări aleatoare. Dacă explicația va fi folosită pentru știință sau politici, introduceți cazuri sintetice controlate unde mecanismul relevant este cunoscut."
+    },
+    {
+      "id": "t000135",
+      "source": "LIME explains a prediction by sampling perturbed versions of the input, querying the black-box model, weighting the samples by proximity to the instance of interest, and fitting a simple interpretable surrogate. The method is attractive because it needs only a prediction interface. The target model can be a neural network, random forest, remote API, or any other system that returns outputs for inputs.",
+      "translation": "LIME explică o predicție eșantionând versiuni perturbate ale intrării, interogând modelul cutie neagră, ponderând eșantioanele după apropierea de instanța de interes și ajustând un surogat interpretabil simplu. Metoda este atractivă deoarece are nevoie doar de o interfață de predicție. Modelul țintă poate fi o rețea neurală, pădure aleatoare, API la distanță sau orice alt sistem care returnează ieșiri pentru intrări."
+    },
+    {
+      "id": "t000136",
+      "source": "The local surrogate is not the original model. Its fidelity depends on how the neighborhood is generated, how distance is defined, how samples are weighted, how features are represented, and how the surrogate is regularized. Two LIME runs can differ because the sampling process is stochastic. More importantly, they can differ because there is no unique local linear approximation to a complex decision surface at a finite neighborhood scale.",
+      "translation": "Surogatul local nu este modelul original. Fidelitatea sa depinde de generarea vecinătății, definirea distanței, ponderarea eșantioanelor, reprezentarea caracteristicilor și regularizarea surogatului. Două rulări LIME pot diferi deoarece procesul eșantionării este stochastic. Mai important, pot diferi deoarece nu există o aproximare liniară locală unică a unei suprafețe complexe de decizie la o scară finită a vecinătății."
+    },
+    {
+      "id": "t000137",
+      "source": "This makes LIME useful as an engineering probe rather than as a certificate. Repeated runs, alternative neighborhood radii, realistic perturbation schemes, and direct measurement of local surrogate fidelity should be standard. A single screenshot is not a validation protocol.",
+      "translation": "Aceasta face LIME util ca sondă inginerească, nu ca certificat. Rulările repetate, razele alternative ale vecinătății, schemele realiste de perturbare și măsurarea directă a fidelității surogatului local ar trebui să fie standard. O singură captură de ecran nu este un protocol de validare."
+    },
+    {
+      "id": "t000138",
+      "source": "Anchors replace a local linear story with high-precision if-then conditions: when a set of feature conditions holds, the model's prediction remains stable with high probability under a defined perturbation distribution. For many users, a short rule is more understandable than a vector of coefficients. The price is that the rule can cover only a narrow region and its precision is again defined relative to how alternative inputs are sampled.",
+      "translation": "Anchors înlocuiește o poveste liniară locală cu condiții dacă-atunci de înaltă precizie: când este valabil un set de condiții asupra caracteristicilor, predicția modelului rămâne stabilă cu probabilitate mare sub o distribuție definită a perturbărilor. Pentru mulți utilizatori, o regulă scurtă este mai inteligibilă decât un vector de coeficienți. Prețul este că regula poate acoperi doar o regiune îngustă, iar precizia sa este din nou definită în raport cu eșantionarea intrărilor alternative."
+    },
+    {
+      "id": "t000139",
+      "source": "Anchors illustrate a broader lesson: explanation form changes what can be claimed. A sparse rule can express a sufficient condition in a region, but it does not necessarily identify every influential feature. A coefficient vector can rank local effects, but it does not necessarily define a stable decision region. Choosing an explanatory representation is therefore part of the problem specification.",
+      "translation": "Anchors ilustrează o lecție mai largă: forma explicației schimbă ce poate fi afirmat. O regulă rară poate exprima o condiție suficientă într-o regiune, dar nu identifică neapărat fiecare caracteristică influentă. Un vector de coeficienți poate ordona efecte locale, dar nu definește neapărat o regiune stabilă de decizie. Alegerea unei reprezentări explicative face astfel parte din specificarea problemei."
+    },
+    {
+      "id": "t000140",
+      "source": "SHAP brought cooperative-game ideas into mainstream model explanation. A prediction is treated as a payoff and features participate in coalitions. The explanatory task is to allocate the difference between a reference prediction and the observed prediction among the features. Under particular axioms, Shapley-style values provide a principled additive allocation.",
+      "translation": "SHAP a adus idei ale jocurilor cooperative în explicarea curentă a modelelor. O predicție este tratată ca beneficiu, iar caracteristicile participă în coaliții. Sarcina explicativă este alocarea diferenței dintre o predicție de referință și cea observată între caracteristici. Sub anumite axiome, valorile de tip Shapley furnizează o alocare aditivă principială."
+    },
+    {
+      "id": "t000141",
+      "source": "This foundation is powerful because it clarifies desirable consistency properties and creates a common interface across model families. TreeSHAP makes Shapley-style explanations practical for tree ensembles; other explainers approximate the coalition calculation for general models. Aggregating local SHAP values produces useful global summaries and interaction views.",
+      "translation": "Acest fundament este puternic deoarece clarifică proprietăți de consistență dezirabile și creează o interfață comună între familiile de modele. TreeSHAP face practice explicațiile de tip Shapley pentru ansamblurile de arbori; alți explicatori aproximează calculul coalițiilor pentru modele generale. Agregarea valorilor SHAP locale produce rezumate globale și vederi ale interacțiunilor utile."
+    },
+    {
+      "id": "t000142",
+      "source": "Yet a Shapley value is only as meaningful as the coalition game. What does it mean for a feature to be missing? Should missing values be sampled independently, conditionally on observed features, or according to a causal intervention? How should dependent variables be handled? Which background dataset defines the reference? Different answers induce different explanations while all remaining mathematically legitimate.",
+      "translation": "Totuși, o valoare Shapley are sens doar în măsura în care are sens jocul de coaliție. Ce înseamnă ca o caracteristică să lipsească? Valorile lipsă ar trebui eșantionate independent, condiționat de caracteristicile observate sau potrivit unei intervenții cauzale? Cum ar trebui gestionate variabilele dependente? Ce set de date de fundal definește referința? Răspunsuri diferite induc explicații diferite, toate rămânând matematic legitime."
+    },
+    {
+      "id": "t000143",
+      "source": "Correlation is not a minor edge case. Real datasets are full of derived variables, proxies, repeated measurements, and strongly coupled attributes. If a person's occupation and income are correlated, assigning credit independently can create unrealistic coalitions. Conditional approaches preserve statistical dependence but can allocate credit to a feature that the model never reads because the feature carries information about another input. Interventional approaches more closely reflect the model function but can create unrealistic combinations.",
+      "translation": "Corelația nu este un caz marginal minor. Seturile reale de date sunt pline de variabile derivate, substituenți, măsurători repetate și atribute puternic cuplate. Dacă ocupația și venitul unei persoane sunt corelate, atribuirea independentă a contribuției poate crea coaliții nerealiste. Abordările condiționale păstrează dependența statistică, dar pot aloca contribuție unei caracteristici pe care modelul nu o citește niciodată deoarece caracteristica poartă informație despre altă intrare. Abordările intervenționale reflectă mai îndeaproape funcția modelului, dar pot crea combinații nerealiste."
+    },
+    {
+      "id": "t000144",
+      "source": "There is no universal resolution because the disagreement reflects different explanatory questions. One question asks how the model function depends on each input when other inputs are manipulated independently. Another asks how much information a feature contributes given the observational data distribution. A third asks about causal interventions in the world. Engineers must label which question is being answered.",
+      "translation": "Nu există rezolvare universală deoarece dezacordul reflectă întrebări explicative diferite. O întrebare cere cum depinde funcția modelului de fiecare intrare când celelalte intrări sunt manipulate independent. Alta cere câtă informație contribuie o caracteristică dată fiind distribuția observațională a datelor. O a treia întreabă despre intervenții cauzale în lume. Inginerii trebuie să eticheteze întrebarea la care răspund."
+    },
+    {
+      "id": "t000145",
+      "source": "Post-hoc explainers can themselves become attack surfaces. Slack and colleagues showed that perturbation-based methods such as LIME and SHAP can be fooled by models that detect the artificial perturbations generated by the explainer. The model behaves one way on normal inputs and another on the synthetic neighborhood, causing the explainer to report a benign surrogate for a problematic decision mechanism.",
+      "translation": "Explicatorii post-hoc pot deveni ei înșiși suprafețe de atac. Slack și colaboratorii au arătat că metodele bazate pe perturbare precum LIME și SHAP pot fi păcălite de modele care detectează perturbările artificiale generate de explicator. Modelul se comportă într-un fel pe intrările normale și altfel pe vecinătatea sintetică, făcând explicatorul să raporteze un surogat benign pentru un mecanism problematic al deciziei."
+    },
+    {
+      "id": "t000146",
+      "source": "This result is important beyond one attack. Any explainer that relies on a predictable query distribution can be gamed by a strategic model or wrapper. In adversarial or regulated contexts, explanations should not be generated by a process that the target system can trivially identify and special-case. Independent behavioral audits and randomized challenge distributions are needed.",
+      "translation": "Acest rezultat este important dincolo de un atac. Orice explicator care se bazează pe o distribuție previzibilă de interogări poate fi păcălit de un model strategic sau înveliș. În contexte adversariale sau reglementate, explicațiile nu ar trebui generate printr-un proces pe care sistemul țintă îl poate identifica trivial și trata special. Sunt necesare audituri comportamentale independente și distribuții randomizate de provocări."
+    },
+    {
+      "id": "t000147",
+      "source": "Use these methods when their explanatory semantics match the question and when black-box access makes more direct instrumentation unavailable. Record the background dataset, masking strategy, output target, random seed, explainer parameters, model version, and data version with every explanation. For consequential uses, run sensitivity analysis across plausible backgrounds and compare multiple independent explanation families.",
+      "translation": "Folosiți aceste metode când semantica lor explicativă corespunde întrebării și când accesul de tip cutie neagră face indisponibilă instrumentarea mai directă. Înregistrați cu fiecare explicație setul de date de fundal, strategia mascării, ținta ieșirii, sămânța aleatoare, parametrii explicatorului, versiunea modelului și versiunea datelor. Pentru utilizări cu consecințe, realizați analiză de sensibilitate între fundaluri plauzibile și comparați mai multe familii independente de explicație."
+    },
+    {
+      "id": "t000148",
+      "source": "Local surrogates and Shapley explanations are strongest when treated as explicitly parameterized experiments. Once the question changes from dependence to change—what would have to be different for the outcome to change—we enter the counterfactual problem.",
+      "translation": "Surogatele locale și explicațiile Shapley sunt cele mai puternice când sunt tratate ca experimente explicit parametrizate. Odată ce întrebarea trece de la dependență la schimbare — ce ar trebui să fie diferit pentru ca rezultatul să se schimbe — intrăm în problema contrafactuală."
+    },
+    {
+      "id": "t000149",
+      "source": "2.3 Counterfactuals, recourse, and causal structure",
+      "translation": "2.3 Contrafactuale, remediere și structură cauzală"
+    },
+    {
+      "id": "t000150",
+      "source": "Attribution asks which existing inputs matter under a specified comparison. Counterfactual explanation changes the grammar of the question: what would have to be different for the result to change?",
+      "translation": "Atribuirea întreabă ce intrări existente contează sub o comparație specificată. Explicația contrafactuală schimbă gramatica întrebării: ce ar trebui să fie diferit pentru ca rezultatul să se schimbe?"
+    },
+    {
+      "id": "t000151",
+      "source": "Counterfactual explanations start from a human pattern of reasoning: “Why did this happen rather than that?” A loan applicant does not necessarily care that income received 0.27 units of attribution. They care whether a realistically higher income, a smaller requested amount, or a longer credit history would have changed the decision. A physician may ask which observable change would have moved a patient out of a high-risk category. An operator may ask what input condition would have prevented an automated shutdown. The explanation is contrastive because it is defined against another outcome.",
+      "translation": "Explicațiile contrafactuale pornesc de la un tipar uman de raționament: „De ce s-a întâmplat aceasta, nu aceea?” Un solicitant de credit nu este neapărat interesat că venitul a primit 0.27 unități de atribuire. Îl interesează dacă un venit realist mai mare, o sumă cerută mai mică sau un istoric de credit mai lung ar fi schimbat decizia. Un medic poate întreba ce schimbare observabilă ar fi mutat un pacient în afara unei categorii de risc înalt. Un operator poate întreba ce condiție de intrare ar fi prevenit o oprire automată. Explicația este contrastivă deoarece este definită față de alt rezultat."
+    },
+    {
+      "id": "t000152",
+      "source": "This makes counterfactuals immediately intuitive and immediately dangerous. Optimization algorithms are excellent at finding small changes in input space. They are not automatically good at finding possible changes in the world. A nearest counterfactual for a hiring model might change age, an immutable attribute, or alter educational history in a way that cannot be achieved prospectively. A clinical counterfactual might lower a measured biomarker while ignoring the disease process that determines it. A text classifier might be flipped by inserting a nonsense token that no human would regard as a meaningful revision.",
+      "translation": "Aceasta face contrafactualele imediat intuitive și imediat periculoase. Algoritmii de optimizare sunt excelenți la găsirea schimbărilor mici în spațiul intrărilor. Nu sunt automat buni la găsirea schimbărilor posibile în lume. Cel mai apropiat contrafactual pentru un model de angajare ar putea schimba vârsta, un atribut imuabil, sau altera istoricul educațional într-un mod imposibil de realizat prospectiv. Un contrafactual clinic ar putea scădea un biomarker măsurat ignorând procesul bolii care îl determină. Un clasificator de text ar putea fi inversat prin inserarea unui token fără sens pe care niciun om nu l-ar considera revizuire semnificativă."
+    },
+    {
+      "id": "t000153",
+      "source": "The move from counterfactual explanation to recourse changes the objective. Recourse asks for a feasible path from the current state to a state associated with a desirable outcome. That path has costs, constraints, dependencies, time, and uncertainty. Some features are immutable; some can be influenced only indirectly; some changes affect other variables; some actions that alter the model score do not alter the true objective. A recourse system therefore needs domain knowledge that is not contained in the predictor.",
+      "translation": "Trecerea de la explicație contrafactuală la remediere schimbă obiectivul. Remedierea cere o cale fezabilă de la starea curentă la o stare asociată unui rezultat dezirabil. Acea cale are costuri, constrângeri, dependențe, timp și incertitudine. Unele caracteristici sunt imuabile; unele pot fi influențate doar indirect; unele schimbări afectează alte variabile; unele acțiuni care alterează scorul modelului nu alterează obiectivul real. Un sistem de remediere are astfel nevoie de cunoaștere de domeniu neconținută în predictor."
+    },
+    {
+      "id": "t000154",
+      "source": "The most useful design pattern is to separate three layers. The predictor states how the system maps current observations to an outcome. The feasibility model states which changes are allowed and how variables depend on one another. The policy layer states which actions are acceptable to recommend. By keeping these layers distinct, an engineer can explain why an optimization is mathematically valid yet socially or physically invalid, rather than forcing all semantics into one distance function.",
+      "translation": "Cel mai util tipar de proiectare este separarea a trei straturi. Predictorul precizează cum mapează sistemul observațiile curente la un rezultat. Modelul fezabilității precizează ce schimbări sunt permise și cum depind variabilele unele de altele. Stratul politicii precizează ce acțiuni sunt acceptabile de recomandat. Păstrând aceste straturi distincte, un inginer poate explica de ce o optimizare este matematic validă, dar social sau fizic invalidă, în loc să forțeze toată semantica într-o funcție de distanță."
+    },
+    {
+      "id": "t000155",
+      "source": "An engineering scenario makes the distinction concrete. Suppose an energy-management model recommends shutting down a machine because predicted failure risk exceeds a threshold. A nearest counterfactual might say that lowering vibration sensor 7 by five percent would avoid shutdown. That is informative for debugging the classifier but useless as recourse if sensor 7 cannot be changed directly. A feasible recourse analysis might instead identify bearing replacement, load reduction, or cooling changes that are expected to alter several sensor readings together. The explanatory object has moved from a modified vector to an action sequence.",
+      "translation": "Un scenariu ingineresc concretizează distincția. Să presupunem că un model de management al energiei recomandă oprirea unei mașini deoarece riscul prezis de defectare depășește un prag. Cel mai apropiat contrafactual ar putea spune că scăderea cu cinci procente a senzorului de vibrații 7 ar evita oprirea. Aceasta este informativ pentru depanarea clasificatorului, dar inutil ca remediere dacă senzorul 7 nu poate fi schimbat direct. O analiză fezabilă de remediere ar putea în schimb identifica înlocuirea rulmentului, reducerea sarcinii sau schimbări de răcire care se așteaptă să altereze împreună mai multe citiri ale senzorilor. Obiectul explicativ a trecut de la un vector modificat la o succesiune de acțiuni."
+    },
+    {
+      "id": "t000156",
+      "source": "This is why good counterfactual systems often need constraints expressed in domain language. Some changes are one-way, some have costs, some require time, and some are mutually dependent. Encoding those constraints is not a nuisance around the algorithm; it is where the real semantics of recourse live.",
+      "translation": "De aceea, sistemele contrafactuale bune au adesea nevoie de constrângeri exprimate în limbajul domeniului. Unele schimbări sunt unidirecționale, unele au costuri, unele cer timp și unele sunt interdependente. Codificarea acelor constrângeri nu este un inconvenient în jurul algoritmului; este locul unde trăiește semantica reală a remedierii."
+    },
+    {
+      "id": "t000157",
+      "source": "People often explain decisions contrastively: why this outcome rather than another? Counterfactual explanations operationalize that intuition by searching for an alternative input close to the observed one that changes the model's decision. A rejected applicant might receive an explanation such as: if annual income had been higher while the other modeled features remained within specified values, the classifier would have approved the application.",
+      "translation": "Oamenii explică adesea deciziile contrastiv: de ce acest rezultat, nu altul? Explicațiile contrafactuale operaționalizează acea intuiție căutând o intrare alternativă apropiată de cea observată care schimbă decizia modelului. Un solicitant respins ar putea primi o explicație precum: dacă venitul anual ar fi fost mai mare, iar celelalte caracteristici modelate ar fi rămas în valori specificate, clasificatorul ar fi aprobat cererea."
+    },
+    {
+      "id": "t000158",
+      "source": "This table separates four objects that are frequently presented under the same counterfactual label. The distinctions matter because the burden of evidence increases each time the explanation moves closer to advice. Table 2.1 — A counterfactual becomes stronger as it incorporates constraints about the world.",
+      "translation": "Acest tabel separă patru obiecte prezentate frecvent sub aceeași etichetă contrafactuală. Distincțiile contează deoarece povara dovezilor crește de fiecare dată când explicația se apropie de sfat. Tabelul 2.1 — Un contrafactual devine mai puternic pe măsură ce încorporează constrângeri despre lume."
+    },
+    {
+      "id": "t000159",
+      "source": "Concept / object",
+      "translation": "Concept / obiect"
+    },
+    {
+      "id": "t000160",
+      "source": "Engineering meaning",
+      "translation": "Sens ingineresc"
+    },
+    {
+      "id": "t000161",
+      "source": "Classifier counterfactual",
+      "translation": "Contrafactual al clasificatorului"
+    },
+    {
+      "id": "t000162",
+      "source": "A changed input that crosses a decision boundary. It says what would change the model output, not whether the change is possible.",
+      "translation": "O intrare schimbată care traversează o frontieră de decizie. Spune ce ar schimba ieșirea modelului, nu dacă schimbarea este posibilă."
+    },
+    {
+      "id": "t000163",
+      "source": "Feasible counterfactual",
+      "translation": "Contrafactual fezabil"
+    },
+    {
+      "id": "t000164",
+      "source": "A boundary-crossing input that respects domain constraints and immutable variables.",
+      "translation": "O intrare care traversează frontiera respectând constrângerile domeniului și variabilele imuabile."
+    },
+    {
+      "id": "t000165",
+      "source": "Actionable recourse",
+      "translation": "Remediere aplicabilă"
+    },
+    {
+      "id": "t000166",
+      "source": "A feasible change expressed as an intervention a person or system can realistically execute.",
+      "translation": "O schimbare fezabilă exprimată ca intervenție pe care o persoană sau un sistem o poate executa realist."
+    },
+    {
+      "id": "t000167",
+      "source": "Causal recourse",
+      "translation": "Remediere cauzală"
+    },
+    {
+      "id": "t000168",
+      "source": "An intervention justified by assumptions about how changing one variable propagates to others in the underlying system.",
+      "translation": "O intervenție justificată prin ipoteze despre propagarea schimbării unei variabile la altele în sistemul subiacent."
+    },
+    {
+      "id": "t000169",
+      "source": "A user-facing system should therefore state which level it actually supports. A classifier counterfactual can be valuable for debugging; presenting it as causal recourse without the necessary model of feasible intervention would be an unjustified semantic upgrade.",
+      "translation": "Un sistem pentru utilizatori ar trebui astfel să precizeze ce nivel susține efectiv. Un contrafactual al clasificatorului poate fi valoros pentru depanare; prezentarea lui ca remediere cauzală fără modelul necesar al intervenției fezabile ar fi o ridicare semantică nejustificată."
+    },
+    {
+      "id": "t000170",
+      "source": "The appeal is immediate. Unlike a feature-attribution vector, a counterfactual can connect directly to an alternative outcome. It also avoids revealing the full decision boundary. Wachter, Mittelstadt, and Russell helped establish this framing for automated decisions, emphasizing that a counterfactual can support understanding and contestability without exposing the internal model.",
+      "translation": "Atracția este imediată. Spre deosebire de un vector de atribuire a caracteristicilor, un contrafactual se poate conecta direct la un rezultat alternativ. Evită și dezvăluirea întregii frontiere de decizie. Wachter, Mittelstadt și Russell au contribuit la stabilirea acestei încadrări pentru decizii automate, subliniind că un contrafactual poate susține înțelegerea și contestabilitatea fără a expune modelul intern."
+    },
+    {
+      "id": "t000171",
+      "source": "Most naive counterfactual generation begins by minimizing a distance between the original instance and an alternative that crosses the decision boundary. But geometric proximity is only a weak proxy for human action. Age cannot be decreased, a university degree cannot be edited instantaneously, a medical measurement may be a consequence rather than a cause, and changing one variable may necessarily change others.",
+      "translation": "Majoritatea generării naive de contrafactuale începe minimizând o distanță între instanța originală și o alternativă care traversează frontiera de decizie. Dar proximitatea geometrică este doar un substitut slab pentru acțiunea umană. Vârsta nu poate fi redusă, o diplomă universitară nu poate fi editată instantaneu, o măsurătoare medicală poate fi o consecință, nu o cauză, iar schimbarea unei variabile poate schimba neapărat altele."
+    },
+    {
+      "id": "t000172",
+      "source": "Feasibility constraints improve the search by marking immutable variables, imposing valid ranges, preserving categorical relationships, and accounting for action costs. Diversity is also useful because a single nearest counterfactual may not reflect the alternatives available to a person. DiCE and related approaches generate multiple alternatives to expose different possible routes.",
+      "translation": "Constrângerile fezabilității îmbunătățesc căutarea marcând variabilele imuabile, impunând intervale valide, păstrând relații categoriale și luând în calcul costurile acțiunilor. Diversitatea este și ea utilă deoarece un singur contrafactual cel mai apropiat poate să nu reflecte alternativele disponibile unei persoane. DiCE și abordările înrudite generează alternative multiple pentru a expune rute posibile diferite."
+    },
+    {
+      "id": "t000173",
+      "source": "Even a feasible point can be a poor recommendation. A person's observed state is the result of a process. If income, education, occupation, and location are causally related, directly replacing one number in the feature vector does not describe the consequences of a real intervention.",
+      "translation": "Chiar și un punct fezabil poate fi o recomandare slabă. Starea observată a unei persoane este rezultatul unui proces. Dacă venitul, educația, ocupația și locația sunt legate cauzal, înlocuirea directă a unui număr din vectorul caracteristicilor nu descrie consecințele unei intervenții reale."
+    },
+    {
+      "id": "t000174",
+      "source": "Algorithmic recourse treats the explanation not merely as a description of the classifier but as a recommendation that should improve an individual's outcome. Karimi, Schölkopf, and Valera make the distinction explicit: a counterfactual endpoint and a causal intervention are not the same object. Recourse requires modeling which variables can be changed, how interventions propagate through the system, and whether the favorable outcome persists under uncertainty.",
+      "translation": "Remedierea algoritmică tratează explicația nu doar ca descriere a clasificatorului, ci ca recomandare care ar trebui să îmbunătățească rezultatul unui individ. Karimi, Schölkopf și Valera fac explicită distincția: un punct final contrafactual și o intervenție cauzală nu sunt același obiect. Remedierea cere modelarea variabilelor care pot fi schimbate, propagării intervențiilor prin sistem și persistenței rezultatului favorabil sub incertitudine."
+    },
+    {
+      "id": "t000175",
+      "source": "This distinction has major engineering consequences. A credit model may tell a person that reducing utilization would change the score. If utilization is itself constrained by income shocks and fixed expenses, a technically valid classifier counterfactual may be practically inaccessible. A medical risk model may suggest altering a biomarker that is not directly controllable. A fraud detector may reveal how to evade detection rather than how to become non-fraudulent.",
+      "translation": "Această distincție are consecințe inginerești majore. Un model de credit poate spune unei persoane că reducerea gradului de utilizare ar schimba scorul. Dacă utilizarea este ea însăși constrânsă de șocuri ale venitului și cheltuieli fixe, un contrafactual tehnic valid al clasificatorului poate fi practic inaccesibil. Un model medical de risc poate sugera alterarea unui biomarker care nu este direct controlabil. Un detector de fraudă poate dezvălui cum se evită detectarea, nu cum se devine nefraudulos."
+    },
+    {
+      "id": "t000176",
+      "source": "Causal reasoning enters when the question changes from",
+      "translation": "Raționamentul cauzal intră când întrebarea trece de la"
+    },
+    {
+      "id": "t000177",
+      "source": "“what input alteration flips the model?” to “what intervention could change the underlying outcome?”",
+      "translation": "„ce alterare a intrării inversează modelul?” la „ce intervenție ar putea schimba rezultatul subiacent?”"
+    },
+    {
+      "id": "t000178",
+      "source": "The difference is easiest to see in medicine. Suppose treatment is strongly associated with mortality because the sickest patients receive it. A predictive model may correctly use treatment as a marker of severity. An attribution method may faithfully report that dependence. But recommending",
+      "translation": "Diferența este cel mai ușor de văzut în medicină. Să presupunem că tratamentul este puternic asociat cu mortalitatea deoarece pacienții cei mai bolnavi îl primesc. Un model predictiv poate folosi corect tratamentul ca marcator al severității. O metodă de atribuire poate raporta fidel acea dependență. Dar recomandarea"
+    },
+    {
+      "id": "t000179",
+      "source": "“do not treat” from that attribution would reverse the causal meaning. The model has learned an observational pattern, not a treatment effect.",
+      "translation": "„nu trata” pornind de la acea atribuire ar inversa sensul cauzal. Modelul a învățat un tipar observațional, nu un efect de tratament."
+    },
+    {
+      "id": "t000180",
+      "source": "Structural causal models give a language for representing such dependencies, but they do not remove uncertainty. The graph itself is an assumption, often informed by domain knowledge and imperfect data. Unobserved confounding can invalidate seemingly precise results. The correct engineering lesson is not that every XAI system must become a full causal-inference project. It is that action-oriented explanations should explicitly state when they rely only on predictive dependence and when they rely on a causal model.",
+      "translation": "Modelele cauzale structurale oferă un limbaj pentru reprezentarea unor asemenea dependențe, dar nu elimină incertitudinea. Graful însuși este o ipoteză, adesea informată de cunoașterea domeniului și date imperfecte. Confuzia neobservată poate invalida rezultate aparent precise. Lecția inginerească corectă nu este că fiecare sistem XAI trebuie să devină un proiect complet de inferență cauzală. Este că explicațiile orientate spre acțiune ar trebui să precizeze explicit când se bazează doar pe dependență predictivă și când se bazează pe un model cauzal."
+    },
+    {
+      "id": "t000181",
+      "source": "Robust recourse adds another practical complication: models change. A user may follow a recommendation generated today only to encounter a retrained model tomorrow. If a suggested action lies barely across the current decision boundary, small model updates can erase the promised benefit. Research on robust recourse therefore seeks actions likely to remain effective across plausible model uncertainty or retraining. This is especially important when actions are expensive or slow, such as education, debt reduction, or clinical intervention.",
+      "translation": "Remedierea robustă adaugă o altă complicație practică: modelele se schimbă. Un utilizator poate urma o recomandare generată astăzi doar pentru a întâlni mâine un model reantrenat. Dacă o acțiune sugerată se află abia dincolo de frontiera curentă de decizie, mici actualizări ale modelului pot șterge beneficiul promis. Cercetarea remedierii robuste caută astfel acțiuni susceptibile să rămână eficiente sub incertitudine plauzibilă a modelului sau reantrenare. Aceasta este deosebit de important când acțiunile sunt costisitoare sau lente, precum educația, reducerea datoriilor sau intervenția clinică."
+    },
+    {
+      "id": "t000182",
+      "source": "A good recourse interface should therefore communicate more than one optimized point. It should communicate feasible ranges, assumptions, uncertainty, and the distinction between guaranteed system behavior and expected real-world effect. The closer an explanation moves toward advice, the less acceptable it is to hide these assumptions behind a neat sentence saying “change X by 12 percent.”",
+      "translation": "O interfață bună de remediere ar trebui astfel să comunice mai mult decât un punct optimizat. Ar trebui să comunice intervale fezabile, ipoteze, incertitudine și distincția dintre comportamentul garantat al sistemului și efectul real așteptat. Cu cât o explicație se apropie de sfat, cu atât este mai puțin acceptabil să ascundă aceste ipoteze în spatele unei propoziții ordonate care spune „schimbă X cu 12 procente”."
+    },
+    {
+      "id": "t000183",
+      "source": "Causal models are especially valuable when the recommendation itself can alter future data. In credit, granting a loan changes debt, repayment history, and later eligibility. In medicine, treatment changes biomarkers that the prediction model will observe in subsequent visits. In industrial control, an intervention changes the state trajectory of the machine. A static counterfactual can ignore these feedback loops and therefore recommend an action whose short-term classifier effect differs from its long-term system effect.",
+      "translation": "Modelele cauzale sunt deosebit de valoroase când recomandarea însăși poate altera datele viitoare. În credit, acordarea unui împrumut schimbă datoria, istoricul rambursării și eligibilitatea ulterioară. În medicină, tratamentul schimbă biomarkerii pe care modelul predictiv îi va observa la vizitele următoare. În controlul industrial, o intervenție schimbă traiectoria stării mașinii. Un contrafactual static poate ignora aceste bucle de feedback și astfel recomanda o acțiune al cărei efect pe termen scurt asupra clasificatorului diferă de efectul sistemic pe termen lung."
+    },
+    {
+      "id": "t000184",
+      "source": "For this reason, robust recourse can be treated as planning under model uncertainty. Instead of optimizing one boundary crossing, evaluate a family of plausible predictors, causal parameters, or future states. Prefer actions whose benefit is stable across that family and whose cost remains acceptable if the world deviates from the nominal model. When no such action exists, the system should say so rather than manufacture precision.",
+      "translation": "Din acest motiv, remedierea robustă poate fi tratată ca planificare sub incertitudinea modelului. În loc să optimizați o singură traversare de frontieră, evaluați o familie de predictori plauzibili, parametri cauzali sau stări viitoare. Preferați acțiuni al căror beneficiu este stabil în acea familie și al căror cost rămâne acceptabil dacă lumea se abate de la modelul nominal. Când nu există o asemenea acțiune, sistemul ar trebui să o spună, nu să fabrice precizie."
+    },
+    {
+      "id": "t000185",
+      "source": "The user-facing explanation should separate what is guaranteed from what is estimated. “This change flips the current classifier” is a different statement from “this action is expected to improve the underlying outcome.” Mixing them is one of the easiest ways for technically correct XAI to become practically misleading.",
+      "translation": "Explicația pentru utilizator ar trebui să separe ce este garantat de ce este estimat. „Această schimbare inversează clasificatorul curent” este un enunț diferit de „această acțiune se așteaptă să îmbunătățească rezultatul subiacent”. Amestecarea lor este una dintre cele mai ușoare căi prin care XAI tehnic corectă devine practic înșelătoare."
+    },
+    {
+      "id": "t000186",
+      "source": "Causal explanation methods try to incorporate structural knowledge into attribution. Causal Shapley values, for example, use a causal graph to separate associations from intervention effects and can distinguish direct from indirect contributions. The gain is stronger semantics. The cost is stronger assumptions: causal graph structure, intervention definitions, and identifiability become part of the explanation system.",
+      "translation": "Metodele de explicație cauzală încearcă să încorporeze cunoaștere structurală în atribuire. Valorile Shapley cauzale, de exemplu, folosesc un graf cauzal pentru a separa asocierile de efectele intervențiilor și pot distinge contribuțiile directe de cele indirecte. Câștigul este o semantică mai puternică. Costul este reprezentat de ipoteze mai puternice: structura grafului cauzal, definițiile intervențiilor și identificabilitatea devin parte a sistemului de explicație."
+    },
+    {
+      "id": "t000187",
+      "source": "This is not a defect. All explanations have assumptions; causal methods make more of them explicit. The danger is to hide uncertain causal structure behind mathematically sophisticated outputs. If the graph is wrong, the causal explanation can be confidently wrong. Engineering practice should therefore version causal assumptions, record which edges are expert-provided versus learned, and test sensitivity to plausible alternative graphs.",
+      "translation": "Acesta nu este un defect. Toate explicațiile au ipoteze; metodele cauzale fac explicite mai multe dintre ele. Pericolul este ascunderea structurii cauzale incerte în spatele unor ieșiri matematic sofisticate. Dacă graful este greșit, explicația cauzală poate fi greșită cu încredere. Practica inginerească ar trebui astfel să versioneze ipotezele cauzale, să înregistreze ce muchii sunt furnizate de experți versus învățate și să testeze sensibilitatea la grafuri alternative plauzibile."
+    },
+    {
+      "id": "t000188",
+      "source": "A further practical problem is model drift. If a person invests time or money in following a recommendation, the model may be retrained before the action is completed. Robust recourse seeks interventions that remain effective across plausible model updates or uncertainty sets. This turns explanation into a contract across time rather than a statement about one model snapshot.",
+      "translation": "O altă problemă practică este deriva modelului. Dacă o persoană investește timp sau bani urmând o recomandare, modelul poate fi reantrenat înaintea finalizării acțiunii. Remedierea robustă caută intervenții care rămân eficiente între actualizări plauzibile ale modelului sau mulțimi de incertitudine. Aceasta transformă explicația într-un contract de-a lungul timpului, nu într-un enunț despre un instantaneu al modelului."
+    },
+    {
+      "id": "t000189",
+      "source": "For production systems, counterfactual generation should therefore be connected to model lifecycle management. A recourse artifact should carry the model version, validity horizon, assumptions, and confidence. If the policy or model changes, stale recommendations should be detectable.",
+      "translation": "Pentru sistemele de producție, generarea contrafactuală ar trebui astfel conectată la administrarea ciclului de viață al modelului. Un artefact de remediere ar trebui să poarte versiunea modelului, orizontul validității, ipotezele și încrederea. Dacă politica sau modelul se schimbă, recomandările învechite ar trebui să fie detectabile."
+    },
+    {
+      "id": "t000190",
+      "source": "The boundary between counterfactual explanation and recourse is where model semantics meet world semantics. That same transition motivates explanations that use concepts, examples, and training data rather than raw input coordinates.",
+      "translation": "Granița dintre explicație contrafactuală și remediere este locul întâlnirii semanticii modelului cu semantica lumii. Aceeași tranziție motivează explicații care folosesc concepte, exemple și date de antrenare, nu coordonate brute de intrare."
+    },
+    {
+      "id": "t000191",
+      "source": "2.4 Concepts, prototypes, and the data behind a decision",
+      "translation": "2.4 Concepte, prototipuri și datele din spatele unei decizii"
+    },
+    {
+      "id": "t000192",
+      "source": "Human explanations rarely stop at elementary features. A radiologist thinks in lesions, borders, anatomical regions, and diagnostic patterns; a security analyst thinks in tactics, behaviors, and sequences; a software engineer thinks in functions, invariants, and failure modes. Concept-based XAI tries to align the explanatory vocabulary with these units. The attraction is obvious: a statement that a vision model depends on “striped texture” or “wheel-like geometry” is easier to inspect than thousands of pixel scores.",
+      "translation": "Explicațiile umane se opresc rareori la caracteristici elementare. Un radiolog gândește în leziuni, margini, regiuni anatomice și tipare diagnostice; un analist de securitate gândește în tactici, comportamente și succesiuni; un inginer software gândește în funcții, invariante și moduri de eșec. XAI bazată pe concepte încearcă să alinieze vocabularul explicativ cu aceste unități. Atracția este evidentă: un enunț că un model vizual depinde de „textură dungată” sau „geometrie de tip roată” este mai ușor de inspectat decât mii de scoruri de pixeli."
+    },
+    {
+      "id": "t000193",
+      "source": "TCAV provides one route by defining a concept from examples and asking whether the model's internal representation is sensitive in the concept direction. Concept bottleneck models go further by making intermediate concepts part of the predictive architecture. Prototype systems explain by similarity to learned or selected examples, giving a “this looks like that” form of reasoning. These approaches differ in whether concepts are post-hoc probes, explicit bottlenecks, or case-based structures, but all expose the same fundamental issue: the quality of the explanation now depends on the quality of the concept vocabulary.",
+      "translation": "TCAV oferă o cale definind un concept din exemple și întrebând dacă reprezentarea internă a modelului este sensibilă în direcția conceptului. Modelele cu blocaj conceptual merg mai departe făcând conceptele intermediare parte a arhitecturii predictive. Sistemele de prototipuri explică prin similaritate cu exemple învățate sau selectate, oferind o formă de raționament „aceasta seamănă cu aceea”. Aceste abordări diferă prin rolul conceptelor ca sonde post-hoc, blocaje explicite sau structuri bazate pe cazuri, dar toate expun aceeași problemă fundamentală: calitatea explicației depinde acum de calitatea vocabularului conceptual."
+    },
+    {
+      "id": "t000194",
+      "source": "Concepts can be incomplete, culturally contingent, mislabeled, or too coarse. A concept bottleneck may create the comforting appearance that the model reasons only through approved concepts while hidden paths or imperfect concept annotations preserve unwanted information. A prototype may be visually compelling yet represent a spurious similarity. Editing a concept can improve controllability while also introducing distribution shift. Concept-based explanation therefore exchanges low-level opacity for a new modeling problem: defining, learning, and validating the semantic units themselves.",
+      "translation": "Conceptele pot fi incomplete, contingente cultural, etichetate greșit sau prea grosiere. Un blocaj conceptual poate crea aparența reconfortantă că modelul raționează doar prin concepte aprobate, în timp ce căi ascunse sau adnotări imperfecte ale conceptelor păstrează informație nedorită. Un prototip poate fi convingător vizual, dar poate reprezenta o similaritate falsă. Editarea unui concept poate îmbunătăți controlabilitatea introducând totodată schimbare de distribuție. Explicația bazată pe concepte schimbă astfel opacitatea de nivel inferior pe o problemă nouă de modelare: definirea, învățarea și validarea unităților semantice însele."
+    },
+    {
+      "id": "t000195",
+      "source": "This is still a productive trade. It is often easier for experts to challenge a wrong concept than a wrong latent vector. The strongest systems treat concepts as hypotheses that can be revised rather than as sacred labels. They expose examples that activate a concept, counterexamples that should not, uncertainty in concept prediction, and downstream sensitivity to concept edits. In that form, concepts become a collaborative interface between learned representations and domain expertise.",
+      "translation": "Acesta este totuși un schimb productiv. Adesea este mai ușor pentru experți să conteste un concept greșit decât un vector latent greșit. Cele mai puternice sisteme tratează conceptele ca ipoteze revizuibile, nu etichete sacre. Expun exemple care activează un concept, contraexemple care nu ar trebui să o facă, incertitudinea predicției conceptului și sensibilitatea ulterioară la editările conceptelor. În acea formă, conceptele devin o interfață colaborativă între reprezentările învățate și expertiza domeniului."
+    },
+    {
+      "id": "t000196",
+      "source": "Input features are convenient because models consume them directly, but they are often poor explanatory units. A radiologist reasons in terms of lesions, borders, asymmetry, tissue patterns, and diagnostic criteria rather than individual pixels. A software engineer reasons about API misuse, privilege boundaries, race conditions, and protocol states rather than token IDs. Concept-based XAI attempts to bridge this semantic gap.",
+      "translation": "Caracteristicile de intrare sunt comode deoarece modelele le consumă direct, dar sunt adesea unități explicative slabe. Un radiolog raționează în termeni de leziuni, margini, asimetrie, tipare tisulare și criterii diagnostice, nu pixeli individuali. Un inginer software raționează despre folosirea greșită a API-urilor, limite de privilegii, condiții de cursă și stări de protocol, nu ID-uri de tokenuri. XAI bazată pe concepte încearcă să construiască o punte peste această lacună semantică."
+    },
+    {
+      "id": "t000197",
+      "source": "The hard part is that concepts are not given by the network. They may be human-defined, discovered from representations, inherited from an ontology, or generated by another foundation model. Every choice embeds a worldview into the explanation. Concept quality therefore deserves the same scrutiny as model quality.",
+      "translation": "Partea dificilă este că conceptele nu sunt date de rețea. Pot fi definite de oameni, descoperite din reprezentări, moștenite dintr-o ontologie sau generate de alt model fundamental. Fiecare alegere încorporează o perspectivă asupra lumii în explicație. Calitatea conceptelor merită astfel aceeași examinare ca și calitatea modelului."
+    },
+    {
+      "id": "t000198",
+      "source": "Testing with Concept Activation Vectors, or TCAV, asks whether a model's internal representation is sensitive to a user-defined concept. Example data for a concept such as stripes, texture, gender presentation, or a medical pattern are used to estimate a direction in representation space. The model's output sensitivity along that direction is then measured.",
+      "translation": "Testing with Concept Activation Vectors, sau TCAV, întreabă dacă reprezentarea internă a unui model este sensibilă la un concept definit de utilizator. Date exemplificative pentru un concept precum dungi, textură, prezentare de gen sau un tipar medical sunt folosite pentru a estima o direcție în spațiul reprezentărilor. Este apoi măsurată sensibilitatea ieșirii modelului de-a lungul acelei direcții."
+    },
+    {
+      "id": "t000199",
+      "source": "TCAV is valuable because it lets domain experts ask questions in their own vocabulary without retraining the entire predictor. It is also limited by the concept examples, the choice of layer, linear separability, and the assumption that a direction corresponds to the concept in a sufficiently stable way. A concept probe can detect information that is represented without proving that the model causally uses that information for a specific prediction.",
+      "translation": "TCAV este valoros deoarece permite experților de domeniu să pună întrebări în propriul vocabular fără a reantrena întregul predictor. Este limitat și de exemplele conceptului, alegerea stratului, separabilitatea liniară și presupunerea că o direcție corespunde conceptului suficient de stabil. O sondă de concept poate detecta informație reprezentată fără a demonstra că modelul folosește cauzal acea informație pentru o predicție specifică."
+    },
+    {
+      "id": "t000200",
+      "source": "Concept Bottleneck Models make a stronger architectural commitment. Instead of merely probing hidden representations after training, the model explicitly predicts named concepts and then predicts the final target from those concepts. This creates a human-readable intermediate interface and supports intervention: a domain expert can correct a concept and observe how the final output changes.",
+      "translation": "Concept Bottleneck Models fac un angajament arhitectural mai puternic. În loc să sondeze doar reprezentări ascunse după antrenare, modelul prezice explicit concepte numite și apoi prezice ținta finală din acele concepte. Aceasta creează o interfață intermediară lizibilă pentru oameni și susține intervenția: un expert al domeniului poate corecta un concept și observa cum se schimbă ieșirea finală."
+    },
+    {
+      "id": "t000201",
+      "source": "The original work by Koh and colleagues showed that concept bottlenecks could achieve competitive performance in tasks such as bird identification and radiographic grading while enabling concept-level inspection. Later work introduced probabilistic concept bottlenecks, editable concept systems, and more data-efficient concept learning. The frontier is moving from static concept dictionaries toward representations that can be revised, queried, and aligned with richer semantic spaces.",
+      "translation": "Lucrarea originală a lui Koh și colaboratorilor a arătat că blocajele conceptuale pot atinge performanță competitivă în sarcini precum identificarea păsărilor și clasificarea radiografică, permițând inspectare la nivel de concept. Lucrările ulterioare au introdus blocaje conceptuale probabiliste, sisteme de concepte editabile și învățare mai eficientă în date a conceptelor. Frontiera trece de la dicționare conceptuale statice la reprezentări care pot fi revizuite, interogate și aliniate cu spații semantice mai bogate."
+    },
+    {
+      "id": "t000202",
+      "source": "The central unresolved issue is concept completeness. If the model can only use a fixed vocabulary, missing concepts can reduce accuracy or force inappropriate compression. If a residual hidden channel is added to recover lost information, the system may regain performance while losing the guarantee that the visible concepts fully mediate the decision. An engineer should therefore ask not only whether concepts are understandable but whether they are sufficient.",
+      "translation": "Problema centrală nerezolvată este completitudinea conceptelor. Dacă modelul poate folosi doar un vocabular fix, conceptele lipsă pot reduce acuratețea sau forța compresie nepotrivită. Dacă este adăugat un canal ascuns rezidual pentru recuperarea informației pierdute, sistemul își poate recâștiga performanța pierzând garanția că conceptele vizibile mediază complet decizia. Un inginer ar trebui astfel să întrebe nu doar dacă conceptele sunt inteligibile, ci și dacă sunt suficiente."
+    },
+    {
+      "id": "t000203",
+      "source": "Prototype models explain by similarity: this input, or this part of an input, resembles a learned representative example. ProtoPNet popularized an architecture for image classification in which local image regions are compared with learned prototypical parts. The explanation has a form humans use naturally: 'this looks like that.'",
+      "translation": "Modelele de prototipuri explică prin similaritate: această intrare sau această parte a unei intrări seamănă cu un exemplu reprezentativ învățat. ProtoPNet a popularizat o arhitectură pentru clasificarea imaginilor în care regiuni locale de imagine sunt comparate cu părți prototipice învățate. Explicația are o formă folosită firesc de oameni: „aceasta seamănă cu aceea”."
+    },
+    {
+      "id": "t000204",
+      "source": "Prototype quality is not automatic. A learned prototype can be visually ambiguous, unrepresentative of the class, or semantically aligned with a shortcut. A prototype can also encourage a user to overgeneralize from one case. Prototype systems need audits of representativeness, coverage, stability, and class semantics, especially when the examples contain sensitive or private information.",
+      "translation": "Calitatea prototipurilor nu este automată. Un prototip învățat poate fi ambiguu vizual, nereprezentativ pentru clasă sau aliniat semantic cu o scurtătură. Un prototip poate și încuraja utilizatorul să suprageneralizeze pornind de la un caz. Sistemele de prototipuri au nevoie de audituri ale reprezentativității, acoperirii, stabilității și semanticii claselor, mai ales când exemplele conțin informații sensibile sau private."
+    },
+    {
+      "id": "t000205",
+      "source": "A model is partly a compressed history of its training data. When a surprising prediction appears, asking which training examples most influenced it can be more informative than asking only which input features mattered. Influence functions, representer-style methods, nearest-neighbor analyses in learned spaces, gradient similarity, and newer data-attribution techniques all attempt to trace behavior backward toward the examples or groups that shaped it.",
+      "translation": "Un model este parțial o istorie comprimată a datelor sale de antrenare. Când apare o predicție surprinzătoare, întrebarea ce exemple de antrenare au influențat-o cel mai mult poate fi mai informativă decât doar întrebarea ce caracteristici de intrare au contat. Funcțiile de influență, metodele de tip representer, analizele celor mai apropiați vecini în spații învățate, similaritatea gradienților și tehnicile noi de atribuire a datelor încearcă toate să urmărească comportamentul înapoi către exemplele sau grupurile care l-au modelat."
+    },
+    {
+      "id": "t000206",
+      "source": "This is valuable for debugging label errors, identifying duplicates, finding contamination, understanding memorization, and investigating whether a behavior is inherited from a narrow slice of data. In a language model, the problem becomes much harder because training corpora are enormous and the relationship between one output and individual examples is diffuse. Even so, the conceptual move is important: explanation can concern not only the forward computation of a model but also the provenance of the knowledge embedded in it.",
+      "translation": "Aceasta este valoroasă pentru depanarea erorilor de etichetare, identificarea duplicatelor, găsirea contaminării, înțelegerea memorării și investigarea moștenirii unui comportament dintr-o porțiune îngustă de date. Într-un model lingvistic, problema devine mult mai dificilă deoarece corpusurile de antrenare sunt enorme, iar relația dintre o ieșire și exemplele individuale este difuză. Chiar și așa, mutarea conceptuală este importantă: explicația poate privi nu doar calculul înainte al unui model, ci și proveniența cunoașterii încorporate în el."
+    },
+    {
+      "id": "t000207",
+      "source": "Training-data attribution also reveals why semantic abstraction is a frontier problem. Raw influential examples are often too numerous or too specific. Engineers need to summarize them into patterns without inventing a story that the evidence does not support. A collection of influential cases might reveal a recurring template, domain, source, demographic cluster, or annotation artifact. Turning that cluster into a named concept is a second inference step and should be validated separately.",
+      "translation": "Atribuirea datelor de antrenare dezvăluie și de ce abstracția semantică este o problemă de frontieră. Exemplele brute influente sunt adesea prea numeroase sau prea specifice. Inginerii trebuie să le rezume în tipare fără a inventa o poveste pe care dovezile nu o susțin. O colecție de cazuri influente ar putea dezvălui un șablon recurent, domeniu, sursă, cluster demografic sau artefact de adnotare. Transformarea acelui cluster într-un concept numit este un al doilea pas de inferență și ar trebui validat separat."
+    }
+  ]
+}

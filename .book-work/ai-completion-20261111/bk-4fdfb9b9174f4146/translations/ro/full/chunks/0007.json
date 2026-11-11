@@ -1,0 +1,906 @@
+{
+  "language": "ro",
+  "chunk": 7,
+  "segments": [
+    {
+      "id": "t000652",
+      "source": "Recommender and ranking systems are inherently comparative. The practical question is rarely why one score is high in isolation; it is why item A appeared above item B, which signals dominate exposure, and how the ranking changes when context or user history changes. Explanations that ignore the candidate set can be misleading because ranking is relative. Long feedback loops also matter: recommendations change behavior, behavior changes training data, and future explanations inherit the resulting selection effects.",
+      "translation": "Sistemele de recomandare și ordonare sunt inerent comparative. Întrebarea practică este rareori de ce un scor este mare izolat; este de ce elementul A a apărut deasupra elementului B, ce semnale domină expunerea și cum se schimbă ordonarea când se schimbă contextul sau istoricul utilizatorului. Explicațiile care ignoră setul candidaților pot induce în eroare deoarece ordonarea este relativă. Contează și buclele lungi de feedback: recomandările schimbă comportamentul, comportamentul schimbă datele de antrenare, iar explicațiile viitoare moștenesc efectele rezultate ale selecției."
+    },
+    {
+      "id": "t000653",
+      "source": "Scientific machine learning raises the evidential bar because the goal may be discovery rather than only prediction. An explanation that identifies a feature correlation can suggest a hypothesis, but scientific interpretation requires domain constraints, causal reasoning, and independent validation. Here XAI is most useful when it helps formulate experiments: identify a candidate variable, show where the model's behavior changes, propose a controlled perturbation or simulation, and then compare the result with theory or new data. The explanation becomes part of a discovery workflow rather than a final answer.",
+      "translation": "Învățarea automată științifică ridică ștacheta probatorie deoarece scopul poate fi descoperirea, nu doar predicția. O explicație care identifică o corelație de caracteristici poate sugera o ipoteză, dar interpretarea științifică cere constrângeri de domeniu, raționament cauzal și validare independentă. Aici XAI este cea mai utilă când ajută la formularea experimentelor: identifică o variabilă candidată, arată unde se schimbă comportamentul modelului, propune o perturbare sau simulare controlată și apoi compară rezultatul cu teoria sau date noi. Explicația devine parte a unui flux de descoperire, nu un răspuns final."
+    },
+    {
+      "id": "t000654",
+      "source": "Across these domains, the common lesson is that explanation semantics come from the task and the allowed intervention, not from the visualization. Time-series explanations require temporally coherent changes; graph explanations require valid graph edits; reinforcement learning requires trajectory-level reasoning; ranking requires comparative context; scientific AI requires experiments that connect learned structure to the world. A reusable XAI platform therefore needs a stable evidence architecture with domain-specific intervention models, not one universal explanation widget.",
+      "translation": "Între aceste domenii, lecția comună este că semantica explicației vine din sarcină și intervenția permisă, nu din vizualizare. Explicațiile seriilor temporale cer schimbări coerente temporal; explicațiile grafurilor cer editări valide de graf; învățarea prin întărire cere raționament la nivel de traiectorie; ordonarea cere context comparativ; IA științifică cere experimente care conectează structura învățată cu lumea. O platformă XAI reutilizabilă are astfel nevoie de o arhitectură stabilă a dovezilor cu modele de intervenție specifice domeniului, nu de un widget universal de explicație."
+    },
+    {
+      "id": "t000655",
+      "source": "The durable principle is therefore not a preferred explainer. It is the discipline of matching an explanatory claim to a valid intervention, preserving the evidence, and designing the system so that future observers can challenge what the present team believes.",
+      "translation": "Principiul durabil nu este astfel un explicator preferat. Este disciplina potrivirii unei afirmații explicative cu o intervenție validă, păstrării dovezilor și proiectării sistemului astfel încât observatorii viitori să poată contesta convingerile echipei prezente."
+    },
+    {
+      "id": "t000656",
+      "source": "Appendix A. Student Glossary and Background Links",
+      "translation": "Anexa A. Glosar pentru studenți și legături introductive"
+    },
+    {
+      "id": "t000657",
+      "source": "This appendix explains terms that a technically curious reader may encounter before taking a dedicated course in machine learning, statistics, causal inference, or software assurance. The definitions are intentionally operational rather than exhaustive. Each row includes a Wikipedia background link as a starting point for general orientation; the research literature in the bibliography should be preferred for technical claims about XAI.",
+      "translation": "Această anexă explică termeni pe care un cititor curios tehnic îi poate întâlni înainte de a urma un curs dedicat de învățare automată, statistică, inferență cauzală sau asigurare software. Definițiile sunt intenționat operaționale, nu exhaustive. Fiecare rând include o legătură introductivă Wikipedia ca punct de plecare pentru orientare generală; literatura de cercetare din bibliografie ar trebui preferată pentru afirmații tehnice despre XAI."
+    },
+    {
+      "id": "t000658",
+      "source": "Table A.1 — Background glossary for readers entering XAI from general software engineering or secondary-school mathematics.",
+      "translation": "Tabelul A.1 — Glosar introductiv pentru cititori care intră în XAI din inginerie software generală sau matematică de liceu."
+    },
+    {
+      "id": "t000659",
+      "source": "Term",
+      "translation": "Termen"
+    },
+    {
+      "id": "t000660",
+      "source": "Plain-language explanation and background link",
+      "translation": "Explicație în limbaj simplu și legătură introductivă"
+    },
+    {
+      "id": "t000661",
+      "source": "Artificial intelligence",
+      "translation": "Inteligență artificială"
+    },
+    {
+      "id": "t000662",
+      "source": "The broad field of building systems that perform tasks associated with perception, reasoning, language, planning, or decision making. In this book the term includes learned models and the larger software systems around them. Wikipedia",
+      "translation": "Domeniul larg al construirii sistemelor care efectuează sarcini asociate percepției, raționamentului, limbajului, planificării sau deciziei. În această carte, termenul include modele învățate și sistemele software mai largi din jurul lor. Wikipedia"
+    },
+    {
+      "id": "t000663",
+      "source": "Machine learning",
+      "translation": "Învățare automată"
+    },
+    {
+      "id": "t000664",
+      "source": "A family of methods in which behavior is learned from data or interaction rather than being fully programmed as explicit rules. Wikipedia",
+      "translation": "O familie de metode în care comportamentul este învățat din date sau interacțiune, nu programat complet ca reguli explicite. Wikipedia"
+    },
+    {
+      "id": "t000665",
+      "source": "Supervised learning",
+      "translation": "Învățare supervizată"
+    },
+    {
+      "id": "t000666",
+      "source": "Learning from examples paired with target labels or values, such as images with diagnoses or applications with historical outcomes. Wikipedia",
+      "translation": "Învățarea din exemple asociate cu etichete sau valori țintă, precum imagini cu diagnostice sau cereri cu rezultate istorice. Wikipedia"
+    },
+    {
+      "id": "t000667",
+      "source": "Classification",
+      "translation": "Clasificare"
+    },
+    {
+      "id": "t000668",
+      "source": "Predicting one of several categories, often together with a score or probability. Many XAI examples use classification because a single decision is easy to localize. Wikipedia",
+      "translation": "Prezicerea uneia dintre mai multe categorii, adesea împreună cu un scor sau o probabilitate. Multe exemple XAI folosesc clasificarea deoarece o singură decizie este ușor de localizat. Wikipedia"
+    },
+    {
+      "id": "t000669",
+      "source": "Regression",
+      "translation": "Regresie"
+    },
+    {
+      "id": "t000670",
+      "source": "Predicting a numerical quantity rather than a discrete class. Explanations must then refer to changes in the predicted value rather than class changes alone. Wikipedia",
+      "translation": "Prezicerea unei cantități numerice, nu a unei clase discrete. Explicațiile trebuie apoi să se refere la schimbările valorii prezise, nu doar la schimbări de clasă. Wikipedia"
+    },
+    {
+      "id": "t000671",
+      "source": "background link background link background link background link The glossary is intentionally not a substitute for the bibliography. Wikipedia is used here as a low-friction orientation layer for prerequisite concepts. Claims about XAI methods, evaluation, regulation, and the 2025–2026 research frontier should be traced to the original papers and institutional sources listed below.",
+      "translation": "legătură introductivă legătură introductivă legătură introductivă legătură introductivă Glosarul nu înlocuiește intenționat bibliografia. Wikipedia este folosită aici ca strat de orientare ușor accesibil pentru concepte prealabile. Afirmațiile despre metode XAI, evaluare, reglementare și frontiera cercetării din 2025–2026 ar trebui urmărite către articolele originale și sursele instituționale enumerate mai jos."
+    },
+    {
+      "id": "t000672",
+      "source": "Feature",
+      "translation": "Caracteristică"
+    },
+    {
+      "id": "t000673",
+      "source": "An input variable or derived representation used by a model. A feature can be a table",
+      "translation": "O variabilă de intrare sau reprezentare derivată folosită de un model. O caracteristică poate fi o coloană de"
+    },
+    {
+      "id": "t000674",
+      "source": "column, representation, sensor summary, or learned internal direction. Wikipedia",
+      "translation": "tabel, reprezentare, rezumat de senzor sau direcție internă învățată. Wikipedia"
+    },
+    {
+      "id": "t000675",
+      "source": "image",
+      "translation": "imagine"
+    },
+    {
+      "id": "t000676",
+      "source": "region,",
+      "translation": "regiune,"
+    },
+    {
+      "id": "t000677",
+      "source": "token",
+      "translation": "token"
+    },
+    {
+      "id": "t000678",
+      "source": "Training data",
+      "translation": "Date de antrenare"
+    },
+    {
+      "id": "t000679",
+      "source": "Examples used to fit model parameters. Data-attribution methods ask how particular training examples or groups influenced later behavior. Wikipedia",
+      "translation": "Exemple folosite pentru ajustarea parametrilor modelului. Metodele de atribuire a datelor întreabă cum au influențat exemple sau grupuri particulare de antrenare comportamentul ulterior. Wikipedia"
+    },
+    {
+      "id": "t000680",
+      "source": "Validation set",
+      "translation": "Set de validare"
+    },
+    {
+      "id": "t000681",
+      "source": "Data held out from training and used to tune or select a model. It is distinct from explanation validation, which tests claims about model behavior. Wikipedia",
+      "translation": "Date rezervate din antrenare și folosite pentru ajustarea sau selecția unui model. Este distinct de validarea explicației, care testează afirmații despre comportamentul modelului. Wikipedia"
+    },
+    {
+      "id": "t000682",
+      "source": "Test set",
+      "translation": "Set de test"
+    },
+    {
+      "id": "t000683",
+      "source": "Held-out data used to estimate how a model performs on unseen examples. A test set alone rarely establishes whether an explanation is faithful. Wikipedia",
+      "translation": "Date rezervate folosite pentru estimarea performanței modelului pe exemple nevăzute. Un set de test singur stabilește rareori dacă o explicație este fidelă. Wikipedia"
+    },
+    {
+      "id": "t000684",
+      "source": "AUROC",
+      "translation": "AUROC"
+    },
+    {
+      "id": "t000685",
+      "source": "Area under the receiver operating characteristic curve, a common measure of ranking quality for binary classifiers. Good AUROC does not imply that a model is explainable or safe. Wikipedia",
+      "translation": "Aria de sub curba caracteristicii de operare a receptorului, o măsură comună a calității ordonării pentru clasificatori binari. AUROC bun nu implică faptul că un model este explicabil sau sigur. Wikipedia"
+    },
+    {
+      "id": "t000686",
+      "source": "Linear model",
+      "translation": "Model liniar"
+    },
+    {
+      "id": "t000687",
+      "source": "A model whose prediction is built from weighted input terms. Linear structure can be directly inspectable when variables are meaningful and interactions are limited. Wikipedia",
+      "translation": "Un model a cărui predicție este construită din termeni ponderați de intrare. Structura liniară poate fi direct inspectabilă când variabilele au sens și interacțiunile sunt limitate. Wikipedia"
+    },
+    {
+      "id": "t000688",
+      "source": "Decision tree",
+      "translation": "Arbore de decizie"
+    },
+    {
+      "id": "t000689",
+      "source": "A branching prediction structure based on sequential conditions. Small trees can be readable; large ensembles are usually not transparent as a whole. Wikipedia",
+      "translation": "O structură predictivă ramificată bazată pe condiții secvențiale. Arborii mici pot fi lizibili; ansamblurile mari nu sunt de obicei transparente în întregime. Wikipedia"
+    },
+    {
+      "id": "t000690",
+      "source": "Generalized additive model",
+      "translation": "Model aditiv generalizat"
+    },
+    {
+      "id": "t000691",
+      "source": "A model that combines learned one-dimensional response functions, often providing a useful compromise between nonlinear accuracy and inspectable structure. Wikipedia",
+      "translation": "Un model care combină funcții învățate unidimensionale de răspuns, oferind adesea un compromis util între acuratețe neliniară și structură inspectabilă. Wikipedia"
+    },
+    {
+      "id": "t000692",
+      "source": "background link background link background link background link",
+      "translation": "legătură introductivă legătură introductivă legătură introductivă legătură introductivă"
+    },
+    {
+      "id": "t000693",
+      "source": "Gradient boosting",
+      "translation": "Boosting pe gradient"
+    },
+    {
+      "id": "t000694",
+      "source": "A technique that builds a strong predictor by adding many weak models sequentially. Explainable Boosting Machines use related ideas with an interpretable additive structure. Wikipedia",
+      "translation": "O tehnică de construire a unui predictor puternic prin adăugarea secvențială a multor modele slabe. Explainable Boosting Machines folosesc idei înrudite cu o structură aditivă interpretabilă. Wikipedia"
+    },
+    {
+      "id": "t000695",
+      "source": "Neural network",
+      "translation": "Rețea neurală"
+    },
+    {
+      "id": "t000696",
+      "source": "A parameterized computational system built from layers of transformations. Modern deep networks can learn rich representations but are usually not directly interpretable. Wikipedia",
+      "translation": "Un sistem computațional parametrizat construit din straturi de transformări. Rețelele profunde moderne pot învăța reprezentări bogate, dar de obicei nu sunt direct interpretabile. Wikipedia"
+    },
+    {
+      "id": "t000697",
+      "source": "Gradient",
+      "translation": "Gradient"
+    },
+    {
+      "id": "t000698",
+      "source": "A quantity describing how a function changes with respect to its inputs or parameters. Gradient-based XAI methods use this local sensitivity information. Wikipedia",
+      "translation": "O cantitate care descrie cum se schimbă o funcție în raport cu intrările sau parametrii săi. Metodele XAI bazate pe gradient folosesc această informație de sensibilitate locală. Wikipedia"
+    },
+    {
+      "id": "t000699",
+      "source": "Backpropagation",
+      "translation": "Retropropagare"
+    },
+    {
+      "id": "t000700",
+      "source": "The standard algorithmic procedure used to compute gradients through layered neural networks. Some attribution methods reuse the same computational machinery. Wikipedia",
+      "translation": "Procedura algoritmică standard folosită pentru calcularea gradienților prin rețele neurale stratificate. Unele metode de atribuire reutilizează același mecanism computațional. Wikipedia"
+    },
+    {
+      "id": "t000701",
+      "source": "Sensitivity analysis",
+      "translation": "Analiza sensibilității"
+    },
+    {
+      "id": "t000702",
+      "source": "The study of how outputs change when inputs or assumptions change. Much of attribution and robustness testing can be understood as specialized sensitivity analysis. Wikipedia",
+      "translation": "Studiul schimbării ieșirilor când se schimbă intrări sau ipoteze. Mare parte din atribuire și testarea robusteții poate fi înțeleasă ca analiză specializată a sensibilității. Wikipedia"
+    },
+    {
+      "id": "t000703",
+      "source": "Baseline",
+      "translation": "Referință"
+    },
+    {
+      "id": "t000704",
+      "source": "A reference input or distribution used to define what counts as absence, replacement, or comparison in an explanation. Changing the baseline can change the meaning of the result. Wikipedia",
+      "translation": "O intrare sau distribuție de referință folosită pentru a defini ce contează ca absență, înlocuire sau comparație într-o explicație. Schimbarea referinței poate schimba sensul rezultatului. Wikipedia"
+    },
+    {
+      "id": "t000705",
+      "source": "Perturbation",
+      "translation": "Perturbare"
+    },
+    {
+      "id": "t000706",
+      "source": "A controlled change to an input, internal state, or environment used to test whether the model response changes as an explanatory claim predicts. Wikipedia",
+      "translation": "O schimbare controlată a unei intrări, stări interne sau mediului, folosită pentru testarea schimbării răspunsului modelului potrivit predicției unei afirmații explicative. Wikipedia"
+    },
+    {
+      "id": "t000707",
+      "source": "Shapley value",
+      "translation": "Valoare Shapley"
+    },
+    {
+      "id": "t000708",
+      "source": "A cooperative-game-theory allocation rule that distributes a total value among contributors. SHAP adapts this idea to model predictions under a chosen background and missingness convention. Wikipedia",
+      "translation": "O regulă de alocare din teoria jocurilor cooperative care distribuie o valoare totală între contributori. SHAP adaptează ideea la predicții ale modelelor sub un fundal și o convenție aleasă a absenței. Wikipedia"
+    },
+    {
+      "id": "t000709",
+      "source": "LIME",
+      "translation": "LIME"
+    },
+    {
+      "id": "t000710",
+      "source": "A local surrogate approach that approximates model behavior around one example using perturbed samples. Its meaning depends on how that local neighborhood is generated. Wikipedia",
+      "translation": "O abordare cu surogat local care aproximează comportamentul modelului în jurul unui exemplu folosind eșantioane perturbate. Sensul său depinde de generarea acelei vecinătăți locale. Wikipedia"
+    },
+    {
+      "id": "t000711",
+      "source": "SHAP",
+      "translation": "SHAP"
+    },
+    {
+      "id": "t000712",
+      "source": "A family of Shapley-style explanation methods that allocate a prediction relative to a reference distribution. SHAP is not automatically a causal explanation. Wikipedia",
+      "translation": "O familie de metode explicative de tip Shapley care alocă o predicție în raport cu o distribuție de referință. SHAP nu este automat o explicație cauzală. Wikipedia"
+    },
+    {
+      "id": "t000713",
+      "source": "Counterfactual",
+      "translation": "Contrafactual"
+    },
+    {
+      "id": "t000714",
+      "source": "A statement about what would happen under a different condition. In XAI, counterfactuals often ask which input changes would alter a prediction. Wikipedia",
+      "translation": "Un enunț despre ce s-ar întâmpla sub o condiție diferită. În XAI, contrafactualele întreabă adesea ce schimbări ale intrării ar altera o predicție. Wikipedia"
+    },
+    {
+      "id": "t000715",
+      "source": "Causal inference",
+      "translation": "Inferență cauzală"
+    },
+    {
+      "id": "t000716",
+      "source": "Methods for reasoning about the effects of interventions rather than only correlations. Causal assumptions become essential when explanations are used to recommend actions. Wikipedia",
+      "translation": "Metode de raționament despre efectele intervențiilor, nu doar corelații. Ipotezele cauzale devin esențiale când explicațiile sunt folosite pentru recomandarea acțiunilor. Wikipedia"
+    },
+    {
+      "id": "t000717",
+      "source": "Causal model",
+      "translation": "Model cauzal"
+    },
+    {
+      "id": "t000718",
+      "source": "A representation of assumed causal relationships among variables. Structural causal models are frequently used to formalize interventions and counterfactual reasoning. Wikipedia",
+      "translation": "O reprezentare a relațiilor cauzale presupuse între variabile. Modelele cauzale structurale sunt frecvent folosite pentru formalizarea intervențiilor și raționamentului contrafactual. Wikipedia"
+    },
+    {
+      "id": "t000719",
+      "source": "Algorithmic recourse",
+      "translation": "Remediere algoritmică"
+    },
+    {
+      "id": "t000720",
+      "source": "A family of methods for finding feasible actions that could change an unfavorable automated decision. Recourse is stronger than merely finding an editable counterfactual input. Wikipedia",
+      "translation": "O familie de metode pentru găsirea acțiunilor fezabile care ar putea schimba o decizie automată nefavorabilă. Remedierea este mai puternică decât simpla găsire a unei intrări contrafactuale editabile. Wikipedia"
+    },
+    {
+      "id": "t000721",
+      "source": "Calibration",
+      "translation": "Calibrare"
+    },
+    {
+      "id": "t000722",
+      "source": "Agreement between predicted confidence and observed frequency. Human-facing explanations should help users calibrate reliance rather than simply increase trust. Wikipedia",
+      "translation": "Concordanța dintre încrederea prezisă și frecvența observată. Explicațiile pentru oameni ar trebui să ajute utilizatorii să calibreze folosirea sistemului, nu doar să crească încrederea. Wikipedia"
+    },
+    {
+      "id": "t000723",
+      "source": "Distribution shift",
+      "translation": "Schimbare de distribuție"
+    },
+    {
+      "id": "t000724",
+      "source": "A change between the data distribution used during development and the distribution encountered later. Explanation quality can drift under the same changes that affect prediction quality. Wikipedia",
+      "translation": "O schimbare între distribuția datelor folosită în dezvoltare și distribuția întâlnită ulterior. Calitatea explicației poate deriva sub aceleași schimbări care afectează calitatea predicției. Wikipedia"
+    },
+    {
+      "id": "t000725",
+      "source": "Concept drift",
+      "translation": "Derivă de concept"
+    },
+    {
+      "id": "t000726",
+      "source": "A change over time in the relationship between inputs and the target. It can make both a predictor and its established explanations stale. Wikipedia",
+      "translation": "O schimbare în timp a relației dintre intrări și țintă. Poate face învechite atât predictorul, cât și explicațiile sale stabilite. Wikipedia"
+    },
+    {
+      "id": "t000727",
+      "source": "Adversarial example",
+      "translation": "Exemplu adversarial"
+    },
+    {
+      "id": "t000728",
+      "source": "An input deliberately modified to induce unwanted model behavior. Explanation interfaces can also be attacked or manipulated and should be treated as a security surface. Wikipedia",
+      "translation": "O intrare modificată deliberat pentru a induce comportament nedorit al modelului. Interfețele explicației pot fi și ele atacate sau manipulate și ar trebui tratate ca suprafață de securitate. Wikipedia"
+    },
+    {
+      "id": "t000729",
+      "source": "Differential privacy",
+      "translation": "Confidențialitate diferențială"
+    },
+    {
+      "id": "t000730",
+      "source": "A mathematical framework for limiting how much information about individual records can be inferred from a computation. Explanation services may need privacy controls because they expose additional information about models and data. Wikipedia",
+      "translation": "Un cadru matematic pentru limitarea cantității de informație despre înregistrări individuale care poate fi inferată dintr-un calcul. Serviciile de explicație pot necesita controale de confidențialitate deoarece expun informații suplimentare despre modele și date. Wikipedia"
+    },
+    {
+      "id": "t000731",
+      "source": "Algorithmic fairness",
+      "translation": "Echitate algoritmică"
+    },
+    {
+      "id": "t000732",
+      "source": "The study of how automated decisions distribute errors, benefits, and burdens across people or groups. Explanation can support fairness audits but does not itself guarantee fairness. Wikipedia",
+      "translation": "Studiul distribuirii erorilor, beneficiilor și poverilor deciziilor automate între oameni sau grupuri. Explicația poate susține audituri de echitate, dar nu garantează ea însăși echitatea. Wikipedia"
+    },
+    {
+      "id": "t000733",
+      "source": "Human in the loop",
+      "translation": "Om în buclă"
+    },
+    {
+      "id": "t000734",
+      "source": "A system design in which people remain involved in decisions, supervision, or correction. Useful explanation should improve appropriate oversight rather than merely make automation feel understandable. Wikipedia",
+      "translation": "O proiectare de sistem în care oamenii rămân implicați în decizii, supervizare sau corecție. Explicația utilă ar trebui să îmbunătățească supravegherea adecvată, nu doar să facă automatizarea să pară inteligibilă. Wikipedia"
+    },
+    {
+      "id": "t000735",
+      "source": "Automation bias",
+      "translation": "Bias de automatizare"
+    },
+    {
+      "id": "t000736",
+      "source": "The tendency to over-rely on automated recommendations. Fluent or persuasive explanations can increase this risk if they hide uncertainty or failure modes. Wikipedia",
+      "translation": "Tendința de a se baza excesiv pe recomandări automate. Explicațiile fluente sau convingătoare pot crește acest risc dacă ascund incertitudinea sau modurile de eșec. Wikipedia"
+    },
+    {
+      "id": "t000737",
+      "source": "Large language model",
+      "translation": "Model lingvistic mare"
+    },
+    {
+      "id": "t000738",
+      "source": "A neural language model trained at large scale to predict and generate text, often extended to code, tools, images, or other modalities. Wikipedia",
+      "translation": "Un model neural de limbaj antrenat la scară mare pentru predicția și generarea textului, adesea extins la cod, instrumente, imagini sau alte modalități. Wikipedia"
+    },
+    {
+      "id": "t000739",
+      "source": "Transformer",
+      "translation": "Transformer"
+    },
+    {
+      "id": "t000740",
+      "source": "The dominant neural architecture behind modern language models and many multimodal systems, based heavily on attention and learned representations. Wikipedia",
+      "translation": "Arhitectura neurală dominantă din spatele modelelor lingvistice moderne și multor sisteme multimodale, bazată puternic pe atenție și reprezentări învățate. Wikipedia"
+    },
+    {
+      "id": "t000741",
+      "source": "Attention",
+      "translation": "Atenție"
+    },
+    {
+      "id": "t000742",
+      "source": "mechanism context-dependent weighted interactions among representations. Attention weights can be useful diagnostics but are not automatically explanations of a model decision. Wikipedia",
+      "translation": "mecanism interacțiuni ponderate dependente de context între reprezentări. Ponderile atenției pot fi diagnostice utile, dar nu sunt automat explicații ale deciziei unui model. Wikipedia"
+    },
+    {
+      "id": "t000743",
+      "source": "that computes",
+      "translation": "care calculează"
+    },
+    {
+      "id": "t000744",
+      "source": "Chain-of-thought prompting",
+      "translation": "Promptare cu lanț de gândire"
+    },
+    {
+      "id": "t000745",
+      "source": "Prompting a language model to produce intermediate reasoning-like text. The generated text is observable behavior and may be useful, but it is not guaranteed to be a faithful trace of hidden computation. Wikipedia",
+      "translation": "Promptarea unui model lingvistic pentru a produce text intermediar de tip raționament. Textul generat este comportament observabil și poate fi util, dar nu este garantat a fi o urmă fidelă a calculului ascuns. Wikipedia"
+    },
+    {
+      "id": "t000746",
+      "source": "Representation learning",
+      "translation": "Învățarea reprezentărilor"
+    },
+    {
+      "id": "t000747",
+      "source": "Learning internal features from data instead of specifying all features manually. Probes and mechanistic methods study what information those representations contain and use. Wikipedia",
+      "translation": "Învățarea caracteristicilor interne din date, nu specificarea manuală a tuturor caracteristicilor. Sondele și metodele mecaniciste studiază ce informații conțin și folosesc acele reprezentări. Wikipedia"
+    },
+    {
+      "id": "t000748",
+      "source": "Probe",
+      "translation": "Sondă"
+    },
+    {
+      "id": "t000749",
+      "source": "A simple model trained on internal activations to test whether information about a property is decodable. Decodability alone does not prove that the original model causally uses that information. Wikipedia",
+      "translation": "Un model simplu antrenat pe activări interne pentru a testa dacă informația despre o proprietate este decodabilă. Decodabilitatea singură nu demonstrează că modelul original folosește cauzal acea informație. Wikipedia"
+    },
+    {
+      "id": "t000750",
+      "source": "Activation patching",
+      "translation": "Modificarea activărilor"
+    },
+    {
+      "id": "t000751",
+      "source": "A causal-intervention technique in which internal activations are replaced with values from another run to test whether a",
+      "translation": "O tehnică de intervenție cauzală în care activările interne sunt înlocuite cu valori din altă rulare pentru a testa dacă o"
+    },
+    {
+      "id": "t000752",
+      "source": "component Wikipedia",
+      "translation": "componentă Wikipedia"
+    },
+    {
+      "id": "t000753",
+      "source": "influences",
+      "translation": "influențează"
+    },
+    {
+      "id": "t000754",
+      "source": "behavior.",
+      "translation": "comportamentul."
+    },
+    {
+      "id": "t000755",
+      "source": "Sparse autoencoder",
+      "translation": "Autoencoder rar"
+    },
+    {
+      "id": "t000756",
+      "source": "An autoencoder trained to represent activations with sparse features. Such features can be easier to label, but labels still require validation. Wikipedia",
+      "translation": "Un autoencoder antrenat să reprezinte activările prin caracteristici rare. Asemenea caracteristici pot fi mai ușor de etichetat, dar etichetele cer totuși validare. Wikipedia"
+    },
+    {
+      "id": "t000757",
+      "source": "Sparse coding",
+      "translation": "Codificare rară"
+    },
+    {
+      "id": "t000758",
+      "source": "Representing a signal with a relatively small number of active components from a larger dictionary. Sparse feature dictionaries are used in modern mechanistic interpretability. Wikipedia",
+      "translation": "Reprezentarea unui semnal cu un număr relativ mic de componente active dintr-un dicționar mai mare. Dicționarele de caracteristici rare sunt folosite în interpretabilitatea mecanicistă modernă. Wikipedia"
+    },
+    {
+      "id": "t000759",
+      "source": "Mechanistic interpretability",
+      "translation": "Interpretabilitate mecanicistă"
+    },
+    {
+      "id": "t000760",
+      "source": "Research that seeks structured, causally testable accounts of how internal model",
+      "translation": "Cercetare care urmărește relatări structurate, testabile cauzal ale modului în care elementele interne ale modelului"
+    },
+    {
+      "id": "t000761",
+      "source": "components Wikipedia",
+      "translation": "componente Wikipedia"
+    },
+    {
+      "id": "t000762",
+      "source": "implement behavior.",
+      "translation": "implementează comportamentul."
+    },
+    {
+      "id": "t000763",
+      "source": "Multimodal learning",
+      "translation": "Învățare multimodală"
+    },
+    {
+      "id": "t000764",
+      "source": "Learning across more than one modality, such as text and images. Explanation then has to address how evidence is aligned and combined across representations. Wikipedia",
+      "translation": "Învățarea între mai mult de o modalitate, precum text și imagini. Explicația trebuie apoi să abordeze alinierea și combinarea dovezilor între reprezentări. Wikipedia"
+    },
+    {
+      "id": "t000765",
+      "source": "Intelligent agent",
+      "translation": "Agent inteligent"
+    },
+    {
+      "id": "t000766",
+      "source": "A system that observes a state or environment and takes actions toward objectives. Agent explanations must often reconstruct sequences of decisions and consequences. Wikipedia",
+      "translation": "Un sistem care observă o stare sau un mediu și ia acțiuni către obiective. Explicațiile agenților trebuie adesea să reconstruiască succesiuni de decizii și consecințe. Wikipedia"
+    },
+    {
+      "id": "t000767",
+      "source": "Software agent",
+      "translation": "Agent software"
+    },
+    {
+      "id": "t000768",
+      "source": "A software component that acts with some autonomy, often invoking tools or services. Modern AI agents combine language models with software-agent infrastructure. Wikipedia",
+      "translation": "O componentă software care acționează cu o anumită autonomie, invocând adesea instrumente sau servicii. Agenții IA moderni combină modele lingvistice cu infrastructură de agenți software. Wikipedia"
+    },
+    {
+      "id": "t000769",
+      "source": "Data provenance",
+      "translation": "Proveniența datelor"
+    },
+    {
+      "id": "t000770",
+      "source": "Information about where data came from, how it was transformed, and which process produced an artifact. Provenance is foundational for reproducible system-level explanations. Wikipedia",
+      "translation": "Informație despre proveniența datelor, transformarea lor și procesul care a produs un artefact. Proveniența este fundamentală pentru explicații reproductibile la nivel de sistem. Wikipedia"
+    },
+    {
+      "id": "t000771",
+      "source": "Formal verification",
+      "translation": "Verificare formală"
+    },
+    {
+      "id": "t000772",
+      "source": "Techniques that mathematically prove whether a system satisfies a precisely stated property under a model of its behavior. Wikipedia",
+      "translation": "Tehnici care demonstrează matematic dacă un sistem satisface o proprietate precis enunțată sub un model al comportamentului său. Wikipedia"
+    },
+    {
+      "id": "t000773",
+      "source": "Model checking",
+      "translation": "Verificarea modelelor"
+    },
+    {
+      "id": "t000774",
+      "source": "A formal-verification technique that explores a state model to determine whether specified properties hold. It is relevant when explanatory properties can be expressed in a tractable form. Wikipedia",
+      "translation": "O tehnică de verificare formală care explorează un model de stare pentru a determina dacă sunt valabile proprietăți specificate. Este relevantă când proprietățile explicative pot fi exprimate într-o formă tractabilă. Wikipedia"
+    },
+    {
+      "id": "t000775",
+      "source": "Knowledge graph",
+      "translation": "Graf de cunoaștere"
+    },
+    {
+      "id": "t000776",
+      "source": "A graph representation of entities and relationships. Evidence graphs proposed in this book use a similar structure to connect explanatory claims, artifacts, tests, and provenance. Wikipedia",
+      "translation": "O reprezentare grafică a entităților și relațiilor. Grafurile de dovezi propuse în această carte folosesc o structură similară pentru a conecta afirmații explicative, artefacte, teste și proveniență. Wikipedia"
+    },
+    {
+      "id": "t000777",
+      "source": "Graph neural network",
+      "translation": "Rețea neurală pe grafuri"
+    },
+    {
+      "id": "t000778",
+      "source": "A neural model designed for graph-structured data. Meaningful explanation often requires valid interventions on nodes, edges, or subgraphs. Wikipedia",
+      "translation": "Un model neural proiectat pentru date structurate ca graf. Explicația semnificativă cere adesea intervenții valide asupra nodurilor, muchiilor sau subgrafurilor. Wikipedia"
+    },
+    {
+      "id": "t000779",
+      "source": "Reinforcement learning",
+      "translation": "Învățare prin întărire"
+    },
+    {
+      "id": "t000780",
+      "source": "Learning to choose actions through interaction and reward. Explanations may need to cover trajectories and future consequences rather than isolated predictions. Wikipedia",
+      "translation": "Învățarea alegerii acțiunilor prin interacțiune și recompensă. Explicațiile pot trebui să acopere traiectorii și consecințe viitoare, nu predicții izolate. Wikipedia"
+    },
+    {
+      "id": "t000781",
+      "source": "Recommender system",
+      "translation": "Sistem de recomandare"
+    },
+    {
+      "id": "t000782",
+      "source": "A system that ranks or selects items for users. Explanations are often comparative because the meaningful question is why one item was ranked above another. Wikipedia",
+      "translation": "Un sistem care ordonează sau selectează elemente pentru utilizatori. Explicațiile sunt adesea comparative deoarece întrebarea semnificativă este de ce un element a fost clasat deasupra altuia. Wikipedia"
+    },
+    {
+      "id": "t000783",
+      "source": "Time series",
+      "translation": "Serie temporală"
+    },
+    {
+      "id": "t000784",
+      "source": "Data ordered in time. Explanation methods must preserve temporal coherence when perturbing or comparing values. Wikipedia",
+      "translation": "Date ordonate în timp. Metodele explicației trebuie să păstreze coerența temporală când perturbă sau compară valori. Wikipedia"
+    },
+    {
+      "id": "t000785",
+      "source": "Model card",
+      "translation": "Fișă de model"
+    },
+    {
+      "id": "t000786",
+      "source": "A structured document describing intended use, evaluation, limitations, and other information about a model. Explanation evidence can complement, but should not be confused with, documentation. Wikipedia",
+      "translation": "Un document structurat care descrie utilizarea intenționată, evaluarea, limitările și alte informații despre un model. Dovezile explicației pot completa documentația, dar nu ar trebui confundate cu ea. Wikipedia"
+    },
+    {
+      "id": "t000787",
+      "source": "Out-of-distribution detection",
+      "translation": "Detectarea intrărilor în afara distribuției"
+    },
+    {
+      "id": "t000788",
+      "source": "Methods for identifying inputs that differ materially from the data regime on which a model was validated. Sometimes the best explanation is that the system is outside its known operating region. Wikipedia",
+      "translation": "Metode pentru identificarea intrărilor care diferă substanțial de regimul datelor pe care a fost validat un model. Uneori cea mai bună explicație este că sistemul se află în afara regiunii cunoscute de funcționare. Wikipedia"
+    },
+    {
+      "id": "t000789",
+      "source": "Appendix B. Method Selection Notes",
+      "translation": "Anexa B. Note privind selecția metodelor"
+    },
+    {
+      "id": "t000790",
+      "source": "Method selection should begin from the explanatory question and evidence requirement, not from familiarity with a library. The table below compresses the book into a practical first-pass guide. It does not declare winners; it identifies where each family of methods is useful and which misunderstanding should be ruled out first.",
+      "translation": "Selecția metodei ar trebui să înceapă de la întrebarea explicativă și cerința dovezilor, nu de la familiaritatea cu o bibliotecă. Tabelul de mai jos comprimă cartea într-un ghid practic de primă trecere. Nu declară câștigători; identifică unde este utilă fiecare familie de metode și ce neînțelegere ar trebui exclusă mai întâi."
+    },
+    {
+      "id": "t000791",
+      "source": "The guide is most useful when read from left to right: identify the explanatory object, then identify the first semantic mistake that could invalidate its use. This keeps method selection tied to the failure mode that matters most.",
+      "translation": "Ghidul este cel mai util când este citit de la stânga la dreapta: identificați obiectul explicativ, apoi identificați prima greșeală semantică ce i-ar putea invalida utilizarea. Aceasta păstrează selecția metodei legată de modul de eșec care contează cel mai mult."
+    },
+    {
+      "id": "t000792",
+      "source": "Table B.1 — A compact method-selection guide.",
+      "translation": "Tabelul B.1 — Un ghid compact de selecție a metodelor."
+    },
+    {
+      "id": "t000793",
+      "source": "Concept / object",
+      "translation": "Concept / obiect"
+    },
+    {
+      "id": "t000794",
+      "source": "Engineering meaning",
+      "translation": "Sens ingineresc"
+    },
+    {
+      "id": "t000795",
+      "source": "Transparent model",
+      "translation": "Model transparent"
+    },
+    {
+      "id": "t000796",
+      "source": "Use when competitive performance is possible with inspectable structure. First risk: confusing visibility with validity or causality.",
+      "translation": "Folosiți când performanța competitivă este posibilă cu structură inspectabilă. Primul risc: confundarea vizibilității cu validitatea sau cauzalitatea."
+    },
+    {
+      "id": "t000797",
+      "source": "Gradient / Integrated Gradients",
+      "translation": "Gradient / Integrated Gradients"
+    },
+    {
+      "id": "t000798",
+      "source": "Use for local sensitivity or path-based attribution in differentiable models. First risk: baseline semantics, saturation, and local sensitivity being described as causal importance.",
+      "translation": "Folosiți pentru sensibilitate locală sau atribuire bazată pe cale în modele diferențiabile. Primul risc: semantica referinței, saturarea și descrierea sensibilității locale ca importanță cauzală."
+    },
+    {
+      "id": "t000799",
+      "source": "Perturbation / occlusion",
+      "translation": "Perturbare / ocluzie"
+    },
+    {
+      "id": "t000800",
+      "source": "Use when a meaningful input intervention can be defined. First risk: creating out-of-distribution samples that test the perturbation mechanism more than the model.",
+      "translation": "Folosiți când poate fi definită o intervenție semnificativă asupra intrării. Primul risc: crearea de eșantioane în afara distribuției care testează mecanismul perturbării mai mult decât modelul."
+    },
+    {
+      "id": "t000801",
+      "source": "LIME",
+      "translation": "LIME"
+    },
+    {
+      "id": "t000802",
+      "source": "Use for local surrogate reasoning. First risk: an artificial neighborhood that does not resemble the data regime relevant to the decision.",
+      "translation": "Folosiți pentru raționament cu surogat local. Primul risc: o vecinătate artificială care nu seamănă cu regimul datelor relevant deciziei."
+    },
+    {
+      "id": "t000803",
+      "source": "SHAP",
+      "translation": "SHAP"
+    },
+    {
+      "id": "t000804",
+      "source": "Use for additive allocation relative to an explicit background and missingness convention. First risk: interpreting allocation as causal responsibility.",
+      "translation": "Folosiți pentru alocare aditivă față de un fundal și o convenție explicită a absenței. Primul risc: interpretarea alocării ca responsabilitate cauzală."
+    },
+    {
+      "id": "t000805",
+      "source": "Counterfactual",
+      "translation": "Contrafactual"
+    },
+    {
+      "id": "t000806",
+      "source": "Use for contrastive questions about how a prediction changes. First risk: infeasible or immutable changes.",
+      "translation": "Folosiți pentru întrebări contrastive despre schimbarea unei predicții. Primul risc: schimbări nefezabile sau imuabile."
+    },
+    {
+      "id": "t000807",
+      "source": "Recourse",
+      "translation": "Remediere"
+    },
+    {
+      "id": "t000808",
+      "source": "Use when the system must suggest actionable interventions. First risk: advice that ignores causal dependencies, cost, strategic response, or model updates.",
+      "translation": "Folosiți când sistemul trebuie să sugereze intervenții aplicabile. Primul risc: sfaturi care ignoră dependențe cauzale, cost, răspuns strategic sau actualizări ale modelului."
+    },
+    {
+      "id": "t000809",
+      "source": "Concept / prototype methods",
+      "translation": "Metode de concepte / prototipuri"
+    },
+    {
+      "id": "t000810",
+      "source": "Use when experts reason in semantic categories or representative cases. First risk: assuming that a human label gives ground-truth meaning to an internal feature.",
+      "translation": "Folosiți când experții raționează în categorii semantice sau cazuri reprezentative. Primul risc: presupunerea că o etichetă umană dă sens de referință unei caracteristici interne."
+    },
+    {
+      "id": "t000811",
+      "source": "Data attribution",
+      "translation": "Atribuirea datelor"
+    },
+    {
+      "id": "t000812",
+      "source": "Use when training examples, sources, or datasets may explain a behavior. First risk: confusing influence under one approximation with a complete causal account of training.",
+      "translation": "Folosiți când exemplele de antrenare, sursele sau seturile de date pot explica un comportament. Primul risc: confundarea influenței sub o aproximare cu o relatare cauzală completă a antrenării."
+    },
+    {
+      "id": "t000813",
+      "source": "Mechanistic interpretability",
+      "translation": "Interpretabilitate mecanicistă"
+    },
+    {
+      "id": "t000814",
+      "source": "Use when internal computation itself is the explanatory target. First risk: treating a convenient feature dictionary or circuit graph as a unique decomposition of the network.",
+      "translation": "Folosiți când calculul intern însuși este ținta explicativă. Primul risc: tratarea unui dicționar comod de caracteristici sau graf de circuit ca descompunere unică a rețelei."
+    },
+    {
+      "id": "t000815",
+      "source": "Agent replay",
+      "translation": "Reluarea agentului"
+    },
+    {
+      "id": "t000816",
+      "source": "Use when behavior unfolds through tools, memory, retrieval, and environment state. First risk: retaining a trace without testing which elements were necessary.",
+      "translation": "Folosiți când comportamentul se desfășoară prin instrumente, memorie, recuperare și stare a mediului. Primul risc: păstrarea unei urme fără testarea elementelor necesare."
+    },
+    {
+      "id": "t000817",
+      "source": "Formal verification",
+      "translation": "Verificare formală"
+    },
+    {
+      "id": "t000818",
+      "source": "Use for narrow, high-consequence properties that can be stated precisely and checked tractably. First risk: proving a property that is rigorous but irrelevant to the real explanatory question.",
+      "translation": "Folosiți pentru proprietăți înguste cu consecințe mari care pot fi enunțate precis și verificate tractabil. Primul risc: demonstrarea unei proprietăți riguroase, dar nerelevante întrebării explicative reale."
+    },
+    {
+      "id": "t000819",
+      "source": "In mature systems several rows will be used together. A user-facing counterfactual may depend on an interpretable structural model, a causal feasibility layer, a robustness test, and a provenance record. XAI therefore becomes compositional as soon as the consequence of the explanation exceeds simple debugging.",
+      "translation": "În sistemele mature vor fi folosite împreună mai multe rânduri. Un contrafactual pentru utilizator poate depinde de un model structural interpretabil, un strat cauzal de fezabilitate, un test de robustețe și o înregistrare de proveniență. XAI devine astfel compozițională imediat ce consecința explicației depășește depanarea simplă."
+    },
+    {
+      "id": "t000820",
+      "source": "References and Recommended Reading",
+      "translation": "Referințe și lecturi recomandate"
+    },
+    {
+      "id": "t000821",
+      "source": "The bibliography combines foundational methods, evaluation work, regulation and assurance sources, and selected 2025–2026 research that marks the present frontier. Original papers are preferred for technical claims. Wikipedia links used in Appendix A are repeated afterward as background orientation rather than as primary scholarly evidence.",
+      "translation": "Bibliografia combină metode fundamentale, lucrări de evaluare, surse de reglementare și asigurare și cercetare selectată din 2025–2026 care marchează frontiera actuală. Articolele originale sunt preferate pentru afirmații tehnice. Legăturile Wikipedia folosite în anexa A sunt repetate ulterior ca orientare introductivă, nu ca dovezi științifice primare."
+    },
+    {
+      "id": "t000822",
+      "source": "Doshi-Velez, F., and Kim, B. (2017). Towards a Rigorous Science of Interpretable Machine Learning. arXiv:1702.08608. Guidotti, R., Monreale, A., Ruggieri, S., Turini, F., Giannotti, F., and Pedreschi, D.",
+      "translation": "Doshi-Velez, F., and Kim, B. (2017). Towards a Rigorous Science of Interpretable Machine Learning. arXiv:1702.08608. Guidotti, R., Monreale, A., Ruggieri, S., Turini, F., Giannotti, F., and Pedreschi, D."
+    },
+    {
+      "id": "t000823",
+      "source": "(2018). A Survey of Methods for Explaining Black Box Models. ACM Computing Surveys 51(5). DOI. Murdoch, W. J., Singh, C., Kumbier, K., Abbasi-Asl, R., and Yu, B. (2019). Definitions, methods, and applications in interpretable machine learning. PNAS 116(44). DOI. Rudin, C. (2019). Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead. Nature Machine Intelligence 1, 206–215. DOI. Ribeiro, M. T., Singh, S., and Guestrin, C. (2016). Why Should I Trust You? Explaining the Predictions of Any Classifier. KDD 2016. DOI. Lundberg, S. M., and Lee, S.-I. (2017). A Unified Approach to Interpreting Model Predictions. NeurIPS 2017. Sundararajan, M., Taly, A., and Yan, Q. (2017). Axiomatic Attribution for Deep Networks. ICML 2017, PMLR 70. Selvaraju, R. R. et al. (2017). Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization. ICCV 2017. Ribeiro, M. T., Singh, S., and Guestrin, C. (2018). Anchors: High-Precision Model-Agnostic Explanations. AAAI 2018. Kim, B. et al. (2018). Interpretability Beyond Feature Attribution: Quantitative Testing with Concept Activation Vectors (TCAV). ICML 2018. Koh, P. W., and Liang, P. (2017). Understanding Black-box Predictions via Influence Functions. ICML 2017. Chen, C. et al. (2019). This Looks Like That: Deep Learning for Interpretable Image Recognition. NeurIPS 2019. Wachter, S., Mittelstadt, B., and Russell, C. (2017/2018). Counterfactual Explanations without Opening the Black Box: Automated Decisions and the GDPR. Harvard Journal of Law & Technology 31. arXiv:1711.00399. Karimi, A.-H., Schölkopf, B., and Valera, I. (2021). Algorithmic Recourse: from Counterfactual Explanations to Interventions. FAccT 2021.",
+      "translation": "(2018). A Survey of Methods for Explaining Black Box Models. ACM Computing Surveys 51(5). DOI. Murdoch, W. J., Singh, C., Kumbier, K., Abbasi-Asl, R., and Yu, B. (2019). Definitions, methods, and applications in interpretable machine learning. PNAS 116(44). DOI. Rudin, C. (2019). Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead. Nature Machine Intelligence 1, 206–215. DOI. Ribeiro, M. T., Singh, S., and Guestrin, C. (2016). Why Should I Trust You? Explaining the Predictions of Any Classifier. KDD 2016. DOI. Lundberg, S. M., and Lee, S.-I. (2017). A Unified Approach to Interpreting Model Predictions. NeurIPS 2017. Sundararajan, M., Taly, A., and Yan, Q. (2017). Axiomatic Attribution for Deep Networks. ICML 2017, PMLR 70. Selvaraju, R. R. et al. (2017). Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization. ICCV 2017. Ribeiro, M. T., Singh, S., and Guestrin, C. (2018). Anchors: High-Precision Model-Agnostic Explanations. AAAI 2018. Kim, B. et al. (2018). Interpretability Beyond Feature Attribution: Quantitative Testing with Concept Activation Vectors (TCAV). ICML 2018. Koh, P. W., and Liang, P. (2017). Understanding Black-box Predictions via Influence Functions. ICML 2017. Chen, C. et al. (2019). This Looks Like That: Deep Learning for Interpretable Image Recognition. NeurIPS 2019. Wachter, S., Mittelstadt, B., and Russell, C. (2017/2018). Counterfactual Explanations without Opening the Black Box: Automated Decisions and the GDPR. Harvard Journal of Law & Technology 31. arXiv:1711.00399. Karimi, A.-H., Schölkopf, B., and Valera, I. (2021). Algorithmic Recourse: from Counterfactual Explanations to Interventions. FAccT 2021."
+    },
+    {
+      "id": "t000824",
+      "source": "Heskes, T., Sijben, E., Bucur, I. G., and Claassen, T. (2020). Causal Shapley Values.",
+      "translation": "Heskes, T., Sijben, E., Bucur, I. G., and Claassen, T. (2020). Causal Shapley Values."
+    },
+    {
+      "id": "t000825",
+      "source": "NeurIPS 2020. Koh, P. W. et al. (2020). Concept Bottleneck Models. ICML 2020. Kim, E. et al. (2023). Probabilistic Concept Bottleneck Models. ICML 2023. Hu, L. et al. (2025). Editable Concept Bottleneck Models. ICML 2025. Adebayo, J. et al. (2018). Sanity Checks for Saliency Maps. NeurIPS 2018. Hooker, S., Erhan, D., Kindermans, P.-J., and Kim, B. (2019). A Benchmark for Interpretability Methods in Deep Neural Networks. NeurIPS 2019. Yeh, C.-K. et al. (2019). On the (In)fidelity and Sensitivity of Explanations. NeurIPS 2019. DeYoung, J. et al. (2020). ERASER: A Benchmark to Evaluate Rationalized NLP Models. ACL 2020. Arras, L., Osman, A., and Samek, W. (2022). CLEVR-XAI: A benchmark dataset for ground-truth evaluation of neural network explanations. Information Fusion 81. Hesse, R., Schaub-Meyer, S., and Roth, S. (2023). FunnyBirds: A Synthetic Vision Dataset for a Part-Based Analysis of Explainable AI Methods. ICCV 2023. Agarwal, C. et al. (2022). OpenXAI: Towards a Transparent Evaluation of Post hoc Model Explanations. NeurIPS Datasets and Benchmarks 2022. Hedström, A. et al. (2023). Quantus: An Explainable AI Toolkit for Responsible Evaluation of Neural Network Explanations and Beyond. JMLR 24(34), 1–11. Jahn, T., Hühn, P., and Reichert, M. (2026). A review on empirical studies in explainable artificial intelligence. Artificial Intelligence Review 59, 175. Slack, D. et al. (2020). Fooling LIME and SHAP: Adversarial Attacks on Post hoc Explanation Methods. AIES 2020. Zhao, H. et al. (2024). Explainability for Large Language Models: A Survey. ACM Transactions on Intelligent Systems and Technology. DOI. Turpin, M. et al. (2023). Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting. NeurIPS 2023. Cornish, C., and Rogers, A. (2025). Examining the Faithfulness of Deepseek R1's Chain-of-Thought Reasoning. CHOMPS 2025 / ACL Anthology. Meng, K. et al. (2022). Locating and Editing Factual Associations in GPT. NeurIPS 2022. Ghandeharioun, A. et al. (2024). Patchscopes: A Unifying Framework for Inspecting Hidden Representations of Language Models. ICML 2024. Cunningham, H. et al. (2024). Sparse Autoencoders Find Highly Interpretable Features in Language Models. ICLR 2024. Bricken, T. et al. (2023). Towards Monosemanticity: Decomposing Language Models With Dictionary Learning. Transformer Circuits Thread. Templeton, A. et al. (2024). Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet. Transformer Circuits Thread.",
+      "translation": "NeurIPS 2020. Koh, P. W. et al. (2020). Concept Bottleneck Models. ICML 2020. Kim, E. et al. (2023). Probabilistic Concept Bottleneck Models. ICML 2023. Hu, L. et al. (2025). Editable Concept Bottleneck Models. ICML 2025. Adebayo, J. et al. (2018). Sanity Checks for Saliency Maps. NeurIPS 2018. Hooker, S., Erhan, D., Kindermans, P.-J., and Kim, B. (2019). A Benchmark for Interpretability Methods in Deep Neural Networks. NeurIPS 2019. Yeh, C.-K. et al. (2019). On the (In)fidelity and Sensitivity of Explanations. NeurIPS 2019. DeYoung, J. et al. (2020). ERASER: A Benchmark to Evaluate Rationalized NLP Models. ACL 2020. Arras, L., Osman, A., and Samek, W. (2022). CLEVR-XAI: A benchmark dataset for ground-truth evaluation of neural network explanations. Information Fusion 81. Hesse, R., Schaub-Meyer, S., and Roth, S. (2023). FunnyBirds: A Synthetic Vision Dataset for a Part-Based Analysis of Explainable AI Methods. ICCV 2023. Agarwal, C. et al. (2022). OpenXAI: Towards a Transparent Evaluation of Post hoc Model Explanations. NeurIPS Datasets and Benchmarks 2022. Hedström, A. et al. (2023). Quantus: An Explainable AI Toolkit for Responsible Evaluation of Neural Network Explanations and Beyond. JMLR 24(34), 1–11. Jahn, T., Hühn, P., and Reichert, M. (2026). A review on empirical studies in explainable artificial intelligence. Artificial Intelligence Review 59, 175. Slack, D. et al. (2020). Fooling LIME and SHAP: Adversarial Attacks on Post hoc Explanation Methods. AIES 2020. Zhao, H. et al. (2024). Explainability for Large Language Models: A Survey. ACM Transactions on Intelligent Systems and Technology. DOI. Turpin, M. et al. (2023). Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting. NeurIPS 2023. Cornish, C., and Rogers, A. (2025). Examining the Faithfulness of Deepseek R1's Chain-of-Thought Reasoning. CHOMPS 2025 / ACL Anthology. Meng, K. et al. (2022). Locating and Editing Factual Associations in GPT. NeurIPS 2022. Ghandeharioun, A. et al. (2024). Patchscopes: A Unifying Framework for Inspecting Hidden Representations of Language Models. ICML 2024. Cunningham, H. et al. (2024). Sparse Autoencoders Find Highly Interpretable Features in Language Models. ICLR 2024. Bricken, T. et al. (2023). Towards Monosemanticity: Decomposing Language Models With Dictionary Learning. Transformer Circuits Thread. Templeton, A. et al. (2024). Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet. Transformer Circuits Thread."
+    },
+    {
+      "id": "t000826",
+      "source": "Shu, D. et al. (2025). A Survey on Sparse Autoencoders: Interpreting the Internal Mechanisms of Large Language Models. Findings of EMNLP 2025. DOI. Lindsey, J. et al. / Anthropic interpretability team (2025). Circuit Tracing and On the Biology of a Large Language Model. Transformer Circuits Thread, March 2025. Anthropic interpretability team (2025). Open-sourcing circuit-tracing tools. 29 May 2025. Dreyer, M. et al. (2025). Mechanistic understanding and validation of large AI models with SemanticLens. Nature Machine Intelligence 7, 1572–1585. DOI. Anthropic interpretability team (2026). Natural Language Autoencoders Produce Unsupervised Explanations of LLM Activations. Transformer Circuits Thread, May 2026. De Palma, A., Dolcetti, G., and Urban, C. (2026). Faster Verified Explanations for Neural Networks. ECOOP 2026, LIPIcs 372:3. DOI. Haufe, S. et al. (2026). Explainable AI needs formalization. npj Artificial Intelligence 2,",
+      "translation": "Shu, D. et al. (2025). A Survey on Sparse Autoencoders: Interpreting the Internal Mechanisms of Large Language Models. Findings of EMNLP 2025. DOI. Lindsey, J. et al. / Anthropic interpretability team (2025). Circuit Tracing and On the Biology of a Large Language Model. Transformer Circuits Thread, March 2025. Anthropic interpretability team (2025). Open-sourcing circuit-tracing tools. 29 May 2025. Dreyer, M. et al. (2025). Mechanistic understanding and validation of large AI models with SemanticLens. Nature Machine Intelligence 7, 1572–1585. DOI. Anthropic interpretability team (2026). Natural Language Autoencoders Produce Unsupervised Explanations of LLM Activations. Transformer Circuits Thread, May 2026. De Palma, A., Dolcetti, G., and Urban, C. (2026). Faster Verified Explanations for Neural Networks. ECOOP 2026, LIPIcs 372:3. DOI. Haufe, S. et al. (2026). Explainable AI needs formalization. npj Artificial Intelligence 2,"
+    },
+    {
+      "id": "t000827",
+      "source": "42. DOI. Vinuesa, R., Brunton, S. L., and Mengaldo, G. (2026). Explainable AI: learning from the learners. Nature Communications 17, 7933. DOI. Giovannoni, C. et al. (2026). A survey on multimodal explainable Artificial Intelligence.",
+      "translation": "42. DOI. Vinuesa, R., Brunton, S. L., and Mengaldo, G. (2026). Explainable AI: learning from the learners. Nature Communications 17, 7933. DOI. Giovannoni, C. et al. (2026). A survey on multimodal explainable Artificial Intelligence."
+    },
+    {
+      "id": "t000828",
+      "source": "Intelligent Systems with Applications 31, 200671. DOI. Wilkinson, C. et al. (2026). Explaining explainability: A comprehensive survey on explainable artificial intelligence and relevant industry applications. Intelligent Systems with Applications 30, 200647. DOI. European Union (2024, consolidated 2026). Regulation (EU) 2024/1689, Artificial Intelligence Act, especially Articles 13 and 14. EUR-Lex. Tabassi, E. (2023). Artificial Intelligence Risk Management Framework (AI RMF 1.0).",
+      "translation": "Intelligent Systems with Applications 31, 200671. DOI. Wilkinson, C. et al. (2026). Explaining explainability: A comprehensive survey on explainable artificial intelligence and relevant industry applications. Intelligent Systems with Applications 30, 200647. DOI. European Union (2024, consolidated 2026). Regulation (EU) 2024/1689, Artificial Intelligence Act, especially Articles 13 and 14. EUR-Lex. Tabassi, E. (2023). Artificial Intelligence Risk Management Framework (AI RMF 1.0)."
+    },
+    {
+      "id": "t000829",
+      "source": "NIST AI 100-1. DOI. NIST (2026). AI Risk Management Framework resources and concept note for a Trustworthy AI in Critical Infrastructure profile. SHAP documentation (current through 2026). Documentation. Captum documentation (current through 2026). Documentation. InterpretML documentation (current through 2026). Documentation. Quantus project and documentation. Project. OpenXAI project and leaderboard. Project.",
+      "translation": "NIST AI 100-1. DOI. NIST (2026). AI Risk Management Framework resources and concept note for a Trustworthy AI in Critical Infrastructure profile. SHAP documentation (current through 2026). Documentation. Captum documentation (current through 2026). Documentation. InterpretML documentation (current through 2026). Documentation. Quantus project and documentation. Project. OpenXAI project and leaderboard. Project."
+    },
+    {
+      "id": "t000830",
+      "source": "Background links used in Appendix A",
+      "translation": "Legături introductive folosite în anexa A"
+    },
+    {
+      "id": "t000831",
+      "source": "Artificial intelligence. Wikipedia Machine learning. Wikipedia Supervised learning. Wikipedia Classification. Wikipedia Regression. Wikipedia Feature. Wikipedia Training data. Wikipedia Validation set. Wikipedia Test set. Wikipedia AUROC. Wikipedia Linear model. Wikipedia Decision tree. Wikipedia Generalized additive model. Wikipedia Gradient boosting. Wikipedia Neural network. Wikipedia Gradient. Wikipedia Backpropagation. Wikipedia Sensitivity analysis. Wikipedia Baseline. Wikipedia Perturbation. Wikipedia Shapley value. Wikipedia LIME. Wikipedia SHAP. Wikipedia Counterfactual. Wikipedia Causal inference. Wikipedia Causal model. Wikipedia Algorithmic recourse. Wikipedia Calibration. Wikipedia Distribution shift. Wikipedia Concept drift. Wikipedia Adversarial example. Wikipedia Differential privacy. Wikipedia Algorithmic fairness. Wikipedia Human in the loop. Wikipedia Automation bias. Wikipedia Large language model. Wikipedia Transformer. Wikipedia Attention. Wikipedia Chain-of-thought prompting. Wikipedia Representation learning. Wikipedia Probe. Wikipedia Activation patching. Wikipedia Sparse autoencoder. Wikipedia Sparse coding. Wikipedia Mechanistic interpretability. Wikipedia Multimodal learning. Wikipedia Intelligent agent. Wikipedia Software agent. Wikipedia Data provenance. Wikipedia Formal verification. Wikipedia Model checking. Wikipedia Knowledge graph. Wikipedia Graph neural network. Wikipedia Reinforcement learning. Wikipedia Recommender system. Wikipedia Time series. Wikipedia Model card. Wikipedia Out-of-distribution detection. Wikipedia Closing perspective Explainability remains an unfinished discipline, and that incompleteness is productive. The field is learning to distinguish an attractive explanation from a tested one, model-level dependence from world-level causation, traceability from mechanism, and broad trust from bounded evidence. The durable direction is not toward one perfect explainer. It is toward AI systems whose important claims can be inspected, challenged, replayed, and revised as the models and the world around them change.",
+      "translation": "Inteligență artificială. Wikipedia Învățare automată. Wikipedia Învățare supervizată. Wikipedia Clasificare. Wikipedia Regresie. Wikipedia Caracteristică. Wikipedia Date de antrenare. Wikipedia Set de validare. Wikipedia Set de test. Wikipedia AUROC. Wikipedia Model liniar. Wikipedia Arbore de decizie. Wikipedia Model aditiv generalizat. Wikipedia Boosting pe gradient. Wikipedia Rețea neurală. Wikipedia Gradient. Wikipedia Retropropagare. Wikipedia Analiza sensibilității. Wikipedia Referință. Wikipedia Perturbare. Wikipedia Valoare Shapley. Wikipedia LIME. Wikipedia SHAP. Wikipedia Contrafactual. Wikipedia Inferență cauzală. Wikipedia Model cauzal. Wikipedia Remediere algoritmică. Wikipedia Calibrare. Wikipedia Schimbare de distribuție. Wikipedia Derivă de concept. Wikipedia Exemplu adversarial. Wikipedia Confidențialitate diferențială. Wikipedia Echitate algoritmică. Wikipedia Om în buclă. Wikipedia Bias de automatizare. Wikipedia Model lingvistic mare. Wikipedia Transformer. Wikipedia Atenție. Wikipedia Promptare cu lanț de gândire. Wikipedia Învățarea reprezentărilor. Wikipedia Sondă. Wikipedia Modificarea activărilor. Wikipedia Autoencoder rar. Wikipedia Codificare rară. Wikipedia Interpretabilitate mecanicistă. Wikipedia Învățare multimodală. Wikipedia Agent inteligent. Wikipedia Agent software. Wikipedia Proveniența datelor. Wikipedia Verificare formală. Wikipedia Verificarea modelelor. Wikipedia Graf de cunoaștere. Wikipedia Rețea neurală pe grafuri. Wikipedia Învățare prin întărire. Wikipedia Sistem de recomandare. Wikipedia Serie temporală. Wikipedia Fișă de model. Wikipedia Detectarea intrărilor în afara distribuției. Wikipedia Perspectivă de încheiere Explicabilitatea rămâne o disciplină neîncheiată, iar acea incompletitudine este productivă. Domeniul învață să distingă o explicație atractivă de una testată, dependența la nivel de model de cauzalitatea la nivelul lumii, trasabilitatea de mecanism și încrederea largă de dovezile limitate. Direcția durabilă nu este către un explicator perfect. Este către sisteme IA ale căror afirmații importante pot fi inspectate, contestate, reluate și revizuite pe măsură ce se schimbă modelele și lumea din jurul lor."
+    }
+  ]
+}

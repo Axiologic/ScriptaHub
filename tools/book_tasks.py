@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 from datetime import date, datetime, timezone
 import hashlib
+from html import escape, unescape
 import json
 import os
 from pathlib import Path
@@ -223,11 +224,11 @@ def announce(work: Path, root: Path = ROOT) -> Path:
 def record_progress(root: Path = ROOT) -> Path:
     """Rebuild a durable handover from sources, public entries and actual chunk files."""
     rows = []
-    for path in sorted((root / ".book-work").glob("*/release.json")):
+    for path in sorted([*(root / ".book-work").glob("*/release.json"), *(root / ".book-work").glob("ai-completion-*/*/release.json")]):
         release = read(path)
         work = path.parent
         public = root / "docs" / release["directory"]
-        readers = {code: {name: (work / "book" / code / name).is_file() for name in ("full_content.html", "short_content.html")} for code in AUTOMATIC_LANGUAGES}
+        readers = {code: {name: ((work / "book" / code / name).is_file() or (bool(release.get("readerCompletion")) and (public / code / name).is_file())) for name in ("full_content.html", "short_content.html")} for code in AUTOMATIC_LANGUAGES}
         translations = []
         for manifest in sorted((work / "translations").glob("**/manifest.json")):
             if "previous" in manifest.relative_to(work / "translations").parts:
@@ -239,7 +240,7 @@ def record_progress(root: Path = ROOT) -> Path:
         meta = read(work / "book/manifest.json") if (work / "book/manifest.json").is_file() else {}
         short_source = work / "book/en/short_content.html"
         keyword_ready = len(meta.get("keywordIds", [])) == 100 and short_source.is_file() and meta.get("keywordSourceHash") == sha256(short_source)
-        rows.append({"source": release["source"], "sha256": release["sha256"], "bookId": release["bookId"], "title": release["englishTitle"], "sourceVersion": release["sourceVersion"], "editionId": release.get("editionId"), "status": release["status"], "workdir": str(work.relative_to(root)), "bookPage": f"docs/{release['directory']}/en/book.html", "pageVisible": (public / "en/book.html").is_file(), "readers": readers, "translations": translations, "keywordCount": len(meta.get("keywordIds", [])), "keywordReviewCount": len((meta.get("keywordReview") or {}).get("phrases", [])), "keywordsRefreshed": keyword_ready, "englishPdfReady": (work / "book/en/book.pdf").is_file(), "validation": release.get("validation", {}), "coverSource": release.get("coverSource")})
+        rows.append({"readerCompletion": release.get("readerCompletion"), "source": release["source"], "sha256": release["sha256"], "bookId": release["bookId"], "title": release["englishTitle"], "sourceVersion": release["sourceVersion"], "editionId": release.get("editionId"), "status": release["status"], "workdir": str(work.relative_to(root)), "bookPage": f"docs/{release['directory']}/en/book.html", "pageVisible": (public / "en/book.html").is_file(), "readers": readers, "translations": translations, "keywordCount": len(meta.get("keywordIds", [])), "keywordReviewCount": len((meta.get("keywordReview") or {}).get("phrases", [])), "keywordsRefreshed": keyword_ready, "englishPdfReady": (work / "book/en/book.pdf").is_file(), "validation": release.get("validation", {}), "coverSource": release.get("coverSource")})
     write(root / "tasks/release-progress.json", {"updatedAt": date.today().isoformat(), "releases": rows})
     # The public work dashboard tracks only distinct deliveries requiring this
     # intake pass. Other workspaces include older releases and exact duplicates.
@@ -253,13 +254,14 @@ def record_progress(root: Path = ROOT) -> Path:
         for item in inventory.get("sources", [])
         if item.get("status") in {"already-installed", "historical-precursor-review"}
     ]
-    dashboard_rows = [row for row in rows if row["source"] in intake_sources] if intake_sources else rows
+    dashboard_rows = [row for row in rows if row["source"] in intake_sources or row.get("readerCompletion")] if intake_sources else rows
     browser_data = {
         "updatedAt": datetime.now(timezone.utc).isoformat(),
         "currentFocus": read(root / "tasks/current-book-focus.json").get("sources", []) if (root / "tasks/current-book-focus.json").is_file() else [],
         "workPlan": read(root / "tasks/work-plan.json") if (root / "tasks/work-plan.json").is_file() else None,
         "excludedSources": excluded_sources,
         "releases": [{
+            "readerCompletion": row.get("readerCompletion"),
             "source": row["source"],
             "title": row["title"],
             "status": row["status"],
@@ -537,7 +539,20 @@ def complete_readers(work: Path, root: Path = ROOT) -> Path:
     target = root / "docs" / release["directory"]
     history = read(target / "editions.json")
     current = next((item for item in history["editions"] if item["id"] == history.get("currentEdition")), None)
-    if not current or current.get("source", {}).get("sha256") != release["sha256"]:
+    completion = release.get("readerCompletion")
+    if completion:
+        if not current or current["id"] != completion.get("edition"):
+            raise ValueError("Reader completion is not for the current edition")
+        sources = completion.get("canonicalSources", {})
+        if set(sources) != {"en/full_content.html", "en/short_content.html"}:
+            raise ValueError("Completion requires both canonical English source hashes")
+        for relative, expected in sources.items():
+            if sha256(target / relative) != expected:
+                raise ValueError("Canonical reader changed; refresh and review translation chunks")
+        from html_translation_chunks import validate as validate_translation
+        for job in sorted((work / "translations/ro").glob("*/manifest.json")):
+            validate_translation(job.parent)
+    elif not current or current.get("source", {}).get("sha256") != release["sha256"]:
         raise ValueError("This workspace is not the current published edition")
     staged = []
     for code in AUTOMATIC_LANGUAGES:
@@ -551,9 +566,40 @@ def complete_readers(work: Path, root: Path = ROOT) -> Path:
             if "TRANSLATION:" in markup or not re.search(rf'<html\b[^>]*\blang=["\x27]{code}', markup, re.I):
                 raise ValueError(f"Incomplete reader: {code}/{name}")
             staged.append((source, destination))
+    if completion and not staged and completion.get("status") == "complete":
+        return target
+    if completion:
+        for source, destination in staged:
+            kind = "full" if source.name == "full_content.html" else "short"
+            if not (work / "translations" / destination.parent.name / kind / "manifest.json").is_file():
+                raise ValueError("Missing validated translation job for " + str(destination))
     for source, destination in staged:
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_text(re.sub(r"(?<=>)[ \t]+(?=\n)", "", source.read_text(encoding="utf-8")), encoding="utf-8")
+        def relocate(match):
+            prefix, quote, value = match.groups()
+            parsed = urlsplit(unescape(value))
+            if not parsed.path or parsed.scheme or parsed.netloc or value.startswith('/'):
+                return match[0]
+            resolved = (source.parent / unquote(parsed.path)).resolve()
+            # Legacy canonical readers already use public-depth shared URLs.
+            # Their staged copies retain those URLs, so resolving from staging
+            # can escape docs. Only known shared assets have a fixed fallback;
+            # book-specific media must keep its original resolved location.
+            shared = {"assets/analytics.js", "reader/standalone.css", "reader/standalone.js"}
+            shared_name = "/".join(Path(unquote(parsed.path)).parts[-2:])
+            if not resolved.is_file() and shared_name in shared:
+                canonical_asset = root / "docs" / shared_name
+                if canonical_asset.is_file():
+                    resolved = canonical_asset.resolve()
+            staged_root = (work / "book").resolve()
+            if resolved.is_relative_to(staged_root):
+                resolved = target.resolve() / resolved.relative_to(staged_root)
+            relative = os.path.relpath(resolved, destination.parent.resolve())
+            if parsed.query: relative += '?' + parsed.query
+            if parsed.fragment: relative += '#' + parsed.fragment
+            return prefix + quote + escape(relative, quote=True) + quote
+        markup = re.sub(r'(\b(?:src|href)\s*=\s*)(["\x27])(.*?)\2', relocate, source.read_text(encoding="utf-8"))
+        destination.write_text(re.sub(r"(?<=>)[ \t]+(?=\n)", "", markup), encoding="utf-8")
         assets = source.parent / "assets"
         if assets.is_dir() and not (destination.parent / "assets").exists():
             shutil.copytree(assets, destination.parent / "assets")
@@ -565,6 +611,14 @@ def complete_readers(work: Path, root: Path = ROOT) -> Path:
         release["automaticLanguages"] = list(AUTOMATIC_LANGUAGES)
         write(work / "release.json", release)
         manifest["releasePolicy"] = "en-ro-on-request"
+    if completion:
+        completion["status"] = "complete"
+        completion["completedAt"] = date.today().isoformat()
+        completion["installedReaders"] = {str(destination.relative_to(target)): sha256(destination) for _, destination in staged}
+        current.setdefault("readerCompletions", []).append(completion.copy())
+        current["readers"] = {code: {kind: path for kind, path in record.items() if kind in {"fullContent", "shortContent"}} for code, record in manifest["editions"].items() if record.get("fullContent") or record.get("shortContent")}
+        write(target / "editions.json", history)
+        write(work / "release.json", release)
     write(target / "manifest.json", manifest)
     return target
 

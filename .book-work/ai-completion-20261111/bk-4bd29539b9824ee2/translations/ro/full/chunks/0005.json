@@ -1,0 +1,656 @@
+{
+  "language": "ro",
+  "chunk": 5,
+  "segments": [
+    {
+      "id": "t000554",
+      "source": "A subcircuit can be exposed as a command with a stable contract while retaining an inspectable internal trace.",
+      "translation": "Un subcircuit poate fi expus ca o comandă cu contract stabil, păstrând o urmă internă inspectabilă."
+    },
+    {
+      "id": "t000555",
+      "source": "Production rule",
+      "translation": "Regulă de producție"
+    },
+    {
+      "id": "t000556",
+      "source": "A template can match state and instantiate computation, but its consequence is a new explicit SOP graph rather than only a mutation of working memory.",
+      "translation": "Un șablon poate potrivi starea și instanția calculul, dar consecința sa este un graf SOP explicit nou, nu doar o modificare a memoriei de lucru."
+    },
+    {
+      "id": "t000557",
+      "source": "Graph rewrite",
+      "translation": "Rescriere de graf"
+    },
+    {
+      "id": "t000558",
+      "source": "Template instantiation or epoch revision changes the executable graph. The research problem is to constrain rewrites so that construction remains deterministic and bounded.",
+      "translation": "Instanțierea șablonului sau revizuirea epocii schimbă graful executabil. Problema cercetării este constrângerea rescrierilor astfel încât construcția să rămână deterministă și limitată."
+    },
+    {
+      "id": "t000559",
+      "source": "Classical construction",
+      "translation": "Construcție clasică"
+    },
+    {
+      "id": "t000560",
+      "source": "Closest SOP Lang interpretation and important difference",
+      "translation": "Cea mai apropiată interpretare SOP Lang și diferența importantă"
+    },
+    {
+      "id": "t000561",
+      "source": "Macro or partial evaluation",
+      "translation": "Macro sau evaluare parțială"
+    },
+    {
+      "id": "t000562",
+      "source": "A parameterized circuit can be specialized using current variables and literals, but specialization must preserve provenance and runtime contracts.",
+      "translation": "Un circuit parametrizat poate fi specializat folosind variabilele și literalii curenți, dar specializarea trebuie să păstreze proveniența și contractele runtime-ului."
+    },
+    {
+      "id": "t000563",
+      "source": "AND/OR graph",
+      "translation": "Graf AND/OR"
+    },
+    {
+      "id": "t000564",
+      "source": "Required inputs of a template form AND dependencies; alternative commands or alternative templates form OR choices. This interpretation becomes central to budgeted construction.",
+      "translation": "Intrările cerute de un șablon formează dependențe AND; comenzile alternative sau șabloanele alternative formează alegeri OR. Această interpretare devine centrală construcției cu buget."
+    },
+    {
+      "id": "t000565",
+      "source": "Template matching is also the point at which combinatorial explosion first becomes visible. If every new @ variable is compared with every template, dynamic composition will fail at scale even if execution of each command is cheap. The template model must therefore be designed together with descriptors and indexes. A template should expose enough summary information for the runtime to determine whether loading and parsing its full body is worthwhile. The source form can remain expressive; the compiled descriptor must be intentionally restrictive and cheap.",
+      "translation": "Potrivirea șabloanelor este și punctul în care explozia combinatorie devine pentru prima dată vizibilă. Dacă fiecare variabilă @ nouă este comparată cu fiecare șablon, compunerea dinamică va eșua la scară, chiar dacă execuția fiecărei comenzi este ieftină. Modelul șabloanelor trebuie astfel proiectat împreună cu descriptorii și indecșii. Un șablon ar trebui să expună suficiente informații rezumative pentru ca runtime-ul să determine dacă merită încărcarea și parsarea întregului său corp. Forma-sursă poate rămâne expresivă; descriptorul compilat trebuie să fie intenționat restrictiv și ieftin."
+    },
+    {
+      "id": "t000566",
+      "source": "Another open issue is recursion. A template can instantiate a circuit that produces variables which make the same or another template applicable. This is desirable for recursive reasoning but can create infinite growth. Prototypes therefore need explicit fixpoint, depth, novelty, and budget semantics. One promising rule is that a deterministic epoch may continue only when an instantiation creates a new signature, a stronger epistemic value, or a newly satisfiable goal. If no such progress occurs, repeated activation should stop even if syntactic matching remains possible.",
+      "translation": "O altă problemă deschisă este recursivitatea. Un șablon poate instanția un circuit care produce variabile ce fac aplicabil același sau alt șablon. Aceasta este de dorit pentru raționamentul recursiv, dar poate crea creștere infinită. Prototipurile au astfel nevoie de semantică explicită pentru punct fix, adâncime, noutate și buget. O regulă promițătoare este că o epocă deterministă poate continua doar când o instanțiere creează o semnătură nouă, o valoare epistemică mai puternică sau un scop nou satisfiabil. Dacă nu există un asemenea progres, activarea repetată ar trebui să se oprească chiar dacă potrivirea sintactică rămâne posibilă."
+    },
+    {
+      "id": "t000567",
+      "source": "These distinctions make the SOP model less mysterious. The persistent model contains source templates and reusable subcircuits. A request produces a small concrete circuit. The runtime executes that circuit, observes the variables created, and may instantiate additional templates into a new or expanded epoch. Learning modifies the persistent library only after validation. The hard research question is not whether this can be implemented; prototypes already establish that it can. The hard question is whether the amount of active graph growth can remain small enough to compete with direct neural inference while preserving the explicit structure that motivates the approach.",
+      "translation": "Aceste distincții fac modelul SOP mai puțin misterios. Modelul persistent conține șabloane-sursă și subcircuite reutilizabile. O cerere produce un circuit concret mic. Runtime-ul execută acel circuit, observă variabilele create și poate instanția șabloane suplimentare într-o epocă nouă sau extinsă. Învățarea modifică biblioteca persistentă numai după validare. Întrebarea dificilă a cercetării nu este dacă aceasta poate fi implementată; prototipurile stabilesc deja că poate. Întrebarea dificilă este dacă volumul creșterii grafului activ poate rămâne suficient de mic pentru a concura cu inferența neurală directă, păstrând structura explicită ce motivează abordarea."
+    },
+    {
+      "id": "t000568",
+      "source": "6.3 Knowledge as declarations, circuits, and indexed external stores",
+      "translation": "6.3 Cunoaștere ca declarații, circuite și depozite externe indexate"
+    },
+    {
+      "id": "t000569",
+      "source": "A symbolic language model requires a persistent knowledge substrate, but storing knowledge as executable code creates severe scalability and governance problems. Millions or billions of facts should not become millions or billions of active command instances in memory. At the same time, separating knowledge into an unrelated database format weakens the unifying benefit of SOP Lang. The most promising design is to use SOP Lang as the persistent representation while distinguishing between inert declarations, executable circuits, and templates that are activated only when needed.",
+      "translation": "Un model lingvistic simbolic cere un substrat persistent de cunoaștere, dar stocarea cunoașterii sub formă de cod executabil creează probleme severe de scalabilitate și guvernanță. Milioane sau miliarde de fapte nu ar trebui să devină milioane sau miliarde de instanțe active de comenzi în memorie. În același timp, separarea cunoașterii într-un format de bază de date fără legătură slăbește beneficiul unificator al SOP Lang. Cea mai promițătoare proiectare este folosirea SOP Lang ca reprezentare persistentă, distingând declarațiile inerte, circuitele executabile și șabloanele activate doar la nevoie."
+    },
+    {
+      "id": "t000570",
+      "source": "The first representation style treats facts and entities as SOP declarations interpreted by data-oriented commands. An entity command can parse identifiers and attributes. A relation command can parse subject, predicate, object, source, validity interval, or confidence. These declarations are syntactically SOP Lang, but the loader does not need to execute each one as a computational node. It can compile or index them into compact storage. The variable name becomes a stable identifier by which other declarations can refer to the fact or entity.",
+      "translation": "Primul stil de reprezentare tratează faptele și entitățile ca declarații SOP interpretate de comenzi orientate pe date. O comandă entity poate parsa identificatori și atribute. O comandă relation poate parsa subiect, predicat, obiect, sursă, interval de validitate sau încredere. Aceste declarații sunt sintactic SOP Lang, dar încărcătorul nu trebuie să execute fiecare declarație ca nod computațional. Le poate compila sau indexa într-o stocare compactă. Numele variabilei devine un identificator stabil prin care alte declarații pot referi faptul sau entitatea."
+    },
+    {
+      "id": "t000571",
+      "source": "This approach has several advantages. Provenance can be expressed directly in the same language, domain-specific record formats can be owned by commands, and knowledge shards remain human-inspectable. A coding agent that learns a new domain fact can emit a declaration rather than modifying procedural code. The main danger is confusing representation with activation. A billion SOP declarations cannot be parsed into a billion in-memory variable objects at startup. The persistent form must support prebuilt indexes, lazy block loading, and compact binary caches.",
+      "translation": "Această abordare are mai multe avantaje. Proveniența poate fi exprimată direct în același limbaj, formatele de înregistrări specifice domeniului pot fi deținute de comenzi, iar fragmentele de cunoaștere rămân inspectabile de oameni. Un agent de programare care învață un fapt nou de domeniu poate emite o declarație în loc să modifice cod procedural. Pericolul principal este confundarea reprezentării cu activarea. Un miliard de declarații SOP nu pot fi parsate în un miliard de obiecte-variabilă în memorie la pornire. Forma persistentă trebuie să susțină indecși preconstruiți, încărcare leneșă de blocuri și cache-uri binare compacte."
+    },
+    {
+      "id": "t000572",
+      "source": "A small knowledge fragment can look like the following. The tokens type, name, source, and valid_from are conventions of the entity and relation commands, not global grammar.",
+      "translation": "Un mic fragment de cunoaștere poate arăta astfel. Tokenurile type, name, source și valid_from sunt convenții ale comenzilor entity și relation, nu gramatică globală."
+    },
+    {
+      "id": "t000573",
+      "source": "In persistent storage, the loader can index fact_001 under the relation command, the predicate token owns, the referenced variable identifiers, the source, and any domain tags published by the command parser. A query about ownership then jumps directly to relevant shards. The textual SOP form remains the source of truth, while binary indexes and compact caches act as rebuildable accelerators.",
+      "translation": "În stocarea persistentă, încărcătorul poate indexa fact_001 sub comanda relation, tokenul predicat owns, identificatorii variabilelor referite, sursa și orice etichete de domeniu publicate de parserul comenzii. O interogare despre posesie sare apoi direct la fragmentele relevante. Forma SOP textuală rămâne sursa de adevăr, în timp ce indecșii binari și cache-urile compacte acționează ca acceleratoare reconstructibile."
+    },
+    {
+      "id": "t000574",
+      "source": "The second representation style stores knowledge as circuits. Instead of recording only that a relation exists, a knowledge unit can describe how a state is transformed or how a conclusion is derived. A transfer of possession can be represented as a state-transition circuit. A scientific claim can be represented together with the evidence-processing path that supports it. A regulation can include a template that becomes executable when the relevant facts are present. This style preserves procedural and justificatory knowledge that is difficult to encode as isolated triples.",
+      "translation": "Al doilea stil de reprezentare stochează cunoașterea ca circuite. În loc să înregistreze doar că există o relație, o unitate de cunoaștere poate descrie cum este transformată o stare sau cum este derivată o concluzie. Un transfer de posesie poate fi reprezentat ca circuit de tranziție a stării. O afirmație științifică poate fi reprezentată împreună cu calea de procesare a dovezilor care o susține. O reglementare poate include un șablon care devine executabil când sunt prezente faptele relevante. Acest stil păstrează cunoașterea procedurală și justificativă greu de codificat ca triple izolate."
+    },
+    {
+      "id": "t000575",
+      "source": "Circuit knowledge has a higher activation cost and should therefore be used selectively. A raw database fact does not need an executable graph if its only role is retrieval. A reusable reasoning procedure benefits from being a circuit because its dependencies, alternatives, and validations matter. The knowledge layer should not force every noun or datum into the same representation class.",
+      "translation": "Cunoașterea în circuite are un cost mai mare de activare și ar trebui astfel folosită selectiv. Un fapt brut de bază de date nu are nevoie de un graf executabil dacă singurul său rol este recuperarea. O procedură reutilizabilă de raționament beneficiază de forma de circuit deoarece contează dependențele, alternativele și validările sale. Stratul de cunoaștere nu ar trebui să forțeze fiecare substantiv sau datum în aceeași clasă de reprezentare."
+    },
+    {
+      "id": "t000576",
+      "source": "A hybrid architecture therefore appears strongest. Persistent SOP packages can contain declaration blocks, circuit blocks, template descriptors, command definitions, indexes, and validation metadata. Declaration blocks compile into compact fact stores. Circuit blocks load as executable graphs only when selected. Template descriptors remain in a small index that allows the construction runtime to decide when their bodies should be loaded. Command implementations are cached by package and version rather than duplicated with each knowledge item.",
+      "translation": "O arhitectură hibridă pare astfel cea mai puternică. Pachetele SOP persistente pot conține blocuri de declarații, blocuri de circuite, descriptori de șabloane, definiții de comenzi, indecși și metadate de validare. Blocurile de declarații se compilează în depozite compacte de fapte. Blocurile de circuite se încarcă drept grafuri executabile numai când sunt selectate. Descriptorii șabloanelor rămân într-un index mic care permite runtime-ului de construcție să decidă când ar trebui încărcate corpurile lor. Implementările comenzilor sunt memorate în cache după pachet și versiune, nu duplicate cu fiecare element de cunoaștere."
+    },
+    {
+      "id": "t000577",
+      "source": "This resembles database query planning and compiled analysis systems more than a conventional rule engine. The runtime should never scan the filesystem to discover every fact at startup. Package manifests and indexes must identify shards by command family, ontology, key ranges, predicates, source, time interval, and other command-published fields. The index itself should be versioned so that startup can map it directly rather than rebuild it from millions of source files.",
+      "translation": "Aceasta seamănă mai mult cu planificarea interogărilor în baze de date și sistemele de analiză compilată decât cu un motor convențional de reguli. Runtime-ul nu ar trebui niciodată să scaneze sistemul de fișiere pentru a descoperi fiecare fapt la pornire. Manifestele pachetelor și indecșii trebuie să identifice fragmentele după familie de comenzi, ontologie, intervale de chei, predicate, sursă, interval temporal și alte câmpuri publicate de comenzi. Indexul însuși ar trebui versionat astfel încât pornirea să îl poată mapa direct, nu reconstrui din milioane de fișiere-sursă."
+    },
+    {
+      "id": "t000578",
+      "source": "The same design supports many KBs. Each KB can have an independent namespace, manifest, index, and cache. A circuit variable can refer to a fact from another KB through an imported or resolved identifier. The runtime loads only the shards needed by the active circuit. Memory pressure can trigger eviction of inactive shards while stable indexes remain mapped or cached. This is critical if the long-term objective is knowledge at the scale of billions of facts.",
+      "translation": "Aceeași proiectare susține multe KB-uri. Fiecare KB poate avea un spațiu de nume, manifest, index și cache independente. O variabilă de circuit poate referi un fapt din alt KB printr-un identificator importat sau rezolvat. Runtime-ul încarcă doar fragmentele necesare circuitului activ. Presiunea memoriei poate declanșa evacuarea fragmentelor inactive, în timp ce indecșii stabili rămân mapați sau memorați în cache. Aceasta este critic dacă obiectivul pe termen lung este cunoașterea la scara miliardelor de fapte."
+    },
+    {
+      "id": "t000579",
+      "source": "SOP Lang also offers a natural place for source lineage. A fact declaration can refer to a source variable representing a document, dataset, experiment, or observation. A derived declaration can consume ~fact_001 when it needs the full provenance object rather than only the relation value. Because the reference mechanism is shared with executable circuits, the boundary between static knowledge and dynamic reasoning does not require a separate provenance language.",
+      "translation": "SOP Lang oferă și un loc firesc pentru filiația surselor. O declarație de fapt poate referi o variabilă-sursă reprezentând un document, set de date, experiment sau observație. O declarație derivată poate consuma ~fact_001 când are nevoie de întregul obiect de proveniență, nu doar de valoarea relației. Deoarece mecanismul de referință este comun cu circuitele executabile, granița dintre cunoașterea statică și raționamentul dinamic nu cere un limbaj separat de proveniență."
+    },
+    {
+      "id": "t000580",
+      "source": "The danger is overloading variable identity. A persistent fact identifier must remain stable across package reloads, while an execution variable may be ephemeral and versioned per circuit instance.",
+      "translation": "Pericolul este supraîncărcarea identității variabilei. Un identificator persistent de fapt trebuie să rămână stabil între reîncărcări ale pachetelor, în timp ce o variabilă de execuție poate fi efemeră și versionată pentru fiecare instanță de circuit."
+    },
+    {
+      "id": "t000581",
+      "source": "Implementations should therefore distinguish persistent symbol identifiers from runtime variable instances even if both appear through SOP names. Namespace-qualified identifiers, package versions, or canonical IDs can provide this distinction without changing the surface syntax.",
+      "translation": "Implementările ar trebui astfel să distingă identificatorii de simboluri persistente de instanțele de variabile runtime, chiar dacă ambele apar prin nume SOP. Identificatorii calificați cu spații de nume, versiunile pachetelor sau ID-urile canonice pot furniza această distincție fără schimbarea sintaxei de suprafață."
+    },
+    {
+      "id": "t000582",
+      "source": "Knowledge consistency is another open problem. An open-world KB may contain incompatible claims from different sources. The storage layer should not collapse them into one truth value. Separate declarations can preserve source-specific claims, while reasoning circuits decide how to aggregate them for a particular task. This is where the distinction between $var and ~var again matters: ordinary reasoning may consume the claim value, while a credibility or conflict-resolution circuit inspects source metadata through the reference.",
+      "translation": "Consistența cunoașterii este o altă problemă deschisă. Un KB de lume deschisă poate conține afirmații incompatibile din surse diferite. Stratul de stocare nu ar trebui să le reducă la o valoare de adevăr. Declarații separate pot păstra afirmații specifice surselor, în timp ce circuitele de raționament decid cum să le agrege pentru o anumită sarcină. Aici contează din nou distincția dintre $var și ~var: raționamentul obișnuit poate consuma valoarea afirmației, iar un circuit de credibilitate sau rezolvare a conflictelor inspectează metadatele sursei prin referință."
+    },
+    {
+      "id": "t000583",
+      "source": "A declaration-oriented KB also creates opportunities for Datalog-style acceleration. Relations extracted from SOP declarations can be exported or compiled into Souffle for recursive closure. [R3] The results can return as SOP variables with derived provenance. The KB therefore remains SOP-centric without requiring the SOP runtime to reimplement every database optimization.",
+      "translation": "Un KB orientat pe declarații creează și oportunități de accelerare de tip Datalog. Relațiile extrase din declarațiile SOP pot fi exportate sau compilate în Souffle pentru închidere recursivă. [R3] Rezultatele pot reveni ca variabile SOP cu proveniență derivată. KB-ul rămâne astfel centrat pe SOP fără a cere runtime-ului SOP să reimplementeze fiecare optimizare de baze de date."
+    },
+    {
+      "id": "t000584",
+      "source": "The research programme should compare all three storage styles experimentally. A declaration-only KB may provide the best scale but force too much procedural logic into commands. A circuit-heavy KB may provide strong provenance but incur unacceptable loading and matching costs. The hybrid design is the leading hypothesis because it makes representation uniform while keeping execution selective. Its success depends on a compiler-like pipeline that separates canonical source, indexes, compact caches, and active runtime objects.",
+      "translation": "Programul de cercetare ar trebui să compare experimental toate cele trei stiluri de stocare. Un KB doar cu declarații poate furniza cea mai bună scară, dar poate forța prea multă logică procedurală în comenzi. Un KB încărcat cu circuite poate furniza proveniență puternică, dar poate implica costuri inacceptabile de încărcare și potrivire. Proiectarea hibridă este ipoteza principală deoarece face reprezentarea uniformă, păstrând execuția selectivă. Succesul său depinde de un flux de tip compilator care separă sursa canonică, indecșii, cache-urile compacte și obiectele runtime active."
+    },
+    {
+      "id": "t000585",
+      "source": "KB representation",
+      "translation": "Reprezentare KB"
+    },
+    {
+      "id": "t000586",
+      "source": "Expected strengths and risks",
+      "translation": "Puncte forte și riscuri așteptate"
+    },
+    {
+      "id": "t000587",
+      "source": "SOP declarations as data",
+      "translation": "Declarații SOP ca date"
+    },
+    {
+      "id": "t000588",
+      "source": "Compact, indexable, streamable, and suitable for very large fact collections. Risk: procedural relationships may be hidden inside generic commands.",
+      "translation": "Compacte, indexabile, procesabile în flux și potrivite colecțiilor foarte mari de fapte. Risc: relațiile procedurale pot fi ascunse în comenzi generice."
+    },
+    {
+      "id": "t000589",
+      "source": "SOP circuits as knowledge",
+      "translation": "Circuite SOP ca cunoaștere"
+    },
+    {
+      "id": "t000590",
+      "source": "Preserves derivation, state transitions, and reusable reasoning structure. Risk: expensive if treated as active graphs at KB scale.",
+      "translation": "Păstrează derivarea, tranzițiile de stare și structura reutilizabilă a raționamentului. Risc: costisitoare dacă sunt tratate ca grafuri active la scara KB."
+    },
+    {
+      "id": "t000591",
+      "source": "Template circuits",
+      "translation": "Circuite-șablon"
+    },
+    {
+      "id": "t000592",
+      "source": "Encode reusable conditional knowledge that becomes executable only when a matching state or goal appears. Risk: uncontrolled matching can create combinatorial growth.",
+      "translation": "Codifică cunoaștere condițională reutilizabilă care devine executabilă numai când apare o stare sau un scop potrivit. Risc: potrivirea necontrolată poate crea creștere combinatorie."
+    },
+    {
+      "id": "t000593",
+      "source": "Hybrid package",
+      "translation": "Pachet hibrid"
+    },
+    {
+      "id": "t000594",
+      "source": "Keeps one textual ecosystem while compiling declarations into stores, indexing",
+      "translation": "Păstrează un ecosistem textual, compilând declarațiile în depozite, indexând"
+    },
+    {
+      "id": "t000595",
+      "source": "templates, and loading executable circuits lazily. Risk: requires a sophisticated build and cache pipeline.",
+      "translation": "șabloane și încărcând leneș circuitele executabile. Risc: cere un flux sofisticat de construire și cache."
+    },
+    {
+      "id": "t000596",
+      "source": "The phrase knowledge base can conceal several fundamentally different objects. A persistent knowledge graph stores entities and relations. A deductive database stores extensional facts together with intensional rules. A rule base stores executable or declarative implications. A document store preserves source material from which facts may be extracted. A SOP Lang knowledge package may need to include all of these, but they should not be collapsed into one gigantic active circuit. The central architectural distinction is between canonical knowledge representation on disk and the small set of variables materialized into the active circuit for a particular request.",
+      "translation": "Expresia bază de cunoștințe poate ascunde obiecte fundamental diferite. Un graf persistent de cunoaștere stochează entități și relații. O bază de date deductivă stochează fapte extensionale împreună cu reguli intensionale. O bază de reguli stochează implicații executabile sau declarative. Un depozit de documente păstrează materialul-sursă din care pot fi extrase fapte. Un pachet de cunoaștere SOP Lang poate trebui să includă toate acestea, dar nu ar trebui reduse la un circuit activ gigantic. Distincția arhitecturală centrală este între reprezentarea canonică a cunoașterii pe disc și micul set de variabile materializate în circuitul activ pentru o anumită cerere."
+    },
+    {
+      "id": "t000597",
+      "source": "The most direct SOP representation treats factual knowledge as declarations whose commands construct data rather than perform expensive reasoning. A fact command can interpret its arguments as a relation record; an entity command can create an entity descriptor; a source command can attach provenance. The text remains auditable and versionable. Crucially, storing one billion such declarations does not imply creating one billion runtime nodes at startup. A build step can compile the files into relation indexes, symbol dictionaries, posting lists, compact segments, and manifests. Only facts retrieved for a task need to be materialized as runtime variables.",
+      "translation": "Cea mai directă reprezentare SOP tratează cunoașterea factuală ca declarații ale căror comenzi construiesc date, nu efectuează raționament costisitor. O comandă fact își poate interpreta argumentele ca înregistrare de relație; o comandă entity poate crea un descriptor de entitate; o comandă source poate atașa proveniență. Textul rămâne auditabil și versionabil. Crucial, stocarea unui miliard de asemenea declarații nu implică crearea unui miliard de noduri runtime la pornire. Un pas de construire poate compila fișierele în indecși de relații, dicționare de simboluri, liste de apariții, segmente compacte și manifeste. Doar faptele recuperate pentru o sarcină trebuie materializate ca variabile runtime."
+    },
+    {
+      "id": "t000598",
+      "source": "This representation behaves differently from a knowledge graph even when it encodes the same relation. The persistent relation can be compiled into a graph or relational store for efficient querying. When retrieved, however, the SOP declaration gives the runtime a value identity and a path back to the canonical source. SOP Lang is therefore an authoring and interchange representation; the physical query engine does not have to preserve the textual layout in memory.",
+      "translation": "Această reprezentare se comportă diferit de un graf de cunoaștere chiar când codifică aceeași relație. Relația persistentă poate fi compilată într-un graf sau depozit relațional pentru interogare eficientă. Când este recuperată însă, declarația SOP oferă runtime-ului o identitate de valoare și o cale înapoi către sursa canonică. SOP Lang este astfel o reprezentare de redactare și schimb; motorul fizic de interogare nu trebuie să păstreze aranjamentul textual în memorie."
+    },
+    {
+      "id": "t000599",
+      "source": "A second option represents knowledge procedurally as circuits. A rule about transitive closure, state transition, causal propagation, or document interpretation can be stored as a reusable circuit or template. This is appropriate when the knowledge is inherently about how to derive something, not merely about what is true. The danger is treating every fact as a tiny executable circuit. At very large scale that mixes storage with control, increases activation cost, and makes simple relation lookup unnecessarily expensive.",
+      "translation": "O a doua opțiune reprezintă cunoașterea procedural, ca circuite. O regulă despre închidere tranzitivă, tranziție de stare, propagare cauzală sau interpretare de document poate fi stocată ca circuit reutilizabil ori șablon. Aceasta este potrivit când cunoașterea privește inerent modul de a deriva ceva, nu doar ceea ce este adevărat. Pericolul este tratarea fiecărui fapt ca mic circuit executabil. La scară foarte mare, aceasta amestecă stocarea cu controlul, crește costul activării și face căutarea simplă a relațiilor inutil de costisitoare."
+    },
+    {
+      "id": "t000600",
+      "source": "The hybrid model is therefore the strongest current research hypothesis. Ground facts, entity descriptions, source metadata, and relatively static relations remain declarative and are compiled into indexed stores. Rules whose semantics fit a mature engine may be compiled into that engine, for example Datalog. Reusable procedures and cross-engine strategies become SOP circuits. Conditional knowledge that should become active only when its prerequisites appear becomes template circuits. The single SOP ecosystem remains visible to authors and coding agents, while runtime representations are specialized for scale.",
+      "translation": "Modelul hibrid este astfel cea mai puternică ipoteză actuală de cercetare. Faptele de bază, descrierile entităților, metadatele surselor și relațiile relativ statice rămân declarative și sunt compilate în depozite indexate. Regulile a căror semantică se potrivește unui motor matur pot fi compilate în acel motor, de exemplu Datalog. Procedurile reutilizabile și strategiile între motoare devin circuite SOP. Cunoașterea condițională care ar trebui să devină activă numai când apar condițiile sale prealabile devine circuite-șablon. Ecosistemul SOP unic rămâne vizibil autorilor și agenților de programare, în timp ce reprezentările runtime sunt specializate pentru scară."
+    },
+    {
+      "id": "t000601",
+      "source": "Knowledge form",
+      "translation": "Formă de cunoaștere"
+    },
+    {
+      "id": "t000602",
+      "source": "Detailed SOP Lang treatment",
+      "translation": "Tratare detaliată SOP Lang"
+    },
+    {
+      "id": "t000603",
+      "source": "Ground fact or relation",
+      "translation": "Fapt de bază sau relație"
+    },
+    {
+      "id": "t000604",
+      "source": "Canonical SOP declaration compiled into a relation-oriented index. It becomes an active @ value only when retrieved or explicitly referenced by an active circuit.",
+      "translation": "Declarație SOP canonică compilată într-un index orientat pe relații. Devine o valoare @ activă numai când este recuperată sau referită explicit de un circuit activ."
+    },
+    {
+      "id": "t000605",
+      "source": "Entity and ontology metadata",
+      "translation": "Metadate de entitate și ontologie"
+    },
+    {
+      "id": "t000606",
+      "source": "Declarations compiled into symbol/type indexes and selectively loaded. Stable integer IDs may replace long textual names in runtime caches while source SOP remains canonical.",
+      "translation": "Declarații compilate în indecși de simboluri/tipuri și încărcate selectiv. ID-uri întregi stabile pot înlocui numele textuale lungi în cache-urile runtime, în timp ce sursa SOP rămâne canonică."
+    },
+    {
+      "id": "t000607",
+      "source": "Deductive rule",
+      "translation": "Regulă deductivă"
+    },
+    {
+      "id": "t000608",
+      "source": "Either a declarative rule consumed by a Datalog/Prolog command or a template circuit if activation must construct a richer heterogeneous subgraph.",
+      "translation": "Fie o regulă declarativă consumată de o comandă Datalog/Prolog, fie un circuit-șablon dacă activarea trebuie să construiască un subgraf eterogen mai bogat."
+    },
+    {
+      "id": "t000609",
+      "source": "Procedure or reasoning skill",
+      "translation": "Procedură sau abilitate de raționament"
+    },
+    {
+      "id": "t000610",
+      "source": "Reusable SOP circuit exposed behind a command-like contract; suitable for hierarchical planning and reuse.",
+      "translation": "Circuit SOP reutilizabil expus în spatele unui contract de tip comandă; potrivit planificării și reutilizării ierarhice."
+    },
+    {
+      "id": "t000611",
+      "source": "Conditional strategy",
+      "translation": "Strategie condițională"
+    },
+    {
+      "id": "t000612",
+      "source": "Template circuit whose descriptor is indexed by the goals, value kinds, domains, and capabilities that can activate it.",
+      "translation": "Circuit-șablon al cărui descriptor este indexat după scopurile, tipurile de valori, domeniile și capacitățile care îl pot activa."
+    },
+    {
+      "id": "t000613",
+      "source": "Source document",
+      "translation": "Document-sursă"
+    },
+    {
+      "id": "t000614",
+      "source": "Stored as document content with indexes; SOP declarations point to spans and versions rather than duplicating the entire document in each fact.",
+      "translation": "Stocat drept conținut de document cu indecși; declarațiile SOP indică fragmente și versiuni, nu dublează întregul document în fiecare fapt."
+    },
+    {
+      "id": "t000615",
+      "source": "Compiled index/cache",
+      "translation": "Index/cache compilat"
+    },
+    {
+      "id": "t000616",
+      "source": "Operational product rebuilt from canonical SOP packages. It may be binary and highly compact because auditability is preserved by the source package and build manifest.",
+      "translation": "Produs operațional reconstruit din pachete SOP canonice. Poate fi binar și foarte compact deoarece auditabilitatea este păstrată de pachetul-sursă și manifestul construirii."
+    },
+    {
+      "id": "t000617",
+      "source": "This design also clarifies the relation between SOP variables and knowledge identifiers. A persistent entity identifier is not automatically the same thing as an active @ variable. The entity Paris may exist in the KB under a stable ID. When a request retrieves Paris, the circuit may create @parisContext as a task-local semantic value that contains or references the persistent ID together with the relevant source set, ontology version, and request-specific interpretation. Keeping these namespaces distinct avoids accidental assumptions that every persistent concept must remain resident as an active circuit object.",
+      "translation": "Această proiectare clarifică și relația dintre variabilele SOP și identificatorii cunoașterii. Un identificator persistent de entitate nu este automat același lucru cu o variabilă @ activă. Entitatea Paris poate exista în KB sub un ID stabil. Când o cerere recuperează Paris, circuitul poate crea @parisContext ca valoare semantică locală sarcinii, care conține sau referă ID-ul persistent împreună cu setul relevant de surse, versiunea ontologiei și interpretarea specifică cererii. Păstrarea distinctă a acestor spații de nume evită presupuneri accidentale că fiecare concept persistent trebuie să rămână rezident ca obiect activ al circuitului."
+    },
+    {
+      "id": "t000618",
+      "source": "The approach creates concrete systems questions. Index construction must be incremental enough that updating one shard does not require scanning an entire KB. Manifests must allow thousands or millions of source files to be located without directory traversal. Cache keys must include the versions that affect meaning. Large values should be represented by handles so that a $ reference does not imply copying megabytes of data. The runtime must release inactive shards after their last dependent variable is no longer needed. These are not peripheral storage optimizations; if they fail, the symbolic model cannot scale beyond toy knowledge bases.",
+      "translation": "Abordarea creează întrebări concrete de sistem. Construirea indecșilor trebuie să fie suficient de incrementală pentru ca actualizarea unui fragment să nu necesite scanarea unui întreg KB. Manifestele trebuie să permită localizarea miilor sau milioanelor de fișiere-sursă fără parcurgerea directoarelor. Cheile cache-ului trebuie să includă versiunile care afectează sensul. Valorile mari ar trebui reprezentate prin handle-uri, astfel încât o referință $ să nu implice copierea megabyților de date. Runtime-ul trebuie să elibereze fragmentele inactive după ce ultima variabilă dependentă nu mai este necesară. Acestea nu sunt optimizări periferice ale stocării; dacă eșuează, modelul simbolic nu poate depăși bazele de cunoștințe-jucărie."
+    },
+    {
+      "id": "t000619",
+      "source": "A further research question is whether declarative SOP should standardize a small vocabulary for facts or leave all factual grammars to commands. A universal triple syntax would simplify tooling but would be too weak for n-ary relations, temporal intervals, provenance, quantitative observations, and domain-specific structures. A command-owned representation can express these naturally but risks fragmentation. The likely path is a compact set of shared data constructors plus domain packages, evaluated empirically against the cost of translation between representations.",
+      "translation": "O altă întrebare de cercetare este dacă SOP declarativ ar trebui să standardizeze un vocabular mic pentru fapte sau să lase toate gramaticile factuale comenzilor. O sintaxă universală de triple ar simplifica instrumentele, dar ar fi prea slabă pentru relații n-are, intervale temporale, proveniență, observații cantitative și structuri specifice domeniului. O reprezentare deținută de comandă le poate exprima firesc, dar riscă fragmentarea. Calea probabilă este un set compact de constructori comuni de date plus pachete de domeniu, evaluate empiric față de costul traducerii între reprezentări."
+    },
+    {
+      "id": "t000620",
+      "source": "A symbolic language model needs a credible account of learning. If every command and circuit is handcrafted, the system is an expert platform rather than a model that improves through experience. SOP Lang makes several forms of learning explicit because the learned artefacts can be persisted in the language itself. The key research question is how these artefacts are proposed, tested, generalized, and promoted without turning online interaction into uncontrolled self-modification.",
+      "translation": "Un model lingvistic simbolic are nevoie de o explicație credibilă a învățării. Dacă fiecare comandă și circuit sunt create manual, sistemul este o platformă expertă, nu un model care se îmbunătățește prin experiență. SOP Lang face explicite mai multe forme de învățare deoarece artefactele învățate pot fi păstrate în limbajul însuși. Întrebarea-cheie a cercetării este cum sunt propuse, testate, generalizate și promovate aceste artefacte fără a transforma interacțiunea online în automodificare necontrolată."
+    },
+    {
+      "id": "t000621",
+      "source": "The most elementary acquisition is a new knowledge declaration. A document parser can create entity and relation declarations linked to source spans. This is analogous to updating an external memory rather than retraining a model. The new knowledge becomes queryable immediately if the index is updated incrementally. The risk is semantic drift: the parser may create a relation under the wrong ontology. Promotion should therefore be conditioned on validation or stored with an uncertain status that downstream circuits can inspect.",
+      "translation": "Achiziția cea mai elementară este o nouă declarație de cunoaștere. Un parser de documente poate crea declarații de entități și relații legate de fragmente-sursă. Aceasta este analogă actualizării unei memorii externe, nu reantrenării unui model. Noua cunoaștere devine imediat interogabilă dacă indexul este actualizat incremental. Riscul este deriva semantică: parserul poate crea o relație sub ontologia greșită. Promovarea ar trebui astfel condiționată de validare sau stocată cu statut incert pe care circuitele ulterioare îl pot inspecta."
+    },
+    {
+      "id": "t000622",
+      "source": "The next level is a new command. A coding agent may discover that a recurring transformation is inefficient to express as a large circuit and propose a new primitive. The define command provides a language-internal route for such acquisition. In a JavaScript profile, the agent can generate the formal parameter list and source body, along with tests and declared properties such as purity, determinism, effects, and cost class. The runtime need not trust the command merely because it compiles. A command registry can maintain candidate, validated, deprecated, and trusted states.",
+      "translation": "Nivelul următor este o comandă nouă. Un agent de programare poate descoperi că o transformare recurentă este ineficient de exprimat ca circuit mare și poate propune o primitivă nouă. Comanda define furnizează o cale internă limbajului pentru o asemenea achiziție. Într-un profil JavaScript, agentul poate genera lista parametrilor formali și corpul-sursă, împreună cu teste și proprietăți declarate precum puritate, determinism, efecte și clasă de cost. Runtime-ul nu trebuie să aibă încredere în comandă doar pentru că se compilează. Un registru de comenzi poate menține stări candidat, validat, depreciat și de încredere."
+    },
+    {
+      "id": "t000623",
+      "source": "The next level is a new reusable circuit. Suppose a set of benchmark tasks repeatedly requires event extraction, reference resolution, temporal ordering, state updates, and answer validation. A coding agent can compose existing commands into a circuit and test it against held-out examples. If successful, the circuit can be packaged behind a stable command interface. This is a form of program learning in which the learned object is inspectable and executable.",
+      "translation": "Nivelul următor este un circuit reutilizabil nou. Să presupunem că un set de sarcini de evaluare cere repetat extragerea evenimentelor, rezolvarea referințelor, ordonare temporală, actualizări de stare și validarea răspunsului. Un agent de programare poate compune comenzi existente într-un circuit și îl poate testa pe exemple rezervate. Dacă reușește, circuitul poate fi împachetat în spatele unei interfețe stabile de comandă. Aceasta este o formă de învățare a programelor în care obiectul învățat este inspectabil și executabil."
+    },
+    {
+      "id": "t000624",
+      "source": "Template learning adds a control dimension. It is not enough to know how to execute a temporal circuit; the model must learn when that circuit is relevant. A template associates a circuit shape with match conditions over goals and state. The matching conditions themselves can be generated and simplified from successful traces. If every question containing the word before activates the temporal template, the rule may be too superficial. If activation depends on semantic event types, requested output type, and available temporal relations, the template is more likely to transfer.",
+      "translation": "Învățarea șabloanelor adaugă o dimensiune de control. Nu este suficient să știm cum se execută un circuit temporal; modelul trebuie să învețe când este relevant acel circuit. Un șablon asociază o formă de circuit cu condiții de potrivire asupra scopurilor și stării. Condițiile de potrivire însele pot fi generate și simplificate din urme reușite. Dacă fiecare întrebare care conține cuvântul before activează șablonul temporal, regula poate fi prea superficială. Dacă activarea depinde de tipurile semantice ale evenimentelor, tipul de ieșire cerut și relațiile temporale disponibile, șablonul are mai multe șanse să se transfere."
+    },
+    {
+      "id": "t000625",
+      "source": "Strategy learning sits above individual templates. The system may learn that direct deterministic reasoning should be attempted before expensive retrieval, or that an ambiguous formalization should be preserved as alternatives until a validator can separate them. These strategies can themselves be represented as meta-circuits. A strategy is therefore not hidden policy code; it can be versioned, benchmarked, and compared.",
+      "translation": "Învățarea strategiilor se află deasupra șabloanelor individuale. Sistemul poate învăța că raționamentul determinist direct ar trebui încercat înaintea recuperării costisitoare sau că o formalizare ambiguă ar trebui păstrată ca alternative până când un validator le poate separa. Aceste strategii pot fi ele însele reprezentate ca metacircuite. O strategie nu este astfel cod de politică ascuns; poate fi versionată, evaluată prin repere și comparată."
+    },
+    {
+      "id": "t000626",
+      "source": "Recent work on equality saturation provides an instructive analogue. EggMind represents EqSat strategies explicitly in a DSL and uses an LLM-guided process to synthesize reusable strategies while controlling e-graph explosion. [R22] The domain is compiler optimization rather than language reasoning, but the methodological lesson is direct: explicit strategy artefacts create a surface on which automated search can operate, and tractability feedback can guide synthesis. SOP Lang can apply the same principle to circuit construction strategies.",
+      "translation": "Lucrările recente despre saturarea egalităților oferă un analog instructiv. EggMind reprezintă explicit strategiile EqSat într-un DSL și folosește un proces ghidat de LLM pentru a sintetiza strategii reutilizabile, controlând explozia e-grafurilor. [R22] Domeniul este optimizarea compilatoarelor, nu raționamentul lingvistic, dar lecția metodologică este directă: artefactele explicite de strategie creează o suprafață asupra căreia poate opera căutarea automată, iar feedbackul de tractabilitate poate ghida sinteza. SOP Lang poate aplica același principiu strategiilor de construcție a circuitelor."
+    },
+    {
+      "id": "t000627",
+      "source": "Learning should be separated into proposal and acceptance. A neural model or coding agent can propose a command, circuit, template, or strategy. Deterministic tests, formal checks where possible, benchmark evaluation, and regression analysis decide whether the artefact becomes active in the persistent model. This separation allows the system to exploit generative creativity without granting generative components authority over the model state.",
+      "translation": "Învățarea ar trebui separată în propunere și acceptare. Un model neural sau agent de programare poate propune o comandă, un circuit, un șablon sau o strategie. Testele deterministe, verificările formale unde sunt posibile, evaluarea prin repere și analiza regresiei decid dacă artefactul devine activ în modelul persistent. Această separare permite sistemului să exploateze creativitatea generativă fără a acorda componentelor generative autoritate asupra stării modelului."
+    },
+    {
+      "id": "t000628",
+      "source": "The promotion process can also be domain-specific. A text-normalization command may require only deterministic unit tests. A medical reasoning template may require source provenance, domain validation, and calibration. A proof-generating command can be checked by Lean or another formal backend. The SOP representation can store the validation metadata alongside the artefact without introducing special global syntax because a registry command can own that metadata grammar.",
+      "translation": "Procesul promovării poate fi și el specific domeniului. O comandă de normalizare a textului poate necesita doar teste unitare deterministe. Un șablon de raționament medical poate necesita proveniență a surselor, validare de domeniu și calibrare. O comandă generatoare de demonstrații poate fi verificată de Lean sau alt backend formal. Reprezentarea SOP poate stoca metadatele validării alături de artefact fără a introduce sintaxă globală specială, deoarece o comandă registry poate deține gramatica acelor metadate."
+    },
+    {
+      "id": "t000629",
+      "source": "The accumulation of artefacts creates a new scaling problem: model bloat. If every successful task adds a nearly identical circuit, the library becomes harder to search than the original problem. Generalization therefore becomes an explicit maintenance operation. The system can compare graphs, factor common subcircuits, canonicalize argument patterns, and merge templates whose behaviour is equivalent over a validation set. E-graphs may help for formally equivalent subexpressions, while clustering and symbolic anti-unification can identify structural similarity in more general circuits.",
+      "translation": "Acumularea artefactelor creează o nouă problemă de scalare: umflarea modelului. Dacă fiecare sarcină reușită adaugă un circuit aproape identic, biblioteca devine mai greu de căutat decât problema originală. Generalizarea devine astfel o operație explicită de întreținere. Sistemul poate compara grafuri, factoriza subcircuite comune, canoniza tipare de argumente și uni șabloane al căror comportament este echivalent pe un set de validare. E-grafurile pot ajuta pentru subexpresii formal echivalente, iar gruparea și antiunificarea simbolică pot identifica similaritatea structurală în circuite mai generale."
+    },
+    {
+      "id": "t000630",
+      "source": "For a symbolic language model, the analogue of fine-tuning may therefore be a coordinated update of several layers. Domain-specific concepts enter the KB; new parsers or neural front ends improve interpretation; stable reasoning patterns become circuits; activation conditions become templates; and selection costs are recalibrated from runtime evidence. None of these mechanisms requires changing the universal SOP grammar.",
+      "translation": "Pentru un model lingvistic simbolic, analogul ajustării fine poate fi astfel o actualizare coordonată a mai multor straturi. Conceptele specifice domeniului intră în KB; parsere sau interfețe neurale de intrare noi îmbunătățesc interpretarea; tiparele stabile de raționament devin circuite; condițiile de activare devin șabloane; iar costurile selecției sunt recalibrate din dovezi runtime. Niciunul dintre aceste mecanisme nu cere schimbarea gramaticii SOP universale."
+    },
+    {
+      "id": "t000631",
+      "source": "The possibility of domain-specific models should be treated as a likely outcome rather than a failure. A legal model may have different command families, ontologies, and acceptance policies from a scientific model. The kernel, graph semantics, template mechanism, and construction runtime can remain common. This is similar to compiler infrastructures in which different dialects and lowering pipelines share common IR machinery without pretending that every source language has the same semantics.",
+      "translation": "Posibilitatea modelelor specifice domeniului ar trebui tratată ca rezultat probabil, nu ca eșec. Un model juridic poate avea familii de comenzi, ontologii și politici de acceptare diferite de un model științific. Nucleul, semantica grafului, mecanismul șabloanelor și runtime-ul de construcție pot rămâne comune. Aceasta seamănă cu infrastructurile compilatoarelor în care dialecte și fluxuri de coborâre diferite împărtășesc mecanisme IR comune fără a pretinde că fiecare limbaj-sursă are aceeași semantică."
+    },
+    {
+      "id": "t000632",
+      "source": "Dynamic online learning should be conservative. A temporary circuit synthesized to solve one request can exist only in the current session or epoch. Promotion to the persistent library should occur only through a later validated development step; the runtime handling a user request should not silently rewrite global knowledge. In a research prototype, promotion can be an explicit command executed after tests. This preserves reproducibility and makes regressions attributable to concrete artefacts.",
+      "translation": "Învățarea dinamică online ar trebui să fie conservatoare. Un circuit temporar sintetizat pentru a rezolva o cerere poate exista doar în sesiunea sau epoca curentă. Promovarea în biblioteca persistentă ar trebui să aibă loc doar printr-un pas ulterior de dezvoltare validată; runtime-ul care gestionează o cerere a utilizatorului nu ar trebui să rescrie tacit cunoașterea globală. Într-un prototip de cercetare, promovarea poate fi o comandă explicită executată după teste. Aceasta păstrează reproductibilitatea și face regresiile atribuibile unor artefacte concrete."
+    },
+    {
+      "id": "t000633",
+      "source": "Learned artefact",
+      "translation": "Artefact învățat"
+    },
+    {
+      "id": "t000634",
+      "source": "How it changes the symbolic model",
+      "translation": "Cum schimbă modelul simbolic"
+    },
+    {
+      "id": "t000635",
+      "source": "Knowledge declaration",
+      "translation": "Declarație de cunoaștere"
+    },
+    {
+      "id": "t000636",
+      "source": "Adds a persistent fact, entity, relation, source, or observation without changing the reasoning machinery.",
+      "translation": "Adaugă un fapt, o entitate, relație, sursă sau observație persistentă fără a schimba mecanismul raționamentului."
+    },
+    {
+      "id": "t000637",
+      "source": "Command implementation",
+      "translation": "Implementare de comandă"
+    },
+    {
+      "id": "t000638",
+      "source": "Adds a new primitive operation that can be invoked by future circuits and templates.",
+      "translation": "Adaugă o operație primitivă nouă care poate fi invocată de circuite și șabloane viitoare."
+    },
+    {
+      "id": "t000639",
+      "source": "Reusable circuit",
+      "translation": "Circuit reutilizabil"
+    },
+    {
+      "id": "t000640",
+      "source": "Packages a successful composition of commands behind a stable interface.",
+      "translation": "Împachetează o compoziție reușită de comenzi în spatele unei interfețe stabile."
+    },
+    {
+      "id": "t000641",
+      "source": "Template circuit",
+      "translation": "Circuit-șablon"
+    },
+    {
+      "id": "t000642",
+      "source": "Adds a rule for when a circuit pattern should be instantiated over a current state or goal.",
+      "translation": "Adaugă o regulă pentru momentul în care un tipar de circuit ar trebui instanțiat asupra unei stări sau unui scop curent."
+    },
+    {
+      "id": "t000643",
+      "source": "Meta-circuit or strategy",
+      "translation": "Metacircuit sau strategie"
+    },
+    {
+      "id": "t000644",
+      "source": "Changes how alternatives are generated, ordered, evaluated, repaired, or terminated under a budget.",
+      "translation": "Schimbă modul în care alternativele sunt generate, ordonate, evaluate, reparate sau oprite sub un buget."
+    },
+    {
+      "id": "t000645",
+      "source": "Index or cost model",
+      "translation": "Index sau model de cost"
+    },
+    {
+      "id": "t000646",
+      "source": "Improves the runtime’s ability to find relevant knowledge and circuits without changing their semantics.",
+      "translation": "Îmbunătățește capacitatea runtime-ului de a găsi cunoaștere și circuite relevante fără a le schimba semantica."
+    },
+    {
+      "id": "t000647",
+      "source": "Domain profile",
+      "translation": "Profil de domeniu"
+    },
+    {
+      "id": "t000648",
+      "source": "Combines ontologies, commands, templates, policies, and optional neural components into a specialized symbolic language model.",
+      "translation": "Combină ontologii, comenzi, șabloane, politici și componente neurale opționale într-un model lingvistic simbolic specializat."
+    },
+    {
+      "id": "t000649",
+      "source": "Learning in this programme should be understood as controlled modification of a persistent executable ecosystem. A new fact changes the knowledge state. A new command changes the primitive operation set. A new reusable circuit changes the composition library. A new template changes the conditions under which computation can be expanded. A new strategy changes the search policy over those artefacts. These changes have very different failure modes and therefore should not share one undifferentiated promotion mechanism.",
+      "translation": "Învățarea în acest program ar trebui înțeleasă ca modificare controlată a unui ecosistem executabil persistent. Un fapt nou schimbă starea cunoașterii. O comandă nouă schimbă setul operațiilor primitive. Un circuit reutilizabil nou schimbă biblioteca de compunere. Un șablon nou schimbă condițiile în care calculul poate fi extins. O strategie nouă schimbă politica de căutare asupra acelor artefacte. Aceste schimbări au moduri de eșec foarte diferite și nu ar trebui astfel să împărtășească un mecanism nediferențiat de promovare."
+    },
+    {
+      "id": "t000650",
+      "source": "Command learning through define is the most invasive case because it introduces new executable semantics. A coding agent can generate a JavaScript implementation, but success on one task is not enough. The command needs a stable formal-parameter contract, effect declaration, test corpus, deterministic-mode behaviour where applicable, resource bounds, serialization behaviour, and a version identity. If the command wraps an external solver, the wrapper must distinguish guarantees supplied by the solver from assumptions introduced by translation into the solver language.",
+      "translation": "Învățarea comenzilor prin define este cazul cel mai invaziv deoarece introduce semantică executabilă nouă. Un agent de programare poate genera o implementare JavaScript, dar succesul într-o sarcină nu este suficient. Comanda are nevoie de un contract stabil al parametrilor formali, declarație de efecte, corpus de teste, comportament în mod determinist unde se aplică, limite de resurse, comportament de serializare și identitate de versiune. Dacă comanda încapsulează un rezolvitor extern, învelișul trebuie să distingă garanțiile furnizate de rezolvitor de ipotezele introduse prin traducerea în limbajul rezolvitorului."
+    },
+    {
+      "id": "t000651",
+      "source": "Circuit learning is less invasive because it composes existing commands. Its main risks are overfitting and unnecessary duplication. A circuit that solves one benchmark instance may simply encode superficial regularities. Promotion should therefore depend on transfer tests and perturbations. A promoted circuit should also be compared structurally with existing circuits so that the library does not grow into thousands of near-duplicates that make selection more difficult than synthesis.",
+      "translation": "Învățarea circuitelor este mai puțin invazivă deoarece compune comenzi existente. Riscurile sale principale sunt supraînvățarea și duplicarea inutilă. Un circuit care rezolvă o instanță a reperului poate doar codifica regularități superficiale. Promovarea ar trebui astfel să depindă de teste de transfer și perturbări. Un circuit promovat ar trebui și comparat structural cu circuitele existente, ca biblioteca să nu crească în mii de cvasi-duplicate care fac selecția mai dificilă decât sinteza."
+    },
+    {
+      "id": "t000652",
+      "source": "Template learning adds another dimension: applicability. A template contains not only a useful subcircuit but also a claim about when instantiating that subcircuit is worthwhile. A coding agent can easily make this claim too broad. The result is activation storms. Template validation must therefore measure false activation as well as task accuracy. A high-quality template is not merely one that can solve a task when invoked; it is one whose descriptor and matching conditions allow the runtime to find it sparsely and predictably.",
+      "translation": "Învățarea șabloanelor adaugă altă dimensiune: aplicabilitatea. Un șablon conține nu doar un subcircuit util, ci și o afirmație despre momentul în care merită instanțiat acel subcircuit. Un agent de programare poate face ușor această afirmație prea largă. Rezultatul sunt furtuni de activare. Validarea șabloanelor trebuie astfel să măsoare activarea falsă, precum și acuratețea sarcinii. Un șablon de înaltă calitate nu este doar unul care poate rezolva o sarcină când este invocat; este unul al cărui descriptor și ale cărui condiții de potrivire permit runtime-ului să îl găsească rar și previzibil."
+    },
+    {
+      "id": "t000653",
+      "source": "The current prototype history is valuable precisely because it has exposed these distinctions. Earlier versions of the broader circuit idea experimented with more syntax, more implicit state, and different ways to bind parameters. Subsequent prototypes have progressively concentrated the model around SOP declarations, explicit produced variables, positional or command-parsed argument streams, and dynamic loading. This evolution should be documented as normal research convergence, not hidden as if the language had been fixed from the beginning. A mature research programme should expect further simplifications if benchmarks show that a construct can be represented more cleanly by commands or templates.",
+      "translation": "Istoria actuală a prototipurilor este valoroasă tocmai pentru că a expus aceste distincții. Versiunile anterioare ale ideii mai largi de circuit au experimentat cu mai multă sintaxă, mai multă stare implicită și moduri diferite de legare a parametrilor. Prototipurile ulterioare au concentrat progresiv modelul în jurul declarațiilor SOP, variabilelor produse explicit, fluxurilor de argumente poziționale sau parsate de comenzi și încărcării dinamice. Această evoluție ar trebui documentată ca o convergență normală a cercetării, nu ascunsă ca și cum limbajul ar fi fost fixat de la început. Un program matur de cercetare ar trebui să aștepte simplificări suplimentare dacă reperele arată că un construct poate fi reprezentat mai curat prin comenzi sau șabloane."
+    },
+    {
+      "id": "t000654",
+      "source": "Artefact maturity",
+      "translation": "Maturitatea artefactului"
+    },
+    {
+      "id": "t000655",
+      "source": "Evidence required before persistent promotion",
+      "translation": "Dovezi necesare înaintea promovării persistente"
+    },
+    {
+      "id": "t000656",
+      "source": "Knowledge declaration",
+      "translation": "Declarație de cunoaștere"
+    },
+    {
+      "id": "t000657",
+      "source": "Source provenance, schema/ontology compatibility, conflict policy, and reproducible indexing.",
+      "translation": "Proveniență a surselor, compatibilitate de schemă/ontologie, politică de conflict și indexare reproductibilă."
+    },
+    {
+      "id": "t000658",
+      "source": "Command defined by code",
+      "translation": "Comandă definită prin cod"
+    },
+    {
+      "id": "t000659",
+      "source": "Sandbox and capability review, unit/property tests, resource limits, deterministic profile where meaningful, and explicit versioning.",
+      "translation": "Revizuirea izolării și capacităților, teste unitare/de proprietăți, limite de resurse, profil determinist unde are sens și versionare explicită."
+    },
+    {
+      "id": "t000660",
+      "source": "Reusable circuit",
+      "translation": "Circuit reutilizabil"
+    },
+    {
+      "id": "t000661",
+      "source": "Held-out task success, perturbation stability, regression tests, cost profile, and comparison with existing circuits.",
+      "translation": "Succes pe sarcini rezervate, stabilitate la perturbări, teste de regresie, profil de cost și comparație cu circuitele existente."
+    },
+    {
+      "id": "t000662",
+      "source": "Template circuit",
+      "translation": "Circuit-șablon"
+    },
+    {
+      "id": "t000663",
+      "source": "All circuit tests plus applicability precision, activation cost, termination behaviour, and descriptor quality.",
+      "translation": "Toate testele circuitului plus precizia aplicabilității, costul activării, comportamentul terminării și calitatea descriptorului."
+    },
+    {
+      "id": "t000664",
+      "source": "Construction strategy",
+      "translation": "Strategie de construcție"
+    },
+    {
+      "id": "t000665",
+      "source": "Benchmark-wide improvement under fixed budgets without hidden nondeterminism or catastrophic regressions.",
+      "translation": "Îmbunătățire în întregul reper sub bugete fixe, fără nedeterminism ascuns sau regresii catastrofale."
+    },
+    {
+      "id": "t000666",
+      "source": "Domain model",
+      "translation": "Model de domeniu"
+    },
+    {
+      "id": "t000667",
+      "source": "Evidence that domain-specific packages reuse the common SOP runtime while gaining measurable advantage from specialization.",
+      "translation": "Dovezi că pachetele specifice domeniului reutilizează runtime-ul SOP comun, obținând un avantaj măsurabil din specializare."
+    },
+    {
+      "id": "t000668",
+      "source": "This model of learning creates a useful distinction between online adaptation and persistent learning. During a request, the runtime may create temporary variables, instantiate templates, synthesize a temporary subcircuit, or even use a coding agent in a permissive research profile. None of those artefacts must automatically change the persistent model. They can be stored as candidates with traces. Promotion becomes a separate reproducible experiment. This avoids the classic problem in self-modifying systems where one anomalous interaction silently changes future global behaviour.",
+      "translation": "Acest model de învățare creează o distincție utilă între adaptarea online și învățarea persistentă. În timpul unei cereri, runtime-ul poate crea variabile temporare, instanția șabloane, sintetiza un subcircuit temporar sau chiar folosi un agent de programare într-un profil permisiv de cercetare. Niciunul dintre acele artefacte nu trebuie să schimbe automat modelul persistent. Pot fi stocate ca și candidați cu urme. Promovarea devine un experiment reproductibil separat. Aceasta evită problema clasică a sistemelor care se automodifică, unde o interacțiune anormală schimbă tacit comportamentul global viitor."
+    },
+    {
+      "id": "t000669",
+      "source": "The strongest long-term hypothesis is that repeated neural improvisation can gradually be converted into tested symbolic artefacts. A novel task may initially require an LLM to propose a representation or circuit. If the same structural problem recurs, coding agents can extract a reusable command or circuit and validate it. Later requests can use the stabilized artefact directly. Whether this transition happens often enough to matter is unknown and should be measured by the declining or non-declining fraction of reasoning steps that require opaque neural calls as the library matures.",
+      "translation": "Cea mai puternică ipoteză pe termen lung este că improvizația neurală repetată poate fi convertită treptat în artefacte simbolice testate. O sarcină nouă poate cere inițial unui LLM să propună o reprezentare sau un circuit. Dacă aceeași problemă structurală reapare, agenții de programare pot extrage o comandă sau un circuit reutilizabil și îl pot valida. Cererile ulterioare pot folosi direct artefactul stabilizat. Nu se știe dacă această tranziție apare suficient de des pentru a conta și ar trebui măsurată prin fracțiunea în scădere sau fără scădere a pașilor de raționament care necesită apeluri neurale opace pe măsură ce biblioteca se maturizează."
+    },
+    {
+      "id": "t000670",
+      "source": "The emerging position is hybrid. SOP Lang should be able to represent small declarative knowledge, rules, templates, and references in a common inspectable form. Large corpora and relation stores should remain in indexed, inert formats whose identities and schemas are exposed to the circuit. Executable command bodies belong in reviewed packages, not in arbitrary knowledge records loaded at request time.",
+      "translation": "Poziția emergentă este hibridă. SOP Lang ar trebui să poată reprezenta cunoaștere declarativă mică, reguli, șabloane și referințe într-o formă inspectabilă comună. Corpusurile mari și depozitele de relații ar trebui să rămână în formate indexate și inerte ale căror identități și scheme sunt expuse circuitului. Corpurile comenzilor executabile aparțin pachetelor revizuite, nu înregistrărilor arbitrare de cunoaștere încărcate la momentul cererii."
+    },
+    {
+      "id": "t000671",
+      "source": "This division limits the attack surface and supports scale. A persistent symbolic model can contain many small SOP source files while startup loads an immutable catalogue rather than scanning them. Request-time execution materializes only the relevant shards and values. The active circuit remains small even when the persistent model is large.",
+      "translation": "Această diviziune limitează suprafața de atac și susține scara. Un model simbolic persistent poate conține multe fișiere-sursă SOP mici, în timp ce pornirea încarcă un catalog imuabil în loc să le scaneze. Execuția la momentul cererii materializează doar fragmentele și valorile relevante. Circuitul activ rămâne mic chiar când modelul persistent este mare."
+    },
+    {
+      "id": "t000672",
+      "source": "Knowledge acquisition can use coding agents, parsers, or human authors. Their outputs enter a candidate area. Compilation and validation produce receipts. Promotion creates a new immutable generation. The runtime binds each request to explicit catalogue and command generations, making historical execution replayable.",
+      "translation": "Achiziția cunoașterii poate folosi agenți de programare, parsere sau autori umani. Rezultatele lor intră într-o zonă de candidați. Compilarea și validarea produc înregistrări justificative. Promovarea creează o generație imuabilă nouă. Runtime-ul leagă fiecare cerere de generații explicite ale catalogului și comenzilor, făcând reluabilă execuția istorică."
+    },
+    {
+      "id": "t000673",
+      "source": "Chapter 7 - Constructing Dynamic Circuits Under Explicit Resource Budgets",
+      "translation": "Capitolul 7 - Construirea circuitelor dinamice cu bugete explicite de resurse"
+    },
+    {
+      "id": "t000674",
+      "source": "7.1 Deterministic agenda construction and incremental activation",
+      "translation": "7.1 Construirea deterministă a agendei și activarea incrementală"
+    },
+    {
+      "id": "t000675",
+      "source": "The viability of the entire programme depends on one algorithmic problem: given an input, a current state, a potentially enormous knowledge base, and a large library of commands and templates, how can the system construct a useful SOP circuit without enumerating an exponential number of compositions? Expressiveness is easy; selective activation is hard. The research runtime must behave like a compiler, deductive database, planner, and cache manager simultaneously, but under a user-specified deadline.",
+      "translation": "Viabilitatea întregului program depinde de o problemă algoritmică: date fiind o intrare, o stare curentă, o bază de cunoștințe potențial enormă și o bibliotecă mare de comenzi și șabloane, cum poate sistemul construi un circuit SOP util fără a enumera un număr exponențial de compoziții? Expresivitatea este ușoară; activarea selectivă este dificilă. Runtime-ul de cercetare trebuie să se comporte simultan ca un compilator, o bază de date deductivă, un planificator și un administrator de cache, dar sub un termen-limită specificat de utilizator."
+    },
+    {
+      "id": "t000676",
+      "source": "The leading design should be deterministic for fixed inputs, persistent model state, runtime version, and budget. Determinism makes benchmark comparisons meaningful and allows regressions to be localized. It does not require that every command be deterministic internally. A command that invokes a stochastic LLM can declare this property, and its random seed or trace can be recorded. The circuit constructor itself should nevertheless choose candidates through stable rules and stable tie-breaking.",
+      "translation": "Proiectarea principală ar trebui să fie deterministă pentru intrări, stare a modelului persistent, versiune a runtime-ului și buget fixe. Determinismul face semnificative comparațiile prin repere și permite localizarea regresiilor. Nu cere ca fiecare comandă să fie intern deterministă. O comandă care invocă un LLM stochastic poate declara această proprietate, iar sămânța aleatoare sau urma sa poate fi înregistrată. Constructorul circuitului însuși ar trebui totuși să aleagă candidații prin reguli și departajări stabile."
+    },
+    {
+      "id": "t000677",
+      "source": "The runtime state can be described abstractly as a variable directory, a set of unresolved goals, an agenda of candidate expansions, a template index, a command registry, a knowledge-index handle, a cache, and a remaining resource budget. The constructor alternates between executing ready declarations and discovering templates that can produce missing capabilities or outputs. Unlike a classical forward-chaining system, it is guided by explicit goals. Unlike a purely backward planner, it reacts incrementally to new variables produced during execution.",
+      "translation": "Starea runtime-ului poate fi descrisă abstract ca un director de variabile, o mulțime de scopuri nerezolvate, o agendă de extinderi candidate, un index de șabloane, un registru de comenzi, un handle de index al cunoașterii, un cache și un buget de resurse rămas. Constructorul alternează între executarea declarațiilor pregătite și descoperirea șabloanelor care pot produce capacități sau rezultate lipsă. Spre deosebire de un sistem clasic de înlănțuire înainte, este ghidat de scopuri explicite. Spre deosebire de un planificator pur înapoi, reacționează incremental la variabilele noi produse în timpul execuției."
+    },
+    {
+      "id": "t000678",
+      "source": "A useful priority relation can be lexicographic rather than a fragile learned scalar. Candidate expansions can first be ordered by goal relevance, then by the number of unsatisfied inputs, then by expected runtime cost, then by risk or guarantee class, and finally by a stable identifier. Domain profiles can refine the ordering, but deterministic tie-breaking remains explicit. Learned estimates may supply expected cost or success probability without controlling the entire semantics.",
+      "translation": "O relație utilă de prioritate poate fi lexicografică, nu un scalar învățat fragil. Extinderile candidate pot fi ordonate mai întâi după relevanța pentru scop, apoi după numărul intrărilor nesatisfăcute, apoi după costul runtime așteptat, apoi după risc sau clasă de garanție și în final după un identificator stabil. Profilurile de domeniu pot rafina ordinea, dar departajarea deterministă rămâne explicită. Estimările învățate pot furniza costul așteptat sau probabilitatea succesului fără a controla întreaga semantică."
+    },
+    {
+      "id": "t000679",
+      "source": "Template discovery should be index-driven. Every template publishes a compact descriptor that can be loaded without loading the body. The descriptor identifies the kind of output or capability it can produce, the kinds of inputs it expects, domain tags, effects, cost class, and optionally required backend capabilities. The runtime first searches the descriptor index using the current goal and available variable signatures. Only the highest-priority matching templates have their bodies loaded.",
+      "translation": "Descoperirea șabloanelor ar trebui ghidată de index. Fiecare șablon publică un descriptor compact care poate fi încărcat fără încărcarea corpului. Descriptorul identifică tipul de ieșire sau capacitate pe care îl poate produce, tipurile intrărilor așteptate, etichetele de domeniu, efectele, clasa de cost și opțional capacitățile backend necesare. Runtime-ul caută mai întâi în indexul descriptorilor folosind scopul curent și semnăturile variabilelor disponibile. Doar șabloanelor potrivite cu cea mai mare prioritate li se încarcă corpurile."
+    },
+    {
+      "id": "t000680",
+      "source": "Matching should be incremental. When @events becomes available, the runtime should query only templates whose descriptors mention compatible event inputs or goals affected by events. This mirrors semi-naive Datalog evaluation, which propagates new tuples rather than recomputing the entire closure. [R3] The same principle appears in production-system matching: match networks retain partial results so that a new fact triggers local work rather than a full rule scan. The exact data structure is an implementation question; the research invariant is that activation should be compiled and delta-driven.",
+      "translation": "Potrivirea ar trebui să fie incrementală. Când @events devine disponibilă, runtime-ul ar trebui să interogheze doar șabloanele ai căror descriptori menționează intrări compatibile de evenimente sau scopuri afectate de evenimente. Aceasta reflectă evaluarea seminaivă Datalog, care propagă tupluri noi în loc să recalculeze întreaga închidere. [R3] Același principiu apare în potrivirea din sistemele de producție: rețelele de potrivire păstrează rezultate parțiale astfel încât un fapt nou să declanșeze muncă locală, nu o scanare completă a regulilor. Structura exactă de date este o întrebare de implementare; invarianta cercetării este că activarea ar trebui să fie compilată și bazată pe delte."
+    },
+    {
+      "id": "t000681",
+      "source": "Goal-directed narrowing provides the complementary direction. If the requested output is a VerifiedAnswer, the constructor can search backwards through templates capable of producing that type or guarantee. Their required inputs become subgoals. This prevents the forward engine from activating every template merely because its inputs happen to be available. The two directions meet when a backward-required input is already present or becomes produced by a forward activation.",
+      "translation": "Restrângerea orientată spre scop furnizează direcția complementară. Dacă ieșirea cerută este un VerifiedAnswer, constructorul poate căuta înapoi prin șabloane capabile să producă acel tip sau acea garanție. Intrările lor necesare devin subscopuri. Aceasta împiedică motorul înainte să activeze fiecare șablon doar fiindcă intrările sale se întâmplă să fie disponibile. Cele două direcții se întâlnesc când o intrare cerută prin căutare înapoi este deja prezentă sau devine produsă printr-o activare înainte."
+    },
+    {
+      "id": "t000682",
+      "source": "The planner should distinguish type compatibility from semantic usefulness. A template may technically accept an EventSet but belong to a domain unrelated to the active task. Descriptor lookup therefore needs several forms of evidence: output kind, input kind, domain, ontology version, required knowledge namespaces, accepted epistemic status, and expected cost. The descriptor must remain compact enough to index. If selecting a template requires parsing its full body, the architecture has already lost one of its central scalability advantages.",
+      "translation": "Planificatorul ar trebui să distingă compatibilitatea de tip de utilitatea semantică. Un șablon poate accepta tehnic un EventSet, dar poate aparține unui domeniu fără legătură cu sarcina activă. Căutarea descriptorilor are astfel nevoie de mai multe forme de dovezi: tipul ieșirii, tipul intrării, domeniul, versiunea ontologiei, spațiile de nume necesare ale cunoașterii, statutul epistemic acceptat și costul așteptat. Descriptorul trebuie să rămână suficient de compact pentru indexare. Dacă selectarea unui șablon cere parsarea întregului său corp, arhitectura a pierdut deja unul dintre avantajele sale centrale de scalabilitate."
+    },
+    {
+      "id": "t000683",
+      "source": "Alternative commands should be budgeted explicitly. A declaration with several commands separated by | can launch all branches only if the budget and branch policy allow it. Otherwise the runtime can schedule them sequentially in deterministic priority order or run a bounded number in parallel. The alternative variable records branches that were not executed because of budget, distinguishing not evaluated from failed, timed out, returned unknown, and produced a value.",
+      "translation": "Comenzile alternative ar trebui bugetate explicit. O declarație cu mai multe comenzi separate prin | poate lansa toate ramurile numai dacă bugetul și politica ramurilor o permit. Altfel, runtime-ul le poate planifica secvențial în ordine deterministă de prioritate sau rula un număr limitat în paralel. Variabila alternativă înregistrează ramurile neexecutate din cauza bugetului, distingând neevaluat de eșuat, timp expirat, a returnat necunoscut și a produs o valoare."
+    }
+  ]
+}

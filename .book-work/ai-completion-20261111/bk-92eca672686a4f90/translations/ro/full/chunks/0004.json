@@ -1,0 +1,771 @@
+{
+  "language": "ro",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000436",
+      "source": "Agent architecture can make regulatory evidence easier or harder to produce. A system with versioned prompts, model identifiers, tool manifests, decision traces, policy gates, human approvals, data lineage, and evaluation reports can support auditing and incident analysis. A system built as a web of hidden prompts and mutable integrations cannot. This is one reason governance should influence platform design early. Logging added after deployment rarely reconstructs the evidence that was never captured.",
+      "translation": "Arhitectura agentică poate face dovezile de reglementare mai ușor sau mai greu de produs. Un sistem cu prompturi cu versiuni, identificatori de modele, manifeste de instrumente, urme decizionale, filtre de politici, aprobări umane, filiația datelor și rapoarte de evaluare poate susține auditul și analiza incidentelor. Un sistem construit ca rețea de prompturi ascunse și integrări modificabile nu poate. Acesta este un motiv pentru care guvernanța ar trebui să influențeze devreme proiectarea platformei. Jurnalizarea adăugată după implementare rareori reconstruiește dovezile care nu au fost niciodată captate."
+    },
+    {
+      "id": "t000437",
+      "source": "Meridian creates a control register linked to the runtime. For each privileged capability, it records purpose, data accessed, identity, policy rule, approval condition, evaluation coverage, and trace fields. The same register supports security review, privacy assessment, vendor due diligence, and regulatory documentation. Governance becomes less about writing separate policy documents and more about ensuring that the system can prove what it was allowed to do, what it actually did, and how the organization knows that behavior remains acceptable.",
+      "translation": "Meridian creează un registru de controale legat de mediul de execuție. Pentru fiecare capacitate privilegiată înregistrează scopul, datele accesate, identitatea, regula de politică, condiția de aprobare, acoperirea evaluării și câmpurile urmei. Același registru susține revizuirea de securitate, evaluarea vieții private, verificarea prealabilă a furnizorilor și documentația de reglementare. Guvernanța devine mai puțin despre scrierea unor documente separate de politică și mai mult despre asigurarea faptului că sistemul poate dovedi ce avea voie să facă, ce a făcut efectiv și cum știe organizația că acel comportament rămâne acceptabil."
+    },
+    {
+      "id": "t000438",
+      "source": "Governance must survive changes in models and vendors. A model upgrade can alter tool preferences, refusal behavior, language understanding, or the way an agent interprets ambiguous policy. A seemingly harmless change to a tool description can do the same. Meridian therefore treats model versions, prompts, policies, tool schemas, retrieval configuration, and memory rules as controlled behavioral dependencies. Changes trigger the evaluation suite appropriate to the affected risk class, and privileged production traffic remains pinned until evidence supports migration.",
+      "translation": "Guvernanța trebuie să supraviețuiască schimbărilor de modele și furnizori. Actualizarea unui model poate modifica preferințele de instrumente, comportamentul de refuz, înțelegerea limbajului sau felul în care un agent interpretează o politică ambiguă. O schimbare aparent inofensivă a descrierii unui instrument poate face același lucru. Meridian tratează, așadar, versiunile modelelor, prompturile, politicile, schemele instrumentelor, configurarea recuperării și regulile de memorie ca dependențe comportamentale controlate. Schimbările declanșează suita de evaluare potrivită clasei de risc afectate, iar traficul privilegiat de producție rămâne fixat la versiunea curentă până când dovezile susțin migrarea."
+    },
+    {
+      "id": "t000439",
+      "source": "Incident response for agents also needs a distinctive playbook. The first action may be to revoke a tool credential or disable a capability rather than to take the whole service offline. Investigators need immutable traces, the exact model and prompt version, retrieved content, tool manifests, approval records, and external state. If long-term memory may have been poisoned, it needs quarantine and revalidation. If an external MCP or A2A dependency is implicated, callers may need to block a version or identity across the fleet. Designing for forensic reconstruction is part of designing for safe operation.",
+      "translation": "Răspunsul la incidente pentru agenți are nevoie și de un plan distinct. Prima acțiune poate fi revocarea unei acreditări de instrument sau dezactivarea unei capacități, nu oprirea întregului serviciu. Investigatorii au nevoie de urme imuabile, versiunea exactă a modelului și promptului, conținutul recuperat, manifestele instrumentelor, înregistrările aprobărilor și starea externă. Dacă memoria pe termen lung ar fi putut fi otrăvită, are nevoie de carantină și revalidare. Dacă este implicată o dependență externă MCP sau A2A, apelanții pot avea nevoie să blocheze o versiune sau identitate în întreaga flotă. Proiectarea pentru reconstrucție criminalistică face parte din proiectarea pentru operare sigură."
+    },
+    {
+      "id": "t000440",
+      "source": "Regulation should be mapped to concrete system facts rather than pasted into prompts. In the European Union, the AI Act's phased obligations were already materially in force by this Draft Edition's 31 August 2026 snapshot, including governance and transparency provisions, while other high-risk requirements follow their statutory timelines [S16][S17]. The engineering response is traceable inventory: what system is deployed, for which purpose, which model and providers it uses, what data and capabilities it accesses, what notices are required, what human oversight exists, and which evidence demonstrates control effectiveness. Compliance is easier when the architecture is legible.",
+      "translation": "Reglementarea ar trebui asociată faptelor concrete ale sistemului, nu lipită în prompturi. În Uniunea Europeană, obligațiile etapizate ale Regulamentului privind IA erau deja substanțial în vigoare la data de referință a acestei ediții preliminare, 31 august 2026, inclusiv dispoziții de guvernanță și transparență, în timp ce alte cerințe de risc ridicat urmează calendarele legale [S16][S17]. Răspunsul ingineresc este un inventar trasabil: ce sistem este implementat, în ce scop, ce modele și furnizori folosește, ce date și capacități accesează, ce informări sunt necesare, ce supraveghere umană există și ce dovezi demonstrează eficacitatea controalelor. Conformitatea este mai ușoară când arhitectura este lizibilă."
+    },
+    {
+      "id": "t000441",
+      "source": "Governance layer",
+      "translation": "Strat de guvernanță"
+    },
+    {
+      "id": "t000442",
+      "source": "Concrete evidence to maintain",
+      "translation": "Dovezi concrete de întreținut"
+    },
+    {
+      "id": "t000443",
+      "source": "Architecture",
+      "translation": "Arhitectură"
+    },
+    {
+      "id": "t000444",
+      "source": "Minimize capabilities, separate trust classes, isolate risky execution.",
+      "translation": "Minimizați capacitățile, separați clasele de încredere, izolați execuția riscantă."
+    },
+    {
+      "id": "t000445",
+      "source": "Policy enforcement",
+      "translation": "Aplicarea politicilor"
+    },
+    {
+      "id": "t000446",
+      "source": "Apply authorization and guardrails at tool and transaction boundaries.",
+      "translation": "Aplicați autorizarea și protecțiile la granițele instrumentelor și tranzacțiilor."
+    },
+    {
+      "id": "t000447",
+      "source": "Privacy",
+      "translation": "Viață privată"
+    },
+    {
+      "id": "t000448",
+      "source": "Minimize context, scope traces and memory, enforce retention and deletion.",
+      "translation": "Minimizați contextul, delimitați urmele și memoria, impuneți retenția și ștergerea."
+    },
+    {
+      "id": "t000449",
+      "source": "Evaluation evidence",
+      "translation": "Dovezi de evaluare"
+    },
+    {
+      "id": "t000450",
+      "source": "Maintain adversarial tests, regression results, and release history.",
+      "translation": "Întrețineți teste adversariale, rezultate de regresie și istoricul lansărilor."
+    },
+    {
+      "id": "t000451",
+      "source": "Operational evidence",
+      "translation": "Dovezi operaționale"
+    },
+    {
+      "id": "t000452",
+      "source": "Preserve traces, approvals, incidents, and remediation actions.",
+      "translation": "Păstrați urme, aprobări, incidente și acțiuni de remediere."
+    },
+    {
+      "id": "t000453",
+      "source": "Regulatory mapping",
+      "translation": "Asociere cu reglementarea"
+    },
+    {
+      "id": "t000454",
+      "source": "Map the deployed use case and organizational role to applicable obligations rather than relying on model branding.",
+      "translation": "Asociați cazul implementat de utilizare și rolul organizațional obligațiilor aplicabile, în loc să vă bazați pe marca modelului."
+    },
+    {
+      "id": "t000455",
+      "source": "Chapter 9 — Where Agents Actually Work",
+      "translation": "Capitolul 9 — Unde funcționează efectiv agenții"
+    },
+    {
+      "id": "t000456",
+      "source": "The market often describes agents horizontally: one technology that will automate everything. Successful deployments are usually vertical in a more interesting sense. They occupy workflows with a particular combination of digital access, measurable outcomes, feedback, recoverability, and economic value. This chapter examines domains where those conditions are already visible and where the remaining limits matter.",
+      "translation": "Piața descrie adesea agenții orizontal: o tehnologie care va automatiza totul. Implementările reușite sunt de obicei verticale într-un sens mai interesant. Ocupă fluxuri de lucru cu o anumită combinație de acces digital, rezultate măsurabile, feedback, recuperabilitate și valoare economică. Capitolul examinează domenii unde acele condiții sunt deja vizibile și unde limitele rămase contează."
+    },
+    {
+      "id": "t000457",
+      "source": "9.1 Coding, customer service, IT operations, and research",
+      "translation": "9.1 Programare, servicii pentru clienți, operațiuni IT și cercetare"
+    },
+    {
+      "id": "t000458",
+      "source": "Software engineering became one of the earliest strong agent domains because the environment provides unusually rich feedback. The agent can inspect a repository, search code, edit files, run tests, observe compiler errors, and iterate. Success can often be checked mechanically. SWE-bench and its Verified subset formalized part of this environment by asking systems to resolve real repository issues against test suites [S20]. The pattern generalizes: agents work well when the world answers back with informative, low-cost signals.",
+      "translation": "Ingineria software a devenit unul dintre primele domenii agentice puternice deoarece mediul oferă feedback neobișnuit de bogat. Agentul poate inspecta un depozit, căuta cod, edita fișiere, rula teste, observa erori de compilare și itera. Succesul poate fi adesea verificat mecanic. SWE-bench și subsetul său Verified au formalizat o parte a acestui mediu cerând sistemelor să rezolve probleme reale din depozite față de suite de teste [S20]. Tiparul se generalizează: agenții funcționează bine când lumea răspunde cu semnale informative, cu cost redus."
+    },
+    {
+      "id": "t000459",
+      "source": "Coding agents are nevertheless not autonomous software companies. Repository-scale work still involves architecture, ambiguous requirements, hidden operational constraints, security, and deployment risk. The strongest production patterns therefore combine model flexibility with tests, linters, sandboxed execution, code review, branch protection, and CI/CD. A useful coding agent can handle a bug, refactor, migration, test generation, or investigation while humans retain responsibility for product intent and high-impact release decisions. As model capability improves, the boundary moves, but the external verification loop remains central.",
+      "translation": "Agenții de programare nu sunt totuși companii software autonome. Munca la scara depozitului implică în continuare arhitectură, cerințe ambigue, constrângeri operaționale ascunse, securitate și risc de implementare. Cele mai puternice tipare de producție combină, așadar, flexibilitatea modelului cu teste, analizoare de cod, execuție izolată, revizuirea codului, protecția ramurilor și CI/CD. Un agent util de programare poate gestiona o eroare, refactorizare, migrare, generare de teste sau investigație, în timp ce oamenii păstrează responsabilitatea pentru intenția produsului și deciziile de lansare cu impact mare. Pe măsură ce capacitatea modelului se îmbunătățește, granița se deplasează, dar bucla externă de verificare rămâne centrală."
+    },
+    {
+      "id": "t000460",
+      "source": "Customer service is another natural fit because interaction, knowledge retrieval, and action are already integrated. Anthropic's production guidance highlights support as a domain where conversation and action combine with clear success criteria and meaningful human oversight [S1]. Current products reflect this maturity. Intercom's Fin is priced around outcomes such as resolutions and procedure handoffs rather than only message volume [S27]. The economic design is revealing: the product is expected to complete a useful service result, not merely generate fluent text.",
+      "translation": "Serviciile pentru clienți sunt o altă potrivire firească deoarece interacțiunea, recuperarea cunoașterii și acțiunea sunt deja integrate. Îndrumarea Anthropic pentru producție evidențiază asistența ca domeniu în care conversația și acțiunea se combină cu criterii clare de succes și supraveghere umană semnificativă [S1]. Produsele actuale reflectă această maturitate. Fin de la Intercom are prețuri stabilite în jurul unor rezultate precum rezolvări și transferuri procedurale, nu doar volum de mesaje [S27]. Proiectarea economică este revelatoare: se așteaptă ca produsul să finalizeze un rezultat util de serviciu, nu doar să genereze text fluent."
+    },
+    {
+      "id": "t000461",
+      "source": "IT operations and security operations offer similar structure. An agent can query logs, ticketing systems, cloud inventories, configuration stores, and monitoring tools. It can propose or execute remediation under policy. The environment produces events and measurable states. Yet these domains are sensitive because a wrong action can cause an outage or erase evidence. The practical frontier is often asymmetric autonomy: broad read access, autonomous diagnosis, narrow reversible actions, and approval for disruptive changes. This pattern can deliver substantial value without pretending that every incident should be solved without human judgment.",
+      "translation": "Operațiunile IT și cele de securitate oferă structură similară. Un agent poate interoga jurnale, sisteme de tichete, inventare cloud, depozite de configurare și instrumente de monitorizare. Poate propune sau executa remediere sub politici. Mediul produce evenimente și stări măsurabile. Totuși, aceste domenii sunt sensibile deoarece o acțiune greșită poate provoca indisponibilitate sau șterge dovezi. Frontiera practică este adesea autonomia asimetrică: acces larg de citire, diagnostic autonom, acțiuni reversibile restrânse și aprobare pentru schimbări perturbatoare. Tiparul poate aduce valoare substanțială fără pretenția că fiecare incident ar trebui rezolvat fără judecată umană."
+    },
+    {
+      "id": "t000462",
+      "source": "Research and knowledge work are more open-ended but increasingly agentic. A research agent can formulate subquestions, search literature or the web, retrieve papers, extract claims, compare evidence, run code, generate tables, and synthesize reports. The challenge is that 'correct result' is often not a single database state. Source quality, novelty, interpretation, and completeness matter. Strong research agents therefore benefit from provenance, explicit uncertainty, independent source checking, and critic stages. Their value may be accelerating a research process rather than fully automating scientific judgment.",
+      "translation": "Cercetarea și munca de cunoaștere sunt mai deschise, dar tot mai agentice. Un agent de cercetare poate formula subîntrebări, căuta în literatură sau pe web, recupera lucrări, extrage afirmații, compara dovezi, rula cod, genera tabele și sintetiza rapoarte. Provocarea este că „rezultatul corect” nu este adesea o singură stare de bază de date. Contează calitatea surselor, noutatea, interpretarea și completitudinea. Agenții puternici de cercetare beneficiază, așadar, de proveniență, incertitudine explicită, verificarea independentă a surselor și etape critice. Valoarea lor poate fi accelerarea procesului de cercetare, nu automatizarea completă a judecății științifice."
+    },
+    {
+      "id": "t000463",
+      "source": "These domains share a hidden structure. The work is digital. Tools expose meaningful actions. Intermediate feedback is available. Failures can often be detected before irreversible harm. Outcomes are valuable enough to justify several model calls. Human experts can define escalation conditions. This is more predictive of success than whether a workflow is linguistically complex. An agent can handle a difficult technical investigation if the environment provides feedback, while failing on a seemingly simple administrative process whose true state lives in undocumented social conventions.",
+      "translation": "Aceste domenii au o structură ascunsă comună. Munca este digitală. Instrumentele expun acțiuni semnificative. Feedbackul intermediar este disponibil. Eșecurile pot fi adesea detectate înaintea prejudiciului ireversibil. Rezultatele sunt suficient de valoroase pentru a justifica mai multe apeluri de model. Experții umani pot defini condițiile escaladării. Aceasta prezice succesul mai bine decât complexitatea lingvistică a fluxului de lucru. Un agent poate gestiona o investigație tehnică dificilă dacă mediul oferă feedback, eșuând în același timp într-un proces administrativ aparent simplu a cărui stare reală trăiește în convenții sociale nedocumentate."
+    },
+    {
+      "id": "t000464",
+      "source": "Meridian expands from support into engineering only after recognizing this structure. The same runtime supports a code-maintenance agent because repositories offer tests and isolated branches. A research assistant uses many of the same retrieval, provenance, and artifact mechanisms but has a different evaluator. The organization does not buy a mystical 'agent platform' and hope workflows appear. It identifies environments where adaptive action can be grounded in feedback and then reuses platform primitives across them.",
+      "translation": "Meridian se extinde de la asistență la inginerie numai după recunoașterea acestei structuri. Același mediu de execuție susține un agent de întreținere a codului deoarece depozitele oferă teste și ramuri izolate. Un asistent de cercetare folosește multe dintre aceleași mecanisme de recuperare, proveniență și artefacte, dar are un evaluator diferit. Organizația nu cumpără o „platformă agentică” mistică sperând să apară fluxuri de lucru. Identifică medii în care acțiunea adaptivă poate fi ancorată în feedback și apoi reutilizează primitivele platformei în acestea."
+    },
+    {
+      "id": "t000465",
+      "source": "Modality expands the same pattern. A voice agent adds speech recognition, turn-taking, latency, identity confirmation, and the risk that an immediate conversational answer is mistaken for an authorized transaction. A computer-use agent adds pixels, changing interfaces, hidden state, and long action sequences. A robotics agent adds physical dynamics and safety interlocks. In every case the model's linguistic capability is only one layer. Successful deployment depends on wrapping perception and action in interfaces whose state can be verified and whose consequences can be bounded.",
+      "translation": "Modalitatea extinde același tipar. Un agent vocal adaugă recunoașterea vorbirii, alternarea replicilor, latență, confirmarea identității și riscul ca un răspuns conversațional imediat să fie confundat cu o tranzacție autorizată. Un agent de utilizare a calculatorului adaugă pixeli, interfețe schimbătoare, stare ascunsă și secvențe lungi de acțiuni. Un agent robotic adaugă dinamică fizică și interblocări de siguranță. În fiecare caz, capacitatea lingvistică a modelului este doar un strat. Implementarea reușită depinde de încadrarea percepției și acțiunii în interfețe a căror stare poate fi verificată și ale căror consecințe pot fi limitate."
+    },
+    {
+      "id": "t000466",
+      "source": "Research agents illustrate why 'use case' should not be equated with full automation. Literature search, evidence extraction, code generation, simulation setup, experiment planning, and manuscript checking can each be valuable even when a scientist remains the final decision maker. The strongest systems often reduce the cost of an epistemic bottleneck rather than replace the profession. A research agent that finds contradictory evidence with provenance may be more useful than one that writes an entire paper. The design target should follow the scarce step in the process.",
+      "translation": "Agenții de cercetare ilustrează de ce „cazul de utilizare” nu ar trebui echivalat cu automatizarea completă. Căutarea literaturii, extragerea dovezilor, generarea codului, pregătirea simulării, planificarea experimentelor și verificarea manuscrisului pot fi fiecare valoroase chiar dacă un cercetător rămâne decidentul final. Cele mai puternice sisteme reduc adesea costul unui blocaj epistemic, nu înlocuiesc profesia. Un agent care găsește dovezi contradictorii cu proveniență poate fi mai util decât unul care scrie o lucrare întreagă. Ținta proiectării ar trebui să urmeze pasul rar din proces."
+    },
+    {
+      "id": "t000467",
+      "source": "A useful maturity ladder runs from assistive to delegated to autonomous. Assistive systems prepare artifacts or recommendations. Delegated systems own a bounded subtask and return a verifiable result. Autonomous systems may decide which subtasks to create and which actions to take over a longer horizon. Organizations should not treat these as marketing labels; they are different operational contracts. Meridian moves workloads up the ladder only after the lower level produces enough traces to define success and failure precisely.",
+      "translation": "O scară utilă a maturității merge de la asistiv la delegat și apoi autonom. Sistemele asistive pregătesc artefacte sau recomandări. Sistemele delegate dețin o subsarcină limitată și returnează un rezultat verificabil. Sistemele autonome pot decide ce subsarcini să creeze și ce acțiuni să întreprindă pe un orizont mai lung. Organizațiile nu ar trebui să le trateze ca etichete de marketing; sunt contracte operaționale diferite. Meridian mută lucrările în sus pe scară numai după ce nivelul inferior produce suficiente urme pentru a defini precis succesul și eșecul."
+    },
+    {
+      "id": "t000468",
+      "source": "Domain",
+      "translation": "Domeniu"
+    },
+    {
+      "id": "t000469",
+      "source": "Why agents can create value",
+      "translation": "De ce pot agenții crea valoare"
+    },
+    {
+      "id": "t000470",
+      "source": "Software engineering",
+      "translation": "Inginerie software"
+    },
+    {
+      "id": "t000471",
+      "source": "Strong tool access, executable feedback, sandboxing, and testable end states make iterative agents effective.",
+      "translation": "Accesul puternic la instrumente, feedbackul executabil, izolarea și stările finale testabile fac agenții iterativi eficace."
+    },
+    {
+      "id": "t000472",
+      "source": "Customer service",
+      "translation": "Servicii pentru clienți"
+    },
+    {
+      "id": "t000473",
+      "source": "Conversation, knowledge, and transactions combine; clear handoff and resolution outcomes support deployment and pricing.",
+      "translation": "Conversația, cunoașterea și tranzacțiile se combină; transferurile și rezolvările clare susțin implementarea și stabilirea prețului."
+    },
+    {
+      "id": "t000474",
+      "source": "IT operations",
+      "translation": "Operațiuni IT"
+    },
+    {
+      "id": "t000475",
+      "source": "Rich telemetry and APIs support diagnosis; mutation risk argues for asymmetric permissions and approvals.",
+      "translation": "Telemetria bogată și API-urile susțin diagnosticul; riscul modificării cere permisiuni asimetrice și aprobări."
+    },
+    {
+      "id": "t000476",
+      "source": "Research",
+      "translation": "Cercetare"
+    },
+    {
+      "id": "t000477",
+      "source": "Search and synthesis benefit from agents, but evaluation requires provenance, source quality, and epistemic caution.",
+      "translation": "Căutarea și sinteza beneficiază de agenți, dar evaluarea cere proveniență, calitatea surselor și prudență epistemică."
+    },
+    {
+      "id": "t000478",
+      "source": "Security operations",
+      "translation": "Operațiuni de securitate"
+    },
+    {
+      "id": "t000479",
+      "source": "Agents can accelerate investigation, but privilege, adversarial input, and evidence preservation demand strict controls.",
+      "translation": "Agenții pot accelera investigația, dar privilegiile, intrările adversariale și păstrarea dovezilor cer controale stricte."
+    },
+    {
+      "id": "t000480",
+      "source": "9.2 Back-office, legal, finance, healthcare, and the use-case selection test",
+      "translation": "9.2 Operațiuni administrative, drept, finanțe, sănătate și testul selectării cazului de utilizare"
+    },
+    {
+      "id": "t000481",
+      "source": "Back-office work is often presented as the largest automation opportunity because organizations contain huge volumes of repetitive document and system interaction. Some of it is ideal for agents: invoice investigation, procurement research, reconciliation, claims triage, document intake, scheduling, record enrichment, and compliance evidence gathering. Other tasks are deceptively difficult because the written procedure is only part of the real process. Exceptions depend on relationships, tacit knowledge, or legal interpretation that is not encoded anywhere the system can retrieve.",
+      "translation": "Munca administrativă este prezentată adesea drept cea mai mare oportunitate de automatizare deoarece organizațiile conțin volume uriașe de interacțiune repetitivă cu documente și sisteme. O parte este ideală pentru agenți: investigarea facturilor, cercetarea pentru achiziții, reconcilierea, trierea cererilor, preluarea documentelor, programarea, îmbogățirea înregistrărilor și colectarea dovezilor de conformitate. Alte sarcini sunt înșelător de dificile deoarece procedura scrisă este doar o parte a procesului real. Excepțiile depind de relații, cunoaștere tacită sau interpretare juridică necodificată nicăieri unde sistemul o poate recupera."
+    },
+    {
+      "id": "t000482",
+      "source": "Legal work illustrates both opportunity and limit. Agents can search authorities, compare clauses, extract obligations, prepare chronologies, review contracts against playbooks, and assemble evidence. These are valuable because they are time-consuming and document-heavy. But legal judgment includes jurisdiction, professional responsibility, uncertainty, and consequences that may not be recoverable. A robust legal agent should expose sources and reasoning artifacts, preserve privilege boundaries, and distinguish drafting or analysis from decisions that require a qualified professional. The system should be designed around the legal service workflow, not around an assumption that fluent legal language equals legal competence.",
+      "translation": "Munca juridică ilustrează atât oportunitatea, cât și limita. Agenții pot căuta izvoare juridice, compara clauze, extrage obligații, pregăti cronologii, revizui contracte față de proceduri și aduna dovezi. Sunt valoroase deoarece consumă timp și multe documente. Dar judecata juridică include jurisdicție, responsabilitate profesională, incertitudine și consecințe care pot fi irecuperabile. Un agent juridic robust ar trebui să expună surse și artefacte de raționament, să păstreze granițele secretului profesional și să distingă redactarea ori analiza de deciziile care cer un profesionist calificat. Sistemul ar trebui proiectat în jurul fluxului de servicii juridice, nu al presupunerii că limbajul juridic fluent echivalează cu competență juridică."
+    },
+    {
+      "id": "t000483",
+      "source": "Finance has similarly strong tool structure and high consequences. Agents can explain transactions, investigate reconciliation breaks, generate management reports, collect KYC evidence, or route exceptions. Autonomous trading, credit decisions, or transfer authority raise a different class of risk. A useful design lens is the difference between information work and commitment. Information can often be generated, checked, and revised. A commitment changes rights, money, or obligations. The closer an action is to commitment, the stronger the identity, policy, verification, and human-governance requirements.",
+      "translation": "Finanțele au structură la fel de puternică a instrumentelor și consecințe ridicate. Agenții pot explica tranzacții, investiga neconcordanțe de reconciliere, genera rapoarte de management, colecta dovezi KYC sau ruta excepții. Tranzacționarea autonomă, deciziile de credit sau autoritatea de transfer ridică o altă clasă de risc. O perspectivă utilă de proiectare este diferența dintre muncă informațională și angajament. Informația poate fi adesea generată, verificată și revizuită. Un angajament schimbă drepturi, bani sau obligații. Cu cât o acțiune este mai aproape de angajament, cu atât cerințele de identitate, politici, verificare și guvernanță umană sunt mai puternice."
+    },
+    {
+      "id": "t000484",
+      "source": "Healthcare administration can benefit from agents in scheduling, coding assistance, documentation workflows, benefit checks, prior-authorization preparation, and navigation of complex information. Clinical decision support is more sensitive because evidence quality, patient context, liability, and regulated high-risk use can become central. This does not imply that agents have no role; it means the runtime must support domain-specific oversight and validation. A system that helps assemble a complete evidence packet may be more valuable and easier to trust than one that attempts an unconstrained clinical conclusion.",
+      "translation": "Administrația medicală poate beneficia de agenți în programări, asistență la codificare, fluxuri de documentare, verificarea beneficiilor, pregătirea autorizării prealabile și navigarea informațiilor complexe. Sprijinul deciziei clinice este mai sensibil deoarece calitatea dovezilor, contextul pacientului, răspunderea și utilizarea reglementată cu risc ridicat pot deveni centrale. Aceasta nu implică absența unui rol pentru agenți; înseamnă că mediul de execuție trebuie să susțină supraveghere și validare specifice domeniului. Un sistem care ajută la asamblarea unui pachet complet de dovezi poate fi mai valoros și mai ușor de considerat de încredere decât unul care încearcă o concluzie clinică neconstrânsă."
+    },
+    {
+      "id": "t000485",
+      "source": "A practical use-case selection test asks six questions. Is the work digitally observable? Are the required actions accessible through tools? Can success be measured? Does the environment provide feedback before the agent causes irreversible harm? Can the task be bounded by permissions and escalation rules? Is the economic value of success high enough to pay for model calls, integrations, evaluation, and human oversight? If several answers are no, a conventional workflow, search system, or copilot may be better than an autonomous agent.",
+      "translation": "Un test practic de selectare a cazului de utilizare pune șase întrebări. Munca este observabilă digital? Acțiunile necesare sunt accesibile prin instrumente? Succesul poate fi măsurat? Mediul oferă feedback înainte ca agentul să producă prejudicii ireversibile? Sarcina poate fi limitată prin permisiuni și reguli de escaladare? Valoarea economică a succesului este suficient de mare pentru a plăti apelurile de model, integrările, evaluarea și supravegherea umană? Dacă mai multe răspunsuri sunt nu, un flux de lucru convențional, un sistem de căutare sau un copilot poate fi mai bun decât un agent autonom."
+    },
+    {
+      "id": "t000486",
+      "source": "The test also asks whether variability is real. If every case follows the same stable path, deterministic automation is cheaper and easier to verify. Agents earn their place where semantic interpretation or adaptive planning reduces the explosion of hand-coded branches. Conversely, if the task is almost entirely subjective and success cannot be observed, the agent may produce impressive activity without measurable value. The best agent workflows tend to lie between rigid automation and unconstrained creativity: they contain real ambiguity inside a world with enough structure to provide feedback.",
+      "translation": "Testul întreabă și dacă variabilitatea este reală. Dacă fiecare caz urmează același traseu stabil, automatizarea deterministă este mai ieftină și mai ușor de verificat. Agenții își câștigă locul unde interpretarea semantică sau planificarea adaptivă reduc explozia ramurilor codificate manual. Invers, dacă sarcina este aproape complet subiectivă și succesul nu poate fi observat, agentul poate produce activitate impresionantă fără valoare măsurabilă. Cele mai bune fluxuri agentice tind să se afle între automatizarea rigidă și creativitatea neconstrânsă: conțin ambiguitate reală într-o lume suficient de structurată pentru a furniza feedback."
+    },
+    {
+      "id": "t000487",
+      "source": "Meridian evaluates a proposed procurement agent using this lens. Supplier documents and ERP records are digital; most queries are read-only; discrepancies have measurable outcomes; purchases above a threshold already require approval; and analysts spend substantial time on exceptions. This is a strong candidate. By contrast, 'negotiate strategic supplier relationships autonomously' has weak success criteria, hidden social context, and high commitment risk. The company does not reject the long-term possibility; it recognizes that the second problem needs a different maturity of models, memory, governance, and institutional trust.",
+      "translation": "Meridian evaluează un agent propus pentru achiziții prin această perspectivă. Documentele furnizorilor și înregistrările ERP sunt digitale; majoritatea interogărilor sunt doar în citire; discrepanțele au rezultate măsurabile; achizițiile peste un prag necesită deja aprobare; iar analiștii petrec mult timp cu excepțiile. Este un candidat puternic. În schimb, „negociază autonom relațiile strategice cu furnizorii” are criterii slabe de succes, context social ascuns și risc ridicat de angajament. Compania nu respinge posibilitatea pe termen lung; recunoaște că a doua problemă necesită altă maturitate a modelelor, memoriei, guvernanței și încrederii instituționale."
+    },
+    {
+      "id": "t000488",
+      "source": "The same workflow can have very different agentability at different boundaries. Invoice reconciliation may be highly automatable until the system encounters a disputed contract, sanctions concern, or unusual tax treatment. A legal document review may be excellent for clause extraction and precedent search but unsuitable for committing the organization to a novel interpretation. A healthcare workflow may safely gather records and flag missing tests while diagnosis or treatment remains clinician-controlled. Good product design identifies the boundary where uncertainty changes from computational to institutional or professional.",
+      "translation": "Același flux de lucru poate avea adecvare agentică foarte diferită la granițe diferite. Reconcilierea facturilor poate fi foarte automatizabilă până când sistemul întâlnește un contract disputat, o preocupare privind sancțiunile sau un tratament fiscal neobișnuit. Revizuirea juridică poate fi excelentă pentru extragerea clauzelor și căutarea precedentelor, dar nepotrivită pentru angajarea organizației într-o interpretare nouă. Un flux medical poate colecta sigur înregistrări și semnala teste lipsă, în timp ce diagnosticul ori tratamentul rămân controlate de clinician. Proiectarea bună a produsului identifică granița unde incertitudinea trece de la computațională la instituțională sau profesională."
+    },
+    {
+      "id": "t000489",
+      "source": "Cumulative harm also matters. A low-severity error repeated at machine scale can become a serious risk. An agent that occasionally routes a customer to the wrong queue may appear harmless in a pilot, yet at millions of interactions it can systematically disadvantage a group, distort metrics, or create hidden operational debt. Evaluation should therefore consider frequency, affected population, reversibility, detectability, and distributional effects. 'No single action is catastrophic' is not the same as 'the system is low risk.'",
+      "translation": "Contează și prejudiciul cumulativ. O eroare cu gravitate mică repetată la scara mașinii poate deveni un risc serios. Un agent care rutează ocazional un client în coada greșită poate părea inofensiv într-un proiect-pilot, dar la milioane de interacțiuni poate dezavantaja sistematic un grup, deforma metrici sau crea datorie operațională ascunsă. Evaluarea ar trebui, așadar, să considere frecvența, populația afectată, reversibilitatea, detectabilitatea și efectele distribuționale. „Nicio acțiune singulară nu este catastrofală” nu este același lucru cu „sistemul are risc redus”."
+    },
+    {
+      "id": "t000490",
+      "source": "The best first use cases usually combine high labor or delay cost with strong feedback and bounded action. They give the organization a way to learn agent engineering without betting the business on unresolved model capabilities. This is strategically important: the early objective is not maximum autonomy but maximum information gained per unit of risk. A well-chosen bounded workflow teaches tool design, evaluation, observability, policy, and economics that can later be reused in harder domains.",
+      "translation": "Cele mai bune cazuri inițiale de utilizare combină de obicei costuri ridicate ale muncii sau întârzierii cu feedback puternic și acțiune limitată. Oferă organizației o modalitate de a învăța ingineria agentică fără a paria afacerea pe capacități nerezolvate ale modelului. Este important strategic: obiectivul timpuriu nu este autonomia maximă, ci informația maximă dobândită per unitate de risc. Un flux limitat bine ales predă proiectarea instrumentelor, evaluarea, observabilitatea, politicile și economia, reutilizabile ulterior în domenii mai dificile."
+    },
+    {
+      "id": "t000491",
+      "source": "Selection test",
+      "translation": "Test de selecție"
+    },
+    {
+      "id": "t000492",
+      "source": "Question",
+      "translation": "Întrebare"
+    },
+    {
+      "id": "t000493",
+      "source": "Digital observability",
+      "translation": "Observabilitate digitală"
+    },
+    {
+      "id": "t000494",
+      "source": "Can the agent see the information needed to understand current state?",
+      "translation": "Poate agentul vedea informația necesară înțelegerii stării curente?"
+    },
+    {
+      "id": "t000495",
+      "source": "Action accessibility",
+      "translation": "Accesibilitatea acțiunii"
+    },
+    {
+      "id": "t000496",
+      "source": "Are useful operations available through stable tools or controllable computer-use environments?",
+      "translation": "Sunt disponibile operații utile prin instrumente stabile sau medii controlabile de utilizare a calculatorului?"
+    },
+    {
+      "id": "t000497",
+      "source": "Measurable outcome",
+      "translation": "Rezultat măsurabil"
+    },
+    {
+      "id": "t000498",
+      "source": "Can the organization determine whether the task actually succeeded?",
+      "translation": "Poate organizația determina dacă sarcina a reușit efectiv?"
+    },
+    {
+      "id": "t000499",
+      "source": "Recoverability",
+      "translation": "Recuperabilitate"
+    },
+    {
+      "id": "t000500",
+      "source": "Can mistakes be detected, reversed, or escalated before major harm?",
+      "translation": "Pot fi greșelile detectate, anulate sau escaladate înaintea unui prejudiciu major?"
+    },
+    {
+      "id": "t000501",
+      "source": "Bounded authority",
+      "translation": "Autoritate limitată"
+    },
+    {
+      "id": "t000502",
+      "source": "Can permissions, budgets, and approval points be expressed concretely?",
+      "translation": "Pot fi exprimate concret permisiunile, bugetele și punctele de aprobare?"
+    },
+    {
+      "id": "t000503",
+      "source": "Economic margin",
+      "translation": "Marjă economică"
+    },
+    {
+      "id": "t000504",
+      "source": "Is the workflow valuable enough to fund integration, inference, evaluation, and oversight?",
+      "translation": "Este fluxul suficient de valoros pentru a finanța integrarea, inferența, evaluarea și supravegherea?"
+    },
+    {
+      "id": "t000505",
+      "source": "Chapter 10 — Product, Economics, and Go-to-Market",
+      "translation": "Capitolul 10 — Produs, economie și lansare pe piață"
+    },
+    {
+      "id": "t000506",
+      "source": "An agent can be technically impressive and commercially weak. Buyers rarely want autonomy as an abstract property; they want a painful workflow to become cheaper, faster, more available, or qualitatively better without creating unacceptable risk. The commercial discipline is therefore to connect agent architecture to a measurable unit of work.",
+      "translation": "Un agent poate fi impresionant tehnic și slab comercial. Cumpărătorii vor rareori autonomie ca proprietate abstractă; vor ca un flux de lucru dificil să devină mai ieftin, mai rapid, mai disponibil sau calitativ mai bun fără risc inacceptabil. Disciplina comercială este, așadar, conectarea arhitecturii agentice la o unitate măsurabilă de muncă."
+    },
+    {
+      "id": "t000507",
+      "source": "10.1 Build versus buy, horizontal platforms, vertical agents, and defensibility",
+      "translation": "10.1 Construire versus cumpărare, platforme orizontale, agenți verticali și avantaj durabil"
+    },
+    {
+      "id": "t000508",
+      "source": "The first product decision is not which model to use. It is what part of the stack should belong to the product. A horizontal agent platform provides orchestration, tools, memory, evaluation, security controls, and deployment infrastructure across many workflows. A vertical agent product packages those primitives around one domain such as customer service, software engineering, legal review, security operations, or research. Most enterprises need both layers: reusable infrastructure underneath and domain-specific behavior, integrations, evaluation cases, and governance on top.",
+      "translation": "Prima decizie de produs nu este ce model să folosești. Este ce parte a stivei ar trebui să aparțină produsului. O platformă agentică orizontală furnizează orchestrare, instrumente, memorie, evaluare, controale de securitate și infrastructură de implementare pentru multe fluxuri de lucru. Un produs agentic vertical grupează aceste primitive în jurul unui domeniu precum servicii pentru clienți, inginerie software, revizuire juridică, operațiuni de securitate sau cercetare. Majoritatea întreprinderilor au nevoie de ambele straturi: infrastructură reutilizabilă dedesubt și comportament specific domeniului, integrări, cazuri de evaluare și guvernanță deasupra."
+    },
+    {
+      "id": "t000509",
+      "source": "Horizontal platforms are attractive because they create leverage across many teams, but they are difficult businesses unless they control a durable integration or operational surface. The base model layer changes quickly. Framework APIs can be copied. Simple tool calling is becoming standardized through MCP and agent-to-agent interaction through A2A. A platform that differentiates only by offering a convenient loop may face rapid commoditization. More defensible assets include enterprise identity integration, policy enforcement, observability, evaluation infrastructure, domain data connectors, deployment governance, and a mature operational dataset of failures and outcomes.",
+      "translation": "Platformele orizontale sunt atractive deoarece creează efect de multiplicare între multe echipe, dar sunt afaceri dificile dacă nu controlează o suprafață durabilă de integrare sau operare. Stratul modelului de bază se schimbă rapid. API-urile cadrelor pot fi copiate. Apelarea simplă a instrumentelor se standardizează prin MCP, iar interacțiunea agent-agent prin A2A. O platformă care se diferențiază doar oferind o buclă comodă se poate confrunta cu banalizare rapidă. Active mai greu de copiat includ integrarea identității organizaționale, aplicarea politicilor, observabilitatea, infrastructura evaluării, conectorii datelor de domeniu, guvernanța implementării și un set matur de date operaționale despre eșecuri și rezultate."
+    },
+    {
+      "id": "t000510",
+      "source": "Vertical products can create stronger value propositions because they own the workflow definition. Intercom does not sell a generic 'agent loop'; Fin is tied to customer-service outcomes [S27]. Salesforce embeds agents into CRM objects, actions, and business processes [S28]. Microsoft integrates Copilot Studio into its identity, productivity, data, and Power Platform ecosystem [S29]. The model is only one component of the product. Distribution, permissions, workflow state, administrative control, and business semantics are usually what make enterprise software sticky.",
+      "translation": "Produsele verticale pot crea propuneri de valoare mai puternice deoarece dețin definiția fluxului de lucru. Intercom nu vinde o „buclă agentică” generică; Fin este legat de rezultatele serviciilor pentru clienți [S27]. Salesforce încorporează agenți în obiecte CRM, acțiuni și procese de afaceri [S28]. Microsoft integrează Copilot Studio în ecosistemul său de identitate, productivitate, date și Power Platform [S29]. Modelul este doar o componentă a produsului. Distribuția, permisiunile, starea fluxului, controlul administrativ și semantica afacerii sunt de obicei cele care fac software-ul organizațional greu de înlocuit."
+    },
+    {
+      "id": "t000511",
+      "source": "Build versus buy should therefore be decomposed. An enterprise may buy model access, use an open framework, build its own orchestration, consume managed sandboxing, adopt a vendor's observability, and still build the domain agent internally. The correct boundary depends on strategic differentiation and risk. Commodity plumbing should usually be purchased or standardized. Proprietary process knowledge, domain evaluation, integrations to critical systems, and policy logic may deserve ownership because they determine whether the agent works in the organization's real environment.",
+      "translation": "Construirea versus cumpărarea ar trebui, prin urmare, descompusă. O întreprindere poate cumpăra acces la modele, folosi un cadru deschis, construi propria orchestrare, consuma izolare gestionată, adopta observabilitatea unui furnizor și totuși construi intern agentul de domeniu. Granița corectă depinde de diferențierea strategică și risc. Infrastructura comună ar trebui de obicei cumpărată sau standardizată. Cunoașterea proprietară a proceselor, evaluarea de domeniu, integrările în sisteme critice și logica politicilor pot merita deținute deoarece determină dacă agentul funcționează în mediul real al organizației."
+    },
+    {
+      "id": "t000512",
+      "source": "Data moats are often misunderstood. A pile of conversation transcripts is not automatically a moat. High-value agent data connects context, trajectory, outcome, and expert correction. It tells you which case occurred, what the agent saw, what it did, what the environment returned, whether the task succeeded, why it failed, and what a qualified human would have done differently. Such data can improve retrieval, tool design, evaluation, prompts, routing, and eventually model adaptation. It is operational knowledge, not merely text volume.",
+      "translation": "Avantajele defensive bazate pe date sunt adesea înțelese greșit. O grămadă de transcrieri conversaționale nu este automat un avantaj defensiv. Datele agentice valoroase conectează contextul, traiectoria, rezultatul și corecția expertă. Îți spun ce caz a apărut, ce a văzut agentul, ce a făcut, ce a returnat mediul, dacă sarcina a reușit, de ce a eșuat și ce ar fi făcut diferit un om calificat. Asemenea date pot îmbunătăți recuperarea, proiectarea instrumentelor, evaluarea, prompturile, rutarea și, în cele din urmă, adaptarea modelului. Sunt cunoaștere operațională, nu doar volum de text."
+    },
+    {
+      "id": "t000513",
+      "source": "Integration can be an even stronger moat. A product that safely performs a useful action inside a customer's identity, data, and workflow landscape has crossed a difficult boundary. It has solved authentication, authorization, schemas, exception handling, compliance, and change management. These integrations may look less glamorous than model research, but they are the difference between a demo and a durable enterprise product. Standard protocols will reduce some integration cost while increasing the value of governance layers that can manage many standardized connections safely.",
+      "translation": "Integrarea poate fi un avantaj defensiv și mai puternic. Un produs care efectuează sigur o acțiune utilă în peisajul de identitate, date și fluxuri al clientului a traversat o graniță dificilă. A rezolvat autentificarea, autorizarea, schemele, tratarea excepțiilor, conformitatea și managementul schimbării. Aceste integrări pot părea mai puțin spectaculoase decât cercetarea modelelor, dar fac diferența dintre demonstrație și produs organizațional durabil. Protocoalele standard vor reduce unele costuri de integrare, crescând valoarea straturilor de guvernanță capabile să gestioneze sigur multe conexiuni standardizate."
+    },
+    {
+      "id": "t000514",
+      "source": "Meridian's internal platform team reaches the same conclusion. It does not try to build a proprietary general model or a universal agent framework. It owns the control plane, evaluation data, tool contracts, identity integration, and reusable runtime because those are strategic for its regulated products. It adopts standard protocols and external models where interchangeability is useful. Domain teams own their workflow-specific instructions, policies, tools, and test cases. The architecture mirrors a sensible product strategy: own the layers where organizational knowledge and risk accumulate.",
+      "translation": "Echipa internă de platformă Meridian ajunge la aceeași concluzie. Nu încearcă să construiască un model general proprietar sau un cadru agentic universal. Deține planul de control, datele de evaluare, contractele instrumentelor, integrarea identității și mediul reutilizabil de execuție deoarece acestea sunt strategice pentru produsele sale reglementate. Adoptă protocoale standard și modele externe acolo unde interschimbabilitatea este utilă. Echipele de domeniu dețin instrucțiunile, politicile, instrumentele și testele specifice fluxului lor. Arhitectura oglindește o strategie rezonabilă de produs: deține straturile unde se acumulează cunoașterea organizațională și riscul."
+    },
+    {
+      "id": "t000515",
+      "source": "Standardization changes where defensibility can live. If models, MCP servers, A2A endpoints, and orchestration runtimes become interchangeable, a thin wrapper around a public model becomes easier to copy. Durable advantage moves toward proprietary workflow integration, trusted distribution, outcome data, evaluation assets, domain-specific tool contracts, accumulated exception handling, and the ability to operate under real compliance constraints. In other words, the moat is increasingly the system that knows how to finish the job safely rather than the prompt that describes the job attractively.",
+      "translation": "Standardizarea schimbă locul unde poate trăi avantajul durabil. Dacă modelele, serverele MCP, punctele terminale A2A și mediile de orchestrare devin interschimbabile, un înveliș subțire peste un model public devine mai ușor de copiat. Avantajul durabil se mută către integrarea proprietară a fluxului, distribuție de încredere, date despre rezultate, active de evaluare, contracte de instrumente specifice domeniului, tratarea acumulată a excepțiilor și capacitatea de operare sub constrângeri reale de conformitate. Cu alte cuvinte, avantajul defensiv este tot mai mult sistemul care știe să termine sigur treaba, nu promptul care o descrie atrăgător."
+    },
+    {
+      "id": "t000516",
+      "source": "Platform teams should resist becoming internal framework vendors. Their purpose is to remove repeated engineering: identity, tool gateways, tracing, evaluation infrastructure, secure sandboxes, model routing, cost controls, and durable task state. Domain teams should still be able to express workflow-specific policies and tests without negotiating every change with a central group. A good internal platform reduces the marginal cost of the next reliable agent while preserving local ownership of business semantics.",
+      "translation": "Echipele de platformă ar trebui să reziste transformării în furnizori interni de cadre de dezvoltare. Scopul lor este eliminarea ingineriei repetate: identitate, porți pentru instrumente, trasare, infrastructura evaluării, medii izolate sigure, rutarea modelelor, controlul costurilor și stare durabilă a sarcinilor. Echipele de domeniu ar trebui să poată exprima în continuare politici și teste specifice fluxului fără a negocia fiecare schimbare cu un grup central. O platformă internă bună reduce costul marginal al următorului agent fiabil, păstrând responsabilitatea locală pentru semantica afacerii."
+    },
+    {
+      "id": "t000517",
+      "source": "Build-versus-buy decisions should therefore be made layer by layer. Buying a model does not imply buying the orchestration platform; buying a support agent does not imply outsourcing identity or audit records. Conversely, building everything may waste years on commodity capabilities. An architecture that uses standards and explicit contracts lets the organization own the parts where risk and learning accumulate while substituting providers where the market is efficient.",
+      "translation": "Deciziile de construire sau cumpărare ar trebui, așadar, luate strat cu strat. Cumpărarea unui model nu implică cumpărarea platformei de orchestrare; cumpărarea unui agent de asistență nu implică externalizarea identității sau înregistrărilor de audit. Invers, construirea tuturor componentelor poate irosi ani pe capacități comune. O arhitectură cu standarde și contracte explicite permite organizației să dețină părțile unde se acumulează riscul și învățarea, înlocuind furnizorii unde piața este eficientă."
+    },
+    {
+      "id": "t000518",
+      "source": "Layer",
+      "translation": "Strat"
+    },
+    {
+      "id": "t000519",
+      "source": "Typical strategic posture",
+      "translation": "Poziție strategică tipică"
+    },
+    {
+      "id": "t000520",
+      "source": "Foundation model",
+      "translation": "Model fundamental"
+    },
+    {
+      "id": "t000521",
+      "source": "Usually buy or support several providers unless model research is itself the business.",
+      "translation": "De obicei cumpărați sau susțineți mai mulți furnizori, dacă cercetarea modelelor nu este însăși afacerea."
+    },
+    {
+      "id": "t000522",
+      "source": "Agent framework",
+      "translation": "Cadru de dezvoltare agentic"
+    },
+    {
+      "id": "t000523",
+      "source": "Use as an implementation accelerator; avoid making framework-specific abstractions the core moat.",
+      "translation": "Folosiți-l ca accelerator de implementare; evitați ca abstracțiile specifice cadrului să devină avantajul defensiv central."
+    },
+    {
+      "id": "t000524",
+      "source": "Control plane",
+      "translation": "Plan de control"
+    },
+    {
+      "id": "t000525",
+      "source": "Often strategic in enterprises because identity, policy, routing, budgets, and governance accumulate here.",
+      "translation": "Adesea strategic în întreprinderi deoarece identitatea, politicile, rutarea, bugetele și guvernanța se acumulează aici."
+    },
+    {
+      "id": "t000526",
+      "source": "Domain tools",
+      "translation": "Instrumente de domeniu"
+    },
+    {
+      "id": "t000527",
+      "source": "Frequently strategic because they encode real workflow semantics and safe action boundaries.",
+      "translation": "Frecvent strategice deoarece codifică semantica reală a fluxului și granițele acțiunii sigure."
+    },
+    {
+      "id": "t000528",
+      "source": "Evaluation corpus",
+      "translation": "Corpus de evaluare"
+    },
+    {
+      "id": "t000529",
+      "source": "Strong candidate for ownership: it represents task reality, failure history, and quality expectations.",
+      "translation": "Candidat puternic pentru deținere: reprezintă realitatea sarcinii, istoricul eșecurilor și așteptările de calitate."
+    },
+    {
+      "id": "t000530",
+      "source": "Operational data",
+      "translation": "Date operaționale"
+    },
+    {
+      "id": "t000531",
+      "source": "Valuable when linked to trajectories, outcomes, and expert corrections rather than stored as undifferentiated logs.",
+      "translation": "Valoroase când sunt legate de traiectorii, rezultate și corecții experte, nu stocate ca jurnale nediferențiate."
+    },
+    {
+      "id": "t000532",
+      "source": "10.2 Pricing, ROI, pilots, procurement, and selling outcomes",
+      "translation": "10.2 Prețuri, rentabilitatea investiției, proiecte-pilot, achiziții și vânzarea rezultatelor"
+    },
+    {
+      "id": "t000533",
+      "source": "Agent pricing is evolving because the software increasingly resembles labor or transaction automation rather than a passive information product. Several models coexist. Per-user pricing works when the product augments an employee. Consumption pricing works when usage varies and the agent performs measurable actions. Per-conversation pricing fits service interactions. Outcome pricing aligns payment with a resolution, qualification, or completed task. Platform vendors often combine these structures because enterprise buyers need predictable budgeting while vendors face variable inference and tool costs.",
+      "translation": "Stabilirea prețului agenților evoluează deoarece software-ul seamănă tot mai mult cu automatizarea muncii sau tranzacțiilor decât cu un produs informațional pasiv. Coexistă mai multe modele. Prețul per utilizator funcționează când produsul augmentează un angajat. Prețul pe consum funcționează când utilizarea variază, iar agentul efectuează acțiuni măsurabile. Prețul per conversație se potrivește interacțiunilor de servicii. Prețul per rezultat aliniază plata unei rezolvări, calificări sau sarcini finalizate. Furnizorii de platforme combină adesea structurile deoarece cumpărătorii organizaționali au nevoie de bugete previzibile, iar furnizorii au costuri variabile de inferență și instrumente."
+    },
+    {
+      "id": "t000534",
+      "source": "Current products illustrate the experimentation. Intercom's 2026 documentation prices several Fin outcomes at a fixed amount per successful outcome, with a higher price for qualified sales leads [S27]. Salesforce offers Flex Credits, conversation pricing, and user-oriented options for Agentforce [S28]. Microsoft sells Copilot Studio through prepaid or pay-as-you-go Copilot Credits and includes some internal agent capabilities within Microsoft 365 Copilot licenses [S29]. These numbers will change, but the direction is more important: commercial units are moving closer to actions and results.",
+      "translation": "Produsele actuale ilustrează experimentarea. Documentația Intercom din 2026 stabilește pentru mai multe rezultate Fin o sumă fixă per rezultat reușit, cu preț mai mare pentru potențiali clienți calificați de vânzări [S27]. Salesforce oferă Flex Credits, prețuri per conversație și opțiuni orientate spre utilizator pentru Agentforce [S28]. Microsoft vinde Copilot Studio prin Copilot Credits preplătite sau plătite după utilizare și include unele capacități agentice interne în licențele Microsoft 365 Copilot [S29]. Cifrele se vor schimba, dar direcția este mai importantă: unitățile comerciale se apropie de acțiuni și rezultate."
+    },
+    {
+      "id": "t000535",
+      "source": "ROI should be calculated per successful outcome, not per model call. Suppose a human incident investigation costs twenty minutes of a skilled engineer and an agent resolves half the cases independently while escalating the rest with useful evidence. The value includes time saved on successful cases and time compressed on escalations. From this subtract inference, tool infrastructure, platform licenses, human review, error remediation, and ongoing engineering. The most honest denominator is usually cost per accepted resolution or cost per correctly completed workflow, not average token cost.",
+      "translation": "Rentabilitatea investiției ar trebui calculată per rezultat reușit, nu per apel de model. Să presupunem că investigarea umană a unui incident costă douăzeci de minute ale unui inginer calificat, iar un agent rezolvă independent jumătate dintre cazuri, escaladând restul cu dovezi utile. Valoarea include timpul economisit în cazurile reușite și timpul comprimat al escaladărilor. Din aceasta scădeți inferența, infrastructura instrumentelor, licențele platformei, revizuirea umană, remedierea erorilor și ingineria continuă. Numitorul cel mai onest este de obicei costul per rezolvare acceptată sau per flux corect finalizat, nu costul mediu al tokenilor."
+    },
+    {
+      "id": "t000536",
+      "source": "The pilot is an experiment, not a miniature deployment. A good pilot chooses a bounded workflow, defines baseline human performance, creates a realistic evaluation set, instruments outcomes, and limits permissions. The objective is to learn the error surface.",
+      "translation": "Proiectul-pilot este un experiment, nu o implementare miniaturală. Un proiect bun alege un flux limitat, definește performanța umană de referință, creează un set realist de evaluare, instrumentează rezultatele și limitează permisiunile. Obiectivul este înțelegerea suprafeței erorilor."
+    },
+    {
+      "id": "t000537",
+      "source": "Which cases are easy? Which are impossible because data is missing? Which failures come from the model, retrieval, tools, policy, or process ambiguity? A pilot that only demonstrates happy-path tasks creates marketing evidence but little engineering evidence.",
+      "translation": "Ce cazuri sunt ușoare? Care sunt imposibile fiindcă lipsesc date? Ce eșecuri provin din model, recuperare, instrumente, politici sau ambiguitatea procesului? Un proiect-pilot care demonstrează doar sarcini pe traseul ideal creează dovezi de marketing, dar puține dovezi inginerești."
+    },
+    {
+      "id": "t000538",
+      "source": "Enterprise procurement introduces another dimension: trust. Buyers ask where data flows, which models are used, how prompts and traces are retained, whether actions are auditable, how permissions work, how the system is evaluated, what happens when it is wrong, and whether it can be disabled. Agent vendors should expect security questionnaires, data-processing agreements, model-provider disclosures, architecture reviews, and increasingly AI-governance requirements. The sales process is therefore easier when the product architecture already produces the evidence procurement needs.",
+      "translation": "Achizițiile organizaționale introduc o altă dimensiune: încrederea. Cumpărătorii întreabă unde circulă datele, ce modele sunt folosite, cum sunt păstrate prompturile și urmele, dacă acțiunile sunt auditabile, cum funcționează permisiunile, cum este evaluat sistemul, ce se întâmplă când greșește și dacă poate fi dezactivat. Furnizorii de agenți ar trebui să se aștepte la chestionare de securitate, acorduri de prelucrare a datelor, informări despre furnizorii de modele, revizuiri arhitecturale și tot mai multe cerințe de guvernanță IA. Procesul de vânzare este, așadar, mai ușor când arhitectura produsului produce deja dovezile necesare achizițiilor."
+    },
+    {
+      "id": "t000539",
+      "source": "Change management matters because workflows have owners and informal adaptations. A successful agent may change staffing, escalation paths, service-level expectations, and accountability. Employees will test whether the system creates more cleanup than it saves. Managers will discover that procedures assumed to be standardized are not. Agent deployment can become a form of process discovery: the failures reveal where organizational rules are inconsistent or where critical knowledge exists only in experienced employees' heads. Treating this as a purely technical rollout wastes that information.",
+      "translation": "Managementul schimbării contează deoarece fluxurile de lucru au responsabili și adaptări informale. Un agent reușit poate schimba personalul necesar, căile de escaladare, așteptările de nivel al serviciului și răspunderea. Angajații vor testa dacă sistemul creează mai multă muncă de curățare decât economisește. Managerii vor descoperi că procedurile presupuse standardizate nu sunt. Implementarea agentică poate deveni o formă de descoperire a proceselor: eșecurile dezvăluie unde regulile organizaționale sunt inconsecvente sau unde cunoașterea critică există doar în mintea angajaților experimentați. Tratarea ei ca lansare pur tehnică irosește acea informație."
+    },
+    {
+      "id": "t000540",
+      "source": "Meridian sells its first external agent capability as a managed incident-resolution service rather than an 'autonomous AI agent.' The contract defines which incident classes are eligible, which actions are automated, what evidence accompanies resolutions, when humans intervene, and how outcomes are measured. Pricing can then be connected to successfully processed incidents. This language is less futuristic but more credible. In mature markets, buyers pay for a reliable workflow with accountability; the agent architecture is how the vendor produces it.",
+      "translation": "Meridian vinde prima sa capacitate agentică externă ca serviciu gestionat de rezolvare a incidentelor, nu ca „agent IA autonom”. Contractul definește clasele eligibile de incidente, acțiunile automatizate, dovezile care însoțesc rezolvările, momentele intervenției umane și măsurarea rezultatelor. Prețul poate fi apoi conectat la incidente procesate cu succes. Limbajul este mai puțin futurist, dar mai credibil. În piețele mature, cumpărătorii plătesc pentru un flux fiabil, cu răspundere; arhitectura agentică este felul în care furnizorul îl produce."
+    },
+    {
+      "id": "t000541",
+      "source": "Unit economics should be calculated per verified outcome, including inference, retrieval, browser or code execution, third-party APIs, human review, retries, support, and the expected cost of failures. Token cost can be a useful component metric, but it rarely matches the buyer's value unit. A cheap agent that succeeds only after extensive human cleanup may be more expensive than a costly model that resolves the case correctly on the first attempt. Economic evaluation and technical evaluation should therefore share the same denominator.",
+      "translation": "Economia unitară ar trebui calculată per rezultat verificat, incluzând inferența, recuperarea, execuția de browser sau cod, API-urile terților, revizuirea umană, reîncercările, asistența și costul așteptat al eșecurilor. Costul tokenilor poate fi o metrică utilă de componentă, dar rareori corespunde unității de valoare a cumpărătorului. Un agent ieftin care reușește doar după multă corectare umană poate fi mai costisitor decât un model scump care rezolvă corect cazul din prima. Evaluarea economică și cea tehnică ar trebui, așadar, să împartă același numitor."
+    },
+    {
+      "id": "t000542",
+      "source": "Contracts for consequential agents will increasingly resemble service contracts rather than software licenses. Buyers will ask which tasks are in scope, what success means, which errors trigger credits or remediation, how data is handled, what audit evidence is available, which model or subprocessors may change, and who is responsible when the system acts incorrectly. Vendors that can describe these boundaries precisely may win against technically impressive competitors that can only discuss benchmark performance.",
+      "translation": "Contractele pentru agenți cu consecințe vor semăna tot mai mult cu contracte de servicii, nu cu licențe software. Cumpărătorii vor întreba ce sarcini intră în domeniu, ce înseamnă succes, ce erori declanșează credite sau remediere, cum sunt tratate datele, ce dovezi de audit sunt disponibile, ce model sau persoane împuternicite secundare se pot schimba și cine răspunde când sistemul acționează incorect. Furnizorii care pot descrie precis aceste granițe pot câștiga în fața concurenților impresionanți tehnic care pot discuta doar performanță de referință."
+    },
+    {
+      "id": "t000543",
+      "source": "There is also a ceiling on outcome pricing: the vendor cannot capture all labor savings because the buyer still bears integration, oversight, residual risk, and organizational change. Sustainable pricing leaves a visible surplus for the customer and improves as the provider reduces intervention cost and expands the reliable task envelope. This creates a healthy incentive: commercial margin grows when the system becomes more dependable, not merely when it generates more tokens.",
+      "translation": "Există și un plafon pentru prețul per rezultat: furnizorul nu poate capta toate economiile de muncă deoarece cumpărătorul suportă în continuare integrarea, supravegherea, riscul rezidual și schimbarea organizațională. Prețul sustenabil lasă un surplus vizibil clientului și se îmbunătățește pe măsură ce furnizorul reduce costul intervenției și extinde perimetrul sarcinilor fiabile. Aceasta creează un stimulent sănătos: marja comercială crește când sistemul devine mai fiabil, nu doar când generează mai mulți tokeni."
+    },
+    {
+      "id": "t000544",
+      "source": "Figure from PDF page 54",
+      "translation": "Figură de la pagina 54 a PDF-ului"
+    },
+    {
+      "id": "t000545",
+      "source": "Figure 7. The path from agent demo to product is a sequence of narrowing, measuring, controlling, and only then scaling.",
+      "translation": "Figura 7. Drumul de la demonstrație agentică la produs este o succesiune de restrângere, măsurare, control și abia apoi extindere la scară."
+    },
+    {
+      "id": "t000546",
+      "source": "Pricing model",
+      "translation": "Model de preț"
+    },
+    {
+      "id": "t000547",
+      "source": "Where it fits",
+      "translation": "Unde se potrivește"
+    },
+    {
+      "id": "t000548",
+      "source": "Per user",
+      "translation": "Per utilizator"
+    },
+    {
+      "id": "t000549",
+      "source": "Best for employee augmentation where value accrues continuously across many tasks.",
+      "translation": "Cel mai potrivit pentru augmentarea angajatului, unde valoarea se acumulează continuu în multe sarcini."
+    },
+    {
+      "id": "t000550",
+      "source": "Consumption /credits",
+      "translation": "Consum / credite"
+    },
+    {
+      "id": "t000551",
+      "source": "Useful for platforms with heterogeneous model and tool usage.",
+      "translation": "Util pentru platforme cu utilizare eterogenă a modelelor și instrumentelor."
+    },
+    {
+      "id": "t000552",
+      "source": "Per action",
+      "translation": "Per acțiune"
+    },
+    {
+      "id": "t000553",
+      "source": "Fits workflows where discrete tool-backed operations are the natural unit.",
+      "translation": "Se potrivește fluxurilor în care operațiile discrete susținute de instrumente sunt unitatea firească."
+    },
+    {
+      "id": "t000554",
+      "source": "Per conversation",
+      "translation": "Per conversație"
+    },
+    {
+      "id": "t000555",
+      "source": "Fits service interactions, though conversation length and value can vary substantially.",
+      "translation": "Se potrivește interacțiunilor de servicii, deși lungimea și valoarea conversației pot varia substanțial."
+    },
+    {
+      "id": "t000556",
+      "source": "Per outcome",
+      "translation": "Per rezultat"
+    },
+    {
+      "id": "t000557",
+      "source": "Strong alignment when success is objectively measurable and attribution is clear.",
+      "translation": "Aliniere puternică atunci când succesul este măsurabil obiectiv și atribuirea clară."
+    },
+    {
+      "id": "t000558",
+      "source": "Fixed enterprise contract",
+      "translation": "Contract organizațional fix"
+    },
+    {
+      "id": "t000559",
+      "source": "Useful when buyers require budget predictability and the vendor can manage usage risk.",
+      "translation": "Util când cumpărătorii cer bugete previzibile, iar furnizorul poate gestiona riscul utilizării."
+    },
+    {
+      "id": "t000560",
+      "source": "Chapter 11 — Frameworks and Reference Architectures",
+      "translation": "Capitolul 11 — Cadre de dezvoltare și arhitecturi de referință"
+    },
+    {
+      "id": "t000561",
+      "source": "Frameworks matter, but less than the architectural concepts they package. The ecosystem of 2026 increasingly converges on the same production primitives: models, tools, structured state, memory, handoffs or graphs, human approval, protocol integration, tracing, and evaluation. This chapter maps representative stacks and then rebuilds Meridian's system from those primitives so the reader can see what is essential and what is replaceable.",
+      "translation": "Cadrele de dezvoltare contează, dar mai puțin decât conceptele arhitecturale pe care le grupează. Ecosistemul din 2026 converge tot mai mult asupra acelorași primitive de producție: modele, instrumente, stare structurată, memorie, transferuri de control sau grafuri, aprobare umană, integrarea protocoalelor, trasare și evaluare. Capitolul cartografiază stive reprezentative și reconstruiește apoi sistemul Meridian din acele primitive, pentru ca cititorul să vadă ce este esențial și ce poate fi înlocuit."
+    },
+    {
+      "id": "t000562",
+      "source": "11.1 The 2026 framework landscape and how to choose among it",
+      "translation": "11.1 Peisajul cadrelor de dezvoltare în 2026 și alegerea dintre ele"
+    },
+    {
+      "id": "t000563",
+      "source": "OpenAI's Agents SDK offers a relatively direct agent abstraction around instructions, models, tools, handoffs, guardrails, sessions, structured outputs, MCP integration, and tracing [S5][S7]. It is attractive when the application already uses OpenAI models or wants a compact orchestration layer without constructing every loop manually. Its manager and handoff patterns make common forms of multi-agent composition explicit. As with any provider-oriented SDK, teams should understand which parts are portable abstractions and which are tied to provider services.",
+      "translation": "SDK-ul Agents al OpenAI oferă o abstracție relativ directă a agentului în jurul instrucțiunilor, modelelor, instrumentelor, transferurilor de control, mecanismelor de protecție, sesiunilor, rezultatelor structurate, integrării MCP și trasării [S5][S7]. Este atractiv când aplicația folosește deja modele OpenAI sau vrea un strat compact de orchestrare fără construirea manuală a fiecărei bucle. Tiparele sale de manager și transfer de control explicitează forme comune de compoziție multiagent. Ca în cazul oricărui SDK orientat spre furnizor, echipele ar trebui să înțeleagă ce părți sunt abstracții portabile și ce părți sunt legate de serviciile furnizorului."
+    },
+    {
+      "id": "t000564",
+      "source": "Microsoft Agent Framework reached version 1.0 in April 2026 as the convergence path for ideas from AutoGen and Semantic Kernel, with .NET and Python APIs, multi-agent orchestration, provider flexibility, and interoperability through MCP and A2A [S8]. Its natural advantage is the Microsoft enterprise ecosystem: identity, Azure, Microsoft 365, Power Platform, and Foundry. For organizations already standardized on these technologies, integration and governance may matter more than marginal differences in orchestration syntax.",
+      "translation": "Microsoft Agent Framework a ajuns la versiunea 1.0 în aprilie 2026 ca traseu de convergență pentru idei din AutoGen și Semantic Kernel, cu API-uri .NET și Python, orchestrare multiagent, flexibilitatea furnizorilor și interoperabilitate prin MCP și A2A [S8]. Avantajul său firesc este ecosistemul organizațional Microsoft: identitate, Azure, Microsoft 365, Power Platform și Foundry. Pentru organizațiile deja standardizate pe aceste tehnologii, integrarea și guvernanța pot conta mai mult decât diferențele marginale ale sintaxei orchestrării."
+    },
+    {
+      "id": "t000565",
+      "source": "Google's Agent Development Kit has evolved quickly into a multi-language development stack with agent orchestration, tools, sessions, memory, evaluation, sandboxed code execution, deployment support, and A2A integration. By mid-2026 its ecosystem included Python 2.0 GA, Go and Java development, an Agents CLI, automated evaluation workflows, and managed runtime capabilities [S9]. Its strengths are particularly visible for teams centered on Gemini and Google Cloud, but the conceptual patterns remain broadly applicable.",
+      "translation": "Agent Development Kit de la Google a evoluat rapid într-o stivă de dezvoltare multilingvă cu orchestrare agentică, instrumente, sesiuni, memorie, evaluare, execuție izolată de cod, sprijin pentru implementare și integrare A2A. Până la mijlocul lui 2026, ecosistemul includea Python 2.0 GA, dezvoltare Go și Java, un Agents CLI, fluxuri automate de evaluare și capacități gestionate de execuție [S9]. Punctele sale forte sunt deosebit de vizibile pentru echipe centrate pe Gemini și Google Cloud, dar tiparele conceptuale rămân larg aplicabile."
+    },
+    {
+      "id": "t000566",
+      "source": "LangGraph takes a lower-level approach. It models long-running, stateful agents as graphs with explicit state transitions, checkpointing, interrupts, durable execution, memory, replay, and human-in-the-loop control [S10][S11]. This is valuable when engineers want to see and control the workflow topology rather than delegate orchestration semantics to a high-level agent object. The tradeoff is that teams own more architectural decisions. This can be an advantage in high-reliability systems and an unnecessary burden for simple use cases.",
+      "translation": "LangGraph are o abordare de nivel inferior. Modelează agenți de lungă durată cu stare ca grafuri cu tranziții explicite de stare, puncte de control, întreruperi, execuție durabilă, memorie, reluare și control cu participare umană [S10][S11]. Este valoros când inginerii vor să vadă și să controleze topologia fluxului, nu să delege semantica orchestrării unui obiect agentic de nivel înalt. Compromisul este că echipele dețin mai multe decizii arhitecturale. Poate fi un avantaj în sisteme foarte fiabile și o povară inutilă pentru cazuri simple."
+    },
+    {
+      "id": "t000567",
+      "source": "CrewAI represents a role-oriented multi-agent style and also distinguishes structured Flows from more autonomous Crews [S34]. Similar high-level frameworks can accelerate experimentation when a problem maps naturally to specialist roles. The caution is to avoid letting framework metaphors substitute for evidence. A 'researcher', 'analyst', and 'writer' may be sensible roles, but they should exist because their tool sets, contexts, or evaluation criteria differ, not because multi-agent branding encourages organizational theater.",
+      "translation": "CrewAI reprezintă un stil multiagent orientat spre roluri și distinge și Flows structurate de Crews mai autonome [S34]. Cadre similare de nivel înalt pot accelera experimentarea când o problemă se mapează firesc pe roluri specializate. Prudența necesară este evitarea înlocuirii dovezilor cu metaforele cadrului. Un „cercetător”, „analist” și „scriitor” pot fi roluri rezonabile, dar ar trebui să existe fiindcă seturile de instrumente, contextele sau criteriile de evaluare diferă, nu fiindcă marca multiagent încurajează teatrul organizațional."
+    },
+    {
+      "id": "t000568",
+      "source": "Framework selection should start from runtime requirements. Does the task need durable state across hours? Human interrupts? Strong graph visibility? Multi-provider models? Built-in tracing? Tight cloud integration? MCP and A2A? Sandboxed code? On-premise deployment? A mature organization may use more than one framework while standardizing the control plane and tool contracts. Standard protocols are making this more plausible: an MCP tool surface or A2A service can be consumed from different orchestration stacks.",
+      "translation": "Selectarea cadrului ar trebui să înceapă cu cerințele execuției. Sarcina are nevoie de stare durabilă pe parcursul orelor? Întreruperi umane? Vizibilitate puternică a grafului? Modele de la mai mulți furnizori? Trasare integrată? Integrare strânsă în cloud? MCP și A2A? Cod izolat? Implementare în infrastructura proprie? O organizație matură poate folosi mai multe cadre standardizând în același timp planul de control și contractele instrumentelor. Protocoalele standard fac aceasta mai plauzibilă: o suprafață MCP de instrumente sau un serviciu A2A poate fi consumat din stive diferite de orchestrare."
+    },
+    {
+      "id": "t000569",
+      "source": "The final criterion is escape cost. Agent frameworks are changing quickly. Business logic should therefore live in portable assets where possible: tool schemas, policy rules, evaluation datasets, prompts under version control, domain models, state definitions, and source data. The orchestration framework should make those assets easier to run, not become the only place where they can exist. Meridian deliberately maintains this separation so it can replace a model or runtime without rewriting the semantics of incident resolution.",
+      "translation": "Criteriul final este costul ieșirii. Cadrele agentice se schimbă rapid. Logica afacerii ar trebui, așadar, să trăiască unde este posibil în active portabile: scheme de instrumente, reguli de politici, seturi de date de evaluare, prompturi sub controlul versiunilor, modele de domeniu, definiții de stare și date-sursă. Cadrul de orchestrare ar trebui să facă aceste active mai ușor de rulat, nu să devină singurul loc unde pot exista. Meridian menține deliberat separarea pentru a putea înlocui un model sau mediu de execuție fără rescrierea semanticii rezolvării incidentelor."
+    },
+    {
+      "id": "t000570",
+      "source": "Framework evaluation should be performed with a representative vertical slice rather than a feature checklist. Implement one workflow that needs structured tools, persistence, an approval interrupt, tracing, a regression evaluation, and at least one external protocol integration. Then inspect the resulting code, failure recovery, testability, deployment model, and observability. The fastest framework for a ten-minute demo may be the hardest to operate six months later; conversely, a heavyweight platform may be unnecessary when a small explicit loop is easier to reason about.",
+      "translation": "Evaluarea cadrului ar trebui efectuată cu o secțiune verticală reprezentativă, nu cu o listă de funcții. Implementați un flux care necesită instrumente structurate, persistență, o întrerupere pentru aprobare, trasare, o evaluare de regresie și cel puțin o integrare externă de protocol. Apoi inspectați codul rezultat, recuperarea după eșec, testabilitatea, modelul de implementare și observabilitatea. Cel mai rapid cadru pentru o demonstrație de zece minute poate fi cel mai greu de operat după șase luni; invers, o platformă greoaie poate fi inutilă când o buclă mică, explicită este mai ușor de înțeles."
+    },
+    {
+      "id": "t000571",
+      "source": "Framework churn is itself an architectural risk. In 2026 major stacks are converging rapidly, merging earlier projects and adding protocol support. Microsoft Agent Framework 1.0, for example, consolidates lessons from AutoGen and Semantic Kernel into a production-oriented framework [S8]. Google ADK, OpenAI's Agents SDK, LangGraph, and CrewAI each emphasize different ergonomics around agents, workflows, state, evaluation, and deployment [S5][S9][S10][S34]. The correct response is not to predict one winner; it is to keep domain semantics outside proprietary orchestration concepts wherever practical.",
+      "translation": "Schimbarea frecventă a cadrelor este ea însăși un risc arhitectural. În 2026, stivele majore converg rapid, integrând proiecte anterioare și adăugând protocoale. Microsoft Agent Framework 1.0, de exemplu, consolidează lecții din AutoGen și Semantic Kernel într-un cadru orientat spre producție [S8]. Google ADK, SDK-ul Agents al OpenAI, LangGraph și CrewAI pun fiecare accent pe ergonomii diferite în jurul agenților, fluxurilor, stării, evaluării și implementării [S5][S9][S10][S34]. Răspunsul corect nu este prezicerea unui câștigător; este păstrarea semanticii de domeniu în afara conceptelor proprietare de orchestrare ori de câte ori este practic."
+    },
+    {
+      "id": "t000572",
+      "source": "Model portability deserves the same caution. Framework abstractions can imply that models are interchangeable, but tool-use reliability, structured output behavior, context limits, latency, cost, and safety behavior differ. A production team should treat model substitution as a behavioral change and rerun evaluations. Portability means the system can migrate with bounded engineering work; it does not mean every model will satisfy the same reliability envelope without evidence.",
+      "translation": "Portabilitatea modelelor merită aceeași prudență. Abstracțiile cadrului pot sugera modele interschimbabile, dar fiabilitatea utilizării instrumentelor, comportamentul rezultatelor structurate, limitele contextului, latența, costul și comportamentul de siguranță diferă. O echipă de producție ar trebui să trateze înlocuirea modelului ca schimbare comportamentală și să reruleze evaluările. Portabilitatea înseamnă că sistemul poate migra cu efort ingineresc limitat; nu înseamnă că fiecare model va satisface același perimetru de fiabilitate fără dovezi."
+    },
+    {
+      "id": "t000573",
+      "source": "Stack",
+      "translation": "Stivă"
+    },
+    {
+      "id": "t000574",
+      "source": "Typical reason to choose it",
+      "translation": "Motiv tipic de alegere"
+    },
+    {
+      "id": "t000575",
+      "source": "OpenAI Agents SDK",
+      "translation": "OpenAI Agents SDK"
+    },
+    {
+      "id": "t000576",
+      "source": "Compact agent abstraction with tools, handoffs, guardrails, sessions, MCP, tracing, and structured outputs.",
+      "translation": "Abstracție compactă de agent cu instrumente, transferuri, protecții, sesiuni, MCP, trasare și rezultate structurate."
+    },
+    {
+      "id": "t000577",
+      "source": "Microsoft Agent Framework Enterprise-oriented .NET/Python framework unifying AutoGen/Semantic Kernel 1.0 directions; strong Microsoft ecosystem fit.",
+      "translation": "Microsoft Agent Framework Cadru .NET/Python orientat organizațional, care unifică direcțiile AutoGen/Semantic Kernel 1.0; potrivire puternică cu ecosistemul Microsoft."
+    },
+    {
+      "id": "t000578",
+      "source": "Stack",
+      "translation": "Stivă"
+    },
+    {
+      "id": "t000579",
+      "source": "Typical reason to choose it",
+      "translation": "Motiv tipic de alegere"
+    },
+    {
+      "id": "t000580",
+      "source": "Google ADK",
+      "translation": "Google ADK"
+    },
+    {
+      "id": "t000581",
+      "source": "Multi-language, tool- and workflow-oriented stack with evaluation, sandbox execution, deployment, and A2A support.",
+      "translation": "Stivă multilingvă orientată spre instrumente și fluxuri, cu evaluare, execuție izolată, implementare și sprijin A2A."
+    },
+    {
+      "id": "t000582",
+      "source": "LangGraph",
+      "translation": "LangGraph"
+    },
+    {
+      "id": "t000583",
+      "source": "Low-level graph runtime emphasizing durable state, checkpoints, interrupts, replay, and explicit control.",
+      "translation": "Mediu de execuție pe grafuri de nivel inferior, cu accent pe stare durabilă, puncte de control, întreruperi, reluare și control explicit."
+    },
+    {
+      "id": "t000584",
+      "source": "CrewAI",
+      "translation": "CrewAI"
+    },
+    {
+      "id": "t000585",
+      "source": "High-level role-oriented multi-agent abstractions plus structured Flows for bounded orchestration.",
+      "translation": "Abstracții multiagent de nivel înalt, orientate pe roluri, plus Flows structurate pentru orchestrare limitată."
+    },
+    {
+      "id": "t000586",
+      "source": "Custom runtime",
+      "translation": "Mediu de execuție personalizat"
+    },
+    {
+      "id": "t000587",
+      "source": "Appropriate when requirements are narrow, highly regulated, latency-sensitive, or when framework abstraction adds more risk than value.",
+      "translation": "Potrivit când cerințele sunt restrânse, puternic reglementate, sensibile la latență sau când abstracția cadrului adaugă mai mult risc decât valoare."
+    },
+    {
+      "id": "t000588",
+      "source": "11.2 A reference production architecture, built step by step",
+      "translation": "11.2 O arhitectură de producție de referință, construită pas cu pas"
+    }
+  ]
+}

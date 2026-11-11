@@ -86,7 +86,7 @@ def prepare(source: Path, destination: Path, language: str, work: Path, maximum_
     for old in (work / "chunks").glob("*.json"):
         old.unlink()
     (work / "template.html").write_text(template, encoding="utf-8")
-    manifest = {"source": str(source.resolve()), "sourceHash": digest(source.read_text(encoding="utf-8")), "destination": str(destination.resolve()), "language": language, "slotCount": len(segments), "chunkCount": len(chunks), "templateHash": digest(template), "sources": {s["id"]: digest(s["source"]) for s in segments}}
+    manifest = {"source": str(source.resolve()), "sourceHash": digest(source.read_text(encoding="utf-8")), "destination": str(destination.resolve()), "language": language, "slotCount": len(segments), "chunkCount": len(chunks), "maximumWords": maximum_words, "templateHash": digest(template), "sources": {s["id"]: digest(s["source"]) for s in segments}}
     (work / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding="utf-8")
     for index, segments in enumerate(chunks, 1):
         (work / "chunks" / f"{index:04d}.json").write_text(json.dumps({"language": language, "chunk": index, "segments": segments}, ensure_ascii=False, indent=2) + '\n', encoding="utf-8")
@@ -159,12 +159,15 @@ def localize_assets(markup: str, manifest: dict) -> str:
     return markup
 
 
-def refresh(work: Path) -> None:
+def refresh(work: Path, source: Path | None = None) -> None:
     """Re-prepare against a changed source, carrying translations over by exact source text."""
     manifest = json.loads((work / "manifest.json").read_text())
     previous = {}
+    prior_chunk_words = []
     for path in sorted((work / "chunks").glob("*.json")):
-        for segment in json.loads(path.read_text())["segments"]:
+        segments = json.loads(path.read_text())["segments"]
+        prior_chunk_words.append(sum(len(segment["source"].split()) for segment in segments))
+        for segment in segments:
             if segment.get("translation", "").strip():
                 previous.setdefault(segment["source"], segment["translation"])
     # Keep the replaced chunks; completed work must never be lost.
@@ -177,7 +180,7 @@ def refresh(work: Path) -> None:
         (backup / "chunks").mkdir()
         for path in (work / "chunks").glob("*.json"):
             (backup / "chunks" / path.name).write_bytes(path.read_bytes())
-    prepare(Path(manifest["source"]), Path(manifest["destination"]), manifest["language"], work, force=True)
+    prepare(source or Path(manifest["source"]), Path(manifest["destination"]), manifest["language"], work, maximum_words=manifest.get("maximumWords", max(prior_chunk_words, default=700)), force=True)
     if manifest.get('localizedAssets'):
         updated = json.loads((work / 'manifest.json').read_text())
         updated['localizedAssets'] = manifest['localizedAssets']
@@ -206,11 +209,12 @@ def main() -> int:
     for command in ("check", "assemble", "refresh"):
         p = sub.add_parser(command); p.add_argument("workdir", type=Path)
         if command == "assemble": p.add_argument("--force", action="store_true")
+        if command == "refresh": p.add_argument("--source", type=Path, help="Reviewed replacement canonical source; retains original source and chunks in previous/")
     args = parser.parse_args()
     try:
         if args.command == "prepare": prepare(args.source, args.destination, args.language, args.workdir, args.maximum_words, args.force)
         elif args.command == "assemble": assemble(args.workdir, args.force)
-        elif args.command == "refresh": refresh(args.workdir)
+        elif args.command == "refresh": refresh(args.workdir, args.source)
         else:
             manifest, _, _ = validate(args.workdir); print(f"All {manifest['slotCount']} segments are translated")
     except (ValueError, OSError, KeyError) as error:

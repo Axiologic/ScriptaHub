@@ -1,0 +1,676 @@
+{
+  "language": "ro",
+  "chunk": 1,
+  "segments": [
+    {
+      "id": "t000001",
+      "source": "BIAS IN AI",
+      "translation": ""
+    },
+    {
+      "id": "t000002",
+      "source": "Figure from PDF page 1",
+      "translation": ""
+    },
+    {
+      "id": "t000003",
+      "source": "COPYRIGHT",
+      "translation": ""
+    },
+    {
+      "id": "t000004",
+      "source": "Copyright © [2026] ScriptaHub All rights reserved.",
+      "translation": ""
+    },
+    {
+      "id": "t000005",
+      "source": "KDP publishing rights held by Outfinity SRL (Iași, Romania).",
+      "translation": ""
+    },
+    {
+      "id": "t000006",
+      "source": "Available for free at",
+      "translation": ""
+    },
+    {
+      "id": "t000007",
+      "source": "ScriptaHub.com",
+      "translation": ""
+    },
+    {
+      "id": "t000008",
+      "source": "Draft Edition 2026",
+      "translation": ""
+    },
+    {
+      "id": "t000009",
+      "source": "Author's Note",
+      "translation": ""
+    },
+    {
+      "id": "t000010",
+      "source": "This work was created under the umbrella of ScriptaHub as part of two interconnected research programs, one dedicated to Artificial Intelligence and the other to Outfinitism, both led by Sînică Alboaie. To explore the details of how these two programs intersect and build upon each other, we invite readers to visit the Outfinity Venture Studio page at",
+      "translation": ""
+    },
+    {
+      "id": "t000011",
+      "source": "www.outfinity.ch",
+      "translation": ""
+    },
+    {
+      "id": "t000012",
+      "source": "While Artificial Intelligence language models were used to assist with text generation, the foundational philosophy, thematic structure, and analytical approach derive exclusively from the author's decades of dedicated study of social phenomena, social technologies, and genuine hard technologies resulting from various European and self funded research projects. Recently, within the ScriptaHub research project, we have been deeply studying AI generated literature and its automated verification using neuro symbolic approaches; all the free books made available to the public are part of the suite of works we use to test our latest technologies.",
+      "translation": ""
+    },
+    {
+      "id": "t000013",
+      "source": "PREFACE",
+      "translation": ""
+    },
+    {
+      "id": "t000014",
+      "source": "This book is written as a course for engineers and students who need a rigorous mental model of AI bias without being forced through mathematical formalism that does not improve the engineering decision.",
+      "translation": ""
+    },
+    {
+      "id": "t000015",
+      "source": "Bias is often taught as a moral defect in data. That framing is too narrow for modern systems. The same model can be accurate overall and unreliable for a subgroup; a proxy can be statistically predictive and institutionally misleading; an aligned language model can suppress an explicit stereotype while retaining an indirect dependence; a retrieval layer can reintroduce a disparity that the base model no longer expresses; and an apparently neutral judge can prefer one answer because it appears first. The field becomes coherent only when these are understood as different failure mechanisms inside a larger socio-technical system.",
+      "translation": ""
+    },
+    {
+      "id": "t000016",
+      "source": "The narrative therefore moves from fundamentals to increasingly composed systems. The first two chapters build the conceptual and classical ML foundations. The third explains how LLM pretraining and post-training change the form of the problem. The fourth treats mitigation, retrieval, tools, and agents as system engineering. The fifth follows bias into multimodal, synthetic-data, and high-stakes applications. The final chapter turns fairness into an assurance problem and then asks what research directions can survive the limitations already exposed by the state of the art.",
+      "translation": ""
+    },
+    {
+      "id": "t000017",
+      "source": "The book avoids “math washing.” Fairness has important mathematical results, especially incompatibility results, calibration, causal reasoning, and uncertainty, but equations are useful only when they clarify a mechanism or a constraint. Here those ideas are explained conceptually and tied to engineering consequences. Readers who need the formal treatment can follow the primary references. A technical glossary at the end provides plain-language explanations and Wikipedia orientation links for concepts that a motivated high-school graduate or first-year student may not yet know.",
+      "translation": ""
+    },
+    {
+      "id": "t000018",
+      "source": "CONTENTS",
+      "translation": ""
+    },
+    {
+      "id": "t000019",
+      "source": "Chapter",
+      "translation": ""
+    },
+    {
+      "id": "t000020",
+      "source": "Chapter 1 · THE ANATOMY OF BIAS: FROM DATA TO SOCIAL HARM",
+      "translation": ""
+    },
+    {
+      "id": "t000021",
+      "source": "Chapter 2 · FAIRNESS BEFORE FOUNDATION MODELS: DEFINITIONS, VALIDITY, AND HARD",
+      "translation": ""
+    },
+    {
+      "id": "t000022",
+      "source": "Chapter 3 · LARGE LANGUAGE MODELS: HOW BIAS IS LEARNED, HIDDEN, AND REVEALED",
+      "translation": ""
+    },
+    {
+      "id": "t000023",
+      "source": "Chapter 4 · FROM DEBIASING TO FAIRNESS ENGINEERING: MITIGATION, RAG, TOOLS, AND",
+      "translation": ""
+    },
+    {
+      "id": "t000024",
+      "source": "Chapter 5 · BIAS IN THE WORLD: MULTIMODAL, SYNTHETIC, AND HIGH-STAKES SYSTEMS",
+      "translation": ""
+    },
+    {
+      "id": "t000025",
+      "source": "Chapter 6 · CONTINUOUS FAIRNESS ASSURANCE AND WHAT COMES NEXT",
+      "translation": ""
+    },
+    {
+      "id": "t000026",
+      "source": "HOW TO READ THIS BOOK",
+      "translation": ""
+    },
+    {
+      "id": "t000027",
+      "source": "The book follows the system boundary outward. Each time the field learns that a narrower object is insufficient, the analysis moves to the next layer.",
+      "translation": ""
+    },
+    {
+      "id": "t000028",
+      "source": "The diagram is not a causal graph and should not be read as one. It is a boundary-setting device. A fairness claim about a foundation model cannot automatically be transferred to a product that wraps that model in retrieval, thresholds, tools, or human review.",
+      "translation": ""
+    },
+    {
+      "id": "t000029",
+      "source": "Figure from PDF page 5",
+      "translation": ""
+    },
+    {
+      "id": "t000030",
+      "source": "Figure 1. Orientation: the operational system is wider than the model.",
+      "translation": ""
+    },
+    {
+      "id": "t000031",
+      "source": "The order of the chapters follows this widening boundary. We begin with the meaning of bias and the provenance of data, then move through classical fairness definitions, foundation models, composed agentic systems, real-world deployment, and finally the assurance mechanisms needed to keep evidence valid over time.",
+      "translation": ""
+    },
+    {
+      "id": "t000032",
+      "source": "Whenever a table or diagram appears, it is used as a compression of an argument already introduced in prose. The surrounding paragraphs explain why the artifact matters and what conclusion it does and does not support.",
+      "translation": ""
+    },
+    {
+      "id": "t000033",
+      "source": "1. THE ANATOMY OF BIAS: FROM DATA TO SOCIAL HARM",
+      "translation": ""
+    },
+    {
+      "id": "t000034",
+      "source": "A hospital can deploy a model that predicts future healthcare cost with impressive accuracy and still allocate too little care to patients who historically had less access to expensive services. This is not a paradox. It is what happens when a convenient target is treated as if it were the thing society actually cares about. The 2019 study by Obermeyer and colleagues became a canonical example because it exposed a pattern that recurs across AI: a technically coherent pipeline can be wrong at the level of meaning. This chapter begins there and follows bias backward through data, labels, objectives, and institutional processes.",
+      "translation": ""
+    },
+    {
+      "id": "t000035",
+      "source": "The chapter first separates the meanings hidden inside the word bias, then treats data as institutional measurement, and finally follows distortion through objectives, thresholds, workflows, and feedback.",
+      "translation": ""
+    },
+    {
+      "id": "t000036",
+      "source": "1.1 What the word “bias” hides",
+      "translation": ""
+    },
+    {
+      "id": "t000037",
+      "source": "The word bias is useful precisely because it points toward systematic distortion, and dangerous because it can refer to different objects without warning. A student can hear “the model is biased” and imagine one defect with one remedy. In practice, statistical bias, inductive bias, representational harm, allocational disparity, measurement error, and normative disagreement are related but not interchangeable. The first discipline of fairness engineering is therefore semantic: name the object before choosing the metric.",
+      "translation": ""
+    },
+    {
+      "id": "t000038",
+      "source": "The easiest way to become confused about bias is to move silently between statistical and social meanings. An estimator can be statistically biased without harming anyone, while a perfectly unbiased estimator of a badly chosen target can reproduce an institutional injustice with great precision. Machine learning also deliberately uses inductive bias. Convolution, locality, sparsity, smoothness, attention, architectural priors, regularization, and preference optimization all constrain what a learner can infer from finite data. Without such preferences, generalization is impossible. Calling every inductive preference a social bias would make the word useless. The practical discipline is to state the object and reference explicitly: a sampling bias relative to a target population, an error disparity relative to groups, a stereotypical association relative to a normative expectation, or an allocational disparity relative to a policy objective.",
+      "translation": ""
+    },
+    {
+      "id": "t000039",
+      "source": "A second distinction concerns descriptive regularities versus normative judgments. A model may correctly detect a real difference in an observed population and still be unsuitable for a decision because the difference arose from unequal access, measurement error, or a variable society has decided must not determine the outcome. Conversely, forcing numerical parity can be harmful when groups genuinely face different clinical risks or when an intervention is intended to compensate for unequal starting conditions. Fairness is therefore not achieved by erasing every group difference. It requires an account of which differences are relevant to the task, which are consequences of injustice, which are proxies for protected characteristics, and which errors matter most.",
+      "translation": ""
+    },
+    {
+      "id": "t000040",
+      "source": "In statistics, bias has a precise and comparatively neutral meaning: an estimator is biased when its expected value systematically differs from the quantity it is intended to estimate. In machine learning, the word also appears in the bias-variance trade-off and in the idea of inductive bias: every learner embodies assumptions that make generalization possible. A convolutional network assumes local spatial structure; a transformer assumes that attention over token sequences is a useful computational primitive; a regularizer encodes preferences among possible solutions. These forms of bias are not moral failures. They are unavoidable aspects of inference.",
+      "translation": ""
+    },
+    {
+      "id": "t000041",
+      "source": "Social and algorithmic bias are different. Here the concern is that an AI system systematically disadvantages, misrepresents, erases, stereotypes, or allocates worse outcomes to people associated with particular groups. That concern is partly empirical and partly normative. The empirical question asks whether behavior differs. The normative question asks whether the difference is unjustified, harmful, or prohibited. A group difference in a medical recommendation may be necessary if the medically relevant condition truly differs. The same difference may be indefensible if it is caused by unequal access to care, a poor proxy, or a historically distorted label.",
+      "translation": ""
+    },
+    {
+      "id": "t000042",
+      "source": "NIST's work on AI bias is useful precisely because it refuses to reduce bias to bad data. It distinguishes systemic bias, computational and statistical bias, and human cognitive bias, and it treats all three as possible sources of harm across the lifecycle (Schwartz et al., 2022). Suresh and Guttag similarly describe sources of downstream harm across collection, development, and deployment rather than locating responsibility in one dataset or one model. The practical implication is that a clean training dataset cannot certify a fair system, and a biased dataset does not mechanically determine a biased deployment.",
+      "translation": ""
+    },
+    {
+      "id": "t000043",
+      "source": "For engineers, the safest convention is to ask a qualifying question whenever the word bias appears: bias of what, relative to what reference, measured where in the system, for which population, under which distribution, and with respect to which harm? Without those qualifiers, \"the model is biased\" is usually too vague to guide an experiment.",
+      "translation": ""
+    },
+    {
+      "id": "t000044",
+      "source": "Suppose a model approves loans at different rates for two demographic groups. The difference might be evidence of unfairness, but it is not a proof. Perhaps the underlying applicant distributions differ in ways that are legitimately relevant to the decision. Perhaps the outcome variable is itself distorted by historical discrimination. Perhaps the model is equally accurate for both groups but the operational threshold creates different error costs. Perhaps the apparent group is only a proxy for another variable. Perhaps the data are collected from different institutions with different practices. The same observed disparity can arise from very different mechanisms.",
+      "translation": ""
+    },
+    {
+      "id": "t000045",
+      "source": "The distinctions in the table matter because the same word can describe a useful learning prior, an estimation error, a measurement defect, or a social harm. Treating them as synonyms leads teams to choose remedies for a different problem than the one they actually have.",
+      "translation": ""
+    },
+    {
+      "id": "t000046",
+      "source": "Table 1. Meanings that should not be collapsed into one word",
+      "translation": ""
+    },
+    {
+      "id": "t000047",
+      "source": "Concept",
+      "translation": ""
+    },
+    {
+      "id": "t000048",
+      "source": "Meaning in practice",
+      "translation": ""
+    },
+    {
+      "id": "t000049",
+      "source": "Statistical bias",
+      "translation": ""
+    },
+    {
+      "id": "t000050",
+      "source": "A systematic estimation error relative to a defined statistical target. It is neither necessary nor sufficient for social unfairness.",
+      "translation": ""
+    },
+    {
+      "id": "t000051",
+      "source": "Inductive bias",
+      "translation": ""
+    },
+    {
+      "id": "t000052",
+      "source": "A structural preference that makes learning and generalization possible, such as locality, smoothness, sparsity, or architectural priors.",
+      "translation": ""
+    },
+    {
+      "id": "t000053",
+      "source": "Representational harm",
+      "translation": ""
+    },
+    {
+      "id": "t000054",
+      "source": "Stereotyping, denigration, erasure, or asymmetric portrayal that changes how groups are represented rather than directly allocating a resource.",
+      "translation": ""
+    },
+    {
+      "id": "t000055",
+      "source": "Allocational harm",
+      "translation": ""
+    },
+    {
+      "id": "t000056",
+      "source": "A difference in access to opportunity, service, exposure, cost, review, or another consequential resource.",
+      "translation": ""
+    },
+    {
+      "id": "t000057",
+      "source": "Measurement bias",
+      "translation": ""
+    },
+    {
+      "id": "t000058",
+      "source": "A systematic mismatch between a recorded proxy or label and the construct the application intends to reason about.",
+      "translation": ""
+    },
+    {
+      "id": "t000059",
+      "source": "Concept",
+      "translation": ""
+    },
+    {
+      "id": "t000060",
+      "source": "Meaning in practice",
+      "translation": ""
+    },
+    {
+      "id": "t000061",
+      "source": "Normative choice",
+      "translation": ""
+    },
+    {
+      "id": "t000062",
+      "source": "A value judgment about which differences are relevant, acceptable, compensable, or unjust.",
+      "translation": ""
+    },
+    {
+      "id": "t000063",
+      "source": "The practical lesson is diagnostic. Before proposing mitigation, state which row describes the observed failure and which row describes the harm that matters. A representational stereotype may require different evidence and intervention from an allocational disparity, even when both originate in the same model.",
+      "translation": ""
+    },
+    {
+      "id": "t000064",
+      "source": "This is why fairness research increasingly borrows ideas from measurement theory and causal inference. Jacobs and Wallach argue that fairness failures often begin before modeling, when a social construct such as",
+      "translation": ""
+    },
+    {
+      "id": "t000065",
+      "source": "\"risk\",",
+      "translation": ""
+    },
+    {
+      "id": "t000066",
+      "source": "\"merit\",",
+      "translation": ""
+    },
+    {
+      "id": "t000067",
+      "source": "\"toxicity\",",
+      "translation": ""
+    },
+    {
+      "id": "t000068",
+      "source": "\"quality\", or \"need\" is mapped to a measurable proxy.",
+      "translation": ""
+    },
+    {
+      "id": "t000069",
+      "source": "The mapping can be statistically reliable and still conceptually wrong. The classic healthcare case studied by Obermeyer and colleagues illustrates the point. A commercial system used expected healthcare cost as a proxy for health need. Because Black patients historically received less care at the same level of illness, cost underestimated need for Black patients. The algorithm was effective at predicting its label and still produced racially unequal health management because the label embodied a social process rather than the construct the institution cared about.",
+      "translation": ""
+    },
+    {
+      "id": "t000070",
+      "source": "The engineering lesson is uncomfortable but important. More predictive accuracy against a distorted target can make a system more consistently wrong in the real sense that matters.",
+      "translation": ""
+    },
+    {
+      "id": "t000071",
+      "source": "Two broad families of harm are useful throughout this book. Representational harms concern how groups are portrayed, described, associated, or omitted. A language model that repeatedly associates women with care work and men with leadership exhibits a representational pattern even if no material resource is immediately allocated. A text-to-image system that generates mostly white men for",
+      "translation": ""
+    },
+    {
+      "id": "t000072",
+      "source": "\"CEO\" or mostly women for \"nurse\" does the same.",
+      "translation": ""
+    },
+    {
+      "id": "t000073",
+      "source": "These harms matter because representation shapes expectations, cultural visibility, and perceived normality.",
+      "translation": ""
+    },
+    {
+      "id": "t000074",
+      "source": "Allocational harms concern resources, opportunities, burdens, and decisions. Hiring, lending, admissions, diagnosis, moderation, fraud detection, insurance pricing, criminal justice, and ranking systems can all allocate benefits or costs. A model may appear polite and non-stereotypical while still allocating worse outcomes. Conversely, a language model may occasionally generate an offensive stereotype without being used in any decision process. Both are problems, but they require different evaluations and different risk models.",
+      "translation": ""
+    },
+    {
+      "id": "t000075",
+      "source": "Large language models blur the boundary because the same model may alternate between representational and allocational roles. A general assistant can write a story in one interaction, rank resumes in the next, recommend a school later, and then act as a judge evaluating another model. Measuring only toxic or stereotypical language is therefore insufficient for understanding what happens when an LLM is embedded in a decision pipeline.",
+      "translation": ""
+    },
+    {
+      "id": "t000076",
+      "source": "Intersectionality makes this more concrete. Aggregate categories such as",
+      "translation": ""
+    },
+    {
+      "id": "t000077",
+      "source": "\"women\" or \"Black users\" can conceal very different behavior at intersections of gender, race, age, disability, language, geography, or socioeconomic status. Gender Shades became influential not because it discovered that averages can be misleading in the abstract, but because it demonstrated the effect in commercial computer-vision systems: the largest errors occurred for darker-skinned women, a subgroup that disappeared inside aggregate performance. The same pattern recurs in language technologies when a benchmark reports broad English performance while overlooking a dialect, accent, or culturally specific use case. A mature analysis therefore asks who is missing from the average before it celebrates the average.",
+      "translation": ""
+    },
+    {
+      "id": "t000078",
+      "source": "The most useful working definition for the remainder of this book is deliberately operational. Harmful bias is a systematic dependence in an AI system that produces unjustified differences in representation, quality of service, allocation, burden, or opportunity for relevant people or groups. The word",
+      "translation": ""
+    },
+    {
+      "id": "t000079",
+      "source": "\"unjustified\" prevents the definition from degenerating into a ban on all statistical differences. The phrase",
+      "translation": ""
+    },
+    {
+      "id": "t000080",
+      "source": "\"AI system\" keeps the boundary wider than the model.",
+      "translation": ""
+    },
+    {
+      "id": "t000081",
+      "source": "And",
+      "translation": ""
+    },
+    {
+      "id": "t000082",
+      "source": "\"systematic dependence\" makes the claim testable: we can look for mechanisms, counterfactual sensitivity, subgroup disparities, exposure differences, or persistent errors rather than relying on intuition alone.",
+      "translation": ""
+    },
+    {
+      "id": "t000083",
+      "source": "The practical consequence is simple but far-reaching: never accept",
+      "translation": ""
+    },
+    {
+      "id": "t000084",
+      "source": "“reduce bias” as an engineering requirement until the object, reference population, harm model, and acceptable trade-off are stated. Otherwise a project can optimize a number while silently changing the question.",
+      "translation": ""
+    },
+    {
+      "id": "t000085",
+      "source": "1.2 Data are measurements made by institutions",
+      "translation": ""
+    },
+    {
+      "id": "t000086",
+      "source": "Training data are often described as raw material. In consequential systems they are better understood as traces produced by institutions. A medical record is shaped by who obtained care, what clinicians measured, what insurance reimbursed, and what the software retained. A hiring history reflects who applied, who was screened, how jobs were advertised, and which managers were promoted. The dataset is already the result of a social and technical process before machine learning begins.",
+      "translation": ""
+    },
+    {
+      "id": "t000087",
+      "source": "The phrase",
+      "translation": ""
+    },
+    {
+      "id": "t000088",
+      "source": "\"training data\" makes records sound as if they existed naturally and were later collected. In many important applications the records are artifacts of a process. Arrest data depend on where police were deployed. Medical expenditure depends on access to care, insurance, and provider behavior. Performance reviews depend on managers and organizational culture. Toxicity labels depend on annotators, guidelines, platform norms, and the language varieties represented in the annotation pool. Even web text is not a census of human knowledge; it is shaped by connectivity, literacy, publishing incentives, moderation, language dominance, and the economics of hosting content.",
+      "translation": ""
+    },
+    {
+      "id": "t000089",
+      "source": "This distinction explains why removing a protected attribute rarely removes the relevant information. High-dimensional data contain proxies. Postal code can encode neighborhood segregation; names can correlate with language, region, ethnicity, or gender; school and employer histories can reflect socioeconomic opportunity. In language models, dialect, topics, stylistic patterns, and named entities can carry demographic information even when no explicit attribute is supplied. Proxy dependence is not automatically illegitimate, because the same features can contain task-relevant information. The question is whether the pathway from proxy to outcome is defensible for the intended use.",
+      "translation": ""
+    },
+    {
+      "id": "t000090",
+      "source": "When a model learns from such data, it is not merely learning",
+      "translation": ""
+    },
+    {
+      "id": "t000091",
+      "source": "\"the world\".",
+      "translation": ""
+    },
+    {
+      "id": "t000092",
+      "source": "It is learning a projection of the world filtered through human institutions. Historical bias therefore does not require overt prejudice in the dataset. It can arise because the probability that an event is observed differs between groups. A model trained on hospital utilization may learn access rather than need. A fraud model trained on investigated cases may learn investigator attention rather than true fraud prevalence.",
+      "translation": ""
+    },
+    {
+      "id": "t000093",
+      "source": "Representation bias occurs when the training or evaluation distribution does not adequately cover the populations or conditions in which the system will be used. This is not simply class imbalance. The missing region may be an intersection: older speakers of a low-resource dialect, dark-skinned women under difficult lighting, rural users with older devices, or patients with a rare disease and a comorbidity. The combinatorial nature of intersectionality means that aggregate diversity statistics can look healthy while important cells remain nearly empty.",
+      "translation": ""
+    },
+    {
+      "id": "t000094",
+      "source": "The Gender Shades study became influential because it made this visible in computer vision. Buolamwini and Gebru evaluated commercial gender classification systems across intersections of skin type and gender presentation and found dramatically higher error rates for darker-skinned women than for lighter-skinned men. The result was not merely",
+      "translation": ""
+    },
+    {
+      "id": "t000095",
+      "source": "\"the dataset is imbalanced\".",
+      "translation": ""
+    },
+    {
+      "id": "t000096",
+      "source": "It demonstrated that performance had to be reported at intersectional granularity because aggregate accuracy concealed the failure mode.",
+      "translation": ""
+    },
+    {
+      "id": "t000097",
+      "source": "Speech recognition shows the same principle in another modality. Koenecke and colleagues reported substantially higher word error rates for Black speakers than for white speakers across several commercial automated speech recognition systems. This matters because speech systems are often treated as neutral input channels. If the channel itself is less reliable for some users, every downstream service inherits the asymmetry.",
+      "translation": ""
+    },
+    {
+      "id": "t000098",
+      "source": "Every supervised learning system converts a real-world goal into a target variable. That conversion is a design decision.",
+      "translation": ""
+    },
+    {
+      "id": "t000099",
+      "source": "\"Good employee\" becomes performance review, promotion, retention, sales, or manager rating.",
+      "translation": ""
+    },
+    {
+      "id": "t000100",
+      "source": "\"Health need\" becomes diagnosis, utilization, cost, hospitalization, or an expert score.",
+      "translation": ""
+    },
+    {
+      "id": "t000101",
+      "source": "\"Toxic\" becomes a crowd label produced under a particular instruction. \"Engaging recommendation\" becomes click-through, watch time, or purchase.",
+      "translation": ""
+    },
+    {
+      "id": "t000102",
+      "source": "The target may be noisy, biased, strategically manipulated, or simply narrower than the real construct. A system can then optimize the proxy while damaging the intended goal. This is closely related to specification gaming in reinforcement learning: once a measurable objective becomes the target, the system has no intrinsic reason to preserve the broader intention behind it.",
+      "translation": ""
+    },
+    {
+      "id": "t000103",
+      "source": "Engineers should therefore document the causal path from construct to measurement. Who creates the label? Under what incentives? What events are invisible? Does the label mean the same thing for all groups? Does observing the label require access to a service? Is it affected by previous model decisions? These questions are not social-science decoration. They determine whether the supervised target is usable evidence.",
+      "translation": ""
+    },
+    {
+      "id": "t000104",
+      "source": "Human annotation is often represented as ground truth, but many socially sensitive labels are intrinsically contestable. Different annotators can reasonably disagree about toxicity, offensiveness, political slant, professional quality, or acceptable risk. Disagreement can correlate with demographic background or cultural context. Majority vote produces a convenient single label but can turn a distribution of perspectives into an artificial certainty.",
+      "translation": ""
+    },
+    {
+      "id": "t000105",
+      "source": "LLM post-training magnifies this issue because preference data shape behavior directly. In RLHF, annotators compare outputs, and a reward model learns what kinds of responses are preferred. If raters reward confidence, verbosity, politeness, agreement, or a particular moral framing, the preference model can learn those preferences as behavioral objectives. Sycophancy is a concrete example. Research by Sharma and colleagues found that human preference data can reward responses that agree with the user's stated beliefs, even when agreement conflicts with truthfulness. Preference optimization can therefore create a bias toward pleasing the evaluator.",
+      "translation": ""
+    },
+    {
+      "id": "t000106",
+      "source": "The appropriate response is not to eliminate humans. It is to treat annotation as measurement. Rater composition, instructions, disagreement, and uncertainty should be part of the dataset description, especially when labels encode values rather than facts.",
+      "translation": ""
+    },
+    {
+      "id": "t000107",
+      "source": "The dataset should therefore be documented as a measurement system with provenance and blind spots, not as a neutral sample of reality. That framing prepares the transition to objectives and deployment, where the same records acquire new meaning through optimization and action.",
+      "translation": ""
+    },
+    {
+      "id": "t000108",
+      "source": "1.3 How objectives, deployment, and feedback create system bias",
+      "translation": ""
+    },
+    {
+      "id": "t000109",
+      "source": "Even a carefully sampled dataset does not determine the social behavior of a product. Objectives choose which errors matter during optimization; thresholds turn scores into actions; interfaces decide what evidence humans see; and deployment changes the environment that generates future data. Bias is therefore better modeled as a path through transformations than as a substance located in one component.",
+      "translation": ""
+    },
+    {
+      "id": "t000110",
+      "source": "Consider a hypothetical hiring assistant. The base model may show no obvious gender stereotype on a public benchmark. Yet the product retrieves examples from a historical archive in which senior roles are disproportionately associated with men, ranks candidates using a summary score that rewards uninterrupted employment, and asks a human reviewer to inspect only the top ten candidates. Nothing in the model weights alone explains the resulting disparity. The retrieval corpus, ranking objective, proxy for experience, interface, and limited human attention jointly create the outcome. If an audit tests only the base model, it can certify the least consequential component of the system.",
+      "translation": ""
+    },
+    {
+      "id": "t000111",
+      "source": "This is the essence of the socio-technical view developed by Selbst and colleagues and reflected in lifecycle frameworks such as Suresh and Guttag's taxonomy and NIST's treatment of systemic, computational, and human bias. An AI system sits inside institutions that define categories, collect records, allocate resources, and react to model outputs. The model does not merely observe that environment; after deployment it can modify it. A recommender changes exposure, a fraud model changes which transactions are investigated, and a predictive-maintenance system changes which failures become visible. The next dataset is partly produced by the previous model.",
+      "translation": ""
+    },
+    {
+      "id": "t000112",
+      "source": "A useful engineering model is to view the AI lifecycle as a sequence of transformations rather than a training stage followed by deployment. Society produces records. Institutions decide what to collect. Data pipelines sample and clean those records. Annotators apply labels. Developers define objectives. Models compress statistical structure. Fine-tuning and preference optimization reshape behavior. Product interfaces frame user requests. Retrieval systems select evidence. Guardrails filter outputs. Users react, and those reactions become new data. Bias can be created, amplified, attenuated, or merely hidden at every transition.",
+      "translation": ""
+    },
+    {
+      "id": "t000113",
+      "source": "This lifecycle perspective is not an invitation to declare every system hopelessly political. It is a way to locate testable hypotheses. If a hiring model is unfair, the next question is not",
+      "translation": ""
+    },
+    {
+      "id": "t000114",
+      "source": "\"which debiasing algorithm should we apply?\" but \"where is the disparity being introduced, and which intervention targets that mechanism?\"",
+      "translation": ""
+    },
+    {
+      "id": "t000115",
+      "source": "Fairness engineering starts with diagnosis.",
+      "translation": ""
+    },
+    {
+      "id": "t000116",
+      "source": "Model-only thinking is attractive because models are easy to benchmark. They have names, versions, weights, APIs, and leaderboards. Social systems are messy. But the model boundary is often arbitrary. A production assistant may use one model to classify the user request, another to embed documents, a vector database to retrieve context, a third model to generate an answer, a moderation model to filter it, and a judge model to decide whether the answer is acceptable. The user experiences a single system. Fairness can fail in any component or through their interaction.",
+      "translation": ""
+    },
+    {
+      "id": "t000117",
+      "source": "The same is true in classical ML. A calibrated risk model can become unfair after a threshold is chosen. A fair ranker can be placed behind an unfair retrieval stage. A facial recognition model can be technically accurate on a benchmark while the decision to deploy face recognition in a particular institutional context creates a different class of harm. Selbst and colleagues describe this as an abstraction problem: technical work often draws the system boundary too narrowly and then solves the wrong fairness problem very precisely.",
+      "translation": ""
+    },
+    {
+      "id": "t000118",
+      "source": "The book will return repeatedly to this principle. A model card can describe a model. It cannot certify a product. A benchmark can measure behavior under a test distribution. It cannot certify future behavior under a new distribution. A mitigation can reduce one disparity. It cannot prove justice.",
+      "translation": ""
+    },
+    {
+      "id": "t000119",
+      "source": "The system boundary should therefore be drawn around the path from input to consequence. For an LLM application that may include a system prompt, retrieval index, embedding model, reranker, memory store, tool permissions, policy filters, a human approval step, and the business rule that interprets the final answer. Each layer can amplify or attenuate a disparity created elsewhere. The fact that a component is \"only infrastructure\" is not evidence that it is fairness-neutral. A retrieval cutoff can allocate attention; a latency budget can degrade service for languages that tokenize less efficiently; an escalation policy can send one subgroup to human review more often than another.",
+      "translation": ""
+    },
+    {
+      "id": "t000120",
+      "source": "This broader boundary also changes how responsibility should be reasoned about. It is usually unproductive to search for a single guilty component. The engineering goal is causal localization: if a disparity is observed, which transformations are necessary for it to appear, and which interventions remove it without causing a more serious failure? A counterfactual test can isolate an input cue; a component ablation can remove retrieval; a reranking experiment can test exposure; a threshold sweep can reveal policy effects; an audit of labels can expose a proxy. Fairness work becomes a form of debugging, but the specification includes social consequences rather than only functional correctness.",
+      "translation": ""
+    },
+    {
+      "id": "t000121",
+      "source": "The payoff is conceptual clarity. A model card can describe known properties of a model, but it cannot certify every product that embeds the model. A benchmark can reveal a failure mode under a controlled prompt, but it cannot guarantee behavior after tool use, personalization, or a distribution shift. The unit of assurance is the deployed system and its operating context. This principle will recur throughout the book, because almost every apparent novelty in LLM fairness becomes easier to understand once the system boundary is drawn correctly.",
+      "translation": ""
+    },
+    {
+      "id": "t000122",
+      "source": "The lifecycle diagram locates the points at which meaning can change between the observed world and the experienced outcome. Its arrows indicate transformation order, not a claim that every step is a sufficient causal explanation.",
+      "translation": ""
+    },
+    {
+      "id": "t000123",
+      "source": "Figure from PDF page 12",
+      "translation": ""
+    },
+    {
+      "id": "t000124",
+      "source": "Figure 2. Bias can be introduced, transformed, or amplified at every transformation between observation and outcome.",
+      "translation": ""
+    },
+    {
+      "id": "t000125",
+      "source": "Reading the chain from left to right changes the audit question. A disparity at the outcome may have entered through sampling, target construction, optimization, a threshold, or the surrounding workflow. Retaining evidence at each transformation is what makes diagnosis possible.",
+      "translation": ""
+    },
+    {
+      "id": "t000126",
+      "source": "A useful thought experiment is to ask what would happen if the model were replaced tomorrow by a different model with identical benchmark scores. If the disparity remains because the same archive is retrieved, the same shortlist cutoff is applied, and the same human workflow ignores uncertainty, changing model weights was never the main intervention. Conversely, if a disparity disappears when the model is swapped while the rest of the pipeline remains fixed, the model becomes a stronger causal suspect. This component-substitution mindset is a practical way to avoid philosophical vagueness: system-level thinking should produce more precise experiments, not less precision.",
+      "translation": ""
+    },
+    {
+      "id": "t000127",
+      "source": "System boundaries also determine what can be promised. A foundation-model vendor may provide strong evidence about a base model, while the application developer controls retrieval, prompts, tools, and policy. Neither evidence set substitutes for the other. Assurance claims should therefore be compositional and modest: component evidence is inherited only where integration preserves the assumptions under which it was obtained. This is particularly important when models are embedded in products whose incentives and user populations differ from those of the original evaluation.",
+      "translation": ""
+    },
+    {
+      "id": "t000128",
+      "source": "A dataset does not determine a model by itself. The objective tells the learning system which mistakes matter. Standard objectives are usually averages: average cross-entropy, average reward, average click-through, average exact match, average satisfaction. Average optimization can sacrifice a small subgroup with little effect on the headline metric. If a population constitutes one percent of traffic, a severe degradation for that population may be almost invisible in the global loss. Group-aware objectives, reweighting, distributionally robust methods, or explicit constraints can change this trade-off, but only after the subgroup and the relevant harm have been identified.",
+      "translation": ""
+    },
+    {
+      "id": "t000129",
+      "source": "Decision thresholds create another separation between prediction and policy. A risk score can be well calibrated and still produce unequal false-positive rates under a common threshold when base rates differ. A product team can also choose different thresholds because the costs of errors differ across contexts. This is why fairness debates cannot stop at the model score. The model produces information; the policy decides what happens because of it. In a language-model application the analogous policy choices include when to refuse, when to escalate to a human, when to invoke a tool, how many retrieved documents to read, and what confidence triggers an automatic action.",
+      "translation": ""
+    },
+    {
+      "id": "t000130",
+      "source": "This is not a failure of mathematics. It is a warning that the system owner must choose which errors matter, to whom, and under what policy. Fairness is partly a problem of resource and risk allocation, not merely a property of the predictive model.",
+      "translation": ""
+    },
+    {
+      "id": "t000131",
+      "source": "A static test assumes that the model sees a distribution that exists independently of the model. Many deployed systems violate this assumption. Recommendations change what users consume. Credit decisions change who receives capital and therefore future credit histories. Police deployment affects where incidents are observed. Content moderation changes which linguistic communities remain visible. Automated hiring changes the future employee pool from which new training data are collected.",
+      "translation": ""
+    },
+    {
+      "id": "t000132",
+      "source": "This creates feedback loops. A recommendation system that initially underexposes niche creators receives fewer interactions from those creators, then learns that their content is less relevant, further reducing exposure. A fraud model that sends more investigations toward one population generates more labeled fraud examples from that population even if true prevalence is equal. The model is partly creating the data it later treats as evidence.",
+      "translation": ""
+    },
+    {
+      "id": "t000133",
+      "source": "Long-term fairness research treats these systems as sequential environments rather than one-shot classifiers. The distinction matters because a locally fair action can have unequal long-term effects, while a temporary disparity may sometimes be justified to correct historical under-observation. Static fairness metrics cannot answer these questions alone.",
+      "translation": ""
+    },
+    {
+      "id": "t000134",
+      "source": "For engineers, the practical consequence is to treat objectives and deployment rules as auditable artifacts. A fairness review should be able to answer what is optimized, which terms are averaged, what thresholds turn scores into actions, what information is hidden after an action, and how the system changes future inputs. These questions often identify a remedy that is cheaper and safer than changing the base model. A retrieval quota, escalation rule, threshold adjustment, or user-interface change may address the operational disparity while preserving useful model capability.",
+      "translation": ""
+    }
+  ]
+}

@@ -1,0 +1,686 @@
+{
+  "language": "ro",
+  "chunk": 2,
+  "segments": [
+    {
+      "id": "t000131",
+      "source": "This matters for ReAct because the pattern gives the thought text a privileged role. The thought selects an action, and the full transcript may later be used for debugging, memory, or explanation. If the thought is unfaithful, the trace can still document what the agent said before acting, but it cannot guarantee why the model preferred the action. It is process telemetry, not a causal account of the neural computation. Trust should therefore rest on observable inputs, authorised actions, environmental outcomes, and external validation rather than on the eloquence of the reasoning trace.",
+      "translation": "Acest lucru contează pentru ReAct deoarece tiparul acordă textului gândirii un rol privilegiat. Gândirea selectează o acțiune, iar transcrierea completă poate fi folosită ulterior pentru depanare, memorie sau explicație. Dacă gândirea nu este fidelă, urma poate documenta în continuare ce a spus agentul înainte de a acționa, dar nu poate garanta de ce modelul a preferat acțiunea. Este telemetrie de proces, nu o descriere cauzală a calculului neuronal. Încrederea ar trebui, așadar, să se bazeze pe intrări observabile, acțiuni autorizate, rezultate în mediu și validare externă, nu pe elocvența urmei de raționament."
+    },
+    {
+      "id": "t000132",
+      "source": "The assumption that more reasoning is automatically better is also unstable. The Curse of Chain-of-Thought reports settings in pattern-based in-context learning where explicit reasoning underperforms direct answering across multiple models and benchmarks. Apple's Illusion of Thinking experiments argue that reasoning models can show sharp degradation as controlled problem complexity rises, even when they generate longer traces. Such results do not prove that reasoning traces are useless. They show that trace length and cognitive reliability are different variables. A system can spend more tokens elaborating the wrong abstraction.",
+      "translation": "Presupunerea că mai mult raționament este automat mai bun este și ea instabilă. The Curse of Chain-of-Thought raportează situații de învățare în context bazată pe tipare în care raționamentul explicit are rezultate mai slabe decât răspunsul direct, pe mai multe modele și teste de referință. Experimentele Apple Illusion of Thinking susțin că modelele de raționament pot înregistra o degradare abruptă pe măsură ce crește complexitatea controlată a problemelor, chiar și când generează urme mai lungi. Asemenea rezultate nu dovedesc că urmele de raționament sunt inutile. Ele arată că lungimea urmei și fiabilitatea cognitivă sunt variabile diferite. Un sistem poate cheltui mai mulți tokeni elaborând abstracția greșită."
+    },
+    {
+      "id": "t000133",
+      "source": "Self-correction has related limits. Without external feedback, models often fail to diagnose and repair their own reasoning reliably. A second pass may improve style or catch simple inconsistencies, but it can also reinforce the original answer or introduce new errors. External feedback changes the situation because it adds information: a test failure, a contradictory source, a solver result, or a human correction. Architecturally, the distinction is fundamental. Reflection should consume evidence, not merely more samples from the same uncertain belief state (Huang et al., 2023).",
+      "translation": "Autocorectarea are limite înrudite. Fără feedback extern, modelele nu reușesc adesea să diagnosticheze și să repare fiabil propriul raționament. O a doua trecere poate îmbunătăți stilul sau surprinde inconsecvențe simple, dar poate și consolida răspunsul inițial ori introduce erori noi. Feedbackul extern schimbă situația deoarece adaugă informații: un test eșuat, o sursă contradictorie, rezultatul unui rezolvitor sau o corecție umană. Din perspectivă arhitecturală, distincția este fundamentală. Reflecția ar trebui să consume dovezi, nu doar mai multe eșantioane din aceeași stare incertă de convingeri (Huang et al., 2023)."
+    },
+    {
+      "id": "t000134",
+      "source": "3.3 Planning is not solved by asking for a plan",
+      "translation": "3.3 Planificarea nu se rezolvă cerând un plan"
+    },
+    {
+      "id": "t000135",
+      "source": "Large language models can produce impressive plans in prose. They are much less reliable at maintaining a correct plan across hidden state, constraints, and long horizons. PlanBench and subsequent investigations found that models struggled with classical planning even when problems were expressed in natural language and when superficially similar examples were available. The failure is not surprising. Next-token prediction can imitate planning discourse without implementing a complete search procedure, state transition model, or invariant checker. A plan can sound strategically coherent while containing an impossible precondition or omitting a necessary resource (Valmeekam et al., 2023, 2024).",
+      "translation": "Modelele lingvistice mari pot produce planuri impresionante în proză. Sunt mult mai puțin fiabile când trebuie să mențină un plan corect în prezența stării ascunse, a constrângerilor și a orizonturilor lungi. PlanBench și investigațiile ulterioare au constatat că modelele aveau dificultăți cu planificarea clasică, chiar și atunci când problemele erau exprimate în limbaj natural și existau exemple superficial similare. Eșecul nu este surprinzător. Predicția următorului token poate imita discursul planificării fără a implementa o procedură completă de căutare, un model de tranziție a stării sau un verificator de invariante. Un plan poate suna coerent strategic, deși conține o precondiție imposibilă sau omite o resursă necesară (Valmeekam et al., 2023, 2024)."
+    },
+    {
+      "id": "t000136",
+      "source": "Agentic planning combines at least four problems. The system must infer the user's actual objective, decompose the objective, select relevant knowledge and tools, and order operations according to dependencies and changing observations. These problems are often collapsed into one prompt. A model can succeed at decomposition and fail at tool selection. It can select a correct tool and provide incorrect arguments. It can create a reasonable initial plan and fail to revise it after the environment contradicts an assumption. Evaluating only the final answer hides which competence failed.",
+      "translation": "Planificarea agentică îmbină cel puțin patru probleme. Sistemul trebuie să deducă obiectivul real al utilizatorului, să descompună obiectivul, să selecteze cunoștințele și instrumentele relevante și să ordoneze operațiile după dependențe și observații în schimbare. Aceste probleme sunt adesea comprimate într-un singur prompt. Un model poate reuși descompunerea și eșua la selectarea instrumentelor. Poate selecta un instrument corect și furniza argumente incorecte. Poate crea un plan inițial rezonabil și să nu-l revizuiască după ce mediul contrazice o presupunere. Evaluarea exclusivă a răspunsului final ascunde competența care a eșuat."
+    },
+    {
+      "id": "t000137",
+      "source": "Long-horizon behaviour is especially fragile because the agent must preserve commitments over many steps. SokoBench, designed around Sokoban-style planning, reports strong degradation beyond moderate solution lengths. Computer-use benchmarks show that agents may perform individual interface operations but fail to sustain coherent progress through multi-application tasks. In software engineering, agents are stronger because repositories provide executable tests and relatively clean text interfaces; even there, performance depends substantially on the agent-computer interface and the harness, not merely on model coding knowledge (Yang et al., 2024).",
+      "translation": "Comportamentul pe orizont lung este deosebit de fragil deoarece agentul trebuie să păstreze angajamente pe parcursul multor pași. SokoBench, conceput în jurul planificării de tip Sokoban, raportează degradare puternică dincolo de lungimi moderate ale soluțiilor. Testele de referință pentru utilizarea calculatorului arată că agenții pot efectua operații individuale în interfață, dar nu reușesc să susțină un progres coerent în sarcini care folosesc mai multe aplicații. În ingineria software, agenții sunt mai puternici deoarece depozitele oferă teste executabile și interfețe text relativ curate; chiar și acolo, performanța depinde substanțial de interfața agent-calculator și de infrastructura de control, nu doar de cunoștințele de programare ale modelului (Yang et al., 2024)."
+    },
+    {
+      "id": "t000138",
+      "source": "The correct response is not to abandon model planning. It is to reduce what planning must carry implicitly. Explicit dependency graphs, typed state, resource budgets, precondition checks, checkpoints, and local replanning make failures visible. A planner should be allowed to propose a structure, but the runtime should validate that structure where possible. Plans should encode what can run in parallel, what must be recomputed after a change, what side effects require approval, and what evidence closes a node. Planning becomes more reliable when it is compiled into an inspectable execution state rather than preserved only as conversational intention.",
+      "translation": "Răspunsul corect nu este abandonarea planificării prin modele. Este reducerea a ceea ce planificarea trebuie să poarte implicit. Grafurile explicite de dependențe, starea tipizată, bugetele de resurse, verificările precondițiilor, punctele de control și replanificarea locală fac eșecurile vizibile. Un planificator ar trebui să poată propune o structură, dar mediul de execuție ar trebui să valideze acea structură acolo unde este posibil. Planurile ar trebui să codifice ce poate rula în paralel, ce trebuie recalculat după o schimbare, ce efecte secundare necesită aprobare și ce dovezi închid un nod. Planificarea devine mai fiabilă când este compilată într-o stare de execuție inspectabilă, în loc să fie păstrată doar ca intenție conversațională."
+    },
+    {
+      "id": "t000139",
+      "source": "Table 3.1. Common failures and the control structures that address them.",
+      "translation": "Tabelul 3.1. Eșecuri frecvente și structurile de control care le abordează."
+    },
+    {
+      "id": "t000140",
+      "source": "Failure mode",
+      "translation": "Mod de eșec"
+    },
+    {
+      "id": "t000141",
+      "source": "Architectural response",
+      "translation": "Răspuns arhitectural"
+    },
+    {
+      "id": "t000142",
+      "source": "Hallucinated state",
+      "translation": "Stare halucinată"
+    },
+    {
+      "id": "t000143",
+      "source": "Ground critical variables in tool output, typed records, or source-linked evidence.",
+      "translation": "Ancorați variabilele critice în rezultatele instrumentelor, înregistrări tipizate sau dovezi legate de surse."
+    },
+    {
+      "id": "t000144",
+      "source": "Failure mode",
+      "translation": "Mod de eșec"
+    },
+    {
+      "id": "t000145",
+      "source": "Architectural response",
+      "translation": "Răspuns arhitectural"
+    },
+    {
+      "id": "t000146",
+      "source": "Unfaithful reasoning trace",
+      "translation": "Urmă de raționament nefidelă"
+    },
+    {
+      "id": "t000147",
+      "source": "Treat trace as telemetry; verify outcomes independently.",
+      "translation": "Tratați urma ca telemetrie; verificați independent rezultatele."
+    },
+    {
+      "id": "t000148",
+      "source": "Invalid or stale plan",
+      "translation": "Plan nevalid sau învechit"
+    },
+    {
+      "id": "t000149",
+      "source": "Represent dependencies explicitly and support local replanning.",
+      "translation": "Reprezentați explicit dependențele și susțineți replanificarea locală."
+    },
+    {
+      "id": "t000150",
+      "source": "Context overload",
+      "translation": "Supraîncărcarea contextului"
+    },
+    {
+      "id": "t000151",
+      "source": "Use scoped state, retrieval, compaction, and named intermediate variables.",
+      "translation": "Folosiți stare cu domeniu delimitat, recuperare, compactare și variabile intermediare denumite."
+    },
+    {
+      "id": "t000152",
+      "source": "Incorrect tool call",
+      "translation": "Apel incorect de instrument"
+    },
+    {
+      "id": "t000153",
+      "source": "Constrain schemas, validate arguments, minimise permissions, and return actionable errors.",
+      "translation": "Restrângeți schemele, validați argumentele, minimizați permisiunile și returnați erori care permit intervenția."
+    },
+    {
+      "id": "t000154",
+      "source": "Premature completion",
+      "translation": "Încheiere prematură"
+    },
+    {
+      "id": "t000155",
+      "source": "Evaluate the final environment state and acceptance criteria, not only the final text.",
+      "translation": "Evaluați starea finală a mediului și criteriile de acceptare, nu doar textul final."
+    },
+    {
+      "id": "t000156",
+      "source": "3.4 Structural limits of the ReAct loop",
+      "translation": "3.4 Limitele structurale ale buclei ReAct"
+    },
+    {
+      "id": "t000157",
+      "source": "ReAct is elegant because the transcript stores both interaction and working state. The same property produces its most important structural limits. Every cycle appends reasoning, tool definitions, observations, errors, and corrections. Context becomes bloated, API cost grows, stale state remains visible, and relevant evidence competes with repetitive output. Long windows postpone truncation but do not guarantee use: Lost in the Middle demonstrated position-sensitive retrieval failures, while 2026 enterprise experiments found that full-history retention could be less reliable, slower, and more expensive than selective pruning plus summarisation. Long generation also creates opportunities for hallucination, internal logical inconsistency, and failure to preserve a complex specification across many local continuations (Liu et al., 2024; Lodha et al., 2026).",
+      "translation": "ReAct este elegant deoarece transcrierea stochează atât interacțiunea, cât și starea de lucru. Aceeași proprietate produce cele mai importante limite structurale ale sale. Fiecare ciclu adaugă raționament, definiții de instrumente, observații, erori și corecții. Contextul devine supradimensionat, costul API crește, starea învechită rămâne vizibilă, iar dovezile relevante concurează cu rezultate repetitive. Ferestrele lungi amână trunchierea, dar nu garantează utilizarea: Lost in the Middle a demonstrat eșecuri de recuperare sensibile la poziție, în timp ce experimentele organizaționale din 2026 au constatat că păstrarea istoricului complet putea fi mai puțin fiabilă, mai lentă și mai costisitoare decât eliminarea selectivă combinată cu rezumarea. Generarea lungă creează și oportunități pentru halucinații, inconsecvență logică internă și incapacitatea de a păstra o specificație complexă pe parcursul multor continuări locale (Liu et al., 2024; Lodha et al., 2026)."
+    },
+    {
+      "id": "t000158",
+      "source": "The second limit is sequentiality. A conventional ReAct loop waits for one model decision, one action, and one observation before beginning the next cycle. Independent operations are serialised even when their dependencies permit concurrency. LLMCompiler reported large latency and cost reductions by compiling model-proposed tasks into a parallel execution graph, and ReWOO reduced repeated deliberation by separating planning from observations. These results are task-dependent rather than universal, but they establish that scheduling and state representation can change system capability without changing the foundation model (Kim et al., 2024; Xu et al., 2023).",
+      "translation": "A doua limită este secvențialitatea. O buclă ReAct convențională așteaptă o decizie a modelului, o acțiune și o observație înainte de a începe ciclul următor. Operațiile independente sunt serializate chiar și atunci când dependențele lor permit concurența. LLMCompiler a raportat reduceri mari de latență și cost prin compilarea sarcinilor propuse de model într-un graf de execuție paralelă, iar ReWOO a redus deliberarea repetată separând planificarea de observații. Aceste rezultate depind de sarcină și nu sunt universale, dar demonstrează că planificarea execuției și reprezentarea stării pot schimba capacitatea sistemului fără a schimba modelul fundamental (Kim et al., 2024; Xu et al., 2023)."
+    },
+    {
+      "id": "t000159",
+      "source": "The third limit is weak failure localisation. When the transcript is the program, a changed assumption can invalidate an unknown suffix of the conversation. The system may preserve conclusions that depended on stale data because dependency relations are implicit. Repetitive output can be mistaken for progress, and a later summary may conceal which premise produced a result. A graph or executable knowledge representation with named values can invalidate only affected nodes and can preserve the original artefacts. ReAct can imitate this discipline in prose, but the runtime has no guarantee that the imitation remains consistent.",
+      "translation": "A treia limită este localizarea slabă a defecțiunilor. Când transcrierea este programul, o presupunere modificată poate invalida un sufix necunoscut al conversației. Sistemul poate păstra concluzii care depindeau de date învechite deoarece relațiile de dependență sunt implicite. Rezultatul repetitiv poate fi confundat cu progresul, iar un rezumat ulterior poate ascunde premisa care a produs un rezultat. Un graf sau o reprezentare de cunoaștere executabilă cu valori denumite poate invalida doar nodurile afectate și poate păstra artefactele originale. ReAct poate imita această disciplină în proză, dar mediul de execuție nu are nicio garanție că imitația rămâne consecventă."
+    },
+    {
+      "id": "t000160",
+      "source": "The fourth limit is interpreter conflation. One model call may decide relevance, choose a tool, perform domain analysis, judge policy compliance, copy data between tools, and decide whether to stop. This creates common-mode failure and encourages natural language to mediate operations for which code, a database engine, a parser, or a policy checker would be more reliable. ReAct can call these components, but the pattern does not decide when model discretion should yield to a narrower interpreter. That choice belongs to the harness.",
+      "translation": "A patra limită este confundarea interpreților. Un singur apel de model poate decide relevanța, alege un instrument, efectua analiza de domeniu, evalua conformitatea cu politicile, copia date între instrumente și decide dacă trebuie să se oprească. Aceasta creează eșecuri de cauză comună și încurajează medierea prin limbaj natural a unor operații pentru care codul, un motor de baze de date, un analizor sintactic sau un verificator de politici ar fi mai fiabil. ReAct poate apela aceste componente, dar tiparul nu decide când libertatea de decizie a modelului ar trebui să cedeze în fața unui interpret mai restrâns. Alegerea aparține infrastructurii de control."
+    },
+    {
+      "id": "t000161",
+      "source": "The fifth limit is budget opacity. Each additional step can look locally useful while global value declines. Reflection, retries, long outputs, and agent debates can multiply cost without adding independent evidence. Production systems need explicit budgets for tokens, elapsed time, tool calls, side effects, and human attention. They also need stopping criteria linked to acceptance conditions rather than to the agent's subjective feeling of completion. The same uncertain process that consumes a budget should not be the sole authority over that budget.",
+      "translation": "A cincea limită este opacitatea bugetului. Fiecare pas suplimentar poate părea util local, în timp ce valoarea globală scade. Reflecția, reîncercările, rezultatele lungi și dezbaterile dintre agenți pot multiplica costul fără a adăuga dovezi independente. Sistemele de producție au nevoie de bugete explicite pentru tokeni, timp scurs, apeluri de instrumente, efecte secundare și atenție umană. Au nevoie și de criterii de oprire legate de condițiile de acceptare, nu de senzația subiectivă de finalizare a agentului. Același proces incert care consumă un buget nu ar trebui să fie singura autoritate asupra acelui buget."
+    },
+    {
+      "id": "t000162",
+      "source": "3.5 Tools, interfaces, and the action grounding problem",
+      "translation": "3.5 Instrumente, interfețe și problema ancorării acțiunii"
+    },
+    {
+      "id": "t000163",
+      "source": "Tool use is often described as the cure for hallucination because tools connect the model to external facts and computation. In reality, tools move the problem. The model must discover the right tool, understand its description, construct valid arguments, interpret errors, and integrate the result. Performance declines when tool libraries become large, overlapping, or poorly documented. Tool selection is a retrieval and semantic-matching problem; argument construction is a constrained generation problem; result interpretation is another reasoning problem. The tool can be perfectly correct while the agent uses it incorrectly.",
+      "translation": "Utilizarea instrumentelor este adesea descrisă drept leacul halucinațiilor, deoarece instrumentele conectează modelul la fapte externe și calcul. În realitate, instrumentele mută problema. Modelul trebuie să descopere instrumentul potrivit, să-i înțeleagă descrierea, să construiască argumente valide, să interpreteze erorile și să integreze rezultatul. Performanța scade când bibliotecile de instrumente devin mari, suprapuse sau slab documentate. Selectarea instrumentelor este o problemă de recuperare și potrivire semantică; construirea argumentelor este o problemă de generare constrânsă; interpretarea rezultatului este o altă problemă de raționament. Instrumentul poate fi perfect corect în timp ce agentul îl folosește incorect."
+    },
+    {
+      "id": "t000164",
+      "source": "Agent-computer interfaces determine how much of the environment is legible. SWE-agent showed that a deliberately designed command and observation interface can improve automated software engineering. Browser and desktop agents face a harder environment: dynamic visual state, hidden elements, timing, multiple windows, ambiguous affordances, and adversarial page content. Screenshots provide visual fidelity but consume context and can carry indirect prompt injection. Accessibility trees are structured but incomplete. Direct APIs are efficient but may not exist. General computer use remains far below human reliability on long tasks because perception, state tracking, and action semantics are all unstable.",
+      "translation": "Interfețele agent-calculator determină cât din mediu este lizibil. SWE-agent a arătat că o interfață de comenzi și observații proiectată deliberat poate îmbunătăți ingineria software automată. Agenții de browser și desktop se confruntă cu un mediu mai dificil: stare vizuală dinamică, elemente ascunse, temporizare, ferestre multiple, posibilități de acțiune ambigue și conținut adversarial al paginilor. Capturile de ecran oferă fidelitate vizuală, dar consumă context și pot purta injecții indirecte de prompt. Arborii de accesibilitate sunt structurați, dar incompleți. API-urile directe sunt eficiente, dar pot să nu existe. Utilizarea generală a calculatorului rămâne mult sub fiabilitatea umană în sarcini lungi deoarece percepția, urmărirea stării și semantica acțiunii sunt toate instabile."
+    },
+    {
+      "id": "t000165",
+      "source": "Good tool design minimises semantic ambiguity. Tools should have narrow purposes, typed schemas, explicit side effects, examples, permission metadata, and errors that support recovery. The runtime should expose only the tools relevant to the current operation. Anthropic's 2025 work on code execution with MCP makes the context problem concrete: loading large tool catalogues and passing full intermediate results through the model can consume enormous token budgets, whereas generated code can select tools and transform records outside the model context. Protocols standardise invocation, but they do not remove the need for authentication, provenance, sandboxing, least privilege, and supply-chain review (Anthropic, 2025a).",
+      "translation": "O bună proiectare a instrumentelor minimizează ambiguitatea semantică. Instrumentele ar trebui să aibă scopuri restrânse, scheme cu tipuri definite, efecte secundare explicite, exemple, metadate de permisiuni și erori care susțin recuperarea. Mediul de execuție ar trebui să expună numai instrumentele relevante pentru operația curentă. Lucrarea Anthropic din 2025 despre execuția de cod cu MCP concretizează problema contextului: încărcarea unor cataloage mari de instrumente și trecerea rezultatelor intermediare complete prin model pot consuma bugete enorme de tokeni, în timp ce codul generat poate selecta instrumente și transforma înregistrări în afara contextului modelului. Protocoalele standardizează invocarea, dar nu elimină necesitatea autentificării, provenienței, izolării, privilegiului minim și revizuirii lanțului de aprovizionare (Anthropic, 2025a)."
+    },
+    {
+      "id": "t000166",
+      "source": "3.6 Security, memory poisoning, and evaluation uncertainty",
+      "translation": "3.6 Securitate, otrăvirea memoriei și incertitudinea evaluării"
+    },
+    {
+      "id": "t000167",
+      "source": "An agent that consumes untrusted content and can take actions creates a new security composition. Indirect prompt injection hides adversarial instructions in web pages, documents, emails, code comments, or tool output. The model may confuse this content with authorised instructions. AgentDojo provides a benchmark for measuring the tension between task utility and prompt-injection security. The deeper lesson is architectural: natural-language instructions from different trust domains must not be placed into one undifferentiated context and left for the model to rank. Defence requires privilege separation, content labelling, tool gating, sandboxing, allowlists, approval for consequential actions, and monitoring (Debenedetti et al., 2024).",
+      "translation": "Un agent care consumă conținut nefiabil și poate întreprinde acțiuni creează o nouă compoziție de securitate. Injecția indirectă de prompt ascunde instrucțiuni adversariale în pagini web, documente, e-mailuri, comentarii de cod sau rezultate ale instrumentelor. Modelul poate confunda acest conținut cu instrucțiuni autorizate. AgentDojo oferă un test de referință pentru măsurarea tensiunii dintre utilitatea sarcinii și securitatea împotriva injecției de prompt. Lecția mai profundă este arhitecturală: instrucțiunile în limbaj natural din domenii de încredere diferite nu trebuie introduse într-un singur context nediferențiat, lăsând modelul să le ierarhizeze. Apărarea necesită separarea privilegiilor, etichetarea conținutului, filtrarea accesului la instrumente, izolare, liste de permisiuni, aprobare pentru acțiunile cu consecințe și monitorizare (Debenedetti et al., 2024)."
+    },
+    {
+      "id": "t000168",
+      "source": "Persistent memory extends the attack across time. An adversary may insert a note that appears harmless in the current task but changes future retrieval or policy interpretation. MemoryGraft and subsequent memory-poisoning benchmarks demonstrate that long-term memory can become an attack surface. Provenance, scope, retention review, and conflict detection are therefore security controls, not organisational niceties. A memory entry should never gain authority merely because it was generated fluently or retrieved frequently.",
+      "translation": "Memoria persistentă extinde atacul în timp. Un adversar poate introduce o notă care pare inofensivă în sarcina curentă, dar schimbă recuperarea viitoare sau interpretarea politicilor. MemoryGraft și testele de referință ulterioare pentru otrăvirea memoriei demonstrează că memoria pe termen lung poate deveni o suprafață de atac. Proveniența, domeniul delimitat, revizuirea retenției și detectarea conflictelor sunt, așadar, controale de securitate, nu simple amabilități organizaționale. O înregistrare de memorie nu ar trebui să dobândească niciodată autoritate doar pentru că a fost generată fluent sau recuperată frecvent."
+    },
+    {
+      "id": "t000169",
+      "source": "Evaluation is itself uncertain. Agent tasks are multi-turn and stateful; a score may depend on the complete trajectory, the final environment state, hidden policies, timing, and whether recovery was acceptable. LLM judges can scale evaluation but may share biases with the agent. Deterministic scorers can be reproducible but miss semantic value. Human review is expensive and inconsistent. AI Agents That Matter argues that agent benchmarks often overemphasise accuracy while underreporting cost, reproducibility, and practical complexity. The correct unit of comparison is the complete system under a declared budget and environment, not a model label detached from its harness (Kapoor et al., 2024).",
+      "translation": "Evaluarea este ea însăși incertă. Sarcinile agenților au mai multe runde și stare; un scor poate depinde de traiectoria completă, starea finală a mediului, politici ascunse, temporizare și caracterul acceptabil al recuperării. Evaluatorii LLM pot extinde evaluarea, dar pot împărtăși părtinirile agentului. Evaluatorii determiniști pot fi reproductibili, dar pot rata valoarea semantică. Revizuirea umană este costisitoare și inconsecventă. AI Agents That Matter susține că testele de referință pentru agenți pun adesea un accent exagerat pe acuratețe, raportând insuficient costul, reproductibilitatea și complexitatea practică. Unitatea corectă de comparație este sistemul complet într-un buget și un mediu declarate, nu o etichetă de model desprinsă de infrastructura sa de control (Kapoor et al., 2024)."
+    },
+    {
+      "id": "t000170",
+      "source": "The limits in this chapter do not imply that agents are a dead end. They imply that autonomy is not a substitute for architecture and that generality should be claimed only on a declared distribution. Long traces are not proofs. More context is not guaranteed relevance. More agents are not guaranteed independence. More tools are not guaranteed grounding. The productive programme is to move repeated responsibility from implicit language-model behaviour into explicit state, specialised interpreters, bounded skills, and evaluation packages. ReAct remains valuable, especially as an exploratory fallback, but it should not be treated as the final form of every agent.",
+      "translation": "Limitele din acest capitol nu implică faptul că agenții sunt o fundătură. Ele implică faptul că autonomia nu înlocuiește arhitectura și că generalitatea ar trebui revendicată numai pe o distribuție declarată. Urmele lungi nu sunt demonstrații. Mai mult context nu garantează relevanța. Mai mulți agenți nu garantează independența. Mai multe instrumente nu garantează ancorarea. Programul productiv constă în mutarea responsabilității repetate din comportamentul implicit al modelului lingvistic în stare explicită, interpreți specializați, competențe procedurale limitate și pachete de evaluare. ReAct rămâne valoros, mai ales ca soluție exploratorie de rezervă, dar nu ar trebui tratat ca forma finală a fiecărui agent."
+    },
+    {
+      "id": "t000171",
+      "source": "CHAPTER 4",
+      "translation": "CAPITOLUL 4"
+    },
+    {
+      "id": "t000172",
+      "source": "Harnesses as the New Systems Layer",
+      "translation": "Infrastructurile de control ca nou strat sistemic"
+    },
+    {
+      "id": "t000173",
+      "source": "The model proposes; the harness decides what proposal",
+      "translation": "Modelul propune; infrastructura de control decide ce propunere"
+    },
+    {
+      "id": "t000174",
+      "source": "becomes computation.",
+      "translation": "devine calcul."
+    },
+    {
+      "id": "t000175",
+      "source": "4.1 What an agent harness is",
+      "translation": "4.1 Ce este infrastructura de control a unui agent"
+    },
+    {
+      "id": "t000176",
+      "source": "An agent harness is the software scaffold that turns a foundation model into an operational actor. It manages instructions, state, context, tool exposure, permissions, scheduling, retries, handoffs, human approvals, traces, and stopping conditions. The term is useful because it separates model capability from system capability. Two products can use the same model and achieve different results because one provides a better interface, smaller relevant context, stronger tools, executable feedback, and more disciplined recovery. Conversely, a strong model can appear weak inside a harness that hides state, overwhelms it with tools, or evaluates the wrong outcome.",
+      "translation": "Infrastructura de control a unui agent este cadrul software care transformă un model fundamental într-un actor operațional. Gestionează instrucțiunile, starea, contextul, expunerea instrumentelor, permisiunile, planificarea execuției, reîncercările, transferurile de control, aprobările umane, urmele și condițiile de oprire. Termenul este util deoarece separă capacitatea modelului de capacitatea sistemului. Două produse pot folosi același model și obține rezultate diferite deoarece unul oferă o interfață mai bună, un context relevant mai mic, instrumente mai puternice, feedback executabil și recuperare mai disciplinată. Invers, un model puternic poate părea slab într-o infrastructură de control care ascunde starea, îl copleșește cu instrumente sau evaluează rezultatul greșit."
+    },
+    {
+      "id": "t000177",
+      "source": "The harness is not identical to a framework. A framework supplies programming abstractions and reusable components. A harness is the concrete control arrangement around a model in a particular system. The same framework can host several harnesses with different authority and evaluation. Nor is the agent harness identical to an evaluation harness. The evaluation harness supplies tasks, environments, scorers, concurrency, recording, and aggregation so that agent systems can be compared. In mature development, the two are connected: every production trace can become evaluation material, and every evaluation should exercise the same controls that matter in deployment.",
+      "translation": "Infrastructura de control nu este identică unui cadru de dezvoltare. Un cadru de dezvoltare furnizează abstracții de programare și componente reutilizabile. Infrastructura de control este aranjamentul concret de control din jurul unui model într-un sistem anume. Același cadru de dezvoltare poate găzdui mai multe infrastructuri de control cu autoritate și evaluare diferite. Nici infrastructura de control a agentului nu este identică infrastructurii de evaluare. Aceasta din urmă furnizează sarcini, medii, evaluatori, concurență, înregistrare și agregare pentru a permite compararea sistemelor agentice. În dezvoltarea matură, cele două sunt conectate: fiecare urmă de producție poate deveni material de evaluare, iar fiecare evaluare ar trebui să exercite aceleași controale care contează în exploatare."
+    },
+    {
+      "id": "t000178",
+      "source": "The harness can be understood as a control plane around a probabilistic data plane. The model handles semantic interpretation and generation. The control plane determines which context is visible, which operations are legal, how calls are routed, where state is stored, what must be checked, and how the process is observed. This division resembles operating systems, database engines, and distributed runtimes. It is not an exact analogy, because natural-language interpretation remains more ambiguous than a conventional instruction set. Yet the analogy is productive: agents need isolation, scheduling, identity, permissions, logging, recovery, and resource accounting.",
+      "translation": "Infrastructura de control poate fi înțeleasă ca un plan de control în jurul unui plan de date probabilist. Modelul gestionează interpretarea semantică și generarea. Planul de control stabilește ce context este vizibil, ce operații sunt permise, cum sunt rutate apelurile, unde este stocată starea, ce trebuie verificat și cum este observat procesul. Această împărțire seamănă cu sistemele de operare, motoarele de baze de date și mediile de execuție distribuite. Nu este o analogie exactă, deoarece interpretarea limbajului natural rămâne mai ambiguă decât un set convențional de instrucțiuni. Totuși, analogia este productivă: agenții au nevoie de izolare, planificarea execuției, identitate, permisiuni, jurnalizare, recuperare și contabilizarea resurselor."
+    },
+    {
+      "id": "t000179",
+      "source": "By July 2026, harness controls are no longer peripheral. OpenAI's updated Agents SDK presents a model-native harness, native sandboxes, configurable memory, and separation between the harness and compute. Anthropic's long-running application work reports that decomposition, structured artefacts, evaluator separation, and context-reset or compaction strategies can dominate outcomes, while also warning that complex harnesses become slow and expensive. Google ADK combines sequential, parallel, and loop agents with OpenTelemetry, plugins, YAML configuration, and human confirmations. The industrial frontier is therefore a runtime problem: how to provide enough structure to improve reliability without freezing model capability or preserving assumptions that newer models no longer need (Anthropic, 2026a; Google, 2026; OpenAI, 2026a).",
+      "translation": "Până în iulie 2026, controalele infrastructurii nu mai sunt periferice. SDK-ul Agents actualizat al OpenAI prezintă o infrastructură de control nativă modelului, medii izolate native, memorie configurabilă și separarea infrastructurii de control de calcul. Lucrările Anthropic privind aplicațiile de lungă durată raportează că descompunerea, artefactele structurate, separarea evaluatorului și strategiile de resetare sau compactare a contextului pot domina rezultatele, avertizând totodată că infrastructurile de control complexe devin lente și costisitoare. Google ADK combină agenți secvențiali, paraleli și în buclă cu OpenTelemetry, pluginuri, configurare YAML și confirmări umane. Frontiera industrială este, prin urmare, o problemă a mediului de execuție: cum să ofere suficientă structură pentru a îmbunătăți fiabilitatea fără a îngheța capacitatea modelului sau a păstra presupuneri de care modelele mai noi nu mai au nevoie (Anthropic, 2026a; Google, 2026; OpenAI, 2026a)."
+    },
+    {
+      "id": "t000180",
+      "source": "Figure from PDF page 35",
+      "translation": "Figură de la pagina 35 a PDF-ului"
+    },
+    {
+      "id": "t000181",
+      "source": "Figure 4.1. The harness surrounds probabilistic inference with context, authority, execution, evidence, and recovery.",
+      "translation": "Figura 4.1. Infrastructura de control înconjoară inferența probabilistă cu context, autoritate, execuție, dovezi și recuperare."
+    },
+    {
+      "id": "t000182",
+      "source": "4.2 The runtime responsibilities",
+      "translation": "4.2 Responsabilitățile mediului de execuție"
+    },
+    {
+      "id": "t000183",
+      "source": "The first responsibility is state management. A serious runtime distinguishes user input, environment state, working variables, session history, durable memory, and artifact storage. It supports checkpoints so a long task can resume after failure or approval. It controls isolation so one user's context does not leak into another's. It records versions of prompts, models, tools, and knowledge so a trajectory can be reconstructed. State is the difference between a demo that appears coherent for one run and a system that can be operated over time.",
+      "translation": "Prima responsabilitate este gestionarea stării. Un mediu de execuție serios distinge intrarea utilizatorului, starea mediului, variabilele de lucru, istoricul sesiunii, memoria durabilă și stocarea artefactelor. Susține puncte de control pentru ca o sarcină lungă să poată fi reluată după un eșec sau o aprobare. Controlează izolarea astfel încât contextul unui utilizator să nu se scurgă către altul. Înregistrează versiuni ale prompturilor, modelelor, instrumentelor și cunoștințelor pentru ca o traiectorie să poată fi reconstruită. Starea face diferența dintre o demonstrație care pare coerentă la o singură rulare și un sistem care poate fi operat în timp."
+    },
+    {
+      "id": "t000184",
+      "source": "Context engineering is the harness responsibility most likely to be underestimated. The runtime decides which instructions, tool schemas, memories, artefacts, prior observations, and policies become visible for the next inference. More content can increase coverage and simultaneously reduce attention, increase latency, expose secrets, preserve stale state, and magnify prompt injection. Less Context, Better Agents reported an enterprise benchmark in which pruning and summarisation improved task completion while reducing tokens and elapsed time relative to full history.",
+      "translation": "Ingineria contextului este responsabilitatea infrastructurii de control cel mai probabil subestimată. Mediul de execuție decide ce instrucțiuni, scheme de instrumente, amintiri, artefacte, observații anterioare și politici devin vizibile pentru inferența următoare. Mai mult conținut poate mări acoperirea și, simultan, reduce atenția, crește latența, expune secrete, păstra starea învechită și amplifica injecția de prompt. Less Context, Better Agents a raportat un test de referință organizațional în care eliminarea selectivă și rezumarea au îmbunătățit finalizarea sarcinilor, reducând totodată tokenii și timpul scurs comparativ cu istoricul complet."
+    },
+    {
+      "id": "t000185",
+      "source": "ContextBudget formulates compression under a budget as a sequential decision problem. These are early results, but they support a strong systems conclusion: context is an actively managed operating substrate, not a transcript dump (Lodha et al., 2026; Wu et al., 2026).",
+      "translation": "ContextBudget formulează comprimarea într-un buget ca problemă de decizie secvențială. Acestea sunt rezultate timpurii, dar susțin o concluzie sistemică puternică: contextul este un substrat operațional gestionat activ, nu o descărcare a transcrierii (Lodha et al., 2026; Wu et al., 2026)."
+    },
+    {
+      "id": "t000186",
+      "source": "The third responsibility is action mediation. Tool calls must be parsed, validated, authorised, executed, and returned in a form the model can use. The runtime can enforce schemas, rate limits, cost limits, data boundaries, and approval requirements. It can wrap side-effecting operations in transactions or dry runs. It can expose safe synthetic tools rather than raw credentials. It can translate low-level errors into structured recovery signals. The model should not directly own secrets, network access, or irreversible authority merely because it can produce the right JSON shape.",
+      "translation": "A treia responsabilitate este medierea acțiunii. Apelurile de instrumente trebuie analizate sintactic, validate, autorizate, executate și returnate într-o formă pe care modelul o poate folosi. Mediul de execuție poate impune scheme, limite de rată, limite de cost, granițe ale datelor și cerințe de aprobare. Poate încadra operațiile cu efecte secundare în tranzacții sau simulări fără efecte. Poate expune instrumente sintetice sigure în locul acreditărilor brute. Poate transforma erorile de nivel inferior în semnale structurate de recuperare. Modelul nu ar trebui să dețină direct secrete, acces la rețea sau autoritate ireversibilă doar pentru că poate produce forma JSON corectă."
+    },
+    {
+      "id": "t000187",
+      "source": "The fourth responsibility is scheduling. A scheduler decides when to continue a loop, when to branch, which work can run in parallel, when to use a smaller model, when to call a specialist, and when to stop. Scheduling is increasingly cost-aware. It can allocate a reasoning budget according to task value, use cascades, or select a deterministic implementation when a stable skill exists. The scheduler also handles retries and backoff. Retries should be classified, because repeating a transient network call differs from repeating a reasoning failure with identical context.",
+      "translation": "A patra responsabilitate este planificarea execuției. Un planificator de execuție decide când să continue o buclă, când să ramifice, ce muncă poate rula în paralel, când să folosească un model mai mic, când să apeleze un specialist și când să se oprească. Planificarea execuției ține tot mai mult cont de costuri. Poate aloca un buget de raționament potrivit valorii sarcinii, folosi cascade sau selecta o implementare deterministă când există o competență procedurală stabilă. Planificatorul gestionează și reîncercările și temporizarea progresivă. Reîncercările ar trebui clasificate, deoarece repetarea unui apel de rețea cu eroare tranzitorie diferă de repetarea unui eșec de raționament cu context identic."
+    },
+    {
+      "id": "t000188",
+      "source": "The fifth responsibility is verification and governance. Guardrails can inspect input, output, tool arguments, and environment state. A verifier can test code, check a schema, compare a claim with retrieved sources, or enforce a business rule. Human approval can be inserted before a high-consequence action or after evidence is assembled. Policies should be local to the action boundary: reading a public page and issuing a refund do not require the same assurance. The harness converts abstract principles such as least privilege and human oversight into executable gates.",
+      "translation": "A cincea responsabilitate este verificarea și guvernanța. Mecanismele de protecție pot inspecta intrarea, ieșirea, argumentele instrumentelor și starea mediului. Un verificator poate testa cod, verifica o schemă, compara o afirmație cu surse recuperate sau impune o regulă de afaceri. Aprobarea umană poate fi inserată înaintea unei acțiuni cu consecințe majore sau după adunarea dovezilor. Politicile ar trebui să fie locale graniței acțiunii: citirea unei pagini publice și emiterea unei rambursări nu necesită aceleași garanții. Infrastructura de control transformă principii abstracte precum privilegiul minim și supravegherea umană în filtre executabile."
+    },
+    {
+      "id": "t000189",
+      "source": "The sixth responsibility is observability. Tracing records model calls, tool calls, handoffs, latency, token use, errors, policy decisions, and final outcomes. OpenTelemetry's emerging generative-AI semantic conventions reflect the movement toward vendor-neutral instrumentation. Observability makes debugging possible, but its deeper function is epistemic: it records what evidence and authority were present when the system acted. A trace is not proof that the action was correct. It is the minimum material from which correctness, cost, and accountability can later be assessed.",
+      "translation": "A șasea responsabilitate este observabilitatea. Trasarea înregistrează apelurile de modele, apelurile de instrumente, transferurile de control, latența, utilizarea tokenilor, erorile, deciziile de politică și rezultatele finale. Convențiile semantice emergente pentru IA generativă ale OpenTelemetry reflectă mișcarea către instrumentare independentă de furnizor. Observabilitatea face depanarea posibilă, dar funcția sa mai profundă este epistemică: înregistrează ce dovezi și ce autoritate erau prezente când sistemul a acționat. O urmă nu este dovada că acțiunea a fost corectă. Este materialul minim din care corectitudinea, costul și răspunderea pot fi evaluate ulterior."
+    },
+    {
+      "id": "t000190",
+      "source": "Table 4.1. The harness as a stack of operational responsibilities.",
+      "translation": "Tabelul 4.1. Infrastructura de control ca stivă de responsabilități operaționale."
+    },
+    {
+      "id": "t000191",
+      "source": "Harness layer",
+      "translation": "Strat al infrastructurii de control"
+    },
+    {
+      "id": "t000192",
+      "source": "Operational duty",
+      "translation": "Sarcină operațională"
+    },
+    {
+      "id": "t000193",
+      "source": "State layer",
+      "translation": "Stratul de stare"
+    },
+    {
+      "id": "t000194",
+      "source": "Sessions, checkpoints, isolation, artefacts, and versioned runtime variables.",
+      "translation": "Sesiuni, puncte de control, izolare, artefacte și variabile de execuție cu versiuni."
+    },
+    {
+      "id": "t000195",
+      "source": "Context layer",
+      "translation": "Stratul de context"
+    },
+    {
+      "id": "t000196",
+      "source": "Retrieval, compaction, memory selection, prompt assembly, and tool disclosure.",
+      "translation": "Recuperare, compactare, selectarea memoriei, asamblarea prompturilor și dezvăluirea instrumentelor."
+    },
+    {
+      "id": "t000197",
+      "source": "Action layer",
+      "translation": "Stratul de acțiune"
+    },
+    {
+      "id": "t000198",
+      "source": "Schema validation, permissions, execution, transactions, and error translation.",
+      "translation": "Validarea schemelor, permisiuni, execuție, tranzacții și traducerea erorilor."
+    },
+    {
+      "id": "t000199",
+      "source": "Scheduling layer",
+      "translation": "Stratul de planificare a execuției"
+    },
+    {
+      "id": "t000200",
+      "source": "Loops, graphs, parallelism, routing, budgets, retries, and termination.",
+      "translation": "Bucle, grafuri, paralelism, rutare, bugete, reîncercări și încheiere."
+    },
+    {
+      "id": "t000201",
+      "source": "Assurance layer",
+      "translation": "Stratul de asigurare"
+    },
+    {
+      "id": "t000202",
+      "source": "Guardrails, validators, approvals, policy checks, and recovery decisions.",
+      "translation": "Mecanisme de protecție, validatoare, aprobări, verificări de politici și decizii de recuperare."
+    },
+    {
+      "id": "t000203",
+      "source": "Observability layer",
+      "translation": "Stratul de observabilitate"
+    },
+    {
+      "id": "t000204",
+      "source": "Traces, metrics, cost attribution, replay, evaluation, and audit evidence.",
+      "translation": "Urme, metrici, atribuirea costurilor, reluare, evaluare și dovezi de audit."
+    },
+    {
+      "id": "t000205",
+      "source": "4.3 The 2026 industrial landscape",
+      "translation": "4.3 Peisajul industrial din 2026"
+    },
+    {
+      "id": "t000206",
+      "source": "OpenAI's stack combines the Agents SDK with tools, handoffs, guardrails, sessions, tracing, evaluation, and AgentKit. In 2026 the SDK added a model-native harness and native sandbox execution for file and command work, together with a portable workspace manifest and a stronger separation between control and compute. AgentKit adds visual workflow construction, connectors, embedded interfaces, datasets, trace grading, and prompt optimisation. The stack illustrates a broad industrial tendency: a turnkey agent loop is valuable, but production differentiation moves into domain logic, context, tools, evaluators, and governance (OpenAI, 2025b, 2026a).",
+      "translation": "Stiva OpenAI combină SDK-ul Agents cu instrumente, transferuri de control, mecanisme de protecție, sesiuni, trasare, evaluare și AgentKit. În 2026, SDK-ul a adăugat o infrastructură de control nativă modelului și execuție nativă în medii izolate pentru lucrul cu fișiere și comenzi, împreună cu un manifest portabil al spațiului de lucru și o separare mai puternică între control și calcul. AgentKit adaugă construirea vizuală a fluxurilor de lucru, conectori, interfețe încorporate, seturi de date, notarea urmelor și optimizarea prompturilor. Stiva ilustrează o tendință industrială amplă: o buclă de agent gata de utilizare este valoroasă, dar diferențierea în producție se mută în logica de domeniu, context, instrumente, evaluatori și guvernanță (OpenAI, 2025b, 2026a)."
+    },
+    {
+      "id": "t000207",
+      "source": "Anthropic presents a deliberately pattern-oriented view. Its Building Effective Agents essay distinguishes workflows from dynamic agents and recommends the simplest composition that works. Classical Agent Skills package instructions, scripts, and resources for progressive discovery by a broad agent. Work on long-running application development separates planner, generator, and evaluator roles and uses structured artefacts to maintain continuity. These contributions are important external reference points, but they should not be conflated with the ScriptaHubAgentLib taxonomy developed in Chapter 8, where orchestration skills coordinate executable families with different runtime semantics (Anthropic, 2024, 2025b, 2026a).",
+      "translation": "Anthropic prezintă o perspectivă deliberat orientată spre tipare. Eseul Building Effective Agents distinge fluxurile de lucru de agenții dinamici și recomandă cea mai simplă compoziție care funcționează. Competențele clasice Agent Skills grupează instrucțiuni, scripturi și resurse pentru descoperire progresivă de către un agent generalist. Lucrările despre dezvoltarea aplicațiilor de lungă durată separă rolurile de planificator, generator și evaluator și folosesc artefacte structurate pentru menținerea continuității. Aceste contribuții sunt repere externe importante, dar nu trebuie confundate cu taxonomia ScriptaHubAgentLib dezvoltată în Capitolul 8, unde competențele de orchestrare coordonează familii executabile cu semantici de execuție diferite (Anthropic, 2024, 2025b, 2026a)."
+    },
+    {
+      "id": "t000208",
+      "source": "Google's Agent Development Kit exposes model-agnostic agents, workflow agents, tools, sessions, memory, evaluation, and deployment across several languages. ADK Go 1.0, released in March 2026, highlights sequential, parallel, and loop agents, OpenTelemetry tracing, plugin-based self-healing, human-in-the-loop confirmations, and YAML-defined agents. The architecture illustrates how an agent framework increasingly resembles a service runtime with configuration, observability, policy insertion, and deployment portability rather than a library of prompt templates (Google, 2026).",
+      "translation": "Agent Development Kit de la Google expune agenți independenți de model, agenți de flux de lucru, instrumente, sesiuni, memorie, evaluare și implementare în mai multe limbaje. ADK Go 1.0, lansat în martie 2026, evidențiază agenți secvențiali, paraleli și în buclă, trasare OpenTelemetry, autoreparare bazată pe pluginuri, confirmări cu participare umană și agenți definiți prin YAML. Arhitectura ilustrează felul în care un cadru de dezvoltare pentru agenți seamănă tot mai mult cu un mediu de execuție de servicii, cu configurare, observabilitate, inserare de politici și portabilitate a implementării, decât cu o bibliotecă de șabloane de prompturi (Google, 2026)."
+    },
+    {
+      "id": "t000209",
+      "source": "Microsoft's agent work connects orchestration to enterprise identity, data, and operational governance. Its framework lineage combines AutoGen-style multi-agent conversation with more explicit workflows, telemetry, state, and service integration. The strategic advantage is not that conversation among agents is inherently superior. It is that agent identities and actions can be integrated with organisational permissions, connectors, and monitoring. The corresponding risk is platform complexity: every additional connector and delegation boundary increases the need for provenance, least privilege, and complete tracing (Microsoft, 2026).",
+      "translation": "Lucrările Microsoft privind agenții conectează orchestrarea la identitatea organizațională, date și guvernanța operațională. Linia sa de cadre de dezvoltare combină conversația multiagent de tip AutoGen cu fluxuri de lucru, telemetrie, stare și integrare de servicii mai explicite. Avantajul strategic nu este că discuția între agenți ar fi inerent superioară. Este că identitățile și acțiunile agenților pot fi integrate cu permisiunile organizaționale, conectorii și monitorizarea. Riscul corespunzător este complexitatea platformei: fiecare conector suplimentar și fiecare graniță de delegare măresc nevoia de proveniență, privilegiu minim și trasare completă (Microsoft, 2026)."
+    },
+    {
+      "id": "t000210",
+      "source": "LangGraph and OpenHands represent two complementary directions. LangGraph treats durable graph state, checkpoints, interrupts, and human review as core abstractions for arbitrary agent workflows. OpenHands concentrates on software-engineering agents and the agent-computer interface, where repositories, shells, editors, sandboxes, tests, and event streams form the working environment. Both show that the operational interface can matter as much as prompting. Better observations and executable feedback often outperform additional free-form reasoning because they change what the model can reliably perceive and verify (Wang et al., 2025).",
+      "translation": "LangGraph și OpenHands reprezintă două direcții complementare. LangGraph tratează starea durabilă a grafului, punctele de control, întreruperile și revizuirea umană ca abstracții de bază pentru fluxuri de lucru agentice arbitrare. OpenHands se concentrează pe agenții de inginerie software și interfața agent-calculator, unde depozitele, shell-urile, editoarele, mediile izolate, testele și fluxurile de evenimente formează mediul de lucru. Ambele arată că interfața operațională poate conta la fel de mult ca promptarea. Observațiile mai bune și feedbackul executabil depășesc adesea raționamentul liber suplimentar deoarece schimbă ceea ce modelul poate percepe și verifica fiabil (Wang et al., 2025)."
+    },
+    {
+      "id": "t000211",
+      "source": "4.4 Protocols and interoperability",
+      "translation": "4.4 Protocoale și interoperabilitate"
+    },
+    {
+      "id": "t000212",
+      "source": "MCP standardises a host-client-server architecture through which agents discover and invoke tools, resources, and prompts. The protocol reduces integration duplication and enables a large ecosystem, but it does not define whether a server is trustworthy, which user delegated an action, or whether returned content is data or instruction. A serious MCP host therefore needs authentication, capability restriction, provenance, context filtering, and audit. As tool ecosystems grow, progressive disclosure and code-mediated access become important because loading every definition and result into model context is neither efficient nor safe (Model Context Protocol, 2025; Anthropic, 2025a).",
+      "translation": "MCP standardizează o arhitectură gazdă-client-server prin care agenții descoperă și invocă instrumente, resurse și prompturi. Protocolul reduce duplicarea integrărilor și permite un ecosistem amplu, dar nu definește dacă un server este de încredere, ce utilizator a delegat o acțiune sau dacă un conținut returnat este dată ori instrucțiune. O gazdă MCP serioasă are, prin urmare, nevoie de autentificare, restrângerea capacităților, proveniență, filtrarea contextului și audit. Pe măsură ce ecosistemele de instrumente cresc, dezvăluirea progresivă și accesul mediat prin cod devin importante, deoarece încărcarea fiecărei definiții și fiecărui rezultat în contextul modelului nu este nici eficientă, nici sigură (Model Context Protocol, 2025; Anthropic, 2025a)."
+    },
+    {
+      "id": "t000213",
+      "source": "The Agent2Agent protocol addresses a different seam: communication between agents or agent services. It aims to make capabilities, tasks, messages, artefacts, and progress interoperable across vendors and was transferred to the Linux Foundation in 2025. MCP and A2A are complementary: one primarily connects an agent to resources and tools, the other connects agentic services. Neither supplies accountability by itself. Identity, authority, cancellation, confidentiality, and responsibility for a composed outcome remain harness and organisational concerns (Linux Foundation, 2025).",
+      "translation": "Protocolul Agent2Agent abordează o altă interfață: comunicarea între agenți sau servicii agentice. El urmărește să facă interoperabile capacitățile, sarcinile, mesajele, artefactele și progresul între furnizori și a fost transferat către Linux Foundation în 2025. MCP și A2A sunt complementare: unul conectează în principal un agent la resurse și instrumente, celălalt conectează servicii agentice. Niciunul nu asigură răspunderea de unul singur. Identitatea, autoritatea, anularea, confidențialitatea și responsabilitatea pentru un rezultat compus rămân preocupări ale infrastructurii de control și ale organizației (Linux Foundation, 2025)."
+    },
+    {
+      "id": "t000214",
+      "source": "Protocol standardisation does not remove semantic ambiguity. Two tools can share a schema and disagree about side effects, freshness, or authority. Two agents can exchange a task and hold different assumptions about completion. Interoperability therefore needs capability descriptions, provenance, versioning, trust domains, idempotency, cancellation, and error taxonomies. The next phase is likely to resemble distributed systems more than chatbot integration.",
+      "translation": "Standardizarea protocoalelor nu elimină ambiguitatea semantică. Două instrumente pot avea aceeași schemă și totuși să difere în privința efectelor secundare, actualității sau autorității. Doi agenți pot transmite o sarcină și pot avea presupuneri diferite despre finalizare. Prin urmare, interoperabilitatea necesită descrieri ale capacităților, proveniență, versiuni, domenii de încredere, idempotență, anulare și taxonomii de erori. Următoarea etapă va semăna probabil mai mult cu sistemele distribuite decât cu integrarea roboților conversaționali."
+    },
+    {
+      "id": "t000215",
+      "source": "Agents will need service contracts and operational semantics, not only natural-language descriptions.",
+      "translation": "Agenții vor avea nevoie de contracte de servicii și semantică operațională, nu doar de descrieri în limbaj natural."
+    },
+    {
+      "id": "t000216",
+      "source": "4.5 Evaluation harnesses and the research frontier",
+      "translation": "4.5 Infrastructuri de evaluare și frontiera cercetării"
+    },
+    {
+      "id": "t000217",
+      "source": "Research on harnesses is becoming more explicit. Architectural Design Decisions in AI Agent Harnesses studies design variation across dozens of open systems, while AI Harness Engineering formalises the model-harness-environment system and proposes auditable episode packages. MemoHarness, published as a July 2026 preprint, explores harnesses that retrieve and adapt control experience from prior executions. These works differ in maturity, but together they mark a conceptual transition: prompts and workflows are no longer the only optimisation target; context policy, tool exposure, memory, verification, and intervention logic are themselves learnable or designable artefacts (Huang et al., 2026; Wei, 2026; Zhong and Zhu, 2026).",
+      "translation": "Cercetarea infrastructurilor de control devine mai explicită. Architectural Design Decisions in AI Agent Harnesses studiază variațiile de proiectare din zeci de sisteme deschise, în timp ce AI Harness Engineering formalizează sistemul model-infrastructură de control-mediu și propune pachete de episoade auditabile. MemoHarness, publicat ca prepublicare în iulie 2026, explorează infrastructuri de control care recuperează și adaptează experiența de control din execuții anterioare. Aceste lucrări diferă ca maturitate, dar împreună marchează o tranziție conceptuală: prompturile și fluxurile de lucru nu mai sunt singura țintă de optimizare; politica de context, expunerea instrumentelor, memoria, verificarea și logica intervenției sunt ele însele artefacte care pot fi învățate sau proiectate (Huang et al., 2026; Wei, 2026; Zhong and Zhu, 2026)."
+    },
+    {
+      "id": "t000218",
+      "source": "This expansion raises a methodological problem. A more elaborate harness can improve a benchmark by adding hidden tools, privileged information, more inference, or evaluator-specific rules. AI Agents That Matter argues that practical evaluation must include cost, reproducibility, held-out tasks, and complete system configuration. Harness research therefore needs ablation: hold the model and environment fixed, add one control responsibility at a time, and inspect trace-level effects. When the application is local, the benchmark should also be local. A system designed for one recurring enterprise process should be judged on that process and its failure consequences, not marketed as generally superior because it has more components (Kapoor et al., 2024).",
+      "translation": "Această extindere ridică o problemă metodologică. O infrastructură de control mai elaborată poate îmbunătăți un rezultat de referință prin adăugarea unor instrumente ascunse, informații privilegiate, mai multă inferență sau reguli specifice evaluatorului. AI Agents That Matter susține că evaluarea practică trebuie să includă costul, reproductibilitatea, sarcinile rezervate și configurarea completă a sistemului. Cercetarea infrastructurilor de control are, prin urmare, nevoie de ablație: mențineți modelul și mediul fixe, adăugați câte o responsabilitate de control și inspectați efectele la nivelul urmei. Când aplicația este locală, testul de referință ar trebui să fie și el local. Un sistem proiectat pentru un proces organizațional recurent ar trebui evaluat după acel proces și consecințele eșecurilor sale, nu promovat ca superior în general fiindcă are mai multe componente (Kapoor et al., 2024)."
+    },
+    {
+      "id": "t000219",
+      "source": "Evaluation should operate at three levels. Component tests verify parsers, schemas, permissions, and deterministic validators. Trajectory tests inspect routing, context, tool selection, recovery, and stopping. End-to-end tests evaluate the resulting environmental state under repeated trials, realistic budgets, and perturbations. The episode package should include model and prompt versions, tool and data versions, selected context, actions, observations, evaluator outputs, costs, timings, and human interventions. Without this package, an agent score is difficult to reproduce and almost impossible to diagnose.",
+      "translation": "Evaluarea ar trebui să opereze la trei niveluri. Testele de componente verifică analizoarele sintactice, schemele, permisiunile și validatoarele deterministe. Testele de traiectorie inspectează rutarea, contextul, selectarea instrumentelor, recuperarea și oprirea. Testele integrale evaluează starea rezultată a mediului în încercări repetate, cu bugete realiste și perturbări. Pachetul episodului ar trebui să includă versiunile modelelor și prompturilor, versiunile instrumentelor și datelor, contextul selectat, acțiunile, observațiile, rezultatele evaluatorilor, costurile, timpii și intervențiile umane. Fără acest pachet, scorul unui agent este greu de reprodus și aproape imposibil de diagnosticat."
+    },
+    {
+      "id": "t000220",
+      "source": "The frontier is a harness that can improve without silently rewriting its own authority. Production traces and user feedback can reveal missing context, brittle instructions, redundant calls, and candidates for deterministic implementation. The system may propose changes to prompts, skills, routing, evaluators, or code, but those changes should be evaluated offline, compared against the previous version, reviewed according to risk, and promoted with rollback. This controlled learning loop anticipates the sleep-phase design developed for MRP-VM in Chapter 9.",
+      "translation": "Frontiera este o infrastructură de control care se poate îmbunătăți fără a-și rescrie pe nesimțite propria autoritate. Urmele de producție și feedbackul utilizatorilor pot dezvălui context lipsă, instrucțiuni fragile, apeluri redundante și candidați pentru implementare deterministă. Sistemul poate propune schimbări ale prompturilor, competențelor procedurale, rutării, evaluatorilor sau codului, dar acele schimbări ar trebui evaluate offline, comparate cu versiunea anterioară, revizuite în funcție de risc și promovate cu posibilitate de revenire. Această buclă de învățare controlată anticipează proiectarea fazei de repaus dezvoltate pentru MRP-VM în Capitolul 9."
+    },
+    {
+      "id": "t000221",
+      "source": "PART II TRUST, ECONOMICS, AND DESIGN",
+      "translation": "PARTEA A II-A ÎNCREDERE, ECONOMIE ȘI PROIECTARE"
+    },
+    {
+      "id": "t000222",
+      "source": "CHAPTER 5",
+      "translation": "CAPITOLUL 5"
+    },
+    {
+      "id": "t000223",
+      "source": "Trustworthy Agentic AI European Philosophy, Law, and Engineering",
+      "translation": "IA agentică de încredere: filosofie europeană, drept și inginerie"
+    },
+    {
+      "id": "t000224",
+      "source": "Trust is not confidence in a model. It is justified reliance on a",
+      "translation": "Încrederea nu înseamnă siguranță într-un model. Înseamnă sprijinire justificată pe un"
+    },
+    {
+      "id": "t000225",
+      "source": "governed system.",
+      "translation": "sistem guvernat."
+    },
+    {
+      "id": "t000226",
+      "source": "5.1 The European meaning of trustworthiness",
+      "translation": "5.1 Sensul european al caracterului demn de încredere"
+    },
+    {
+      "id": "t000227",
+      "source": "Trustworthy AI is often reduced to a collection of safety techniques. The European tradition is broader. The High-Level Expert Group on Artificial Intelligence defined trustworthy AI through three simultaneous conditions: it should be lawful, ethical, and robust. The seven operational requirements are human agency and oversight; technical robustness and safety; privacy and data governance; transparency; diversity, non-discrimination, and fairness; societal and environmental well-being; and accountability. These requirements are not a model benchmark. They are lifecycle obligations that connect technical design to fundamental rights, institutions, and human purposes (AI HLEG, 2019, 2020).",
+      "translation": "IA de încredere este adesea redusă la un ansamblu de tehnici de siguranță. Tradiția europeană este mai amplă. Grupul de experți la nivel înalt privind inteligența artificială a definit IA de încredere prin trei condiții simultane: ar trebui să fie legală, etică și robustă. Cele șapte cerințe operaționale sunt capacitatea umană de acțiune și supravegherea; robustețea tehnică și siguranța; viața privată și guvernanța datelor; transparența; diversitatea, nediscriminarea și echitatea; bunăstarea societală și de mediu; și răspunderea. Aceste cerințe nu sunt un test de referință pentru modele. Sunt obligații pe întregul ciclu de viață, care leagă proiectarea tehnică de drepturi fundamentale, instituții și scopuri umane (AI HLEG, 2019, 2020)."
+    },
+    {
+      "id": "t000228",
+      "source": "Agentic systems make this philosophy more demanding because they do not merely recommend. They interpret goals, select procedures, interact with other systems, preserve memory, and perform actions. The relevant object is therefore the full sociotechnical arrangement: models, prompts, tools, data, memory, deployment infrastructure, human operators, affected persons, and organisational policies. A model can be accurate in isolation while the agentic system remains untrustworthy because authority is excessive, redress is absent, logs are incomplete, or the workflow systematically disadvantages a group.",
+      "translation": "Sistemele agentice fac această filosofie mai exigentă deoarece nu se limitează la recomandări. Ele interpretează obiective, selectează proceduri, interacționează cu alte sisteme, păstrează memorie și efectuează acțiuni. Obiectul relevant este, prin urmare, întregul aranjament sociotehnic: modele, prompturi, instrumente, date, memorie, infrastructură de implementare, operatori umani, persoane afectate și politici organizaționale. Un model poate fi precis luat izolat, în timp ce sistemul agentic rămâne nedemn de încredere deoarece autoritatea este excesivă, remedierea prejudiciilor lipsește, jurnalele sunt incomplete sau fluxul de lucru dezavantajează sistematic un grup."
+    },
+    {
+      "id": "t000229",
+      "source": "The correct definition of trust is justified reliance. A person or institution may rely on an agent only to the extent that the system has demonstrated suitable competence, bounded authority, traceable operation, and remedies for failure. This definition rejects both technological optimism and blanket distrust. It asks what claim has been warranted for which task, environment, population, time period, and consequence level. An agent that is trustworthy for drafting may not be trustworthy for submission. An agent that is trustworthy in a sandbox may not be trustworthy in production. Trust must attach to a configured use, not to an abstract model family.",
+      "translation": "Definiția corectă a încrederii este sprijinirea justificată. O persoană sau o instituție se poate baza pe un agent doar în măsura în care sistemul a demonstrat competență adecvată, autoritate limitată, operare trasabilă și remedii pentru eșec. Definiția respinge atât optimismul tehnologic, cât și neîncrederea generalizată. Ea întreabă ce afirmație a fost justificată pentru ce sarcină, mediu, populație, perioadă și nivel al consecințelor. Un agent demn de încredere pentru redactare poate să nu fie demn de încredere pentru depunere. Un agent demn de încredere într-un mediu izolat poate să nu fie demn de încredere în producție. Încrederea trebuie să se atașeze unei utilizări configurate, nu unei familii abstracte de modele."
+    },
+    {
+      "id": "t000230",
+      "source": "The European approach also resists the idea that human oversight is a cosmetic control. Human-in-the-loop, human-on-the-loop, and human-in-command represent different allocations of authority. A person who receives an incomprehensible final recommendation under time pressure is not meaningful oversight. Effective oversight requires information, time, competence, and the ability to intervene. Agent harnesses must therefore design the human interface as carefully as the model interface: show the decision that is requested, the evidence assembled, the alternatives considered, the remaining uncertainty, and the consequences of approval.",
+      "translation": "Abordarea europeană se opune și ideii că supravegherea umană este un control cosmetic. Participarea umană în buclă, supravegherea umană a buclei și comanda umană reprezintă repartizări diferite ale autorității. O persoană care primește o recomandare finală de neînțeles sub presiunea timpului nu reprezintă supraveghere semnificativă. Supravegherea eficace necesită informații, timp, competență și capacitatea de a interveni. Prin urmare, infrastructurile de control ale agenților trebuie să proiecteze interfața umană la fel de atent ca interfața modelului: să arate decizia solicitată, dovezile adunate, alternativele luate în calcul, incertitudinea rămasă și consecințele aprobării."
+    },
+    {
+      "id": "t000231",
+      "source": "Figure from PDF page 43",
+      "translation": "Figură de la pagina 43 a PDF-ului"
+    },
+    {
+      "id": "t000232",
+      "source": "Figure 5.1. European trustworthy-AI principles become effective only when translated through governance into runtime controls.",
+      "translation": "Figura 5.1. Principiile europene ale IA de încredere devin eficace numai când sunt transpuse prin guvernanță în controale ale mediului de execuție."
+    },
+    {
+      "id": "t000233",
+      "source": "5.2 From seven requirements to agent controls",
+      "translation": "5.2 De la șapte cerințe la controale ale agenților"
+    },
+    {
+      "id": "t000234",
+      "source": "Human agency and oversight become controls on delegation. The runtime should define which actions are advisory, reversible, reviewable, or prohibited. It should support escalation and interruption. It should prevent a chain of agent-to-agent delegation from silently expanding authority. The person responsible for a process must remain able to understand the current state, change the goal, withdraw permission, and contest the outcome. Human command is not achieved by inserting an approval button after all substantive choices have already been made.",
+      "translation": "Capacitatea umană de acțiune și supravegherea devin controale asupra delegării. Mediul de execuție ar trebui să definească ce acțiuni sunt consultative, reversibile, revizuibile sau interzise. Ar trebui să susțină escaladarea și întreruperea. Ar trebui să împiedice un lanț de delegare de la agent la agent să extindă pe nesimțite autoritatea. Persoana responsabilă pentru un proces trebuie să rămână capabilă să înțeleagă starea curentă, să schimbe obiectivul, să retragă permisiunea și să conteste rezultatul. Comanda umană nu se obține prin inserarea unui buton de aprobare după ce toate alegerile de fond au fost deja făcute."
+    },
+    {
+      "id": "t000235",
+      "source": "Technical robustness and safety become defence in depth. Models will fail, tools will fail, external services will change, and adversaries will manipulate content. Robustness therefore includes schema validation, typed state, isolation, least privilege, fault classification, checkpointing, fallback, rollback, and safe termination. Reliability should be measured across repeated runs and perturbations, not inferred from one successful demonstration. Security tests must include indirect prompt injection, malicious tools, memory poisoning, credential misuse, and unexpected interaction among agents.",
+      "translation": "Robustețea tehnică și siguranța devin apărare în profunzime. Modelele vor eșua, instrumentele vor eșua, serviciile externe se vor schimba, iar adversarii vor manipula conținutul. Robustețea include, așadar, validarea schemelor, starea tipizată, izolarea, privilegiul minim, clasificarea defecțiunilor, punctele de control, soluțiile de rezervă, revenirea și încheierea sigură. Fiabilitatea ar trebui măsurată în rulări repetate și perturbări, nu dedusă dintr-o singură demonstrație reușită. Testele de securitate trebuie să includă injecția indirectă de prompt, instrumentele malițioase, otrăvirea memoriei, folosirea abuzivă a acreditărilor și interacțiunile neașteptate între agenți."
+    },
+    {
+      "id": "t000236",
+      "source": "Privacy and data governance become context governance. An agentic runtime continuously decides what data to retrieve, expose to a model, send to a tool, preserve in memory, or include in a trace. Data minimisation should therefore operate at every step, not only at initial collection. Sensitive data can be protected through local processing, scoped retrieval, redaction, access controls, retention limits, and model routing according to data boundary. Persistent memory needs explicit legal basis, purpose, source, expiration, and deletion semantics. A useful memory is not automatically a legitimate memory.",
+      "translation": "Viața privată și guvernanța datelor devin guvernanță a contextului. Un mediu de execuție agentic decide continuu ce date să recupereze, să expună unui model, să trimită unui instrument, să păstreze în memorie sau să includă într-o urmă. Minimizarea datelor ar trebui, prin urmare, să opereze la fiecare pas, nu doar la colectarea inițială. Datele sensibile pot fi protejate prin procesare locală, recuperare cu domeniu delimitat, redactarea informațiilor sensibile, controale de acces, limite de retenție și rutarea modelelor potrivit graniței datelor. Memoria persistentă necesită temei juridic explicit, scop, sursă, expirare și semantică a ștergerii. O memorie utilă nu este automat o memorie legitimă."
+    },
+    {
+      "id": "t000237",
+      "source": "Transparency becomes traceability, communication, and process intelligibility. The system should record model and tool versions, instructions, retrieved sources, key variables, approvals, and final actions. The user should know that an agent is involved and understand its capabilities and limits. Yet transparency should not mean dumping a raw chain-of-thought transcript. Raw traces may be misleading, private, or insecure. The better target is a process explanation: what information was used, what procedure was followed, what was verified, what remained uncertain, and who authorised the result.",
+      "translation": "Transparența devine trasabilitate, comunicare și inteligibilitate a procesului. Sistemul ar trebui să înregistreze versiunile modelelor și instrumentelor, instrucțiunile, sursele recuperate, variabilele-cheie, aprobările și acțiunile finale. Utilizatorul ar trebui să știe că este implicat un agent și să-i înțeleagă capacitățile și limitele. Totuși, transparența nu ar trebui să însemne descărcarea unei transcrieri brute a lanțului de raționament. Urmele brute pot fi înșelătoare, private sau nesigure. Ținta mai bună este o explicație a procesului: ce informații au fost folosite, ce procedură s-a urmat, ce s-a verificat, ce a rămas incert și cine a autorizat rezultatul."
+    },
+    {
+      "id": "t000238",
+      "source": "Diversity, non-discrimination, and fairness become requirements on data, workflow, interface, and outcome. An agent can create disparate effects through routing, memory, tool access, or escalation even if its base model passes a generic bias benchmark. Fairness must be tested at the system level and across the task distribution actually served. Accessibility also matters because agent interfaces can exclude users who cannot interpret dense traces or operate complex approval flows. Stakeholder participation is especially valuable when the agent changes an institutional process rather than merely automating an existing screen.",
+      "translation": "Diversitatea, nediscriminarea și echitatea devin cerințe asupra datelor, fluxului de lucru, interfeței și rezultatului. Un agent poate crea efecte inegale prin rutare, memorie, acces la instrumente sau escaladare chiar dacă modelul său de bază trece un test generic de părtinire. Echitatea trebuie testată la nivelul sistemului și în distribuția sarcinilor efectiv deservite. Contează și accesibilitatea, deoarece interfețele agenților pot exclude utilizatorii care nu pot interpreta urme dense sau opera fluxuri complexe de aprobare. Participarea părților interesate este deosebit de valoroasă când agentul schimbă un proces instituțional, nu doar automatizează un ecran existent."
+    },
+    {
+      "id": "t000239",
+      "source": "Societal and environmental well-being become design constraints on purpose, labour, democracy, and resource use. Agentic systems can increase productivity, but they can also intensify surveillance, centralise control, obscure responsibility, or flood institutions with low-cost generated actions. Energy and compute should be measured because iterative loops, multi-agent debate, and verification can multiply inference. Efficiency is therefore part of trustworthiness: unnecessary computation is not only a financial problem but a sustainability and accessibility problem.",
+      "translation": "Bunăstarea societală și de mediu devine o constrângere de proiectare asupra scopului, muncii, democrației și utilizării resurselor. Sistemele agentice pot crește productivitatea, dar pot și intensifica supravegherea, centraliza controlul, ascunde responsabilitatea sau inunda instituțiile cu acțiuni generate la cost redus. Energia și calculul ar trebui măsurate deoarece buclele iterative, dezbaterea multiagent și verificarea pot multiplica inferența. Eficiența face, prin urmare, parte din caracterul demn de încredere: calculul inutil nu este doar o problemă financiară, ci și una de sustenabilitate și accesibilitate."
+    },
+    {
+      "id": "t000240",
+      "source": "Accountability becomes evidence and decision ownership. Every consequential operation should have an identifiable operator, policy basis, and route for review. The system should preserve enough evidence to determine what happened without implying that the trace proves correctness. Responsibilities among model provider, harness developer, tool provider, deployer, and user should be explicit. A multi-vendor agent stack can otherwise create an accountability gap in which each component behaved according to its local contract while the combined system harmed someone.",
+      "translation": "Răspunderea devine dovadă și asumare a deciziilor. Fiecare operație cu consecințe ar trebui să aibă un operator identificabil, un temei în politici și o cale de revizuire. Sistemul ar trebui să păstreze suficiente dovezi pentru a stabili ce s-a întâmplat fără a sugera că urma dovedește corectitudinea. Responsabilitățile furnizorului modelului, dezvoltatorului infrastructurii de control, furnizorului instrumentelor, implementatorului și utilizatorului ar trebui să fie explicite. Altfel, o stivă agentică cu mai mulți furnizori poate crea o lacună de răspundere în care fiecare componentă s-a comportat potrivit contractului local, în timp ce sistemul combinat a prejudiciat pe cineva."
+    },
+    {
+      "id": "t000241",
+      "source": "Table 5.1. Translating European trustworthy-AI requirements into harness design.",
+      "translation": "Tabelul 5.1. Transpunerea cerințelor europene pentru IA de încredere în proiectarea infrastructurii de control."
+    },
+    {
+      "id": "t000242",
+      "source": "European requirement",
+      "translation": "Cerință europeană"
+    },
+    {
+      "id": "t000243",
+      "source": "Agent-system consequence",
+      "translation": "Consecință pentru sistemul agentic"
+    },
+    {
+      "id": "t000244",
+      "source": "Human agency and",
+      "translation": "Capacitate umană de acțiune și"
+    },
+    {
+      "id": "t000245",
+      "source": "Bounded delegation, interruption, meaningful",
+      "translation": "Delegare limitată, întrerupere, aprobare"
+    },
+    {
+      "id": "t000246",
+      "source": "oversight",
+      "translation": "supraveghere"
+    },
+    {
+      "id": "t000247",
+      "source": "approval, and contestability.",
+      "translation": "semnificativă și posibilitate de contestare."
+    },
+    {
+      "id": "t000248",
+      "source": "Technical robustness and",
+      "translation": "Robustețe tehnică și"
+    },
+    {
+      "id": "t000249",
+      "source": "Isolation, least privilege, recovery, repeatability,",
+      "translation": "Izolare, privilegiu minim, recuperare, repetabilitate"
+    },
+    {
+      "id": "t000250",
+      "source": "safety",
+      "translation": "siguranță"
+    },
+    {
+      "id": "t000251",
+      "source": "and adversarial testing.",
+      "translation": "și testare adversarială."
+    },
+    {
+      "id": "t000252",
+      "source": "Privacy and data",
+      "translation": "Viață privată și guvernanța"
+    },
+    {
+      "id": "t000253",
+      "source": "Step-level minimisation, scoped memory,",
+      "translation": "Minimizare la nivelul pasului, memorie cu domeniu delimitat,"
+    },
+    {
+      "id": "t000254",
+      "source": "governance",
+      "translation": "datelor"
+    },
+    {
+      "id": "t000255",
+      "source": "provenance, retention, and access control.",
+      "translation": "proveniență, retenție și control al accesului."
+    },
+    {
+      "id": "t000256",
+      "source": "Transparency",
+      "translation": "Transparență"
+    },
+    {
+      "id": "t000257",
+      "source": "Process explanations, traceability, disclosure, and capability communication.",
+      "translation": "Explicații ale procesului, trasabilitate, informare și comunicarea capacităților."
+    },
+    {
+      "id": "t000258",
+      "source": "Fairness and diversity",
+      "translation": "Echitate și diversitate"
+    },
+    {
+      "id": "t000259",
+      "source": "System-level outcome testing, accessibility, and stakeholder participation.",
+      "translation": "Testarea rezultatelor la nivel de sistem, accesibilitate și participarea părților interesate."
+    },
+    {
+      "id": "t000260",
+      "source": "Societal and environmental Purpose review, labour effects, democratic",
+      "translation": "Bunăstare societală și de mediu Revizuirea scopului, efectele asupra muncii, impactul"
+    },
+    {
+      "id": "t000261",
+      "source": "well-being",
+      "translation": "asupra mediului"
+    },
+    {
+      "id": "t000262",
+      "source": "impact, and compute efficiency.",
+      "translation": "democratic și eficiența calculului."
+    },
+    {
+      "id": "t000263",
+      "source": "Accountability",
+      "translation": "Răspundere"
+    },
+    {
+      "id": "t000264",
+      "source": "Audit evidence, responsibility allocation, redress, and governed release.",
+      "translation": "Dovezi de audit, repartizarea responsabilității, remedierea prejudiciilor și lansare guvernată."
+    },
+    {
+      "id": "t000265",
+      "source": "5.3 The AI Act as architecture pressure",
+      "translation": "5.3 Regulamentul privind IA ca presiune arhitecturală"
+    },
+    {
+      "id": "t000266",
+      "source": "The AI Act applies generally from 2 August 2026, with earlier application for prohibited practices, AI literacy, governance, and general-purpose AI obligations. A political agreement reached on 7 May 2026 adjusted the implementation path for high-risk rules: the Commission's current timeline places certain stand-alone high-risk systems at 2 December 2027 and product-embedded systems at 2 August 2028, subject to completion of the legislative process and supporting measures. Agent builders should therefore distinguish law already applicable, obligations entering application on 2 August 2026, and high-risk provisions whose dates have been politically revised. This book states the position as of 23 July 2026 rather than treating regulatory timelines as static (European Commission, 2026a; European Union, 2024).",
+      "translation": "Regulamentul privind IA se aplică în general de la 2 august 2026, cu aplicare mai timpurie pentru practicile interzise, alfabetizarea în domeniul IA, guvernanță și obligațiile privind IA de uz general. Un acord politic încheiat la 7 mai 2026 a ajustat calendarul implementării normelor de risc ridicat: calendarul actual al Comisiei plasează anumite sisteme de sine stătătoare cu risc ridicat la 2 decembrie 2027 și sistemele încorporate în produse la 2 august 2028, sub rezerva finalizării procesului legislativ și a măsurilor de sprijin. Constructorii de agenți ar trebui, prin urmare, să distingă dreptul deja aplicabil, obligațiile care intră în aplicare la 2 august 2026 și dispozițiile privind riscul ridicat ale căror date au fost revizuite politic. Cartea prezintă situația la 23 iulie 2026, în loc să trateze calendarele de reglementare ca fixe (European Commission, 2026a; European Union, 2024)."
+    }
+  ]
+}
