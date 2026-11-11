@@ -1,0 +1,51 @@
+{
+  "language": "en",
+  "chunk": 22,
+  "segments": [
+    {
+      "id": "t000259",
+      "source": "„Alege o sală în care să încăpem toți.” Asistentul ar putea cere imediat numărul participanților, ora, bugetul, echipamentul dorit, accesul la transport și preferințele pentru lumină naturală. Toate pot fi informații utile. Totuși, dacă singura alegere urgentă este între o sală cu douăzeci de locuri și una cu cincizeci, iar utilizatorul a spus deja că vor veni cel puțin treizeci de persoane, putem deja elimina sala mică. Pentru cea de cincizeci de locuri mai trebuie să verificăm limita superioară a grupului, dar conversația a avansat: o opțiune a fost exclusă pe baza informației existente.",
+      "translation": "“Choose a room where we can all fit.” The assistant could immediately ask for the number of participants, time, budget, desired equipment, transport access and preferences for natural light. All may be useful information. Yet if the only urgent choice is between a twenty-seat room and a fifty-seat one, and the user has already said at least thirty people will attend, we can already eliminate the small room. For the fifty-seat room, we still need to check the group’s upper limit, but the conversation has advanced: an option has been excluded using existing information."
+    },
+    {
+      "id": "t000260",
+      "source": "Valoarea unui asistent se vede și în lucrurile pe care nu ne obligă să le explicăm din nou. Pentru aceasta, sistemul trebuie să păstreze scopul, informația deja stabilită și relația dintre necunoscute și opțiunile rămase. Un SWM poate face aceste legături inspectabile. Întrebarea potrivită nu este neapărat cea despre câmpul cel mai gol, ci aceea al cărei răspuns permite conversației să avanseze în direcția cerută de utilizator.",
+      "translation": "An assistant’s value also appears in what it does not force us to explain again. For this, the system must retain the goal, the information already established and the relationship between unknowns and remaining options. An SWM can make these connections inspectable. The right question is not necessarily the one about the emptiest field, but the one whose answer lets the conversation advance in the direction requested by the user."
+    },
+    {
+      "id": "t000261",
+      "source": "Detaliul care desparte două decizii",
+      "translation": "The detail that separates two decisions"
+    },
+    {
+      "id": "t000262",
+      "source": "Organizăm o seară de proiecție urmată de o discuție. O sală este disponibilă până la ora 21:00, alta până la 23:00. Filmul durează nouăzeci de minute, iar începerea este propusă pentru 19:00. Dacă utilizatorul vrea doar proiecția, prima sală poate fi suficientă. Dacă vrea și o discuție de o oră, aceeași sală nu mai acoperă programul. Durata discuției a devenit o necunoscută care schimbă alegerea. Întrebarea „Cât vrei să păstrăm pentru discuție?” apare din structura situației, nu dintr-o listă fixă de câmpuri obligatorii.",
+      "translation": "We are organizing an evening screening followed by a discussion. One room is available until 21:00, another until 23:00. The film lasts ninety minutes, and the proposed start is 19:00. If the user wants only the screening, the first room may suffice. If they also want an hour-long discussion, the same room no longer covers the program. The discussion’s duration has become an unknown that changes the choice. The question “How much time would you like to keep for discussion?” arises from the situation’s structure, not from a fixed list of mandatory fields."
+    },
+    {
+      "id": "t000263",
+      "source": "Putem urmări raționamentul pas cu pas. Instanța păstrează ora de început, durata filmului, intervalele sălilor și faptul că există o activitate după film. Tiparul spune cum se leagă activitățile succesive și cum verificăm încadrarea într-un interval. Sistemul explorează valori relevante pentru durata încă necunoscută. Cu douăzeci de minute de discuție, finalul este la 20:50; cu șaizeci de minute, la 21:30. O condiție este îndeplinită într-o variantă și încălcată în cealaltă. Întrebarea are astfel o justificare pe care asistentul o poate exprima simplu: sala de până la nouă depinde de cât durează discuția.",
+      "translation": "We can follow the reasoning step by step. The instance retains the start time, film duration, room intervals and the fact that an activity follows the film. The pattern says how successive activities are connected and how we check whether they fit within an interval. The system explores relevant values for the still-unknown duration. With twenty minutes of discussion, the end is at 20:50; with sixty minutes, at 21:30. A condition is satisfied in one option and violated in the other. The question thus has a justification the assistant can express simply: using the room available until nine depends on how long the discussion lasts."
+    },
+    {
+      "id": "t000264",
+      "source": "Cum transformăm această observație într-un mecanism care alege întrebări? Pornim de la operația cerută acum: vrem să aflăm dacă putem păstra sala disponibilă până la 21:00. Un mesaj precum „să fie și o discuție scurtă” poate conduce la mai multe interpretări candidate. Ele păstrează sursa expresiei, activitatea la care se referă și duratele compatibile cu informația disponibilă. O propunere a modelului neuronal rămâne candidat până când condițiile instanței sau un răspuns o susțin; sistemul poate păstra și faptul că lista interpretărilor este încă incompletă.",
+      "translation": "How do we turn this observation into a mechanism for choosing questions? We start from the operation requested now: we want to know whether we can keep the room available until 21:00. A message such as “let’s also have a short discussion” may lead to several candidate interpretations. They retain the expression’s source, the activity it concerns and the durations compatible with the available information. A neural model’s proposal remains a candidate until the instance’s conditions or an answer support it; the system can also retain the fact that the interpretation list is still incomplete."
+    },
+    {
+      "id": "t000265",
+      "source": "Să presupunem că intervalul plauzibil rămas este de la douăzeci la șaizeci de minute. Interpretorul verifică opțiunile pentru aceste alternative și le grupează după răspunsul la întrebarea curentă. Filmul se termină la 20:30, deci orice durată de cel mult treizeci de minute păstrează prima sală fezabilă; o durată mai mare o exclude. Nu trebuie să simulăm separat fiecare minut. Condiția temporală ne dă pragul care separă două grupuri. Sala de până la 23:00 poate găzdui ambele grupuri, în condițiile analizate. Dacă utilizatorul dorește doar o sală fezabilă și acceptă această a doua opțiune, durata exactă poate să nu mai fie necesară pentru alegere.",
+      "translation": "Suppose the remaining plausible interval is twenty to sixty minutes. The interpreter checks the options for these alternatives and groups them by their answer to the current question. The film ends at 20:30, so any duration of at most thirty minutes keeps the first room feasible; a longer duration excludes it. We need not simulate every minute separately. The temporal condition gives us the threshold separating two groups. Under the conditions analyzed, the room available until 23:00 can accommodate both groups. If the user only wants a feasible room and accepts this second option, the exact duration may no longer be necessary for the choice."
+    },
+    {
+      "id": "t000266",
+      "source": "Întrebările candidate se construiesc din diferențele care separă aceste rezultate. „Discuția va depăși treizeci de minute?” este suficientă pentru prima sală; „va dura douăzeci sau douăzeci și cinci?” separă două situații cu același rezultat și nu ajută acea decizie. Gruparea depinde astfel de scop. Dacă trebuie publicată ora exactă de încheiere, douăzeci și douăzeci și cinci devin răspunsuri diferite, iar clarificarea mai precisă capătă valoare. Păstrăm atât alternativele, cât și întrebarea pentru care le-am considerat echivalente.",
+      "translation": "Candidate questions are constructed from differences separating these results. “Will the discussion exceed thirty minutes?” is sufficient for the first room; “will it last twenty or twenty-five?” separates two situations with the same result and does not help that decision. Grouping thus depends on the goal. If the exact finishing time must be published, twenty and twenty-five become different answers, and the more precise clarification gains value. We retain both the alternatives and the question for which we considered them equivalent."
+    },
+    {
+      "id": "t000267",
+      "source": "Nu este nevoie ca fiecare întrebare să vină cu demonstrația completă. Utilizatorul are nevoie, de obicei, de motivul local al clarificării. „Vrei să păstrăm o oră pentru discuție? În acest caz trebuie sala disponibilă mai târziu.” Explicația arată de ce contează răspunsul și permite corectarea scopului. Utilizatorul poate spune că discuția este opțională sau că evenimentul poate începe la 18:30. Clarificarea nu doar completează o valoare; poate schimba felul în care este formulată problema.",
+      "translation": "Not every question needs to come with the full proof. The user generally needs the local reason for clarification. “Would you like to keep an hour for discussion? In that case, we need the room available later.” The explanation shows why the answer matters and allows the goal to be corrected. The user may say the discussion is optional or that the event can start at 18:30. Clarification does not merely fill a value; it can change how the problem is formulated."
+    }
+  ]
+}

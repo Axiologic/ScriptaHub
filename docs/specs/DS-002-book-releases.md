@@ -129,6 +129,15 @@ meaningful step and before a context switch or hand-off.
 
 ## Installing and preserving history
 
+When composing a PDF with `--copyright-book` and a release workspace, the renderer
+uses that workspace's announced edition and planned publication date. This supports
+new books that have only a pending edition and prevents replacement PDFs from
+inheriting the previous edition's credits. Without a workspace, use the current
+published edition. The copyright book must match the staged release.
+Recomposed PDFs retain clickable contents entries and omit their source-document
+page numbers, which no longer describe the new pagination. Canonical reader text
+stays unchanged; the print receipt records the omitted page-label count.
+
 ```sh
 python3 tools/book_tasks.py check .book-work/WORKSPACE
 python3 tools/book_tasks.py install .book-work/WORKSPACE

@@ -1,0 +1,61 @@
+{
+  "language": "en",
+  "chunk": 12,
+  "segments": [
+    {
+      "id": "t000168",
+      "source": "Cum obținem concret planul de calcul? Pornim de la rezultatul cerut și consultăm contractul operației: ce citește, ce produce și în ce condiții este aplicabilă. Rezolvăm referințele, identificăm intrările existente și căutăm operații care pot furniza intrările lipsă. Operațiile fără dependențe nerezolvate pot fi evaluate; rezultatele lor deblochează alte operații. Dacă lipsește durata transferului și nu există un mod acceptat de a o obține, verificarea rămâne în așteptare cu această lipsă identificată. Nu o evaluăm ca și cum durata ar fi zero.",
+      "translation": "How do we obtain the calculation plan in concrete terms? We start from the requested result and consult the operation’s contract: what it reads, what it produces and under what conditions it applies. We resolve references, identify existing inputs and look for operations that can provide missing inputs. Operations with no unresolved dependencies can be evaluated; their results unlock other operations. If the transfer duration is missing and there is no accepted way to obtain it, the check remains pending with that gap identified. We do not evaluate it as if the duration were zero."
+    },
+    {
+      "id": "t000169",
+      "source": "Un circuit semantic poate avea legături circulare perfect obișnuite: persoana indică organizația din care face parte, iar organizația își enumeră membrii. Acest lucru nu împiedică citirea datelor. Un ciclu de calcul cere însă o interpretare: dacă rezultatul A depinde de B, iar B de A, ordonarea singură nu ajunge. Avem nevoie de o regulă explicită de rezolvare, de o iterație justificată sau de oprirea cu dependența nerezolvată. Simplul desen al circuitului nu decide această alegere. În arhitectura propusă, contractele operațiilor fac posibilă separarea dintre o relație de sens și o dependență care blochează calculul.",
+      "translation": "A semantic circuit can have perfectly ordinary circular links: the person points to the organization they belong to, while the organization lists its members. This does not prevent reading the data. A computational cycle, however, requires interpretation: if result A depends on B and B on A, ordering alone is insufficient. We need an explicit resolution rule, a justified iteration or a stop with the dependency unresolved. Simply drawing the circuit does not decide this choice. In the proposed architecture, operation contracts make it possible to separate a semantic relationship from a dependency that blocks calculation."
+    },
+    {
+      "id": "t000170",
+      "source": "Compunerea păstrează identitățile și declară ce traversează granița",
+      "translation": "Composition preserves identities and declares what crosses the boundary"
+    },
+    {
+      "id": "t000171",
+      "source": "O publicație digitală pregătește un articol ilustrat. Circuitul editorial descrie textul, imaginile alese și poziția lor în pagină. Un alt circuit descrie fișierele de imagine, versiunile și aprobările de utilizare. Ambele pot vorbi despre „fotografia de pe copertă”, dar această expresie nu este suficientă pentru a le uni: alegerea editorială și aprobarea privesc roluri diferite, iar fișierul poate fi înlocuit între timp.",
+      "translation": "A digital publication is preparing an illustrated article. The editorial circuit describes the text, the chosen images and their positions on the page. Another circuit describes image files, versions and usage approvals. Both may speak of “the cover photograph”, but this expression is insufficient to join them: the editorial choice and the approval concern different roles, and the file may have been replaced in the meantime."
+    },
+    {
+      "id": "t000172",
+      "source": "Intrările compunerii sunt cele două circuite și o declarație a legăturilor permise între ele. Mai întâi păstrăm identitățile separate. Dacă ambele folosesc identificatorul local foto, îl rezolvăm împreună cu spațiul din care provine: editorial sau imagini. Dacă importăm firele într-un registru comun, atribuim nume distincte și rescriem consecvent referințele interne. Nu schimbăm doar etichetele firelor, lăsând legăturile să indice vechile nume.",
+      "translation": "The inputs to composition are the two circuits and a declaration of the connections allowed between them. First, we keep identities separate. If both use the local identifier foto, we resolve it together with its originating space: editorial or images. If we import the threads into a shared registry, we assign distinct names and consistently rewrite internal references. We do not merely change thread labels while leaving links pointing to the old names."
+    },
+    {
+      "id": "t000173",
+      "source": "Apoi declarăm interfața, adică informația pe care fiecare circuit o oferă și o așteaptă. Punctele acestei interfețe pot fi numite porturi: nu sunt un nou fel de obiect al lumii, ci locuri declarate de conectare. Circuitul editorial oferă identificarea fișierului, versiunea aleasă și utilizarea propusă. Circuitul aprobărilor oferă o evaluare pentru acea combinație și sursa ei. O mapare precizează că imaginea selectată în articol corespunde fișierului și versiunii din celălalt circuit. Numele afișat al fotografiei poate ajuta căutarea, dar maparea adoptată se bazează pe identificarea verificată.",
+      "translation": "We then declare the interface, meaning the information each circuit provides and expects. The points of this interface may be called ports: they are not a new kind of world object, but declared connection points. The editorial circuit provides the file identification, selected version and proposed use. The approvals circuit provides an assessment for that combination and its source. A mapping specifies that the image selected in the article corresponds to the file and version in the other circuit. The photograph’s displayed name may help the search, but the adopted mapping relies on verified identification."
+    },
+    {
+      "id": "t000174",
+      "source": "Procesorul verifică apoi compatibilitatea interfeței: este vorba despre aceeași versiune, despre același tip de utilizare și despre o evaluare încă valabilă pentru condițiile declarate? Dacă aprobarea privește versiunea anterioară, compunerea produce o condiție neacoperită. Nu transferă automat răspunsul asupra noului fișier. Dacă evaluarea este favorabilă, rezultatul poate debloca verificarea editorială corespunzătoare; nu publică articolul. Ieșirea compunerii este un ansamblu conectat, cu mapări inspectabile și condiții satisfăcute ori rămase deschise.",
+      "translation": "The processor then checks interface compatibility: is this the same version, the same kind of use and an assessment still valid for the declared conditions? If approval concerns the previous version, composition produces an unmet condition. It does not automatically transfer the answer to the new file. If the assessment is favorable, the result can unlock the corresponding editorial check; it does not publish the article. The output of composition is a connected collection, with inspectable mappings and conditions either satisfied or still open."
+    },
+    {
+      "id": "t000175",
+      "source": "Acesta este un contract de arhitectură, nu un efect ascuns al semnului $. SOP poate purta firele și relațiile acestei descrieri; aplicația trebuie să definească semantica interfeței și operațiile care o verifică. Compunerea modulelor unui tipar și conectarea a două instanțe independente sunt, de asemenea, operații diferite. În primul caz reutilizăm reguli și vocabular; în al doilea stabilim corespondențe între situații concrete. O prefixare a numelor previne coliziunile, dar nu dovedește că două reprezentări privesc același lucru.",
+      "translation": "This is an architectural contract, not a hidden effect of the $ sign. SOP can carry the threads and relationships of this description; the application must define the interface’s semantics and the operations that check it. Composing a pattern’s modules and connecting two independent instances are also different operations. In the first case, we reuse rules and vocabulary; in the second, we establish correspondences between concrete situations. Prefixing names prevents collisions, but does not prove that two representations concern the same thing."
+    },
+    {
+      "id": "t000176",
+      "source": "Validarea transformă o descriere într-o intrare de încredere pentru calcul",
+      "translation": "Validation turns a description into a reliable input for calculation"
+    },
+    {
+      "id": "t000177",
+      "source": "Sistemul poate citi perfect „transfer de 25 de minute” și totuși folosi transferul dintre alte două locuri. De aceea, validarea nu este o singură întrebare la care răspundem cu da sau nu. Ea urmărește straturi diferite de corectitudine, fiecare cu propriul rezultat și cu propria posibilitate de reparare.",
+      "translation": "The system may read “a 25-minute transfer” perfectly yet use the transfer between two other places. For this reason, validation is not a single question answered yes or no. It tracks different layers of correctness, each with its own result and its own possibility of repair."
+    },
+    {
+      "id": "t000178",
+      "source": "Pornim de la textul propus, instanța vizată și versiunea tiparului folosit. Citirea sintactică verifică dacă declarațiile pot fi reconstruite: există identificator și tip, valorile sunt închise corect între ghilimele, proprietățile au forma așteptată. Rezultatul este un circuit candidat. O eroare aici indică un fragment care nu poate fi citit; nu este încă o contradicție despre călătorie.",
+      "translation": "We start from the proposed text, the intended instance and the version of the pattern used. Syntactic reading checks whether the declarations can be reconstructed: an identifier and type exist, values are correctly enclosed in quotation marks, and properties have the expected form. The result is a candidate circuit. An error here indicates a fragment that cannot be read; it is not yet a contradiction about the trip."
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "language": "en",
+  "chunk": 4,
+  "segments": [
+    {
+      "id": "t000124",
+      "source": "Cercetarea neurosimbolică a explorat concret această împărțire. The Neuro-Symbolic Concept Learner construiește o reprezentare a obiectelor dintr-o imagine și transformă întrebarea într-un program care operează asupra acelei reprezentări. Percepția, interpretarea întrebării și execuția sunt legate într-un sistem învățat. [S10] Pentru problema noastră, lecția de arhitectură este că o întrebare poate deveni o operație inspectabilă asupra unei situații reprezentate. Un asistent conversațional adaugă apoi continuitatea dintre mesaje, schimbarea informațiilor și consecințele acțiunilor.",
+      "translation": "Neurosymbolic research has explored this division concretely. The Neuro-Symbolic Concept Learner constructs a representation of the objects in an image and turns the question into a program operating on that representation. Perception, question interpretation and execution are connected in a learned system. [S10] For our problem, the architectural lesson is that a question can become an inspectable operation on a represented situation. A conversational assistant then adds continuity between messages, changing information and the consequences of actions."
+    },
+    {
+      "id": "t000125",
+      "source": "Această continuitate cere și o urmă până la mesaj. Dacă întrebarea a fost „am putea?”, sistemul trebuie să poată arăta de ce rezultatul este un scenariu. Dacă utilizatorul corectează „mă refeream la ziua următoare”, referința modificată trebuie să ajungă la calculele dependente. Păstrarea fragmentului de limbaj și a interpretării sale face corecția localizabilă. În acest fel, formalizarea devine o propunere care poate fi examinată și îmbunătățită, în locul unei traduceri care dispare imediat în interiorul sistemului.",
+      "translation": "This continuity also requires a trace back to the message. If the question was “could we?”, the system must be able to show why the result is a scenario. If the user corrects it with “I meant the next day”, the changed reference must reach the dependent calculations. Retaining the language fragment and its interpretation makes the correction locatable. In this way, formalization becomes a proposal that can be examined and improved, rather than a translation that immediately disappears inside the system."
+    },
+    {
+      "id": "t000126",
+      "source": "Figura 2. Tiparul participă la interpretare, iar o clarificare poate relua verificarea.",
+      "translation": "Figure 2. The pattern participates in interpretation, and a clarification can restart checking."
+    },
+    {
+      "id": "t000127",
+      "source": "SOP Lang face legăturile vizibile",
+      "translation": "SOP Lang makes connections visible"
+    },
+    {
+      "id": "t000128",
+      "source": "Luați două contacte cu același prenume. Într-un text, ambele pot apărea ca „Ana”. Într-o programare trebuie să știm despre care este vorba. De aceea, un identificator este diferit de numele afișat. El permite ca întâlnirea, călătoria și mesajele să se refere la aceeași persoană, chiar dacă numele ei se schimbă sau este comun cu al alteia. Aceasta este prima nevoie pe care o rezolvă forma de bază a unei declarații SOP. [S1]",
+      "translation": "Take two contacts with the same first name. In a text, both can appear as “Ana”. In an appointment, we must know which one is meant. This is why an identifier differs from a displayed name. It allows the meeting, trip and messages to refer to the same person, even if her name changes or is shared with someone else. This is the first need addressed by the basic form of an SOP declaration. [S1]"
+    },
+    {
+      "id": "t000129",
+      "source": "@ana person name=\"Ana\"",
+      "translation": "@ana person name=\"Ana\""
+    },
+    {
+      "id": "t000130",
+      "source": "@tren service label=\"T1\" date=\"2027-05-14\" departure=\"08:00\"",
+      "translation": "@tren service label=\"T1\" date=\"2027-05-14\" departure=\"08:00\""
+    },
+    {
+      "id": "t000131",
+      "source": "@calatorie trip traveler=$ana service=$tren date=\"2027-05-14\"",
+      "translation": "@calatorie trip traveler=$ana service=$tren date=\"2027-05-14\""
+    },
+    {
+      "id": "t000132",
+      "source": "@intalnire meeting participant=$ana",
+      "translation": "@intalnire meeting participant=$ana"
+    },
+    {
+      "id": "t000133",
+      "source": "date=\"2027-05-14\" start=\"11:00\"",
+      "translation": "date=\"2027-05-14\" start=\"11:00\""
+    },
+    {
+      "id": "t000134",
+      "source": "Fiecare declarație este numită fir. @ana îi dă primului fir un identificator, person precizează tipul său, iar name=\"Ana\" adaugă o proprietate. Referința $ana leagă călătoria și întâlnirea de aceeași persoană, iar $tren leagă acea călătorie de serviciul T1 din ziua indicată. Un ansamblu de fire formează un circuit SOP. Referințele exprimă legături între fire; ele nu impun, prin simpla lor prezență, o ordine de calcul sau de execuție.",
+      "translation": "Each declaration is called a thread. @ana gives the first thread an identifier, person specifies its type, and name=\"Ana\" adds a property. The reference $ana connects the trip and meeting to the same person, while $tren connects that trip to service T1 on the indicated day. A collection of threads forms an SOP circuit. References express connections between threads; their mere presence does not impose an order of calculation or execution."
+    },
+    {
+      "id": "t000135",
+      "source": "Putem înțelege reprezentarea din memorie fără să cunoaștem o bibliotecă: un registru asociază fiecărui identificator un fir, iar firul păstrează tipul și proprietățile sale. Pentru fiecare proprietate există una sau mai multe valori. Unele sunt texte ori numere; altele sunt referințe care pot fi rezolvate în registru. O călătorie nu conține o copie a persoanei, ci o legătură spre ea. Astfel, mai multe călătorii pot privi aceeași persoană fără să creeze persoane noi. Instanța de lume cuprinde acest ansamblu și informațiile necesare interpretării lui, nu doar un singur fir.",
+      "translation": "We can understand the in-memory representation without knowing a library: a registry associates each identifier with a thread, and the thread retains its type and properties. Each property has one or more values. Some are texts or numbers; others are references that can be resolved in the registry. A trip does not contain a copy of the person, but a link to her. Thus, several trips can concern the same person without creating new people. The world instance encompasses this collection and the information needed to interpret it, not just a single thread."
+    },
+    {
+      "id": "t000136",
+      "source": "Semnul $ contează fiindcă o legătură și un text au utilizări diferite. Referința participant=$ana permite traversarea relației spre persoană. Un șir citat, precum participant=\"$ana\", păstrează doar caracterele respective. Tiparul stabilește unde este necesară o referință și unde este potrivit un text. Nici identificatorii, nici numele de proprietăți nu decid singure semantica; ele fac posibil ca semantica aleasă să fie exprimată fără ambiguitatea unui paragraf liber. Identificatorul este local spațiului în care îl rezolvăm. Un alt circuit poate folosi @ana pentru altă persoană; unirea lor cere o decizie explicită despre identitate.",
+      "translation": "The $ sign matters because a connection and a text have different uses. The reference participant=$ana allows traversal of the relationship to the person. A quoted string such as participant=\"$ana\" retains only those characters. The pattern establishes where a reference is necessary and where text is appropriate. Neither identifiers nor property names determine semantics on their own; they make it possible to express the chosen semantics without the ambiguity of a free-form paragraph. An identifier is local to the space in which we resolve it. Another circuit can use @ana for a different person; joining them requires an explicit decision about identity."
+    },
+    {
+      "id": "t000137",
+      "source": "Să adăugăm datele scenariului. Orele următoare sunt alese pentru exemplu, în aceeași zi și același fus orar. Trenul sosește la 10:20, iar transferul de la gară la locul întâlnirii durează 25 de minute. Pentru calcul folosim numărul de minute de la începutul zilei. Instanța poate păstra și forma obișnuită a orei pentru afișare; conversia trebuie să respecte aceeași convenție în toate valorile folosite.",
+      "translation": "Let us add the scenario data. The following times are chosen for the example, on the same day and in the same time zone. The train arrives at 10:20, and the transfer from the station to the meeting place takes 25 minutes. For the calculation, we use the number of minutes since the start of the day. The instance can also retain the ordinary time format for display; the conversion must respect the same convention across all values used."
+    },
+    {
+      "id": "t000138",
+      "source": "@sosire arrival traveler=$ana trip=$calatorie minute=620",
+      "translation": "@sosire arrival traveler=$ana trip=$calatorie minute=620"
+    },
+    {
+      "id": "t000139",
+      "source": "@inceput meeting_start meeting=$intalnire minute=660",
+      "translation": "@inceput meeting_start meeting=$intalnire minute=660"
+    },
+    {
+      "id": "t000140",
+      "source": "@deplasare transfer",
+      "translation": "@deplasare transfer"
+    },
+    {
+      "id": "t000141",
+      "source": "from=$sosire to=$inceput duration_minutes=25",
+      "translation": "from=$sosire to=$inceput duration_minutes=25"
+    },
+    {
+      "id": "t000142",
+      "source": "Relația from leagă transferul de sosirea relevantă, iar to îl leagă de începutul întâlnirii. Cele 25 de minute nu sunt o durată fără adresă. Dacă în aceeași zi există o altă întâlnire, legăturile ne ajută să evităm folosirea accidentală a transferului ei. În plus, faptul că un fir ocupă mai multe linii ține de lizibilitate. Ordinea temporală este exprimată prin proprietăți și relații, nu dedusă din poziția în fișier.",
+      "translation": "The from relationship connects the transfer to the relevant arrival, while to connects it to the meeting’s start. The 25 minutes are not an unanchored duration. If there is another meeting that day, the links help us avoid accidentally using its transfer. Moreover, a thread spanning several lines is a matter of readability. Temporal order is expressed through properties and relationships, not inferred from position in the file."
+    },
+    {
+      "id": "t000143",
+      "source": "SOP poate reprezenta și relații cu mai mulți participanți. O declarație poate conține cheia participant de mai multe ori, dacă vocabularul întâlnirii permite această multiplicare. Tiparul trebuie să spună dacă fiecare participant este obligatoriu, dacă acceptarea tuturor este necesară și ce înseamnă un răspuns lipsă. Sintaxa oferă o formă comună, iar diferențele care schimbă comportamentul rămân explicite în interpretare.",
+      "translation": "SOP can also represent relationships with several participants. A declaration can contain the participant key several times if the meeting vocabulary permits this multiplicity. The pattern must say whether each participant is mandatory, whether everyone’s acceptance is necessary and what a missing response means. The syntax provides a common form, while the differences that change behavior remain explicit in interpretation."
+    },
+    {
+      "id": "t000144",
+      "source": "Această împărțire este utilă pentru extindere. Un cititor al sintaxei poate recunoaște fire, chei și referințe fără să cunoască fizica unei clădiri sau regulile unei publicații. Un interpretor specializat folosește apoi vocabularul lumii respective. În același format putem descrie un personaj și sursa unei informații, o măsurare și senzorul ei, o întâlnire și participanții ei. Generalitatea notației este infrastructură pentru diversitate, în timp ce tiparul păstrează sensul fiecărui domeniu.",
+      "translation": "This division is useful for extension. A syntax reader can recognize threads, keys and references without knowing a building’s physics or a publication’s rules. A specialized interpreter then uses the vocabulary of the world concerned. In the same format, we can describe a character and the source of information, a measurement and its sensor, a meeting and its participants. The notation’s generality is infrastructure for diversity, while the pattern retains each domain’s meaning."
+    },
+    {
+      "id": "t000145",
+      "source": "Dar unde păstrăm chiar descrierea acestui tipar? Și el poate fi exprimat printr-un circuit SOP: fire pentru definițiile de tipuri și proprietăți, fire care descriu șabloane de potrivire, reguli, calcule și condiții. Folosim aceeași formă de reprezentare, dar în roluri diferite. Firul care declară că o întâlnire poate avea participanți aparține descrierii tiparului; firul întâlnirii Anei aparține instanței. Declararea unei reguli despre călătorii nu afirmă că o anumită călătorie a avut loc.",
+      "translation": "But where do we retain the description of the pattern itself? It too can be expressed through an SOP circuit: threads for type and property definitions, threads describing matching templates, rules, calculations and conditions. We use the same representational form, but in different roles. The thread declaring that a meeting can have participants belongs to the pattern’s description; the thread for Ana’s meeting belongs to the instance. Declaring a rule about trips does not assert that a particular trip took place."
+    },
+    {
+      "id": "t000146",
+      "source": "Interpretorul pregătește tiparul înainte de a-l folosi. Rezolvă legăturile dintre declarații și verifică dacă regula indică șabloane existente, iar calculul numește o operație disponibilă. Din definițiile proprietăților construiește evidența verificărilor aplicabile fiecărui tip. Din premise construiește indexuri care arată ce reguli trebuie cercetate când apare un fapt de un anumit tip. Pregătește și pașii potrivirii: ce fire sunt căutate, ce variabile trebuie să coincidă și ce calcule sau condiții urmează. Aceasta este compilarea tiparului într-o formă convenabilă procesării; nu transformă automat orice referință în ordine de execuție și nu inventează implementarea operațiilor numite.",
+      "translation": "The interpreter prepares the pattern before using it. It resolves links between declarations and checks that a rule points to existing templates and that a calculation names an available operation. From property definitions, it constructs the record of checks applicable to each type. From premises, it constructs indexes showing which rules must be investigated when a fact of a particular type appears. It also prepares the matching steps: which threads are sought, which variables must coincide and which calculations or conditions follow. This is compilation of the pattern into a form convenient for processing; it does not automatically turn every reference into an execution order or invent implementations for the named operations."
+    },
+    {
+      "id": "t000147",
+      "source": "O regulă a călătoriei poate cere o sosire, transferul către întâlnirea vizată și ora ei de început. Calculează momentul ajungerii și verifică dacă, împreună cu marja cerută, respectă termenul. Consecința este o evaluare temporală favorabilă pentru acea variantă, legată de datele folosite. Regula rămâne în tipar; evaluarea produsă intră în instanță. Dacă durata lipsește, regula nu produce acea evaluare: lipsa concluziei nu dovedește întârzierea. Astfel, același circuit reutilizabil poate prelucra numeroase instanțe fără să le amestece identitățile sau rezultatele.",
+      "translation": "A trip rule may require an arrival, the transfer to the intended meeting and its start time. It calculates the time of reaching the meeting and checks whether, together with the required margin, it meets the deadline. The consequence is a favorable temporal assessment for that option, connected to the data used. The rule remains in the pattern; the assessment produced enters the instance. If the duration is missing, the rule does not produce that assessment: absence of the conclusion does not prove lateness. Thus, the same reusable circuit can process many instances without mixing their identities or results."
+    },
+    {
+      "id": "t000148",
+      "source": "Potrivirea identifică relațiile dintre fire",
+      "translation": "Matching identifies relationships between threads"
+    },
+    {
+      "id": "t000149",
+      "source": "Ana poate avea două întâlniri în aceeași zi, iar altcineva poate călători cu același tren. O căutare după cuvintele „tren” și „întâlnire” ar aduna date relevante fără să ne spună care trebuie folosite împreună. Potrivirea simbolică verifică tocmai această legătură. Intrările ei sunt circuitul căutat, circuitul disponibil și regulile de interpretare a tipurilor și valorilor; rezultatul este o colecție de potriviri complete, fiecare cu propriile legături între variabile și valori.",
+      "translation": "Ana may have two meetings on the same day, while someone else may travel on the same train. A search for the words “train” and “meeting” would gather relevant data without telling us which should be used together. Symbolic matching checks precisely this connection. Its inputs are the circuit sought, the available circuit and the rules for interpreting types and values; its result is a collection of complete matches, each with its own bindings between variables and values."
+    },
+    {
+      "id": "t000150",
+      "source": "Când lucrăm cu multe călătorii, avem nevoie să găsim informațiile potrivite fără să rescriem fiecare identificator. Aici apar variabilele. În următoarele șabloane de căutare, ?cine desemnează o valoare care trebuie găsită, iar folosirea ei în două locuri cere ca acea valoare să fie aceeași. Semnul ? dinaintea identificatorului declarației arată că avem un fir de căutat, nu afirmarea unui fapt nou.",
+      "translation": "When working with many trips, we need to find the appropriate information without rewriting every identifier. This is where variables appear. In the following search templates, ?cine designates a value to be found, and using it in two places requires that value to be the same. The ? sign before the declaration’s identifier indicates that we have a thread to search for, not an assertion of a new fact."
+    },
+    {
+      "id": "t000151",
+      "source": "?persoana_in_drum trip traveler=?cine date=?zi",
+      "translation": "?persoana_in_drum trip traveler=?cine date=?zi"
+    },
+    {
+      "id": "t000152",
+      "source": "?eveniment meeting participant=?cine date=?zi start=?ora",
+      "translation": "?eveniment meeting participant=?cine date=?zi start=?ora"
+    },
+    {
+      "id": "t000153",
+      "source": "Motorul începe cu firele de tip călătorie. Dacă are un index, adică un registru care grupează firele după tip ori după o proprietate, nu trebuie să inspecteze toate obiectele lumii. Când găsește călătoria Anei, notează provizoriu că cine este referința $ana, iar zi este data indicată. Această mică asociere se numește substituție: spune cu ce valoare poate fi înlocuită fiecare variabilă în potrivirea curentă. Reține și identitatea firului care a satisfăcut primul șablon, pentru a putea explica de unde provin valorile.",
+      "translation": "The engine begins with threads of the trip type. If it has an index, meaning a registry grouping threads by type or by a property, it need not inspect every object in the world. When it finds Ana’s trip, it provisionally notes that cine is the reference $ana and zi is the indicated date. This small association is called a substitution: it says which value can replace each variable in the current match. It also retains the identity of the thread that satisfied the first template, so it can explain where the values came from."
+    },
+    {
+      "id": "t000154",
+      "source": "Cu substituția astfel obținută, al doilea șablon caută o întâlnire a aceleiași persoane în aceeași zi. O întâlnire a lui Dan este respinsă chiar dacă începe la ora dorită. O întâlnire a Anei din ziua următoare este respinsă din același motiv: o variabilă deja legată nu poate primi pe ascuns altă valoare. Pentru întâlnirea compatibilă, motorul completează substituția cu ora. Dacă două întâlniri sunt compatibile, rezultă două potriviri, fiecare păstrând identitățile firelor care au satisfăcut șabloanele. Chiar dacă valorile substituite coincid, întâlnirile pot fi distincte; identitățile permit justificarea fiecărui rezultat.",
+      "translation": "With the substitution thus obtained, the second template seeks a meeting involving the same person on the same day. A meeting involving Dan is rejected even if it starts at the desired time. Ana’s meeting on the following day is rejected for the same reason: an already bound variable cannot silently acquire another value. For the compatible meeting, the engine extends the substitution with the time. If two meetings are compatible, two matches result, each retaining the identities of the threads that satisfied the templates. Even if the substituted values coincide, the meetings may be distinct; identities allow each result to be justified."
+    },
+    {
+      "id": "t000155",
+      "source": "Să presupunem că prima călătorie încercată nu are nicio întâlnire compatibilă. Căutarea revine la alegerea călătoriei, abandonează legăturile provizorii ale acelei încercări și testează următoarea. Această revenire se numește backtracking. Ea trebuie să păstreze separate ramurile: ora găsită pentru o întâlnire nu poate rămâne accidental în substituția alteia. Aceeași disciplină permite potrivirea unor circuite mai mari, cu mai multe condiții comune. Enumerarea este completă când candidații au fost epuizați. Dacă oprim la primul rezultat sau la limita de calcul, ieșirea precizează că pot exista alte potriviri.",
+      "translation": "Suppose the first trip tried has no compatible meeting. The search returns to the choice of trip, abandons that attempt’s provisional bindings and tests the next one. This return is called backtracking. It must keep branches separate: the time found for one meeting cannot accidentally remain in another’s substitution. The same discipline enables matching larger circuits with several shared conditions. Enumeration is complete when candidates have been exhausted. If we stop at the first result or at the computation limit, the output specifies that other matches may exist."
+    },
+    {
+      "id": "t000156",
+      "source": "Variabilele au un domeniu local de utilizare: numele cine dintr-o altă regulă nu trebuie să devină accidental aceeași necunoscută. Șablonul reprezintă o condiție asupra datelor. A introduce ?ora în el nu modifică ora reală a întâlnirii. Dacă nu obținem nicio potrivire, știm doar că datele disponibile nu satisfac căutarea. Poate lipsi ora, poate fi greșită ziua sau poate să nu existe întâlnirea. Pentru a spune care dintre aceste situații avem, folosim alte verificări și informația despre ce considerăm complet în instanță.",
+      "translation": "Variables have a local scope of use: the name cine in another rule must not accidentally become the same unknown. The template represents a condition on the data. Introducing ?ora into it does not change the meeting’s actual time. If we obtain no match, we know only that the available data do not satisfy the search. The time may be missing, the day may be wrong or the meeting may not exist. To say which situation we have, we use other checks and information about what we consider complete in the instance."
+    },
+    {
+      "id": "t000157",
+      "source": "Precizia presupune și o convenție pentru valori. În SOP, potrivirea valorilor literale păstrează forma lor textuală: 5 și 5.0 nu sunt aceeași potrivire, deși o comparație numerică le poate recunoaște egalitatea. Normalizarea datelor sau calculul explicit trebuie să rezolve diferența potrivit sensului urmărit. La fel, două nume egale nu dovedesc identitatea persoanelor. Potrivirea aplică relațiile declarate; nu înlocuiește stabilirea lor.",
+      "translation": "Precision also requires a convention for values. In SOP, matching literal values preserves their textual form: 5 and 5.0 are not the same match, although a numerical comparison can recognize their equality. Data normalization or explicit calculation must resolve the difference according to the intended meaning. Similarly, two identical names do not prove that the people are identical. Matching applies the declared relationships; it does not replace establishing them."
+    },
+    {
+      "id": "t000158",
+      "source": "Legătura de sens și ordinea calculului răspund la întrebări diferite",
+      "translation": "Semantic connections and calculation order answer different questions"
+    },
+    {
+      "id": "t000159",
+      "source": "Referința spre Ana ne spune cine participă la întâlnire. Ea nu ne spune dacă trebuie să verificăm mai întâi orarul trenului sau disponibilitatea sălii. Diferența se poate pierde când desenăm toate relațiile prin săgeți. Pentru a proiecta procesarea, trebuie să distingem trei structuri care pot folosi aceleași fire fără să însemne același lucru.",
+      "translation": "The reference to Ana tells us who attends the meeting. It does not tell us whether we must first check the train timetable or the room’s availability. The difference can be lost when we draw every relationship with arrows. To design processing, we must distinguish three structures that can use the same threads without meaning the same thing."
+    },
+    {
+      "id": "t000160",
+      "source": "Graful semantic spune ce reprezintă legăturile: Ana călătorește, trenul aparține variantei discutate, transferul unește sosirea cu întâlnirea. Un graf este aici doar o mulțime de elemente și relații între ele. Graful dependențelor de calcul spune ce valori trebuie cunoscute pentru a obține un rezultat: verificarea temporală citește momentul sosirii, durata transferului, ora întâlnirii și marja cerută. Planul de execuție spune în ce ordine vor fi efectuate operațiile disponibile și care dintre ele pot avea loc independent. El este construit pentru o întrebare și o stare a datelor.",
+      "translation": "The semantic graph says what the connections represent: Ana travels, the train belongs to the option under discussion, the transfer connects the arrival to the meeting. Here, a graph is simply a set of elements and relationships between them. A computational dependency graph says which values must be known to obtain a result: the temporal check reads the arrival time, transfer duration, meeting time and required margin. The execution plan says in what order the available operations will be performed and which can take place independently. It is constructed for a question and a state of the data."
+    },
+    {
+      "id": "t000161",
+      "source": "Datele călătoriei sunt acum vizibile, dar răspunsul încă trebuie obținut. Pentru scenariul simplu, adunăm 25 la 620 și obținem 645, adică 10:45. Comparăm cu 660, ora 11:00. Rezultă o marjă de 15 minute. Această concluzie privește timpii și condițiile declarate: transferul folosit este cel dintre sosirea trenului ales și întâlnirea vizată. Dacă dorim o marjă minimă de 20 de minute, același calcul conduce la altă evaluare a variantei.",
+      "translation": "The trip data are now visible, but the answer still has to be obtained. For the simple scenario, we add 25 to 620 and obtain 645, or 10:45. We compare this with 660, or 11:00. The resulting margin is 15 minutes. This conclusion concerns the declared times and conditions: the transfer used is the one between the selected train’s arrival and the intended meeting. If we want a minimum margin of 20 minutes, the same calculation leads to a different assessment of the option."
+    }
+  ]
+}

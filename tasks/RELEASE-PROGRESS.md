@@ -2405,6 +2405,28 @@ Policy: show new books and pending edition entries immediately as **In preparati
 - [ ] Refresh catalogue and pass catalogue and internal-link checks.
 - Browser layout review pending: no browser is currently exposed to the UI tool; source structure and styles can be checked independently.
 
+## Symbolic World Models — source v1
+
+- Source: `income/swm.docx`
+- SHA-256: `7e813050a033fabc09e941e4d4628af338bb51ea2e72c712b944931e2e3ce184`
+- Book ID: `bk-049d00ef0ab54f38`; edition: `edition-1`
+- Workspace: `.book-work/swm-v1-7e813050a033`
+- [x] Visible book page: `docs/books/symbolic/world/models/bk-049d00ef0ab54f38/en/book.html`
+- [x] EN full_content.html
+- [x] EN short_content.html
+- [x] RO full_content.html
+- [x] RO short_content.html
+- Translation `.book-work/swm-v1-7e813050a033/translations/en/full`: **48/48 chunks**, 612/612 segments complete.
+- Translation `.book-work/swm-v1-7e813050a033/translations/en/short`: **4/4 chunks**, 76/76 segments complete.
+- [x] Refresh 100 keywords per interface language from this release's English short reader (staged count: 100)
+- [x] English PDF staged
+- [x] Inspect representative PDF pages, including figures and tables.
+- [x] Verify reader structure, local images and translation completeness against the source.
+- [x] Refresh descriptions, About Book and release notes in all interface languages.
+- [x] Inspect and record this delivery's cover; preserve historical covers.
+- [x] Install the staged edition and preserve historical readers and downloads.
+- [x] Refresh catalogue and pass catalogue and internal-link checks.
+
 ## The Adventures of Ferdinand Count Fathom: Part I — source v1
 
 - Source: `income/The_Adventures_of_Ferdinand_Count_Fathom___Part_I/content.pdf`

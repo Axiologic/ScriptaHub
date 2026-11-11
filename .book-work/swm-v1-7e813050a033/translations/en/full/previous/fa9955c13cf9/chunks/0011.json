@@ -1,0 +1,131 @@
+{
+  "language": "en",
+  "chunk": 11,
+  "segments": [
+    {
+      "id": "t000313",
+      "source": "O rezolvare poate utiliza operația atomică de modificare oferită de serviciu, dacă aceasta există și are contractul necesar. În alt sistem, poate fi nevoie de o rezervare temporară a noului interval, urmată de confirmare și de eliberarea celui vechi. Alegerea depinde de operațiile disponibile și de eventualele costuri ale unei perioade cu două rezervări. Modelul simbolic poate descrie aceste posibilități, iar codul de integrare trebuie să respecte protocolul ales.",
+      "translation": "One solution can use the atomic modification operation provided by the service, if one exists and has the required contract. In another system, a temporary reservation of the new slot may be needed, followed by confirmation and release of the old one. The choice depends on the available operations and the possible costs of a period with two reservations. The symbolic model can describe these possibilities, while the integration code must follow the chosen protocol."
+    },
+    {
+      "id": "t000314",
+      "source": "Devine astfel important ce anume reprezintă o ramură. „Nu cunoaștem disponibilitatea” este o stare a informației noastre. „Serviciul a refuzat intervalul” este un rezultat al unei operații. Dacă programul le tratează la fel, poate anula prea devreme un plan sau poate prezenta drept imposibilă o variantă care încă nu a fost verificată. Un tipar care distinge aceste situații permite un program care întreabă, așteaptă sau caută o alternativă fără să denatureze ceea ce știe.",
+      "translation": "What a branch represents thus becomes important. “We do not know the availability” is a state of our information. “The service rejected the slot” is the result of an operation. If the program treats them alike, it may cancel a plan too soon or present an option that has not yet been checked as impossible. A pattern that distinguishes these situations enables a program to ask, wait or seek an alternative without distorting what it knows."
+    },
+    {
+      "id": "t000315",
+      "source": "La fiecare pas, condițiile trebuie evaluate în starea pe care a produs-o pasul anterior. Dacă doi organizatori încearcă să ocupe simultan ultimul interval disponibil, amândoi pot vedea inițial că el este liber. Analiza unei instanțe izolate explică fiecare intenție, dar respectarea regulii comune cere și un mecanism de coordonare în serviciul care deține calendarul. În acest punct, o proprietate a reprezentării se întâlnește cu o proprietate a execuției distribuite. Legătura dintre ele trebuie descrisă, altfel aceeași propoziție, „intervalul este liber”, ar fi folosită cu două sensuri temporale diferite.",
+      "translation": "At each step, conditions must be evaluated in the state produced by the previous step. If two organizers try to occupy the last available slot simultaneously, both may initially see that it is free. Analyzing an isolated instance explains each intention, but enforcing the shared rule also requires a coordination mechanism in the service that owns the calendar. At this point, a property of the representation meets a property of distributed execution. Their relationship must be described; otherwise the same sentence, “the slot is free,” would be used with two different temporal meanings."
+    },
+    {
+      "id": "t000316",
+      "source": "O descriere care poate fi calculată în mai multe feluri",
+      "translation": "A description that can be computed in several ways"
+    },
+    {
+      "id": "t000317",
+      "source": "Înainte de a publica programul, organizatorul află că invitatul va întârzia între cinci și zece minute. O analiză pe intervale poate arăta imediat că ultima prezentare s-ar termina între 10:20 și 10:25. Avem acum un răspuns mai informativ decât un verdict unic: deplasarea de cinci minute satisface limita sălii, iar valorile mai mari o depășesc. Clarificarea exactă a întârzierii contează pentru decizie, deoarece alternativele rămase conduc la rezultate diferite.",
+      "translation": "Before publishing the schedule, the organizer learns that the guest will be between five and ten minutes late. An interval analysis can immediately show that the last presentation would end between 10:20 and 10:25. We now have a more informative answer than a single verdict: a shift of five minutes satisfies the room's limit, while larger values exceed it. Clarifying the exact delay matters to the decision because the remaining alternatives lead to different results."
+    },
+    {
+      "id": "t000318",
+      "source": "Această formă de calcul ilustrează interpretarea abstractă: analizăm ansambluri de execuții prin reprezentări mai compacte ale proprietăților lor. Patrick și Radhia Cousot au formulat un cadru pentru a lega asemenea aproximări de semantica programului. [S29] Într-o analiză menită să susțină o verificare, intervalul calculat trebuie să includă toate rezultatele concrete relevante. Dacă întregul interval satisface o condiție, putem folosi rezultatul pentru acea condiție. Dacă intervalul traversează granița dintre acceptat și refuzat, avem nevoie de informație sau de o analiză mai precisă.",
+      "translation": "This form of calculation illustrates abstract interpretation: we analyze sets of executions through more compact representations of their properties. Patrick and Radhia Cousot formulated a framework for relating such approximations to program semantics. [S29] In an analysis intended to support verification, the calculated interval must include all relevant concrete results. If the entire interval satisfies a condition, we can use the result for that condition. If the interval crosses the boundary between acceptance and rejection, we need more information or a more precise analysis."
+    },
+    {
+      "id": "t000319",
+      "source": "Compactarea informației poate pierde relații utile. Să luăm o prezentare cu durata de treizeci de minute, al cărei început este mutat cu o valoare încă necunoscută. Începutul și sfârșitul depind de aceeași deplasare. Dacă păstrăm numai câte un interval separat pentru fiecare, fără dependența comună, calculul poate sugera mai multe durate. Expresia algebrică păstrează relația și arată că durata rămâne exact treizeci. Reprezentările sunt alese după proprietatea pe care vrem să o aflăm: un interval pentru ora finală poate fi suficient, în timp ce păstrarea duratei cere o relație între două momente.",
+      "translation": "Compressing information can lose useful relationships. Consider a presentation lasting thirty minutes whose start is shifted by a value that is still unknown. Its start and end depend on the same shift. If we retain only a separate interval for each, without the shared dependency, the calculation may suggest several durations. The algebraic expression preserves the relationship and shows that the duration remains exactly thirty. Representations are chosen according to the property we want to establish: an interval for the end time may suffice, whereas preserving duration requires a relationship between two times."
+    },
+    {
+      "id": "t000320",
+      "source": "Putem vedea pierderea exactă pe a doua prezentare. Pentru d între cinci și zece minute, începutul este între 9:50 și 9:55, iar sfârșitul între 10:20 și 10:25. Scăzând intervalele independent, obținem durate între douăzeci și cinci și treizeci și cinci de minute. Acest interval include durata reală, dar admite și combinația imposibilă dintre deplasarea maximă a începutului și deplasarea minimă a sfârșitului. Dacă o asemenea aproximare semnalează o durată nepotrivită, revenim la relația comună cu d înainte să declarăm că am găsit un defect. Alarma abstractă este o cerere de precizare a analizei.",
+      "translation": "We can see the precise loss in the second presentation. For d between five and ten minutes, the start is between 9:50 and 9:55, and the end between 10:20 and 10:25. Subtracting the intervals independently gives durations between twenty-five and thirty-five minutes. This interval includes the actual duration, but also allows the impossible combination of the maximum shift of the start and the minimum shift of the end. If such an approximation signals an unsuitable duration, we return to the shared relationship with d before declaring that we have found a defect. The abstract alarm is a request to refine the analysis."
+    },
+    {
+      "id": "t000321",
+      "source": "Într-un SWM, aceeași acțiune poate fi privită prin aceste interpretări complementare. Cu valori concrete, calculăm un program propus. Cu expresii, verificăm ce relații păstrează transformarea. Cu intervale, analizăm efectul incertitudinii. Când utilizatorul adoptă varianta, executorul poate începe operațiile asupra serviciului real. Tiparul precizează sensul acțiunii, iar fiecare interpretor declară ce poate calcula din acea descriere.",
+      "translation": "In an SWM, the same action can be examined through these complementary interpretations. With concrete values, we calculate a proposed schedule. With expressions, we check which relationships the transformation preserves. With intervals, we analyze the effect of uncertainty. When the user adopts the option, the executor can begin operations on the real service. The pattern specifies the action's meaning, and each interpreter declares what it can calculate from that description."
+    },
+    {
+      "id": "t000322",
+      "source": "Acest lucru cere disciplină în proiectare. Dacă simulatorul adaugă cinci minute ambelor capete ale unui interval, iar executorul actualizează numai începutul, analiza a cercetat o altă operație decât cea executată. O descriere comună a efectelor, un fragment de expresii bine definit și verificarea implementărilor care îl interpretează reduc această ruptură. SOP poate purta declarațiile și legăturile dintre ele; componenta care înțelege o adunare, o condiție sau o comandă de calendar realizează calculul ori efectul corespunzător.",
+      "translation": "This requires discipline in design. If the simulator adds five minutes to both ends of an interval while the executor updates only the start, the analysis has examined a different operation from the one executed. A shared description of effects, a well-defined fragment of expressions and verification of the implementations that interpret it reduce this gap. SOP can carry the declarations and the links between them; the component that understands an addition, a condition or a calendar command performs the corresponding calculation or effect."
+    },
+    {
+      "id": "t000323",
+      "source": "Contractul comun al mutării poate preciza intrarea ca un program identificat și o deplasare în minute, cu momentele raportate la aceeași axă temporală. Operația transformă ambele capete ale fiecărei prezentări și păstrează identitatea ei; precondițiile privesc domeniul valorilor și condițiile externe aplicabile. Interpretorul concret produce ore. Cel simbolic produce expresii și condiții de drum. Cel abstract produce o acoperire a rezultatelor posibile, folosind operatori care includ efectele concrete ale aceleiași transformări. Dacă implementarea folosește numere cu limite sau rotunjiri, acestea intră în semantica pe care analiza trebuie să o acopere.",
+      "translation": "The shared contract for shifting can specify the input as an identified schedule and a shift in minutes, with times expressed on the same timeline. The operation transforms both ends of each presentation and preserves its identity; preconditions concern the value domain and applicable external conditions. The concrete interpreter produces times. The symbolic interpreter produces expressions and path conditions. The abstract interpreter produces a coverage of possible results, using operators that include the concrete effects of the same transformation. If the implementation uses numbers with bounds or rounding, these become part of the semantics the analysis must cover."
+    },
+    {
+      "id": "t000324",
+      "source": "La frontieră, executorul primește programul propus și versiunea rezervării asupra căreia trebuie să opereze. Răspunsul său trebuie să distingă schimbarea confirmată, refuzul și rezultatul încă necunoscut. Orele calculate rămân o propunere până la confirmarea efectului. Echivalența interpretoarelor nu rezultă din numele comun al operației: fiecare implementare trebuie verificată față de contractul ei. Astfel putem schimba metoda de analiză fără să schimbăm pe ascuns întrebarea despre ceea ce face acțiunea.",
+      "translation": "At the boundary, the executor receives the proposed schedule and the reservation version on which it must operate. Its response must distinguish a confirmed change, a rejection and an outcome that is still unknown. The calculated times remain a proposal until the effect is confirmed. Interpreter equivalence does not follow from the operation's shared name: each implementation must be checked against its contract. We can thus change the analysis method without secretly changing the question about what the action does."
+    },
+    {
+      "id": "t000325",
+      "source": "Folosim astfel simbolurile pentru a face acțiunile inspectabile. Unele proprietăți pot fi demonstrate pentru o familie întreagă de cazuri, altele cer informații despre instanța de acum, iar altele devin cunoscute prin observarea rezultatului extern. În viața de zi cu zi, o parte importantă a acestei informații vine din imagini, sunete și procese continue. Următoarea întrebare este cum aducem aceste observații și regularități învățate în aceeași arhitectură, păstrând legătura dintre ceea ce sistemul recunoaște și ceea ce poate explica.",
+      "translation": "We therefore use symbols to make actions inspectable. Some properties can be proved for an entire family of cases, others require information about the present instance, and others become known by observing the external result. In everyday life, much of this information comes from images, sounds and continuous processes. The next question is how we bring these observations and learned regularities into the same architecture, preserving the link between what the system recognizes and what it can explain."
+    },
+    {
+      "id": "t000326",
+      "source": "8 Mai multe reprezentări pentru aceeași lume",
+      "translation": "8 Several representations for the same world"
+    },
+    {
+      "id": "t000327",
+      "source": "Un robot vede o cană pe marginea mesei. Pentru a o muta, trebuie să estimeze unde se află, cum poate fi prinsă și ce se va întâmpla dacă brațul se deplasează într-un anumit fel. Dacă îi cerem să ducă acea cană în sala unde începe o întâlnire, apare o altă familie de întrebări. Care este întâlnirea? În ce sală are loc acum, după schimbarea de program? Cana este cea pregătită pentru invitat sau cea pe care cineva încă o folosește? Mișcarea brațului și interpretarea cererii fac parte din aceeași activitate, dar cer reprezentări cu proprietăți diferite.",
+      "translation": "A robot sees a cup on the edge of a table. To move it, the robot must estimate where it is, how it can be grasped and what will happen if its arm moves in a particular way. If we ask it to take that cup to the room where a meeting is starting, another family of questions arises. Which meeting? Which room is it taking place in now, after the schedule change? Is this the cup prepared for the guest or the one someone is still using? Moving the arm and interpreting the request belong to the same activity, but require representations with different properties."
+    },
+    {
+      "id": "t000328",
+      "source": "Termenul world model acoperă mai multe răspunsuri la această nevoie de a anticipa și de a organiza o situație. Unele modele învață regularități din imagini și din efectele acțiunilor. Altele exprimă legi fizice. Altele fac explicite obiectele, relațiile și condițiile unei decizii. Interesul arhitecturii SWM crește tocmai în locul în care aceste răspunsuri trebuie să coopereze: o estimare devine informație despre un obiect, o intenție devine un scop, iar o acțiune permisă trebuie transformată într-un comportament care reușește.",
+      "translation": "The term world model covers several responses to this need to anticipate and organize a situation. Some models learn regularities from images and the effects of actions. Others express physical laws. Others make the objects, relationships and conditions of a decision explicit. The interest of the SWM architecture grows precisely where these responses must cooperate: an estimate becomes information about an object, an intention becomes a goal, and a permitted action must be transformed into behavior that succeeds."
+    },
+    {
+      "id": "t000329",
+      "source": "Un viitor învățat din experiență",
+      "translation": "A future learned from experience"
+    },
+    {
+      "id": "t000330",
+      "source": "Un copil poate anticipa că o minge va continua să se rostogolească fără să cunoască ecuația mișcării. Similar, un sistem artificial poate învăța să prezică aspecte ale evoluției unui mediu fără ca proiectantul să enumere fiecare relație. Observațiile și acțiunile anterioare devin materialul din care se construiește o reprezentare utilă pentru predicție. Când reprezentarea păstrează regularitățile de care are nevoie agentul, acesta poate compara comportamente înainte de a le încerca efectiv în mediu.",
+      "translation": "A child can anticipate that a ball will keep rolling without knowing the equation of motion. Similarly, an artificial system can learn to predict aspects of an environment's evolution without its designer enumerating every relationship. Previous observations and actions become the material from which a representation useful for prediction is constructed. When the representation retains the regularities the agent needs, the agent can compare behaviors before actually trying them in the environment."
+    },
+    {
+      "id": "t000331",
+      "source": "În lucrarea World Models, David Ha și Jürgen Schmidhuber au explorat o arhitectură care comprimă observațiile vizuale și modelează evoluția reprezentării rezultate. Un controler folosește informația furnizată de model pentru a alege acțiuni. Experimentele includ antrenarea unui comportament într-un mediu generat de model și transferarea lui în mediul sarcinii. [S7] Ideea care ne interesează este posibilitatea de a desprinde învățarea unei reprezentări a mediului de învățarea comportamentului care o folosește.",
+      "translation": "In World Models, David Ha and Jürgen Schmidhuber explored an architecture that compresses visual observations and models the evolution of the resulting representation. A controller uses the information provided by the model to choose actions. The experiments include training a behavior in an environment generated by the model and transferring it to the task environment. [S7] The idea that interests us is the possibility of separating the learning of an environmental representation from the learning of the behavior that uses it."
+    },
+    {
+      "id": "t000332",
+      "source": "Această separare poate fi înțeleasă printr-un joc de curse. Agentul are nevoie să anticipeze cum se schimbă imaginea drumului când virează și ce situații conduc la ieșirea de pe pistă. O reprezentare internă utilă poate codifica aceste regularități fără a avea câmpuri numite „curbă”, „aderență” și „marginea pistei”. Coordonatele ei sunt alese prin procesul de învățare. Spunem că reprezentarea este latentă deoarece conținutul ei nu este oferit direct sub forma unor obiecte și relații cu nume stabilite de proiectant.",
+      "translation": "This separation can be understood through a racing game. The agent needs to anticipate how the image of the road changes when it steers and which situations lead it off the track. A useful internal representation can encode these regularities without having fields named “curve,” “grip” and “track edge.” Its coordinates are chosen through the learning process. We say the representation is latent because its content is not provided directly as objects and relationships with names established by the designer."
+    },
+    {
+      "id": "t000333",
+      "source": "DreamerV3 dezvoltă direcția folosirii unui model învățat al mediului pentru a îmbunătăți comportamentul prin traiectorii imaginate. Studiul publicat de Hafner și colaboratorii în 2025 examinează numeroase sarcini de control cu aceeași configurație a algoritmului. [S8] Pentru un constructor de sisteme, aspectul important este că un model al schimbării poate fi o resursă reutilizabilă în procesul de învățare a acțiunilor. Agentul beneficiază de consecințe estimate, chiar dacă acestea nu sunt prezentate ca un lanț de reguli inteligibil unui cititor.",
+      "translation": "DreamerV3 develops the use of a learned environmental model to improve behavior through imagined trajectories. The study published by Hafner and colleagues in 2025 examines numerous control tasks with the same algorithm configuration. [S8] For a system builder, the important point is that a model of change can be a reusable resource in the process of learning actions. The agent benefits from estimated consequences even if they are not presented as a chain of rules intelligible to a reader."
+    },
+    {
+      "id": "t000334",
+      "source": "Predicția nu trebuie să reconstruiască întotdeauna fiecare pixel al unei imagini viitoare. V-JEPA 2 urmărește predicția în spațiul unor reprezentări învățate din date vizuale. Lucrarea distinge modelul antrenat inițial fără acțiuni de varianta V-JEPA 2-AC, adaptată cu date de interacțiune pentru predicție condiționată de acțiuni și planificare robotică. Autorii prezintă sarcini de apucare și plasare cu scopuri vizuale. [S9] Distincția contează pentru arhitectură: observarea felului în care lucrurile evoluează și estimarea efectului propriei intervenții sunt probleme apropiate, care cer totuși informații diferite.",
+      "translation": "Prediction does not always have to reconstruct every pixel of a future image. V-JEPA 2 pursues prediction in a space of representations learned from visual data. The paper distinguishes the model initially trained without actions from the V-JEPA 2-AC variant, adapted with interaction data for action-conditioned prediction and robotic planning. The authors present grasping and placing tasks with visual goals. [S9] The distinction matters to the architecture: observing how things evolve and estimating the effect of one's own intervention are related problems that nevertheless require different information."
+    },
+    {
+      "id": "t000335",
+      "source": "Revenind la robotul cu cana, un model învățat poate ajuta la alegerea unei mișcări și la anticiparea rezultatului ei vizual. Tiparul de lume simbolic poate păstra însă că întâlnirea a fost mutată, că anumite persoane au confirmat noua sală și că o instrucțiune privește o anumită cană. Această informație vine din conversații, calendare și reguli ale activității. Pentru a o folosi împreună cu modelul vizual, sistemul trebuie să lege obiectul recunoscut de obiectul urmărit în instanță și să asocieze scopul simbolic cu un rezultat observabil.",
+      "translation": "Returning to the robot with the cup, a learned model can help select a movement and anticipate its visual result. The symbolic world pattern, however, can retain that the meeting has moved, that certain people have confirmed the new room and that an instruction concerns a particular cup. This information comes from conversations, calendars and the rules of the activity. To use it together with the visual model, the system must link the recognized object to the object tracked in the instance and associate the symbolic goal with an observable result."
+    },
+    {
+      "id": "t000336",
+      "source": "Astfel de legături sunt locul în care se decide calitatea integrării. Dacă imaginea arată două căni asemănătoare, identitatea relevantă poate cere un indiciu suplimentar. Dacă robotul a mutat obiectul în sala veche, mișcarea poate fi impecabilă, iar sarcina îndeplinită greșit. Un SWM oferă spațiul în care păstrăm relațiile activității și verificăm rezultatul față de ele. Modelul învățat aduce capacitățile perceptive și predictive necesare pentru a lega acea activitate de un mediu variabil.",
+      "translation": "Such links are where the quality of integration is decided. If the image shows two similar cups, the relevant identity may require an additional clue. If the robot moves the object to the old room, the movement may be flawless while the task is fulfilled incorrectly. An SWM provides the space in which we retain the relationships of the activity and check the result against them. The learned model contributes the perceptual and predictive capabilities needed to connect that activity to a variable environment."
+    },
+    {
+      "id": "t000337",
+      "source": "Putem face această cooperare implementabilă prin contractul modulului perceptiv. Intrarea poate fi o imagine identificată, momentul captării și informațiile despre cameră necesare măsurării. Ieșirea conține obiecte candidate: regiunea din imagine, clasa propusă, poziția estimată cu reperul ei de coordonate și scorurile cu sens declarat. Identificatorul unei detecții în imagine nu devine automat identitatea cănii din instanță. Modulul poate observa două căni fără să știe care este destinată invitatului; lipsa acestei informații trebuie să rămână vizibilă în rezultat.",
+      "translation": "We can make this cooperation implementable through the perceptual module's contract. The input may be an identified image, its capture time and the camera information needed for measurement. The output contains candidate objects: the image region, the proposed class, the estimated position with its coordinate frame, and scores whose meanings are declared. The identifier of a detection in an image does not automatically become the identity of the cup in the instance. The module may observe two cups without knowing which is intended for the guest; the absence of this information must remain visible in the result."
+    }
+  ]
+}

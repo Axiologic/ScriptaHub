@@ -27,22 +27,43 @@ def statement_text(parts) -> str:
     return ''.join(escape(part) if isinstance(part,str) else f'<a href="{escape(part["url"])}">{escape(part["label"])}</a>' for part in parts)
 
 
-def copyright_page(book:Path,language:str) -> str:
-    """Compose a copyright page from the current edition's recorded credits."""
+def copyright_page(book:Path,language:str,edition_id:str|None=None,publication_date:str|None=None) -> str:
+    """Use the selected staged edition's credits, or the current published edition."""
     labels=COPYRIGHT_LABELS[language]
     history=json.loads((book/'editions.json').read_text())
-    edition=next(item for item in history['editions'] if item['id']==history['currentEdition'])
+    selected=edition_id or history['currentEdition']
+    edition=next((item for item in history['editions'] if item['id']==selected),None)
+    if edition is None:raise ValueError(f'No recorded copyright edition {selected!r} in {book}')
     manifest=json.loads((book/'manifest.json').read_text())
     registry=json.loads((ROOT/'docs/contributors.json').read_text())
     credits=edition.get('contributors') or []
     authors=[registry['authors'][item['authorId']]['name'] for item in credits if item['authorId'] in registry['authors']]
-    year=str(edition.get('publishedAt','2026'))[:4]
+    published=publication_date or edition.get('publishedAt','')
+    if not published:raise ValueError('The selected copyright edition needs a publication date')
+    year=str(published)[:4]
     statements=[statement_text(registry['statements'][item['statementId']]['description'][language]) for item in credits if item['statementId'] in registry.get('statements',{})]
     lines=[f'<p>© {year} {escape(", ".join(dict.fromkeys(authors)) or "ScriptaHub")}. {labels["rights"]}</p>']
     lines+=[f'<p>{text}</p>' for text in dict.fromkeys(statements)]
-    lines.append(f'<p>{escape(labels["edition"].format(number=edition["number"],date=edition.get("publishedAt","")))}</p>')
+    lines.append(f'<p>{escape(labels["edition"].format(number=edition["number"],date=published))}</p>')
     if language!='en':lines.append(f'<p>{escape(labels["title"].format(title=manifest["title"]["en"]))}</p>')
     return f'<section class="copyright-page"><h2>{labels["heading"]}</h2>{"".join(lines)}</section>'
+
+
+def prepare_print_front_matter(doc,title:str='') -> int:
+    """Style a recognized title and omit source pagination from linked contents."""
+    paragraphs=doc.xpath('//article/p')
+    if paragraphs and title and ' '.join(paragraphs[0].text_content().split())==title:
+        paragraphs[0].set('class',(paragraphs[0].get('class','')+' book-print-title').strip())
+    removed=0
+    for heading in doc.xpath('//h1|//h2'):
+        if heading.text_content().strip().casefold() not in {'cuprins','contents','table of contents'}:continue
+        for node in heading.itersiblings():
+            if node.tag in {'h1','h2'}:break
+            for link in node.xpath('.//a[starts-with(@href,"#")]'):
+                if link.tail and re.fullmatch(r'\s*\d+\s*',link.tail):
+                    link.tail=''
+                    removed+=1
+    return removed
 
 
 def main() -> None:
@@ -63,6 +84,8 @@ def main() -> None:
     # The retired OutfinityGift notice must not reach downloads from income deliveries.
     if 'outfinitygift' in markup.lower() or ('all rights reserved' in markup.lower() and not args.keep_rights_notice):raise SystemExit('Retired rights text remains')
     doc=html.fromstring(markup.encode())
+    book_manifest=json.loads((args.copyright_book/'manifest.json').read_text()) if args.copyright_book else {}
+    removed_page_labels=prepare_print_front_matter(doc,book_manifest.get('title',{}).get(args.language,''))
     style=etree.SubElement(doc.find('head'),'style')
     style.text='''
 @page { size: 6in 9in; margin: .72in .72in .75in;
@@ -76,6 +99,7 @@ h2 { font-size: 14pt; margin: 10mm 0 4mm; }
 h3 { font-size: 11pt; margin: 6mm 0 3mm; }
 p { margin: 0 0 7pt; text-align: justify; hyphens: auto; orphans: 3; widows: 3; }
 p.edition-credit { text-align: left; }
+p.book-print-title { font: bold 28pt/1.1 "Red Hat Display", sans-serif; color: #244e52; margin: 30mm 0 12mm; text-align: left; }
 section { margin: 0; }
 img { max-width: 100%; max-height: 7.3in; height: auto; object-fit: contain; }
 figure { margin: 0 0 7pt; break-inside: avoid; }
@@ -83,13 +107,16 @@ section.copyright-page { break-before: page; break-after: page; padding-top: 45m
 section.copyright-page p { text-align: left; font-size: 8.6pt; }
 '''
     if args.copyright_book:
-        page=html.fragment_fromstring(copyright_page(args.copyright_book.resolve(),args.language))
+        release=json.loads((work/'release.json').read_text()) if work and (work/'release.json').is_file() else {}
+        if release and (ROOT/'docs'/release['directory']).resolve()!=args.copyright_book.resolve():
+            raise ValueError('The copyright book must match the staged release')
+        page=html.fragment_fromstring(copyright_page(args.copyright_book.resolve(),args.language,release.get('editionId'),release.get('publishedAt')))
         body=doc.find('body')
         # The copyright page follows the title page: insert it before the first
         # contents, front-matter or chapter heading, else before the second
         # heading (titles are often split across two headings).
         headings=list(body.iter('h1','h2'))
-        opening=re.compile(r'^\s*(cuprins|contents|prolog|prologue|prefa|preface|introducere|introduction|not[ăa]\b|note\b|capitolul|chapter|partea|part\b|[0-9]+\.|[IVX]+\.)',re.I)
+        opening=re.compile(r'^\s*(cuprins|contents|cuvânt\s+înainte|foreword|prolog|prologue|prefa|preface|introducere|introduction|not[ăa]\b|note\b|capitolul|chapter|partea|part\b|[0-9]+\.|[IVX]+\.)',re.I)
         target=next((node for node in headings if opening.match(node.text_content())),None)
         if target is None and len(headings)>=2:target=headings[1]
         if target is not None:target.addprevious(page)
@@ -100,7 +127,7 @@ section.copyright-page p { text-align: left; font-size: 8.6pt; }
     print_html=output/'clean-publication.html'
     print_html.write_bytes(etree.tostring(doc,method='html',encoding='utf-8',doctype='<!doctype html>'))
     HTML(string=print_html.read_text(encoding='utf-8'),base_url=str(source.parent)).write_pdf(str(destination),pdf_tags=True)
-    receipt={'sourceHtml':str(source),'sourceHtmlSha256':sha256(source.read_bytes()).hexdigest(),'pdf':str(destination),'pdfSha256':sha256(destination.read_bytes()).hexdigest(),'engine':'WeasyPrint','pageSize':'6 x 9 inches','language':args.language,'input':f'Complete canonical {args.language} HTML reader'}
+    receipt={'sourceHtml':str(source),'sourceHtmlSha256':sha256(source.read_bytes()).hexdigest(),'pdf':str(destination),'pdfSha256':sha256(destination.read_bytes()).hexdigest(),'engine':'WeasyPrint','pageSize':'6 x 9 inches','language':args.language,'input':f'Complete canonical {args.language} HTML reader','omittedSourceContentsPageLabels':removed_page_labels}
     (output/'pdf-build.json').write_text(json.dumps(receipt,indent=2)+'\n')
     print(destination)
 

@@ -1,0 +1,166 @@
+{
+  "language": "en",
+  "chunk": 14,
+  "segments": [
+    {
+      "id": "t000400",
+      "source": "La început, diferența este de opt grade, iar un sfert din ea înseamnă două: după primul interval obținem 18 grade. Următorul interval adaugă un sfert din șase, deci ajungem la 19,5. Continuând în același mod, obținem evoluția de mai jos. Acesta este un calcul asupra unei instanțe ipotetice pornite din starea observată, în care presupunerea despre regimul de încălzire rămâne valabilă.",
+      "translation": "Initially, the difference is eight degrees, and a quarter of it is two: after the first interval we obtain 18 degrees. The next interval adds a quarter of six, taking us to 19.5. Continuing in the same way gives the evolution below. This is a calculation on a hypothetical instance starting from the observed state, in which the assumption about the heating regime remains valid."
+    },
+    {
+      "id": "t000401",
+      "source": "Momentul scenariului",
+      "translation": "Scenario time"
+    },
+    {
+      "id": "t000402",
+      "source": "Temperatura calculată",
+      "translation": "Calculated temperature"
+    },
+    {
+      "id": "t000403",
+      "source": "16 grade",
+      "translation": "16 degrees"
+    },
+    {
+      "id": "t000404",
+      "source": "18 grade",
+      "translation": "18 degrees"
+    },
+    {
+      "id": "t000405",
+      "source": "19,5 grade",
+      "translation": "19.5 degrees"
+    },
+    {
+      "id": "t000406",
+      "source": "Aproximativ 20,63 grade",
+      "translation": "Approximately 20.63 degrees"
+    },
+    {
+      "id": "t000407",
+      "source": "Aproximativ 21,47 grade",
+      "translation": "Approximately 21.47 degrees"
+    },
+    {
+      "id": "t000408",
+      "source": "Modelul oferă acum o diferență relevantă pentru decizie. Pornirea la ora patru conduce, în aceste condiții, la depășirea țintei până la începutul evenimentului. Dacă presupunem că sala rămâne la 16 grade până la 16:15 și încălzirea începe abia atunci, la ora cinci avem numai trei intervale de evoluție și aproximativ 20,63 grade. Cele cincisprezece minute de întârziere schimbă concluzia. Legătura dintre orarul evenimentului și modelul termic a făcut vizibilă o dependență pe care simplul calendar nu o conținea.",
+      "translation": "The model now offers a difference relevant to the decision. Switching on at four o'clock leads, under these conditions, to exceeding the target by the start of the event. If we assume the room remains at 16 degrees until 16:15 and heating begins only then, by five we have only three intervals of evolution and approximately 20.63 degrees. The fifteen-minute delay changes the conclusion. The link between the event schedule and the thermal model has made visible a dependency that the calendar alone did not contain."
+    },
+    {
+      "id": "t000409",
+      "source": "Pentru a reproduce acest calcul, aplicația pregătește un scenariu identificat: versiunea stării inițiale, pornirea propusă, ipoteza ferestrelor închise și termenul de la 17:00. Selectează un model ale cărui intrări, unități și condiții de folosire corespund scenariului și fixează versiunea parametrilor. Interpretorul avansează ceasul simulat, aplicând transformarea la fiecare interval. Păstrează rezultatele intermediare separat de observațiile reale. În exemplul nostru se oprește după patru pași, la termenul cerut. O intrare indispensabilă absentă suspendă calculul; un model care nu poate continua întoarce motivul opririi. Aplicația poate astfel cere temperatura exterioară sau alege alt model, în loc să prezinte un număr fără fundament.",
+      "translation": "To reproduce this calculation, the application prepares an identified scenario: the initial state version, proposed switch-on, closed-window assumption and 17:00 deadline. It selects a model whose inputs, units and conditions of use correspond to the scenario and fixes the parameter version. The interpreter advances the simulated clock, applying the transformation at each interval. It retains intermediate results separately from real observations. In our example, it stops after four steps, at the required deadline. An indispensable missing input suspends calculation; a model unable to continue returns the reason for stopping. The application can thus request the outside temperature or choose another model instead of presenting a number without foundation."
+    },
+    {
+      "id": "t000410",
+      "source": "Într-o aplicație, alegerea modelului depinde de ce vrem să anticipăm. Ecuațiile fizice pot descrie schimburile de căldură, inerția pereților și efectul ventilației. Un model învățat poate estima răspunsul încăperii din episoade anterioare, folosind temperatura exterioară și regimul instalației. O simulare cu evenimente discrete poate urmări când intră grupurile, când se schimbă utilizarea spațiului și când este disponibil personalul pentru pregătire. Fiecare calcul are intrări și rezultate care trebuie legate de aceleași momente și obiecte.",
+      "translation": "In an application, model selection depends on what we want to anticipate. Physical equations can describe heat exchange, the thermal inertia of walls and the effect of ventilation. A learned model can estimate the room's response from previous episodes, using the outside temperature and the installation's operating regime. A discrete-event simulation can track when groups enter, when the space's use changes and when staff are available for preparation. Each calculation has inputs and results that must be linked to the same times and objects."
+    },
+    {
+      "id": "t000411",
+      "source": "Functional Mock-up Interface, FMI, oferă un contract pentru schimbul și executarea unor modele dinamice. În Model Exchange, mediul care importă modelul asigură rezolvarea numerică; în Co‑Simulation, componentele pot veni cu mecanismele lor de rezolvare, iar mediul coordonează schimbul de date și avansarea simulării. [S26] Pentru o clădire, aceasta permite colaborarea dintre modele ale încăperilor, ale instalației și ale controlului, fără ca toate să fie implementate în același instrument. Partea simbolică poate organiza scenariul: ce componentă este simulată, ce ipoteze au fost alese și ce întrebare primește rezultatul.",
+      "translation": "Functional Mock-up Interface, FMI, provides a contract for exchanging and executing dynamic models. In Model Exchange, the environment importing the model supplies numerical solving; in Co‑Simulation, components can bring their own solving mechanisms, while the environment coordinates data exchange and simulation advancement. [S26] For a building, this enables cooperation between models of rooms, installations and control without all of them being implemented in the same tool. The symbolic part can organize the scenario: which component is simulated, which assumptions have been chosen and which question receives the result."
+    },
+    {
+      "id": "t000412",
+      "source": "La întoarcere, rezultatul poartă eticheta de predicție, identitatea scenariului, momentul pentru care este valabil, modelul folosit și ipotezele relevante. Dacă modelul furnizează o estimare a incertitudinii, aceasta însoțește valoarea și metoda prin care a fost obținută. Interpretorul nu înscrie „21,47” drept temperatură observată. Aplicația verifică dacă între timp s-au schimbat intrările relevante; un calcul corect pentru vechea situație poate necesita refacere. Compară apoi rezultatul aplicabil cu cerința evenimentului și păstrează justificarea concluziei. O schimbare ulterioară a orei sau a stării inițiale face vizibil că această concluzie trebuie recalculată.",
+      "translation": "On return, the result carries the prediction label, the scenario identity, the time for which it is valid, the model used and the relevant assumptions. If the model supplies an uncertainty estimate, this accompanies the value and the method by which it was obtained. The interpreter does not record “21.47” as an observed temperature. The application checks whether relevant inputs have changed in the meantime; a correct calculation for the old situation may need to be repeated. It then compares the applicable result with the event's requirement and retains the conclusion's justification. A subsequent change in time or initial state makes it visible that this conclusion must be recalculated."
+    },
+    {
+      "id": "t000413",
+      "source": "Predicția devine mai folositoare când știm cum se comportă la confruntarea cu observațiile. Dacă temperatura măsurată la 16:30 este 18,8, diferența față de 19,5 poate orienta o verificare: încălzirea a pornit la timp, fereastra este închisă, condițiile exterioare s-au schimbat? Dacă, pentru scenariul de la ora cinci, analiza modelului susține un interval între 20,5 și 22,4 grade, ținta de 21 rămâne incertă. Sistemul are un motiv concret să verifice mai devreme sala sau să pregătească o alternativă. Valoarea practică a predicției constă și în această capacitate de a arăta când mai avem timp să schimbăm planul.",
+      "translation": "A prediction becomes more useful when we know how it behaves when confronted with observations. If the temperature measured at 16:30 is 18.8, the difference from 19.5 can guide a check: did the heating start on time, is the window closed, have outside conditions changed? If, for the five-o'clock scenario, the model analysis supports an interval between 20.5 and 22.4 degrees, the target of 21 remains uncertain. The system has a concrete reason to check the room earlier or prepare an alternative. The practical value of prediction also lies in this ability to show when we still have time to change the plan."
+    },
+    {
+      "id": "t000414",
+      "source": "Comparația folosește aceeași proprietate și același moment: observația de la 16:30 este confruntată cu pasul corespunzător al simulării. O abatere față de toleranța stabilită pentru model declanșează verificarea intrărilor și a ipotezelor; singură, abaterea nu identifică o cauză. Confirmarea ferestrei deschise cere un scenariu compatibil cu noua situație. O nepotrivire repetată, cu intrări verificate, poate cere reestimarea parametrilor. În ambele cazuri se creează o versiune nouă și se reia predicția, păstrând calculul anterior pentru comparație. Procesul se oprește când există un rezultat utilizabil, când lipsește o observație necesară sau când s-a consumat bugetul de calcul stabilit de aplicație.",
+      "translation": "The comparison uses the same property and the same time: the observation from 16:30 is compared with the corresponding simulation step. A deviation beyond the tolerance established for the model triggers a check of inputs and assumptions; by itself, the deviation does not identify a cause. Confirmation of an open window requires a scenario compatible with the new situation. Repeated mismatch, with verified inputs, may require parameter reestimation. In both cases, a new version is created and prediction resumes, retaining the previous calculation for comparison. The process stops when a usable result exists, when a necessary observation is missing or when the computation budget established by the application has been consumed."
+    },
+    {
+      "id": "t000415",
+      "source": "O comandă își continuă povestea în afara modelului",
+      "translation": "A command's story continues outside the model"
+    },
+    {
+      "id": "t000416",
+      "source": "Organizatorul spune „pornește încălzirea”, iar asistentul confirmă că a trimis cererea. După douăzeci de minute, sala este tot rece. Din perspectiva conversației, instrucțiunea pare rezolvată; din perspectiva clădirii, încă nu știm dacă instalația a primit-o, dacă a acceptat-o sau dacă un alt control a schimbat ulterior regimul. Pentru ca asistentul să fie util, reprezentarea trebuie să poată urmări și această parte a poveștii.",
+      "translation": "The organizer says “switch on the heating,” and the assistant confirms that it has sent the request. Twenty minutes later, the room is still cold. From the conversation's perspective, the instruction seems resolved; from the building's perspective, we do not yet know whether the installation received it, accepted it or had its regime subsequently changed by another control. For the assistant to be useful, the representation must also be able to track this part of the story."
+    },
+    {
+      "id": "t000417",
+      "source": "Eclipse Ditto păstrează explicit proprietăți curente și proprietăți dorite pentru funcționalitățile dispozitivelor. Documentația lasă aplicației sau dispozitivului logica prin care starea dorită este realizată. [S23] Această distincție permite ca ținta de temperatură, cererea transmisă și observația să existe simultan fără să fie confundate. În instanța noastră, 21 de grade poate reprezenta cerința evenimentului, aproximativ 21,47 rezultatul unei simulări pentru ora cinci, iar 18,8 o măsurare la 16:30. Fiecare valoare răspunde unei alte întrebări.",
+      "translation": "Eclipse Ditto explicitly retains current properties and desired properties for device features. The documentation leaves the logic by which the desired state is achieved to the application or device. [S23] This distinction allows the temperature target, the transmitted request and the observation to coexist without being confused. In our instance, 21 degrees may represent the event's requirement, approximately 21.47 the result of a simulation for five o'clock, and 18.8 a measurement at 16:30. Each value answers a different question."
+    },
+    {
+      "id": "t000418",
+      "source": "Interpretorul numeric produce predicția; executorul comunică cu instalația. Aplicația urmărește răspunsurile și observațiile care arată dacă efectul s-a produs. Dacă dispozitivul confirmă schimbarea regimului, avem o informație despre comandă. Dacă temperatura începe să crească, avem și informație despre comportamentul fizic. Întreruperea comunicației între aceste momente cere păstrarea unui rezultat încă necunoscut. Această reprezentare permite o verificare a stării înainte de repetarea comenzii și o explicație fidelă pentru persoana care a cerut-o.",
+      "translation": "The numerical interpreter produces the prediction; the executor communicates with the installation. The application tracks responses and observations showing whether the effect occurred. If the device confirms the regime change, we have information about the command. If the temperature starts to rise, we also have information about physical behavior. A communication interruption between these times requires retention of an outcome that is still unknown. This representation allows a state check before repeating the command and a faithful explanation for the person who requested it."
+    },
+    {
+      "id": "t000419",
+      "source": "Cererea de execuție primește propriul identificator, dispozitivul vizat, regimul cerut, termenul și precondițiile. Imediat înainte de trimitere, executorul verifică starea disponibilă: instalația este aceeași, nu a intrat în întreținere, cererea mai este autorizată și relevantă. Schimbarea unei precondiții oprește trimiterea și readuce decizia în aplicație; o condiție decisivă necunoscută cere verificare. Confirmarea primirii este asociată identificatorului comenzii; confirmarea aplicării regimului este înregistrată distinct. O respingere explicită produce un eșec cunoscut. Expirarea timpului de așteptare fără răspuns produce o stare necunoscută, care cere verificare înaintea unei retrimiteri. Observațiile ulterioare arată separat dacă sala se încălzește și dacă ținta a fost atinsă. Acestea închid evaluarea efectului urmărit, nu simpla confirmare a mesajului.",
+      "translation": "The execution request receives its own identifier, target device, requested regime, deadline and preconditions. Immediately before sending, the executor checks the available state: the installation is the same, has not entered maintenance, and the request remains authorized and relevant. A changed precondition stops sending and returns the decision to the application; an unknown decisive condition requires checking. Confirmation of receipt is associated with the command identifier; confirmation that the regime was applied is recorded separately. An explicit rejection produces a known failure. A timeout without a response produces an unknown state requiring verification before resending. Subsequent observations separately show whether the room is warming and whether the target has been reached. These close the evaluation of the intended effect, rather than merely confirming the message."
+    },
+    {
+      "id": "t000420",
+      "source": "Actualizarea poate afecta și alte reprezentări. Documentația Azure Digital Twins arată cum evenimentele de modificare a unui geamăn pot fi prelucrate prin funcții pentru a actualiza gemeni înrudiți în graf. [S22] În cazul bibliotecii, o schimbare a temperaturii poate actualiza evaluarea pregătirii sălii. O schimbare a orei evenimentului poate cere o nouă simulare. Semantica acestor efecte aparține aplicației: graful oferă relațiile, iar regulile și codul precizează ce consecințe sunt calculate și ce informații sunt păstrate.",
+      "translation": "Updating can also affect other representations. Azure Digital Twins documentation shows how events modifying one twin can be processed through functions to update related twins in the graph. [S22] In the library's case, a temperature change can update the room-readiness assessment. A change to the event time can require a new simulation. The semantics of these effects belongs to the application: the graph supplies the relationships, while rules and code specify which consequences are calculated and which information is retained."
+    },
+    {
+      "id": "t000421",
+      "source": "Acum dialogul poate participa la exploatarea clădirii într-un mod mai precis. Mesajul „venim cu o oră mai devreme” schimbă termenul de pregătire, fără să modifice automat ținta de temperatură. „Mutăm întâlnirea în sala mică” schimbă spațiul relevant și instalația care îl deservește. „Am deschis ferestrele pentru aerisire” aduce o observație care poate invalida scenariul termic folosit anterior. Componenta neuronală identifică sensul probabil al mesajului; tiparele și instanțele permit urmărirea consecințelor sale până la calcule, întrebări și acțiuni.",
+      "translation": "Dialogue can now participate more precisely in operating the building. The message “we are coming an hour earlier” changes the preparation deadline without automatically changing the temperature target. “We are moving the meeting to the small room” changes the relevant space and the installation serving it. “We opened the windows for ventilation” brings an observation that may invalidate the thermal scenario previously used. The neural component identifies the message's probable meaning; patterns and instances allow its consequences to be tracked through calculations, questions and actions."
+    },
+    {
+      "id": "t000422",
+      "source": "Aceeași clădire poate fi urmărită astfel din lumea programării evenimentelor, din lumea funcționării instalațiilor și din cea a consumului de energie. Sala este comună, dar o rezervare confirmată, o temperatură estimată și un cost calculat au justificări diferite. Conectarea lor face posibil un răspuns precum: „Sala este rezervată, însă atingerea temperaturii dorite înainte de noua oră depinde de pornirea imediată a încălzirii; sala mică este deja în intervalul cerut.” Dincolo de un ecran care arată valori, avem o explicație a opțiunilor disponibile. Următoarea problemă este cum păstrăm această precizie când o decizie traversează și alte lumi, cu alte reguli și alte responsabilități.",
+      "translation": "The same building can thus be tracked from the world of event scheduling, the world of installation operation and the world of energy consumption. The room is shared, but a confirmed reservation, an estimated temperature and a calculated cost have different justifications. Connecting them enables an answer such as: “The room is reserved, but reaching the desired temperature before the new time depends on switching on the heating immediately; the small room is already within the required range.” Beyond a screen displaying values, we have an explanation of the available options. The next problem is how to retain this precision when a decision crosses into still other worlds with different rules and responsibilities."
+    },
+    {
+      "id": "t000423",
+      "source": "10 Cum lucrează împreună lumile",
+      "translation": "10 How worlds work together"
+    },
+    {
+      "id": "t000424",
+      "source": "La ora nouă, o persoană din firmă întreabă asistentul: „Suntem pregătiți pentru vizita de după-amiază?” Calendarul arată o întâlnire confirmată. Un mesaj din producție anunță o întârziere. În raportul cercetării a fost corectată o măsurare folosită în prezentarea produsului. Un răspuns de un singur cuvânt ar ascunde situația. Pentru a ajuta, asistentul trebuie să descopere care dintre aceste schimbări influențează scopul vizitei și ce opțiuni au rămas deschise.",
+      "translation": "At nine o'clock, someone in the company asks the assistant, “Are we ready for this afternoon's visit?” The calendar shows a confirmed meeting. A message from production announces a delay. A measurement used in the product presentation has been corrected in the research report. A one-word answer would conceal the situation. To help, the assistant must discover which of these changes influence the visit's purpose and which options remain open."
+    },
+    {
+      "id": "t000425",
+      "source": "Revenim la compania de biciclete electrice pentru a urmări arhitectura în funcțiune. De data aceasta, clientul dorește chiar să încerce exemplarul experimental B17, vineri, la ora cincisprezece. Acesta apare în programare ca resursă necesară întâlnirii, în pregătirea produsului ca obiect aflat într-un proces și în cercetare ca suport al unui experiment. Identitatea comună permite conectarea informațiilor. Sensul lor trebuie păstrat de-a lungul acestei conexiuni.",
+      "translation": "We return to the electric bicycle company to follow the architecture at work. This time, the customer actually wants to try experimental unit B17 on Friday at fifteen hundred. It appears in scheduling as a resource needed for the meeting, in product preparation as an object within a process, and in research as the subject of an experiment. The shared identity allows information to be connected. Its meaning must be preserved along this connection."
+    },
+    {
+      "id": "t000426",
+      "source": "Un rezultat trebuie să își păstreze sensul când circulă",
+      "translation": "A result must retain its meaning as it circulates"
+    },
+    {
+      "id": "t000427",
+      "source": "Producția spune că B17 va fi pregătită după ora doisprezece, dacă verificarea finală se încheie favorabil. Programarea poate folosi această informație pentru a evalua întâlnirea de la cincisprezece. Rezultatul primit este însă o estimare condiționată, nu o observație că bicicleta este deja pregătită. Legătura dintre lumi trebuie să păstreze obiectul, utilizarea, momentul și condiția. Altfel, o formulare prescurtată precum „disponibilă la prânz” poate pierde exact dependența care trebuie urmărită vineri dimineață.",
+      "translation": "Production says B17 will be ready after twelve if the final check is completed successfully. Scheduling can use this information to evaluate the meeting at fifteen hundred. The received result, however, is a conditional estimate, not an observation that the bicycle is already ready. The link between worlds must preserve the object, use, time and condition. Otherwise, an abbreviated formulation such as “available at noon” may lose precisely the dependency that needs to be tracked on Friday morning."
+    },
+    {
+      "id": "t000428",
+      "source": "Cercetarea furnizează o altă contribuție: rezultatul unei comparații privind autonomia bicicletei, obținut într-un experiment descris. Această informație poate susține prezentarea pe care consultantul o face clientului. Pentru o afirmație despre traseul zilnic al clientului trebuie să știm în ce măsură condițiile acelui traseu sunt acoperite de experiment sau de un model validat. Asistentul poate separa ceea ce poate fi relatat acum de întrebarea care cere informații suplimentare, fără să reducă întreaga discuție la un verdict despre produs.",
+      "translation": "Research supplies another contribution: the result of a comparison concerning the bicycle's range, obtained in a described experiment. This information can support the presentation the consultant gives the customer. For a claim about the customer's daily route, we need to know to what extent the conditions of that route are covered by the experiment or a validated model. The assistant can separate what can be reported now from the question requiring additional information without reducing the entire discussion to a verdict about the product."
+    },
+    {
+      "id": "t000429",
+      "source": "La rândul ei, conversația cu clientul poate schimba felul în care folosim aceste rezultate. Aflăm că interesul principal este poziția de mers și comportamentul la urcare; bateria experimentală este o curiozitate suplimentară. O altă bicicletă, deja pregătită, poate satisface scopul principal. Această informație deschide o alternativă pentru întâlnire, deși nu schimbă nici stadiul lui B17, nici rezultatul experimentului. Efectul clarificării se produce în relația dintre scop și opțiuni.",
+      "translation": "In turn, the conversation with the customer can change how we use these results. We learn that the main interest is the riding position and uphill behavior; the experimental battery is an additional curiosity. Another bicycle, already prepared, may satisfy the main purpose. This information opens an alternative for the meeting, although it changes neither B17's status nor the experiment's result. Clarification has its effect in the relationship between purpose and options."
+    },
+    {
+      "id": "t000430",
+      "source": "Pentru a organiza asemenea treceri, putem descrie un contract între lumi. Cuvântul „contract” numește aici o înțelegere precisă despre sensul rezultatului transmis: la ce se referă, când este valabil, de ce depinde și ce poate face destinatarul cu el. Unele condiții pot fi verificate mecanic, precum identitatea exemplarului sau compatibilitatea momentelor. Altele depind de o regulă a domeniului, precum folosirea unei verificări tehnice pentru un anumit tip de demonstrație. Contractul devine parte a legăturii inspectabile dintre instanțe.",
+      "translation": "To organize such transitions, we can describe a contract between worlds. The word “contract” here names a precise understanding about the meaning of the transmitted result: what it concerns, when it is valid, what it depends on and what the recipient can do with it. Some conditions can be checked mechanically, such as the unit's identity or the compatibility of times. Others depend on a domain rule, such as using a technical check for a particular type of demonstration. The contract becomes part of the inspectable link between instances."
+    },
+    {
+      "id": "t000431",
+      "source": "Într-o organizație mare, datele pot veni din sisteme care identifică același lucru în mod diferit. Calendarul folosește un nume comercial, producția un număr de serie, iar cercetarea un cod de experiment. Asocierea lor cere o relație justificată. Pot exista mai multe exemplare cu același nume comercial și mai multe experimente asupra aceluiași exemplar. O mapare corectă face posibilă întrebarea „ce rezultat privește exact bicicleta pe care o vom folosi?” și previne transformarea asemănării numelor într-o identitate presupusă.",
+      "translation": "In a large organization, data may come from systems identifying the same thing differently. The calendar uses a commercial name, production a serial number, and research an experiment code. Associating them requires a justified relationship. There may be several units with the same commercial name and several experiments on the same unit. Correct mapping makes it possible to ask “which result concerns exactly the bicycle we will use?” and prevents name similarity from becoming an assumed identity."
+    }
+  ]
+}

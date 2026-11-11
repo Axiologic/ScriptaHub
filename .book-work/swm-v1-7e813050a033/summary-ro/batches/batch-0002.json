@@ -1,0 +1,320 @@
+{
+  "batch": "batch-0002.json",
+  "language": "ro",
+  "audience": "educated general reader",
+  "chapterId": "chapter-0003",
+  "chapterTitle": "1 Când o conversație are nevoie de o lume",
+  "segment": 1,
+  "selectionWeights": {
+    "centrality": 0.5,
+    "recurrence": 0.25,
+    "originality": 0.25
+  },
+  "instructions": "Analyze this chapter segment faithfully. Capture its thesis, role, ideas, representative evidence, objections, and qualifications. Cite source unit IDs.",
+  "units": [
+    {
+      "id": "u000025",
+      "chapterId": "chapter-0003",
+      "kind": "h1",
+      "text": "1 Când o conversație are nevoie de o lume",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000026",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "„Mutăm plecarea pe vineri.” Propoziția are patru cuvinte și pare să ceară o modificare simplă. În spatele ei se află însă o călătorie deja discutată: un tren, o cameră rezervată, o întâlnire și cineva care urma să ne aștepte la destinație. Persoana care primește mesajul înțelege că unele dintre acestea trebuie reconsiderate. Poate răspunde imediat, dar poate și observa ceva ce noi am omis: vineri întâlnirea nu mai este posibilă, deși trenul și hotelul sunt disponibile.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000027",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Un asistent AI se întâlnește cu aceeași problemă. Recunoașterea zilei și a verbului „a muta” reprezintă numai începutul. Pentru a ajuta, trebuie să stabilească la ce plecare ne referim, care dintre angajamente depind de ea și dacă solicităm explorarea unei alternative sau modificarea rezervărilor. O singură replică deschide, astfel, trei întrebări legate: ce înseamnă mesajul, ce rezultă din el și ce avem dreptul să schimbăm efectiv.",
+      "sourceAnchor": null,
+      "wordCount": 66
+    },
+    {
+      "id": "u000028",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Aceste întrebări ne conduc spre modelele simbolice ale lumii. Ele pornesc de la nevoia de a întreține o reprezentare a situației, pe care conversația o poate completa și transforma. Câștigul urmărit este continuitatea sensului între ceea ce spune utilizatorul, ceea ce calculează sistemul și ceea ce se întâmplă ulterior.",
+      "sourceAnchor": null,
+      "wordCount": 49
+    },
+    {
+      "id": "u000029",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "Arhitectura din spatele unui răspuns",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000030",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Dacă am construi acest asistent, unde am pune informația că hotelul fusese ales pentru apropierea de întâlnire? Și ce componentă ar trebui să reacționeze când întâlnirea se mută? Aceste întrebări transformă intuiția într-o arhitectură. Sistemul are nevoie de o memorie explicită a situației, de o descriere a relațiilor pe care le poate interpreta și de componente care execută operații asupra lor. Un răspuns util apare prin colaborarea acestor părți.",
+      "sourceAnchor": null,
+      "wordCount": 69
+    },
+    {
+      "id": "u000031",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Vom numi tipar de lume descrierea reutilizabilă a obiectelor, relațiilor, condițiilor și operațiilor dintr-o familie de situații. Instanța de lume păstrează cazul particular: călătoria discutată, opțiunile sale și informațiile pe care ne bazăm. Tiparul spune, de exemplu, cum verificăm o legătură între două segmente de transport. Instanța spune care sunt segmentele, când au loc și ce durată de transfer cunoaștem. Acestea sunt cele două concepte centrale ale cărții. Interpretoarele și executorii sunt componentele software care le folosesc.",
+      "sourceAnchor": null,
+      "wordCount": 77
+    },
+    {
+      "id": "u000032",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Reprezentarea poate fi organizată prin fire și circuite SOP . Un fir identifică un element și îi descrie proprietățile: o persoană, o întâlnire, o observație sau o operație cerută. Referințele leagă firele într-un circuit. În călătoria noastră, o rezervare trimite la persoana și la segmentul de transport potrivite, iar verificarea participării trimite la sosire și la începutul întâlnirii. Tiparul stabilește sensul acestor legături. Circuitul oferă o structură pe care un program o poate parcurge, interoga și transforma; simpla sa existență nu execută însă nicio rezervare.",
+      "sourceAnchor": null,
+      "wordCount": 84
+    },
+    {
+      "id": "u000033",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Privită în ansamblu, arhitectura are un traseu principal și două întoarceri importante. Un mesaj produce o interpretare propusă, aceasta este verificată în contextul unei instanțe, iar modificarea adoptată declanșează calculele relevante. Dacă lipsește o distincție decisivă, traseul se întoarce în dialog. Dacă este cerută o acțiune externă, traseul trece printr-un executor și revine prin rezultatul observat. Figura arată aceste relații; aceeași aplicație poate realiza mai multe dintre roluri, fără să le confunde responsabilitățile.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000034",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Figura 1. Instanța păstrează situația și rezultatele. Clarificarea și efectele externe revin ca intrări pentru un nou ciclu de procesare.",
+      "sourceAnchor": null,
+      "wordCount": 20
+    },
+    {
+      "id": "u000035",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Să urmărim mecanismul folosind mesajul „mutăm plecarea pe vineri”. La intrare păstrăm mesajul și contextul în care a fost primit. Un selector de context caută instanțele plauzibile după discuția activă, persoanele menționate și evenimentele deja legate de ele. Un model neuronal propune că este vorba despre călătoria aflată în discuție, identifică data și interpretează intenția. Rezultatul acestei etape este o propunere de modificare : obiectul vizat, schimbarea cerută, sursa și presupunerile folosite. Nu este încă noua stare a tuturor rezervărilor.",
+      "sourceAnchor": null,
+      "wordCount": 79
+    },
+    {
+      "id": "u000036",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Această propunere este evaluată pe o copie de lucru sau pe o listă de diferențe față de versiunea curentă a instanței. Validatorul verifică dacă obiectul există, dacă noua valoare are sens pentru proprietatea schimbată și dacă referințele conduc la elementele așteptate. Începutul unei întâlniri cere un moment; participantul cere o referință la o persoană; o durată trebuie interpretată în unitatea corectă. Dacă „vineri” poate desemna două date relevante, sistemul păstrează alternativele și cere precizarea care schimbă rezultatul. Validarea nu completează în tăcere ceea ce mesajul nu a stabilit.",
+      "sourceAnchor": null,
+      "wordCount": 88
+    },
+    {
+      "id": "u000037",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "După verificările structurale, interpretoarele evaluează condițiile relevante. În cazul nostru, modificarea plecării schimbă sosirea, iar sosirea influențează participarea. Motorul nu trebuie să reia fiecare calcul despre toate călătoriile. El consultă legăturile de dependență și introduce într-o agendă de lucru operațiile afectate. Agenda este lista calculelor care trebuie încă efectuate, fiecare asociat cu datele și versiunea pentru care este cerut. Un interpretor temporal recalculează ora sosirii; un alt calcul verifică marja până la întâlnire. Dacă rezultatul schimbă o concluzie folosită mai departe, acea concluzie pune la rândul ei alte operații în agendă.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000038",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Aici trebuie separate două feluri de legături. Faptul că întâlnirea și călătoria se referă la aceeași persoană este o relație semantică. Faptul că evaluarea participării are nevoie de ora sosirii este o dependență de calcul. Numai a doua stabilește că un rezultat trebuie disponibil înaintea altui calcul. Din circuitul care descrie situația construim sau selectăm dependențele cerute de operația curentă. În capitolele următoare vom vedea cum unele calcule pot rula în paralel, cum altele cer o ordine și cum tratăm regulile care se reactivează reciproc.",
+      "sourceAnchor": null,
+      "wordCount": 85
+    },
+    {
+      "id": "u000039",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Rezultatele trebuie să păstreze originea lor. Evaluarea „nu ajungem la timp” este legată de noua sosire, durata transferului și ora întâlnirii. Această justificare permite două operații: explicarea răspunsului și revizuirea lui când una dintre premise se schimbă. În memorie putem păstra firele într-o colecție adresabilă după identificator, un index după tip și proprietăți, plus legăturile inverse care spun unde este folosită fiecare informație. Acestea sunt moduri de organizare a acelorași date. Ele fac posibilă recuperarea rapidă și actualizarea locală, fără să adauge o nouă noțiune de lume.",
+      "sourceAnchor": null,
+      "wordCount": 87
+    },
+    {
+      "id": "u000040",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "La capătul acestui traseu, controlul aplicației alege ce fel de rezultat trebuie oferit. Dacă întrebarea privea numai fezabilitatea, prezentăm concluzia și premisele decisive. Dacă există mai multe variante, păstrăm scenariile. Dacă lipsește informația care le separă, formulăm o clarificare. Dacă utilizatorul a cerut efectiv schimbarea, pregătim operația pe care serviciul de rezervări o poate accepta. Alegerea nu este dedusă numai din faptul că un scenariu este posibil: ea depinde și de intenția, preferințele și autoritatea exprimate în interacțiune.",
+      "sourceAnchor": null,
+      "wordCount": 78
+    },
+    {
+      "id": "u000041",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Adoptarea unei modificări în instanță și producerea unui efect în exterior sunt două operații cu rezultate diferite. În memorie putem înregistra imediat decizia „dorim plecarea vineri” și faptul că schimbarea biletului este în așteptare. Executorul trimite cererea serviciului, cu identitatea operației și condițiile necesare. Dacă serviciul confirmă, rezultatul intră ca un nou eveniment și actualizează starea rezervării. Dacă refuză, instanța păstrează rezervarea existentă și motivul refuzului. Dacă răspunsul se pierde, rezultatul rămâne necunoscut până la o verificare; sistemul nu inventează confirmarea din propria intenție.",
+      "sourceAnchor": null,
+      "wordCount": 84
+    },
+    {
+      "id": "u000042",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Memoria persistentă face acest proces continuabil. După închiderea aplicației trebuie să putem recupera instanța, versiunea tiparului, justificările importante și operațiile externe încă neclarificate. Starea curentă poate fi păstrată împreună cu un jurnal al modificărilor relevante. Un calcul început asupra unei versiuni vechi nu este adoptat automat după ce utilizatorul a schimbat din nou data: rezultatul trebuie confruntat cu premisele actuale. Astfel, consistența nu este doar o verificare la încărcare, ci o proprietate urmărită pe parcursul actualizărilor.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000043",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Prin această arhitectură, SWM devine partea care păstrează organizarea semantică a activității. Modelul neuronal propune sensuri și recunoaște obiecte. Interpretoarele calculează consecințele pentru descrierile pe care le înțeleg. Controlul aplicației alege următorul pas, iar executorii interacționează cu serviciile sau dispozitivele. Putem începe cu un singur tipar, un depozit de instanțe și câteva operații bine definite. Extinderea adaugă alte tipare și interpretoare prin aceleași puncte de legătură: date identificate, condiții explicite și rezultate care își păstrează sensul.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000044",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "Situația continuă după ce propoziția s-a terminat",
+      "sourceAnchor": null,
+      "wordCount": 7
+    },
+    {
+      "id": "u000045",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Plecarea de joi fusese aleasă pentru a ajunge cu o seară înaintea întâlnirii de vineri. Arhitectura urmărește deja efectele unei schimbări de orar; acum apare o schimbare mai profundă, în motivul călătoriei.",
+      "sourceAnchor": null,
+      "wordCount": 32
+    },
+    {
+      "id": "u000046",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "O conversație poate modifica și felul în care privim scopul. Utilizatorul adaugă: „Întâlnirea se poate face online; important este să fiu acolo pentru weekend.” Plecarea de joi fusese justificată de o condiție care tocmai și-a pierdut importanța. Un sistem care păstrează justificările poate redeschide alegerea călătoriei fără să considere întregul plan greșit. Hotelul poate rămâne potrivit, transportul de la gară poate necesita altă oră, iar întâlnirea poate trece în altă formă de organizare.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000047",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "De aici rezultă o observație importantă pentru proiectarea memoriei unui asistent. O amintire utilă conține atât ceea ce am ales, cât și motivul pentru care alegerea avea sens. Dacă motivul se schimbă, memoria poate indica ce merită reconsiderat. Această proprietate este la fel de relevantă într-o analiză de documente sau într-un proiect de cercetare: o concluzie care supraviețuiește după retragerea premisei sale poate deveni mai periculoasă decât o informație uitată.",
+      "sourceAnchor": null,
+      "wordCount": 70
+    },
+    {
+      "id": "u000048",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "La această scară, reprezentarea simbolică seamănă cu o bună organizare a muncii intelectuale. Avem obiecte identificabile, afirmații despre ele și relații pe care le putem inspecta. Totuși, scopul este ca aceste relații să poată fi folosite de programe. Sistemul poate urmări dependențele, verifica o condiție temporală sau construi o variantă a planului. Explicația și calculul folosesc aceeași organizare a situației, ceea ce permite ca rezultatul să fie legat de pașii care l-au produs.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000049",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "Aceeași viață conține lumi diferite",
+      "sourceAnchor": null,
+      "wordCount": 5
+    },
+    {
+      "id": "u000050",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Telefonul unei persoane poate conține un calendar, un roman în lucru, mesaje de familie și date despre consumul locuinței. Toate o privesc, dar fiecare cere alte distincții. În calendar contează suprapunerea intervalelor și acordul participanților. În roman contează continuitatea evenimentelor și ceea ce știe fiecare personaj. În locuință contează observațiile senzorilor, evoluția temperaturii și comenzile trimise echipamentelor. Apartenența la aceeași persoană nu oferă, singură, un mod comun de a interpreta toate aceste informații.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000051",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Vom folosi cuvântul „lume” pentru o delimitare în care anumite obiecte, relații și schimbări sunt suficiente pentru o familie de întrebări. Lumea unei călătorii ne permite să discutăm trasee, sosiri și legături. Lumea unui roman ne permite să discutăm personaje, evenimente și perspective. Delimitarea este aleasă în funcție de ceea ce vrem să înțelegem sau să facem; ea poate deveni mai bogată când întâlnim o întrebare care cere o distincție nouă.",
+      "sourceAnchor": null,
+      "wordCount": 71
+    },
+    {
+      "id": "u000052",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Un exemplu din lectură face această idee ușor de simțit. Cititorul află că o scrisoare a fost ascunsă, dar personajul principal încă nu știe. Dacă povestea îl face să acționeze pe baza conținutului scrisorii înainte să îl afle, apare o ruptură de continuitate. Pentru a o identifica trebuie să reprezentăm separat evenimentul și accesul personajului la informație. O listă cu faptele din roman ar putea fi corectă și totuși insuficientă pentru această întrebare. Reprezentarea potrivită păstrează și perspectiva din care fiecare fapt poate influența o acțiune.",
+      "sourceAnchor": null,
+      "wordCount": 86
+    },
+    {
+      "id": "u000053",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Într-o locuință întâlnim o dificultate diferită. „Camera trebuie să fie caldă la sosire” exprimă o intenție, temperatura măsurată exprimă o observație, iar ora probabilă a sosirii exprimă o estimare. Sistemul trebuie să le pună în relație pentru a decide când să pornească încălzirea. Dacă trenul întârzie, se schimbă timpul disponibil pentru încălzire. Dacă o fereastră rămâne deschisă, se schimbă condițiile fizice ale predicției. Cele două modificări ajung la aceeași decizie prin relații diferite.",
+      "sourceAnchor": null,
+      "wordCount": 73
+    },
+    {
+      "id": "u000054",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Exemplele ne arată de ce pluralitatea lumilor este utilă. Nu încercăm să înghesuim totul într-un vocabular unic, în care „disponibil”, „cunoscut” și „confirmat” ar avea un singur sens. Construim reprezentări potrivite activității și precizăm legăturile dintre ele. Ora sosirii poate fi comună lumii călătoriei și celei a locuinței, fără ca o regulă despre bilete să devină o regulă despre temperatură.",
+      "sourceAnchor": null,
+      "wordCount": 60
+    },
+    {
+      "id": "u000055",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Această alegere are și un criteriu practic. Merită să distingem lumi atunci când aceeași informație își schimbă sensul operațional, când răspunsurile cer dovezi diferite sau când schimbările urmează reguli diferite. Două întrebări apropiate din același calendar pot folosi aceeași lume. Cercetarea unei ipoteze și confirmarea unei comenzi pot avea nevoie de lumi distincte, chiar dacă privesc același produs. Generalitatea sistemului va veni din felul în care poate organiza și conecta aceste diferențe.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000056",
+      "chapterId": "chapter-0003",
+      "kind": "h2",
+      "text": "Ceea ce reutilizăm și cazul pe care îl trăim",
+      "sourceAnchor": null,
+      "wordCount": 9
+    },
+    {
+      "id": "u000057",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Când pregătim o nouă călătorie, nu redescoperim de fiecare dată că trebuie să ajungem înainte să plece următorul tren. Folosim relații învățate anterior și le aplicăm unor evenimente noi. Când citim un roman nou, presupunem că un personaj își păstrează identitatea între două scene și că informația trebuie să ajungă la el pe o anumită cale. Acest fond reutilizabil poate fi modificat de context: o poveste poate permite călătoria în timp, iar un traseu poate include un transfer organizat după alte reguli. În fiecare caz există ceva general și ceva particular.",
+      "sourceAnchor": null,
+      "wordCount": 91
+    },
+    {
+      "id": "u000058",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Distincția introdusă în arhitectură capătă acum un sens mai larg. Tiparul de lume descrie ceea ce putem reutiliza pentru a interpreta situații și schimbări. Instanța de lume păstrează cazul particular: călătoria discutată acum, romanul pe care îl analizăm sau situația locuinței în această seară. Instanța poate conține informații certe, alternative încă deschise, presupuneri și un istoric. Tiparul permite ca aceste informații să fie puse în relație și folosite în raționament.",
+      "sourceAnchor": null,
+      "wordCount": 70
+    },
+    {
+      "id": "u000059",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Distincția se vede în ceea ce putem schimba. Dacă trenul ajunge la altă oră, actualizăm instanța călătoriei. Dacă tiparul presupunea că orice schimbare de tren are loc în aceeași gară, descoperirea unui transfer prin oraș cere îmbogățirea lui: trebuie să poată reprezenta și deplasarea dintre gări. Durata deplasării concrete rămâne o informație despre locurile și condițiile respective, chiar dacă o folosim în mai multe călătorii. Reutilizarea unei informații nu o transformă automat într-o regulă a lumii.",
+      "sourceAnchor": null,
+      "wordCount": 76
+    },
+    {
+      "id": "u000060",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Tiparul participă activ la înțelegerea instanței. El poate arăta că lipsește durata transferului, că o sosire târzie pune în discuție o întâlnire sau că un personaj nu putea cunoaște încă o informație. Poate orienta o întrebare și poate face vizibilă o consecință care nu apare literal în mesaj. Aici se află interesul arhitecturii SWM: cunoașterea reutilizabilă devine un instrument pentru interpretarea și explorarea unui caz, iar cazul poate aduce motive pentru îmbunătățirea cunoașterii reutilizabile.",
+      "sourceAnchor": null,
+      "wordCount": 74
+    },
+    {
+      "id": "u000061",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "Într-un sistem neurosimbolic, modelul neuronal poate propune că „mutăm plecarea” privește o anumită călătorie și o anumită dată. Instanța oferă contextul în care verificăm acea propunere. Tiparul permite calculul consecințelor, iar un serviciu de rezervări poate executa schimbarea dacă aceasta este cerută și admisă. Fiecare componentă contribuie la același fir de sens. Cititorul ar trebui să poată urmări cum a trecut sistemul de la propoziție la alegere și, apoi, la rezultatul observat.",
+      "sourceAnchor": null,
+      "wordCount": 72
+    },
+    {
+      "id": "u000062",
+      "chapterId": "chapter-0003",
+      "kind": "p",
+      "text": "O organizație face această problemă și mai interesantă. Acolo, aceeași conversație poate trece în câteva secunde de la disponibilitatea unei persoane la pregătirea unui produs și la valoarea unei dovezi experimentale. Pentru a înțelege un asemenea dialog, trebuie să vedem mai întâi cum pot exista mai multe lumi în aceeași realitate.",
+      "sourceAnchor": null,
+      "wordCount": 51
+    }
+  ]
+}

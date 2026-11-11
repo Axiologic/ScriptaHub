@@ -1,0 +1,160 @@
+{
+  "batch": "batch-0004.json",
+  "chapterId": "chapter-0005",
+  "segment": 1,
+  "thesis": "Formalizarea face explicit obiectul și rolul fiecărei afirmații înainte de calcul.",
+  "role": "Detaliază SOP, potrivirea, dependențele și validarea.",
+  "ideas": [
+    {
+      "id": "batch-0004-idea-001",
+      "statement": "Firele și referințele SOP identifică obiecte fără să stabilească ordinea execuției.",
+      "centrality": 1,
+      "originality": 0.85,
+      "recurrenceCandidate": "formalization",
+      "sourceUnitIds": [
+        "u000107",
+        "u000109",
+        "u000111"
+      ]
+    },
+    {
+      "id": "batch-0004-idea-002",
+      "statement": "Potrivirea păstrează substituții consistente și ramuri separate.",
+      "centrality": 0.9,
+      "originality": 0.85,
+      "recurrenceCandidate": "formalization",
+      "sourceUnitIds": [
+        "u000121",
+        "u000124",
+        "u000126"
+      ]
+    },
+    {
+      "id": "batch-0004-idea-003",
+      "statement": "Graful semantic, graful dependențelor și planul de execuție răspund întrebărilor diferite.",
+      "centrality": 0.95,
+      "originality": 0.9,
+      "recurrenceCandidate": "contracts",
+      "sourceUnitIds": [
+        "u000130",
+        "u000131"
+      ]
+    }
+  ],
+  "evidenceAndExamples": [
+    {
+      "statement": "Firele și referințele SOP identifică obiecte fără să stabilească ordinea execuției.",
+      "sourceUnitIds": [
+        "u000107",
+        "u000109",
+        "u000111"
+      ]
+    },
+    {
+      "statement": "„Dacă luăm trenul de la opt, ajungem la întâlnire? Păstrează varianta, dar nu schimba biletele.” Un om recunoaște în acest mesaj o întrebare despre un viitor posibil și o limită asupra acțiunii. Vrem să explorăm, apoi să reținem rezultatul. Trenul, întâlnirea și biletele aparțin aceleiași conversații, însă propoziția nu spune că noul plan a fost adoptat. Pentru un asistent, a pierde această diferență ar putea însemna efectuarea unei operații pe care utilizatorul tocmai a exclus-o.",
+      "sourceUnitIds": [
+        "u000097"
+      ]
+    },
+    {
+      "statement": "Expresia „trenul de la opt” pare un identificator suficient până când în conversație apar două zile sau două gări. Componenta neuronală poate folosi contextul pentru a propune trenul vizat. Poate recunoaște și că „ajungem” se referă la participanții călătoriei, iar „întâlnirea” la evenimentul discutat anterior. Aceste asocieri trebuie păstrate ca parte a formalizării. Un calcul corect efectuat pentru alt tren răspunde precis unei întrebări pe care utilizatorul nu a pus-o.",
+      "sourceUnitIds": [
+        "u000100"
+      ]
+    },
+    {
+      "statement": "Într-o reprezentare utilă putem vedea obiectul ales pentru fiecare referință și rolul fiecărei propoziții. Prima parte a mesajului introduce un scenariu. A doua cere memorarea lui. Ultima exclude schimbarea biletelor. Tiparul călătoriei ajută la interpretare: știm că un segment are plecare și sosire, că un transfer cere timp și că o rezervare efectivă este altceva decât o opțiune. Instanța aduce identitățile concrete și informațiile deja stabilite în conversație.",
+      "sourceUnitIds": [
+        "u000101"
+      ]
+    },
+    {
+      "statement": "O verificare simbolică poate descoperi că trenul propus pleacă din alt oraș decât cel al călătoriei. Poate și arăta că două trenuri rămân compatibile cu mesajul. În al doilea caz, un răspuns de clarificare este mai bine întemeiat decât alegerea arbitrară. Puterea verificării vine din relațiile explicite, iar informația despre limbaj rămâne necesară pentru a decide dacă reprezentarea corespunde intenției. Cele două operații se pot ajuta reciproc într-un proces repetat: formalizarea propune, verificarea identifică o nepotrivire, contextul sau utilizatorul o rezolvă.",
+      "sourceUnitIds": [
+        "u000102"
+      ]
+    },
+    {
+      "statement": "Această continuitate cere și o urmă până la mesaj. Dacă întrebarea a fost „am putea?”, sistemul trebuie să poată arăta de ce rezultatul este un scenariu. Dacă utilizatorul corectează „mă refeream la ziua următoare”, referința modificată trebuie să ajungă la calculele dependente. Păstrarea fragmentului de limbaj și a interpretării sale face corecția localizabilă. În acest fel, formalizarea devine o propunere care poate fi examinată și îmbunătățită, în locul unei traduceri care dispare imediat în interiorul sistemului.",
+      "sourceUnitIds": [
+        "u000104"
+      ]
+    },
+    {
+      "statement": "Putem înțelege reprezentarea din memorie fără să cunoaștem o bibliotecă: un registru asociază fiecărui identificator un fir, iar firul păstrează tipul și proprietățile sale. Pentru fiecare proprietate există una sau mai multe valori. Unele sunt texte ori numere; altele sunt referințe care pot fi rezolvate în registru. O călătorie nu conține o copie a persoanei, ci o legătură spre ea. Astfel, mai multe călătorii pot privi aceeași persoană fără să creeze persoane noi. Instanța de lume cuprinde acest ansamblu și informațiile necesare interpretării lui, nu doar un singur fir.",
+      "sourceUnitIds": [
+        "u000110"
+      ]
+    },
+    {
+      "statement": "Dar unde păstrăm chiar descrierea acestui tipar? Și el poate fi exprimat printr-un circuit SOP: fire pentru definițiile de tipuri și proprietăți, fire care descriu șabloane de potrivire, reguli, calcule și condiții. Folosim aceeași formă de reprezentare, dar în roluri diferite. Firul care declară că o întâlnire poate avea participanți aparține descrierii tiparului; firul întâlnirii Anei aparține instanței. Declararea unei reguli despre călătorii nu afirmă că o anumită călătorie a avut loc.",
+      "sourceUnitIds": [
+        "u000117"
+      ]
+    },
+    {
+      "statement": "Interpretorul pregătește tiparul înainte de a-l folosi. Rezolvă legăturile dintre declarații și verifică dacă regula indică șabloane existente, iar calculul numește o operație disponibilă. Din definițiile proprietăților construiește evidența verificărilor aplicabile fiecărui tip. Din premise construiește indexuri care arată ce reguli trebuie cercetate când apare un fapt de un anumit tip. Pregătește și pașii potrivirii: ce fire sunt căutate, ce variabile trebuie să coincidă și ce calcule sau condiții urmează. Aceasta este compilarea tiparului într-o formă convenabilă procesării; nu transformă automat orice referință în ordine de execuție și nu inventează implementarea operațiilor numite.",
+      "sourceUnitIds": [
+        "u000118"
+      ]
+    },
+    {
+      "statement": "Cu substituția astfel obținută, al doilea șablon caută o întâlnire a aceleiași persoane în aceeași zi. O întâlnire a lui Dan este respinsă chiar dacă începe la ora dorită. O întâlnire a Anei din ziua următoare este respinsă din același motiv: o variabilă deja legată nu poate primi pe ascuns altă valoare. Pentru întâlnirea compatibilă, motorul completează substituția cu ora. Dacă două întâlniri sunt compatibile, rezultă două potriviri, fiecare păstrând identitățile firelor care au satisfăcut șabloanele. Chiar dacă valorile substituite coincid, întâlnirile pot fi distincte; identitățile permit justificarea fiecărui rezultat.",
+      "sourceUnitIds": [
+        "u000125"
+      ]
+    },
+    {
+      "statement": "Cum obținem concret planul de calcul? Pornim de la rezultatul cerut și consultăm contractul operației: ce citește, ce produce și în ce condiții este aplicabilă. Rezolvăm referințele, identificăm intrările existente și căutăm operații care pot furniza intrările lipsă. Operațiile fără dependențe nerezolvate pot fi evaluate; rezultatele lor deblochează alte operații. Dacă lipsește durata transferului și nu există un mod acceptat de a o obține, verificarea rămâne în așteptare cu această lipsă identificată. Nu o evaluăm ca și cum durata ar fi zero.",
+      "sourceUnitIds": [
+        "u000137"
+      ]
+    },
+    {
+      "statement": "Un circuit semantic poate avea legături circulare perfect obișnuite: persoana indică organizația din care face parte, iar organizația își enumeră membrii. Acest lucru nu împiedică citirea datelor. Un ciclu de calcul cere însă o interpretare: dacă rezultatul A depinde de B, iar B de A, ordonarea singură nu ajunge. Avem nevoie de o regulă explicită de rezolvare, de o iterație justificată sau de oprirea cu dependența nerezolvată. Simplul desen al circuitului nu decide această alegere. În arhitectura propusă, contractele operațiilor fac posibilă separarea dintre o relație de sens și o dependență care blochează calculul.",
+      "sourceUnitIds": [
+        "u000138"
+      ]
+    },
+    {
+      "statement": "Apoi declarăm interfața, adică informația pe care fiecare circuit o oferă și o așteaptă. Punctele acestei interfețe pot fi numite porturi: nu sunt un nou fel de obiect al lumii, ci locuri declarate de conectare. Circuitul editorial oferă identificarea fișierului, versiunea aleasă și utilizarea propusă. Circuitul aprobărilor oferă o evaluare pentru acea combinație și sursa ei. O mapare precizează că imaginea selectată în articol corespunde fișierului și versiunii din celălalt circuit. Numele afișat al fotografiei poate ajuta căutarea, dar maparea adoptată se bazează pe identificarea verificată.",
+      "sourceUnitIds": [
+        "u000142"
+      ]
+    },
+    {
+      "statement": "Procesorul verifică apoi compatibilitatea interfeței: este vorba despre aceeași versiune, despre același tip de utilizare și despre o evaluare încă valabilă pentru condițiile declarate? Dacă aprobarea privește versiunea anterioară, compunerea produce o condiție neacoperită. Nu transferă automat răspunsul asupra noului fișier. Dacă evaluarea este favorabilă, rezultatul poate debloca verificarea editorială corespunzătoare; nu publică articolul. Ieșirea compunerii este un ansamblu conectat, cu mapări inspectabile și condiții satisfăcute ori rămase deschise.",
+      "sourceUnitIds": [
+        "u000143"
+      ]
+    },
+    {
+      "statement": "Pornim de la textul propus, instanța vizată și versiunea tiparului folosit. Citirea sintactică verifică dacă declarațiile pot fi reconstruite: există identificator și tip, valorile sunt închise corect între ghilimele, proprietățile au forma așteptată. Rezultatul este un circuit candidat. O eroare aici indică un fragment care nu poate fi citit; nu este încă o contradicție despre călătorie.",
+      "sourceUnitIds": [
+        "u000147"
+      ]
+    },
+    {
+      "statement": "Urmează verificarea identităților și a referințelor. Fiecare identificator trebuie să fie neambiguu în spațiul lui, iar legăturile interne trebuie să ajungă la firele potrivite. Dacă sosirea indică o călătorie care nu a fost încă identificată, reținem această lipsă fără să inventăm obiectul. Tiparul poate apoi verifica tipurile, proprietățile admise și numărul de valori: participantul trebuie să refere o persoană, iar o oră de început unică nu poate avea două valori incompatibile tratate simultan ca definitive.",
+      "sourceUnitIds": [
+        "u000148"
+      ]
+    }
+  ],
+  "objectionsAndQualifications": [
+    {
+      "statement": "Validarea structurală nu dovedește adevărul și lipsa unei premise nu este verdict negativ.",
+      "sourceUnitIds": [
+        "u000149",
+        "u000150",
+        "u000152"
+      ]
+    }
+  ],
+  "audit": {
+    "chapterCovered": true,
+    "meaningPreserved": true,
+    "factsPreserved": true,
+    "notes": "Citire integrală și separarea propunerilor de rezultate observate."
+  }
+}

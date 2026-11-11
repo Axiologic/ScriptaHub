@@ -1,0 +1,71 @@
+{
+  "language": "en",
+  "chunk": 11,
+  "segments": [
+    {
+      "id": "t000155",
+      "source": "Să presupunem că prima călătorie încercată nu are nicio întâlnire compatibilă. Căutarea revine la alegerea călătoriei, abandonează legăturile provizorii ale acelei încercări și testează următoarea. Această revenire se numește backtracking. Ea trebuie să păstreze separate ramurile: ora găsită pentru o întâlnire nu poate rămâne accidental în substituția alteia. Aceeași disciplină permite potrivirea unor circuite mai mari, cu mai multe condiții comune. Enumerarea este completă când candidații au fost epuizați. Dacă oprim la primul rezultat sau la limita de calcul, ieșirea precizează că pot exista alte potriviri.",
+      "translation": "Suppose the first trip tried has no compatible meeting. The search returns to the choice of trip, abandons that attempt’s provisional bindings and tests the next one. This return is called backtracking. It must keep branches separate: the time found for one meeting cannot accidentally remain in another’s substitution. The same discipline enables matching larger circuits with several shared conditions. Enumeration is complete when candidates have been exhausted. If we stop at the first result or at the computation limit, the output specifies that other matches may exist."
+    },
+    {
+      "id": "t000156",
+      "source": "Variabilele au un domeniu local de utilizare: numele cine dintr-o altă regulă nu trebuie să devină accidental aceeași necunoscută. Șablonul reprezintă o condiție asupra datelor. A introduce ?ora în el nu modifică ora reală a întâlnirii. Dacă nu obținem nicio potrivire, știm doar că datele disponibile nu satisfac căutarea. Poate lipsi ora, poate fi greșită ziua sau poate să nu existe întâlnirea. Pentru a spune care dintre aceste situații avem, folosim alte verificări și informația despre ce considerăm complet în instanță.",
+      "translation": "Variables have a local scope of use: the name cine in another rule must not accidentally become the same unknown. The template represents a condition on the data. Introducing ?ora into it does not change the meeting’s actual time. If we obtain no match, we know only that the available data do not satisfy the search. The time may be missing, the day may be wrong or the meeting may not exist. To say which situation we have, we use other checks and information about what we consider complete in the instance."
+    },
+    {
+      "id": "t000157",
+      "source": "Precizia presupune și o convenție pentru valori. În SOP, potrivirea valorilor literale păstrează forma lor textuală: 5 și 5.0 nu sunt aceeași potrivire, deși o comparație numerică le poate recunoaște egalitatea. Normalizarea datelor sau calculul explicit trebuie să rezolve diferența potrivit sensului urmărit. La fel, două nume egale nu dovedesc identitatea persoanelor. Potrivirea aplică relațiile declarate; nu înlocuiește stabilirea lor.",
+      "translation": "Precision also requires a convention for values. In SOP, matching literal values preserves their textual form: 5 and 5.0 are not the same match, although a numerical comparison can recognize their equality. Data normalization or explicit calculation must resolve the difference according to the intended meaning. Similarly, two identical names do not prove that the people are identical. Matching applies the declared relationships; it does not replace establishing them."
+    },
+    {
+      "id": "t000158",
+      "source": "Legătura de sens și ordinea calculului răspund la întrebări diferite",
+      "translation": "Semantic connections and calculation order answer different questions"
+    },
+    {
+      "id": "t000159",
+      "source": "Referința spre Ana ne spune cine participă la întâlnire. Ea nu ne spune dacă trebuie să verificăm mai întâi orarul trenului sau disponibilitatea sălii. Diferența se poate pierde când desenăm toate relațiile prin săgeți. Pentru a proiecta procesarea, trebuie să distingem trei structuri care pot folosi aceleași fire fără să însemne același lucru.",
+      "translation": "The reference to Ana tells us who attends the meeting. It does not tell us whether we must first check the train timetable or the room’s availability. The difference can be lost when we draw every relationship with arrows. To design processing, we must distinguish three structures that can use the same threads without meaning the same thing."
+    },
+    {
+      "id": "t000160",
+      "source": "Graful semantic spune ce reprezintă legăturile: Ana călătorește, trenul aparține variantei discutate, transferul unește sosirea cu întâlnirea. Un graf este aici doar o mulțime de elemente și relații între ele. Graful dependențelor de calcul spune ce valori trebuie cunoscute pentru a obține un rezultat: verificarea temporală citește momentul sosirii, durata transferului, ora întâlnirii și marja cerută. Planul de execuție spune în ce ordine vor fi efectuate operațiile disponibile și care dintre ele pot avea loc independent. El este construit pentru o întrebare și o stare a datelor.",
+      "translation": "The semantic graph says what the connections represent: Ana travels, the train belongs to the option under discussion, the transfer connects the arrival to the meeting. Here, a graph is simply a set of elements and relationships between them. A computational dependency graph says which values must be known to obtain a result: the temporal check reads the arrival time, transfer duration, meeting time and required margin. The execution plan says in what order the available operations will be performed and which can take place independently. It is constructed for a question and a state of the data."
+    },
+    {
+      "id": "t000161",
+      "source": "Datele călătoriei sunt acum vizibile, dar răspunsul încă trebuie obținut. Pentru scenariul simplu, adunăm 25 la 620 și obținem 645, adică 10:45. Comparăm cu 660, ora 11:00. Rezultă o marjă de 15 minute. Această concluzie privește timpii și condițiile declarate: transferul folosit este cel dintre sosirea trenului ales și întâlnirea vizată. Dacă dorim o marjă minimă de 20 de minute, același calcul conduce la altă evaluare a variantei.",
+      "translation": "The trip data are now visible, but the answer still has to be obtained. For the simple scenario, we add 25 to 620 and obtain 645, or 10:45. We compare this with 660, or 11:00. The resulting margin is 15 minutes. This conclusion concerns the declared times and conditions: the transfer used is the one between the selected train’s arrival and the intended meeting. If we want a minimum margin of 20 minutes, the same calculation leads to a different assessment of the option."
+    },
+    {
+      "id": "t000162",
+      "source": "Pentru a descrie și un calcul, putem folosi fire cu roluri declarate de vocabularul aplicației. Exemplul de mai jos introduce un vocabular didactic: time_check numește o verificare a compatibilității temporale, iar proprietățile sale indică exact datele și condiția folosite. El explică o posibilă semantică; nu depinde de o metodă a unei biblioteci.",
+      "translation": "To describe a calculation as well, we can use threads with roles declared by the application’s vocabulary. The example below introduces an instructional vocabulary: time_check names a temporal compatibility check, and its properties indicate exactly the data and condition used. It explains one possible semantics; it does not depend on a library method."
+    },
+    {
+      "id": "t000163",
+      "source": "@ajungem_la_timp time_check",
+      "translation": "@ajungem_la_timp time_check"
+    },
+    {
+      "id": "t000164",
+      "source": "arrival=$sosire transfer=$deplasare deadline=$inceput",
+      "translation": "arrival=$sosire transfer=$deplasare deadline=$inceput"
+    },
+    {
+      "id": "t000165",
+      "source": "minimum_margin_minutes=15",
+      "translation": "minimum_margin_minutes=15"
+    },
+    {
+      "id": "t000166",
+      "source": "Interpretorul acestei declarații trebuie să rezolve referințele și să verifice că transferul pleacă de la sosirea indicată și ajunge la evenimentul indicat. Apoi citește valorile în unități compatibile și verifică relația „sosire plus transfer plus marjă minimă este cel mult începutul întâlnirii”. Pentru valorile noastre, 620 plus 25 plus 15 este 660, deci condiția este îndeplinită exact la limită. Un rezultat explicabil păstrează relația, valorile și originea lor. Când durata transferului devine 30 de minute, putem vedea de ce concluzia se schimbă fără să reinterpretăm toate firele lumii.",
+      "translation": "The interpreter for this declaration must resolve the references and check that the transfer starts at the indicated arrival and reaches the indicated event. It then reads the values in compatible units and checks the relationship “arrival plus transfer plus minimum margin is no later than the meeting’s start”. For our values, 620 plus 25 plus 15 is 660, so the condition is satisfied exactly at the limit. An explainable result retains the relationship, the values and their origins. When the transfer duration becomes 30 minutes, we can see why the conclusion changes without reinterpreting every thread in the world."
+    },
+    {
+      "id": "t000167",
+      "source": "Un alt interpretor ar putea trata durata transferului drept o necunoscută și ar deduce că trebuie să fie de cel mult 25 de minute pentru a respecta marja aleasă. Aceeași descriere a relației poate servi astfel unei evaluări concrete sau unei căutări de condiții. Pentru această reutilizare, semantica trebuie să fie precizată suficient de bine încât interpretoarele să trateze aceleași valori, aceleași limite și același sens al rezultatului.",
+      "translation": "Another interpreter could treat transfer duration as an unknown and infer that it must be at most 25 minutes to respect the chosen margin. The same description of the relationship can thus serve a concrete evaluation or a search for conditions. For this reuse, the semantics must be specified well enough for interpreters to handle the same values, the same limits and the same meaning of the result."
+    }
+  ]
+}

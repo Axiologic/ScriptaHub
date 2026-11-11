@@ -34,6 +34,7 @@ import uuid
 from urllib.parse import unquote, urlencode
 from urllib.request import Request, urlopen
 import time
+import site_analytics
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1210,7 +1211,7 @@ def install_site_branding(source: str, page_dir: Path) -> str:
 
 def version_shared_assets(source: str, page_dir: Path, versions: dict[Path, str]) -> str:
     """Keep new HTML and its shared component code in the same browser revision."""
-    source = install_site_branding(source, page_dir)
+    source = site_analytics.install(install_site_branding(source, page_dir), page_dir)
     def replace(match: re.Match) -> str:
         attribute, value = match.groups()
         plain = html.unescape(value).split("?", 1)[0]
@@ -1261,6 +1262,7 @@ def refresh_pages() -> dict[str, int]:
     # produced by older builds so per-keyword routes cannot return by accident.
     if (DOCS / "keywords").exists():
         shutil.rmtree(DOCS / "keywords")
+    site_analytics.refresh()
     return {"books": len(collection["books"])}
 
 
@@ -1827,7 +1829,7 @@ def editorial_description_problems(manifest: dict) -> list[str]:
 
 
 def check() -> list[str]:
-    problems = []
+    problems = site_analytics.check()
     if not COLLECTION.is_file():
         return [f"missing {COLLECTION.relative_to(ROOT)}"]
     collection = json.loads(COLLECTION.read_text(encoding="utf-8"))

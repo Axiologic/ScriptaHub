@@ -1,0 +1,61 @@
+{
+  "language": "en",
+  "chunk": 41,
+  "segments": [
+    {
+      "id": "t000459",
+      "source": "Această arhitectură poate începe într-un singur proces, cu un depozit de instanțe, o agendă persistentă, interpretoare locale și câteva adaptoare spre servicii. Distribuirea componentelor este o alegere ulterioară, dictată de volum, timp de răspuns și organizarea sistemelor. Responsabilitățile rămân aceleași. Putem adăuga un simulator nou sau un alt mecanism de căutare dacă acesta declară operațiile înțelese și întoarce rezultate cu sensul și dependențele necesare. Extensibilitatea vine din acest contract, nu din presupunerea că orice algoritm poate interpreta orice circuit.",
+      "translation": "This architecture can begin in a single process, with an instance store, a persistent agenda, local interpreters and a few adapters to services. Distributing the components is a later choice, dictated by volume, response time and the organization of systems. Responsibilities remain the same. We can add a new simulator or another search mechanism if it declares the operations it understands and returns results with the necessary meaning and dependencies. Extensibility comes from this contract, not from assuming that any algorithm can interpret any circuit."
+    },
+    {
+      "id": "t000460",
+      "source": "Forța integrării poate fi pusă la încercare printr-un scenariu foarte concret: întârziem un rezultat, schimbăm între timp una dintre premise și repornim aplicația înaintea confirmării unei comenzi. Sistemul trebuie să respingă folosirea rezultatului devenit vechi, să reia calculul afectat și să regăsească starea comenzii. Dacă face aceste lucruri, am construit o parte esențială din continuitatea promisă de SWM. Rămâne să înțelegem cum dobândim și îmbunătățim tiparele care dau sens acestui mecanism.",
+      "translation": "The strength of integration can be tested through a very concrete scenario: we delay a result, change one premise in the meantime and restart the application before a command is confirmed. The system must reject use of the now-stale result, repeat the affected calculation and recover the command's state. If it does these things, we have built an essential part of the continuity promised by SWM. It remains to understand how we acquire and improve the patterns that give this mechanism meaning."
+    },
+    {
+      "id": "t000461",
+      "source": "11 Cum învățăm tipare mai bune",
+      "translation": "11 How we learn better patterns"
+    },
+    {
+      "id": "t000462",
+      "source": "Două echipe repetă aparent același experiment și obțin rezultate diferite. Prima reacție este să căutăm cine a greșit. Dar expresia „același experiment” poate ascunde o diferență: alt instrument, altă versiune a programului, altă pregătire a materialului sau un interval de timp care nu fusese considerat important. Pentru a alege următoarea verificare, trebuie să putem spune ce a fost comun și ce a variat între încercări. Nepotrivirea rezultatelor devine astfel o întrebare despre reprezentarea noastră.",
+      "translation": "Two teams seemingly repeat the same experiment and obtain different results. The first reaction is to look for who made a mistake. But the expression “the same experiment” may conceal a difference: another instrument, another software version, different material preparation or a time interval that had not been considered important. To choose the next check, we must be able to say what was shared and what varied between attempts. The mismatch of results thus becomes a question about our representation."
+    },
+    {
+      "id": "t000463",
+      "source": "Un tipar de lume nu trebuie privit ca un obiect încheiat înainte de prima conversație. El poate fi proiectat de oameni, extras parțial din documente, propus de un model învățat și îmbunătățit prin confruntarea cu instanțe. Problema cercetării este să organizăm această îmbunătățire astfel încât o observație nouă să ne ajute să alegem între o valoare greșită, o condiție omisă și o regulă nepotrivită. Fiecare cere o intervenție diferită, iar un sistem util ar trebui să poată arăta ce anume propune să schimbe.",
+      "translation": "A world pattern should not be viewed as an object completed before the first conversation. It can be designed by people, partially extracted from documents, proposed by a learned model and improved through confrontation with instances. The research problem is to organize this improvement so that a new observation helps us choose between an incorrect value, an omitted condition and an unsuitable rule. Each requires a different intervention, and a useful system should be able to show what exactly it proposes to change."
+    },
+    {
+      "id": "t000464",
+      "source": "Pentru a vedea ce ar trebui să învețe sistemul, să privim mai întâi ce păstrăm noi dintr-o situație și cum recunoaștem că o descriere a lăsat ceva important în afara ei.",
+      "translation": "To see what the system should learn, let us first consider what we retain from a situation and how we recognize that a description has left something important out."
+    },
+    {
+      "id": "t000465",
+      "source": "Memoria unei situații păstrează mai mult decât cuvintele",
+      "translation": "Memory of a situation retains more than words"
+    },
+    {
+      "id": "t000466",
+      "source": "După câteva capitole dintr-un roman, ne putem aminti că un personaj a plecat înainte să sosească scrisoarea fără să ne amintim propoziția exactă care spunea aceasta. Mai târziu, o scenă ne poate surprinde fiindcă personajul pare să cunoască mesajul. Comparăm ceea ce citim cu o situație pe care am construit-o mental. Înțelegerea noastră are o organizare care trece dincolo de forma frazelor: participanți, locuri, timp, relații și acces la informație.",
+      "translation": "After a few chapters of a novel, we may remember that a character left before the letter arrived without remembering the exact sentence that said so. Later, a scene may surprise us because the character seems to know the message. We compare what we read with a situation we have constructed mentally. Our understanding has an organization extending beyond the form of sentences: participants, places, time, relationships and access to information."
+    },
+    {
+      "id": "t000467",
+      "source": "Cercetarea despre modelele situației în înțelegerea limbajului studiază tocmai asemenea reprezentări. Zwaan și Radvansky disting reprezentarea textului de reprezentarea situației descrise și discută felul în care aceasta participă la înțelegere și memorie. Ei separă și cunoașterea despre situații tipice de cazul particular reprezentat în timpul lecturii. [S14] Distincția oferă un reper apropiat de tipar și instanță. Pentru arhitectura noastră, ea sugerează să păstrăm atât mesajele, cât și situația construită din ele, astfel încât fiecare să poată ajuta la verificarea celeilalte.",
+      "translation": "Research on situation models in language comprehension studies precisely such representations. Zwaan and Radvansky distinguish the representation of the text from the representation of the situation described and discuss how the latter participates in understanding and memory. They also separate knowledge about typical situations from the particular case represented during reading. [S14] The distinction provides a reference point close to pattern and instance. For our architecture, it suggests retaining both messages and the situation constructed from them so each can help verify the other."
+    },
+    {
+      "id": "t000468",
+      "source": "Revenind la roman, putem proiecta un mecanism care urmărește evenimentele prin care personajele află anumite lucruri. O lectură, o conversație sau o deducție poate adăuga informație perspectivei unui personaj. Dacă o acțiune ulterioară pare să ceară o cunoaștere pentru care nu găsim sprijin, sistemul poate semnala legătura lipsă. Autorul poate decide că lipsește o scenă, că personajul a dedus ceva sau că observația sistemului pornește de la o interpretare greșită. Reprezentarea face problema localizabilă și lasă decizia literară în locul ei firesc.",
+      "translation": "Returning to the novel, we can design a mechanism tracking the events through which characters learn certain things. Reading, a conversation or a deduction can add information to a character's perspective. If a subsequent action seems to require knowledge for which we find no support, the system can flag the missing link. The author can decide that a scene is missing, that the character deduced something or that the system's observation starts from an incorrect interpretation. The representation makes the problem localizable and leaves the literary decision in its proper place."
+    },
+    {
+      "id": "t000469",
+      "source": "Există și cunoaștere care ne pregătește să înțelegem o situație înainte să avem toate detaliile. Când cineva spune „am rezervat o masă”, așteptăm informații despre loc, moment și participanți. Cadrele propuse de Marvin Minsky organizau cunoașterea despre situații tipice împreună cu locuri de completat și așteptări. [S2] Într-un SWM, un tipar poate avea un rol asemănător: recunoașterea unei activități activează întrebări relevante și relații prin care răspunsurile pot fi folosite.",
+      "translation": "There is also knowledge preparing us to understand a situation before we have all the details. When someone says “I reserved a table,” we expect information about location, time and participants. Marvin Minsky's proposed frames organized knowledge about typical situations together with slots to fill and expectations. [S2] In an SWM, a pattern can have a similar role: recognizing an activity activates relevant questions and relationships through which answers can be used."
+    }
+  ]
+}

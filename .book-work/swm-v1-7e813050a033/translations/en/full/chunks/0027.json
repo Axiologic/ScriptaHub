@@ -1,0 +1,51 @@
+{
+  "language": "en",
+  "chunk": 27,
+  "segments": [
+    {
+      "id": "t000309",
+      "source": "La testul privind disponibilitatea sălii, interpretorul creează două stări. Prima adaugă la condiția de drum cerința d cel mult cinci; cealaltă adaugă cerința d mai mare decât cinci. Fiecare copie continuă cu instrucțiunile ramurii sale. Dacă prima ramură ar conține ulterior un test care cere d mai mare decât șapte, acea continuare ar impune simultan d cel mult cinci și d mai mare decât șapte. Un verificator de satisfiabilitate poate stabili că nu există o valoare care să respecte ambele condiții, astfel încât interpretorul elimină continuarea imposibilă.",
+      "translation": "At the room-availability test, the interpreter creates two states. The first adds to the path condition the requirement that d be at most five; the other adds the requirement that d be greater than five. Each copy continues with its branch’s instructions. If the first branch later contained a test requiring d greater than seven, that continuation would simultaneously impose d at most five and d greater than seven. A satisfiability checker can establish that no value respects both conditions, so the interpreter eliminates the impossible continuation."
+    },
+    {
+      "id": "t000310",
+      "source": "Putem urmări defectul pas cu pas. La început există o rezervare confirmată. Programul o anulează, deci în starea intermediară nu mai avem acel angajament. Cere apoi intervalul nou. Pe traseul în care cererea este refuzată, programul se termină fără rezervare. Acest traseu satisface condițiile descrise: rezervarea inițială exista, anularea a reușit, iar noul interval nu era disponibil. El contrazice însă proprietatea dorită: o reprogramare nereușită trebuie să păstreze rezervarea inițială.",
+      "translation": "We can trace the defect step by step. Initially, there is a confirmed reservation. The program cancels it, so in the intermediate state we no longer have that commitment. It then requests the new interval. On the path where the request is refused, the program ends without a reservation. This path satisfies the described conditions: the initial reservation existed, cancellation succeeded and the new interval was unavailable. Yet it contradicts the desired property: an unsuccessful rescheduling must preserve the initial reservation."
+    },
+    {
+      "id": "t000311",
+      "source": "Rezultatul analizei poate fi prezentat sub forma unui contraexemplu, cu stări și răspunsuri concrete. Pentru un dezvoltator, acesta arată ramura care trebuie schimbată. Pentru un proiectant al tiparului, arată că verbul „reprogramează” ascunde un angajament mai bogat decât două instrucțiuni succesive. Pentru utilizator, justifică un comportament inteligibil: asistentul păstrează varianta confirmată până când poate stabili ce înlocuire este posibilă în condițiile serviciului folosit.",
+      "translation": "The analysis result can be presented as a counterexample with concrete states and responses. For a developer, it shows the branch that must change. For a pattern designer, it shows that the verb “reschedule” hides a richer commitment than two successive instructions. For the user, it justifies intelligible behavior: the assistant retains the confirmed option until it can establish which replacement is possible under the conditions of the service used."
+    },
+    {
+      "id": "t000312",
+      "source": "Contraexemplul poate fi căutat printr-o întrebare precisă adresată solverului: există valori care satisfac condiția drumului și încalcă proprietatea cerută la ieșire? În exemplul rezervării, valorile includ răspunsurile operațiilor externe. Combinația „anulare acceptată, rezervare nouă refuzată” lasă rezervarea inițială absentă și satisface această întrebare. Solverul poate furniza valorile care fac eroarea realizabilă în model. Dacă serviciul real nu admite acea combinație, contractul său trebuie să o excludă explicit. Un răspuns imaginar al unui serviciu nu poate deveni contraexemplu executabil numai fiindcă l-am numit simbol.",
+      "translation": "The counterexample can be sought through a precise question addressed to the solver: do values exist that satisfy the path condition and violate the required property at the output? In the reservation example, the values include responses from external operations. The combination “cancellation accepted, new reservation refused” leaves the initial reservation absent and satisfies this question. The solver can provide the values that make the error feasible within the model. If the real service does not permit that combination, its contract must explicitly exclude it. An imaginary service response cannot become an executable counterexample merely because we have called it a symbol."
+    },
+    {
+      "id": "t000313",
+      "source": "Verificatorul poate răspunde și că problema rămâne necunoscută, de exemplu când operațiile depășesc fragmentul pe care îl poate decide sau când expiră timpul de calcul. Interpretorul păstrează atunci ramura drept nerezolvată. O ramură se încheie când programul ajunge la o ieșire, la o eroare ori la limita explicită a explorării. Dacă programul are bucle sau numeroase interacțiuni, numărul drumurilor poate crește fără o limită utilă. Analiza livrează atunci drumurile verificate, contraexemplele găsite și ce a rămas neexplorat. Absența unui contraexemplu în această colecție nu este o demonstrație pentru toate execuțiile.",
+      "translation": "The checker can also answer that the problem remains unknown, for example when operations exceed the fragment it can decide or computation time expires. The interpreter then retains the branch as unresolved. A branch ends when the program reaches an exit, an error or the explicit exploration limit. If the program has loops or numerous interactions, the number of paths may grow without a useful bound. The analysis then delivers the paths checked, counterexamples found and what remains unexplored. Absence of a counterexample in this collection is not a proof covering every execution."
+    },
+    {
+      "id": "t000314",
+      "source": "O rezolvare poate utiliza operația atomică de modificare oferită de serviciu, dacă aceasta există și are contractul necesar. În alt sistem, poate fi nevoie de o rezervare temporară a noului interval, urmată de confirmare și de eliberarea celui vechi. Alegerea depinde de operațiile disponibile și de eventualele costuri ale unei perioade cu două rezervări. Modelul simbolic poate descrie aceste posibilități, iar codul de integrare trebuie să respecte protocolul ales.",
+      "translation": "One solution can use the atomic modification operation provided by the service, if one exists and has the required contract. In another system, a temporary reservation of the new slot may be needed, followed by confirmation and release of the old one. The choice depends on the available operations and the possible costs of a period with two reservations. The symbolic model can describe these possibilities, while the integration code must follow the chosen protocol."
+    },
+    {
+      "id": "t000315",
+      "source": "Devine astfel important ce anume reprezintă o ramură. „Nu cunoaștem disponibilitatea” este o stare a informației noastre. „Serviciul a refuzat intervalul” este un rezultat al unei operații. Dacă programul le tratează la fel, poate anula prea devreme un plan sau poate prezenta drept imposibilă o variantă care încă nu a fost verificată. Un tipar care distinge aceste situații permite un program care întreabă, așteaptă sau caută o alternativă fără să denatureze ceea ce știe.",
+      "translation": "What a branch represents thus becomes important. “We do not know the availability” is a state of our information. “The service rejected the slot” is the result of an operation. If the program treats them alike, it may cancel a plan too soon or present an option that has not yet been checked as impossible. A pattern that distinguishes these situations enables a program to ask, wait or seek an alternative without distorting what it knows."
+    },
+    {
+      "id": "t000316",
+      "source": "La fiecare pas, condițiile trebuie evaluate în starea pe care a produs-o pasul anterior. Dacă doi organizatori încearcă să ocupe simultan ultimul interval disponibil, amândoi pot vedea inițial că el este liber. Analiza unei instanțe izolate explică fiecare intenție, dar respectarea regulii comune cere și un mecanism de coordonare în serviciul care deține calendarul. În acest punct, o proprietate a reprezentării se întâlnește cu o proprietate a execuției distribuite. Legătura dintre ele trebuie descrisă, altfel aceeași propoziție, „intervalul este liber”, ar fi folosită cu două sensuri temporale diferite.",
+      "translation": "At each step, conditions must be evaluated in the state produced by the previous step. If two organizers try to occupy the last available slot simultaneously, both may initially see that it is free. Analyzing an isolated instance explains each intention, but enforcing the shared rule also requires a coordination mechanism in the service that owns the calendar. At this point, a property of the representation meets a property of distributed execution. Their relationship must be described; otherwise the same sentence, “the slot is free,” would be used with two different temporal meanings."
+    },
+    {
+      "id": "t000317",
+      "source": "O descriere care poate fi calculată în mai multe feluri",
+      "translation": "A description that can be computed in several ways"
+    }
+  ]
+}

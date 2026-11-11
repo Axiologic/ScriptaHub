@@ -1,0 +1,111 @@
+{
+  "language": "en",
+  "chunk": 2,
+  "segments": [
+    {
+      "id": "t000039",
+      "source": "Dacă am construi acest asistent, unde am pune informația că hotelul fusese ales pentru apropierea de întâlnire? Și ce componentă ar trebui să reacționeze când întâlnirea se mută? Aceste întrebări transformă intuiția într-o arhitectură. Sistemul are nevoie de o memorie explicită a situației, de o descriere a relațiilor pe care le poate interpreta și de componente care execută operații asupra lor. Un răspuns util apare prin colaborarea acestor părți.",
+      "translation": "If we were building this assistant, where would we put the information that the hotel had been chosen for its proximity to the meeting? And which component should react when the meeting moves? These questions turn an intuition into an architecture. The system needs an explicit memory of the situation, a description of the relationships it can interpret and components that perform operations on them. A useful answer emerges through collaboration between these parts."
+    },
+    {
+      "id": "t000040",
+      "source": "Vom numi",
+      "translation": "We will use"
+    },
+    {
+      "id": "t000041",
+      "source": "tipar de lume",
+      "translation": "world pattern"
+    },
+    {
+      "id": "t000042",
+      "source": "descrierea reutilizabilă a obiectelor, relațiilor, condițiilor și operațiilor dintr-o familie de situații.",
+      "translation": "to mean the reusable description of the objects, relationships, conditions and operations within a family of situations."
+    },
+    {
+      "id": "t000043",
+      "source": "Instanța de lume",
+      "translation": "The world instance"
+    },
+    {
+      "id": "t000044",
+      "source": "păstrează cazul particular: călătoria discutată, opțiunile sale și informațiile pe care ne bazăm. Tiparul spune, de exemplu, cum verificăm o legătură între două segmente de transport. Instanța spune care sunt segmentele, când au loc și ce durată de transfer cunoaștem. Acestea sunt cele două concepte centrale ale cărții. Interpretoarele și executorii sunt componentele software care le folosesc.",
+      "translation": "retains the particular case: the trip being discussed, its options and the information we rely on. The pattern says, for example, how to check a connection between two transport legs. The instance says which legs they are, when they take place and what transfer duration we know. These are the book’s two central concepts. Interpreters and executors are the software components that use them."
+    },
+    {
+      "id": "t000045",
+      "source": "Reprezentarea poate fi organizată prin",
+      "translation": "The representation can be organized through"
+    },
+    {
+      "id": "t000046",
+      "source": "fire",
+      "translation": "threads"
+    },
+    {
+      "id": "t000047",
+      "source": "și",
+      "translation": "and"
+    },
+    {
+      "id": "t000048",
+      "source": "circuite SOP",
+      "translation": "SOP circuits"
+    },
+    {
+      "id": "t000049",
+      "source": ". Un fir identifică un element și îi descrie proprietățile: o persoană, o întâlnire, o observație sau o operație cerută. Referințele leagă firele într-un circuit. În călătoria noastră, o rezervare trimite la persoana și la segmentul de transport potrivite, iar verificarea participării trimite la sosire și la începutul întâlnirii. Tiparul stabilește sensul acestor legături. Circuitul oferă o structură pe care un program o poate parcurge, interoga și transforma; simpla sa existență nu execută însă nicio rezervare.",
+      "translation": ". A thread identifies an element and describes its properties: a person, a meeting, an observation or a requested operation. References connect threads into a circuit. In our trip, a reservation points to the appropriate person and transport leg, while the attendance check points to the arrival and the start of the meeting. The pattern establishes the meaning of these connections. The circuit provides a structure that a program can traverse, query and transform; its mere existence does not, however, make any reservation."
+    },
+    {
+      "id": "t000050",
+      "source": "Privită în ansamblu, arhitectura are un traseu principal și două întoarceri importante. Un mesaj produce o interpretare propusă, aceasta este verificată în contextul unei instanțe, iar modificarea adoptată declanșează calculele relevante. Dacă lipsește o distincție decisivă, traseul se întoarce în dialog. Dacă este cerută o acțiune externă, traseul trece printr-un executor și revine prin rezultatul observat. Figura arată aceste relații; aceeași aplicație poate realiza mai multe dintre roluri, fără să le confunde responsabilitățile.",
+      "translation": "Viewed as a whole, the architecture has one main path and two important return paths. A message produces a proposed interpretation, which is checked in the context of an instance, and the adopted change triggers the relevant calculations. If a decisive distinction is missing, the path returns to the dialogue. If an external action is requested, the path passes through an executor and returns through the observed result. The figure shows these relationships; the same application can perform several roles without confusing their responsibilities."
+    },
+    {
+      "id": "t000051",
+      "source": "Figura 1. Instanța păstrează situația și rezultatele. Clarificarea și efectele externe revin ca intrări pentru un nou ciclu de procesare.",
+      "translation": "Figure 1. The instance retains the situation and the results. Clarification and external effects return as inputs for a new processing cycle."
+    },
+    {
+      "id": "t000052",
+      "source": "Să urmărim mecanismul folosind mesajul „mutăm plecarea pe vineri”. La intrare păstrăm mesajul și contextul în care a fost primit. Un selector de context caută instanțele plauzibile după discuția activă, persoanele menționate și evenimentele deja legate de ele. Un model neuronal propune că este vorba despre călătoria aflată în discuție, identifică data și interpretează intenția. Rezultatul acestei etape este o",
+      "translation": "Let us follow the mechanism using the message “we’re moving departure to Friday”. At the input, we retain the message and the context in which it was received. A context selector looks for plausible instances based on the active discussion, the people mentioned and the events already connected to them. A neural model proposes that the message concerns the trip under discussion, identifies the date and interprets the intention. The result of this stage is a"
+    },
+    {
+      "id": "t000053",
+      "source": "propunere de modificare",
+      "translation": "proposed change"
+    },
+    {
+      "id": "t000054",
+      "source": ": obiectul vizat, schimbarea cerută, sursa și presupunerile folosite. Nu este încă noua stare a tuturor rezervărilor.",
+      "translation": ": the target object, the requested change, the source and the assumptions used. It is not yet the new state of all the reservations."
+    },
+    {
+      "id": "t000055",
+      "source": "Această propunere este evaluată pe o copie de lucru sau pe o listă de diferențe față de versiunea curentă a instanței. Validatorul verifică dacă obiectul există, dacă noua valoare are sens pentru proprietatea schimbată și dacă referințele conduc la elementele așteptate. Începutul unei întâlniri cere un moment; participantul cere o referință la o persoană; o durată trebuie interpretată în unitatea corectă. Dacă „vineri” poate desemna două date relevante, sistemul păstrează alternativele și cere precizarea care schimbă rezultatul. Validarea nu completează în tăcere ceea ce mesajul nu a stabilit.",
+      "translation": "This proposal is evaluated on a working copy or a list of differences from the current version of the instance. The validator checks whether the object exists, whether the new value makes sense for the property being changed and whether the references lead to the expected elements. A meeting’s start requires a point in time; a participant requires a reference to a person; a duration must be interpreted in the correct unit. If “Friday” could refer to two relevant dates, the system retains the alternatives and asks for the clarification that changes the result. Validation does not silently fill in what the message has not established."
+    },
+    {
+      "id": "t000056",
+      "source": "După verificările structurale, interpretoarele evaluează condițiile relevante. În cazul nostru, modificarea plecării schimbă sosirea, iar sosirea influențează participarea. Motorul nu trebuie să reia fiecare calcul despre toate călătoriile. El consultă legăturile de dependență și introduce într-o",
+      "translation": "After the structural checks, the interpreters evaluate the relevant conditions. In our case, changing the departure changes the arrival, and the arrival affects attendance. The engine does not have to repeat every calculation about every trip. It consults the dependency links and places the affected operations on a"
+    },
+    {
+      "id": "t000057",
+      "source": "agendă de lucru",
+      "translation": "work agenda"
+    },
+    {
+      "id": "t000058",
+      "source": "operațiile afectate. Agenda este lista calculelor care trebuie încă efectuate, fiecare asociat cu datele și versiunea pentru care este cerut. Un interpretor temporal recalculează ora sosirii; un alt calcul verifică marja până la întâlnire. Dacă rezultatul schimbă o concluzie folosită mai departe, acea concluzie pune la rândul ei alte operații în agendă.",
+      "translation": ". The agenda is the list of calculations still to be performed, each associated with the data and version for which it is requested. A temporal interpreter recalculates the arrival time; another calculation checks the margin before the meeting. If the result changes a conclusion used further on, that conclusion in turn places other operations on the agenda."
+    },
+    {
+      "id": "t000059",
+      "source": "Aici trebuie separate două feluri de legături. Faptul că întâlnirea și călătoria se referă la aceeași persoană este o relație semantică. Faptul că evaluarea participării are nevoie de ora sosirii este o dependență de calcul. Numai a doua stabilește că un rezultat trebuie disponibil înaintea altui calcul. Din circuitul care descrie situația construim sau selectăm dependențele cerute de operația curentă. În capitolele următoare vom vedea cum unele calcule pot rula în paralel, cum altele cer o ordine și cum tratăm regulile care se reactivează reciproc.",
+      "translation": "Here we must distinguish two kinds of connection. The fact that the meeting and the trip refer to the same person is a semantic relationship. The fact that assessing attendance requires the arrival time is a computational dependency. Only the second establishes that one result must be available before another calculation. From the circuit describing the situation, we construct or select the dependencies required by the current operation. In the following chapters, we will see how some calculations can run in parallel, how others require an order and how we handle rules that reactivate one another."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "language": "en",
+  "chunk": 35,
+  "segments": [
+    {
+      "id": "t000394",
+      "source": "În zona industrială, Asset Administration Shell organizează descrierea activelor prin identificatori, submodele și referințe semantice. Specificația distinge active de tip și active individuale, precum și șabloane de submodel și instanțe ale acestora. [S19] Această separare este utilă și pentru echipamentele clădirii. Două pompe pot împărtăși caracteristici de proiectare și totuși pot avea istorii de întreținere diferite. Descrierea comună spune cum trebuie interpretate anumite proprietăți; informațiile unei pompe instalate spun ce știm despre acel exemplar și ce intervenții a primit.",
+      "translation": "In industry, the Asset Administration Shell organizes asset descriptions through identifiers, submodels and semantic references. The specification distinguishes type assets and individual assets, as well as submodel templates and their instances. [S19] This separation is also useful for building equipment. Two pumps may share design characteristics yet have different maintenance histories. The shared description says how certain properties should be interpreted; information about an installed pump says what we know about that particular unit and which interventions it has received."
+    },
+    {
+      "id": "t000395",
+      "source": "O instanță simbolică a clădirii nu este, așadar, o copie a fișei de produs a fiecărui dispozitiv. Ea leagă informațiile relevante pentru activitatea urmărită. La înlocuirea unei pompe, o parte din descrierea reutilizabilă poate rămâne aceeași, dar identitatea echipamentului instalat și istoricul său se schimbă. La schimbarea utilizării unei săli, echipamentele pot rămâne fizic aceleași, în timp ce condițiile după care evaluăm spațiul devin altele. Tiparul și instanța ne ajută să localizăm diferența, fără să rescriem întreaga clădire pentru fiecare modificare.",
+      "translation": "A symbolic instance of the building is therefore not a copy of each device's product sheet. It connects the information relevant to the activity being tracked. When a pump is replaced, part of the reusable description may remain the same, but the installed equipment's identity and history change. When a room's use changes, the equipment may remain physically the same while the conditions by which we evaluate the space become different. Pattern and instance help us locate the difference without rewriting the entire building for every change."
+    },
+    {
+      "id": "t000396",
+      "source": "Există și întrebări pentru care geometria devine esențială. Dacă mutăm masa de prezentare, vrem să vedem dacă mai rămâne loc pentru public și dacă ecranul este vizibil. OpenUSD oferă mecanisme de descriere și compoziție a scenelor, prin care obiecte și contribuții reutilizabile pot fi reunite în variante. [S27] Un proiectant poate explora astfel mai multe amenajări pornind de la aceeași clădire. Într-o integrare cu SWM, identitățile din scenă pot fi legate de rezervări, echipamente și condițiile evenimentului. Propunerea vizuală și amenajarea efectiv observată își păstrează rolurile distincte.",
+      "translation": "There are also questions for which geometry becomes essential. If we move the presentation table, we want to see whether space remains for the audience and whether the screen is visible. OpenUSD offers mechanisms for scene description and composition through which reusable objects and contributions can be brought together in variants. [S27] A designer can thus explore several layouts starting from the same building. In an integration with SWM, scene identities can be linked to reservations, equipment and event conditions. The visual proposal and the arrangement actually observed retain their distinct roles."
+    },
+    {
+      "id": "t000397",
+      "source": "Aceste paralele arată că ideea reutilizării nu începe cu SWM. Există deja mecanisme mature pentru a descrie tipuri de obiecte, relații și instanțe. Propunerea noastră urmărește cum pot fi folosite asemenea descrieri într-un proces de înțelegere și raționament: de la „mutăm întâlnirea în sala mare” la identificarea schimbărilor necesare, a condițiilor încă necunoscute și a explicației pe care o primește organizatorul. Descrierea lumii devine astfel activă în conversație.",
+      "translation": "These parallels show that the idea of reuse does not begin with SWM. Mature mechanisms already exist for describing object types, relationships and instances. Our proposal examines how such descriptions can be used in a process of understanding and reasoning: from “we are moving the meeting to the large room” to identifying the necessary changes, the conditions still unknown and the explanation the organizer receives. The description of the world thus becomes active in conversation."
+    },
+    {
+      "id": "t000398",
+      "source": "Viitorul unei încăperi trebuie calculat",
+      "translation": "A room's future must be calculated"
+    },
+    {
+      "id": "t000399",
+      "source": "La ora patru, sala este identificată corect și avem o măsurare recentă. Temperatura este de 16 grade, iar organizatorul dorește cel puțin 21 de grade la ora cinci. Acum apare o întrebare pe care inventarul echipamentelor și istoricul senzorilor nu o rezolvă singure: dacă pornim încălzirea acum, ce se va întâmpla în următoarea oră? Răspunsul cere un model al evoluției, legat de condițiile în care urmează să funcționeze sala.",
+      "translation": "At four o'clock, the room is correctly identified and we have a recent measurement. The temperature is 16 degrees, and the organizer wants at least 21 degrees at five. A question now arises that the equipment inventory and sensor history cannot resolve by themselves: if we switch on the heating now, what will happen over the next hour? The answer requires a model of evolution connected to the conditions in which the room will operate."
+    },
+    {
+      "id": "t000400",
+      "source": "Pentru a urmări calculul complet, folosim un exemplu numeric construit pentru această explicație. Presupunem că, într-un regim de încălzire fix și cu ferestrele închise, temperatura tinde spre 24 de grade. La fiecare cincisprezece minute se reduce cu un sfert diferența dintre temperatura curentă și această valoare. Parametrii ar trebui identificați din comportamentul încăperii într-o aplicație reală; aici sunt aleși astfel încât cititorul să poată verifica fiecare pas.",
+      "translation": "To follow the complete calculation, we use a numerical example constructed for this explanation. We assume that, under a fixed heating regime and with the windows closed, the temperature tends toward 24 degrees. Every fifteen minutes, the difference between the current temperature and this value decreases by a quarter. In a real application, the parameters would have to be identified from the room's behavior; here they are chosen so the reader can check each step."
+    },
+    {
+      "id": "t000401",
+      "source": "temperatura următoare = temperatura curentă + (24 − temperatura curentă) / 4",
+      "translation": "next temperature = current temperature + (24 − current temperature) / 4"
+    },
+    {
+      "id": "t000402",
+      "source": "La început, diferența este de opt grade, iar un sfert din ea înseamnă două: după primul interval obținem 18 grade. Următorul interval adaugă un sfert din șase, deci ajungem la 19,5. Continuând în același mod, obținem evoluția de mai jos. Acesta este un calcul asupra unei instanțe ipotetice pornite din starea observată, în care presupunerea despre regimul de încălzire rămâne valabilă.",
+      "translation": "Initially, the difference is eight degrees, and a quarter of it is two: after the first interval we obtain 18 degrees. The next interval adds a quarter of six, taking us to 19.5. Continuing in the same way gives the evolution below. This is a calculation on a hypothetical instance starting from the observed state, in which the assumption about the heating regime remains valid."
+    },
+    {
+      "id": "t000403",
+      "source": "Momentul scenariului",
+      "translation": "Scenario time"
+    },
+    {
+      "id": "t000404",
+      "source": "Temperatura calculată",
+      "translation": "Calculated temperature"
+    },
+    {
+      "id": "t000405",
+      "source": "16 grade",
+      "translation": "16 degrees"
+    },
+    {
+      "id": "t000406",
+      "source": "18 grade",
+      "translation": "18 degrees"
+    },
+    {
+      "id": "t000407",
+      "source": "19,5 grade",
+      "translation": "19.5 degrees"
+    },
+    {
+      "id": "t000408",
+      "source": "Aproximativ 20,63 grade",
+      "translation": "Approximately 20.63 degrees"
+    },
+    {
+      "id": "t000409",
+      "source": "Aproximativ 21,47 grade",
+      "translation": "Approximately 21.47 degrees"
+    },
+    {
+      "id": "t000410",
+      "source": "Modelul oferă acum o diferență relevantă pentru decizie. Pornirea la ora patru conduce, în aceste condiții, la depășirea țintei până la începutul evenimentului. Dacă presupunem că sala rămâne la 16 grade până la 16:15 și încălzirea începe abia atunci, la ora cinci avem numai trei intervale de evoluție și aproximativ 20,63 grade. Cele cincisprezece minute de întârziere schimbă concluzia. Legătura dintre orarul evenimentului și modelul termic a făcut vizibilă o dependență pe care simplul calendar nu o conținea.",
+      "translation": "The model now offers a difference relevant to the decision. Switching on at four o'clock leads, under these conditions, to exceeding the target by the start of the event. If we assume the room remains at 16 degrees until 16:15 and heating begins only then, by five we have only three intervals of evolution and approximately 20.63 degrees. The fifteen-minute delay changes the conclusion. The link between the event schedule and the thermal model has made visible a dependency that the calendar alone did not contain."
+    }
+  ]
+}

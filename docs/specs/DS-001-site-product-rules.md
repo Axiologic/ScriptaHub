@@ -171,6 +171,8 @@ Legal pages remain easy to reach and distinguish confirmed behavior from placeho
 
 No public legal or product text should freeze the service into its current delivery method. Claims about data handling must remain precise even if the transport changes; update privacy and AI pages alongside any architecture change that changes those claims.
 
+Analytics configuration lives only in `docs/assets/analytics.js`. Every public HTML document, including book landing pages, current and archived reader editions, workflows, legal pages, animation pages and the reader shell, loads that shared file once with `defer` in its head. The loader appends the configured Umami script once per document, independently of catalogue availability. The configured endpoint is hosted on `bizanso.com`; no page embeds its own tracker URL or website identifier. `tools/site_analytics.py` installs and audits the includes; catalogue refresh maintains them and catalogue checks reject missing, duplicated or misplaced includes.
+
 ## 14. Validation and change control
 
 After a catalogue, generator, route, or shared interaction change, run:
